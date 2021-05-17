@@ -11,6 +11,6 @@ export const API_Heroku1_Phone_L = (params) =>
 //
 export const API_Heroku1_Phone_R = (id) =>
     axiosClientHeroku({
-        url: `${id}/`,
+        url: `phone/${id}/`,
         method: 'GET',
     });

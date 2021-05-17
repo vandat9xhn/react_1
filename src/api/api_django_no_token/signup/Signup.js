@@ -7,10 +7,9 @@ import { default_login } from '../../../pages/login_form/_default/DefaultLogin';
 export const SignupRequest = (data) =>
     API_FakeReal(
         default_login,
-        axiosClientNoToken({
+        () => axiosClientNoToken({
             method: 'POST',
             data: data,
             url: '/registration/sign-up/',
-            headers: { 'X-CSRFToken': csrftoken() },
         })
     );

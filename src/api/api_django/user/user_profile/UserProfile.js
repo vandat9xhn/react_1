@@ -9,7 +9,7 @@ export const API_UserProfile_RU = (pk, method, data = {}) =>
         default_user_r.find((item) => item.id == pk) || default_user_r[2],
         () =>
             axiosDjangoClient({
-                url: 'user/ru-profile/' + pk + '/',
+                url: '/user/ru-profile/' + pk + '/',
                 method: method,
                 data: data,
             })
@@ -18,7 +18,7 @@ export const API_UserProfile_RU = (pk, method, data = {}) =>
 // Retrieve Update Contact
 export const RU_UserContact = (pk, method, data = {}) =>
     axiosDjangoClient({
-        url: 'user/ru-contact/' + pk + '/',
+        url: '/user/ru-contact/' + pk + '/',
         method: method,
         data: data,
     });
@@ -26,7 +26,7 @@ export const RU_UserContact = (pk, method, data = {}) =>
 // Retrieve Update Work
 export const RU_UserWork = (pk, method, data = {}) =>
     axiosDjangoClient({
-        url: 'user/ru-work/' + pk + '/',
+        url: '/user/ru-work/' + pk + '/',
         method: method,
         data: data,
     });

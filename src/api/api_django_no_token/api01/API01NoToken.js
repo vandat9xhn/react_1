@@ -7,7 +7,7 @@ import axiosClientNoToken from '../_axios/AxiosNoToken';
 export const API_City_L = (params) =>
     API_FakeReal(
         Array(6).fill(default_arr_city[0]),
-        API_IsLogin_URL(
+        () => API_IsLogin_URL(
             {
                 method: 'GET',
                 params: params,
