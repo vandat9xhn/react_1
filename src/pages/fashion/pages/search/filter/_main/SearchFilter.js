@@ -6,6 +6,7 @@ import {
     search_rate_props,
     search_sort_props,
 } from '../__prop-types/FilterPropTypes';
+
 import FilterArea from '../area/_main/FilterArea';
 import FilterRate from '../rate/_main/FilterRate';
 import FilterSort from '../sort/_main/FilterSort';
@@ -25,10 +26,10 @@ function SearchFilter(props) {
         area_arr,
         handleAreaChecked,
         //
-        active_rate_ix,
+        rate_ix,
         handleFilterRate,
         //
-        cur_sort_by,
+        sort_by,
         handleFilterSort,
     } = props;
 
@@ -45,14 +46,14 @@ function SearchFilter(props) {
 
                 <div className="SearchFilter_col">
                     <FilterRate
-                        active_rate_ix={active_rate_ix}
+                        rate_ix={rate_ix}
                         handleFilterRate={handleFilterRate}
                     />
                 </div>
 
                 <div className="SearchFilter_col">
                     <FilterSort
-                        cur_sort_by={cur_sort_by}
+                        sort_by={sort_by}
                         handleFilterSort={handleFilterSort}
                     />
                 </div>

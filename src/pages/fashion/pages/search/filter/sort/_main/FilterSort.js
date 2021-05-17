@@ -21,7 +21,7 @@ FilterSort.propTypes = {
 
 //
 function FilterSort(props) {
-    const {cur_sort_by, handleFilterSort} = props;
+    const {sort_by, handleFilterSort} = props;
 
     // 
     return (
@@ -35,7 +35,7 @@ function FilterSort(props) {
                             <FilterSortItem
                                 title={item.title}
                                 sort_by={item.sort_by}
-                                is_active={item.sort_by == cur_sort_by}
+                                is_active={item.sort_by == sort_by}
                                 handleFilterSort={handleFilterSort}
                             />
                         </div>

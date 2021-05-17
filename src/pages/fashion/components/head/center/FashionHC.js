@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
+import CustomLink from '../../../../../component/link/link/CustomLink';
 import InputSearch from '../../../../../component/input/input_search/InputSearch';
-// 
+//
 import './FashionHC.scss';
 
 //
@@ -19,10 +20,10 @@ FashionHC.propTypes = {
 //
 function FashionHC(props) {
     const {
-        handleSearchFashion,
         value_search,
         handled,
         handleChangeValueSearch,
+        handleSearchFashion,
     } = props;
 
     //
@@ -31,12 +32,12 @@ function FashionHC(props) {
             <div className="FashionHC_contain">
                 <div className="FashionHC_input">
                     <InputSearch
-                        placeholder="Search for name, product"
-                        onSearch={handleSearchFashion}
-                        handled={handled}
-                        default_search=""
                         value_search={value_search}
+                        default_search=""
+                        handled={handled}
+                        placeholder="Search for name, product"
                         handleChangeSearch={handleChangeValueSearch}
+                        onSearch={handleSearchFashion}
                     />
                 </div>
 
@@ -44,12 +45,12 @@ function FashionHC(props) {
                     <div className="FashionHC_search-row">
                         {searches.map((search, ix) => (
                             <div key={`FashionHC_${ix}`}>
-                                <div
-                                    className="FashionHC_word"
-                                    onClick={() => handleSearchFashion(search)}
+                                <CustomLink
+                                    to={`/fashion/search?q=${search}`}
+                                    className="normal-text"
                                 >
                                     {search}
-                                </div>
+                                </CustomLink>
                             </div>
                         ))}
                     </div>

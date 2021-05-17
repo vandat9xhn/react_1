@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import FashionHCommon from '../__main_common/FashionHCommon';
-
 
 //
 FashionHSearch.propTypes = {
@@ -14,7 +13,8 @@ FashionHSearch.propTypes = {
 //
 function FashionHSearch(props) {
     // props
-    const { handleSearchFashion, value_search, handleChangeValueSearch} = props;
+    const { handleSearchFashion, value_search, handleChangeValueSearch } =
+        props;
     //
     return (
         <div className="FashionHSearch">

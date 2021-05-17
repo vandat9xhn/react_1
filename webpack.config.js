@@ -7,16 +7,16 @@ const Dotenv = require('dotenv-webpack');
 
 // vendor
 const VENDOR_LIBS = [
-    "react",
-    "react-dom",
-    "react-router-dom",
-    "axios",
-    "redux",
-    "react-redux",
-    "redux-thunk",
-    "redux-saga",
-    "yup",
-    "formik"
+    'react',
+    'react-dom',
+    'react-router-dom',
+    'axios',
+    'redux',
+    'react-redux',
+    'redux-thunk',
+    'redux-saga',
+    'yup',
+    'formik',
 ];
 
 //devServer
@@ -25,15 +25,16 @@ const devServer = {
     open: false,
     stats: 'minimal',
     disableHostCheck: true,
-    historyApiFallback : true,
-    overlay : true,
-    inline : true,
-    compress : true,
-    contentBase : '/',
+    historyApiFallback: true,
+    overlay: true,
+    inline: true,
+    compress: true,
+    contentBase: '/',
 };
 
 // Development or Production
 const is_prod = process.env.ENVIRONMENT === 'production';
+// const is_prod = true;
 
 // Config
 const config = {
@@ -43,21 +44,20 @@ const config = {
         vendor: VENDOR_LIBS,
         // async: 'babel-polyfill'
     },
-//output
+    //output
     output: {
-        filename: 'static/[name].js',
+        filename: 'static/js/[name].js',
         publicPath: '/',
         path: path.resolve(__dirname, 'dist'),
     },
-//devtool
+    //devtool
     devtool: 'source-map',
-// module
+    // module
     module: {
         rules: [
-
             // file js
             {
-                use: ['babel-loader'/*, 'eslint-loader'*/],
+                use: ['babel-loader' /*, 'eslint-loader'*/],
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
             },
@@ -67,10 +67,10 @@ const config = {
                 use: [
                     // When being is_prod, it will use 'style-loader': css will be injected into multiple <style></style>, it works faster
                     is_prod ? MiniCssExtractPlugin.loader : 'style-loader',
-                    {loader: 'css-loader', options:{sourceMap: true}},
-                    {loader: 'sass-loader'}
+                    { loader: 'css-loader', options: { sourceMap: true } },
+                    { loader: 'sass-loader' },
                 ],
-                test: /\.(c|sa|sc)ss$/
+                test: /\.(c|sa|sc)ss$/,
             },
 
             // image video svg
@@ -78,43 +78,43 @@ const config = {
                 loader: 'file-loader',
                 test: /\.(png|svg|jpe?g|gif|woff2?|eot|ttf|wav|mp3|mp4|ico)$/,
                 options: {
-                    outputPath: 'static/images_icons'
-                }
+                    outputPath: 'static/images_icons',
+                },
             },
-        ]
+        ],
     },
 
-// plugins
+    // plugins
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[contenthash].min.css',
+            filename: 'static/css/[contenthash].min.css',
         }),
 
         new HtmlWebpackPlugin({
             template: 'src/index.html',
-            favicon: 'image/favicon.svg'
+            favicon: 'image/favicon.svg',
         }),
 
         new CleanWebpackPlugin(),
-        
+
         new Dotenv({
             path: '.env',
         }),
     ],
 
-// performance
+    // performance
     performance: {
-        hints: false
+        hints: false,
     },
-// optimization
+    // optimization
     optimization: {
         splitChunks: {
             chunks: 'all',
         },
     },
-// devServer
+    // devServer
     devServer,
-// mode
+    // mode
     mode: is_prod ? 'production' : 'development',
 };
 

@@ -1,7 +1,14 @@
 
 
+/* -------------------------- */
 .FashionSearch_pagination{
     margin: 1rem 0;
+}
+
+.FashionSearch_fetching{
+    top: 10rem;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .FashionSearch_open-filter{

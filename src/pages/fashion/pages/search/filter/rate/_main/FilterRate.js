@@ -13,7 +13,7 @@ FilterRate.propTypes = {
 
 //
 function FilterRate(props) {
-    const { active_rate_ix, handleFilterRate } = props;
+    const { rate_ix, handleFilterRate } = props;
 
     //
     return (
@@ -26,7 +26,7 @@ function FilterRate(props) {
                     {[5, 4, 3, 2, 1].map((ix) => (
                         <div key={`FilterRate_${ix}`} className="SearchFilter_item">
                             <FilterRateItem
-                                is_active={active_rate_ix == ix}
+                                is_active={rate_ix == ix}
                                 ix={ix}
                                 handleFilterRate={handleFilterRate}
                             />

@@ -14,3 +14,8 @@ export const params_buy = {
 export const params_cancel = {
     
 }
+
+// 
+export const params_fashion_search_l = {
+    size: 30,
+}

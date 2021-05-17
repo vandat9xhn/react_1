@@ -35,10 +35,10 @@ function FashionHCommon(props) {
 
                     <div className="FashionHCommon_center">
                         <FashionHC
-                            handleSearchFashion={handleSearchFashion}
                             handled={handled}
                             value_search={value_search}
                             handleChangeValueSearch={handleChangeValueSearch}
+                            handleSearchFashion={handleSearchFashion}
                         />
                     </div>
 

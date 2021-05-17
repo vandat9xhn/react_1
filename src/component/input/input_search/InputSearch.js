@@ -18,6 +18,7 @@ function InputSearch(props) {
         onSearch,
         refreshSearch,
     } = props;
+
     // ref
     const ref_input_search = useRef(null);
 
@@ -42,7 +43,6 @@ function InputSearch(props) {
         <div className="InputSearch">
             <div className="InputSearch_contain">
                 <div className="InputSearch_row brs-5px">
-                    {/* input */}
                     <div className="InputSearch_input">
                         <input
                             type="text"
@@ -55,7 +55,6 @@ function InputSearch(props) {
                         />
                     </div>
 
-                    {/* icon key */}
                     <div
                         className="InputSearch_key hv-opacity"
                         onClick={onClickSearch}

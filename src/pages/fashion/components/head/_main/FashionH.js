@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 // 
 import FashionHCommon from '../__main_common/FashionHCommon';
 
