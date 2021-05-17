@@ -1,0 +1,49 @@
+
+.ScreenTitle_row{
+    display: flex;
+    align-items: center;
+}
+
+//
+.ScreenTitle_close{
+    margin: 0.5rem;
+}
+
+//
+.ScreenTitle__icon-arrow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2rem;
+    height: 2rem;
+    padding: 0.2rem;
+    background-color: var(--bg-loader);
+
+    opacity: 0.5;
+    cursor: pointer;
+    &:hover{
+        background-color: var(--bg-loader-hover);
+        opacity: 1;
+    }
+}
+
+
+// 
+@media (max-width: 400px){
+    .ScreenTitle{
+        .IconFav{
+            width: 2rem;
+            height: 2rem;
+        }
+        .IconsArrow{
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+
+    .ScreenTitle__icon-arrow{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}

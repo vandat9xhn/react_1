@@ -1,0 +1,15 @@
+.SuccessDiv{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    min-width: 10rem;
+    padding: 0.5rem;
+
+    border-radius: 5px;
+    background-color: var(--success);
+    color: white;
+}
+.SuccessDiv > div{
+    text-align: center;
+}

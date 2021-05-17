@@ -1,0 +1,111 @@
+// installment discount
+%installment-discount {
+    position: absolute;
+    top: 5px;
+    font-size: 11px;
+}
+
+/* --------------------------------- */
+
+.ProductItem {
+    position: relative;
+    width: 12rem;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+        .ProductItem_img {
+            img {
+                bottom: 0.2rem;
+            }
+        }
+    }
+}
+
+.ProductItem_img {
+    height: 11rem;
+    img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        border-radius: 5px;
+        transition: all 0.15s;
+    }
+}
+
+.ProductItem_info {
+    font-size: 14px;
+}
+
+.ProductItem_name {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-line-clamp: 3;
+
+    line-height: 1.5rem;
+    max-height: 3rem;
+    overflow: hidden;
+    text-transform: lowercase;
+}
+
+.ProductItem_price {
+    & > div {
+        margin-right: 0.3rem;
+    }
+}
+// .
+.ProductItem_old-price {
+    text-decoration: line-through;
+    font-size: 11px;
+}
+// .
+.ProductItem_installment {
+    @extend %installment-discount;
+    left: 0;
+
+    padding: 0 0.2rem;
+    background-color: var(--gold);
+}
+// .
+.ProductItem_discount {
+    @extend %installment-discount;
+    right: 0;
+}
+
+//
+@media (max-width: 500px) {
+    .ProductItem {
+        width: 8rem;
+    }
+
+    .ProductItem_img {
+        height: 7.5rem;
+    }
+
+    .ProductItem_price {
+        & > div {
+            margin-right: 0.2rem;
+        }
+    }
+}
+
+@media (max-width: 350px) {
+    .ProductItem {
+        width: 7rem;
+    }
+
+    .ProductItem_img {
+        height: 6.5rem;
+    }
+}
+
+@media (max-width: 280px) {
+    .ProductItem {
+        width: 6.5rem;
+    }
+
+    .ProductItem_img {
+        height: 6rem;
+    }
+}

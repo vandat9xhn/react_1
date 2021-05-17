@@ -1,0 +1,31 @@
+
+// user
+.CreateUpdatePostHome_user{
+    width: fit-content;
+    max-width: 15rem;
+}
+
+.CreateUpdatePostHome_files-tag{
+    margin: 0.25rem 0;
+}
+
+// btn post
+.CreateUpdatePostHome_post{
+    width: 100%;
+    padding: 0.25rem;
+
+    text-align: center;
+    color: var(--white);
+    font-weight: 500;
+}
+.CreateUpdatePostHome_post-disable{
+    background-color: var(--md-bg-ccc);
+    opacity: 0.5;
+}
+.CreateUpdatePostHome_post-active{
+    background-color: var(--blue);
+    &:hover{
+        cursor: pointer;
+    }
+}
+

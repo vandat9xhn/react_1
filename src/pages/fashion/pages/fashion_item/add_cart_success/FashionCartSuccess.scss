@@ -1,0 +1,17 @@
+.FashionCartSuccess{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 16rem;
+    height: 10rem;
+
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+
+    .IconDiv__icon{
+        border-radius: 50%;
+        background-color: var(--success);
+    }
+}

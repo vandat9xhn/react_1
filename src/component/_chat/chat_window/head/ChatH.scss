@@ -1,0 +1,65 @@
+
+.ChatH_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    border-bottom: 2px solid var(--md-border-blur);
+}
+
+// .
+.ChatH_user {
+    max-width: 70%;
+    padding: 0.1rem;
+    .PictureNameCommon__pic {
+        width: auto;
+        height: auto;
+        img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+// ..
+.ChatH_user-pic {
+    margin: 0 0.2rem;
+}
+
+// .
+.ChatH_actions {
+    width: 30%;
+}
+// ..
+.ChatH_actions-row {
+    display: flex;
+    justify-content: flex-end;
+}
+// ...
+.ChatH_actions_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.25rem;
+    margin: 0 0.1rem;
+
+    background-color: var(--danger);
+    cursor: pointer;
+
+    .IconsArrow_close {
+        stroke-width: 35;
+    }
+    .IconsArrow_dropdown {
+        fill: var(--white);
+    }
+}
+// ....
+.ChatH_actions_btn-hide {
+    transform: rotate(90deg);
+}
+.ChatH_actions_btn-hide_active {
+    transform: rotate(-90deg);
+}

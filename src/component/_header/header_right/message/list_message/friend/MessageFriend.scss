@@ -1,0 +1,19 @@
+
+.MessageFriend{
+    padding: 5px;
+}
+
+.MessageFriend_pic{
+    margin-bottom: 0.5rem;
+}
+// .
+.MessageFriend_img{
+    border: 1px solid var(--md-bg-ccc);
+}
+
+.MessageFriend_name{
+    width: 70px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

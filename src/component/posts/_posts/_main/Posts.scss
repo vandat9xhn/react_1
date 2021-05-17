@@ -1,0 +1,12 @@
+
+.Posts_new{
+    margin: 0 auto 1rem ;
+    max-width: 500px;
+}
+
+
+@media (max-width: 330px) {
+    .Posts_new{
+        margin-bottom: 0.75rem;
+    }
+}

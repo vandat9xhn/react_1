@@ -1,0 +1,61 @@
+
+//
+.Carousel_contain{
+    overflow: hidden;
+}
+
+//
+.Carousel_row{
+    height: 100%;
+}
+.Carousel_transition{
+    transition: transform 0.5s;
+}
+.Carousel_transition-none{
+    transition: none;
+}
+
+//
+.Carousel_btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background-color: var(--md-bg-primary);
+    border-radius: 50%;
+    transition: transform 0.3s;
+    box-shadow: 0 0 1px 1px var(--md-border-blur);
+    cursor: pointer;
+    &:hover{
+        transform: translateY(-50%) scale(1.5);
+    }
+}
+//
+.Carousel_btn-next{
+    right: 0;
+}
+.Carousel_btn-prev{
+    left: 0;
+}
+//
+.Carousel_icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//
+@media (max-width: 40rem){
+    .Carousel{
+        width: 95vw;
+    }
+    .Carousel_img{
+        img{
+            width: 95vw;
+            height: 12.5rem;
+        }
+    }
+}

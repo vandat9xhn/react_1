@@ -1,0 +1,31 @@
+/* ----------------------- SCSS ----------------------- */
+$height: 3rem;
+
+/* ---------------------------------------------- */
+// @import url('./HeaderCommon.scss');
+// @import url('./HeaderRes.scss');
+
+/* --------------------- HEADER ----------------------------- */
+
+.Header {
+    height: $height;
+    border-bottom: 1px solid var(--hr-bg);
+    background-color: var(--md-bg-primary);
+}
+// .
+.Header_contain {
+    height: $height;
+}
+// ..
+.Header_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: $height;
+}
+//...
+.Header_col-left,
+.Header_col-right {
+    height: $height;
+}

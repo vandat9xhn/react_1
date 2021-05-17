@@ -1,0 +1,26 @@
+
+//
+.FashionCtg_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.FashionCtg_item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0.5rem;
+    width: 6rem;
+    padding: 0.5rem;
+    background-color: var(--white-blur);
+    border: 1px solid var(--md-bg-blur);
+    &:hover{
+        background-color: var(--white);
+    }
+}
+.FashionCtg_item-name{
+    height: 3rem;
+    overflow: hidden;
+    text-align: center;
+}

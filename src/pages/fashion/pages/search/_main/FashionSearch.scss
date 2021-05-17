@@ -1,0 +1,30 @@
+
+
+.FashionSearch_pagination{
+    margin: 1rem 0;
+}
+
+.FashionSearch_open-filter{
+    display: none;
+}
+// 
+.FashionSearch_open-filter-btn{
+    margin-left: auto;
+    margin-right: 1rem;
+    width: fit-content;
+    padding: 0.5rem;
+
+    cursor: pointer;
+}
+
+.FashionSearch_filter{
+    margin: 0.25rem;
+}
+// 
+.FashionSearch_filter-icon-close{
+    display: none;
+}
+
+.FashionSearch_product{
+    flex-grow: 1;
+}

@@ -1,0 +1,15 @@
+
+.ScreenPermissionItem{
+    padding: 0.5rem;
+}
+.ScreenPermissionItem_active{
+    background-color: var(--md-bg-fb);
+}
+
+.ScreenPermissionItem_right{
+    margin-left: 0.5rem;
+}
+// ..
+.ScreenPermissionItem_right_icon{
+    margin-right: 0.25rem;
+}

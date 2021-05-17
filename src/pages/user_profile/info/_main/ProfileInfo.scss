@@ -1,0 +1,127 @@
+$pic_width: 15vw;
+$pic_width_500: 25vw;
+
+/*----------------------------------*/
+
+.ProfileInfo {
+    background-color: var(--md-bg-primary);
+    .SkeletonDiv {
+        &:nth-child(1) {
+            margin: auto;
+            width: 10rem;
+        }
+        &:nth-child(2) {
+            margin: auto;
+            width: 10rem;
+        }
+        &:nth-child(3) {
+            margin: auto;
+            width: 15rem;
+        }
+    }
+}
+
+.ProfileInfo_pics {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+// .
+.ProfileInfo_cover-pic {
+    padding: 0 8%;
+    img {
+        width: 100%;
+        height: 25rem;
+        border-radius: 5px;
+    }
+}
+// .
+.ProfileInfo_div-pic {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: $pic_width;
+    height: 2rem;
+}
+// ..
+.ProfileInfo_profile-pic {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    img {
+        width: $pic_width;
+        height: $pic_width;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+}
+
+// ..
+.ProfileInfo_name {
+    font-size: 1.6rem;
+    div {
+        padding: 0.5rem;
+        &:first-child {
+            font-weight: 600;
+        }
+    }
+}
+
+// ..
+.ProfileInfo__add-friend {
+    padding: 0.2rem;
+    min-width: 8rem;
+    background-color: var(--blue);
+
+    cursor: pointer;
+}
+// ..
+.ProfileInfo__message {
+    margin-left: 0.5rem;
+    padding: 0.2rem;
+    cursor: pointer;
+    .IconsMenu {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+}
+
+//
+@media (max-width: 500px) {
+    .ProfileInfo_pics {
+        margin-bottom: 1rem;
+    }
+
+    // .
+    .ProfileInfo_cover-pic {
+        padding: 0;
+        img {
+            border-radius: 0;
+            height: 10rem;
+        }
+    }
+
+    // .
+    .ProfileInfo_div-pic {
+        width: $pic_width_500;
+        height: 1rem;
+        // ..
+    }
+    .ProfileInfo_profile-pic {
+        img {
+            width: $pic_width_500;
+            height: $pic_width_500;
+        }
+    }
+
+    // .
+
+    .ProfileInfo_name {
+        font-size: 1rem;
+        div {
+            padding: 0.3rem;
+        }
+    }
+}

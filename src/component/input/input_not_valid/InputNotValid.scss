@@ -1,0 +1,59 @@
+//
+%placeholder-move{
+    top: 0;
+
+    line-height: 12px;
+    padding: 0 0.3rem;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+//
+$opacity_blur: 0.5;
+
+//
+.InputNotValid{
+    position: relative;
+}
+
+//
+.InputNotValid_placeholder{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: top 200ms, font-size 200ms;
+
+    background-color: var(--color-react);
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+
+    pointer-events: none;
+}
+
+//
+.InputNotValid_input{
+    width: 100%;
+    padding: 0.8rem;
+    background-color: transparent;
+    border: 2px solid var(--md-bg-blur);
+
+    opacity: $opacity_blur;
+    &:focus{
+        opacity: 1;
+        border: 2px solid var(--blue);
+        outline: none;
+
+        &+.InputNotValid_placeholder{
+            @extend %placeholder-move;
+            color: var(--blue);
+        }
+    }
+}
+
+//
+.InputNotValid_text{
+    .InputNotValid_placeholder{
+        @extend %placeholder-move;
+    }
+}

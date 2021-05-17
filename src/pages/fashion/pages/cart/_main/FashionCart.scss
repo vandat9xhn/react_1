@@ -1,0 +1,98 @@
+
+//1
+.FashionCart_body{
+    margin: 0.5rem 2.5rem;
+}
+
+.FashionCart_action{
+    margin: 1rem 0;
+}
+
+//2
+.FashionCart_item-title{
+    padding: 0.5rem;
+}
+//3
+.FashionCart__check{
+    width: 5.5rem;
+    margin: 0 0.5rem;
+}
+.FashionCart__name{
+    width: 40%;
+}
+.FashionCart__calculate{
+    width: calc(60% - 6rem);
+    text-align: center;
+}
+//2
+.FashionCart_del{
+    margin: 0.5rem;
+    margin-left: auto;
+    width: 4rem;
+    padding: 0.25rem;
+    background-color: var(--danger);
+
+    text-align: center;
+    color: var(--white);
+    cursor: pointer;
+}
+
+//2
+.FashionCart_buy{
+    margin: 1rem;
+}
+//3
+.FashionCart_buy-now{
+    width: 10rem;
+    padding: 1rem 2rem;
+    background-color: var(--btn-buy);
+
+    text-align: center;
+    font-weight: 600;
+    color: var(--white);
+}
+.FashionCart_buy_ready{
+    cursor: pointer;
+    &:hover{
+        opacity: 0.9;
+    }
+}
+
+//1
+.FashionCart_no-product{
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 96%;
+    padding: 2rem;
+
+    text-align: center;
+    font-weight: 800;
+    color: var(--md-bg-blur);
+}
+
+//
+@media (max-width: 1000px){
+    .FashionCart_body{
+        margin: 1rem;
+    }
+}
+
+//
+@media (max-width: 700px){
+    .FashionCart_body{
+        margin: 0.5rem 0.25rem;
+    }
+}
+
+//
+@media (max-width: 300px){
+    .FashionCart_item-title-row{
+        display: block;
+        &>div{
+            width: 100%;
+        }
+    }
+    .FashionCart__calculate{
+        text-align: start;
+    }
+}

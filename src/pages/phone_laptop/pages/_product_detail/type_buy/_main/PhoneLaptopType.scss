@@ -1,0 +1,50 @@
+
+
+//
+.PhoneLaptopType_contain{
+    position: relative;
+    max-height: 96vh;
+    overflow: auto;
+    background-color: var(--md-bg-primary);
+}
+
+//
+.PhoneLaptopType_head{
+    padding: 0.5rem;
+}
+.PhoneLaptopType_new-price{
+    margin-right: 0.5rem;
+}
+.PhoneLaptopType_old-price{
+    text-decoration: line-through;
+}
+
+//
+.PhoneLaptopType_body-title{
+    padding: 0.5rem;
+}
+.PhoneLaptopType_list{
+    max-width: 100%;
+    overflow: auto;
+}
+
+//
+.PhoneLaptopType_bottom{
+    padding: 0.5rem;
+}
+
+//
+.PhoneLaptopType_close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.PhoneLaptopType_close-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--danger);
+}

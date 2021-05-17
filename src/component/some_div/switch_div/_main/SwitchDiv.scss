@@ -1,0 +1,12 @@
+.SwitchDiv{
+    .SwitchDiv_row{
+        display: flex;
+        justify-content: space-between;
+        
+        & > div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

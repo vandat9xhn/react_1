@@ -1,0 +1,70 @@
+// text in link
+.HeaderH__text {
+    height: 3rem;
+    padding: 0.62rem;
+    font-weight: 600;
+
+    &:hover {
+        background-color: var(--md-bg-hover);
+        color: var(--blue);
+    }
+
+    // icon phone, menu
+    .IconsProfile,
+    .IconsMenu {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+    .IconsMenu_menu {
+        stroke: none;
+    }
+}
+
+/* ------------------ DROPDOWN LIST ------------------- */
+.HeaderH_learns {
+    position: relative;
+    cursor: pointer;
+    &:hover {
+        .HeaderH_learns-hidden {
+            visibility: visible;
+            opacity: 1;
+            &::before {
+                width: 13rem;
+            }
+        }
+        .ArrowAndString_arrow {
+            transform: rotate(90deg);
+            .IconsArrow_dropdown {
+                fill: aqua;
+            }
+        }
+    }
+}
+.HeaderH_learns-hidden {
+    right: auto;
+    left: 0;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+
+    // make bottom blue
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+
+        width: 0;
+        height: 2px;
+        background-color: var(--blue);
+        transition: width 0.4s ease-in-out;
+    }
+}
+
+//
+@media (max-width: 800px) {
+    .HeaderH {
+        display: none;
+    }
+}

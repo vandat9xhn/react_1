@@ -1,0 +1,15 @@
+
+.AddFriendBtn_row{
+    display: flex;
+    justify-content: space-around;
+}
+// .
+.AddFriendBtn_col{
+    width: 45%;
+    border: 1px solid var(--md-bg-ccc);
+}
+.AddFriendBtn_left{
+    .BtnAction{
+        background-color: var(--blue);
+    }
+}

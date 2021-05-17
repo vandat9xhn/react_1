@@ -1,0 +1,16 @@
+
+
+.Pagination_contain{
+    width: fit-content;
+    max-width: 96%;
+    overflow-x: auto;
+    margin: auto;
+
+}
+
+//
+@media (max-width: 230px) {
+    .Pagination_row{
+        flex-wrap: wrap;
+    }
+}

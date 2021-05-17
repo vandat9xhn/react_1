@@ -1,0 +1,77 @@
+/* ------------------ HOVER -------------------------- */
+
+.open_type-like {
+    .IconLaugh {
+        .IconLaugh_group {
+            animation: laugh-group 3s infinite linear;
+        }
+
+        .IconLaugh_eye {
+            animation: laugh-eye 3s infinite linear;
+        }
+
+        .IconLaugh_mouth {
+            animation: laugh-mouth 0.6s infinite linear;
+        }
+    }
+}
+
+/* ------------------ KEYFRAMES -------------------------- */
+
+
+// group
+@keyframes laugh-group {
+    0% {
+        transform: translate(0px, 30px);
+    }
+    25% {
+        transform: translate(-20px, 0px);
+    }
+    50% {
+        transform: translate(0px, -35px);
+    }
+    75% {
+        transform: translate(20px, 0px);
+    }
+    100% {
+        transform: translate(0px, 30px);
+    }
+}
+
+
+// eyes
+@keyframes laugh-eye {
+    0% {
+        transform: translate(300px, 100px) scale(1)
+            translate(-300px, -100px) translate(0px, 0px);
+    }
+
+    50% {
+        transform: translate(300px, 100px) scale(1, 0.5)
+            translate(-300px, -100px) translate(0px, -10px);
+    }
+
+    100% {
+        transform: translate(300px, 100px) scale(1)
+            translate(-300px, -100px) translate(0px, 0px);
+    }
+}
+
+
+// mouth
+@keyframes laugh-mouth {
+    0% {
+        transform: translate(300px, 100px) scale(1.1, 1.2)
+            translate(-300px, -100px);
+    }
+
+    50% {
+        transform: translate(300px, 100px) scale(1)
+            translate(-300px, -100px);
+    }
+
+    100% {
+        transform: translate(300px, 100px) scale(1.1, 1.2)
+            translate(-300px, -100px);
+    }
+}

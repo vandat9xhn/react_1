@@ -1,0 +1,22 @@
+
+.AddFriendRequested_reply{
+    position: absolute;
+    top: 102%;
+    z-index: 1;
+
+    width: 100%;
+    padding: 0.25rem;
+    background-color: var(--md-bg-primary);
+}
+// .
+.AddFriendRequested_reply_row{
+    justify-content: space-around;
+}
+// ..
+.AddFriendRequested_reply_item{
+    padding: 0.25rem;
+    cursor: pointer;
+    &:hover{
+        background-color: var(--bg-through);
+    }
+}

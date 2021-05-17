@@ -1,0 +1,23 @@
+
+.FashionBC{
+    user-select: none;
+}
+
+.FashionBC_row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+// 
+.FashionBC_carousel{
+    width: 40rem;
+    max-width: 95vw;
+    height: 15rem;
+}
+
+
+//
+@media (max-width: 42rem){
+
+}

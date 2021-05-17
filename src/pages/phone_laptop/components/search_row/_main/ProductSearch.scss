@@ -1,0 +1,21 @@
+.ProductSearch{
+    padding: 0.5rem;
+    background-color: var(--md-bg-primary);
+}
+
+// ..
+.ProductSearch__btn {
+    margin-right: 0.5rem;
+    width: 5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    .IconsArrow {
+        transform: rotate(-180deg) scale(0.9, 0.7);
+    }
+
+    &:hover {
+        background-color: var(--bg-blur);
+    }
+}
+

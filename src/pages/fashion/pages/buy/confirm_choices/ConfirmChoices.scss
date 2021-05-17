@@ -1,0 +1,20 @@
+//
+.ConfirmChoices_contain{
+    border-top: 1px solid var(--md-bg-ccc);
+}
+//
+.ConfirmChoices_item{
+    margin: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    
+    cursor: pointer;
+    &:hover{
+        opacity: 0.9;
+    }
+}
+.ConfirmChoices_close{
+    background-color: var(--ccc);
+}
+.ConfirmChoices_yes{
+    background-color: var(--danger);
+}

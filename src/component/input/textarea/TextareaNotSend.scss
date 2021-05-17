@@ -1,0 +1,12 @@
+.TextareaNotSend{
+    width: 100%;
+    overflow-y: scroll;
+    resize: none;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    :focus{
+        outline: none;
+    }
+}

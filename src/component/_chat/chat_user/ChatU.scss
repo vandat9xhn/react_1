@@ -1,0 +1,59 @@
+
+// chat user
+.ChatU{
+    //
+    .ChatU_toggle{
+        position: fixed;
+        right: 0;
+        bottom: 60%;
+
+        width: 2rem;
+        background-color: var(--danger);
+        cursor: pointer;
+    }
+    //
+    .ChatU_open{
+        transform: translateX(50%);
+        transition: transform 0.3s;
+        &:hover{
+            transform: translateX(10%);
+        }
+    }
+    
+    // contain
+    .ChatU_contain{
+        position: fixed;
+        right: 0;
+        top: 40%;
+
+        height: 12rem;
+        width: 15rem;
+        overflow-y: auto;
+        
+        background-color: var(--md-bg-blur);
+        transition: all 0.5s;
+
+        .ChatU_friends{
+            padding: 0.2rem;
+            &:hover{
+                background-color: var(--bg-light);
+            }
+        }
+
+    }
+    // close
+    .ChatU_contain-close{
+        transform: translateX(98%);
+        opacity: 0.4;
+        pointer-events: none;
+    }
+    // close
+    .ChatU_contain-open{
+        transform: translate(0%);
+        opacity: 1;
+    }
+
+    .IconsArrow{
+        stroke: var(--white);
+    }
+}

@@ -1,0 +1,39 @@
+.WaitingBall{
+    display: flex;
+    justify-content: center;
+    height: 1.6rem;
+    // 
+    .WaitingBall_ball{
+        animation: ballMove 0.3s infinite alternate;
+    }
+    .WaitingBall_2{
+        animation-delay: 0.05s;
+    }
+    .WaitingBall_3{
+        animation-delay: 0.1s;
+    }
+}
+
+.WaitingBall_center{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.WaitingBall_ball{
+    position: relative;
+    margin-right: 0.5rem;
+    bottom: 0;
+    
+    width: 0.6rem;
+    height: 0.6rem;
+    background-color: red;
+    border-radius: 50%;
+
+    animation: ballMove 0.3s infinite alternate;
+}
+
+@keyframes ballMove{
+    100%{bottom: 0.8rem;}
+}

@@ -1,0 +1,13 @@
+
+// 
+.action-item{
+    width: 100%;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--md-bg-ccc);
+
+    font-weight: 500;
+    cursor: pointer;
+    &:hover{
+        background-color: var(--bg-through);
+    }
+}

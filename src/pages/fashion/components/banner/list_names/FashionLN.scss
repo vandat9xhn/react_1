@@ -1,0 +1,17 @@
+
+
+.FashionLN_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.FashionLN_item{
+    margin: 0.5rem;
+}
+.FashionLN_title{
+    padding: 0.5rem;
+    background-color: var(--white-blur);
+    &:hover{
+        background-color: var(--white);
+    }
+}

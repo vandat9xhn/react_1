@@ -1,0 +1,21 @@
+
+//
+.ScreenBlurFootYesNo_foot_row{
+    display: flex;
+    justify-content: flex-end;
+}
+///
+.ScreenBlurFootYesNo_foot__btn{
+    margin: 0 0.5rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 5px;
+
+    color: var(--white);
+    cursor: pointer;
+}
+.ScreenBlurFootYesNo_foot__btn-yes{
+    background-color: var(--danger);
+}
+.ScreenBlurFootYesNo_foot__btn-no{
+    background-color: var(--bg-loader);
+}

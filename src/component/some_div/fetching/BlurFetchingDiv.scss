@@ -1,0 +1,14 @@
+//
+.BlurFetchingDiv{
+    .BlurFetchingDiv_screen{
+        z-index: 54;
+    }
+}
+
+//
+.BlurFetchingDiv_fetching{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

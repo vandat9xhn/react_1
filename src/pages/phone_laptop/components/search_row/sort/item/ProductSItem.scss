@@ -1,0 +1,11 @@
+
+.ProductSortItem {
+    padding: 0.25rem;
+}
+
+.ProductSortItem_item{
+    padding: 0.25rem;
+    &:hover{
+        color: var(--blue);
+    }
+}

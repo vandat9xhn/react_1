@@ -1,0 +1,104 @@
+// 
+%key-close{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* ------------------------ */
+
+.SearchAnimateDiv{
+    width: 100%;
+    padding: 0.5rem 2.5rem;
+    background-color: var(--md-bg-primary);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 250ms;
+}
+.SearchAnimateDiv_close{
+    width: 2.5rem;
+    padding: 0.5rem 1.3rem;
+    .SearchAnimateDiv_input{
+        opacity: 0;
+        input{
+            padding: 0;
+        }
+    }
+    .SearchAnimateDiv_right{
+        opacity: 0
+    }
+}
+
+.SearchAnimateDiv_key{
+    @extend %key-close;
+    left: 0;
+    z-index: 1;
+}
+// .
+.SearchAnimateDiv_key-contain{
+    padding: 0.5rem;
+}
+
+.SearchAnimateDiv_input{
+    position: relative;
+    input{
+        padding: 0.25rem 1rem 0.25rem 0.25rem;
+        width: 100%;
+        border: none;
+        // border: 1px solid var(--md-bg-ccc);
+        // border-radius: 5px;
+        &:focus{
+            outline: none;
+        }
+    }
+}
+// .
+.SearchAnimateDiv_input-clear{
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    cursor: default;
+    &:hover{
+        opacity: 0.8;
+    }
+    .IconsArrow_close{
+        stroke: black;
+    }
+}
+
+.SearchAnimateDiv_right{
+    @extend %key-close;
+    right: 0;
+}
+// .
+.SearchAnimateDiv_icon-close{
+    padding: 0.5rem;
+}
+
+
+@media (max-width: 500px){
+    .SearchAnimateDiv{
+        padding: 0.25rem 2rem;
+        .IconsInput{
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        .close-icon-small{
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+    }
+    .SearchAnimateDiv_close{
+        width: 0;
+        padding: 0.25rem 1.1rem;
+    }
+}
+
+@media (max-width: 300px){
+    .SearchAnimateDiv_close {
+        padding: 0.3rem 1.1rem;
+    }
+}

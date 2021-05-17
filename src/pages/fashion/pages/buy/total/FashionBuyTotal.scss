@@ -1,0 +1,49 @@
+
+//
+.FashionBuyTotal_contain{
+    padding: 0.5rem 1rem;
+}
+.FashionBuyTotal_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.FashionBuyTotal_title{
+    font-size: 18px;
+}
+
+//
+.FashionBuyTotal__calculate{
+    margin-left: 1rem;
+    text-align: end;
+}
+
+//
+.FashionBuyTotal_buy{
+    margin: 0.5rem;
+    padding: 1rem;
+    background-color: var(--btn-buy);
+
+    text-align: center;
+    font-weight: 800;
+    color: white;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.9;
+    }
+}
+
+
+
+//
+@media (max-width: 600px){
+    .FashionBuyTotal_row{
+        display: block;
+    }
+    .FashionBuyTotal_title{
+        border-bottom: 1px solid var(--md-bg-blur);
+    }
+    .FashionBuyTotal_calculate-row{
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,40 @@
+//
+.CommentContent {
+    width: 100%;
+}
+
+//
+.CommentContent_text {
+    margin-left: 1rem;
+    white-space: pre-wrap;
+}
+
+.CommentContent_images {
+    display: flex;
+    width: 30%;
+    overflow: auto;
+}
+.CommentContent_image {
+    margin: 0.25rem;
+    video,img {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 5px;
+        object-fit: fill;
+    }
+}
+
+.CommentContent_time {
+    width: fit-content;
+    margin-left: auto;
+
+    font-size: 0.7rem;
+    font-style: italic;
+}
+
+//
+@media (max-width: 600px) {
+    .CommentContent_images {
+        width: 80%;
+    }
+}

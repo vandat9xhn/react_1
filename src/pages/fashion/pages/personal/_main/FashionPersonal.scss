@@ -1,0 +1,79 @@
+
+
+//
+.FashionPersonal_ctg{
+    margin-top: 0.5rem;
+}
+
+
+//
+.FashionPersonal_contain{
+    position: relative;
+}
+//
+.FashionPersonal_row{
+    display: flex;
+}
+
+//
+.FashionPersonal_left{
+    // width: 10rem;
+    background-color: var(--md-bg-primary);
+    transition: transform 0.3s;
+    z-index: 2;
+}
+
+.FashionPersonal_left-toggle{
+    display: none;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+
+    opacity: 1;
+    transition: all 0.3s;
+}
+.FashionPersonal_left-toggle-hidden{
+    right: -1.2rem;
+    opacity: 0.5;
+}
+
+.FashionPersonal_left-icon{
+    transition: transform 0.3s;
+}
+.FashionPersonal_left-icon-close{
+    transform: rotate(45deg);
+}
+
+//
+.FashionPersonal_right{
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+    flex-grow: 1;
+    border: 1px solid var(--md-bg-blur);
+}
+
+//
+.FashionPersonal_block{
+    padding: 0.5rem;
+}
+
+
+//
+@media (max-width: 600px){
+    .FashionPersonal_left{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .FashionPersonal_left-hidden{
+        transform: translateX(-100%);
+    }
+    .FashionPersonal_left-toggle{
+        display: block;
+    }
+
+    .FashionPersonal_right{
+        margin: 0;
+        padding: 0.1rem;
+    }
+}

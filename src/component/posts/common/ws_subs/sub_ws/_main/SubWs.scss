@@ -1,0 +1,30 @@
+
+
+.Sub_contain{
+    flex-grow: 1;
+}
+
+// .
+.Sub_user {
+    .Sub_picture {
+        img {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+        }
+    }
+
+    .Sub_edit {
+        position: absolute;
+        right: 2px;
+        top: 0;
+    }
+
+    .label-field {
+        margin-right: 0.5rem;
+    }
+}
+// .
+.Sub_content {
+    text-indent: 1rem;
+}

@@ -1,0 +1,38 @@
+.MainFooter_contain {
+    background-color: var(--md-bg-primary);
+}
+// .
+.MainFooter_row {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0.5rem;
+}
+// ..
+.MainFooter_col {
+    width: 33%;
+    div {
+        padding: 0.5rem 0;
+    }
+    &:nth-child(-n + 2) {
+        div {
+            color: var(--blue);
+        }
+    }
+}
+
+//
+@media (max-width: 600px) {
+    // .
+    .MainFooter_row {
+        display: block;
+        padding: 0.25rem;
+    }
+    // ..
+    .MainFooter_col {
+        width: 100%;
+        div {
+            padding: 0.25rem;
+        }
+    }
+}

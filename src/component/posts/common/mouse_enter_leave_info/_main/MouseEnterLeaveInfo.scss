@@ -1,0 +1,16 @@
+
+.MouseEnterLeaveInfo{
+    .PictureName{
+        .PictureNameCommon_contain {
+            color: var(--white);
+        }
+    }
+}
+
+.MouseEnterLeaveInfo_list,
+.MouseEnterLeaveInfo_fetching {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+}

@@ -1,0 +1,38 @@
+/* ------------------ HOVER -------------------------- */
+
+.open_type-like {
+    // transform: scale(1.1);
+    // transition: transform 0.2s;
+    // cursor: pointer;
+    .IconLike_g {
+        animation: animation-like 1s infinite linear;
+        stroke: var(--blue);
+    }
+}
+
+/* ------------------ ACTIVE -------------------------- */
+
+.nav-active {
+    .IconLike_g {
+        stroke: var(--blue);
+    }
+}
+
+/* ------------------ KEYFRAMES -------------------------- */
+
+@keyframes animation-like {
+    0% {
+        transform: translate(100px, 100px) rotate(0deg)
+            translate(-100px, -100px);
+    }
+
+    45% {
+        transform: translate(100px, 100px) rotate(-20deg)
+            translate(-100px, -100px) translate(-15px, -25px);
+    }
+
+    90% {
+        transform: translate(100px, 100px) rotate(0deg)
+            translate(-100px, -100px);
+    }
+}

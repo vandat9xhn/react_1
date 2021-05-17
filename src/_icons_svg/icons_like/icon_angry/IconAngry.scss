@@ -1,0 +1,86 @@
+/* ------------------ HOVER -------------------------- */
+
+.open_type-like {
+    // face
+    .IconAngry_face-angry {
+        animation: face-angry 4s infinite linear;
+    }
+    // in face
+    .IconAngry_in-face {
+        animation: in-face 4s infinite linear;
+    }
+    // face group
+    .IconAngry_face-group {
+        animation: face-group 4s infinite linear;
+    }
+}
+
+/* ------------------ KEYFRAMES -------------------------- */
+
+// in face
+@keyframes in-face {
+    0% {
+        transform: translate(1100px, 100px) scale(1) translate(-1100px, -100px)
+            translate(0, 0);
+    }
+
+    20% {
+        transform: translate(1100px, 100px) scale(0.9)
+            translate(-1100px, -100px) translate(0px, 10px);
+    }
+
+    40% {
+        transform: translate(1100px, 100px) scale(0.8)
+            translate(-1100px, -100px) translate(0px, 20px);
+    }
+
+    70% {
+        transform: translate(1100px, 100px) scale(0.75)
+            translate(-1100px, -100px) translate(0px, 30px);
+    }
+
+    95% {
+        transform: translate(1100px, 100px) scale(1) translate(-1100px, -100px)
+            translate(0, 0);
+    }
+}
+
+// face
+@keyframes face-angry {
+    0% {
+        fill: var(--face-yellow);
+    }
+    80% {
+        fill: var(--face-angry);
+    }
+    100% {
+        fill: var(--face-yellow);
+    }
+}
+
+// face group
+@keyframes face-group {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    40% {
+        transform: translate(0px, 0px);
+    }
+    45% {
+        transform: translate(15px, 0px);
+    }
+    50% {
+        transform: translate(-15px, 0px);
+    }
+    60% {
+        transform: translate(15px, 0px);
+    }
+    64% {
+        transform: translate(0px, 0px);
+    }
+
+    95% {
+        transform: translate(0, 0);
+    }
+}

@@ -1,0 +1,35 @@
+
+.ZoomPostCommonLeft{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+// .
+.ZoomPostCommonLeft_vid-pic{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 80%;
+    height: 80%;
+}
+
+// .
+.ZoomPostCommonLeft_btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    cursor: pointer;
+    .IconsArrow{
+        stroke: var(--white);
+    }
+}
+.ZoomPostCommonLeft_next{
+    right: 2px;
+}
+.ZoomPostCommonLeft_prev{
+    left: 2px;
+}

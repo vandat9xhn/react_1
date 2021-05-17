@@ -1,0 +1,35 @@
+
+.Comments_list{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+//
+.Comment__input {
+    position: relative;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 1rem);
+    
+    .CommentInput {
+        .InputFile {
+            width: 1.5rem;
+            height: 1.5rem;
+            .IconsInput {
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+    }
+
+    .CommentInput_preview {
+        position: absolute;
+        bottom: 100%;
+    }
+}
+// .
+.Comments_input-contain{
+    padding-top: 0.25rem;
+    border-top: 1px solid var(--md-bg-ccc);
+}

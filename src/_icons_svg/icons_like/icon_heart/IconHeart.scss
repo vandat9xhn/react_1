@@ -1,0 +1,56 @@
+/* ------------------ HOVER -------------------------- */
+
+.open_type-like {
+    .IconHeart_face {
+        fill: var(--heart-blur);
+    }
+
+    .IconHeart_heart {
+        fill: var(--heart);
+        animation: animation-heart 3s infinite linear;
+    }
+}
+
+/* ------------------ ACTIVE -------------------------- */
+
+.nav-active {
+    .IconHeart_face {
+        fill: var(--heart-blur);
+    }
+    .IconHeart_heart {
+        fill: var(--heart);
+    }
+}
+
+/* ------------------ KEYFRAMES -------------------------- */
+
+@keyframes animation-heart {
+    0% {
+        transform: translate(700px, 100px) scale(0.5) translate(-700px, -100px)
+            translate(-45px, 75px);
+    }
+
+    45% {
+        transform: translate(700px, 100px) scale(0.8) translate(-700px, -100px)
+            translate(0px, 0px);
+    }
+
+    55% {
+        transform: translate(700px, 100px) skew(5deg, 5deg) rotate(15deg)
+            scale(0.85) translate(-700px, -100px);
+    }
+
+    60% {
+        transform: translate(700px, 100px) skew(-5deg, -5deg) rotate(-15deg)
+            scale(0.9) translate(-700px, -100px);
+    }
+
+    90% {
+        transform: translate(700px, 100px) scale(1) translate(-700px, -100px);
+    }
+
+    100% {
+        transform: translate(700px, 100px) scale(0.5) translate(-700px, -100px)
+            translate(-45px, 75px);
+    }
+}

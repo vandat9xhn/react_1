@@ -1,0 +1,15 @@
+
+.CheckBoxCustom_input{
+    margin-right: 0.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
+
+    border: 1px solid var(--md-bg-ccc);
+    transition: background-color 250ms;
+}
+.CheckBoxCustom_input-active{
+    background-color: var(--border-fashion);
+}
+.CheckBoxCustom_input-inactive{
+    background-color: var(--md-bg-primary);
+}

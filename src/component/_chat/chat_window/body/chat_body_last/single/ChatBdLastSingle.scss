@@ -1,0 +1,31 @@
+//
+.ChatBdLastSingle{
+    margin: 0.5rem;
+}
+
+//
+.ChatBdLastSingle_pic{
+    margin: auto;
+    width: 4rem;
+    height: 4rem;
+    img{
+        width: 100%;
+        height: 100%;
+
+        border: 1px solid var(--md-bg-ccc);
+        border-radius: 50%;
+    }
+}
+
+//
+.ChatBdLastSingle_name{
+    margin: 0.25rem;
+    text-align: center;
+}
+
+//
+.ChatBdLastSingle_info{
+    text-align: center;
+    font-size: 12.5px;
+}
+

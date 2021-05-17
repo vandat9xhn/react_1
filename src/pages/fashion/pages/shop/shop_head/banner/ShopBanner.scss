@@ -1,0 +1,21 @@
+
+.ShopBanner_carousel{
+    margin: auto;
+    width: 95vw;
+    height: 30rem;
+}
+
+
+// 
+@media (max-width: 500px){
+    .ShopBanner_carousel{
+        height: 25rem;
+    }
+}
+
+// 
+@media (max-width: 300px){
+    .ShopBanner_carousel{
+        height: 20rem;
+    }
+}

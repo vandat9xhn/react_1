@@ -1,0 +1,50 @@
+//
+.ListTypeLike{
+    position: relative;
+    animation: move-down 0.3s ease-out;
+    //
+    .open_type-like{
+        transition: transform 0.2s;
+        cursor: pointer;
+
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+}
+
+//
+.ListTypeLike_contain{
+    border-radius: 10px;
+    background-color: var(--md-bg-blur);
+    z-index: 55;
+
+    .ListTypeLike_row{
+        display: flex;
+    }
+}
+
+//
+.ListTypeLike__item{
+    position: relative;
+    bottom: 0;
+    padding: 0.3rem;
+    overflow: hidden;
+
+    user-select: none;
+    transition: bottom 0.2s;
+    &:hover{
+        bottom: 0.3rem;
+        .IconsTypeLike{
+            transform: scale(1.2);
+        }
+    }
+}
+
+
+
+//
+@keyframes move-down{
+    from{opacity: 0; top: -70px;}
+    to{opacity: 1; top: 0px;}
+}

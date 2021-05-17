@@ -1,0 +1,26 @@
+//
+.ArrowAndString_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+//
+.ArrowAndString_arrow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    transition: all 0.3s linear;
+}
+//
+.ArrowAndString_arrow-down{
+    transform: rotate(90deg);
+    .IconsArrow_dropdown{
+        fill: aqua;
+    }
+}

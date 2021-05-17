@@ -1,0 +1,46 @@
+.CmtSub_head {
+    position: relative;
+    background-color: var(--md-bg-ccc);
+    border-radius: 5px;
+}
+
+//
+.CmtSub_edit {
+    position: absolute;
+    right: 5px;
+    top: 0;
+}
+
+.CmtSub_content {
+    padding: 0 0.5rem;
+}
+
+.CmtSub_foot {
+    position: relative;
+    padding-bottom: 0.75rem;
+    font-size: 14px;
+    user-select: none;
+}
+
+// rep
+.CmtSub_reply {
+    margin: 0 0.5rem;
+    cursor: pointer;
+    &:hover{
+        color: var(--blue);
+    }
+}
+// total likes
+.CmtSub_total-like {
+    cursor: pointer;
+}
+// time
+.CmtSub_time {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+
+    font-size: 12px;
+    font-style: italic;
+    cursor: default;
+}

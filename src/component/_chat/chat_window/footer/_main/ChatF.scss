@@ -1,0 +1,68 @@
+// line height of textarea
+$line-height: 1.5;
+
+
+// chat footer
+.ChatF{
+    position: relative;
+}
+
+// preview
+.ChatF_preview{
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 20rem;
+    max-width: 100%;
+}
+
+// more top + open + close
+.ChatF_MT{
+    transition: height 0.4s;
+    overflow: hidden;
+}
+.ChatF_MT-open{
+    height: 3rem;
+}
+.ChatF_MT-close{
+    height: 0;
+}
+
+// row input
+.ChatF_row{
+    display: flex;
+    align-items: flex-end;
+
+    padding: 0.25rem;
+    border-top: 1px solid var(--bg-blur);
+}
+// more bottom + open + close
+.ChatF_MB{
+    transition: width 0.4s;
+}
+.ChatF_MB-open{
+    width: 8rem;
+}
+.ChatF_MB-close{
+    width: 2rem;
+}
+// input text
+.ChatF_Ip{
+    margin: 0 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    background-color: var(--md-bg-ccc);
+
+    flex-grow: 1;
+    transition: all 0.4s;
+}
+// textarea
+.ChatF_textarea{
+    // max rows = 4 and per line height = 1.5rem
+    line-height: #{$line-height}rem;
+    max-height: #{$line-height * 4.2}rem;
+}
+// send
+.ChatF_Sd{
+    margin-left: 0.5rem;
+}

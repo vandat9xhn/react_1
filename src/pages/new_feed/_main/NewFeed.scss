@@ -1,0 +1,29 @@
+
+.NewFeed_contain{
+    padding: 0 0.5rem;
+}
+
+.NewFeed_search {
+    padding: 0.75rem 0 0.75rem 5px;
+    width: 20rem;
+    max-width: calc(100% - 10px);
+}
+
+.NewFeed_row {
+    display: flex;
+    justify-content: space-between;
+}
+// .
+.NewFeed_col-left {
+    width: 350px;
+    background-color: var(--md-bg-primary);
+}
+// .
+.NewFeed_col-center{
+    width: 500px;
+}
+// .
+.NewFeed_col-right{
+    width: 350px;
+    background-color: var(--md-bg-primary);
+}

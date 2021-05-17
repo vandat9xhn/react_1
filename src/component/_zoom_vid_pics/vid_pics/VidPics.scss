@@ -1,0 +1,76 @@
+%size-100{
+    width: 100%;
+    height: 100%;
+}
+%bg-blur{
+    position: absolute;
+    top: 0;
+    left: 0;
+    @extend %size-100;
+}
+
+//
+.VidPics{
+    @extend %size-100;
+}
+.VidPics_contain{
+    position: relative;
+    @extend %size-100;
+}
+
+// bg blur
+.VidPics_bg{
+    @extend %bg-blur;
+}
+.VidPics_blur{
+    @extend %bg-blur;
+    filter: blur(10px);
+    .VidPics_blur-img{
+        @extend %size-100;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+/* ------------------- CURRENT ------------------- */
+.VidPics_current{
+    position: absolute;
+    left: 10%;
+    bottom: 4rem;
+    height: 80%;
+    width: 80%;
+}
+.VidPics_current-contain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @extend %size-100;
+    img, video{
+        min-width: 50%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+/* ------------------- ALL ------------------- */
+.VidPics_all{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+}
+.VidPics_all-contain{
+    max-width: 20rem;
+    overflow-x: auto;
+    transform: translateX(-50%);
+}
+.VidPics_all-row{
+    display: flex;
+}
+
+
+//
+@media (max-width: 20rem){
+    .VidPics_all-contain{
+        max-width: 100vw;
+    }
+}

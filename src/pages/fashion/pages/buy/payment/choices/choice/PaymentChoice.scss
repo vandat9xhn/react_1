@@ -1,0 +1,26 @@
+
+//
+.PaymentChoice_contain{
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--md-bg-blur);
+}
+//
+.PaymentChoice_contain-active{
+    position: relative;
+    color: var(--blue);
+    &::before{
+        content: "✔";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+//
+.PaymentChoice_row{
+    margin-left: 1.5rem;
+}
+.PaymentChoice_item{
+    cursor: pointer;
+}

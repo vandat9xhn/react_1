@@ -1,0 +1,125 @@
+/* ------------------ HOVER -------------------------- */
+
+.open_type-like {
+    // cry
+    .IconSad_cry {
+        opacity: 0;
+        transform: translate(900px, 100px) scale(1)
+            translate(-900px, -100px) translate(0px, 0px);
+        animation: sad-cry 4s infinite linear;
+    }
+    // group in face
+    .IconSad_g {
+        animation: sad-group 4s infinite linear;
+    }
+}
+
+
+/* ------------------ KEYFRAMES -------------------------- */
+
+@keyframes sad-group {
+    0% {
+        transform: translate(900px, 100px) scale(1) translate(-900px, -100px);
+    }
+
+    24% {
+        transform: translate(900px, 100px) scale(0.7) translate(-900px, -100px)
+            translate(30px, 40px);
+    }
+    26% {
+        transform: translate(900px, 100px) scale(0.7) translate(-900px, -100px)
+            translate(30px, 40px);
+    }
+
+    47% {
+        transform: translate(900px, 100px) scale(0.8) translate(-900px, -100px)
+            translate(-35px, 0px);
+    }
+    49% {
+        transform: translate(900px, 100px) scale(0.8) translate(-900px, -100px)
+            translate(-35px, 0px);
+    }
+
+    72% {
+        transform: translate(900px, 100px) scale(0.7) translate(-900px, -100px)
+            translate(-35px, 50px);
+    }
+
+    95% {
+        transform: translate(900px, 100px) scale(1) translate(-900px, -100px);
+    }
+}
+
+// cry
+@keyframes sad-cry {
+    0% {
+        opacity: 0;
+        transform: translate(900px, 100px) scale(1) translate(-900px, -100px)
+            translate(0px, 0px);
+    }
+    1% {
+        opacity: 0;
+        transform: translate(900px, 100px) scale(0.5) translate(-900px, -100px)
+            translate(40px, -10px);
+    }
+    2% {
+        opacity: 1;
+        transform: translate(900px, 100px) scale(0.5) translate(-900px, -100px)
+            translate(40px, -10px);
+    }
+
+    23% {
+        opacity: 1;
+        transform: translate(900px, 100px) scale(1) translate(-900px, -100px)
+            translate(0px, 60px);
+    }
+    28% {
+        opacity: 0;
+        transform: translate(900px, 100px) scale(0.9) translate(-900px, -100px)
+            translate(0px, 80px);
+    }
+
+    30% {
+        opacity: 0;
+        transform: translate(900px, 60px) scale(0.5) translate(-900px, -100px)
+            translate(-180px, 15px);
+    }
+    45% {
+        opacity: 0;
+        transform: translate(900px, 60px) scale(0.5) translate(-900px, -100px)
+            translate(-180px, 15px);
+    }
+    49% {
+        opacity: 0;
+        transform: translate(900px, 60px) scale(0.5) translate(-900px, -100px)
+            translate(-180px, 25px);
+    }
+
+    75% {
+        opacity: 1;
+        transform: translate(900px, 100px) scale(0.7) translate(-900px, -100px)
+            translate(-145px, 90px);
+    }
+    76% {
+        opacity: 0;
+        transform: translate(900px, 100px) scale(0.7) translate(-900px, -100px)
+            translate(-145px, 90px);
+    }
+
+    90% {
+        opacity: 0;
+        transform: translate(900px, 100px) scale(0.5) translate(-900px, -100px)
+            translate(40px, -10px);
+    }
+
+    95% {
+        opacity: 0;
+        transform: translate(900px, 100px) scale(1) translate(-900px, -100px)
+            translate(0px, 0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(900px, 100px) scale(1) translate(-900px, -100px)
+            translate(0px, 0px);
+    }
+}

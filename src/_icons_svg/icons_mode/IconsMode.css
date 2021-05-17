@@ -1,0 +1,15 @@
+.IconsMode_dark{
+    transition: all 0.8s;
+}
+.IconsMode_dark-none{
+    opacity: 0;
+    transform: translate(100px, 100px) translate(-50px, 50px) translate(-100px, -100px);
+}
+
+.IconsMode_light{
+    transition: all 0.8s;
+}
+.IconsMode_light-none{
+    opacity: 0;
+    transform: translate(100px, 100px) translate(-50px, 50px) translate(-100px, -100px);
+}

@@ -1,0 +1,77 @@
+
+//
+.CommentInput_contain {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    background-color: var(--md-bg-primary);
+    border: 1px solid var(--md-border-blur);
+    border-radius: 15px;
+}
+
+// text input
+.CommentInput_input {
+    display: flex;
+    align-items: center;
+    
+    width: 1rem;
+    padding-left: 0.5rem;
+    flex-grow: 1;
+    overflow: hidden;
+}
+.CommentInput__editable {
+    padding: 0.3rem;
+}
+
+// files input
+.CommentInput_files {
+    align-self: flex-end;
+    padding-right: 0.25rem;
+}
+.CommentInput_files-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .CommentInput_files-col {
+        padding: 0.2rem;
+    }
+
+    // icon send
+    .CommentInput__send {
+        display: none;
+        div {
+            display: flex;
+        }
+    }
+}
+
+// preview
+.CommentInput_preview {
+    max-width: 100%;
+    overflow-x: auto;
+    .ImgVidPreview {
+        display: flex;
+        .ImgVidPreview__elm {
+            margin: 0.3rem;
+        }
+    }
+}
+
+//
+@media (max-width: 600px),
+    (max-width: 820px) and (max-height: 400px) and (orientation: landscape) {
+    .CommentInput_files-row {
+        .InputFile {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+        .IconsInput {
+            width: 0.8rem;
+            height: 0.8rem;
+        }
+        .CommentInput__send {
+            display: block;
+        }
+    }
+}

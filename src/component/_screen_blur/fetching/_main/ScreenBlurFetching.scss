@@ -1,0 +1,14 @@
+//
+.ScreenBlurFetching{
+    .ScreenBlurFetching_screen{
+        z-index: 1000;
+    }
+}
+
+//
+.ScreenBlurFetching_fetching{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

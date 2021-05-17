@@ -1,0 +1,51 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
+import IconDiv from '../../../../some_div/icon_div/IconDiv';
+import IconsAction from '../../../../../_icons_svg/icons_action/IconsAction';
+
+import './ActionsEdit.scss';
+import YesNoDiv from '../../../../some_div/yes_no_div/YesNoDiv';
+//
+ActionsEdit.propTypes = {};
+
+//
+function ActionsEdit(props) {
+    const { chat_ix, delBdMessage } = props;
+    //
+    const [open_yes_no, setOpenYesNo] = useState(false);
+    //
+    function onDelBdMessage() {
+        delBdMessage(chat_ix);
+    }
+    //
+    function openYesNoDelete() {
+        setOpenYesNo(true);
+    }
+    //
+    function closeYesNo() {
+        setOpenYesNo(false);
+    }
+
+    //
+    return (
+        <div>
+            <div className="ActionsEdit_contain">
+                <div className="ActionsChat__del">
+                    <div className="ActionsEdit_row" onClick={openYesNoDelete}>
+                        <IconDiv Icon={IconsAction}>Delete message</IconDiv>
+                    </div>
+
+                    <div className={open_yes_no ? '' : 'display-none'}>
+                        <YesNoDiv
+                            handleYes={onDelBdMessage}
+                            handleNo={closeYesNo}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default ActionsEdit;

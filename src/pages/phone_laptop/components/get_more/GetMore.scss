@@ -1,0 +1,10 @@
+.GetMore_contain{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.GetMore_contain > div{
+    padding: 0.5rem;
+    color: var(--blue);
+    cursor: pointer;
+}

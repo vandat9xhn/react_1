@@ -1,0 +1,42 @@
+//
+.PaginationItem {
+    margin: 0.25rem;
+}
+
+//
+.PaginationItem_contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 2rem;
+    height: 2rem;
+    padding: 0.5rem;
+    background-color: var(--border-fashion);
+
+    color: black;
+    user-select: none;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--fashion-hover);
+    }
+}
+.PaginationItem_contain-active {
+    border: 1px solid var(--danger);
+    color: var(--white);
+    font-weight: 500;
+}
+
+//
+@media (max-width: 350px) {
+    .PaginationItem {
+        margin: 0.1rem;
+    }
+
+    //
+    .PaginationItem_contain {
+        width: 1.65rem;
+        height: 1.65rem;
+        padding: 0.25rem;
+    }
+}

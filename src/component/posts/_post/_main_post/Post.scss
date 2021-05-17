@@ -1,0 +1,39 @@
+// post
+.Post {
+    margin: 0 auto 1rem;
+    width: 100%;
+    max-width: 500px;
+    padding: 0.5rem;
+    background-color: var(--md-bg-primary);
+}
+
+// ..
+.Post__user {
+    display: flex;
+    align-items: center;
+    margin-right: 2.5rem;
+}
+// ..
+.Post__actions {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+// .
+.Post_content {
+    padding: 0.5rem;
+}
+
+// .
+.Post_comment {
+    margin-top: 0.5rem;
+}
+
+//
+@media (max-width: 400px) {
+    .Post {
+        padding: 0.25rem;
+        border-radius: 0;
+    }
+}

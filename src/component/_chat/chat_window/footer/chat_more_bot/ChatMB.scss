@@ -1,0 +1,93 @@
+$dur: 0.4s;
+
+// row toggle + actions
+.ChatMB_row{
+    display: flex;
+    align-items: center;
+}
+
+// toggle actions
+.ChatMB_toggle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    background-color: var(--blue);
+    transition: transform $dur;
+}
+//
+.ChatMB_open{
+    transform: rotate(0deg);
+}
+//
+.ChatMB_close{
+    transform: rotate(-45deg);
+}
+
+// actions + open + close
+.ChatMB_actions{
+    overflow: hidden;
+    transition: width $dur;
+}
+.ChatMB_actions-open{
+    width: 10rem;
+    .ChatMB__item{
+        transform: scale(1);
+    }
+    //
+    .ChatMB__files{
+        transition-delay: 0.1s;
+    }
+    .ChatMB__face-gray{
+        transition-delay: 0.2s;
+    }
+}
+.ChatMB_actions-close{
+    width: 0;
+    .ChatMB__item{
+        transform: scale(0);
+    }
+    //
+    .ChatMB__files{
+        transition-delay: 0.06s;
+    }
+    .ChatMB__draw{
+        transition-delay: 0.1s;
+    }
+}
+// row actions
+.ChatMB_actions-row{
+    display: flex;
+}
+.ChatMB__item{
+    margin-left: 0.5rem;
+    border-radius: 50%;
+
+    cursor: pointer;
+    transition: transform $dur;
+
+    &:hover{
+        opacity: 0.8;
+    }
+    //
+    .InputFile{
+        width: 1.5rem;
+        height: 1.5rem;
+        .InputFile_face{
+            background-color: transparent;
+            .IconsInput{
+                fill: var(--blue);
+            }
+        }
+    }
+    //
+    .IconFaceGray{
+        stroke: var(--gold);
+        .IconFaceGray_eyes{
+            fill: var(--gold);
+        }
+    }
+}

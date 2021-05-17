@@ -1,0 +1,18 @@
+.IconsFlower{
+    width: 2rem;
+    height: 2rem;
+    
+    stroke: none;
+}
+
+.IconsFlower_mai{
+    // use
+    use{
+        // child of use
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i + 1}){
+                transform: translate(100px, 100px) rotate(#{60 * $i}deg) translate(-100px, -100px);
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+
+//
+.ProductPrices{
+    margin: 0.5rem 0;
+}
+
+.ProductPrices_row {
+    display: flex;
+}
+.ProductPrices_prices {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: auto;
+    .ProductPrices__block {
+        margin: 0.5rem 0.5rem 0.5rem 0;
+
+        .ProductPrices__item {
+            width: 6rem;
+            padding: 0.5rem;
+            background-color: var(--blue-blur);
+
+            text-align: center;
+            color: white;
+            cursor: pointer;
+        }
+        .ProductPrices__item-active{
+            background-color: var(--blue);
+        }
+    }
+}

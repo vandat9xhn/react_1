@@ -1,0 +1,33 @@
+
+@media (max-width: 1200px) {
+    // .
+    .NewFeed_col-right {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .NewFeed_row {
+        justify-content: center;
+    }
+    // .
+    .NewFeed_col-left {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .NewFeed_col-center {
+        width: 96%;
+    }
+}
+
+@media (max-width: 300px) {
+    .NewFeed_contain{
+        padding: 0;
+    }
+
+    .NewFeed_col-center {
+        width: 100%;
+    }
+}

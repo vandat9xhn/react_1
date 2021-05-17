@@ -1,0 +1,32 @@
+
+//
+.InputText_input{
+    width: 100%;
+    padding: 0.5rem;
+
+    &:focus{
+        outline: none;
+    }
+}
+//
+.InputText_valid{
+    border: 2px solid var(--success);
+}
+//
+.InputText_invalid{
+    border: 2px solid var(--danger);
+}
+
+
+//
+@media (max-width: 500px){
+    .InputText_input{
+        padding: 0.35rem;
+    }
+}
+
+@media (max-width: 300px){
+    .InputText_input{
+        padding: 0.25rem;
+    }
+}

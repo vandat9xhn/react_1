@@ -1,0 +1,16 @@
+.FriendEdit {
+    padding: 0.25rem;
+    background-color: var(--md-bg-primary);
+}
+
+.FriendEdit_left {
+    flex-grow: 1;
+}
+
+// .
+.FriendEdit_action-item{
+    padding: 0.5rem;
+    &:hover{
+        background-color: var(--bg-through);
+    }
+}

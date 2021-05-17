@@ -1,0 +1,69 @@
+// mixin media
+@mixin sm-media{
+    @media (max-width: 500px){
+        @content
+    }
+}
+
+// 
+.LearnHTML_contain {
+    padding: 0.5rem;
+    @include sm-media() {
+        padding: 0;
+    }
+}
+
+// row title
+.LearnHTML_row-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--md-bg-ccc);
+
+    // btn run
+    .LearnHTML__run {
+        padding: 0.5rem;
+        background-color: var(--success);
+        color: white;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+// col learn
+.LearnHTML_col {
+    width: 50%;
+
+    border: 2px solid var(--bg-blur);
+    overflow-y: auto;
+    word-wrap: break-word;
+    .LearnHTML__editable {
+        height: 90vh;
+        max-height: 30rem;
+        outline: none;
+        &:focus{
+            outline: none;
+        }
+    }
+    .LearnHTML__iframe {
+        height: 90vh;
+        max-height: 30rem;
+    }
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+//
+@media (max-width: 500px){
+    .LearnHTML_row-learn{
+        display: block;
+    }
+    .LearnHTML_col{
+        width: 100%;
+    }
+}

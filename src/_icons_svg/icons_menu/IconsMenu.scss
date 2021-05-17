@@ -1,0 +1,13 @@
+
+/* --------------------- ACTIVE -------------------------- */
+.nav-active{
+    .IconsMenu{
+        stroke: var(--blue);
+        fill: var(--blue);
+
+         /* Message */
+        .IconsMenu_message-out{
+            fill: var(--blue);
+        }
+    }
+}

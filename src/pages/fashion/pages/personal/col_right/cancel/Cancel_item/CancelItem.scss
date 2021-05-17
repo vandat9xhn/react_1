@@ -1,0 +1,16 @@
+
+.CancelItem{
+    margin-bottom: 0.5rem;
+}
+.CancelItem_contain{
+    padding: 0.5rem;
+    background-color: var(--md-bg-primary);
+}
+
+
+//
+@media (max-width: 500px){
+    .CancelItem_row{
+        display: block;
+    }
+}

@@ -1,0 +1,61 @@
+
+
+//
+.PhoneLaptopConfirmBuy_contain{
+    position: relative;
+    max-height: 96vh;
+    overflow: auto;
+    padding: 0.5rem;
+    background-color: var(--md-bg-primary);
+}
+
+//
+.PhoneLaptopConfirmBuy__input{
+    margin: 0.5rem;
+    input{
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid var(--md-bg-ccc);
+        border-radius: 5px;
+        &:focus{
+            outline: none;
+            border: 1px solid var(--blue);
+        }
+    }
+}
+
+//
+.PhoneLaptopConfirmBuy_submit{
+    text-align: center;
+    button{
+        margin-top: 0.5rem;
+        width: 100%;
+        padding: 0.75rem;
+
+        border: none;
+        background-color: var(--border-fashion);
+        border-radius: 5px;
+
+        color: white;
+        cursor: pointer;
+        &:hover{
+            opacity: 0.9;
+        }
+    }
+}
+
+//
+.PhoneLaptopConfirmBuy_close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.PhoneLaptopConfirmBuy_close-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--danger);
+}

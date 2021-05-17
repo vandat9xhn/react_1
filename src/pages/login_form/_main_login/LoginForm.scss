@@ -1,0 +1,72 @@
+.LoginForm {
+    margin: 0 2rem;
+}
+.LoginForm_contain {
+    padding: 1rem;
+    background-color: var(--green);
+}
+
+// .
+.LoginForm_col-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30%;
+    color: var(--color-light);
+    .LoginForm_col-info {
+        text-align: center;
+    }
+}
+// .
+.LoginForm_col-right {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+}
+// ..
+.LoginForm_form {
+    max-width: 27rem;
+    .LoginForm_error {
+        padding: 0.5rem;
+        background-color: var(--heart-blur);
+        border: 1px solid var(--danger);
+        color: var(--danger);
+    }
+    .LoginForm_input {
+        margin: 1.25rem 0;
+    }
+}
+
+
+// 
+@media (max-width: 1400px) {
+    .LoginForm{
+        margin: 0 0.5rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .LoginForm {
+        margin: 0 0.2rem;
+    }
+
+    .LoginForm_row {
+        display: block;
+    }
+    // .
+    .LoginForm_col-left {
+        margin-bottom: 1rem;
+    }
+    // .
+    .LoginForm_col-left,
+    .LoginForm_col-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .LoginForm_contain {
+        padding: 0.1rem;
+    }
+}

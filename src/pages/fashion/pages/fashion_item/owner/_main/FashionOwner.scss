@@ -1,0 +1,17 @@
+.FashionOwner_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+//
+.FashionOwner_right{
+    flex-grow: 1;
+}
+
+//
+@media (max-width: 800px){
+    .FashionOwner_row{
+        display: block;
+    }
+}

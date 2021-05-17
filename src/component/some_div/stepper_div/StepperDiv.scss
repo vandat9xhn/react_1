@@ -1,0 +1,15 @@
+
+.StepperDiv{
+    position: relative;
+}
+
+.StepperDiv_row{
+    display: flex;
+    justify-content: space-between;
+}
+//
+.StepperDiv_stage{
+    padding: 0.5rem;
+    background-color: var(--md-bg-primary);
+    z-index: 1;
+}

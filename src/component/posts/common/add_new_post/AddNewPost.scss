@@ -1,0 +1,52 @@
+.AddNewPost {
+    padding: 0.5rem;
+    background-color: var(--md-bg-primary);
+    border: 1px solid var(--md-bg-ccc);
+    cursor: default;
+}
+
+.AddNewPost_head {
+    padding-bottom: 0.5rem;
+}
+// .
+.AddNewPost_head-right {
+    margin-left: 0.25rem;
+    max-width: calc(100% - 3rem);
+    padding: 0.5rem;
+
+    border-radius: 15px;
+    border: 1px solid var(--md-bg-ccc);
+}
+// ..
+.AddNewPost_head-right_title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.AddNewPost_foot-row {
+    display: flex;
+}
+// .
+.AddNewPost_foot-item {
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.5rem;
+    background-color: var(--bg-fetching);
+    border-radius: 5px;
+    .IconsInput {
+        fill: var(--md-bg-ccc);
+    }
+}
+
+//
+@media (max-width: 300px) {
+    .AddNewPost {
+        padding: 0.25rem;
+        border-radius: 0;
+    }
+}

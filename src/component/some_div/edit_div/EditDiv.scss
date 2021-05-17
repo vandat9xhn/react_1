@@ -1,0 +1,42 @@
+.EditDiv{
+    display: flex;
+    justify-content: space-between;
+    .EditDiv_name-value{
+        flex-grow: 1;
+        margin-right: 0.5rem;
+        .EditDiv__name{
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            .EditDiv__value-permission{
+                min-width: 10%;
+                select{
+                    border: none;
+                    background-color: transparent;
+                    color: var(--md-color);
+                    opacity: 0.6;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+        }
+        .EditDiv__value{
+            .EditDiv__value-about{
+                input{
+                    width: 100%;
+                    border: none;
+                    background-color: transparent;
+                    color: var(--md-color);
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+    .EditDiv_icon{
+        display: flex;
+        cursor: pointer;
+    }
+}

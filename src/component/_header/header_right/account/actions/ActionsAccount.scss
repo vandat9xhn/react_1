@@ -1,0 +1,39 @@
+
+//
+.ActionsAccount{
+    .ToggleSwitch_btn{
+        border: 1px solid var(--md-bg-ccc);
+    }
+
+    .IconsNature{
+        width: 2rem;
+        height: 2rem;
+    }
+    .IconsArrow_back-prev{
+        stroke: var(--md-color);
+    }
+}
+//
+.ActionsAccount_profile {
+    padding: 0;
+    border-bottom: 2px solid var(--bg-blur);
+    .PictureName{
+        display: block;
+        padding-left: 0.5rem;
+    }
+    .PictureName__name{
+        max-width: calc(100vw - 3.6rem);
+    }
+}
+
+//
+.ActionsAccount_mode{
+    font-weight: 500;
+}
+
+//
+.ActionsAccount_nature{
+    .IconDiv__icon{
+        transform: rotate(180deg);
+    }
+}

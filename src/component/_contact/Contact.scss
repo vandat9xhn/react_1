@@ -1,0 +1,154 @@
+// mixin phone
+@mixin phone($per) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin-left: 1rem;
+    width: $per;
+    height: $per;
+
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// placeholder for brs-right
+%brs-right{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+// keyframes animation for phone
+@keyframes animation_phone {
+    0% {
+        background-color: var(--nav-active-color);
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        background-color: transparent;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+// keyframes animation for phone
+@keyframes phone-shake {
+    0% {
+        transform: rotate(-25deg);
+    }
+    80% {
+        transform: rotate(25deg);
+    }
+    100%{
+        transform: rotate(-25deg);
+    }
+}
+
+// hide
+.Contact_hide {
+    transform: translateX(-100%);
+    visibility: hidden;
+}
+
+
+// CLOSE
+.Contact_close {
+    position: fixed;
+    z-index: 1000;
+    bottom: 30%;
+    left: 0%;
+
+    div {
+        padding: 0.2rem 0rem;
+        @extend %brs-right;
+
+        text-align: center;
+        vertical-align: middle;
+        color: var(--md-color);
+        font-weight: 500;
+
+        opacity: 0.5;
+        transform: translateX(-30%);
+        transition: all 0.3s;
+        &:hover {
+            background-color: var(--danger);
+            color: white;
+
+            opacity: 1;
+            transform: translateX(0);
+            cursor: pointer;
+        }
+    }
+}
+
+// PHONE + WEB
+.Contact_main {
+    position: fixed;
+    z-index: 1000;
+    top: 70%;
+    left: 0%;
+    transition: all 0.3s;
+
+    // PHONE
+    .Contact_phone {
+        position: relative;
+        width: 3.5rem;
+        height: 3.5rem;
+        .Contact_phone-number {
+            @include phone(80%);
+
+            z-index: 11;
+            cursor: pointer;
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+            .Contact_phone-img:hover{
+                animation: phone-shake 0.4s infinite alternate ease-in;
+            }
+        }
+        .Contact_phone-animation {
+            @include phone(160%);
+            animation: animation_phone 1s infinite ease-in-out;
+            z-index: 10;
+        }
+    }
+
+    // WEB
+    .Contact_web {
+        margin-top: 1rem;
+        display: flex;
+        .Contact_web-online {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-left: 2px;
+            height: 2rem;
+            width: 2rem;
+
+            border-radius: 50%;
+            background-color: var(--md-bg-ccc);
+
+            color: var(--white);
+            font-weight: 500;
+
+            cursor: pointer;
+        }
+    }
+
+    // CONTACT NUMBER
+    .Contact_number{
+        margin-top: 0.3rem;
+        @extend %brs-right;
+
+        text-align: center;
+        background-color: var(--success);
+    }
+}
+
+@media (max-height: 500px){
+    .Contact{
+        display: none;
+    }
+}

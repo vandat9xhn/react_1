@@ -1,0 +1,14 @@
+
+.ProductCFTItem_title {
+    padding: 0.3rem 0.7rem 0.3rem 0.3rem;
+    background-color: var(--blue);
+}
+
+.ProductCFTItem_del {
+    position: absolute;
+    top: 0;
+    right: 2%;
+    transform: translateY(-20%);
+
+    line-height: 0.8rem;
+}

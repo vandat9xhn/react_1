@@ -1,0 +1,13 @@
+.ListPeople_contain {
+    background-color: var(--bg-loader);
+}
+
+.ListPeople_item {
+    width: 13rem;
+    padding: 0.5rem;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--color-light);
+}

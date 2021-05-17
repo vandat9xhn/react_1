@@ -1,0 +1,22 @@
+.HeaderMessage_row{
+    display: flex;
+    align-items: center;
+}
+
+//
+.HeaderMessage_pic{
+    margin-right: 0.5rem;
+}
+
+.HeaderMessage_mess{
+    width: 11rem;
+    max-width: calc(100vw - 5rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+//
+@media (max-width: 250px){
+    
+}

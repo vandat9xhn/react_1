@@ -1,0 +1,77 @@
+/* ------------------ HOVER -------------------------- */
+
+.open_type-like {
+    .IconWow {
+        //
+        .IconWow_eyes-g {
+            animation: wow-eyes 3s infinite linear;
+        }
+        // cry
+        .IconWow_mouth {
+            animation: wow-mouth 3s infinite linear;
+        }
+    }
+}
+
+/* ------------------ KEYFRAMES -------------------------- */
+
+@keyframes wow-eyes {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    30% {
+        transform: translate(500px, 100px) scale(1, 0.8)
+            translate(-500px, -100px) translate(0px, -35px);
+    }
+
+    40% {
+        transform: translate(500px, 100px) scale(1, 0.8)
+            translate(-500px, -100px) translate(0px, -35px);
+    }
+
+    55% {
+        transform: translate(500px, 100px) scale(1, 0.8)
+            translate(-500px, -100px) translate(15px, -30px);
+    }
+
+    70% {
+        transform: translate(500px, 100px) scale(1, 0.8)
+            translate(-500px, -100px) translate(-15px, -20px);
+    }
+
+    95% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes wow-mouth {
+    0% {
+        transform: translate(500px, 100px) scale(1) translate(-500px, -100px);
+    }
+
+    30% {
+        transform: translate(500px, 100px) scale(0.6, 0.4)
+            translate(-500px, -100px) translate(0px, -40px);
+    }
+
+    40% {
+        transform: translate(500px, 100px) scale(0.7, 0.7)
+            translate(-500px, -100px) translate(0px, -40px);
+    }
+
+    55% {
+        transform: translate(500px, 100px) scale(1) translate(-500px, -100px)
+            translate(30px, -20px);
+    }
+
+    70% {
+        transform: translate(500px, 100px) scale(0.6, 0.4)
+            translate(-500px, -100px) translate(-40px, -10px);
+    }
+
+    95% {
+        transform: translate(500px, 100px) scale(1) translate(-500px, -100px)
+            translate(0px, 0px);
+    }
+}

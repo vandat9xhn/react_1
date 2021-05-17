@@ -1,0 +1,24 @@
+
+// 
+.position-rel{
+    position: relative;
+}
+
+.position-abs{
+    position: absolute;
+}
+
+.pos-abs-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pos-abs-100{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}

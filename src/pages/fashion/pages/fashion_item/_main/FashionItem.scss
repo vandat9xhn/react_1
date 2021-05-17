@@ -1,0 +1,38 @@
+
+//
+.FashionItem_head{
+    margin-bottom: 1rem;
+}
+
+//
+.FashionItem_mid{
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+//
+.FashionItem_rate-stars{
+    margin: 1rem auto;
+    width: fit-content;
+}
+.FashionItem_rate-textarea{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--md-bg-ccc);
+
+    resize: none;
+    outline: none;
+    &:focus{
+        border: 1px solid var(--blue);
+    }
+}
+
+
+//
+@media (max-width: 300px){
+    //
+    .FashionItem_mid{
+        margin-right: 0.25rem;
+        margin-left: 0.25rem;
+    }
+}

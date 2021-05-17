@@ -1,0 +1,31 @@
+//
+@media (max-width: 1200px) {
+    .CityItem_contain {
+        width: 50vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .CityItem_contain {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .CityItem_contain {
+        width: 80vw;
+    }
+    .CityItem_img-contain {
+        height: 13rem;
+    }
+}
+
+@media (max-width: 300px) {
+    .CityItem_contain {
+        width: 100vw;
+        border-radius: 0;
+    }
+    .CityItem_img-contain {
+        height: 11rem;
+    }
+}

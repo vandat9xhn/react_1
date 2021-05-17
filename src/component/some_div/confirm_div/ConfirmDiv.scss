@@ -1,0 +1,74 @@
+// scss
+%btn-confirm{
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.8;
+
+    &:hover{
+        opacity: 1;
+    }
+}
+
+//
+.ConfirmDiv_contain{
+    background-color: var(--md-bg-primary);
+}
+
+// top
+.ConfirmDiv_top{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--md-border-blur);
+}
+.ConfirmDiv__title{
+    display: flex;
+    align-items: center;
+    &>div:first-child{
+        margin-right: 0.2rem;
+    }
+}
+.ConfirmDiv__close{
+    padding: 0.5rem;
+    background-color: var(--danger);
+    opacity: 0.8;
+    cursor: pointer;
+    &:hover{
+        opacity: 1;
+    }
+}
+
+// mid
+.ConfirmDiv_mid{
+    min-height: 11rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--md-border-blur);
+    text-align: center;
+}
+
+// bot
+.ConfirmDiv_bot{
+    display: flex;
+    justify-content: space-around;
+}
+.ConfirmDiv__yes{
+    @extend %btn-confirm;
+    background-color: var(--danger);
+}
+.ConfirmDiv__no{
+    @extend %btn-confirm;
+    background-color: var(--gray);
+}
+
+
+//
+@media (max-width: 600px){
+    .ConfirmDiv__mid{
+        min-height: 7rem;
+        padding: 0.3rem;
+    }
+    
+    .ConfirmDiv__yes, .ConfirmDiv__no{
+        padding: 0.5rem 1.5rem;
+    }
+}
