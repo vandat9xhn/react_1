@@ -45,7 +45,7 @@ function FriendEdit(props) {
     //
     return (
         <div className="FriendEdit position-rel box-shadow-1 brs-5px">
-            <div className="display-flex align-items-center">
+            {/* <div className="display-flex align-items-center"> */}
                 <div className="FriendEdit_left brs-5px">
                     <PictureName user={user} />
                 </div>
@@ -67,7 +67,7 @@ function FriendEdit(props) {
                         </div>
                     </Actions>
                 </div>
-            </div>
+            {/* </div> */}
         </div>
     );
 }

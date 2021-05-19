@@ -1,4 +1,6 @@
 .FriendEdit {
+    margin: auto;
+    max-width: 20rem;
     padding: 0.25rem;
     background-color: var(--md-bg-primary);
 }
@@ -7,7 +9,14 @@
     flex-grow: 1;
 }
 
-// .
+.FriendEdit_right{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    // transform: translateY(-50%);
+}
+
+// ...
 .FriendEdit_action-item{
     padding: 0.5rem;
     &:hover{

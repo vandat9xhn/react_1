@@ -4,6 +4,7 @@ $pic_width_500: 25vw;
 /*----------------------------------*/
 
 .ProfileInfo {
+    padding-bottom: 1rem;
     background-color: var(--md-bg-primary);
     .SkeletonDiv {
         &:nth-child(1) {

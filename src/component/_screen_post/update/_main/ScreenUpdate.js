@@ -47,7 +47,10 @@ class ScreenUpdate extends Component {
 
         //
         return (
-            <ScreenBlur open_screen={open_update}>
+            <ScreenBlur
+                open_screen={open_update}
+                closeScreen={this.closeScreenUpdate}
+            >
                 <div>
                     <ScreenBlurHead
                         title={title}

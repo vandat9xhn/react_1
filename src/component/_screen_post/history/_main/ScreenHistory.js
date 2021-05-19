@@ -24,12 +24,8 @@ class ScreenHistory extends Component {
 
     // common
     getAPI_History = async () => {
-        const {
-            histories,
-            count_his,
-            has_fetched,
-            handle_API_History_L,
-        } = this.state;
+        const { histories, count_his, has_fetched, handle_API_History_L } =
+            this.state;
 
         try {
             const [data, new_count] = await handle_API_History_L(
@@ -107,7 +103,10 @@ class ScreenHistory extends Component {
 
         //
         return (
-            <ScreenBlur open_screen={open_history}>
+            <ScreenBlur
+                open_screen={open_history}
+                closeScreen={this.closeScreenHistory}
+            >
                 <div>
                     <ScreenBlurHead
                         title={title}

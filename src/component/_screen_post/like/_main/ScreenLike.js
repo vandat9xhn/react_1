@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import { type_likes } from '../../../like/list_type_like/type_likes/TypeLikes';
+
 import ScreenBlur from '../../../_screen_blur/_main/ScreenBlur';
 import ScreenBlurShowMore from '../../../_screen_blur/_component/foot/ScreenBlurShowMore';
 import UserAdd from '../../_component/user_add/UserAdd';
@@ -134,7 +135,10 @@ class ScreenLike extends Component {
 
         //
         return (
-            <ScreenBlur open_screen={open_screen}>
+            <ScreenBlur
+                open_screen={open_screen}
+                closeScreen={this.closeScreenLike}
+            >
                 <div className="ScreenLike">
                     <div className="ScreenLike_head-contain">
                         <div className="ScreenLike_head-row">

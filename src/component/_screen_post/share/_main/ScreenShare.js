@@ -31,12 +31,8 @@ class ScreenShare extends Component {
 
     //
     handleAfterGetAPI = async () => {
-        const {
-            shares,
-            count_share,
-            has_fetched,
-            handle_API_Share_L,
-        } = this.state;
+        const { shares, count_share, has_fetched, handle_API_Share_L } =
+            this.state;
 
         const [new_shares, new_count_share] = await handle_API_Share_L();
         //
@@ -103,7 +99,10 @@ class ScreenShare extends Component {
 
         //
         return (
-            <ScreenBlur open_screen={open_screen}>
+            <ScreenBlur
+                open_screen={open_screen}
+                closeScreen={this.closeScreenShare}
+            >
                 <div className="ScreenShare_contain">
                     <ScreenBlurHead
                         title={title}

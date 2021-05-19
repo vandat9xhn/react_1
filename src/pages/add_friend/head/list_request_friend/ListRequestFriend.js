@@ -24,7 +24,7 @@ function ListRequestFriend(props) {
     return (
         <div className="ListRequestFriend">
             <div
-                className={`ListRequestFriend_item brs-5px hv-cl-blue ${
+                className={`ListRequestFriend_item label-field brs-5px hv-cl-blue ${
                     is_active ? "text-blue" : ""
                 }`}
                 onClick={onChangeCurrentList}

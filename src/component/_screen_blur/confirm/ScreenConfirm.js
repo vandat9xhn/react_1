@@ -49,7 +49,10 @@ class ScreenConfirm extends Component {
 
         //
         return (
-            <ScreenBlur open_screen={open_confirm}>
+            <ScreenBlur
+                open_screen={open_confirm}
+                closeScreen={this.closeScreenConfirm}
+            >
                 <div className="ScreenConfirm_contain">
                     <div className="ScreenConfirm_head">
                         <ScreenBlurHead

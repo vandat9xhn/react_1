@@ -33,7 +33,7 @@ class ScreenPermission extends Component {
 
     //
     closeScreenPermission = () => {
-        this.c_num = -1
+        this.c_num = -1;
 
         this.setState({
             open_screen: false,
@@ -65,7 +65,10 @@ class ScreenPermission extends Component {
 
         //
         return (
-            <ScreenBlur open_screen={open_screen}>
+            <ScreenBlur
+                open_screen={open_screen}
+                closeScreen={this.closeScreenPermission}
+            >
                 <div className="ScreenPermission">
                     <div>
                         <ScreenBlurHead

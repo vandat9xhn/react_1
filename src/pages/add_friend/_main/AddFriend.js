@@ -70,7 +70,14 @@ function AddFriend(props) {
             add_friend_obj[new_request].count
         );
 
-        const data = new_data.map((item) => item.friend);
+        const data = new_data.map((item) =>
+            new_request == 'sent_obj'
+                ? {
+                      ...item.friend,
+                      status_requested: 'cancel',
+                  }
+                : item.friend
+        );
 
         setAddFriendObj((add_friend_obj) => ({
             ...add_friend_obj,

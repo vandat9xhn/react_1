@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import ScreenTitle from '../title/ScreenTitle';
-// 
+//
 import './ScreenFixed.scss';
 
 //
@@ -20,6 +20,15 @@ ScreenFixed.defaultProps = {
 function ScreenFixed(props) {
     //
     const { url, handleDownload, children, closeScreenFixed } = props;
+
+    //
+    useEffect(() => {
+        window.addEventListener('popstate', closeScreenFixed);
+
+        return () => {
+            window.removeEventListener('popstate', closeScreenFixed);
+        };
+    }, []);
 
     //
     return (

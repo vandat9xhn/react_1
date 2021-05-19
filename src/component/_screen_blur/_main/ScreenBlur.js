@@ -6,6 +6,7 @@ import './ScreenBlur.scss';
 //
 ScreenBlur.propTypes = {
     open_screen: PropTypes.bool,
+    closeScreen: PropTypes.func,
     children: PropTypes.element,
 };
 
@@ -16,7 +17,7 @@ ScreenBlur.defaultProps = {
 
 //
 function ScreenBlur(props) {
-    const { open_screen } = props;
+    const { open_screen, closeScreen } = props;
     //
     const is_body_hidden = useRef(false);
 
@@ -36,6 +37,14 @@ function ScreenBlur(props) {
             }
         }
     }, [open_screen]);
+
+    useEffect(() => {
+        window.addEventListener('popstate', closeScreen)
+
+        return () => {
+            window.removeEventListener('popstate', closeScreen)
+        }
+    }, [])
 
     //
     return (

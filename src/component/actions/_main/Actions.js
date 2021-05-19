@@ -51,14 +51,17 @@ function Actions(props) {
                 >
                     {title_action}
                 </div>
-
+                
+                
                 {is_open && (
                     <div className="Actions_choices App_box_shadow brs-5px">
-                        <div className="ActionsChoices_back display-none">
-                            <ActionBack />
-                        </div>
+                        <div className="Actions_choices_actions">
+                            <div className="ActionsChoices_back display-none">
+                                <ActionBack />
+                            </div>
 
-                        {children}
+                            {children}
+                        </div>
                     </div>
                 )}
             </div>
