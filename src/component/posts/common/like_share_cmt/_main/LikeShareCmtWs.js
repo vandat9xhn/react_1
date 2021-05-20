@@ -41,7 +41,7 @@ function LikeShareCmt(props) {
         enabled_share,
         count_share,
         count_user_shared,
-        // 
+        //
         handleClickBtnCmt,
     } = props;
     //
@@ -68,35 +68,33 @@ function LikeShareCmt(props) {
     /* ----------------------------------------------------------------- */
     return (
         <div className="LikeShareCmt">
-            <div className="LikeShareCmt_contain">
-                <div className="LikeShareCmt_row">
-                    {enabled_like && (
-                        <div className="LikeShareCmt_like">
-                            <BtnPostLike
-                                user_type_like={user_type_like}
-                                changeTypeLike={changeTypeLike}
-                            />
-                        </div>
-                    )}
+            <div className="LikeShareCmt_row display-flex-center">
+                {enabled_like && (
+                    <div className="LikeShareCmt_item">
+                        <BtnPostLike
+                            user_type_like={user_type_like}
+                            changeTypeLike={changeTypeLike}
+                        />
+                    </div>
+                )}
 
-                    {enabled_cmt && (
-                        <div>
-                            <BtnPostCmt
-                                count_comment={count_comment}
-                                handleClickBtnCmt={handleClickBtnCmt}
-                            />
-                        </div>
-                    )}
+                {enabled_cmt && (
+                    <div className="LikeShareCmt_item">
+                        <BtnPostCmt
+                            count_comment={count_comment}
+                            handleClickBtnCmt={handleClickBtnCmt}
+                        />
+                    </div>
+                )}
 
-                    {enabled_share && (
-                        <div>
-                            <BtnPostShare
-                                count_share={count_share}
-                                sharePost={sharePost}
-                            />
-                        </div>
-                    )}
-                </div>
+                {enabled_share && (
+                    <div className="LikeShareCmt_item">
+                        <BtnPostShare
+                            count_share={count_share}
+                            sharePost={sharePost}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );

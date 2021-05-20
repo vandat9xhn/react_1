@@ -13,9 +13,9 @@ import CommentWsFoot from '../foot/CommentWsFoot';
 import CommentWsHead from '../head/CommentWsHead';
 import CommentWsBody from '../body/CommentWsBody';
 import CmtSubUpdate from '../../../ws_actions/update_component/_main/CmtSubUpdate';
+import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
 //
 import './CommentWs.scss';
-import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
 
 //
 CommentWs.propTypes = {};
@@ -33,6 +33,8 @@ function CommentWs(props) {
     } = useContext(context_post);
 
     const {
+        user: c_user,
+
         openScreenConfirm,
         openScreenHistory,
         openScreenUpdate,
@@ -62,7 +64,9 @@ function CommentWs(props) {
 
     // state
     const [open_input_sub, setOpenInputSub] = useState(false);
-    const [fetching_more_content, setFetchingMoreContent] = useState(false);
+
+    // 
+    const ref_subs_ws = useRef(null)
 
     // hook
     const forceUpdate = useForceUpdate();
@@ -70,23 +74,19 @@ function CommentWs(props) {
     /* -------------------------------- */
 
     //
-    async function onSeeMoreContentCmt() {
-        setFetchingMoreContent(false);
-        const more_content = await handle_API_MoreContentCmt_R(id);
-        content_obj.content += more_content;
-        content_obj.has_more_content = false;
-        setFetchingMoreContent(true);
+    function onSeeMoreContentCmt() {
+        return handle_API_MoreContentCmt_R(id);
     }
 
     /* ---------------- SUB ---------------- */
 
     //
     function focusInputSub() {
-        if (localStorage.is_login == 1) {
+        if (c_user.id) {
             !open_input_sub && setOpenInputSub(true);
             setTimeout(() => {
-                document
-                    .querySelector('.Comment_subs textarea.Textarea')
+                ref_subs_ws.current
+                    .querySelector('.Subs_input textarea.CommentInput_textarea')
                     .focus();
             }, 1);
         }
@@ -205,9 +205,7 @@ function CommentWs(props) {
                             <CommentWsHead
                                 user={user}
                                 content_obj={content_obj}
-                                content_obj={content_obj}
                                 onSeeMoreContentCmt={onSeeMoreContentCmt}
-                                fetching_more_content={fetching_more_content}
                                 //
                                 openHistoryCmt={openHistoryCmt}
                                 openUpdateCmt={openUpdateCmt}
@@ -233,7 +231,7 @@ function CommentWs(props) {
                             />
                         </div>
 
-                        <div className="Comment_subs">
+                        <div className="Comment_subs" ref={ref_subs_ws}>
                             <SubsWs
                                 cmt_id={id}
                                 subs={subs}

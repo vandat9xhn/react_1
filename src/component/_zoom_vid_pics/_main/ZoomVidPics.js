@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-//
+// 
 import ScreenFixed from '../../_screen_fixed/_main/ScreenFixed';
 import VidPics from '../vid_pics/VidPics';
 
@@ -12,17 +12,8 @@ class ZoomVidPics extends Component {
         open_zoom: false,
     };
 
-    componentDidMount() {
-        this.is_body_hidden = false
-    }
-
     //
     openZoomVidPics = (urls = [], current = 0) => {
-        this.is_body_hidden = document.getElementsByTagName('BODY')[0].style.overflow == 'hidden'
-        !this.is_body_hidden && document
-            .getElementsByTagName('BODY')[0]
-            .style.setProperty('overflow-y', 'hidden');
-        //
         this.setState({
             open_zoom: true,
             urls: urls,
@@ -32,9 +23,6 @@ class ZoomVidPics extends Component {
 
     //
     closeZoomVidPics = () => {
-        !this.is_body_hidden && document
-            .getElementsByTagName('BODY')[0]
-            .style.setProperty('overflow-y', 'auto');
         this.setState({
             open_zoom: false,
             urls: [],

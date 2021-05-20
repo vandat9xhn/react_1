@@ -1,19 +1,20 @@
 .CmtSub_head {
     position: relative;
-    background-color: var(--md-bg-ccc);
-    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: var(--md-bg-fb);
+    border-radius: 18px;
 }
 
 //
 .CmtSub_edit {
     position: absolute;
-    right: 5px;
+    right: 10px;
     top: 0;
 }
 
-.CmtSub_content {
-    padding: 0 0.5rem;
-}
+// .CmtSub_content {
+//     padding: 0 0.5rem;
+// }
 
 .CmtSub_foot {
     position: relative;

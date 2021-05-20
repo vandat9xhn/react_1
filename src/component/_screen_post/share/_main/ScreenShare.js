@@ -99,8 +99,9 @@ class ScreenShare extends Component {
 
         //
         return (
+            open_screen &&
             <ScreenBlur
-                open_screen={open_screen}
+                // open_screen={open_screen}
                 closeScreen={this.closeScreenShare}
             >
                 <div className="ScreenShare_contain">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 //
@@ -10,19 +10,28 @@ import {
     API_FashionBuy_LC,
     API_FashionPayment_L,
 } from '../../../../../api/api_django/fashion/APIFashionToken';
+
+import { context_api } from '../../../../../_context/ContextAPI';
+
 import makeFormData from '../../../../../_some_function/makeFormData';
-// 
-import ConfirmDiv from '../../../../../component/some_div/confirm_div/ConfirmDiv';
-import { actionFashionChangeCountCartNum } from '../../../../../redux/action/action_count_cart';
-import CircleLoading from '../../../../../component/waiting/circle_loading/CircleLoading';
 //
+import CircleLoading from '../../../../../component/waiting/circle_loading/CircleLoading';
+import ScreenBlur from '../../../../../component/_screen_blur/_main/ScreenBlur';
+//
+import { actionFashionChangeCountCartNum } from '../../../../../redux/action/action_count_cart';
+
 import { params_buy } from '../../../_params/FashionParams';
+
 import FashionH from '../../../components/head/_main/FashionH';
-import InfoBuying from '../../../components/info_buying/InfoBuying';
 import BuyProductList from '../buy_product_list/_main/BuyProductList';
-import BuyCurExtra from '../extra_buy/cur_extra/_main/BuyCurExtra';
-import BuyChoicesExtra from '../extra_buy/choices_extra/_main/BuyChoicesExtra';
+import BuyFetching from '../buy_fetching/BuyFetching';
 import FashionBuyTotal from '../total/FashionBuyTotal';
+import TransportCurrent from '../transportation/current/TransportCurrent';
+import PaymentCurrent from '../payment/current/PaymentCurrent';
+import VoucherCurrent from '../voucher/current/VoucherCurrent';
+import TransportationChoices from '../transportation/choices/_main/TransportationChoices';
+import PaymentChoices from '../payment/choices/_main/PaymentChoices';
+import VoucherChoices from '../voucher/choices/_main/VoucherChoices';
 //
 import './FashionBuy.scss';
 
@@ -30,6 +39,14 @@ import './FashionBuy.scss';
 function FashionBuy(props) {
     //
     const dispatch = useDispatch();
+
+    //
+    const {
+        openScreenFetching,
+        openScreenConfirm,
+
+        closeScreenFetching,
+    } = useContext(context_api);
 
     // state
     const [buy_shops, setBuyShops] = useState([]);
@@ -49,10 +66,9 @@ function FashionBuy(props) {
 
     const [has_fetched, setHasFetched] = useState(false);
     const [has_fetched_voucher, setHasFetchedVoucher] = useState(false);
-     
-    const [open_confirm_buy, setOpenConfirmBuy] = useState(false);
     const [buying_success, setBuyingSuccess] = useState(false);
-    const [is_buying, setIsBuying] = useState(false);
+
+    const { trans_ix, price_ix } = cur_transport;
 
     // effect
     useEffect(() => {
@@ -61,8 +77,7 @@ function FashionBuy(props) {
         getAPI_Transport({
             size: 1,
         });
-        getAPI_Payment()
-
+        getAPI_Payment();
     }, []);
 
     /* --------------------- GET API ----------------------- */
@@ -83,7 +98,7 @@ function FashionBuy(props) {
             c_count: arr_voucher.length,
         });
         setArrVoucher([...arr_voucher, ...res.data.data]);
-        setHasFetchedVoucher(true)
+        setHasFetchedVoucher(true);
     }
 
     //
@@ -96,11 +111,11 @@ function FashionBuy(props) {
         });
         setArrTransport([...arr_transport, ...res.data.data]);
     }
-    
+
     //
     async function getAPI_Payment() {
         const res = await API_FashionPayment_L();
-        setArrPayment(res.data)
+        setArrPayment(res.data);
     }
 
     /* --------------------- EXTRA ----------------------- */
@@ -119,10 +134,12 @@ function FashionBuy(props) {
             getAPI_FashionVoucher();
         }
     }
+
     //
     function closeExtraBuy() {
         setExtraBuy('');
     }
+
     //
     function handleChangeTransport(trans) {
         setCurTransport({
@@ -131,11 +148,13 @@ function FashionBuy(props) {
         });
         closeExtraBuy();
     }
+
     //
     function handleChangePayment(ix) {
         setPaymentIx(ix);
         closeExtraBuy();
     }
+
     //
     function handleChangeVoucher(ix) {
         setVoucherIx(ix);
@@ -146,20 +165,17 @@ function FashionBuy(props) {
 
     // confirm
     function openConfirmBuy() {
-        setOpenConfirmBuy(true);
+        openScreenConfirm('Buying', 'Do you want to buy now!', confirmBuy);
     }
-    //
-    function closeConfirmBuy() {
-        setOpenConfirmBuy(false);
-    }
+
     //
     async function confirmBuy() {
-        setIsBuying(true);
-        const { trans_ix, price_ix } = cur_transport;
+        openScreenFetching(BuyFetching);
+
         const formData = makeFormData({
-            voucher_model: arr_voucher[voucher_ix].id,
+            voucher_model: voucher_ix != -1 ? arr_voucher[voucher_ix].id : -1,
             transport_price_model: arr_transport[trans_ix].prices[price_ix].id,
-            payment: arr_payment[payment_ix],
+            payment: payment_name,
         });
         await API_FashionBuy_LC('POST', {}, formData);
         //
@@ -168,6 +184,7 @@ function FashionBuy(props) {
             0
         );
         dispatch(actionFashionChangeCountCartNum(-count_checked));
+        closeScreenFetching();
         setBuyingSuccess(true);
     }
 
@@ -186,13 +203,33 @@ function FashionBuy(props) {
             ),
         0
     );
-    
-    const transport_price = arr_transport.length
-        ? arr_transport[cur_transport.trans_ix].prices[cur_transport.price_ix]
-              .price
-        : 0;
+
     //
-    const voucher_price = voucher_ix == -1 ? 0 : arr_voucher[voucher_ix].cost;
+    let transport_name = '';
+    let transport_price = 0;
+    let transport_title = '';
+
+    if (arr_transport.length) {
+        const transport_item = arr_transport[trans_ix]
+        const transport_price_item = transport_item.prices[price_ix]
+
+        transport_name = arr_transport[trans_ix].name;
+        transport_price = transport_price_item.price;
+        transport_title = transport_price_item.title;
+    }
+
+    //
+    let voucher_name = '';
+    let voucher_price = 0;
+
+    if (voucher_ix != -1) {
+        const voucher_item = arr_voucher[voucher_ix]
+        voucher_name = voucher_item.name;
+        voucher_price = voucher_item.cost;
+    }
+
+    //
+    const payment_name = arr_payment[payment_ix];
 
     /* -------------------------------------------- */
 
@@ -215,57 +252,47 @@ function FashionBuy(props) {
                         <BuyProductList buy_shops={buy_shops} amount={amount} />
                     </div>
 
-                    <div className="FashionBuy_current box-shadow-1 brs-5px">
-                        <BuyCurExtra
-                            name_trans={
-                                arr_transport.length
-                                    ? arr_transport[cur_transport.trans_ix].name
-                                    : ''
-                            }
-                            title_trans={
-                                arr_transport.length
-                                    ? arr_transport[cur_transport.trans_ix]
-                                          .prices[cur_transport.price_ix].info
-                                    : ''
-                            }
-                            price_trans={transport_price}
-                            //
-                            name_payment={arr_payment[payment_ix]}
-                            //
-                            name_voucher={
-                                voucher_ix != -1
-                                    ? arr_voucher[voucher_ix].name
-                                    : ''
-                            }
-                            title_voucher={
-                                voucher_ix == -1
-                                    ? ''
-                                    : arr_voucher[voucher_ix].info
-                            }
-                            price_voucher={
-                                voucher_ix == -1
-                                    ? 0
-                                    : voucher_price
-                            }
-                            //
-                            handleChooseExtraBuy={handleChooseExtraBuy}
-                            doNotUseVoucher={doNotUseVoucher}
-                        />
+                    <div className="FashionBuy_current bg-primary box-shadow-1 brs-5px">
+                        <div>
+                            <TransportCurrent
+                                name={transport_name}
+                                title={transport_title}
+                                price={transport_price}
+                                handleChooseExtraBuy={handleChooseExtraBuy}
+                            />
+                        </div>
+
+                        <div>
+                            <PaymentCurrent
+                                name={payment_name}
+                                handleChooseExtraBuy={handleChooseExtraBuy}
+                            />
+                        </div>
+
+                        <div>
+                            <VoucherCurrent
+                                name={voucher_name}
+                                cost={voucher_price}
+                                handleChooseExtraBuy={handleChooseExtraBuy}
+                                doNotUseVoucher={doNotUseVoucher}
+                            />
+                        </div>
                     </div>
 
                     <div className="FashionBuy_total">
                         <FashionBuyTotal
                             amount={amount}
-                            transport_price={transport_price * buy_shops.length}
-                            voucher_price={voucher_price * buy_shops.length}
-                            payment={arr_payment[payment_ix]}
+                            transport_price={transport_price}
+                            voucher_price={voucher_price}
+                            shop_count={buy_shops.length}
+                            payment={payment_name}
                             openConfirmBuy={openConfirmBuy}
                         />
                     </div>
                 </div>
             </div>
-            
-            {/* empty cart buy */}
+
+            {/* empty */}
             <div
                 className={`${
                     !buy_shops.length && has_fetched
@@ -275,64 +302,49 @@ function FashionBuy(props) {
             >
                 Nothing to buy
             </div>
-            
-            {/* loading cart buy */}
+
+            {/* loading */}
             <div className="width-fit-content margin-auto">
-                <br/><br/>
-                <CircleLoading open_fetching={!has_fetched}/>
+                <br />
+                <br />
+                <CircleLoading open_fetching={!has_fetched} />
             </div>
 
-            {/* position fix */}
-            <div className={extra_buy == '' ? 'display-none' : 'screen-blur'}>
-                <BuyChoicesExtra
-                    extra_buy={extra_buy}
-                    arr_transport={arr_transport}
-                    cur_transport={cur_transport}
-                    handleChangeTransport={handleChangeTransport}
-                    // 
-                    arr_payment={arr_payment}
-                    payment_ix={payment_ix}
-                    handleChangePayment={handleChangePayment}
-                    // 
-                    amount={amount}
-                    has_fetched_voucher={has_fetched_voucher}
-                    arr_voucher={arr_voucher}
-                    voucher_ix={voucher_ix}
-                    handleChangeVoucher={handleChangeVoucher}
-                    // 
-                    closeExtraBuy={closeExtraBuy}
-                />
-            </div>
-
-            <ConfirmDiv
-                open_confirm={open_confirm_buy}
-                closeConfirm={closeConfirmBuy}
-                confirmYes={confirmBuy}
-            >
-                <div>
-                    <InfoBuying
-                        amount={+amount}
-                        voucher_price={+voucher_price * buy_shops.length}
-                        transport_price={+transport_price * buy_shops.length}
-                        payment={arr_payment[payment_ix]}
-                    />
-
-                    <br />
-                    <div className="label-field">Do you want to buy now?</div>
-                </div>
-            </ConfirmDiv>
-
-            <div className={is_buying ? 'screen-blur' : 'display-none'}>
-                <div className="pos-abs-center">
+            {/* extra */}
+            {extra_buy != '' && (
+                <ScreenBlur closeScreen={closeExtraBuy}>
                     <div>
-                        <CircleLoading open_fetching={is_buying}/>
-                    </div><br/>
+                        {extra_buy == 'transport' && (
+                            <TransportationChoices
+                                arr_transport={arr_transport}
+                                cur_transport={cur_transport}
+                                handleChangeTransport={handleChangeTransport}
+                                closeExtraBuy={closeExtraBuy}
+                            />
+                        )}
 
-                    <div className="text-align-center">
-                        Buying...
+                        {extra_buy == 'payment' && (
+                            <PaymentChoices
+                                arr_payment={arr_payment}
+                                payment_ix={payment_ix}
+                                handleChangePayment={handleChangePayment}
+                                closeExtraBuy={closeExtraBuy}
+                            />
+                        )}
+
+                        {extra_buy == 'voucher' && (
+                            <VoucherChoices
+                                amount={amount}
+                                has_fetched={has_fetched_voucher}
+                                arr_voucher={arr_voucher}
+                                voucher_ix={voucher_ix}
+                                handleChangeVoucher={handleChangeVoucher}
+                                closeExtraBuy={closeExtraBuy}
+                            />
+                        )}
                     </div>
-                </div>
-            </div>
+                </ScreenBlur>
+            )}
         </div>
     );
 }

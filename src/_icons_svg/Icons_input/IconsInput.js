@@ -32,30 +32,32 @@ function IconsInput(props) {
             width={size_icon}
             height={size_icon}
             //
-            fill="var(--md-color)"
+            fill="none"
             stroke="var(--md-color)"
             strokeLinecap="round"
         >
 
             {/* image x=0 y=0*/}
-            <path 
-                d="M0,170 
-                L70,70 Q78,63 86,70 
-                L120,130 
-                L130,110 Q138,100 146,110 
-                L200,180 L200,200 L0,200"
-            />
-            <circle cx="150" cy="50" r="25"/>
+            <g strokeWidth="5">
+                <path 
+                    d="M0,170 
+                    L70,70 Q78,63 86,70 
+                    L120,130 
+                    L130,110 Q138,100 146,110 
+                    L200,180 L200,200 L0,200"
+                />
+                <circle cx="150" cy="50" r="25"/>
+            </g>
 
 
             {/* video x=200 y=0*/}
             <path d="M275,50 L275,150 L350,100 Z"/>
-            <circle cx="300" cy="100" r="90" fill="none" strokeWidth="20"/>
+            <circle cx="300" cy="100" r="90" strokeWidth="20"/>
 
 
             {/* key for searching x=0 y=200*/}
             <g className="IconsInput_key">
-                <circle fill="none" cx="80" cy="280" r="65" strokeWidth="10"/>
+                <circle cx="80" cy="280" r="65" strokeWidth="10"/>
                 <line strokeWidth="25" x1="130" y1="330" x2="200" y2="400"/>
             </g>
 

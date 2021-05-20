@@ -103,8 +103,9 @@ class ScreenHistory extends Component {
 
         //
         return (
+            open_history &&
             <ScreenBlur
-                open_screen={open_history}
+                // open_screen={open_history}
                 closeScreen={this.closeScreenHistory}
             >
                 <div>

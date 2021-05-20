@@ -25,7 +25,7 @@ function CartHead(props) {
                 </div>
             </div>
 
-            <div className="FashionCart_item-title box-shadow-1 brs-5px">
+            <div className="FashionCart_item-title box-shadow-1 bg-primary brs-5px">
                 <div className="FashionCart_item-title-row display-flex align-items-center label-field">
                     <div className="FashionCart__check">
                         <input

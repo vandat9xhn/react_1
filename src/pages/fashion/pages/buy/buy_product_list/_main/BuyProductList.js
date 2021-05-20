@@ -24,7 +24,7 @@ function BuyProductList(props) {
     // 
     return (
         <div>
-            <div className="BuyProductList box-shadow-1 brs-5px">
+            <div className="BuyProductList bg-primary box-shadow-1 brs-5px">
                 <div className="BuyProductList_title">All products</div>
 
                 {buy_shops.map((buy_shop, action_ix) => (

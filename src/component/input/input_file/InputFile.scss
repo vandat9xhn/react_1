@@ -1,32 +1,26 @@
-/* --------------- COMPONENT ----------------- */
-.InputFile{
-    position: relative;
-    width: 2rem;
-    height: 2rem;
-
-    // face
-    .InputFile_face{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-
-        background-color: var(--blue);
-        &:hover{
-            opacity: 0.8;
-        }
+.InputFile {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+// ..
+.InputFile_face {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+// ...
+.InputFile_face-contain {
+    cursor: pointer;
+    transition: background-color 0.15s;
+    &:hover {
+        background-color: #e1e2e285;
     }
 }
 
-
-@media (max-width: 500px){
-    .InputFile{
-        width: 1.5rem;
-        height: 1.5rem;
+//
+@media (max-width: 500px) {
+    .InputFile {
+        width: 1.75rem;
+        height: 1.75rem;
     }
 }

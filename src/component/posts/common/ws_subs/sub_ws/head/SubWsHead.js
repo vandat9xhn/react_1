@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import SubActionsWs from '../../../ws_actions/sub/SubActionsWs';
+import PictureName from '../../../../../picture_name/pic_name/PictureName';
 import ContentMore from '../../../../../content_more/Content_more';
+// 
+import SubActionsWs from '../../../ws_actions/sub/SubActionsWs';
 //
 import './SubWsHead.scss';
-import PictureName from '../../../../../picture_name/pic_name/PictureName';
 
 //
 SubWsHead.propTypes = {};
@@ -16,16 +16,13 @@ function SubWsHead(props) {
         user,
 
         content_obj,
-        onSeeMoreContentSub,
-        fetching_more_content,
-        //
+        seeMoreContentSub,
+        
         openHistorySub,
         openUpdateSub,
         openDeleteSub,
         openReportSub,
     } = props;
-
-    const { content, has_more_content } = content_obj;
 
     //
     return (
@@ -36,10 +33,8 @@ function SubWsHead(props) {
 
             <div className="CmtSub_content">
                 <ContentMore
-                    content={content}
-                    has_more_content={has_more_content}
-                    seeMoreContent={onSeeMoreContentSub}
-                    is_fetching={fetching_more_content}
+                    content_obj={content_obj}
+                    seeMoreContent={seeMoreContentSub}
                 />
             </div>
 

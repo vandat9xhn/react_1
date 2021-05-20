@@ -65,8 +65,9 @@ class ScreenPermission extends Component {
 
         //
         return (
+            open_screen &&
             <ScreenBlur
-                open_screen={open_screen}
+                // open_screen={open_screen}
                 closeScreen={this.closeScreenPermission}
             >
                 <div className="ScreenPermission">

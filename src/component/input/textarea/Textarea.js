@@ -33,10 +33,8 @@ function Textarea(props) {
         if (!e.shiftKey && e.keyCode == 13) {
             if (localStorage.is_mobile == 0) {
                 e.preventDefault();
-                if (handleSend) {
-                    handleSend();
-                    e.target.style.height = 'auto';
-                }
+                handleSend();
+                e.target.style.height = 'auto';
             }
         }
     };
@@ -47,7 +45,6 @@ function Textarea(props) {
             text={text}
             textarea_class={textarea_class}
             placeholder={placeholder}
-
             onKeyDown={onKeyDown}
             onChange={onChange}
             handleFocus={handleFocus}

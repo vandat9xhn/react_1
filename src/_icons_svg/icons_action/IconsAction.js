@@ -74,7 +74,7 @@ function IconsAction(props) {
                 d="M 240,310 L340,305 Q350,300 340,295 L240,290
                 L215,230 Q213,213 230,215 L400,300
                 L230,385 Q213,387 215,370 Z"
-                fill="var(--bg-blur)"
+                fill="var(--md-bg-ccc)"
                 stroke="none"
             />
 

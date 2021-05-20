@@ -15,34 +15,38 @@ CommentPost.propTypes = {
 };
 CommentPost.defaultProps = {
     is_sub: false,
-}
+};
 
 //
 function CommentPost(props) {
     const { is_sub, handleSend } = props;
     //
-    const {user} = useContext(context_api)
+    const { user } = useContext(context_api);
 
     //
-    return (
-        user.id ? (
-            <div className={`CommentPost ${is_sub ? 'CommentPost_sub' : ''}`}>
-                <div className="CommentPost_user">
-                    <Link to={`/profile/${user.id}`}>
-                        <img
-                            className="brs-50"
-                            src={user.picture || white_person}
-                            alt=""
-                            width="30"
-                            height="30"
-                        />
-                    </Link>
-                </div>
-                <CommentInput placeholder={is_sub ? 'Type...' : undefined} handleSend={handleSend} />
+    return user.id ? (
+        <div className={`CommentPost ${is_sub ? 'CommentPost_sub' : ''}`}>
+            <div className="CommentPost_user">
+                <Link to={`/profile/${user.id}`}>
+                    <img
+                        className="brs-50"
+                        src={user.picture || white_person}
+                        alt=""
+                        width="30"
+                        height="30"
+                    />
+                </Link>
             </div>
-        ) : (
-            <div></div>
-        )
+
+            <div>
+                <CommentInput
+                    placeholder={is_sub ? 'Type...' : undefined}
+                    handleSend={handleSend}
+                />
+            </div>
+        </div>
+    ) : (
+        <div></div>
     );
 }
 

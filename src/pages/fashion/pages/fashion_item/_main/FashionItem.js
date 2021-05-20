@@ -11,8 +11,8 @@ import {
     API_FashionCart_UD,
     API_FashionRate_C,
 } from '../../../../../api/api_django/fashion/APIFashionToken';
+
 import makeFormData from '../../../../../_some_function/makeFormData';
-import { oneProduct } from '../../../../../api/api_heroku/get_api/GetAPI';
 // 
 import { context_api } from '../../../../../_context/ContextAPI';
 import { useNewCount } from '../../../../../_custom_hooks/useCount';
@@ -33,7 +33,6 @@ import FashionInfo from '../info/FashionInfo';
 import ConfirmRate from '../confirm_rate/ConfirmRate';
 import CommentItem from '../comment/_main/CommentItem';
 // 
-import my_image from '../../../../../../image/my_image.png';
 import './FashionItem.scss';
 
 //
@@ -43,8 +42,10 @@ function FashionItem(props) {
     // const cart_list = useSelector(state => state.cart.list)
     const { count_cart } = useSelector((state) => state.count_cart_obj);
     const dispatch = useDispatch();
+
     // context
     const user_id = useContext(context_api).user.id;
+
     // state
     const [item, setItem] = useState({});
     const [show_notice_cart_success, setShowNoticeCartSuccess] = useState(
@@ -55,6 +56,7 @@ function FashionItem(props) {
     const [fashion_rates, setFashionRates] = useState({});
     const [open_rate, setOpenRate] = useState(false);
     const [relative_products, setRelativeProducts] = useState([]);
+
     // use hook
     const [
         count,
@@ -69,7 +71,6 @@ function FashionItem(props) {
         changeMin,
     ] = useNewCount(0, 0, 0);
     const mounted = useMounted();
-    //
 
     //
     useEffect(() => {
@@ -280,7 +281,7 @@ function FashionItem(props) {
 
     //
     return (
-        <div className="FashionItem">
+        <div className="FashionItem bg-primary">
             <div className="FashionItem_head">
                 <FashionH />
             </div>

@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import './InputFile.scss';
 
-// 
+//
 InputFile.propTypes = {
     //
     name: PropTypes.string,
@@ -27,7 +27,7 @@ InputFile.defaultProps = {
     should_reset: true,
 };
 
-// 
+//
 function InputFile(props) {
     const {
         name,
@@ -36,31 +36,32 @@ function InputFile(props) {
         accept,
         title,
         should_reset,
-        // 
+        //
         children,
         onBlur,
     } = props;
-    
+
     //
     const refInput = useRef(null);
 
     //
-    function onClick(){
+    function onClick() {
         refInput.current.click();
-    };
-    
+    }
+
     //
     function onChange(event) {
         props.onChange(event);
-        should_reset && setTimeout(() => {
-            event.target.value = '';
-        }, 500);
+        should_reset &&
+            setTimeout(() => {
+                event.target.value = '';
+            }, 500);
     }
 
     //
 
     return (
-        <div className="InputFile">
+        <div className="InputFile position-rel">
             <div className="InputFile_input display-none">
                 <input
                     ref={refInput}
@@ -74,8 +75,15 @@ function InputFile(props) {
                 />
             </div>
 
-            <div className="InputFile_face brs-5px" onClick={onClick}>
-                {children}
+            <div className="InputFile_face wh-100">
+                <div
+                    className="InputFile_face-contain wh-100 brs-50"
+                    onClick={onClick}
+                >
+                    <div className="wh-100 display-flex justify-content-center align-items-center">
+                        {children}
+                    </div>
+                </div>
             </div>
         </div>
     );

@@ -17,18 +17,16 @@ function BtnPostCmt(props) {
 
     //
     return (
-        <div
-            className="LikeShareCmt_cmt"
-            onClick={handleClickBtnCmt}
-            title="comment"
-        >
+        <div onClick={handleClickBtnCmt} title="comment">
             <IconDiv x={200} Icon={IconsPost}>
                 <div>
-                    <div className="BtnPostCmt_title">Comment</div>
+                    <div className="BtnPostCmtShare_title">Comment</div>
 
                     <div
                         className={
-                            count_comment ? 'BtnPostCmt_total' : 'display-none'
+                            count_comment
+                                ? 'BtnPostCmtShare_total'
+                                : 'display-none'
                         }
                     >
                         {UnitNumber(count_comment)}

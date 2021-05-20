@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { loadFile } from '../../../../../_some_function/loadFile';
+//
 import CreateUpdatePostHome from '../home/_main/CreateUpdatePostHome';
 import FixAll from '../fix_all/_main/FixAll';
 //
 import './CreateUpdatePost.scss';
+import './CreateUpdatePostRes.scss';
 
 //
 CreateUpdatePost.propTypes = {
     main_content: PropTypes.string,
-    vid_pics: PropTypes.array,
+    vid_pics: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number,
+            vid_pic: PropTypes.string,
+            content: PropTypes.string,
+            type: PropTypes.string,
+        })
+    ),
 
     title_action: PropTypes.string,
     handleCreateUpdatePost: PropTypes.func,
@@ -17,7 +27,14 @@ CreateUpdatePost.propTypes = {
 
 CreateUpdatePost.defaultProps = {
     main_content: '',
-    vid_pics: [],
+    vid_pics: [
+        {
+            id: 0,
+            vid_pic: '',
+            content: '',
+            type: '',
+        },
+    ],
 
     title_action: 'Post',
 };
@@ -80,36 +97,6 @@ function CreateUpdatePost(props) {
 
     /* ---------------------------- VID_PIC ---------------------------------- */
 
-    //
-    function loaderFile(new_files) {
-        return new Promise((res) => {
-            files.push(...new_files);
-            //
-            let i = 1;
-
-            for (const file of new_files) {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    vid_pics.push({
-                        id: 0,
-                        content: '',
-                        vid_pic: reader.result,
-                        type: file.type,
-                    });
-                };
-                reader.readAsDataURL(file);
-                //
-                if (i == new_files.length) {
-                    setTimeout(() => {
-                        res();
-                    }, i <= 5 ? 500 : i * 100);
-                } else {
-                    i += 1;
-                }
-            }
-        });
-    }
-
     // choose
     async function handleChooseFiles(event) {
         const new_files = event.target.files;
@@ -120,10 +107,20 @@ function CreateUpdatePost(props) {
                 is_loading: true,
             });
 
-            await loaderFile(new_files);
+            const { files: load_files, vid_pics: load_vid_pics } =
+                await loadFile(new_files);
+
+            const new_vid_pics = load_vid_pics.map((item) => {
+                item.content = '';
+                item.id = 0;
+
+                return item;
+            });
 
             setUpdateCreateObj({
                 ...update_create_obj,
+                files: [...files, ...load_files],
+                vid_pics: [...vid_pics, ...new_vid_pics],
                 is_loading: false,
                 has_file: true,
                 has_text: !!main_content.trim(),
@@ -136,8 +133,8 @@ function CreateUpdatePost(props) {
         const deleted_item = vid_pics[index];
 
         deleted_item.id && deleted_ids.push(deleted_item.id);
-        files.splice(index, 1)
-        vid_pics.splice(index, 1)
+        files.splice(index, 1);
+        vid_pics.splice(index, 1);
         //
         if (vid_pics.length) {
             setUpdateCreateObj((update_create_obj) => ({
@@ -181,6 +178,7 @@ function CreateUpdatePost(props) {
             updated_ids.push(updated_id);
             updated_contents.push(content);
         }
+
         setUpdateCreateObj({
             ...update_create_obj,
             has_text: !!main_content.trim(),
@@ -196,17 +194,16 @@ function CreateUpdatePost(props) {
     //
     return (
         <div className="CreateUpdatePost">
-            {/* home */}
             <div className={open_fix_all ? 'display-none' : ''}>
                 <CreateUpdatePostHome
                     main_content={main_content}
                     vid_pics={vid_pics}
                     title_action={title_action}
-                    // 
+                    //
                     has_file={has_file}
                     has_text={has_text}
                     is_loading={is_loading}
-                    // 
+                    //
                     showFixAll={showFixAll}
                     handleChangeMainContent={handleChangeMainContent}
                     deleteAnItem={deleteAnItem}
@@ -215,7 +212,6 @@ function CreateUpdatePost(props) {
                 />
             </div>
 
-            {/* Fix all */}
             <div className={open_fix_all ? '' : 'display-none'}>
                 <FixAll
                     open_fix_all={open_fix_all}

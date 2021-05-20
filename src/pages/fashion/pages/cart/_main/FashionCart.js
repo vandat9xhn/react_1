@@ -2,23 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 //
-import FashionH from '../../../components/head/_main/FashionH';
-import CartItem from '../change/CartItem';
-import ConfirmDiv from '../../../../../component/some_div/confirm_div/ConfirmDiv';
 import { useMounted } from '../../../../../_custom_hooks/useMounted';
 import {
     API_FashionCart_LC,
     API_FashionCart_UD,
 } from '../../../../../api/api_django/fashion/APIFashionToken';
-import { actionFashionChangeCountCart } from '../../../../../redux/action/action_count_cart';
+
 import makeFormData from '../../../../../_some_function/makeFormData';
-//
-import image_loading from '../../../../../../image/image_loading.svg';
-import './FashionCart.scss';
-import { params_cart } from '../../../_params/FashionParams';
+// 
+import ConfirmDiv from '../../../../../component/some_div/confirm_div/ConfirmDiv';
 import CircleLoading from '../../../../../component/waiting/circle_loading/CircleLoading';
+// 
+import { params_cart } from '../../../_params/FashionParams';
+
+import { actionFashionChangeCountCart } from '../../../../../redux/action/action_count_cart';
+
+import FashionH from '../../../components/head/_main/FashionH';
 import CartHead from '../cart_head/CartHead';
 import CartShop from '../cart_shop/CartShop';
+//
+import './FashionCart.scss';
+import './FashionCartRes.scss';
 
 //
 function FashionCart(props) {
@@ -177,7 +181,7 @@ function FashionCart(props) {
                         {carts.map((cart, cart_ix) => (
                             <div
                                 key={`FashionCart_${cart_ix}`}
-                                className={`FashionCart_action box-shadow-1 ${
+                                className={`FashionCart_action ${
                                     cart.count_product ? '' : 'display-none'
                                 }`}
                             >

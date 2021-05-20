@@ -52,26 +52,28 @@ function CreateUpdatePostHome(props) {
                 />
             </div>
 
-            <div className="CreateUpdatePostHome_files-tag">
-                <CreateUpdatePostHomeMoreInput
-                    handleChooseFiles={handleChooseFiles}
-                />
-            </div>
+            <div className="CreateUpdatePostHome_footer">
+                <div className="CreateUpdatePostHome_files-tag">
+                    <CreateUpdatePostHomeMoreInput
+                        handleChooseFiles={handleChooseFiles}
+                    />
+                </div>
 
-            {/* btn post */}
-            <div>
-                <button
-                    className={`CreateUpdatePostHome_post brs-5px ${
-                        !has_text && !has_file
-                            ? 'CreateUpdatePostHome_post-disable'
-                            : 'CreateUpdatePostHome_post-active'
-                    }`}
-                    disabled={!has_text && !has_file}
-                    title={title_action}
-                    onClick={handleCreateUpdatePost}
-                >
-                    {title_action}
-                </button>
+                {/* btn post */}
+                <div>
+                    <button
+                        className={`CreateUpdatePostHome_post brs-5px ${
+                            !has_text && !has_file
+                                ? 'CreateUpdatePostHome_post-disable'
+                                : 'CreateUpdatePostHome_post-active'
+                        }`}
+                        disabled={!has_text && !has_file}
+                        title={title_action}
+                        onClick={handleCreateUpdatePost}
+                    >
+                        {title_action}
+                    </button>
+                </div>
             </div>
         </div>
     );

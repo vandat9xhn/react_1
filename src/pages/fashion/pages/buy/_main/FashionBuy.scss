@@ -69,3 +69,22 @@
         margin: 0 0.5rem;
     }
 }
+
+//
+@media (max-width: 300px){
+    .FashionBuy_body{
+        margin: 0;
+    }
+
+    .BuyProductList{
+        border-radius: 0;
+    }
+
+    .FashionBuy_current{
+        border-radius: 0;
+    }
+
+    .FashionBuyTotal{
+        border-radius: 0;
+    }
+}

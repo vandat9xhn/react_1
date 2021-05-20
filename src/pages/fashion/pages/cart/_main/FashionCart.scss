@@ -69,30 +69,3 @@
     font-weight: 800;
     color: var(--md-bg-blur);
 }
-
-//
-@media (max-width: 1000px){
-    .FashionCart_body{
-        margin: 1rem;
-    }
-}
-
-//
-@media (max-width: 700px){
-    .FashionCart_body{
-        margin: 0.5rem 0.25rem;
-    }
-}
-
-//
-@media (max-width: 300px){
-    .FashionCart_item-title-row{
-        display: block;
-        &>div{
-            width: 100%;
-        }
-    }
-    .FashionCart__calculate{
-        text-align: start;
-    }
-}

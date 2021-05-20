@@ -48,57 +48,53 @@ function BuyingShop(props) {
 
     //
     return (
-        <div className="BuyingShop">
-            <div className="BuyingShop_contain">
-                <div className="BuyingShop_row">
-                    <div className="display-flex">
-                        <ShopCartBuy
-                            id={shop.id}
-                            name={shop.name}
-                            picture={shop.picture}
+        <div className="BuyingShop bg-primary">
+            <div className="BuyingShop_row">
+                <div className="display-flex">
+                    <ShopCartBuy
+                        id={shop.id}
+                        name={shop.name}
+                        picture={shop.picture}
+                    />
+                </div>
+
+                <div>
+                    <div className="BuyingShop_items-contain">
+                        {products.map((buy_product, ix) => (
+                            <BuyingItem
+                                key={`BillBuying_item_${ix}`}
+                                buy_product={buy_product}
+                                status={status}
+                                //
+                                // buy_package_ix={buy_package_ix}
+                                buy_shop_ix={buy_shop_ix}
+                                buy_product_ix={ix}
+                                //
+                                openConFirmCancelBuying={
+                                    openConFirmCancelBuying
+                                }
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                <div className="BuyingShop_bot width-fit-content margin-auto">
+                    <div className="label-field">
+                        Total: {formatNum(amount)} VND
+                    </div>
+
+                    <div className="BuyingShop_bot-info box-shadow-1 brs-5px">
+                        <InfoBuying
+                            amount={
+                                amount - transport_price_model - voucher_model
+                            }
+                            voucher_price={voucher_model}
+                            transport_price={transport_price_model}
+                            payment={payment}
                         />
                     </div>
-
-                    <div>
-                        <div className="BuyingShop_items-contain">
-                            {products.map((buy_product, ix) => (
-                                <BuyingItem
-                                    key={`BillBuying_item_${ix}`}
-                                    buy_product={buy_product}
-                                    status={status}
-                                    //
-                                    // buy_package_ix={buy_package_ix}
-                                    buy_shop_ix={buy_shop_ix}
-                                    buy_product_ix={ix}
-                                    //
-                                    openConFirmCancelBuying={
-                                        openConFirmCancelBuying
-                                    }
-                                />
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="BuyingShop_bot width-fit-content margin-auto">
-                        <div className="label-field">
-                            Total: {formatNum(amount)} VND
-                        </div>
-
-                        <div className="BuyingShop_bot-info box-shadow-1 brs-5px">
-                            <InfoBuying
-                                amount={
-                                    amount -
-                                    transport_price_model -
-                                    voucher_model
-                                }
-                                voucher_price={voucher_model}
-                                transport_price={transport_price_model}
-                                payment={payment}
-                            />
-                        </div>
-                    </div>
-                    <br />
                 </div>
+                <br />
             </div>
         </div>
     );

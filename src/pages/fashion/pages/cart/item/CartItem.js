@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 //
 import { useNewCount } from '../../../../../_custom_hooks/useCount';
 //
-import './CartItem.scss';
 import ProductCartBuy from '../../../components/product_cart_buy/ProductCartBuy';
+// 
+import './CartItem.scss';
 
 //
 CartItem.propTypes = {

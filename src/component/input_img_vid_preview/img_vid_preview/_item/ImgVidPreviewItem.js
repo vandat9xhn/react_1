@@ -85,7 +85,7 @@ function ImgVidPreviewItem(props) {
             {/* delete */}
             <div className="ImgVidPreviewItem_delete">
                 <div
-                    className="ImgVidPreviewItem__icon-arrow brs-50 hv-opacity bg-loader cursor-pointer"
+                    className="ImgVidPreviewItem__icon-arrow display-flex-center brs-50 hv-opacity cursor-pointer"
                     onClick={onDeleteAnItem}
                     title="Delete"
                 >

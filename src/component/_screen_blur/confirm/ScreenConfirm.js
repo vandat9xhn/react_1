@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
 import ScreenBlur from '../_main/ScreenBlur';
-import IconsArrow from '../../../_icons_svg/icons_arrow/IconsArrow';
-//
-import './ScreenConfirm.scss';
 import ScreenBlurHead from '../_component/head/ScreenBlurHead';
 import ScreenBlurFootYesNo from '../_component/foot_yes_no/ScreenBlurFootYesNo';
+// 
+import './ScreenConfirm.scss';
 
 //
 class ScreenConfirm extends Component {
     state = {
         open_confirm: false,
         title: '',
-        notification: '',
+        notification: '' || <div></div>,
         handleConfirm: () => {},
     };
 
@@ -38,7 +37,8 @@ class ScreenConfirm extends Component {
 
     //
     onConfirm = () => {
-        this.state.handleConfirm();
+        const {handleConfirm} = this.state;
+        handleConfirm();
         this.closeScreenConfirm();
     };
 
@@ -49,6 +49,7 @@ class ScreenConfirm extends Component {
 
         //
         return (
+            open_confirm &&
             <ScreenBlur
                 open_screen={open_confirm}
                 closeScreen={this.closeScreenConfirm}

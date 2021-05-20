@@ -8,6 +8,7 @@ import IconsInput from '../../../../../../_icons_svg/Icons_input/IconsInput';
 import ImgVidPreviewItem from '../../../../../input_img_vid_preview/img_vid_preview/_item/ImgVidPreviewItem';
 //
 import './CmtSubUpdate.scss';
+import './CmtSubUpdateRes.scss';
 
 //
 CmtSubUpdate.propTypes = {
@@ -37,7 +38,7 @@ function CmtSubUpdate(props) {
         const new_file = e.target.files[0];
         if (new_file) {
             const reader = new FileReader();
-            
+
             reader.onload = () => {
                 vid_pic_obj.url = reader.result;
                 vid_pic_obj.type = new_file.type;
@@ -53,7 +54,7 @@ function CmtSubUpdate(props) {
         setVidPicObj({
             url: '',
             type: '',
-        })
+        });
     }
 
     //
@@ -68,35 +69,40 @@ function CmtSubUpdate(props) {
     //
     return (
         <div className="CmtSubUpdate">
-            <div>
-                <div className="CmtSubUpdate_main">
-                    <div className="CmtSubUpdate_div-textarea brs-5px">
-                        <TextareaNotSend
-                            text={new_text}
-                            placeholder="Write something..."
-                            textarea_class="CmtSubUpdate__textarea scroll-thin"
-                            onChange={handleChangeText}
-                        />
-                    </div>
+            <div className="CmtSubUpdate_body">
+                <div className="CmtSubUpdate_div-textarea brs-5px">
+                    <TextareaNotSend
+                        text={new_text}
+                        placeholder="Write something..."
+                        textarea_class="CmtSubUpdate__textarea scroll-thin"
+                        onChange={handleChangeText}
+                    />
+                </div>
 
-                    <div className="CmtSubUpdate_pic">
-                        <div className="CmtSubUpdate_pic-contain">
-                            <div className="display-flex justify-content-center">
-                                <div className={vid_pic_obj.url ? 'CmtSubUpdate_pic-item brs-5px' : 'display-none'}>
-                                    <ImgVidPreviewItem
-                                        item_ix={0}
-                                        urls={[vid_pic_obj]}
-                                        url={vid_pic_obj.url}
-                                        type={vid_pic_obj.type}
-                                        deleteAnItem={handleDeleteFile}
-                                    />
-                                </div>
+                <div className="CmtSubUpdate_pic">
+                    <div className="CmtSubUpdate_pic-contain">
+                        <div className="display-flex justify-content-center">
+                            <div
+                                className={
+                                    vid_pic_obj.url
+                                        ? 'CmtSubUpdate_pic-item brs-5px'
+                                        : 'display-none'
+                                }
+                            >
+                                <ImgVidPreviewItem
+                                    item_ix={0}
+                                    urls={[vid_pic_obj]}
+                                    url={vid_pic_obj.url}
+                                    type={vid_pic_obj.type}
+                                    deleteAnItem={handleDeleteFile}
+                                />
                             </div>
                         </div>
                     </div>
-
                 </div>
+            </div>
 
+            <div className="CmtSubUpdate_footer">
                 <div className="CmtSubUpdate_file">
                     <div className="CmtSubUpdate_file-row">
                         <div className="CmtSubUpdate_file-item">
@@ -104,7 +110,7 @@ function CmtSubUpdate(props) {
                                 accept="image/*, video/*"
                                 onChange={handleChangeFile}
                             >
-                                <IconsInput size_icon="1rem"/>
+                                <IconsInput size_icon="1rem" />
                             </InputFile>
                         </div>
                     </div>

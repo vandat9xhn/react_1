@@ -8,22 +8,28 @@ PaymentCurrent.propTypes = {
 };
 
 function PaymentCurrent(props) {
-    const {name, handleChooseExtraBuy} = props;
+    const { name, handleChooseExtraBuy } = props;
     //
     function onChooseExtraBuy() {
-        handleChooseExtraBuy('payment')
+        handleChooseExtraBuy('payment');
     }
 
     //
     return (
         <div className="PaymentCurrent">
-            <div className="FashionChoiceCurrent_contain">
-                <div className="FashionChoiceCurrent_row">
-                    <div className="FashionChoiceCurrent_title label-field">Payment</div>
+            <div className="FashionChoiceCurrent_row">
+                <div className="FashionChoiceCurrent_title label-field">
+                    Payment
+                </div>
 
-                    <div className="FashionChoiceCurrent_right">
-                        <div className="text-blue">{name}</div>
-                        <div className="FashionChoiceCurrent_change" onClick={onChooseExtraBuy}>Change</div>
+                <div className="FashionChoiceCurrent_right">
+                    <div className="text-blue">{name}</div>
+
+                    <div
+                        className="FashionChoiceCurrent_change"
+                        onClick={onChooseExtraBuy}
+                    >
+                        Change
                     </div>
                 </div>
             </div>

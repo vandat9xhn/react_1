@@ -7,7 +7,7 @@ import ScreenBlurHead from '../../../_screen_blur/_component/head/ScreenBlurHead
 //
 class ScreenUpdate extends Component {
     state = {
-        open_update: false,
+        open_screen: false,
         title: '',
         UpdateComponent: () => <div></div>,
         data_update: {},
@@ -24,7 +24,7 @@ class ScreenUpdate extends Component {
     //
     openScreenUpdate = (title, UpdateComponent, data_update) => {
         this.setState({
-            open_update: true,
+            open_screen: true,
             title: title,
             UpdateComponent: UpdateComponent,
             data_update: data_update,
@@ -34,7 +34,7 @@ class ScreenUpdate extends Component {
     //
     closeScreenUpdate = () => {
         this.setState({
-            open_update: false,
+            open_screen: false,
             title: '',
             UpdateComponent: () => <div></div>,
             data_update: {},
@@ -43,12 +43,13 @@ class ScreenUpdate extends Component {
 
     //
     render() {
-        const { open_update, title, UpdateComponent, data_update } = this.state;
+        const { open_screen, title, UpdateComponent, data_update } = this.state;
 
         //
         return (
+            open_screen &&
             <ScreenBlur
-                open_screen={open_update}
+                // open_screen={open_screen}
                 closeScreen={this.closeScreenUpdate}
             >
                 <div>

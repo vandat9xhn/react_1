@@ -135,8 +135,9 @@ class ScreenLike extends Component {
 
         //
         return (
+            open_screen &&
             <ScreenBlur
-                open_screen={open_screen}
+                // open_screen={open_screen}
                 closeScreen={this.closeScreenLike}
             >
                 <div className="ScreenLike">

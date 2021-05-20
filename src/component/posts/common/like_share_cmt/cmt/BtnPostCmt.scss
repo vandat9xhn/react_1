@@ -1,19 +1,1 @@
 
-//
-.BtnPostCmt_title {
-    display: block;
-}
-.BtnPostCmt_total {
-    display: none;
-}
-
-//
-@media (max-width: 500px) {
-    //
-    .BtnPostCmt_title {
-        display: none;
-    }
-    .BtnPostCmt_total {
-        display: block;
-    }
-}

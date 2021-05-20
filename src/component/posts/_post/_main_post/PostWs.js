@@ -45,6 +45,7 @@ Post.defaultProps = {
 function Post(props) {
     //
     const {
+        user: c_user,
         openScreenConfirm,
         openScreenHistory,
         openScreenUpdate,
@@ -92,10 +93,7 @@ function Post(props) {
         count_comment,
     } = post;
 
-    const { content = '', has_more_content = false } = content_obj || {};
-
     // state
-    const [fetching_more_content, setFetchingMoreContent] = useState(false);
     const [open_input, setOpenInput] = useState(false);
     const [fetching_cmt, setFetchingCmt] = useState(false);
 
@@ -192,12 +190,8 @@ function Post(props) {
     /* ------------------------------ */
 
     // More content
-    async function on_API_MoreContent_R() {
-        setFetchingMoreContent(true);
-        const more_content = await handle_API_MoreContent_R(id);
-        content_obj.content += more_content;
-        content_obj.has_more_content = false;
-        setFetchingMoreContent(false);
+    function on_API_MoreContent_R() {
+        return handle_API_MoreContent_R(id);
     }
 
     //
@@ -215,11 +209,11 @@ function Post(props) {
 
     //
     function focusInput() {
-        if (localStorage.is_login == 1) {
+        if (c_user.id) {
             !open_input && setOpenInput(true);
             setTimeout(() => {
                 ref_comments.current
-                    .querySelector('.Comments_input-contain .Textarea')
+                    .querySelector('.Comments_input-contain textarea.CommentInput_textarea')
                     .focus();
             }, 1);
         }
@@ -256,10 +250,8 @@ function Post(props) {
                 <div className="Post_content">
                     <div className="Post__text">
                         <ContentMore
-                            content={content}
+                            content_obj={content_obj}
                             seeMoreContent={on_API_MoreContent_R}
-                            has_more_content={has_more_content}
-                            is_fetching={fetching_more_content}
                         />
                     </div>
 

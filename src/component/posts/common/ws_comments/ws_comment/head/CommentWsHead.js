@@ -17,15 +17,12 @@ function CommentWsHead(props) {
         //
         content_obj,
         onSeeMoreContentCmt,
-        fetching_more_content,
         //
         openHistoryCmt,
         openUpdateCmt,
         openDeleteCmt,
         openReportCmt,
     } = props;
-
-    const { content, has_more_content } = content_obj;
 
     //
     return (
@@ -41,10 +38,8 @@ function CommentWsHead(props) {
 
             <div className="CmtSub_content">
                 <ContentMore
-                    content={content}
-                    has_more_content={has_more_content}
+                    content_obj={content_obj}
                     seeMoreContent={onSeeMoreContentCmt}
-                    is_fetching={fetching_more_content}
                 />
             </div>
 

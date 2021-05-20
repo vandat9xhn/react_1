@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // 
-import CartItem from '../change/CartItem';
+import CartItem from '../item/CartItem';
 import ShopCartBuy from '../../../components/shop_cart_buy/ShopCartBuy';
 
 // 
@@ -20,7 +20,7 @@ function CartShop(props) {
 
     // 
     return (
-        <div>
+        <div className="bg-primary box-shadow-1">
             <ShopCartBuy
                 id={shop.id}
                 name={shop.name}

@@ -9,9 +9,9 @@ import SubWsFoot from '../foot/SubWsFoot';
 import SubWsHead from '../head/SubWsHead';
 import SubWsBody from '../body/SubWsBody';
 import CmtSubUpdate from '../../../ws_actions/update_component/_main/CmtSubUpdate';
+import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
 //
 import './SubWs.scss';
-import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
 
 //
 SubWs.propTypes = {};
@@ -53,21 +53,14 @@ function SubWs(props) {
         user_type_like,
     } = sub;
 
-    //  state
-    const [fetching_more_content, setFetchingMoreContent] = useState(false);
-
     // hook
     const forceUpdate = useForceUpdate();
 
     /* -------------------------------- */
 
     //
-    async function onSeeMoreContentSub() {
-        setFetchingMoreContent(true);
-        const more_content = await handle_API_MoreContentSub_R(id);
-        content_obj.content += more_content;
-        content_obj.has_more_content = false;
-        setFetchingMoreContent(false);
+    function seeMoreContentSub() {
+        return handle_API_MoreContentSub_R(id);
     }
 
     /* ---------------- WS ---------------- */
@@ -171,8 +164,7 @@ function SubWs(props) {
                             user={user}
                             //
                             content_obj={content_obj}
-                            onSeeMoreContentSub={onSeeMoreContentSub}
-                            fetching_more_content={fetching_more_content}
+                            seeMoreContentSub={seeMoreContentSub}
                             //
                             openHistorySub={openHistorySub}
                             openUpdateSub={openUpdateSub}

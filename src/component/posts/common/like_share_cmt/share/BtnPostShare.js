@@ -14,11 +14,11 @@ function BtnPostShare(props) {
 
     //
     return (
-        <div className="LikeShareCmt_share" onClick={sharePost} title="share">
+        <div onClick={sharePost} title="share">
             <IconDiv y={200} Icon={IconsPost}>
                 <div>
-                    <div className="LikeShareCmt_cmt-share_title">Share</div>
-                    <div className="LikeShareCmt_cmt-share_total">
+                    <div className="BtnPostCmtShare_title">Share</div>
+                    <div className={count_share ? 'BtnPostCmtShare_total' : 'display-none'}>
                         {UnitNumber(count_share)}
                     </div>
                 </div>
