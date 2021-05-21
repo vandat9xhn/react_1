@@ -13,6 +13,9 @@
 }
 .FashionBuy_current{
     margin: 0.5rem 0;
+    & > div > div{
+        padding: 0.5rem;
+    }
 }
 .FashionBuy_total{
     margin: 0.5rem 0;

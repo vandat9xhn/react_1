@@ -20,7 +20,7 @@ const ZoomVidPicItem = React.lazy(() => import('../component/posts/_zoom_post/zo
 const AddFriend = React.lazy(() => import('../pages/add_friend/_main/AddFriend'));
 
 // Login form
-const LoginForm = React.lazy(() => import('../pages/login_form/_main_login/LoginForm'));
+const LoginForm = React.lazy(() => import('../pages/login_form/_main/LoginForm'));
 
 // Registration form
 const Registration = React.lazy(() => import('../pages/registration/_main/Registration'));

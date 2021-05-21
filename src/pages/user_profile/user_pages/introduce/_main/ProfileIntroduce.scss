@@ -1,52 +1,35 @@
-.ProfileIntroduce{
-    .ProfileIntroduce_container{
-        padding: 0.5rem 2rem;
-        .ProfileIntroduce_row{
-            display: flex;
-            justify-content: center;
-            .ProfileIntroduce_col-menu{
-                width: 25%;
-                padding: 0.5rem;
-                background-color: var(--md-bg-ccc);
-                border-right: 1px solid var(--md-bg-hover);
-                & > div:not(:first-child){
-                    padding: 0.5rem;
-                    font-weight: 500;
-                    cursor: pointer;
-                    &:hover{
-                        background-color: var(--md-bg-hover);
-                    }
-                }
-            }
-
-            .ProfileIntroduce_col-info{
-                width: 50%;
-                padding: 0.5rem;
-                background-color: var(--md-bg-ccc);
-            }
+// 
+.ProfileIntroduce_col-menu {
+    width: 400px;
+    margin-right: 0.5rem;
+    & > div:not(:first-child) {
+        padding: 0.5rem;
+        font-weight: 500;
+        cursor: pointer;
+        &:hover {
+            background-color: var(--md-bg-hover);
         }
     }
 }
 
-@media (max-width: 500px){
-    .ProfileIntroduce{
-        .ProfileIntroduce_container{
-            padding: 0.3rem 1rem;
-            .ProfileIntroduce_row{
-                display: block;
-                .ProfileIntroduce_col-menu{
-                    width: 100%;
-                    padding: 0.3rem;;
-                    & > div:not(:first-child){
-                        padding: 0.3rem;
-                    }
-                }
+.ProfileIntroduce_col-info {
+    width: 600px;
+}
+
+//
+@media (max-width: 1000px) {
+    .ProfileIntroduce_row {
+        display: block;
+    }
+
+    .ProfileIntroduce_col-menu {
+        margin: auto auto 0.5rem;
+        width: 600px;
+        max-width: 100%;
+    }
     
-                .ProfileIntroduce_col-info{
-                    width: 100%;
-                    padding: 0.3rem;
-                }
-            }
-        }
+    .ProfileIntroduce_col-info {
+        margin: auto;
+        max-width: 100%;
     }
 }

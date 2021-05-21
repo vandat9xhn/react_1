@@ -7,24 +7,13 @@ import { handle_API_ProfileUser_R } from '../__handle_api/ProfileHandleAPI';
 
 import ProfileInfo from '../info/_main/ProfileInfo';
 import ProfileMore from '../more/ProfileMore';
-import ProfilePost from '../user_pages/posts/ProfilePost';
-import ProfilePicture from '../user_pages/picture/ProfilePicture';
-import ProfileFriend from '../user_pages/friend/_main/ProfileFriend';
+
+import ProfileHome from '../user_pages/home/_main/ProfileHome';
 import ProfileIntroduce from '../user_pages/introduce/_main/ProfileIntroduce';
+import ProfileFriend from '../user_pages/friend/_main/ProfileFriend';
+import ProfilePicture from '../user_pages/picture/ProfilePicture';
 //
 import './Profile.scss';
-
-// lazy load
-// const ProfilePost = React.lazy(() => import('../user_pages/posts/ProfilePost'));
-// const ProfilePicture = React.lazy(() =>
-//     import('../user_pages/picture/ProfilePicture')
-// );
-// const ProfileFriend = React.lazy(() =>
-//     import('../user_pages/friend/_main/ProfileFriend')
-// );
-// const ProfileIntroduce = React.lazy(() =>
-//     import('../user_pages/introduce/_main/ProfileIntroduce')
-// );
 
 //
 function Profile(props) {
@@ -32,11 +21,11 @@ function Profile(props) {
 
     //
     const [profile, setProfile] = useState({});
-
     const [sk_obj, setSkObj] = useState({
         sk_loaded_arr: [],
         which_sk: '',
     });
+    const [is_fetching, setIsFetching] = useState(false)
 
     const { sk_loaded_arr, which_sk } = sk_obj;
 
@@ -48,8 +37,12 @@ function Profile(props) {
 
     //
     async function getProfileInfo() {
+        setIsFetching(true)
+
         const data = await handle_API_ProfileUser_R(id);
+
         setProfile(data);
+        setIsFetching(false)
         document.title = data.first_name + ' ' + data.last_name;
     }
 
@@ -97,14 +90,18 @@ function Profile(props) {
                     openPicture={openPicture}
                 />
             </div>
-            
+
             <div className="Profile_more">
                 <ProfileMore sk={which_sk} onClickSk={onClickSk} />
             </div>
 
             {sk_loaded_arr.includes('') && (
                 <div className={which_sk == '' ? '' : 'display-none'}>
-                    <ProfilePost last_name={profile.last_name} />
+                    <ProfileHome
+                        profile={profile}
+                        is_fetching={is_fetching}
+                        onClickSk={onClickSk}
+                    />
                 </div>
             )}
 

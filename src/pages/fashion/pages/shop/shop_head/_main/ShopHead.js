@@ -32,7 +32,7 @@ function ShopHead(props) {
 
     // 
     return (
-        <div>
+        <div className="ShopHead bg-primary">
             <div className="ShopHead_personal">
                 <ShopPersonal
                     profile_user={profile_user}

@@ -82,8 +82,6 @@ export const API_PostPic_C = (data = {}) =>
         data: data,
     });
 
-/* --------------- VID PIC -------------- */
-
 //
 export const API_PostPic_RUD = (pk = 1, method, params = {}, data = {}) =>
     API_FakeReal(default_post_arr[0].vid_pics[0], () =>

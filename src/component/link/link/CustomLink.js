@@ -8,6 +8,7 @@ CustomLink.propTypes = {
     to: PropTypes.string,
     className: PropTypes.string,
     replace: PropTypes.bool,
+    onClick: PropTypes.func,
 };
 
 CustomLink.defaultProps = {
@@ -15,10 +16,11 @@ CustomLink.defaultProps = {
 };
 
 //
-function CustomLink({ children, to, replace, className }) {
+function CustomLink({ children, to, replace, className, onClick }) {
     //
     function handleClickLink(e) {
         to == location.pathname + location.search && e.preventDefault();
+        onClick()
     }
 
     //

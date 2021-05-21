@@ -1,0 +1,22 @@
+
+
+.ProfilePrFriend_pic-row{
+    justify-content: space-between;
+}
+
+.ProfilePrFriend_pic-item{
+    width: calc(33.3% - 5px);
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+
+        object-fit: cover;
+    }
+}
+// .
+.ProfilePrFriend_pic-item_name{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

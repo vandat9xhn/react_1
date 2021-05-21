@@ -1,0 +1,12 @@
+
+
+.ProfilePrPic_item{
+    margin-bottom: 4px;
+    width: calc(33.3% - 2px);
+    img{
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+    }
+}

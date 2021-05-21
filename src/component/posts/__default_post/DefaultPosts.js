@@ -1,4 +1,5 @@
 import white_person from '../../../../image/white_person.svg';
+import naruto_x_hinata from '../../../../image/naruto_x_hinata.jpg';
 
 // 
 export const default_like_post_arr = [
@@ -618,7 +619,7 @@ export const default_post_arr = [
                 ],
                 "arr_unique_like": [0, 2, 3],
                 "count_like": 1,
-                "vid_pic": white_person,
+                "vid_pic": naruto_x_hinata,
                 "content": "note 1",
                 "folder_picture": "my folder picture",
                 "post_model": 11,

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
@@ -8,7 +9,6 @@ import IconsInput from '../../../../_icons_svg/Icons_input/IconsInput';
 import UpdateCreatePost from '../create_update_post/_main/CreateUpdatePost';
 //
 import './AddNewPost.scss';
-import { Link } from 'react-router-dom';
 
 //
 AddNewPost.propTypes = {
@@ -61,9 +61,9 @@ function AddNewPost(props) {
                             </Link>
                         </div>
 
-                        <div className="AddNewPost_head-right flex-grow-1">
+                        <div className="AddNewPost_head-right bg-fb flex-grow-1">
                             <div className="AddNewPost_head-right_title opacity-5">
-                                {user.last_name}! {title}
+                                {title}
                             </div>
                         </div>
                     </div>

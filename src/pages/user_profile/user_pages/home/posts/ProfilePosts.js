@@ -1,29 +1,29 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import { context_api } from '../../../../_context/ContextAPI';
+import { context_api } from '../../../../../_context/ContextAPI';
 
-import { useMounted } from '../../../../_custom_hooks/useMounted';
+import { useMounted } from '../../../../../_custom_hooks/useMounted';
 
-import { WindowScrollDownBool } from '../../../../_some_function/ScrollDown';
+import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
+import { WindowScrollDownBool } from '../../../../../_some_function/ScrollDown';
 //
-import FetchingDiv from '../../../../component/some_div/fetching/FetchingDiv';
+import FetchingDiv from '../../../../../component/some_div/fetching/FetchingDiv';
 //
-import { handle_API_ProfilePost_L } from '../../__handle_api/ProfileHandleAPI';
+import { handle_API_ProfilePost_L } from '../../../__handle_api/ProfileHandleAPI';
 
-import Posts from '../../../../component/posts/_posts/_main/PostsWs';
-//
-import './ProfilePost.scss';
+import Posts from '../../../../../component/posts/_posts/_main/PostsWs';
+
 
 //
-ProfilePost.propTypes = {
-    last_name: PropTypes.string,
+ProfilePosts.propTypes = {
+    profile: PropTypes.object,
 };
 
 //
-function ProfilePost(props) {
-    const { id } = useParams();
+function ProfilePosts(props) {
+    //
+    const id = GetIdSlug();
 
     //
     const { user } = useContext(context_api);
@@ -62,9 +62,8 @@ function ProfilePost(props) {
     //
     useEffect(() => {
         has_fetched && handleBeforeChangeId();
-        // setTimeout(() => {
         getData_API_Post();
-        // }, 0);
+
     }, [id]);
 
     /* ----------------------- COMMON ---------------------- */
@@ -132,31 +131,23 @@ function ProfilePost(props) {
 
     //
     return (
-        <div className="ProfilePost bg-fb">
-            <div className="ProfilePost_row">
-                <div className="ProfilePost_col">
-                    <div></div>
+        <div className="ProfilePosts">
+            <div>
+                <Posts
+                    posts={has_fetched ? post_arr : [{}]}
+                    title_add_new={
+                        user.id == id
+                            ? 'Post a status update'
+                            : `Write a post on ${last_name}'s timeline`
+                    }
+                />
+            </div>
 
-                    <div>
-                        <Posts
-                            posts={has_fetched ? post_arr : [{}]}
-                            title_add_new={
-                                user.id == id
-                                    ? 'Post a status update'
-                                    : `Write a post on ${last_name}'s timeline`
-                            }
-                        />
-                    </div>
-
-                    <div className="width-fit-content margin-auto">
-                        <FetchingDiv
-                            open_fetching={has_fetched && is_fetching}
-                        />
-                    </div>
-                </div>
+            <div className="width-fit-content margin-auto">
+                <FetchingDiv open_fetching={has_fetched && is_fetching} />
             </div>
         </div>
     );
 }
 
-export default ProfilePost;
+export default ProfilePosts;

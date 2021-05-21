@@ -16,7 +16,7 @@ function ShopProducts(props) {
 
     // 
     return (
-        <div className="ShopProducts margin-auto">
+        <div className="ShopProducts margin-auto bg-primary">
             <div className="display-flex justify-content-center flex-wrap">
                 {products.map((product, ix) => (
                     <div key={`ShopProducts_${ix}`}>

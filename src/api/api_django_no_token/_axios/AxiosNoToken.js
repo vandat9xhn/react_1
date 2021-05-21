@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime';
 import Axios from 'axios';
 import queryString from 'query-string';
-// 
+//
 import { csrftoken } from '../../_ConstAPI';
 
 // Create Axios
@@ -16,5 +16,14 @@ const axiosClientNoToken = Axios.create({
     },
     paramsSerializer: (params) => queryString.stringify(params),
 });
+
+axiosClientNoToken.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    (err) => {
+        console.log(err);
+    }
+);
 
 export default axiosClientNoToken;

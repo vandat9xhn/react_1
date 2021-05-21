@@ -31,7 +31,7 @@ export const TokenIsExpired = () => {
     const access_token = localStorage.access_token;
     const time_set = localStorage.time_set || 0;
     const time_now = new Date().getTime();
-    const access_life = + process.env.ACCESS_LIFE
+    const access_life = + localStorage.life_time || 0
     // 
     return (time_now - time_set > access_life) || !access_token;
 };
@@ -41,9 +41,10 @@ export const TokenIsExpired = () => {
 const GetRefreshToken = async () => {
     try {
         const res = await RefreshToken();
-        const access_token = res.data['access'];
-        // save to local storage
+        const {access: access_token, life_time} = res.data;
+        // 
         localStorage.access_token = access_token;
+        localStorage.life_time = life_time
         localStorage.time_set = new Date().getTime();
         //
         return access_token;
@@ -64,7 +65,7 @@ const waitRefreshToken = () => new Promise(res => {
                 clearInterval(fetching_interval)
                 res()
             }
-            //
+            
             times_interval++
             if (times_interval == 10) {
                 clearInterval(fetching_interval)
@@ -106,7 +107,7 @@ axiosDjangoClient.interceptors.response.use(
         return response;
     },
     (err) => {
-        throw err;
+        console.log(err);;
     }
 );
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import AboutWork from '../about_work/AboutWork';
 import AboutContact from '../about_contact/AboutContact';
-// 
+//
 import './ProfileIntroduce.scss';
 
 // const
@@ -34,57 +34,54 @@ function ProfileIntroduce() {
         setCurrentAbout(new_current_about);
     }
 
+    // 
     return (
         <div className="ProfileIntroduce">
-            <div className="ProfileIntroduce_container">
-                <div className="ProfileIntroduce_row">
-                    {/* Menu */}
-                    <div className="ProfileIntroduce_col-menu box-shadow-1 brs-5px">
-                        <div className="ProfileIntroduce__common App_title">
-                            Common
+            <div className="ProfileIntroduce_row display-flex justify-content-center">
+                {/* Menu */}
+                <div className="ProfileIntroduce_col-menu box-shadow-1 brs-5px bg-primary">
+                    <div className="ProfileIntroduce__common App_title">
+                        Common
+                    </div>
+                    {about_common.map((item, index) => (
+                        <div
+                            key={`ProfileIntroduce__about_${index}`}
+                            className={`ProfileIntroduce__about ${
+                                current_about == item.about
+                                    ? 'active-color'
+                                    : ''
+                            }`}
+                            onClick={() => changeCurrentAbout(item.about)}
+                        >
+                            {item.title}
                         </div>
-                        {about_common.map((item, index) => (
-                            <div
-                                key={`ProfileIntroduce__about_${index}`}
-                                className={`ProfileIntroduce__about ${
-                                    current_about == item.about
-                                        ? 'active-color'
-                                        : ''
-                                }`}
-                                onClick={() => changeCurrentAbout(item.about)}
-                            >
-                                {item.title}
-                            </div>
-                        ))}
+                    ))}
+                </div>
+
+                {/* info */}
+                <div className="ProfileIntroduce_col-info box-shadow-1 brs-5px bg-primary">
+                    <div
+                        className={
+                            current_about == 'work' ? '' : 'display-none'
+                        }
+                    >
+                        <AboutWork />
                     </div>
 
-                    {/* info */}
-                    <div className="ProfileIntroduce_col-info box-shadow-1 brs-5px">
-                        <div
-                            className={
-                                current_about == 'work' ? '' : 'display-none'
-                            }
-                        >
-                            <AboutWork />
-                        </div>
+                    <div
+                        className={
+                            current_about == 'contact' ? '' : 'display-none'
+                        }
+                    >
+                        <AboutContact />
+                    </div>
 
-                        <div
-                            className={
-                                current_about == 'contact' ? '' : 'display-none'
-                            }
-                        >
-                            <AboutContact />
-                        </div>
-
-                        <div
-                            className={
-                                current_about == 'personal'
-                                    ? ''
-                                    : 'display-none'
-                            }
-                        >
-                            aaaa
-                        </div>
+                    <div
+                        className={
+                            current_about == 'personal' ? '' : 'display-none'
+                        }
+                    >
+                        aaaa
                     </div>
                 </div>
             </div>

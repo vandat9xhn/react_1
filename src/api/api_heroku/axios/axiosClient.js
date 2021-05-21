@@ -19,13 +19,11 @@ const axiosClientHeroku = Axios.create({
 // request
 axiosClientHeroku.interceptors.request.use(async (config) => {
     // Handle token here
-    // config.headers.handle_token = 'my token2';
     return config;
 });
 
 // response
 axiosClientHeroku.interceptors.response.use(
-    // Handle response here
     (response) => {
         // if (response && response.data) {
         //     return response.data;
@@ -33,7 +31,7 @@ axiosClientHeroku.interceptors.response.use(
         return response;
     },
     (err) => {
-        throw err;
+        console.log(err);
     }
 );
 

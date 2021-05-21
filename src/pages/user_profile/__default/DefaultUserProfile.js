@@ -13,6 +13,10 @@ export const default_user_r = [
         last_name: 'Dat',
         nick_name: 'nothing',
         story: 'Ha Ha',
+        university: 'USSH',
+        hobby: 'Play game',
+        from: 'Vinh Phuc',
+        live_now: 'Vinh Phuc',
 
         permission_add_friend: permission_add_friend_obj.has_mutual_friend,
         user_related: user_related_obj.c_user,
@@ -26,6 +30,10 @@ export const default_user_r = [
         last_name: 'My',
         nick_name: 'my my',
         story: 'Game',
+        university: 'FPT',
+        hobby: 'CODE',
+        from: 'Nam Dinh',
+        live_now: 'Hai Hau',
 
         permission_add_friend: permission_add_friend_obj.no_mutual_friend,
         user_related: user_related_obj.has_mutual_friend,
@@ -39,6 +47,10 @@ export const default_user_r = [
         last_name: 'My',
         nick_name: '<3',
         story: '',
+        university: 'Havard',
+        hobby: 'Sleep',
+        from: 'Vinh Phuc',
+        live_now: 'Vinh Phuc',
 
         permission_add_friend: permission_add_friend_obj.follow,
         user_related: user_related_obj.send_request,

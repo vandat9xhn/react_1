@@ -1,6 +1,6 @@
 import { API_Friends_LC } from "../../../api/api_django/user/user_friend/UserFriend";
 import { API_Post_L } from "../../../api/api_django/user/user_post/UserPost";
-import { API_UserProfile_RU } from "../../../api/api_django/user/user_profile/UserProfile";
+import { API_UserProfile_RU, API_UserVidPic_L } from "../../../api/api_django/user/user_profile/UserProfile";
 // 
 import { params_profile_post_l } from "../__params/ProfileParams";
 
@@ -27,6 +27,17 @@ export async function handle_API_Friend_L(user_id, c_count=0) {
     const {data, count} = res.data
 
     return [data, count]
+}
+
+export async function handle_API_VidPic_L(user_id, c_count=0) {
+    const res = await API_UserVidPic_L({
+        profile_user: user_id,
+        page: 1,
+        size: 10,
+        c_count: c_count,
+    });
+
+    return res.data
 }
 
 // 

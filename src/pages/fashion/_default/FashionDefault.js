@@ -32,7 +32,17 @@ export const owner_info = [
 export const default_arr_shop = [
     {
         "id": 2,
-        "list_names": [],
+        "list_names": [
+            {
+                "name": 'Baby',
+            },
+            {
+                "name":'Mom',
+            },
+            {
+                "name":'Other',
+            },
+        ],
         "vid_pics": [
             {
                 "id": 4,

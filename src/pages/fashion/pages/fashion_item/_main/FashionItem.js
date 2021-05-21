@@ -35,16 +35,23 @@ import CommentItem from '../comment/_main/CommentItem';
 // 
 import './FashionItem.scss';
 
+// 
+FashionItem.propTypes = {
+    match: PropTypes.object,
+};
+
 //
 function FashionItem(props) {
+    // context
+    const user_id = useContext(context_api).user.id;
+
+    // 
     const { id } = props.match.params;
+
     // redux
     // const cart_list = useSelector(state => state.cart.list)
     const { count_cart } = useSelector((state) => state.count_cart_obj);
     const dispatch = useDispatch();
-
-    // context
-    const user_id = useContext(context_api).user.id;
 
     // state
     const [item, setItem] = useState({});
@@ -339,9 +346,5 @@ function FashionItem(props) {
         </div>
     );
 }
-
-FashionItem.propTypes = {
-    match: PropTypes.object,
-};
 
 export default FashionItem;
