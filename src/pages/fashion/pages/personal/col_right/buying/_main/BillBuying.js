@@ -1,34 +1,68 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { context_api } from '../../../../../../../_context/ContextAPI';
+
 import { API_FashionBuy_LC } from '../../../../../../../api/api_django/fashion/APIFashionToken';
+
+import { ParseLocationSearch } from '../../../../../../../_some_function/ParseLocationSearch';
 //
-import ConfirmDiv from '../../../../../../../component/some_div/confirm_div/ConfirmDiv';
-//
-import { params_buy } from '../../../../../_params/FashionParams';
-import BuyingStage from '../buying_stage/_main/BuyingStage';
-import BuyingShop from '../buying_shop/BuyingShop';
 import CircleLoading from '../../../../../../../component/waiting/circle_loading/CircleLoading';
 import ScreenBlurShowMore from '../../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
+//
+import { params_buy } from '../../../../../_params/FashionParams';
+
+import BuyingStage from '../buying_stage/_main/BuyingStage';
+import BuyingShop from '../buying_shop/BuyingShop';
 
 //
 const arr_stage = ['buying', 'ready', 'delivery', 'bought'];
-const search_stage = () => location.search.replace('?stage=', '')
+
 //
 BillBuying.propTypes = {};
 
 //
 function BillBuying(props) {
     //
-    const [buy_arr, setBuyArr] = useState([]);
-    const [count_buy, setCountBuy] = useState(0);
-    const [cur_stage, setCurStage] = useState(0);
-    const [open_confirm, setOpenConfirm] = useState(false);
-    const [first_fetching, setFirstFetching] = useState(false);
-    const [is_fetching, setIsFetching] = useState(false);
+    const { openScreenConfirm } = useContext(context_api);
+
+    //
+    const [buying_state, setBuyingState] = useState({
+        buy_obj: {
+            buying: {
+                buy_arr: [],
+                count_buy: 0,
+                has_fetched: false,
+            },
+
+            ready: {
+                buy_arr: [],
+                count_buy: 0,
+                has_fetched: false,
+            },
+
+            delivery: {
+                buy_arr: [],
+                count_buy: 0,
+                has_fetched: false,
+            },
+
+            bought: {
+                buy_arr: [],
+                count_buy: 0,
+                has_fetched: false,
+            },
+        },
+
+        cur_stage: 0,
+        is_fetching: false,
+    });
+
+    const { buy_obj, cur_stage, is_fetching } = buying_state;
+    const { buy_arr, count_buy, has_fetched } = buy_obj[arr_stage[cur_stage]];
+
     //
     const cancel_obj = useRef({
-        // buy_package_ix: 0,
         buy_shop_ix: 0,
         item_ix: 0,
         item_id: 0,
@@ -36,89 +70,143 @@ function BillBuying(props) {
 
     //
     useEffect(() => {
-        if (location.pathname.endsWith('/buying')) {
-            if (cur_stage == 0) {
-                const stage = search_stage();
-                const new_cur_stage = arr_stage.indexOf(stage) + 1 || 1;
-                history.replaceState('', '', '?stage=' + arr_stage[new_cur_stage - 1]);
-                getData_API_Buying();
-                setCurStage(new_cur_stage);
-            } else {
-                console.log(cur_stage);
-                history.replaceState('', '', '?stage=' + arr_stage[cur_stage - 1]);
-            }
-        }
-        
+        handlePathnameChange();
     }, [location.pathname]);
 
     //
-    async function getData_API_Buying() {
-        setFirstFetching(true)
-        // 
-        const search = search_stage().toUpperCase()
-        const is_pagination = ['BOUGHT'].includes(search)
-        const params = {};
-        // 
-        params.status = search
-        if (is_pagination) {
-            params.page = 1
-            params.size = 5
+    function handlePathnameChange() {
+        if (!location.pathname.endsWith('/buying')) {
+            return;
         }
-        // 
-        const res = await API_FashionBuy_LC('GET', {...params, ...params_buy});
-        if(is_pagination){
-            setCountBuy(res.data.count || 3)
-            setBuyArr(res.data.data)
-        } else {
-            setCountBuy(0)
-            setBuyArr(res.data)
+
+        const stage = getBuyingStage();
+
+        history.replaceState('', '', '?stage=' + stage);
+        !buy_arr.length &&
+            getData_API_Buying({
+                cur_stage: arr_stage.indexOf(stage),
+            });
+    }
+
+    /* --------------------------------------- */
+
+    //
+    function getBuyingStage() {
+        let stage = ParseLocationSearch()['stage'];
+        if (arr_stage.indexOf(stage) == -1) {
+            stage = 'buying';
         }
-        // 
-        setFirstFetching(false)
+
+        return stage;
     }
 
     //
-    async function getMore_API_Buying(){
-        setIsFetching(true)
-        // 
+    function startFetchingData(start_obj_state = {}) {
+        setBuyingState((buying_state) => ({
+            ...buying_state,
+            ...start_obj_state,
+            is_fetching: true,
+        }));
+    }
+
+    //
+    async function getData_API_Buying(start_obj_state = {}) {
+        startFetchingData(start_obj_state);
+
+        const stage = getBuyingStage();
+        const is_pagination = 'bought' == stage;
+        const params = {
+            status: stage,
+        };
+
+        if (is_pagination) {
+            params.page = 1;
+            params.size = 5;
+        }
+
+        const res = await API_FashionBuy_LC('GET', {
+            ...params,
+            ...params_buy,
+        });
+
+        setBuyingState((buying_state) => ({
+            ...buying_state,
+            buy_obj: {
+                ...buying_state.buy_obj,
+                [stage]: {
+                    buy_arr: is_pagination ? res.data.data : res.data,
+                    count_buy: is_pagination ? res.data.count : 0,
+                    has_fetched: true,
+                },
+            },
+            is_fetching: false,
+        }));
+    }
+
+    //
+    async function getMore_API_Buying() {
+        startFetchingData();
+        const stage = arr_stage[cur_stage];
+        //
         const params = {
             ...params_buy,
             page: 1,
             size: 5,
             c_count: buy_arr.length,
-            status: search_stage().toUpperCase(),
+            status: stage,
         };
-        // 
+        //
         const res = await API_FashionBuy_LC('GET', params);
-        buy_arr.push(...res.data.data)
-        // 
-        setIsFetching(false)
+
+        setBuyingState({
+            ...buying_state,
+            buy_obj: {
+                ...buy_obj,
+                [stage]: {
+                    ...buy_obj[stage],
+                    buy_arr: [...buy_arr, ...res.data.data],
+                },
+            },
+            is_fetching: false,
+        });
     }
 
-    // 
+    //
     function handleChooseStep(new_cur_stage) {
-        if (new_cur_stage + 1 != cur_stage) {
-            history.replaceState('', '', '?stage=' + arr_stage[new_cur_stage])
-            setCurStage(new_cur_stage + 1)
-            getData_API_Buying()
+        if (new_cur_stage == cur_stage) {
+            return;
         }
+
+        history.replaceState('', '', '?stage=' + arr_stage[new_cur_stage]);
+
+        if (buy_obj[arr_stage[new_cur_stage]].has_fetched) {
+            setBuyingState({
+                ...buying_state,
+                cur_stage: new_cur_stage,
+            })
+        } else {
+            getData_API_Buying({
+                cur_stage: new_cur_stage,
+            });
+        }
+
     }
 
-/* ---------------- CANCEL ----------------- */
+    /* ---------------- CANCEL ----------------- */
 
     //
     function openConFirmCancelBuying(buy_shop_ix, item_ix, item_id) {
         cancel_obj.current = { buy_shop_ix, item_ix, item_id };
-        setOpenConfirm(true);
+        openScreenConfirm(
+            'Cancel Product',
+            'Do you really want to cancel buying this product?',
+            conFirmCancelBuying
+        );
     }
-    //
-    function closeConfirmCancel() {
-        setOpenConfirm(false);
-    }
+
     //
     function conFirmCancelBuying() {
         console.log(cancel_obj);
-        closeConfirmCancel();
     }
 
     //
@@ -133,12 +221,12 @@ function BillBuying(props) {
                     <div>
                         <BuyingStage
                             count_stage={4}
-                            completed_stage_ix={cur_stage}
+                            completed_stage_ix={cur_stage + 1}
                             handleChooseStep={handleChooseStep}
                         />
                     </div>
 
-                    <div className={first_fetching ? 'display-none' : ''}>
+                    <div className={!has_fetched ? 'display-none' : ''}>
                         {buy_arr.map((buy_shop, ix) => (
                             <BuyingShop
                                 key={`BillBuying_item_${ix}`}
@@ -153,26 +241,24 @@ function BillBuying(props) {
                 </div>
             </div>
 
-            <ConfirmDiv
-                open_confirm={open_confirm}
-                confirmYes={conFirmCancelBuying}
-                closeConfirm={closeConfirmCancel}
-            >
-                Do you want to cancel this product?
-            </ConfirmDiv>
-
             <div className="width-fit-content margin-auto">
                 <ScreenBlurShowMore
                     title="Show more"
                     is_show_more={count_buy > buy_arr.length}
-                    is_fetching={is_fetching || first_fetching}
-                    // 
+                    is_fetching={is_fetching}
+                    //
                     handleShowMore={getMore_API_Buying}
                     FetchingComponent={CircleLoading}
                 />
             </div>
 
-            <div className={!first_fetching && buy_arr.length == 0 ? 'fashion_title fashion_center fashion_border-bottom' : 'display-none'}>
+            <div
+                className={
+                    has_fetched && !is_fetching && buy_arr.length == 0
+                        ? 'fashion_title fashion_center fashion_border-bottom'
+                        : 'display-none'
+                }
+            >
                 No BILL
             </div>
         </div>

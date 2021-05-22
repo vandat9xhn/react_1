@@ -36,7 +36,7 @@ function ProfilePreview(props) {
         <div className="ProfilePreview">
             <div className="ProfilePreview_item">
                 <ProfilePrCommon
-                    title="Introduce"
+                    title="Intro"
                     sk="intro"
                     onClickSk={onClickSk}
                     is_fetching={is_fetching}

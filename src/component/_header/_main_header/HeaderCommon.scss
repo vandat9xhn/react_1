@@ -1,30 +1,3 @@
-// hidden list
-.header_hidden{
-    position: absolute;
-    top: 105%;
-    right: 0;
-}
-
-.header_hidden-contain{
-    width: 22.5rem;
-    max-width: 100vw;
-    max-height: calc(100vh - 3.5rem);
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    border-radius: 5px;
-    background-color: var(--md-bg-primary);
-    box-shadow: 0 1px 2px 1px var(--md-bg-ccc);
-    
-    &::-webkit-scrollbar{
-        width: 0.5rem;
-    }
-    &::-webkit-scrollbar-thumb{
-        background-color: var(--md-bg-ccc);
-        border-radius: 5px;
-    }
-}
-
 .header_item{
     padding: 0.5rem;
     color: var(--md-color);
@@ -59,5 +32,32 @@
     svg{
         width: 1.5rem;
         height: 1.5rem;
+    }
+}
+
+// hidden list
+.header_hidden{
+    position: absolute;
+    top: 105%;
+    right: 0;
+}
+
+.header_hidden-contain{
+    width: 22.5rem;
+    max-width: 100vw;
+    max-height: calc(100vh - 3.5rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    border-radius: 5px;
+    background-color: var(--md-bg-primary);
+    box-shadow: 0 1px 2px 1px var(--md-bg-ccc);
+    
+    &::-webkit-scrollbar{
+        width: 0.5rem;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: var(--md-bg-ccc);
+        border-radius: 5px;
     }
 }

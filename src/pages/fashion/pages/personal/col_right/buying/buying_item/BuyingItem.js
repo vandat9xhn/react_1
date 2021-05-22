@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import ProductCartBuy from '../../../../../components/product_cart_buy/ProductCartBuy';
-// 
-import './BuyingItem.scss';
 import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
+//
+import ProductCartBuy from '../../../../../components/product_cart_buy/ProductCartBuy';
+//
+import './BuyingItem.scss';
 
 //
 BuyingItem.propTypes = {
     buy_product: PropTypes.object,
-    // buy_package_ix: PropTypes.number,
     buy_shop_ix: PropTypes.number,
     buy_product_ix: PropTypes.number,
     openConFirmCancelBuying: PropTypes.func,
@@ -20,7 +20,6 @@ function BuyingItem(props) {
     const {
         buy_product,
         status,
-        // buy_package_ix,
         buy_shop_ix,
         buy_product_ix,
         openConFirmCancelBuying,
@@ -29,12 +28,7 @@ function BuyingItem(props) {
     const { product, quantity } = buy_product;
     //
     function onOpenConFirmCancelBuying() {
-        openConFirmCancelBuying(
-            // buy_package_ix,
-            buy_shop_ix,
-            buy_product_ix,
-            product.id
-        );
+        openConFirmCancelBuying(buy_shop_ix, buy_product_ix, product.id);
     }
 
     //
@@ -44,15 +38,15 @@ function BuyingItem(props) {
                 <ProductCartBuy product={product} quantity={quantity}>
                     <div className="text-align-center">x{quantity}</div>
                 </ProductCartBuy>
-                
-                {status == 'BUYING' &&
+
+                {status == 'BUYING' && (
                     <div
                         className="BuyingItem_cancel close-icon-small brs-50 cursor-pointer hv-opacity"
                         onClick={onOpenConFirmCancelBuying}
                     >
-                        <IconsArrow y={400} size_icon="1rem"/>
+                        <IconsArrow y={400} size_icon="1rem" />
                     </div>
-                }
+                )}
             </div>
         </div>
     );

@@ -1,3 +1,6 @@
+import { API_FakeReal } from '../../_ConstAPI';
+import axiosDjangoClient from '../_axios/AxiosDjango';
+
 import {
     DefaultFashionCartBuy,
     default_arr_payment,
@@ -6,8 +9,6 @@ import {
     default_arr_buy,
     default_arr_cancel,
 } from '../../../pages/fashion/_default/FashionDefault';
-import { API_FakeReal } from '../../_ConstAPI';
-import axiosDjangoClient from '../_axios/AxiosDjango';
 
 // get create cart
 export const API_FashionCart_LC = (method, params = {}, data = {}) =>
@@ -40,7 +41,7 @@ export const API_FashionCart_UD = (method, data = {}) =>
 // get create buy
 export const API_FashionBuy_LC = (method, params = {}, data = {}) =>
     API_FakeReal(
-        default_arr_buy.filter((item) => item.status == params.status),
+        default_arr_buy.filter((item) => item.status.toLocaleLowerCase() == params.status),
         () =>
             axiosDjangoClient({
                 url: '/fashion-api/lc-buy/',

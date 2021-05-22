@@ -1,35 +1,39 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-// 
-import HeaderH from '../header_left/header_horizontal/HeaderH';
-import HeaderV from '../header_left/header_vertical/HeaderV';
+import React, { useEffect, useState } from 'react';
+//
+import HeaderH from '../header_left/header_horizontal/_main/HeaderH';
+import HeaderV from '../header_left/header_vertical/_main/HeaderV';
 import RightHeader from '../header_right/_main/RightHeaderWs';
-// 
+//
 import './Header.scss';
 import './HeaderCommon.scss';
 import './HeaderRes.scss';
 
-
-// Class
+//
 function Header() {
+    const [is_hidden, setIsHidden] = useState(false);
+
+    //
     useEffect(() => {
         localStorage.is_mobile = navigator.userAgent.includes('Mobile') ? 1 : 0;
+        handleNewMember();
+    }, []);
 
-        if (sessionStorage.new_member == 1) {
-            if (localStorage.is_login == 1) {
-                alert('Welcome ' + localStorage.name);
-                sessionStorage.removeItem('new_member');
-            }
+    useEffect(() => {
+        setIsHidden(location.pathname.search(/registration-form/) > 0);
+    }, [location.pathname.search(/registration-form/)]);
+
+    //
+    function handleNewMember() {
+        if (sessionStorage.new_member) {
+            alert('Welcome ' + sessionStorage.new_member);
+            sessionStorage.removeItem('new_member');
         }
-    }, [])
-
+    }
 
     return (
         <div
             className={`Header App_box_shadow ${
-                useLocation().pathname.search(/registration-form/) > 0
-                    ? 'display-none'
-                    : ''
+                is_hidden ? 'display-none' : ''
             }`}
         >
             <div className="Header_contain">

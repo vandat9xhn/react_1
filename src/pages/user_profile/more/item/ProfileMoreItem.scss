@@ -1,0 +1,10 @@
+
+.ProfileMoreItem {
+    padding: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--md-bg-hover);
+        // text-decoration: none;
+    }
+}

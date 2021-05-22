@@ -53,6 +53,10 @@
     border-radius: 5px;
 }
 
+.brs-8px{
+    border-radius: 8px;
+}
+
 .brs-50{
     border-radius: 50%;
 }
@@ -144,6 +148,11 @@
 /* ---------------------------- POINTER EVENTS -------------------------*/
 .pointer-events-none{
     pointer-events: none;
+}
+
+/* ---------------------------- POINTER EVENTS -------------------------*/
+.padding-8px{
+    padding: 8px;
 }
 
 

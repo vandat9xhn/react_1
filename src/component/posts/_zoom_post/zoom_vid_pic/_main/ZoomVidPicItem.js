@@ -35,6 +35,7 @@ import ActionsVidPic from '../actions/ActionsVidPic';
 //
 import './ZoomVidPicItem.scss';
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
+import { useMounted } from '../../../../../_custom_hooks/useMounted';
 
 //
 ZoomVidPicItem.propTypes = {
@@ -64,7 +65,6 @@ function ZoomVidPicItem(props) {
     //
     const [vid_pic_obj, setVidPicObj] = useState({ [id]: {} });
     const [vid_pic_id_arr, setVidPicIdArr] = useState([]);
-    const [is_fetching, setIsFetching] = useState(false);
     const [is_del_all, setIsDeleteAll] = useState(false);
 
     const {
@@ -85,6 +85,9 @@ function ZoomVidPicItem(props) {
     
     //
     const ws = useRef(null);
+
+    // 
+    const mounted = useMounted()
 
     //
     useEffect(() => {
@@ -144,17 +147,14 @@ function ZoomVidPicItem(props) {
     async function getData_API_VidPicId(post_id) {
         const data = await handle_API_PostVidPicID_L(post_id);
         const new_vid_pic_id_arr = data.map((item) => item.id);
-        setVidPicIdArr(new_vid_pic_id_arr);
+        mounted && setVidPicIdArr(new_vid_pic_id_arr);
     }
 
     /* ------------------------------------------ */
 
     //
-    async function seeMoreContent() {
-        setIsFetching(true);
-        const more_content = await handle_API_PostVidPicContent_R(id);
-        vid_pic_obj[id].content += more_content;
-        setIsFetching(false);
+    function seeMoreContent() {
+        return handle_API_PostVidPicContent_R(id);
     }
 
     //
@@ -272,7 +272,6 @@ function ZoomVidPicItem(props) {
                         updated_time={updated_time}
                         //
                         content_obj={content_obj}
-                        is_fetching={is_fetching}
                         seeMoreContent={seeMoreContent}
                         //
                         count_like={count_like}

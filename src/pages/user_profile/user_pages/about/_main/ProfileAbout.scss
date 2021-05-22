@@ -1,0 +1,26 @@
+// 
+.ProfileAbout_left {
+    width: 400px;
+}
+
+.ProfileAbout_right {
+    width: 600px;
+}
+
+//
+@media (max-width: 1000px) {
+    .ProfileAbout_row {
+        display: block;
+    }
+
+    .ProfileAbout_left{
+        margin: auto;
+        width: 600px;
+        max-width: 100%;
+    }
+    
+    .ProfileAbout_col-info {
+        margin: auto;
+        max-width: 100%;
+    }
+}

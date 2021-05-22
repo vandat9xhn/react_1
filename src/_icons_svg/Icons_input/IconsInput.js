@@ -40,11 +40,11 @@ function IconsInput(props) {
             {/* image x=0 y=0*/}
             <g strokeWidth="5">
                 <path 
-                    d="M0,170 
+                    d="M10,170 
                     L70,70 Q78,63 86,70 
                     L120,130 
                     L130,110 Q138,100 146,110 
-                    L200,180 L200,200 L0,200"
+                    L190,180 L190,190 L0,190"
                 />
                 <circle cx="150" cy="50" r="25"/>
             </g>

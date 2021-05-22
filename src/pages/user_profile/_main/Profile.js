@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { ParseLocationSearch } from '../../../_some_function/ParseLocationSearch';
+import { useRouteLoaded } from '../../../_custom_hooks/useRouteLoaded';
 //
+import RouteLoaded from '../../../component/_route/route_loaded/RouteLoaded';
+//
+import { ProfileRoutes } from '../__common/routes';
+import { initial_profile } from '../__common/Initial';
+
 import { handle_API_ProfileUser_R } from '../__handle_api/ProfileHandleAPI';
 
 import ProfileInfo from '../info/_main/ProfileInfo';
-import ProfileMore from '../more/ProfileMore';
-
-import ProfileHome from '../user_pages/home/_main/ProfileHome';
-import ProfileIntroduce from '../user_pages/introduce/_main/ProfileIntroduce';
-import ProfileFriend from '../user_pages/friend/_main/ProfileFriend';
-import ProfilePicture from '../user_pages/picture/ProfilePicture';
+import ProfileMore from '../more/_main/ProfileMore';
 //
 import './Profile.scss';
 
@@ -20,54 +20,57 @@ function Profile(props) {
     const { id } = props.match.params;
 
     //
-    const [profile, setProfile] = useState({});
-    const [sk_obj, setSkObj] = useState({
-        sk_loaded_arr: [],
-        which_sk: '',
+    const [profile_state, setProfileState] = useState({
+        profile: { ...initial_profile },
+        is_fetching: false,
     });
-    const [is_fetching, setIsFetching] = useState(false)
 
-    const { sk_loaded_arr, which_sk } = sk_obj;
+    const { profile, is_fetching } = profile_state;
+
+    //
+    const [route_loaded_arr] = useRouteLoaded(
+        'search',
+        handleBeforeSetRouteLoaded
+    );
 
     //
     useEffect(() => {
-        handleSkLoaded();
         getProfileInfo();
     }, [id]);
 
     //
     async function getProfileInfo() {
-        setIsFetching(true)
+        setProfileState({
+            ...profile_state,
+            is_fetching: true,
+        });
 
         const data = await handle_API_ProfileUser_R(id);
 
-        setProfile(data);
-        setIsFetching(false)
+        setProfileState({
+            profile: data,
+            is_fetching: false,
+        });
         document.title = data.first_name + ' ' + data.last_name;
     }
 
     //
-    function handleSkLoaded() {
-        let sk = ParseLocationSearch().sk || '';
-        if (!['friend', 'pic', 'intro'].includes(sk)) {
-            sk = '';
-        }
-        setSkObj({
-            which_sk: sk,
-            sk_loaded_arr: [sk],
-        });
-    }
+    function handleBeforeSetRouteLoaded() {
+        if (
+            ![
+                '',
+                '?sk=friend',
+                '?sk=photos_all',
+                '?sk=photos_album',
+                '?sk=about',
+            ].includes(location.search)
+        ) {
+            location.search = '';
 
-    //
-    function onClickSk(sk) {
-        if (sk !== which_sk) {
-            setSkObj({
-                which_sk: sk,
-                sk_loaded_arr: !sk_loaded_arr.includes(sk)
-                    ? [...sk_loaded_arr, sk]
-                    : sk_loaded_arr,
-            });
+            return '';
         }
+
+        return location.search;
     }
 
     //
@@ -80,6 +83,7 @@ function Profile(props) {
         console.log(id);
     }
 
+    console.log(route_loaded_arr);
     //
     return (
         <div className="Profile">
@@ -92,36 +96,16 @@ function Profile(props) {
             </div>
 
             <div className="Profile_more">
-                <ProfileMore sk={which_sk} onClickSk={onClickSk} />
+                <ProfileMore />
             </div>
 
-            {sk_loaded_arr.includes('') && (
-                <div className={which_sk == '' ? '' : 'display-none'}>
-                    <ProfileHome
-                        profile={profile}
-                        is_fetching={is_fetching}
-                        onClickSk={onClickSk}
-                    />
-                </div>
-            )}
-
-            {sk_loaded_arr.includes('friend') && (
-                <div className={which_sk == 'friend' ? '' : 'display-none'}>
-                    <ProfileFriend />
-                </div>
-            )}
-
-            {sk_loaded_arr.includes('intro') && (
-                <div className={which_sk == 'intro' ? '' : 'display-none'}>
-                    <ProfileIntroduce />
-                </div>
-            )}
-
-            {sk_loaded_arr.includes('pic') && (
-                <div className={which_sk == 'pic' ? '' : 'display-none'}>
-                    <ProfilePicture />
-                </div>
-            )}
+            <Suspense fallback={<Fragment />}>
+                <RouteLoaded
+                    route_arr={ProfileRoutes}
+                    part_location="search"
+                    route_loaded_arr={route_loaded_arr}
+                />
+            </Suspense>
         </div>
     );
 }

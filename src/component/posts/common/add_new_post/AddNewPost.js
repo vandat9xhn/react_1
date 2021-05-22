@@ -30,6 +30,9 @@ function AddNewPost(props) {
     function onOpenScreenUpdate() {
         openScreenUpdate('Create', UpdateCreatePost, {
             handleCreateUpdatePost: handleCreatePost,
+            main_content: '',
+            vid_pics: [],
+            title_action: 'Post',
         });
     }
 

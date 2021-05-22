@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { handle_API_Friend_L } from '../../../../../__handle_api/ProfileHandleAPI';
-// 
+
 import ProfilePrCommon from '../../_common/preview_common/ProfilePrCommon';
+
 import ProfilePrFrSkeleton from '../skeleton/ProfilePrFrSkeleton';
+import ProfilePrFrItem from '../item/ProfilePrFrItem';
 //
 import './ProfilePrFriend.scss';
+import { useMounted } from '../../../../../../../_custom_hooks/useMounted';
 
 //
 ProfilePrFriend.propTypes = {};
@@ -32,6 +34,9 @@ function ProfilePrFriend(props) {
 
     const { friend_arr, friend_count } = friend_state;
 
+    // 
+    const mounted = useMounted()
+
     //
     useEffect(() => {
         getData_API_FriendPreview();
@@ -45,18 +50,20 @@ function ProfilePrFriend(props) {
             id,
             friend_arr.length
         );
-
-        setFriendState({
-            friend_arr: data.map((item) => item.friend),
-            friend_count: new_count,
-        });
-        setIsFetching(false);
+        
+        if (mounted) {
+            setFriendState({
+                friend_arr: data.map((item) => item.friend),
+                friend_count: new_count,
+            });
+            setIsFetching(false);
+        }
     }
 
     //
     return (
         <ProfilePrCommon
-            title="Friend"
+            title="Friends"
             sk="friend"
             onClickSk={onClickSk}
             is_fetching={is_fetching}
@@ -67,23 +74,12 @@ function ProfilePrFriend(props) {
 
                 <div className="ProfilePrFriend_pic">
                     <div className="ProfilePrFriend_pic-row display-flex flex-wrap">
-                        {friend_arr.map((item, ix) => (
+                        {friend_arr.map((friend_obj, ix) => (
                             <div
                                 className="ProfilePrFriend_pic-item"
                                 key={`ProfilePrFriend_${ix}`}
                             >
-                                <Link
-                                    to={`/profile/${item.id}`}
-                                    className="normal-text hv-cl-blue"
-                                >
-                                    <div>
-                                        <img src={item.picture} alt="" />
-                                    </div>
-
-                                    <div className="ProfilePrFriend_pic-item_name">
-                                        {item.last_name}
-                                    </div>
-                                </Link>
+                                <ProfilePrFrItem friend_obj={friend_obj} />
                             </div>
                         ))}
                     </div>

@@ -1,25 +1,33 @@
 .FriendEdit {
-    margin: auto;
-    max-width: 20rem;
-    padding: 0.25rem;
-    background-color: var(--md-bg-primary);
+    padding: 0.5rem;
 }
 
 .FriendEdit_left {
     flex-grow: 1;
+}
+// .
+.FriendEdit_left_name{
+    margin-left: 0.5rem;
 }
 
 .FriendEdit_right{
     position: absolute;
     right: 5px;
     top: 5px;
-    // transform: translateY(-50%);
 }
 
 // ...
-.FriendEdit_action-item{
+.FriendEdit_action_item{
     padding: 0.5rem;
     &:hover{
         background-color: var(--bg-through);
+    }
+}
+
+
+// 
+@media (max-width: 300px) {
+    .FriendEdit{
+        border-radius: 0;
     }
 }

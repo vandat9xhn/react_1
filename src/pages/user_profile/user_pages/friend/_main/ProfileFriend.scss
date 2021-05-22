@@ -1,4 +1,25 @@
 
+.ProfileFriend_contain{
+    width: 900px;
+    max-width: 100%;
+}
+
 .ProfileFriend_item{
     margin: 0.5rem 0;
+    width: calc(50% - 10px);
+}
+
+
+// 
+@media (max-width: 700px) {
+    .ProfileFriend_item{
+        width: 100%;
+    }
+}
+
+// 
+@media (max-width: 300px) {
+    .ProfileFriend_contain{
+        border-radius: 0;
+    }
 }

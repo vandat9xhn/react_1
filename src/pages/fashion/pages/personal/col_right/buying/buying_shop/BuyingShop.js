@@ -1,32 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import BuyingItem from '../buying_item/BuyingItem';
+import { formatNum } from '../../../../../../../_some_function/FormatNum';
+// 
 import ShopCartBuy from '../../../../../components/shop_cart_buy/ShopCartBuy';
-import BuyingStage from '../buying_stage/_main/BuyingStage';
+
+import BuyingItem from '../buying_item/BuyingItem';
+import InfoBuying from '../../../../../components/info_buying/InfoBuying';
+
 //
 import './BuyingShop.scss';
-import { formatNum } from '../../../../../../../_some_function/FormatNum';
-import InfoBuying from '../../../../../components/info_buying/InfoBuying';
 
 //
 BuyingShop.propTypes = {
     buy_shop: PropTypes.object,
-    // buy_package_ix: PropTypes.number,
     buy_shop_ix: PropTypes.number,
     openConFirmCancelBuying: PropTypes.func,
-    //
-    // payment: PropTypes.string,
-    // transport_price_model: PropTypes.number,
-    // voucher_model: PropTypes.number,
 };
 
 //
 function BuyingShop(props) {
     const {
         buy_shop,
-        // buy_package_ix,
         buy_shop_ix,
+
         openConFirmCancelBuying,
     } = props;
 
@@ -34,11 +31,14 @@ function BuyingShop(props) {
         shop,
         products,
         status,
-        //
+        
         payment,
         transport_price_model,
         voucher_model,
     } = buy_shop;
+
+    const {id, name, picture} = shop;
+
     //
     const amount = products.reduce(
         (a, buy_product) =>
@@ -52,9 +52,9 @@ function BuyingShop(props) {
             <div className="BuyingShop_row">
                 <div className="display-flex">
                     <ShopCartBuy
-                        id={shop.id}
-                        name={shop.name}
-                        picture={shop.picture}
+                        id={id}
+                        name={name}
+                        picture={picture}
                     />
                 </div>
 
@@ -66,7 +66,6 @@ function BuyingShop(props) {
                                 buy_product={buy_product}
                                 status={status}
                                 //
-                                // buy_package_ix={buy_package_ix}
                                 buy_shop_ix={buy_shop_ix}
                                 buy_product_ix={ix}
                                 //

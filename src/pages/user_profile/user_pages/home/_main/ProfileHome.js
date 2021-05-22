@@ -17,14 +17,14 @@ ProfileHome.propTypes = {
 //
 function ProfileHome(props) {
     //
-    const {onClickSk, profile, is_fetching} = props;
+    const { profile, is_fetching, onClickSk} = props;
 
-    const { last_name, hobby, university, from, live_now } = profile;
+    const { last_name, hobby, university, from, live_now } = profile || {};
 
     //
     return (
         <div className="ProfileHome">
-            <div className="ProfileHome_row">
+            <div className="ProfileHome_row display-flex justify-content-center">
                 <div className="ProfileHome_col-left">
                     <ProfilePreview
                         hobby={hobby}

@@ -32,7 +32,6 @@ function ZoomPostCommon(props) {
         updated_time,
 
         content_obj,
-        is_fetching,
         seeMoreContent,
 
         count_like,
@@ -43,11 +42,6 @@ function ZoomPostCommon(props) {
         like_share_cmt_component,
         comment_component,
     } = props;
-
-    const { content, has_more_content } = content_obj || {
-        content: '',
-        has_more_content: false,
-    };
 
     //
     function onOpenDetailLike(type_like) {
@@ -109,10 +103,8 @@ function ZoomPostCommon(props) {
 
                                 <div>
                                     <ContentMore
-                                        content={content}
-                                        has_more_content={has_more_content}
+                                        content_obj={content_obj}
                                         seeMoreContent={seeMoreContent}
-                                        is_fetching={is_fetching}
                                     />
                                 </div>
 

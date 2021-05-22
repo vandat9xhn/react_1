@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 import { context_post } from '../../../__context_post/ContextPost';
+
 import { UnitNumber } from '../../../../../_some_function/UnitNumber';
 //
 import InfoCmt from '../cmt/InfoCmt';
@@ -86,7 +87,6 @@ function Info(props) {
             <div className="Info_row">
                 <div className="Info_like">
                     <ListUniqueLike
-                        list_people={[]}
                         title={title_like}
                         count_like={count_like}
                         arr_unique_like={arr_unique_like}
@@ -107,7 +107,6 @@ function Info(props) {
                     {enabled_share && (
                         <div className="Info_share">
                             <MouseEnterLeaveInfo
-                                list_people={shares}
                                 count={count_share}
                                 title={title_share}
                                 total_people={count_unique_share}

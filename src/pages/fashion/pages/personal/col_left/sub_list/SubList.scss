@@ -1,24 +1,16 @@
-
-
 //
-.SubList{
-    .SubList_list{
-        display: flex;
-        flex-direction: column;
-    
-        margin-left: 0.5rem;
-        overflow: hidden;
-        transition: max-height 0.3s;
-    }
+.SubList_list {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 0.5rem;
+    overflow: hidden;
+    transition: max-height 0.3s;
 }
-.SubList_show{
+
+.SubList_show {
     max-height: 15rem;
 }
-.SubList_hidden{
+.SubList_hidden {
     max-height: 0rem;
-}
-
-//
-.SubList_block{
-    padding: 0.5rem;
 }

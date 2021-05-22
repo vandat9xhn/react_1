@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { useMounted } from '../../_custom_hooks/useMounted';
+// 
 import CircleLoading from '../waiting/circle_loading/CircleLoading';
 //
 import './ContentMore.scss';
@@ -30,6 +32,9 @@ function ContentMore(props) {
     //
     const [is_fetching, setIsFetching] = useState(false);
 
+    // 
+    const mounted = useMounted()
+
     //
     function onSeeMoreContent() {
         setIsFetching(true);
@@ -38,7 +43,7 @@ function ContentMore(props) {
             content_obj.content += more_content
             content_obj.has_more_content = false
             
-            setIsFetching(false);
+            mounted && setIsFetching(false);
         });
     }
 

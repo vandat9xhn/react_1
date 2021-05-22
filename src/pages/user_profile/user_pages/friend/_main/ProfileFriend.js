@@ -12,6 +12,7 @@ import { handle_API_Friend_L } from '../../../__handle_api/ProfileHandleAPI';
 import FriendEdit from '../friend_edit/FriendEdit';
 //
 import './ProfileFriend.scss';
+import { useMounted } from '../../../../../_custom_hooks/useMounted';
 
 //
 ProfileFriend.propTypes = {};
@@ -20,6 +21,7 @@ ProfileFriend.propTypes = {};
 function ProfileFriend() {
     // 
     const {id} = GetIdSlug()
+
     //
     const [friend_obj, setFriendObj] = useState({
         friend_arr: [],
@@ -28,6 +30,9 @@ function ProfileFriend() {
     })
 
     const {friend_arr, count_friend, has_fetched} = friend_obj;
+
+    // 
+    const mounted = useMounted()
 
     // 
     useEffect(() => {
@@ -39,7 +44,7 @@ function ProfileFriend() {
     async function getData_API_Friend() {
         const [data, new_count] = await handle_API_Friend_L(id, friend_arr.length)
 
-        setFriendObj({
+        mounted && setFriendObj({
             friend_arr: [...friend_arr, ...data],
             count_friend: has_fetched ? count_friend : new_count,
             has_fetched: true,
@@ -58,12 +63,16 @@ function ProfileFriend() {
     //
     return (
         <div className="ProfileFriend">
-            <div className="ProfileFriend_contain">
+            <div className="ProfileFriend_contain brs-8px bg-primary margin-auto">
                 <div className="width-fit-content margin-auto">
                     <CircleLoading open_fetching={!has_fetched}/>
                 </div>
+                
+                <h2 className={has_fetched ? '' : 'display-none'}>
+                    Friends
+                </h2>
 
-                <div className="display-flex flex-wrap">
+                <div className="display-flex flex-wrap space-between">
                     {friend_arr.map((item, ix) => (
                         <div
                             key={`ProfileFriend_${ix}`}

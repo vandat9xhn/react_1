@@ -14,7 +14,6 @@ import { handle_API_ProfilePost_L } from '../../../__handle_api/ProfileHandleAPI
 
 import Posts from '../../../../../component/posts/_posts/_main/PostsWs';
 
-
 //
 ProfilePosts.propTypes = {
     profile: PropTypes.object,
@@ -63,7 +62,6 @@ function ProfilePosts(props) {
     useEffect(() => {
         has_fetched && handleBeforeChangeId();
         getData_API_Post();
-
     }, [id]);
 
     /* ----------------------- COMMON ---------------------- */
@@ -111,16 +109,15 @@ function ProfilePosts(props) {
                     post_arr.length
                 );
 
-                if (mounted) {
-                    has_fetched && (is_max.current = post_arr.length >= count);
-                    post_arr.push(...data);
+                has_fetched && (is_max.current = post_arr.length >= count);
+
+                mounted &&
                     setPostObj({
-                        ...post_obj,
+                        post_arr: [...post_obj.post_arr, ...data],
                         count: has_fetched ? count : new_count,
                         is_fetching: false,
                         has_fetched: true,
                     });
-                }
             } catch (e) {
                 console.log(e);
             } finally {
