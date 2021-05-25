@@ -21,6 +21,8 @@ import {
     handle_API_Post_U,
 } from '../../__handle_api/PostHandleAPI';
 
+import {initial_posts} from '../../__common/InitialPosts';
+
 import CreateUpdatePost from '../../common/create_update_post/_main/CreateUpdatePost';
 import VidPicsPost from '../vid_pics/_main/VidPicsPost';
 import PermissionPost from '../../common/permission/_main/PermissionPost';
@@ -28,17 +30,13 @@ import Info from '../../common/info/_main/InfoWs';
 import ActionsPost from '../actions_post/ActionsPost';
 import CommentsWs from '../../common/ws_comments/_main/CommentsWs';
 import LikeShareCmt from '../../common/like_share_cmt/_main/LikeShareCmtWs';
+import PostHistory from '../history/_main/PostHistory';
 //
 import './Post.scss';
-import PostHistory from '../history/_main/PostHistory';
 
 //
 Post.propTypes = {
     post: PropTypes.object,
-};
-
-Post.defaultProps = {
-    post: {},
 };
 
 //

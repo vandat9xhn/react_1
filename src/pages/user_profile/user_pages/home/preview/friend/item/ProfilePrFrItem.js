@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
 import './ProfilePrFrItem.scss';
+import PicSquareDiv from '../../../../../../../component/some_div/pic_square_div/PicSquareDiv';
 
 //
 ProfilePrFrItem.propTypes = {};
@@ -13,25 +14,15 @@ function ProfilePrFrItem({ friend_obj }) {
 
     //
     return (
-        <div className="ProfilePrFrItem">
-            <div className="ProfilePrFrItem_pic position-rel">
-                <Link to={`/profile/${id}`} className="normal-text hv-cl-blue">
-                    <div className="pos-abs-100">
-                        <div className="wh-100">
-                            <img
-                                className="wh-100 brs-8px object-fit-cover"
-                                src={picture}
-                                alt=""
-                            />
-                        </div>
+        <Link to={`/profile/${id}`} className="w-100per normal-text hv-cl-blue">
+            <div className="ProfilePrFrItem">
+                <div>
+                    <PicSquareDiv vid_pic={picture} />
+                </div>
 
-                    </div>
-
-                </Link>
+                <div className="one-line">{last_name}</div>
             </div>
-
-            <div className="one-line">{last_name}</div>
-        </div>
+        </Link>
     );
 }
 

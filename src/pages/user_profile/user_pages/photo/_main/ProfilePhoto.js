@@ -1,28 +1,25 @@
-import React, { Suspense, Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import CircleLoading from '../../../../../component/waiting/circle_loading/CircleLoading';
-import RouteLoaded from '../../../../../component/_route/route_loaded/RouteLoaded';
 import { useRouteLoaded } from '../../../../../_custom_hooks/useRouteLoaded';
+//
+import RouteLoaded from '../../../../../component/_route/route_loaded/RouteLoaded';
+//
+import { PhotosRoutes } from '../__common/routes/routes';
+//
+import './ProfilePhoto.scss';
+import ProfileSkeleton from '../../../__common/skeleton/ProfileSkeleton';
 
 //
-const ProfilePhotoList = React.lazy(() =>
-    import('../list/_main/ProfilePhotoList')
-);
-const ProfilePhotoAlbum = React.lazy(() =>
-    import('../album/_main/ProfilePhotoAlbum')
-);
-
-//
-const photo_routes = [
+const group_photo_arr = [
     {
-        component: ProfilePhotoAlbum,
-        search: '?sk=photos_album',
+        search: 'all',
+        title: 'Your Photos',
     },
     {
-        component: ProfilePhotoList,
-        search: '?sk=photos_all',
+        search: 'album',
+        title: 'Album',
     },
 ];
 
@@ -31,40 +28,47 @@ ProfilePhoto.propTypes = {};
 
 //
 function ProfilePhoto(props) {
-    const has_fetched = true;
-
     //
     const [route_loaded_arr] = useRouteLoaded('search');
 
     //
     return (
-        <div>
-            <div className="width-fit-content margin-auto">
-                <CircleLoading open_fetching={!has_fetched} />
-            </div>
+        <div className="ProfilePhoto bg-primary padding-8px brs-8px-md margin-auto">
+            <h2 className="ProfilePhoto_title margin-0">Photos</h2>
 
-            <div className={has_fetched ? '' : 'display-none'}>
-                <h2>Photos</h2>
+            <div>
+                <div className="display-flex">
+                    {group_photo_arr.map((item, ix) => (
+                        <div
+                            key={`ProfilePhoto_group_${ix}`}
+                            className="padding-8px"
+                        >
+                            <Link
+                                to={`?sk=photos_${item.search}`}
+                                className="normal-text"
+                                replace
+                            >
+                                <div
+                                    className={`label-field hv-cl-blue ${
+                                        `?sk=photos_${item.search}` ==
+                                        location.search
+                                            ? 'text-blue'
+                                            : ''
+                                    }`}
+                                >
+                                    {item.title}
+                                </div>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
 
                 <div>
-                    <div>
-                        <div>
-                            <Link to="?sk=photos_all" replace>
-                                Your photos
-                            </Link>
-                        </div>
-
-                        <div>
-                            <Link to="?sk=photos_album" replace>
-                                Albums
-                            </Link>
-                        </div>
-                    </div>
-
                     <RouteLoaded
-                        route_arr={photo_routes}
+                        route_arr={PhotosRoutes}
                         part_location="search"
                         route_loaded_arr={route_loaded_arr}
+                        fallback={<ProfileSkeleton />}
                     />
                 </div>
             </div>

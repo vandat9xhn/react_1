@@ -67,10 +67,10 @@ function SubsWs(props) {
             />
 
             <div className="SubsWs_list">
-                {subs.map((sub, index) => (
+                {subs.map((sub) => (
                     <div
                         className="SubsWs_item"
-                        key={`SubsWs_${index}`}
+                        key={`SubsWs_${sub.id}`}
                     >
                     <SubWs
                         sub={sub}

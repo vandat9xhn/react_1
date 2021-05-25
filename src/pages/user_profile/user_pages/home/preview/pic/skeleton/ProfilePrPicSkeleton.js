@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import SkeletonDiv from '../../../../../../../component/skeleton/skeleton_div/SkeletonDiv';
 //
 import image_loading from '../../../../../../../../image/image_loading.svg';
+// 
+
 
 //
 ProfilePrPicSkeleton.propTypes = {};

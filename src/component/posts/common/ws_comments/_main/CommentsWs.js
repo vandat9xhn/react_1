@@ -71,14 +71,19 @@ function CommentsWs(props) {
         <div className="Comments">
             <ScreenBlurShowMore
                 title="More comments..."
-                is_show_more={count_comment > comments.length && !!comments.length}
+                is_show_more={
+                    count_comment > comments.length && !!comments.length
+                }
                 is_fetching={fetching_cmt || fetching_first_cmt}
                 handleShowMore={onGetCommentsWs}
             />
 
             <div className="Comments_list">
-                {comments.map((comment, cmt_ix) => (
-                    <CommentWs key={`Comment_${cmt_ix}`} comment={comment} />
+                {comments.map((comment) => (
+                    <CommentWs
+                        key={`Comment_${comment.id}`}
+                        comment={comment}
+                    />
                 ))}
             </div>
 

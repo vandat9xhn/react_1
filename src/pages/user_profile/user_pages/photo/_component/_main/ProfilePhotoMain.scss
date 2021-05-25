@@ -1,0 +1,28 @@
+.ProfilePhotoMain_item {
+    width: 20%;
+}
+
+//
+@media (max-width: 700px) {
+    .ProfilePhotoMain_item {
+        width: 25%;
+    }
+}
+
+@media (max-width: 500px) {
+    .ProfilePhotoMain_item {
+        width: 33.3%;
+    }
+}
+
+@media (max-width: 300px) {
+    .ProfilePhotoMain_item {
+        width: 50%;
+    }
+}
+
+@media (max-width: 150px) {
+    .ProfilePhotoMain_item {
+        width: 100%;
+    }
+}

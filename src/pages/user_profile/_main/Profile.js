@@ -1,12 +1,13 @@
-import React, { Suspense, Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useRouteLoaded } from '../../../_custom_hooks/useRouteLoaded';
 //
 import RouteLoaded from '../../../component/_route/route_loaded/RouteLoaded';
 //
-import { ProfileRoutes } from '../__common/routes';
-import { initial_profile } from '../__common/Initial';
+import { initial_profile } from '../__common/initial/Initial';
+import { ProfileRoutes } from '../__common/routes/routes';
+import ProfileSkeleton from '../__common/skeleton/ProfileSkeleton';
 
 import { handle_API_ProfileUser_R } from '../__handle_api/ProfileHandleAPI';
 
@@ -28,15 +29,22 @@ function Profile(props) {
     const { profile, is_fetching } = profile_state;
 
     //
-    const [route_loaded_arr] = useRouteLoaded(
+    const [route_loaded_arr, setRouteLoadedArr] = useRouteLoaded(
         'search',
         handleBeforeSetRouteLoaded
     );
 
     //
     useEffect(() => {
+        handleChangeId();
+        setRouteLoadedArr([handleBeforeSetRouteLoaded()]);
         getProfileInfo();
     }, [id]);
+
+    //
+    function handleChangeId() {
+        window.scroll(0, 0);
+    }
 
     //
     async function getProfileInfo() {
@@ -47,6 +55,10 @@ function Profile(props) {
 
         const data = await handle_API_ProfileUser_R(id);
 
+        ProfileRoutes.find((item) => item.search == '').props = {
+            last_name: data.last_name,
+        };
+
         setProfileState({
             profile: data,
             is_fetching: false,
@@ -56,15 +68,9 @@ function Profile(props) {
 
     //
     function handleBeforeSetRouteLoaded() {
-        if (
-            ![
-                '',
-                '?sk=friend',
-                '?sk=photos_all',
-                '?sk=photos_album',
-                '?sk=about',
-            ].includes(location.search)
-        ) {
+        const search_arr = ProfileRoutes.map((item) => item.search);
+        
+        if (!search_arr.includes(location.search)) {
             location.search = '';
 
             return '';
@@ -83,7 +89,6 @@ function Profile(props) {
         console.log(id);
     }
 
-    console.log(route_loaded_arr);
     //
     return (
         <div className="Profile">
@@ -99,13 +104,12 @@ function Profile(props) {
                 <ProfileMore />
             </div>
 
-            <Suspense fallback={<Fragment />}>
-                <RouteLoaded
-                    route_arr={ProfileRoutes}
-                    part_location="search"
-                    route_loaded_arr={route_loaded_arr}
-                />
-            </Suspense>
+            <RouteLoaded
+                route_arr={ProfileRoutes}
+                part_location="search"
+                route_loaded_arr={route_loaded_arr}
+                fallback={<ProfileSkeleton />}
+            />
         </div>
     );
 }

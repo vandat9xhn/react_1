@@ -1,0 +1,9 @@
+
+.ProfilePhotoAlbumItem{
+    padding: 0 5px 12px;
+    cursor: pointer;
+
+    &:hover{
+        text-decoration: 1px underline solid;
+    }
+}

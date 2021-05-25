@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { content_pic_name_props } from '../../../_prop-types/_CommonPropTypes';
-// 
+//
 import SkeletonDiv from '../../skeleton/skeleton_div/SkeletonDiv';
 //
 import white_person from '../../../../image/white_person.svg';
@@ -19,7 +19,7 @@ PictureNameCommon.defaultProps = {
     name: '',
     picture: '',
     content: '',
-    is_inline_block: false
+    is_inline_block: false,
 };
 
 //
@@ -47,7 +47,11 @@ function PictureNameCommon(props) {
                                 {name}
                             </span>
 
-                            <span className={`PictureNameCommon__content ${is_inline_block ? '' : 'display-block'}`}>
+                            <span
+                                className={`PictureNameCommon__content ${
+                                    is_inline_block ? '' : 'display-block'
+                                }`}
+                            >
                                 {content}
                             </span>
                         </div>

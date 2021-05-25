@@ -2,14 +2,18 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
+
 import { API_City_UD } from '../../../../../../api/api_django/api01/API01';
-import makeFormData from '../../../../../../_some_function/makeFormData';
-import { handle_API_CityHistory_L } from '../../../../__handle_api/CityHandleAPI';
+
 import { useForceUpdate } from '../../../../../../_custom_hooks/UseForceUpdate';
+
+import makeFormData from '../../../../../../_some_function/makeFormData';
 //
 import SkeletonDiv from '../../../../../../component/skeleton/skeleton_div/SkeletonDiv';
 import PictureName from '../../../../../../component/picture_name/pic_name/PictureName';
 //
+import { handle_API_CityHistory_L } from '../../../../__handle_api/CityHandleAPI';
+
 import Choices from '../../choices/Choices';
 import CityUpdate from '../../actions/action_update/CityUpdate';
 //

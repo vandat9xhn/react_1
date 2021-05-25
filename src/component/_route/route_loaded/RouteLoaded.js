@@ -6,17 +6,19 @@ RouteLoaded.propTypes = {
     route_arr: PropTypes.array,
     part_location: PropTypes.string,
     route_loaded_arr: PropTypes.array,
+    fallback: PropTypes.element,
 };
 
 RouteLoaded.defaultProps = {
     part_location: 'pathname',
-}
+    fallback: <Fragment />,
+};
 
 //
-function RouteLoaded({ route_arr, part_location, route_loaded_arr }) {
+function RouteLoaded({ route_arr, part_location, route_loaded_arr, fallback }) {
     //
     return (
-        <Suspense fallback={<Fragment />}>
+        <Suspense fallback={fallback}>
             {route_arr.map((route_obj, index) => (
                 <div
                     key={`RouteLoaded_${index}`}
@@ -27,7 +29,7 @@ function RouteLoaded({ route_arr, part_location, route_loaded_arr }) {
                     }
                 >
                     {route_loaded_arr.includes(route_obj[part_location]) && (
-                        <route_obj.component />
+                        <route_obj.component {...(route_obj.props || {})} />
                     )}
                 </div>
             ))}

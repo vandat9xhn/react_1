@@ -1,16 +1,16 @@
 
 //
 .CityItem{
-    margin: 1rem 0;
+    margin-bottom: 1rem;
 }
 
 //
 .CityItem_contain {
     position: relative;
-
     margin: auto;
     width: 40vw;
     max-width: 500px;
+    
     padding: 0.5rem;
     background-color: var(--md-bg-primary);
 }

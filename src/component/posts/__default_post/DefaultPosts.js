@@ -548,6 +548,19 @@ export const default_history_sub_post_arr = [
     }
 ]
 
+export const default_album_vid_pic_arr = [
+    {
+        id: 1,
+        name: 'My My',
+        vid_pics: [
+            {
+                id: 1,
+                vid_pic: naruto_x_hinata,
+            },
+        ]
+    }
+]
+
 // 
 export const default_post_arr = [
     {

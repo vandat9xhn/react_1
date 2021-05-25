@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// 
+import PropTypes from 'prop-types';
+//
 import './ProfilePrPicItem.scss';
+import PicSquareDiv from '../../../../../../../component/some_div/pic_square_div/PicSquareDiv';
 
 //
 ProfilePrPicItem.propTypes = {};
@@ -11,17 +12,11 @@ ProfilePrPicItem.propTypes = {};
 function ProfilePrPicItem({ id, vid_pic }) {
     //
     return (
-        <div className="ProfilePrPicItem position-rel">
-            <Link to={`/post/photos/${id}`}>
-                <div className="ProfilePrPicItem_div-img pos-abs-100">
-                    <img
-                        className="wh-100 brs-8px object-fit-cover"
-                        src={vid_pic}
-                        alt=""
-                    />
-                </div>
-            </Link>
-        </div>
+        <Link to={`/post/photos/${id}`} className="w-100per">
+            <div className="ProfilePrPicItem">
+                <PicSquareDiv vid_pic={vid_pic} />
+            </div>
+        </Link>
     );
 }
 

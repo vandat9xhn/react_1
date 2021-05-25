@@ -5,7 +5,7 @@ import CloseDiv from '../../../../some_div/close_div/CloseDiv';
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import ActionsAccount from '../actions/ActionsAccount';
-// 
+//
 import './HeaderAccount.scss';
 
 //
@@ -13,12 +13,14 @@ HeaderAccount.propTypes = {};
 
 //
 function HeaderAccount(props) {
+    // 
     const [open_account, setOpenAccount] = useState(false);
 
     // Toggle
     async function toggleOpenAccount() {
         setOpenAccount(!open_account);
     }
+
     // Close
     function closeAccount() {
         open_account && setOpenAccount(false);
@@ -27,11 +29,13 @@ function HeaderAccount(props) {
     //
     return (
         <CloseDiv makeDivHidden={closeAccount}>
-            <div className={`header_menu ${open_account ? 'bottom-blue' : ''}`}>
+            <div
+                className={`header_menu ${
+                    open_account ? 'bottom-blue nav-active' : ''
+                }`}
+            >
                 <div
-                    className={`HeaderAccount__icon header_icon ${
-                        open_account ? 'nav-active' : ''
-                    }`}
+                    className="HeaderAccount__icon header_icon"
                     title="account"
                     onClick={toggleOpenAccount}
                 >

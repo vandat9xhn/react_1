@@ -11,26 +11,16 @@ ProfileAbout.propTypes = {};
 
 //
 function ProfileAbout() {
-    const [current_about, setCurrentAbout] = useState('overview');
-
-    //
-    function changeCurrentAbout(new_current_about) {
-        setCurrentAbout(new_current_about);
-    }
-
     //
     return (
-        <div className="ProfileAbout box-shadow-1 brs-5px bg-primary">
+        <div className="ProfileAbout width-fit-content margin-auto box-shadow-1 brs-8px bg-primary">
             <div className="ProfileAbout_row display-flex justify-content-center">
-                <div className="ProfileAbout_left">
-                    <AboutLeft
-                        current_about={current_about}
-                        changeCurrentAbout={changeCurrentAbout}
-                    />
+                <div className="ProfileAbout_left padding-8px">
+                    <AboutLeft />
                 </div>
 
-                <div className="ProfileAbout_right">
-                    <AboutRight current_about={current_about} />
+                <div className="ProfileAbout_right padding-8px">
+                    <AboutRight />
                 </div>
             </div>
         </div>

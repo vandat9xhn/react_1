@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import { Link } from 'react-router-dom';
+import ComponentSkeleton from '../../../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 //
 import './ProfilePrCommon.scss';
 
@@ -12,23 +13,16 @@ ProfilePrCommon.propTypes = {
     sk: PropTypes.string,
     is_fetching: PropTypes.bool,
 
-    onClickSk: PropTypes.func,
-    ProfileSkeleton: PropTypes.func,
+    ProfilePrSkeleton: PropTypes.func,
 };
 
 ProfilePrCommon.defaultProps = {
-    ProfileSkeleton: () => <div></div>
-}
+    ProfilePrSkeleton: () => <div></div>,
+};
 
 //
 function ProfilePrCommon(props) {
-    const { children, title, sk, is_fetching, ProfileSkeleton, onClickSk } =
-        props;
-
-    //
-    function onClick() {
-        onClickSk(sk);
-    }
+    const { children, title, sk, is_fetching, ProfilePrSkeleton } = props;
 
     //
     return (
@@ -38,8 +32,7 @@ function ProfilePrCommon(props) {
                     <Link
                         to={location.pathname + '?sk=' + sk}
                         className="normal-text hv-cl-blue"
-                        replace={true}
-                        onClick={onClick}
+                        replace
                     >
                         {title}
                     </Link>
@@ -48,9 +41,10 @@ function ProfilePrCommon(props) {
                 <div>{children}</div>
             </div>
 
-            <div className={is_fetching ? '' : 'display-none'}>
-                <ProfileSkeleton />
-            </div>
+            <ComponentSkeleton
+                component={<ProfilePrSkeleton />}
+                has_fetched={!is_fetching}
+            />
         </div>
     );
 }

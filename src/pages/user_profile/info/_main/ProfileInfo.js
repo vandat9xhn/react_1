@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
+
+import { GetIdSlug } from '../../../../_some_function/GetIdSlug';
 //
 import SkeletonDiv from '../../../../component/skeleton/skeleton_div/SkeletonDiv';
 //
@@ -10,7 +12,6 @@ import ProfileInfoStory from '../story/_main/ProfileInfoStory';
 import ProfileInfoPicture from '../picture/_main/ProfileInfoPicture';
 //
 import './ProfileInfo.scss';
-import { GetIdSlug } from '../../../../_some_function/GetIdSlug';
 
 //
 ProfileInfo.propTypes = {

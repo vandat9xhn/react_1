@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 //
 ProfileInfoPicture.propTypes = {};
@@ -14,7 +14,11 @@ function ProfileInfoPicture(props) {
         <div className="ProfileInfo_pics">
             <div className="ProfileInfo_cover-pic">
                 <Link to="/posts/1">
-                    <img src={cover_picture} alt="" onClick={openCoverPicture} />
+                    <img
+                        src={cover_picture}
+                        alt=""
+                        onClick={openCoverPicture}
+                    />
                 </Link>
             </div>
 

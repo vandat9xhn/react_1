@@ -57,7 +57,7 @@ function IconsMenu(props){
             {/* message x=200 y=200 */}
             <g
                 className="IconsMenu_message-out"
-                fill="var(--md-bg-ccc)"
+                fill="var(--md-color)"
                 stroke="none"
             >
                 <path d="M235,350 Q230,370 220,380 Q255,375 260,370 Z" />
@@ -66,8 +66,8 @@ function IconsMenu(props){
 
             <path
                 className="IconsMenu_message-in"
+                fill="var(--md-bg-primary)"
                 d="M240,330 L285,280 L320,300 L360,280 L315,325 L280,305 Z"
-                fill="white"
             />
 
             {/* new feed x=0 y=200 */}

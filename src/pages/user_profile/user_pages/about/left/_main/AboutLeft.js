@@ -10,24 +10,19 @@ AboutLeft.propTypes = {};
 
 //
 function AboutLeft(props) {
-    const {current_about, changeCurrentAbout} = props;
 
     // 
     return (
         <div className="AboutLeft">
-            <h2 className="AboutLeft_title">About</h2>
+            <h2 className="AboutLeft_title margin-0">About</h2>
             
             {common_about_title.map((item, index) => (
                 <div
                     key={`AboutLeft_${index}`}
-                    className={`AboutLeft_about ${
-                        current_about == item.about ? 'active-color' : ''
-                    }`}
+                    className="AboutLeft_about"
                 >
                     <AboutLeftItem
                         item={item}
-                        changeCurrentAbout={changeCurrentAbout}
-                        is_active={current_about == item.about}
                     />
                 </div>
             ))}

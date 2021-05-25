@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
 //
 export const useRouteLoaded = (
@@ -9,7 +9,7 @@ export const useRouteLoaded = (
     const [route_loaded_arr, setRouteLoadedArr] = useState([]);
 
     //
-    useEffect(() => {
+    useLayoutEffect(() => {
         const str_part_location = handleBeforeSetRouteLoaded();
 
         !route_loaded_arr.includes(location[part_location]) &&

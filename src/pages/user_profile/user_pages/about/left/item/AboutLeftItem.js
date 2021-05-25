@@ -1,35 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 //
 AboutLeftItem.propTypes = {
     item: PropTypes.shape({
-        about: PropTypes.string,
+        search: PropTypes.string,
         title: PropTypes.string,
     }),
-    is_active: PropTypes.bool,
-    changeCurrentAbout: PropTypes.func,
 };
 
 //
-function AboutLeftItem(props) {
-    const { item, is_active, changeCurrentAbout } = props.item;
-
-    const {about, title} = item;
-
-    //
-    function onChangeCurrentAbout() {
-        changeCurrentAbout(about);
-    }
+function AboutLeftItem({item}) {
+    // 
+    const { search, title } = item;
 
     //
     return (
-        <div
-            className={`AboutLeftItem ${is_active ? 'active-color' : ''}`}
-            onClick={onChangeCurrentAbout}
+        <Link
+            to={search}
+            replace
+            className="normal-text w-100per"
         >
-            {title}
-        </div>
+            <div
+                className={`AboutLeftItem brs-8px padding-8px ${
+                    search == location.search ? 'bg-active-fb text-blue' : 'hv-bg-blur'
+                }`}
+            >
+                {title}
+            </div>
+        </Link>
     );
 }
 

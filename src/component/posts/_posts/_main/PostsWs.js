@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { useParams } from "react-router";
-import PropTypes from "prop-types";
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 //
-import { context_api } from "../../../../_context/ContextAPI";
-import { is_api_fake } from "../../../../api/_ConstAPI";
+import { context_api } from '../../../../_context/ContextAPI';
 
-import { useMounted } from "../../../../_custom_hooks/useMounted";
-import { useForceUpdate } from "../../../../_custom_hooks/UseForceUpdate";
+import { is_api_fake } from '../../../../api/_ConstAPI';
+
+import { useMounted } from '../../../../_custom_hooks/useMounted';
+import { useForceUpdate } from '../../../../_custom_hooks/UseForceUpdate';
 //
-import ContextPost from "../../__context_post/ContextPost";
+import ContextPost from '../../__context_post/ContextPost';
 
 import {
     handle_API_Cmt_C,
@@ -28,14 +28,15 @@ import {
     handle_API_Sub_C,
     handle_API_Sub_L,
     handle_API_Sub_U,
-} from "../../__handle_api/PostHandleAPI";
-import { handleCreateNewPost } from "../../__handle_create/PostHandleCreate";
+} from '../../__handle_api/PostHandleAPI';
 
-import Post from "../../_post/_main_post/PostWs";
-import AddNewPost from "../../common/add_new_post/AddNewPost";
-import ZoomVidPicItem from "../../_zoom_post/zoom_vid_pic/_main/ZoomVidPicItem";
+import { handleCreateNewPost } from '../../__handle_create/PostHandleCreate';
+
+import Post from '../../_post/_main_post/PostWs';
+import AddNewPost from '../../common/add_new_post/AddNewPost';
+import ZoomVidPicItem from '../../_zoom_post/zoom_vid_pic/_main/ZoomVidPicItem';
 //
-import "./Posts.scss";
+import './Posts.scss';
 
 //
 Posts.propTypes = {
@@ -44,15 +45,11 @@ Posts.propTypes = {
     title_add_new: PropTypes.string,
 };
 Posts.defaultProps = {
-    posts: [{}],
     has_add_new: true,
 };
 
 //
 function Posts(props) {
-    //
-    // const {id} = useParams()
-
     //
     const {
         // user,
@@ -76,13 +73,13 @@ function Posts(props) {
 
     //
     useEffect(() => {
-        window.addEventListener("popstate", handlePopstate);
+        window.addEventListener('popstate', handlePopstate);
 
         ws.current =
-            localStorage.is_login && !is_api_fake ? new WebSocket("") : null;
+            localStorage.is_login && !is_api_fake ? new WebSocket('') : null;
 
         return () => {
-            window.removeEventListener("popstate", handlePopstate);
+            window.removeEventListener('popstate', handlePopstate);
         };
     }, []);
 
@@ -102,7 +99,7 @@ function Posts(props) {
     function zoomVidPicPost(index, post_ix) {
         const { id: photo_id } = posts[post_ix].vid_pics[index];
 
-        history.pushState("", "", "/post/photos/" + photo_id);
+        history.pushState('', '', '/post/photos/' + photo_id);
         setShowZoomVidPic(true);
     }
 
@@ -137,7 +134,7 @@ function Posts(props) {
         <div className="Posts">
             <div
                 className={`Posts_contain ${
-                    show_zoom_vid_pic ? "display-none" : ""
+                    show_zoom_vid_pic ? 'display-none' : ''
                 }`}
             >
                 {has_add_new && (
@@ -187,7 +184,7 @@ function Posts(props) {
                     >
                         {posts.map((post, index) => (
                             <Post
-                                key={`Posts_${index}`}
+                                key={`Posts_${post.id}`}
                                 post={post}
                                 post_ix={index}
                             />

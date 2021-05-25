@@ -24,6 +24,7 @@ function HeaderMessage(props) {
     } = props;
 
     const { zooms, count_new_zoom, count_zoom, friend_arr } = zoom_obj;
+
     // state
     const [open_message, setOpenMessage] = useState(false);
     const [is_fetching_zoom, setIsFetchingZoom] = useState(false);
@@ -37,6 +38,7 @@ function HeaderMessage(props) {
             setIsFetchingZoom(false);
         }
     }
+
     // Close
     function closeMessage() {
         open_message && setOpenMessage(false);
@@ -58,9 +60,9 @@ function HeaderMessage(props) {
     //
     return (
         <CloseDiv makeDivHidden={closeMessage}>
-            <div className={`header_menu ${open_message ? 'bottom-blue' : ''}`}>
+            <div className={`HeaderMessage header_menu ${open_message ? 'bottom-blue nav-active' : ''}`}>
                 <div
-                    className="RightHeader__icon header_icon nav-active"
+                    className="RightHeader__icon header_icon"
                     onClick={onToggleOpenMessage}
                     title="message"
                     num-notice={count_new_zoom || undefined}
