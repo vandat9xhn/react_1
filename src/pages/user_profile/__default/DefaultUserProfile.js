@@ -1,4 +1,5 @@
 import img from '../../../../image/my_image.png';
+
 import { permission_add_friend_obj, user_related_obj } from '../__some_obj/InfoObj';
 
 /* ----------------------------------------- */
@@ -157,3 +158,21 @@ export const default_friend_arr = [
         },
     },
 ];
+
+// user
+
+export const default_user_about_r = {
+    work_arr: [{
+        name: 'IT at Ha Noi',
+        permission: 0,
+    }],
+    university_arr: [{
+        name: 'Dai hoc Buon long ga ban long vit',
+        permission: 0,
+    }],
+    school_arr: [{
+        name: 'Le Quy Don',
+        permission: 0,
+    }],
+    
+}

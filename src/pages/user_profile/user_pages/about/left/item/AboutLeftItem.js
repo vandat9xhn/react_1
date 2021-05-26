@@ -23,7 +23,7 @@ function AboutLeftItem({item}) {
             className="normal-text w-100per"
         >
             <div
-                className={`AboutLeftItem brs-8px padding-8px ${
+                className={`AboutLeftItem brs-8px padding-8px label-field text-secondary ${
                     search == location.search ? 'bg-active-fb text-blue' : 'hv-bg-blur'
                 }`}
             >

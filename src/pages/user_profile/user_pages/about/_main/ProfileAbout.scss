@@ -6,6 +6,9 @@
 
 .ProfileAbout_right {
     width: 600px;
+    .InputNotValid_placeholder{
+        background-color: var(--md-bg-primary);
+    }
 }
 
 //

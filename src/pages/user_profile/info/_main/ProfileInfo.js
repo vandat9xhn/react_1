@@ -77,7 +77,7 @@ function ProfileInfo(props) {
 
     //
     return (
-        <div className="ProfileInfo">
+        <div className="ProfileInfo bg-primary">
             <div className="ProfileInfo_pics">
                 <ProfileInfoPicture
                     cover_picture={cover_picture}
@@ -87,8 +87,8 @@ function ProfileInfo(props) {
                 />
             </div>
 
-            {first_name ? (
-                <div className="ProfileInfo_name-story">
+            <div className="ProfileInfo_name-story">
+                {first_name ? (
                     <ProfileInfoStory
                         name={first_name + ' ' + last_name}
                         nick_name={nick_name}
@@ -96,10 +96,10 @@ function ProfileInfo(props) {
                         is_user={user.id == id}
                         handleChangeStory={handleChangeStory}
                     />
-                </div>
-            ) : (
-                <SkeletonDiv num={3} />
-            )}
+                ) : (
+                    <SkeletonDiv num={3} />
+                )}
+            </div>
 
             {first_name && (
                 <ProfileInfoActions

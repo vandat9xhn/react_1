@@ -1,35 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
-import './InputNotValidPass.scss';
-import InputNotValid from '../input_not_valid/InputNotValid';
+//
 import IconsEye from '../../../_icons_svg/icons_eye/IconsEye';
 //
+import InputNotValid from '../input_not_valid/InputNotValid';
+//
+import './InputNotValidPass.scss';
+
+//
 InputNotValidPass.propTypes = {
+    password: PropTypes.string,
     name: PropTypes.string,
-    type: PropTypes.string,
     placeholder: PropTypes.string,
     max_length: PropTypes.number,
-    // 
-    password: PropTypes.string,
+
     handleChange: PropTypes.func,
-    // 
-    toggleType: PropTypes.func,
 };
 
+InputNotValidPass.defaultProps = {
+    placeholder: 'Password',
+    max_length: 100,
+}
+
+//
 function InputNotValidPass(props) {
     const {
+        password,
         name,
-        type,
         placeholder,
         max_length,
-        // 
-        password,
+
         handleChange,
-        // 
-        toggleType,
     } = props;
 
+    // 
+    const [type, setType] = useState('password')
+
+    //
+    function toggleType(){
+        setType(type == 'password' ? 'text' : 'password')
+    } 
+
+    // 
     return (
         <div className="InputNotValidPass">
             {/* input */}
@@ -47,7 +59,10 @@ function InputNotValidPass(props) {
 
             {/* eye */}
             <div className="InputNotValidPass_eye">
-                <div className="InputNotValidPass_eye-contain hv-opacity" onClick={toggleType}>
+                <div
+                    className="InputNotValidPass_eye-contain hv-opacity"
+                    onClick={toggleType}
+                >
                     <IconsEye x={200} y={200} close_eye={type == 'password'} />
                 </div>
             </div>

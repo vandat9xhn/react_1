@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import UnitTime from '../../../../../_some_function/UnitTime';
-import { IconsPermission } from '../../../../../_groups_icon/permission/GroupIconPermission';
+import PermissionDiv from '../../../../some_div/permission_div/PermissionDiv';
 //
 import './PermissionPost.scss';
 
@@ -19,8 +19,6 @@ PermissionPost.defaultProps = {
 //
 function PermissionPost(props) {
     const { permission_post, updated_time } = props;
-
-    const {Icon, data_icon} = IconsPermission[permission_post || 0]
     //
     return (
         <div className="PermissionPost font-italic">
@@ -36,7 +34,7 @@ function PermissionPost(props) {
             <span className="PermissionPost_delimiter">*</span>
 
             <span className="PermissionPost_permission">
-                <Icon {...data_icon}/>
+                <PermissionDiv permission={permission_post} />
             </span>
         </div>
     );

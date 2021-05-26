@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// 
+import './ProfileInfoPicture.scss';
 
 //
 ProfileInfoPicture.propTypes = {};
@@ -11,8 +13,8 @@ function ProfileInfoPicture(props) {
 
     //
     return (
-        <div className="ProfileInfo_pics">
-            <div className="ProfileInfo_cover-pic">
+        <div className="ProfileInfoPicture">
+            <div className="ProfileInfoPicture_cover">
                 <Link to="/posts/1">
                     <img
                         src={cover_picture}
@@ -22,8 +24,8 @@ function ProfileInfoPicture(props) {
                 </Link>
             </div>
 
-            <div className="ProfileInfo_div-pic">
-                <div className="ProfileInfo_profile-pic">
+            <div className="ProfileInfoPicture_profile">
+                <div className="ProfileInfoPicture_profile-contain">
                     <Link to="/posts/1">
                         <img src={picture} alt="" onClick={openPicture} />
                     </Link>

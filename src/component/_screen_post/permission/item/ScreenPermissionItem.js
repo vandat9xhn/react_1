@@ -15,7 +15,7 @@ ScreenPermissionItem.propTypes = {
 function ScreenPermissionItem(props) {
     const { is_active, ix, icon_obj, choosePermission } = props;
 
-    const { Icon, title, data_icon } = icon_obj;
+    const { Icon, title } = icon_obj;
 
     //
     function onChoosePermission() {
@@ -38,7 +38,7 @@ function ScreenPermissionItem(props) {
                 <div className="ScreenPermissionItem_right">
                     <div className="display-flex align-items-center">
                         <div className="ScreenPermissionItem_right_icon display-flex">
-                            <Icon {...data_icon} />
+                            {Icon}
                         </div>
 
                         <div className="label-field">{title}</div>

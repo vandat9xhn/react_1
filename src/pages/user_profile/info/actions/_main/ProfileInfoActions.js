@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import IconsMenu from '../../../../../_icons_svg/icons_menu/IconsMenu';
-// 
+//
 import { handleInfoActions } from '../case/_main/InfoActionsCase';
+// 
+import './ProfileInfoActions.scss';
 
 //
 ProfileInfoActions.propTypes = {};
@@ -36,27 +38,28 @@ function ProfileInfoActions(props) {
 
     //
     return (
-        <div className="ProfileInfo_is-friend">
+        <div className="ProfileInfoActions">
             <div className="brs-5px label-field">
                 <div className="display-flex justify-content-center align-items-center">
                     <div
-                        className="ProfileInfo__add-friend display-flex justify-content-center align-items-center brs-5px"
-                        title="add friend"
+                        className="display-flex justify-content-center align-items-center"
                     >
-                        {handleInfoActions(
-                            user_related,
-                            permission_add_friend,
-                            handleAddStory,
-                            handleAcceptRequest,
-                            handleCancelRequest,
-                            handleAddFriend,
-                            handleFollowFriend
-                        )}
+                        <div className="ProfileInfoActions_add-friend brs-5px">
+                            {handleInfoActions(
+                                user_related,
+                                permission_add_friend,
+                                handleAddStory,
+                                handleAcceptRequest,
+                                handleCancelRequest,
+                                handleAddFriend,
+                                handleFollowFriend
+                            )}
+                        </div>
                     </div>
 
                     {!is_block_message && !is_user && (
                         <div
-                            className="ProfileInfo__message"
+                            className="ProfileInfoActions_message"
                             title="message"
                             onClick={onOpenMessage}
                         >

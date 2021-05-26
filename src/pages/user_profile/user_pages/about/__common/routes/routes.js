@@ -13,8 +13,8 @@ const PfAboutWorkEdu = React.lazy(() =>
     import('../../right/work_edu/_main/PfAboutWorkEdu')
 );
 
-const PfAboutContact = React.lazy(() =>
-    import('../../right/contact/_main/PfAboutContact')
+const PfAboutContactBasis = React.lazy(() =>
+    import('../../right/contact_basis/_main/PfAboutContactBasis')
 );
 
 const PfAboutRelation = React.lazy(() =>
@@ -50,7 +50,7 @@ export const AboutCommonRoutes = [
         title: 'Work and education',
     },
     {
-        component: PfAboutContact,
+        component: PfAboutContactBasis,
         search: '?sk=about_contact',
         props: {},
         title: 'Contact and basis info',

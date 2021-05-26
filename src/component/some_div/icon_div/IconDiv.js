@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import FlexDiv from '../flex_div/FlexDiv';
+//
 import './IconDiv.scss';
 
 //
@@ -42,25 +44,22 @@ function IconDiv(props) {
 
     //
     return (
-        <div className="IconDiv">
-            <div
-                className={`IconDiv_row ${is_reverse ? 'row-reverse' : ''} ${
-                    space_between ? 'IconDiv_row-between' : ''
-                }`}
-            >
-                <div className="IconDiv__icon">
+        <FlexDiv
+            is_reverse={is_reverse}
+            space_between={space_between}
+            ComponentLeft={
+                <div className="IconDiv_left">
                     <Icon
                         x={x}
                         y={y}
-                        color={color}
                         size_icon={size_icon}
+                        color={color}
                         {...icon_props}
                     />
                 </div>
-
-                <div className="IconDiv__children">{children}</div>
-            </div>
-        </div>
+            }
+            ComponentRight={<div className="IconDiv_right">{children}</div>}
+        />
     );
 }
 

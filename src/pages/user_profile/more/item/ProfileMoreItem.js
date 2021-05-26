@@ -24,7 +24,9 @@ function ProfileMoreItem({ sk, title }) {
             }
             replace
         >
-            <div className="ProfileMoreItem nav-text nav-bottom">{title}</div>
+            <div className="ProfileMoreItem padding-8px hv-bg-blur cursor-pointer label-field text-secondary nav-text nav-bottom">
+                {title}
+            </div>
         </NavLink>
     );
 }

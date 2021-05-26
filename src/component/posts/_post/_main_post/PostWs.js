@@ -21,8 +21,6 @@ import {
     handle_API_Post_U,
 } from '../../__handle_api/PostHandleAPI';
 
-import {initial_posts} from '../../__common/InitialPosts';
-
 import CreateUpdatePost from '../../common/create_update_post/_main/CreateUpdatePost';
 import VidPicsPost from '../vid_pics/_main/VidPicsPost';
 import PermissionPost from '../../common/permission/_main/PermissionPost';

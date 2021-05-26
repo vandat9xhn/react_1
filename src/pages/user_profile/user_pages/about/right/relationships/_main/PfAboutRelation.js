@@ -1,16 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// 
+import PfAboutRelation from '../relationship/_main/PfAboutRelation';
+import PfAboutFamily from '../family/_main/PfAboutFamily';
 
-PfAboutRelation.propTypes = {
+// 
+PfAboutRelations.propTypes = {
     
 };
 
-function PfAboutRelation(props) {
+// 
+function PfAboutRelations(props) {
     return (
         <div>
-            Family and Relationships
+            <div className="PfAbout_part">
+                <PfAboutRelation />
+            </div>
+
+            <div className="PfAbout_part">
+                <PfAboutFamily />
+            </div>
         </div>
     );
 }
 
-export default PfAboutRelation;
+export default PfAboutRelations;

@@ -1,0 +1,19 @@
+
+.ProfileInfoActions{
+    &_add-friend {
+        padding: 0.35rem;
+        min-width: 8rem;
+        background-color: var(--blue);
+        cursor: pointer;
+    }
+    
+    &_message {
+        margin-left: 0.5rem;
+        padding: 0.2rem;
+        cursor: pointer;
+        .IconsMenu {
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+    }
+}

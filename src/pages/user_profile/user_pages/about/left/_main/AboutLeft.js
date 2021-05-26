@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { common_about_title } from '../../__common/data/ProfileIntroData';
 
 import AboutLeftItem from '../item/AboutLeftItem';
+// 
+import './AboutLeft.scss';
 
 //
 AboutLeft.propTypes = {};
@@ -19,7 +21,7 @@ function AboutLeft(props) {
             {common_about_title.map((item, index) => (
                 <div
                     key={`AboutLeft_${index}`}
-                    className="AboutLeft_about"
+                    className="AboutLeft_item"
                 >
                     <AboutLeftItem
                         item={item}

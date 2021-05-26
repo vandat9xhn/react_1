@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import AboutLeft from '../left/_main/AboutLeft';
 import AboutRight from '../right/_main/AboutRight';
 //
 import './ProfileAbout.scss';
+import './ProfileAboutCommon.scss';
 
 //
 ProfileAbout.propTypes = {};

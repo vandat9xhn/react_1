@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FastField, Form, Formik } from 'formik';
 //
-import { validationSchema } from '../../../__default/DefaultCity';
 import InputText from '../../../../../component/input/input_text/InputText';
 import ButtonRipple from '../../../../../component/button/button_ripple/ButtonRipple';
+//
+import { validationSchema } from '../../../__default/DefaultCity';
+
 import InputImage from '../input_image/InputImage';
-// 
+//
 import './CityForm.scss';
 
 //
@@ -23,10 +25,11 @@ CityForm.defaultProps = {
 //
 function CityForm(props) {
     const { initialValues, title_submit, handleSubmit } = props;
+
     //
     const [file, setFile] = useState('');
 
-    // image change
+    //
     function handleImageChange(new_file) {
         setFile(new_file);
     }
@@ -47,38 +50,44 @@ function CityForm(props) {
         >
             {(props) => (
                 <Form
-                    className="CityForm App_Form brs-5px App_box_shadow scroll-thin"
+                    className="CityForm App_Form brs-5px box-shadow-1 scroll-thin"
                     autoComplete="off"
                 >
-                    <FastField
-                        name="city"
-                        component={InputText}
-                        label="City"
-                        placeholder="Your city..."
-                        dataList={['Ha Noi', 'Ho Chi Minh', 'Da Nang']}
-                        help="5-50 letters"
-                    />
+                    <div className="CityForm_field">
+                        <FastField
+                            name="city"
+                            component={InputText}
+                            label="City"
+                            placeholder="Your city..."
+                            dataList={['Ha Noi', 'Ho Chi Minh', 'Da Nang']}
+                            help="5-50 letters"
+                        />
+                    </div>
 
-                    <FastField
-                        name="street"
-                        component={InputText}
-                        label="Street"
-                        placeholder="Your Street..."
-                        dataList={[
-                            'Nguyen Trai',
-                            'Nguyen Hue',
-                            'Quang Trung',
-                            'Tran Phu',
-                        ]}
-                        help="5-50 letters"
-                    />
+                    <div className="CityForm_field">
+                        <FastField
+                            name="street"
+                            component={InputText}
+                            label="Street"
+                            placeholder="Your Street..."
+                            dataList={[
+                                'Nguyen Trai',
+                                'Nguyen Hue',
+                                'Quang Trung',
+                                'Tran Phu',
+                            ]}
+                            help="5-50 letters"
+                        />
+                    </div>
 
-                    <FastField
-                        name="image"
-                        component={InputImage}
-                        label="Image"
-                        handleImageChange={handleImageChange}
-                    />
+                    <div className="CityForm_field">
+                        <FastField
+                            name="image"
+                            component={InputImage}
+                            label="Image"
+                            handleImageChange={handleImageChange}
+                        />
+                    </div>
                     <br />
 
                     <div className="App_submit">

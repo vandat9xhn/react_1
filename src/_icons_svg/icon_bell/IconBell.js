@@ -14,7 +14,7 @@ IconBell.defaultProps = {
     size_icon: '1.5rem',
     x: 0,
     y: 0,
-    stroke_color: 'var(--black-brown)',
+    stroke_color: 'var(--md-black-brown)',
 };
 
 function IconBell(props) {

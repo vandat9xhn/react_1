@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+//
+import './ProfileInfoStory.scss';
 
 //
 ProfileInfoStory.propTypes = {};
@@ -10,22 +12,26 @@ function ProfileInfoStory(props) {
 
     //
     return (
-        <div className="ProfileInfo_name-story">
-            <div className="ProfileInfo_name display-flex justify-content-center align-items-center">
+        <div className="ProfileInfoStory">
+            <div className="ProfileInfoStory_head display-flex justify-content-center align-items-center">
                 <div className="display-flex">
-                    <div>{name}</div>
+                    <h1 className="margin-0">
+                        <span>{name}</span>
 
-                    {nick_name && <div> ({nick_name})</div>}
+                        <span className={nick_name ? 'ProfileInfoStory__nick' : 'display-none'}>
+                            ({nick_name})
+                        </span>
+                    </h1>
                 </div>
             </div>
 
-            <div className="ProfileInfo_story text-align-center">
+            <div className="ProfileInfoStory_story text-align-center">
                 <div onClick={is_user ? handleChangeStory : undefined}>
-                    {story ? (
-                        <div>{story}</div>
-                    ) : (
-                        <div>{is_user ? 'Add your story' : ''}</div>
-                    )}
+                    <div className={story ? '' : 'display-none'}>{story}</div>
+
+                    <div className={story ? 'display-none' : ''}>
+                        {is_user ? 'Add your story' : ''}
+                    </div>
                 </div>
             </div>
         </div>

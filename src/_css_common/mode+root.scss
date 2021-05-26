@@ -5,7 +5,7 @@
     --btn-buy: #ff8d00;
     --color-react: #61dafb;
     --color-django: #44b78b;
-    --color-light: #ebebf0;
+    --color-light: #e4e6eb;
     --ccc: #ccc;
     --ccc-blur: #cccccc80;
     --blue: #007bff;
@@ -73,7 +73,8 @@
     --fashion-hover: #ff7c24;
 
     /* Mode Light*/
-    --md-color: black;
+    --md-color: #050505;
+    --md-color-secondary: #65676b;
     --md-color-smoke: #d3d1d1;
     --md-gold: var(--gold-through);
     --md-heart: var(--heart-through);
@@ -82,7 +83,7 @@
     // bg
     --md-bg-primary: white;
     --md-bg-secondary: aqua;
-    --md-bg-ccc: #ccc;
+    --md-bg-ccc: #e6e6e6;
     --md-bg-blur: #eee;
     --bg-app-form: #61ff8a;
     --md-bg-through: var(--bg-through);
@@ -99,6 +100,7 @@
     /*     DARK     */
     &[data-theme=dark] {
         --md-color: var(--color-light);
+        --md-color-secondary: #b0b3b8;
         --md-color-smoke: #3a3939;
         --md-gold: var(--gold);
         --md-heart: var(--heart);
@@ -107,8 +109,8 @@
         // bg
         --md-bg-primary: #3f3f3f;
         --md-bg-secondary: #1e1e1e;
-        --md-bg-ccc: rgb(104, 104, 104);
-        --md-bg-blur: #3e3e3e;
+        --md-bg-ccc: #4e4f50;
+        --md-bg-blur: #ffffff1a;
         --md-bg-through: #545252d6;
         --bg-app-form: #61ff8a80;
         --md-bg-fb:  #18191a;

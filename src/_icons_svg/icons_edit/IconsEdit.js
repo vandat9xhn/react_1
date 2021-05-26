@@ -5,17 +5,17 @@ import './IconsEdit.scss';
 
 //
 IconsEdit.propTypes = {
-    size_icon: PropTypes.string,
     x: PropTypes.number,
     y: PropTypes.number,
+    size_icon: PropTypes.string,
     color: PropTypes.string,
     is_editing: PropTypes.bool,
 };
 
 IconsEdit.defaultProps = {
-    size_icon: '1.5rem',
     x: 0,
     y: 0,
+    size_icon: '1.5rem',
     color: 'var(--blue)',
     is_editing: false,
 };
@@ -41,12 +41,14 @@ function IconsEdit(props) {
             </g>
 
             {/* dot waiting */}
-            <g className={is_editing ? 'EditIcons_active' : 'display-none'} fill="var(--md-color)">
+            <g
+                className={is_editing ? 'EditIcons_active' : 'display-none'}
+                fill="var(--md-color)"
+            >
                 <circle cx="80" cy="190" r="10" />
                 <circle cx="130" cy="190" r="10" />
                 <circle cx="180" cy="190" r="10" />
             </g>
-            
         </svg>
     );
 }

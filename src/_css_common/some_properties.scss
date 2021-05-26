@@ -1,4 +1,10 @@
 
+/* ------------------------------ ACTIVE ----------------------------- */
+
+.act-scale-sm:active{
+    transform: scale(0.95);
+}
+
 /* ------------------------------ BG BS HR ----------------------------- */
 
 .bg-primary{
@@ -27,6 +33,14 @@
 
 .bg-active-fb{
     background-color: var(--md-bg-active-fb);
+}
+
+.bg-ccc{
+    background-color: var(--md-bg-ccc);
+}
+
+.bg-blue{
+    background-color: var(--blue);
 }
 
 /* ----------------------- Box Shadow --------------------------------- */
@@ -176,6 +190,14 @@
 .normal-text{
     color: var(--md-color);
     text-decoration: none;
+}
+
+.text-secondary{
+    color: var(--md-color-secondary);
+}
+
+.text-white{
+    color: var(--white);
 }
 
 /* red */
