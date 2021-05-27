@@ -6,7 +6,7 @@ import { useRouteLoaded } from '../../../_custom_hooks/useRouteLoaded';
 import RouteLoaded from '../../../component/_route/route_loaded/RouteLoaded';
 //
 import { initial_profile } from '../__common/initial/Initial';
-import { ProfileRoutes } from '../__common/routes/routes';
+import { ProfileRoutes, profile_search_arr } from '../__common/routes/routes';
 import ProfileSkeleton from '../__common/skeleton/ProfileSkeleton';
 
 import { handle_API_ProfileUser_R } from '../__handle_api/ProfileHandleAPI';
@@ -29,15 +29,16 @@ function Profile(props) {
     const { profile, is_fetching } = profile_state;
 
     //
-    const [route_loaded_arr, setRouteLoadedArr] = useRouteLoaded(
-        'search',
-        handleBeforeSetRouteLoaded
-    );
+    const [route_loaded_arr, setRouteLoadedArr] = useRouteLoaded({
+        part_location: 'search',
+        allowed_routes: profile_search_arr,
+        handleNotFoundRoute: handleNotFoundRoute,
+    });
 
     //
     useEffect(() => {
         handleChangeId();
-        setRouteLoadedArr([handleBeforeSetRouteLoaded()]);
+        setRouteLoadedArr([location.search]);
         getProfileInfo();
     }, [id]);
 
@@ -67,16 +68,8 @@ function Profile(props) {
     }
 
     //
-    function handleBeforeSetRouteLoaded() {
-        const search_arr = ProfileRoutes.map((item) => item.search);
-        
-        if (!search_arr.includes(location.search)) {
-            location.search = '';
-
-            return '';
-        }
-
-        return location.search;
+    function handleNotFoundRoute() {
+        setRouteLoadedArr([''])
     }
 
     //

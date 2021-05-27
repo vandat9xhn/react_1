@@ -37,15 +37,22 @@ import AddNewPost from '../../common/add_new_post/AddNewPost';
 import ZoomVidPicItem from '../../_zoom_post/zoom_vid_pic/_main/ZoomVidPicItem';
 //
 import './Posts.scss';
+import ComponentSkeleton from '../../../skeleton/component_skeleton/ComponentSkeleton';
+import PostSkeleton from '../../_post/skeleton/PostSkeleton';
+import FetchingDiv from '../../../some_div/fetching/FetchingDiv';
 
 //
 Posts.propTypes = {
     posts: PropTypes.array,
     has_add_new: PropTypes.bool,
     title_add_new: PropTypes.string,
+    has_fetched: PropTypes.bool,
+    is_fetching: PropTypes.bool,
 };
 Posts.defaultProps = {
     has_add_new: true,
+    has_fetched: false,
+    is_fetching: false,
 };
 
 //
@@ -59,7 +66,8 @@ function Posts(props) {
     } = useContext(context_api);
 
     //
-    const { posts, has_add_new, title_add_new } = props;
+    const { posts, has_fetched, is_fetching, has_add_new, title_add_new } =
+        props;
 
     //
     const [show_zoom_vid_pic, setShowZoomVidPic] = useState(false);
@@ -189,6 +197,17 @@ function Posts(props) {
                                 post_ix={index}
                             />
                         ))}
+
+                        <ComponentSkeleton
+                            has_fetched={has_fetched}
+                            component={<PostSkeleton />}
+                        />
+
+                        <div className="width-fit-content margin-auto">
+                            <FetchingDiv
+                                open_fetching={is_fetching && has_fetched}
+                            />
+                        </div>
                     </ContextPost>
                 </div>
             </div>

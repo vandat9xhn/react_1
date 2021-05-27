@@ -6,10 +6,10 @@ import { context_api } from '../../../_context/ContextAPI';
 import IconsEdit from '../../../_icons_svg/icons_edit/IconsEdit';
 import PermissionDiv from '../permission_div/PermissionDiv';
 //
-import './EditDiv.scss';
+import './PermissionEditDiv.scss';
 
 //
-EditDiv.propTypes = {
+PermissionEditDiv.propTypes = {
     permission: PropTypes.number,
     is_editing: PropTypes.bool,
 
@@ -18,7 +18,7 @@ EditDiv.propTypes = {
 };
 
 //
-function EditDiv(props) {
+function PermissionEditDiv(props) {
     //
     const { openScreenPermission } = useContext(context_api);
 
@@ -41,7 +41,7 @@ function EditDiv(props) {
         <div>
             <div className="display-flex align-item-center">
                 <div
-                    className={`EditDiv_left ${is_editing ? 'display-none' : ''}`}
+                    className={`PermissionEditDiv_left ${is_editing ? 'display-none' : ''}`}
                     onClick={handlePermission}
                     title="Change permission"
                 >
@@ -55,7 +55,7 @@ function EditDiv(props) {
                     className="display-flex-center"
                 >
                     <div
-                        className="EditDiv_right-icon display-flex-center brs-50 cursor-pointer hv-bg-blur"
+                        className="PermissionEditDiv_right-icon display-flex-center brs-50 cursor-pointer hv-bg-blur"
                         onClick={toggleEdit}
                         title="Edit"
                     >
@@ -67,4 +67,4 @@ function EditDiv(props) {
     );
 }
 
-export default EditDiv;
+export default PermissionEditDiv;

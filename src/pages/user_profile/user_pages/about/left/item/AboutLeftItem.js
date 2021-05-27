@@ -11,8 +11,8 @@ AboutLeftItem.propTypes = {
 };
 
 //
-function AboutLeftItem({item}) {
-    // 
+function AboutLeftItem({ item }) {
+    //
     const { search, title } = item;
 
     //
@@ -24,7 +24,9 @@ function AboutLeftItem({item}) {
         >
             <div
                 className={`AboutLeftItem brs-8px padding-8px label-field text-secondary ${
-                    search == location.search ? 'bg-active-fb text-blue' : 'hv-bg-blur'
+                    search == location.search
+                        ? 'bg-active-fb text-blue'
+                        : 'hv-bg-blur'
                 }`}
             >
                 {title}

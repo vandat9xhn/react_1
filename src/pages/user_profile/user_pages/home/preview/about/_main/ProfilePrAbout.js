@@ -67,7 +67,7 @@ function ProfilePrAbout({ id }) {
         <div ref={ref_component}>
             <ProfilePrCommon
                 title="Intro"
-                sk="about"
+                sk="about_overview"
                 is_fetching={is_fetching}
                 ProfilePrSkeleton={ProfilePrAboutSkeleton}
             >

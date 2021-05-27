@@ -3,10 +3,13 @@ import { API_Post_L } from '../../../api/api_django/user/user_post/UserPost';
 
 import {
     API_UserAboutEmail_U,
+    API_UserAboutPhone_U,
     API_UserAboutOverview_R,
+    // 
     API_UserAlbumVidPic_L,
     API_UserProfile_RU,
     API_UserVidPic_L,
+    API_UserAboutPhone_C,
 } from '../../../api/api_django/user/user_profile/UserProfile';
 
 import makeFormData from '../../../_some_function/makeFormData';
@@ -92,6 +95,35 @@ export async function handle_API_PermissionEmail_U({
         makeFormData({
             email: email,
             password: password,
+            permission: permission,
+        })
+    );
+
+    return res.data
+}
+
+// phone
+export async function handle_API_Phone_C({
+    phone = '',
+    permission = 0,
+}) {
+    const res = await API_UserAboutPhone_C(
+        makeFormData({
+            phone: phone,
+            permission: permission,
+        })
+    );
+
+    return res.data
+}
+
+export async function handle_API_Phone_U({
+    phone = '',
+    permission = 0,
+}) {
+    const res = await API_UserAboutPhone_U(
+        makeFormData({
+            phone: phone,
             permission: permission,
         })
     );

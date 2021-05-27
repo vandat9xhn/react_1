@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// import { withRouter } from 'react-router';
+// 
+import { handleScrollSmooth } from '../../_some_function/handleScrollSmooth';
 // 
 import IconsArrow from '../../_icons_svg/icons_arrow/IconsArrow';
 // 
@@ -22,15 +23,9 @@ function BackTop() {
         setOpenBtn(window.pageYOffset > 100);
     }
 
-    // onClick
-    function handleClick() {
-        document.getElementsByTagName('HTML')[0].style.scrollBehavior =
-            'smooth';
-        setTimeout(() => {
-            window.scroll(0, 0);
-            document.getElementsByTagName('HTML')[0].style.scrollBehavior =
-                'auto';
-        }, 0);
+    // 
+    function backToTopSmooth(){
+        handleScrollSmooth(() => window.scrollTo(0, 0))
     }
 
     //
@@ -41,7 +36,7 @@ function BackTop() {
                     ? 'hv-opacity'
                     : 'BackTop_hide'
             }`}
-            onClick={handleClick}
+            onClick={backToTopSmooth}
             title="back to top"
         >
             <IconsArrow y={200} />

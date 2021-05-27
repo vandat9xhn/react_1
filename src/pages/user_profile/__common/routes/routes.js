@@ -1,5 +1,5 @@
 import React from 'react';
-// 
+//
 import { about_search_arr } from '../../user_pages/about/__common/routes/routes';
 import { photos_search_arr } from '../../user_pages/photo/__common/routes/routes';
 
@@ -17,7 +17,6 @@ const ProfilePhoto = React.lazy(() =>
     import('../../user_pages/photo/_main/ProfilePhoto')
 );
 
-
 //
 export const ProfileRoutes = [
     {
@@ -26,17 +25,17 @@ export const ProfileRoutes = [
         props: {},
     },
 
-    ...about_search_arr.map(item => ({
+    {
         component: ProfileAbout,
-        search: item,
+        search: about_search_arr,
         props: {},
-    })),
+    },
 
-    ...photos_search_arr.map(item => ({
+    {
         component: ProfilePhoto,
-        search: item,
+        search: photos_search_arr,
         props: {},
-    })),
+    },
 
     {
         component: ProfileFriend,
@@ -44,3 +43,6 @@ export const ProfileRoutes = [
         props: {},
     },
 ];
+
+//
+export const profile_search_arr = ['', '?sk=friend', ...about_search_arr, ...photos_search_arr]

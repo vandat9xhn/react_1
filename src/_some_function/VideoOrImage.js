@@ -7,11 +7,13 @@ export const VideoOrImage = (vid_pic, type, video) => {
     }
 
     if (
-        vid_pic.search(/(\.(png|jpg|jpeg|svg)$|data:image)/) >= 0 ||
+        /(\.(png|jpg|jpeg|svg)$|data:image)/.test(vid_pic) ||
         type.startsWith('image')
     ) {
         return <img src={vid_pic} alt="" />;
-    } else if (vid_pic.search(/\.(mp4)$/) > 0 || type.startsWith('video')) {
+    }
+
+    if (/\.(mp4)$/.test(vid_pic) || type.startsWith('video')) {
         return video || <video src={vid_pic} alt="" />;
     }
 };

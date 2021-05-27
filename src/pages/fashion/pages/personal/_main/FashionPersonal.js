@@ -6,7 +6,7 @@ import { useRouteLoaded } from '../../../../../_custom_hooks/useRouteLoaded';
 import RouteLoaded from '../../../../../component/_route/route_loaded/RouteLoaded';
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import { FashionRoutes, fashion_path_arr } from '../routes/FashionRoutes';
+import { FashionRoutes, fashion_path_arr, fashion_person_pathname_arr } from '../routes/FashionRoutes';
 
 import PersonalLeft from '../col_left/_main/PersonalLeft';
 import FashionH from '../../../components/head/_main/FashionH';
@@ -23,7 +23,7 @@ function FashionPersonal(props) {
     const [active_ix, setActiveIx] = useState(-1);
 
     // 
-    const [route_loaded_arr] = useRouteLoaded()
+    const [route_loaded_arr] = useRouteLoaded({allowed_routes: fashion_person_pathname_arr})
 
     //
     useEffect(() => {

@@ -1,11 +1,18 @@
+
+.ProfileAbout{
+    max-width: 100%;
+}
+
 // 
 .ProfileAbout_left {
     width: 400px;
+    max-width: 100%;
     border-right: 2px solid var(--md-bg-ccc);
 }
 
 .ProfileAbout_right {
     width: 600px;
+    max-width: 100%;
     .InputNotValid_placeholder{
         background-color: var(--md-bg-primary);
     }
@@ -20,13 +27,11 @@
     .ProfileAbout_left{
         margin: auto;
         width: 600px;
-        max-width: 100%;
         border-left: none;
         border-bottom: 2px solid var(--md-bg-ccc);
     }
     
     .ProfileAbout_col-info {
         margin: auto;
-        max-width: 100%;
     }
 }

@@ -49,6 +49,8 @@ export const API_UserAlbumVidPic_L = (params) =>
         params
     );
 
+/* ------------ ABOUT ------------ */
+
 // overview
 export const API_UserAboutOverview_R = (params) =>
     API_FakeReal(default_user_about_r, () =>
@@ -65,6 +67,25 @@ export const API_UserAboutEmail_U = (data) =>
         axiosDjangoClient({
             url: '/user/about-email-u/',
             method: 'PATCH',
+            data: data,
+        })
+    );
+
+// phone
+export const API_UserAboutPhone_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-phone-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+export const API_UserAboutPhone_C = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-phone-C/',
+            method: 'POST',
             data: data,
         })
     );

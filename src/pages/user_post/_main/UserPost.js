@@ -14,7 +14,13 @@ UserPost.propTypes = {};
 
 //
 function UserPost(props) {
-    const [post, setPost] = useState({});
+    const [post_state, setPostState] = useState({
+        post: [],
+        has_fetched: false,
+    });
+
+    const { post, has_fetched } = post_state;
+
     //
     const mounted = useMounted();
 
@@ -26,7 +32,11 @@ function UserPost(props) {
     //
     async function getData_API_Post() {
         const res = await API_Post_RD(1, 'GET');
-        mounted && setPost(res.data);
+        mounted &&
+            setPostState({
+                post: [res.data],
+                has_fetched: true,
+            });
     }
 
     //
@@ -34,7 +44,12 @@ function UserPost(props) {
         <div className="UserPost">
             <div className="UserPost_contain bg-fb">
                 <div className="UserPost_posts">
-                    <Posts posts={[post]} has_add_new={false} />
+                    <Posts
+                        posts={post}
+                        has_add_new={false}
+                        has_fetched={has_fetched}
+                        is_fetching={false}
+                    />
                 </div>
             </div>
         </div>

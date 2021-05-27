@@ -39,7 +39,7 @@ function NewFeed() {
     const handleSearch = (search) => {
         params_api.current = {
             search: search,
-        }
+        };
         getData_API_Post_first();
         console.log(search);
     };
@@ -57,11 +57,11 @@ function NewFeed() {
 
                     <div className="NewFeed_col-center">
                         <div>
-                            <Posts posts={has_fetched ? post_arr : [{}]} />
-                        </div>
-
-                        <div className="width-fit-content margin-auto">
-                            <FetchingDiv open_fetching={is_fetching} />
+                            <Posts
+                                posts={has_fetched ? post_arr : []}
+                                has_fetched={has_fetched}
+                                is_fetching={is_fetching}
+                            />
                         </div>
                     </div>
 

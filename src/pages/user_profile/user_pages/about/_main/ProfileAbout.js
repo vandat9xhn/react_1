@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import AboutLeft from '../left/_main/AboutLeft';
@@ -12,9 +12,10 @@ ProfileAbout.propTypes = {};
 
 //
 function ProfileAbout() {
+
     //
     return (
-        <div className="ProfileAbout width-fit-content margin-auto box-shadow-1 brs-8px bg-primary">
+        <div className="ProfileAbout width-fit-content margin-auto box-shadow-1 brs-8px-md bg-primary">
             <div className="ProfileAbout_row display-flex justify-content-center">
                 <div className="ProfileAbout_left padding-8px">
                     <AboutLeft />

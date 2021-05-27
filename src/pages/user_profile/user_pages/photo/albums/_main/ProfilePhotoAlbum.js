@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import CircleLoading from '../../../../../../component/waiting/circle_loading/CircleLoading';
+// 
 import { handle_API_AlbumVidPic_L } from '../../../../__handle_api/ProfileHandleAPI';
 
 import ProfilePhotoMain from '../../_component/_main/ProfilePhotoMain';
@@ -8,7 +10,7 @@ import ProfilePhotoAlbumItem from '../item/ProfilePhotoAlbumItem';
 import ProfilePhotoList from '../../_component/list/_main/ProfilePhotoList';
 //
 import './ProfilePhotoAlbum.scss';
-import CircleLoading from '../../../../../../component/waiting/circle_loading/CircleLoading';
+import { handleScrollSmooth } from '../../../../../../_some_function/handleScrollSmooth';
 
 //
 ProfilePhotoAlbum.propTypes = {};
@@ -42,7 +44,9 @@ function ProfilePhotoAlbum(props) {
                 is_fetching: false,
             });
 
-            ref_photos_in_album.current.scrollIntoView();
+            handleScrollSmooth(() => {
+                ref_photos_in_album.current.scrollIntoView();
+            })
         }, 100);
     }
 

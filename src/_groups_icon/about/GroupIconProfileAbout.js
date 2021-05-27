@@ -23,7 +23,8 @@ export const IconsProfileAbout = {
 
     other_name: <IconsProfile />,
 
-    phone: <IconsProfile />,
+    email: <IconsProfile x={200}/>,
+    phone: <IconsProfile y={200} />,
     address: <IconsProfile />,
 
     basis: <IconsProfile />,

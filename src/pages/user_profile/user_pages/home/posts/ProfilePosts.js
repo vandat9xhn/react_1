@@ -8,15 +8,11 @@ import { useScrollDown } from '../../../../../_custom_hooks/useScrollDown';
 import observeToDo from '../../../../../_some_function/observerToDo';
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 //
-import FetchingDiv from '../../../../../component/some_div/fetching/FetchingDiv';
-//
 import { initial_posts } from '../../../../../component/posts/__common/InitialPosts';
 
 import { handle_API_ProfilePost_L } from '../../../__handle_api/ProfileHandleAPI';
 
 import Posts from '../../../../../component/posts/_posts/_main/PostsWs';
-import PostSkeleton from '../../../../../component/posts/_post/skeleton/PostSkeleton';
-import ComponentSkeleton from '../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 
 //
 ProfilePosts.propTypes = {
@@ -26,10 +22,10 @@ ProfilePosts.propTypes = {
 //
 function ProfilePosts(props) {
     //
-    const id = GetIdSlug();
+    const { user } = useContext(context_api);
 
     //
-    const { user } = useContext(context_api);
+    const id = GetIdSlug();
 
     //
     const { last_name } = props;
@@ -60,17 +56,10 @@ function ProfilePosts(props) {
                             ? 'Post a status update'
                             : `Write a post on ${last_name}'s timeline`
                     }
+                    has_fetched={has_fetched}
+                    is_fetching={is_fetching}
                 />
             </div>
-
-            <div className="width-fit-content margin-auto">
-                <FetchingDiv open_fetching={has_fetched && is_fetching} />
-            </div>
-
-            <ComponentSkeleton
-                component={<PostSkeleton />}
-                has_fetched={has_fetched}
-            />
         </div>
     );
 }

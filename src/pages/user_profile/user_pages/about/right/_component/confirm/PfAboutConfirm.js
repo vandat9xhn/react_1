@@ -8,7 +8,11 @@ import PermissionDiv from '../../../../../../../component/some_div/permission_di
 import './PfAboutConfirm.scss';
 
 //
-PfAboutConfirm.propTypes = {};
+PfAboutConfirm.propTypes = {
+    permission: PropTypes.number,
+    handleCancel: PropTypes.func,
+    handleSave: PropTypes.func,
+};
 
 //
 function PfAboutConfirm({ permission, handleCancel, handleSave }) {
@@ -31,7 +35,7 @@ function PfAboutConfirm({ permission, handleCancel, handleSave }) {
 
     //
     return (
-        <div>
+        <div className="PfAboutConfirm">
             <div className="display-flex align-items-center space-between">
                 <div onClick={onChangePermission}>
                     <PermissionDiv

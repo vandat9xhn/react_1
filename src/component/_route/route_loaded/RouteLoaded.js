@@ -23,12 +23,23 @@ function RouteLoaded({ route_arr, part_location, route_loaded_arr, fallback }) {
                 <div
                     key={`RouteLoaded_${index}`}
                     className={
-                        location[part_location] == route_obj[part_location]
+                        (
+                            typeof route_obj[part_location] == 'string'
+                                ? route_obj[part_location] ==
+                                  location[part_location]
+                                : route_obj[part_location].includes(
+                                      location[part_location]
+                                  )
+                        )
                             ? ''
                             : 'display-none'
                     }
                 >
-                    {route_loaded_arr.includes(route_obj[part_location]) && (
+                    {(typeof route_obj[part_location] == 'string'
+                        ? route_loaded_arr.includes(route_obj[part_location])
+                        : route_loaded_arr.some((item) =>
+                              route_obj[part_location].includes(item)
+                          )) && (
                         <route_obj.component {...(route_obj.props || {})} />
                     )}
                 </div>

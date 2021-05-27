@@ -6,10 +6,11 @@ import { useRouteLoaded } from '../../../../../_custom_hooks/useRouteLoaded';
 //
 import RouteLoaded from '../../../../../component/_route/route_loaded/RouteLoaded';
 //
-import { PhotosRoutes } from '../__common/routes/routes';
+import ProfileSkeleton from '../../../__common/skeleton/ProfileSkeleton';
+
+import { PhotosRoutes, photos_search_arr } from '../__common/routes/routes';
 //
 import './ProfilePhoto.scss';
-import ProfileSkeleton from '../../../__common/skeleton/ProfileSkeleton';
 
 //
 const group_photo_arr = [
@@ -29,7 +30,10 @@ ProfilePhoto.propTypes = {};
 //
 function ProfilePhoto(props) {
     //
-    const [route_loaded_arr] = useRouteLoaded('search');
+    const [route_loaded_arr] = useRouteLoaded({
+        part_location: 'search',
+        allowed_routes: photos_search_arr,
+    });
 
     //
     return (
