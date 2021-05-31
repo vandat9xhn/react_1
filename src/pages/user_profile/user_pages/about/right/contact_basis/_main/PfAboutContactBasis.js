@@ -33,11 +33,30 @@ function PfAboutContactBasis(props) {
         },
     ];
 
+    const address_arr = [
+        {
+            id: 1,
+            title: 'Ha Noi',
+            address: 'Ha Noi',
+            permission: 0,
+        },
+        {
+            id: 2,
+            title: 'Vinh Phuc',
+            address: 'Vinh Phuc',
+            permission: 0,
+        },
+    ];
+
     //
     return (
         <div>
             <div className="PfAbout_part">
-                <PfAboutContact phone_arr={phone_arr} email_obj={email_obj} />
+                <PfAboutContact
+                    phone_arr={phone_arr}
+                    email_obj={email_obj}
+                    address_arr={address_arr}
+                />
             </div>
 
             <div className="PfAbout_part">

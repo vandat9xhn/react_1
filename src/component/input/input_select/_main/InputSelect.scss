@@ -1,0 +1,46 @@
+
+.InputSelect_head{
+    border: 1px solid var(--md-color-secondary);
+    cursor: text;
+}
+.InputSelect_head-active{
+    border: 1px solid var(--blue);
+}
+// ..
+.InputSelect_head-item{
+    max-width: 95%;
+    margin: 4px;
+}
+// ..
+.InputSelect_head-input{
+    min-width: 80px;
+    max-width: 100%;
+    border: none;
+    &:focus{
+        outline: none;
+    }
+}
+
+.InputSelect_placeholder-active{
+    color: var(--blue);
+}
+
+.InputSelect_foot{
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+}
+// .
+.InputSelect_foot-contain{
+    background-color: var(--md-bg-primary);
+}
+
+.InputSelect_input_length{
+    height: 0;
+    max-width: 100%;
+    overflow: hidden;
+
+    white-space: nowrap;
+    opacity: 0;
+}

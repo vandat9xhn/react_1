@@ -1,12 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { loadFile } from '../../../_some_function/loadFile';
 //
-import InputFile from '../../input/input_file/InputFile';
+import { useMounted } from '../../../_custom_hooks/useMounted';
+//
 import IconsInput from '../../../_icons_svg/Icons_input/IconsInput';
-import ImgVidPreview from '../img_vid_preview/ImgVidPreview';
 import IconsAction from '../../../_icons_svg/icons_action/IconsAction';
+//
+import InputFile from '../../input/input_file/InputFile';
+import ImgVidPreview from '../img_vid_preview/ImgVidPreview';
 import FetchingDiv from '../../some_div/fetching/FetchingDiv';
 import Textarea from '../../input/textarea/Textarea';
 //
@@ -17,16 +20,18 @@ CommentInput.propTypes = {
     file_multiple: PropTypes.bool,
     placeholder: PropTypes.string,
     handleSend: PropTypes.func,
+    deps_reset: PropTypes.any,
 };
 
 CommentInput.defaultProps = {
     file_multiple: false,
     placeholder: 'Comment...',
+    deps_reset: '',
 };
 
 //
 function CommentInput(props) {
-    const { file_multiple, placeholder, handleSend } = props;
+    const { file_multiple, placeholder, handleSend, deps_reset } = props;
 
     //
     const [cmt_obj, setCmtObj] = useState({
@@ -40,6 +45,20 @@ function CommentInput(props) {
 
     //
     const ref_comment_input = useRef(null);
+
+    //
+    const mounted = useMounted();
+
+    //
+    useEffect(() => {
+        mounted &&
+            setCmtObj({
+                text: '',
+                urls: [],
+                files: [],
+                file_reading: false,
+            });
+    }, [deps_reset]);
 
     /* -------------------------------- INPUT -------------------------------------- */
 

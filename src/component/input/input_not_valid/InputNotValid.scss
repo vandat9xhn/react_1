@@ -1,53 +1,15 @@
-//
-%placeholder-move{
-    top: 0;
-
-    line-height: 12px;
-    padding: 0 0.25rem;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-//
-.InputNotValid{
-    position: relative;
-}
-
-//
-.InputNotValid_placeholder{
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    transition: top 200ms, font-size 200ms;
-
-    background-color: var(--color-react);
-    font-size: 16px;
-    color: var(--md-color-secondary);
-
-    pointer-events: none;
-}
-
-//
-.InputNotValid_input{
+// .
+.InputNotValid_input {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.75rem;
     background-color: transparent;
     border: 1px solid var(--md-color-secondary);
-    &:focus{
+    &:focus {
         border: 1px solid var(--blue);
         outline: none;
-
-        &+.InputNotValid_placeholder{
-            @extend %placeholder-move;
-            color: var(--blue);
-        }
     }
 }
 
-//
-.InputNotValid_text{
-    .InputNotValid_placeholder{
-        @extend %placeholder-move;
-    }
+.InputNotValid_placeholder{
+    background-color: var(--color-react);
 }

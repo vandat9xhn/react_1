@@ -7,7 +7,7 @@ import Pagination from '../../../../../component/pagination/_main/Pagination';
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 import WaitingBall from '../../../../../component/waiting/waiting_ball/WaitingBall';
 //
-import { handle_API_FashionProduct_L } from '../../../__handle_api/FashionHandleAPI';
+import { handle_API_FashionProduct_L } from '../../../__handle_api/home/FashionHandleAPI';
 
 import FashionShead from '../head/FashionShead';
 import SearchProducts from '../products/SearchProducts';
@@ -402,7 +402,7 @@ function FashionSearch(props) {
                     </div>
 
                     <div className="FashionSearch_fetching position-abs width-fit-content margin-auto">
-                        <WaitingBall is_animate={is_fetching || !has_fetched} />
+                        <WaitingBall open_fetching={is_fetching || !has_fetched} />
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@ import ScreenBlur from '../../../../../component/_screen_blur/_main/ScreenBlur';
 //
 import { actionFashionChangeCountCartNum } from '../../../../../redux/action/action_count_cart';
 
-import { params_buy } from '../../../_params/FashionParams';
+import { params_buy } from '../../../__params/home/FashionParams';
 
 import FashionH from '../../../components/head/_main/FashionH';
 import BuyProductList from '../buy_product_list/_main/BuyProductList';

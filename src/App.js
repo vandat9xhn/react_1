@@ -1,25 +1,26 @@
 import React, { Component, Suspense } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 //
-import "./_css_common/mode+root.scss";
-import "./_css_common/some_properties.scss";
-import "./_css_common/App_Form.scss";
-import "./_css_common/display.scss";
-import "./_css_common/position.scss";
-import "./_css_common/vid_pics.scss";
-import "./_css_common/some_classes.scss";
-import "./_css_common/post_cmt_sub.scss";
 import "./App.scss";
+import "./_style/root.scss";
+import "./_style/display.scss";
+import "./_style/position.scss";
+import "./_style/properties.scss";
+import "./_style/classes.scss";
+import "./_style/form.scss";
+import "./_style/post.scss";
+import "./_style/vid_pics.scss";
 //
 import { RoutesExact, RoutesNotExact } from "./_all_routes/AllRoutes";
 import ContextAPI from "./_context/ContextAPI";
 //
-import Header from "./component/_header/_main_header/Header";
 import WaitingBall from "./component/waiting/waiting_ball/WaitingBall";
+// 
+import Header from "./component/_header/_main_header/Header";
 import BackTop from "./component/_back_to_top/BackTop";
-import MainFooter from "./component/_footer/_main_footer/MainFooter";
+import Footer from "./component/_footer/_main/Footer";
 import Contact from "./component/_contact/Contact";
-// import Chat from './component/_chat/_main/ChatRealtime';
+
 import Chat from "./component/_chat/_main/ChatRealtime";
 import ChatU from "./component/_chat/chat_user/ChatU";
 import ZoomVidPics from "./component/_zoom_vid_pics/_main/ZoomVidPics";
@@ -33,6 +34,7 @@ import ScreenUpdate from "./component/_screen_post/update/_main/ScreenUpdate";
 import ScreenLike from "./component/_screen_post/like/_main/ScreenLike";
 import ScreenPermission from "./component/_screen_post/permission/_main/ScreenPermission";
 import ScreenBlurFetching from "./component/_screen_blur/fetching/_main/ScreenBlurFetching";
+import ScreenNotice from "./component/_screen_blur/notice/ScreenNotice";
 
 // App
 class App extends Component {
@@ -45,49 +47,57 @@ class App extends Component {
     }
   };
 
-  // zoom vid pics
+  // 
   refZoom = (elm) => {
     if (elm !== null) {
       this.openZoomVidPics = elm.openZoomVidPics;
     }
   };
 
-  // zoom vid pics
+  // 
   refCanvas = (elm) => {
     if (elm !== null) {
       this.toggleCanvasFixed = elm.toggleCanvasFixed;
     }
   };
 
-  // snow drop
+  // p
   refSnowDrop = (elm) => {
     if (elm !== null) {
       this.toggleSnowFlower = elm.toggleSnowFlower;
     }
   };
 
-  // screen confirm
+  // 
   refScreenConfirm = (elm) => {
     if (elm !== null) {
       this.openScreenConfirm = elm.openScreenConfirm;
     }
   };
 
-  // screen history
+  // 
+  refScreenNotice = (elm) => {
+    if (elm !== null) {
+      this.openScreenNotice = elm.openScreenNotice;
+      this.closeScreenNotice = elm.closeScreenNotice;
+    }
+  };
+
+  // 
   refScreenHistory = (elm) => {
     if (elm !== null) {
       this.openScreenHistory = elm.openScreenHistory;
     }
   };
 
-  // screen share
+  // 
   refScreenShare = (elm) => {
     if (elm !== null) {
       this.openScreenShare = elm.openScreenShare;
     }
   };
 
-  // screen update
+  // 
   refScreenUpdate = (elm) => {
     if (elm !== null) {
       this.openScreenUpdate = elm.openScreenUpdate;
@@ -95,21 +105,21 @@ class App extends Component {
     }
   };
 
-  // screen update
+  // 
   refScreenLike = (elm) => {
     if (elm !== null) {
       this.openScreenLike = elm.openScreenLike;
     }
   };
 
-  // screen permission
+  // 
   refScreenPermission = (elm) => {
     if (elm !== null) {
       this.openScreenPermission = elm.openScreenPermission;
     }
   };
 
-  // screen fetching
+  //
   refScreenFetching = (elm) => {
     if (elm != null) {
       this.openScreenFetching = elm.openScreenFetching;
@@ -133,6 +143,7 @@ class App extends Component {
             toggleSnowFlower={this.toggleSnowFlower}
             //
             openScreenConfirm={this.openScreenConfirm}
+            openScreenNotice={this.openScreenNotice}
             openScreenHistory={this.openScreenHistory}
             openScreenShare={this.openScreenShare}
             openScreenUpdate={this.openScreenUpdate}
@@ -141,6 +152,7 @@ class App extends Component {
             openScreenFetching={this.openScreenFetching}
             //
             closeScreenUpdate={this.closeScreenUpdate}
+            closeScreenNotice={this.closeScreenNotice}
             closeScreenFetching={this.closeScreenFetching}
           >
             <div className="App">
@@ -187,7 +199,7 @@ class App extends Component {
 
               {/* Footer */}
               <footer className="AppFooter">
-                <MainFooter />
+                <Footer />
               </footer>
 
               {/* Back to top */}
@@ -248,6 +260,10 @@ class App extends Component {
 
               <div>
                 <ScreenConfirm ref={this.refScreenConfirm} />
+              </div>
+
+              <div>
+                <ScreenNotice ref={this.refScreenNotice} />
               </div>
 
               <div>

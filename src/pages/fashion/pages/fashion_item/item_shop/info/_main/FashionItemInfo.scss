@@ -1,0 +1,38 @@
+
+//
+.FashionItemInfo_col{
+    width: 50%;
+    padding: 0.5rem;
+}
+
+
+
+
+//
+@media (max-width: 600px) {
+    .FashionItemInfo_img {
+        height: 90vw;
+    }
+    //
+    .FashionItemInfo_row{
+        display: block;
+    }
+    //
+    .FashionItemInfo_col{
+        width: 100%;
+    }
+    //
+    .FashionItemInfo__num {
+        & > div {
+            &:nth-child(2) {
+                width: 6rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 300px){
+    .FashionItemInfo_amount{
+        display: block;
+    }
+}

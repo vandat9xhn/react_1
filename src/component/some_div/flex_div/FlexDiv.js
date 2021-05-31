@@ -7,28 +7,38 @@ import './FlexDiv.scss';
 FlexDiv.propTypes = {
     is_reverse: PropTypes.bool,
     space_between: PropTypes.bool,
+    align_center: PropTypes.bool,
+
     ComponentLeft: PropTypes.element,
-    ComponentRight: PropTypes.oneOfType([
-        PropTypes.element, PropTypes.string,
-    ]),
+    ComponentRight: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
 };
 
 FlexDiv.defaultProps = {
     is_reverse: false,
     space_between: false,
+    align_center: true,
 };
 
 //
 function FlexDiv(props) {
-    const { is_reverse, space_between, ComponentLeft, ComponentRight } = props;
+    const {
+        is_reverse,
+        space_between,
+        align_center,
+        
+        ComponentLeft,
+        ComponentRight,
+    } = props;
 
     //
     return (
         <div className="FlexDiv">
             <div
-                className={`FlexDiv_row display-flex align-items-center ${
+                className={`FlexDiv_row display-flex ${
                     is_reverse ? 'row-reverse' : ''
-                } ${space_between ? 'space-between' : ''}`}
+                } ${space_between ? 'space-between' : ''} ${
+                    align_center ? 'align-items-center' : ''
+                }`}
             >
                 <div
                     className={`FlexDiv_left ${

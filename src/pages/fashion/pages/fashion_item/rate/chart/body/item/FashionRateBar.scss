@@ -1,0 +1,21 @@
+
+.FashionRateBar_bar{
+    flex-grow: 1;
+}
+
+.FashionRateBar_rate{
+    width: 4rem;
+    padding-left: 1rem;
+}
+
+
+//
+@media (max-width: 300px){
+    .FashionRateBar_rate{
+        display: none;
+    }
+
+    .FashionRateBar_bar{
+        max-width: calc(100% - 3.5rem);
+    }
+}

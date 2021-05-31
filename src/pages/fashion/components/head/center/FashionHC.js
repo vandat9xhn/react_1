@@ -29,31 +29,29 @@ function FashionHC(props) {
     //
     return (
         <div className="FashionHC">
-            <div className="FashionHC_contain">
-                <div className="FashionHC_input">
-                    <InputSearch
-                        value_search={value_search}
-                        default_search=""
-                        handled={handled}
-                        placeholder="Search for name, product"
-                        handleChangeSearch={handleChangeValueSearch}
-                        onSearch={handleSearchFashion}
-                    />
-                </div>
+            <div className="FashionHC_input">
+                <InputSearch
+                    value_search={value_search}
+                    default_search=""
+                    handled={handled}
+                    placeholder="Search for name, product"
+                    handleChangeSearch={handleChangeValueSearch}
+                    onSearch={handleSearchFashion}
+                />
+            </div>
 
-                <div className="FashionHC_search">
-                    <div className="FashionHC_search-row">
-                        {searches.map((search, ix) => (
-                            <div key={`FashionHC_${ix}`}>
-                                <CustomLink
-                                    to={`/fashion/search?q=${search}`}
-                                    className="normal-text"
-                                >
-                                    {search}
-                                </CustomLink>
-                            </div>
-                        ))}
-                    </div>
+            <div className="FashionHC_search">
+                <div className="FashionHC_search-row">
+                    {searches.map((search, ix) => (
+                        <div key={`FashionHC_${ix}`}>
+                            <CustomLink
+                                to={`/fashion/search?q=${search}`}
+                                className="normal-text"
+                            >
+                                {search}
+                            </CustomLink>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

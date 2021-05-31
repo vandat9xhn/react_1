@@ -2,14 +2,21 @@ import { API_Friends_LC } from '../../../api/api_django/user/user_friend/UserFri
 import { API_Post_L } from '../../../api/api_django/user/user_post/UserPost';
 
 import {
-    API_UserAboutEmail_U,
-    API_UserAboutPhone_U,
-    API_UserAboutOverview_R,
-    // 
     API_UserAlbumVidPic_L,
     API_UserProfile_RU,
     API_UserVidPic_L,
+    // 
+    API_UserAboutOverview_R,
+
+    API_UserAboutEmail_U,
+    API_UserAboutPhone_U,
     API_UserAboutPhone_C,
+    API_UserAboutAddress_C,
+    API_UserAboutAddress_U,
+    
+    API_UserAboutGender_U,
+    API_UserAboutLang_U,
+    API_UserAboutLang_C,
 } from '../../../api/api_django/user/user_profile/UserProfile';
 
 import makeFormData from '../../../_some_function/makeFormData';
@@ -77,12 +84,12 @@ export async function handle_API_ProfileUser_R(pk) {
 /* ------------------ ABOUT ----------------- */
 
 // overview
-export async function handle_API_UserOverview_r({user_id}) {
+export async function handle_API_UserOverview_r({ user_id }) {
     const res = await API_UserAboutOverview_R({
-        profile_model: user_id
-    })
+        profile_model: user_id,
+    });
 
-    return res.data
+    return res.data;
 }
 
 // email
@@ -99,14 +106,11 @@ export async function handle_API_PermissionEmail_U({
         })
     );
 
-    return res.data
+    return res.data;
 }
 
 // phone
-export async function handle_API_Phone_C({
-    phone = '',
-    permission = 0,
-}) {
+export async function handle_API_Phone_C({ phone = '', permission = 0 }) {
     const res = await API_UserAboutPhone_C(
         makeFormData({
             phone: phone,
@@ -114,19 +118,84 @@ export async function handle_API_Phone_C({
         })
     );
 
-    return res.data
+    return res.data;
 }
 
 export async function handle_API_Phone_U({
+    id = 0,
     phone = '',
     permission = 0,
 }) {
     const res = await API_UserAboutPhone_U(
+        id,
         makeFormData({
             phone: phone,
             permission: permission,
         })
     );
 
-    return res.data
+    return res.data;
+}
+
+// address
+export async function handle_API_Address_C({ address = '', permission = 0 }) {
+    const res = await API_UserAboutAddress_C(
+        makeFormData({
+            address: address,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+export async function handle_API_Address_U({
+    id = 0,
+    address = '',
+    permission = 0,
+}) {
+    const res = await API_UserAboutAddress_U(
+        id,
+        makeFormData({
+            address: address,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// gender
+export async function handle_API_Gender_U({ gender = '', permission = 0 }) {
+    const res = await API_UserAboutGender_U(
+        makeFormData({
+            gender: gender,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// gender
+export async function handle_API_Lang_U({ lang = '', permission = 0 }) {
+    const res = await API_UserAboutLang_U(
+        makeFormData({
+            lang: lang,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+export async function handle_API_Lang_C({ lang = '', permission = 0 }) {
+    const res = await API_UserAboutLang_C(
+        makeFormData({
+            lang: lang,
+            permission: permission,
+        })
+    );
+
+    return res.data;
 }

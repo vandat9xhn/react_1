@@ -7,7 +7,7 @@ import CircleLoading from '../../../../../../../component/waiting/circle_loading
 import ScreenBlurShowMore from '../../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
 //
 import CancelItem from '../Cancel_item/CancelItem';
-import { params_cancel } from '../../../../../_params/FashionParams';
+import { params_cancel } from '../../../../../__params/home/FashionParams';
 // 
 import './BillCancel.scss';
 

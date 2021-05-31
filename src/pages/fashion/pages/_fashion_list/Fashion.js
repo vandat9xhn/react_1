@@ -8,6 +8,7 @@ import {
 import ButtonRipple from '../../../../component/button/button_ripple/ButtonRipple';
 import WaitingBall from '../../../../component/waiting/waiting_ball/WaitingBall';
 import ProductItem from '../../../../component/products/product_item/ProductItem';
+import ScreenBlurShowMore from '../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
 //
 import FashionBC from '../../components/banner/banner_carousel/_main/FashionBC';
 import FashionLN from '../../components/banner/list_names/FashionLN';
@@ -44,6 +45,7 @@ class Fashion extends Component {
     //
     getListHotImage = async () => {
         const res = await API_FashionHotImage_L();
+        console.log(res.data);
         const hot_images = res.data.map((item) => item.vid_pic);
         //
         this.setState({
@@ -109,11 +111,7 @@ class Fashion extends Component {
                                 images={
                                     has_fetched
                                         ? hot_images
-                                        : [
-                                              image_loading,
-                                              image_loading,
-                                              image_loading,
-                                          ]
+                                        : Array(4).fill(image_loading)
                                 }
                             />
                         </div>
@@ -130,53 +128,43 @@ class Fashion extends Component {
                         <ul className="Fashion__list">
                             {(has_fetched
                                 ? list
-                                : new Array(5).fill({ vid_pics: [] })
-                            ).map((item, index) => {
-                                const {
-                                    id,
-                                    vid_pics,
-                                    name,
-                                    new_price,
-                                    old_price,
-                                } = item;
-                                return (
-                                    <li key={index} className="Fashion__item">
-                                        <ProductItem
-                                            link={'/fashion:' + id}
-                                            img={
-                                                vid_pics.length
-                                                    ? vid_pics[0].vid_pic
-                                                    : undefined
-                                            }
-                                            name={name}
-                                            new_price={new_price}
-                                            old_price={old_price}
-                                        />
-                                    </li>
-                                );
-                            })}
+                                : Array(5).fill({ vid_pics: [] })
+                            ).map((item, ix) => (
+                                <li
+                                    key={`Fashion_item_${item.id || ix}`}
+                                    className="Fashion__item"
+                                >
+                                    <ProductItem
+                                        link={`/fashion:${item.id}`}
+                                        img={
+                                            item.vid_pics.length
+                                                ? item.vid_pics[0].vid_pic
+                                                : undefined
+                                        }
+                                        name={item.name}
+                                        new_price={item.new_price}
+                                        old_price={item.old_price}
+                                    />
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <br />
 
-                    {/* waiting and get more */}
-                    <div
-                        className={
-                            count > list.length && has_fetched
-                                ? 'Fashion_more'
-                                : 'display-none'
+                    <ScreenBlurShowMore
+                        title={
+                            <ButtonRipple
+                                disabled={is_fetching}
+                                ripple_type="center"
+                            >
+                                More product...
+                            </ButtonRipple>
                         }
-                    >
-                        <WaitingBall is_animate={is_fetching} />
-                        <ButtonRipple
-                            disabled={is_fetching}
-                            onClick={this.getListProductFashion}
-                            ripple_type="center"
-                        >
-                            More product...
-                        </ButtonRipple>
-                    </div>
-                    <br />
+                        is_show_more={count > list.length}
+                        is_fetching={is_fetching && has_fetched}
+                        handleShowMore={this.getListProductFashion}
+                        FetchingComponent={WaitingBall}
+                    />
                 </div>
             </div>
         );

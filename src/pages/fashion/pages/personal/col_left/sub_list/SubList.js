@@ -39,7 +39,7 @@ function SubList(props) {
                             to={`/fashion/personal${sub_item.link}`}
                             replace
                         >
-                            <div className="padding-8px">
+                            <div className="padding-8px text-secondary label-field">
                                 {sub_item.title}
                             </div>
                         </NavLink>

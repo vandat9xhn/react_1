@@ -41,7 +41,9 @@ export const API_FashionCart_UD = (method, data = {}) =>
 // get create buy
 export const API_FashionBuy_LC = (method, params = {}, data = {}) =>
     API_FakeReal(
-        default_arr_buy.filter((item) => item.status.toLocaleLowerCase() == params.status),
+        default_arr_buy.filter(
+            (item) => item.status.toLocaleLowerCase() == params.status
+        ),
         () =>
             axiosDjangoClient({
                 url: '/fashion-api/lc-buy/',
@@ -63,29 +65,34 @@ export const API_FashionBuyProduct_D = (buy_product_id) =>
 export const API_FashionCancelProduct_L = (params = {}) =>
     API_FakeReal(
         default_arr_cancel,
-        () => axiosDjangoClient({
-            url: '/fashion-api/l-cancel/',
-            method: 'GET',
-            params: params,
-        }),
+        () =>
+            axiosDjangoClient({
+                url: '/fashion-api/l-cancel/',
+                method: 'GET',
+                params: params,
+            }),
         params
     );
 
 // create rate
 export const API_FashionRate_C = (data) =>
-    axiosDjangoClient({
-        url: '/fashion-api/c-rate/',
-        method: 'POST',
-        data: data,
-    });
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/fashion-api/rate-c/',
+            method: 'POST',
+            data: data,
+        })
+    );
 
 // create comment
 export const API_FashionComment_C = (data) =>
-    axiosDjangoClient({
-        url: '/fashion-api/c-comment/',
-        method: 'POST',
-        data: data,
-    });
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/fashion-api/comment-c/',
+            method: 'POST',
+            data: data,
+        })
+    );
 
 // transport
 export const API_FashionTransport_L = (params) =>

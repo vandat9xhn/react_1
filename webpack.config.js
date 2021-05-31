@@ -32,12 +32,17 @@ const devServer = {
     contentBase: '/',
 };
 
-// Development or Production
+//
 const is_prod = process.env.ENVIRONMENT === 'production';
 // const is_prod = true;
 
 // Config
 const config = {
+    // resolve: {
+        // alias: {
+        //     '': path.resolve(__dirname, './src'),
+        // },
+    // },
     // entry
     entry: {
         app: './src/index.js',
@@ -55,17 +60,16 @@ const config = {
     // module
     module: {
         rules: [
-            // file js
+            //
             {
                 use: ['babel-loader' /*, 'eslint-loader'*/],
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
             },
 
-            // file scss css sass
+            //
             {
                 use: [
-                    // When being is_prod, it will use 'style-loader': css will be injected into multiple <style></style>, it works faster
                     is_prod ? MiniCssExtractPlugin.loader : 'style-loader',
                     { loader: 'css-loader', options: { sourceMap: true } },
                     { loader: 'sass-loader' },
@@ -73,7 +77,7 @@ const config = {
                 test: /\.(c|sa|sc)ss$/,
             },
 
-            // image video svg
+            //
             {
                 loader: 'file-loader',
                 test: /\.(png|svg|jpe?g|gif|woff2?|eot|ttf|wav|mp3|mp4|ico)$/,

@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import AddDiv from '../../../../../../../../component/some_div/add_div/AddDiv';
-// 
+//
 import PfAboutEmail from '../email/_main/PfAboutEmail';
 import PfAboutPhone from '../phone/_main/PfAboutPhone';
+import PfAboutAddress from '../address/_main/PfAboutAddress';
 
-// 
+//
 PfAboutContact.propTypes = {};
 
-// 
-function PfAboutContact({phone_arr, email_obj}) {
-
-
-    // 
+//
+function PfAboutContact({ phone_arr, address_arr, email_obj }) {
+    //
     return (
         <div className="PfAboutContact">
             <h3 className="PfAbout_title">Contact info</h3>
@@ -23,7 +22,7 @@ function PfAboutContact({phone_arr, email_obj}) {
             </div>
 
             <div className="PfAbout_add">
-                <AddDiv>Add your address</AddDiv>
+                <PfAboutAddress address_arr={address_arr} />
             </div>
 
             <div>

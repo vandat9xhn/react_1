@@ -10,7 +10,7 @@ import { ParseLocationSearch } from '../../../../../../../_some_function/ParseLo
 import CircleLoading from '../../../../../../../component/waiting/circle_loading/CircleLoading';
 import ScreenBlurShowMore from '../../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
 //
-import { params_buy } from '../../../../../_params/FashionParams';
+import { params_buy } from '../../../../../__params/home/FashionParams';
 
 import BuyingStage from '../buying_stage/_main/BuyingStage';
 import BuyingShop from '../buying_shop/BuyingShop';

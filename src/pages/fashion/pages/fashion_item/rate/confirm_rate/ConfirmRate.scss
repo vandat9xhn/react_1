@@ -1,0 +1,17 @@
+
+.ConfirmRate_rate{
+    margin: 1rem auto;
+    width: fit-content;
+}
+
+.ConfirmRate_textarea{
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--md-bg-ccc);
+
+    resize: none;
+    outline: none;
+    &:focus{
+        border: 1px solid var(--blue);
+    }
+}

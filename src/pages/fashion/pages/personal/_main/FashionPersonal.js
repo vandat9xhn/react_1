@@ -12,6 +12,7 @@ import PersonalLeft from '../col_left/_main/PersonalLeft';
 import FashionH from '../../../components/head/_main/FashionH';
 //
 import './FashionPersonal.scss';
+import './FashionPersonalRes.scss';
 
 //
 FashionPersonal.propTypes = {};
@@ -66,7 +67,7 @@ function FashionPersonal(props) {
                     <div className="FashionPersonal_contain">
                         <div className="FashionPersonal_row">
                             <div
-                                className={`FashionPersonal_left box-shadow-1 brs-5px ${
+                                className={`FashionPersonal_left bg-primary box-shadow-1 ${
                                     is_open ? '' : 'FashionPersonal_left-hidden'
                                 }`}
                             >
@@ -95,7 +96,7 @@ function FashionPersonal(props) {
                                 </div>
                             </div>
 
-                            <div className="FashionPersonal_right">
+                            <div className="FashionPersonal_right bg-primary box-shadow-1">
                                 <RouteLoaded
                                     route_arr={FashionRoutes}
                                     route_loaded_arr={route_loaded_arr}

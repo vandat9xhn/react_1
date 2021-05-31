@@ -1,0 +1,29 @@
+
+// ..
+.FooterBody_col {
+    width: 33%;
+    div {
+        padding: 0.5rem 0;
+    }
+    &:nth-child(-n + 2) {
+        div {
+            color: var(--blue);
+        }
+    }
+}
+
+//
+@media (max-width: 600px) {
+    // .
+    .FooterBody_row {
+        display: block;
+        padding: 0.25rem;
+    }
+    // ..
+    .FooterBody_col {
+        width: 100%;
+        div {
+            padding: 0.25rem;
+        }
+    }
+}

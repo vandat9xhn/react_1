@@ -1,0 +1,13 @@
+
+.HeaderMessHead{
+    max-width: 100%;
+    overflow-x: auto;
+    user-select: none;
+    
+    &::-webkit-scrollbar{
+        height: 0;
+    }
+    img{
+        -webkit-user-drag: none;
+    }
+}

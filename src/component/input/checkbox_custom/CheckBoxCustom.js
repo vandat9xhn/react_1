@@ -15,6 +15,7 @@ CheckBoxCustom.propTypes = {
 //
 function CheckBoxCustom(props) {
     const { checked, title, handleChangeChecked } = props;
+    
     //
     return (
         <div className="CheckBoxCustom">

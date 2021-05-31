@@ -13,7 +13,7 @@ import makeFormData from '../../../../../_some_function/makeFormData';
 import ConfirmDiv from '../../../../../component/some_div/confirm_div/ConfirmDiv';
 import CircleLoading from '../../../../../component/waiting/circle_loading/CircleLoading';
 // 
-import { params_cart } from '../../../_params/FashionParams';
+import { params_cart } from '../../../__params/home/FashionParams';
 
 import { actionFashionChangeCountCart } from '../../../../../redux/action/action_count_cart';
 

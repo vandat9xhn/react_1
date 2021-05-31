@@ -72,10 +72,10 @@ export const API_UserAboutEmail_U = (data) =>
     );
 
 // phone
-export const API_UserAboutPhone_U = (data) =>
+export const API_UserAboutPhone_U = (id, data) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
-            url: '/user/about-phone-u/',
+            url: '/user/about-phone-u/' + id + '/',
             method: 'PATCH',
             data: data,
         })
@@ -84,7 +84,55 @@ export const API_UserAboutPhone_U = (data) =>
 export const API_UserAboutPhone_C = (data) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
-            url: '/user/about-phone-C/',
+            url: '/user/about-phone-c/',
+            method: 'POST',
+            data: data,
+        })
+    );
+
+// address
+export const API_UserAboutAddress_U = (id, data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-address-u/' + id + '/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+export const API_UserAboutAddress_C = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-address-C/',
+            method: 'POST',
+            data: data,
+        })
+    );
+
+// gender
+export const API_UserAboutGender_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-gender-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+// lang
+export const API_UserAboutLang_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-lang-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+export const API_UserAboutLang_C = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-lang-c/',
             method: 'POST',
             data: data,
         })

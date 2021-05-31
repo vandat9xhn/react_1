@@ -8,14 +8,19 @@ RadioCustom.propTypes = {
 };
 RadioCustom.defaultProps = {
     is_active: false,
-}
+};
 
 //
 function RadioCustom(props) {
-    const {is_active} = props;
+    const { is_active } = props;
 
+    // 
     return (
-        <div className={`RadioCustom brs-50 ${is_active ? 'RadioCustom_active' : 'RadioCustom_inactive'}`}>
+        <div
+            className={`RadioCustom brs-50 ${
+                is_active ? 'RadioCustom_active' : 'RadioCustom_inactive'
+            }`}
+        >
             <div className="RadioCustom_center brs-50"></div>
         </div>
     );

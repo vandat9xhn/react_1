@@ -4,7 +4,7 @@
  */
 export function FuncPagination(count, num_side_center, current){
     const num_center = num_side_center * 2 + 1;
-    //
+    
     if (count <= 2) {
         return [[], false, false]
     }

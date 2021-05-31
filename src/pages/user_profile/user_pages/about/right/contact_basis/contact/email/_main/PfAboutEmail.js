@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IconsProfileAbout } from '../../../../../../../../../_groups_icon/about/GroupIconProfileAbout';
-// 
+//
 import { handle_API_PermissionEmail_U } from '../../../../../../../__handle_api/ProfileHandleAPI';
 
 import AboutRowItemEdit from '../../../../_component/row_item_edit/AboutRowItemEdit';
@@ -25,18 +25,23 @@ function PfAboutEmail(props) {
 
         email_obj.permission = permission;
         email_obj.email = email;
+        email_obj.title = email;
     }
 
     //
     return (
         <div>
-            <AboutRowItemEdit
-                item_obj={email_obj}
-                Icon={IconsProfileAbout.email}
-                ComponentEdit={PfAbEmailEdit}
-                handle_API_U={handle_API_PermissionEmail_U}
-                handleUpdateItemObj={handleUpdateItemObj}
-            />
+            <div className="label-field text-secondary">Mail</div>
+
+            <div>
+                <AboutRowItemEdit
+                    item_obj={email_obj}
+                    Icon={IconsProfileAbout.email}
+                    ComponentEdit={PfAbEmailEdit}
+                    handle_API_U={handle_API_PermissionEmail_U}
+                    handleUpdateItemObj={handleUpdateItemObj}
+                />
+            </div>
         </div>
     );
 }

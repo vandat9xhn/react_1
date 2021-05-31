@@ -1,7 +1,7 @@
-// Make Form Data
+//
 function makeFormData(data = {}) {
     const formData = new FormData();
-    //
+    
     for (const key in data) {
         if (Array.isArray(data[key])) {
             for(const item of data[key]){
@@ -11,7 +11,7 @@ function makeFormData(data = {}) {
             formData.append(key, data[key]);
         }
     }
-    //
+    
     return formData;
 }
 

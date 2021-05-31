@@ -2,13 +2,14 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useRouteLoaded } from '../../../../../../_custom_hooks/useRouteLoaded';
+
+import { handleScrollSmooth } from '../../../../../../_some_function/handleScrollSmooth';
 //
 import RouteLoaded from '../../../../../../component/_route/route_loaded/RouteLoaded';
 //
 import { AboutRoutes, about_search_arr } from '../../__common/routes/routes';
 //
 import './AboutRight.scss';
-import { handleScrollSmooth } from '../../../../../../_some_function/handleScrollSmooth';
 
 //
 AboutRight.propTypes = {};
@@ -32,11 +33,8 @@ function AboutRight(props) {
                 ref_about_right.current.scrollIntoView(false)
             })
         }
-
-        console.log(1);
     }
 
-    // console.log(1);
     //
     return (
         <div ref={ref_about_right}>

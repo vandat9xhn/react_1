@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
-import PaginationItem from '../page_item/PaginationItem';
+//
 import { FuncPagination } from '../func_page/FuncPagination';
-// 
+import PaginationItem from '../page_item/PaginationItem';
+//
 import './Pagination.scss';
 
 //
@@ -17,12 +17,14 @@ Pagination.propTypes = {
 /**
  * num_center = num_side_center * 2 + 1
  */
-function Pagination(props) {
-    const { count, num_side_center, current, handleChangePage } = props;
+function Pagination({ count, num_side_center, current, handleChangePage }) {
     //
-    const [arr_center, more_left, more_right] = FuncPagination(count, num_side_center, current)
+    const [arr_center, more_left, more_right] = FuncPagination(
+        count,
+        num_side_center,
+        current
+    );
 
-    
     //
     return (
         <div className="Pagination">
@@ -35,7 +37,9 @@ function Pagination(props) {
                     />
 
                     <div>
-                        <div className={more_left ? '' : 'display-none'}>...</div>
+                        <div className={more_left ? '' : 'display-none'}>
+                            ...
+                        </div>
                     </div>
 
                     {arr_center.map((num_page) => (
@@ -48,20 +52,18 @@ function Pagination(props) {
                     ))}
 
                     <div>
-                        <div
-                            className={more_right ? '' : 'display-none'}
-                        >
+                        <div className={more_right ? '' : 'display-none'}>
                             ...
                         </div>
                     </div>
-                    
-                    {count > 1 &&
+
+                    {count > 1 && (
                         <PaginationItem
                             num_page={count}
                             is_active={count == current}
                             handleChangePage={handleChangePage}
                         />
-                    }
+                    )}
                 </div>
             </div>
         </div>

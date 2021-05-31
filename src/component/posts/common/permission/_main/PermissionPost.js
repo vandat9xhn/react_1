@@ -14,7 +14,7 @@ PermissionPost.propTypes = {
 
 PermissionPost.defaultProps = {
     permission_post: 0,
-}
+};
 
 //
 function PermissionPost(props) {
@@ -22,20 +22,22 @@ function PermissionPost(props) {
     //
     return (
         <div className="PermissionPost font-italic">
-            <span
-                className="PermissionPost_time"
-                title={new Date(updated_time).toLocaleString()}
-            >
-                {UnitTime(
-                    new Date().getTime() - new Date(updated_time).getTime()
-                )}
-            </span>
+            <div className="inline-flex align-items-center">
+                <span
+                    className="PermissionPost_time"
+                    title={new Date(updated_time).toLocaleString()}
+                >
+                    {UnitTime(
+                        new Date().getTime() - new Date(updated_time).getTime()
+                    )}
+                </span>
 
-            <span className="PermissionPost_delimiter">*</span>
+                <span className="PermissionPost_delimiter">*</span>
 
-            <span className="PermissionPost_permission">
-                <PermissionDiv permission={permission_post} />
-            </span>
+                <span className="PermissionPost_permission pointer-events-none">
+                    <PermissionDiv permission={permission_post} />
+                </span>
+            </div>
         </div>
     );
 }

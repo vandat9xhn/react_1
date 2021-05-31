@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { withRouter } from 'react-router';
 //
 import phone_img from '../../../image/contact phone.png';
 import IconsArrow from '../../_icons_svg/icons_arrow/IconsArrow';
@@ -11,13 +10,13 @@ function Contact() {
     const [is_open, setIsOpen] = useState(false);
     const [show_number, setShowNumber] = useState(false);
 
-    // toggle open
+    // 
     function toggleOpen() {
         setIsOpen(!is_open);
         show_number && setShowNumber(false);
     }
 
-    // number phone
+    // 
     function showNumberPhone() {
         !show_number && setShowNumber(true);
     }

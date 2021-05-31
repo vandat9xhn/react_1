@@ -13,6 +13,7 @@ import {
     data_list_zooms,
     default_friend_arr,
 } from '../zz_initial/InitialRightHeader';
+
 import HeaderMessage from '../message/_main/HeaderMessage';
 import HeaderAccount from '../account/_main/HeaderAccount';
 import HeaderNotice from '../notice/_main/HeaderNotice';
@@ -24,6 +25,7 @@ import './RightHeaderRes.scss';
 function RightHeader() {
     // context
     const { chat_class, openMessage, user } = useContext(context_api);
+    
     // state
     const [zoom_obj, setZoomObj] = useState({
         zooms: [],
@@ -37,6 +39,7 @@ function RightHeader() {
         count_new_notice: 0,
     });
     const [count_new_add_friend, setCountNewAddFriend] = useState(0);
+    
     // ref
     const ws = useRef(null);
 
@@ -243,7 +246,7 @@ function RightHeader() {
 
     //
     async function handleOpenNotice() {
-        notice_obj.count_new_notice = 0;
+        // notice_obj.count_new_notice = 0;
         setNoticeObj((notice_obj) => ({
             ...notice_obj,
             count_new_notice: 0,

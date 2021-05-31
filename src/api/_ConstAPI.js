@@ -6,9 +6,10 @@ const API_Fake = (new_data, params = {}) =>
     new Promise((res) => {
         const is_pagination = 'page' in params;
         const data = JSON.parse(JSON.stringify(new_data));
+        const is_arr = Array.isArray(data);
 
         setTimeout(() => {
-            const res_data = Array.isArray(data)
+            const res_data = is_arr
                 ? data.map((item, ix) => {
                       item.id =
                           ix +
@@ -18,9 +19,18 @@ const API_Fake = (new_data, params = {}) =>
                   })
                 : data;
 
-            is_pagination
-                ? res({ data: { data: res_data, pages: 8, count: 22 } })
-                : res({ data: res_data });
+            res(
+                is_pagination
+                    ? { data: { data: res_data, pages: 8, count: 22 } }
+                    : is_arr || typeof res_data != 'object'
+                    ? { data: res_data }
+                    : {
+                          data: {
+                              ...res_data,
+                              id: Math.round(Math.random() * 10000),
+                          },
+                      }
+            );
         }, 500);
     });
 

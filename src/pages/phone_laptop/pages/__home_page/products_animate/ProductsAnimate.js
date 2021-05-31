@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
-import ProductItem from '../../../../../component/products/product_item/ProductItem';
 import getWidthTransform from '../../../../../_some_function/getWidthTransform';
 import observerAppearance from '../../../../../_some_function/observerAppearance';
+// 
+import NextPrevDiv from '../../../../../component/some_div/next_prev_div/NextPrevDiv';
+import ProductItem from '../../../../../component/products/product_item/ProductItem';
 //
 import './ProductsAnimate.scss';
 
@@ -43,6 +44,7 @@ class ProductsAnimate extends Component {
         if (this.just_click) {
             return;
         }
+
         const [width_transform, max_width_transform] = getWidthTransform(
             'ProductsAnimate_row',
             'ProductsAnimate__0',
@@ -67,6 +69,7 @@ class ProductsAnimate extends Component {
         if (this.just_click) {
             return;
         }
+        
         const [width_transform, max_width_transform] = getWidthTransform(
             'ProductsAnimate_row',
             'ProductsAnimate__0',
@@ -155,27 +158,10 @@ class ProductsAnimate extends Component {
                             ))}
                         </div>
 
-                        {/* next */}
-                        <div className="ProductsAnimate_next">
-                            <div
-                                className="cursor-pointer hv-opacity"
-                                onClick={this.nextPhones}
-                                title="next"
-                            >
-                                <IconsArrow x={200} />
-                            </div>
-                        </div>
-
-                        {/* prev */}
-                        <div className="ProductsAnimate_prev">
-                            <div
-                                className="cursor-pointer hv-opacity"
-                                onClick={this.prevPhones}
-                                title="previous"
-                            >
-                                <IconsArrow x={400} />
-                            </div>
-                        </div>
+                        <NextPrevDiv
+                            handleNext={this.nextPhones}
+                            handlePrev={this.prevPhones}
+                        />
                     </div>
                 </div>
             </div>

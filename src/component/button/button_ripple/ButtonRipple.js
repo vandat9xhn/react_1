@@ -21,9 +21,10 @@ ButtonRipple.defaultProps = {
     disabled: false,
 };
 
-//
+/**
+ * ripple_type is one of ['right', 'left', 'center']
+ */
 function ButtonRipple(props) {
-    // ripple_type is one of ['right', 'left', 'center']
     const { children, onClick, type, disabled, ripple_type, title } = props;
 
     //

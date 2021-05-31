@@ -1,13 +1,15 @@
 //
-export function handleScrollSmooth(handleScrollTo = function () {}) {
-    document.getElementsByTagName('HTML')[0].style.scrollBehavior = 'smooth';
+export function handleScrollSmooth(
+    handleScrollTo = function () {},
+    elm = document.getElementsByTagName('HTML')[0],
+) {
+    elm.style.scrollBehavior = 'smooth';
 
     setTimeout(() => {
         handleScrollTo();
 
         setTimeout(() => {
-            document.getElementsByTagName('HTML')[0].style.scrollBehavior =
-                'auto';
+            elm.style.scrollBehavior = 'auto';
         }, 0);
     }, 0);
 }

@@ -1,9 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import IconFav from '../../../../../_icons_svg/_icon_fav/IconFav';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
+// 
+import IconFav from '../../../../../_icons_svg/_icon_fav/IconFav';
+// 
 import './FashionHL.scss';
+
 //
 FashionHL.propTypes = {
     

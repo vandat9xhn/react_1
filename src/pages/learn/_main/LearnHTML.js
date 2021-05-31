@@ -25,18 +25,6 @@ function LearnHTML() {
         runHTML();
     }, [])
 
-     // use effect
-     useEffect(() => {
-        window.addEventListener('keydown', handleMobileBack)
-    
-        return () => {
-            window.removeEventListener('keydown', handleMobileBack)
-        }
-    }, [])
-    function handleMobileBack(e){
-        alert(e.keyCode)
-    }
-
     // run html
     const runHTML = () => {
         const iframe = refIframe.current.contentWindow.document
@@ -117,7 +105,7 @@ function LearnHTML() {
                 <TestPagination />
             </div>
             
-            <TestWs />
+            {/* <TestWs /> */}
             
         </div>
     );

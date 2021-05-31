@@ -1,10 +1,10 @@
-// 
-const observeToDo = (elm, callback, threshold=0.9) => {
+//
+const observeToDo = (elm, callback = () => {}, threshold = 0.9) => {
     const observer = new IntersectionObserver(
         (entries, observer) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    callback()
+                    callback();
                     observer.unobserve(entry.target);
                 }
             });

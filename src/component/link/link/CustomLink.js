@@ -13,6 +13,7 @@ CustomLink.propTypes = {
 
 CustomLink.defaultProps = {
     replace: false,
+    onClick: () => {}
 };
 
 //
@@ -20,7 +21,7 @@ function CustomLink({ children, to, replace, className, onClick }) {
     //
     function handleClickLink(e) {
         to == location.pathname + location.search && e.preventDefault();
-        onClick()
+        onClick(e)
     }
 
     //

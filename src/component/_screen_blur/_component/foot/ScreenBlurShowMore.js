@@ -7,7 +7,7 @@ import './ScreenBlurShowMore.scss';
 
 //
 ScreenBlurShowMore.propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     is_show_more: PropTypes.bool,
     is_fetching: PropTypes.bool,
     //
@@ -25,14 +25,18 @@ function ScreenBlurShowMore(props) {
         title,
         is_show_more,
         is_fetching,
-        // 
+        //
         handleShowMore,
         FetchingComponent,
     } = props;
 
-    // 
+    //
     return (
-        <div className={!is_fetching && !is_show_more ? '' : 'ScreenBlurShowMore'}>
+        <div
+            className={
+                !is_fetching && !is_show_more ? '' : 'ScreenBlurShowMore'
+            }
+        >
             <div className="display-flex justify-content-center">
                 <div
                     className={

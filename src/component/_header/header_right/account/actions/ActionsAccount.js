@@ -1,29 +1,30 @@
-import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 
 import { LogoutRequest } from '../../../../../api/api_django_no_token/login_logout/LoginLogout';
-//
-import IconDiv from '../../../../some_div/icon_div/IconDiv';
+
+import { useScreenFetching } from '../../../../../_custom_hooks/UseScreenFetching';
+// 
 import IconsMode from '../../../../../_icons_svg/icons_mode/IconsMode';
-import SwitchDiv from '../../../../some_div/switch_div/_main/SwitchDiv';
-import ToggleSwitch from '../../../../some_div/switch_div/switch/Switch';
 import IconsAccount from '../../../../../_icons_svg/icons_account/IconsAccount';
-import PictureName from '../../../../picture_name/pic_name/PictureName';
 import IconsFlower from '../../../../../_icons_svg/icons_flower/IconsFlower';
-import BlurFetchingDiv from '../../../../some_div/fetching/BlurFetchingDiv';
-import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
 import IconsNature from '../../../../../_icons_svg/icons_nature/IconsNature';
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
+//
+import IconDiv from '../../../../some_div/icon_div/IconDiv';
+import SwitchDiv from '../../../../some_div/switch_div/_main/SwitchDiv';
+import PictureName from '../../../../picture_name/pic_name/PictureName';
+import FlexDiv from '../../../../some_div/flex_div/FlexDiv';
 //
 import HeaderNature from '../../nature/HeaderNature';
 //
 import './ActionsAccount.scss';
 
 //
-const arr_icons_nature = [IconsNature, IconsNature, IconsFlower];
+const icon_nature_obj = { snow: IconsNature, flower: IconsFlower };
 
 //
 ActionsAccount.propTypes = {
@@ -32,17 +33,24 @@ ActionsAccount.propTypes = {
 
 //
 function ActionsAccount(props) {
+    //
+    const { user, setDataUser, toggleSnowFlower } = useContext(context_api);
+
+    //
     const { closeAccount } = props;
+
     //
     const [light_mode, setLightMode] = useState(
         localStorage.light_mode != 0 ? 1 : 0
     );
     const [which_nature, setWhichNature] = useState('');
     const [open_choose_nature, setOpenChooseNature] = useState(false);
-    const [logging_out, setLoggingOut] = useState(false);
-    const [logout_success, setLogoutSuccess] = useState(false);
+
     //
-    const { user, setDataUser, toggleSnowFlower } = useContext(context_api);
+    const ref_logout_success = useRef(false);
+
+    //
+    const handleScreenFetching = useScreenFetching();
 
     //
     useEffect(() => {
@@ -54,7 +62,7 @@ function ActionsAccount(props) {
 
     /* ----------------- MODE ------------------ */
 
-    // func change mode
+    //
     function changeMode(new_mode) {
         if (new_mode != 1) {
             document.documentElement.setAttribute('data-theme', 'dark');
@@ -73,9 +81,10 @@ function ActionsAccount(props) {
                 );
     }
 
-    // on change mode
+    //
     function onChangeMode() {
         const new_light_mode = light_mode == 1 ? 0 : 1;
+
         changeMode(new_light_mode);
         setLightMode(new_light_mode);
         localStorage.light_mode = new_light_mode;
@@ -83,15 +92,15 @@ function ActionsAccount(props) {
 
     /* ----------------- NATURE ------------------ */
 
-    // open
+    //
     function seeNature() {
         setOpenChooseNature(true);
     }
-    // close
+    //
     function closeSeeNature() {
         setOpenChooseNature(false);
     }
-    // change
+    //
     function changeNature(new_which_nature) {
         toggleSnowFlower(new_which_nature);
         setWhichNature(new_which_nature);
@@ -114,11 +123,11 @@ function ActionsAccount(props) {
     //
     async function handleLogout() {
         try {
-            setLoggingOut(true);
-            await LogoutRequest();
+            await handleScreenFetching(() => LogoutRequest());
 
-            localStorage.light_mode = 1;
             handleBeForeLog();
+            ref_logout_success.current = true;
+            localStorage.light_mode = 1;
 
             setDataUser({
                 id: 0,
@@ -130,21 +139,15 @@ function ActionsAccount(props) {
             console.log(e);
             alert('Something went wrong!');
         } finally {
-            setLogoutSuccess(true);
-            setTimeout(() => {
-                setLogoutSuccess(false);
-                setLoggingOut(false);
-                closeAccount();
-            }, 0);
+            ref_logout_success.current = false;
+            closeAccount();
         }
     }
 
-    if (logout_success) {
+    //
+    if (!user.id && ref_logout_success.current) {
         return <Redirect to="/login-form" push />;
     }
-    //
-    const IconNature =
-        arr_icons_nature[['', 'snow', 'flower'].indexOf(which_nature)];
     //
     return (
         <div className="ActionsAccount">
@@ -182,17 +185,25 @@ function ActionsAccount(props) {
                             onClick={seeNature}
                             title="Choose nature effect"
                         >
-                            <IconDiv
-                                Icon={IconsArrow}
-                                x={200}
-                                y={200}
-                                is_reverse={true}
+                            <FlexDiv
+                                ComponentLeft={
+                                    <IconDiv
+                                        Icon={
+                                            which_nature
+                                                ? icon_nature_obj[which_nature]
+                                                : IconsNature
+                                        }
+                                    >
+                                        Nature Effect
+                                    </IconDiv>
+                                }
+                                ComponentRight={
+                                    <div className="ActionsAccount_nature-right">
+                                        <IconsArrow x={200} y={200} />
+                                    </div>
+                                }
                                 space_between={true}
-                            >
-                                <IconDiv Icon={IconNature}>
-                                    Nature Effect
-                                </IconDiv>
-                            </IconDiv>
+                            />
                         </div>
                     </div>
                 </div>
@@ -216,11 +227,6 @@ function ActionsAccount(props) {
                     </Link>
                 )}
             </div>
-
-            <BlurFetchingDiv
-                FetchingComponent={CircleLoading}
-                open_fetching={logging_out}
-            />
 
             <div className={open_choose_nature ? '' : 'display-none'}>
                 <HeaderNature

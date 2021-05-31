@@ -106,7 +106,7 @@ function ChatBd(props) {
                             is_on_input ? '' : 'ChatWd_friend-texting_close'
                         }`}
                     >
-                        <WaitingBall is_animate={is_on_input} />
+                        <WaitingBall open_fetching={is_on_input} />
                     </div>
                 </div>
             </div>

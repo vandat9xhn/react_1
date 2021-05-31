@@ -1,0 +1,18 @@
+
+.InputSelected{
+    padding: 2px 0 2px 8px;
+}
+
+.InputSelected_row{
+    display: inline-flex;
+    align-items: center;
+}
+
+// .
+.InputSelected_icon{
+    width: 28px;
+    height: 28px;
+    .IconsArrow_close{
+        stroke: var(--blue);
+    }
+}

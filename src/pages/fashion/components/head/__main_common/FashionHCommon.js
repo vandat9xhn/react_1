@@ -27,24 +27,22 @@ function FashionHCommon(props) {
     //
     return (
         <div className="FashionHCommon">
-            <div className="FashionHCommon_contain brs-5px">
-                <div className="FashionHCommon_row">
-                    <div className="FashionHCommon_left">
-                        <FashionHL />
-                    </div>
+            <div className="FashionHCommon_row display-flex align-items-center">
+                <div className="FashionHCommon_left">
+                    <FashionHL />
+                </div>
 
-                    <div className="FashionHCommon_center">
-                        <FashionHC
-                            handled={handled}
-                            value_search={value_search}
-                            handleChangeValueSearch={handleChangeValueSearch}
-                            handleSearchFashion={handleSearchFashion}
-                        />
-                    </div>
+                <div className="FashionHCommon_center">
+                    <FashionHC
+                        handled={handled}
+                        value_search={value_search}
+                        handleChangeValueSearch={handleChangeValueSearch}
+                        handleSearchFashion={handleSearchFashion}
+                    />
+                </div>
 
-                    <div className="FashionHCommon_right">
-                        {localStorage.is_login == 1 && <FashionHR />}
-                    </div>
+                <div className="FashionHCommon_right">
+                    {localStorage.is_login == 1 && <FashionHR />}
                 </div>
             </div>
         </div>

@@ -12,10 +12,11 @@ import {
     handle_API_ChatZoom_R,
     handle_API_ProfileFriend_L,
 } from '../__handle_api/ChatHandleAPI';
+
 //
 import ChatWd from '../chat_window/_main/ChatWdRealtime';
 //
-// import './Chat.scss';
+import './Chat.scss';
 
 //
 class Chat extends Component {

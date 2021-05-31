@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import CloseDiv from '../../../../some_div/close_div/CloseDiv';
 import IconsMenu from '../../../../../_icons_svg/icons_menu/IconsMenu';
 //
-import ListMessages from '../list_message/_main/ListMessages';
+import ListMessages from '../contain/_main/HeaderMessContain';
 //
 import './HeaderMessage.scss';
+import HeaderMessageIcon from '../icon/HeaderMessageIcon';
 
 //
 HeaderMessage.propTypes = {};
@@ -60,24 +61,16 @@ function HeaderMessage(props) {
     //
     return (
         <CloseDiv makeDivHidden={closeMessage}>
-            <div className={`HeaderMessage header_menu ${open_message ? 'bottom-blue nav-active' : ''}`}>
-                <div
-                    className="RightHeader__icon header_icon"
-                    onClick={onToggleOpenMessage}
-                    title="message"
-                    num-notice={count_new_zoom || undefined}
-                >
-                    <IconsMenu x={200} y={200} />
-
-                    <div
-                        className={
-                            count_new_zoom
-                                ? 'RightHeader__num-notice'
-                                : 'display-none'
-                        }
-                    >
-                        {count_new_zoom}
-                    </div>
+            <div
+                className={`HeaderMessage header_menu ${
+                    open_message ? 'bottom-blue nav-active' : ''
+                }`}
+            >
+                <div>
+                    <HeaderMessageIcon
+                        count_new_zoom={count_new_zoom}
+                        handleToggleOpenMessage={onToggleOpenMessage}
+                    />
                 </div>
 
                 <div

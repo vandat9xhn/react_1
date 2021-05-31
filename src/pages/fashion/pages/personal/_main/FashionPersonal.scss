@@ -14,8 +14,6 @@
 
 //
 .FashionPersonal_left {
-    // width: 10rem;
-    background-color: var(--md-bg-primary);
     transition: transform 0.3s;
     z-index: 2;
 }
@@ -30,11 +28,13 @@
     transition: all 0.3s;
 }
 .FashionPersonal_left-toggle-hidden {
-    right: -1.2rem;
+    right: -2rem;
     opacity: 0.5;
 }
 
 .FashionPersonal_left-icon {
+    width: 2rem;
+    height: 2rem;
     transition: transform 0.3s;
 }
 .FashionPersonal_left-icon-close {
@@ -52,24 +52,4 @@
 //
 .FashionPersonal_block {
     padding: 0.5rem;
-}
-
-//
-@media (max-width: 600px) {
-    .FashionPersonal_left {
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    .FashionPersonal_left-hidden {
-        transform: translateX(-100%);
-    }
-    .FashionPersonal_left-toggle {
-        display: block;
-    }
-
-    .FashionPersonal_right {
-        margin: 0;
-        padding: 0.1rem;
-    }
 }

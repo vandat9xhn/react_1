@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useScreenFetching } from '../../../../../../../_custom_hooks/UseScreenFetching';
 // 
 import AddDiv from '../../../../../../../component/some_div/add_div/AddDiv';
+import { useMounted } from '../../../../../../../_custom_hooks/useMounted';
 
 //
 PfAboutAdd.propTypes = {};
@@ -25,6 +26,7 @@ function PfAboutAdd(props) {
 
     //
     const handleScreenFetching = useScreenFetching();
+    const mounted = useMounted()
 
     //
     function openAdding() {
@@ -33,7 +35,7 @@ function PfAboutAdd(props) {
 
     //
     function closeAdding() {
-        setIsAdding(false);
+        mounted && setIsAdding(false);
     }
 
     //

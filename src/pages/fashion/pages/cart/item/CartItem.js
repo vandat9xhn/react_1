@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useNewCount } from '../../../../../_custom_hooks/useCount';
 //
 import ProductCartBuy from '../../../components/product_cart_buy/ProductCartBuy';
-// 
+//
 import './CartItem.scss';
 
 //
@@ -35,20 +35,22 @@ function CartItem(props) {
     } = props;
 
     const { product, quantity, checked } = cart_product;
+
     //
     const should_update = useRef(false);
+
     //
-    const [
+    const {
         count,
         countUp,
         countDown,
-        // 
         beforeCountNum,
         countNum,
         countNumDone,
-        // 
+        //
         changeMax,
-    ] = useNewCount(1, 1, 1, onCount);
+    } = useNewCount(1, 1, 1, onCount);
+
     //
     useEffect(() => {
         changeMax(product.total);
@@ -57,6 +59,7 @@ function CartItem(props) {
             should_update.current = true;
         }, 1);
     }, []);
+
     //
     function onCount(value) {
         should_update.current && handleCount(cart_ix, cart_product_ix, value);

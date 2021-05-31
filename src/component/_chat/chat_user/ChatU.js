@@ -2,13 +2,17 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../_context/ContextAPI';
+
 import { API_Friends_LC } from '../../../api/api_django/user/user_friend/UserFriend';
+
 import { useMounted } from '../../../_custom_hooks/useMounted';
+
 import { ScrollDown } from '../../../_some_function/ScrollDown';
 import observeToDo from '../../../_some_function/observerToDo';
 //
-import PicNameContent from '../../picture_name/pic_name_content/PicNameContent';
 import IconsArrow from '../../../_icons_svg/icons_arrow/IconsArrow';
+// 
+import PicNameContent from '../../picture_name/pic_name_content/PicNameContent';
 //
 import './ChatU.scss';
 
@@ -39,6 +43,14 @@ function ChatU() {
     useEffect(() => {
         observeToDo(ref_chat_user.current, getFriends, 0.1);
     }, []);
+
+    // 
+    useEffect(() => {
+        is_open && setFriendObj({
+            ...friend_obj,
+            is_open: false,
+        });
+    }, [location.href])
 
     /* --------------------- GET API -------------------- */
 

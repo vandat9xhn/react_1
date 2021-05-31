@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ScreenBlur from '../_main/ScreenBlur';
 import ScreenBlurHead from '../_component/head/ScreenBlurHead';
 import ScreenBlurFootYesNo from '../_component/foot_yes_no/ScreenBlurFootYesNo';
-// 
+//
 import './ScreenConfirm.scss';
 
 //
@@ -37,7 +37,7 @@ class ScreenConfirm extends Component {
 
     //
     onConfirm = () => {
-        const {handleConfirm} = this.state;
+        const { handleConfirm } = this.state;
         handleConfirm();
         this.closeScreenConfirm();
     };
@@ -49,31 +49,34 @@ class ScreenConfirm extends Component {
 
         //
         return (
-            open_confirm &&
-            <ScreenBlur
-                open_screen={open_confirm}
-                closeScreen={this.closeScreenConfirm}
-            >
-                <div className="ScreenConfirm_contain">
-                    <div className="ScreenConfirm_head">
-                        <ScreenBlurHead
-                            title={title}
-                            closeScreenBlur={this.closeScreenConfirm}
-                        />
-                    </div>
+            open_confirm && (
+                <ScreenBlur
+                    open_screen={open_confirm}
+                    closeScreen={this.closeScreenConfirm}
+                >
+                    <div className="ScreenConfirm_contain">
+                        <div className="ScreenConfirm_head">
+                            <ScreenBlurHead
+                                title={title}
+                                closeScreenBlur={this.closeScreenConfirm}
+                            />
+                        </div>
 
-                    <div>
-                        <div className="ScreenConfirm_body">{notification}</div>
-                    </div>
+                        <div>
+                            <div className="ScreenConfirm_body">
+                                {notification}
+                            </div>
+                        </div>
 
-                    <div className="ScreenConfirm_foot">
-                        <ScreenBlurFootYesNo
-                            handleConfirm={this.onConfirm}
-                            closeScreenBlur={this.closeScreenConfirm}
-                        />
+                        <div className="ScreenConfirm_foot">
+                            <ScreenBlurFootYesNo
+                                handleConfirm={this.onConfirm}
+                                closeScreenBlur={this.closeScreenConfirm}
+                            />
+                        </div>
                     </div>
-                </div>
-            </ScreenBlur>
+                </ScreenBlur>
+            )
         );
     }
 }

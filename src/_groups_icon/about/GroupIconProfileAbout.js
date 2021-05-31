@@ -27,5 +27,7 @@ export const IconsProfileAbout = {
     phone: <IconsProfile y={200} />,
     address: <IconsProfile />,
 
-    basis: <IconsProfile />,
+    gender: <IconsProfile />,
+    birth: <IconsProfile />,
+    lang: <IconsProfile />,
 };
