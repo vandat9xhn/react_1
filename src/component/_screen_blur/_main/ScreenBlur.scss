@@ -1,14 +1,14 @@
 
+.ScreenBlur{
+    z-index: var(--z-index-lv5);
+}
+
 .ScreenBlur_contain{
     max-width: 100vw;
     background-color: var(--md-bg-primary);
 }
 
-//
-// .ScreenBlur_body{
-//     margin: 1rem 0.5rem;
-// }
-///
+// .
 .ScreenBlur_body_contain{
     min-height: 5rem;
     max-height: calc(100vh - 8rem);

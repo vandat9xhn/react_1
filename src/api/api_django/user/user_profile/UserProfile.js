@@ -119,6 +119,16 @@ export const API_UserAboutGender_U = (data) =>
         })
     );
 
+// birth
+export const API_UserAboutBirth_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-birth-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
 // lang
 export const API_UserAboutLang_U = (data) =>
     API_FakeReal({}, () =>
@@ -133,6 +143,131 @@ export const API_UserAboutLang_C = (data) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
             url: '/user/about-lang-c/',
+            method: 'POST',
+            data: data,
+        })
+    );
+
+// You
+export const API_UserAboutYou_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-you-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+// Favour
+export const API_UserAboutFavour_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-favour-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+// Other name
+export const API_UserAboutOtherName_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-other-name-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+export const API_UserAboutOtherName_C = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-other-name-c/',
+            method: 'POST',
+            data: data,
+        })
+    );
+
+// Life Event
+export const API_UserAboutLifeEvent_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-life-event-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+export const API_UserAboutLifeEvent_C = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-life-event-c/',
+            method: 'POST',
+            data: data,
+        })
+    );
+
+// Town
+export const API_UserAboutTown_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-town-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+export const API_UserAboutTown_C = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-town-c/',
+            method: 'POST',
+            data: data,
+        })
+    );
+
+// City
+export const API_UserAboutCity_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-city-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+export const API_UserAboutCity_C = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-city-c/',
+            method: 'POST',
+            data: data,
+        })
+    );
+
+// relationship
+export const API_UserAboutRelationship_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-relationship-c/',
+            method: 'POST',
+            data: data,
+        })
+    );
+
+// family
+export const API_UserAboutFamily_U = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-family-u/',
+            method: 'PATCH',
+            data: data,
+        })
+    );
+
+export const API_UserAboutFamily_C = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/about-family-c/',
             method: 'POST',
             data: data,
         })

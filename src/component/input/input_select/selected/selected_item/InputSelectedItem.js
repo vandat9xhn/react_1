@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
+import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import './InputSelected.scss';
+import './InputSelectedItem.scss';
 
 //
-InputSelected.propTypes = {};
+InputSelectedItem.propTypes = {};
 
 //
-function InputSelected({ ix, item, handleRemoveSelectedItem }) {
+function InputSelectedItem({ ix, item, handleRemoveSelectedItem }) {
     //
     function onRemoveSelectedItem() {
         handleRemoveSelectedItem(ix);
@@ -17,13 +17,13 @@ function InputSelected({ ix, item, handleRemoveSelectedItem }) {
 
     //
     return (
-        <div className="InputSelected brs-8px bg-active-fb text-blue">
-            <div className="InputSelected_row">
+        <div className="InputSelectedItem brs-8px bg-active-fb text-blue">
+            <div className="InputSelectedItem_row">
                 <div className="inline-block label-field">{item}</div>
 
                 <div className="inline-block">
                     <div
-                        className="InputSelected_icon display-flex-center cursor-pointer brs-50 hv-bg-blur"
+                        className="InputSelectedItem_icon display-flex-center cursor-pointer brs-50 hv-bg-blur"
                         onClick={onRemoveSelectedItem}
                     >
                         <IconsArrow y={400} size_icon="1rem" />
@@ -34,4 +34,4 @@ function InputSelected({ ix, item, handleRemoveSelectedItem }) {
     );
 }
 
-export default InputSelected;
+export default InputSelectedItem;

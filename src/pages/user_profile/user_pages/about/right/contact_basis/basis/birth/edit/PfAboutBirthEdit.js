@@ -2,55 +2,43 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import PfAboutConfirm from '../../../../_component/confirm/PfAboutConfirm';
-import InputNotValid from '../../../../../../../../../component/input/input_not_valid/InputNotValid';
 
 //
-PfAboutPhoneEdit.propTypes = {
+PfAboutBirthEdit.propTypes = {
     item_obj: PropTypes.object,
     handleSave: PropTypes.func,
     handleCancel: PropTypes.func,
 };
 
 //
-function PfAboutPhoneEdit(props) {
+function PfAboutBirthEdit(props) {
     //
     const { item_obj, handleSave, handleCancel } = props;
 
-    const { permission, phone } = item_obj;
+    const { permission, birth } = item_obj;
 
     //
-    const [cur_phone, setCurPhone] = useState(phone);
-    const [phone_error, setPhoneError] = useState(false);
+    const [cur_birth, setCurBirth] = useState(birth);
 
     //
-    function handleChangePhone(e) {
-        setCurPhone(e.target.value);
+    function handleChangeBirth(e) {
+        setCurBirth(e.target.value);
     }
 
     function onSave(new_permission) {
-        if (/^\d{10}$/.test(cur_phone)) {
-            handleSave({ permission: new_permission, phone: cur_phone });
-        } else {
-            setPhoneError(true);
-        }
+        handleSave({ permission: new_permission, birth: cur_birth });
     }
 
     //
     return (
         <div>
-            <div className={phone_error ? 'text-red' : 'display-none'}>
-                <div>Phone must have 10 numbers!</div>
-                <br />
-            </div>
-
             <div>
                 <div className="PfAbout_input">
-                    <InputNotValid
-                        name="phone"
-                        value={cur_phone}
-                        type="tel"
-                        placeholder="Your phone"
-                        handleChange={handleChangePhone}
+                    <input
+                        value={cur_birth}
+                        type="date"
+                        max={new Date().toJSON().slice(0, 10)}
+                        onChange={handleChangeBirth}
                     />
                 </div>
             </div>
@@ -66,4 +54,4 @@ function PfAboutPhoneEdit(props) {
     );
 }
 
-export default PfAboutPhoneEdit;
+export default PfAboutBirthEdit;

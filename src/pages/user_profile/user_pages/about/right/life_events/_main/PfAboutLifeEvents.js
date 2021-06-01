@@ -10,10 +10,13 @@ PfAboutLifeEvents.propTypes = {
 
 // 
 function PfAboutLifeEvents(props) {
+    const life_event_arr = []
+
+    // 
     return (
         <div>
             <div className="PfAbout_part">
-                <PfAboutLifeEvent />
+                <PfAboutLifeEvent life_event_arr={life_event_arr} />
             </div>
         </div>
     );

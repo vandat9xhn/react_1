@@ -1,21 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
-import AddDiv from '../../../../../../../../component/some_div/add_div/AddDiv';
+//
+import { useForceUpdate } from '../../../../../../../../_custom_hooks/UseForceUpdate';
+//
+import { handle_API_You_U } from '../../../../../../__handle_api/ProfileHandleAPI';
 
-// 
+import PfAboutAdd from '../../../_component/add/PfAboutAdd';
+
+import PfAboutYouEdit from '../edit/PfAboutYouEdit';
+import PfAboutYouItem from '../item/PfAboutYouItem';
+
+//
 PfAboutYou.propTypes = {
-    
+    you_obj: PropTypes.object,
 };
 
-// 
+//
 function PfAboutYou(props) {
+    //
+    const { you_obj } = props;
+
+    //
+    const forceUpdate = useForceUpdate();
+
+    //
+    function handleCreate(data) {
+        const { you, permission } = data;
+
+        you_obj.title = you;
+        you_obj.you = you;
+        you_obj.permission = permission;
+        forceUpdate();
+    }
+
+    //
     return (
         <div>
-            <h3 className="PfAbout_title">About you</h3>
+            <div
+                className={`PfAbout_add ${
+                    you_obj.you == '' ? '' : 'display-none'
+                }`}
+            >
+                <PfAboutAdd
+                    title_add="Add about you"
+                    item_obj={{
+                        you: '',
+                        permission: 0,
+                    }}
+                    ComponentEdit={PfAboutYouEdit}
+                    handleCreate={handleCreate}
+                    handle_API_C={handle_API_You_U}
+                />
+            </div>
 
-            <div className="PfAbout_add">
-                <AddDiv>Add something about you</AddDiv>
+            <div className={`${you_obj.you == '' ? 'display-none' : ''}`}>
+                <PfAboutYouItem you_obj={you_obj} />
             </div>
         </div>
     );

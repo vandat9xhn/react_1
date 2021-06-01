@@ -15,8 +15,8 @@ PicNameContent.propTypes = {
 
 // 
 function PicNameContent(props) {
-    const {handleClick, content, is_inline_block} = props;
-    const { id, picture, first_name, last_name } = props.user;
+    const {user, content, is_inline_block, handleClick} = props;
+    const { id, picture, first_name, last_name } = user;
 
     // 
     return (

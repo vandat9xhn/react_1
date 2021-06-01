@@ -6,10 +6,11 @@ export function useInputSelect({
     all_data_arr,
     initial_data_str,
     multiple = true,
+    delimiter = ',',
 }) {
     //
     const [data_item_edit_state, setLangEditState] = useState({
-        cur_data_arr: initial_data_str ? initial_data_str.split(',') : [],
+        cur_data_arr: initial_data_str ? initial_data_str.split(delimiter) : [],
         value_input: '',
         option_data_arr: all_data_arr.filter(
             (item) => !initial_data_str.includes(item)

@@ -28,7 +28,7 @@ function PfAboutAddressEdit(props) {
     }
 
     function onSave(new_permission) {
-        if (/[a-zA-Z]{2,}/.test(cur_address)) {
+        if (/[a-zA-Z]{2,}/.test(cur_address) || (address != '' && cur_address == '')) {
             handleSave({ permission: new_permission, address: cur_address.trim() });
         } else {
             setAddressError(true);

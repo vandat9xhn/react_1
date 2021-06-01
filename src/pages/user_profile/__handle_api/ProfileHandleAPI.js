@@ -5,18 +5,35 @@ import {
     API_UserAlbumVidPic_L,
     API_UserProfile_RU,
     API_UserVidPic_L,
-    // 
+    //
     API_UserAboutOverview_R,
-
     API_UserAboutEmail_U,
     API_UserAboutPhone_U,
     API_UserAboutPhone_C,
     API_UserAboutAddress_C,
     API_UserAboutAddress_U,
-    
+    //
     API_UserAboutGender_U,
     API_UserAboutLang_U,
     API_UserAboutLang_C,
+    API_UserAboutBirth_U,
+    //
+    API_UserAboutYou_U,
+    API_UserAboutFavour_U,
+    API_UserAboutOtherName_C,
+    API_UserAboutOtherName_U,
+    //
+    API_UserAboutLifeEvent_C,
+    API_UserAboutLifeEvent_U,
+    //
+    API_UserAboutTown_C,
+    API_UserAboutTown_U,
+    API_UserAboutCity_C,
+    API_UserAboutCity_U,
+    //
+    API_UserAboutRelationship_U,
+    API_UserAboutFamily_C,
+    API_UserAboutFamily_U,
 } from '../../../api/api_django/user/user_profile/UserProfile';
 
 import makeFormData from '../../../_some_function/makeFormData';
@@ -177,7 +194,19 @@ export async function handle_API_Gender_U({ gender = '', permission = 0 }) {
     return res.data;
 }
 
-// gender
+// birth
+export async function handle_API_Birth_U({ birth = '', permission = 0 }) {
+    const res = await API_UserAboutBirth_U(
+        makeFormData({
+            birth: birth,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// Lang
 export async function handle_API_Lang_U({ lang = '', permission = 0 }) {
     const res = await API_UserAboutLang_U(
         makeFormData({
@@ -193,6 +222,192 @@ export async function handle_API_Lang_C({ lang = '', permission = 0 }) {
     const res = await API_UserAboutLang_C(
         makeFormData({
             lang: lang,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// You
+export async function handle_API_You_U({ you = '', permission = 0 }) {
+    const res = await API_UserAboutYou_U(
+        makeFormData({
+            you: you,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// Favour
+export async function handle_API_Favour_U({ favour = '', permission = 0 }) {
+    const res = await API_UserAboutFavour_U(
+        makeFormData({
+            favour: favour,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// Other name
+export async function handle_API_OtherName_C({
+    other_name = '',
+    permission = 0,
+}) {
+    const res = await API_UserAboutOtherName_C(
+        makeFormData({
+            other_name: other_name,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+export async function handle_API_OtherName_U({
+    other_name = '',
+    permission = 0,
+}) {
+    const res = await API_UserAboutOtherName_U(
+        makeFormData({
+            other_name: other_name,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// Life event
+export async function handle_API_LifeEvent_C({
+    life_event = '',
+    permission = 0,
+}) {
+    const res = await API_UserAboutLifeEvent_C(
+        makeFormData({
+            life_event: life_event,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+export async function handle_API_LifeEvent_U({
+    life_event = '',
+    permission = 0,
+}) {
+    const res = await API_UserAboutLifeEvent_U(
+        makeFormData({
+            life_event: life_event,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// Town
+export async function handle_API_Town_C({ town = '', permission = 0 }) {
+    const res = await API_UserAboutTown_C(
+        makeFormData({
+            town: town,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+export async function handle_API_Town_U({ town = '', permission = 0 }) {
+    const res = await API_UserAboutTown_U(
+        makeFormData({
+            town: town,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// city
+export async function handle_API_City_C({ city = '', permission = 0 }) {
+    const res = await API_UserAboutCity_C(
+        makeFormData({
+            city: city,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+export async function handle_API_City_U({ city = '', permission = 0 }) {
+    const res = await API_UserAboutCity_U(
+        makeFormData({
+            city: city,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// relationship
+export async function handle_API_Relationship_U({
+    relationship = '',
+    permission = 0,
+}) {
+    const res = await API_UserAboutRelationship_U(
+        makeFormData({
+            relationship: relationship,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+// family
+export async function handle_API_Family_L(c_count = 0) {
+    const res = await API_Friends_LC('GET', {
+        page: 1,
+        size: 10,
+        c_count: c_count,
+    });
+
+    return res.data;
+}
+
+export async function handle_API_Family_C({
+    member = {},
+    relation = '',
+    permission = 0,
+}) {
+    const res = await API_UserAboutFamily_C(
+        makeFormData({
+            member: member,
+            relation: relation,
+            permission: permission,
+        })
+    );
+
+    return res.data;
+}
+
+export async function handle_API_Family_U({
+    member = {},
+    relation = '',
+    permission = 0,
+}) {
+    const res = await API_UserAboutFamily_U(
+        makeFormData({
+            member: member,
+            relation: relation,
             permission: permission,
         })
     );

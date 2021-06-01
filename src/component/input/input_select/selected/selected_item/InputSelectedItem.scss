@@ -1,15 +1,15 @@
 
-.InputSelected{
+.InputSelectedItem{
     padding: 2px 0 2px 8px;
 }
 
-.InputSelected_row{
+.InputSelectedItem_row{
     display: inline-flex;
     align-items: center;
 }
 
 // .
-.InputSelected_icon{
+.InputSelectedItem_icon{
     width: 28px;
     height: 28px;
     .IconsArrow_close{

@@ -3,42 +3,48 @@ import PropTypes from 'prop-types';
 //
 import { IconsProfileAbout } from '../../../../../../../../../_groups_icon/about/GroupIconProfileAbout';
 //
-import { handle_API_Phone_U } from '../../../../../../../__handle_api/ProfileHandleAPI';
+import { handle_API_Birth_U } from '../../../../../../../__handle_api/ProfileHandleAPI';
 
 import AboutRowItemEdit from '../../../../_component/row_item_edit/AboutRowItemEdit';
-import PfAboutPhoneEdit from '../edit/PfAboutPhoneEdit';
+import PfAboutBirthEdit from '../edit/PfAboutBirthEdit';
 
 //
-PfAboutPhoneItem.propTypes = {
-    phone_obj: PropTypes.object,
+PfAboutBirthItem.propTypes = {
+    birth_obj: PropTypes.object,
 };
 
 //
-function PfAboutPhoneItem(props) {
+function PfAboutBirthItem(props) {
     //
-    const { phone_obj } = props;
+    const { birth_obj } = props;
 
     //
     function handleUpdateItemObj(data) {
-        const { phone, permission } = data;
+        const { birth, permission } = data;
 
-        phone_obj.title = phone;
-        phone_obj.permission = permission;
-        phone_obj.phone = phone
+        birth_obj.title = birth;
+        birth_obj.permission = permission;
+        birth_obj.birth = birth;
     }
 
     //
     return (
         <div>
-            <AboutRowItemEdit
-                item_obj={phone_obj}
-                Icon={IconsProfileAbout.phone}
-                ComponentEdit={PfAboutPhoneEdit}
-                handle_API_U={handle_API_Phone_U}
-                handleUpdateItemObj={handleUpdateItemObj}
-            />
+            <div>
+                <div className="label-field text-secondary">Birth</div>
+            </div>
+
+            <div>
+                <AboutRowItemEdit
+                    item_obj={birth_obj}
+                    Icon={IconsProfileAbout.birth}
+                    ComponentEdit={PfAboutBirthEdit}
+                    handle_API_U={handle_API_Birth_U}
+                    handleUpdateItemObj={handleUpdateItemObj}
+                />
+            </div>
         </div>
     );
 }
 
-export default PfAboutPhoneItem;
+export default PfAboutBirthItem;

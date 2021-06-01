@@ -20,11 +20,14 @@
     }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 400px) {
     .CityItem_contain {
         width: 100vw;
         border-radius: 0;
     }
+}
+
+@media (max-width: 300px) {
     .CityItem_img-contain {
         height: 11rem;
     }

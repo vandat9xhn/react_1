@@ -22,6 +22,12 @@ function PfAboutAddressItem(props) {
     function handleUpdateItemObj(data) {
         const { address, permission } = data;
 
+        if (!address){
+            address_obj.is_del = true
+
+            return
+        }
+
         address_obj.title = address;
         address_obj.permission = permission;
         address_obj.address = address

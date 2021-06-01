@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //
-InputSelectOption.propTypes = {};
+InputSelectOptionItem.propTypes = {};
 
 //
-function InputSelectOption({ ix, item, handleSelectOption }) {
+function InputSelectOptionItem({ ix, item, handleSelectOption }) {
     //
     function onSelectOption() {
         handleSelectOption(ix);
@@ -22,4 +22,4 @@ function InputSelectOption({ ix, item, handleSelectOption }) {
     );
 }
 
-export default InputSelectOption;
+export default InputSelectOptionItem;

@@ -25,7 +25,7 @@ function PfAboutGender(props) {
 
         gender_obj.permission = permission;
         gender_obj.gender = gender;
-        gender_obj.title = gender;
+        gender_obj.title = gender.slice(0, 1).toUpperCase() + gender.slice(1);
     }
 
     //

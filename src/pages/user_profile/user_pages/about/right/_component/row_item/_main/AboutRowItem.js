@@ -9,7 +9,9 @@ import './AboutRowItem.scss';
 //
 AboutRowItem.propTypes = {
     Icon: PropTypes.element,
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([
+        PropTypes.string, PropTypes.element,
+    ]),
     permission: PropTypes.number,
     is_editing: PropTypes.bool,
 

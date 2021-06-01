@@ -14,7 +14,7 @@ const API_Fake = (new_data, params = {}) =>
                       item.id =
                           ix +
                           1 +
-                          (params['c_count'] + 1 || params['page'] * 20);
+                          (params['c_count'] + 1) || (params['page'] * 20);
                       return item;
                   })
                 : data;

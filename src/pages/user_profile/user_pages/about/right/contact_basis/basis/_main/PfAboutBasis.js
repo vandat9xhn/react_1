@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//
-import AddDiv from '../../../../../../../../component/some_div/add_div/AddDiv';
 // 
 import PfAboutGender from '../gender/_main/PfAboutGender';
 import PfAboutLang from '../language/_main/PfAboutLang';
+import PfAboutBirth from '../birth/_main/PfAboutBirth';
 
 //
 PfAboutBasis.propTypes = {};
@@ -15,12 +14,19 @@ function PfAboutBasis(props) {
     const gender_obj = {
         gender: 'male',
         permission: 0,
-        title: 'Mail',
+        title: 'Male',
     };
 
     //
     const lang_obj = {
         lang: '',
+        permission: 0,
+        title: '',
+    };
+
+    //
+    const birth_obj = {
+        birth: '',
         permission: 0,
         title: '',
     };
@@ -34,8 +40,8 @@ function PfAboutBasis(props) {
                 <PfAboutGender gender_obj={gender_obj} />
             </div>
 
-            <div className="PfAbout_add">
-                <AddDiv>Add your birth</AddDiv>
+            <div>
+                <PfAboutBirth birth_obj={birth_obj} />
             </div>
 
             <div>

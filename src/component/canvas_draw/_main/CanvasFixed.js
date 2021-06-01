@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// 
+import { context_api } from '../../../_context/ContextAPI';
 //
 import CanvasDraw from '../canvas/CanvasDraw';
 import ScreenFixed from '../../_screen_fixed/_main/ScreenFixed';
@@ -22,17 +24,14 @@ class CanvasFixed extends Component {
         this.openCanvasFixed(data.completeCanvas, data.canvas_draws);
     };
 
-    // open canvas fixed
+    // 
     openCanvasFixed = (completeCanvas, canvas_draws) => {
-        document
-            .getElementsByTagName('BODY')[0]
-            .style.setProperty('overflow-y', 'hidden');
-        //
         this.completeCanvasDraw = completeCanvas;
+
         this.setState({
             show_canvas: true,
         });
-        //
+        
         setTimeout(() => {
             this.ref_canvas_draw.startReadyCanvas(canvas_draws);
         }, 0);
@@ -47,34 +46,35 @@ class CanvasFixed extends Component {
     completeCanvas = (canvas_draws) => {
         this.completeCanvasDraw(canvas_draws);
         this.completeCanvasDraw = null;
+        
         setTimeout(() => {
             this.setState({
                 show_canvas: false,
             });
         }, 0);
-        //
-        document
-            .getElementsByTagName('BODY')[0]
-            .style.setProperty('overflow-y', 'auto');
     };
 
-    //
-    closeCanvasFixed = () => {
-        if (confirm('Your changes will not be saved!')) {
-            this.deleteCanvas();
-            document
-                .getElementsByTagName('BODY')[0]
-                .style.setProperty('overflow-y', 'auto');
-        }
-    };
-
-    // delete canvas
+    // 
     deleteCanvas = () => {
         this.setState({
             show_canvas: false,
         });
         this.completeCanvasDraw = null;
         this.ref_canvas_draw.clearCompleteCanvas();
+    };
+
+    //
+    closeCanvasFixed = () => {
+        this.deleteCanvas();
+    };
+
+    //
+    openCloseCanvasFixed = () => {
+        this.context.openScreenConfirm(
+            'Canvas not saved',
+            'Your changes will not be saved!',
+            this.closeCanvasFixed
+        );
     };
 
     //
@@ -86,7 +86,7 @@ class CanvasFixed extends Component {
                 {show_canvas && (
                     <ScreenFixed
                         url={url}
-                        closeScreenFixed={this.closeCanvasFixed}
+                        closeScreenFixed={this.openCloseCanvasFixed}
                         onDownload={this.onDownload}
                     >
                         <CanvasDraw
@@ -101,5 +101,7 @@ class CanvasFixed extends Component {
 }
 
 CanvasFixed.propTypes = {};
+
+CanvasFixed.contextType = context_api;
 
 export default CanvasFixed;

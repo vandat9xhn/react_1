@@ -9,6 +9,7 @@ export const user_propTypes = {
         picture: PropTypes.string,
     }),
 };
+
 export const user_default = {
     user: {
         id: 0,

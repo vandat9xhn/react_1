@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { joinArrayWithAnd } from '../../../../../../../../../_some_function/joinArrayWithAnd';
-// 
+//
 import { IconsProfileAbout } from '../../../../../../../../../_groups_icon/about/GroupIconProfileAbout';
 //
 import { handle_API_Lang_U } from '../../../../../../../__handle_api/ProfileHandleAPI';
@@ -32,13 +32,19 @@ function PfAboutLangItem(props) {
     //
     return (
         <div>
-            <AboutRowItemEdit
-                item_obj={lang_obj}
-                Icon={IconsProfileAbout.lang}
-                ComponentEdit={PfAboutLangEdit}
-                handle_API_U={handle_API_Lang_U}
-                handleUpdateItemObj={handleUpdateItemObj}
-            />
+            <div>
+                <div className="label-field text-secondary">Language</div>
+            </div>
+
+            <div>
+                <AboutRowItemEdit
+                    item_obj={lang_obj}
+                    Icon={IconsProfileAbout.lang}
+                    ComponentEdit={PfAboutLangEdit}
+                    handle_API_U={handle_API_Lang_U}
+                    handleUpdateItemObj={handleUpdateItemObj}
+                />
+            </div>
         </div>
     );
 }

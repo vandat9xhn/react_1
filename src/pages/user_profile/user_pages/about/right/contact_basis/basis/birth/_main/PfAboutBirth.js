@@ -2,65 +2,62 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { useForceUpdate } from '../../../../../../../../../_custom_hooks/UseForceUpdate';
-// 
-import { handle_API_Phone_C } from '../../../../../../../__handle_api/ProfileHandleAPI';
+//
+import { handle_API_Birth_U } from '../../../../../../../__handle_api/ProfileHandleAPI';
 
 import PfAboutAdd from '../../../../_component/add/PfAboutAdd';
 
-import PfAboutPhoneEdit from '../edit/PfAboutPhoneEdit';
-import PfAboutPhoneItem from '../item/PfAboutPhoneItem';
+import PfAboutBirthEdit from '../edit/PfAboutBirthEdit';
+import PfAboutBirthItem from '../item/PfAboutBirthItem';
 
 //
-PfAboutPhone.propTypes = {
-    phone_arr: PropTypes.array,
+PfAboutBirth.propTypes = {
+    birth_obj: PropTypes.object,
 };
 
 //
-function PfAboutPhone(props) {
+function PfAboutBirth(props) {
     //
-    const { phone_arr } = props;
+    const { birth_obj } = props;
 
-    // 
-    const forceUpdate = useForceUpdate()
+    //
+    const forceUpdate = useForceUpdate();
 
-    // 
+    //
     function handleCreate(data) {
-        const {phone, permission} = data;
+        const { birth, permission } = data;
 
-        phone_arr.push({
-            id: 101 + phone_arr.length,
-            title: phone,
-            phone: phone,
-            permission: permission,
-        })
-        forceUpdate()
+        birth_obj.title = birth;
+        birth_obj.birth = birth;
+        birth_obj.permission = permission;
+        forceUpdate();
     }
 
     //
     return (
         <div>
-            <div className="PfAbout_add">
+            <div
+                className={`PfAbout_add ${
+                    birth_obj.birth == '' ? '' : 'display-none'
+                }`}
+            >
                 <PfAboutAdd
-                    title_add="Add a phone"
+                    title_add="Add a birth"
                     item_obj={{
-                        phone: '',
+                        birth: '',
                         permission: 0,
                     }}
-                    ComponentEdit={PfAboutPhoneEdit}
+                    ComponentEdit={PfAboutBirthEdit}
                     handleCreate={handleCreate}
-                    handle_API_C={handle_API_Phone_C}
+                    handle_API_C={handle_API_Birth_U}
                 />
             </div>
 
-            <div>
-                {phone_arr.map((phone_obj) => (
-                    <div key={`PfAboutPhone_${phone_obj.id}`}>
-                        <PfAboutPhoneItem phone_obj={phone_obj} />
-                    </div>
-                ))}
+            <div className={`${birth_obj.birth == '' ? 'display-none' : ''}`}>
+                <PfAboutBirthItem birth_obj={birth_obj} />
             </div>
         </div>
     );
 }
 
-export default PfAboutPhone;
+export default PfAboutBirth;

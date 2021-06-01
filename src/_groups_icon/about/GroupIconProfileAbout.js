@@ -9,18 +9,15 @@ export const IconsProfileAbout = {
     school: <IconsProfile />,
 
     family: <IconsProfile />,
+    relationship: <IconsProfile />,
 
-    relation: <IconsProfile />,
-
-    hometown: <IconsProfile />,
+    town: <IconsProfile />,
     city: <IconsProfile />,
 
     life_event: <IconsProfile />,
 
-    about_you: <IconsProfile />,
-
-    favourite: <IconsProfile />,
-
+    you: <IconsProfile />,
+    favour: <IconsProfile />,
     other_name: <IconsProfile />,
 
     email: <IconsProfile x={200}/>,

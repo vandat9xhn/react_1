@@ -28,7 +28,7 @@ function PfAboutPhoneEdit(props) {
     }
 
     function onSave(new_permission) {
-        if (/^\d{10}$/.test(cur_phone)) {
+        if (/^\d{10}$/.test(cur_phone) || (phone != '' && cur_phone == '')) {
             handleSave({ permission: new_permission, phone: cur_phone });
         } else {
             setPhoneError(true);

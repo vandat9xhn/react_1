@@ -12,7 +12,7 @@ Select.propTypes = {
 function Select(props) {
     const { options, current_option, onSelectOption } = props;
 
-    // 
+    //
     return (
         <select name="" value={current_option} onChange={onSelectOption}>
             {options.map((option, ix) => (

@@ -28,7 +28,7 @@ function PictureNameCommon(props) {
 
     //
     return (
-        <div className="PictureNameCommon_contain" title={name}>
+        <div className="PictureNameCommon" title={name}>
             <div className="PictureNameCommon_row display-flex align-items-center">
                 <div className="PictureNameCommon_left">
                     <div className="PictureNameCommon__pic brs-50">

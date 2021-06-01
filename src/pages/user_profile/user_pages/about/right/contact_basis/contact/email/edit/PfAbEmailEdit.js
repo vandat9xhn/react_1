@@ -30,31 +30,59 @@ function PfAbEmailEdit(props) {
     const { email, permission } = item_obj;
 
     //
-    const [cur_email, setCurEmail] = useState(email);
-    const [cur_pass, setCurPass] = useState('');
+    const [email_state, setEmailState] = useState({
+        cur_email: email,
+        cur_pass: '',
+        is_error: false,
+    });
+
+    const { cur_email, cur_pass, is_error } = email_state;
+
+    //
+    function handleChange(key, event) {
+        setEmailState({
+            ...email_state,
+            [key]: event.target.value,
+            is_error: false,
+        });
+    }
 
     //
     function handleChangeEmail(e) {
-        setCurEmail(e.target.value);
+        handleChange('cur_email', e);
     }
 
     //
     function handleChangePass(e) {
-        setCurPass(e.target.value);
+        handleChange('cur_pass', e);
     }
 
     //
     function onSave(new_permission) {
-        handleSave({
-            email: cur_email,
-            password: cur_pass,
-            permission: new_permission,
-        });
+        if (/^[a-zA-Z0-9]{4,}@[a-z]{2,10}\.[a-z]{2,10}$/.test(cur_email)) {
+            handleSave({
+                email: cur_email,
+                password: cur_pass,
+                permission: new_permission,
+            });
+        } else {
+            setEmailState({
+                ...email_state,
+                is_error: true,
+            });
+        }
     }
 
     //
     return (
         <div className="PfAbEmailEdit">
+            <div className={is_error ? '' : 'display-none'}>
+                <div className="text-red">
+                    Your email does not look like a real email!
+                </div>
+                <br />
+            </div>
+
             <div>
                 <div className="PfAbout_input">
                     <InputNotValid
