@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// 
-import { content_pic_name_props, user_default, user_propTypes } from '../../../_prop-types/_CommonPropTypes';
+//
+import {
+    content_pic_name_props,
+    user_default,
+    user_propTypes,
+} from '../../../_prop-types/_CommonPropTypes';
 //
 import PictureNameCommon from '../_main/PictureNameCommon';
 
@@ -11,6 +15,7 @@ PictureName.propTypes = {
     ...user_propTypes,
     content: content_pic_name_props,
     is_inline_block: PropTypes.bool,
+    align_center: PropTypes.bool,
 };
 
 PictureName.defaultProps = {
@@ -20,7 +25,7 @@ PictureName.defaultProps = {
 
 //
 function PictureName(props) {
-    const { link_class, content } = props;
+    const { link_class, content, is_inline_block, align_center } = props;
     const { id, picture, first_name, last_name } = props.user;
 
     //
@@ -39,6 +44,9 @@ function PictureName(props) {
                     picture={picture}
                     name={first_name + ' ' + last_name}
                     content={content}
+                    //
+                    is_inline_block={is_inline_block}
+                    align_center={align_center}
                 />
             </Link>
         </div>

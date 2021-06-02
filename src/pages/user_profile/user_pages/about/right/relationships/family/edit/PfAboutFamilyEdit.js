@@ -8,13 +8,14 @@ import Select from '../../../../../../../../component/input/select/Select';
 //
 import { handle_API_Family_L } from '../../../../../../__handle_api/ProfileHandleAPI';
 
+import { relation_arr } from '../../../../__common/data/ProfileIntroData';
+
 import PfAboutConfirm from '../../../_component/confirm/PfAboutConfirm';
 import PfRelationOptionList from '../option_list/_main/PfRelationOptionList';
 import PfRelationSelectedList from '../selected_list/_main/PfRelationSelectedList';
 
 //
 const multiple = false;
-const relation_arr = ['Father', 'Mother', 'Child', 'Brother', 'Sister'];
 
 //
 PfAboutFamilyEdit.propTypes = {
@@ -88,6 +89,8 @@ function PfAboutFamilyEdit(props) {
                 member: selected_arr[0],
                 relation: cur_relation,
             });
+
+            console.log(selected_arr);
         } else {
             handleChange('is_error', true);
         }
@@ -116,7 +119,8 @@ function PfAboutFamilyEdit(props) {
                         //
                         selected_props={{}}
                         option_props={{
-                            has_fetched: has_fetched && selected_arr.length == 0,
+                            has_fetched:
+                                has_fetched && selected_arr.length == 0,
                             open_option: open_option,
                             is_fetching: is_fetching,
                             count: option_count,

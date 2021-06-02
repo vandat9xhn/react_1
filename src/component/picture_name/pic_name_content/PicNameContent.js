@@ -10,12 +10,14 @@ PicNameContent.propTypes = {
     user: PropTypes.object,
     handleClick: PropTypes.func,
     content: content_pic_name_props,
+
     is_inline_block: PropTypes.bool,
+    align_center: PropTypes.bool,
 };
 
 // 
 function PicNameContent(props) {
-    const {user, content, is_inline_block, handleClick} = props;
+    const {user, content, is_inline_block, align_center, handleClick} = props;
     const { id, picture, first_name, last_name } = user;
 
     // 
@@ -26,6 +28,7 @@ function PicNameContent(props) {
                 picture={picture}
                 content={content}
                 is_inline_block={is_inline_block}
+                align_center={align_center}
             />
         </div>
     );

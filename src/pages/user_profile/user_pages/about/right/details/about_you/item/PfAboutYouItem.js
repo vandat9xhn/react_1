@@ -11,33 +11,20 @@ import PfAboutYouEdit from '../edit/PfAboutYouEdit';
 //
 PfAboutYouItem.propTypes = {
     you_obj: PropTypes.object,
+    handleUpdateItemObj: PropTypes.func,
 };
 
 //
-function PfAboutYouItem(props) {
-    //
-    const { you_obj } = props;
-
-    //
-    function handleUpdateItemObj(data) {
-        const { you, permission } = data;
-
-        you_obj.title = you;
-        you_obj.permission = permission;
-        you_obj.you = you;
-    }
-
+function PfAboutYouItem({ you_obj, handleUpdateItemObj }) {
     //
     return (
         <div>
             <div>
-                <div className="label-field text-secondary">About you</div>
-            </div>
-
-            <div>
                 <AboutRowItemEdit
                     item_obj={you_obj}
                     Icon={IconsProfileAbout.you}
+                    label="About you"
+                    //
                     ComponentEdit={PfAboutYouEdit}
                     handle_API_U={handle_API_You_U}
                     handleUpdateItemObj={handleUpdateItemObj}

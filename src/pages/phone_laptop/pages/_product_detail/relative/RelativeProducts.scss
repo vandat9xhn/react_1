@@ -1,16 +1,7 @@
-.RelativeProducts{
+.RelativeProducts {
     margin-top: 1rem;
-    padding: 0.5rem;
-    .RelativeProducts_contain{
-        width: 100%;
-        .RelativeProducts_row{
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+}
 
-            .RelativeProducts_col{
-                border: 1px solid var(--bg-blur);
-            }
-        }
-    }
+.RelativeProducts_col {
+    border: 1px solid var(--bg-blur);
 }

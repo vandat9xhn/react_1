@@ -14,30 +14,15 @@ PfAboutRelationshipItem.propTypes = {
 };
 
 //
-function PfAboutRelationshipItem(props) {
-    //
-    const { relationship_obj } = props;
-
-    //
-    function handleUpdateItemObj(data) {
-        const { relationship, permission } = data;
-
-        relationship_obj.title = relationship;
-        relationship_obj.permission = permission;
-        relationship_obj.relationship = relationship;
-    }
-
+function PfAboutRelationshipItem({ relationship_obj, handleUpdateItemObj }) {
     //
     return (
         <div>
             <div>
-                <div className="label-field text-secondary">Relationship</div>
-            </div>
-
-            <div>
                 <AboutRowItemEdit
                     item_obj={relationship_obj}
                     Icon={IconsProfileAbout.relationship}
+                    label="Relationship"
                     ComponentEdit={PfAboutRelationshipEdit}
                     handle_API_U={handle_API_Relationship_U}
                     handleUpdateItemObj={handleUpdateItemObj}

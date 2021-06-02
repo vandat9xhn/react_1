@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { IconsProfileAbout } from '../../../../../../../../../_groups_icon/about/GroupIconProfileAbout';
 //
-import { handle_API_PermissionEmail_U } from '../../../../../../../__handle_api/ProfileHandleAPI';
+import { handle_API_Email_U } from '../../../../../../../__handle_api/ProfileHandleAPI';
 
 import AboutRowItemEdit from '../../../../_component/row_item_edit/AboutRowItemEdit';
 
@@ -31,14 +31,14 @@ function PfAboutEmail(props) {
     //
     return (
         <div>
-            <div className="label-field text-secondary">Mail</div>
-
             <div>
                 <AboutRowItemEdit
                     item_obj={email_obj}
                     Icon={IconsProfileAbout.email}
+                    label="Mail"
+                    // 
                     ComponentEdit={PfAbEmailEdit}
-                    handle_API_U={handle_API_PermissionEmail_U}
+                    handle_API_U={handle_API_Email_U}
                     handleUpdateItemObj={handleUpdateItemObj}
                 />
             </div>

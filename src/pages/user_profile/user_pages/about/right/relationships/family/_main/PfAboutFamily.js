@@ -9,6 +9,7 @@ import PfAboutAdd from '../../../_component/add/PfAboutAdd';
 
 import PfAboutFamilyEdit from '../edit/PfAboutFamilyEdit';
 import PfAboutFamilyItem from '../item/PfAboutFamilyItem';
+import PictureName from '../../../../../../../../component/picture_name/pic_name/PictureName';
 
 //
 PfAboutFamily.propTypes = {
@@ -26,7 +27,13 @@ function PfAboutFamily({ family_arr }) {
 
         family_arr.push({
             id: 101 + family_arr.length,
-            title: `${member.friend.first_name} ${member.friend.last_name} (${relation})`,
+            title: (
+                <PictureName
+                    user={member.friend}
+                    content={<div className="font-12px">{relation}</div>}
+                    align_center={false}
+                />
+            ),
             member: member,
             relation: relation,
             permission: permission,

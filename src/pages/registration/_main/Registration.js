@@ -145,7 +145,7 @@ function Registration(props) {
                         ))}
                         )
                         
-                        <div className="App_submit">
+                        <div className="App_submit display-flex-center">
                             <ButtonRipple
                                 type="submit"
                                 title="Sign up"

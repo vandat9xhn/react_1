@@ -37,8 +37,10 @@ function RowProduct({ products }) {
                 className="RowProduct scroll-x-none"
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
+                // 
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
+                onTouchEnd={handleMouseUp}
             >
                 <div className="RowProduct_row display-flex">
                     {products.map((product, ix) => (

@@ -34,6 +34,20 @@ function PfAboutFavour(props) {
     }
 
     //
+    function handleUpdateItemObj(data) {
+        const { favour, permission } = data;
+
+        favour_obj.title = favour;
+        favour_obj.permission = permission;
+        favour_obj.favour = favour;
+        
+        if (!favour) {
+            favour_obj.is_del = true
+            forceUpdate()
+        }
+    }
+
+    //
     return (
         <div>
             <div
@@ -54,7 +68,10 @@ function PfAboutFavour(props) {
             </div>
 
             <div className={`${favour_obj.favour == '' ? 'display-none' : ''}`}>
-                <PfAboutFavourItem favour_obj={favour_obj} />
+                <PfAboutFavourItem
+                    favour_obj={favour_obj}
+                    handleUpdateItemObj={handleUpdateItemObj}
+                />
             </div>
         </div>
     );

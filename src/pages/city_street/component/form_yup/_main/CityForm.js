@@ -90,7 +90,7 @@ function CityForm(props) {
                     </div>
                     <br />
 
-                    <div className="App_submit">
+                    <div className="App_submit display-flex-center">
                         <ButtonRipple type="submit" title="Create new city">
                             {title_submit}
                         </ButtonRipple>

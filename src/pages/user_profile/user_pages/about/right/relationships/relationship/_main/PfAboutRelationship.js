@@ -24,10 +24,25 @@ function PfAboutRelationship({ relationship_obj }) {
     function handleCreate(data) {
         const { relationship, permission } = data;
 
+        console.log(data);
         relationship_obj.title = relationship;
         relationship_obj.relationship = relationship;
         relationship_obj.permission = permission;
         forceUpdate();
+    }
+
+    //
+    function handleUpdateItemObj(data) {
+        const { relationship, permission } = data;
+
+        relationship_obj.title = relationship;
+        relationship_obj.permission = permission;
+        relationship_obj.relationship = relationship;
+
+        if (!relationship) {
+            relationship_obj.is_del = true;
+            forceUpdate();
+        }
     }
 
     //
@@ -55,7 +70,10 @@ function PfAboutRelationship({ relationship_obj }) {
                     relationship_obj.relationship == '' ? 'display-none' : ''
                 }`}
             >
-                <PfAboutRelationshipItem relationship_obj={relationship_obj} />
+                <PfAboutRelationshipItem
+                    relationship_obj={relationship_obj}
+                    handleUpdateItemObj={handleUpdateItemObj}
+                />
             </div>
         </div>
     );

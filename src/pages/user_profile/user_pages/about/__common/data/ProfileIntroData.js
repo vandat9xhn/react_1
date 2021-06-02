@@ -41,3 +41,14 @@ export const common_overview_icon = [
         search: 'contact',
     },
 ]
+
+// 
+export const relation_arr = [
+    'Father',
+    'Mother',
+    'Child',
+    'Brother',
+    'Sister',
+    'Girl friend',
+    'Boy friend',
+];

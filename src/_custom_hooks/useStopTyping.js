@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
 //
-export function useStopTyping({ time_stop = 100, callback = () => {} }) {
+export function useStopLoadingTyping({ time_stop = 100, callback = () => {} }) {
     //
     const is_typing = useRef(false);
     const interval = useRef(null);
@@ -9,13 +9,13 @@ export function useStopTyping({ time_stop = 100, callback = () => {} }) {
     //
     function handleKeyDownTying() {
         is_typing.current = true;
-        clearInterval(interval.current);
+        clearTimeout(interval.current);
         interval.current = null;
     }
 
     //
     function handleKeyUpTying() {
-        interval.current = setInterval(() => {
+        interval.current = setTimeout(() => {
             is_typing.current = false;
         }, time_stop);
     }
@@ -23,11 +23,11 @@ export function useStopTyping({ time_stop = 100, callback = () => {} }) {
     //
     function handleChangeTying() {
         is_typing.current = true;
-        clearInterval(interval.current);
+        clearTimeout(interval.current);
 
-        interval.current = setInterval(() => {
+        interval.current = setTimeout(() => {
             is_typing.current = false;
-            clearInterval(interval.current);
+            clearTimeout(interval.current);
 
             callback();
         }, time_stop);

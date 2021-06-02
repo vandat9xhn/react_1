@@ -3,19 +3,18 @@ import PropTypes from 'prop-types';
 
 import './PhoneLaptopBuying.scss';
 //
-PhoneLaptopBuying.propTypes = {
-    
-};
+PhoneLaptopBuying.propTypes = {};
 
 //
-function PhoneLaptopBuying(props) {
-    const {openTypeBuy} = props;
-
+function PhoneLaptopBuying({ openTypeBuy }) {
     //
     return (
         <div className="PhoneLaptopBuying">
             <div className="PhoneLaptopBuying_row-btn">
-                <div className="PhoneLaptopBuying_btn brs-5px" onClick={openTypeBuy}>
+                <div
+                    className="PhoneLaptopBuying_btn brs-5px"
+                    onClick={openTypeBuy}
+                >
                     Buy now
                 </div>
                 <div className="font-italic">

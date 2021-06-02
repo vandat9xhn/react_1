@@ -49,225 +49,39 @@ export const API_UserAlbumVidPic_L = (params) =>
         params
     );
 
-/* ------------ ABOUT ------------ */
+/* ------------ COMMON ABOUT ------------ */
 
-// overview
-export const API_UserAboutOverview_R = (params) =>
+export const API_UserAbout_R = (params) =>
     API_FakeReal(default_user_about_r, () =>
         axiosDjangoClient({
-            url: '/user/about-overview-r/',
+            url: '/user/about-r/',
             method: 'GET',
             params: params,
         })
     );
 
-// email
-export const API_UserAboutEmail_U = (data) =>
+export const API_UserAboutMulti_U = (about = '', id = 0, data = {}) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
-            url: '/user/about-email-u/',
+            url: `/user/about-${about}-u/${id}/`,
             method: 'PATCH',
             data: data,
         })
     );
 
-// phone
-export const API_UserAboutPhone_U = (id, data) =>
+export const API_UserAbout_U = (about = '', data = {}) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
-            url: '/user/about-phone-u/' + id + '/',
+            url: `/user/about-${about}-u/`,
             method: 'PATCH',
             data: data,
         })
     );
 
-export const API_UserAboutPhone_C = (data) =>
+export const API_UserAbout_C = (about = '', data = {}) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
-            url: '/user/about-phone-c/',
-            method: 'POST',
-            data: data,
-        })
-    );
-
-// address
-export const API_UserAboutAddress_U = (id, data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-address-u/' + id + '/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-export const API_UserAboutAddress_C = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-address-C/',
-            method: 'POST',
-            data: data,
-        })
-    );
-
-// gender
-export const API_UserAboutGender_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-gender-u/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-// birth
-export const API_UserAboutBirth_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-birth-u/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-// lang
-export const API_UserAboutLang_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-lang-u/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-export const API_UserAboutLang_C = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-lang-c/',
-            method: 'POST',
-            data: data,
-        })
-    );
-
-// You
-export const API_UserAboutYou_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-you-u/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-// Favour
-export const API_UserAboutFavour_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-favour-u/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-// Other name
-export const API_UserAboutOtherName_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-other-name-u/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-export const API_UserAboutOtherName_C = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-other-name-c/',
-            method: 'POST',
-            data: data,
-        })
-    );
-
-// Life Event
-export const API_UserAboutLifeEvent_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-life-event-u/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-export const API_UserAboutLifeEvent_C = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-life-event-c/',
-            method: 'POST',
-            data: data,
-        })
-    );
-
-// Town
-export const API_UserAboutTown_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-town-u/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-export const API_UserAboutTown_C = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-town-c/',
-            method: 'POST',
-            data: data,
-        })
-    );
-
-// City
-export const API_UserAboutCity_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-city-u/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-export const API_UserAboutCity_C = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-city-c/',
-            method: 'POST',
-            data: data,
-        })
-    );
-
-// relationship
-export const API_UserAboutRelationship_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-relationship-c/',
-            method: 'POST',
-            data: data,
-        })
-    );
-
-// family
-export const API_UserAboutFamily_U = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-family-u/',
-            method: 'PATCH',
-            data: data,
-        })
-    );
-
-export const API_UserAboutFamily_C = (data) =>
-    API_FakeReal({}, () =>
-        axiosDjangoClient({
-            url: '/user/about-family-c/',
+            url: `/user/about-${about}-c/`,
             method: 'POST',
             data: data,
         })

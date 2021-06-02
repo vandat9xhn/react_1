@@ -12,11 +12,16 @@ import './AboutRowItemEdit.scss';
 AboutRowItemEdit.propTypes = {
     item_obj: PropTypes.object,
     Icon: PropTypes.element,
+    label: PropTypes.string,
 
     handle_API_U: PropTypes.func,
     ComponentEdit: PropTypes.func,
     handleUpdateItemObj: PropTypes.func,
 };
+
+AboutRowItemEdit.defaultProps = {
+    label: '',
+}
 
 //
 function AboutRowItemEdit(props) {
@@ -24,6 +29,7 @@ function AboutRowItemEdit(props) {
     const {
         item_obj,
         Icon,
+        label,
 
         ComponentEdit,
         handle_API_U,
@@ -81,26 +87,34 @@ function AboutRowItemEdit(props) {
     //
     return (
         <div className="AboutRowItemEdit">
-            <div className="AboutRowItemEdit_item">
-                <AboutRowItem
-                    Icon={Icon}
-                    title={title}
-                    permission={permission}
-                    is_editing={is_editing}
-                    handleChoosePermission={handleChoosePermission}
-                    toggleEdit={toggleEdit}
-                />
-            </div>
-
-            {is_editing && (
-                <div className="PfAbout_edit">
-                    <ComponentEdit
-                        item_obj={item_obj}
-                        handleCancel={handleCancel}
-                        handleSave={handleSave}
-                    />
+            {label && (
+                <div>
+                    <div className="label-field text-secondary">{label}</div>
                 </div>
             )}
+
+            <div>
+                <div className="AboutRowItemEdit_item">
+                    <AboutRowItem
+                        Icon={Icon}
+                        title={title}
+                        permission={permission}
+                        is_editing={is_editing}
+                        handleChoosePermission={handleChoosePermission}
+                        toggleEdit={toggleEdit}
+                    />
+                </div>
+
+                {is_editing && (
+                    <div className="PfAbout_edit">
+                        <ComponentEdit
+                            item_obj={item_obj}
+                            handleCancel={handleCancel}
+                            handleSave={handleSave}
+                        />
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

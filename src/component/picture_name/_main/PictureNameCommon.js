@@ -13,23 +13,35 @@ PictureNameCommon.propTypes = {
     name: PropTypes.string,
     picture: PropTypes.string,
     content: content_pic_name_props,
+
     is_inline_block: PropTypes.bool,
+    align_center: PropTypes.bool,
 };
 PictureNameCommon.defaultProps = {
     name: '',
     picture: '',
     content: '',
+
     is_inline_block: false,
+    align_center: true,
 };
 
 //
-function PictureNameCommon(props) {
-    const { name, picture, content, is_inline_block } = props;
-
+function PictureNameCommon({
+    name,
+    picture,
+    content,
+    is_inline_block,
+    align_center,
+}) {
     //
     return (
         <div className="PictureNameCommon" title={name}>
-            <div className="PictureNameCommon_row display-flex align-items-center">
+            <div
+                className={`PictureNameCommon_row display-flex ${
+                    align_center ? 'align-items-center' : ''
+                }`}
+            >
                 <div className="PictureNameCommon_left">
                     <div className="PictureNameCommon__pic brs-50">
                         <img

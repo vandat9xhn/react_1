@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useStopTyping } from './useStopTyping';
+import { useStopLoadingTyping } from './useStopTyping';
 
 //
 export function useInputSelectLoading({
@@ -31,7 +31,7 @@ export function useInputSelectLoading({
     } = input_select_state;
 
     //
-    const { handleChangeTying } = useStopTyping({
+    const { handleChangeTying } = useStopLoadingTyping({
         time_stop: 500,
         callback: handleGetDataAfterChange,
     });

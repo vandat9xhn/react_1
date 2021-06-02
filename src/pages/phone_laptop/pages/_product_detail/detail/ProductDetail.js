@@ -1,14 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import './ProductDetail.scss';
-import SkeletonDiv from '../../../../../component/skeleton/skeleton_div/SkeletonDiv';
-import PhoneLaptopBuying from '../buying/PhoneLaptopBuying';
-import image_loading from '../../../../../../image/image_loading.svg';
+//
 import { formatNum } from '../../../../../_some_function/FormatNum';
+//
+import SkeletonDiv from '../../../../../component/skeleton/skeleton_div/SkeletonDiv';
+//
+import PhoneLaptopBuying from '../buying/PhoneLaptopBuying';
+//
+import image_loading from '../../../../../../image/image_loading.svg';
+import './ProductDetail.scss';
 
 //
-function ProductDetail(props) {
+ProductDetail.propTypes = {
+    product: PropTypes.object,
+};
+
+//
+function ProductDetail({ product, openTypeBuy, has_fetched }) {
     const {
         url,
         name,
@@ -26,33 +34,43 @@ function ProductDetail(props) {
         internal_memory,
         camera,
         memory_stick,
-    } = props.product;
-    const {openTypeBuy} = props;
+    } = product;
 
-    const product_specifications = cpu ? ([
+    const product_specifications = has_fetched
+        ? [
               { name: 'CPU', value: cpu },
               { name: 'OS', value: os },
               { name: 'RAM', value: ram },
               { name: 'Internal memory', value: internal_memory },
               { name: 'Camera', value: camera },
               { name: 'Memory stick', value: memory_stick },
-        ]) : undefined;
+          ]
+        : undefined;
 
     return (
         <div className="ProductDetail">
-            {/* name */}
-            <div className="ProductDetail_name">{name}</div>
+            <div className="padding-8px">
+                {has_fetched ? (
+                    <h2 className="ProductDetail_name margin-0">{name}</h2>
+                ) : (
+                    <h2 className="ProductDetail_name-skeleton margin-0">
+                        <SkeletonDiv />
+                    </h2>
+                )}
+            </div>
+
             <hr className="App_hr-bg" />
 
-            {/* main */}
             <div className="ProductDetail_contain">
-                <div className="ProductDetail_row">
-                    {/* col image */}
+                <div className="ProductDetail_row display-flex">
                     <div className="ProductDetail_col">
                         <div className="ProductDetail_image">
-                            <div className="ProductDetail__img">
-                                
-                                <img src={url || image_loading} alt="" />
+                            <div className="ProductDetail__img position-rel">
+                                <img
+                                    className="wh-100"
+                                    src={url || image_loading}
+                                    alt=""
+                                />
 
                                 <div className="ProductDetail__discount">
                                     -{discount}%
@@ -61,10 +79,12 @@ function ProductDetail(props) {
                                     Installment {installment}%
                                 </div>
                             </div>
-                            {new_price ? (
+
+                            {has_fetched ? (
                                 <div>
                                     <div>
-                                        {formatNum(new_price)} VND <del>{formatNum(old_price)}</del>
+                                        {formatNum(new_price)} VND{' '}
+                                        <del>{formatNum(old_price)}</del>
                                     </div>
 
                                     <div className="text-red">{in_stock}</div>
@@ -75,12 +95,13 @@ function ProductDetail(props) {
                         </div>
                     </div>
 
-                    {/* col promotion */}
                     <div className="ProductDetail_col">
                         <div>
-                            <div className="label-field">* Promotion: </div>
+                            <h3 className="ProductDetail_specs_title">
+                                * Promotion:{' '}
+                            </h3>
 
-                            {promotion ? (
+                            {has_fetched ? (
                                 promotion
                                     .split('\n')
                                     .map((item, index) => (
@@ -95,15 +116,15 @@ function ProductDetail(props) {
                             )}
                         </div>
 
-                        {/* gift */}
                         <div>{gift}</div>
                     </div>
 
-                    {/* col products */}
                     <div className="ProductDetail_col">
                         <div>
-                            <div className="label-field">* Product sets: </div>
-                            {product_sets ? (
+                            <h3 className="ProductDetail_specs_title">
+                                * Product sets:{' '}
+                            </h3>
+                            {has_fetched ? (
                                 product_sets
                                     .split('\n')
                                     .map((item, index) => (
@@ -118,16 +139,17 @@ function ProductDetail(props) {
                             )}
                         </div>
                     </div>
-
                 </div>
             </div>
 
             <hr className="App_hr-bg" />
 
-            {/* product specifications */}
             <div className="ProductDetail_specs">
-                <div className="label-field">* Product specifications:</div>
-                {product_specifications ? (
+                <h3 className="ProductDetail_specs_title">
+                    * Product specifications:
+                </h3>
+
+                {has_fetched ? (
                     product_specifications.map((item, index) => (
                         <div key={`ProductDetail_product_specs_${index}`}>
                             - {item.name}: {item.value}
@@ -137,16 +159,12 @@ function ProductDetail(props) {
                     <SkeletonDiv num={6} />
                 )}
             </div>
-            
+
             <div>
-                <PhoneLaptopBuying openTypeBuy={openTypeBuy}/>
+                <PhoneLaptopBuying openTypeBuy={openTypeBuy} />
             </div>
         </div>
     );
 }
-
-ProductDetail.propTypes = {
-    product: PropTypes.object,
-};
 
 export default ProductDetail;

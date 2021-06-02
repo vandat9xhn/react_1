@@ -1,21 +1,62 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
-import AddDiv from '../../../../../../../../component/some_div/add_div/AddDiv';
+//
+import { useForceUpdate } from '../../../../../../../../_custom_hooks/UseForceUpdate';
+//
+import { handle_API_Work_C } from '../../../../../../__handle_api/ProfileHandleAPI';
 
-// 
+import PfAboutAdd from '../../../_component/add/PfAboutAdd';
+
+import PfAboutWorkEdit from '../edit/PfAboutWorkEdit';
+import PfAboutWorkItem from '../item/PfAboutWorkItem';
+
+//
 PfAboutWork.propTypes = {
-    
+    work_arr: PropTypes.array,
 };
 
-// 
-function PfAboutWork(props) {
+//
+function PfAboutWork({ work_arr }) {
+    //
+    const forceUpdate = useForceUpdate();
+
+    //
+    function handleCreate(data) {
+        const { work, permission } = data;
+
+        work_arr.push({
+            id: 101 + work_arr.length,
+            title: work,
+            work: work,
+            permission: permission,
+        });
+        forceUpdate();
+    }
+
+    //
     return (
         <div>
             <h3 className="PfAbout_title">Work</h3>
 
             <div className="PfAbout_add">
-                <AddDiv>Add a workplace</AddDiv>
+                <PfAboutAdd
+                    title_add="Add a Work"
+                    item_obj={{
+                        work: '',
+                        permission: 0,
+                    }}
+                    ComponentEdit={PfAboutWorkEdit}
+                    handleCreate={handleCreate}
+                    handle_API_C={handle_API_Work_C}
+                />
+            </div>
+
+            <div>
+                {work_arr.map((work_obj) => (
+                    <div key={`PfAboutWork_${work_obj.id}`}>
+                        <PfAboutWorkItem work_obj={work_obj} />
+                    </div>
+                ))}
             </div>
         </div>
     );

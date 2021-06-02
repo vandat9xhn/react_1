@@ -41,8 +41,10 @@ function HeaderMessHead({ friend_arr, closeMessage }) {
                 ref={ref_list_friend}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
+                // 
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
+                onTouchEnd={handleMouseUp}
             >
                 <div className="display-flex align-items-center">
                     {friend_arr.map((friend, ix) => (

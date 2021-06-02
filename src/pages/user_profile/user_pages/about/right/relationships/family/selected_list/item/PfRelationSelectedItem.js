@@ -20,11 +20,12 @@ function PfRelationSelectedItem({ item, ix, handleRemoveSelectedItem }) {
 
     //
     return (
-        <div>
+        <div className="padding-8px hv-bg-blur">
             <div className="flex-between-center">
                 <div>
                     <PicNameContent user={item} />
                 </div>
+
                 <div>
                     <div
                         className="close-icon-small brs-50 cursor-pointer hv-opacity"

@@ -11,33 +11,20 @@ import PfAboutFavourEdit from '../edit/PfAboutFavourEdit';
 //
 PfAboutFavourItem.propTypes = {
     favour_obj: PropTypes.object,
+    handleUpdateItemObj: PropTypes.func,
 };
 
 //
-function PfAboutFavourItem(props) {
-    //
-    const { favour_obj } = props;
-
-    //
-    function handleUpdateItemObj(data) {
-        const { favour, permission } = data;
-
-        favour_obj.title = favour;
-        favour_obj.permission = permission;
-        favour_obj.favour = favour;
-    }
-
+function PfAboutFavourItem({ favour_obj, handleUpdateItemObj }) {
     //
     return (
         <div>
             <div>
-                <div className="label-field text-secondary">Favour</div>
-            </div>
-
-            <div>
                 <AboutRowItemEdit
                     item_obj={favour_obj}
                     Icon={IconsProfileAbout.favour}
+                    label="Favour"
+                    // 
                     ComponentEdit={PfAboutFavourEdit}
                     handle_API_U={handle_API_Favour_U}
                     handleUpdateItemObj={handleUpdateItemObj}

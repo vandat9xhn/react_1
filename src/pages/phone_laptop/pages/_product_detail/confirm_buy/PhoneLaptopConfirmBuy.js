@@ -1,38 +1,72 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+//
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
-
+//
 import './PhoneLaptopConfirmBuy.scss';
+
 //
 PhoneLaptopConfirmBuy.propTypes = {
-    
+    handleSubmit: PropTypes.func,
+    closeConfirmBuy: PropTypes.func,
 };
 
-function PhoneLaptopConfirmBuy(props) {
-    const {onSubmit, is_buying, closeConfirmBuy} = props;
+//
+function PhoneLaptopConfirmBuy({ handleSubmit, closeConfirmBuy }) {
+    //
+    const ref_name = useRef(null);
+    const ref_address = useRef(null);
+    const ref_phone = useRef(null);
 
+    //
+    function onSubmit(e) {
+        e.preventDefault();
+
+        handleSubmit(
+            ref_name.current.value,
+            ref_address.current.value,
+            ref_phone.current.value
+        );
+    }
+
+    //
     return (
         <div>
             <div className="PhoneLaptopConfirmBuy_contain scroll-thin brs-5px box-shadow-1">
                 <form onSubmit={onSubmit} autoComplete="off">
                     <div>
-                        <div className="label-field">Full name</div>
-                        <div className="PhoneLaptopConfirmBuy__input">
-                            <input type="text" name="full_name" required/>
-                        </div>
-                    </div>
+                        <label className="label-field">Full name</label>
 
-                    <div>
-                        <div className="label-field">Address</div>
-                        <div className="PhoneLaptopConfirmBuy__input">
-                            <input type="text" name="address" required/>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div className="label-field">Phone</div>
                         <div className="PhoneLaptopConfirmBuy__input">
                             <input
+                                ref={ref_name}
+
+                                type="text"
+                                name="full_name"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="label-field">Address</label>
+
+                        <div className="PhoneLaptopConfirmBuy__input">
+                            <input
+                                ref={ref_address}
+                                type="text"
+                                name="address"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="label-field">Phone</label>
+
+                        <div className="PhoneLaptopConfirmBuy__input">
+                            <input
+                                ref={ref_phone}
                                 type="tel"
                                 name="phone"
                                 pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
@@ -43,15 +77,16 @@ function PhoneLaptopConfirmBuy(props) {
                     </div>
 
                     <div className="PhoneLaptopConfirmBuy_submit">
-                        <button type="submit" disabled={is_buying}>
-                            Send information
-                        </button>
+                        <button type="submit">Send information</button>
                     </div>
                 </form>
 
                 <div className="PhoneLaptopConfirmBuy_close">
-                    <div className="PhoneLaptopConfirmBuy_close-icon brs-50 hv-opacity" onClick={closeConfirmBuy}>
-                        <IconsArrow y={400} size_icon="1rem"/>
+                    <div
+                        className="PhoneLaptopConfirmBuy_close-icon brs-50 hv-opacity"
+                        onClick={closeConfirmBuy}
+                    >
+                        <IconsArrow y={400} size_icon="1rem" />
                     </div>
                 </div>
             </div>

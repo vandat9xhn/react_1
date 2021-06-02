@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 export function useMouseFakeDrag(elm, handleAfterMouseUp = () => {}) {
     //
     const [is_mouse_down, setIsMouseDown] = useState(false);
+    
     //
     const ref_should_scroll = useRef(false);
     const ref_clientX = useRef(0);

@@ -8,9 +8,10 @@ export const useScreenFetching = () => {
 
     //
     async function handleScreenFetching(
-        callback_handle_API = () => new Promise()
+        callback_handle_API = () => new Promise(),
+        ComponentFetching
     ) {
-        openScreenFetching();
+        openScreenFetching(ComponentFetching);
         const data = await callback_handle_API();
         closeScreenFetching();
 

@@ -27,6 +27,6 @@ export const default_phone_arr = [
             { url: phone_jpg, title: 'White' },
         ],
         promotion:
-            'ad asd ad asd as asd asd ad ada d asda dsa dasd asd asd asd as asd asd asd asd',
+            'ad asd ad asd as asd asd \nad ada d asda dsa dasd \nasd asd asd as asd asd asd asd',
     },
 ];

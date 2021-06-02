@@ -6,29 +6,36 @@ import './TypeItem.scss';
 TypeItem.propTypes = {};
 
 //
-function TypeItem(props) {
-    const { type_ix, url, title, handleChangeTypeBuy } = props;
+function TypeItem({ ix, is_active, url, title, handleChangeTypeBuy }) {
     //
     function onChangeTypeBuy() {
-        handleChangeTypeBuy(type_ix);
+        handleChangeTypeBuy(ix);
     }
 
     //
     return (
-        <div className="TypeItem">
-            <div className="TypeItem_contain">
-                <div className="TypeItem_row">
-                    <div>
-                        <img src={url} alt="" width="30" height="40" />
-                    </div>
-
-                    <div>
-                        <input type="radio" name="type_buy" onClick={onChangeTypeBuy} />
-                    </div>
-                    <div>{title}</div>
+        <label
+            htmlFor={`TypeItem_phone_${ix}`}
+            className="TypeItem padding-8px cursor-pointer"
+        >
+            <div className="TypeItem_row flex-col display-flex align-items-center">
+                <div>
+                    <img src={url} alt="" width="80" height="100" />
                 </div>
+
+                <div>
+                    <input
+                        id={`TypeItem_phone_${ix}`}
+                        type="radio"
+                        name="type_buy"
+                        checked={is_active}
+                        onChange={onChangeTypeBuy}
+                    />
+                </div>
+
+                <div>{title}</div>
             </div>
-        </div>
+        </label>
     );
 }
 

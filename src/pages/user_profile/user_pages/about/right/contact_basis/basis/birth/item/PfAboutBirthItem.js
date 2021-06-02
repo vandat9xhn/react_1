@@ -31,13 +31,11 @@ function PfAboutBirthItem(props) {
     return (
         <div>
             <div>
-                <div className="label-field text-secondary">Birth</div>
-            </div>
-
-            <div>
                 <AboutRowItemEdit
                     item_obj={birth_obj}
                     Icon={IconsProfileAbout.birth}
+                    label="Birth"
+                    //
                     ComponentEdit={PfAboutBirthEdit}
                     handle_API_U={handle_API_Birth_U}
                     handleUpdateItemObj={handleUpdateItemObj}

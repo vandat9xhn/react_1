@@ -155,7 +155,7 @@ function LoginForm() {
                             </div>
 
                             {/* submit */}
-                            <div className="App_submit">
+                            <div className="App_submit display-flex-center">
                                 <ButtonRipple
                                     type="submit"
                                     title="Login"
@@ -168,7 +168,7 @@ function LoginForm() {
                             <br />
 
                             {/* sign up */}
-                            <div className="App_submit">
+                            <div className="App_submit display-flex-center">
                                 <a href="/registration-form">
                                     <div title="Sign up">Sign up now</div>
                                 </a>

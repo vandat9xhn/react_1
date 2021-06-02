@@ -1,17 +1,11 @@
 
 
 //
-.PhoneLaptopType_contain{
-    position: relative;
+.PhoneLaptopType{
     max-height: 96vh;
     overflow: auto;
-    background-color: var(--md-bg-primary);
 }
 
-//
-.PhoneLaptopType_head{
-    padding: 0.5rem;
-}
 .PhoneLaptopType_new-price{
     margin-right: 0.5rem;
 }
@@ -20,17 +14,15 @@
 }
 
 //
-.PhoneLaptopType_body-title{
-    padding: 0.5rem;
-}
 .PhoneLaptopType_list{
     max-width: 100%;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 //
-.PhoneLaptopType_bottom{
-    padding: 0.5rem;
+.PhoneLaptopType_bottom_promotion{
+    white-space: pre-wrap;
 }
 
 //
@@ -38,13 +30,4 @@
     position: absolute;
     top: 5px;
     right: 5px;
-}
-.PhoneLaptopType_close-icon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: var(--danger);
 }
