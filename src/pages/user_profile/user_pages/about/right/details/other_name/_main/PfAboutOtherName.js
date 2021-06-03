@@ -33,6 +33,7 @@ function PfAboutOtherName(props) {
             other_name: other_name,
             permission: permission,
         });
+
         forceUpdate();
     }
 

@@ -18,28 +18,17 @@ PfAboutLangItem.propTypes = {
 //
 function PfAboutLangItem(props) {
     //
-    const { lang_obj } = props;
-
-    //
-    function handleUpdateItemObj(data) {
-        const { lang, permission } = data;
-
-        lang_obj.title = joinArrayWithAnd(lang.split(','));
-        lang_obj.permission = permission;
-        lang_obj.lang = lang;
-    }
+    const { lang_obj, handleUpdateItemObj } = props;
 
     //
     return (
         <div>
             <div>
-                <div className="label-field text-secondary">Language</div>
-            </div>
-
-            <div>
                 <AboutRowItemEdit
                     item_obj={lang_obj}
                     Icon={IconsProfileAbout.lang}
+                    label="Language"
+                    // 
                     ComponentEdit={PfAboutLangEdit}
                     handle_API_U={handle_API_Lang_U}
                     handleUpdateItemObj={handleUpdateItemObj}

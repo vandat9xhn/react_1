@@ -23,6 +23,8 @@ function RowProduct({ products }) {
         handleMouseUp,
         is_mouse_down,
 
+        handleScroll,
+
         is_has_next,
         is_has_prev,
         handleNext,
@@ -41,6 +43,7 @@ function RowProduct({ products }) {
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
                 onTouchEnd={handleMouseUp}
+                onScroll={handleScroll}
             >
                 <div className="RowProduct_row display-flex">
                     {products.map((product, ix) => (

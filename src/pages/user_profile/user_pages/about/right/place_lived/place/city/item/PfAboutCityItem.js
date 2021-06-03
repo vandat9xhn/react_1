@@ -21,12 +21,6 @@ function PfAboutCityItem(props) {
     //
     function handleUpdateItemObj(data) {
         const { city, permission } = data;
-        
-        if(!city){
-            city_obj.is_del = true
-
-            return
-        }
 
         city_obj.title = city;
         city_obj.permission = permission;

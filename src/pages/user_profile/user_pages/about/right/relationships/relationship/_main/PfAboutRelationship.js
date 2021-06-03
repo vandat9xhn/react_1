@@ -24,7 +24,6 @@ function PfAboutRelationship({ relationship_obj }) {
     function handleCreate(data) {
         const { relationship, permission } = data;
 
-        console.log(data);
         relationship_obj.title = relationship;
         relationship_obj.relationship = relationship;
         relationship_obj.permission = permission;
@@ -39,10 +38,7 @@ function PfAboutRelationship({ relationship_obj }) {
         relationship_obj.permission = permission;
         relationship_obj.relationship = relationship;
 
-        if (!relationship) {
-            relationship_obj.is_del = true;
-            forceUpdate();
-        }
+        forceUpdate();
     }
 
     //
@@ -65,11 +61,7 @@ function PfAboutRelationship({ relationship_obj }) {
                 />
             </div>
 
-            <div
-                className={`${
-                    relationship_obj.relationship == '' ? 'display-none' : ''
-                }`}
-            >
+            <div>
                 <PfAboutRelationshipItem
                     relationship_obj={relationship_obj}
                     handleUpdateItemObj={handleUpdateItemObj}

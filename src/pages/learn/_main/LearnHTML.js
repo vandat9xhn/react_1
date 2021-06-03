@@ -7,6 +7,7 @@ import TestPagination from '../test_pagination/TestPagination';
 // 
 import './LearnHTML.scss';
 import TestSearchAnimate from '../test_search_animate/TestSearchAnimate';
+import FbLogin from '../fb/test_login/FbLogin';
 
 //
 LearnHTML.propTypes = {
@@ -105,7 +106,7 @@ function LearnHTML() {
                 <TestPagination />
             </div>
             
-            {/* <TestWs /> */}
+            <FbLogin />
             
         </div>
     );

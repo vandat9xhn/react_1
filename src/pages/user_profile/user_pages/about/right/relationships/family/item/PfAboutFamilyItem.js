@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IconsProfileAbout } from '../../../../../../../../_groups_icon/about/GroupIconProfileAbout';
+// 
+import PictureName from '../../../../../../../../component/picture_name/pic_name/PictureName';
 //
 import { handle_API_Family_U } from '../../../../../../__handle_api/ProfileHandleAPI';
 
@@ -22,13 +24,15 @@ function PfAboutFamilyItem(props) {
     function handleUpdateItemObj(data) {
         const { member, relation, permission } = data;
 
-        if (!member) {
-            family_obj.is_del = true;
-
-            return;
-        }
-
-        family_obj.title = `${member.friend.first_name} ${member.friend.last_name} (${relation})`;
+        family_obj.title = member ? (
+            <PictureName
+                user={member.friend}
+                content={<div className="font-12px">{relation}</div>}
+                align_center={false}
+            />
+        ) : (
+            ''
+        );
         family_obj.member = member;
         family_obj.relation = relation;
         family_obj.permission = permission;

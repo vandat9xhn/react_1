@@ -13,7 +13,6 @@ TestSearchAnimate.propTypes = {};
 function TestSearchAnimate(props) {
     const [value, setValue] = useState('')
     // 
-    console.log(useContext(context_post));
 
     // 
     function handleChange(new_value) {

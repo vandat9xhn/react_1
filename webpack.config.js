@@ -30,6 +30,7 @@ const devServer = {
     inline: true,
     compress: true,
     contentBase: '/',
+    // https: true,
 };
 
 //

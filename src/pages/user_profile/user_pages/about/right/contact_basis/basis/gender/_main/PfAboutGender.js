@@ -31,12 +31,11 @@ function PfAboutGender(props) {
     //
     return (
         <div>
-            <div className="label-field text-secondary">Gender</div>
-
             <div>
                 <AboutRowItemEdit
                     item_obj={gender_obj}
                     Icon={IconsProfileAbout.gender}
+                    label="Gender"
                     ComponentEdit={PfAbGenderEdit}
                     handle_API_U={handle_API_Gender_U}
                     handleUpdateItemObj={handleUpdateItemObj}

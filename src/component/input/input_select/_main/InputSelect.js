@@ -117,12 +117,12 @@ function InputSelect(props) {
                         ? 'input-active'
                         : ''
                 }`}
-                onClick={focusInput}
-            >
+                >
                 <div
                     className={`InputSelect_head padding-8px brs-5px ${
                         is_focus ? 'InputSelect_head-active' : ''
                     }`}
+                    onClick={focusInput}
                 >
                     <div>
                         <ComponentSelectedList

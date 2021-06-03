@@ -30,6 +30,7 @@ function PfAboutYou(props) {
         you_obj.title = you;
         you_obj.you = you;
         you_obj.permission = permission;
+
         forceUpdate();
     }
 
@@ -41,10 +42,7 @@ function PfAboutYou(props) {
         you_obj.permission = permission;
         you_obj.you = you;
 
-        if (!you) {
-            you_obj.is_del = true;
-            forceUpdate()
-        }
+        forceUpdate()
     }
 
     //
@@ -67,7 +65,7 @@ function PfAboutYou(props) {
                 />
             </div>
 
-            <div className={`${you_obj.you == '' ? 'display-none' : ''}`}>
+            <div>
                 <PfAboutYouItem
                     you_obj={you_obj}
                     handleUpdateItemObj={handleUpdateItemObj}

@@ -21,12 +21,6 @@ function PfAboutLifeEventItem(props) {
     //
     function handleUpdateItemObj(data) {
         const { life_event, permission } = data;
-        
-        if(!life_event){
-            life_event_obj.is_del = true
-
-            return
-        }
 
         life_event_obj.title = life_event;
         life_event_obj.permission = permission;

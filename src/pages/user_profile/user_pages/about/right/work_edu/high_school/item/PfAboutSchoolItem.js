@@ -21,12 +21,6 @@ function PfAboutSchoolItem(props) {
     //
     function handleUpdateItemObj(data) {
         const { school, permission } = data;
-        
-        if(!school){
-            school_obj.is_del = true
-
-            return
-        }
 
         school_obj.title = school;
         school_obj.permission = permission;

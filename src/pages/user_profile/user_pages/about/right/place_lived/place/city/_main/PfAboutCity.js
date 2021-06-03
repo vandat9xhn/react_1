@@ -16,7 +16,7 @@ PfAboutCity.propTypes = {
 };
 
 //
-function PfAboutCity({city_arr}) {
+function PfAboutCity({ city_arr }) {
     //
     const forceUpdate = useForceUpdate();
 
@@ -37,7 +37,7 @@ function PfAboutCity({city_arr}) {
     return (
         <div>
             <h3 className="PfAbout_title">City</h3>
-            
+
             <div className="PfAbout_add">
                 <PfAboutAdd
                     title_add="Add a City"

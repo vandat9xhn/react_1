@@ -21,7 +21,7 @@ AboutRowItemEdit.propTypes = {
 
 AboutRowItemEdit.defaultProps = {
     label: '',
-}
+};
 
 //
 function AboutRowItemEdit(props) {
@@ -36,7 +36,7 @@ function AboutRowItemEdit(props) {
         handleUpdateItemObj,
     } = props;
 
-    const { permission, title, is_del } = item_obj;
+    const { permission, title } = item_obj;
 
     //
     const [is_editing, setIsEditing] = useState(false);
@@ -81,12 +81,9 @@ function AboutRowItemEdit(props) {
         setIsEditing(false);
     }
 
-    if (is_del) {
-        return <div></div>;
-    }
     //
     return (
-        <div className="AboutRowItemEdit">
+        <div className={`AboutRowItemEdit ${title ? '' : 'display-none'}`}>
             {label && (
                 <div>
                     <div className="label-field text-secondary">{label}</div>

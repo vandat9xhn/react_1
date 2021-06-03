@@ -30,6 +30,7 @@ function PfAboutFavour(props) {
         favour_obj.title = favour;
         favour_obj.favour = favour;
         favour_obj.permission = permission;
+
         forceUpdate();
     }
 
@@ -40,11 +41,8 @@ function PfAboutFavour(props) {
         favour_obj.title = favour;
         favour_obj.permission = permission;
         favour_obj.favour = favour;
-        
-        if (!favour) {
-            favour_obj.is_del = true
-            forceUpdate()
-        }
+
+        forceUpdate();
     }
 
     //
@@ -52,7 +50,7 @@ function PfAboutFavour(props) {
         <div>
             <div
                 className={`PfAbout_add ${
-                    favour_obj.favour == '' ? '' : 'display-none'
+                    favour_obj.title == '' ? '' : 'display-none'
                 }`}
             >
                 <PfAboutAdd
@@ -67,7 +65,7 @@ function PfAboutFavour(props) {
                 />
             </div>
 
-            <div className={`${favour_obj.favour == '' ? 'display-none' : ''}`}>
+            <div>
                 <PfAboutFavourItem
                     favour_obj={favour_obj}
                     handleUpdateItemObj={handleUpdateItemObj}

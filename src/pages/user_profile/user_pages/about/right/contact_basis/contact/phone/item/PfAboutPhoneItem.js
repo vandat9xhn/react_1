@@ -22,12 +22,6 @@ function PfAboutPhoneItem(props) {
     function handleUpdateItemObj(data) {
         const { phone, permission } = data;
 
-        if (!phone) {
-            phone_obj.is_del = true;
-
-            return;
-        }
-
         phone_obj.title = phone;
         phone_obj.permission = permission;
         phone_obj.phone = phone;

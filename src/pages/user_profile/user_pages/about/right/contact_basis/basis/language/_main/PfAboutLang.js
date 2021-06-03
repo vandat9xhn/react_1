@@ -37,23 +37,41 @@ function PfAboutLang(props) {
     }
 
     //
+    function handleUpdateItemObj(data) {
+        const { lang, permission } = data;
+
+        lang_obj.title = joinArrayWithAnd(lang.split(','));
+        lang_obj.permission = permission;
+        lang_obj.lang = lang;
+
+        forceUpdate()
+    }
+
+    //
     return (
         <div>
-            <div className="PfAbout_add">
-                {lang_obj.lang == '' ? (
-                    <PfAboutAdd
-                        title_add="Add a language"
-                        item_obj={{
-                            lang: '',
-                            permission: 0,
-                        }}
-                        ComponentEdit={PfAboutLangEdit}
-                        handleCreate={handleCreate}
-                        handle_API_C={handle_API_Lang_C}
-                    />
-                ) : (
-                    <PfAboutLangItem lang_obj={lang_obj} />
-                )}
+            <div
+                className={`PfAbout_add ${
+                    lang_obj.title == '' ? '' : 'display-none'
+                }`}
+            >
+                <PfAboutAdd
+                    title_add="Add a language"
+                    item_obj={{
+                        lang: '',
+                        permission: 0,
+                    }}
+                    ComponentEdit={PfAboutLangEdit}
+                    handleCreate={handleCreate}
+                    handle_API_C={handle_API_Lang_C}
+                />
+            </div>
+
+            <div>
+                <PfAboutLangItem
+                    lang_obj={lang_obj}
+                    handleUpdateItemObj={handleUpdateItemObj}
+                />
             </div>
         </div>
     );

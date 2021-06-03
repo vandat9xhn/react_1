@@ -21,16 +21,10 @@ function PfAboutWorkItem(props) {
     //
     function handleUpdateItemObj(data) {
         const { work, permission } = data;
-        
-        if(!work){
-            work_obj.is_del = true
-
-            return
-        }
 
         work_obj.title = work;
         work_obj.permission = permission;
-        work_obj.work = work
+        work_obj.work = work;
     }
 
     //

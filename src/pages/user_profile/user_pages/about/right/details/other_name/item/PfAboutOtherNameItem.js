@@ -21,12 +21,6 @@ function PfAboutOtherNameItem(props) {
     //
     function handleUpdateItemObj(data) {
         const { other_name, permission } = data;
-        
-        if(!other_name){
-            other_name_obj.is_del = true
-
-            return
-        }
 
         other_name_obj.title = other_name;
         other_name_obj.permission = permission;
