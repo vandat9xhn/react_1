@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import TransportationPrice from '../price/TransportationPrice';
-// 
+//
 
 import './TransportationChoice.scss';
 //
@@ -12,56 +12,55 @@ TransportationChoice.propTypes = {};
 function TransportationChoice(props) {
     //
     const {
-        transport,
+        trans_item,
         trans_ix,
-        trans_ix_active,
-        price_ix_active,
-        // 
-        handleChangeTransportIx,
-        handleChangePriceIx,
+        is_open,
+        is_choose,
+        price_active_ix,
+        //
+        handleChangeTransport,
+        handleChangePrice,
     } = props;
-    const { name, prices } = transport;
+
+    const { name, price_arr } = trans_item;
+
     //
-    function onChooseTransportIx() {
-        handleChangeTransportIx(trans_ix);
+    function onChangeTransport() {
+        handleChangeTransport(trans_ix);
     }
 
     //
     return (
-        <div>
-            <div className="TransportationChoice_contain">
-                <div
-                    className="TransportationChoice_name TransportationChoice_block label-field cursor-pointer"
-                    onClick={onChooseTransportIx}
-                >
-                    {name}
-                </div>
+        <div className="TransportationChoice">
+            <h4
+                className="TransportationChoice_name margin-0 padding-8px cursor-pointer hv-cl-blue"
+                onClick={onChangeTransport}
+            >
+                {name}
+            </h4>
 
-                <div
-                    className={`TransportationChoice_forms ${
-                        trans_ix_active == trans_ix
-                            ? 'TransportationChoice_forms-active'
-                            : 'TransportationChoice_forms-inactive'
-                    }`}
-                >
-                    {prices.map((price_item, price_ix) => (
-                        <div
-                            key={`TransportationChoice_forms_${price_ix}`}
-                            className="TransportationChoice_form TransportationChoice_block"
-                        >
-                            <TransportationPrice
-                                is_active={
-                                    trans_ix_active == trans_ix &&
-                                    price_ix_active == price_ix
-                                }
-                                price_ix={price_ix}
-                                title={price_item.title}
-                                price={price_item.price}
-                                handleChangePriceIx={handleChangePriceIx}
-                            />
-                        </div>
-                    ))}
-                </div>
+            <div
+                className={`TransportationChoice_forms ${
+                    is_open
+                        ? 'TransportationChoice_forms-active'
+                        : 'TransportationChoice_forms-inactive'
+                }`}
+            >
+                {price_arr.map((price_item, ix) => (
+                    <div
+                        key={`TransportationChoice_forms_${ix}`}
+                        className="TransportationChoice_price"
+                    >
+                        <TransportationPrice
+                            is_active={is_choose && price_active_ix == ix}
+                            trans_ix={trans_ix}
+                            price_ix={ix}
+                            title={price_item.title}
+                            price={price_item.price}
+                            handleChangePrice={handleChangePrice}
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     );

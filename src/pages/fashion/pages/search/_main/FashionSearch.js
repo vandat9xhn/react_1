@@ -402,7 +402,7 @@ function FashionSearch(props) {
                     </div>
 
                     <div className="FashionSearch_fetching position-abs width-fit-content margin-auto">
-                        <WaitingBall open_fetching={is_fetching || !has_fetched} />
+                        <WaitingBall is_fetching={is_fetching || !has_fetched} />
                     </div>
                 </div>
             </div>

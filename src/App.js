@@ -133,7 +133,6 @@ class App extends Component {
 
     //
     render() {
-
         return (
             <Suspense fallback={<WaitingBall waitingBall_center={true} />}>
                 <BrowserRouter>
@@ -157,12 +156,10 @@ class App extends Component {
                         closeScreenFetching={this.closeScreenFetching}
                     >
                         <div className="App">
-                            {/* Header */}
                             <header className="AppHeader">
                                 <Header />
                             </header>
 
-                            {/* main */}
                             <main className="AppContent">
                                 <Switch>
                                     {RoutesExact.map((item, index) => (
@@ -198,45 +195,29 @@ class App extends Component {
                                 </Switch>
                             </main>
 
-                            {/* Back to top */}
                             <div className="AppBackTop">
                                 <BackTop />
                             </div>
 
-                            {/* Contact */}
                             <div className="AppContact">
                                 <Contact />
                             </div>
 
-                            {/* Chat */}
                             <div className="AppChat">
                                 <Chat ref={this.refChat} />
                             </div>
 
-                            {/* Chat User */}
                             <div className="AppChatUser">
                                 <ChatU />
                             </div>
 
-                            {/* zoom */}
-                            <div className="AppZoomVidPic">
-                                <ZoomVidPics ref={this.refZoom} />
-                            </div>
-
-                            {/* canvas */}
-                            <div className="AppCanvas">
-                                <CanvasFixed ref={this.refCanvas} />
-                            </div>
-
-                            {/* snow flake + flower */}
-                            <div className="AppNatureDrop">
-                                <SnowDrop ref={this.refSnowDrop} />
-                            </div>
-
-                            {/* Footer */}
                             <footer className="AppFooter">
                                 <Footer />
                             </footer>
+
+                            <div>
+                                <CanvasFixed ref={this.refCanvas} />
+                            </div>
 
                             {/* screen */}
                             <div>
@@ -273,6 +254,15 @@ class App extends Component {
                                 <ScreenBlurFetching
                                     ref={this.refScreenFetching}
                                 />
+                            </div>
+
+                            {/* fix */}
+                            <div>
+                                <ZoomVidPics ref={this.refZoom} />
+                            </div>
+
+                            <div className="AppNatureDrop">
+                                <SnowDrop ref={this.refSnowDrop} />
                             </div>
                         </div>
                     </ContextAPI>

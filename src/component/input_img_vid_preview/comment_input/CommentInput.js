@@ -130,17 +130,19 @@ function CommentInput(props) {
             <div className="CommentInput_contain position-rel">
                 <div className="display-flex align-items-center">
                     <div className="CommentInput_input" ref={ref_comment_input}>
-                        <Textarea
-                            text={text}
-                            placeholder={placeholder}
-                            textarea_class="CommentInput_textarea scroll-thin"
-                            onChange={onChangeCmt}
-                            handleSend={onSendCmt}
-                        />
+                        <div className="display-flex align-items-center">
+                            <Textarea
+                                text={text}
+                                placeholder={placeholder}
+                                textarea_class="CommentInput_textarea scroll-thin"
+                                onChange={onChangeCmt}
+                                handleSend={onSendCmt}
+                            />
+                        </div>
                     </div>
 
                     <div className="CommentInput_files">
-                        <div className="CommentInput_files-row display-flex justify-content-center align-items-center">
+                        <div className="CommentInput_files-row display-flex-center">
                             <div className="CommentInput_files-col">
                                 <InputFile
                                     onChange={onChooseFile}
@@ -169,16 +171,18 @@ function CommentInput(props) {
                 </div>
             </div>
 
-            {/* image video preview */}
             <div className="CommentInput_preview">
-                <ImgVidPreview
-                    urls={urls || []}
-                    show_all={true}
-                    deleteAnItem={deleteAnItemPreview}
-                    delete_in_pic={true}
-                    video_controls={false}
-                />
-                <FetchingDiv open_fetching={file_reading} />
+                <div className="display-flex">
+                    <ImgVidPreview
+                        urls={urls || []}
+                        show_all={true}
+                        deleteAnItem={deleteAnItemPreview}
+                        delete_in_pic={true}
+                        video_controls={false}
+                    />
+
+                    <FetchingDiv is_fetching={file_reading} />
+                </div>
             </div>
         </div>
     );

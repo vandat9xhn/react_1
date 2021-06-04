@@ -22,7 +22,7 @@ function PfAboutRelationshipItem({ relationship_obj, handleUpdateItemObj }) {
                 <AboutRowItemEdit
                     item_obj={relationship_obj}
                     Icon={IconsProfileAbout.relationship}
-                    label="Relationship"
+                    // label="Relationship"
                     ComponentEdit={PfAboutRelationshipEdit}
                     handle_API_U={handle_API_Relationship_U}
                     handleUpdateItemObj={handleUpdateItemObj}

@@ -22,17 +22,7 @@
     align-self: flex-end;
     padding-right: 0.25rem;
 }
-// ...
-// .CommentInput_files-row{
-//     .InputFile {
-//         width: 1.25rem;
-//         height: 1.25rem;
-//     }
-// }
-// ....
-// .CommentInput_files-col {
-//     padding: 0.2rem;
-// }
+
 // ....
 .CommentInput__send {
     display: none;
@@ -54,13 +44,6 @@
 
 //
 @media (max-width: 600px) {
-    // ...
-    .CommentInput_files-row {
-        .IconsInput {
-            width: 0.8rem;
-            height: 0.8rem;
-        }
-    }
     // ....
     .CommentInput__send {
         display: block;

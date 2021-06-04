@@ -38,8 +38,6 @@ function ActionsTimeLineList(props) {
                 title="Show more..."
                 is_show_more={count > data_arr.length}
                 is_fetching={is_fetching}
-                // is_show_more={true}
-                // is_fetching={false}
                 handleShowMore={getMoreTimeLineGroup}
             />
         </div>

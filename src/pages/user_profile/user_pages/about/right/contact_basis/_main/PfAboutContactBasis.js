@@ -11,6 +11,31 @@ PfAboutContactBasis.propTypes = {};
 
 //
 function PfAboutContactBasis(props) {
+    /*--------- BASIS ----------*/ 
+    //
+    const gender_obj = {
+        gender: 'male',
+        permission: 0,
+        title: 'Male',
+    };
+    
+    //
+    const lang_obj = {
+        lang: '',
+        permission: 0,
+        title: '',
+    };
+    
+    //
+    const birth_obj = {
+        birth: '',
+        permission: 0,
+        title: '',
+    };
+
+    /*--------- CONTACT ----------*/ 
+    
+    //
     const email_obj = {
         id: 1,
         title: 'mymy@gmail.com',
@@ -48,6 +73,9 @@ function PfAboutContactBasis(props) {
         },
     ];
 
+    // 
+    const has_fetched = true
+
     //
     return (
         <div>
@@ -56,11 +84,17 @@ function PfAboutContactBasis(props) {
                     phone_arr={phone_arr}
                     email_obj={email_obj}
                     address_arr={address_arr}
+                    has_fetched={has_fetched}
                 />
             </div>
 
             <div className="PfAbout_part">
-                <PfAboutBasis />
+                <PfAboutBasis
+                    gender_obj={gender_obj}
+                    birth_obj={birth_obj}
+                    lang_obj={lang_obj}
+                    has_fetched={has_fetched}
+                />
             </div>
         </div>
     );

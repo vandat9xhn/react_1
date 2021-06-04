@@ -1,0 +1,19 @@
+.NewFeedGroupConversation{
+    border-top: 1px solid var(--md-bg-ccc);
+
+    .IconDiv_left{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 2rem;
+        height: 2rem;
+
+        border-radius: 50%;
+        border: 1px solid var(--md-color);
+        transform: rotate(45deg);
+    }
+    .IconsArrow_close{
+        stroke: black;
+    }
+}

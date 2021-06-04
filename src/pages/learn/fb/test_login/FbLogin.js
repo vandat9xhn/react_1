@@ -10,6 +10,9 @@ import {
 } from '../../../../_fb/FacebookSdk';
 //
 
+// 
+const use_fb = false;
+
 //
 FbLogin.propTypes = {};
 
@@ -24,7 +27,7 @@ function FbLogin(props) {
 
     //
     useEffect(() => {
-        location.protocol === 'https:' && loginToFb();
+        location.protocol === 'https:' && use_fb && loginToFb();
     }, []);
 
     //

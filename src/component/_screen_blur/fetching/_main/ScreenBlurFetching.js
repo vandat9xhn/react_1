@@ -8,14 +8,14 @@ import './ScreenBlurFetching.scss';
 //
 class ScreenBlurFetching extends Component {
     state = {
-        open_fetching: false,
+        is_fetching: false,
         FetchingComponent: () => <div></div>,
     };
 
     //
     openScreenFetching = (FetchingComponent) => {
         this.setState({
-            open_fetching: true,
+            is_fetching: true,
             FetchingComponent: FetchingComponent || CircleLoading,
         });
     };
@@ -23,25 +23,25 @@ class ScreenBlurFetching extends Component {
     //
     closeScreenFetching = () => {
         this.setState({
-            open_fetching: false,
+            is_fetching: false,
             FetchingComponent: () => <div></div>,
         });
     };
 
     //
     render() {
-        const { open_fetching, FetchingComponent } = this.state;
+        const { is_fetching, FetchingComponent } = this.state;
 
         return (
-            open_fetching && (
+            is_fetching && (
                 <div
                     className={
-                        open_fetching ? 'ScreenBlurFetching' : 'display-none'
+                        is_fetching ? 'ScreenBlurFetching' : 'display-none'
                     }
                 >
                     <div className="ScreenBlurFetching_screen screen-blur">
                         <div className="ScreenBlurFetching_fetching">
-                            <FetchingComponent open_fetching={open_fetching} />
+                            <FetchingComponent is_fetching={is_fetching} />
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ import PfAboutAdd from '../../../../_component/add/PfAboutAdd';
 
 import PfAboutTownEdit from '../edit/PfAboutTownEdit';
 import PfAboutTownItem from '../item/PfAboutTownItem';
+import AboutNoItem from '../../../../_component/no_item/AboutNoItem';
 
 //
 PfAboutTown.propTypes = {
@@ -16,7 +17,7 @@ PfAboutTown.propTypes = {
 };
 
 //
-function PfAboutTown({town_arr}) {
+function PfAboutTown({ town_arr, has_fetched }) {
     //
     const forceUpdate = useForceUpdate();
 
@@ -34,29 +35,42 @@ function PfAboutTown({town_arr}) {
     }
 
     //
+    const no_item = !town_arr.length;
+
+    //
     return (
         <div>
             <h3 className="PfAbout_title">Town</h3>
-            
-            <div className="PfAbout_add">
-                <PfAboutAdd
-                    title_add="Add a Town"
-                    item_obj={{
-                        town: '',
-                        permission: 0,
-                    }}
-                    ComponentEdit={PfAboutTownEdit}
-                    handleCreate={handleCreate}
-                    handle_API_C={handle_API_Town_C}
-                />
-            </div>
 
             <div>
-                {town_arr.map((town_obj) => (
-                    <div key={`PfAboutTown_${town_obj.id}`}>
-                        <PfAboutTownItem town_obj={town_obj} />
+                <AboutNoItem
+                    has_fetched={has_fetched}
+                    no_item={no_item}
+                    title="No town to show"
+                >
+                    <div>
+                        <div className="PfAbout_add">
+                            <PfAboutAdd
+                                title_add="Add a Town"
+                                item_obj={{
+                                    town: '',
+                                    permission: 0,
+                                }}
+                                ComponentEdit={PfAboutTownEdit}
+                                handleCreate={handleCreate}
+                                handle_API_C={handle_API_Town_C}
+                            />
+                        </div>
+
+                        <div>
+                            {town_arr.map((town_obj) => (
+                                <div key={`PfAboutTown_${town_obj.id}`}>
+                                    <PfAboutTownItem town_obj={town_obj} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                ))}
+                </AboutNoItem>
             </div>
         </div>
     );

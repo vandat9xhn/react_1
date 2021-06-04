@@ -30,8 +30,8 @@ function ScreenFixed(props) {
 
     //
     return (
-        <div className="ScreenFixed">
-            <div className="ScreenFixed_contain screen-blur">
+        <div className="ScreenFixed screen-blur">
+            <div className="ScreenFixed_contain wh-100">
                 {children}
 
                 <div className="ScreenFixed_title">

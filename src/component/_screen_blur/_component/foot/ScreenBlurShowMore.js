@@ -50,7 +50,7 @@ function ScreenBlurShowMore(props) {
                 </div>
 
                 <div>
-                    <FetchingComponent open_fetching={is_fetching} />
+                    <FetchingComponent is_fetching={is_fetching} />
                 </div>
             </div>
         </div>

@@ -91,7 +91,7 @@ function ProfilePhotoAlbum(props) {
                             album_model={album_model}
                             ProfilePhotoMainSkeleton={
                                 <div className="width-fit-content margin-auto height-100vh">
-                                    <CircleLoading open_fetching={true} />
+                                    <CircleLoading is_fetching={true} />
                                 </div>
                             }
                         />

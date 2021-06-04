@@ -1,12 +1,12 @@
 //
-export const ScrollDown = (
-    e,
+export const ScrollDownBool = (
+    elm,
     posScroll,
     is_fetching,
     max_page,
     thresh_hold = 0.7
 ) => {
-    if (e.target.scrollTop <= posScroll) {
+    if (elm.scrollTop <= posScroll) {
         return false;
     }
     if (is_fetching) {
@@ -16,8 +16,8 @@ export const ScrollDown = (
         return false;
     }
     if (
-        e.target.scrollTop <=
-        thresh_hold * (e.target.scrollHeight - e.target.clientHeight)
+        elm.scrollTop <=
+        thresh_hold * (elm.scrollHeight - elm.clientHeight)
     ) {
         return false;
     }

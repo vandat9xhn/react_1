@@ -1,27 +1,28 @@
 
 //
-.VoucherChoice_contain{
-    position: relative;
+.VoucherChoice{
+    padding: 4px;
     border-bottom: 1px solid var(--md-bg-blur);
 }
 
-//
-.VoucherChoice_row{
-    display: flex;
-    align-items: center;
+// ..
+.VoucherChoice_img{
+    margin-right: 0.5rem;
 }
-.VoucherChoice_detail{
-    flex-grow: 1;
-    padding: 0.5rem;
-}
+
+// ..
 .VoucherChoice_radio{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 4rem;
 }
 
-//
+// .
+.VoucherChoice_time{
+    position: absolute;
+    right: 4rem;
+    top: 0;
+}
+
+// .
 .VoucherChoice_condition{
     position: absolute;
     right: 4rem;
@@ -31,6 +32,10 @@
 
 //
 @media (max-width: 500px){
+    .VoucherChoice_time{
+        right: 3rem;
+    }
+
     .VoucherChoice_condition{
         right: 0.25rem;
         bottom: 0.1rem;

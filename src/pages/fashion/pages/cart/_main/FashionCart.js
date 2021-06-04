@@ -219,7 +219,7 @@ function FashionCart(props) {
             )}
 
             <div className="width-fit-content margin-auto">
-                <CircleLoading open_fetching={!has_fetched} />
+                <CircleLoading is_fetching={!has_fetched} />
             </div>
 
             <ConfirmDiv
@@ -232,7 +232,7 @@ function FashionCart(props) {
 
             <div className={is_deleting ? 'screen-blur' : ''}>
                 <div className="pos-abs-center">
-                    <CircleLoading open_fetching={is_deleting} />
+                    <CircleLoading is_fetching={is_deleting} />
                 </div>
             </div>
         </div>

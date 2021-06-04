@@ -10,11 +10,11 @@ import { ProfileRoutes, profile_search_arr } from '../__common/routes/routes';
 import ProfileSkeleton from '../__common/skeleton/ProfileSkeleton';
 
 import { handle_API_ProfileUser_R } from '../__handle_api/ProfileHandleAPI';
-
-import ProfileInfo from '../info/_main/ProfileInfo';
-import ProfileMore from '../more/_main/ProfileMore';
 //
 import './Profile.scss';
+// 
+import ProfileInfo from '../info/_main/ProfileInfo';
+import ProfileMore from '../more/_main/ProfileMore';
 
 //
 function Profile(props) {

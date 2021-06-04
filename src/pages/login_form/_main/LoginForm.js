@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 //
 import { context_api } from '../../../_context/ContextAPI';
-
+//
 import { LoginRequest } from '../../../api/api_django_no_token/login_logout/LoginLogout';
-
+//
+import { useScreenFetching } from '../../../_custom_hooks/UseScreenFetching';
+//
 import makeFormData from '../../../_some_function/makeFormData';
 //
 import ButtonRipple from '../../../component/button/button_ripple/ButtonRipple';
@@ -13,16 +15,15 @@ import IconsAction from '../../../_icons_svg/icons_action/IconsAction';
 import IconFav from '../../../_icons_svg/_icon_fav/IconFav';
 import InputNotValid from '../../../component/input/input_not_valid/InputNotValid';
 import InputNotValidPass from '../../../component/input/input_not_valid_pass/InputNotValidPass';
-// 
-import LoginFetching from '../logging/LoginFetching';
 //
 import './LoginForm.scss';
+//
+import LoginFetching from '../logging/LoginFetching';
 
 //
 function LoginForm() {
     //
-    const { user, setDataUser, openScreenFetching, closeScreenFetching } =
-        useContext(context_api);
+    const { user, setDataUser } = useContext(context_api);
 
     //
     const [login_state, setLoginState] = useState({
@@ -33,6 +34,9 @@ function LoginForm() {
     });
 
     const { username, password, type_pass, account_wrong } = login_state;
+
+    //
+    const handleScreenFetching = useScreenFetching();
 
     //
     useEffect(() => {
@@ -60,19 +64,22 @@ function LoginForm() {
     //
     async function handleLogin(e) {
         e.preventDefault();
-        
+
         setLoginState((login_state) => ({
             ...login_state,
             account_wrong: false,
         }));
-        openScreenFetching(LoginFetching);
 
         const formData = makeFormData({
             username: username,
             password: password,
         });
-        const res = await LoginRequest(formData);
-        
+
+        const res = await handleScreenFetching(
+            () => LoginRequest(formData),
+            LoginFetching
+        );
+
         if (res.data == 'wrong') {
             setLoginState((login_state) => ({
                 ...login_state,
@@ -87,15 +94,13 @@ function LoginForm() {
             localStorage.time_set = new Date().getTime();
             setDataUser(user_data);
         }
-
-        closeScreenFetching();
     }
 
-    // 
+    //
     if (user.id) {
         return <Redirect to={sessionStorage.url_before_login || '/home'} />;
     }
-    // 
+    //
     return (
         <div className="LoginForm">
             <div className="LoginForm_contain brs-5px">
@@ -156,10 +161,7 @@ function LoginForm() {
 
                             {/* submit */}
                             <div className="App_submit display-flex-center">
-                                <ButtonRipple
-                                    type="submit"
-                                    title="Login"
-                                >
+                                <ButtonRipple type="submit" title="Login">
                                     Login
                                 </ButtonRipple>
                             </div>

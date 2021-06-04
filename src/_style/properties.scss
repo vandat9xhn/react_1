@@ -288,6 +288,11 @@
     height: 0;
 }
 
+// 
+.scroll-y-none::-webkit-scrollbar{
+    width: 0;
+}
+
 /* ----------------------- Webkit input ------------------------*/
 .inner-spin-none::-webkit-inner-spin-button {
     -webkit-appearance: none;

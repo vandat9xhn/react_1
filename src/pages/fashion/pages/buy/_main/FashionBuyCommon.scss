@@ -1,0 +1,21 @@
+//
+.FashionChoiceCurrent_contain {
+    padding: 0.5rem 1rem;
+}
+
+.FashionChoiceCurrent_right {
+    text-align: end;
+}
+.FashionChoiceCurrent_change {
+    font-size: 14px;
+    font-style: italic;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+//
+.FashionChoices_title {
+    padding: 8px;
+    border-bottom: 1px solid var(--md-bg-ccc);
+    text-align: center;
+}

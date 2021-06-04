@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//
+// 
 import PermissionEditDiv from '../../../../../../../../component/some_div/permission_edit_div/PermissionEditDiv';
 import FlexDiv from '../../../../../../../../component/some_div/flex_div/FlexDiv';
 //
@@ -8,10 +8,9 @@ import './AboutRowItem.scss';
 
 //
 AboutRowItem.propTypes = {
+    is_user: PropTypes.bool,
     Icon: PropTypes.element,
-    title: PropTypes.oneOfType([
-        PropTypes.string, PropTypes.element,
-    ]),
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     permission: PropTypes.number,
     is_editing: PropTypes.bool,
 
@@ -21,7 +20,9 @@ AboutRowItem.propTypes = {
 
 //
 function AboutRowItem(props) {
+    // 
     const {
+        is_user,
         Icon,
         title,
 
@@ -47,14 +48,16 @@ function AboutRowItem(props) {
                     />
                 </div>
 
-                <div className="AboutRowItem_right">
-                    <PermissionEditDiv
-                        permission={permission}
-                        is_editing={is_editing}
-                        handleChoosePermission={handleChoosePermission}
-                        toggleEdit={toggleEdit}
-                    />
-                </div>
+                {is_user && (
+                    <div className="AboutRowItem_right">
+                        <PermissionEditDiv
+                            permission={permission}
+                            is_editing={is_editing}
+                            handleChoosePermission={handleChoosePermission}
+                            toggleEdit={toggleEdit}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );

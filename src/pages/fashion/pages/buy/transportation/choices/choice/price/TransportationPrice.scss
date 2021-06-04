@@ -1,9 +1,8 @@
 
 //
-.TransportationPrice_row{
-    display: flex;
-    align-items: center;
-}
-.TransportationPrice_radio{
-    margin-right: 1rem;
+.TransportationPrice{
+    padding: 5px;
+    .FlexDiv_left{
+        margin-right: 1.25rem;
+    }
 }

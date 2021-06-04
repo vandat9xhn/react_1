@@ -1785,7 +1785,7 @@ export const default_arr_transporter = [
         info: 'a b c d e f as sd\nasd asd asd asd a',
         name: 'Ninja Van',
         created_time: '2021-04-22T10:00:13Z',
-        prices: [
+        price_arr: [
             {
                 title: 'Ninja 1',
                 price: 18000,
@@ -1814,7 +1814,7 @@ export const default_arr_transporter = [
         info: 'a b c d e f as sd\nasd asd asd asd a',
         name: 'Giao hang tiet kiem',
         created_time: '2021-04-22T10:00:13Z',
-        prices: [
+        price_arr: [
             {
                 title: 'tk 1',
                 price: 15000,
@@ -1840,7 +1840,12 @@ export const default_arr_transporter = [
     },
 ];
 //
-export const default_arr_payment = ['COD', 'BANK', 'VISA', 'MOMO'];
+export const default_arr_payment = [
+    { name: 'COD' },
+    { name: 'BANK' },
+    { name: 'VISA' },
+    { name: 'MOMO' },
+];
 //
 export const default_arr_voucher = [
     {

@@ -46,7 +46,7 @@ function CreateUpdatePostHomeContent(props) {
                 </div>
 
                 <div className="CreateUpdatePostHomeContent_loading">
-                    <FetchingDiv open_fetching={is_loading} />
+                    <FetchingDiv is_fetching={is_loading} />
                 </div>
 
                 <div

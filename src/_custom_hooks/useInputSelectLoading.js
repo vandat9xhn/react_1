@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useStopLoadingTyping } from './useStopTyping';
+import { useStopLoadingTyping } from './useStopLoadingTyping';
 
 //
 export function useInputSelectLoading({

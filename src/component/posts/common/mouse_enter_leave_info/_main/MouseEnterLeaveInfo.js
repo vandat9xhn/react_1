@@ -77,7 +77,7 @@ function MouseEnterLeaveInfo(props) {
             <div className="MouseEnterLeaveInfo_fetching">
                 <LoaderDiv
                     LoadingComponent={LoadingComponent}
-                    open_fetching={is_fetching}
+                    is_fetching={is_fetching}
                 />
             </div>
         </div>

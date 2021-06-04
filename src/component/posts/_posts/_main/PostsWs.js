@@ -205,7 +205,7 @@ function Posts(props) {
 
                         <div className="width-fit-content margin-auto">
                             <FetchingDiv
-                                open_fetching={is_fetching && has_fetched}
+                                is_fetching={is_fetching && has_fetched}
                             />
                         </div>
                     </ContextPost>

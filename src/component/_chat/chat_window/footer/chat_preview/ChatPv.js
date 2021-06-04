@@ -104,7 +104,7 @@ function ChatPv(props) {
 
                 {/* loading vid pic */}
                 <div className="ChatPv_fetching">
-                    <FetchingDiv open_fetching={file_reading} />
+                    <FetchingDiv is_fetching={file_reading} />
                 </div>
             </div>
         </div>

@@ -1,26 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+//
 import './PaymentChoice.scss';
-//
-PaymentChoice.propTypes = {
-    
-};
 
 //
-function PaymentChoice(props) {
-    const {payment_item, payment_ix, is_active, handleChangePayment} = props;
+PaymentChoice.propTypes = {};
+
+//
+function PaymentChoice({ payment_item, payment_ix, is_active, handlePayment }) {
     //
     function onChangePayment() {
-        handleChangePayment(payment_ix)
+        handlePayment(payment_ix);
     }
-    
+
     return (
-        <div>
-            <div className={`PaymentChoice_contain ${is_active ? 'PaymentChoice_contain-active' : ''}`}>
-                <div className="PaymentChoice_row">
-                    <div className="PaymentChoice_item label-field" onClick={onChangePayment}>{payment_item}</div>
-                </div>
+        <div
+            className={`PaymentChoice padding-8px hv-bg-blur cursor-pointer ${
+                is_active ? 'PaymentChoice_active text-blue' : ''
+            }`}
+            onClick={onChangePayment}
+        >
+            <div
+                className="label-field"
+            >
+                {payment_item.name}
             </div>
         </div>
     );

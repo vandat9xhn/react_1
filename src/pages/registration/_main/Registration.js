@@ -161,7 +161,7 @@ function Registration(props) {
             {/* fetching div */}
             <BlurFetchingDiv
                 FetchingComponent={FetchingDiv}
-                open_fetching={submitting}
+                is_fetching={submitting}
             />
         </div>
     );

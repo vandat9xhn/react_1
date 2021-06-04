@@ -18,17 +18,23 @@ function PfAboutRelations(props) {
     //
     const family_arr = [];
 
+    const has_fetched = true;
+
     //
     return (
         <div>
-            <h3 className="PfAbout_title">Relationships</h3>
-            
             <div className="PfAbout_part">
-                <PfAboutRelationship relationship_obj={relationship_obj} />
+                <PfAboutRelationship
+                    relationship_obj={relationship_obj}
+                    has_fetched={has_fetched}
+                />
             </div>
 
             <div className="PfAbout_part">
-                <PfAboutFamily family_arr={family_arr} />
+                <PfAboutFamily
+                    family_arr={family_arr}
+                    has_fetched={has_fetched}
+                />
             </div>
         </div>
     );

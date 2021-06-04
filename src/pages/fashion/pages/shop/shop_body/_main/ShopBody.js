@@ -50,7 +50,7 @@ function ShopBody(props) {
             </div>
 
             <div className="width-fit-content margin-auto">
-                <CircleLoading open_fetching={is_fetching} />
+                <CircleLoading is_fetching={is_fetching} />
             </div>
 
             <div className="ShopBody_pagination">

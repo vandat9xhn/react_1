@@ -4,14 +4,18 @@ import { is_api_fake } from '../api/_ConstAPI';
 
 import { useMounted } from './useMounted';
 
-import { WindowScrollDownBool } from '../_some_function/ScrollDown';
+import {
+    ScrollDownBool,
+    WindowScrollDownBool,
+} from '../_some_function/ScrollDown';
 
 //
-export const useScrollDown = (
+export const useScrollDown = ({
     initial_data_arr = [],
     handle_API_L = () => new Promise(),
-    thresh_hold = 0.7
-) => {
+    thresh_hold = 0.7,
+    elm = window,
+}) => {
     // state
     const [data_state, setDataState] = useState({
         data_arr: initial_data_arr,
@@ -28,15 +32,6 @@ export const useScrollDown = (
 
     //
     const mounted = useMounted();
-
-    //
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
 
     /*---------------------------- GET API ---------------------------------*/
 
@@ -80,7 +75,7 @@ export const useScrollDown = (
 
     //
     function handleGetMoreData() {
-        pos.current = window.pageYOffset;
+        pos.current = elm == window ? window.pageYOffset : elm.scrollTop;
         just_fetching.current = true;
         getData_API();
     }
@@ -92,12 +87,20 @@ export const useScrollDown = (
         }
 
         if (
-            WindowScrollDownBool(
-                pos.current,
-                just_fetching.current,
-                is_api_fake ? false : is_max.current,
-                thresh_hold
-            )
+            elm == window
+                ? WindowScrollDownBool(
+                      pos.current,
+                      just_fetching.current,
+                      is_api_fake ? false : is_max.current,
+                      thresh_hold
+                  )
+                : ScrollDownBool(
+                      elm,
+                      pos.current,
+                      just_fetching.current,
+                      is_api_fake ? false : is_max.current,
+                      thresh_hold
+                  )
         ) {
             handleGetMoreData();
         }
@@ -112,11 +115,54 @@ export const useScrollDown = (
         });
     }
 
-    // 
+    //
     function resetStopScrollDown() {
         pos.current = 0;
-        data_count.current = 0
+        data_count.current = 0;
     }
 
-    return [data_state, setDataState, getData_API_at_first, resetStopScrollDown];
+    //
+    return {
+        data_state,
+        setDataState,
+
+        handleScroll,
+        getData_API_at_first,
+        resetStopScrollDown,
+    };
 };
+
+//
+export function useScrollDownWindow({
+    initial_data_arr = [],
+    handle_API_L = () => new Promise(),
+    thresh_hold = 0.7,
+}) {
+    //
+    const {
+        data_state,
+        setDataState,
+
+        handleScroll,
+        getData_API_at_first,
+        resetStopScrollDown,
+    } = useScrollDown({ initial_data_arr, handle_API_L, thresh_hold });
+
+    //
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    //
+    return {
+        data_state,
+        setDataState,
+
+        getData_API_at_first,
+        resetStopScrollDown,
+    };
+}

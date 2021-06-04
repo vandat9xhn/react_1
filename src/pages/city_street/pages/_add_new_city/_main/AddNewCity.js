@@ -68,7 +68,7 @@ function AddNewCity() {
 
             <BlurFetchingDiv
                 FetchingComponent={FetchingDiv}
-                open_fetching={is_fetching}
+                is_fetching={is_fetching}
             />
         </div>
     );

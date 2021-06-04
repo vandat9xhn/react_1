@@ -62,7 +62,7 @@ function ContentMore(props) {
             )}
 
             <div className="ContentMore_fetching">
-                <CircleLoading open_fetching={is_fetching} />
+                <CircleLoading is_fetching={is_fetching} />
             </div>
         </div>
     );

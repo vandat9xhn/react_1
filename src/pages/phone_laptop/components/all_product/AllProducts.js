@@ -83,7 +83,7 @@ function AllProducts(props) {
 
         products: initial_phone_arr,
         has_fetched: false,
-        open_fetching: false,
+        is_fetching: false,
         count: 0,
 
         should_filter: false,
@@ -105,7 +105,7 @@ function AllProducts(props) {
 
         products,
         has_fetched,
-        open_fetching,
+        is_fetching,
         count,
 
         should_filter,
@@ -234,7 +234,7 @@ function AllProducts(props) {
         try {
             setProductObj((product_obj) => ({
                 ...product_obj,
-                open_fetching: true,
+                is_fetching: true,
             }));
 
             const res = await API_FilterPhoneLaptop_L(paramsListFilter(true));
@@ -243,7 +243,7 @@ function AllProducts(props) {
             setProductObj((product_obj) => ({
                 ...product_obj,
                 products: [...products, ...data],
-                open_fetching: false,
+                is_fetching: false,
             }));
         } catch (e) {
             console.log(e);
@@ -401,7 +401,7 @@ function AllProducts(props) {
                     title_more={`Get more ${count - products.length} products`}
                     handleGetMore={handleGetMore}
                     should_get_more={count > products.length}
-                    open_fetching={open_fetching}
+                    is_fetching={is_fetching}
                 />
             </div>
         </div>

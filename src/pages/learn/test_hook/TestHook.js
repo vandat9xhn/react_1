@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+// 
 import { useHoldPress } from '../../../_custom_hooks/useHoldPress';
 
 //
@@ -8,13 +9,15 @@ TestHook.propTypes = {
 };
 
 //
-function TestHook(props) {
+function TestHook(props) {    
     //
     const [hold_success, setHoldSuccess] = useState(false)
+
     //
     const [StartHoldPress, StopHoldPress] = useHoldPress(6, () => {
         setHoldSuccess(true)
     })
+
     //
     function handleMouseDown() {
         StartHoldPress()

@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 // 
+import FashionH from '../../../components/head/_main/FashionH';
+
 import FashionItemShop from '../item_shop/_main/FashionItemShop';
 import FashionRate from '../rate/_main/FashionRate';
 import FashionRlt from '../relative/FashionRlt';
@@ -26,6 +28,10 @@ function FashionItem(props) {
     // 
     return (
         <div>
+            <div>
+                <FashionH />
+            </div>
+
             <div className="bg-primary">
                 <div>
                     <FashionItemShop id={id}/>

@@ -1,0 +1,14 @@
+// 
+.NewFeed_side_item {
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--md-bg-ccc);
+    }
+
+    .PictureNameCommon__pic {
+        width: 2rem;
+        height: 2rem;
+    }
+}

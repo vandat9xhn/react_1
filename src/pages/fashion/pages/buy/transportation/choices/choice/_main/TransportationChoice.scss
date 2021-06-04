@@ -1,6 +1,6 @@
 
 //
-.TransportationChoice_contain{
+.TransportationChoice{
     border-bottom: 1px solid var(--md-bg-blur);
 }
 
@@ -10,18 +10,13 @@
 }
 //
 .TransportationChoice_forms{
-    margin-left: 2rem;
     overflow: hidden;
     transition: max-height 0.3s;
 }
 .TransportationChoice_forms-active{
-    max-height: 15rem;
+    max-height: 18rem;
 }
 .TransportationChoice_forms-inactive{
     max-height: 0;
 }
 
-//
-.TransportationChoice_block{
-    padding: 0.5rem;
-}

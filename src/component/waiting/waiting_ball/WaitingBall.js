@@ -6,19 +6,19 @@ import './WaitingBall.scss';
 //
 WaitingBall.propTypes = {
     waitingBall_center: PropTypes.bool,
-    open_fetching: PropTypes.bool,
+    is_fetching: PropTypes.bool,
 };
 
 WaitingBall.defaultProps = {
-    open_fetching: true,
+    is_fetching: true,
 };
 
 //
-function WaitingBall({ waitingBall_center, open_fetching }) {
+function WaitingBall({ waitingBall_center, is_fetching }) {
     //
     return (
         <div
-            className={`${open_fetching ? 'WaitingBall' : 'display-none'} ${
+            className={`${is_fetching ? 'WaitingBall' : 'display-none'} ${
                 waitingBall_center ? 'WaitingBall_center' : ''
             }`}
         >

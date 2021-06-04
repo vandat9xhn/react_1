@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 
-import { useScrollDown } from '../../../../../_custom_hooks/useScrollDown';
+import { useScrollDownWindow } from '../../../../../_custom_hooks/useScrollDown';
 
 import observeToDo from '../../../../../_some_function/observerToDo';
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
@@ -34,8 +34,14 @@ function ProfilePosts(props) {
     const ref_component = useRef(null);
 
     // state
-    const [post_obj, setPostObj, handleChangeId, resetStopScrollDown] =
-        useScrollDown(initial_posts, handle_API_ProfilePost_L);
+    const {
+        data_state: post_obj,
+        getData_API_at_first: handleChangeId,
+        resetStopScrollDown,
+    } = useScrollDownWindow({
+        initial_data_arr: initial_posts,
+        handle_API_L: handle_API_ProfilePost_L,
+    });
 
     const { data_arr: post_arr, is_fetching, has_fetched } = post_obj;
 

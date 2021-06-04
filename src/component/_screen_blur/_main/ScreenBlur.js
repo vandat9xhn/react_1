@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useCloseScreen } from '../../../_custom_hooks/useCloseScreen';
 import { useMakeBodyHidden } from '../../../_custom_hooks/useMakeBodyHidden';
-//
+// 
+import ScreenBlurBodyNotHidden from './ScreenBlurBodyNotHidden';
+// 
 import './ScreenBlur.scss';
 
 //
@@ -19,22 +20,16 @@ ScreenBlur.defaultProps = {
 };
 
 //
-function ScreenBlur(props) {
-    const { closeScreen } = props;
-
+function ScreenBlur({ closeScreen, children }) {
     //
-    useCloseScreen(closeScreen);
-    useMakeBodyHidden()
+    useMakeBodyHidden();
 
     //
     return (
-        <div className="ScreenBlur screen-blur">
-            <div className="form-fixed">
-                <div className="ScreenBlur_contain brs-5px">
-                    {props.children}
-                </div>
-            </div>
-        </div>
+        <ScreenBlurBodyNotHidden
+            closeScreen={closeScreen}
+            children={children}
+        />
     );
 }
 

@@ -20,16 +20,14 @@ FlexDiv.defaultProps = {
 };
 
 //
-function FlexDiv(props) {
-    const {
-        is_reverse,
-        space_between,
-        align_center,
-        
-        ComponentLeft,
-        ComponentRight,
-    } = props;
-
+function FlexDiv({
+    ComponentLeft,
+    ComponentRight,
+    
+    is_reverse,
+    space_between,
+    align_center,
+}) {
     //
     return (
         <div className="FlexDiv">

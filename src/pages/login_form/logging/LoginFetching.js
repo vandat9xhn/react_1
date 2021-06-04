@@ -5,16 +5,16 @@ import FetchingDiv from '../../../component/some_div/fetching/FetchingDiv';
 
 //
 LoginFetching.propTypes = {
-    open_fetching: PropTypes.bool,
+    is_fetching: PropTypes.bool,
 };
 
 //
-function LoginFetching({ open_fetching }) {
+function LoginFetching({ is_fetching }) {
     //
     return (
         <div>
             <div className="width-fit-content margin-auto">
-                <FetchingDiv open_fetching={open_fetching} />
+                <FetchingDiv is_fetching={is_fetching} />
             </div>
 
             <div>Logging in...</div>

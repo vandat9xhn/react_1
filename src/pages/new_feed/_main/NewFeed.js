@@ -1,20 +1,22 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useScrollDown } from '../../../_custom_hooks/useScrollDown';
-//
-import FetchingDiv from '../../../component/some_div/fetching/FetchingDiv';
+import { useScrollDownWindow } from '../../../_custom_hooks/useScrollDown';
 //
 import { initial_posts } from '../../../component/posts/__common/InitialPosts';
 
 import Posts from '../../../component/posts/_posts/_main/PostsWs';
-
+// 
 import { handle_API_NewFeedPost_L } from '../__handle_api/NewFeedHandleAPI';
-
-import NewFeedSearch from '../search/NewFeedSearch';
-//
+// 
+import './NewFeedCommon.scss';
 import './NewFeed.scss';
 import './NewFeedRes.scss';
+// 
+import NewFeedSearch from '../search/NewFeedSearch';
+import NewFeedRight from '../right/_main/NewFeedRight';
+import NewFeedLeft from '../left/_main/NewFeedLeft';
+//
 
 //
 function NewFeed() {
@@ -22,10 +24,17 @@ function NewFeed() {
     const params_api = useRef({});
 
     //
-    const [post_obj, setPostObj, getData_API_Post_first] = useScrollDown(
-        initial_posts,
-        (c_count) => handle_API_NewFeedPost_L(c_count, params_api.current)
-    );
+    const {
+        data_state: post_obj,
+        getData_API_at_first: getData_API_Post_first,
+    } = useScrollDownWindow({
+        initial_data_arr: initial_posts,
+        handle_API_L: (c_count) =>
+            handle_API_NewFeedPost_L({
+                c_count: c_count,
+                params: params_api.current,
+            }),
+    });
 
     const { data_arr: post_arr, is_fetching, has_fetched } = post_obj;
 
@@ -40,8 +49,8 @@ function NewFeed() {
         params_api.current = {
             search: search,
         };
+
         getData_API_Post_first();
-        console.log(search);
     };
 
     //
@@ -53,7 +62,9 @@ function NewFeed() {
                 </div>
 
                 <div className="NewFeed_row">
-                    <div className="NewFeed_col-left"></div>
+                    <div className="NewFeed_col-left">
+                        <NewFeedLeft />
+                    </div>
 
                     <div className="NewFeed_col-center">
                         <div>
@@ -65,7 +76,9 @@ function NewFeed() {
                         </div>
                     </div>
 
-                    <div className="NewFeed_col-right"></div>
+                    <div className="NewFeed_col-right">
+                        <NewFeedRight />
+                    </div>
                 </div>
             </div>
         </div>

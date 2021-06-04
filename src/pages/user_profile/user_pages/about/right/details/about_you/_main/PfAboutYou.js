@@ -16,10 +16,7 @@ PfAboutYou.propTypes = {
 };
 
 //
-function PfAboutYou(props) {
-    //
-    const { you_obj } = props;
-
+function PfAboutYou({ you_obj }) {
     //
     const forceUpdate = useForceUpdate();
 
@@ -42,7 +39,7 @@ function PfAboutYou(props) {
         you_obj.permission = permission;
         you_obj.you = you;
 
-        forceUpdate()
+        forceUpdate();
     }
 
     //

@@ -189,12 +189,6 @@ export const RoutesExact = [
     path: '/learn-html',
     component: LearnHTML,
   },
-
-  // zoom
-  {
-    path: '/zoom',
-    component: ZoomVidPics,
-  },
 ];
 
 export const RoutesNotExact = [

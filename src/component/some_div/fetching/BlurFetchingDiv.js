@@ -5,13 +5,13 @@ import './BlurFetchingDiv.scss';
 
 //
 function BlurFetchingDiv(props) {
-    const {open_fetching, FetchingComponent} = props;
+    const {is_fetching, FetchingComponent} = props;
 
     return (
-        <div className={open_fetching ? 'BlurFetchingDiv' : 'display-none'}>
+        <div className={is_fetching ? 'BlurFetchingDiv' : 'display-none'}>
             <div className="BlurFetchingDiv_screen screen-blur">
                 <div className="BlurFetchingDiv_fetching">
-                    <FetchingComponent open_fetching={open_fetching}/>
+                    <FetchingComponent is_fetching={is_fetching}/>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@ function BlurFetchingDiv(props) {
 
 BlurFetchingDiv.propTypes = {
     FetchingComponent: PropTypes.func,
-    open_fetching: PropTypes.bool,
+    is_fetching: PropTypes.bool,
 };
 
 export default BlurFetchingDiv;

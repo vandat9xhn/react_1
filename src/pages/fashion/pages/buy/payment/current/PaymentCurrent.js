@@ -4,23 +4,20 @@ import PropTypes from 'prop-types';
 //
 PaymentCurrent.propTypes = {
     name: PropTypes.string,
-    handleChooseExtraBuy: PropTypes.func,
+    handleExtraBuy: PropTypes.func,
 };
 
-function PaymentCurrent(props) {
-    const { name, handleChooseExtraBuy } = props;
+function PaymentCurrent({ name, handleExtraBuy }) {
     //
     function onChooseExtraBuy() {
-        handleChooseExtraBuy('payment');
+        handleExtraBuy('payment');
     }
 
     //
     return (
         <div className="PaymentCurrent">
-            <div className="FashionChoiceCurrent_row">
-                <div className="FashionChoiceCurrent_title label-field">
-                    Payment
-                </div>
+            <div className="FashionChoiceCurrent_row flex-between-center">
+                <h3 className="margin-0">Payment</h3>
 
                 <div className="FashionChoiceCurrent_right">
                     <div className="text-blue">{name}</div>

@@ -1,93 +1,20 @@
-
-
-.FashionBuy_buying{
+.FashionBuy_buying {
     cursor: wait;
 }
 
-.FashionBuy_body{
+.FashionBuy_body {
     margin: 0 2rem;
 }
 //
-.FashionBuy_product{
+.FashionBuy_product {
     margin: 1rem 0;
 }
-.FashionBuy_current{
+.FashionBuy_current {
     margin: 0.5rem 0;
-    & > div > div{
+    & > div > div {
         padding: 0.5rem;
     }
 }
-.FashionBuy_total{
+.FashionBuy_total {
     margin: 0.5rem 0;
-}
-
-//
-.FashionBuy_nothing{
-    text-align: center;
-    font-size: 20px;
-    color: var(--md-bg-ccc);
-    font-weight: bold;
-}
-
-//
-.FashionChoiceCurrent_contain{
-    padding: 0.5rem 1rem;
-}
-.FashionChoiceCurrent_row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.FashionChoiceCurrent_title{
-    font-size: 18px;
-}
-.FashionChoiceCurrent_right{
-    text-align: end;
-}
-.FashionChoiceCurrent_change{
-    font-size: 14px;
-    font-style: italic;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-//
-.FashionBuy_choice-div{
-    background-color: var(--md-bg-primary);
-}
-//
-.FashionChoices_title{
-    padding: 0.5rem;
-    border-bottom: 1px solid var(--md-bg-ccc);
-
-    color: var(--md-bg-ccc);
-    font-size: 18px;
-    font-weight: 600;
-    text-align: center;
-}
-
-//
-@media (max-width: 700px){
-    .FashionBuy_body{
-        margin: 0 0.5rem;
-    }
-}
-
-//
-@media (max-width: 300px){
-    .FashionBuy_body{
-        margin: 0;
-    }
-
-    .BuyProductList{
-        border-radius: 0;
-    }
-
-    .FashionBuy_current{
-        border-radius: 0;
-    }
-
-    .FashionBuyTotal{
-        border-radius: 0;
-    }
 }

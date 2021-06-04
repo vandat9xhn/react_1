@@ -9,6 +9,7 @@ import PfAboutAdd from '../../../_component/add/PfAboutAdd';
 
 import PfAboutLifeEventEdit from '../edit/PfAboutLifeEventEdit';
 import PfAboutLifeEventItem from '../item/PfAboutLifeEventItem';
+import AboutNoItem from '../../../_component/no_item/AboutNoItem';
 
 //
 PfAboutLifeEvent.propTypes = {
@@ -16,10 +17,7 @@ PfAboutLifeEvent.propTypes = {
 };
 
 //
-function PfAboutLifeEvent(props) {
-    //
-    const { life_event_arr } = props;
-
+function PfAboutLifeEvent({ life_event_arr, has_fetched }) {
     //
     const forceUpdate = useForceUpdate();
 
@@ -37,29 +35,46 @@ function PfAboutLifeEvent(props) {
     }
 
     //
+    const no_item = !life_event_arr.length;
+
+    //
     return (
         <div>
             <h3 className="PfAbout_title">Life Events</h3>
-            
-            <div className="PfAbout_add">
-                <PfAboutAdd
-                    title_add="Add a life event"
-                    item_obj={{
-                        life_event: '',
-                        permission: 0,
-                    }}
-                    ComponentEdit={PfAboutLifeEventEdit}
-                    handleCreate={handleCreate}
-                    handle_API_C={handle_API_LifeEvent_C}
-                />
-            </div>
 
             <div>
-                {life_event_arr.map((life_event_obj) => (
-                    <div key={`PfAboutLifeEvent_${life_event_obj.id}`}>
-                        <PfAboutLifeEventItem life_event_obj={life_event_obj} />
+                <AboutNoItem
+                    has_fetched={has_fetched}
+                    no_item={no_item}
+                    title="No life event to show"
+                >
+                    <div>
+                        <div className="PfAbout_add">
+                            <PfAboutAdd
+                                title_add="Add a life event"
+                                item_obj={{
+                                    life_event: '',
+                                    permission: 0,
+                                }}
+                                ComponentEdit={PfAboutLifeEventEdit}
+                                handleCreate={handleCreate}
+                                handle_API_C={handle_API_LifeEvent_C}
+                            />
+                        </div>
+
+                        <div>
+                            {life_event_arr.map((life_event_obj) => (
+                                <div
+                                    key={`PfAboutLifeEvent_${life_event_obj.id}`}
+                                >
+                                    <PfAboutLifeEventItem
+                                        life_event_obj={life_event_obj}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                ))}
+                </AboutNoItem>
             </div>
         </div>
     );

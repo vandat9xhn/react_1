@@ -14,6 +14,10 @@ UserPost.propTypes = {};
 
 //
 function UserPost(props) {
+    //
+    const { id } = props.match.params;
+
+    //
     const [post_state, setPostState] = useState({
         post: [],
         has_fetched: false,
@@ -27,11 +31,17 @@ function UserPost(props) {
     //
     useEffect(() => {
         getData_API_Post();
-    }, []);
+    }, [id]);
 
     //
     async function getData_API_Post() {
-        const res = await API_Post_RD(1, 'GET');
+        setPostState({
+            post: [],
+            has_fetched: false,
+        });
+
+        const res = await API_Post_RD(id, 'GET');
+        
         mounted &&
             setPostState({
                 post: [res.data],

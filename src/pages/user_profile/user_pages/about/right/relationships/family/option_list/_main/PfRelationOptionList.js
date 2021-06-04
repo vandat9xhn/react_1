@@ -48,7 +48,7 @@ function PfRelationOptionList({
             <div>
                 <NoItemHasFetched
                     has_fetched={has_fetched}
-                    arr_length={option_item_arr.length}
+                    no_item={option_item_arr.length == 0}
                 />
             </div>
 

@@ -1,13 +1,13 @@
 
 //
-.PaymentChoice_contain{
-    padding: 0.5rem;
+.PaymentChoice{
     border-bottom: 1px solid var(--md-bg-blur);
 }
 //
-.PaymentChoice_contain-active{
+.PaymentChoice_active{
     position: relative;
-    color: var(--blue);
+    padding-left: 1.5rem;
+    
     &::before{
         content: "✔";
         position: absolute;
@@ -15,12 +15,4 @@
         top: 50%;
         transform: translateY(-50%);
     }
-}
-
-//
-.PaymentChoice_row{
-    margin-left: 1.5rem;
-}
-.PaymentChoice_item{
-    cursor: pointer;
 }

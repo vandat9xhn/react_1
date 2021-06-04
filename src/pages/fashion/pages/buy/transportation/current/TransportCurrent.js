@@ -8,45 +8,46 @@ TransportCurrent.propTypes = {
     name: PropTypes.string,
     title: PropTypes.string,
     price: PropTypes.number,
-    handleChooseExtraBuy: PropTypes.func,
+    handleExtraBuy: PropTypes.func,
 };
 TransportCurrent.defaultProps = {
     name: '',
     title: '',
     price: '',
-    handleChooseExtraBuy: () => {},
+    handleExtraBuy: () => {},
 };
 
 //
-function TransportCurrent(props) {
-    const { name, title, price, handleChooseExtraBuy } = props;
+function TransportCurrent({ name, title, price, has_choose, handleExtraBuy }) {
     //
-    function onChooseChoiceDiv() {
-        handleChooseExtraBuy('transport');
+    function openExtraBuyTransport() {
+        handleExtraBuy('transport');
     }
 
     //
     return (
         <div className="TransportCurrent">
-            <div className="FashionChoiceCurrent_row">
+            <div className="FashionChoiceCurrent_row flex-between-center">
                 <div>
-                    <div className="FashionChoiceCurrent_title label-field">
+                    <h3 className="FashionChoiceCurrent_title margin-0">
                         Transportation
-                    </div>
+                    </h3>
 
                     <div className="text-blue">{name}</div>
                 </div>
 
                 <div className="FashionChoiceCurrent_right">
-                    <div className="label-field">{title}</div>
+                    <div className={`${has_choose ? '' : 'display-none'}`}>
+                        <div className="label-field">{title}</div>
 
-                    <div className="text-blue">{formatNum(price)}</div>
-                    
+                        <div className="text-blue">{formatNum(price)}</div>
+                    </div>
+
                     <div
                         className="FashionChoiceCurrent_change"
-                        onClick={onChooseChoiceDiv}
+                        onClick={openExtraBuyTransport}
                     >
-                        Change
+                        {has_choose ? 'Change' : 'Choose'}
                     </div>
                 </div>
             </div>

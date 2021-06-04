@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 //
-import { useScrollDown } from '../../../../../_custom_hooks/useScrollDown';
+import { useScrollDownWindow } from '../../../../../_custom_hooks/useScrollDown';
 //
 import FetchingDiv from '../../../../../component/some_div/fetching/FetchingDiv';
 //
@@ -19,11 +19,11 @@ function Cities() {
     const value_search = useRef('');
 
     //
-    const [city_obj, setCityObj, getData_API_at_first] = useScrollDown(
-        [],
-        (c_count) => handle_API_City_L(value_search.current, c_count),
-        0.8
-    );
+    const { data_state: city_obj, getData_API_at_first } = useScrollDownWindow({
+        handle_API_L: (c_count) =>
+            handle_API_City_L(value_search.current, c_count),
+        thresh_hold: 0.8,
+    });
 
     const { data_arr: cities_arr, is_fetching, has_fetched } = city_obj;
 
@@ -60,7 +60,7 @@ function Cities() {
                         </div>
 
                         <div className="width-fit-content margin-auto">
-                            <FetchingDiv open_fetching={is_fetching} />
+                            <FetchingDiv is_fetching={is_fetching} />
                         </div>
                     </div>
                 </div>

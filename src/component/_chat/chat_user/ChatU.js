@@ -7,11 +7,11 @@ import { API_Friends_LC } from '../../../api/api_django/user/user_friend/UserFri
 
 import { useMounted } from '../../../_custom_hooks/useMounted';
 
-import { ScrollDown } from '../../../_some_function/ScrollDown';
+import { ScrollDownBool } from '../../../_some_function/ScrollDown';
 import observeToDo from '../../../_some_function/observerToDo';
 //
 import IconsArrow from '../../../_icons_svg/icons_arrow/IconsArrow';
-// 
+//
 import PicNameContent from '../../picture_name/pic_name_content/PicNameContent';
 //
 import './ChatU.scss';
@@ -44,13 +44,14 @@ function ChatU() {
         observeToDo(ref_chat_user.current, getFriends, 0.1);
     }, []);
 
-    // 
+    //
     useEffect(() => {
-        is_open && setFriendObj({
-            ...friend_obj,
-            is_open: false,
-        });
-    }, [location.href])
+        is_open &&
+            setFriendObj({
+                ...friend_obj,
+                is_open: false,
+            });
+    }, [location.href]);
 
     /* --------------------- GET API -------------------- */
 
@@ -62,9 +63,9 @@ function ChatU() {
             c_count: friend_arr.length,
         });
 
-        const new_friends = res.data.data.map(item => item.friend)
+        const new_friends = res.data.data.map((item) => item.friend);
         mounted &&
-            setFriendObj(friend_obj => ({
+            setFriendObj((friend_obj) => ({
                 ...friend_obj,
                 friend_arr: [...friend_arr, ...new_friends],
                 has_fetched: true,
@@ -80,7 +81,7 @@ function ChatU() {
 
     //
     function onScroll(e) {
-        if (ScrollDown(e, posScroll, just_scroll, max_friend)) {
+        if (ScrollDownBool(e.target, posScroll, just_scroll, max_friend)) {
             posScroll.current = e.target.scrollTop;
             just_scroll.current = true;
             getFriends();

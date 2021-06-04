@@ -1,0 +1,13 @@
+// 
+.NewFeedLeftHead{
+    max-height: 100vh;
+    overflow-y: auto;
+    
+    .FlexDiv_left{
+        margin-right: 0.5rem;
+        svg{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}

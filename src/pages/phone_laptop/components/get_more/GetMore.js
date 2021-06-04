@@ -8,22 +8,22 @@ import './GetMore.scss';
 // 
 GetMore.propTypes = {
     title_more: PropTypes.string,
-    open_fetching: PropTypes.bool,
+    is_fetching: PropTypes.bool,
     handleGetMore: PropTypes.func,
 };
 
 //
 function GetMore(props) {
-    const { title_more, handleGetMore, open_fetching } = props;
+    const { title_more, handleGetMore, is_fetching } = props;
 
     // 
     return (
         <div className="GetMore">
             <div className="width-fit-content margin-auto">
-                <FetchingDiv open_fetching={open_fetching} />
+                <FetchingDiv is_fetching={is_fetching} />
             </div>
 
-            <div className={open_fetching ? 'display-none' : 'GetMore_contain'}>
+            <div className={is_fetching ? 'display-none' : 'GetMore_contain'}>
                 <div
                     className="width-fit-content margin-auto"
                     onClick={handleGetMore}
