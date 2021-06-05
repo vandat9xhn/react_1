@@ -26,18 +26,22 @@ function ShopCartBuy(props) {
     //
     return (
         <div className="ShopCartBuy">
-            <Link
-                className="ShopCartBuy_link normal-text label-field hv-cl-blue"
-                to={`/fashion/shop/${id}`}
-            >
-                <div className="display-flex align-items-center">
-                    <div className="ShopCartBuy__picture brs-50">
-                        <img src={picture} alt="" width="40" height="40"/>
-                    </div>
+            <div className="display-flex">    
+                <Link
+                    className="ShopCartBuy_link normal-text label-field hv-cl-blue"
+                    to={`/fashion/shop/${id}`}
+                >
+                    <div className="padding-8px">
+                        <div className="display-flex align-items-center">
+                            <div className="ShopCartBuy__picture brs-50">
+                                <img src={picture} alt="" width="40" height="40"/>
+                            </div>
 
-                    <div>{name}</div>
-                </div>
-            </Link>
+                            <h3 className="margin-0">{name}</h3>
+                        </div>
+                    </div>
+                </Link>
+            </div>
         </div>
     );
 }

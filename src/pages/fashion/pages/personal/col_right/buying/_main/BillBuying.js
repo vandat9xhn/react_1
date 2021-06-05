@@ -11,7 +11,9 @@ import CircleLoading from '../../../../../../../component/waiting/circle_loading
 import ScreenBlurShowMore from '../../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
 //
 import { params_buy } from '../../../../../__params/home/FashionParams';
-
+//
+import './BillBuying.scss';
+//
 import BuyingStage from '../buying_stage/_main/BuyingStage';
 import BuyingShop from '../buying_shop/BuyingShop';
 
@@ -183,13 +185,12 @@ function BillBuying(props) {
             setBuyingState({
                 ...buying_state,
                 cur_stage: new_cur_stage,
-            })
+            });
         } else {
             getData_API_Buying({
                 cur_stage: new_cur_stage,
             });
         }
-
     }
 
     /* ---------------- CANCEL ----------------- */
@@ -228,14 +229,18 @@ function BillBuying(props) {
 
                     <div className={!has_fetched ? 'display-none' : ''}>
                         {buy_arr.map((buy_shop, ix) => (
-                            <BuyingShop
+                            <div
                                 key={`BillBuying_item_${ix}`}
-                                buy_shop={buy_shop}
-                                buy_shop_ix={ix}
-                                openConFirmCancelBuying={
-                                    openConFirmCancelBuying
-                                }
-                            />
+                                className="BillBuying_item"
+                            >
+                                <BuyingShop
+                                    buy_shop={buy_shop}
+                                    buy_shop_ix={ix}
+                                    openConFirmCancelBuying={
+                                        openConFirmCancelBuying
+                                    }
+                                />
+                            </div>
                         ))}
                     </div>
                 </div>

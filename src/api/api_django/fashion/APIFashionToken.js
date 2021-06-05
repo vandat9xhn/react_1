@@ -32,11 +32,14 @@ export const API_FashionCountCart = () =>
 
 // Update delete cart
 export const API_FashionCart_UD = (method, data = {}) =>
-    axiosDjangoClient({
-        url: '/fashion-api/ud-cart/',
-        method: method,
-        data: data,
-    });
+    API_FakeReal(
+        {},
+        () => axiosDjangoClient({
+            url: '/fashion-api/ud-cart/',
+            method: method,
+            data: data,
+        })
+    );
 
 // get create buy
 export const API_FashionBuy_LC = (method, params = {}, data = {}) =>

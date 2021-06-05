@@ -1,27 +1,12 @@
-// 
-%bd-bt{
-    border-bottom: 2px solid var(--md-bg-ccc);
-}
 
-%bd-t{
-    border-top: 1px solid var(--md-color);
-}
 
-//
-.BuyShop_shop{
-    display: flex;
-    align-items: center;
-}
-///
-.BuyShop_shop-contain{
-    @extend %bd-bt;
+.BuyShop_item{
+    padding: 0.5rem 0 0.5rem 0.25rem;
 }
 
 //
 .BuyShop_calculate{
-    margin-left: auto;
-    margin-right: 1rem;
-    width: fit-content;
     padding: 0.5rem;
-    @extend %bd-t;
+    border-bottom: 1px solid var(--md-bg-ccc);
+    text-align: center;
 }

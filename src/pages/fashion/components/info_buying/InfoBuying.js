@@ -16,42 +16,67 @@ InfoBuying.propTypes = {
 
 InfoBuying.defaultProps = {
     shop_count: 1,
-}
+};
 
 //
-function InfoBuying(props) {
-    const { amount, voucher_price, transport_price, payment, shop_count } =
-        props;
-
+function InfoBuying({
+    amount,
+    voucher_price,
+    transport_price,
+    payment,
+    shop_count,
+}) {
     //
     return (
-        <div className="display-flex justify-content-center">
-            <div className="text-align-left label-field">
-                <div>Payment:</div>
-                <div>Products:</div>
-                <div>Transportation:</div>
-                <div>Free Ship:</div>
-                <div>Total:</div>
-            </div>
+        <table className="InfoBuying w-100per">
+            <tbody>
+                <tr>
+                    <td>
+                        <h3 className="margin-0">Payment:</h3>
+                    </td>
 
-            <div className="InfoBuying_calculate">
-                <div>{payment}</div>
+                    <td>{payment}</td>
+                </tr>
 
-                <div>{formatNum(amount)}</div>
+                <tr>
+                    <td>
+                        <h3 className="margin-0">Products:</h3>
+                    </td>
 
-                <div>
-                    {formatNum(transport_price)} x {shop_count}
-                </div>
+                    <td>{formatNum(amount)}</td>
+                </tr>
 
-                <div>
-                    - {formatNum(voucher_price)} x {shop_count}
-                </div>
+                <tr>
+                    <td>
+                        <h3 className="margin-0">Transport</h3>
+                    </td>
 
-                <div className="label-field">
-                    {formatNum(+amount + transport_price - voucher_price)} VND
-                </div>
-            </div>
-        </div>
+                    <td>
+                        {transport_price} x {shop_count}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h3 className="margin-0">Free Ship</h3>
+                    </td>
+
+                    <td>
+                        {voucher_price} x {shop_count}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <h3 className="margin-0">Total</h3>
+                    </td>
+
+                    <td className="label-field">
+                        {formatNum(+amount + transport_price - voucher_price)} VND
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     );
 }
 

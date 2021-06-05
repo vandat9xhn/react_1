@@ -6,13 +6,14 @@ import { useRouteLoaded } from '../../../../../_custom_hooks/useRouteLoaded';
 import RouteLoaded from '../../../../../component/_route/route_loaded/RouteLoaded';
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
+//
+import './FashionPersonal.scss';
+import './FashionPersonalRes.scss';
+// 
 import { FashionRoutes, fashion_path_arr, fashion_person_pathname_arr } from '../routes/FashionRoutes';
 
 import PersonalLeft from '../col_left/_main/PersonalLeft';
 import FashionH from '../../../components/head/_main/FashionH';
-//
-import './FashionPersonal.scss';
-import './FashionPersonalRes.scss';
 
 //
 FashionPersonal.propTypes = {};
@@ -96,7 +97,7 @@ function FashionPersonal(props) {
                                 </div>
                             </div>
 
-                            <div className="FashionPersonal_right bg-primary box-shadow-1">
+                            <div className="FashionPersonal_right">
                                 <RouteLoaded
                                     route_arr={FashionRoutes}
                                     route_loaded_arr={route_loaded_arr}

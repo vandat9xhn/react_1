@@ -1474,13 +1474,13 @@ export const DefaultFashionCartBuy = [
                         {
                             id: 15,
                             vid_pic:
-                                'http://localhost:8000/media/phone/iphone-xr-hopmoi-den-600x600-2-600x600.jpg',
+                                image_loading,
                             product_model: 5,
                         },
                         {
                             id: 106,
                             vid_pic:
-                                'http://localhost:8000/media/laptop/hp-15s-du1103tu-i5-2w7j7pa-400x400.jpg',
+                                image_loading,
                             product_model: 5,
                         },
                     ],
@@ -1514,7 +1514,7 @@ export const DefaultFashionCartBuy = [
                     shop_model: 6,
                     list_model: null,
                 },
-                quantity: 1,
+                quantity: 2,
                 checked: true,
                 created_time: '2021-04-21T09:20:46.510170Z',
                 updated_time: '2021-04-21T09:20:46.510170Z',
@@ -1532,13 +1532,13 @@ export const DefaultFashionCartBuy = [
                         {
                             id: 15,
                             vid_pic:
-                                'http://localhost:8000/media/phone/iphone-xr-hopmoi-den-600x600-2-600x600.jpg',
+                                image_loading,
                             product_model: 5,
                         },
                         {
                             id: 106,
                             vid_pic:
-                                'http://localhost:8000/media/laptop/hp-15s-du1103tu-i5-2w7j7pa-400x400.jpg',
+                                image_loading,
                             product_model: 5,
                         },
                     ],
@@ -1587,13 +1587,13 @@ export const DefaultFashionCartBuy = [
                         {
                             id: 15,
                             vid_pic:
-                                'http://localhost:8000/media/phone/iphone-xr-hopmoi-den-600x600-2-600x600.jpg',
+                                image_loading,
                             product_model: 5,
                         },
                         {
                             id: 106,
                             vid_pic:
-                                'http://localhost:8000/media/laptop/hp-15s-du1103tu-i5-2w7j7pa-400x400.jpg',
+                                image_loading,
                             product_model: 5,
                         },
                     ],
@@ -1659,13 +1659,13 @@ export const DefaultFashionCartBuy = [
                         {
                             id: 15,
                             vid_pic:
-                                'http://localhost:8000/media/phone/iphone-xr-hopmoi-den-600x600-2-600x600.jpg',
+                                image_loading,
                             product_model: 5,
                         },
                         {
                             id: 106,
                             vid_pic:
-                                'http://localhost:8000/media/laptop/hp-15s-du1103tu-i5-2w7j7pa-400x400.jpg',
+                                image_loading,
                             product_model: 5,
                         },
                     ],
@@ -1699,7 +1699,7 @@ export const DefaultFashionCartBuy = [
                     shop_model: 6,
                     list_model: null,
                 },
-                quantity: 1,
+                quantity: 3,
                 checked: true,
                 created_time: '2021-04-21T09:20:46.510170Z',
                 updated_time: '2021-04-21T09:20:46.510170Z',
@@ -1717,13 +1717,13 @@ export const DefaultFashionCartBuy = [
                         {
                             id: 15,
                             vid_pic:
-                                'http://localhost:8000/media/phone/iphone-xr-hopmoi-den-600x600-2-600x600.jpg',
+                                image_loading,
                             product_model: 5,
                         },
                         {
                             id: 106,
                             vid_pic:
-                                'http://localhost:8000/media/laptop/hp-15s-du1103tu-i5-2w7j7pa-400x400.jpg',
+                                image_loading,
                             product_model: 5,
                         },
                     ],

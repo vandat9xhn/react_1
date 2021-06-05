@@ -39,23 +39,17 @@
 
 //2
 .FashionCart_buy{
-    margin: 1rem;
+    margin-top: 1rem;
 }
 //3
 .FashionCart_buy-now{
-    width: 10rem;
+    width: 15rem;
     padding: 1rem 2rem;
     background-color: var(--btn-buy);
 
     text-align: center;
     font-weight: 600;
     color: var(--white);
-}
-.FashionCart_buy_ready{
-    cursor: pointer;
-    &:hover{
-        opacity: 0.9;
-    }
 }
 
 //1
@@ -67,5 +61,5 @@
 
     text-align: center;
     font-weight: 800;
-    color: var(--md-bg-blur);
+    color: var(--md-color-secondary);
 }

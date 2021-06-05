@@ -39,10 +39,9 @@ ProductCartBuy.defaultProps = {
 };
 
 //
-function ProductCartBuy(props) {
-    const { product, quantity, children } = props;
+function ProductCartBuy({ product, quantity, children }) {
     //
-    const {id, name, vid_pics, new_price} = product;
+    const { id, name, vid_pics, new_price } = product;
 
     //
     return (
@@ -70,17 +69,17 @@ function ProductCartBuy(props) {
                     </Link>
                 </div>
 
-                <div className="ProductCartBuy_calculate display-flex align-items-center">
-                    <div className="ProductCartBuy_price">
-                        {formatNum(new_price)}
-                    </div>
+                <div className="ProductCartBuy_calculate">
+                    <div className="ProductCartBuy_calculate-row display-flex align-items-center">
+                        <div className="ProductCartBuy_price">
+                            {formatNum(new_price)}
+                        </div>
 
-                    {children}
+                        {children}
 
-                    <div className="ProductCartBuy_total label-field">
-                        {formatNum(
-                            new_price * quantity
-                        )}
+                        <div className="ProductCartBuy_total label-field">
+                            {formatNum(new_price * quantity)}
+                        </div>
                     </div>
                 </div>
             </div>

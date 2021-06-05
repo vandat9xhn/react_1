@@ -1,49 +1,32 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
 //
-import Pagination from '../../../../../component/pagination/_main/Pagination';
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
+// 
+import Pagination from '../../../../../component/pagination/_main/Pagination';
 import WaitingBall from '../../../../../component/waiting/waiting_ball/WaitingBall';
 //
 import { handle_API_FashionProduct_L } from '../../../__handle_api/home/FashionHandleAPI';
-
-import FashionShead from '../head/FashionShead';
-import SearchProducts from '../products/SearchProducts';
-import SearchFilter from '../filter/_main/SearchFilter';
+import { initial_fashion_search_products_obj } from '../../../__initial/initial';
 //
 import './FashionSearch.scss';
 import './FashionSearchRes.scss';
+// 
+import FashionShead from '../head/FashionShead';
+import SearchProducts from '../products/SearchProducts';
+import SearchFilter from '../filter/_main/SearchFilter';
 
 //
 function FashionSearch(props) {
-    // state
+    // 
+    const use_history = useHistory()
+
+    // 
     const [fashion_search_state, setFashionSearchState] = useState({
-        products_obj: {
-            0: [
-                {
-                    id: 0,
-                    vid_pics: [
-                        {
-                            id: 0,
-                            vid_pic: '',
-                        },
-                    ],
-                    count_rate: 0,
-                    total_rate: 0,
-                    address: '',
-                    brand: '',
-                    type: '',
-                    hashtag: '',
-                    name: '',
-                    new_price: 0,
-                    old_price: 0,
-                    discount: 0,
-                    sold: 0,
-                },
-            ],
-        },
+        products_obj: initial_fashion_search_products_obj,
 
         area_arr: [
             { title: 'Ha Noi', checked: false },
@@ -102,9 +85,7 @@ function FashionSearch(props) {
 
     //
     async function getData_API_Search({
-        start_obj_state = {
-            // ...fashion_search_state,
-        },
+        start_obj_state = {},
         params_api = {
             new_value_search: value_search,
             new_page: page,
@@ -175,9 +156,7 @@ function FashionSearch(props) {
 
     //
     function getData_API_Search_Refresh({
-        start_obj_state = {
-            ...fashion_search_state,
-        },
+        start_obj_state = {},
         params_api = {
             new_value_search: value_search,
             new_page: page,
@@ -218,21 +197,23 @@ function FashionSearch(props) {
             return;
         }
 
-        history.pushState(
-            '',
-            value_search,
-            '/fashion/search?q=' + new_value_search
-        );
+        use_history.push('/fashion/search?q=' + new_value_search)
 
-        const start_obj_state = {
-            value_search: new_value_search,
-        };
+        // history.pushState(
+        //     '',
+        //     value_search,
+        //     '/fashion/search?q=' + new_value_search
+        // );
 
-        const params_api = {
-            new_value_search: new_value_search,
-        };
+        // const start_obj_state = {
+        //     value_search: new_value_search,
+        // };
 
-        getData_API_Search_Refresh({ start_obj_state, params_api });
+        // const params_api = {
+        //     new_value_search: new_value_search,
+        // };
+
+        // getData_API_Search_Refresh({ start_obj_state, params_api });
     }
 
     /* -------------------- PAGE ---------------------*/
@@ -337,6 +318,7 @@ function FashionSearch(props) {
         getData_API_Search_Refresh({ start_obj_state, params_api });
     }
 
+    console.log(products_obj);
     //
     return (
         <div>

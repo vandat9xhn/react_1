@@ -43,3 +43,30 @@ export const initial_fashion_shop = {
         },
     ]
 };
+
+
+// 
+export const initial_fashion_search_products_obj = {
+    0: [
+        {
+            id: 0,
+            vid_pics: [
+                {
+                    id: 0,
+                    vid_pic: '',
+                },
+            ],
+            count_rate: 0,
+            total_rate: 0,
+            address: '',
+            brand: '',
+            type: '',
+            hashtag: '',
+            name: '',
+            new_price: 0,
+            old_price: 0,
+            discount: 0,
+            sold: 0,
+        },
+    ],
+}

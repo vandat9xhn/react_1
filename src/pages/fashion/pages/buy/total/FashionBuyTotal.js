@@ -4,45 +4,41 @@ import PropTypes from 'prop-types';
 import InfoBuying from '../../../components/info_buying/InfoBuying';
 //
 import './FashionBuyTotal.scss';
+
 //
 FashionBuyTotal.propTypes = {};
 
 //
-function FashionBuyTotal(props) {
-    const {
-        amount,
-        transport_price,
-        voucher_price,
-        payment,
-        shop_count,
-        openConfirmBuy,
-    } = props;
-
+function FashionBuyTotal({
+    amount,
+    transport_price,
+    voucher_price,
+    payment,
+    shop_count,
+    openConfirmBuy,
+}) {
+    //
     return (
         <div className="FashionBuyTotal bg-primary box-shadow-1 brs-5px">
-            <div className="FashionBuyTotal_contain">
-                <div className="FashionBuyTotal_row">
-                    <div className="FashionBuyTotal_title label-field">
-                        TOTAL
-                    </div>
+            <div className="FashionBuyTotal_row flex-between-center">
+                <h3 className="FashionBuyTotal_title margin-0">TOTAL</h3>
+
+                <div className="FashionBuyTotal_right">
+                    <InfoBuying
+                        amount={+amount}
+                        voucher_price={+voucher_price}
+                        transport_price={+transport_price}
+                        payment={payment}
+                        shop_count={shop_count}
+                    />
 
                     <div>
-                        <InfoBuying
-                            amount={+amount}
-                            voucher_price={+voucher_price}
-                            transport_price={+transport_price}
-                            payment={payment}
-                            shop_count={shop_count}
-                        />
-
-                        <div>
-                            <div
-                                className="FashionBuyTotal_buy brs-5px"
-                                onClick={openConfirmBuy}
-                            >
-                                Buy now
-                            </div>
-                        </div>
+                        <button
+                            className="FashionBuyTotal_buy btn btn-hv btn-active w-100per brs-5px"
+                            onClick={openConfirmBuy}
+                        >
+                            Buy now
+                        </button>
                     </div>
                 </div>
             </div>

@@ -150,17 +150,16 @@ function FashionBuy(props) {
         };
         closeExtraBuy();
     }
-    
+
     //
     function doNotUseVoucher() {
         voucher_obj.current = {
-            voucher: {name: '', info: '', cost: 0},
+            voucher: { name: '', info: '', cost: 0 },
             voucher_ix: 0,
             voucher_has_choose: false,
         };
         closeExtraBuy();
     }
-    
 
     /* --------------------- CONFIRM BUY ----------------------- */
 
@@ -175,8 +174,8 @@ function FashionBuy(props) {
         } else {
             openScreenConfirm(
                 'Fashion Buying',
-                'You must choose transport!',
-                () => {}
+                <div className="text-red">You must choose transport!</div>,
+                () => handleExtraBuy('transport')
             );
         }
     }
@@ -191,7 +190,7 @@ function FashionBuy(props) {
 
         await handleScreenFetching(
             () => API_FashionBuy_LC('POST', {}, formData),
-            <BuyFetching is_fetching={true} />
+            BuyFetching
         );
 
         const count_checked = buy_shops.reduce(
@@ -258,7 +257,7 @@ function FashionBuy(props) {
                             amount={amount}
                             transport_price={transport_price}
                             voucher_price={voucher_price}
-                            payment_name={payment_name}
+                            payment={payment_name}
                             shop_count={buy_shops.length}
                             openConfirmBuy={openConfirmBuy}
                         />

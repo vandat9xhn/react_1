@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { formatNum } from '../../../../../../../_some_function/FormatNum';
-// 
+//
 import ShopCartBuy from '../../../../../components/shop_cart_buy/ShopCartBuy';
 
 import BuyingItem from '../buying_item/BuyingItem';
@@ -31,13 +31,13 @@ function BuyingShop(props) {
         shop,
         products,
         status,
-        
+
         payment,
         transport_price_model,
         voucher_model,
     } = buy_shop;
 
-    const {id, name, picture} = shop;
+    const { id, name, picture } = shop;
 
     //
     const amount = products.reduce(
@@ -49,20 +49,20 @@ function BuyingShop(props) {
     //
     return (
         <div className="BuyingShop bg-primary">
-            <div className="BuyingShop_row">
-                <div className="display-flex">
-                    <ShopCartBuy
-                        id={id}
-                        name={name}
-                        picture={picture}
-                    />
+            <div className="BuyingShop_head">
+                <div className="BuyingShop_shop">
+                    <ShopCartBuy id={id} name={name} picture={picture} />
                 </div>
+            </div>
 
-                <div>
-                    <div className="BuyingShop_items-contain">
-                        {products.map((buy_product, ix) => (
+            <div>
+                <div className="BuyingShop_items-contain">
+                    {products.map((buy_product, ix) => (
+                        <div
+                            key={`BillBuying_item_${ix}`}
+                            className="BuyingShop_item"
+                        >
                             <BuyingItem
-                                key={`BillBuying_item_${ix}`}
                                 buy_product={buy_product}
                                 status={status}
                                 //
@@ -73,27 +73,24 @@ function BuyingShop(props) {
                                     openConFirmCancelBuying
                                 }
                             />
-                        ))}
-                    </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="BuyingShop_bot width-fit-content margin-auto">
+                <div className="label-field">
+                    Total: {formatNum(amount)} VND
                 </div>
 
-                <div className="BuyingShop_bot width-fit-content margin-auto">
-                    <div className="label-field">
-                        Total: {formatNum(amount)} VND
-                    </div>
-
-                    <div className="BuyingShop_bot-info box-shadow-1 brs-5px">
-                        <InfoBuying
-                            amount={
-                                amount - transport_price_model - voucher_model
-                            }
-                            voucher_price={voucher_model}
-                            transport_price={transport_price_model}
-                            payment={payment}
-                        />
-                    </div>
+                <div className="BuyingShop_bot-info box-shadow-1 brs-5px">
+                    <InfoBuying
+                        amount={amount - transport_price_model - voucher_model}
+                        voucher_price={voucher_model}
+                        transport_price={transport_price_model}
+                        payment={payment}
+                    />
                 </div>
-                <br />
             </div>
         </div>
     );

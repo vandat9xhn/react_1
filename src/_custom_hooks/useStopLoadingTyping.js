@@ -17,6 +17,7 @@ export function useStopLoadingTyping({ time_stop = 100, callback = () => {} }) {
     function handleKeyUpTying() {
         interval.current = setTimeout(() => {
             is_typing.current = false;
+            callback()
         }, time_stop);
     }
 
