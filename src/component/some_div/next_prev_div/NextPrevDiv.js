@@ -10,6 +10,7 @@ NextPrevDiv.propTypes = {
     is_btn_circle: PropTypes.bool,
     is_has_next: PropTypes.bool,
     is_has_prev: PropTypes.bool,
+    size_icon: PropTypes.string,
 
     handleNext: PropTypes.func,
     handlePrev: PropTypes.func,
@@ -19,6 +20,7 @@ NextPrevDiv.defaultProps = {
     is_btn_circle: false,
     is_has_next: true,
     is_has_prev: true,
+    size_icon: '1.25rem',
 };
 
 //
@@ -26,6 +28,7 @@ function NextPrevDiv({
     is_btn_circle,
     is_has_next,
     is_has_prev,
+    size_icon,
     handleNext,
     handlePrev,
 }) {
@@ -43,7 +46,7 @@ function NextPrevDiv({
                     onClick={handleNext}
                     title="next"
                 >
-                    <IconsArrow x={200} size_icon="1.25rem" />
+                    <IconsArrow x={200} size_icon={size_icon} />
                 </div>
             </div>
 
@@ -59,7 +62,7 @@ function NextPrevDiv({
                     onClick={handlePrev}
                     title="previous"
                 >
-                    <IconsArrow x={400} size_icon="1.25rem" />
+                    <IconsArrow x={400} size_icon={size_icon} />
                 </div>
             </div>
         </div>

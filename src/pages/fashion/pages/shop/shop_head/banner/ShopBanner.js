@@ -9,18 +9,20 @@ import './ShopBanner.scss';
 ShopBanner.propTypes = {
     vid_pics: PropTypes.array,
 };
+
 ShopBanner.defaultProps = {
     vid_pics: ['', '', '']
 }
+
 //
-function ShopBanner(props) {
-    const vid_pics = props.vid_pics.map(item => item.vid_pic);
-    //
+function ShopBanner({vid_pics}) {
+    // 
     const new_vid_pics = [
         vid_pics[vid_pics.length - 1],
         ...vid_pics,
         vid_pics[0],
     ];
+
     //
     return (
         vid_pics.length >= 1 && (

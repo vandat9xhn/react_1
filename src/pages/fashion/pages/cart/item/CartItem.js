@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useStopLoadingTyping } from '../../../../../_custom_hooks/useStopLoadingTyping';
+import { useWaitingLastAction } from '../../../../../_custom_hooks/useWaitingLastAction';
 import { useNewCount } from '../../../../../_custom_hooks/useCount';
 //
 import ProductCartBuy from '../../../components/product_cart_buy/ProductCartBuy';
@@ -37,8 +37,8 @@ function CartItem({
     const { product, quantity, checked } = cart_product;
 
     //
-    const { handleChangeTying } = useStopLoadingTyping({
-        time_stop: 500,
+    const { handleWaitingLastAction } = useWaitingLastAction({
+        time_waiting: 500,
         callback: onCount,
     });
 
@@ -49,7 +49,7 @@ function CartItem({
         beforeCountNum,
         countNum,
         countNumDone,
-    } = useNewCount(quantity, 1, product.total, handleChangeTying);
+    } = useNewCount(quantity, 1, product.total, handleWaitingLastAction);
 
     //
     function onCount(value) {

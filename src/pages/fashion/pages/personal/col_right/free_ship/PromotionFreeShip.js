@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-PromotionFreeShip.propTypes = {
-    
-};
+//
+PromotionFreeShip.propTypes = {};
 
+//
 function PromotionFreeShip(props) {
     return (
         <div>
             <div>
                 <div>
-                    <div className="fashion_title fashion_center fashion_border-bottom">Free ship</div>
+                    <h2 className="margin-0 text-secondary text-align-center">
+                        Free Ship
+                    </h2>
                 </div>
             </div>
         </div>

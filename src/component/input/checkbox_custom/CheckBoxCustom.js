@@ -13,12 +13,13 @@ CheckBoxCustom.propTypes = {
 };
 
 //
-function CheckBoxCustom(props) {
-    const { checked, title, handleChangeChecked } = props;
-    
+function CheckBoxCustom({ checked, title, handleChangeChecked }) {
     //
     return (
-        <div className="CheckBoxCustom">
+        <div
+            className="CheckBoxCustom cursor-pointer"
+            onClick={handleChangeChecked}
+        >
             <div className="CheckBoxCustom_row display-flex align-items-center">
                 <div
                     className={`CheckBoxCustom_input brs-5px position-rel ${
@@ -26,7 +27,6 @@ function CheckBoxCustom(props) {
                             ? 'CheckBoxCustom_input-active'
                             : 'CheckBoxCustom_input-inactive'
                     }`}
-                    onClick={handleChangeChecked}
                 >
                     <div className="CheckBoxCustom_input-icon pos-abs-100 display-flex align-items-center justify-content-center">
                         <IconSent

@@ -8,6 +8,9 @@ import { API_FashionProduct_R } from '../../../../../../api/api_django_no_token/
 //
 import { useMounted } from '../../../../../../_custom_hooks/useMounted';
 //
+import UnitTime from '../../../../../../_some_function/UnitTime';
+import { UnitNumber } from '../../../../../../_some_function/UnitNumber';
+//
 import { actionFashionChangeCountCartNum } from '../../../../../../redux/action/action_count_cart';
 //
 import {
@@ -21,6 +24,7 @@ import FashionItemInfo from '../info/_main/FashionItemInfo';
 import FashionOwner from '../owner/_main/FashionOwner';
 import FashionCartSuccess from '../../add_cart_success/FashionCartSuccess';
 import observeToDo from '../../../../../../_some_function/observerToDo';
+import { changeOwnerInfo } from '../../../../__function/FashionFunction';
 
 //
 FashionItemShop.propTypes = {};
@@ -80,12 +84,18 @@ function FashionItemShop({ id }) {
                 wait_add_cart: false,
             });
 
-        const { vid_pics: new_vid_pic_arr, shop_obj, ...rest_data } = data;
+        const {
+            vid_pics: new_vid_pic_arr,
+            shop_obj: new_shop_obj,
+            ...rest_data
+        } = data;
+
+        changeOwnerInfo(new_shop_obj.owner_info)
 
         setItemShopState({
             vid_pic_arr: new_vid_pic_arr.map((item) => item.vid_pic),
             info_right: rest_data,
-            shop_obj: shop_obj,
+            shop_obj: new_shop_obj,
             has_fetched: true,
             wait_add_cart: false,
         });

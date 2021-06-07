@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import './CanvasDraw.scss';
-import Select from '../../input/select/Select';
+// 
 import IconReUndo from '../../../_icons_svg/icon_re_undo/IconReUndo';
+// 
+import Select from '../../input/select/Select';
+// 
+import './CanvasDraw.scss';
 
-// const w_canvas = window.innerWidth >= 500 ? 500 : 300;
+//
 const w_canvas = 250;
 const h_canvas = 250;
+
 //
 class CanvasDraw extends Component {
     state = {
@@ -22,171 +25,22 @@ class CanvasDraw extends Component {
             this.ref_canvas = elm;
         }
     };
+
     refLinkDownload = (elm) => {
         if (elm !== null) {
             this.ref_link_download = elm;
         }
     };
+
     //
     componentDidMount() {
         this.startCanvas();
     }
 
-    //
-    startReadyCanvas = (canvas_draws) => {
-        this.list_canvas = [...canvas_draws.list_canvas];
-        this.c_step = canvas_draws.c_step;
-        //
-        setTimeout(() => {
-            this.drawImageToCanvas(this.c_step);
-            this.setState({
-                bg: canvas_draws.bg,
-                stroke_width: canvas_draws.stroke_width,
-                color: canvas_draws.color,
-            });
-        }, 5);
-    };
+    /* ------------------ COMMON ------------------- */
 
-    // start
-    startCanvas = () => {
-        this.ctx = this.ref_canvas.getContext('2d');
-        this.run = false;
-        this.list_canvas = [''];
-        this.c_step = 0;
-        this.just_move = false;
-        // this.current_client_x = 0
-        // this.current_client_y = 0
-    };
-
-    // mouse down on canvas
-    onMouseDown = (event) => {
-        this.onMouseDownTouch(event.clientX, event.clientY);
-    };
-    // mouse move on canvas
-    onMouseMove = (event) => {
-        this.onMoveToDraw(event.clientX, event.clientY);
-    };
-    // mouse up on canvas
-    onMouseUp = () => {
-        this.onMouseUpTouchEnd();
-    };
-
-    // mouse down on canvas
-    onTouchStart = (event) => {
-        event.stopPropagation();
-        this.onMouseDownTouch(
-            event.touches[0].clientX,
-            event.touches[0].clientY
-        );
-    };
-    // mouse move on canvas
-    onTouchMove = (event) => {
-        event.stopPropagation();
-        this.onMoveToDraw(event.touches[0].clientX, event.touches[0].clientY);
-    };
-    //
-    onTouchEnd = () => {
-        // this.onMouseUpTouchEnd(event.changedTouches[0].clientX, event.changedTouches[0].clientY)
-        this.onMouseUpTouchEnd();
-    };
-
-    // mouse leave
-    onMouseLeave = () => {
-        this.run = false;
-    };
-
-    // clear canvas
-    clearCanvas = () => {
-        if (!this.run && this.list_canvas[this.c_step] != '') {
-            this.ctx.clearRect(0, 0, w_canvas, h_canvas);
-            this.list_canvas.splice(
-                this.c_step + 1,
-                this.list_canvas.length,
-                ''
-            );
-            this.c_step += 1;
-        }
-    };
-
-    // undo
-    undo = () => {
-        if (this.c_step > 0) {
-            this.c_step -= 1;
-            this.drawImageToCanvas(this.c_step);
-        }
-    };
-
-    // redo
-    redo = () => {
-        if (this.list_canvas.length > this.c_step + 1) {
-            this.c_step += 1;
-            this.drawImageToCanvas(this.c_step);
-        }
-    };
-
-    // change input color
-    onChangeColor = (e) => {
-        this.setState({
-            color: e.target.value,
-        });
-    };
-
-    // change input background
-    onChangeBg = (e) => {
-        this.setState({
-            bg: e.target.value,
-        });
-    };
-
-    // change input width
-    onChangeWidth = (e) => {
-        this.setState({
-            stroke_width: e.target.value,
-        });
-    };
-
-    // on download
-    onDownload = (e) => {
-        e.preventDefault();
-        this.fillBgCanvas();
-        //
-        setTimeout(() => {
-            this.ref_link_download.href = this.ref_canvas.toDataURL();
-            this.ref_link_download.click();
-        }, 0);
-        //
-        setTimeout(() => {
-            this.afterDownload();
-        }, 1);
-    };
-
-    // complete canvas
-    completeCanvas = () => {
-        this.fillBgCanvas();
-        //
-        setTimeout(() => {
-            this.props.completeCanvas({
-                current_canvas: this.ref_canvas.toDataURL(),
-                list_canvas: this.list_canvas,
-                c_step: this.c_step,
-                bg: this.state.bg,
-                color: this.state.color,
-                stroke_width: this.state.stroke_width,
-            });
-        }, 10);
-        //
-        setTimeout(() => {
-            this.clearCompleteCanvas();
-        }, 15);
-    };
-
-    /* ---------------------------------- COMMON FUNCS --------------------------------------- */
-
-    // start draw
+    // 
     onMouseDownTouch = (client_x, client_y) => {
-        // this.current_client_x = client_x
-        // this.current_client_y = client_y
-        //
         this.run = true;
         this.x_offset = this.ref_canvas.getBoundingClientRect().left;
         this.y_offset = this.ref_canvas.getBoundingClientRect().top;
@@ -198,7 +52,8 @@ class CanvasDraw extends Component {
         this.ctx.lineWidth = this.state.stroke_width;
         this.ctx.moveTo(move_to_x, move_to_y);
     };
-    // move to draw
+
+    //
     onMoveToDraw = (client_x, client_y) => {
         if (this.run) {
             if (!this.just_move) {
@@ -210,7 +65,8 @@ class CanvasDraw extends Component {
             this.ctx.stroke();
         }
     };
-    // mouse up and touch end
+
+    //
     onMouseUpTouchEnd = () => {
         this.run = false;
         if (!this.just_move) {
@@ -225,18 +81,15 @@ class CanvasDraw extends Component {
         this.just_move = false;
     };
 
-    // draw image
+    //
     drawImageToCanvas = (index) => {
-        // const img_canvas = new Image();
-        // img_canvas.src = this.list_canvas[index];
-        // img_canvas.onload = () => { this.ctx.drawImage(img_canvas, 0, 0); }
         this.ctx.clearRect(0, 0, w_canvas, h_canvas);
         if (this.list_canvas[this.c_step]) {
             this.ctx.putImageData(this.list_canvas[index], 0, 0);
         }
     };
 
-    // fill bg for canvas when download or complete
+    // 
     fillBgCanvas = () => {
         const img_src = this.ref_canvas.toDataURL();
         this.ctx.clearRect(0, 0, w_canvas, h_canvas);
@@ -251,7 +104,7 @@ class CanvasDraw extends Component {
         };
     };
 
-    // after download
+    //
     afterDownload = () => {
         this.ctx.clearRect(0, 0, w_canvas, h_canvas);
         this.drawImageToCanvas(this.c_step);
@@ -269,9 +122,161 @@ class CanvasDraw extends Component {
         });
     };
 
-    // render
+    /* ------------------------------------ */
+
+    //
+    startReadyCanvas = (canvas_draws) => {
+        this.list_canvas = [...canvas_draws.list_canvas];
+        this.c_step = canvas_draws.c_step;
+        
+        setTimeout(() => {
+            this.drawImageToCanvas(this.c_step);
+            this.setState({
+                bg: canvas_draws.bg,
+                stroke_width: canvas_draws.stroke_width,
+                color: canvas_draws.color,
+            });
+        }, 5);
+    };
+
+    // start
+    startCanvas = () => {
+        this.ctx = this.ref_canvas.getContext('2d');
+        this.run = false;
+        this.list_canvas = [''];
+        this.c_step = 0;
+        this.just_move = false;
+    };
+
+    // 
+    onMouseDown = (event) => {
+        this.onMouseDownTouch(event.clientX, event.clientY);
+    };
+
+    // 
+    onMouseMove = (event) => {
+        this.onMoveToDraw(event.clientX, event.clientY);
+    };
+    // 
+    onMouseUp = () => {
+        this.onMouseUpTouchEnd();
+    };
+
+    // 
+    onTouchStart = (event) => {
+        event.stopPropagation();
+        this.onMouseDownTouch(
+            event.touches[0].clientX,
+            event.touches[0].clientY
+        );
+    };
+
+    //
+    onTouchMove = (event) => {
+        event.stopPropagation();
+        this.onMoveToDraw(event.touches[0].clientX, event.touches[0].clientY);
+    };
+
+    //
+    onTouchEnd = () => {
+        this.onMouseUpTouchEnd();
+    };
+
+    // 
+    onMouseLeave = () => {
+        this.run = false;
+    };
+
+    //
+    clearCanvas = () => {
+        if (!this.run && this.list_canvas[this.c_step] != '') {
+            this.ctx.clearRect(0, 0, w_canvas, h_canvas);
+            this.list_canvas.splice(
+                this.c_step + 1,
+                this.list_canvas.length,
+                ''
+            );
+            this.c_step += 1;
+        }
+    };
+
+    // 
+    undo = () => {
+        if (this.c_step > 0) {
+            this.c_step -= 1;
+            this.drawImageToCanvas(this.c_step);
+        }
+    };
+
+    // 
+    redo = () => {
+        if (this.list_canvas.length > this.c_step + 1) {
+            this.c_step += 1;
+            this.drawImageToCanvas(this.c_step);
+        }
+    };
+
+    // 
+    onChangeColor = (e) => {
+        this.setState({
+            color: e.target.value,
+        });
+    };
+
+    // 
+    onChangeBg = (e) => {
+        this.setState({
+            bg: e.target.value,
+        });
+    };
+
+    // 
+    onChangeWidth = (e) => {
+        this.setState({
+            stroke_width: e.target.value,
+        });
+    };
+
+    // 
+    onDownload = (e) => {
+        e.preventDefault();
+        this.fillBgCanvas();
+        
+        setTimeout(() => {
+            this.ref_link_download.href = this.ref_canvas.toDataURL();
+            this.ref_link_download.click();
+
+            setTimeout(() => {
+                this.afterDownload();
+            }, 1);
+        }, 0);
+    };
+
+    //
+    completeCanvas = () => {
+        this.fillBgCanvas();
+        
+        setTimeout(() => {
+            this.props.completeCanvas({
+                current_canvas: this.ref_canvas.toDataURL(),
+                list_canvas: this.list_canvas,
+                c_step: this.c_step,
+                bg: this.state.bg,
+                color: this.state.color,
+                stroke_width: this.state.stroke_width,
+            });
+
+            setTimeout(() => {
+                this.clearCompleteCanvas();
+            }, 5);
+        }, 10);
+    };
+
+    // 
     render() {
         const { bg, color, stroke_width } = this.state;
+        
+        // 
         return (
             <div className="CanvasDraw bg-vid-pic">
                 <div className="CanvasDraw_contain brs-5px App_box_shadow">

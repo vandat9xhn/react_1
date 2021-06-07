@@ -1,22 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import ProductItem from '../../../../../../component/products/product_item/ProductItem';
-// 
+//
 import './ShopProducts.scss';
 
-// 
-ShopProducts.propTypes = {
-    
-};
+//
+ShopProducts.propTypes = {};
 
-// 
-function ShopProducts(props) {
-    const {products} = props;
-
-    // 
+//
+function ShopProducts({ products }) {
+    //
     return (
-        <div className="ShopProducts margin-auto bg-primary">
+        <div className="ShopProducts margin-auto brs-5px-md bg-primary">
             <div className="display-flex justify-content-center flex-wrap">
                 {products.map((product, ix) => (
                     <div key={`ShopProducts_${ix}`}>

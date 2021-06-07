@@ -1,11 +1,16 @@
 
-//
-.FashionItem_head{
-    margin-bottom: 1rem;
-}
-
-//
-.FashionItem_mid{
-    margin-right: 1rem;
-    margin-left: 1rem;
+.FashionItem_{
+    &head{
+        margin-bottom: 1rem;
+    }
+    
+    &mid{
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    // .
+    &part{
+        margin-bottom: 1rem;
+        background-color: var(--md-bg-primary);
+    }
 }

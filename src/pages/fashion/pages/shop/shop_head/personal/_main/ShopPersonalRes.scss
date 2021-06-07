@@ -37,18 +37,37 @@
     }
 }
 
-@media (max-width: 500px){
-    .ShopPersonalRight_row{
-        display: block;
+@media (max-width: 650px){
+    .ShopPersonal_right{
+        .ShopActivity_col {
+            width: 50%;
+        }
     }
-    .ShopPersonalRight_col {
-        width: 100%;
+}
+
+@media (max-width: 450px){
+    .ShopPersonalLeft_row{
+        flex-wrap: wrap;
+        // .
+        .ShopPersonalLeft_actions, .ShopPersonalLeft_info{
+            width: 100%;
+        }
+        // ..
+        .ShopPersonalLeft_actions-row{
+            display: flex;
+        }
+    }
+
+    .ShopPersonal_right{
+        .ShopActivity_col {
+            width: 100%;
+        }
     }
 }
 
 @media (max-width: 300px){
     .ShopPersonal {
-        padding: 0.1rem;
+        padding: 0;
     }
 
     .ShopPersonalRight {

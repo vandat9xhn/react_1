@@ -4,27 +4,27 @@ import image_loading from '../../../../image/giay_the_thao.jpg';
 export const owner_info = [
     {
         title: 'Rating',
-        value: '1',
+        value: 4.6,
     },
     {
         title: 'Reply chat',
-        value: '2',
+        value: '100%',
     },
     {
         title: 'Time join',
-        value: '3',
+        value: '2021-04-13T21:25:13.739874Z',
     },
     {
         title: 'Products',
-        value: '4',
+        value: 400,
     },
     {
         title: 'Reply time',
-        value: '5',
+        value: new Date().toLocaleString(),
     },
     {
         title: 'Follow',
-        value: '6',
+        value: 600000,
     },
 ];
 
@@ -32,15 +32,18 @@ export const owner_info = [
 export const default_arr_shop = [
     {
         id: 2,
-        list_names: [
+        list_name: [
             {
-                name: 'Baby',
+                name: 'baby',
+                title: 'Baby',
             },
             {
-                name: 'Mom',
+                name: 'mom',
+                title: 'Mom',
             },
             {
-                name: 'Other',
+                name: 'other',
+                title: 'Other',
             },
         ],
         vid_pics: [
@@ -1279,13 +1282,8 @@ export const default_arr_shop = [
         address: 'Product address 1',
         info: 'Shop info 1\nSentence 2\nSentence 3\nSentence 4\nSentence 5',
         created_time: '2021-04-13T21:25:13.739874Z',
+        owner_info: owner_info,
         profile_user: 2,
-        //
-        count_product: 6,
-        count_sold: 20,
-        count_follow: 1000,
-        count_rate: 250,
-        avg_rate: 4.6,
     },
 ];
 
@@ -1308,9 +1306,9 @@ export const default_arr_product_r = {
     shop_obj: {
         id: 3,
         picture: image_loading,
-        name: 'Product name 2',
-        address: 'Product address 2',
-        info: 'Product info 2',
+        name: 'Shop Name 3',
+        address: 'Shop address 2',
+        info: 'Shop info 2',
         owner_info: owner_info,
     },
     brand: 'Product brand 5',

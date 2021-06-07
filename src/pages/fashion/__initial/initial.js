@@ -11,15 +11,18 @@ export const initial_fashion_info_right = {
 //
 export const initial_fashion_shop = {
     id: 0,
-    picture: '',
     name: '',
+    picture: '',
+    banner: '',
     address: '',
     info: '',
     time_online: '',
+    vid_pics: [],
+    profile_user: 0,
     owner_info: [
         {
             title: 'Rating',
-            value: '',
+            value: 0,
         },
         {
             title: 'Reply chat',
@@ -31,15 +34,15 @@ export const initial_fashion_shop = {
         },
         {
             title: 'Products',
-            value: '',
+            value: 0,
         },
         {
             title: 'Reply time',
-            value: '',
+            value: 0,
         },
         {
             title: 'Follow',
-            value: '',
+            value: 0,
         },
     ]
 };

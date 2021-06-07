@@ -5,12 +5,12 @@ import {
     handle_API_AddFriend_L,
     handle_API_FriendRequest,
 } from '../__handle_api/AddFriendHandleAPI';
-
-import AddFriendBody from '../body/_main/AddFriendBody';
-import AddFriendHead from '../head/_main/AddFriendHead';
-//
+// 
 import './AddFriend.scss';
 import './AddFriendRes.scss';
+//
+import AddFriendBody from '../body/_main/AddFriendBody';
+import AddFriendHead from '../head/_main/AddFriendHead';
 
 //
 AddFriend.propTypes = {};

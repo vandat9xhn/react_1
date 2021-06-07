@@ -1,74 +1,60 @@
 //
-.FashionItemCmt {
-    margin: 1rem 0;
-}
-///
-.FashionItemCmt_contain {
-    padding: 0.5rem;
-    border: 2px solid var(--border-fashion);
-}
+.FashionItemCmt_ {
+    //
+    &skeleton {
+        margin: 0.5rem;
+    }
+    // .
+    &skeleton-user {
+        width: 12rem;
+    }
+    &skeleton-content {
+        width: 20rem;
+        max-width: 95%;
+    }
 
-//
-.FashionItemCmt_skeleton{
-    margin: 0.5rem;
-}
-///
-.FashionItemCmt_skeleton-user{
-    width: 12rem;
-}
-.FashionItemCmt_skeleton-content{
-    width: 20rem;
-    max-width: 95%;
-}
-
-//
-.FashionItemCmt_pages {
-    margin-bottom: 0.5rem;
-}
-///
-.FashionItemCmt_page {
-    margin-left: 2px;
-    line-height: 2rem;
-    width: 2rem;
-    text-align: center;
-    border-radius: 5px;
-    background-color: var(--md-bg-ccc);
-    &:hover {
-        cursor: pointer;
+    //
+    &pages {
+        margin-bottom: 0.5rem;
+    }
+    // .
+    &page {
+        margin-left: 2px;
+        line-height: 2rem;
+        width: 2rem;
+        text-align: center;
+        border-radius: 5px;
+        background-color: var(--md-bg-ccc);
+        &:hover {
+            cursor: pointer;
+            background-color: var(--blue);
+        }
+    }
+    &page-active {
         background-color: var(--blue);
+        color: white;
     }
-}
-.FashionItemCmt_page-active {
-    background-color: var(--blue);
-    color: white;
-}
 
-
-.FashionItemCmt_input {
-    width: 40%;
-}
-.FashionItemCmt_imgs-preview {
-    div {
-        display: flex;
+    &input {
+        width: 40%;
     }
-}
 
-
-//
-@media (max-width: 1000px) {
-    .FashionItemCmt_input {
-        width: 50%;
+    //
+    @media (max-width: 1000px) {
+        &input {
+            width: 50%;
+        }
     }
-}
 
-@media (max-width: 800px) {
-    .FashionItemCmt_input {
-        width: 60%;
+    @media (max-width: 800px) {
+        &input {
+            width: 60%;
+        }
     }
-}
 
-@media (max-width: 500px) {
-    .FashionItemCmt_input {
-        width: 100%;
+    @media (max-width: 500px) {
+        &input {
+            width: 100%;
+        }
     }
 }

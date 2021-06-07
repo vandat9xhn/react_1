@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
+import observeToDo from '../../../../../../_some_function/observerToDo';
+//
 import Pagination from '../../../../../../component/pagination/_main/Pagination';
 import SkeletonDiv from '../../../../../../component/skeleton/skeleton_div/SkeletonDiv';
 import CommentInput from '../../../../../../component/input_img_vid_preview/comment_input/CommentInput';
@@ -11,11 +13,11 @@ import {
     handle_API_FashionComment_C,
     handle_API_FashionComment_L,
 } from '../../../../__handle_api/item/comment/FashionItemCmtHandleAPI';
-
-import FashionItemCmtItem from '../item/FashionItemCmtItem';
 //
 import './FashionItemCmt.scss';
-import observeToDo from '../../../../../../_some_function/observerToDo';
+//
+import FashionItemCmtItem from '../item/FashionItemCmtItem';
+import FashionItemCmtSkeleton from '../skeleton/FashionItemCmtSkeleton';
 
 //
 FashionItemCmt.propTypes = {
@@ -60,7 +62,6 @@ function FashionItemCmt({ id: product_id }) {
                 }),
             0
         );
-
     }, [product_id]);
 
     /* ---------------- GET API ---------------- */
@@ -156,61 +157,48 @@ function FashionItemCmt({ id: product_id }) {
 
     //
     return (
-        <div ref={ref_comment} className="FashionItemCmt">
-            <div className="FashionItemCmt_contain brs-5px">
-                <div className="label-field">COMMENT ({count}):</div>
-                <hr className="App_hr-bg" />
+        <div
+            ref={ref_comment}
+            className="FashionItemCmt padding-8px brs-5px-md"
+        >
+            <h3 className="margin-0">COMMENT ({count}):</h3>
+            <hr className="App_hr-bg" />
 
-                <div>
-                    {!is_fetching &&
-                        cmt_pages_obj[page].map((item, cmt_ix) => (
-                            <FashionItemCmtItem
-                                key={`CommentContent_${item.id}`}
-                                ix={cmt_ix}
-                                item={item}
-                                zoomVidPics={zoomVidPics}
-                            />
-                        ))}
-
-                    {is_fetching &&
-                        [1, 2, 3].map((ix) => (
-                            <div
-                                key={`FashionItemCmt_skeleton_${ix}`}
-                                className="FashionItemCmt_skeleton"
-                            >
-                                <div className="FashionItemCmt_skeleton-user">
-                                    <SkeletonDiv />
-                                </div>
-
-                                <div className="FashionItemCmt_skeleton-content">
-                                    <SkeletonDiv />
-                                </div>
-                            </div>
-                        ))}
-                </div>
-                <br />
-
-                <div className="FashionItemCmt_pages">
-                    <div className="FashionItemCmt_pages-contain">
-                        <Pagination
-                            count={pages}
-                            num_side_center={2}
-                            current={page}
-                            handleChangePage={changeCurrentPage}
+            <div>
+                {!is_fetching &&
+                    cmt_pages_obj[page].map((item, cmt_ix) => (
+                        <FashionItemCmtItem
+                            key={`CommentContent_${item.id}`}
+                            ix={cmt_ix}
+                            item={item}
+                            zoomVidPics={zoomVidPics}
                         />
-                    </div>
-                </div>
+                    ))}
 
-                {user.id && (
-                    <div className="FashionItemCmt_input">
-                        <CommentInput
-                            deps_reset={product_id}
-                            file_multiple={true}
-                            handleSend={handleSend}
-                        />
-                    </div>
-                )}
+                {is_fetching && <FashionItemCmtSkeleton />}
             </div>
+            <br />
+
+            <div className="FashionItemCmt_pages">
+                <div className="FashionItemCmt_pages-contain">
+                    <Pagination
+                        count={pages}
+                        num_side_center={2}
+                        current={page}
+                        handleChangePage={changeCurrentPage}
+                    />
+                </div>
+            </div>
+
+            {user.id && (
+                <div className="FashionItemCmt_input">
+                    <CommentInput
+                        deps_reset={product_id}
+                        file_multiple={true}
+                        handleSend={handleSend}
+                    />
+                </div>
+            )}
         </div>
     );
 }

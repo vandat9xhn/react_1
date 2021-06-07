@@ -215,9 +215,9 @@ function BillBuying(props) {
         <div>
             <div>
                 <div>
-                    <div className="fashion_title fashion_center fashion_border-bottom">
-                        BILL BUYING
-                    </div>
+                    <h2 className="margin-0 text-align-center text-secondary">
+                        Bill
+                    </h2>
 
                     <div>
                         <BuyingStage
@@ -260,7 +260,7 @@ function BillBuying(props) {
             <div
                 className={
                     has_fetched && !is_fetching && buy_arr.length == 0
-                        ? 'fashion_title fashion_center fashion_border-bottom'
+                        ? 'margin-0 text-align-center text-secondary'
                         : 'display-none'
                 }
             >

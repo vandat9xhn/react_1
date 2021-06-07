@@ -171,10 +171,11 @@ function FashionCart(props) {
 
         dispatch(actionFashionChangeCountCart(count_cart - count_del));
 
-        mounted && setCartState({
-            ...cart_state,
-            count_checked: 0,
-        });
+        mounted &&
+            setCartState({
+                ...cart_state,
+                count_checked: 0,
+            });
     }
 
     //
@@ -187,7 +188,9 @@ function FashionCart(props) {
                 <FashionH />
             </div>
 
-            <div className="App_title">Cart</div>
+            <h2 className="text-secondary App_title">
+                Cart
+            </h2>
 
             <div
                 className={`FashionCart_body ${

@@ -1,42 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import ShopPersonalLeft from '../left/ShopPersonalLeft';
-import ShopPersonalRight from '../right/ShopPersonalRight';
-// 
 import './ShopPersonal.scss';
 import './ShopPersonalRes.scss';
+//
+import ShopPersonalLeft from '../left/ShopPersonalLeft';
+import ShopPersonalRight from '../right/ShopPersonalRight';
 
 //
-ShopPersonal.propTypes = {
-    profile_user: PropTypes.number,
-    picture: PropTypes.string,
-    name: PropTypes.string,
-    banner: PropTypes.string,
-    // 
-    count_product: PropTypes.number,
-    count_sold: PropTypes.number,
-    created_time: PropTypes.string,
-    count_follow: PropTypes.number,
-    count_rate: PropTypes.number,
-};
+ShopPersonal.propTypes = {};
 
 //
-function ShopPersonal(props) {
-    const {
-        profile_user,
-        picture,
-        name,
-        banner,
-        // 
-        count_product,
-        count_sold,
-        created_time,
-        count_follow,
-        count_rate,
-        avg_rate,
-    } = props;
+function ShopPersonal({
+    profile_user,
+    picture,
+    name,
+    banner,
 
+    owner_info,
+}) {
     //
     return (
         <div className="ShopPersonal">
@@ -51,14 +33,7 @@ function ShopPersonal(props) {
                 </div>
 
                 <div className="ShopPersonal_right">
-                    <ShopPersonalRight
-                        count_product={count_product}
-                        count_sold={count_sold}
-                        created_time={created_time}
-                        count_follow={count_follow}
-                        count_rate={count_rate}
-                        avg_rate={avg_rate}
-                    />
+                    <ShopPersonalRight owner_info={owner_info} />
                 </div>
             </div>
         </div>

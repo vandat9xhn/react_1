@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import ScreenBlurShowMore from '../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
+import NoItem from '../../../../component/some_div/no_item/NoItem';
 //
 import AddFriendRequested from '../actions/requested/AddFriendRequested';
 import AddFriendNormal from '../actions/normal/AddFriendNormal';
@@ -75,16 +76,11 @@ function AddFriendBody(props) {
                 />
             </div>
 
-            <div
-                className={
-                    !is_fetching &&
-                    count <= 0 &&
-                    arr.every((item) => item.is_del)
-                        ? 'text-align-center opacity-5 label-field'
-                        : 'display-none'
-                }
-            >
-                No friend
+            <div className="text-align-center text-secondary opacity-5 label-field">
+                <NoItem
+                    no_item={!is_fetching && count == 0}
+                    title="No Friend"
+                />
             </div>
         </div>
     );

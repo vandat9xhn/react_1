@@ -1,44 +1,54 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+//
+import { ParseLocationSearch } from '../../../../../../_some_function/ParseLocationSearch';
 //
 import './ShopCategory.scss';
 
 //
-ShopCategory.propTypes = {
-    active_ix: PropTypes.number,
-};
+ShopCategory.propTypes = {};
 
 //
-function ShopCategory(props) {
-    const { list_name, active_ix, changeGroupProducts } = props;
-
-    // 
-    function chooseAll(){
-        changeGroupProducts(-1)
-    }
-
+function ShopCategory({ list_name }) {
     //
     return (
         <div className="ShopCategory bg-primary">
             <div className="ShopCategory_row display-flex">
-                <div
-                    className={`ShopCategory_item ${
-                        active_ix == -1 ? 'ShopCategory_item-active' : ''
-                    }`}
-                    onClick={chooseAll}
-                >
-                    All
+                <div>
+                    <Link
+                        to={location.pathname}
+                        className="normal-text"
+                    >
+                        <div
+                            className={`ShopCategory_item label-field ${
+                                !ParseLocationSearch()['category']
+                                    ? 'ShopCategory_item-active pointer-events-none'
+                                    : ''
+                            }`}
+                        >
+                            All
+                        </div>
+                    </Link>
                 </div>
 
                 {list_name.map((item, ix) => (
-                    <div
-                        key={`ShopCategory_${ix}`}
-                        className={`ShopCategory_item ${
-                            active_ix == ix ? 'ShopCategory_item-active' : ''
-                        }`}
-                        onClick={() => changeGroupProducts(ix)}
-                    >
-                        {item.name}
+                    <div key={`ShopCategory_${ix}`}>
+                        <Link
+                            to={`?category=${item.name}`}
+                            className="normal-text"
+                        >
+                            <div
+                                className={`ShopCategory_item label-field ${
+                                    item.name ==
+                                    ParseLocationSearch()['category']
+                                        ? 'ShopCategory_item-active pointer-events-none'
+                                        : ''
+                                }`}
+                            >
+                                {item.title}
+                            </div>
+                        </Link>
                     </div>
                 ))}
             </div>

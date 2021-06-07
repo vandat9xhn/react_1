@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { stringify } from 'query-string';
 import PropTypes from 'prop-types';
 //
 import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
 //
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
-// 
+//
 import Pagination from '../../../../../component/pagination/_main/Pagination';
 import WaitingBall from '../../../../../component/waiting/waiting_ball/WaitingBall';
 //
@@ -14,17 +15,20 @@ import { initial_fashion_search_products_obj } from '../../../__initial/initial'
 //
 import './FashionSearch.scss';
 import './FashionSearchRes.scss';
-// 
+//
 import FashionShead from '../head/FashionShead';
 import SearchProducts from '../products/SearchProducts';
 import SearchFilter from '../filter/_main/SearchFilter';
 
 //
-function FashionSearch(props) {
-    // 
-    const use_history = useHistory()
+FashionSearch.propTypes = {};
 
-    // 
+//
+function FashionSearch(props) {
+    //
+    const use_history = useHistory();
+
+    //
     const [fashion_search_state, setFashionSearchState] = useState({
         products_obj: initial_fashion_search_products_obj,
 
@@ -65,18 +69,38 @@ function FashionSearch(props) {
 
     //
     useEffect(() => {
+        window.scrollTo(0, 0);
         is_location_changed.current && handleChangeLocationSearch();
     }, [location.search]);
-    
+
     function handleChangeLocationSearch() {
-        const location_search_obj = ParseLocationSearch();
-        const new_value_search = location_search_obj['q'];
-        const new_page = parseInt(location_search_obj['p']) || 1;
-        //
+        const { p, q, area, sort, rate } = ParseLocationSearch();
+        const new_area_arr = [...area_arr];
+
+        new_area_arr.map((item) => {
+            if (
+                (area
+                    ? typeof area == 'string'
+                        ? [area]
+                        : area
+                    : []
+                ).includes(item.title)
+            ) {
+                item.checked = true;
+            } else {
+                item.checked = false;
+            }
+
+            return item;
+        });
+
         getData_API_Search_Refresh({
             params_api: {
-                new_value_search: new_value_search,
-                new_page: new_page,
+                new_value_search: q,
+                new_page: parseInt(p) || 1,
+                new_area_arr: new_area_arr,
+                new_sort_by: sort || '',
+                new_rate_ix: rate || 0,
             },
         });
     }
@@ -109,6 +133,9 @@ function FashionSearch(props) {
             setFashionSearchState((fashion_search_state) => ({
                 ...fashion_search_state,
                 ...start_obj_state,
+                rate_ix: new_rate_ix,
+                area_arr: new_area_arr,
+                sort_by: new_sort_by,
                 is_fetching: true,
             }));
 
@@ -169,13 +196,13 @@ function FashionSearch(props) {
         const new_start_obj_state = {
             ...start_obj_state,
             has_fetched: false,
-            page: 1,
+            page: has_fetched ? 1 : params_api.new_page,
             pages: 1,
         };
 
         const new_params_api = {
             ...params_api,
-            new_page: 1,
+            new_page: has_fetched ? 1 : params_api.new_page,
         };
 
         const new_end_obj_state = {
@@ -189,6 +216,49 @@ function FashionSearch(props) {
         });
     }
 
+    //
+    function getStringParamsSearch({
+        new_value_search = value_search,
+        new_area_arr = area_arr,
+        new_rate_ix = rate_ix,
+        new_sort_by = sort_by,
+    }) {
+        const params = {};
+        const new_area_title_arr = new_area_arr
+            .filter((item) => !!item.checked)
+            .map((item) => item.title);
+
+        new_area_title_arr && (params['area'] = new_area_title_arr);
+        new_rate_ix && (params['rate'] = new_rate_ix);
+        new_sort_by && (params['sort'] = new_sort_by);
+
+        return (
+            location.pathname +
+            '?' +
+            stringify({
+                q: new_value_search,
+                ...params,
+            })
+        );
+    }
+
+    //
+    function historyPushSearch({
+        new_value_search = value_search,
+        new_area_arr = area_arr,
+        new_rate_ix = rate_ix,
+        new_sort_by = sort_by,
+    }) {
+        use_history.push(
+            getStringParamsSearch({
+                new_value_search,
+                new_area_arr,
+                new_rate_ix,
+                new_sort_by,
+            })
+        );
+    }
+
     /* -------------------- SEARCH ---------------------*/
 
     //
@@ -197,23 +267,7 @@ function FashionSearch(props) {
             return;
         }
 
-        use_history.push('/fashion/search?q=' + new_value_search)
-
-        // history.pushState(
-        //     '',
-        //     value_search,
-        //     '/fashion/search?q=' + new_value_search
-        // );
-
-        // const start_obj_state = {
-        //     value_search: new_value_search,
-        // };
-
-        // const params_api = {
-        //     new_value_search: new_value_search,
-        // };
-
-        // getData_API_Search_Refresh({ start_obj_state, params_api });
+        use_history.push(location.pathname + '?q=' + new_value_search);
     }
 
     /* -------------------- PAGE ---------------------*/
@@ -223,7 +277,7 @@ function FashionSearch(props) {
         history.pushState(
             '',
             value_search,
-            '/fashion/search?q=' + value_search + '&p=' + new_page
+            getStringParamsSearch({}) + '&p=' + new_page
         );
 
         //
@@ -236,12 +290,11 @@ function FashionSearch(props) {
             });
 
             setTimeout(() => {
-                is_location_changed.current = true
+                is_location_changed.current = true;
             }, 1);
         }
         //
         else {
-            window.scroll(0, 0);
             const start_obj_state = {
                 page: new_page,
                 products_obj: {
@@ -281,44 +334,33 @@ function FashionSearch(props) {
         const new_area_arr = [...area_arr];
         new_area_arr[area_ix].checked = !new_area_arr[area_ix].checked;
 
-        const start_obj_state = {
-            area_arr: new_area_arr,
-        };
-
-        const params_api = {
+        historyPushSearch({
             new_area_arr: new_area_arr,
-        };
-
-        getData_API_Search_Refresh({ start_obj_state, params_api });
+        });
     }
 
     //
     function handleFilterRate(new_rate_ix) {
-        const start_obj_state = {
-            rate_ix: new_rate_ix,
-        };
+        if (new_rate_ix == rate_ix) {
+            return;
+        }
 
-        const params_api = {
+        historyPushSearch({
             new_rate_ix: new_rate_ix,
-        };
-
-        getData_API_Search_Refresh({ start_obj_state, params_api });
+        });
     }
 
     //
     function handleFilterSort(new_sort_by) {
-        const start_obj_state = {
-            sort_by: new_sort_by,
-        };
+        if (new_sort_by == sort_by) {
+            return;
+        }
 
-        const params_api = {
+        historyPushSearch({
             new_sort_by: new_sort_by,
-        };
-
-        getData_API_Search_Refresh({ start_obj_state, params_api });
+        });
     }
 
-    console.log(products_obj);
     //
     return (
         <div>
@@ -384,14 +426,14 @@ function FashionSearch(props) {
                     </div>
 
                     <div className="FashionSearch_fetching position-abs width-fit-content margin-auto">
-                        <WaitingBall is_fetching={is_fetching || !has_fetched} />
+                        <WaitingBall
+                            is_fetching={is_fetching || !has_fetched}
+                        />
                     </div>
                 </div>
             </div>
         </div>
     );
 }
-
-FashionSearch.propTypes = {};
 
 export default FashionSearch;

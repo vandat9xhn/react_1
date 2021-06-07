@@ -15,13 +15,13 @@ import {
     handle_API_FashionRate_L,
     handle_API_FashionUserContentRate_R,
 } from '../../../../__handle_api/item/rate/FashionItemRateHandleAPI';
-
+//
+import './FashionRate.scss';
+//
 import FashionRateSkeleton from '../skeleton/FashionRateSkeleton';
 import ConfirmRate from '../confirm_rate/ConfirmRate';
 import FashionRateChart from '../chart/_main/FashionRateChart';
 import FashionRateList from '../list/_main/FashionRateList';
-//
-import './FashionRate.scss';
 
 //
 FashionRate.propTypes = {};

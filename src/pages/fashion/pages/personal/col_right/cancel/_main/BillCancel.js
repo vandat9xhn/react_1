@@ -2,24 +2,29 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { API_FashionCancelProduct_L } from '../../../../../../../api/api_django/fashion/APIFashionToken';
-// 
+//
 import CircleLoading from '../../../../../../../component/waiting/circle_loading/CircleLoading';
 import ScreenBlurShowMore from '../../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
 //
-import CancelItem from '../Cancel_item/CancelItem';
 import { params_cancel } from '../../../../../__params/home/FashionParams';
-// 
+//
 import './BillCancel.scss';
+//
+import CancelItem from '../Cancel_item/CancelItem';
 
 //
 CancelBuying.propTypes = {};
 
 //
 function CancelBuying(props) {
-    const [products, setProducts] = useState([]);
-    const [count_product, setCountProduct] = useState(0);
-    const [is_fetching, setIsFetching] = useState(false);
-    const [has_fetched, setHasFetched] = useState(false);
+    const [cancel_state, setCancelState] = useState({
+        products: [],
+        count_product: 0,
+        is_fetching: false,
+        has_fetched: false,
+    });
+
+    const { products, count_product, is_fetching, has_fetched } = cancel_state;
 
     //
     useEffect(() => {
@@ -28,7 +33,10 @@ function CancelBuying(props) {
 
     //
     async function getData_API_Cancel() {
-        setIsFetching(true);
+        setCancelState({
+            ...cancel_state,
+            is_fetching: true,
+        });
         //
         const params = {
             page: 1,
@@ -41,52 +49,54 @@ function CancelBuying(props) {
             ...params_cancel,
         });
         products.push(...res.data.data);
-        //
-        setIsFetching(false);
-        if (!has_fetched) {
-            setCountProduct(5);
-            setHasFetched(true);
-        }
+
+        setCancelState({
+            products: has_fetched
+                ? [...products, ...res.data.data]
+                : res.data.data,
+            count_product: has_fetched ? count_product : res.data.count,
+            is_fetching: false,
+            has_fetched: true,
+        });
     }
 
     //
     return (
         <div>
             <div>
-                <div>
-                    <div className="fashion_title fashion_center fashion_border-bottom">
-                        Cancel
-                    </div><br/>
+                <h2 className="margin-0 text-align-center text-secondary">
+                    Cancel
+                </h2>
+                <br />
 
-                    <div className="BillCancel_product">
-                        {products.map((cancel_product, ix) => (
-                            <CancelItem
-                                key={`CancelBuying_item_${ix}`}
-                                cancel_product={cancel_product}
-                            />
-                        ))}
-                    </div>
-
-                    <div className="width-fit-content margin-auto">
-                        <ScreenBlurShowMore
-                            title="Show more"
-                            is_show_more={count_product > products.length}
-                            is_fetching={is_fetching}
-                            //
-                            handleShowMore={getData_API_Cancel}
-                            FetchingComponent={CircleLoading}
+                <div className="BillCancel_product">
+                    {products.map((cancel_product, ix) => (
+                        <CancelItem
+                            key={`CancelBuying_item_${ix}`}
+                            cancel_product={cancel_product}
                         />
-                    </div>
+                    ))}
+                </div>
 
-                    <div
-                        className={
-                            has_fetched && products.length == 0
-                                ? 'fashion_title fashion_center fashion_border-bottom'
-                                : 'display-none'
-                        }
-                    >
-                        No BILL
-                    </div>
+                <div className="width-fit-content margin-auto">
+                    <ScreenBlurShowMore
+                        title="Show more"
+                        is_show_more={count_product > products.length}
+                        is_fetching={is_fetching}
+                        //
+                        handleShowMore={getData_API_Cancel}
+                        FetchingComponent={CircleLoading}
+                    />
+                </div>
+
+                <div
+                    className={
+                        has_fetched && products.length == 0
+                            ? 'margin-0 text-align-center text-secondary'
+                            : 'display-none'
+                    }
+                >
+                    No BILL
                 </div>
             </div>
         </div>

@@ -1,15 +1,19 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useState } from "react"
 
-//
+/**
+ * Deprecated
+*/
 export function useMounted(){
-    const mounted = useRef(true)
+    // 
+    const [mounted, setMounted] = useState(true)
+
     //
     useEffect(() => {
 
         return () => {
-            mounted.current = false
+            setMounted(false)
         }
     }, [])
 
-    return mounted.current
+    return mounted
 }

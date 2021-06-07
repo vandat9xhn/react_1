@@ -46,7 +46,6 @@ function HeaderMessHead({ friend_arr, closeMessage }) {
                 // 
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
-                onTouchEnd={handleMouseUp}
                 onScroll={handleScroll}
             >
                 <div className="display-flex align-items-center">

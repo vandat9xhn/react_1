@@ -7,17 +7,17 @@ import observeToDo from '../../../../../_some_function/observerToDo';
 //
 import RowProducts from '../../../components/row_products/_main/RowProducts';
 //
-import './FashionRlt.scss';
+// import './FashionOtherItem.scss';
 
 //
-FashionRlt.propTypes = {
+FashionOtherItem.propTypes = {
     id: PropTypes.number,
 };
 
-FashionRlt.defaultProps = {};
+FashionOtherItem.defaultProps = {};
 
 //
-function FashionRlt({ id }) {
+function FashionOtherItem({ id }) {
     //
     const [products, setProducts] = useState([]);
 
@@ -50,12 +50,12 @@ function FashionRlt({ id }) {
 
     //
     return (
-        <div ref={ref_product_rlt} className="FashionRlt">
+        <div ref={ref_product_rlt} className="FashionOtherItem">
             <RowProducts list_products={[products, products]}>
-                <h3 className="margin-0">RELATIVE PRODUCTS:</h3>
+                <h3 className="margin-0">OTHER PRODUCTS:</h3>
             </RowProducts>
         </div>
     );
 }
 
-export default FashionRlt;
+export default FashionOtherItem;

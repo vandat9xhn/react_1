@@ -1,0 +1,15 @@
+.ShopActivity_row{
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+//
+.ShopActivity_col{
+    width: 33.33%;
+    padding: 0.5rem;
+}
+
+.ShopActivity_col-title{
+    margin-right: 0.5rem;
+}

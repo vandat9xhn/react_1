@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import { context_api } from '../../../_context/ContextAPI';
+//
+import {
+    requestFullscreen,
+    exitFullscreen,
+} from '../../../_some_function/handelFullScreen';
 //
 import CanvasDraw from '../canvas/CanvasDraw';
 import ScreenFixed from '../../_screen_fixed/_main/ScreenFixed';
@@ -24,16 +29,17 @@ class CanvasFixed extends Component {
         this.openCanvasFixed(data.completeCanvas, data.canvas_draws);
     };
 
-    // 
+    //
     openCanvasFixed = (completeCanvas, canvas_draws) => {
         this.completeCanvasDraw = completeCanvas;
-
+        
         this.setState({
             show_canvas: true,
         });
         
         setTimeout(() => {
             this.ref_canvas_draw.startReadyCanvas(canvas_draws);
+            requestFullscreen();
         }, 0);
     };
 
@@ -46,15 +52,16 @@ class CanvasFixed extends Component {
     completeCanvas = (canvas_draws) => {
         this.completeCanvasDraw(canvas_draws);
         this.completeCanvasDraw = null;
-        
+
         setTimeout(() => {
             this.setState({
                 show_canvas: false,
             });
-        }, 0);
+            exitFullscreen();
+        }, 100);
     };
 
-    // 
+    //
     deleteCanvas = () => {
         this.setState({
             show_canvas: false,
@@ -66,6 +73,7 @@ class CanvasFixed extends Component {
     //
     closeCanvasFixed = () => {
         this.deleteCanvas();
+        exitFullscreen();
     };
 
     //

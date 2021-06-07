@@ -2,16 +2,18 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 //
 import { useScrollDownWindow } from '../../../../../_custom_hooks/useScrollDown';
+// 
+import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
 //
 import FetchingDiv from '../../../../../component/some_div/fetching/FetchingDiv';
 //
 import { handle_API_City_L } from '../../../__handle_api/CityHandleAPI';
-
-import CitySearch from '../search/CitySearch';
-import CityItem from '../item/_main/CityItem';
 //
 import './Cities.scss';
 import './CitiesRes.scss';
+// 
+import CitySearch from '../search/CitySearch';
+import CityItem from '../item/_main/CityItem';
 
 //
 function Cities() {
@@ -30,6 +32,7 @@ function Cities() {
     //
     useEffect(() => {
         document.title = 'City';
+        value_search.current = ParseLocationSearch()['city']
         getData_API_at_first();
     }, []);
 
@@ -37,6 +40,8 @@ function Cities() {
 
     function handleSearch(new_value_search) {
         value_search.current = new_value_search;
+        history.pushState('', '', '?city=' + new_value_search)
+
         getData_API_at_first();
     }
 

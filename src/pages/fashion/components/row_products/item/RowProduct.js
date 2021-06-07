@@ -42,7 +42,6 @@ function RowProduct({ products }) {
                 // 
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
-                onTouchEnd={handleMouseUp}
                 onScroll={handleScroll}
             >
                 <div className="RowProduct_row display-flex">

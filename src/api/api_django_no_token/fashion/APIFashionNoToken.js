@@ -47,7 +47,7 @@ export const API_FashionHotImage_L = (params = {}) =>
 // product
 export const API_FashionProduct_L = (params = {}) =>
     API_FakeReal(
-        Array(10).fill(default_arr_product[0]),
+        Array(20).fill(default_arr_product[0]),
         () =>
             axiosClientNoToken({
                 url: '/fashion-api/l-product/',

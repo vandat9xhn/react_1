@@ -76,7 +76,7 @@ function FashionItemInfoRight({
             <div className={has_fetched ? '' : 'display-none'}>
                 <div className="FashionItemInfoRight_head">
                     <FsItemIfRHead name={name} description={description} />
-                </div>
+                </div><br />
 
                 <div className="FashionItemInfoRight_body">
                     <FsItemIfRBody
@@ -93,7 +93,7 @@ function FashionItemInfoRight({
                         countNum={countNum}
                         countNumDone={countNumDone}
                     />
-                </div>
+                </div><br />
 
                 <div className="FashionItemInfoRight_foot">
                     <FsItemIfRFoot

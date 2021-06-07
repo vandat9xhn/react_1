@@ -1,17 +1,55 @@
-.FashionOwner_row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+// 
+.FashionOwner_{
+    &left{
+        width: 20rem;
+    }
+    
+    &right{
+        padding-left: 4rem;
+    }
+    
+    
+    //
+    @media (max-width: 1000px){
+        &right{
+            .ShopActivity_col{
+                width: 50%;
+            }
+        }
+    }
 
-//
-.FashionOwner_right{
-    flex-grow: 1;
-}
+    @media (max-width: 800px){
+        &row{
+            display: block;
+        }
+        // .
+        &left{
+            width: 100%;
+        }
+        // .
+        &right{
+            padding: 0.5rem;
+            .ShopActivity_col{
+                width: 33.33%;
+            }
+        }
+    }
 
-//
-@media (max-width: 800px){
-    .FashionOwner_row{
-        display: block;
+    @media (max-width: 650px){
+        // .
+        &right{
+            .ShopActivity_col{
+                width: 50%;
+            }
+        }
+    }
+
+    @media (max-width: 450px){
+        // .
+        &right{
+            .ShopActivity_col{
+                width: 100%;
+            }
+        }
     }
 }

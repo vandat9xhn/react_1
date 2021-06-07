@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-Notifications.propTypes = {
-    
-};
+// 
+Notifications.propTypes = {};
 
+// 
 function Notifications(props) {
     return (
         <div>
             <div>
                 <div>
-                    <div className="fashion_title fashion_center fashion_border-bottom">Notifications</div>
+                    <h2 className="margin-0 text-align-center text-secondary">
+                        Notifications
+                    </h2>
                 </div>
             </div>
         </div>

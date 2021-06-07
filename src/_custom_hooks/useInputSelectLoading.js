@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useStopLoadingTyping } from './useStopLoadingTyping';
+import { useWaitingLastAction } from './useWaitingLastAction';
 
 //
 export function useInputSelectLoading({
@@ -31,8 +31,8 @@ export function useInputSelectLoading({
     } = input_select_state;
 
     //
-    const { handleChangeTying } = useStopLoadingTyping({
-        time_stop: 500,
+    const { handleWaitingLastAction } = useWaitingLastAction({
+        time_waiting: 500,
         callback: handleGetDataAfterChange,
     });
 
@@ -83,7 +83,7 @@ export function useInputSelectLoading({
 
     //
     function handleChangeInput(e) {
-        handleChangeTying();
+        handleWaitingLastAction();
 
         setInputSelectState({
             ...input_select_state,

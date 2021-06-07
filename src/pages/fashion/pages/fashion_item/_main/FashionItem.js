@@ -7,8 +7,9 @@ import './FashionItem.scss';
 // 
 import FashionItemShop from '../item_shop/_main/FashionItemShop';
 import FashionRate from '../rate/_main/FashionRate';
-import FashionRlt from '../relative/FashionRlt';
 import FashionItemCmt from '../comment/_main/FashionItemCmt';
+import FashionRlt from '../relative/FashionRlt';
+import FashionOtherItem from '../other_shop_item/FashionOtherItem';
 
 // 
 FashionItem.propTypes = {
@@ -27,25 +28,29 @@ function FashionItem(props) {
 
     // 
     return (
-        <div>
+        <div className="FashionItem">
             <div>
                 <FashionH />
             </div>
 
-            <div className="bg-primary">
-                <div>
+            <div>
+                <div className="FashionItem_part">
                     <FashionItemShop id={id}/>
                 </div>
                 
-                <div>
+                <div className="FashionItem_part">
                     <FashionRate id={id}/>
                 </div>
 
-                <div>
+                <div className="FashionItem_part">
                     <FashionItemCmt id={id}/>
                 </div>
 
-                <div>
+                <div className="FashionItem_part">
+                    <FashionOtherItem id={id}/>
+                </div>
+
+                <div className="FashionItem_part">
                     <FashionRlt id={id}/>
                 </div>
             </div>

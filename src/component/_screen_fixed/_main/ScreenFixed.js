@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { useCloseScreen } from '../../../_custom_hooks/useCloseScreen';
+import { useFullScreen } from '../../../_custom_hooks/useFullScreen';
 import { useMakeBodyHidden } from '../../../_custom_hooks/useMakeBodyHidden';
 //
 import ScreenTitle from '../title/ScreenTitle';
@@ -25,6 +26,7 @@ function ScreenFixed(props) {
     const { url, handleDownload, children, closeScreenFixed } = props;
 
     //
+    useFullScreen()
     useCloseScreen(closeScreenFixed);
     useMakeBodyHidden();
 
