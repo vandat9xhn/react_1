@@ -22,6 +22,7 @@ function VidPicsPost(props) {
                             index={index}
                             post_ix={post_ix}
                             count_vid_pic={vid_pics.length}
+                            id={item.id}
                             vid_pic={item.vid_pic}
                         />
                     ))}

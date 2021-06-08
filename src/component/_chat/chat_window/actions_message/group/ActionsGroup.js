@@ -10,21 +10,22 @@ import './ActionsGroup.scss';
 ActionsGroup.propTypes = {};
 
 //
-function ActionsGroup(props) {
-    const {
-        show_action_group,
-        openTimeLineGroup,
-        handleToggleActionsGroup,
-        openAddFriendToGroup,
-        handleToggleNotice,
-        handleQuitGroup,
-    } = props;
+function ActionsGroup({
+    show_action_group,
+    openTimeLineGroup,
+    handleToggleActionsGroup,
+    openAddFriendToGroup,
+    handleToggleNotice,
+    handleQuitGroup,
+}) {
     //
     const [open_quit, setOpenQit] = useState(false);
+
     //
     function openQuitGroup() {
         setOpenQit(!open_quit);
     }
+
     //
     function closeQuitGroup() {
         setOpenQit(false);
@@ -38,7 +39,7 @@ function ActionsGroup(props) {
 
     //
     return (
-        <div className="ActionsGroup">
+        <div className="ActionsGroup position-rel">
             <div className="ActionsGroup_row-icon display-flex">
                 <div
                     className={`ActionsGroup_icon brs-50 close-icon-small hv-opacity cursor-pointer ${
@@ -48,7 +49,7 @@ function ActionsGroup(props) {
                     }`}
                     onClick={onToggleActionsGroup}
                 >
-                    <IconsArrow y={400} size_icon="0.8rem" />
+                    <IconsArrow y={400} size_icon="1rem" />
                 </div>
             </div>
 
@@ -56,7 +57,7 @@ function ActionsGroup(props) {
                 className={`ActionsGroup_contain box-shadow-1 ${
                     !show_action_group || open_quit
                         ? 'ActionsGroup_close'
-                        : 'ActionsGroup_show'
+                        : 'ActionsGroup_show scroll-y-none'
                 }`}
             >
                 <div
@@ -65,18 +66,21 @@ function ActionsGroup(props) {
                 >
                     Time line
                 </div>
+
                 <div
                     className="ActionsGroup__choice"
                     onClick={openAddFriendToGroup}
                 >
                     Add friend
                 </div>
+
                 <div
                     className="ActionsGroup__choice"
                     onClick={handleToggleNotice}
                 >
                     Receive notice
                 </div>
+
                 <div className="ActionsGroup__choice" onClick={openQuitGroup}>
                     Quit group
                 </div>

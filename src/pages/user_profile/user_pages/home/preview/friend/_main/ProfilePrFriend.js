@@ -35,6 +35,7 @@ function ProfilePrFriend({ id }) {
     const { friend_arr, friend_count, is_fetching } = friend_state;
 
     //
+    ;
     const ref_component = useRef(null);
 
     //
@@ -52,7 +53,7 @@ function ProfilePrFriend({ id }) {
             is_fetching: true,
         }));
 
-        const {data, count: new_count} = await handle_API_Friend_L(
+        const { data, count: new_count } = await handle_API_Friend_L(
             id,
             friend_arr.length
         );

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useMounted } from '../../../../../../../_custom_hooks/useMounted';
 
 import observeToDo from '../../../../../../../_some_function/observerToDo';
-// 
+//
 import { handle_API_ProfileUser_R } from '../../../../../__handle_api/ProfileHandleAPI';
 
 import ProfilePrCommon from '../../_common/preview_common/ProfilePrCommon';
@@ -14,9 +14,7 @@ import ProfilePrAboutSkeleton from '../skeleton/ProfilePrAboutSkeleton';
 import './ProfilePrAbout.scss';
 
 //
-ProfilePrAbout.propTypes = {
-    
-};
+ProfilePrAbout.propTypes = {};
 
 //
 function ProfilePrAbout({ id }) {
@@ -32,9 +30,10 @@ function ProfilePrAbout({ id }) {
     });
 
     const { about_obj, is_fetching } = about_state;
-    const {hobby, university, from, live_now} = about_obj;
+    const { hobby, university, from, live_now } = about_obj;
 
     //
+    ;
     const ref_component = useRef(null);
 
     //

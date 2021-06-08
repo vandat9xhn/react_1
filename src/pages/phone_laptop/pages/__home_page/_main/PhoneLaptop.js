@@ -34,6 +34,7 @@ function PhoneLaptop(props) {
     const [laptop_arr, setLaptopArr] = useState(skeleton_arr);
 
     //
+    ;
     const ref_hot = useRef(null);
     const ref_phone = useRef(null);
     const ref_lap = useRef(null);

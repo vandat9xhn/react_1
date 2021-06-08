@@ -25,12 +25,13 @@ function ProfilePrPic({ id }) {
             },
         ],
         is_fetching: true,
-    })
+    });
 
-    const {vid_pics, is_fetching} = vid_pic_state;
+    const { vid_pics, is_fetching } = vid_pic_state;
 
-    // 
-    const ref_component = useRef(null)
+    //
+    ;
+    const ref_component = useRef(null);
 
     //
     const mounted = useMounted();
@@ -42,10 +43,10 @@ function ProfilePrPic({ id }) {
 
     //
     async function getData_API_PicPreview() {
-        setVidPicState(vid_pic_state => ({
+        setVidPicState((vid_pic_state) => ({
             ...vid_pic_state,
             is_fetching: true,
-        }))
+        }));
 
         const { data } = await handle_API_VidPic_L(id, vid_pics.length);
 
@@ -53,7 +54,7 @@ function ProfilePrPic({ id }) {
             setVidPicState({
                 vid_pics: data,
                 is_fetching: false,
-            })
+            });
         }
     }
 

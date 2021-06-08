@@ -41,23 +41,20 @@ import { useMounted } from '../../../../../_custom_hooks/useMounted';
 ZoomVidPicItem.propTypes = {
     show_screen_title: PropTypes.bool,
     closeScreenTitle: PropTypes.func,
-}
+};
 
 ZoomVidPicItem.defaultProps = {
     show_screen_title: false,
-}
+};
 
 //
 function ZoomVidPicItem(props) {
-    // 
-    const id = GetIdSlug()
+    //
+    const id = GetIdSlug();
 
     //
-    const {
-        openScreenConfirm,
-        openScreenHistory,
-        openScreenUpdate,
-    } = useContext(context_api);
+    const { openScreenConfirm, openScreenHistory, openScreenUpdate } =
+        useContext(context_api);
 
     //
     const { show_screen_title, closeScreenTitle } = props;
@@ -82,12 +79,13 @@ function ZoomVidPicItem(props) {
         comments,
         count_comment,
     } = vid_pic_obj[id];
-    
+
     //
+    ;
     const ws = useRef(null);
 
-    // 
-    const mounted = useMounted()
+    //
+    const mounted = useMounted();
 
     //
     useEffect(() => {
@@ -250,7 +248,9 @@ function ZoomVidPicItem(props) {
                 handle_API_Cmt_U={handle_API_VidPicCmt_U}
                 handle_API_LikeCmt_L={handle_API_VidPicLikeCmt_L}
                 handle_API_HistoryCmt_L={handle_API_VidPicHistoryCmt_L}
-                handle_API_MoreContentHisCmt_R={handle_API_MoreContentHisVidPicCmt_R}
+                handle_API_MoreContentHisCmt_R={
+                    handle_API_MoreContentHisVidPicCmt_R
+                }
                 //
                 handle_API_MoreContentSub_R={handle_API_VidPicMoreContentSub_R}
                 handle_API_Sub_L={handle_API_VidPicSub_L}
@@ -258,7 +258,9 @@ function ZoomVidPicItem(props) {
                 handle_API_Sub_U={handle_API_VidPicSub_U}
                 handle_API_LikeSub_L={handle_API_VidPicLikeSub_L}
                 handle_API_HistorySub_L={handle_API_VidPicHistorySub_L}
-                handle_API_MoreContentHisSub_R={handle_API_VidPicMoreContentHisSub_R}
+                handle_API_MoreContentHisSub_R={
+                    handle_API_VidPicMoreContentHisSub_R
+                }
             >
                 {!is_del && (
                     <ZoomPostCommon

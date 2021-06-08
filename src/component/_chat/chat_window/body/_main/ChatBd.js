@@ -5,37 +5,35 @@ import ScreenBlurShowMore from '../../../../_screen_blur/_component/foot/ScreenB
 import WaitingBall from '../../../../waiting/waiting_ball/WaitingBall';
 import FetchingDiv from '../../../../some_div/fetching/FetchingDiv';
 //
+import './ChatBd.scss';
+//
 import ChatBdLastGroup from '../chat_body_last/group/ChatBdlastGroup';
 import ChatBdLastSingle from '../chat_body_last/single/ChatBdLastSingle';
 import ChatMess from '../message/ChatMess';
-//
-import './ChatBd.scss';
 
 //
 ChatBd.propTypes = {};
 
 //
-function ChatBd(props) {
-    const {
-        zoom_chat,
-        chat_ix,
-        messages,
-        count_message,
-        fetching_message,
-        is_on_input,
-        //
-        is_group,
-        zoom_users,
-        zoom_creator,
-        //
-        onScroll,
-        onMouseLeave,
-        //
-        onGetMoreMessages,
-        openZoomVidPics,
-        openActionsMess,
-    } = props;
+function ChatBd({
+    zoom_chat,
+    chat_ix,
+    messages,
+    count_message,
+    fetching_message,
+    is_on_input,
 
+    is_group,
+    zoom_users,
+    zoom_creator,
+
+    onScroll,
+    onMouseLeave,
+
+    onGetMoreMessages,
+    openZoomVidPics,
+    openActionsMess,
+}) {
     //
     const is_mobile = localStorage.is_mobile == 1;
 
@@ -65,10 +63,9 @@ function ChatBd(props) {
                     )}
                 </div>
 
-                {/* fetching message */}
                 <div className="ChatWd_body-fetching margin-auto width-fit-content">
                     <ScreenBlurShowMore
-                        title="More messages..."
+                        title="See old messages"
                         is_show_more={
                             is_mobile && count_message > messages.length
                         }
@@ -79,7 +76,6 @@ function ChatBd(props) {
                     />
                 </div>
 
-                {/* messages */}
                 <div className="display-flex col-reverse">
                     {messages.map((mess_item, mess_ix) => (
                         <div
@@ -99,7 +95,6 @@ function ChatBd(props) {
                     ))}
                 </div>
 
-                {/* when friend is texting */}
                 <div className="ChatWd_body-mess">
                     <div
                         className={`ChatWd_friend-texting ${

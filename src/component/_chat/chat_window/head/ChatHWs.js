@@ -6,27 +6,40 @@ import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import './ChatH.scss';
 
+ChatH.propTypes = {
+    friend_user: PropTypes.object,
+    is_hide: PropTypes.bool,
+    hideShowMessage: PropTypes.func,
+    closeMessage: PropTypes.func,
+};
+
+ChatH.defaultProps = {
+    is_hide: false,
+};
+
 //
-function ChatH(props) {
-    const {
-        chat_ix,
-        is_group,
-        zoom_users,
-        is_hide,
-        count_user,
-        hideShowMessage,
-        closeMessage,
-        openActionsMess,
-    } = props;
+function ChatH({
+    chat_ix,
+    is_group,
+    zoom_users,
+    is_hide,
+    count_user,
+    
+    hideShowMessage,
+    closeMessage,
+    openActionsMess,
+}) {
     //
     const some_user_pics = zoom_users
         .sort((item) => item.is_friend)
         .slice(0, 3)
         .map((item) => item.user.picture);
+
     //
     function onHideShowMessage() {
         hideShowMessage(chat_ix);
     }
+
     //
     function onCloseMessage() {
         closeMessage(chat_ix);
@@ -43,8 +56,8 @@ function ChatH(props) {
 
     //
     return (
-        <div className="ChatH">
-            <div className="ChatH_row">
+        <div className="ChatH position-rel">
+            <div className="ChatH_row flex-between-center">
                 {is_group && (
                     <div
                         className="ChatH_user display-flex cursor-pointer"
@@ -83,23 +96,21 @@ function ChatH(props) {
                 )}
 
                 <div className="ChatH_actions">
-                    <div className="ChatH_actions-row">
+                    <div className="ChatH_actions-row display-flex flex-end">
                         <div
-                            className={`ChatH_actions_btn brs-5px hv-opacity ${
+                            className={`ChatH_actions_btn display-flex-center cursor-pointer brs-5px hv-opacity ${
                                 is_hide
                                     ? 'ChatH_actions_btn-hide_active'
                                     : 'ChatH_actions_btn-hide'
                             }`}
                             onClick={onHideShowMessage}
-                            title={is_hide ? 'Show' : 'Hide'}
                         >
                             <IconsArrow size_icon="0.75rem" />
                         </div>
 
                         <div
-                            className="ChatH_actions_btn brs-5px hv-opacity"
+                            className="ChatH_actions_btn brs-5px display-flex-center cursor-pointer hv-opacity"
                             onClick={onCloseMessage}
-                            title="Close chat"
                         >
                             <IconsArrow y={400} size_icon="0.75rem" />
                         </div>
@@ -109,16 +120,5 @@ function ChatH(props) {
         </div>
     );
 }
-
-ChatH.propTypes = {
-    friend_user: PropTypes.object,
-    is_hide: PropTypes.bool,
-    hideShowMessage: PropTypes.func,
-    closeMessage: PropTypes.func,
-};
-
-ChatH.defaultProps = {
-    is_hide: false,
-};
 
 export default ChatH;

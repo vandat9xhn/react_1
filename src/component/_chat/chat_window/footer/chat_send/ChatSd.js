@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+//
 import IconsAction from '../../../../../_icons_svg/icons_action/IconsAction';
 
 //
-function ChatSd(props) {
-    const { should_send, handleSend } = props;
+ChatSd.propTypes = {
+    should_send: PropTypes.bool,
+    handleSend: PropTypes.func,
+};
 
+//
+function ChatSd({ should_send, handleSend }) {
+    //
     return (
         <div className="ChatSd">
             <div
@@ -18,10 +24,5 @@ function ChatSd(props) {
         </div>
     );
 }
-
-ChatSd.propTypes = {
-    should_send: PropTypes.bool,
-    handleSend: PropTypes.func,
-};
 
 export default ChatSd;

@@ -1,17 +1,7 @@
 $dur: 0.4s;
 
-// row toggle + actions
-.ChatMB_row{
-    display: flex;
-    align-items: center;
-}
-
 // toggle actions
 .ChatMB_toggle{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     width: 1.5rem;
     height: 1.5rem;
 
@@ -58,10 +48,7 @@ $dur: 0.4s;
         transition-delay: 0.1s;
     }
 }
-// row actions
-.ChatMB_actions-row{
-    display: flex;
-}
+
 .ChatMB__item{
     margin-left: 0.5rem;
     border-radius: 50%;

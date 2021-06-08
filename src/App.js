@@ -1,4 +1,4 @@
-import React, { Component, createRef, Suspense } from 'react';
+import React, { Component, Suspense } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 //
 import './App.scss';
@@ -22,7 +22,7 @@ import Footer from './component/_footer/_main/Footer';
 import Contact from './component/_contact/Contact';
 
 import Chat from './component/_chat/_main/ChatRealtime';
-import ChatU from './component/_chat/chat_user/ChatU';
+// import ChatU from './component/_chat/chat_user/ChatU';
 import ZoomVidPics from './component/_zoom_vid_pics/_main/ZoomVidPics';
 import CanvasFixed from './component/canvas_draw/_main/CanvasFixed';
 import SnowDrop from './component/_snow_drop/SnowDrop';
@@ -207,9 +207,9 @@ class App extends Component {
                                 <Chat ref={this.refChat} />
                             </div>
 
-                            <div className="AppChatUser">
+                            {/* <div className="AppChatUser">
                                 <ChatU />
-                            </div>
+                            </div> */}
 
                             <footer className="AppFooter">
                                 <Footer />

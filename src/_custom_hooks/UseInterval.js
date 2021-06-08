@@ -1,34 +1,38 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 //
-export function useInterval(time, callback=function(){}) {
-    const skip_interval = useRef(false)
-    const mounted = useRef(true)
+export function useInterval({ time, callback = function () {} }) {
+    //
+    const skip_interval = useRef(false);
+    const mounted = useRef(true);
+
     //
     useEffect(() => {
-        StartInterval()
+        StartInterval();
 
         return () => {
-            mounted.current = false
-        } 
-    }, [])
+            mounted.current = false;
+        };
+    }, []);
+
     //
-    function StartInterval(){
+    function StartInterval() {
         const interval = setInterval(() => {
-            if(!mounted.current){
-                clearInterval(interval)
-            } 
-            else if(!skip_interval.current){
-                callback()
+            if (!mounted.current) {
+                clearInterval(interval);
+            } else if (!skip_interval.current) {
+                callback();
             } else {
-                skip_interval.current = false
+                skip_interval.current = false;
             }
         }, time);
     }
 
+    //
     function doSkipInterval() {
-        skip_interval.current = true
+        skip_interval.current = true;
     }
 
-    return [doSkipInterval]
+    //
+    return { doSkipInterval };
 }

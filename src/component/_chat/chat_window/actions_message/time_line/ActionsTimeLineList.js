@@ -2,16 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import ScreenBlurShowMore from '../../../../_screen_blur/_component/foot/ScreenBlurShowMore';
-// 
+//
 import './ActionsTimeLineList.scss';
 
 //
 ActionsTimeLineList.propTypes = {};
 
 //
-function ActionsTimeLineList(props) {
-    const { time_line, getMoreTimeLineGroup } = props;
-
+function ActionsTimeLineList({ time_line, getMoreTimeLineGroup }) {
+    //
     const { data_arr, count, is_fetching } = time_line;
 
     //
@@ -26,7 +25,9 @@ function ActionsTimeLineList(props) {
                         {item.user.first_name} {item.user.last_name}
                     </span>
 
-                    <span className="ActionsTimeLineList_status label-field">{item.status}</span>
+                    <span className="ActionsTimeLineList_status label-field">
+                        {item.status}
+                    </span>
 
                     <span>
                         {item.friend.first_name} {item.friend.last_name}

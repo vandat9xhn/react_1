@@ -25,6 +25,7 @@ export const useScrollDown = ({
     });
 
     // ref
+    ;
     const pos = useRef(0);
     const is_max = useRef(false);
     const just_fetching = useRef(true);

@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 //
 import { is_api_fake } from '../../../../api/_ConstAPI';
 //
-import ChatH from '../head/ChatHWs';
-import ChatBd from '../body/_main/ChatBd';
-import ChatF from '../footer/_main/ChatFWs';
-import ActionsGroup from '../actions_message/group/ActionsGroup';
-import ActionsChat from '../actions_message/_main/ActionsChat';
-//
 import {
     handleSendAddFriendToGroupWs,
     handleSendDeleteMessageWs,
@@ -22,59 +16,64 @@ import {
 import { handle_API_ChatMessage_C } from '../../__handle_api/ChatHandleAPI';
 //
 import './ChatWdRealtime.scss';
+//
+import ChatH from '../head/ChatHWs';
+import ChatBd from '../body/_main/ChatBd';
+import ChatF from '../footer/_main/ChatFWs';
+import ActionsGroup from '../actions_message/group/ActionsGroup';
+import ActionsChat from '../actions_message/_main/ActionsChat';
 
 //
 ChatWd.propTypes = {};
 
 //
-function ChatWd(props) {
-    const {
-        c_user_id,
-        chat,
-        chat_ix,
-        new_chat_ix,
-        two_window,
-        //
-        reverseCurrentMessage,
-        hideShowMessage,
-        closeMessage,
-        handleScroll,
-        getMoreMessages,
-        handleMouseLeave,
-        //
-        openZoomVidPics,
-        handleToggleActionsGroup,
-        //
-        openActionsMess,
-        closeActionsMess,
-        getMoreUserLiked,
-        getMoreTimeLineGroup,
-        //
-        letDrawCanvas,
-        handleChooseFiles,
-        MoreActionsIp,
-        showPreview,
-        deleteAnItemPreview,
-        deleteCanvasDraw,
-        // SEND
-        sendLikeMessage,
-        sendStatusMessage,
-        sendDeleteMessage,
-        sendMessage,
-        sendAddFriendToGroup,
-        sendQuitGroup,
-        sendForceQuitGroup,
-        // HANDLE
-        handleLikeMessage,
-        handleOnInPut,
-        handleStatusMessage,
-        handleGetMessage,
-        handleDeleteMessage,
-        handleAddFriendToGroup,
-        handleQuitGroup,
-        handleForceQuitGroup,
-    } = props;
-
+function ChatWd({
+    c_user_id,
+    chat,
+    chat_ix,
+    new_chat_ix,
+    two_window,
+    //
+    reverseCurrentMessage,
+    hideShowMessage,
+    closeMessage,
+    handleScroll,
+    getMoreMessages,
+    handleMouseLeave,
+    //
+    openZoomVidPics,
+    handleToggleActionsGroup,
+    //
+    openActionsMess,
+    closeActionsMess,
+    getMoreUserLiked,
+    getMoreTimeLineGroup,
+    //
+    letDrawCanvas,
+    handleChooseFiles,
+    MoreActionsIp,
+    showPreview,
+    deleteAnItemPreview,
+    deleteCanvasDraw,
+    // SEND
+    sendLikeMessage,
+    sendStatusMessage,
+    sendDeleteMessage,
+    sendMessage,
+    sendAddFriendToGroup,
+    sendQuitGroup,
+    sendForceQuitGroup,
+    // HANDLE
+    handleLikeMessage,
+    handleOnInPut,
+    handleStatusMessage,
+    handleGetMessage,
+    handleDeleteMessage,
+    handleAddFriendToGroup,
+    handleQuitGroup,
+    handleForceQuitGroup,
+}) {
+    //
     const {
         chat_obj,
         message_obj,
@@ -86,14 +85,11 @@ function ChatWd(props) {
         actions_obj,
     } = chat;
 
-    const {
-        is_hide,
-        more_input,
-        show_preview,
-        user_input,
-        num_input,
-    } = chat_obj;
+    const { is_hide, more_input, show_preview, user_input, num_input } =
+        chat_obj;
+
     const { is_group, show_action_group } = group_obj;
+
     const {
         zoom_chat,
         zoom_active,
@@ -102,6 +98,7 @@ function ChatWd(props) {
         zoom_creator,
         zoom_owner,
     } = zoom_obj;
+
     const { messages, count_message, user_begin_mess } = message_obj;
     const { files, urls, file_reading } = input_obj;
     const { current_canvas } = canvas_obj;
@@ -109,6 +106,7 @@ function ChatWd(props) {
 
     const should_send = urls.length > 0 || current_canvas != '';
     const is_on_input = user_input ? num_input >= 2 : num_input >= 1;
+
     // ref
     const ws = useRef(null);
 
@@ -307,14 +305,17 @@ function ChatWd(props) {
     }
 
     /* ------------------------------------------- */
+
     //
     function onScroll(e) {
         handleScroll(e, chat_ix);
     }
+
     //
     function onGetMoreMessages() {
         getMoreMessages(chat_ix);
     }
+
     //
     function onMouseLeave(e) {
         handleMouseLeave(e, chat_ix);
@@ -325,6 +326,7 @@ function ChatWd(props) {
         zoom_obj.zoom_active = true;
         shouldSendStatus();
     }
+
     //
     function onBlurChatWd() {
         zoom_obj.zoom_active = false;
@@ -335,22 +337,27 @@ function ChatWd(props) {
     function onLetDrawCanvas() {
         letDrawCanvas(chat_ix);
     }
+
     //
     function onChooseFiles(e) {
         handleChooseFiles(e, chat_ix);
     }
+
     //
     function onMoreActionsIp() {
         MoreActionsIp(chat_ix);
     }
+
     //
     function onShowPreview() {
         showPreview(chat_ix);
     }
+
     //
     function onDeleteAnItemPreview(file_ix) {
         deleteAnItemPreview(chat_ix, file_ix);
     }
+
     //
     function onDeleteCanvasDraw() {
         deleteCanvasDraw(chat_ix);
@@ -366,10 +373,12 @@ function ChatWd(props) {
     function onToggleNotice() {
         handleToggleNotice(chat_ix);
     }
+
     //
     function onOpenAddFriendToGroup() {
         onOpenActionsMess('add_user');
     }
+
     //
     function onOpenTimeLineGroup() {
         onOpenActionsMess('time_line');
@@ -379,16 +388,17 @@ function ChatWd(props) {
     function onGetMoreTimeLineGroup() {
         getMoreTimeLineGroup(chat_ix);
     }
+
     //
     function onGetMoreUserLikes() {
         getMoreUserLiked(chat_ix);
     }
 
     //
-    //
     function onOpenActionsMess(action_type) {
         openActionsMess(action_type, { chat_ix: chat_ix });
     }
+
     //
     function onCloseActionsMess() {
         closeActionsMess(chat_ix);

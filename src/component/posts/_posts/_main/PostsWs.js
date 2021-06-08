@@ -9,7 +9,12 @@ import { useMounted } from '../../../../_custom_hooks/useMounted';
 import { useForceUpdate } from '../../../../_custom_hooks/UseForceUpdate';
 //
 import ContextPost from '../../__context_post/ContextPost';
-
+// 
+import ComponentSkeleton from '../../../skeleton/component_skeleton/ComponentSkeleton';
+import FetchingDiv from '../../../some_div/fetching/FetchingDiv';
+import AddNewPost from '../../common/add_new_post/AddNewPost';
+import ZoomVidPicItem from '../../_zoom_post/zoom_vid_pic/_main/ZoomVidPicItem';
+// 
 import {
     handle_API_Cmt_C,
     handle_API_Cmt_L,
@@ -31,15 +36,10 @@ import {
 } from '../../__handle_api/PostHandleAPI';
 
 import { handleCreateNewPost } from '../../__handle_create/PostHandleCreate';
-
-import Post from '../../_post/_main_post/PostWs';
-import AddNewPost from '../../common/add_new_post/AddNewPost';
-import ZoomVidPicItem from '../../_zoom_post/zoom_vid_pic/_main/ZoomVidPicItem';
 //
 import './Posts.scss';
-import ComponentSkeleton from '../../../skeleton/component_skeleton/ComponentSkeleton';
+import Post from '../../_post/_main_post/PostWs';
 import PostSkeleton from '../../_post/skeleton/PostSkeleton';
-import FetchingDiv from '../../../some_div/fetching/FetchingDiv';
 
 //
 Posts.propTypes = {
@@ -56,7 +56,13 @@ Posts.defaultProps = {
 };
 
 //
-function Posts(props) {
+function Posts({
+    posts,
+    has_fetched,
+    is_fetching,
+    has_add_new,
+    title_add_new,
+}) {
     //
     const {
         // user,
@@ -66,13 +72,10 @@ function Posts(props) {
     } = useContext(context_api);
 
     //
-    const { posts, has_fetched, is_fetching, has_add_new, title_add_new } =
-        props;
-
-    //
     const [show_zoom_vid_pic, setShowZoomVidPic] = useState(false);
 
     //
+    ;
     const ws = useRef(null);
 
     //

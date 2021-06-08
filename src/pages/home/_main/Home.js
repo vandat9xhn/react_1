@@ -21,10 +21,11 @@ function Home() {
     const [clothes, setClothes] = useState(initial_arr);
     const [cities, setCities] = useState(initial_arr);
 
-    // 
-    const ref_phone = useRef(null)
-    const ref_cloth = useRef(null)
-    const ref_city = useRef(null)
+    //
+    ;
+    const ref_phone = useRef(null);
+    const ref_cloth = useRef(null);
+    const ref_city = useRef(null);
 
     //
     const mounted = useMounted();
@@ -37,9 +38,9 @@ function Home() {
 
     //
     function getAPIWhenCDM() {
-        observeToDo(ref_phone.current, getPhones, 0)
-        observeToDo(ref_cloth.current, getClothes, 0)
-        observeToDo(ref_city.current, getCities, 0)
+        observeToDo(ref_phone.current, getPhones, 0);
+        observeToDo(ref_cloth.current, getClothes, 0);
+        observeToDo(ref_city.current, getCities, 0);
     }
 
     /* ----------------- GET API ------------------ */

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { API_Post_RD } from '../../../api/api_django/user/user_post/UserPost';
@@ -26,6 +26,9 @@ function UserPost(props) {
     const { post, has_fetched } = post_state;
 
     //
+    ;
+
+    //
     const mounted = useMounted();
 
     //
@@ -41,7 +44,7 @@ function UserPost(props) {
         });
 
         const res = await API_Post_RD(id, 'GET');
-        
+
         mounted &&
             setPostState({
                 post: [res.data],

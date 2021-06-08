@@ -1,10 +1,4 @@
-
 .ChatH_row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-
     border-bottom: 2px solid var(--md-border-blur);
 }
 
@@ -30,24 +24,15 @@
 .ChatH_actions {
     width: 30%;
 }
-// ..
-.ChatH_actions-row {
-    display: flex;
-    justify-content: flex-end;
-}
+
 // ...
 .ChatH_actions_btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     width: 1.5rem;
     height: 1.5rem;
     padding: 0.25rem;
     margin: 0 0.1rem;
 
     background-color: var(--danger);
-    cursor: pointer;
 
     .IconsArrow_close {
         stroke-width: 35;

@@ -1,19 +1,14 @@
-
 //
-.ZoomUser{
-    &:not(:last-child){
+.ZoomUser {
+    &:not(:last-child) {
         margin-bottom: 0.25rem;
         border-bottom: 1px solid var(--md-bg-ccc);
     }
 }
 
 //
-.ZoomUser_row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .IconsArrow_close{
+.ZoomUser_row {
+    .IconsArrow_close {
         stroke: var(--danger);
     }
 }

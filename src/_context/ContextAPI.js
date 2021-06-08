@@ -6,8 +6,7 @@ import { DefineUser } from '../api/api_django_no_token/define_user/DefineUser';
 export const context_api = React.createContext();
 
 //
-const ContextAPI = (props) => {
-    const { children, ...rest_props } = props;
+const ContextAPI = ({ children, ...rest_props }) => {
     //
     const [user, setUser] = useState({
         id: 0,

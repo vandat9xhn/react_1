@@ -1,31 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 import IconDraw from '../../../../../_icons_svg/icon_draw/IconDraw';
 import InputFile from '../../../../input/input_file/InputFile';
 import IconsInput from '../../../../../_icons_svg/Icons_input/IconsInput';
 import IconFaceGray from '../../../../../_icons_svg/icons_like/_Icon_face_gray/IconFaceGray';
-// 
+//
 import './ChatMB.scss';
 
 //
-function ChatMB(props) {
-    const {
-        has_text,
-        more_input,
-        moreActionsIp,
-        letDrawCanvas,
-        handleChooseFiles,
-    } = props;
-
+function ChatMB({
+    has_text,
+    more_input,
+    moreActionsIp,
+    letDrawCanvas,
+    handleChooseFiles,
+}) {
+    //
     return (
         <div className="ChatMB">
-            <div className="ChatMB_row">
-                {/* toggle */}
+            <div className="ChatMB_row display-flex align-items-center">
                 <div>
                     <div
-                        className={`ChatMB_toggle brs-50 cursor-pointer ${
+                        className={`ChatMB_toggle display-flex-center brs-50 cursor-pointer ${
                             more_input ? 'ChatMB_open' : 'ChatMB_close'
                         }`}
                         onClick={moreActionsIp}
@@ -34,7 +32,6 @@ function ChatMB(props) {
                     </div>
                 </div>
 
-                {/* actions */}
                 <div
                     className={`ChatMB_actions ${
                         more_input || has_text
@@ -42,7 +39,7 @@ function ChatMB(props) {
                             : 'ChatMB_actions-open'
                     }`}
                 >
-                    <div className="ChatMB_actions-row">
+                    <div className="ChatMB_actions-row display-flex">
                         <div>
                             <div
                                 className="ChatMB__draw ChatMB__item"
@@ -53,7 +50,6 @@ function ChatMB(props) {
                             </div>
                         </div>
 
-                        {/* input file */}
                         <div>
                             <div
                                 className="ChatMB__files ChatMB__item"

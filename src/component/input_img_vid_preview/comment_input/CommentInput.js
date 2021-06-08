@@ -44,6 +44,7 @@ function CommentInput(props) {
     const { text, urls, files, file_reading } = cmt_obj;
 
     //
+    ;
     const ref_comment_input = useRef(null);
 
     //

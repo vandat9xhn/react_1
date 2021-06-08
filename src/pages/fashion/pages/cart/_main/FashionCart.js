@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 //
@@ -46,6 +46,9 @@ function FashionCart(props) {
     });
 
     const { carts, count_checked, has_fetched } = cart_state;
+
+    // 
+    ;
 
     //
     const mounted = useMounted();
@@ -188,9 +191,7 @@ function FashionCart(props) {
                 <FashionH />
             </div>
 
-            <h2 className="text-secondary App_title">
-                Cart
-            </h2>
+            <h2 className="text-secondary App_title">Cart</h2>
 
             <div
                 className={`FashionCart_body ${

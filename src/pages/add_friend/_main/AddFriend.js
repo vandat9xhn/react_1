@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { useMounted } from '../../../_custom_hooks/useMounted';
+//
 import {
     handle_API_AddFriend_L,
     handle_API_FriendRequest,
 } from '../__handle_api/AddFriendHandleAPI';
-// 
+//
 import './AddFriend.scss';
 import './AddFriendRes.scss';
 //
@@ -43,6 +45,9 @@ function AddFriend(props) {
         add_friend_obj;
 
     const { arr, has_fetched, count } = add_friend_obj[c_request];
+    
+    //
+    const mounted = useMounted();
 
     //
     useEffect(() => {
@@ -78,6 +83,10 @@ function AddFriend(props) {
                   }
                 : item.friend
         );
+
+        if (!mounted) {
+            return;
+        }
 
         setAddFriendObj((add_friend_obj) => ({
             ...add_friend_obj,

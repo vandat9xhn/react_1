@@ -11,12 +11,12 @@ import './ActionsLike.scss';
 ActionsLike.propTypes = {};
 
 //
-function ActionsLike(props) {
-    const { is_active, chat_ix, chooseBdTypeLike, user_like } = props;
+function ActionsLike({ is_active, chat_ix, chooseBdTypeLike, user_like }) {
     //
     function onChooseBdTypeLike(type_like) {
         chooseBdTypeLike(type_like, chat_ix);
     }
+
     //
     function onDelBdTypeLike() {
         chooseBdTypeLike(-1, chat_ix);
@@ -30,7 +30,7 @@ function ActionsLike(props) {
                     is_active ? 'open_type-like' : ''
                 }`}
             >
-                <div className={`ActionsLike_row`}>
+                <div className={`ActionsLike_row display-flex`}>
                     {type_likes.map((item, index) => (
                         <TypesLike
                             key={`ActionsLike_${index}`}
@@ -40,16 +40,15 @@ function ActionsLike(props) {
                         />
                     ))}
                     <div
-                        className={`ActionsLike_del ${
+                        className={`ActionsLike_del display-flex align-items-center ${
                             user_like == undefined || user_like == -1
                                 ? 'pointer-events-none opacity-5'
-                                : ''
+                                : 'cursor-pointer'
                         }`}
                     >
                         <div
                             className="close-icon-small brs-50"
                             onClick={onDelBdTypeLike}
-                            title="Delete this feeling"
                         >
                             <IconsArrow y={400} size_icon="1rem" />
                         </div>

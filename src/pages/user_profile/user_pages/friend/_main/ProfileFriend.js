@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { API_Friend_D } from '../../../../../api/api_django/user/user_friend/UserFriend';
@@ -36,6 +36,9 @@ function ProfileFriend() {
     });
 
     const { friend_arr, count_friend, has_fetched, is_fetching } = friend_obj;
+
+    //
+    ;
 
     //
     const mounted = useMounted();

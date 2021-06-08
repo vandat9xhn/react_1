@@ -22,6 +22,9 @@ ChatU.propTypes = {};
 //
 function ChatU() {
     //
+    const { openMessage, chat_class } = useContext(context_api);
+
+    //
     const [friend_obj, setFriendObj] = useState({
         friend_arr: [],
         is_open: false,
@@ -29,15 +32,16 @@ function ChatU() {
     });
 
     const { friend_arr, is_open, has_fetched } = friend_obj;
+
     //
+    ;
     const ref_chat_user = useRef(null);
     const posScroll = useRef(0);
     const just_scroll = useRef(false);
     const max_friend = useRef(false);
+
     //
     const mounted = useMounted();
-    //
-    const { openMessage, chat_class } = useContext(context_api);
 
     //
     useEffect(() => {

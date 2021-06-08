@@ -52,6 +52,7 @@ function FashionItemShop({ id }) {
     const { owner_info, ...rest_shop_obj } = shop_obj;
 
     //
+    ;
     const ref_item_shop = useRef(null);
 
     //
@@ -90,7 +91,7 @@ function FashionItemShop({ id }) {
             ...rest_data
         } = data;
 
-        changeOwnerInfo(new_shop_obj.owner_info)
+        changeOwnerInfo(new_shop_obj.owner_info);
 
         setItemShopState({
             vid_pic_arr: new_vid_pic_arr.map((item) => item.vid_pic),

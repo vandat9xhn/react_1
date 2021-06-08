@@ -1,26 +1,15 @@
 import React, { useEffect, useState } from 'react';
 //
-import phone_img from '../../../image/contact phone.png';
 import IconsArrow from '../../_icons_svg/icons_arrow/IconsArrow';
 //
+import phone_img from '../../../image/contact phone.png';
 import './Contact.scss';
 
 //
 function Contact(props) {
     //
     const [is_open, setIsOpen] = useState(false);
-    const [display_none, setDisplayNone] = useState(
-        location.pathname.search(/(profile|add-friend|new-feed)/) > 0
-    );
     const [show_number, setShowNumber] = useState(false);
-
-    //
-    useEffect(() => {
-        setDisplayNone(
-            location.pathname.search(/(profile|add-friend|new-feed)/) > 0
-        );
-
-    }, [location]);
 
     //
     function toggleOpen() {
@@ -35,7 +24,13 @@ function Contact(props) {
 
     //
     return (
-        <div className={display_none ? 'display-none' : 'Contact'}>
+        <div
+            className={
+                !location.pathname.includes('phone')
+                    ? 'display-none'
+                    : 'Contact'
+            }
+        >
             <div className="Contact_close">
                 <div onClick={toggleOpen} title={is_open ? 'Close' : 'Contact'}>
                     {is_open ? <IconsArrow x={400} /> : <IconsArrow x={200} />}
@@ -65,17 +60,11 @@ function Contact(props) {
 
                 {/* Online */}
                 <div className="Contact_web">
-                    <div className="Contact_web-online" title="Facebook">
-                        FB
-                    </div>
+                    <div className="Contact_web-online">FB</div>
 
-                    <div className="Contact_web-online" title="Zalo">
-                        ZL
-                    </div>
+                    <div className="Contact_web-online">ZL</div>
 
-                    <div className="Contact_web-online" title="Twitter">
-                        TT
-                    </div>
+                    <div className="Contact_web-online">TT</div>
                 </div>
 
                 {/* number phone */}

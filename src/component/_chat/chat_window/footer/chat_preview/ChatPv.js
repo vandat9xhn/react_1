@@ -8,7 +8,7 @@ import FetchingDiv from '../../../../some_div/fetching/FetchingDiv';
 //
 import './ChatPv.scss';
 
-// 
+//
 ChatPv.propTypes = {
     current_canvas: PropTypes.string,
     urls: PropTypes.array,
@@ -22,23 +22,21 @@ ChatPv.defaultProps = {
 };
 
 //
-function ChatPv(props) {
-    const {
-        current_canvas,
-        urls,
-        file_reading,
-        
-        letDrawCanvas,
-        deleteCanvasDraw,
-        deleteAnItemPreview,
-        
-        showPreview,
-        show_preview,
-    } = props;
+function ChatPv({
+    current_canvas,
+    urls,
+    file_reading,
 
+    letDrawCanvas,
+    deleteCanvasDraw,
+    deleteAnItemPreview,
+
+    showPreview,
+    show_preview,
+}) {
+    //
     return (
         <div className="ChatPv">
-            {/* hide preview */}
             <div
                 className={`ChatPv_toggle hv-opacity ${
                     show_preview ? 'ÇhatPv_toggle-show' : 'ChatPv_toggle-hide'
@@ -61,13 +59,11 @@ function ChatPv(props) {
                 <div
                     className={current_canvas ? 'ChatPv_draw' : 'display-none'}
                 >
-                    {/* canvas draw */}
                     <div className="ChatPv__item">
                         <div className="ChatPv__draw-img">
                             <img src={current_canvas} alt="" />
                         </div>
 
-                        {/* face for draw */}
                         <div className="ChatPv__face">
                             <div
                                 className="ChatPv__face-elm brs-5px"
@@ -78,7 +74,6 @@ function ChatPv(props) {
                             </div>
                         </div>
 
-                        {/* delete draw */}
                         <div className="ChatPv__close">
                             <div
                                 className="ChatPv__close-elm hv-opacity brs-50 bg-loader"
@@ -91,7 +86,6 @@ function ChatPv(props) {
                     </div>
                 </div>
 
-                {/* vid pic */}
                 <div className="ChatPv_files">
                     <ImgVidPreview
                         urls={urls}
@@ -102,7 +96,6 @@ function ChatPv(props) {
                     />
                 </div>
 
-                {/* loading vid pic */}
                 <div className="ChatPv_fetching">
                     <FetchingDiv is_fetching={file_reading} />
                 </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useInterval } from '../../../_custom_hooks/UseInterval';
+import { useMounted } from '../../../_custom_hooks/useMounted';
 //
 import NextPrevDiv from '../../some_div/next_prev_div/NextPrevDiv';
 //
@@ -16,17 +17,20 @@ Carousel.propTypes = {
 //
 function Carousel({ vid_pics }) {
     //
-    const [doSkipInterval] = useInterval(6000, handleAutoNext);
-
-    //
     const [vid_pic_ix, setVidPicIx] = useState(1);
 
     //
-    const mounted = useRef(true);
-
     const btn_disable = useRef(false);
     const transition_none = useRef(false);
     const ref_count = useRef(vid_pics.length);
+
+    //
+    const mounted = useMounted();
+
+    const { doSkipInterval } = useInterval({
+        time: 6000,
+        callback: handleAutoNext,
+    });
 
     //
     useEffect(() => {

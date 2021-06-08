@@ -10,17 +10,19 @@ import { type_likes } from '../../../../like/list_type_like/type_likes/TypeLikes
 import './ChatMess.scss';
 
 //
-function ChatMess(props) {
-    const {
-        zoom_chat,
-        chat_ix,
-        mess_ix,
-        mess_item,
+function ChatMess({
+    zoom_chat,
+    chat_ix,
+    mess_ix,
+    mess_item,
 
-        openZoomVidPics,
-        openActionsMess,
-    } = props;
-    
+    openZoomVidPics,
+    openActionsMess,
+}) {
+    //
+    const c_user_id = useContext(context_api).user.id;
+
+    //
     const {
         id,
         profile_user,
@@ -32,9 +34,6 @@ function ChatMess(props) {
         count_user_like,
         // user_statuses,
     } = mess_item;
-    // 
-    const c_user_id = useContext(context_api).user.id
-
 
     //
     function onOpenActionsMess(type) {
@@ -44,6 +43,7 @@ function ChatMess(props) {
             mess_id: id,
         });
     }
+
     //
     function onOpenActionsEdit() {
         onOpenActionsMess('edit');
@@ -52,6 +52,7 @@ function ChatMess(props) {
     function onOpenActionsLike() {
         onOpenActionsMess('like');
     }
+    
     //
     function onShowAllUserLikes() {
         onOpenActionsMess('user_liked');
@@ -62,12 +63,16 @@ function ChatMess(props) {
         <div className="ChatMess">
             <div
                 className={`ChatMess_common ${
-                    profile_user == c_user_id ? 'ChatMess_user' : 'ChatMess_Friend'
+                    profile_user == c_user_id
+                        ? 'ChatMess_user'
+                        : 'ChatMess_Friend'
                 }`}
             >
                 <div className="ChatMess_mess">
                     <div
-                        className={message ? 'ChatMess_content' : 'display-none'}
+                        className={
+                            message ? 'ChatMess_content' : 'display-none'
+                        }
                     >
                         {message}
                     </div>

@@ -40,6 +40,7 @@ function NewFeed() {
 
     //
     useEffect(() => {
+        document.title = 'New Feed'
         getData_API_Post_first();
     }, []);
 
@@ -53,6 +54,7 @@ function NewFeed() {
         getData_API_Post_first();
     };
 
+    // console.log(post_arr);
     //
     return (
         <div className="NewFeed">

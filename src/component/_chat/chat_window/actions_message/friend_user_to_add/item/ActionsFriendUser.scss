@@ -4,9 +4,6 @@
 }
 // .
 .ActionsFriendUser_row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     .PictureName__name{
         width: 10rem;
         max-width: calc(100vw - 6rem);
@@ -14,10 +11,10 @@
 }
 
 // ..
-.ActionsFriendUser_add{
-    padding: 0.5rem;
-    cursor: pointer;
-    &:hover{
-        color: var(--blue);
-    }
-}
+// .ActionsFriendUser_add{
+    // padding: 0.5rem;
+    // cursor: pointer;
+    // &:hover{
+    //     color: var(--blue);
+    // }
+// }
