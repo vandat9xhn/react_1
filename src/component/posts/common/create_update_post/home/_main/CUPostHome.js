@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import PictureName from '../../../../../picture_name/pic_name/PictureName';
-import CreateUpdatePostHomeContent from '../content/CreateUpdatePostHomeContent';
-import CreateUpdatePostHomeMoreInput from '../more_input/CreateUpdatePostHomeMoreInput';
+import CUPostHomeContent from '../content/CUPostHomeContent';
+import CUPostHomeMoreInput from '../more_input/CUPostHomeMoreInput';
 //
-import './CreateUpdatePostHome.scss';
+import './CUPostHome.scss';
 
 //
-CreateUpdatePostHome.propTypes = {};
+CUPostHome.propTypes = {};
 
 //
-function CreateUpdatePostHome(props) {
+function CUPostHome(props) {
     //
     const { user } = useContext(context_api);
     //
@@ -30,18 +30,18 @@ function CreateUpdatePostHome(props) {
         handleChangeMainContent,
         deleteAnItem,
         handleChooseFiles,
-        handleCreateUpdatePost,
+        handleCUPost,
     } = props;
 
     //
     return (
         <div>
-            <div className="CreateUpdatePostHome_user">
+            <div className="CUPostHome_user">
                 <PictureName user={user} />
             </div>
 
             <div>
-                <CreateUpdatePostHomeContent
+                <CUPostHomeContent
                     main_content={main_content}
                     urls_preview={vid_pics}
                     is_loading={is_loading}
@@ -52,9 +52,9 @@ function CreateUpdatePostHome(props) {
                 />
             </div>
 
-            <div className="CreateUpdatePostHome_footer">
-                <div className="CreateUpdatePostHome_files-tag">
-                    <CreateUpdatePostHomeMoreInput
+            <div className="CUPostHome_footer">
+                <div className="CUPostHome_files-tag">
+                    <CUPostHomeMoreInput
                         handleChooseFiles={handleChooseFiles}
                     />
                 </div>
@@ -62,14 +62,14 @@ function CreateUpdatePostHome(props) {
                 {/* btn post */}
                 <div>
                     <button
-                        className={`CreateUpdatePostHome_post brs-5px ${
+                        className={`CUPostHome_post brs-5px ${
                             !has_text && !has_file
-                                ? 'CreateUpdatePostHome_post-disable'
-                                : 'CreateUpdatePostHome_post-active'
+                                ? 'CUPostHome_post-disable'
+                                : 'CUPostHome_post-active'
                         }`}
                         disabled={!has_text && !has_file}
                         title={title_action}
-                        onClick={handleCreateUpdatePost}
+                        onClick={handleCUPost}
                     >
                         {title_action}
                     </button>
@@ -79,4 +79,4 @@ function CreateUpdatePostHome(props) {
     );
 }
 
-export default CreateUpdatePostHome;
+export default CUPostHome;

@@ -1,15 +1,8 @@
 import white_person  from '../../../../../image/white_person.svg';
 
 
-export const data_count_new = {
-    count_new_zoom: 2,
-    count_new_notice: 3,
-    count_new_add_friend: 0,
-}
-
-
 // const
-export const initialMessage = [
+export const default_message_arr = [
     {
         id: 2,
         name: 'Nguyen Nguyen',
@@ -38,7 +31,7 @@ export const initialMessage = [
     },
 ];
 
-export const data_list_zooms = [
+export const default_zoom_arr = [
     {
         zoom_chat: '1-2',
         messages: [{
@@ -80,7 +73,7 @@ export const data_list_zooms = [
     },
 ]
 
-export const data_list_notices = [
+export const default_notice_arr = [
     {
         id: 1,
         link_id: 2,
@@ -104,50 +97,5 @@ export const data_list_notices = [
         content: 'My My commented your post',
         status_seen: 2,
         updated_time: new Date()
-    },
-]
-
-export const default_friend_arr = [
-    {
-        id: 2,
-        first_name: 'My',
-        last_name: 'My',
-        picture: white_person,
-    },
-    {
-        id: 3,
-        first_name: 'My',
-        last_name: 'My',
-        picture: white_person,
-    },
-    {
-        id: 4,
-        first_name: 'My',
-        last_name: 'My',
-        picture: white_person,
-    },
-    {
-        id: 45,
-        first_name: 'My',
-        last_name: 'My',
-        picture: white_person,
-    },
-    {
-        id: 6,
-        first_name: 'My',
-        last_name: 'My',
-        picture: white_person,
-    },
-    {
-        id: 7,
-        first_name: 'My',
-        last_name: 'My',
-        picture: white_person,
-    },
-    {
-        id: 8,
-        first_name: 'My',
-        last_name: 'My',
-        picture: white_person,
     },
 ]

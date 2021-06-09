@@ -57,8 +57,8 @@ $form-media:
     ("break-point": 1560px, "form-width": 45vw),
     ("break-point": 1260px, "form-width": 50vw),
     ("break-point": 960px, "form-width": 60vw),
-    ("break-point": 600px, "form-width": 90vw),
-    ("break-point": 300px, "form-width": 100vw)
+    ("break-point": 720px, "form-width": 90vw),
+    ("break-point": 400px, "form-width": 100vw)
 ;
 
 @mixin AppFormMedia($w) {

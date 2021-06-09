@@ -14,11 +14,12 @@ import { handle_API_FashionProduct_L } from '../../../__handle_api/home/FashionH
 import { initial_fashion_search_products_obj } from '../../../__initial/initial';
 //
 import './FashionSearch.scss';
-import './FashionSearchRes.scss';
 //
 import FashionShead from '../head/FashionShead';
 import SearchProducts from '../products/SearchProducts';
 import SearchFilter from '../filter/_main/SearchFilter';
+// 
+import './FashionSearchRes.scss';
 
 //
 FashionSearch.propTypes = {};

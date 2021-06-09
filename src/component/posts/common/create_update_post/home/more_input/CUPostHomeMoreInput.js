@@ -1,24 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import IconsInput from '../../../../../../_icons_svg/Icons_input/IconsInput';
 import InputFile from '../../../../../input/input_file/InputFile';
 import IconsPost from '../../../../../../_icons_svg/icons_post/IconsPost';
-// 
-import './CreateUpdatePostHomeMoreInput.scss';
+//
+import './CUPostHomeMoreInput.scss';
 
-// 
-CreateUpdatePostHomeMoreInput.propTypes = {};
+//
+CUPostHomeMoreInput.propTypes = {};
 
-// 
-function CreateUpdatePostHomeMoreInput(props) {
-    const {handleChooseFiles} = props;
-
-    // 
+//
+function CUPostHomeMoreInput({ handleChooseFiles }) {
+    //
     return (
-        <div className="CreateUpdatePostHomeMoreInput">
-            <div className="CreateUpdatePostHomeMoreInput_row display-flex align-items-center">
-                <div className="CreateUpdatePostHomeContent__files">
+        <div className="CUPostHomeMoreInput bg-primary brs-5px-md">
+            <div className="CUPostHomeMoreInput_row display-flex align-items-center">
+                <div className="CUPostHomeContent__files">
                     <InputFile
                         onChange={handleChooseFiles}
                         accept="image/*, video/*"
@@ -30,7 +28,7 @@ function CreateUpdatePostHomeMoreInput(props) {
                 </div>
 
                 <div
-                    className="CreateUpdatePostHomeContent__tag"
+                    className="CUPostHomeContent__tag"
                     title="Tag your friends"
                 >
                     <IconsPost />
@@ -40,4 +38,4 @@ function CreateUpdatePostHomeMoreInput(props) {
     );
 }
 
-export default CreateUpdatePostHomeMoreInput;
+export default CUPostHomeMoreInput;

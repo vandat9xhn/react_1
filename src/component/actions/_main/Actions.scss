@@ -1,13 +1,6 @@
-.Actions_contain {
-    position: relative;
-}
 
 .Actions_symbol {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-weight: 500;
+    font-weight: 600;
     user-select: none;
     cursor: pointer;
 }
@@ -40,11 +33,11 @@
 //
 @media (max-width: 500px) {
     .Actions_symbol-post {
-        letter-spacing: 0.1rem;
+        letter-spacing: 0.2rem;
     }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 400px) {
     .Actions_choices {
         position: fixed;
         top: auto;

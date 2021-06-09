@@ -17,24 +17,22 @@ Actions.propTypes = {
 
 Actions.defaultProps = {
     symbol_post: true,
-    title_action: '...'
+    title_action: '...',
 };
 
 //
-function Actions(props) {
-    const {title_action, symbol_post, children} = props;
-
-    // state
+function Actions({ title_action, symbol_post, children }) {
+    //
     const [is_open, setIsOpen] = useState(false);
 
     /* ---------------------------------- */
 
-    // Toggle
+    //
     const toggleActions = () => {
         setIsOpen(!is_open);
     };
 
-    // close
+    //
     const closeActions = () => {
         is_open && toggleActions();
     };
@@ -42,19 +40,21 @@ function Actions(props) {
     //
     return (
         <CloseDiv makeDivHidden={closeActions}>
-            <div onClick={toggleActions} className="Actions_contain">
+            <div
+                onClick={toggleActions}
+                className="Actions_contain position-rel"
+            >
                 <div
-                    className={`Actions_symbol brs-50 hv-opacity ${
+                    className={`Actions_symbol display-flex-center brs-50 hv-opacity ${
                         symbol_post ? 'Actions_symbol-post' : ''
                     }`}
                     title="More actions"
                 >
                     {title_action}
                 </div>
-                
-                
+
                 {is_open && (
-                    <div className="Actions_choices App_box_shadow brs-5px">
+                    <div className="Actions_choices box-shadow-1 brs-5px">
                         <div className="Actions_choices_actions">
                             <div className="ActionsChoices_back display-none">
                                 <ActionBack />

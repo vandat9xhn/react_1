@@ -5,17 +5,30 @@ import PropTypes from 'prop-types';
 ComponentSkeleton.propTypes = {
     component: PropTypes.element,
     has_fetched: PropTypes.bool,
+    num: PropTypes.number,
+    skeleton_class: PropTypes.string,
+};
+
+ComponentSkeleton.defaultProps = {
+    num: 1,
+    skeleton_class: '',
 };
 
 //
-function ComponentSkeleton({
-    component,
-    has_fetched,
-}) {
+function ComponentSkeleton({ component, has_fetched, num, skeleton_class }) {
+    //
     return (
-        <div>
-            {!has_fetched && component}
-        </div>
+        !has_fetched && (
+            <div
+                className={`ComponentSkeleton pointer-events-none ${skeleton_class}`}
+            >
+                {Array(num)
+                    .fill(1)
+                    .map((_, ix) => (
+                        <div key={`ComponentSkeleton_${ix}`}>{component}</div>
+                    ))}
+            </div>
+        )
     );
 }
 

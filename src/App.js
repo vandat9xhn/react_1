@@ -25,7 +25,7 @@ import Chat from './component/_chat/_main/ChatRealtime';
 // import ChatU from './component/_chat/chat_user/ChatU';
 import ZoomVidPics from './component/_zoom_vid_pics/_main/ZoomVidPics';
 import CanvasFixed from './component/canvas_draw/_main/CanvasFixed';
-import SnowDrop from './component/_snow_drop/SnowDrop';
+import NatureDropMain from './component/_snow_drop/_main/NatureDropMain';
 
 import ScreenConfirm from './component/_screen_blur/confirm/ScreenConfirm';
 import ScreenHistory from './component/_screen_post/history/_main/ScreenHistory';
@@ -62,7 +62,7 @@ class App extends Component {
     };
 
     // p
-    refSnowDrop = (elm) => {
+    refNatureDropMain = (elm) => {
         if (elm !== null) {
             this.toggleSnowFlower = elm.toggleSnowFlower;
         }
@@ -262,7 +262,7 @@ class App extends Component {
                             </div>
 
                             <div className="AppNatureDrop">
-                                <SnowDrop ref={this.refSnowDrop} />
+                                <NatureDropMain ref={this.refNatureDropMain} />
                             </div>
                         </div>
                     </ContextAPI>

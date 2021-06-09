@@ -1,17 +1,17 @@
 /* -------------- CONTENT ------------------ */
-.CreateUpdatePostHomeContent {
+.CUPostHomeContent {
     max-height: calc(100vh - 12rem);
     padding: 0.5rem;
     overflow: auto;
 }
 
 /* -------------- TEXTAREA ------------------ */
-.CreateUpdatePostHomeContent_input {
+.CUPostHomeContent_input {
     margin-bottom: 0.5rem;
     border: 1px solid var(--bg-blur);
 }
 // .
-.CreateUpdatePostHomeContent_input-contain {
+.CUPostHomeContent_input-contain {
     padding: 0.5rem;
     textarea {
         width: 100%;
@@ -24,14 +24,14 @@
 }
 
 /* -------------- PREVIEW ------------------ */
-.CreateUpdatePostHomeContent_preview {
+.CUPostHomeContent_preview {
     position: relative;
-    &:hover > .CreateUpdatePostHomeContent__fixAll {
+    &:hover > .CUPostHomeContent__fixAll {
         display: block;
     }
 }
 // .
-.CreateUpdatePostHomeContent_preview-contain {
+.CUPostHomeContent_preview-contain {
     .ImgVidPreviewItem {
         position: relative;
         width: 100%;
@@ -45,7 +45,7 @@
 }
 
 /* -------------- FIX ------------------ */
-.CreateUpdatePostHomeContent__fixAll {
+.CUPostHomeContent__fixAll {
     display: none;
     position: absolute;
     top: 0;
@@ -58,7 +58,7 @@
 }
 
 /* -------------------------------- */
-.CreateUpdatePostHomeContent__no-pic {
+.CUPostHomeContent__no-pic {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -70,7 +70,7 @@
     font-size: 20px;
     color: var(--md-bg-ccc);
 }
-.CreateUpdatePostHomeContent_loading {
+.CUPostHomeContent_loading {
     position: absolute;
     top: 2%;
     left: 50%;
@@ -79,29 +79,29 @@
 
 //
 @media (max-width: 600px) {
-    .CreateUpdatePostHomeContent__fixAll {
+    .CUPostHomeContent__fixAll {
         display: block;
     }
 
-    .CreateUpdatePostHomeContent_preview-contain {
+    .CUPostHomeContent_preview-contain {
         .ImgVidPreview {
             min-height: 15rem;
         }
     }
 
     // when no vid pic
-    .CreateUpdatePostHomeContent__no-pic {
+    .CUPostHomeContent__no-pic {
         font-size: 1rem;
     }
 }
 
 //
 @media (max-width: 300px) {
-    .CreateUpdatePostHomeContent {
+    .CUPostHomeContent {
         max-height: calc(100vh - 10.5rem);
     }
 
-    .CreateUpdatePostHome_files-tag {
+    .CUPostHome_files-tag {
         svg {
             width: 1rem;
             height: 1rem;

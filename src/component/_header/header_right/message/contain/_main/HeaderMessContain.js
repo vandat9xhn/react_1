@@ -3,48 +3,35 @@ import PropTypes from 'prop-types';
 //
 import ScreenBlurShowMore from '../../../../../_screen_blur/_component/foot/ScreenBlurShowMore';
 //
+import './HeaderMessContain.scss';
+//
 import MessageFriendHead from '../head/_main/HeaderMessHead';
 import HeaderMessItem from '../body/item/HeaderMessItem';
-//
-import './HeaderMessContain.scss';
 
 //
 HeaderMessContain.propTypes = {};
 
 //
-function HeaderMessContain(props) {
-    const {
-        zooms,
-        count_zoom,
-        friend_arr,
-        is_fetching_zoom,
-        //
-        handleClickZoomItem,
-        closeMessage,
-        getMoreZooms,
-    } = props;
-
+function HeaderMessContain({
+    zooms,
+    count,
+    is_fetching,
+    //
+    handleClickZoomItem,
+    closeZoom,
+    getMoreZoom,
+}) {
     //
     return (
         <div className="RightHeader_hidden-contain header_hidden-contain">
-            <div className="RightHeader_hidden-title">
-                <div className="label-field">Messages</div>
-            </div>
+            <h2 className="padding-8px margin-0">Messages</h2>
 
             <div className="HeaderMessContain_friend">
                 <MessageFriendHead
-                    friend_arr={friend_arr}
-                    closeMessage={closeMessage}
+                    closeZoom={closeZoom}
                 />
             </div>
 
-            <div>
-
-            </div>
-
-            <div>
-                
-            </div>
             <div>
                 {zooms.map((zoom_item, ix) => (
                     <HeaderMessItem
@@ -64,9 +51,9 @@ function HeaderMessContain(props) {
             <div className="RightHeader_hidden_show-more">
                 <ScreenBlurShowMore
                     title="Show more..."
-                    is_show_more={count_zoom > zooms.length}
-                    handleShowMore={getMoreZooms}
-                    is_fetching={is_fetching_zoom}
+                    is_show_more={count > zooms.length}
+                    handleShowMore={getMoreZoom}
+                    is_fetching={is_fetching}
                 />
             </div>
         </div>

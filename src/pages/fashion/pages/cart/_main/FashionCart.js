@@ -24,10 +24,11 @@ import { actionFashionChangeCountCart } from '../../../../../redux/action/action
 import FashionH from '../../../components/head/_main/FashionH';
 //
 import './FashionCart.scss';
-import './FashionCartRes.scss';
 //
 import CartHead from '../cart_head/CartHead';
 import CartShop from '../cart_shop/CartShop';
+// 
+import './FashionCartRes.scss';
 
 //
 function FashionCart(props) {

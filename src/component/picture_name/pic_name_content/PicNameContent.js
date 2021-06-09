@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import { content_pic_name_props } from '../../../_prop-types/_CommonPropTypes';
-// 
+//
 import PictureNameCommon from '../_main/PictureNameCommon';
 
-// 
+//
 PicNameContent.propTypes = {
     user: PropTypes.object,
     handleClick: PropTypes.func,
@@ -15,12 +15,17 @@ PicNameContent.propTypes = {
     align_center: PropTypes.bool,
 };
 
-// 
-function PicNameContent(props) {
-    const {user, content, is_inline_block, align_center, handleClick} = props;
+//
+function PicNameContent({
+    user,
+    content,
+    is_inline_block,
+    align_center,
+    handleClick,
+}) {
     const { id, picture, first_name, last_name } = user;
 
-    // 
+    //
     return (
         <div className="PicNameContent" onClick={handleClick}>
             <PictureNameCommon

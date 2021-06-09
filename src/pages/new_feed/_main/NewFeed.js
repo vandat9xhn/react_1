@@ -11,12 +11,12 @@ import { handle_API_NewFeedPost_L } from '../__handle_api/NewFeedHandleAPI';
 // 
 import './NewFeedCommon.scss';
 import './NewFeed.scss';
-import './NewFeedRes.scss';
 // 
 import NewFeedSearch from '../search/NewFeedSearch';
 import NewFeedRight from '../right/_main/NewFeedRight';
 import NewFeedLeft from '../left/_main/NewFeedLeft';
 //
+import './NewFeedRes.scss';
 
 //
 function NewFeed() {

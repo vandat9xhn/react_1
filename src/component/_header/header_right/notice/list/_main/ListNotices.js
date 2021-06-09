@@ -1,64 +1,61 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import ScreenBlurShowMore from '../../../../../_screen_blur/_component/foot/ScreenBlurShowMore';
-// 
-import ItemNotice from '../item/ItemNotice';
-// 
+//
 import './ListNotices.scss';
+//
+import ItemNotice from '../item/ItemNotice';
 
 //
 ListNotices.propTypes = {};
 
 //
-function ListNotices(props) {
-    const {
-        notices,
-        count_notice,
-        is_fetching_notice,
-        //
-        MarkAllAsRead,
-        handleClickNoticeItem,
-        getMoreNotice,
-    } = props;
+function ListNotices({
+    notices,
+    count,
+    is_fetching,
 
+    MarkAllAsRead,
+    handleClickItem,
+    getMoreNotice,
+}) {
     //
     return (
         <div className="RightHeader_hidden-contain header_hidden-contain">
-            <div className="RightHeader_hidden-title">
-                <div className="label-field">Notices</div>
-            </div>
+            <h2 className="margin-0 padding-8px">Notices</h2>
 
-            <div className="ListNotices_mark-all" onClick={MarkAllAsRead}>
+            <h4
+                className="ListNotices_mark-all margin-0 text-blue"
+                onClick={MarkAllAsRead}
+            >
                 Mark all as Read
-            </div>
+            </h4>
 
             <div>
                 {notices.map((notice, ix) => (
-                    <Link
+                    <div
                         key={`RightHeader_notice_${ix}`}
-                        to={'/posts/' + notice.link_id}
                     >
                         <ItemNotice
                             id={notice.id}
                             ix={ix}
                             user={notice.user}
                             content={notice.content}
-                            updated_time={notice.updated_time}
                             is_new={notice.status_seen == 2 ? false : true}
-                            handleClickItem={handleClickNoticeItem}
+                            updated_time={notice.updated_time}
+                            handleClickItem={handleClickItem}
                         />
-                    </Link>
+                    </div>
                 ))}
             </div>
 
             <div className="RightHeader_hidden_show-more">
                 <ScreenBlurShowMore
                     title="Show more..."
-                    is_show_more={count_notice > notices.length}
+                    is_show_more={count > notices.length}
                     handleShowMore={getMoreNotice}
-                    is_fetching={is_fetching_notice}
+                    is_fetching={is_fetching}
                 />
             </div>
         </div>

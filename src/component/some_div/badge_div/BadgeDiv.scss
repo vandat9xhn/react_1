@@ -1,0 +1,13 @@
+
+.BadgeDiv{
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--danger);
+
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--white);
+
+    user-select: none;
+    overflow: hidden;
+}

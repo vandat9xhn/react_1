@@ -21,7 +21,7 @@ import {
     handle_API_Post_U,
 } from '../../__handle_api/PostHandleAPI';
 
-import CreateUpdatePost from '../../common/create_update_post/_main/CreateUpdatePost';
+import CUPost from '../../common/create_update_post/_main/CUPost';
 import VidPicsPost from '../vid_pics/_main/VidPicsPost';
 import PermissionPost from '../../common/permission/_main/PermissionPost';
 import Info from '../../common/info/_main/InfoWs';
@@ -117,12 +117,12 @@ function Post(props) {
             type: item.vid_pic.endsWith('./mp4') ? 'video' : 'image',
         }));
 
-        openScreenUpdate('Update', CreateUpdatePost, {
+        openScreenUpdate('Update', CUPost, {
             main_content: data.content,
             vid_pics: vid_pics_update,
 
             title_action: 'Update',
-            handleCreateUpdatePost: handleUpdate,
+            handleCUPost: handleUpdate,
         });
     }
     //

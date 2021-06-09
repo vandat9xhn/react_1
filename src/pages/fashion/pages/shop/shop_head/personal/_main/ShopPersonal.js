@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import './ShopPersonal.scss';
-import './ShopPersonalRes.scss';
 //
 import ShopPersonalLeft from '../left/ShopPersonalLeft';
 import ShopPersonalRight from '../right/ShopPersonalRight';
+// 
+import './ShopPersonalRes.scss';
 
 //
 ShopPersonal.propTypes = {};

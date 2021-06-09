@@ -1,6 +1,6 @@
-import { API_FakeReal } from '../../_ConstAPI';
 import axiosDjangoClient from '../_axios/AxiosDjango';
-
+import { API_FakeReal } from '../../_ConstAPI';
+// 
 import {
     DefaultFashionCartBuy,
     default_arr_payment,

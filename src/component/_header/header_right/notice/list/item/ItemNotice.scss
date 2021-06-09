@@ -13,10 +13,11 @@
     }
     // .
     .PictureNameCommon__name-content {
-        max-width: calc(100% - 1rem);
         display: -webkit-box;
         -webkit-line-clamp: 3;
         line-height: 1.5rem;
+
+        max-width: calc(100% - 1rem);
         max-height: 4.5rem;
         overflow: hidden;
     }

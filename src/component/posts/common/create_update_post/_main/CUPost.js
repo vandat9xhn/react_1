@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 //
 import { loadFile } from '../../../../../_some_function/loadFile';
 //
-import CreateUpdatePostHome from '../home/_main/CreateUpdatePostHome';
+import './CUPost.scss';
+//
+import CUPostHome from '../home/_main/CUPostHome';
 import FixAll from '../fix_all/_main/FixAll';
 //
-import './CreateUpdatePost.scss';
-import './CreateUpdatePostRes.scss';
+import './CUPostRes.scss';
 
 //
-CreateUpdatePost.propTypes = {
+CUPost.propTypes = {
     main_content: PropTypes.string,
     vid_pics: PropTypes.arrayOf(
         PropTypes.shape({
@@ -22,10 +23,10 @@ CreateUpdatePost.propTypes = {
     ),
 
     title_action: PropTypes.string,
-    handleCreateUpdatePost: PropTypes.func,
+    handleCUPost: PropTypes.func,
 };
 
-CreateUpdatePost.defaultProps = {
+CUPost.defaultProps = {
     main_content: '',
     vid_pics: [
         {
@@ -40,16 +41,13 @@ CreateUpdatePost.defaultProps = {
 };
 
 //
-function CreateUpdatePost(props) {
-    //
-    const {
-        main_content: old_main_content,
-        vid_pics: old_vid_pics,
+function CUPost({
+    main_content: old_main_content,
+    vid_pics: old_vid_pics,
 
-        title_action,
-        handleCreateUpdatePost,
-    } = props;
-
+    title_action,
+    handleCUPost,
+}) {
     //
     const [update_create_obj, setUpdateCreateObj] = useState({
         main_content: old_main_content || '',
@@ -83,7 +81,7 @@ function CreateUpdatePost(props) {
 
     /* ---------------------------- MAIN CONTENT ---------------------------------- */
 
-    // on change
+    // 
     function handleChangeMainContent(event) {
         const new_main_content = event.target.value;
 
@@ -97,7 +95,7 @@ function CreateUpdatePost(props) {
 
     /* ---------------------------- VID_PIC ---------------------------------- */
 
-    // choose
+    // 
     async function handleChooseFiles(event) {
         const new_files = event.target.files;
 
@@ -128,7 +126,7 @@ function CreateUpdatePost(props) {
         }
     }
 
-    // delete
+    // 
     function deleteAnItem(index) {
         const deleted_item = vid_pics[index];
 
@@ -187,15 +185,15 @@ function CreateUpdatePost(props) {
     }
 
     //
-    function onCreateUpdatePost() {
-        handleCreateUpdatePost(update_create_obj);
+    function onCUPost() {
+        handleCUPost(update_create_obj);
     }
 
     //
     return (
-        <div className="CreateUpdatePost">
+        <div className="CUPost">
             <div className={open_fix_all ? 'display-none' : ''}>
-                <CreateUpdatePostHome
+                <CUPostHome
                     main_content={main_content}
                     vid_pics={vid_pics}
                     title_action={title_action}
@@ -208,7 +206,7 @@ function CreateUpdatePost(props) {
                     handleChangeMainContent={handleChangeMainContent}
                     deleteAnItem={deleteAnItem}
                     handleChooseFiles={handleChooseFiles}
-                    handleCreateUpdatePost={onCreateUpdatePost}
+                    handleCUPost={onCUPost}
                 />
             </div>
 
@@ -226,4 +224,4 @@ function CreateUpdatePost(props) {
     );
 }
 
-export default CreateUpdatePost;
+export default CUPost;

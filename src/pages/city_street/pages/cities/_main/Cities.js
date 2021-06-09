@@ -10,10 +10,11 @@ import FetchingDiv from '../../../../../component/some_div/fetching/FetchingDiv'
 import { handle_API_City_L } from '../../../__handle_api/CityHandleAPI';
 //
 import './Cities.scss';
-import './CitiesRes.scss';
 // 
 import CitySearch from '../search/CitySearch';
 import CityItem from '../item/_main/CityItem';
+// 
+import './CitiesRes.scss';
 
 //
 function Cities() {

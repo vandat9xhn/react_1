@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import ImgVidPreview from '../../../../../input_img_vid_preview/img_vid_preview/ImgVidPreview';
 import FetchingDiv from '../../../../../some_div/fetching/FetchingDiv';
 //
-import './CreateUpdatePostHomeContent.scss';
+import './CUPostHomeContent.scss';
 
 //
-CreateUpdatePostHomeContent.propTypes = {};
+CUPostHomeContent.propTypes = {};
 
 //
-function CreateUpdatePostHomeContent(props) {
+function CUPostHomeContent(props) {
     const {
         main_content,
         urls_preview,
@@ -23,11 +23,11 @@ function CreateUpdatePostHomeContent(props) {
 
     //
     return (
-        <div className="CreateUpdatePostHomeContent scroll-thin">
-            <div className="CreateUpdatePostHomeContent_input">
-                <div className="CreateUpdatePostHomeContent_input-contain brs-5px">
+        <div className="CUPostHomeContent scroll-thin">
+            <div className="CUPostHomeContent_input">
+                <div className="CUPostHomeContent_input-contain brs-5px">
                     <textarea
-                        className="CreateUpdatePostHomeContent__textarea scroll-thin"
+                        className="CUPostHomeContent__textarea scroll-thin"
                         rows="4"
                         value={main_content}
                         placeholder=""
@@ -36,8 +36,8 @@ function CreateUpdatePostHomeContent(props) {
                 </div>
             </div>
 
-            <div className="CreateUpdatePostHomeContent_preview">
-                <div className="CreateUpdatePostHomeContent_preview-contain brs-5px">
+            <div className="CUPostHomeContent_preview">
+                <div className="CUPostHomeContent_preview-contain brs-5px">
                     <ImgVidPreview
                         urls={urls_preview}
                         vid_pic_count={true}
@@ -45,14 +45,14 @@ function CreateUpdatePostHomeContent(props) {
                     />
                 </div>
 
-                <div className="CreateUpdatePostHomeContent_loading">
+                <div className="CUPostHomeContent_loading">
                     <FetchingDiv is_fetching={is_loading} />
                 </div>
 
                 <div
                     className={
                         urls_preview.length
-                            ? 'CreateUpdatePostHomeContent__fixAll brs-5px hv-opacity'
+                            ? 'CUPostHomeContent__fixAll brs-5px hv-opacity'
                             : 'display-none'
                     }
                     onClick={showFixAll}
@@ -63,7 +63,7 @@ function CreateUpdatePostHomeContent(props) {
                 <div
                     className={
                         urls_preview.length == 0
-                            ? 'CreateUpdatePostHomeContent__no-pic'
+                            ? 'CUPostHomeContent__no-pic'
                             : 'display-none'
                     }
                 >
@@ -74,4 +74,4 @@ function CreateUpdatePostHomeContent(props) {
     );
 }
 
-export default CreateUpdatePostHomeContent;
+export default CUPostHomeContent;

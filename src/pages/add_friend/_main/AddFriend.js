@@ -9,10 +9,11 @@ import {
 } from '../__handle_api/AddFriendHandleAPI';
 //
 import './AddFriend.scss';
-import './AddFriendRes.scss';
 //
 import AddFriendBody from '../body/_main/AddFriendBody';
 import AddFriendHead from '../head/_main/AddFriendHead';
+// 
+import './AddFriendRes.scss';
 
 //
 AddFriend.propTypes = {};

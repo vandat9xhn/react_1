@@ -2,32 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // 
 import IconsMenu from '../../../../../_icons_svg/icons_menu/IconsMenu';
+import BadgeDiv from '../../../../some_div/badge_div/BadgeDiv';
 
 //
 HeaderMessageIcon.propTypes = {
-    count_new_zoom: PropTypes.number,
-    handleToggleOpenMessage: PropTypes.func,
+    count_new: PropTypes.number,
+    toggleOpenZoom: PropTypes.func,
 };
 
 //
-function HeaderMessageIcon({ count_new_zoom, handleToggleOpenMessage }) {
+function HeaderMessageIcon({ count_new, toggleOpenZoom }) {
 
     // 
     return (
         <div
             className="RightHeader__icon header_icon"
-            onClick={handleToggleOpenMessage}
+            onClick={toggleOpenZoom}
             title="message"
-            num-notice={count_new_zoom || undefined}
         >
             <IconsMenu x={200} y={200} />
 
             <div
-                className={
-                    count_new_zoom ? 'RightHeader__num-notice' : 'display-none'
-                }
+                className='RightHeader__num-notice'
             >
-                {count_new_zoom}
+                <BadgeDiv num={count_new} />
             </div>
         </div>
     );

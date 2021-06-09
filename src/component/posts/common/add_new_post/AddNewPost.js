@@ -6,7 +6,7 @@ import { context_api } from '../../../../_context/ContextAPI';
 //
 import IconsInput from '../../../../_icons_svg/Icons_input/IconsInput';
 //
-import UpdateCreatePost from '../create_update_post/_main/CreateUpdatePost';
+import UpdateCreatePost from '../create_update_post/_main/CUPost';
 //
 import './AddNewPost.scss';
 
@@ -29,7 +29,7 @@ function AddNewPost(props) {
     //
     function onOpenScreenUpdate() {
         openScreenUpdate('Create', UpdateCreatePost, {
-            handleCreateUpdatePost: handleCreatePost,
+            handleCUPost: handleCreatePost,
             main_content: '',
             vid_pics: [],
             title_action: 'Post',

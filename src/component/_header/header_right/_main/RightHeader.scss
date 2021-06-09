@@ -16,28 +16,8 @@
     position: absolute;
     left: 75%;
     top: -5px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 9px;
-    font-weight: 500;
-    color: var(--white);
-
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    background-color: var(--danger);
 }
 
 .RightHeader__icon{
     position: relative;
-}
-
-.RightHeader_hidden-title{
-    padding: 0.25rem 0.5rem;
-    font-size: 22px;
-    font-weight: bold;
-    cursor: default;
 }

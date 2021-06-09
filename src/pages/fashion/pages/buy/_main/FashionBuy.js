@@ -21,7 +21,6 @@ import { params_buy } from '../../../__params/home/FashionParams';
 //
 import './FashionBuyCommon.scss';
 import './FashionBuy.scss';
-import './FashionBuyRes.scss';
 //
 import FashionH from '../../../components/head/_main/FashionH';
 import BuyProductList from '../product_list/_main/BuyProductList';
@@ -30,6 +29,8 @@ import NoItemHasFetched from '../../../../../component/some_div/no_item/NoItemHa
 import FashionBuyExtra from '../extra/choices/FashionBuyExtra';
 import FashionBuyExtraCurrent from '../extra/current/FashionBuyExtraCurrent';
 import BuyFetching from '../fetching/BuyFetching';
+// 
+import './FashionBuyRes.scss';
 
 //
 function FashionBuy(props) {

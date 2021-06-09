@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
@@ -7,7 +7,7 @@ import { context_api } from '../../../../../_context/ContextAPI';
 import { LogoutRequest } from '../../../../../api/api_django_no_token/login_logout/LoginLogout';
 
 import { useScreenFetching } from '../../../../../_custom_hooks/UseScreenFetching';
-// 
+//
 import IconsMode from '../../../../../_icons_svg/icons_mode/IconsMode';
 import IconsAccount from '../../../../../_icons_svg/icons_account/IconsAccount';
 import IconsFlower from '../../../../../_icons_svg/icons_flower/IconsFlower';
@@ -19,9 +19,9 @@ import SwitchDiv from '../../../../some_div/switch_div/_main/SwitchDiv';
 import PictureName from '../../../../picture_name/pic_name/PictureName';
 import FlexDiv from '../../../../some_div/flex_div/FlexDiv';
 //
-import HeaderNature from '../../nature/HeaderNature';
-//
 import './ActionsAccount.scss';
+//
+import HeaderNature from '../../nature/HeaderNature';
 
 //
 const icon_nature_obj = { snow: IconsNature, flower: IconsFlower };
@@ -32,12 +32,12 @@ ActionsAccount.propTypes = {
 };
 
 //
-function ActionsAccount(props) {
+function ActionsAccount({ closeAccount }) {
     //
-    const { user, setDataUser, toggleSnowFlower } = useContext(context_api);
+    const use_history = useHistory();
 
     //
-    const { closeAccount } = props;
+    const { user, setDataUser, toggleSnowFlower } = useContext(context_api);
 
     //
     const [light_mode, setLightMode] = useState(
@@ -45,9 +45,6 @@ function ActionsAccount(props) {
     );
     const [which_nature, setWhichNature] = useState('');
     const [open_choose_nature, setOpenChooseNature] = useState(false);
-
-    //
-    const ref_logout_success = useRef(false);
 
     //
     const handleScreenFetching = useScreenFetching();
@@ -70,14 +67,15 @@ function ActionsAccount(props) {
             document.documentElement.setAttribute('data-theme', 'light');
         }
 
-        // set color for iframe learn html
+        //
         const iframe = document.getElementById('LearnHTML__iframe');
         iframe &&
             iframe.contentWindow.document
                 .getElementsByTagName('BODY')[0]
                 .style.setProperty(
                     'color',
-                    new_mode == 1 ? 'black' : 'rgba(236, 229, 229, 0.8)'
+                    // new_mode == 1 ? 'black' : 'rgba(236, 229, 229, 0.8)'
+                    'var(--md-color)'
                 );
     }
 
@@ -103,10 +101,10 @@ function ActionsAccount(props) {
     //
     function changeNature(new_which_nature) {
         toggleSnowFlower(new_which_nature);
-        setWhichNature(new_which_nature);
+        setWhichNature(new_which_nature == which_nature ? '' : new_which_nature);
     }
 
-    /* ---------------- LOG IN OUT -------------------- */
+    /* ---------------- LOG -------------------- */
 
     //
 
@@ -126,8 +124,10 @@ function ActionsAccount(props) {
             await handleScreenFetching(() => LogoutRequest());
 
             handleBeForeLog();
-            ref_logout_success.current = true;
-            localStorage.light_mode = 1;
+            closeAccount();
+            // localStorage.light_mode = 1;
+
+            use_history.push('/login-form');
 
             setDataUser({
                 id: 0,
@@ -137,22 +137,13 @@ function ActionsAccount(props) {
             });
         } catch (e) {
             console.log(e);
-            alert('Something went wrong!');
-        } finally {
-            ref_logout_success.current = false;
-            closeAccount();
         }
     }
 
     //
-    if (!user.id && ref_logout_success.current) {
-        return <Redirect to="/login-form" push />;
-    }
-    //
     return (
         <div className="ActionsAccount">
             <div className={open_choose_nature ? 'display-none' : ''}>
-                {/* profile */}
                 <div className={user.id ? '' : 'display-none'}>
                     <div
                         className="ActionsAccount_profile"
@@ -163,7 +154,6 @@ function ActionsAccount(props) {
                     </div>
                 </div>
 
-                {/* mode */}
                 <div onClick={onChangeMode} title="Change mode">
                     <div className="header_item ActionsAccount_mode">
                         <SwitchDiv switch_on={light_mode == 0}>
@@ -177,7 +167,6 @@ function ActionsAccount(props) {
                     </div>
                 </div>
 
-                {/* Nature */}
                 <div>
                     <div className="ActionsAccount_nature">
                         <div
@@ -208,7 +197,6 @@ function ActionsAccount(props) {
                     </div>
                 </div>
 
-                {/* log in/out */}
                 {user.id ? (
                     <div
                         className="header_item"

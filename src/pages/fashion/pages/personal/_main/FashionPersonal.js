@@ -9,10 +9,11 @@ import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 import { FashionRoutes, fashion_path_arr, fashion_person_pathname_arr } from '../routes/FashionRoutes';
 //
 import './FashionPersonal.scss';
-import './FashionPersonalRes.scss';
 // 
 import PersonalLeft from '../col_left/_main/PersonalLeft';
 import FashionH from '../../../components/head/_main/FashionH';
+// 
+import './FashionPersonalRes.scss';
 
 //
 FashionPersonal.propTypes = {};

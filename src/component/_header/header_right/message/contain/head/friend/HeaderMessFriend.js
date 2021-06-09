@@ -10,13 +10,17 @@ HeaderMessFriend.propTypes = {
     friend_id: PropTypes.number,
     picture: PropTypes.string,
     last_name: PropTypes.string,
-    closeMessage: PropTypes.func,
+    closeZoom: PropTypes.func,
 };
 
 //
-function HeaderMessFriend(props) {
-    const { is_mouse_down, friend_id, picture, last_name, closeMessage } =
-        props;
+function HeaderMessFriend({
+    is_mouse_down,
+    friend_id,
+    picture,
+    last_name,
+    closeZoom,
+}) {
     //
     const { openMessage } = useContext(context_api);
 
@@ -24,7 +28,7 @@ function HeaderMessFriend(props) {
     function onOpenMessage() {
         if (!is_mouse_down) {
             openMessage(friend_id);
-            closeMessage();
+            closeZoom();
         }
     }
 
@@ -38,8 +42,8 @@ function HeaderMessFriend(props) {
                             className="HeaderMessFriend_img brs-50"
                             src={picture}
                             alt=""
-                            width="65"
-                            height="65"
+                            width="60"
+                            height="60"
                         />
                     </div>
 
