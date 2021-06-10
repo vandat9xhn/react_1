@@ -6,13 +6,11 @@ import ProductItem from '../../../../component/products/product_item/ProductItem
 import './ProductContent.scss';
 
 //
-function ProductContent(props) {
-    const {products} = props;
-
-    // 
+function ProductContent({ products }) {
+    //
     return (
-        <div className="ProductContent">
-            <div className="ProductContent_row">
+        <div className="ProductContent padding-8px bg-primary">
+            <div className="ProductContent_row display-flex justify-content-center flex-wrap">
                 {products.map((item, index) => (
                     <div key={index} className="ProductContent_item">
                         <ProductItem

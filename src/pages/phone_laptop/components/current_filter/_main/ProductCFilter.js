@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import ProductCFType from '../type/_main/ProductCFType';
-// 
+//
 import './ProductCFilter.scss';
 
-// 
+//
 ProductCFilter.propTypes = {
     arr_memories: PropTypes.array,
     arr_rams: PropTypes.array,
     arr_oses: PropTypes.array,
     arr_cpus: PropTypes.array,
-    // 
+    //
     current_memories: PropTypes.array,
     current_rams: PropTypes.array,
     current_oses: PropTypes.array,
@@ -21,21 +21,20 @@ ProductCFilter.propTypes = {
 };
 
 //
-function ProductCFilter(props) {
-    const {
-        arr_memories,
-        arr_rams,
-        arr_oses,
-        arr_cpus,
+function ProductCFilter({
+    arr_memories,
+    arr_rams,
+    arr_oses,
+    arr_cpus,
 
-        current_rams,
-        current_memories,
-        current_oses,
-        current_cpus,
+    current_rams,
+    current_memories,
+    current_oses,
+    current_cpus,
 
-        closeCurrentItem,
-    } = props;
-
+    closeCurrentItem,
+}) {
+    // 
     const current_arr = [
         {
             current: current_memories,
@@ -63,14 +62,18 @@ function ProductCFilter(props) {
         },
     ];
 
-    // 
+    //
     return (
         <div className="ProductCFilter">
             <div className="display-flex">
                 {current_arr.map((item, i) => (
                     <div
                         key={`ProductCFilter_current_arr${i}`}
-                        className={item.current.length ? 'ProductCFilter_type' : 'display-none'}
+                        className={
+                            item.current.length
+                                ? 'ProductCFilter_type'
+                                : 'display-none'
+                        }
                     >
                         <ProductCFType
                             current={item.current}

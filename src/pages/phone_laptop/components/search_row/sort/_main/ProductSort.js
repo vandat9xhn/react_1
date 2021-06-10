@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import ProductSortItem from '../item/ProductSItem';
-// 
+//
 import './ProductSort.scss';
 
 //
 ProductSort.propTypes = {};
 
 //
-function ProductSort(props) {
-    const { arr_sorts, current_sort, handleChooseSort } = props;
-
+function ProductSort({ arr_sorts, current_sort, handleChooseSort }) {
     //
     return (
-        <div className="ProductSort">
-            <div className="ProductSort_title label-field">Sort by</div>
+        <div className="ProductSort padding-8px">
+            <h3 className="ProductSort_title margin-0 text-secondary">
+                Sort by
+            </h3>
 
             <div>
                 {arr_sorts.map((item, index) => (

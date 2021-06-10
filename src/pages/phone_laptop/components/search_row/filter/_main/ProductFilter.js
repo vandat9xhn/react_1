@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import ProductFChoice from '../filter_choice/_main/ProductFChoice';
-// 
+//
 import './ProductFilter.scss';
 
-// 
+//
 ProductFilter.propTypes = {};
 
-// 
+//
 function ProductFilter(props) {
     const {
         filter_choice_arr,
@@ -38,13 +38,17 @@ function ProductFilter(props) {
                 ))}
             </div>
 
-            <div className="ProductFilter_btn">
+            <div className="ProductFilter_btn padding">
                 <button
-                    className={`label-field brs-5px ${should_filter ? 'cursor-pointer active-color' : 'opacity-5'}`}
+                    className={`label-field padding-8px brs-5px ${
+                        should_filter
+                            ? 'cursor-pointer active-color'
+                            : 'opacity-5'
+                    }`}
                     onClick={handleStartFilter}
                     disabled={!should_filter}
                 >
-                    Filter now
+                    Filter Now
                 </button>
             </div>
         </div>

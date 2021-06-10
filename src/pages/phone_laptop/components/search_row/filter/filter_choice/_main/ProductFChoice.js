@@ -2,29 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import ProductFChoiceItem from '../item/ProductFCItem';
-// 
+//
 import './ProductFChoice.scss';
 
 //
 ProductFChoice.propTypes = {};
 
 //
-function ProductFChoice(props) {
-    const {
-        choice_ix,
+function ProductFChoice({
+    choice_ix,
 
-        title,
-        arr,
-        choose,
-        choose_name,
+    title,
+    arr,
+    choose,
+    choose_name,
 
-        handleChooseFilter,
-    } = props;
-
+    handleChooseFilter,
+}) {
     //
     return (
         <div>
-            <div className="ProductFCItem_label label-field">{title}</div>
+            <h3 className="ProductFCItem_label margin-0 text-secondary">
+                {title}
+            </h3>
 
             <div className="ProductFCItem_choice">
                 {arr.map((item, index) => (

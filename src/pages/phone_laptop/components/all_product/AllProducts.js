@@ -3,23 +3,25 @@ import PropTypes from 'prop-types';
 //
 import { API_FilterPhoneLaptop_L } from '../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
 //
+import { initial_phone_arr } from '../../__initial/InitialPhone';
+import { data_sort_arr } from '../../__data/AllProductData';
+import {
+    addOrRemoveItem,
+    ListOrEmpty,
+    ListOrEmptyNumber,
+    ListOrRegex,
+} from '../../__func/AllProductsFunc';
+//
+import './AllProducts.scss';
+//
 import ProductBrands from '../brands_row/_main/ProductBrands';
 import ProductSearch from '../search_row/_main/ProductSearch';
 import ProductContent from '../content/ProductContent';
-import GetMore from '../get_more/GetMore';
 import ProductCFilter from '../current_filter/_main/ProductCFilter';
 import ProductPrices from '../prices_row/ProductPrices';
 //
-import { initial_phone_arr } from '../../__initial/InitialPhone';
-//
-import './AllProducts.scss';
 import './AllProductsRes.scss';
-
-function addOrRemoveItem(old_arr = [], ix = 0) {
-    return old_arr.includes(ix)
-        ? old_arr.filter((item) => item != ix)
-        : [...old_arr, ix];
-}
+import ScreenBlurShowMore from '../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
 
 //
 AllProducts.propTypes = {
@@ -39,20 +41,17 @@ AllProducts.defaultProps = {
 };
 
 //
-function AllProducts(props) {
-    //
-    const {
-        type_product,
+function AllProducts({
+    type_product,
 
-        arr_brands,
-        arr_prices,
-        arr_memories,
-        arr_rams,
-        arr_sorts,
-        arr_cpus,
-        arr_oses,
-    } = props;
-
+    arr_brands,
+    arr_prices,
+    arr_memories,
+    arr_rams,
+    arr_sorts,
+    arr_cpus,
+    arr_oses,
+}) {
     //
     const [product_obj, setProductObj] = useState({
         // current_brands: [-1],
@@ -113,49 +112,19 @@ function AllProducts(props) {
 
     //
     useEffect(() => {
-        getFilterSortAllProducts();
+        getData_API_FilterSortProducts();
     }, []);
 
     /* ---------------------- COMMON ----------------------------- */
 
-    //
-    function ListOrEmpty(new_arr = [''] || [-1], arr = [''] || [-1]) {
-        if (new_arr.length >= 1) {
-            return new_arr;
-        }
-
-        return arr;
-    }
-
-    //
-    function ListOrEmptyNumber(new_arr = [-1], count_arr) {
-        return ListOrEmpty(
-            new_arr,
-            Array.from({ length: count_arr }, (_, k) => k)
-        );
-    }
-
-    //
-    function ListOrRegex(current_arr = [-1], arr = [''], is_reg = false) {
-        const new_arr = current_arr.map((ix) => arr[ix]);
-
-        if (is_reg) {
-            return '(?i).*' + new_arr.join('|') + '.*';
-        }
-
-        return ListOrEmpty(new_arr, arr);
-    }
-
     // params
-    function paramsListFilter(is_get_more = false) {
+    function getParamsAPI(is_get_more = false) {
         const common_params = {
             type_product: type_product,
             in_stock: '',
             current_brands: ListOrRegex(current_brands, arr_brands, false),
             current_prices: ListOrEmpty(current_prices),
-            current_sort: ['is_hot', 'date', 'new_price', '-new_price'][
-                current_sort
-            ],
+            current_sort: data_sort_arr[current_sort],
 
             page: 1,
             size: has_fetched ? 15 : 20,
@@ -199,15 +168,15 @@ function AllProducts(props) {
     /* --------------- GET API --------------- */
 
     //
-    async function getFilterSortAllProducts(new_start_obj = {}) {
+    async function getData_API_FilterSortProducts(start_obj_state = {}) {
         try {
             setProductObj((product_obj) => ({
                 ...product_obj,
                 has_fetched: false,
-                ...new_start_obj,
+                ...start_obj_state,
             }));
 
-            const res = await API_FilterPhoneLaptop_L(paramsListFilter(false));
+            const res = await API_FilterPhoneLaptop_L(getParamsAPI(false));
 
             const { data, count: new_count } = res.data;
 
@@ -237,7 +206,7 @@ function AllProducts(props) {
                 is_fetching: true,
             }));
 
-            const res = await API_FilterPhoneLaptop_L(paramsListFilter(true));
+            const res = await API_FilterPhoneLaptop_L(getParamsAPI(true));
 
             const { data } = res.data;
             setProductObj((product_obj) => ({
@@ -252,31 +221,31 @@ function AllProducts(props) {
 
     /* --------------------------- FILTER + SORT ------------------------------ */
 
-    // choose filter
+    // 
     function handleChooseFilter(choose_name, index) {
         handleAddOrRemoveItem(choose_name, index, {
             should_filter: true,
         });
     }
 
-    // start filter
+    // 
     function handleStartFilter() {
-        getFilterSortAllProducts();
+        getData_API_FilterSortProducts();
     }
 
-    // choose sort
+    // 
     function handleChooseSort(index) {
-        getFilterSortAllProducts({
+        getData_API_FilterSortProducts({
             current_sort: index,
         });
     }
 
-    // current item
+    // 
     function closeCurrentItem(name = '', index = 0) {
         const choose_name = 'choose_' + name;
         const current_name = 'current_' + name;
 
-        getFilterSortAllProducts({
+        getData_API_FilterSortProducts({
             [choose_name]: addOrRemoveItem(
                 product_obj[choose_name],
                 product_obj[choose_name][index]
@@ -292,28 +261,28 @@ function AllProducts(props) {
 
     //
     function handleChooseBrand(brand_ix) {
-        getFilterSortAllProducts({
+        getData_API_FilterSortProducts({
             current_brands: addOrRemoveItem(current_brands, brand_ix),
         });
     }
 
     //
     function handleChooseAllBrand() {
-        getFilterSortAllProducts({
+        getData_API_FilterSortProducts({
             current_brands: [],
         });
     }
 
     //
     function handleChoosePrice(price_ix) {
-        getFilterSortAllProducts({
+        getData_API_FilterSortProducts({
             current_prices: addOrRemoveItem(current_prices, price_ix),
         });
     }
 
     //
     function handleChooseAllPrice() {
-        getFilterSortAllProducts({
+        getData_API_FilterSortProducts({
             current_prices: [],
         });
     }
@@ -396,12 +365,12 @@ function AllProducts(props) {
                 />
             </div>
 
-            <div className={count > products.length ? '' : 'display-none'}>
-                <GetMore
-                    title_more={`Get more ${count - products.length} products`}
-                    handleGetMore={handleGetMore}
-                    should_get_more={count > products.length}
+            <div>
+                <ScreenBlurShowMore
+                    title={`See more ${count - products.length} products`}
                     is_fetching={is_fetching}
+                    is_show_more={has_fetched && count > products.length}
+                    handleShowMore={handleGetMore}
                 />
             </div>
         </div>

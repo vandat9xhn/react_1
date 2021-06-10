@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import './ProductSItem.scss';
 
-// 
+//
 ProductSortItem.propTypes = {};
 
-// 
-function ProductSortItem(props) {
-    const { sort_ix, is_active, item, handleChooseSort } = props;
-
+//
+function ProductSortItem({ sort_ix, is_active, item, handleChooseSort }) {
     //
     function onChooseSort() {
         handleChooseSort(sort_ix);
@@ -17,15 +15,17 @@ function ProductSortItem(props) {
 
     //
     return (
-        <div className="ProductSortItem">
-            <div
-                className={`ProductSortItem_item label-field cursor-pointer ${
-                    is_active ? 'active-color' : 'hv-opacity'
+        <div
+            className="ProductSortItem hv-bg-blur cursor-pointer"
+            onClick={onChooseSort}
+        >
+            <h4
+                className={`ProductSortItem_item margin-0 ${
+                    is_active ? 'text-blue' : ''
                 }`}
-                onClick={onChooseSort}
             >
                 {item} {is_active ? '    ✓' : ''}
-            </div>
+            </h4>
         </div>
     );
 }

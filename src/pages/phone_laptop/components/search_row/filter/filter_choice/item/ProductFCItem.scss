@@ -1,8 +1,11 @@
 .ProductFCItem {
     padding: 0.25rem;
-}
 
-// ..
-.ProductFCItem_left {
-    margin-right: 0.5rem;
+    .FlexDiv_left {
+        margin: 0;
+    }
+
+    .FlexDiv_right {
+        padding-left: 0.5rem;
+    }
 }

@@ -6,7 +6,7 @@ import IconDiv from '../../../../../component/some_div/icon_div/IconDiv';
 //
 import ProductFilter from '../filter/_main/ProductFilter';
 import ProductSort from '../sort/_main/ProductSort';
-// 
+//
 import './ProductSearch.scss';
 
 //
@@ -31,27 +31,25 @@ ProductSearch.propTypes = {
 };
 
 //
-function ProductSearch(props) {
+function ProductSearch({
+    arr_memories,
+    arr_rams,
+    arr_sorts,
+    arr_cpus,
+    arr_oses,
+
+    choose_memories,
+    choose_rams,
+    choose_cpus,
+    choose_oses,
+    current_sort,
+
+    should_filter,
+    handleChooseFilter,
+    handleStartFilter,
+    handleChooseSort,
+}) {
     //
-    const {
-        arr_memories,
-        arr_rams,
-        arr_sorts,
-        arr_cpus,
-        arr_oses,
-
-        choose_memories,
-        choose_rams,
-        choose_cpus,
-        choose_oses,
-        current_sort,
-
-        should_filter,
-        handleChooseFilter,
-        handleStartFilter,
-        handleChooseSort,
-    } = props;
-
     const filter_choice_arr = [
         {
             arr: arr_memories,
@@ -101,68 +99,92 @@ function ProductSearch(props) {
         toggleFilterSort('sort');
     }
 
+    // 
+    function onStartFilter() {
+        setFilterOrSort('')
+        handleStartFilter()
+    }
+    
+    // 
+    function onChooseSort(sort_ix) {
+        setFilterOrSort('')
+        handleChooseSort(sort_ix)
+    }
+
     //
     return (
-        <div className="ProductSearch">
+        <div className="ProductSearch position-rel bg-primary">
             <div className="display-flex">
-                <div
-                    className={`ProductSearch__btn brs-5px ${
-                        filter_or_sort == 'filter' ? 'nav-active ' : ''
-                    }`}
-                    onClick={toggleFilter}
-                >
-                    <IconDiv Icon={IconsArrow} y={200} is_reverse={true} size_icon="1rem">
-                        <div
-                            className={
-                                filter_or_sort == 'filter' ? 'active-color' : ''
-                            }
+                <div>
+                    <button
+                        className={`ProductSearch__btn btn padding-8px brs-5px ${
+                            filter_or_sort == 'filter'
+                                ? 'nav-active text-blue'
+                                : ''
+                        }`}
+                        onClick={toggleFilter}
+                    >
+                        <IconDiv
+                            Icon={IconsArrow}
+                            y={200}
+                            is_reverse={true}
+                            size_icon="0.8rem"
                         >
                             Filter
-                        </div>
-                    </IconDiv>
+                        </IconDiv>
+                    </button>
+                </div>
+
+                <div>
+                    <button
+                        className={`ProductSearch__btn btn padding-8px brs-5px ${
+                            filter_or_sort == 'sort'
+                                ? 'nav-active text-blue'
+                                : ''
+                        }`}
+                        onClick={toggleSort}
+                    >
+                        <IconDiv
+                            Icon={IconsArrow}
+                            y={200}
+                            is_reverse={true}
+                            size_icon="0.8rem"
+                        >
+                            Sort
+                        </IconDiv>
+                    </button>
+                </div>
+            </div>
+
+            <div
+                className={`ProductSearch_filter_sort bg-primary w-100per box-shadow-1 ${
+                    filter_or_sort != '' ? '' : 'display-none'
+                }`}
+            >
+                <div
+                    className={`ProductSearch_filter brs-5px ${
+                        filter_or_sort == 'filter' ? '' : 'display-none'
+                    }`}
+                >
+                    <ProductFilter
+                        filter_choice_arr={filter_choice_arr}
+                        should_filter={should_filter}
+                        handleChooseFilter={handleChooseFilter}
+                        handleStartFilter={onStartFilter}
+                    />
                 </div>
 
                 <div
-                    className={`ProductSearch__btn brs-5px ${
-                        filter_or_sort == 'sort' ? 'nav-active ' : ''
+                    className={`ProductSearch_sort brs-5px ${
+                        filter_or_sort == 'sort' ? '' : 'display-none'
                     }`}
-                    onClick={toggleSort}
                 >
-                    <IconDiv Icon={IconsArrow} y={200} is_reverse={true} size_icon="1rem">
-                        <div
-                            className={
-                                filter_or_sort == 'sort' ? 'active-color' : ''
-                            }
-                        >
-                            Sort
-                        </div>
-                    </IconDiv>
+                    <ProductSort
+                        arr_sorts={arr_sorts}
+                        current_sort={current_sort}
+                        handleChooseSort={onChooseSort}
+                    />
                 </div>
-            </div>
-
-            <div
-                className={`ProductSearch_filter brs-5px ${
-                    filter_or_sort == 'filter' ? '' : 'display-none'
-                }`}
-            >
-                <ProductFilter
-                    filter_choice_arr={filter_choice_arr}
-                    should_filter={should_filter}
-                    handleChooseFilter={handleChooseFilter}
-                    handleStartFilter={handleStartFilter}
-                />
-            </div>
-
-            <div
-                className={`ProductSearch_sort brs-5px ${
-                    filter_or_sort == 'sort' ? '' : 'display-none'
-                }`}
-            >
-                <ProductSort
-                    arr_sorts={arr_sorts}
-                    current_sort={current_sort}
-                    handleChooseSort={handleChooseSort}
-                />
             </div>
         </div>
     );

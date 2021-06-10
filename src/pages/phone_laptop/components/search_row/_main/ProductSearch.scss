@@ -1,13 +1,10 @@
-.ProductSearch{
-    padding: 0.5rem;
-    background-color: var(--md-bg-primary);
-}
-
 // ..
 .ProductSearch__btn {
     margin-right: 0.5rem;
     width: 5rem;
     padding: 0.5rem;
+
+    font-weight: bold;
     cursor: pointer;
 
     .IconsArrow {
@@ -19,3 +16,9 @@
     }
 }
 
+
+// .
+.ProductSearch_filter_sort{
+    position: absolute;
+    z-index: var(--z-index-lv1);
+}
