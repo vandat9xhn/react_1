@@ -22,9 +22,9 @@ function ProductFChoice({
     //
     return (
         <div>
-            <h3 className="ProductFCItem_label margin-0 text-secondary">
+            <h4 className="ProductFCItem_label margin-0 text-secondary">
                 {title}
-            </h3>
+            </h4>
 
             <div className="ProductFCItem_choice">
                 {arr.map((item, index) => (

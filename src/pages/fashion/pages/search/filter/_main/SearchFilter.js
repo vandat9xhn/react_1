@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import {
-    search_area_props,
-    search_rate_props,
-    search_sort_props,
-} from '../__prop-types/FilterPropTypes';
-
 import FilterArea from '../area/_main/FilterArea';
 import FilterRate from '../rate/_main/FilterRate';
 import FilterSort from '../sort/_main/FilterSort';
@@ -15,27 +9,24 @@ import './SearchFilter.scss';
 
 //
 SearchFilter.propTypes = {
-    ...search_area_props,
-    ...search_rate_props,
-    ...search_sort_props,
+    ...FilterArea.propTypes,
+    ...FilterRate.propTypes,
+    ...FilterSort.propTypes,
 };
 
 //
-function SearchFilter(props) {
-    const {
-        area_arr,
-        handleAreaChecked,
-        //
-        rate_ix,
-        handleFilterRate,
-        //
-        sort_by,
-        handleFilterSort,
-    } = props;
+function SearchFilter({
+    area_arr,
+    rate_ix,
+    sort_by,
 
+    handleAreaChecked,
+    handleFilterRate,
+    handleFilterSort,
+}) {
     //
     return (
-        <div className="SearchFilter brs-5px box-shadow-1">
+        <div className="SearchFilter bg-primary brs-5px box-shadow-1">
             <div className="SearchFilter_row">
                 <div className="SearchFilter_col">
                     <FilterArea

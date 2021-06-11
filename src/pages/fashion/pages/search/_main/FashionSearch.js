@@ -74,6 +74,7 @@ function FashionSearch(props) {
         is_location_changed.current && handleChangeLocationSearch();
     }, [location.search]);
 
+    // 
     function handleChangeLocationSearch() {
         const { p, q, area, sort, rate } = ParseLocationSearch();
         const new_area_arr = [...area_arr];
@@ -95,6 +96,7 @@ function FashionSearch(props) {
             return item;
         });
 
+        // 
         getData_API_Search_Refresh({
             params_api: {
                 new_value_search: q,

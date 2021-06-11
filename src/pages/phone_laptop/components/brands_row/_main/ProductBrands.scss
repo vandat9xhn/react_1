@@ -4,8 +4,6 @@
 }
 //
 .ProductBrands_row {
-    display: flex;
-    align-items: center;
     overflow: auto;
 }
 
@@ -20,18 +18,18 @@
     padding: 0.5rem;
     cursor: pointer;
 }
-// when not active
+// 
 .ProductBrands_item {
-    background-color: var(--white-blur);
+    background-color: var(--md-bg-through);
     border: 2px solid var(--md-bg-blur);
 }
-// when active
+// 
 .ProductBrands_active {
     position: relative;
-    background-color: var(--white);
+    background-color: var(--md-bg-primary);
     border: 2px solid var(--blue);
 
-    // add content when active
+    // 
     &::after {
         position: absolute;
         top: 1px;

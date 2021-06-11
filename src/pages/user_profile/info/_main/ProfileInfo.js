@@ -7,11 +7,11 @@ import { GetIdSlug } from '../../../../_some_function/GetIdSlug';
 //
 import SkeletonDiv from '../../../../component/skeleton/skeleton_div/SkeletonDiv';
 //
+import './ProfileInfo.scss';
+// 
 import ProfileInfoActions from '../actions/_main/ProfileInfoActions';
 import ProfileInfoStory from '../story/_main/ProfileInfoStory';
 import ProfileInfoPicture from '../picture/_main/ProfileInfoPicture';
-//
-import './ProfileInfo.scss';
 
 //
 ProfileInfo.propTypes = {
@@ -21,16 +21,14 @@ ProfileInfo.propTypes = {
 };
 
 //
-function ProfileInfo(props) {
+function ProfileInfo({profile, openCoverPicture, openPicture}) {
     //
     const id = GetIdSlug();
 
     //
     const { user } = useContext(context_api);
 
-    //
-    const { profile, openCoverPicture, openPicture } = props;
-
+    // 
     const {
         // id,
         picture,

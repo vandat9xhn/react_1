@@ -1,5 +1,12 @@
+// 
+const should_full_screen = false
+
 //
 export function requestFullscreen() {
+    if (!should_full_screen) {
+        return;
+    }
+
     if (localStorage.is_mobile == 0) {
         return;
     }
@@ -21,6 +28,10 @@ export function requestFullscreen() {
 
 //
 export function exitFullscreen() {
+    if (!should_full_screen) {
+        return;
+    }
+    
     if (localStorage.is_mobile == 0) {
         return;
     }

@@ -15,17 +15,16 @@ ProductBrands.propTypes = {
 };
 
 //
-function ProductBrands(props) {
-    const {
-        arr_brands,
-        current_brands,
-        handleChooseBrand,
-        handleChooseAllBrand,
-    } = props;
+function ProductBrands({arr_brands,
+    current_brands,
+    handleChooseBrand,
+    handleChooseAllBrand,}) {
+   
 
+        // 
     return (
         <div className="ProductBrands">
-            <div className="ProductBrands_row">
+            <div className="ProductBrands_row display-flex align-items-center">
                 <div className="ProductBrands__item">
                     <div
                         className={`ProductBrands__all-brand ProductBrands__elm label-field brs-5px ${

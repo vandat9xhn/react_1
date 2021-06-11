@@ -40,11 +40,11 @@ function ProfileInfoActions(props) {
     return (
         <div className="ProfileInfoActions">
             <div className="brs-5px label-field">
-                <div className="display-flex justify-content-center align-items-center">
+                <div className="display-flex-center">
                     <div
-                        className="display-flex justify-content-center align-items-center"
+                        className="display-flex-center"
                     >
-                        <div className="ProfileInfoActions_add-friend brs-5px">
+                        <div className="ProfileInfoActions_add-friend display-flex-center brs-5px">
                             {handleInfoActions(
                                 user_related,
                                 permission_add_friend,

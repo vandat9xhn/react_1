@@ -5,9 +5,7 @@ import PropTypes from 'prop-types';
 ProductBrandItem.propTypes = {};
 
 //
-function ProductBrandItem(props) {
-    const { item, ix, is_active, handleChooseBrand } = props;
-
+function ProductBrandItem({ item, ix, is_active, handleChooseBrand }) {
     //
     function onChooseBrand() {
         handleChooseBrand(ix);
@@ -15,16 +13,13 @@ function ProductBrandItem(props) {
 
     //
     return (
-        <div>
-            <div
-                className={`ProductBrands__elm label-field brs-5px ${
-                    is_active ? 'ProductBrands_active' : 'ProductBrands_item'
-                }`}
-                onClick={onChooseBrand}
-                title={item}
-            >
-                {item}
-            </div>
+        <div
+            className={`ProductBrands__elm label-field brs-5px ${
+                is_active ? 'ProductBrands_active' : 'ProductBrands_item'
+            }`}
+            onClick={onChooseBrand}
+        >
+            {item}
         </div>
     );
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import TypeLikeItem from '../item/TypeLikeItem';
 import { type_likes } from '../type_likes/TypeLikes';
 //
 import './ListTypeLike.scss';
+//
+import TypeLikeItem from '../item/TypeLikeItem';
 
 //
 ListTypeLike.propTypes = {
@@ -13,15 +14,13 @@ ListTypeLike.propTypes = {
 };
 
 //
-function ListTypeLike(props) {
-    const { chooseListTypeLike, open_type_like } = props;
-
+function ListTypeLike({ chooseListTypeLike, open_type_like }) {
     //
     return (
-        <div className="ListTypeLike">
+        <div className="ListTypeLike position-rel">
             <div className={open_type_like ? 'open_type-like' : 'display-none'}>
-                <div className="ListTypeLike_contain App_box_shadow">
-                    <div className="ListTypeLike_row">
+                <div className="ListTypeLike_contain bg-primary box-shadow-1 brs-8px">
+                    <div className="ListTypeLike_row display-flex">
                         {type_likes.map((item, index) => (
                             <div key={`ListTypeLike_${index}`}>
                                 <TypeLikeItem

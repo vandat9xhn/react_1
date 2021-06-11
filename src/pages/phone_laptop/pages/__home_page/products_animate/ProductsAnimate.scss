@@ -28,35 +28,3 @@
 
     transition: transform 1s;
 }
-
-// 
-@media (max-width: 959px) {
-    .ProductsAnimate_contain {
-        width: 48rem;
-    }
-}
-
-@media (max-width: 767px) {
-    .ProductsAnimate_contain {
-        width: 36rem;
-    }
-}
-
-@media (max-width: 500px) {
-    .ProductsAnimate_contain {
-        width: 24rem;
-    }
-}
-
-@media (max-width: 350px) {
-    .ProductsAnimate_contain {
-        width: 14rem;
-    }
-}
-
-@media (max-width: 280px) {
-    //
-    .ProductsAnimate_contain {
-        width: 13rem;
-    }
-}

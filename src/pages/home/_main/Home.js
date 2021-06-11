@@ -5,16 +5,18 @@ import { API_City_L } from '../../../api/api_django_no_token/api01/API01NoToken'
 import { API_FashionProduct_L } from '../../../api/api_django_no_token/fashion/APIFashionNoToken';
 import { API_PhoneLaptop_L } from '../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
 //
-import ProductItem from '../../../component/products/product_item/ProductItem';
 import { useMounted } from '../../../_custom_hooks/useMounted';
+//
 import observeToDo from '../../../_some_function/observerToDo';
+//
+import ProductItem from '../../../component/products/product_item/ProductItem';
 //
 import './Home.scss';
 
-// const
-const initial_arr = [1, 2, 3, 4, 5];
+//
+const initial_arr = Array.from({ length: 10 }, (_, k) => k + 1);
 
-// Home
+//
 function Home() {
     //
     const [phones, setPhones] = useState(initial_arr);
@@ -22,7 +24,6 @@ function Home() {
     const [cities, setCities] = useState(initial_arr);
 
     //
-    ;
     const ref_phone = useRef(null);
     const ref_cloth = useRef(null);
     const ref_city = useRef(null);
@@ -33,17 +34,13 @@ function Home() {
     //
     useEffect(() => {
         document.title = 'Home';
-        getAPIWhenCDM();
-    }, []);
 
-    //
-    function getAPIWhenCDM() {
         observeToDo(ref_phone.current, getPhones, 0);
         observeToDo(ref_cloth.current, getClothes, 0);
         observeToDo(ref_city.current, getCities, 0);
-    }
+    }, []);
 
-    /* ----------------- GET API ------------------ */
+    /* ----------------- COMMON ------------------ */
 
     //
     async function getAPI_Common(API_GetData, params, callback) {
@@ -55,7 +52,9 @@ function Home() {
         }
     }
 
-    // phone
+    /* ----------------------------------- */
+
+    //
     function getPhones() {
         getAPI_Common(
             API_PhoneLaptop_L,
@@ -73,14 +72,14 @@ function Home() {
         );
     }
 
-    // cloth
+    //
     function getClothes() {
         getAPI_Common(API_FashionProduct_L, { page: 1, size: 10 }, (data) =>
             setClothes(data)
         );
     }
 
-    // city
+    //
     function getCities() {
         getAPI_Common(API_City_L, { page: 1, size: 10 }, (data) =>
             setCities(data)
@@ -92,7 +91,7 @@ function Home() {
         <div className="Home">
             <div ref={ref_phone} className="Home_products">
                 <div className="Home_products_contain box-shadow-1 brs-5px">
-                    <div className="Home_phone_title App_title">
+                    <h3 className="Home_phone_title App_title margin-0">
                         <Link
                             to="/phone-laptop"
                             className="Home__main_link"
@@ -100,7 +99,8 @@ function Home() {
                         >
                             Phone-Laptop
                         </Link>
-                    </div>
+                    </h3>
+
                     <div className="Home_products_row">
                         {phones.map((item, index) => (
                             <div
@@ -124,10 +124,9 @@ function Home() {
                 </div>
             </div>
 
-            {/* clothes */}
             <div ref={ref_cloth} className="Home_products">
                 <div className="Home_products_contain box-shadow-1 brs-5px">
-                    <div className="Home_cloth_title App_title">
+                    <h3 className="Home_cloth_title App_title margin-0">
                         <Link
                             to="/fashion"
                             className="Home__main_link"
@@ -135,7 +134,8 @@ function Home() {
                         >
                             Shopping
                         </Link>
-                    </div>
+                    </h3>
+
                     <div className="Home_products_row">
                         {clothes.map((item, index) => (
                             <div
@@ -161,10 +161,9 @@ function Home() {
                 </div>
             </div>
 
-            {/* city */}
             <div ref={ref_city} className="Home_products">
                 <div className="Home_products_contain box-shadow-1 brs-5px">
-                    <div className="Home_city_title App_title">
+                    <h3 className="Home_city_title App_title margin-0">
                         <Link
                             to="/city-street"
                             className="Home__main_link"
@@ -172,7 +171,8 @@ function Home() {
                         >
                             City
                         </Link>
-                    </div>
+                    </h3>
+
                     <div className="Home_products_row">
                         {cities.map((item, index) => (
                             <div

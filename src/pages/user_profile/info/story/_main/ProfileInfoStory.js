@@ -7,21 +7,31 @@ import './ProfileInfoStory.scss';
 ProfileInfoStory.propTypes = {};
 
 //
-function ProfileInfoStory(props) {
-    const { is_user, name, nick_name, story, handleChangeStory } = props;
-
+function ProfileInfoStory({
+    is_user,
+    name,
+    nick_name,
+    story,
+    handleChangeStory,
+}) {
     //
     return (
         <div className="ProfileInfoStory">
-            <div className="ProfileInfoStory_head display-flex justify-content-center align-items-center">
+            <div className="ProfileInfoStory_head display-flex-center">
                 <div className="display-flex">
-                    <h1 className="margin-0">
-                        <span>{name}</span>
+                    <h2 className="ProfileInfoStory_name margin-0 display-flex">
+                        <div>{name}</div>
 
-                        <span className={nick_name ? 'ProfileInfoStory__nick' : 'display-none'}>
+                        <div
+                            className={
+                                nick_name
+                                    ? 'ProfileInfoStory__nick'
+                                    : 'display-none'
+                            }
+                        >
                             ({nick_name})
-                        </span>
-                    </h1>
+                        </div>
+                    </h2>
                 </div>
             </div>
 

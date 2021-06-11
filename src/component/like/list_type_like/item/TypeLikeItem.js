@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// 
+import './TypeLikeItem.scss';
 
 //
 TypeLikeItem.propTypes = {
@@ -10,25 +12,20 @@ TypeLikeItem.propTypes = {
 };
 
 //
-function TypeLikeItem(props) {
-    const { index, title, component, chooseListTypeLike } = props;
-
+function TypeLikeItem({ index, title, component, chooseListTypeLike }) {
     //
     function onChooseListTypeLike() {
         chooseListTypeLike(index);
     }
+
     //
     return (
-        <div>
-            <div className="ListTypeLike_col">
-                <div
-                    className="ListTypeLike__item"
-                    onClick={onChooseListTypeLike}
-                    title={title}
-                >
-                    {component}
-                </div>
-            </div>
+        <div
+            className="ListTypeLikeItem"
+            onClick={onChooseListTypeLike}
+            title={title}
+        >
+            {component}
         </div>
     );
 }

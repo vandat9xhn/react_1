@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import FilterSortItem from '../item/FilterSortItem';
-import { search_sort_props } from '../../__prop-types/FilterPropTypes';
 // 
 import './FilterSort.scss';
 
@@ -16,7 +15,7 @@ const arr_sort = [
 
 //
 FilterSort.propTypes = {
-    ...search_sort_props,
+    ...FilterSortItem.propTypes,
 };
 
 //
@@ -26,7 +25,7 @@ function FilterSort(props) {
     // 
     return (
         <div className="FilterSort">
-            <div className="SearchFilter_title label-field">Sort by</div>
+            <h3 className="SearchFilter_title margin-0">Sort by</h3>
 
             <div className="SearchFilter_list">
                 <div>

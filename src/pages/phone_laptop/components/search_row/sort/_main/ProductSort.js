@@ -13,9 +13,9 @@ function ProductSort({ arr_sorts, current_sort, handleChooseSort }) {
     //
     return (
         <div className="ProductSort padding-8px">
-            <h3 className="ProductSort_title margin-0 text-secondary">
+            <h4 className="ProductSort_title margin-0 text-secondary">
                 Sort by
-            </h3>
+            </h4>
 
             <div>
                 {arr_sorts.map((item, index) => (

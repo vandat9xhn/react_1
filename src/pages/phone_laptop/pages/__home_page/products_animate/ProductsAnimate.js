@@ -3,19 +3,29 @@ import PropTypes from 'prop-types';
 //
 import getWidthTransform from '../../../../../_some_function/getWidthTransform';
 import observerAppearance from '../../../../../_some_function/observerAppearance';
-// 
+//
 import NextPrevDiv from '../../../../../component/some_div/next_prev_div/NextPrevDiv';
-import ProductItem from '../../../../../component/products/product_item/ProductItem';
 //
 import './ProductsAnimate.scss';
+//
+import ProductItem from '../../../../../component/products/product_item/ProductItem';
+//
+import './ProductsAnimateRes.scss';
 
-// class
+//
 class ProductsAnimate extends Component {
     state = {
         translateX: 0,
     };
 
-    // cdm
+    //
+    refProductAnimate = (elm) => {
+        if (elm != null) {
+            this.ref_product_animate = elm;
+        }
+    };
+
+    //
     componentDidMount() {
         this.mounted = true;
         this.just_click = false;
@@ -28,107 +38,107 @@ class ProductsAnimate extends Component {
         this.mounted = false;
     }
 
-    /* --------------------------- NEXT PREV ---------------------------------- */
+    /* ---------------- COMMON ------------------ */
 
     //
     makeBtnDisabled = () => {
         this.stop_auto = true;
         this.just_click = true;
+
         setTimeout(() => {
             this.just_click = false;
         }, 1000);
     };
 
-    // next
+    //
+    handleNextPrev = (callback) => {
+        if (this.just_click) {
+            return;
+        }
+
+        const [width_transform, max_width_transform] = getWidthTransform(
+            'ProductsAnimate_row',
+            'ProductsAnimate__0',
+            this.props.products.length
+        );
+
+        callback(this.state.translateX, width_transform, max_width_transform);
+
+        this.makeBtnDisabled();
+    };
+
+    /* ---------------- NEXT PREV ------------------ */
+
+    //
     nextPhones = () => {
-        if (this.just_click) {
-            return;
-        }
-
-        const [width_transform, max_width_transform] = getWidthTransform(
-            'ProductsAnimate_row',
-            'ProductsAnimate__0',
-            this.props.products.length
-        );
-        const { translateX } = this.state;
-        //
-        this.setState({
-            translateX:
-                translateX >= max_width_transform
-                    ? 0
-                    : translateX + width_transform < max_width_transform
-                    ? translateX + width_transform
-                    : max_width_transform,
-        });
-        //
-        this.makeBtnDisabled();
-    };
-
-    // prev
-    prevPhones = () => {
-        if (this.just_click) {
-            return;
-        }
-        
-        const [width_transform, max_width_transform] = getWidthTransform(
-            'ProductsAnimate_row',
-            'ProductsAnimate__0',
-            this.props.products.length
-        );
-        const { translateX } = this.state;
-        //
-        this.setState({
-            translateX:
-                translateX == 0
-                    ? max_width_transform
-                    : translateX - width_transform < 0
-                    ? 0
-                    : translateX - width_transform,
-        });
-        //
-        this.makeBtnDisabled();
-    };
-
-    // auto next
-    autoNext = () => {
-        if (this.mounted) {
-            const elm = document.getElementsByClassName(
-                'ProductsAnimate_contain'
-            )[0];
-            const { appearance } = elm.dataset;
-            //
-            if (appearance != 'false') {
-                if (!this.stop_auto) {
-                    this.nextPhones();
-                    // reason: nextPhones() make this.stop = true
-                    this.stop_auto = false;
-                } else {
-                    this.stop_auto = false;
-                }
+        this.handleNextPrev(
+            (translateX, width_transform, max_width_transform) => {
+                this.setState({
+                    translateX:
+                        translateX >= max_width_transform
+                            ? 0
+                            : translateX + width_transform < max_width_transform
+                            ? translateX + width_transform
+                            : max_width_transform,
+                });
             }
-            // call autoNext again
-            setTimeout(() => {
-                observerAppearance(elm);
-                setTimeout(() => {
-                    this.autoNext();
-                }, 1000);
-            }, 7000);
-        }
+        );
     };
 
-    // render
+    //
+    prevPhones = () => {
+        this.handleNextPrev(
+            (translateX, width_transform, max_width_transform) => {
+                this.setState({
+                    translateX:
+                        translateX == 0
+                            ? max_width_transform
+                            : translateX - width_transform < 0
+                            ? 0
+                            : translateX - width_transform,
+                });
+            }
+        );
+    };
+
+    //
+    autoNext = () => {
+        if (!this.mounted) {
+            return;
+        }
+
+        if (this.ref_product_animate.dataset.appearance != 'false') {
+            if (!this.stop_auto) {
+                this.nextPhones();
+                this.stop_auto = false;
+            } else {
+                this.stop_auto = false;
+            }
+        }
+
+        setTimeout(() => {
+            observerAppearance(this.ref_product_animate);
+            setTimeout(() => {
+                this.autoNext();
+            }, 1000);
+        }, 7000);
+    };
+
+    //
     render() {
         const { translateX } = this.state;
         const { products } = this.props;
 
+        //
         return (
             <div className="ProductsAnimate">
-                <div className="ProductsAnimate_title App_title">
+                <h3 className="ProductsAnimate_title App_title">
                     HOT PRODUCTS
-                </div>
+                </h3>
 
-                <div className="ProductsAnimate_margin">
+                <div>
                     <div
+                        ref={this.refProductAnimate}
                         className="ProductsAnimate_contain brs-5px box-shadow-1"
                         data-appearance="false"
                     >

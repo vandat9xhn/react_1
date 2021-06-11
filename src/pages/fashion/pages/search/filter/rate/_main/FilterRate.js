@@ -1,30 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { search_rate_props } from '../../__prop-types/FilterPropTypes';
 import FilterRateItem from '../item/FilterRateItem';
-// 
+//
 import './FilterRate.scss';
 
 //
-FilterRate.propTypes = {
-    ...search_rate_props,
-};
+FilterRate.propTypes = {};
 
 //
-function FilterRate(props) {
-    const { rate_ix, handleFilterRate } = props;
-
+function FilterRate({ rate_ix, handleFilterRate }) {
     //
     return (
         <div className="FilterRate">
-
-            <div className="SearchFilter_title label-field">Rate</div>
+            <h3 className="SearchFilter_title margin-0">Rate</h3>
 
             <div className="SearchFilter_list">
                 <div>
                     {[5, 4, 3, 2, 1].map((ix) => (
-                        <div key={`FilterRate_${ix}`} className="SearchFilter_item">
+                        <div
+                            key={`FilterRate_${ix}`}
+                            className="SearchFilter_item"
+                        >
                             <FilterRateItem
                                 is_active={rate_ix == ix}
                                 ix={ix}

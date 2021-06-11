@@ -1,21 +1,21 @@
-.Home{
+.Home {
     padding-top: 0.5rem;
-    .App_title{
+    .App_title {
         margin-bottom: 1rem;
     }
 }
 
-.Home_phone_title{
+.Home_phone_title {
     background-color: var(--gold);
 }
-.Home_cloth_title{
+.Home_cloth_title {
     background-color: var(--border-fashion);
 }
-.Home_city_title{
+.Home_city_title {
     background-color: var(--green);
 }
 
-.Home__main_link{
+.Home__main_link {
     color: white;
 }
 
@@ -28,7 +28,7 @@
     width: 64rem;
     padding: 0;
     padding-bottom: 0.5rem;
-    
+
     background-color: var(--md-bg-primary);
     border: 1px solid var(--bg-blur);
 
@@ -46,9 +46,8 @@
     }
 }
 
-// 
-@media (max-width: 500px),
-    (orientation: landscape) and (max-width: 850px) and (max-height: 400px) {
+//
+@media (max-width: 500px) {
     .Home_products_contain {
         width: 100%;
         border-radius: 0;

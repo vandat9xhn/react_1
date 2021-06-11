@@ -6,6 +6,7 @@ import { formatNum } from '../../../../_some_function/FormatNum';
 //
 import image_loading from '../../../../../image/image_loading.svg';
 import './ProductCartBuy.scss';
+import './ProductCartBuyRes.scss';
 
 //
 ProductCartBuy.propTypes = {
