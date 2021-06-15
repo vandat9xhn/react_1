@@ -11,10 +11,10 @@ ActionsGroup.propTypes = {};
 
 //
 function ActionsGroup({
+    chat_ix,
     show_action_group,
-    openTimeLineGroup,
+    openActionsMess,
     handleToggleActionsGroup,
-    openAddFriendToGroup,
     handleToggleNotice,
     handleQuitGroup,
 }) {
@@ -31,10 +31,27 @@ function ActionsGroup({
         setOpenQit(false);
     }
 
+    /*---------------------------*/ 
+    
     //
     function onToggleActionsGroup() {
         open_quit && setOpenQit(false);
-        handleToggleActionsGroup();
+        handleToggleActionsGroup(chat_ix);
+    }
+
+    //
+    function onToggleNotice() {
+        handleToggleNotice(chat_ix);
+    }
+
+    //
+    function onOpenAddFriendToGroup() {
+        openActionsMess('add_user', { chat_ix: chat_ix });
+    }
+
+    //
+    function onOpenTimeLineGroup() {
+        openActionsMess('time_line', { chat_ix: chat_ix });
     }
 
     //
@@ -60,30 +77,23 @@ function ActionsGroup({
                         : 'ActionsGroup_show scroll-y-none'
                 }`}
             >
-                <div
-                    className="ActionsGroup__choice"
-                    onClick={openTimeLineGroup}
-                >
-                    Time line
-                </div>
-
-                <div
-                    className="ActionsGroup__choice"
-                    onClick={openAddFriendToGroup}
-                >
-                    Add friend
-                </div>
-
-                <div
-                    className="ActionsGroup__choice"
-                    onClick={handleToggleNotice}
-                >
-                    Receive notice
-                </div>
-
-                <div className="ActionsGroup__choice" onClick={openQuitGroup}>
-                    Quit group
-                </div>
+                {[
+                    { title: 'Time line', handleClick: onOpenTimeLineGroup },
+                    {
+                        title: 'Add friend',
+                        handleClick: onOpenAddFriendToGroup,
+                    },
+                    { title: 'Receive notice', handleClick: onToggleNotice },
+                    { title: 'Quit group', handleClick: openQuitGroup },
+                ].map((item, ix) => (
+                    <div
+                        key={`${ix}`}
+                        className="ActionsGroup__choice"
+                        onClick={item.handleClick}
+                    >
+                        {item.title}
+                    </div>
+                ))}
             </div>
 
             <div

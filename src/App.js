@@ -11,18 +11,17 @@ import './_style/form.scss';
 import './_style/post.scss';
 import './_style/vid_pics.scss';
 //
-import { RoutesExact, RoutesNotExact } from './_all_routes/AllRoutes';
-import ContextAPI from './_context/ContextAPI';
+import { Routes } from './__routes/__main';
+//
+import ContextAPI from './_context/ContextAPIProvider';
 //
 import WaitingBall from './component/waiting/waiting_ball/WaitingBall';
 //
 import Header from './component/_header/_main_header/Header';
 import BackTop from './component/_back_to_top/BackTop';
 import Footer from './component/_footer/_main/Footer';
-import Contact from './component/_contact/Contact';
 
 import Chat from './component/_chat/_main/ChatRealtime';
-// import ChatU from './component/_chat/chat_user/ChatU';
 import ZoomVidPics from './component/_zoom_vid_pics/_main/ZoomVidPics';
 import CanvasFixed from './component/canvas_draw/_main/CanvasFixed';
 import NatureDropMain from './component/_snow_drop/_main/NatureDropMain';
@@ -127,8 +126,8 @@ class App extends Component {
         }
     };
 
-    componentDidMount() {
-        this.setState({});
+    handleRefresh = () => {
+        this.setState({})
     }
 
     //
@@ -137,6 +136,8 @@ class App extends Component {
             <Suspense fallback={<WaitingBall waitingBall_center={true} />}>
                 <BrowserRouter>
                     <ContextAPI
+                        handleRefresh={this.handleRefresh}
+                        // 
                         openMessage={this.openMessage}
                         openZoomVidPics={this.openZoomVidPics}
                         toggleCanvasFixed={this.toggleCanvasFixed}
@@ -162,32 +163,12 @@ class App extends Component {
 
                             <main className="AppContent">
                                 <Switch>
-                                    {RoutesExact.map((item, index) => (
+                                    {Routes.map((route, index) => (
                                         <Route
-                                            key={`App_exact_${index}`}
-                                            path={item.path}
-                                            // render={(props) => (
-                                            //     <item.component
-                                            //         key={props.match.params.id}
-                                            //         {...props}
-                                            //     />
-                                            // )}
-                                            component={item.component}
-                                            exact
-                                        />
-                                    ))}
-
-                                    {RoutesNotExact.map((item, index) => (
-                                        <Route
-                                            key={`App_not_exact_${index}`}
-                                            path={item.path}
-                                            // render={(props) => (
-                                            //     <item.component
-                                            //         key={props.match.params.id}
-                                            //         {...props}
-                                            //     />
-                                            // )}
-                                            component={item.component}
+                                            key={`App_route_${index}`}
+                                            path={route.path}
+                                            component={route.component}
+                                            exact={route.exact}
                                         />
                                     ))}
 
@@ -199,17 +180,9 @@ class App extends Component {
                                 <BackTop />
                             </div>
 
-                            <div className="AppContact">
-                                <Contact />
-                            </div>
-
                             <div className="AppChat">
                                 <Chat ref={this.refChat} />
                             </div>
-
-                            {/* <div className="AppChatUser">
-                                <ChatU />
-                            </div> */}
 
                             <footer className="AppFooter">
                                 <Footer />

@@ -39,7 +39,7 @@ function ActionsChat({
     closeActionsMess,
 }) {
     //
-    const c_user_id = useContext(context_api).user.id;
+    const { id: c_user_id } = useContext(context_api).user;
 
     //
     const {
@@ -51,6 +51,26 @@ function ActionsChat({
     } = actions_obj;
 
     //
+    function onCloseActionsMess() {
+        closeActionsMess(chat_ix);
+    }
+
+    //
+    function onGetMoreTimeLineGroup() {
+        getMoreTimeLineGroup(chat_ix);
+    }
+
+    //
+    function onGetMoreUserLiked() {
+        getMoreUserLiked(chat_ix);
+    }
+
+    //
+    function onGetMoreFriendsAddToGroup() {
+        getMoreFriendsAddToGroup(chat_ix);
+    }
+
+    //
     return (
         <div className="ActionsChat">
             <div
@@ -60,7 +80,7 @@ function ActionsChat({
 
             <div
                 className="ActionsChat_close close-icon-small brs-50 hv-opacity cursor-pointer"
-                onClick={closeActionsMess}
+                onClick={onCloseActionsMess}
             >
                 <IconsArrow y={400} />
             </div>
@@ -86,7 +106,7 @@ function ActionsChat({
                     {action_type == 'user_liked' && (
                         <ActionsUserLikedList
                             user_liked={user_liked}
-                            getMoreUserLiked={getMoreUserLiked}
+                            getMoreUserLiked={onGetMoreUserLiked}
                         />
                     )}
 
@@ -110,7 +130,7 @@ function ActionsChat({
                                         sendAddFriendToGroupWs
                                     }
                                     getMoreFriendsAddToGroup={
-                                        getMoreFriendsAddToGroup
+                                        onGetMoreFriendsAddToGroup
                                     }
                                 />
                             )}
@@ -118,7 +138,9 @@ function ActionsChat({
                             {action_type == 'time_line' && (
                                 <ActionsTimeLineList
                                     time_line={time_line}
-                                    getMoreTimeLineGroup={getMoreTimeLineGroup}
+                                    getMoreTimeLineGroup={
+                                        onGetMoreTimeLineGroup
+                                    }
                                 />
                             )}
                         </div>

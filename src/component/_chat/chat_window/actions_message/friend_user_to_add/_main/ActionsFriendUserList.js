@@ -36,9 +36,9 @@ function ActionsFriendUserList({
                 handleShowMore={getMoreFriendsAddToGroup}
             />
 
-            <div>
+            <div className="display-flex-center">
                 <NoItem
-                    no_item={data_arr.length == 0 && !is_fetching}
+                    no_item={data_arr.length == 0 && !is_fetching && count == 0}
                     title="No Friend"
                 />
             </div>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 //
 import { formatNum } from '../../../_some_function/FormatNum';
 import { observerVidPic } from '../../../_some_function/ImageObserve';
-// 
+//
 import ProductItemSkeleton from '../skeleton/ProductItemSkeleton';
 //
 import './ProductItem.scss';
@@ -27,20 +27,18 @@ ProductItem.defaultProps = {
 };
 
 //
-function ProductItem(props) {
-    const {
-        img_or_dataset,
+function ProductItem({
+    img_or_dataset,
 
-        link,
-        img,
-        name,
-        in_stock,
-        new_price,
-        old_price,
-        discount,
-        installment,
-    } = props;
-
+    link,
+    img,
+    name,
+    in_stock,
+    new_price,
+    old_price,
+    discount,
+    installment,
+}) {
     //
     const ref_image = useRef(null);
 
@@ -52,10 +50,7 @@ function ProductItem(props) {
 
     //
     return name ? (
-        <div
-            className="ProductItem padding-8px position-rel"
-            title={name}
-        >
+        <div className="ProductItem padding-8px position-rel" title={name}>
             <Link to={link} className="normal-text hv-cl-blue">
                 <div className="ProductItem_head">
                     {img_or_dataset ? (

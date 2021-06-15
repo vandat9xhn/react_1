@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import update from 'immutability-helper';
+// import update from 'immutability-helper';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../_context/ContextAPI';
-// 
+//
+import { loadFile } from '../../../_some_function/loadFile';
+//
 import {
     handle_API_ChatLike_L,
     handle_API_ChatMessage_L,
@@ -14,6 +16,8 @@ import {
 } from '../__handle_api/ChatHandleAPI';
 
 //
+import { initial_chat_current } from '../__initial/ChatInitial';
+//
 import ChatWd from '../chat_window/_main/ChatWdRealtime';
 //
 import './Chat.scss';
@@ -21,58 +25,43 @@ import './Chat.scss';
 //
 class Chat extends Component {
     state = {
-        current_chats: [
-            {
-                chat_obj: {
-                    is_active: false,
-                },
-                zoom_obj: {},
-            },
-            {
-                chat_obj: {
-                    is_active: false,
-                },
-                zoom_obj: {},
-            },
-        ],
+        current_chats: [initial_chat_current(), initial_chat_current()],
         canvas_index: -1,
         new_chat_ix: 1,
     };
 
     //
     componentDidMount() {
-        // setTimeout(() => {
-        //     if (sessionStorage.initialMessageID) {
-        //         for (const id of sessionStorage.initialMessageID
-        //             .split(',')
-        //             .reverse()) {
-        //             this.openChatAtBegin(id);
-        //         }
-        //     }
-        // }, 500);
+        setTimeout(() => {
+            if (sessionStorage.initialMessageID) {
+                for (const id of sessionStorage.initialMessageID
+                    .split(',')
+                    .reverse()) {
+                    this.openChatAtBegin(id);
+                }
+            }
+        }, 500);
     }
 
-    /*----------------------------------- OPEN CHAT ---------------------------------*/
+    /*----------------- OPEN --------------------*/
 
-    // open message in cdm and do not change sessionStorage
+    //
     openChatAtBegin = async (id_or_zoom, is_id = true) => {
         const { user } = this.context;
         const zoom_chat = is_id
             ? [user.id, id_or_zoom].sort().join('-')
             : id_or_zoom;
         const { current_chats, new_chat_ix } = this.state;
+
         // if not already
         if (
             !current_chats.some((item) => item.zoom_obj.zoom_chat == zoom_chat)
         ) {
             //
             const new_ix = new_chat_ix == 0 ? 1 : 0;
-            current_chats[new_ix] = {
-                chat_obj: {
-                    is_active: false,
-                },
-                zoom_obj: {},
-            };
+
+            current_chats[new_ix] = initial_chat_current();
+
             this.setState({});
 
             // get data
@@ -82,13 +71,12 @@ class Chat extends Component {
                 messages,
                 count_message,
                 user_begin_mess,
-                // is_group,
+                is_group,
                 owner,
                 creator,
                 count_group_notice,
             } = await handle_API_ChatZoom_R(zoom_chat);
-            
-            const is_group = Math.floor(Math.random() * 2) >= 1
+
             //
             current_chats[new_ix] = {
                 chat_obj: {
@@ -172,29 +160,28 @@ class Chat extends Component {
                     },
                 },
             };
-            // set state
+
             this.setState({
                 new_chat_ix: new_ix,
             });
-
-            // if zoom_chat is already set is_hide = false to show
         } else {
-            current_chats.map((item) => {
-                if (item.zoom_obj.zoom_chat == zoom_chat) {
-                    item.chat_obj.is_hide = false;
-                    return item;
-                }
-            });
+            const current_chat = current_chats.find(
+                (item) => item.zoom_obj.zoom_chat == zoom_chat
+            );
+
+            current_chat.chat_obj.is_hide = false;
+
             this.setState({});
             this.reverseCurrentMessage();
         }
     };
 
-    // open message and update sessionStorage
+    //
     openMessage = (id, is_id) => {
         const { current_chats } = this.state;
-        // open new chat
+
         this.openChatAtBegin(id, is_id);
+
         setTimeout(() => {
             sessionStorage.initialMessageID = current_chats
                 .map((item) => item.zoom_obj.zoom_chat)
@@ -207,9 +194,8 @@ class Chat extends Component {
     //
     handleScroll = (event, chat_ix) => {
         const { scroll_obj } = this.state.current_chats[chat_ix];
-        const { messages, count_message } = this.state.current_chats[
-            chat_ix
-        ].message_obj;
+        const { messages, count_message } =
+            this.state.current_chats[chat_ix].message_obj;
         //
         if (messages.length >= count_message) {
             return;
@@ -222,6 +208,7 @@ class Chat extends Component {
         }
         //
         const { scrollTop, clientHeight, scrollHeight } = event.target;
+
         if (scrollTop - clientHeight + scrollHeight <= 10) {
             scroll_obj.just_scroll = true;
             scroll_obj.scroll_top = scrollTop;
@@ -251,12 +238,14 @@ class Chat extends Component {
         //
         this.endGetMoreMessage(chat_ix, target, new_messages);
     };
+
     //
     startGetMoreMessage = (chat_ix) => {
         const { scroll_obj } = this.state.current_chats[chat_ix];
         scroll_obj.fetching_message = true;
         this.setState({});
     };
+
     //
     endGetMoreMessage = (chat_ix, target, data) => {
         const current_scroll_top = target.scrollTop;
@@ -277,9 +266,9 @@ class Chat extends Component {
         scroll_obj.current_scroll = event.target.scrollTop;
     };
 
-    /* -------------------------------- HEAD -------------------------------------- */
+    /* ------------- HEAD -------------- */
 
-    // reverse current_chats if window.innerWidth <= 500px
+    //
     reverseCurrentMessage = () => {
         const { current_chats, new_chat_ix } = this.state;
         if (
@@ -294,7 +283,7 @@ class Chat extends Component {
         }
     };
 
-    // Close current message
+    //
     closeMessage = (chat_ix) => {
         const { current_chats } = this.state;
         const zoom_chat = current_chats[chat_ix].zoom_obj;
@@ -304,29 +293,24 @@ class Chat extends Component {
                 .replace(zoom_chat, '')
                 .replace(',', '');
         }
-        //
-        current_chats[chat_ix] = {
-            chat_obj: {
-                is_active: false,
-            },
-            zoom_obj: {},
-        };
+
+        current_chats[chat_ix] = initial_chat_current();
 
         this.setState({
             new_chat_ix: chat_ix == 0 ? 1 : 0,
         });
     };
 
-    // Hide show current message
+    //
     hideShowMessage = (chat_ix) => {
         const { chat_obj } = this.state.current_chats[chat_ix];
         chat_obj.is_hide = !chat_obj.is_hide;
         this.setState({});
     };
 
-    /* -------------------------------- BODY -------------------------------------- */
+    /* -------------- BODY ----------------- */
 
-    // open zoom vid pic
+    //
     openZoomVidPics = async (
         zoom_chat,
         mess_id,
@@ -341,14 +325,15 @@ class Chat extends Component {
                 mess_id,
                 vid_pics.length
             );
+
             vid_pics.push(...new_vid_pics);
             this.context.openZoomVidPics(vid_pics, ix);
         }
     };
 
-    /* -------------------------------- CANVAS -------------------------------------- */
+    /* -------------- CANVAS --------------- */
 
-    // draw canvas
+    //
     letDrawCanvas = (chat_ix) => {
         const { canvas_obj } = this.state.current_chats[chat_ix];
 
@@ -362,7 +347,7 @@ class Chat extends Component {
         });
     };
 
-    // complete canvas
+    //
     completeCanvas = (canvas_data, chat_ix) => {
         const chat = this.state.current_chats[chat_ix];
 
@@ -372,13 +357,13 @@ class Chat extends Component {
         this.setState({});
     };
 
-    // delete canvas
+    //
     deleteCanvasDraw = (chat_ix) => {
         this.resetCanvas(chat_ix);
         this.setState({});
     };
 
-    // delete canvas
+    //
     resetCanvas = (chat_ix) => {
         const chat = this.state.current_chats[chat_ix];
         chat.canvas_obj = {
@@ -391,9 +376,9 @@ class Chat extends Component {
         };
     };
 
-    /* -------------------------------- PREVIEW -------------------------------------- */
+    /* -------------- PREVIEW --------------- */
 
-    // delete
+    //
     deleteAnItemPreview = (chat_ix, file_ix) => {
         const { files, urls } = this.state.current_chats[chat_ix].input_obj;
         files.splice(file_ix, 1);
@@ -401,55 +386,37 @@ class Chat extends Component {
         this.setState({});
     };
 
-    // toggle show + hide
+    //
     showPreview = (chat_ix) => {
         const { chat_obj } = this.state.current_chats[chat_ix];
         chat_obj.show_preview = !chat_obj.show_preview;
         this.setState({});
     };
 
-    /* -------------------------------- INPUT FILE -------------------------------------- */
+    /* ------------- FILE ---------------- */
 
-    // get urls when choose files
-    getVidPicChange = (new_files, chat_ix) =>
-        new Promise((res) => {
-            const { urls, files } = this.state.current_chats[chat_ix].input_obj;
-            let i = 1;
-            files.push(...new_files);
-            //
-            for (const file of new_files) {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    urls.push({ url: reader.result, type: file.type });
-                };
-                reader.readAsDataURL(file);
-
-                if (i == new_files.length) {
-                    setTimeout(() => {
-                        res();
-                    }, 500);
-                } else {
-                    i += 1;
-                }
-            }
-        });
-
-    // onChange image
+    //
     handleChooseFiles = async (event, chat_ix) => {
         const new_files = event.target.files;
 
         if (new_files.length) {
             const { input_obj } = this.state.current_chats[chat_ix];
+            const { urls, files } = input_obj;
+
             input_obj.file_reading = true;
             this.setState({});
 
-            await this.getVidPicChange(new_files, chat_ix);
+            const { vid_pics } = await loadFile(new_files, 'url');
+
+            files.push(...new_files);
+            urls.push(...vid_pics);
+
             input_obj.file_reading = false;
             this.setState({});
         }
     };
 
-    /* -------------------------------- MORE INPUT -------------------------------------- */
+    /* --------------- MORE INPUT --------------- */
 
     //
     moreActionsIp = (chat_ix) => {
@@ -458,7 +425,7 @@ class Chat extends Component {
         this.setState({});
     };
 
-    /* -------------------------------- GROUP -------------------------------------- */
+    /* --------------- GROUP ---------------- */
 
     //
     handleToggleActionsGroup = (chat_ix) => {
@@ -467,7 +434,7 @@ class Chat extends Component {
         this.setState({});
     };
 
-    /* -------------------------------- ACTIONS OPEN -------------------------------------- */
+    /* ------------- ACTIONS OPEN ------------ */
 
     //
     openActionsMess = (action_type, data) => {
@@ -496,13 +463,14 @@ class Chat extends Component {
     //
     openActionsEditMess = (action_type, data_action) => {
         const { mess_id, chat_ix } = data_action;
-        //
+
         const { actions_obj } = this.state.current_chats[chat_ix];
         actions_obj.type = action_type;
         actions_obj.edit = {
             mess_id: mess_id,
             is_fetching: false,
         };
+
         this.setState({});
     };
 
@@ -510,13 +478,14 @@ class Chat extends Component {
     openActionsLikeMess = (action_type, data_action) => {
         const { mess_id, mess_ix, chat_ix } = data_action;
         const { actions_obj, message_obj } = this.state.current_chats[chat_ix];
-        //
+
         actions_obj.type = action_type;
         actions_obj.like = {
             mess_id: mess_id,
             user_like: message_obj.messages[mess_ix].user_like,
             is_fetching: false,
         };
+
         this.setState({});
     };
 
@@ -524,6 +493,7 @@ class Chat extends Component {
     openActionsZoomUser = (action_type, data_action) => {
         const { chat_ix } = data_action;
         const { actions_obj } = this.state.current_chats[chat_ix];
+
         actions_obj.type = action_type;
         this.setState({});
     };
@@ -532,19 +502,18 @@ class Chat extends Component {
     openActionsUserLikedMess = (action_type, data_action) => {
         const { chat_ix, mess_ix, mess_id } = data_action;
         const { actions_obj } = this.state.current_chats[chat_ix];
-        const message = this.state.current_chats[chat_ix].message_obj.messages[
-            mess_ix
-        ];
+        const message =
+            this.state.current_chats[chat_ix].message_obj.messages[mess_ix];
         const { user_liked } = actions_obj;
-        //
+
         user_liked.mess_id = mess_id;
         user_liked.data_arr = [];
         user_liked.count = message.count_like;
         actions_obj.type = action_type;
-        //
+
         const startOpenAction = () => [user_liked];
         const API_GetData = () => handle_API_ChatLike_L(mess_id);
-        
+
         this.openAction(startOpenAction, API_GetData);
     };
 
@@ -556,15 +525,15 @@ class Chat extends Component {
         const { zoom_users } = this.state.current_chats[chat_ix].zoom_obj;
 
         const exclude_ids = zoom_users.map((item) => item.profile_model);
-        //
+
         actions_obj.type = action_type;
         if (add_user.count == 0) {
             add_user.count = 10;
         }
-        
+
         const startOpenAction = () => {
             add_user.exclude_ids = exclude_ids;
-            return [add_user]
+            return [add_user];
         };
         const API_GetData = () =>
             handle_API_ProfileFriend_L(exclude_ids, add_user.data_arr.length);
@@ -578,22 +547,24 @@ class Chat extends Component {
         const { actions_obj } = this.state.current_chats[chat_ix];
         const { zoom_chat } = this.state.current_chats[chat_ix].zoom_obj;
         const { time_line } = actions_obj;
-        //
+
         actions_obj.type = action_type;
         const startOpenAction = () => [time_line];
-        const API_GetData = () => handle_API_ChatTimeLine_L(zoom_chat, time_line.data_arr.length);
+        const API_GetData = () =>
+            handle_API_ChatTimeLine_L(zoom_chat, time_line.data_arr.length);
 
         this.openAction(startOpenAction, API_GetData);
     };
 
-    /* -------------------------------- ACTIONS GET MORE -------------------------------------- */
+    /* ------------ ACTIONS GET MORE ------------ */
 
     getMoreFriendsAddToGroup = (chat_ix) => {
         const { actions_obj } = this.state.current_chats[chat_ix];
         const { add_user } = actions_obj;
-        const {exclude_ids, data_arr} = add_user
+        const { exclude_ids, data_arr } = add_user;
         //
-        const API_GetData = () => handle_API_ProfileFriend_L(exclude_ids, data_arr.length);
+        const API_GetData = () =>
+            handle_API_ProfileFriend_L(exclude_ids, data_arr.length);
         this.getMoreData(add_user, API_GetData);
     };
 
@@ -603,7 +574,8 @@ class Chat extends Component {
         const { user_liked } = actions_obj;
         const { mess_id, data_arr } = user_liked;
 
-        const API_GetData = () => handle_API_ChatLike_L(mess_id, data_arr.length);
+        const API_GetData = () =>
+            handle_API_ChatLike_L(mess_id, data_arr.length);
         this.getMoreData(user_liked, API_GetData);
     };
 
@@ -613,14 +585,15 @@ class Chat extends Component {
         const { actions_obj } = this.state.current_chats[chat_ix];
         const { time_line } = actions_obj;
         //
-        const API_GetData = () => handle_API_ChatTimeLine_L(zoom_chat, time_line.data_arr.length);
+        const API_GetData = () =>
+            handle_API_ChatTimeLine_L(zoom_chat, time_line.data_arr.length);
         this.getMoreData(time_line, API_GetData);
     };
 
-    /* -------------------------------- ACTIONS COMMON -------------------------------------- */
+    /* ----------- ACTIONS COMMON ------------ */
 
     //
-    openAction = async (startOpenAction, API_GetData=() => new Promise()) => {
+    openAction = async (startOpenAction, API_GetData = () => new Promise()) => {
         const [action_obj] = startOpenAction();
         const { data_arr, count } = action_obj;
         console.log(data_arr, count);
@@ -633,7 +606,7 @@ class Chat extends Component {
             const [data, new_count] = await API_GetData();
             console.log(data);
 
-            action_obj.data_arr = [...data_arr, ...data]
+            action_obj.data_arr = [...data_arr, ...data];
             action_obj.count = new_count;
             action_obj.is_fetching = false;
             //
@@ -645,19 +618,19 @@ class Chat extends Component {
     };
 
     //
-    getMoreData = async (action_obj, API_GetData=() => new Promise()) => {
+    getMoreData = async (action_obj, API_GetData = () => new Promise()) => {
         const { data_arr } = action_obj;
-        //
+
         action_obj.is_fetching = true;
         this.setState({});
-        //
+
         const [data] = await API_GetData();
         data_arr.push(...data);
         action_obj.is_fetching = false;
         this.setState({});
     };
 
-    /* -------------------------------- SEND -------------------------------------- */
+    /* ----------- SEND ------------ */
 
     //
     sendLikeMessage = (chat_ix) => {
@@ -668,7 +641,7 @@ class Chat extends Component {
     sendStatusMessage = (chat_ix) => {
         // this.closeActionsMess(chat_ix)
     };
-    
+
     // send message
     sendMessage = async (chat_ix) => {
         const { input_obj } = this.state.current_chats[chat_ix];
@@ -688,7 +661,7 @@ class Chat extends Component {
     sendAddFriendToGroup = (chat_ix, friend_ix) => {
         const { add_user } = this.state.current_chats[chat_ix].actions_obj;
         const friend_added = add_user.data_arr.splice(friend_ix, 1);
-        add_user.exclude_ids.push(friend_added.id)
+        add_user.exclude_ids.push(friend_added.id);
         add_user.count -= 1;
         this.setState({});
     };
@@ -704,33 +677,32 @@ class Chat extends Component {
         // this.closeActionsMess(chat_ix)
     };
 
-    /* -------------------------------- HANDLE -------------------------------------- */
+    /* ---------- HANDLE ---------- */
 
     //
-    handleDeleteMessage = (mess_id, chat_ix) => {
+    handleDeleteMessage = ({ mess_id, chat_ix }) => {
         const { message_obj } = this.state.current_chats[chat_ix];
         const { messages } = message_obj;
         const mess_ix = messages.findIndex((item) => item.id == mess_id);
-        //
+
         messages.splice(mess_ix, 1);
         message_obj.count_message -= 1;
         this.setState({});
     };
     //
-    handleGetMessage = (
+    handleGetMessage = ({
         new_mess_id,
         chat_ix,
         user_id,
         mess_text,
         vid_pics,
-        count_vid_pic
-    ) => {
+        count_vid_pic,
+    }) => {
         const { message_obj, chat_obj } = this.state.current_chats[chat_ix];
-        const { zoom_users, zoom_chat } = this.state.current_chats[
-            chat_ix
-        ].zoom_obj;
+        const { zoom_users, zoom_chat } =
+            this.state.current_chats[chat_ix].zoom_obj;
         const { messages } = message_obj;
-        //
+
         const new_vid_pics = vid_pics.map((item) => ({
             vid_pic: item,
             mess_model: new_mess_id,
@@ -749,39 +721,46 @@ class Chat extends Component {
             profile_model: user_id,
             created_time: new Date().getTime(),
         });
+
         message_obj.count_message += 1;
         chat_obj.num_input -= 1;
         user_id == this.context.user.id && (chat_obj.user_input = false);
+
         this.setState({});
     };
 
     //
-    handleOnInPut = (chat_ix, num_input) => {
+    handleOnInPut = ({ chat_ix, num_input }) => {
         const { chat_obj } = this.state.current_chats[chat_ix];
         chat_obj.num_input = num_input;
         this.setState({});
     };
 
     //
-    handleStatusMessage = (user_id, mess_id, chat_ix, status_mess) => {
+    handleStatusMessage = ({ user_id, mess_id, chat_ix, status_mess }) => {
         const { zoom_users } = this.state.current_chats[chat_ix].zoom_obj;
         const user = zoom_users.find((item) => item.profile_model == user_id);
-        //
+
         if (status_mess == 'seen') {
             user.i_seen_mess = mess_id;
         }
         if (status_mess == 'receive') {
             user.i_receive_mess = mess_id;
         }
-        //
+
         this.setState({});
     };
 
     //
-    handleLikeMessage = (chat_ix, mess_id, num_vol, arr_distinct_user_like) => {
+    handleLikeMessage = ({
+        chat_ix,
+        mess_id,
+        num_vol,
+        arr_distinct_user_like,
+    }) => {
         const { messages } = this.state.current_chats[chat_ix].message_obj;
         const message = messages.find((item) => item.id == mess_id);
-        //
+
         if (message) {
             message.count_user_like += num_vol;
             message.arr_distinct_user_like = arr_distinct_user_like;
@@ -790,11 +769,16 @@ class Chat extends Component {
     };
 
     //
-    handleAddFriendToGroup = (chat_ix, user_id, friend, begin_mess) => {
+    handleAddFriendToGroup = ({
+        chat_ix,
+        user_id,
+        friend,
+        begin_mess,
+    }) => {
         const { zoom_obj } = this.state.current_chats[chat_ix];
         const { zoom_users } = zoom_obj;
         const user = zoom_users.find((item) => item.user.id == user_id);
-        //
+
         zoom_users.push({
             user: friend,
             is_notice: true,
@@ -807,20 +791,20 @@ class Chat extends Component {
         });
         zoom_obj.count_user += 1;
         this.onAddGroupNotices(chat_ix, user, friend, 'add_friend');
-        //
+
         this.setState({});
     };
 
     //
-    handleQuitGroup = (chat_ix, user_id) => {
+    handleQuitGroup = ({ chat_ix, user_id }) => {
         const user_out = this.onQuitGroup(chat_ix, user_id);
         this.onAddGroupNotices(chat_ix, user_out, {}, 'quit');
-        //
+
         this.setState({});
     };
 
     //
-    handleForceQuitGroup = (chat_ix, friend_id) => {
+    handleForceQuitGroup = ({ chat_ix, friend_id }) => {
         if (friend_id == this.context.user.id) {
             this.closeMessage(chat_ix);
             this.setState;
@@ -832,7 +816,7 @@ class Chat extends Component {
                 user_out,
                 'force_quit'
             );
-            //
+
             this.setState({});
         }
     };
@@ -844,12 +828,13 @@ class Chat extends Component {
         const zoom_user_ix = zoom_users.findIndex(
             (item) => item.user.id == user_id
         );
-        //
+
         const user_out = zoom_users.splice(zoom_user_ix, 1);
         zoom_obj.count_user -= 1;
-        //
+
         return user_out;
     };
+
     //
     onAddGroupNotices = (
         chat_ix,
@@ -859,7 +844,7 @@ class Chat extends Component {
     ) => {
         const { actions_obj } = this.state.current_chats[chat_ix];
         const { time_line } = actions_obj;
-        //
+
         time_line.data_arr.length &&
             time_line.data_arr.unshift({
                 profile_model: profile_model,
@@ -870,7 +855,7 @@ class Chat extends Component {
         time_line.count += 1;
     };
 
-    // render
+    //
     render() {
         const { current_chats, new_chat_ix } = this.state;
         //
@@ -906,6 +891,7 @@ class Chat extends Component {
                                 closeActionsMess={this.closeActionsMess}
                                 getMoreUserLiked={this.getMoreUserLiked}
                                 getMoreTimeLineGroup={this.getMoreTimeLineGroup}
+                                getMoreFriendsAddToGroup={this.getMoreFriendsAddToGroup}
                                 //
                                 handleToggleActionsGroup={
                                     this.handleToggleActionsGroup

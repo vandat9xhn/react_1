@@ -1,6 +1,8 @@
 import img from '../../../../image/my_image.png';
 
-export const default_zoom_chat_obj = {
+
+// 
+export const default_zoom_chat_obj = () => ({
     "zoom_chat": "1-2",
     "zoom_users": [
         {
@@ -163,7 +165,7 @@ export const default_zoom_chat_obj = {
         }
     ],
     "count_message": 1,
-    "is_group": true,
+    "is_group": Math.floor(Math.random() * 2) >= 1,
     "updated_time": "2021-03-28T10:11:52Z",
     "owner": {
         id: 1,
@@ -197,4 +199,4 @@ export const default_zoom_chat_obj = {
     "count_new_mess": 0,
     "is_active": false,
     "user_begin_mess": 0,
-}
+})

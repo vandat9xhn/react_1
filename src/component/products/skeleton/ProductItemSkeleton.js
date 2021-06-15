@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import SkeletonDiv from '../../skeleton/skeleton_div/SkeletonDiv';
-// 
+//
 import image_loading from '../../../../image/image_loading.svg';
 
 //
@@ -10,7 +10,7 @@ ProductItemSkeleton.propTypes = {};
 
 //
 function ProductItemSkeleton() {
-    // 
+    //
     return (
         <div className="ProductItem">
             <div className="ProductItem_head">
@@ -19,7 +19,9 @@ function ProductItemSkeleton() {
                 </div>
             </div>
 
-            <SkeletonDiv num={3} />
+            <div className="ProductItem_foot">
+                <SkeletonDiv num={4} />
+            </div>
         </div>
     );
 }

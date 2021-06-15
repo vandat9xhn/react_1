@@ -34,7 +34,6 @@ function PhoneLaptop(props) {
     const [laptop_arr, setLaptopArr] = useState(skeleton_arr);
 
     //
-    ;
     const ref_hot = useRef(null);
     const ref_phone = useRef(null);
     const ref_lap = useRef(null);
@@ -98,8 +97,8 @@ function PhoneLaptop(props) {
                 ...initial_params,
                 ...params,
             });
+
             mounted && setState(res.data.data);
-            //
         } catch (e) {
             console.log(e);
         }

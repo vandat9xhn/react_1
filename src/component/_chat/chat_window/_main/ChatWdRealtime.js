@@ -43,15 +43,17 @@ function ChatWd({
     //
     openZoomVidPics,
     handleToggleActionsGroup,
+    handleToggleNotice,
     //
     openActionsMess,
     closeActionsMess,
     getMoreUserLiked,
     getMoreTimeLineGroup,
+    getMoreFriendsAddToGroup,
     //
     letDrawCanvas,
     handleChooseFiles,
-    MoreActionsIp,
+    moreActionsIp,
     showPreview,
     deleteAnItemPreview,
     deleteCanvasDraw,
@@ -135,85 +137,7 @@ function ChatWd({
             };
 
             ws.current.onmessage = (e) => {
-                const data = JSON.parse(e.data);
-                const { type } = data;
-                if (type == 'mess') {
-                    const {
-                        user_id,
-                        new_mess_id,
-                        message,
-                        vid_pics,
-                        count_vid_pic,
-                    } = data;
-                    handleGetMessage(
-                        new_mess_id,
-                        chat_ix,
-                        user_id,
-                        message,
-                        vid_pics,
-                        count_vid_pic
-                    );
-                    if (zoom_active) {
-                        if (!is_hide) {
-                            sendStatusMessageWs(new_mess_id, 'seen');
-                        } else {
-                            sendStatusMessageWs(new_mess_id, 'receive');
-                        }
-                    }
-                }
-                //
-                else if (type == 'on_input') {
-                    const { num_input } = data;
-                    handleOnInPut(chat_ix, num_input);
-                }
-                //
-                else if (type == 'status_mess') {
-                    const { status_mess, user_id, mess_id } = data;
-                    mess_id > user_begin_mess &&
-                        handleStatusMessage(
-                            user_id,
-                            mess_id,
-                            chat_ix,
-                            status_mess
-                        );
-                }
-                //
-                else if (type == 'like_message') {
-                    const { mess_id, num_vol, arr_distinct_user_like } = data;
-                    mess_id > user_begin_mess &&
-                        handleLikeMessage(
-                            chat_ix,
-                            mess_id,
-                            +num_vol,
-                            arr_distinct_user_like
-                        );
-                }
-                //
-                else if (type == 'delete_message') {
-                    const { mess_id } = data;
-                    mess_id > user_begin_mess &&
-                        handleDeleteMessage(mess_id, chat_ix);
-                }
-                //
-                else if (type == 'add_friend') {
-                    const { user_id, friend } = data;
-                    handleAddFriendToGroup(
-                        chat_ix,
-                        user_id,
-                        friend,
-                        messages.length
-                    );
-                }
-                //
-                else if (type == 'quit') {
-                    const { user_id } = data;
-                    handleQuitGroup(chat_ix, user_id);
-                }
-                //
-                else if (type == 'force_quit') {
-                    const { friend_id } = data;
-                    handleForceQuitGroup(chat_ix, friend_id);
-                }
+                handleWsMessage(e);
             };
         }
 
@@ -228,6 +152,63 @@ function ChatWd({
     useEffect(() => {
         shouldSendStatus();
     }, []);
+
+    //
+    function handleWsMessage(e) {
+        const data = JSON.parse(e.data);
+        const { type } = data;
+
+        if (type == 'mess') {
+            const { new_mess_id } = data;
+            handleGetMessage({ ...data, chat_ix: chat_ix });
+
+            if (zoom_active) {
+                if (!is_hide) {
+                    sendStatusMessageWs(new_mess_id, 'seen');
+                } else {
+                    sendStatusMessageWs(new_mess_id, 'receive');
+                }
+            }
+        }
+        //
+        else if (type == 'on_input') {
+            handleOnInPut({ chat_ix: chat_ix, ...data });
+        }
+        //
+        else if (type == 'status_mess') {
+            const { mess_id } = data;
+            mess_id > user_begin_mess &&
+                handleStatusMessage({ ...data, chat_ix: chat_ix });
+        }
+        //
+        else if (type == 'like_message') {
+            const { mess_id } = data;
+            mess_id > user_begin_mess &&
+                handleLikeMessage({ ...data, chat_ix: chat_ix });
+        }
+        //
+        else if (type == 'delete_message') {
+            const { mess_id } = data;
+            mess_id > user_begin_mess &&
+                handleDeleteMessage({ ...data, chat_ix: chat_ix });
+        }
+        //
+        else if (type == 'add_friend') {
+            handleAddFriendToGroup({
+                ...data,
+                chat_ix: chat_ix,
+                begin_mess: messages[messages.length - 1].id,
+            });
+        }
+        //
+        else if (type == 'quit') {
+            handleQuitGroup({ chat_ix: chat_ix, ...data });
+        }
+        //
+        else if (type == 'force_quit') {
+            handleForceQuitGroup({ chat_ix: chat_ix, ...data });
+        }
+    }
 
     //
     function shouldSendStatus() {
@@ -307,21 +288,6 @@ function ChatWd({
     /* ------------------------------------------- */
 
     //
-    function onScroll(e) {
-        handleScroll(e, chat_ix);
-    }
-
-    //
-    function onGetMoreMessages() {
-        getMoreMessages(chat_ix);
-    }
-
-    //
-    function onMouseLeave(e) {
-        handleMouseLeave(e, chat_ix);
-    }
-
-    //
     function onFocusChatWd() {
         zoom_obj.zoom_active = true;
         shouldSendStatus();
@@ -330,78 +296,6 @@ function ChatWd({
     //
     function onBlurChatWd() {
         zoom_obj.zoom_active = false;
-    }
-
-    /* ------------------------------------------- */
-    //
-    function onLetDrawCanvas() {
-        letDrawCanvas(chat_ix);
-    }
-
-    //
-    function onChooseFiles(e) {
-        handleChooseFiles(e, chat_ix);
-    }
-
-    //
-    function onMoreActionsIp() {
-        MoreActionsIp(chat_ix);
-    }
-
-    //
-    function onShowPreview() {
-        showPreview(chat_ix);
-    }
-
-    //
-    function onDeleteAnItemPreview(file_ix) {
-        deleteAnItemPreview(chat_ix, file_ix);
-    }
-
-    //
-    function onDeleteCanvasDraw() {
-        deleteCanvasDraw(chat_ix);
-    }
-
-    /* ------------------------------------------- */
-    //
-    function onToggleActionsGroup() {
-        handleToggleActionsGroup(chat_ix);
-    }
-
-    //
-    function onToggleNotice() {
-        handleToggleNotice(chat_ix);
-    }
-
-    //
-    function onOpenAddFriendToGroup() {
-        onOpenActionsMess('add_user');
-    }
-
-    //
-    function onOpenTimeLineGroup() {
-        onOpenActionsMess('time_line');
-    }
-
-    //
-    function onGetMoreTimeLineGroup() {
-        getMoreTimeLineGroup(chat_ix);
-    }
-
-    //
-    function onGetMoreUserLikes() {
-        getMoreUserLiked(chat_ix);
-    }
-
-    //
-    function onOpenActionsMess(action_type) {
-        openActionsMess(action_type, { chat_ix: chat_ix });
-    }
-
-    //
-    function onCloseActionsMess() {
-        closeActionsMess(chat_ix);
     }
 
     //
@@ -439,11 +333,13 @@ function ChatWd({
                     {is_group && (
                         <div className="ChatWd_group position-abs">
                             <ActionsGroup
+                                chat_ix={chat_ix}
                                 show_action_group={show_action_group}
-                                openTimeLineGroup={onOpenTimeLineGroup}
-                                handleToggleActionsGroup={onToggleActionsGroup}
-                                openAddFriendToGroup={onOpenAddFriendToGroup}
-                                handleToggleNotice={onToggleNotice}
+                                openActionsMess={openActionsMess}
+                                handleToggleActionsGroup={
+                                    handleToggleActionsGroup
+                                }
+                                handleToggleNotice={handleToggleNotice}
                                 handleQuitGroup={sendQuitGroupWs}
                             />
                         </div>
@@ -464,10 +360,10 @@ function ChatWd({
                             zoom_users={zoom_users}
                             zoom_creator={zoom_creator}
                             //
-                            onScroll={onScroll}
-                            onMouseLeave={onMouseLeave}
+                            handleScroll={handleScroll}
+                            handleMouseLeave={handleMouseLeave}
                             //
-                            onGetMoreMessages={onGetMoreMessages}
+                            getMoreMessages={getMoreMessages}
                             openZoomVidPics={openZoomVidPics}
                             openActionsMess={openActionsMess}
                         />
@@ -479,21 +375,21 @@ function ChatWd({
                             more_input={more_input}
                             should_send={should_send}
                             //
-                            letDrawCanvas={onLetDrawCanvas}
-                            handleChooseFiles={onChooseFiles}
-                            moreActionsIp={onMoreActionsIp}
+                            letDrawCanvas={letDrawCanvas}
+                            handleChooseFiles={handleChooseFiles}
+                            moreActionsIp={moreActionsIp}
                             //
                             sendOnInput={sendOnInputWs}
                             handleSend={sendMessageWs}
                             //
                             show_preview={show_preview}
-                            showPreview={onShowPreview}
+                            showPreview={showPreview}
                             //
                             current_canvas={current_canvas}
                             urls={urls}
                             file_reading={file_reading}
-                            deleteAnItemPreview={onDeleteAnItemPreview}
-                            deleteCanvasDraw={onDeleteCanvasDraw}
+                            deleteAnItemPreview={deleteAnItemPreview}
+                            deleteCanvasDraw={deleteCanvasDraw}
                         />
                     </div>
 
@@ -506,9 +402,10 @@ function ChatWd({
                                 zoom_users={zoom_users}
                                 zoom_owner={zoom_owner}
                                 //
-                                getMoreTimeLineGroup={onGetMoreTimeLineGroup}
-                                getMoreUserLikes={onGetMoreUserLikes}
-                                closeActionsMess={onCloseActionsMess}
+                                getMoreTimeLineGroup={getMoreTimeLineGroup}
+                                getMoreFriendsAddToGroup={getMoreFriendsAddToGroup}
+                                getMoreUserLiked={getMoreUserLiked}
+                                closeActionsMess={closeActionsMess}
                                 //
                                 sendDeleteMessageWs={sendDeleteMessageWs}
                                 sendLikeMessageWs={sendLikeMessageWs}

@@ -132,7 +132,7 @@ class ProductsAnimate extends Component {
         //
         return (
             <div className="ProductsAnimate">
-                <h3 className="ProductsAnimate_title App_title">
+                <h3 className="ProductsAnimate_title App_title margin-0">
                     HOT PRODUCTS
                 </h3>
 

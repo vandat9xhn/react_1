@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { VideoOrImage } from '../../../_some_function/VideoOrImage';
 //
 import './VidPics.scss';
+// 
 import VidPicItem from '../vid_pic_item/VidPicItem';
 
 //

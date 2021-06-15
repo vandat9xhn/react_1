@@ -7,6 +7,7 @@ import {
     API_ChatTimeLine_LC,
 } from '../../../api/api_django/chat/APIChat';
 import { API_Friends_LC } from '../../../api/api_django/user/user_friend/UserFriend';
+//
 import makeFormData from '../../../_some_function/makeFormData';
 //
 import {
@@ -40,7 +41,12 @@ export async function handle_API_ChatMessage_L(zoom_chat, c_count = 0) {
 }
 
 //
-export async function handle_API_ChatMessage_C(zoom_chat, message, current_canvas, files) {
+export async function handle_API_ChatMessage_C(
+    zoom_chat,
+    message,
+    current_canvas,
+    files
+) {
     const formData = makeFormData({
         zoom_model: zoom_chat,
         message: message,
@@ -50,10 +56,10 @@ export async function handle_API_ChatMessage_C(zoom_chat, message, current_canva
     for (const file of files) {
         formData.append('vid_pics[]', file);
     }
-    
+
     const res = await API_Message_LC('POST', formData);
 
-    return {...res.data, message: message, vid_pics: files}
+    return { ...res.data, message: message, vid_pics: files };
 }
 
 //
@@ -87,19 +93,23 @@ export async function handle_API_ProfileFriend_L(exclude_ids, c_count) {
         'exclude_ids[]': exclude_ids,
     });
     const { data, count } = res.data;
-    const new_data = data.map(item => item.friend)
+    const new_data = data.map((item) => item.friend);
 
     return [new_data, count];
 }
 
 //
 export async function handle_API_ChatTimeLine_L(zoom_chat, c_count = 0) {
-    const res = await API_ChatTimeLine_LC('GET', {}, {
-        zoom_model: zoom_chat,
-        page: 1,
-        size: 5,
-        c_count: c_count,
-    });
+    const res = await API_ChatTimeLine_LC(
+        'GET',
+        {},
+        {
+            zoom_model: zoom_chat,
+            page: 1,
+            size: 5,
+            c_count: c_count,
+        }
+    );
     const { data, count } = res.data;
 
     return [data, count];

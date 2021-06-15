@@ -38,28 +38,25 @@ ChatF.defaultProps = {
 
 
 //
-function ChatF(props) {
-    const {
-        chat_ix,
-        more_input,
-        should_send,
-        //
-        letDrawCanvas,
-        handleChooseFiles,
-        moreActionsIp,
-        //
-        current_canvas,
-        urls,
-        file_reading,
-        show_preview,
-        //
-        deleteAnItemPreview,
-        deleteCanvasDraw,
-        showPreview,
-        //
-        handleSend,
-        sendOnInput,
-    } = props;
+function ChatF({chat_ix,
+    more_input,
+    should_send,
+    //
+    letDrawCanvas,
+    handleChooseFiles,
+    moreActionsIp,
+    //
+    current_canvas,
+    urls,
+    file_reading,
+    show_preview,
+    //
+    deleteAnItemPreview,
+    deleteCanvasDraw,
+    showPreview,
+    //
+    handleSend,
+    sendOnInput,}) {
     //
     const [new_text, setNewText] = useState('');
 
@@ -73,6 +70,36 @@ function ChatF(props) {
         }
         //
         setNewText(value);
+    }
+
+    // 
+    function onMoreActionsIp() {
+        moreActionsIp(chat_ix)
+    }
+
+    // 
+    function onChooseFiles(e) {
+        handleChooseFiles(e, chat_ix)
+    }
+
+    // 
+    function onLetDrawCanvas() {
+        letDrawCanvas(chat_ix)
+    }
+
+    // 
+    function onShowPreview() {
+        showPreview(chat_ix)
+    }
+
+    // 
+    function onDeleteAnItemPreview(file_ix) {
+        deleteAnItemPreview(file_ix, chat_ix)
+    }
+
+    // 
+    function onDeleteCanvasDraw() {
+        deleteCanvasDraw(chat_ix);
     }
 
     //
@@ -100,8 +127,8 @@ function ChatF(props) {
                     }`}
                 >
                     <ChatMT
-                        letDrawCanvas={letDrawCanvas}
-                        handleChooseFiles={handleChooseFiles}
+                        letDrawCanvas={onLetDrawCanvas}
+                        handleChooseFiles={onChooseFiles}
                     />
                 </div>
 
@@ -117,9 +144,9 @@ function ChatF(props) {
                         <ChatMB
                             has_text={!!new_text.trim()}
                             more_input={more_input}
-                            moreActionsIp={moreActionsIp}
-                            letDrawCanvas={letDrawCanvas}
-                            handleChooseFiles={handleChooseFiles}
+                            moreActionsIp={onMoreActionsIp}
+                            letDrawCanvas={onLetDrawCanvas}
+                            handleChooseFiles={onChooseFiles}
                         />
                     </div>
 
@@ -152,10 +179,10 @@ function ChatF(props) {
                     file_reading={file_reading}
                     show_preview={show_preview}
                     //
-                    letDrawCanvas={letDrawCanvas}
-                    deleteCanvasDraw={deleteCanvasDraw}
-                    deleteAnItemPreview={deleteAnItemPreview}
-                    showPreview={showPreview}
+                    letDrawCanvas={onLetDrawCanvas}
+                    deleteCanvasDraw={onDeleteCanvasDraw}
+                    deleteAnItemPreview={onDeleteAnItemPreview}
+                    showPreview={onShowPreview}
                 />
             </div>
         </div>

@@ -6,18 +6,20 @@ import { default_zoom_arr } from '../../../component/_header/header_right/__defa
 
 //
 export const API_Zoom_L = (params = {}) =>
-    API_FakeReal(default_zoom_arr, () =>
-        axiosDjangoClient({
-            url: 'api/chat/zoom-l/',
-            method: 'GET',
-            params: params,
-        }),
+    API_FakeReal(
+        default_zoom_arr,
+        () =>
+            axiosDjangoClient({
+                url: 'api/chat/zoom-l/',
+                method: 'GET',
+                params: params,
+            }),
         params
     );
 
 //
 export const API_Zoom_R = (zoom_chat, params = {}) =>
-    API_FakeReal(default_zoom_chat_obj, () =>
+    API_FakeReal(default_zoom_chat_obj(), () =>
         axiosDjangoClient({
             url: 'chat/chat-friend/' + zoom_chat + '/',
             method: 'GET',
@@ -39,7 +41,7 @@ export const API_Zoom_U = (zoom_chat, data = {}) =>
 export const API_ChatTimeLine_LC = (method, data = {}, params = {}) =>
     API_FakeReal(
         method == 'GET'
-            ? default_zoom_chat_obj.group_notices
+            ? default_zoom_chat_obj().group_notices
             : { id: Math.floor(Math.random() * 100), ...data },
         () =>
             axiosDjangoClient({
@@ -54,7 +56,7 @@ export const API_ChatTimeLine_LC = (method, data = {}, params = {}) =>
 export const API_Message_LC = (method, data = {}, params = {}) =>
     API_FakeReal(
         method == 'GET'
-            ? default_zoom_chat_obj.messages
+            ? default_zoom_chat_obj().messages
             : { id: Math.floor(Math.random() * 100), ...data },
         () =>
             axiosDjangoClient({
@@ -69,7 +71,7 @@ export const API_Message_LC = (method, data = {}, params = {}) =>
 //
 export const API_MessageVidPic_L = (params = {}) =>
     API_FakeReal(
-        default_zoom_chat_obj.messages[0].vid_pics,
+        default_zoom_chat_obj().messages[0].vid_pics,
         () =>
             axiosDjangoClient({
                 url: 'chat/l-message-vid-pic/',
@@ -82,7 +84,7 @@ export const API_MessageVidPic_L = (params = {}) =>
 //
 export const API_MessageLike_L = (params = {}) =>
     API_FakeReal(
-        default_zoom_chat_obj.messages[0].user_likes,
+        default_zoom_chat_obj().messages[0].user_likes,
         () =>
             axiosDjangoClient({
                 url: 'chat/l-message-like/',

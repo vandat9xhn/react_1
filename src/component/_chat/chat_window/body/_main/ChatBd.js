@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 //
 import ScreenBlurShowMore from '../../../../_screen_blur/_component/foot/ScreenBlurShowMore';
 import WaitingBall from '../../../../waiting/waiting_ball/WaitingBall';
@@ -27,15 +27,30 @@ function ChatBd({
     zoom_users,
     zoom_creator,
 
-    onScroll,
-    onMouseLeave,
+    handleScroll,
+    handleMouseLeave,
 
-    onGetMoreMessages,
+    getMoreMessages,
     openZoomVidPics,
     openActionsMess,
 }) {
     //
     const is_mobile = localStorage.is_mobile == 1;
+
+    // 
+    function onScroll(e) {
+        handleScroll(e, chat_ix)
+    }
+
+    // 
+    function onGetMoreMessages() {
+        getMoreMessages(chat_ix)
+    }
+
+    // 
+    function onMouseLeave(e) {
+        handleMouseLeave(e, chat_ix)
+    }
 
     //
     return (
