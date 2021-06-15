@@ -144,7 +144,7 @@ export const default_arr_shop = [
                         text: '22',
                         created_time: '2021-04-18T07:21:04.632269Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 27,
@@ -176,7 +176,7 @@ export const default_arr_shop = [
                         text: '21',
                         created_time: '2021-04-18T07:21:02.066646Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 26,
@@ -208,7 +208,7 @@ export const default_arr_shop = [
                         text: '20',
                         created_time: '2021-04-18T07:21:00.775763Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 25,
@@ -240,7 +240,7 @@ export const default_arr_shop = [
                         text: '19',
                         created_time: '2021-04-18T07:20:55.118716Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 24,
@@ -272,7 +272,7 @@ export const default_arr_shop = [
                         text: '18',
                         created_time: '2021-04-18T07:20:52.392768Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 23,
@@ -304,7 +304,7 @@ export const default_arr_shop = [
                         text: '17',
                         created_time: '2021-04-18T07:20:48.955884Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 22,
@@ -336,7 +336,7 @@ export const default_arr_shop = [
                         text: '16',
                         created_time: '2021-04-18T07:20:47.465301Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 21,
@@ -368,7 +368,7 @@ export const default_arr_shop = [
                         text: 'v',
                         created_time: '2021-04-18T07:20:39.728042Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 20,
@@ -400,7 +400,7 @@ export const default_arr_shop = [
                         text: 'aa',
                         created_time: '2021-04-18T07:20:36.128428Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 19,
@@ -432,7 +432,7 @@ export const default_arr_shop = [
                         text: '13',
                         created_time: '2021-04-18T07:11:10.646666Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 18,
@@ -464,7 +464,7 @@ export const default_arr_shop = [
                         text: '12',
                         created_time: '2021-04-18T07:11:08.314178Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 17,
@@ -496,7 +496,7 @@ export const default_arr_shop = [
                         text: '11',
                         created_time: '2021-04-18T07:10:36.400212Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 16,
@@ -528,7 +528,7 @@ export const default_arr_shop = [
                         text: '10',
                         created_time: '2021-04-18T07:09:51.665759Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 15,
@@ -560,7 +560,7 @@ export const default_arr_shop = [
                         text: '9',
                         created_time: '2021-04-18T07:02:54.983982Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 14,
@@ -592,7 +592,7 @@ export const default_arr_shop = [
                         text: '8',
                         created_time: '2021-04-18T07:02:51.196627Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 11,
@@ -624,7 +624,7 @@ export const default_arr_shop = [
                         text: '1 1',
                         created_time: '2021-04-18T02:03:37.827763Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 10,
@@ -656,7 +656,7 @@ export const default_arr_shop = [
                         text: 'ad asda sda',
                         created_time: '2021-04-18T02:03:30.190410Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 9,
@@ -709,7 +709,7 @@ export const default_arr_shop = [
                         text: '12 21 213 3',
                         created_time: '2021-04-18T02:03:22.308944Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 8,
@@ -747,7 +747,7 @@ export const default_arr_shop = [
                         text: '1 2 3',
                         created_time: '2021-04-18T02:02:51.284422Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 7,
@@ -779,7 +779,7 @@ export const default_arr_shop = [
                         text: 'a sd a asd asd',
                         created_time: '2021-04-18T02:00:18.002912Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                     {
                         id: 6,
@@ -811,7 +811,7 @@ export const default_arr_shop = [
                         text: 'a a sda sa',
                         created_time: '2021-04-18T01:59:58.406636Z',
                         product_model: 4,
-                        profile_user: 1,
+                        profile_model: 1,
                     },
                 ],
                 count_comment: 21,
@@ -1044,7 +1044,7 @@ export const default_arr_shop = [
                         text: 'c c',
                         created_time: '2021-04-17T15:30:13.228780Z',
                         product_model: 17,
-                        profile_user: 2,
+                        profile_model: 2,
                     },
                     {
                         id: 4,
@@ -1076,7 +1076,7 @@ export const default_arr_shop = [
                         text: 'v b b b\nAdsad AD\n Asd',
                         created_time: '2021-04-17T15:29:51.665862Z',
                         product_model: 17,
-                        profile_user: 2,
+                        profile_model: 2,
                     },
                     {
                         id: 3,
@@ -1108,7 +1108,7 @@ export const default_arr_shop = [
                         text: 'a a a a',
                         created_time: '2021-04-17T14:33:18.585393Z',
                         product_model: 17,
-                        profile_user: 2,
+                        profile_model: 2,
                     },
                     {
                         id: 2,
@@ -1140,7 +1140,7 @@ export const default_arr_shop = [
                         text: 'a c ac',
                         created_time: '2021-04-17T14:30:17.319052Z',
                         product_model: 17,
-                        profile_user: 2,
+                        profile_model: 2,
                     },
                     {
                         id: 1,
@@ -1172,7 +1172,7 @@ export const default_arr_shop = [
                         text: 'a',
                         created_time: '2021-04-17T14:28:46.266872Z',
                         product_model: 17,
-                        profile_user: 2,
+                        profile_model: 2,
                     },
                 ],
                 count_comment: 5,
@@ -1283,7 +1283,7 @@ export const default_arr_shop = [
         info: 'Shop info 1\nSentence 2\nSentence 3\nSentence 4\nSentence 5',
         created_time: '2021-04-13T21:25:13.739874Z',
         owner_info: owner_info,
-        profile_user: 2,
+        profile_model: 2,
     },
 ];
 
@@ -1439,7 +1439,7 @@ export const default_arr_cmt = [
         },
         created_time: '2021-04-17T15:30:13.228780Z',
         product_model: 17,
-        profile_user: 2,
+        profile_model: 2,
     },
 ];
 
@@ -1642,7 +1642,7 @@ export const DefaultFashionCartBuy = [
             info: 'Product info 5',
         },
         shop_model: 6,
-        profile_user: 1,
+        profile_model: 1,
     },
     {
         // buy follow shop
@@ -1772,7 +1772,7 @@ export const DefaultFashionCartBuy = [
             info: 'Product info 5',
         },
         shop_model: 4,
-        profile_user: 1,
+        profile_model: 1,
     },
 ];
 
@@ -2039,7 +2039,7 @@ export const default_arr_buy = [
         status: 'BUYING',
         created_time: '2021-04-23T09:31:11.551079Z',
         updated_time: '2021-04-23T09:31:11.551079Z',
-        profile_user: 1,
+        profile_model: 1,
         shop_model: 3,
         transport_price_model: 1,
         voucher_model: 1,
@@ -2178,7 +2178,7 @@ export const default_arr_buy = [
         status: 'BUYING',
         created_time: '2021-04-23T09:31:11.551079Z',
         updated_time: '2021-04-23T09:31:11.551079Z',
-        profile_user: 1,
+        profile_model: 1,
         shop_model: 3,
         transport_price_model: 1,
         voucher_model: 1,
@@ -2246,7 +2246,7 @@ export const default_arr_buy = [
         status: 'DELIVERY',
         created_time: '2021-04-23T09:31:11.551079Z',
         updated_time: '2021-04-23T09:31:11.551079Z',
-        profile_user: 1,
+        profile_model: 1,
         shop_model: 3,
         transport_price_model: 1,
         voucher_model: 1,
@@ -2385,7 +2385,7 @@ export const default_arr_buy = [
         status: 'BOUGHT',
         created_time: '2021-04-23T09:31:11.551079Z',
         updated_time: '2021-04-23T09:31:11.551079Z',
-        profile_user: 1,
+        profile_model: 1,
         shop_model: 3,
         transport_price_model: 1,
         voucher_model: 1,

@@ -555,7 +555,7 @@ class Chat extends Component {
         const { add_user } = actions_obj;
         const { zoom_users } = this.state.current_chats[chat_ix].zoom_obj;
 
-        const exclude_ids = zoom_users.map((item) => item.profile_user);
+        const exclude_ids = zoom_users.map((item) => item.profile_model);
         //
         actions_obj.type = action_type;
         if (add_user.count == 0) {
@@ -738,7 +738,7 @@ class Chat extends Component {
         messages.unshift({
             id: new_mess_id,
             zoom_model: zoom_chat,
-            user: zoom_users.find((item) => item.profile_user == user_id).user,
+            user: zoom_users.find((item) => item.profile_model == user_id).user,
             message: mess_text,
             vid_pics: new_vid_pics,
             count_vid_pic: count_vid_pic,
@@ -746,7 +746,7 @@ class Chat extends Component {
             count_user_like: 0,
             arr_distinct_user_like: [],
             user_statuses: [],
-            profile_user: user_id,
+            profile_model: user_id,
             created_time: new Date().getTime(),
         });
         message_obj.count_message += 1;
@@ -765,7 +765,7 @@ class Chat extends Component {
     //
     handleStatusMessage = (user_id, mess_id, chat_ix, status_mess) => {
         const { zoom_users } = this.state.current_chats[chat_ix].zoom_obj;
-        const user = zoom_users.find((item) => item.profile_user == user_id);
+        const user = zoom_users.find((item) => item.profile_model == user_id);
         //
         if (status_mess == 'seen') {
             user.i_seen_mess = mess_id;
@@ -853,7 +853,7 @@ class Chat extends Component {
     //
     onAddGroupNotices = (
         chat_ix,
-        profile_user,
+        profile_model,
         profile_friend = {},
         status_notice
     ) => {
@@ -862,7 +862,7 @@ class Chat extends Component {
         //
         time_line.data_arr.length &&
             time_line.data_arr.unshift({
-                profile_user: profile_user,
+                profile_model: profile_model,
                 profile_friend: profile_friend,
                 status: status_notice,
                 created_time: new Date(),

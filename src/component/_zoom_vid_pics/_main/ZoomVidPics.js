@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import ScreenFixed from '../../_screen_fixed/_main/ScreenFixed';
 import VidPics from '../vid_pics/VidPics';
 
@@ -14,6 +14,7 @@ class ZoomVidPics extends Component {
 
     //
     openZoomVidPics = (urls = [], current = 0) => {
+        console.log(urls, current);
         this.setState({
             open_zoom: true,
             urls: urls,
@@ -34,9 +35,8 @@ class ZoomVidPics extends Component {
     changeCurrent = (new_current) => {
         this.setState({
             current: new_current,
-        })
-    }
-
+        });
+    };
 
     //
     render() {

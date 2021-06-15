@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+//
+import { makeAutoHeight } from '../../../_some_function/makeAutoHeight';
 // 
 import './TextareaNotSend.scss';
 
 //
 TextareaNotSend.propTypes = {
+    name: PropTypes.string,
     text: PropTypes.string,
     placeholder: PropTypes.string,
     textarea_class: PropTypes.string,
@@ -15,34 +18,39 @@ TextareaNotSend.propTypes = {
     handleBlur: PropTypes.func,
 };
 
-//
-function TextareaNotSend(props) {
-    const {
-        text,
-        placeholder,
-        textarea_class,
+TextareaNotSend.defaultProps = {
+    name: '',
+}
 
-        handleBlur,
-        handleFocus,
-        onKeyDown,
-    } = props;
-    
+//
+function TextareaNotSend({
+    name,
+    text,
+    placeholder,
+    textarea_class,
+
+    handleBlur,
+    handleFocus,
+    onKeyDown,
+    onChange,
+}) {
     //
-    const onChange = (e) => {
-        props.onChange(e.target.value);
-        e.target.style.height = 'auto';
-        e.target.style.height = e.target.scrollHeight + 'px';
+    const handleChange = (e) => {
+        onChange(e.target.value);
+        makeAutoHeight(e)
     };
-    
+
     //
     return (
         <textarea
             className={`${textarea_class} TextareaNotSend`}
             rows={1}
-            placeholder={placeholder}
+            name={name}
             value={text}
+            placeholder={placeholder}
+            // 
             onKeyDown={onKeyDown}
-            onChange={onChange}
+            onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
         />

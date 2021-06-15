@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import CityForm from '../../../../component/form_yup/_main/CityForm';
-// 
+//
 import './CityUpdate.scss';
 
 //
@@ -12,9 +12,7 @@ CityUpdate.propTypes = {
 };
 
 //
-function CityUpdate(props) {
-    const { initialValues, handleSubmit } = props;
-
+function CityUpdate({ initialValues, handleSubmit }) {
     //
     return (
         <div className="CityUpdate">

@@ -15,7 +15,8 @@ function VidPicPostItem({ count_vid_pic, index, post_ix, id, vid_pic }) {
     const { zoomVidPicPost } = useContext(context_post);
 
     //
-    function onZoomVidPicPost() {
+    function handleClick(e) {
+        e.preventDefault();
         zoomVidPicPost(index, post_ix);
     }
 
@@ -23,12 +24,13 @@ function VidPicPostItem({ count_vid_pic, index, post_ix, id, vid_pic }) {
     return (
         <div
             className={`VidPics_count_${count_vid_pic > 4 ? 5 : count_vid_pic}`}
-            // onClick={onZoomVidPicPost}
             data-length={
                 index == 3 && count_vid_pic > 4 ? count_vid_pic - 4 : undefined
             }
         >
-            <Link to={`/post/photos/${id}`}>{VideoOrImage(vid_pic)}</Link>
+            <Link to={`/post/photos/${id}`} onClick={handleClick}>
+                {VideoOrImage(vid_pic)}
+            </Link>
         </div>
     );
 }

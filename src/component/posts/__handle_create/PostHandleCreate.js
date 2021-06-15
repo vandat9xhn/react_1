@@ -52,6 +52,6 @@ export function handleCreateNewPost(content_post, vid_pics) {
         created_time: new Date().toString(),
         permission_post: 0,
         updated_time: new Date().toString(),
-        profile_user: 1,
+        profile_model: 1,
     };
 }

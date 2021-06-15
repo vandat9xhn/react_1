@@ -7,7 +7,7 @@ import './ShopPersonalLeft.scss';
 
 //
 ShopPersonalLeft.propTypes = {
-    profile_user: PropTypes.number,
+    profile_model: PropTypes.number,
     picture: PropTypes.string,
     name: PropTypes.string,
     banner: PropTypes.string,
@@ -15,12 +15,12 @@ ShopPersonalLeft.propTypes = {
 
 //
 function ShopPersonalLeft(props) {
-    const { profile_user, picture, name, banner } = props;
+    const { profile_model, picture, name, banner } = props;
     //
     const { openMessage } = useContext(context_api);
     //
     function onOpenMessage() {
-        openMessage(profile_user);
+        openMessage(profile_model);
     }
 
     //

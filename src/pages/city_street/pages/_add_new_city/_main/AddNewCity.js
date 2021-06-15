@@ -1,52 +1,51 @@
-import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 //
 import { API_City_C } from '../../../../../api/api_django/api01/API01';
+// 
+import { useScreenFetching } from '../../../../../_custom_hooks/UseScreenFetching';
+// 
 import makeFormData from '../../../../../_some_function/makeFormData';
 //
-import BlurFetchingDiv from '../../../../../component/some_div/fetching/BlurFetchingDiv';
-import FetchingDiv from '../../../../../component/some_div/fetching/FetchingDiv';
-//
-import { initialValues } from '../../../__default/DefaultCity';
+import { initialValues } from '../../../__initial/CityInitial';
+// 
 import MainForm from '../../../component/form_yup/_main/CityForm';
 //
 import './AddNewCity.scss';
 
 //
 function AddNewCity() {
-    // state
-    const [is_fetching, setIsFetching] = useState(false);
-    const [is_submitted, setIsSubmitted] = useState(false);
+    // 
+    const use_history = useHistory()
+
+    const handleScreenFetching = useScreenFetching()
+
     //
     useEffect(() => {
         document.title = 'Add new city';
     }, []);
 
-    // Submit
+    // 
     async function handleSubmit(data) {
         try {
-            const {city, street, file} = data;
-            setIsFetching(true);
-            //
+            const {city, street, file, bg_color} = data;
+            
             const formData = makeFormData({
                 city: city,
                 street: street,
                 image: file,
-                profile_user: 1,
+                bg_color: bg_color,
+                profile_model: 1,
             });
-            await API_City_C(formData);
-            //
-            setIsSubmitted(true);
+            
+            await handleScreenFetching(() => API_City_C(formData))
+
+            use_history.push('/city-street')
         } catch (e) {
             console.log(e);
-            setIsFetching(false)
-        }
+        } 
     }
 
-    //
-    if (is_submitted) {
-        return <Redirect to="/city-street" />;
-    }
     //
     if (localStorage.is_login != 1) {
         return <Redirect to="/login-form" />;
@@ -54,9 +53,9 @@ function AddNewCity() {
     //
     return (
         <div className="AddNewCity">
-            <div className="label-field text-align-center">
+            <h3 className="label-field text-align-center">
                 Let's create a post about your city now!
-            </div>
+            </h3>
             <br />
 
             <div>
@@ -65,11 +64,6 @@ function AddNewCity() {
                     handleSubmit={handleSubmit}
                 />
             </div>
-
-            <BlurFetchingDiv
-                FetchingComponent={FetchingDiv}
-                is_fetching={is_fetching}
-            />
         </div>
     );
 }

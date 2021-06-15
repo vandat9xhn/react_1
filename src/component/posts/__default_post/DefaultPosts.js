@@ -30,7 +30,7 @@ export const default_like_post_arr = [
         },
         "type_like": 4,
         "vid_pic_model": 6,
-        "profile_user": 3
+        "profile_model": 3
     }
 ]
 
@@ -61,7 +61,7 @@ export const default_share_post_arr = [
             "is_online": false
         },
         "post_model": 11,
-        "profile_user": 1
+        "profile_model": 1
     },
     {
         "id": 2,
@@ -89,7 +89,7 @@ export const default_share_post_arr = [
             "is_online": false
         },
         "post_model": 11,
-        "profile_user": 1
+        "profile_model": 1
     },
     {
         "id": 3,
@@ -117,7 +117,7 @@ export const default_share_post_arr = [
             "is_online": false
         },
         "post_model": 11,
-        "profile_user": 2
+        "profile_model": 2
     }
 ]
 
@@ -268,7 +268,7 @@ export const default_cmt_post_arr = [
                 },
                 "type_like": 2,
                 "comment_model": 1,
-                "profile_user": 3
+                "profile_model": 3
             }
         ],
         "count_like": 1,
@@ -331,7 +331,7 @@ export const default_cmt_post_arr = [
                         },
                         "type_like": 3,
                         "sub_model": 1,
-                        "profile_user": 2
+                        "profile_model": 2
                     }
                 ],
                 "count_like": 1,
@@ -342,7 +342,7 @@ export const default_cmt_post_arr = [
                 "updated_time": "2021-04-02T06:44:46.495730Z",
                 "vid_pic": white_person,
                 "comment_model": 1,
-                "profile_user": 3
+                "profile_model": 3
             }
         ],
         "count_sub": 1,
@@ -352,7 +352,7 @@ export const default_cmt_post_arr = [
         "updated_time": "2021-04-02T06:42:36.443763Z",
         "vid_pic": white_person,
         "post_model": 11,
-        "profile_user": 2
+        "profile_model": 2
     }
 ]
 
@@ -384,7 +384,7 @@ export const default_like_cmt_post_arr = [
         },
         "type_like": 2,
         "comment_model": 1,
-        "profile_user": 3
+        "profile_model": 3
     }
 ]
 
@@ -474,7 +474,7 @@ export const default_sub_post_arr = [
                 },
                 "type_like": 3,
                 "sub_model": 1,
-                "profile_user": 2
+                "profile_model": 2
             }
         ],
         "count_like": 1,
@@ -485,7 +485,7 @@ export const default_sub_post_arr = [
         "updated_time": "2021-04-02T06:44:46.495730Z",
         "vid_pic": white_person,
         "comment_model": 1,
-        "profile_user": 3
+        "profile_model": 3
     }
 ]
 
@@ -517,7 +517,7 @@ export const default_like_sub_post_arr = [
         },
         "type_like": 3,
         "sub_model": 1,
-        "profile_user": 2
+        "profile_model": 2
     }
 ]
 
@@ -627,7 +627,7 @@ export const default_post_arr = [
                         },
                         "type_like": 4,
                         "vid_pic_model": 6,
-                        "profile_user": 3
+                        "profile_model": 3
                     }
                 ],
                 "arr_unique_like": [0, 2, 3],
@@ -717,7 +717,7 @@ export const default_post_arr = [
                                 },
                                 "type_like": 2,
                                 "comment_model": 1,
-                                "profile_user": 3
+                                "profile_model": 3
                             }
                         ],
                         "count_like": 1,
@@ -780,7 +780,7 @@ export const default_post_arr = [
                                         },
                                         "type_like": 3,
                                         "sub_model": 1,
-                                        "profile_user": 2
+                                        "profile_model": 2
                                     }
                                 ],
                                 "count_like": 1,
@@ -791,7 +791,7 @@ export const default_post_arr = [
                                 "updated_time": "2021-04-02T06:44:46.495730Z",
                                 "vid_pic": white_person,
                                 "comment_model": 8,
-                                "profile_user": 3
+                                "profile_model": 3
                             }
                         ],
                         "count_sub": 1,
@@ -801,7 +801,7 @@ export const default_post_arr = [
                         "updated_time": "2021-04-02T06:42:36.443763Z",
                         "vid_pic": white_person,
                         "vid_pic_model": 6,
-                        "profile_user": 2
+                        "profile_model": 2
                     },
                 ],
                 "count_comment": 1,
@@ -839,7 +839,7 @@ export const default_post_arr = [
                 },
                 "type_like": 1,
                 "post_model": 11,
-                "profile_user": 2
+                "profile_model": 2
             },
             {
                 "id": 3,
@@ -868,7 +868,7 @@ export const default_post_arr = [
                 },
                 "type_like": 2,
                 "post_model": 11,
-                "profile_user": 3
+                "profile_model": 3
             }
         ],
         "count_like": 2,
@@ -900,7 +900,7 @@ export const default_post_arr = [
                     "is_online": false
                 },
                 "post_model": 11,
-                "profile_user": 1
+                "profile_model": 1
             },
             {
                 "id": 2,
@@ -928,7 +928,7 @@ export const default_post_arr = [
                     "is_online": false
                 },
                 "post_model": 11,
-                "profile_user": 1
+                "profile_model": 1
             },
             {
                 "id": 3,
@@ -956,7 +956,7 @@ export const default_post_arr = [
                     "is_online": false
                 },
                 "post_model": 11,
-                "profile_user": 2
+                "profile_model": 2
             }
         ],
         "count_share": 3,
@@ -1020,7 +1020,7 @@ export const default_post_arr = [
                         },
                         "type_like": 2,
                         "comment_model": 1,
-                        "profile_user": 3
+                        "profile_model": 3
                     }
                 ],
                 "count_like": 1,
@@ -1083,7 +1083,7 @@ export const default_post_arr = [
                                 },
                                 "type_like": 3,
                                 "sub_model": 1,
-                                "profile_user": 2
+                                "profile_model": 2
                             }
                         ],
                         "count_like": 1,
@@ -1094,7 +1094,7 @@ export const default_post_arr = [
                         "updated_time": "2021-04-02T06:44:46.495730Z",
                         "vid_pic": white_person,
                         "comment_model": 1,
-                        "profile_user": 3
+                        "profile_model": 3
                     }
                 ],
                 "count_sub": 6,
@@ -1104,7 +1104,7 @@ export const default_post_arr = [
                 "updated_time": "2021-04-02T06:42:36.443763Z",
                 "vid_pic": white_person,
                 "post_model": 11,
-                "profile_user": 2
+                "profile_model": 2
             }
         ],
         "count_comment": 11,
@@ -1113,7 +1113,7 @@ export const default_post_arr = [
         "created_time": "2021-04-01T07:48:48.176630Z",
         "permission_post": 0,
         "updated_time": "2021-04-01T15:18:30.339347Z",
-        "profile_user": 1
+        "profile_model": 1
     },
     {
         "id": 11,
@@ -1179,7 +1179,7 @@ export const default_post_arr = [
                         },
                         "type_like": 4,
                         "vid_pic_model": 6,
-                        "profile_user": 3
+                        "profile_model": 3
                     }
                 ],
                 "count_like": 1,
@@ -1218,7 +1218,7 @@ export const default_post_arr = [
                 },
                 "type_like": 1,
                 "post_model": 11,
-                "profile_user": 2
+                "profile_model": 2
             },
             {
                 "id": 3,
@@ -1247,7 +1247,7 @@ export const default_post_arr = [
                 },
                 "type_like": 2,
                 "post_model": 11,
-                "profile_user": 3
+                "profile_model": 3
             }
         ],
         "count_like": 2,
@@ -1279,7 +1279,7 @@ export const default_post_arr = [
                     "is_online": false
                 },
                 "post_model": 11,
-                "profile_user": 1
+                "profile_model": 1
             },
             {
                 "id": 2,
@@ -1307,7 +1307,7 @@ export const default_post_arr = [
                     "is_online": false
                 },
                 "post_model": 11,
-                "profile_user": 1
+                "profile_model": 1
             },
             {
                 "id": 3,
@@ -1335,7 +1335,7 @@ export const default_post_arr = [
                     "is_online": false
                 },
                 "post_model": 11,
-                "profile_user": 2
+                "profile_model": 2
             }
         ],
         "count_share": 3,
@@ -1348,7 +1348,7 @@ export const default_post_arr = [
         "created_time": "2021-04-01T07:48:48.176630Z",
         "permission_post": 0,
         "updated_time": "2021-04-01T15:18:30.339347Z",
-        "profile_user": 1
+        "profile_model": 1
     },
 ]
 

@@ -6,19 +6,18 @@
 
     font-weight: bold;
     cursor: pointer;
+    &:hover {
+        background-color: var(--md-bg-blur);
+    }
 
     .IconsArrow {
         transform: rotate(-180deg) scale(0.9, 0.7);
     }
-
-    &:hover {
-        background-color: var(--bg-blur);
-    }
 }
 
-
 // .
-.ProductSearch_filter_sort{
+.ProductSearch_filter_sort {
     position: absolute;
     z-index: var(--z-index-lv1);
+    border: 2px solid var(--md-bg-blur);
 }

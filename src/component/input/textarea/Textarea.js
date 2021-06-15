@@ -16,18 +16,16 @@ Textarea.propTypes = {
 };
 
 //
-function Textarea(props) {
-    const {
-        text,
-        placeholder,
-        textarea_class,
+function Textarea({
+    text,
+    placeholder,
+    textarea_class,
 
-        onChange,
-        handleBlur,
-        handleFocus,
-        handleSend,
-    } = props;
-
+    onChange,
+    handleBlur,
+    handleFocus,
+    handleSend,
+}) {
     //
     const onKeyDown = (e) => {
         if (!e.shiftKey && e.keyCode == 13) {

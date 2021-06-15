@@ -17,7 +17,7 @@ const zoom_fields = [
 const message_fields = [
     'id',
     'message',
-    'profile_user',
+    'profile_model',
     'user',
     'zoom_model',
     'created_time',

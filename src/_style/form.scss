@@ -26,7 +26,7 @@
 }
 
 
-/************ Label Error Help Title ************/
+//
 
 .label-field{
     font-weight: bold;
@@ -76,7 +76,7 @@ $form-media:
 
 @media (max-width: 600px){
     .App_title{
-        font-weight: 500;
+        font-weight: bold;
         letter-spacing: 0.1rem;
     }
 }

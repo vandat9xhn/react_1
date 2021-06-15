@@ -2,18 +2,20 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 //
 import { useScrollDownWindow } from '../../../../../_custom_hooks/useScrollDown';
-// 
+//
 import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
 //
 import FetchingDiv from '../../../../../component/some_div/fetching/FetchingDiv';
+import ComponentSkeleton from '../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 //
 import { handle_API_City_L } from '../../../__handle_api/CityHandleAPI';
 //
 import './Cities.scss';
-// 
+//
 import CitySearch from '../search/CitySearch';
 import CityItem from '../item/_main/CityItem';
-// 
+import CityItemSkeleton from '../item/skeleton/CityItemSkeleton';
+//
 import './CitiesRes.scss';
 
 //
@@ -33,7 +35,7 @@ function Cities() {
     //
     useEffect(() => {
         document.title = 'City';
-        value_search.current = ParseLocationSearch()['city']
+        value_search.current = ParseLocationSearch()['city'];
         getData_API_at_first();
     }, []);
 
@@ -41,46 +43,55 @@ function Cities() {
 
     function handleSearch(new_value_search) {
         value_search.current = new_value_search;
-        history.pushState('', '', '?city=' + new_value_search)
+        history.pushState('', '', '?city=' + new_value_search);
 
         getData_API_at_first();
     }
 
     //
     return (
-        <div className="Cities">
-            <div className="Cities_search">
-                <CitySearch handleSearch={handleSearch} />
-            </div>
+        <div>
+            <div className={`Cities ${has_fetched ? '' : 'display-none'}`}>
+                <div className="Cities_search">
+                    <CitySearch handleSearch={handleSearch} />
+                </div>
 
-            <div className="City_contain">
-                <div className="City_row">
-                    <div className="City_col">
-                        <div className="Cities__cities_arr">
-                            {(has_fetched ? cities_arr : [{}]).map((item) => (
+                <div className="Cities_contain">
+                    <div className="Cities__cities_arr">
+                        {cities_arr.map((item) => (
+                            <div
+                                className="Cities_item"
+                                key={`City_${item.id}`}
+                            >
                                 <CityItem
-                                    key={`City_${item.id}`}
                                     city_obj={item}
+                                    has_fetched={has_fetched}
                                 />
-                            ))}
-                        </div>
+                            </div>
+                        ))}
+                    </div>
 
-                        <div className="width-fit-content margin-auto">
-                            <FetchingDiv is_fetching={is_fetching} />
-                        </div>
+                    <div className="width-fit-content margin-auto">
+                        <FetchingDiv is_fetching={is_fetching} />
                     </div>
                 </div>
-            </div>
 
-            {/* link to add new city */}
-            {localStorage.is_login == 1 && (
-                <Link to="/new-city">
-                    <div
-                        className="Cities_add-city cursor-pointer hv-opacity"
-                        title="Add new city"
-                    ></div>
-                </Link>
-            )}
+                {localStorage.is_login == 1 && (
+                    <Link to="/new-city">
+                        <div
+                            className="Cities_add-city cursor-pointer hv-opacity"
+                            title="Add new city"
+                        ></div>
+                    </Link>
+                )}
+            </div>
+            
+            <div className={`${has_fetched ? '' : 'Cities_skeleton'}`}>
+                <ComponentSkeleton
+                    component={<CityItemSkeleton />}
+                    has_fetched={has_fetched}
+                />
+            </div>
         </div>
     );
 }

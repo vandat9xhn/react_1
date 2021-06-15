@@ -2,8 +2,13 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 //
-import { is_api_fake } from '../../../../../api/_ConstAPI';
 import { context_api } from '../../../../../_context/ContextAPI';
+//
+import { is_api_fake } from '../../../../../api/_ConstAPI';
+//
+import { useMounted } from '../../../../../_custom_hooks/useMounted';
+//
+import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 //
 import {
     handle_API_MoreContentHisVidPicCmt_R,
@@ -34,8 +39,6 @@ import CommentsWs from '../../../common/ws_comments/_main/CommentsWs';
 import ActionsVidPic from '../actions/ActionsVidPic';
 //
 import './ZoomVidPicItem.scss';
-import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
-import { useMounted } from '../../../../../_custom_hooks/useMounted';
 
 //
 ZoomVidPicItem.propTypes = {
@@ -48,16 +51,13 @@ ZoomVidPicItem.defaultProps = {
 };
 
 //
-function ZoomVidPicItem(props) {
+function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
     //
     const id = GetIdSlug();
 
     //
     const { openScreenConfirm, openScreenHistory, openScreenUpdate } =
         useContext(context_api);
-
-    //
-    const { show_screen_title, closeScreenTitle } = props;
 
     //
     const [vid_pic_obj, setVidPicObj] = useState({ [id]: {} });
@@ -81,7 +81,6 @@ function ZoomVidPicItem(props) {
     } = vid_pic_obj[id];
 
     //
-    ;
     const ws = useRef(null);
 
     //

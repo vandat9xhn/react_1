@@ -15,6 +15,14 @@ body{
     font-weight: 400;
     line-height: 1.5;
     text-align: left;
+
+    &[data-count-hidden]{
+        overflow-y: hidden;
+    }
+
+    &[data-count-hidden='0']{
+        overflow-y: auto;
+    }
 }
 svg {
     overflow: hidden;

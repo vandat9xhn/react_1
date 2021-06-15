@@ -2,16 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import image_loading from '../../../../../../image/image_loading.svg';
-// 
+//
 import VidPicPostItem from '../item/VidPicPostItem';
-// 
+//
 // import './VidPicsPost.scss';
 
 //
-function VidPicsPost(props) {
-    const { post_ix, vid_pics } = props;
-    
-    // 
+function VidPicsPost({ post_ix, vid_pics }) {
+    //
     return (
         <div className="VidPicsPost">
             {vid_pics ? (

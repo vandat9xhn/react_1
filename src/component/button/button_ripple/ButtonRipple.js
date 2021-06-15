@@ -24,9 +24,14 @@ ButtonRipple.defaultProps = {
 /**
  * ripple_type is one of ['right', 'left', 'center']
  */
-function ButtonRipple(props) {
-    const { children, onClick, type, disabled, ripple_type, title } = props;
-
+function ButtonRipple({
+    children,
+    onClick,
+    type,
+    disabled,
+    ripple_type,
+    title,
+}) {
     //
     return (
         <button

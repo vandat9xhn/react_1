@@ -6,7 +6,6 @@ import { context_api } from '../../../../../../_context/ContextAPI';
 import { useScreenFetching } from '../../../../../../_custom_hooks/UseScreenFetching';
 //
 import observeToDo from '../../../../../../_some_function/observerToDo';
-import { calculateAvgCount } from '../../../../../../_some_function/calculateAvgCount';
 //
 import ComponentSkeleton from '../../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 //
@@ -22,6 +21,17 @@ import FashionRateSkeleton from '../skeleton/FashionRateSkeleton';
 import ConfirmRate from '../confirm_rate/ConfirmRate';
 import FashionRateChart from '../chart/_main/FashionRateChart';
 import FashionRateList from '../list/_main/FashionRateList';
+
+// 
+function calculateAvgCount(arr) {
+    const rate_total = arr.reduce((a, b, ix) => a + b * (ix + 1));
+    const count = arr.reduce((a, b) => a + b);
+
+    const avg =
+        rate_total == 0 ? 0 : Math.round((rate_total * 10) / count) / 10;
+
+    return { count, avg };
+}
 
 //
 FashionRate.propTypes = {};
@@ -55,7 +65,6 @@ function FashionRate({ id }) {
     //
     const ref_fashion_rate = useRef(null);
     const ref_confirm_rate = useRef(null);
-
     const user_rate_temp = useRef(user_rate);
 
     //

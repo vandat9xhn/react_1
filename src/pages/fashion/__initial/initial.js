@@ -18,7 +18,7 @@ export const initial_fashion_shop = {
     info: '',
     time_online: '',
     vid_pics: [],
-    profile_user: 0,
+    profile_model: 0,
     owner_info: [
         {
             title: 'Rating',

@@ -13,25 +13,23 @@ import './CUPostHome.scss';
 CUPostHome.propTypes = {};
 
 //
-function CUPostHome(props) {
+function CUPostHome({
+    main_content,
+    vid_pics,
+    title_action,
+
+    has_file,
+    has_text,
+    is_loading,
+
+    showFixAll,
+    handleChangeMainContent,
+    deleteAnItem,
+    handleChooseFiles,
+    handleCUPost,
+}) {
     //
     const { user } = useContext(context_api);
-    //
-    const {
-        main_content,
-        vid_pics,
-        title_action,
-
-        has_file,
-        has_text,
-        is_loading,
-
-        showFixAll,
-        handleChangeMainContent,
-        deleteAnItem,
-        handleChooseFiles,
-        handleCUPost,
-    } = props;
 
     //
     return (

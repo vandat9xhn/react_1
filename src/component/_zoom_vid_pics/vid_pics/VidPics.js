@@ -18,26 +18,27 @@ VidPics.defaultProps = {
 };
 
 //
-function VidPics(props) {
-    //
-    const { urls, current, changeCurrent } = props;
-
+function VidPics({ urls, current, changeCurrent }) {
     //
     return (
-        <div className="VidPics">
-            <div className="VidPics_contain">
-                {/* bg blur */}
-                <div className="VidPics_blur">
+        <div className="VidPics wh-100">
+            <div className="VidPics_contain position-rel wh-100">
+                <div className="VidPics_blur wh-100 position-abs">
                     <div
-                        className="VidPics_blur-img"
-                        style={{ backgroundImage: `url(${urls[current].url})` }}
+                        className="VidPics_blur-img wh-100"
+                        style={{
+                            backgroundImage: `url(${
+                                urls[current].url ||
+                                urls[current].vid_pic ||
+                                urls[current]
+                            })`,
+                        }}
                     ></div>
                 </div>
-                <div className="VidPics_bg bg-loader"></div>
+                <div className="VidPics_bg wh-100 position-abs bg-loader"></div>
 
-                {/* current */}
                 <div className="VidPics_current">
-                    <div className="VidPics_current-contain">
+                    <div className="VidPics_current-contain display-flex-center wh-100">
                         {VideoOrImage(
                             urls[current].url || urls[current].vid_pic,
                             urls[current].type,
@@ -51,12 +52,11 @@ function VidPics(props) {
                     </div>
                 </div>
 
-                {/* all */}
                 <div
                     className={urls.length > 1 ? 'VidPics_all' : 'display-none'}
                 >
                     <div className="VidPics_all-contain">
-                        <div className="VidPics_all-row">
+                        <div className="VidPics_all-row display-flex">
                             {urls.map((item, index) => (
                                 <VidPicItem
                                     key={`VidPics_${index}`}
@@ -74,6 +74,5 @@ function VidPics(props) {
         </div>
     );
 }
-
 
 export default VidPics;

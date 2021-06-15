@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 //
+import { useMakeBodyHidden } from '../../../../../_custom_hooks/useMakeBodyHidden';
+// 
 import ScreenTitle from '../../../../_screen_fixed/title/ScreenTitle';
 import ContentMore from '../../../../content_more/Content_more';
 import PictureName from '../../../../picture_name/pic_name/PictureName';
@@ -16,12 +18,8 @@ import './ZoomPostCommon.scss';
 ZoomPostCommon.propTypes = {};
 
 //
-function ZoomPostCommon(props) {
-    //
-    const { openScreenLike } = useContext(context_api);
-    //
-    const {
-        show_screen_title,
+function ZoomPostCommon({
+    show_screen_title,
         closeScreenTitle,
 
         vid_pic,
@@ -41,27 +39,18 @@ function ZoomPostCommon(props) {
         action_component,
         like_share_cmt_component,
         comment_component,
-    } = props;
+}) {
+    //
+    const { openScreenLike } = useContext(context_api);
+
+    // 
+    useMakeBodyHidden()
 
     //
     function onOpenDetailLike(type_like) {
         openScreenLike(on_API_Like_L, type_like);
     }
-
-    //
-    useEffect(() => {
-        const is_body_hidden =
-            document.getElementsByTagName('BODY')[0].style.overflow == 'hidden';
-        !is_body_hidden &&
-            (document.getElementsByTagName('BODY')[0].style.overflow =
-                'hidden');
-
-        return () => {
-            !is_body_hidden &&
-                (document.getElementsByTagName('BODY')[0].style.overflow =
-                    'auto');
-        };
-    }, []);
+    
 
     //
     return (

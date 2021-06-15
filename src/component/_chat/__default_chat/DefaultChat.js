@@ -39,7 +39,7 @@ export const default_zoom_chat_obj = {
             "id_seen_mess": 0,
             "joined_time": "2021-03-28T03:14:47.608010Z",
             "zoom_model": "1-2",
-            "profile_user": 1
+            "profile_model": 1
         },
         {
             "id": 2,
@@ -75,7 +75,7 @@ export const default_zoom_chat_obj = {
             "begin_mess": 0,
             "joined_time": "2021-03-28T03:14:51.777085Z",
             "zoom_model": "1-2",
-            "profile_user": 2
+            "profile_model": 2
         }
     ],
     "count_user": 2,
@@ -148,7 +148,7 @@ export const default_zoom_chat_obj = {
                     },
                     "type_like": 1,
                     "mess_model": 1,
-                    "profile_user": 2
+                    "profile_model": 2
                 }
             ],
             "user_like": -1,
@@ -159,7 +159,7 @@ export const default_zoom_chat_obj = {
             "message": "ssss",
             "created_time": "2021-03-28T03:15:17.869450Z",
             "zoom_model": "1-2",
-            "profile_user": 1
+            "profile_model": 1
         }
     ],
     "count_message": 1,
@@ -177,7 +177,7 @@ export const default_zoom_chat_obj = {
     },
     "group_notices": [
         {
-            profile_user: 1,
+            profile_model: 1,
             user: {
                 id: 1,
                 first_name: 'Nguyen',

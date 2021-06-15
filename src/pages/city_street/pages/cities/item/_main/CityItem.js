@@ -2,49 +2,32 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
-
+//
 import { API_City_UD } from '../../../../../../api/api_django/api01/API01';
-
+//
 import { useForceUpdate } from '../../../../../../_custom_hooks/UseForceUpdate';
-
+//
 import makeFormData from '../../../../../../_some_function/makeFormData';
 //
-import SkeletonDiv from '../../../../../../component/skeleton/skeleton_div/SkeletonDiv';
 import PictureName from '../../../../../../component/picture_name/pic_name/PictureName';
 //
 import { handle_API_CityHistory_L } from '../../../../__handle_api/CityHandleAPI';
-
+//
+import './CityItem.scss';
+//
 import Choices from '../../choices/Choices';
 import CityUpdate from '../../actions/action_update/CityUpdate';
-//
-import image_loading from '../../../../../../../image/image_loading.svg';
-import './CityItem.scss';
+import { useScreenFetching } from '../../../../../../_custom_hooks/UseScreenFetching';
 
 //
 CityItem.propTypes = {
     city_obj: PropTypes.object,
+    has_fetched: PropTypes.bool,
 };
 
 //
-function CityItem(props) {
-    const { city_obj } = props;
-
-    const {
-        id,
-        user,
-        city,
-        street,
-        image,
-        count_his,
-
-        is_user,
-        is_del,
-    } = city_obj;
-
-    // hook
-    const forceUpdate = useForceUpdate();
-
-    // context
+function CityItem({ city_obj }) {
+    //
     const {
         openScreenConfirm,
         openScreenHistory,
@@ -52,6 +35,26 @@ function CityItem(props) {
         //
         closeScreenUpdate,
     } = useContext(context_api);
+
+    //
+    const {
+        id,
+        user,
+        city,
+        street,
+        bg_color,
+        quote,
+        image,
+        count_his,
+
+        is_user,
+        is_del,
+    } = city_obj;
+
+    //
+    const forceUpdate = useForceUpdate();
+
+    const handleScreenFetching = useScreenFetching();
 
     /* -------------------- OPEN ACTIONS ----------------- */
 
@@ -65,19 +68,18 @@ function CityItem(props) {
     }
     //
     function openUpdate() {
-        openScreenUpdate(
-            'Update',
-            CityUpdate, // UpdateComponent
-            {
-                initialValues: {
-                    city: city,
-                    street: street,
-                    image: image,
-                },
-                handleSubmit: handleUpdate,
-            } //data_update
-        );
+        openScreenUpdate('Update', CityUpdate, {
+            initialValues: {
+                city: city,
+                street: street,
+                image: image,
+                quote: quote,
+                bg_color: bg_color,
+            },
+            handleSubmit: handleUpdate,
+        });
     }
+
     //
     function openDelete() {
         openScreenConfirm(
@@ -86,6 +88,7 @@ function CityItem(props) {
             handleDelete
         );
     }
+
     //
     function openReport() {
         openScreenConfirm(
@@ -104,21 +107,28 @@ function CityItem(props) {
 
     //
     async function handleUpdate(data = {}) {
-        // Do something and force_update
-        await API_City_UD(id, 'PATCH', makeFormData(data));
+        //
+        await handleScreenFetching(() =>
+            API_City_UD(id, 'PATCH', makeFormData(data))
+        );
+
         city_obj.city = data.city;
         city_obj.street = data.street;
         data.image && (city_obj.image = data.image);
+        city_obj.quote = data.quote;
+        city_obj.bg_color = data.bg_color;
 
         forceUpdate();
         closeScreenUpdate();
     }
+
     //
     async function handleDelete() {
         await API_City_UD(id, 'DELETE');
         city_obj.is_del = true;
         forceUpdate();
     }
+
     //
     function handleReport() {
         //  Do something
@@ -128,40 +138,42 @@ function CityItem(props) {
     //
     return (
         !is_del && (
-            <div className="CityItem">
-                <div className="CityItem_contain brs-5px box-shadow-1">
-                    <div className="CityItem_user">
-                        <PictureName user={user} />
-                    </div>
+            <div
+                className="CityItem brs-5px box-shadow-1"
+                style={{ backgroundColor: bg_color }}
+            >
+                <div className="CityItem_user">
+                    <PictureName user={user} />
+                </div>
 
-                    {city ? (
-                        <div>
-                            <div>City: {city}.</div>
-                            <div>Street: {street}</div>
+                <div>
+                    <address>
+                        <div>City: {city}</div>
+
+                        <div>Street: {street}</div>
+                    </address>
+
+                    <blockquote className="CityItem_quote">{quote}</blockquote>
+                </div>
+
+                <div className="CityItem_img">
+                    <a href={image} target="_blank">
+                        <div className="CityItem_img-contain bg-loader brs-5px">
+                            <img src={image} alt="" />
                         </div>
-                    ) : (
-                        <SkeletonDiv num={2} />
-                    )}
+                    </a>
+                </div>
 
-                    <div className="CityItem_img">
-                        <a href={image || image_loading} target="_blank">
-                            <div className="CityItem_img-contain bg-loader brs-5px">
-                                <img src={image || image_loading} alt="" />
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div className="CityItem_choices">
-                        <Choices
-                            is_user={is_user}
-                            count_his={count_his}
-                            //
-                            openHistory={openHistory}
-                            openUpdate={openUpdate}
-                            openDelete={openDelete}
-                            openReport={openReport}
-                        />
-                    </div>
+                <div className="CityItem_choices">
+                    <Choices
+                        is_user={is_user}
+                        count_his={count_his}
+                        //
+                        openHistory={openHistory}
+                        openUpdate={openUpdate}
+                        openDelete={openDelete}
+                        openReport={openReport}
+                    />
                 </div>
             </div>
         )

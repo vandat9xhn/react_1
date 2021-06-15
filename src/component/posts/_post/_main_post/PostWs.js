@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
-// 
+//
 import { useForceUpdate } from '../../../../_custom_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../_custom_hooks/UseScreenFetching';
 //
@@ -10,7 +10,7 @@ import PictureName from '../../../picture_name/pic_name/PictureName';
 import ContentMore from '../../../content_more/Content_more';
 //
 import { context_post } from '../../__context_post/ContextPost';
-
+//
 import {
     handle_API_ContentMoreHistory_R,
     handle_API_History_L,
@@ -20,7 +20,7 @@ import {
     handle_API_Post_D,
     handle_API_Post_U,
 } from '../../__handle_api/PostHandleAPI';
-
+//
 import CUPost from '../../common/create_update_post/_main/CUPost';
 import VidPicsPost from '../vid_pics/_main/VidPicsPost';
 import PermissionPost from '../../common/permission/_main/PermissionPost';
@@ -38,7 +38,14 @@ Post.propTypes = {
 };
 
 //
-function Post(props) {
+function Post({
+    post,
+    post_ix,
+    //
+    enabled_share,
+    // enabled_like,
+    // enabled_cmt,
+}) {
     //
     const {
         user: c_user,
@@ -57,15 +64,6 @@ function Post(props) {
     const handleScreenFetching = useScreenFetching();
 
     //
-    const {
-        post,
-        post_ix,
-        //
-        enabled_share,
-        // enabled_like,
-        // enabled_cmt,
-    } = props;
-
     const {
         is_del,
 
@@ -89,7 +87,7 @@ function Post(props) {
         count_comment,
     } = post;
 
-    // state
+    //
     const [open_input, setOpenInput] = useState(false);
     const [fetching_cmt, setFetchingCmt] = useState(false);
 
@@ -125,6 +123,7 @@ function Post(props) {
             handleCUPost: handleUpdate,
         });
     }
+
     //
     function openDeletePost() {
         openScreenConfirm(
@@ -133,6 +132,7 @@ function Post(props) {
             handleDelete
         );
     }
+
     //
     function openReportPost() {
         openScreenConfirm(
@@ -141,6 +141,7 @@ function Post(props) {
             handleReport
         );
     }
+
     //
     function openPermissionPost() {
         openScreenPermission(permission_post, handleChoosePermission);
@@ -165,17 +166,20 @@ function Post(props) {
         content_obj.has_more_content = false;
         forceUpdate();
     }
+    
     //
     async function handleDelete() {
         await handleScreenFetching(() => handle_API_Post_D(id));
         post.is_del = true;
         forceUpdate();
     }
+
     //
     function handleReport() {
         //  Do something
         console.log('Report: ' + id);
     }
+
     //
     async function handleChoosePermission(ix) {
         await handleScreenFetching(() => handle_API_Permission_U(id, ix));
@@ -185,7 +189,7 @@ function Post(props) {
 
     /* ------------------------------ */
 
-    // More content
+    //
     function on_API_MoreContent_R() {
         return handle_API_MoreContent_R(id);
     }
@@ -209,7 +213,9 @@ function Post(props) {
             !open_input && setOpenInput(true);
             setTimeout(() => {
                 ref_comments.current
-                    .querySelector('.Comments_input-contain textarea.CommentInput_textarea')
+                    .querySelector(
+                        '.Comments_input-contain textarea.CommentInput_textarea'
+                    )
                     .focus();
             }, 1);
         }

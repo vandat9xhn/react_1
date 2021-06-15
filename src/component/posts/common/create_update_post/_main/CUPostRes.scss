@@ -4,6 +4,7 @@
     .CUPostHome_footer{
         position: fixed;
         bottom: 0;
+        z-index: var(--z-index-lv1);
 
         width: 100%;
     }

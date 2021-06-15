@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import IconDiv from '../../some_div/icon_div/IconDiv';
 import IconsAction from '../../../_icons_svg/icons_action/IconsAction';
-// 
+//
+import TextareaNotSend from '../textarea/TextareaNotSend';
+//
 import './InputText.scss';
+import { makeAutoHeight } from '../../../_some_function/makeAutoHeight';
 
+//
 InputText.propTypes = {
-    // field form of formik
+    // formik
     field: PropTypes.object,
     form: PropTypes.object,
-    // properties
+    //
+    is_textarea: PropTypes.bool,
     type: PropTypes.string,
     label: PropTypes.string,
     placeholder: PropTypes.string,
@@ -20,63 +25,87 @@ InputText.propTypes = {
 };
 
 InputText.defaultProps = {
+    is_textarea: false,
     dataList: [],
     type: 'text',
 };
 
-// 
-function InputText(props) {
-    const {
-        field,
-        form,
+//
+function InputText({
+    field,
+    form,
 
-        type,
-        label,
-        placeholder,
-        dataList,
-        help,
-        max_length,
-    } = props;
-
-    const { name } = field;
+    is_textarea,
+    type,
+    label,
+    placeholder,
+    dataList,
+    help,
+    max_length,
+}) {
+    //
+    const { name, onChange } = field;
     const { touched, errors } = form;
     const showError = touched[name] && errors[name];
     const dataListId = `list_${name}_${label}`;
 
     //
+    function handleChange(e) {
+        onChange(e);
+        makeAutoHeight(e);
+    }
+
+    //
     return (
         <div className="InputText">
             <div>
-                <label className="label-field" htmlFor={name}>
-                    {label}
-                </label>
+                <label className="label-field">{label}</label>
             </div>
 
             <div>
-                <input
-                    className={`InputText_input brs-5px ${
-                        touched[name] && !errors[name] ? 'InputText_valid' : ''
-                    } ${
-                        touched[name] && !!errors[name]
-                            ? 'InputText_invalid'
-                            : ''
-                    }`}
-                    {...field}
-                    placeholder={placeholder}
-                    type={type}
-                    list={dataListId}
-                    maxLength={max_length}
-                />
+                {is_textarea ? (
+                    <textarea
+                        className={`InputText_input InputText_textarea scroll-thin brs-5px ${
+                            touched[name] && !errors[name]
+                                ? 'InputText_valid'
+                                : ''
+                        } ${
+                            touched[name] && !!errors[name]
+                                ? 'InputText_invalid'
+                                : ''
+                        }`}
+                        {...field}
+                        onChange={handleChange}
+                        placeholder={placeholder}
+                        type={type}
+                        maxLength={max_length}
+                    />
+                ) : (
+                    <input
+                        className={`InputText_input brs-5px ${
+                            touched[name] && !errors[name]
+                                ? 'InputText_valid'
+                                : ''
+                        } ${
+                            touched[name] && !!errors[name]
+                                ? 'InputText_invalid'
+                                : ''
+                        }`}
+                        {...field}
+                        placeholder={placeholder}
+                        type={type}
+                        list={dataListId}
+                        maxLength={max_length}
+                    />
+                )}
             </div>
 
-            {/* data list */}
             <datalist id={dataListId}>
                 {dataList.map((item, index) => (
                     <option key={`InputText_${index}`}>{item}</option>
                 ))}
             </datalist>
 
-            {/* help */}
             {help && (
                 <div className="help-text">
                     <IconDiv Icon={IconsAction} x={600}>
@@ -85,7 +114,6 @@ function InputText(props) {
                 </div>
             )}
 
-            {/* error */}
             {showError && (
                 <div className="error-field">
                     <IconDiv Icon={IconsAction} x={400} y={400}>

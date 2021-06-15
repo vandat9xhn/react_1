@@ -1,18 +1,18 @@
 //
 @media (max-width: 1200px) {
-    .CityItem_contain {
+    .CityItem {
         width: 50vw;
     }
 }
 
 @media (max-width: 900px) {
-    .CityItem_contain {
+    .CityItem {
         width: 60vw;
     }
 }
 
 @media (max-width: 600px) {
-    .CityItem_contain {
+    .CityItem {
         width: 80vw;
     }
     .CityItem_img-contain {
@@ -21,7 +21,7 @@
 }
 
 @media (max-width: 400px) {
-    .CityItem_contain {
+    .CityItem {
         width: 100vw;
         border-radius: 0;
     }

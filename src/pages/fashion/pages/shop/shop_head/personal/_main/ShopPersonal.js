@@ -13,7 +13,7 @@ ShopPersonal.propTypes = {};
 
 //
 function ShopPersonal({
-    profile_user,
+    profile_model,
     picture,
     name,
     banner,
@@ -26,7 +26,7 @@ function ShopPersonal({
             <div className="ShopPersonal_row display-flex align-items-center">
                 <div className="ShopPersonal_left">
                     <ShopPersonalLeft
-                        profile_user={profile_user}
+                        profile_model={profile_model}
                         picture={picture}
                         name={name}
                         banner={banner}

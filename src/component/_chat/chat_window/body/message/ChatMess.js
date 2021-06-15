@@ -25,7 +25,7 @@ function ChatMess({
     //
     const {
         id,
-        profile_user,
+        profile_model,
         message,
         vid_pics,
         count_vid_pic,
@@ -63,7 +63,7 @@ function ChatMess({
         <div className="ChatMess">
             <div
                 className={`ChatMess_common ${
-                    profile_user == c_user_id
+                    profile_model == c_user_id
                         ? 'ChatMess_user'
                         : 'ChatMess_Friend'
                 }`}
@@ -131,7 +131,7 @@ function ChatMess({
                     {/* more */}
                     <div className="ChatMess_more">
                         {/* actions */}
-                        {profile_user == c_user_id && (
+                        {profile_model == c_user_id && (
                             <div className="ChatMess__actions hv-opacity cursor-pointer">
                                 <div
                                     className="display-flex"

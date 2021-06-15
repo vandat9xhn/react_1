@@ -1,30 +1,32 @@
-
 //
-.CityItem{
-    margin-bottom: 1rem;
-}
-
-//
-.CityItem_contain {
+.CityItem {
     position: relative;
     margin: auto;
     width: 40vw;
     max-width: 500px;
-    
+
     padding: 0.5rem;
     background-color: var(--md-bg-primary);
 }
-.CityItem_user{
+
+// .
+.CityItem_user {
     width: fit-content;
-    .SkeletonDiv_div{
+    .SkeletonDiv_div {
         width: 8rem;
     }
 }
 
-.CityItem_img{
+// ..
+.CityItem_quote{
+    white-space: pre-wrap;
+}
+
+// .
+.CityItem_img {
     margin-top: 0.5rem;
 }
-.CityItem_img-contain{
+.CityItem_img-contain {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +37,7 @@
     }
 }
 
-.CityItem_choices{
+.CityItem_choices {
     position: absolute;
     right: 0;
     top: 5px;
