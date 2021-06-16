@@ -45,12 +45,12 @@ function PersonalLeft(props) {
                                 to={`/fashion/personal${item.link}`}
                                 replace
                             >
-                                <div
-                                    className="padding-8px label-field"
+                                <h3
+                                    className="padding-8px margin-0"
                                     onClick={handleUnActiveIx}
                                 >
                                     {item.title}
-                                </div>
+                                </h3>
                             </NavLink>
                         )}
                     </li>

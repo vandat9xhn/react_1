@@ -31,32 +31,32 @@ export const fashion_route_arr = [
     {
         path: '/fashion',
         component: Fashion,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion/shop/:id',
         component: FashionShop,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion::id',
         component: FashionItem,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion/cart',
         component: FashionCart,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion/buy',
         component: FashionBuy,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion/search',
         component: FashionSearch,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion/personal',
@@ -68,31 +68,31 @@ export const fashion_route_arr = [
     {
         path: '/fashion/mall',
         component: FashionOnWork,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion/extra-ship',
         component: FashionOnWork,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion/premium',
         component: FashionOnWork,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion/brand-discount',
         component: FashionOnWork,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion/brand-1',
         component: FashionOnWork,
-        export: true,
+        exact: true,
     },
     {
         path: '/fashion/condition',
         component: FashionOnWork,
-        export: true,
+        exact: true,
     },
 ];

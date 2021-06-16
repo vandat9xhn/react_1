@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// 
 StageReady.propTypes = {
     is_active: PropTypes.bool,
 };
 
-function StageReady(props) {
-    const {is_active} = props;
-
+// 
+function StageReady({ is_active }) {
+    //
     return (
         <div>
-            <div className={is_active ? 'text-green' : ''}>
+            <h4 className={`margin-0 ${is_active ? 'text-green' : ''}`}>
                 READY
-            </div>
+            </h4>
         </div>
     );
 }

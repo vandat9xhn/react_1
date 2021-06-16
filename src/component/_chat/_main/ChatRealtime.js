@@ -899,11 +899,10 @@ class Chat extends Component {
                                 //
                                 letDrawCanvas={this.letDrawCanvas}
                                 handleChooseFiles={this.handleChooseFiles}
-                                MoreActionsIp={this.moreActionsIp}
+                                moreActionsIp={this.moreActionsIp}
                                 showPreview={this.showPreview}
                                 deleteAnItemPreview={this.deleteAnItemPreview}
                                 deleteCanvasDraw={this.deleteCanvasDraw}
-                                //
                                 // SEND
                                 sendLikeMessage={this.sendLikeMessage}
                                 sendStatusMessage={this.sendStatusMessage}

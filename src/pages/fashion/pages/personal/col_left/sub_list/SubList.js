@@ -8,8 +8,7 @@ import './SubList.scss';
 SubList.propTypes = {};
 
 //
-function SubList(props) {
-    const { active_ix, item_ix, sub_list, title, handleChangeActiveIx } = props;
+function SubList({active_ix, item_ix, sub_list, title, handleChangeActiveIx}) {
 
     //
     function onChangeActiveIx() {
@@ -19,12 +18,12 @@ function SubList(props) {
     //
     return (
         <div className="SubList">
-            <div
-                className="padding-8px label-field cursor-pointer"
+            <h3
+                className="padding-8px margin-0 cursor-pointer"
                 onClick={onChangeActiveIx}
             >
                 {title}
-            </div>
+            </h3>
 
             <ul
                 className={`SubList_list list-none ${
@@ -34,14 +33,14 @@ function SubList(props) {
                 {sub_list.map((sub_item, sub_ix) => (
                     <li key={`SubList_${sub_ix}`}>
                         <NavLink
-                            className="normal-text"
+                            className="normal-text text-secondary label-field"
                             activeClassName="text-blue"
                             to={`/fashion/personal${sub_item.link}`}
                             replace
                         >
-                            <div className="padding-8px text-secondary label-field">
+                            <h4 className="padding-8px margin-0">
                                 {sub_item.title}
-                            </div>
+                            </h4>
                         </NavLink>
                     </li>
                 ))}

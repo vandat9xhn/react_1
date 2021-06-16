@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// 
+//
 StageBuying.propTypes = {
     is_active: PropTypes.bool,
 };
 
-// 
-function StageBuying(props) {
-    const {is_active} = props;
-
+//
+function StageBuying({ is_active }) {
+    //
     return (
         <div>
-            <div className={is_active ? 'text-green' : ''}>
-                Buying
-            </div>
+            <h4 className={`margin-0 ${is_active ? 'text-green' : ''}`}>
+                BUYING
+            </h4>
         </div>
     );
 }

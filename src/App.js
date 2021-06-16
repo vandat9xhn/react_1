@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 //
-import './App.scss';
+import './_style/App.scss';
 import './_style/root.scss';
 import './_style/display.scss';
 import './_style/position.scss';

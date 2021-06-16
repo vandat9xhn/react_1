@@ -26,7 +26,7 @@ ChatF.propTypes = {
     urls: PropTypes.array,
     file_reading: PropTypes.bool,
     show_preview: PropTypes.bool,
-    // 
+    //
     deleteAnItemPreview: PropTypes.func,
     deleteCanvasDraw: PropTypes.func,
     showPreview: PropTypes.func,
@@ -36,9 +36,9 @@ ChatF.defaultProps = {
     more_input: false,
 };
 
-
 //
-function ChatF({chat_ix,
+function ChatF({
+    chat_ix,
     more_input,
     should_send,
     //
@@ -56,7 +56,8 @@ function ChatF({chat_ix,
     showPreview,
     //
     handleSend,
-    sendOnInput,}) {
+    sendOnInput,
+}) {
     //
     const [new_text, setNewText] = useState('');
 
@@ -72,32 +73,32 @@ function ChatF({chat_ix,
         setNewText(value);
     }
 
-    // 
+    //
     function onMoreActionsIp() {
-        moreActionsIp(chat_ix)
+        moreActionsIp(chat_ix);
     }
 
-    // 
+    //
     function onChooseFiles(e) {
-        handleChooseFiles(e, chat_ix)
+        handleChooseFiles(e, chat_ix);
     }
 
-    // 
+    //
     function onLetDrawCanvas() {
-        letDrawCanvas(chat_ix)
+        letDrawCanvas(chat_ix);
     }
 
-    // 
+    //
     function onShowPreview() {
-        showPreview(chat_ix)
+        showPreview(chat_ix);
     }
 
-    // 
+    //
     function onDeleteAnItemPreview(file_ix) {
-        deleteAnItemPreview(file_ix, chat_ix)
+        deleteAnItemPreview(file_ix, chat_ix);
     }
 
-    // 
+    //
     function onDeleteCanvasDraw() {
         deleteCanvasDraw(chat_ix);
     }

@@ -5,14 +5,13 @@ StageDelivery.propTypes = {
     is_active: PropTypes.bool,
 };
 
-function StageDelivery(props) {
-    const {is_active} = props;
-
+function StageDelivery({ is_active }) {
+    //
     return (
         <div>
-            <div className={is_active ? 'text-green' : ''}>
+            <h4 className={`margin-0 ${is_active ? 'text-green' : ''}`}>
                 DELIVERY
-            </div>
+            </h4>
         </div>
     );
 }

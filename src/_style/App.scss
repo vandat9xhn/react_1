@@ -44,7 +44,7 @@ img {
     vertical-align: middle;
 }
 
-/* --------------------------- APP ---------------------------------- */
+/* ------------ APP -------------- */
 .App{
     // background-color:  var(--md-bg-primary);
     background-color: var(--md-bg-fb);
@@ -52,7 +52,7 @@ img {
     overflow-x: hidden;
 }
 
-/* --------------------------- HEADER ---------------------------------- */
+/* ------------ HEADER -------------- */
 .AppHeader{
     position: fixed;
     top: 0;
@@ -60,7 +60,7 @@ img {
     z-index: var(--z-index-lv3);
 }
 
-/* --------------------------- CONTENT ---------------------------------- */
+/* ------------ CONTENT -------------- */
 .AppContent {
     margin-top: calc(var(--height-header));
     margin-bottom: 1rem;
