@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react';
 
 //
-export function useInterval({ time, callback = function () {} }) {
+export function useInterval({ time, callback = () => {} }) {
     //
-    const skip_interval = useRef(false);
+    const skip_interval = useRef(true);
     const mounted = useRef(true);
+    const stop_interval = useRef(true)
 
     //
     useEffect(() => {
@@ -18,6 +19,10 @@ export function useInterval({ time, callback = function () {} }) {
     //
     function StartInterval() {
         const interval = setInterval(() => {
+            if (stop_interval.current) {
+                return;
+            }
+
             if (!mounted.current) {
                 clearInterval(interval);
             } else if (!skip_interval.current) {
@@ -28,11 +33,16 @@ export function useInterval({ time, callback = function () {} }) {
         }, time);
     }
 
+    // 
+    function stopInterval(is_stop) {
+        stop_interval.current = is_stop
+    }
+
     //
     function doSkipInterval() {
         skip_interval.current = true;
     }
 
     //
-    return { doSkipInterval };
+    return { doSkipInterval, stopInterval };
 }

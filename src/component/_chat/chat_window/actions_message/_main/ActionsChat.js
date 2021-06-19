@@ -72,80 +72,71 @@ function ActionsChat({
 
     //
     return (
-        <div className="ActionsChat">
-            <div
-                className="ActionsChat_bg bg-loader"
-                // onClick={closeActionsMess}
-            ></div>
-
-            <div
-                className="ActionsChat_close close-icon-small brs-50 hv-opacity cursor-pointer"
-                onClick={onCloseActionsMess}
-            >
-                <IconsArrow y={400} />
+        <div className="ActionsChat h-100per bg-loader">
+            <div className="ActionsChat_close">
+                <div
+                    className="close-icon-small brs-50 hv-opacity cursor-pointer"
+                    onClick={onCloseActionsMess}
+                >
+                    <IconsArrow y={400} />
+                </div>
             </div>
 
             <div className="ActionsChat_pos scroll-thin bg-primary">
-                <div className="ActionsChat_contain">
-                    {action_type == 'like' && (
-                        <ActionsLike
-                            chat_ix={chat_ix}
-                            chooseBdTypeLike={sendLikeMessageWs}
-                            user_like={like.user_like}
-                            is_active={action_type == 'like'}
-                        />
-                    )}
+                {action_type == 'like' && (
+                    <ActionsLike
+                        chat_ix={chat_ix}
+                        chooseBdTypeLike={sendLikeMessageWs}
+                        user_like={like.user_like}
+                        is_active={action_type == 'like'}
+                    />
+                )}
 
-                    {action_type == 'edit' && (
-                        <ActionsEdit
-                            chat_ix={chat_ix}
-                            delBdMessage={sendDeleteMessageWs}
-                        />
-                    )}
+                {action_type == 'edit' && (
+                    <ActionsEdit
+                        chat_ix={chat_ix}
+                        delBdMessage={sendDeleteMessageWs}
+                    />
+                )}
 
-                    {action_type == 'user_liked' && (
-                        <ActionsUserLikedList
-                            user_liked={user_liked}
-                            getMoreUserLiked={onGetMoreUserLiked}
-                        />
-                    )}
+                {action_type == 'user_liked' && (
+                    <ActionsUserLikedList
+                        user_liked={user_liked}
+                        getMoreUserLiked={onGetMoreUserLiked}
+                    />
+                )}
 
-                    {is_group && (
-                        <div className="ActionsChat_item">
-                            {action_type == 'zoom_user' &&
-                                zoom_users.map((zoom_user, user_ix) => (
-                                    <ZoomUser
-                                        key={`ActionsChat_user_${user_ix}`}
-                                        c_user_id={c_user_id}
-                                        zoom_owner={zoom_owner}
-                                        zoom_user={zoom_user}
-                                        sendForceUserQuit={sendForceUserQuit}
-                                    />
-                                ))}
-
-                            {action_type == 'add_user' && (
-                                <ActionsFriendUserList
-                                    add_user={add_user}
-                                    sendAddFriendToGroupWs={
-                                        sendAddFriendToGroupWs
-                                    }
-                                    getMoreFriendsAddToGroup={
-                                        onGetMoreFriendsAddToGroup
-                                    }
+                {is_group && (
+                    <div className="ActionsChat_item">
+                        {action_type == 'zoom_user' &&
+                            zoom_users.map((zoom_user, user_ix) => (
+                                <ZoomUser
+                                    key={`ActionsChat_user_${user_ix}`}
+                                    c_user_id={c_user_id}
+                                    zoom_owner={zoom_owner}
+                                    zoom_user={zoom_user}
+                                    sendForceUserQuit={sendForceUserQuit}
                                 />
-                            )}
+                            ))}
 
-                            {action_type == 'time_line' && (
-                                <ActionsTimeLineList
-                                    time_line={time_line}
-                                    getMoreTimeLineGroup={
-                                        onGetMoreTimeLineGroup
-                                    }
-                                />
-                            )}
-                        </div>
-                    )}
-                </div>
+                        {action_type == 'add_user' && (
+                            <ActionsFriendUserList
+                                add_user={add_user}
+                                sendAddFriendToGroupWs={sendAddFriendToGroupWs}
+                                getMoreFriendsAddToGroup={
+                                    onGetMoreFriendsAddToGroup
+                                }
+                            />
+                        )}
+
+                        {action_type == 'time_line' && (
+                            <ActionsTimeLineList
+                                time_line={time_line}
+                                getMoreTimeLineGroup={onGetMoreTimeLineGroup}
+                            />
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );

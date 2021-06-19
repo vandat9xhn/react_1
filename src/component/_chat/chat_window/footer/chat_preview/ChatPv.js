@@ -36,19 +36,22 @@ function ChatPv({
 }) {
     //
     return (
-        <div className="ChatPv">
+        <div className="ChatPv position-rel">
             <div
                 className={`ChatPv_toggle hv-opacity ${
                     show_preview ? 'ÇhatPv_toggle-show' : 'ChatPv_toggle-hide'
                 } ${current_canvas || urls.length ? '' : 'display-none'}`}
             >
-                <div className="ChatPv_toggle-elm" onClick={showPreview}>
+                <div
+                    className="ChatPv_toggle-elm"
+                    onClick={showPreview}
+                >
                     {show_preview ? 'Hide' : 'Show'}
                 </div>
             </div>
 
             <div
-                className={`ChatPv_contain bg-loader ${
+                className={`ChatPv_contain position-rel bg-loader ${
                     show_preview ? 'ChatPv_show' : 'ChatPv_hide'
                 } ${
                     (current_canvas || urls.length) && show_preview

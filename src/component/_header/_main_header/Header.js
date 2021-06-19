@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 //
 import './HeaderCommon.scss';
-import './Header.scss';
 //
 import HeaderH from '../header_left/header_horizontal/_main/HeaderH';
 import HeaderV from '../header_left/header_vertical/_main/HeaderV';
 import RightHeader from '../header_right/_main/RightHeaderWs';
-// 
+//
+import './Header.scss';
 import './HeaderRes.scss';
 
 //
 function Header() {
-    // 
-    const [is_hidden, setIsHidden] = useState(false);
+    //
+    const { is_register } = useSelector((state) => state.location_obj);
+
+    //
+    // const [is_hidden, setIsHidden] = useState(false);
 
     //
     useEffect(() => {
@@ -20,9 +24,9 @@ function Header() {
         handleNewMember();
     }, []);
 
-    useEffect(() => {
-        setIsHidden(location.pathname.search(/registration-form/) > 0);
-    }, [location.pathname.search(/registration-form/)]);
+    // useEffect(() => {
+    //     setIsHidden(location.pathname.search(/registration-form/) > 0);
+    // }, [location.pathname.search(/registration-form/)]);
 
     //
     function handleNewMember() {
@@ -32,10 +36,11 @@ function Header() {
         }
     }
 
+    //
     return (
         <div
             className={`Header App_box_shadow ${
-                is_hidden ? 'display-none' : ''
+                is_register ? 'display-none' : ''
             }`}
         >
             <div className="Header_contain">

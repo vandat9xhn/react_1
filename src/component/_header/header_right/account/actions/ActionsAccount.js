@@ -88,7 +88,7 @@ function ActionsAccount({ closeAccount }) {
         localStorage.light_mode = new_light_mode;
     }
 
-    /* ----------------- NATURE ------------------ */
+    /* ------------ NATURE ---------- */
 
     //
     function seeNature() {
@@ -104,10 +104,9 @@ function ActionsAccount({ closeAccount }) {
         setWhichNature(new_which_nature == which_nature ? '' : new_which_nature);
     }
 
-    /* ---------------- LOG -------------------- */
+    /* ----------- LOG ---------- */
 
     //
-
     function handleBeForeLog() {
         sessionStorage.url_before_login = location.pathname + location.search;
     }
@@ -121,20 +120,19 @@ function ActionsAccount({ closeAccount }) {
     //
     async function handleLogout() {
         try {
-            await handleScreenFetching(() => LogoutRequest());
-
-            handleBeForeLog();
-            closeAccount();
-            // localStorage.light_mode = 1;
-
-            use_history.push('/login-form');
-
             setDataUser({
                 id: 0,
                 first_name: '',
                 last_name: '',
                 picture: '',
             });
+
+            handleBeForeLog();
+            closeAccount();
+
+            await handleScreenFetching(() => LogoutRequest());
+
+            use_history.push('/login-form');
         } catch (e) {
             console.log(e);
         }

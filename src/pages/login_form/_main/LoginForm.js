@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 //
 import { context_api } from '../../../_context/ContextAPI';
 //
@@ -16,9 +16,9 @@ import IconFav from '../../../_icons_svg/_icon_fav/IconFav';
 import InputNotValid from '../../../component/input/input_not_valid/InputNotValid';
 import InputNotValidPass from '../../../component/input/input_not_valid_pass/InputNotValidPass';
 //
-import './LoginForm.scss';
-//
 import LoginFetching from '../logging/LoginFetching';
+//
+import './LoginForm.scss';
 
 //
 function LoginForm() {
@@ -108,6 +108,7 @@ function LoginForm() {
                     <div className="LoginForm_col-left">
                         <div className="LoginForm_col-info">
                             <IconFav size_icon="6rem" />
+
                             <div>This web was built by ReactJs and Django</div>
                         </div>
                     </div>
@@ -121,7 +122,6 @@ function LoginForm() {
                             <div className="App_title">Login</div>
                             <hr className="App_hr-bg" />
 
-                            {/* error */}
                             <div
                                 className={`LoginForm_error ${
                                     account_wrong ? '' : 'display-none'
@@ -132,7 +132,6 @@ function LoginForm() {
                                 </IconDiv>
                             </div>
 
-                            {/* username */}
                             <div className="LoginForm_input">
                                 <InputNotValid
                                     name="username"
@@ -145,7 +144,6 @@ function LoginForm() {
                                 />
                             </div>
 
-                            {/* password */}
                             <div className="LoginForm_input">
                                 <InputNotValidPass
                                     name="password"
@@ -159,7 +157,6 @@ function LoginForm() {
                                 />
                             </div>
 
-                            {/* submit */}
                             <div className="App_submit display-flex-center">
                                 <ButtonRipple type="submit" title="Login">
                                     Login
@@ -169,11 +166,10 @@ function LoginForm() {
                             <div>Do you have a account?</div>
                             <br />
 
-                            {/* sign up */}
                             <div className="App_submit display-flex-center">
-                                <a href="/registration-form">
+                                <Link to="/registration-form">
                                     <div title="Sign up">Sign up now</div>
-                                </a>
+                                </Link>
                             </div>
                         </form>
                     </div>

@@ -1,102 +1,98 @@
-/* --------------------------------------- */
-%w_h{
+/* ---------------- */
+
+$dur-time: 0.25s;
+
+%w_h {
     width: 4rem;
     height: 4rem;
 }
 //
-%pos-l0-t0{
+%pos-l0-t0 {
     position: absolute;
     top: 0;
-    left: 0; 
+    left: 0;
 }
 
-/* --------------------------------------- */
-.ChatPV{
-    position: relative;
-}
-
+/* -------------------- */
 //
-.ChatPv_contain{
-    position: relative;
-    transition: all 0.4s;
+.ChatPv_contain {
+    transition: all $dur-time;
     overflow: hidden;
 }
-.ChatPv_show{
+.ChatPv_show {
     max-height: 10rem;
 }
-.ChatPv_hide{
+.ChatPv_hide {
     max-height: 0;
 }
 //
-.ChatPv_padding-show{
-    padding-top: 1.25rem;
+.ChatPv_padding-show {
+    padding-top: 2rem;
 }
 //
-.ChatPv_padding-hide{
+.ChatPv_padding-hide {
     padding-top: 0;
 }
 
-// toggle open + close
-.ChatPv_toggle{
+//
+.ChatPv_toggle {
     position: absolute;
     left: 50%;
     z-index: 2;
 
-    transform:translateX(-50%);
-    transition: all 0.4s;
+    transform: translateX(-50%);
+    transition: all $dur-time;
     cursor: pointer;
 }
-.ÇhatPv_toggle-show{
+.ÇhatPv_toggle-show {
     top: 0;
-    //
-    .ChatPv_toggle-elm{
-        color: var(--white);
-    }
+    color: var(--white);
 }
-.ChatPv_toggle-hide{
+.ChatPv_toggle-hide {
     top: -20px;
     color: var(--md-color);
 }
 
-// draw
-.ChatPv_draw{
-    padding: 0.25rem 0;
-    .ChatPv__item{
-        @extend %w_h;
-        position: relative;
-        margin-left: auto;
-        margin-right: 0.25rem;
-    }
-}
 //
-.ChatPv__draw-img{
+.ChatPv_draw {
+    padding: 0.25rem 0;
+}
+.ChatPv__item {
+    @extend %w_h;
+    position: relative;
+    margin-left: auto;
+    margin-right: 0.25rem;
+}
+
+//
+.ChatPv__draw-img {
     @extend %w_h;
     border: 1px solid var(--md-bg-blur);
     border-radius: 5px;
-    img{
+    img {
         width: 100%;
         height: 100%;
         border-radius: 5px;
     }
 }
 //
-.ChatPv__face{
+.ChatPv__face {
     @extend %pos-l0-t0;
 }
 //
-.ChatPv__face-elm{
+.ChatPv__face-elm {
     @extend %w_h;
     cursor: pointer;
     opacity: 0;
-    &:hover{
-        opacity: 0.4;
+    &:hover {
+        opacity: 0.5;
     }
 }
 //
-.ChatPv__close{
+.ChatPv__close {
     @extend %pos-l0-t0;
 }
-.ChatPv__close-elm{
+.ChatPv__close-elm {
     display: flex;
     align-content: center;
 
@@ -105,19 +101,20 @@
 }
 
 // files
-.ChatPv_files{
+.ChatPv_files {
     width: 100%;
     overflow-x: auto;
-    .ImgVidPreview{
+    .ImgVidPreview {
         display: flex;
-        .ImgVidPreview__elm{
+        .ImgVidPreview__elm {
             margin-right: 0.5rem;
+            position: relative;
         }
     }
 }
 
 // fetching
-.ChatPv_fetching{
+.ChatPv_fetching {
     position: absolute;
     bottom: 2.5rem;
     left: 2.5rem;

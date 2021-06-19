@@ -8,18 +8,20 @@ import watcherSaga from '../saga/ReduxSaga';
 import reducer_saga from './ReducerSaga';
 // 
 import reducer_count_cart from './reducer_count_cart';
+import reducerLocation from './reducer_location';
 
 // Combine reducers
 const rootReducer = combineReducers({
   list2: reducer_saga,
   count_cart_obj: reducer_count_cart,
+  location_obj: reducerLocation,
 });
 
 // window dev
 const devtools_compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // Custom middleware
-const my_middleware = (store) => (next) => (action) => {
+const customMiddleware = (store) => (next) => (action) => {
   if (Array.isArray(action.payload)) {
     // console.log('Success');
   }
@@ -32,7 +34,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 // Enhance
 const enhance = devtools_compose(
-  applyMiddleware(sagaMiddleware, thunk, my_middleware),
+  applyMiddleware(sagaMiddleware, thunk, customMiddleware),
 );
 
 // Store:

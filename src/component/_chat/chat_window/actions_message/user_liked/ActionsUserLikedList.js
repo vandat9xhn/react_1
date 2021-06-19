@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { type_likes } from '../../../../like/list_type_like/type_likes/TypeLikes';
 import PictureName from '../../../../picture_name/pic_name/PictureName';
 import ScreenBlurShowMore from '../../../../_screen_blur/_component/foot/ScreenBlurShowMore';
+// 
+import './ActionsUserLikedList.scss'
 
 //
 ActionsUserLikedList.propTypes = {};
@@ -16,14 +18,16 @@ function ActionsUserLikedList({ user_liked, getMoreUserLiked }) {
     //
     return (
         <div>
-            {data_arr.map((user_like, user_like_ix) => (
+            {data_arr.map((user_like, ix) => (
                 <div
-                    className="ActionsChat_user-like"
-                    key={`ActionsChat_user_like_${user_like_ix}`}
+                    className="ActionsUserLikedList_item padding-8px"
+                    key={`${user_like.id || ix}`}
                 >
-                    <PictureName user={user_like.user} />
+                    <div className="flex-between-center">
+                        <PictureName user={user_like.user} />
 
-                    {type_likes[user_like.type_like].component}
+                        {type_likes[user_like.type_like].component}
+                    </div>
                 </div>
             ))}
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useRef, useState } from 'react';
 //
 import {
     API_FashionProduct_L,
@@ -17,158 +17,165 @@ import FashionH from '../../components/head/_main/FashionH';
 //
 import image_loading from '../../../../../image/image_loading.svg';
 import './Fashion.scss';
+import observeToDo from '../../../../_some_function/observerToDo';
 
-// class
-class Fashion extends Component {
-    state = {
+//
+function Fashion(props) {
+    //
+    const [fashion_state, setFashionState] = useState({
         list: [],
+        count: 0,
         hot_images: [],
+        has_fetched_hot: false,
         has_fetched: false,
         is_fetching: false,
-        count: 0,
-    };
+    });
 
-    componentDidMount() {
-        document.title = 'Fashion';
-        this.mounted = true;
-        // get api
-        this.getListHotImage();
-        this.getListProductFashion();
-    }
+    const {
+        list,
+        count,
+        has_fetched,
+        is_fetching,
 
-    componentWillUnmount() {
-        this.mounted = false;
-    }
-
-    /* -------------------- GET API ------------------------ */
+        hot_images,
+        has_fetched_hot,
+    } = fashion_state;
 
     //
-    getListHotImage = async () => {
+    const mounted = useRef(true);
+    const ref_product_elm = useRef(true);
+
+    //
+    useEffect(() => {
+        document.title = 'Fashion';
+
+        getData_API_HotImage();
+        observeToDo(ref_product_elm.current, getData_API_Product, 0);
+
+        return () => {
+            mounted.current = false;
+        };
+    }, []);
+
+    /* ------------ GET API ----------- */
+
+    //
+    async function getData_API_HotImage() {
         const res = await API_FashionHotImage_L();
-        console.log(res.data);
         const hot_images = res.data.map((item) => item.vid_pic);
-        //
-        this.setState({
+
+        setFashionState((fashion_state) => ({
+            ...fashion_state,
             hot_images: [
                 hot_images[hot_images.length - 1],
                 ...hot_images,
                 hot_images[0],
             ],
-            has_fetched: this.state.list.length ? true : false,
-        });
-    };
+            has_fetched_hot: true,
+        }));
+    }
 
     //
-    getListProductFashion = async () => {
-        const { count, list, has_fetched } = this.state;
-        const c_count = list.length;
-        //
-        if (has_fetched && count <= c_count) {
-            return;
-        }
-        //
-        has_fetched &&
-            this.setState({
-                is_fetching: true,
-            });
-        //
+    async function getData_API_Product() {
         try {
+            setFashionState((fashion_state) => ({
+                ...fashion_state,
+                is_fetching: true,
+            }));
+
             const res = await API_FashionProduct_L({
                 page: 1,
                 size: 20,
-                c_count: c_count,
+                c_count: list.length,
             });
-            //
-            if (this.mounted) {
-                list.push(...res.data.data);
-                this.setState({
-                    is_fetching: false,
-                    count: has_fetched ? count : res.data.count,
-                    has_fetched: this.state.hot_images.length ? true : false,
-                });
+
+            if (!mounted.current) {
+                return;
             }
-            //
+
+            setFashionState((fashion_state) => ({
+                ...fashion_state,
+                list: has_fetched ? [...list, ...res.data.data] : res.data.data,
+                count: has_fetched ? count : res.data.count,
+                is_fetching: false,
+                has_fetched: true,
+            }));
         } catch (e) {
             console.log(e);
         }
-    };
-
-    // render
-    render() {
-        const { is_fetching, has_fetched, list, hot_images, count } =
-            this.state;
-
-        return (
-            <div className="Fashion">
-                <div className="Fashion_head">
-                    <FashionH />
-                </div>
-
-                <div className="Fashion_body">
-                    <div>
-                        <div className="Fashion_carousel">
-                            <FashionBC
-                                images={
-                                    has_fetched
-                                        ? hot_images
-                                        : Array(4).fill(image_loading)
-                                }
-                            />
-                        </div>
-
-                        <div className="Fashion_banner">
-                            <FashionLN />
-
-                            <FashionCtg />
-                        </div>
-                    </div>
-                    <hr className="App_hr-bg" />
-
-                    <div>
-                        <ul className="Fashion__list">
-                            {(has_fetched
-                                ? list
-                                : Array(5).fill({ vid_pics: [] })
-                            ).map((item, ix) => (
-                                <li
-                                    key={`Fashion_item_${item.id || ix}`}
-                                    className="Fashion__item"
-                                >
-                                    <ProductItem
-                                        link={`/fashion:${item.id}`}
-                                        img={
-                                            item.vid_pics.length
-                                                ? item.vid_pics[0].vid_pic
-                                                : undefined
-                                        }
-                                        name={item.name}
-                                        new_price={item.new_price}
-                                        old_price={item.old_price}
-                                    />
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <br />
-
-                    <ScreenBlurShowMore
-                        title={
-                            <ButtonRipple
-                                disabled={is_fetching}
-                                ripple_type="center"
-                            >
-                                More product...
-                            </ButtonRipple>
-                        }
-                        is_show_more={count > list.length}
-                        is_fetching={is_fetching && has_fetched}
-                        handleShowMore={this.getListProductFashion}
-                        FetchingComponent={WaitingBall}
-                    />
-                </div>
-            </div>
-        );
     }
+
+    return (
+        <div className="Fashion">
+            <div className="Fashion_head">
+                <FashionH />
+            </div>
+
+            <div className="Fashion_body">
+                <div>
+                    <div className="Fashion_carousel">
+                        <FashionBC
+                            images={
+                                has_fetched_hot
+                                    ? hot_images
+                                    : Array(3).fill(image_loading)
+                            }
+                            has_fetched={has_fetched_hot}
+                        />
+                    </div>
+
+                    <div className="Fashion_banner">
+                        <FashionLN />
+
+                        <FashionCtg />
+                    </div>
+                </div>
+                <hr className="App_hr-bg" />
+
+                <div ref={ref_product_elm}>
+                    <ul className="Fashion__list">
+                        {(has_fetched
+                            ? list
+                            : Array(5).fill({ vid_pics: [] })
+                        ).map((item, ix) => (
+                            <li
+                                key={`Fashion_item_${item.id || ix}`}
+                                className="Fashion__item"
+                            >
+                                <ProductItem
+                                    link={`/fashion:${item.id}`}
+                                    img={
+                                        item.vid_pics.length
+                                            ? item.vid_pics[0].vid_pic
+                                            : undefined
+                                    }
+                                    name={item.name}
+                                    new_price={item.new_price}
+                                    old_price={item.old_price}
+                                />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <br />
+
+                <ScreenBlurShowMore
+                    title={
+                        <ButtonRipple
+                            disabled={is_fetching}
+                            ripple_type="center"
+                        >
+                            More product...
+                        </ButtonRipple>
+                    }
+                    is_show_more={count > list.length}
+                    is_fetching={is_fetching && has_fetched}
+                    handleShowMore={getData_API_Product}
+                    FetchingComponent={WaitingBall}
+                />
+            </div>
+        </div>
+    );
 }
 
 export default Fashion;

@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { API_PhoneLaptop_L } from '../../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
-
+// 
 import { useMounted } from '../../../../../_custom_hooks/useMounted';
-
+// 
 import observeToDo from '../../../../../_some_function/observerToDo';
+// 
+import Contact from '../../../../../component/_contact/Contact';
 //
 import ProductsAnimate from '../products_animate/ProductsAnimate';
 import SpecProducts from '../products_spec/SpecProducts';
@@ -126,6 +128,8 @@ function PhoneLaptop(props) {
                     link="/phone-laptop-laptops"
                 />
             </div>
+
+            <Contact />
         </div>
     );
 }

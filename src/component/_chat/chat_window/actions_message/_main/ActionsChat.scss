@@ -1,44 +1,18 @@
-
 //
-.ActionsChat, .ActionsChat_bg{
-    height: 100%;
-}
-
-//
-.ActionsChat_close{
+.ActionsChat_close {
     position: absolute;
     top: 5px;
-    left: 5px;
-    background-color: var(--danger);
+    right: 5px;
 }
 
 //
-.ActionsChat_pos{
+.ActionsChat_pos {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
+
     width: 100%;
     min-height: 5rem;
     max-height: calc(100% - 4rem);
     overflow-y: auto;
-
-}
-///
-.ActionsChat_contain{
-    .ActionsChat_item:not(:last-child){
-        border-bottom: 1px solid var(--md-bg-ccc);
-    }
-}
-
-
-//
-.ActionsChat_user-like{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .IconsTypeLike{
-        width: 1.25rem;
-        height: 1.25rem;
-    }
 }

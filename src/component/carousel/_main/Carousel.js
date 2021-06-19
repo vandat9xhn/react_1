@@ -5,28 +5,34 @@ import { useInterval } from '../../../_custom_hooks/UseInterval';
 //
 import NextPrevDiv from '../../some_div/next_prev_div/NextPrevDiv';
 //
-import './Carousel.scss';
 import CarouselItem from '../item/CarouselItem';
+//
+import './Carousel.scss';
 
 //
 Carousel.propTypes = {
     vid_pics: PropTypes.array.isRequired,
+    has_fetched: PropTypes.bool,
+};
+
+Carousel.defaultProps = {
+    has_fetched: false,
 };
 
 //
-function Carousel({ vid_pics }) {
+function Carousel({ vid_pics, has_fetched }) {
     //
     const [vid_pic_ix, setVidPicIx] = useState(1);
 
     //
     const mounted = useRef(true);
     const btn_disable = useRef(false);
-    const transition_none = useRef(false);
+    const transition_none = useRef(true);
     const ref_count = useRef(vid_pics.length);
 
     //
 
-    const { doSkipInterval } = useInterval({
+    const { doSkipInterval, stopInterval } = useInterval({
         time: 6000,
         callback: handleAutoNext,
     });
@@ -39,11 +45,15 @@ function Carousel({ vid_pics }) {
     }, []);
 
     useEffect(() => {
-        doSkipInterval();
         ref_count.current = vid_pics.length;
+
+        if (has_fetched) {
+            transition_none.current = false;
+            stopInterval(false);
+        }
     }, [vid_pics]);
 
-    /* --------------------- COMMON --------------------- */
+    /* --------------- COMMON ------------- */
 
     //
     function disableBtnNextPrev() {

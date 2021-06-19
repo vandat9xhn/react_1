@@ -1,6 +1,4 @@
 import React from 'react';
-import AppPhone from './AppPhone';
-// import AppPhone from './AppPhone';
 
 //
 const PhoneLaptop = React.lazy(() =>
@@ -22,8 +20,7 @@ const Phones = React.lazy(() =>
 export const phone_route_arr = [
     {
         path: '/phone-laptop',
-        component: (props) =>
-            AppPhone({ component: PhoneLaptop, props: props }),
+        component: PhoneLaptop,
         export: true,
     },
     {
@@ -42,9 +39,3 @@ export const phone_route_arr = [
         export: true,
     },
 ];
-// .map((item) => {
-//     item.component = (props) =>
-//         AppPhone({ component: item.component, props: props });
-
-//     return item;
-// });

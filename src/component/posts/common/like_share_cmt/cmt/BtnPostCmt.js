@@ -12,8 +12,7 @@ import './BtnPostCmt.scss';
 BtnPostCmt.propTypes = {};
 
 //
-function BtnPostCmt(props) {
-    const { handleClickBtnCmt, count_comment } = props;
+function BtnPostCmt({handleClickBtnCmt, count_comment}) {
 
     //
     return (

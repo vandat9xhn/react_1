@@ -15,18 +15,17 @@ AddFriendNormal.defaultProps = {
 };
 
 //
-function AddFriendNormal(props) {
-    const {
-        id,
-        ix,
-        pic,
-        name,
-        status_requested,
+function AddFriendNormal({
+    id,
+    ix,
+    pic,
+    name,
+    status_requested,
 
-        handleRemoving,
-        handleRequesting,
-    } = props;
-
+    handleRemoving,
+    handleRequesting,
+}) {
+    //
     const title_request = status_requested == 'cancel' ? 'Cancel' : 'Send';
 
     //
@@ -47,9 +46,6 @@ function AddFriendNormal(props) {
     function onRemoving() {
         setRemoving(true);
         handleRemoving(ix);
-        // .then(() => {
-        //     setRemoving(false);
-        // });
     }
 
     //

@@ -7,9 +7,7 @@ import Like from '../../../../like/_main/Like';
 BtnPostLike.propTypes = {};
 
 //
-function BtnPostLike(props) {
-    const { user_type_like, changeTypeLike } = props;
-
+function BtnPostLike({ user_type_like, changeTypeLike }) {
     //
     return (
         <div>

@@ -24,13 +24,15 @@ function ActionsLike({ is_active, chat_ix, chooseBdTypeLike, user_like }) {
 
     //
     return (
-        <div className="ActionsLike">
+        <div className="ActionsLike w-100per">
             <div
-                className={`ActionsLike_contain  ${
+                className={`ActionsLike_contain padding-8px  ${
                     is_active ? 'open_type-like' : ''
                 }`}
             >
-                <div className={`ActionsLike_row display-flex`}>
+                <div
+                    className={`ActionsLike_row display-flex justify-content-center flex-wrap`}
+                >
                     {type_likes.map((item, index) => (
                         <TypesLike
                             key={`ActionsLike_${index}`}
@@ -40,17 +42,17 @@ function ActionsLike({ is_active, chat_ix, chooseBdTypeLike, user_like }) {
                         />
                     ))}
                     <div
-                        className={`ActionsLike_del display-flex align-items-center ${
+                        className={`ActionsLike_del display-flex align-items-center flex-wrap ${
                             user_like == undefined || user_like == -1
                                 ? 'pointer-events-none opacity-5'
                                 : 'cursor-pointer'
                         }`}
                     >
                         <div
-                            className="close-icon-small brs-50"
+                            className="ActionsLike_del-item close-icon-small brs-50"
                             onClick={onDelBdTypeLike}
                         >
-                            <IconsArrow y={400} size_icon="1rem" />
+                            <IconsArrow y={400} size_icon="1.5rem" />
                         </div>
                     </div>
                 </div>

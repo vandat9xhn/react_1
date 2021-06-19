@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 //
-import "./ListRequestFriend.scss";
+import './ListRequestFriend.scss';
 
 //
 ListRequestFriend.propTypes = {
@@ -12,9 +12,7 @@ ListRequestFriend.propTypes = {
 };
 
 //
-function ListRequestFriend(props) {
-    const { title, request, is_active, changeCurrentList } = props;
-
+function ListRequestFriend({ title, request, is_active, changeCurrentList }) {
     //
     function onChangeCurrentList() {
         changeCurrentList(request);
@@ -23,15 +21,15 @@ function ListRequestFriend(props) {
     //
     return (
         <div className="ListRequestFriend">
-            <div
-                className={`ListRequestFriend_item label-field brs-5px hv-cl-blue ${
-                    is_active ? "text-blue" : ""
+            <h4
+                className={`margin-0 padding-8px brs-5px hv-bg-blur cursor-pointer ${
+                    is_active ? 'text-blue' : ''
                 }`}
                 onClick={onChangeCurrentList}
                 title={title}
             >
                 {title}
-            </div>
+            </h4>
         </div>
     );
 }

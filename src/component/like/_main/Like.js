@@ -22,17 +22,11 @@ Like.defaultProps = {
 };
 
 //
-function Like(props) {
+function Like({ changeTypeLike, icon_small, type_like }) {
     //
-    const { changeTypeLike, icon_small, type_like } = props;
-
-    // state
     const [open_type_like, setOpenTypeLike] = useState(false);
 
-    // ref
-    const is_mobile = useRef(localStorage.is_mobile == 1);
-
-    // use hook
+    //
     const [StartHoldPress, StopHoldPress] = useHoldPress(8, () => {
         setOpenTypeLike(true);
     });
@@ -41,42 +35,43 @@ function Like(props) {
         setOpenTypeLike(false);
     });
 
-    /* ##################### LAPTOP ####################### */
+    /* ############ LAPTOP ############# */
 
-    /* ------------------- MAIN LIKE ----------------------------- */
+    /* ------------- MAIN LIKE ------------ */
 
-    // when enter
+    //
     function onMouseEnter() {
         StopOutPress();
     }
-    // when leave
+    //
     function onMouseLeave() {
         StartOutPress();
     }
 
-    /* ------------------- TYPE LIKE ----------------------------- */
+    /* ------------- TYPE LIKE --------------- */
 
     //
     function onMouseEnterLike() {
         StartHoldPress();
     }
+
     //
     function onMouseLeaveLike() {
         StopHoldPress();
     }
 
-    /* ##################### PHONE IPAD ####################### */
+    /* ########## PHONE IPAD ############# */
 
-    // when touch start
+    //
     function onTouchStartLike() {
         StartHoldPress();
     }
-    // when touch end
+    //
     function onTouchEndLike() {
         StopHoldPress();
     }
 
-    /* ------------------- CHOOSE TYPE ----------------------------- */
+    /* ------- CHOOSE TYPE --------------- */
 
     //
     function handleLike() {
@@ -103,8 +98,10 @@ function Like(props) {
         setOpenTypeLike(false);
     }
 
-    /* ------------------------------------------- */
+    //
+    const is_mobile = localStorage.is_mobile == 1;
 
+    //
     return (
         <div
             className="Like"
@@ -117,23 +114,17 @@ function Like(props) {
                         icon_small ? 'Like_icon-small' : ''
                     } ${type_like == 0 ? 'nav-active active-color' : ''}`}
                     onClick={handleLike}
-                    onTouchStart={
-                        is_mobile.current ? onTouchStartLike : undefined
-                    }
-                    onTouchEnd={is_mobile.current ? onTouchEndLike : undefined}
-                    onMouseEnter={
-                        is_mobile.current ? undefined : onMouseEnterLike
-                    }
-                    onMouseLeave={
-                        is_mobile.current ? undefined : onMouseLeaveLike
-                    }
+                    onTouchStart={onTouchStartLike}
+                    onTouchEnd={onTouchEndLike}
+                    onMouseEnter={is_mobile ? undefined : onMouseEnterLike}
+                    onMouseLeave={is_mobile ? undefined : onMouseLeaveLike}
                 >
                     {type_like < 0
                         ? type_likes[0].component
                         : type_likes[type_like].component}
                 </div>
 
-                {!is_mobile.current && open_type_like && (
+                {!is_mobile && open_type_like && (
                     <div
                         className={`Like_list-type ${
                             icon_small ? 'Like_list-small' : ''
@@ -147,8 +138,7 @@ function Like(props) {
                 )}
             </div>
 
-            {/* when can touch */}
-            {is_mobile.current && open_type_like && (
+            {is_mobile && open_type_like && (
                 <div
                     className="Like_screen-list-type screen-blur"
                     onClick={closeListTypeLike}

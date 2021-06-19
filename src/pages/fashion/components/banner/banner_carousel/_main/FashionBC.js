@@ -11,13 +11,13 @@ import FashionBCR from '../right/FashionBCR';
 FashionBC.propTypes = {};
 
 //
-function FashionBC({ images }) {
+function FashionBC({ images, has_fetched }) {
     //
     return (
         <div className="FashionBC">
             <div className="FashionBC_row display-flex align-items-center flex-wrap">
                 <div className="FashionBC_carousel">
-                    <Carousel vid_pics={images} />
+                    <Carousel vid_pics={images} has_fetched={has_fetched} />
                 </div>
 
                 <div>

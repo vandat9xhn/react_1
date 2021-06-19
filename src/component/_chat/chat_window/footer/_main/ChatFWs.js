@@ -69,7 +69,7 @@ function ChatF({
         if (new_text == '' && value != '') {
             sendOnInput(true);
         }
-        //
+        
         setNewText(value);
     }
 
@@ -95,7 +95,7 @@ function ChatF({
 
     //
     function onDeleteAnItemPreview(file_ix) {
-        deleteAnItemPreview(file_ix, chat_ix);
+        deleteAnItemPreview(chat_ix, file_ix);
     }
 
     //
@@ -121,7 +121,6 @@ function ChatF({
     return (
         <div className="ChatF">
             <div className="ChatF_contain">
-                {/* more actions top*/}
                 <div
                     className={`ChatF_MT ${
                         more_input ? 'ChatF_MT-open' : 'ChatF_MT-close'
@@ -134,7 +133,6 @@ function ChatF({
                 </div>
 
                 <div className="ChatF_row">
-                    {/* more action bottom */}
                     <div
                         className={`ChatF_MB ${
                             more_input || new_text.trim()
@@ -151,7 +149,6 @@ function ChatF({
                         />
                     </div>
 
-                    {/* input text*/}
                     <div className="ChatF_Ip">
                         <Textarea
                             text={new_text}
@@ -162,7 +159,6 @@ function ChatF({
                         />
                     </div>
 
-                    {/* send */}
                     <div className="ChatF_Sd">
                         <ChatSd
                             should_send={should_send || !!new_text.trim()}
@@ -172,7 +168,6 @@ function ChatF({
                 </div>
             </div>
 
-            {/* preview */}
             <div className="ChatF_preview">
                 <ChatPv
                     current_canvas={current_canvas}

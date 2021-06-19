@@ -6,14 +6,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 3;
-}
-//
-.ActionsLike_contain{
-    padding: 0.25rem;
-    background-color: var(--white);
-    border: 1px solid var(--md-bg-blur);
-    border-radius: 10px;
+    z-index: var(--z-index-lv1);
 }
 
 //
@@ -22,8 +15,8 @@
     cursor: pointer;
 
     .IconsTypeLike{
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 2rem;
+        height: 2rem;
     }
     &:hover{
         position: relative;
@@ -32,6 +25,12 @@
         transform: scale(1.25);
     }
 }
+
 .ActionsLike_del{
     margin: 0.25rem;
+}
+// .
+.ActionsLike_del-item{
+    width: 2rem;
+    height: 2rem;
 }
