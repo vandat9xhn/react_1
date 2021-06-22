@@ -228,7 +228,7 @@ function FashionCart(props) {
                 <div className="FashionCart_buy">
                     <div
                         className={`${
-                            count_checked ? '' : 'pointer-events-none opacity-5'
+                            count_checked ? '' : 'pointer-events-none opacity-05'
                         }`}
                     >
                         <Link to="/fashion/buy">

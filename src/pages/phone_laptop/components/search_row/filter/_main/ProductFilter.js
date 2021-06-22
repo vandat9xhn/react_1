@@ -43,7 +43,7 @@ function ProductFilter(props) {
                     className={`label-field padding-8px brs-5px ${
                         should_filter
                             ? 'cursor-pointer active-color'
-                            : 'opacity-5'
+                            : 'opacity-05'
                     }`}
                     onClick={handleStartFilter}
                     disabled={!should_filter}

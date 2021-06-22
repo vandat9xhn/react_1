@@ -29,7 +29,7 @@ function VidPicItem(props) {
             <div>
                 <div
                     className={`VidPicItem_item brs-5px ${
-                        is_active ? '' : 'opacity-5'
+                        is_active ? '' : 'opacity-05'
                     }`}
                     onClick={onChangeCurrent}
                 >

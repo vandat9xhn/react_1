@@ -34,14 +34,13 @@ PfAbGenderEdit.propTypes = {
 };
 
 //
-function PfAbGenderEdit(props) {
-    const {
-        item_obj,
+function PfAbGenderEdit({
+    item_obj,
 
-        handleSave,
-        handleCancel,
-    } = props;
-
+    handleSave,
+    handleCancel,
+}) {
+    //
     const { gender, permission } = item_obj;
 
     //
@@ -61,6 +60,8 @@ function PfAbGenderEdit(props) {
             permission: new_permission,
         });
     }
+
+    console.log(item_obj);
 
     //
     return (

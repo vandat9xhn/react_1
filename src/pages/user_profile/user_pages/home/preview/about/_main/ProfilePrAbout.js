@@ -20,20 +20,18 @@ ProfilePrAbout.propTypes = {};
 function ProfilePrAbout({ id }) {
     //
     const [about_state, setAboutState] = useState({
-        about_obj: {
-            hobby: '',
-            university: '',
-            from: '',
-            live_now: '',
-        },
+        about_arr: [
+            { title: 'Hobby', content: '' },
+            { title: 'University', content: '' },
+            { title: 'From', content: '' },
+            { title: 'Live now', content: '' },
+        ],
         is_fetching: true,
     });
 
-    const { about_obj, is_fetching } = about_state;
-    const { hobby, university, from, live_now } = about_obj;
+    const { about_arr, is_fetching } = about_state;
 
     //
-    ;
     const ref_component = useRef(null);
 
     //
@@ -55,7 +53,25 @@ function ProfilePrAbout({ id }) {
 
         if (mounted) {
             setAboutState({
-                about_obj: data,
+                about_arr: [
+                    { title: 'Hobby', content: data.hobby_obj.hobby },
+                    {
+                        title: 'University',
+                        content: data.university_arr.length
+                            ? data.university[0].university
+                            : '',
+                    },
+                    {
+                        title: 'From',
+                        content: data.city_arr.length ? data.city[0].city : '',
+                    },
+                    {
+                        title: 'Live now',
+                        content: data.address_arr.length
+                            ? data.address[0].address
+                            : '',
+                    },
+                ],
                 is_fetching: false,
             });
         }
@@ -71,25 +87,15 @@ function ProfilePrAbout({ id }) {
                 ProfilePrSkeleton={ProfilePrAboutSkeleton}
             >
                 <div className="ProfilePrAbout">
-                    <div>
-                        <span>From: </span>
-                        <span className="label-field">{from}</span>
-                    </div>
-
-                    <div>
-                        <span>Live at: </span>
-                        <span className="label-field">{live_now}</span>
-                    </div>
-
-                    <div>
-                        <span>Hobby: </span>
-                        <span className="label-field">{hobby}</span>
-                    </div>
-
-                    <div>
-                        <span>University: </span>
-                        <span className="label-field">{university}</span>
-                    </div>
+                    {about_arr.map((item, ix) => (
+                        <div
+                            key={`${ix}`}
+                            className={`${item.content ? '' : 'display-none'}`}
+                        >
+                            <span>{item.title}: </span>
+                            <span className="label-field">{item.content}</span>
+                        </div>
+                    ))}
                 </div>
             </ProfilePrCommon>
         </div>

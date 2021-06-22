@@ -20,31 +20,28 @@ InputNotValidPass.propTypes = {
 InputNotValidPass.defaultProps = {
     placeholder: 'Password',
     max_length: 100,
-}
+};
 
 //
-function InputNotValidPass(props) {
-    const {
-        password,
-        name,
-        placeholder,
-        max_length,
+function InputNotValidPass({
+    password,
+    name,
+    placeholder,
+    max_length,
 
-        handleChange,
-    } = props;
-
-    // 
-    const [type, setType] = useState('password')
+    handleChange,
+}) {
+    //
+    const [type, setType] = useState('password');
 
     //
-    function toggleType(){
-        setType(type == 'password' ? 'text' : 'password')
-    } 
+    function toggleType() {
+        setType(type == 'password' ? 'text' : 'password');
+    }
 
-    // 
+    //
     return (
         <div className="InputNotValidPass">
-            {/* input */}
             <div>
                 <InputNotValid
                     name={name}
@@ -57,7 +54,6 @@ function InputNotValidPass(props) {
                 />
             </div>
 
-            {/* eye */}
             <div className="InputNotValidPass_eye">
                 <div
                     className="InputNotValidPass_eye-contain hv-opacity"

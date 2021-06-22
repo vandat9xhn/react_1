@@ -1,4 +1,6 @@
 import image_loading from '../../../../image/giay_the_thao.jpg';
+import my_image from '../../../../image/my_image.png';
+import naruto_x_hinata from '../../../../image/naruto_x_hinata.jpg';
 
 //
 export const owner_info = [
@@ -1382,25 +1384,25 @@ export const default_arr_hot_image = [
         vid_pic: image_loading,
     },
     {
-        vid_pic: image_loading,
+        vid_pic: my_image,
     },
     {
         vid_pic: image_loading,
     },
     {
-        vid_pic: image_loading,
+        vid_pic: naruto_x_hinata,
     },
     {
         vid_pic: image_loading,
     },
     {
-        vid_pic: image_loading,
+        vid_pic: my_image,
     },
     {
         vid_pic: image_loading,
     },
     {
-        vid_pic: image_loading,
+        vid_pic: naruto_x_hinata,
     },
 ];
 

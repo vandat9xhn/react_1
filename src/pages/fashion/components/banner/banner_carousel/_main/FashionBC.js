@@ -17,7 +17,11 @@ function FashionBC({ images, has_fetched }) {
         <div className="FashionBC">
             <div className="FashionBC_row display-flex align-items-center flex-wrap">
                 <div className="FashionBC_carousel">
-                    <Carousel vid_pics={images} has_fetched={has_fetched} />
+                    <Carousel
+                        vid_pics={images}
+                        has_fetched={has_fetched}
+                        // disabled_btn_when_trans={false}
+                    />
                 </div>
 
                 <div>

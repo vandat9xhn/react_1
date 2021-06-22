@@ -3,7 +3,6 @@ import { API_Post_L } from '../../../api/api_django/user/user_post/UserPost';
 
 import {
     API_UserAlbumVidPic_L,
-    API_UserProfile_RU,
     API_UserVidPic_L,
     //
     API_UserAbout_R,
@@ -14,8 +13,8 @@ import {
 } from '../../../api/api_django/user/user_profile/UserProfile';
 
 import makeFormData from '../../../_some_function/makeFormData';
-// 
-import { params_profile_overview_r } from '../__params/about/params';
+//
+import { params_profile_overview_r, params_profile_r } from '../__params/about/params';
 import { params_profile_post_l } from '../__params/home/params';
 
 // posts
@@ -70,8 +69,11 @@ export async function handle_API_AlbumVidPic_L(user_id, c_count = 0) {
 }
 
 // profile
-export async function handle_API_ProfileUser_R(pk) {
-    const res = await API_UserProfile_RU(pk, 'GET');
+export async function handle_API_ProfileUser_R({ user_id }) {
+    const res = await API_UserAbout_R({
+        ...params_profile_r,
+        profile_model: user_id,
+    });
 
     return res.data;
 }

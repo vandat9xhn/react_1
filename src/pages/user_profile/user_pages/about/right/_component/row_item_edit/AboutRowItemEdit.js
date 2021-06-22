@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../../_context/ContextAPI';
-// 
+//
 import { useForceUpdate } from '../../../../../../../_custom_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../../../../_custom_hooks/UseScreenFetching';
-// 
+//
 import { GetIdSlug } from '../../../../../../../_some_function/GetIdSlug';
 //
 import AboutRowItem from '../row_item/_main/AboutRowItem';
@@ -28,23 +28,21 @@ AboutRowItemEdit.defaultProps = {
 };
 
 //
-function AboutRowItemEdit(props) {
-    // 
+function AboutRowItemEdit({
+    item_obj,
+    Icon,
+    label,
+
+    ComponentEdit,
+    handle_API_U,
+    handleUpdateItemObj,
+}) {
+    //
     const { user } = useContext(context_api);
 
     const is_user = user.id == GetIdSlug();
 
     //
-    const {
-        item_obj,
-        Icon,
-        label,
-
-        ComponentEdit,
-        handle_API_U,
-        handleUpdateItemObj,
-    } = props;
-
     const { permission, title } = item_obj;
 
     //

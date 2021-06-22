@@ -24,7 +24,7 @@ function ScreenBlurFootYesNo(props) {
             <div className="ScreenBlurFootYesNo_foot_row">
                 <div
                     className={`ScreenBlurFootYesNo_foot__btn ScreenBlurFootYesNo_foot__btn-yes ${
-                        disabled ? 'pointer-events-none opacity-5' : ''
+                        disabled ? 'pointer-events-none opacity-05' : ''
                     }`}
                     onClick={handleConfirm}
                 >

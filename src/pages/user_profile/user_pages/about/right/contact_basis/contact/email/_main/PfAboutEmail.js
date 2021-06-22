@@ -15,10 +15,7 @@ import './PfAboutEmail.scss';
 PfAboutEmail.propTypes = {};
 
 //
-function PfAboutEmail(props) {
-    //
-    const { email_obj } = props;
-
+function PfAboutEmail({ email_obj }) {
     //
     function handleUpdateItemObj(data) {
         const { email, password, permission } = data;
@@ -36,7 +33,7 @@ function PfAboutEmail(props) {
                     item_obj={email_obj}
                     Icon={IconsProfileAbout.email}
                     label="Mail"
-                    // 
+                    //
                     ComponentEdit={PfAbEmailEdit}
                     handle_API_U={handle_API_Email_U}
                     handleUpdateItemObj={handleUpdateItemObj}

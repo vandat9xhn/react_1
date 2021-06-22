@@ -76,7 +76,7 @@ function AddFriendBody(props) {
                 />
             </div>
 
-            <div className="text-align-center text-secondary opacity-5 label-field">
+            <div className="text-align-center text-secondary opacity-05 label-field">
                 <NoItem
                     no_item={!is_fetching && count == 0}
                     title="No Friend"

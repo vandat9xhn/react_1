@@ -20,6 +20,7 @@ FbLogin.propTypes = {};
 function FbLogin(props) {
     //
     const [fb_state, setFbState] = useState({
+        // status: '',
         picture: '',
     });
 
@@ -27,7 +28,8 @@ function FbLogin(props) {
 
     //
     useEffect(() => {
-        location.protocol === 'https:' && use_fb && loginToFb();
+        // location.protocol === 'https:' && use_fb && loginToFb();
+        loginToFb();
     }, []);
 
     //
@@ -35,17 +37,12 @@ function FbLogin(props) {
         try {
             const res = await checkStatusFb();
 
-            if (res === 'not_authorized') {
-                const res_login = await doLoginFb();
+            console.log(res);
 
-                setFbState({
-                    picture: res_login.picture.data.url,
-                });
-            } else {
-                setFbState({
-                    picture: res.picture.data.url,
-                });
-            }
+            setFbState({
+                picture: res.picture.data.url,
+            });
+            
         } catch (err) {
             console.log(err);
         }

@@ -46,7 +46,7 @@ function CountDownUpDiv({
     return (
         <div
             className={`CountDownUpDiv ${
-                disabled ? 'pointer-events-none opacity-5' : ''
+                disabled ? 'pointer-events-none opacity-05' : ''
             }`}
         >
             <div className="display-flex align-items-center">
@@ -54,7 +54,7 @@ function CountDownUpDiv({
                     <button
                         className={`CountDownUpDiv_btn btn btn-active ${
                             count <= min
-                                ? 'CountDownUpDiv_btn_disabled opacity-5'
+                                ? 'CountDownUpDiv_btn_disabled opacity-05'
                                 : 'btn-hv'
                         }`}
                         disabled={count <= min}
@@ -79,7 +79,7 @@ function CountDownUpDiv({
                     <button
                         className={`CountDownUpDiv_btn btn btn-active ${
                             count >= max
-                                ? 'CountDownUpDiv_btn_disabled opacity-5'
+                                ? 'CountDownUpDiv_btn_disabled opacity-05'
                                 : 'btn-hv'
                         }`}
                         disabled={count >= max}

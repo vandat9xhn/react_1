@@ -17,7 +17,7 @@ function CartHead(props) {
             <div>
                 <div
                     className={`FashionCart_del brs-5px ${
-                        count_checked ? '' : 'opacity-5'
+                        count_checked ? '' : 'opacity-05'
                     }`}
                     onClick={openConfirmDel}
                 >

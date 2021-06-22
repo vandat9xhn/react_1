@@ -44,7 +44,7 @@ function ActionsLike({ is_active, chat_ix, chooseBdTypeLike, user_like }) {
                     <div
                         className={`ActionsLike_del display-flex align-items-center flex-wrap ${
                             user_like == undefined || user_like == -1
-                                ? 'pointer-events-none opacity-5'
+                                ? 'pointer-events-none opacity-05'
                                 : 'cursor-pointer'
                         }`}
                     >

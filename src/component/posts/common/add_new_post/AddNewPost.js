@@ -65,7 +65,7 @@ function AddNewPost(props) {
                         </div>
 
                         <div className="AddNewPost_head-right bg-fb flex-grow-1">
-                            <div className="AddNewPost_head-right_title opacity-5">
+                            <div className="AddNewPost_head-right_title opacity-05">
                                 {title}
                             </div>
                         </div>

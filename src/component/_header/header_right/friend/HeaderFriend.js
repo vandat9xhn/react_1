@@ -17,7 +17,7 @@ function HeaderFriend({}) {
 
     //
     useEffect(() => {
-        getData_API_FriendCountNew();
+        location.pathname != '/add-friend-add' && getData_API_FriendCountNew();
     }, []);
 
     //

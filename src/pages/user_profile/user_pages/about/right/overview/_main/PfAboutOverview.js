@@ -11,7 +11,7 @@ import { handle_API_UserOverview_r } from '../../../../../__handle_api/ProfileHa
 
 import PfAboutOverviewItem from '../item/PfAboutOverviewItem';
 import PfAbOvSkeleton from '../skeleton/PfAbOvSkeleton';
-// 
+//
 import './PfAboutOverview.scss';
 
 //
@@ -19,7 +19,7 @@ PfAboutOverview.propTypes = {};
 
 //
 function PfAboutOverview(props) {
-    const id = GetIdSlug();
+    const user_id = GetIdSlug();
 
     //
     const [overview_state, setOverviewState] = useState({
@@ -36,7 +36,7 @@ function PfAboutOverview(props) {
 
     //
     async function getData_API_Overview() {
-        const data = await handle_API_UserOverview_r(id);
+        const data = await handle_API_UserOverview_r({ user_id: user_id });
 
         setOverviewState({
             overview_obj: data,
@@ -48,27 +48,28 @@ function PfAboutOverview(props) {
     return (
         <div>
             <div className={has_fetched ? '' : 'display-none'}>
-                {common_overview_icon.map(
-                    (item, ix) =>
-                        overview_obj[item.key_data + '_arr'] && (
-                            <div
-                                key={`PfAboutOverview_item${ix}`}
-                                className="PfAboutOverview_item"
-                            >
-                                <PfAboutOverviewItem
-                                    link_to={`?sk=about_${item.search}`}
-                                    Icon={item.Icon}
-                                    title={
-                                        overview_obj[item.key_data + '_arr'][0]
-                                            .name
-                                    }
-                                    permission={
-                                        overview_obj[item.key_data + '_arr'][0]
-                                            .permission
-                                    }
-                                />
-                            </div>
-                        )
+                {common_overview_icon.map((item, ix) =>
+                    overview_obj[item.key_data + '_arr'] &&
+                    overview_obj[item.key_data + '_arr'].length ? (
+                        <div
+                            key={`PfAboutOverview_item${ix}`}
+                            className="PfAboutOverview_item"
+                        >
+                            <PfAboutOverviewItem
+                                link_to={`?sk=about_${item.search}`}
+                                Icon={item.Icon}
+                                title={
+                                    overview_obj[item.key_data + '_arr'][0].name
+                                }
+                                permission={
+                                    overview_obj[item.key_data + '_arr'][0]
+                                        .permission
+                                }
+                            />
+                        </div>
+                    ) : (
+                        <div key={`${ix}`}></div>
+                    )
                 )}
             </div>
 

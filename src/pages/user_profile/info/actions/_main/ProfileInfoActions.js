@@ -6,28 +6,26 @@ import { context_api } from '../../../../../_context/ContextAPI';
 import IconsMenu from '../../../../../_icons_svg/icons_menu/IconsMenu';
 //
 import { handleInfoActions } from '../case/_main/InfoActionsCase';
-// 
+//
 import './ProfileInfoActions.scss';
 
 //
 ProfileInfoActions.propTypes = {};
 
 //
-function ProfileInfoActions(props) {
-    const {
-        id,
-        is_user,
-        user_related,
-        permission_add_friend,
-        is_block_message,
+function ProfileInfoActions({
+    id,
+    is_user,
+    user_related,
+    permission_add_friend,
+    is_block_message,
 
-        handleAddStory,
-        handleAcceptRequest,
-        handleCancelRequest,
-        handleAddFriend,
-        handleFollowFriend,
-    } = props;
-
+    handleAddStory,
+    handleAcceptRequest,
+    handleCancelRequest,
+    handleAddFriend,
+    handleFollowFriend,
+}) {
     //
     const { openMessage } = useContext(context_api);
 
@@ -41,9 +39,7 @@ function ProfileInfoActions(props) {
         <div className="ProfileInfoActions">
             <div className="brs-5px label-field">
                 <div className="display-flex-center">
-                    <div
-                        className="display-flex-center"
-                    >
+                    <div className="display-flex-center">
                         <div className="ProfileInfoActions_add-friend display-flex-center brs-5px">
                             {handleInfoActions(
                                 user_related,
@@ -63,7 +59,7 @@ function ProfileInfoActions(props) {
                             title="message"
                             onClick={onOpenMessage}
                         >
-                            <IconsMenu x={200} y={200} />
+                            <IconsMenu x={200} y={200} size_icon="2rem" />
                         </div>
                     )}
                 </div>

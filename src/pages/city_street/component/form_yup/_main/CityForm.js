@@ -144,7 +144,7 @@ function CityForm({
                                 className={`App_submit display-flex-center  ${
                                     props.dirty || new_bg_color != bg_color
                                         ? ''
-                                        : 'pointer-events-none opacity-5'
+                                        : 'pointer-events-none opacity-05'
                                 }`}
                                 onClick={() => handleError(props.errors)}
                             >

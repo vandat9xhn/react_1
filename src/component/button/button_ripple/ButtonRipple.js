@@ -36,7 +36,7 @@ function ButtonRipple({
     return (
         <button
             className={`ButtonRipple label-field ${
-                disabled ? 'opacity-5 pointer-events-none' : 'cursor-pointer'
+                disabled ? 'opacity-05 pointer-events-none' : 'cursor-pointer'
             }`}
             type={type}
             title={title}

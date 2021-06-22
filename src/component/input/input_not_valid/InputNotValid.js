@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { useFocusBlur } from '../../../_custom_hooks/useFocusBlur';
-// 
+//
 import './InputNotValid.scss';
 
 //
@@ -23,12 +23,16 @@ InputNotValid.defaultProps = {
 };
 
 //
-function InputNotValid(props) {
+function InputNotValid({
+    name,
+    value,
+    type,
+    placeholder,
+    max_length,
+    handleChange,
+}) {
     //
-    const { name, value, type, placeholder, max_length, handleChange } = props;
-
-    // 
-    const {is_focus, handleFocus, handleBlur} = useFocusBlur()
+    const { is_focus, handleFocus, handleBlur } = useFocusBlur();
 
     //
     return (
@@ -54,7 +58,7 @@ function InputNotValid(props) {
 
             <div
                 className={`InputNotValid_placeholder input-placeholder ${
-                    is_focus ? 'text-blue' : ''
+                    is_focus ? 'input-placeholder-active' : ''
                 }`}
             >
                 {placeholder}

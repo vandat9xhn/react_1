@@ -137,6 +137,7 @@ export async function checkStatusFb() {
         const res = await promisesFB.checkLoginState();
 
         console.log(res);
+
         if (res.status !== 'connected') {
             return 'not_authorized';
         }
@@ -177,13 +178,3 @@ export async function doLogoutFb() {
         throw err;
     }
 }
-
-// checkStatus
-
-// => if not login => login
-// => if not user => fail
-// => if user => fetch_data_user
-
-// => if login => fetch_data_user
-
-// => logout

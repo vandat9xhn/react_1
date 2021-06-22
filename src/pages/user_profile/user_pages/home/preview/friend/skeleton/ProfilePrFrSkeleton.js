@@ -27,7 +27,11 @@ function ProfilePrFrSkeleton(props) {
                                 className="ProfilePrFriend_pic-item"
                             >
                                 <div>
-                                    <img src={image_loading} alt="" />
+                                    <img
+                                        className="wh-100 brs-5px"
+                                        src={image_loading}
+                                        alt=""
+                                    />
                                 </div>
 
                                 <div className="ProfilePrFrSkeleton_pic-name">

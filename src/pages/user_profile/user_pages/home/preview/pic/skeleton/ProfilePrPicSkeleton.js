@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import SkeletonDiv from '../../../../../../../component/skeleton/skeleton_div/SkeletonDiv';
 //
 import image_loading from '../../../../../../../../image/image_loading.svg';
-// 
-
+//
 
 //
 ProfilePrPicSkeleton.propTypes = {};
@@ -27,7 +26,11 @@ function ProfilePrPicSkeleton(props) {
                                 key={`ProfilePrPicSkeleton_${ix}`}
                                 className="ProfilePrPic_item"
                             >
-                                <img src={image_loading} alt="" />
+                                <img
+                                    className="wh-100 padding-8px brs-5px"
+                                    src={image_loading}
+                                    alt=""
+                                />
                             </div>
                         ))}
                 </div>

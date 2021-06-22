@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { useForceUpdate } from '../../../../../../../../../_custom_hooks/UseForceUpdate';
-// 
+//
 import { handle_API_Phone_C } from '../../../../../../../__handle_api/ProfileHandleAPI';
 
 import PfAboutAdd from '../../../../_component/add/PfAboutAdd';
@@ -16,24 +16,21 @@ PfAboutPhone.propTypes = {
 };
 
 //
-function PfAboutPhone(props) {
+function PfAboutPhone({ phone_arr }) {
     //
-    const { phone_arr } = props;
+    const forceUpdate = useForceUpdate();
 
-    // 
-    const forceUpdate = useForceUpdate()
-
-    // 
+    //
     function handleCreate(data) {
-        const {phone, permission} = data;
+        const { phone, permission } = data;
 
         phone_arr.push({
             id: 101 + phone_arr.length,
             title: phone,
             phone: phone,
             permission: permission,
-        })
-        forceUpdate()
+        });
+        forceUpdate();
     }
 
     //

@@ -1,63 +1,14 @@
 import img from '../../../../image/my_image.png';
+import phone_jpg from '../../../../image/phone_jpg.jpg';
+import banner_phone from '../../../../image/banner_phone.jpg';
+import naruto_x_hinata from '../../../../image/naruto_x_hinata.jpg';
 
-import { permission_add_friend_obj, user_related_obj } from '../__some_obj/InfoObj';
+import {
+    permission_add_friend_obj,
+    user_related_obj,
+} from '../__some_obj/InfoObj';
 
 /* ----------------------------------------- */
-
-//
-export const default_user_r = [
-    {
-        id: 1,
-        picture: img,
-        cover_picture: img,
-        first_name: 'Nguyen',
-        last_name: 'Dat',
-        nick_name: 'nothing',
-        story: 'Ha Ha',
-        university: 'USSH',
-        hobby: 'Play game',
-        from: 'Vinh Phuc',
-        live_now: 'Vinh Phuc',
-
-        permission_add_friend: permission_add_friend_obj.has_mutual_friend,
-        user_related: user_related_obj.c_user,
-        is_block_message: 0,
-    },
-    {
-        id: 2,
-        picture: img,
-        cover_picture: img,
-        first_name: 'My',
-        last_name: 'My',
-        nick_name: 'my my',
-        story: 'Game',
-        university: 'FPT',
-        hobby: 'CODE',
-        from: 'Nam Dinh',
-        live_now: 'Hai Hau',
-
-        permission_add_friend: permission_add_friend_obj.no_mutual_friend,
-        user_related: user_related_obj.has_mutual_friend,
-        is_block_message: 0,
-    },
-    {
-        id: 3,
-        picture: img,
-        cover_picture: img,
-        first_name: 'Ngoc',
-        last_name: 'My',
-        nick_name: '<3',
-        story: '',
-        university: 'Havard',
-        hobby: 'Sleep',
-        from: 'Vinh Phuc',
-        live_now: 'Vinh Phuc',
-
-        permission_add_friend: permission_add_friend_obj.follow,
-        user_related: user_related_obj.send_request,
-        is_block_message: 1,
-    },
-];
 
 // friends
 export const default_friend_arr = [
@@ -161,18 +112,114 @@ export const default_friend_arr = [
 
 // user
 
-export const default_user_about_r = {
-    work_arr: [{
-        name: 'IT at Ha Noi',
-        permission: 0,
-    }],
-    university_arr: [{
-        name: 'Dai hoc Buon long ga ban long vit',
-        permission: 0,
-    }],
-    school_arr: [{
-        name: 'Le Quy Don',
-        permission: 0,
-    }],
-    
+function getRandomItemArr(arr = [], default_return) {
+    if (arr.length == 0) return default_return;
+
+    return arr[Math.floor(Math.random() * (arr.length - 1))];
 }
+
+const first_name_arr = [
+    'Mon',
+    'Tues',
+    'Wednes',
+    'Thurs',
+    'Fri',
+    'Satur',
+    'Sun',
+];
+const picture_arr = [img, banner_phone, naruto_x_hinata, phone_jpg];
+const cover_arr = [img, banner_phone, naruto_x_hinata, phone_jpg];
+const user_related_arr = [
+    'no_mutual_friend',
+    'has_mutual_friend',
+    'send_request',
+    'received_request',
+    'friend',
+    'c_user',
+];
+
+export const default_user_about_r = () => ({
+    id: Math.floor(Math.random() * 1000),
+    first_name: getRandomItemArr(first_name_arr),
+    last_name: 'Day',
+    picture: getRandomItemArr(picture_arr, ''),
+    cover: getRandomItemArr(cover_arr, ''),
+
+    user_related: getRandomItemArr(user_related_arr),
+    permission_add_friend: 0,
+    is_block_message: 0,
+
+    gender_obj: {
+        id: 5,
+        title: 'Male',
+        gender: 'male',
+        permission: 0,
+        profile_model: 11,
+    },
+
+    birth_obj: {
+        id: 5,
+        title: '2000-11-10',
+        birth: '2000-11-10',
+        permission: 0,
+        profile_model: 11,
+    },
+
+    lang_obj: {
+        id: 5,
+        title: '',
+        lang: '',
+        permission: 0,
+        profile_model: 11,
+    },
+
+    life_arr: [],
+
+    mail_obj: {
+        id: 8,
+        title: 'monday@gmail.com',
+        mail: 'monday@gmail.com',
+        permission: 0,
+        profile_model: 11,
+    },
+
+    phone_arr: [],
+    address_arr: [],
+    town_arr: [],
+    city_arr: [],
+
+    family_arr: [],
+
+    relation_obj: {
+        id: 5,
+        title: '',
+        relation: '',
+        permission: 0,
+        profile_model: 11,
+    },
+
+    work_arr: [],
+    school_arr: [],
+    university_arr: [],
+
+    hobby_obj: {
+        id: 5,
+        title: '',
+        hobby: '',
+        permission: 0,
+        profile_model: 11,
+    },
+
+    you_obj: {
+        id: 5,
+        title: '',
+        you: '',
+        permission: 0,
+        profile_model: 11,
+    },
+
+    other_name_arr: [],
+
+    is_online: true,
+    created_time: '2021-06-10T01:15:38.302083Z',
+});

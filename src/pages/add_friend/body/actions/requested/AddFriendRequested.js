@@ -125,7 +125,7 @@ function AddFriendRequested(props) {
                 </div>
 
                 <div
-                    className={`text-align-center opacity-5 label-field ${
+                    className={`text-align-center opacity-05 label-field ${
                         !status_requested ? 'display-none' : ''
                     }`}
                 >

@@ -2,13 +2,11 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
-
-import { GetIdSlug } from '../../../../_some_function/GetIdSlug';
 //
 import SkeletonDiv from '../../../../component/skeleton/skeleton_div/SkeletonDiv';
 //
 import './ProfileInfo.scss';
-// 
+//
 import ProfileInfoActions from '../actions/_main/ProfileInfoActions';
 import ProfileInfoStory from '../story/_main/ProfileInfoStory';
 import ProfileInfoPicture from '../picture/_main/ProfileInfoPicture';
@@ -21,27 +19,28 @@ ProfileInfo.propTypes = {
 };
 
 //
-function ProfileInfo({profile, openCoverPicture, openPicture}) {
-    //
-    const id = GetIdSlug();
-
+function ProfileInfo({ profile, openCoverPicture, openPicture }) {
     //
     const { user } = useContext(context_api);
 
-    // 
+    //
     const {
-        // id,
+        id,
         picture,
-        cover_picture,
+        cover,
         first_name,
         last_name,
-        nick_name,
-        story,
 
         user_related,
         permission_add_friend,
         is_block_message,
     } = profile;
+
+    const story = profile.you_obj.you;
+
+    const nick_name = profile.other_name_arr.length
+        ? profile.other_name_arr[0].other_name
+        : '';
 
     //
     function handleChangeStory() {
@@ -78,7 +77,7 @@ function ProfileInfo({profile, openCoverPicture, openPicture}) {
         <div className="ProfileInfo bg-primary">
             <div className="ProfileInfo_pics">
                 <ProfileInfoPicture
-                    cover_picture={cover_picture}
+                    cover={cover}
                     picture={picture}
                     openCoverPicture={openCoverPicture}
                     openPicture={openPicture}

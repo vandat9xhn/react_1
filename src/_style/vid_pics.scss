@@ -57,6 +57,10 @@
     object-fit: cover;
 }
 
+.vid_pic-observe{
+    transition: opacity 250ms ease-in-out;
+}
+
 
 //
 @media (max-width: 500px){

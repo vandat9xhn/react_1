@@ -12,7 +12,7 @@ import ProfileSkeleton from '../__common/skeleton/ProfileSkeleton';
 import { handle_API_ProfileUser_R } from '../__handle_api/ProfileHandleAPI';
 //
 import './Profile.scss';
-// 
+//
 import ProfileInfo from '../info/_main/ProfileInfo';
 import ProfileMore from '../more/_main/ProfileMore';
 
@@ -54,7 +54,7 @@ function Profile(props) {
             is_fetching: true,
         });
 
-        const data = await handle_API_ProfileUser_R(id);
+        const data = await handle_API_ProfileUser_R({ user_id: id });
 
         ProfileRoutes.find((item) => item.search == '').props = {
             last_name: data.last_name,
@@ -69,7 +69,7 @@ function Profile(props) {
 
     //
     function handleNotFoundRoute() {
-        setRouteLoadedArr([''])
+        setRouteLoadedArr(['']);
     }
 
     //

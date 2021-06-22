@@ -32,7 +32,7 @@ function VoucherChoice({
         >
             <div
                 className={`VoucherChoice_row display-flex align-items-center ${
-                    !disabled ? '' : 'opacity-5 pointer-events-none'
+                    !disabled ? '' : 'opacity-05 pointer-events-none'
                 }`}
             >
                 <div className="VoucherChoice_img">

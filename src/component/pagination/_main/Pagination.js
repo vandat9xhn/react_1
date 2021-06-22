@@ -40,7 +40,7 @@ function Pagination({
     return (
         <div
             className={`Pagination ${
-                is_fetching ? 'pointer-events-none opacity-5' : ''
+                is_fetching ? 'pointer-events-none opacity-05' : ''
             }`}
         >
             <div className="Pagination_row display-flex">

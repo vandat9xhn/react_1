@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+//
+import { GetIdSlug } from '../../../../../../../_some_function/GetIdSlug';
+//
+import { handle_API_UserOverview_r } from '../../../../../__handle_api/ProfileHandleAPI';
+import { initial_contact_basis_state } from '../../../__common/initial/initial';
 //
 import PfAboutContact from '../contact/_main/PfAboutContact';
 import PfAboutBasis from '../basis/_main/PfAboutBasis';
@@ -11,70 +16,47 @@ PfAboutContactBasis.propTypes = {};
 
 //
 function PfAboutContactBasis(props) {
-    /*--------- BASIS ----------*/ 
     //
-    const gender_obj = {
-        gender: 'male',
-        permission: 0,
-        title: 'Male',
-    };
-    
+    const user_id = GetIdSlug();
+
     //
-    const lang_obj = {
-        lang: '',
-        permission: 0,
-        title: '',
-    };
-    
+    const [about_state, setAboutState] = useState({
+        ...initial_contact_basis_state,
+    });
+
+    const {
+        phone_arr,
+        email_obj,
+        address_arr,
+
+        gender_obj,
+        birth_obj,
+        lang_obj,
+
+        has_fetched,
+    } = about_state;
+
     //
-    const birth_obj = {
-        birth: '',
-        permission: 0,
-        title: '',
-    };
+    useEffect(() => {
+        getData_API_About();
+    }, []);
 
-    /*--------- CONTACT ----------*/ 
-    
     //
-    const email_obj = {
-        id: 1,
-        title: 'mymy@gmail.com',
-        email: 'mymy@gmail.com',
-        permission: 0,
-    };
+    async function getData_API_About() {
+        const about_obj = await handle_API_UserOverview_r({ user_id: user_id });
 
-    const phone_arr = [
-        {
-            id: 1,
-            title: '0123456789',
-            phone: '0123456789',
-            permission: 0,
-        },
-        {
-            id: 2,
-            title: '9876543210',
-            phone: '9876543210',
-            permission: 0,
-        },
-    ];
+        setAboutState({
+            phone_arr: about_obj.phone_arr,
+            email_obj: about_obj.mail_obj,
+            address_arr: about_obj.address_arr,
 
-    const address_arr = [
-        {
-            id: 1,
-            title: 'Ha Noi',
-            address: 'Ha Noi',
-            permission: 0,
-        },
-        {
-            id: 2,
-            title: 'Vinh Phuc',
-            address: 'Vinh Phuc',
-            permission: 0,
-        },
-    ];
+            gender_obj: about_obj.gender_obj,
+            birth_obj: about_obj.birth_obj,
+            lang_obj: about_obj.lang_obj,
 
-    // 
-    const has_fetched = true
+            has_fetched: true,
+        });
+    }
 
     //
     return (

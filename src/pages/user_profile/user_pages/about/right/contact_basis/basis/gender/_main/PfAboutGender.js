@@ -15,10 +15,7 @@ import './PfAboutGender.scss';
 PfAboutGender.propTypes = {};
 
 //
-function PfAboutGender(props) {
-    //
-    const { gender_obj } = props;
-
+function PfAboutGender({ gender_obj }) {
     //
     function handleUpdateItemObj(data) {
         const { gender, permission } = data;

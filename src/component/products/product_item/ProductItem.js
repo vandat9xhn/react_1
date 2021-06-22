@@ -1,14 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { formatNum } from '../../../_some_function/FormatNum';
-import { observerVidPic } from '../../../_some_function/ImageObserve';
 //
+import VidPicObserve from '../../vid_pic/observe/VidPicObserve';
 import ProductItemSkeleton from '../skeleton/ProductItemSkeleton';
 //
 import './ProductItem.scss';
 
+// 
 ProductItem.propTypes = {
     img_or_dataset: PropTypes.bool,
 
@@ -40,15 +41,6 @@ function ProductItem({
     installment,
 }) {
     //
-    const ref_image = useRef(null);
-
-    //
-    useEffect(() => {
-        ref_image.current != null &&
-            observerVidPic(ref_image.current, 'data-src');
-    }, [img]);
-
-    //
     return name ? (
         <div className="ProductItem padding-8px position-rel" title={name}>
             <Link to={link} className="normal-text hv-cl-blue">
@@ -56,7 +48,7 @@ function ProductItem({
                     {img_or_dataset ? (
                         <img src={img} alt="" />
                     ) : (
-                        <img ref={ref_image} data-src={img} alt="" />
+                        <VidPicObserve vid_pic={img} />
                     )}
                 </div>
 

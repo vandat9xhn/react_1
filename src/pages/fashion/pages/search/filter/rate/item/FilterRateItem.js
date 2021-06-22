@@ -22,7 +22,7 @@ function FilterRateItem(props) {
     return (
         <div
             className={`FilterRateItem cursor-pointer ${
-                is_active ? '' : 'opacity-5'
+                is_active ? '' : 'opacity-05'
             }`}
             onClick={onFilterRate}
         >

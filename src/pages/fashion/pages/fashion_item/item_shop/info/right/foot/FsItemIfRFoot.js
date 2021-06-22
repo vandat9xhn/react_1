@@ -35,7 +35,7 @@ function FsItemIfRFoot({ max, total_add_cart, wait_add_cart, addToCart }) {
                         wait_add_cart ? 'cursor-wait' : 'cursor-pointer'
                     } ${
                         max == 0 || wait_add_cart
-                            ? 'pointer-events-none opacity-5'
+                            ? 'pointer-events-none opacity-05'
                             : ''
                     }`}
                     onClick={addToCart}

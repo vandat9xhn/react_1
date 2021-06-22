@@ -55,6 +55,10 @@
         font-size: 14px;
         font-weight: 500;
     }
+
+    .input-placeholder-active{
+        color: var(--blue);
+    }
 }
 
 .input-placeholder {
@@ -78,7 +82,7 @@
     padding: 0;
 }
 
-/* ------------------------- S ---------------------- */
+/* ------------------------- O ---------------------- */
 
 .one-line {
     white-space: nowrap;

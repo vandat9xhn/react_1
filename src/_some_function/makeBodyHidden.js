@@ -1,3 +1,4 @@
+// Deprecated
 //
 export function checkBodyHidden() {
     return document.getElementsByTagName('BODY')[0].style.overflowY == 'hidden';
