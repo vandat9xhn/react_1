@@ -25,7 +25,7 @@ export const type_video_or_img = (vid_pic = '', type = '') => {
 //
 export const VideoOrImage = (vid_pic = '', type = '', video, img) => {
     if (!vid_pic) {
-        return;
+        return '';
     }
 
     const type_vid_pic = type_video_or_img(vid_pic, type);

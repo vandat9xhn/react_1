@@ -1,44 +1,53 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { useRouteLoaded } from '../../../_custom_hooks/useRouteLoaded';
 //
 import RouteLoaded from '../../../component/_route/route_loaded/RouteLoaded';
 //
-import { initial_profile } from '../__common/initial/Initial';
 import { ProfileRoutes, profile_search_arr } from '../__common/routes/routes';
-import ProfileSkeleton from '../__common/skeleton/ProfileSkeleton';
-
+// 
+import { initial_profile } from '../__common/initial/Initial';
+// 
 import { handle_API_ProfileUser_R } from '../__handle_api/ProfileHandleAPI';
 //
-import './Profile.scss';
-//
+import ProfileSkeleton from '../__common/skeleton/ProfileSkeleton';
 import ProfileInfo from '../info/_main/ProfileInfo';
 import ProfileMore from '../more/_main/ProfileMore';
+//
+import './Profile.scss';
 
 //
 function Profile(props) {
+    // 
+    const use_history = useHistory()
+
+    // 
     const { id } = props.match.params;
 
     //
     const [profile_state, setProfileState] = useState({
-        profile: { ...initial_profile },
+        profile: initial_profile,
         is_fetching: false,
     });
 
     const { profile, is_fetching } = profile_state;
 
     //
-    const [route_loaded_arr, setRouteLoadedArr] = useRouteLoaded({
-        part_location: 'search',
-        allowed_routes: profile_search_arr,
-        handleNotFoundRoute: handleNotFoundRoute,
-    });
+    const { route_arr } =
+        useRouteLoaded({
+            initial_route_arr: ProfileRoutes,
+            part_location: 'search',
+            allow_routes_str: profile_search_arr,
+            deps: [id],
+
+            handleNotFoundRoute: handleNotFoundRoute,
+        });
 
     //
     useEffect(() => {
         handleChangeId();
-        setRouteLoadedArr([location.search]);
         getProfileInfo();
     }, [id]);
 
@@ -56,8 +65,12 @@ function Profile(props) {
 
         const data = await handle_API_ProfileUser_R({ user_id: id });
 
-        ProfileRoutes.find((item) => item.search == '').props = {
-            last_name: data.last_name,
+        route_arr.find((item) => item.search == '').props = {
+            name: data.first_name + ' ' + data.last_name,
+        };
+
+        route_arr.find((item) => item.search.includes('?sk=about')).props = {
+            name: data.first_name + ' ' + data.last_name,
         };
 
         setProfileState({
@@ -69,7 +82,7 @@ function Profile(props) {
 
     //
     function handleNotFoundRoute() {
-        setRouteLoadedArr(['']);
+        use_history.replace('/profile/' + id)
     }
 
     //
@@ -88,6 +101,7 @@ function Profile(props) {
             <div className="Profile_info">
                 <ProfileInfo
                     profile={profile}
+                    is_fetching={is_fetching}
                     openCoverPicture={openCoverPicture}
                     openPicture={openPicture}
                 />
@@ -98,9 +112,7 @@ function Profile(props) {
             </div>
 
             <RouteLoaded
-                route_arr={ProfileRoutes}
-                part_location="search"
-                route_loaded_arr={route_loaded_arr}
+                route_arr={route_arr}
                 fallback={<ProfileSkeleton />}
             />
         </div>

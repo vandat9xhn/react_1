@@ -10,4 +10,10 @@
     &_name-story {
         margin-bottom: 0.5rem;
     }
+
+    &_actions{
+        .SkeletonDiv_div{
+            height: 2rem;
+        }
+    }
 }

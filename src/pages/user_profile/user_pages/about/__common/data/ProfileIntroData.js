@@ -26,8 +26,8 @@ export const common_overview_icon = [
         search: 'work_edu',
     },
     {
-        Icon: IconsProfileAbout.hometown,
-        key_data: 'hometown',
+        Icon: IconsProfileAbout.town,
+        key_data: 'town',
         search: 'place_lived',
     },
     {

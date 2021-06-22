@@ -13,7 +13,7 @@ ProfileHome.propTypes = {
 };
 
 //
-function ProfileHome({last_name}) {
+function ProfileHome({name}) {
 
     //
     return (
@@ -24,7 +24,7 @@ function ProfileHome({last_name}) {
                 </div>
 
                 <div className="ProfileHome_col-right">
-                    <ProfilePosts last_name={last_name}/>
+                    <ProfilePosts name={name}/>
                 </div>
             </div>
         </div>

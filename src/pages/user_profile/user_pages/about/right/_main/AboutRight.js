@@ -7,7 +7,7 @@ import { handleScrollSmooth } from '../../../../../../_some_function/handleScrol
 //
 import RouteLoaded from '../../../../../../component/_route/route_loaded/RouteLoaded';
 //
-import { AboutRoutes, about_search_arr } from '../../__common/routes/routes';
+import { AboutRoutes, about_searches_str } from '../../__common/routes/routes';
 //
 import './AboutRight.scss';
 
@@ -15,23 +15,30 @@ import './AboutRight.scss';
 AboutRight.propTypes = {};
 
 //
-function AboutRight(props) {
-    // 
-    const ref_about_right = useRef(null)
+function AboutRight({ name }) {
+    //
+    const ref_about_right = useRef(null);
 
     //
-    const [route_loaded_arr, setRouteLoadedArr] = useRouteLoaded({
+    const { route_arr } = useRouteLoaded({
+        initial_route_arr: AboutRoutes.map((item) => {
+            if (item.search == '?sk=about_details') {
+                item.props = { name: name };
+            }
+            
+            return item;
+        }),
         part_location: 'search',
+        allow_routes_str: about_searches_str,
         handleAfterSetRouteLoaded: handleAfterSetRouteLoaded,
-        allowed_routes: about_search_arr,
     });
 
-    // 
-    function handleAfterSetRouteLoaded(){
-        if (window.innerWidth < 1000) {            
+    //
+    function handleAfterSetRouteLoaded() {
+        if (window.innerWidth < 1000) {
             handleScrollSmooth(() => {
-                ref_about_right.current.scrollIntoView(false)
-            })
+                ref_about_right.current.scrollIntoView(false);
+            });
         }
     }
 
@@ -39,9 +46,7 @@ function AboutRight(props) {
     return (
         <div ref={ref_about_right}>
             <RouteLoaded
-                route_arr={AboutRoutes}
-                part_location="search"
-                route_loaded_arr={route_loaded_arr}
+                route_arr={route_arr}
                 fallback={<div className="AboutRight_fallback wh-100"></div>}
             />
         </div>

@@ -65,7 +65,7 @@ export const AboutCommonRoutes = [
         component: PfAboutDetails,
         search: '?sk=about_details',
         props: {},
-        title: 'Details about you',
+        title: 'Details',
     },
     {
         component: PfAboutLifeEvents,
@@ -76,11 +76,16 @@ export const AboutCommonRoutes = [
 ];
 
 //
-export const AboutRoutes = AboutCommonRoutes.map(item => ({
+export const AboutRoutes = AboutCommonRoutes.map((item) => ({
     component: item.component,
     search: item.search,
     props: item.props,
+    is_active: false,
+    is_loaded: false,
 }));
 
 //
-export const about_search_arr = AboutCommonRoutes.map((item) => item.search);
+export const about_searches_str = AboutCommonRoutes.reduce(
+    (a, b) => a + b.search,
+    ''
+);

@@ -8,7 +8,7 @@ import RouteLoaded from '../../../../../component/_route/route_loaded/RouteLoade
 //
 import ProfileSkeleton from '../../../__common/skeleton/ProfileSkeleton';
 
-import { PhotosRoutes, photos_search_arr } from '../__common/routes/routes';
+import { PhotosRoutes, photos_searches_str } from '../__common/routes/routes';
 //
 import './ProfilePhoto.scss';
 
@@ -30,9 +30,10 @@ ProfilePhoto.propTypes = {};
 //
 function ProfilePhoto(props) {
     //
-    const [route_loaded_arr] = useRouteLoaded({
+    const { route_arr } = useRouteLoaded({
+        initial_route_arr: PhotosRoutes,
         part_location: 'search',
-        allowed_routes: photos_search_arr,
+        allow_routes_str: photos_searches_str,
     });
 
     //
@@ -69,9 +70,7 @@ function ProfilePhoto(props) {
 
                 <div>
                     <RouteLoaded
-                        route_arr={PhotosRoutes}
-                        part_location="search"
-                        route_loaded_arr={route_loaded_arr}
+                        route_arr={route_arr}
                         fallback={<ProfileSkeleton />}
                     />
                 </div>

@@ -16,19 +16,16 @@ import Posts from '../../../../../component/posts/_posts/_main/PostsWs';
 
 //
 ProfilePosts.propTypes = {
-    last_name: PropTypes.string,
+    name: PropTypes.string,
 };
 
 //
-function ProfilePosts(props) {
+function ProfilePosts({name}) {
     //
     const { user } = useContext(context_api);
 
     //
     const id = GetIdSlug();
-
-    //
-    const { last_name } = props;
 
     //
     const ref_component = useRef(null);
@@ -60,7 +57,7 @@ function ProfilePosts(props) {
                     title_add_new={
                         user.id == id
                             ? 'Post a status update'
-                            : `Write a post on ${last_name}'s timeline`
+                            : `Write a post on ${name}'s timeline`
                     }
                     has_fetched={has_fetched}
                     is_fetching={is_fetching}

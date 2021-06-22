@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import './SkeletonDiv.scss';
 
-// 
+//
 SkeletonDiv.propTypes = {
     num: PropTypes.number,
 };
@@ -18,7 +18,12 @@ function SkeletonDiv({ num }) {
     return (
         <div className="SkeletonDiv">
             {Array.from({ length: num }, (_, k) => k).map((item) => (
-                <div key={`SkeletonDiv_${item}`} className="SkeletonDiv_div" />
+                <div
+                    key={`SkeletonDiv_${item}`}
+                    className="SkeletonDiv_contain"
+                >
+                    <div className="SkeletonDiv_div"></div>
+                </div>
             ))}
         </div>
     );

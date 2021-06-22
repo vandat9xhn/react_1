@@ -59,7 +59,7 @@ function PfAboutOverview(props) {
                                 link_to={`?sk=about_${item.search}`}
                                 Icon={item.Icon}
                                 title={
-                                    overview_obj[item.key_data + '_arr'][0].name
+                                    overview_obj[item.key_data + '_arr'][0].title
                                 }
                                 permission={
                                     overview_obj[item.key_data + '_arr'][0]

@@ -1,19 +1,17 @@
 // 
+.SkeletonDiv_contain{
+    height: 1.5rem;
+}
+
 .SkeletonDiv_div{
-    margin: 0.75rem;
-    height: 0.75rem;
+    height: 1rem;
     border-radius: 20px;
     background-color: var(--bg-skeleton);
 
     animation: loading 2s infinite alternate;
 }
 
-@media (max-width: 600px){
-    .SkeletonDiv_div{
-        margin: 0.5rem;
-    }
-}
-
+// 
 @keyframes loading{
     0%{opacity: 0.75;}
     100%{opacity: 0.25;}

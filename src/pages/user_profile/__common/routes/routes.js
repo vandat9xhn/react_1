@@ -1,7 +1,7 @@
 import React from 'react';
 //
-import { about_search_arr } from '../../user_pages/about/__common/routes/routes';
-import { photos_search_arr } from '../../user_pages/photo/__common/routes/routes';
+import { about_searches_str } from '../../user_pages/about/__common/routes/routes';
+import { photos_searches_str } from '../../user_pages/photo/__common/routes/routes';
 
 //
 const ProfileHome = React.lazy(() =>
@@ -22,27 +22,38 @@ export const ProfileRoutes = [
     {
         component: ProfileHome,
         search: '',
+        is_active: false,
+        is_loaded: false,
         props: {},
     },
 
     {
         component: ProfileAbout,
-        search: about_search_arr,
+        search: about_searches_str,
+        is_active: false,
+        is_loaded: false,
         props: {},
     },
 
     {
         component: ProfilePhoto,
-        search: photos_search_arr,
+        search: photos_searches_str,
+        is_active: false,
+        is_loaded: false,
         props: {},
     },
 
     {
         component: ProfileFriend,
         search: '?sk=friend',
+        is_active: false,
+        is_loaded: false,
         props: {},
     },
 ];
 
 //
-export const profile_search_arr = ['', '?sk=friend', ...about_search_arr, ...photos_search_arr]
+export const profile_search_arr = ProfileRoutes.reduce(
+    (a, b) => a + b.search,
+    ''
+);

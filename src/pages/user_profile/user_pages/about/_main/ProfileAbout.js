@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import AboutLeft from '../left/_main/AboutLeft';
@@ -11,7 +11,7 @@ import './ProfileAboutCommon.scss';
 ProfileAbout.propTypes = {};
 
 //
-function ProfileAbout() {
+function ProfileAbout({ name }) {
 
     //
     return (
@@ -22,7 +22,7 @@ function ProfileAbout() {
                 </div>
 
                 <div className="ProfileAbout_right padding-8px">
-                    <AboutRight />
+                    <AboutRight name={name} />
                 </div>
             </div>
         </div>

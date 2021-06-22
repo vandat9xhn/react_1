@@ -12,6 +12,7 @@ import './ProductItem.scss';
 // 
 ProductItem.propTypes = {
     img_or_dataset: PropTypes.bool,
+    num_row_info: PropTypes.number,
 
     link: PropTypes.string,
     img: PropTypes.string,
@@ -25,11 +26,13 @@ ProductItem.propTypes = {
 
 ProductItem.defaultProps = {
     img_or_dataset: true,
+    num_row_info: 4,
 };
 
 //
 function ProductItem({
     img_or_dataset,
+    num_row_info,
 
     link,
     img,
@@ -45,11 +48,13 @@ function ProductItem({
         <div className="ProductItem padding-8px position-rel" title={name}>
             <Link to={link} className="normal-text hv-cl-blue">
                 <div className="ProductItem_head">
-                    {img_or_dataset ? (
-                        <img src={img} alt="" />
-                    ) : (
-                        <VidPicObserve vid_pic={img} />
-                    )}
+                    <div className="ProductItem_head-img pos-abs-100">
+                        {img_or_dataset ? (
+                            <img src={img} alt="" />
+                        ) : (
+                            <VidPicObserve vid_pic={img} />
+                        )}
+                    </div>
                 </div>
 
                 <div className="ProductItem_foot">
@@ -89,7 +94,7 @@ function ProductItem({
             )}
         </div>
     ) : (
-        <ProductItemSkeleton />
+        <ProductItemSkeleton num_row_info={num_row_info} />
     );
 }
 

@@ -54,21 +54,23 @@ function ProfilePrAbout({ id }) {
         if (mounted) {
             setAboutState({
                 about_arr: [
-                    { title: 'Hobby', content: data.hobby_obj.hobby },
-                    {
-                        title: 'University',
-                        content: data.university_arr.length
-                            ? data.university[0].university
-                            : '',
-                    },
                     {
                         title: 'From',
-                        content: data.city_arr.length ? data.city[0].city : '',
+                        content: data.town_arr.length
+                            ? data.town_arr[0].title
+                            : '',
                     },
                     {
                         title: 'Live now',
                         content: data.address_arr.length
-                            ? data.address[0].address
+                            ? data.address_arr[0].address
+                            : '',
+                    },
+                    { title: 'Hobby', content: data.hobby_obj.hobby },
+                    {
+                        title: 'University',
+                        content: data.university_arr.length
+                            ? data.university_arr[0].title
                             : '',
                     },
                 ],
@@ -92,7 +94,10 @@ function ProfilePrAbout({ id }) {
                             key={`${ix}`}
                             className={`${item.content ? '' : 'display-none'}`}
                         >
-                            <span>{item.title}: </span>
+                            <span className="label-field text-secondary">
+                                {item.title}:{' '}
+                            </span>
+                            
                             <span className="label-field">{item.content}</span>
                         </div>
                     ))}

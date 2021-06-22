@@ -1,7 +1,11 @@
 import img from '../../../../image/my_image.png';
 import phone_jpg from '../../../../image/phone_jpg.jpg';
 import banner_phone from '../../../../image/banner_phone.jpg';
+import banner_laptop_phone from '../../../../image/banner_laptop_phone.jpg';
 import naruto_x_hinata from '../../../../image/naruto_x_hinata.jpg';
+import contact_phone from '../../../../image/contact phone.png';
+import giay_the_thao from '../../../../image/giay_the_thao.jpg';
+import white_person from '../../../../image/white person.png';
 
 import {
     permission_add_friend_obj,
@@ -127,8 +131,26 @@ const first_name_arr = [
     'Satur',
     'Sun',
 ];
-const picture_arr = [img, banner_phone, naruto_x_hinata, phone_jpg];
-const cover_arr = [img, banner_phone, naruto_x_hinata, phone_jpg];
+const picture_arr = [
+    img,
+    banner_phone,
+    naruto_x_hinata,
+    phone_jpg,
+    banner_laptop_phone,
+    giay_the_thao,
+    contact_phone,
+    white_person,
+];
+const cover_arr = [
+    img,
+    banner_phone,
+    naruto_x_hinata,
+    phone_jpg,
+    banner_laptop_phone,
+    giay_the_thao,
+    contact_phone,
+    white_person,
+];
 const user_related_arr = [
     'no_mutual_friend',
     'has_mutual_friend',
@@ -173,7 +195,7 @@ export const default_user_about_r = () => ({
         profile_model: 11,
     },
 
-    life_arr: [],
+    life_event_arr: [],
 
     mail_obj: {
         id: 8,
@@ -185,12 +207,19 @@ export const default_user_about_r = () => ({
 
     phone_arr: [],
     address_arr: [],
-    town_arr: [],
+    town_arr: [
+        {
+            id: 1,
+            title: 'Ha Noi',
+            town: 'Ha Noi',
+            permission: 0,
+        }
+    ],
     city_arr: [],
 
     family_arr: [],
 
-    relation_obj: {
+    relationship_obj: {
         id: 5,
         title: '',
         relation: '',
@@ -200,7 +229,14 @@ export const default_user_about_r = () => ({
 
     work_arr: [],
     school_arr: [],
-    university_arr: [],
+    university_arr: [
+        {
+            id: 1,
+            title: 'Dai Hoc Buon Long Ga',
+            university: 'Dai Hoc Buon Long Ga',
+            permission: 0,
+        }
+    ],
 
     hobby_obj: {
         id: 5,
@@ -214,6 +250,14 @@ export const default_user_about_r = () => ({
         id: 5,
         title: '',
         you: '',
+        permission: 0,
+        profile_model: 11,
+    },
+
+    favour_obj: {
+        id: 5,
+        title: '',
+        favour: '',
         permission: 0,
         profile_model: 11,
     },

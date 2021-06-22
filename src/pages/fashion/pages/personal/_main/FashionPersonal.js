@@ -2,17 +2,21 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useRouteLoaded } from '../../../../../_custom_hooks/useRouteLoaded';
+//
+import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 // 
 import RouteLoaded from '../../../../../component/_route/route_loaded/RouteLoaded';
-import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import { FashionRoutes, fashion_path_arr, fashion_person_pathname_arr } from '../routes/FashionRoutes';
+import {
+    FashionRoutes,
+    fashion_path_arr,
+    fashion_person_pathname_arr,
+} from '../routes/FashionRoutes';
 //
-import './FashionPersonal.scss';
-// 
 import PersonalLeft from '../col_left/_main/PersonalLeft';
 import FashionH from '../../../components/head/_main/FashionH';
-// 
+//
+import './FashionPersonal.scss';
 import './FashionPersonalRes.scss';
 
 //
@@ -24,8 +28,11 @@ function FashionPersonal(props) {
     const [is_open, setIsOpen] = useState(false);
     const [active_ix, setActiveIx] = useState(-1);
 
-    // 
-    const [route_loaded_arr] = useRouteLoaded({allowed_routes: fashion_person_pathname_arr})
+    //
+    const { route_arr } = useRouteLoaded({
+        initial_route_arr: FashionRoutes,
+        allow_routes_str: fashion_person_pathname_arr,
+    });
 
     //
     useEffect(() => {
@@ -98,10 +105,7 @@ function FashionPersonal(props) {
                             </div>
 
                             <div className="FashionPersonal_right">
-                                <RouteLoaded
-                                    route_arr={FashionRoutes}
-                                    route_loaded_arr={route_loaded_arr}
-                                />
+                                <RouteLoaded route_arr={route_arr} />
                             </div>
                         </div>
                     </div>

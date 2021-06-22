@@ -36,41 +36,62 @@ export const FashionRoutes = [
     {
         pathname: '/fashion/personal/user/info',
         component: PersonalInformation,
+        is_active: false,
+        is_loaded: false,
+        props: {},
     },
     {
         pathname: '/fashion/personal/user/contact',
         component: PersonalContact,
+        is_active: false,
+        is_loaded: false,
+        props: {},
     },
 
     //
     {
         pathname: '/fashion/personal/bill/buying',
         component: BillBuying,
+        is_active: false,
+        is_loaded: false,
+        props: {},
     },
     {
         pathname: '/fashion/personal/bill/cancel',
         component: BillCancel,
+        is_active: false,
+        is_loaded: false,
+        props: {},
     },
 
     //
     {
         pathname: '/fashion/personal/notifications',
         component: Notifications,
+        is_active: false,
+        is_loaded: false,
+        props: {},
     },
 
     //
     {
         pathname: '/fashion/personal/promotion/voucher',
         component: PromotionVoucher,
+        is_active: false,
+        is_loaded: false,
+        props: {},
     },
     {
-        title: 'Free Ship',
         pathname: '/fashion/personal/promotion/free-ship',
         component: PromotionFreeShip,
+        is_active: false,
+        is_loaded: false,
+        props: {},
     },
 ];
 
 //
-export const fashion_person_pathname_arr = FashionRoutes.map(
-    (item) => item.pathname
+export const fashion_person_pathname_arr = FashionRoutes.reduce(
+    (a, b) => a + b.pathname,
+    ''
 );

@@ -22,4 +22,7 @@ export const PhotosRoutes = [
     },
 ];
 
-export const photos_search_arr = PhotosRoutes.map(item => item.search)
+export const photos_searches_str = PhotosRoutes.reduce(
+    (a, b) => a + b.search,
+    ''
+);

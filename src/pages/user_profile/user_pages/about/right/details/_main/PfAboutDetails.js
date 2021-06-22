@@ -1,5 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+//
+import { context_api } from '../../../../../../../_context/ContextAPI';
+// 
+import { GetIdSlug } from '../../../../../../../_some_function/GetIdSlug';
+//
+import { handle_API_UserOverview_r } from '../../../../../__handle_api/ProfileHandleAPI';
+//
+import { initial_detail_state } from '../../../__common/initial/initial';
 //
 import PfAboutYou from '../about_you/_main/PfAboutYou';
 import PfAboutOtherName from '../other_name/_main/PfAboutOtherName';
@@ -10,45 +18,54 @@ import AboutNoItem from '../../_component/no_item/AboutNoItem';
 PfAboutDetails.propTypes = {};
 
 //
-function PfAboutDetails(props) {
-    // 
-    const user_name = ''
+function PfAboutDetails({ name }) {
+    //
+    const { id } = useContext(context_api).user;
 
     //
-    const you_obj = {
-        you: '',
-        permission: 0,
-    };
+    const user_id = GetIdSlug();
 
     //
-    const other_name_arr = [
-        // {
-        //     other_name: '',
-        //     permission: 0,
-        // },
-    ];
+    const [about_state, setAboutState] = useState({
+        ...initial_detail_state,
+    });
+
+    const {
+        you_obj,
+        other_name_arr,
+        favour_obj,
+
+        has_fetched,
+        no_item,
+    } = about_state;
 
     //
-    const favour_obj = {
-        favour: '',
-        permission: 0,
-    };
+    useEffect(() => {
+        getData_API_About();
+    }, []);
 
     //
-    const no_item = !(
-        you_obj.title ||
-        other_name_arr.length ||
-        favour_obj.title
-    );
+    async function getData_API_About() {
+        const about_obj = await handle_API_UserOverview_r({ user_id: user_id });
 
-    const has_fetched = true;
+        setAboutState({
+            you_obj: about_obj.you_obj,
+            other_name_arr: about_obj.other_name_arr,
+            favour_obj: about_obj.favour_obj,
+
+            has_fetched: true,
+            no_item: !(
+                about_obj.you_obj.title ||
+                about_obj.other_name_arr.length ||
+                about_obj.favour_obj.title
+            ),
+        });
+    }
 
     //
     return (
         <div>
-            <h3 className="PfAbout_title">
-                Details about {user_name}
-            </h3>
+            <h3 className="PfAbout_title">Details about {id == user_id ? 'you' : name}</h3>
 
             <div>
                 <AboutNoItem

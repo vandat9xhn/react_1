@@ -31,11 +31,18 @@ $pic_width_500: 25vw;
     bottom: 0%;
     left: 50%;
     transform: translateX(-50%);
+
     img {
         width: $pic_width;
         height: $pic_width;
         border-radius: 50%;
         border: 2px solid white;
+    }
+
+    .ProfileInfoPicture_profile-fetching{
+        overflow: hidden;
+        border: 1px solid var(--md-color-secondary);
+        background: white;
     }
 }
 

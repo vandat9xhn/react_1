@@ -9,18 +9,18 @@ import image_loading from '../../../../image/image_loading.svg';
 ProductItemSkeleton.propTypes = {};
 
 //
-function ProductItemSkeleton() {
+function ProductItemSkeleton({ num_row_info }) {
     //
     return (
-        <div className="ProductItem">
+        <div className="ProductItem padding-8px position-rel">
             <div className="ProductItem_head">
-                <div className="ProductItem_img">
+                <div className="ProductItem_head-img pos-abs-100">
                     <img src={image_loading} alt="" />
                 </div>
             </div>
 
             <div className="ProductItem_foot">
-                <SkeletonDiv num={4} />
+                <SkeletonDiv num={num_row_info} />
             </div>
         </div>
     );

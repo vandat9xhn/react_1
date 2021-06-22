@@ -19,7 +19,7 @@ ProfileInfo.propTypes = {
 };
 
 //
-function ProfileInfo({ profile, openCoverPicture, openPicture }) {
+function ProfileInfo({ profile, is_fetching, openCoverPicture, openPicture }) {
     //
     const { user } = useContext(context_api);
 
@@ -79,13 +79,14 @@ function ProfileInfo({ profile, openCoverPicture, openPicture }) {
                 <ProfileInfoPicture
                     cover={cover}
                     picture={picture}
+                    is_fetching={is_fetching}
                     openCoverPicture={openCoverPicture}
                     openPicture={openPicture}
                 />
             </div>
 
             <div className="ProfileInfo_name-story">
-                {first_name ? (
+                {!is_fetching ? (
                     <ProfileInfoStory
                         name={first_name + ' ' + last_name}
                         nick_name={nick_name}
@@ -94,11 +95,14 @@ function ProfileInfo({ profile, openCoverPicture, openPicture }) {
                         handleChangeStory={handleChangeStory}
                     />
                 ) : (
-                    <SkeletonDiv num={3} />
+                    <div>
+                        <br />
+                        <SkeletonDiv num={2} />
+                    </div>
                 )}
             </div>
 
-            {first_name && (
+            {!is_fetching ? (
                 <ProfileInfoActions
                     id={id}
                     is_user={user.id == id}
@@ -112,6 +116,10 @@ function ProfileInfo({ profile, openCoverPicture, openPicture }) {
                     handleAddFriend={handleAddFriend}
                     handleFollowFriend={handleFollowFriend}
                 />
+            ) : (
+                <div className="ProfileInfo_actions">
+                    <br /> <SkeletonDiv />
+                </div>
             )}
         </div>
     );
