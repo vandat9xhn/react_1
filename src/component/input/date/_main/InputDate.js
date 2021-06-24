@@ -35,9 +35,9 @@ function InputDate({
                     <div className="InputDate_item">
                         <div className="InputDate_item-contain">
                             <InputDay
+                                day={day}
                                 month={month}
                                 year={year}
-                                day={day}
                                 handleChangeDay={handleChangeDay}
                             />
                         </div>

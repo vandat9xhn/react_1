@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
+import update from 'immutability-helper';
 
 //
 export const useRouteLoaded = ({
@@ -15,23 +16,17 @@ export const useRouteLoaded = ({
     const [route_arr, setRouteArr] = useState(initial_route_arr);
 
     //
-    const is_first = useRef(false);
+    const should_reset = useRef(false);
 
     //
     useLayoutEffect(() => {
-        if (deps.length && !is_first.current) {
-            handleChangePartLocation(true)
-        }
+        makeReset();
     }, deps);
 
+    /* ---------------------- */
+
     //
     useLayoutEffect(() => {
-        if (is_first.current) {
-            is_first.current = false
-
-            return;
-        }
-
         if (!allow_routes_str.includes(location[part_location])) {
             handleNotFoundRoute();
         } else {
@@ -39,33 +34,73 @@ export const useRouteLoaded = ({
             handleChangePartLocation();
             handleAfterSetRouteLoaded();
         }
-    }, [location[part_location]]);
+    }, [location[part_location], ...deps]);
 
     //
-    function handleChangePartLocation(should_reset = false) {
-        const new_route_arr = [...route_arr];
+    function makeReset() {
+        should_reset.current = true;
+    }
 
-        const route_ix = new_route_arr.findIndex((item) =>
+    //
+    function handleResetRoute() {
+        const route_ix = route_arr.findIndex((item) =>
             item[part_location].includes(location[part_location])
         );
+        const active_route_ix = route_arr.findIndex((item) => item.is_active);
 
-        if (!new_route_arr[route_ix].is_active || should_reset) {
+        if (route_ix == active_route_ix) {
+            setRouteArr(initial_route_arr);
+
+            setTimeout(() => {
+                handleChangeRoute();
+            }, 100);
+
+            return;
+        } else {
+            handleChangeRoute();
+        }
+    }
+
+    //
+    function handleChangeRoute() {
+        setRouteArr((route_arr) => {
+            const route_ix = route_arr.findIndex((item) =>
+                item[part_location].includes(location[part_location])
+            );
+
+            const new_route_arr = update(route_arr, {
+                [route_ix]: {
+                    is_active: { $set: true },
+                    is_loaded: { $set: true },
+                },
+            });
+
             new_route_arr.map((item, ix) => {
-                if (ix == route_ix) {
-                    item.is_active = true;
-                    item.is_loaded = true;
-                } else {
+                if (ix != route_ix) {
                     item.is_active = false;
-                    should_reset && (item.is_loaded = false);
+                    should_reset.current && (item.is_loaded = false);
                 }
 
                 return item;
             });
 
-            setRouteArr(new_route_arr);
+            should_reset.current = false;
+
+            return new_route_arr;
+        });
+    }
+
+    /* ---------------------- */
+
+    //
+    function handleChangePartLocation() {
+        if (should_reset.current) {
+            handleResetRoute();
+        } else {
+            handleChangeRoute();
         }
     }
 
     //
-    return { route_arr, setRouteArr, handleChangePartLocation };
+    return { route_arr, should_reset, setRouteArr, makeReset };
 };

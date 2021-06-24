@@ -11,19 +11,19 @@ import './CommentWsHead.scss';
 CommentWsHead.propTypes = {};
 
 //
-function CommentWsHead(props) {
-    const {
-        user,
-        //
-        content_obj,
-        onSeeMoreContentCmt,
-        //
-        openHistoryCmt,
-        openUpdateCmt,
-        openDeleteCmt,
-        openReportCmt,
-    } = props;
+function CommentWsHead({
+    user,
+    is_user,
+    is_poster,
 
+    content_obj,
+    onSeeMoreContentCmt,
+
+    openHistoryCmt,
+    openUpdateCmt,
+    openDeleteCmt,
+    openReportCmt,
+}) {
     //
     return (
         <div className="CmtSub_head">
@@ -45,6 +45,9 @@ function CommentWsHead(props) {
 
             <div className="CmtSub_edit">
                 <CmtActionsWs
+                    is_user={is_user}
+                    is_poster={is_poster}
+
                     openHistoryCmt={openHistoryCmt}
                     openUpdateCmt={openUpdateCmt}
                     openDeleteCmt={openDeleteCmt}

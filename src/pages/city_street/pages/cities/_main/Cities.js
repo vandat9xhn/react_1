@@ -10,12 +10,11 @@ import ComponentSkeleton from '../../../../../component/skeleton/component_skele
 //
 import { handle_API_City_L } from '../../../__handle_api/CityHandleAPI';
 //
-import './Cities.scss';
-//
 import CitySearch from '../search/CitySearch';
 import CityItem from '../item/_main/CityItem';
 import CityItemSkeleton from '../item/skeleton/CityItemSkeleton';
 //
+import './Cities.scss';
 import './CitiesRes.scss';
 
 //

@@ -19,14 +19,13 @@ PfAbEmailEdit.propTypes = {
 };
 
 //
-function PfAbEmailEdit(props) {
-    const {
-        item_obj,
+function PfAbEmailEdit({
+    item_obj,
 
-        handleSave,
-        handleCancel,
-    } = props;
-
+    handleSave,
+    handleCancel,
+}) {
+    // 
     const { email, permission } = item_obj;
 
     //

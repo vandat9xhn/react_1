@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import update from 'immutability-helper';
 import PropTypes from 'prop-types';
 //
 import { useRouteLoaded } from '../../../_custom_hooks/useRouteLoaded';
@@ -7,9 +8,9 @@ import { useRouteLoaded } from '../../../_custom_hooks/useRouteLoaded';
 import RouteLoaded from '../../../component/_route/route_loaded/RouteLoaded';
 //
 import { ProfileRoutes, profile_search_arr } from '../__common/routes/routes';
-// 
+//
 import { initial_profile } from '../__common/initial/Initial';
-// 
+//
 import { handle_API_ProfileUser_R } from '../__handle_api/ProfileHandleAPI';
 //
 import ProfileSkeleton from '../__common/skeleton/ProfileSkeleton';
@@ -20,10 +21,10 @@ import './Profile.scss';
 
 //
 function Profile(props) {
-    // 
-    const use_history = useHistory()
+    //
+    const use_history = useHistory();
 
-    // 
+    //
     const { id } = props.match.params;
 
     //
@@ -35,26 +36,28 @@ function Profile(props) {
     const { profile, is_fetching } = profile_state;
 
     //
-    const { route_arr } =
-        useRouteLoaded({
-            initial_route_arr: ProfileRoutes,
-            part_location: 'search',
-            allow_routes_str: profile_search_arr,
-            deps: [id],
-
-            handleNotFoundRoute: handleNotFoundRoute,
-        });
-
-    //
     useEffect(() => {
         handleChangeId();
-        getProfileInfo();
     }, [id]);
-
+    
     //
     function handleChangeId() {
         window.scroll(0, 0);
+        getProfileInfo();
+        // makeReset()
     }
+
+    //
+    const { route_arr, makeReset } = useRouteLoaded({
+        initial_route_arr: update(ProfileRoutes, {
+            0: { props: { $set: {} } },
+        }),
+        part_location: 'search',
+        allow_routes_str: profile_search_arr,
+        deps: [id],
+
+        handleNotFoundRoute: handleNotFoundRoute,
+    });
 
     //
     async function getProfileInfo() {
@@ -64,25 +67,27 @@ function Profile(props) {
         });
 
         const data = await handle_API_ProfileUser_R({ user_id: id });
+        const user_name = data.first_name + ' ' + data.last_name;
 
-        route_arr.find((item) => item.search == '').props = {
-            name: data.first_name + ' ' + data.last_name,
-        };
+        route_arr.map((item) => {
+            item.props = {
+                name: user_name,
+                user_id: id,
+            };
 
-        route_arr.find((item) => item.search.includes('?sk=about')).props = {
-            name: data.first_name + ' ' + data.last_name,
-        };
+            return item;
+        });
 
         setProfileState({
             profile: data,
             is_fetching: false,
         });
-        document.title = data.first_name + ' ' + data.last_name;
+        document.title = user_name;
     }
 
     //
     function handleNotFoundRoute() {
-        use_history.replace('/profile/' + id)
+        use_history.replace('/profile/' + id);
     }
 
     //
@@ -95,6 +100,7 @@ function Profile(props) {
         console.log(id);
     }
 
+    // console.log(route_arr);
     //
     return (
         <div className="Profile">
@@ -113,6 +119,7 @@ function Profile(props) {
 
             <RouteLoaded
                 route_arr={route_arr}
+                // use_loaded={false}
                 fallback={<ProfileSkeleton />}
             />
         </div>

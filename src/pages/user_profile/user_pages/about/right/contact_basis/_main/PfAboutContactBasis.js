@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { useMounted } from '../../../../../../../_custom_hooks/useMounted';
+// 
 import { GetIdSlug } from '../../../../../../../_some_function/GetIdSlug';
 //
 import { handle_API_UserOverview_r } from '../../../../../__handle_api/ProfileHandleAPI';
@@ -36,18 +38,26 @@ function PfAboutContactBasis(props) {
         has_fetched,
     } = about_state;
 
+    // 
+    const mounted = useMounted()
+
     //
     useEffect(() => {
-        getData_API_About();
-    }, []);
+        getData_API_About()
 
+    }, []);
+    
     //
     async function getData_API_About() {
+        if (!mounted) {
+            return;
+        }
+
         const about_obj = await handle_API_UserOverview_r({ user_id: user_id });
 
-        setAboutState({
+        mounted && setAboutState({
             phone_arr: about_obj.phone_arr,
-            email_obj: about_obj.mail_obj,
+            email_obj: about_obj.email_obj,
             address_arr: about_obj.address_arr,
 
             gender_obj: about_obj.gender_obj,

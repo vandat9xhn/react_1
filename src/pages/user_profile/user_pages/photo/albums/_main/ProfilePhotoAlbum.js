@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { handleScrollSmooth } from '../../../../../../_some_function/handleScrollSmooth';
+// 
 import CircleLoading from '../../../../../../component/waiting/circle_loading/CircleLoading';
 // 
 import { handle_API_AlbumVidPic_L } from '../../../../__handle_api/ProfileHandleAPI';
@@ -10,7 +12,6 @@ import ProfilePhotoAlbumItem from '../item/ProfilePhotoAlbumItem';
 import ProfilePhotoList from '../../_component/list/_main/ProfilePhotoList';
 //
 import './ProfilePhotoAlbum.scss';
-import { handleScrollSmooth } from '../../../../../../_some_function/handleScrollSmooth';
 
 //
 ProfilePhotoAlbum.propTypes = {};

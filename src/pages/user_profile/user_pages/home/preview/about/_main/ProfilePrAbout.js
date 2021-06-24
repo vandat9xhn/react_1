@@ -40,7 +40,7 @@ function ProfilePrAbout({ id }) {
     //
     useEffect(() => {
         observeToDo(ref_component.current, getData_API_About, 0);
-    }, [id]);
+    }, []);
 
     //
     async function getData_API_About() {

@@ -61,8 +61,6 @@ function PfAbGenderEdit({
         });
     }
 
-    console.log(item_obj);
-
     //
     return (
         <div className="PfAbGenderEdit">

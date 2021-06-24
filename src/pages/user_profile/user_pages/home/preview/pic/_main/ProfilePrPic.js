@@ -39,7 +39,7 @@ function ProfilePrPic({ id }) {
     //
     useEffect(() => {
         observeToDo(ref_component.current, getData_API_PicPreview, 0);
-    }, [id]);
+    }, []);
 
     //
     async function getData_API_PicPreview() {

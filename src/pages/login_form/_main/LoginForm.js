@@ -98,12 +98,12 @@ function LoginForm() {
 
     //
     if (user.id) {
-        // return <Redirect to={sessionStorage.url_before_login || '/home'} />;
+        return <Redirect to={sessionStorage.url_before_login || '/home'} />;
     }
     //
     return (
         <div className="LoginForm">
-            <div className="LoginForm_contain brs-5px-md">
+            <div className="LoginForm_contain">
                 <div className="LoginForm_row display-flex flex-wrap">
                     <div className="LoginForm_col-left display-flex-center">
                         <div className="LoginForm_col-info text-align-center">

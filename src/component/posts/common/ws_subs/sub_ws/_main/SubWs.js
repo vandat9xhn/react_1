@@ -17,8 +17,8 @@ import './SubWs.scss';
 SubWs.propTypes = {};
 
 //
-function SubWs(props) {
-    // context
+function SubWs({ sub, is_commenter, focusInputSub }) {
+    //
     const {
         ws_send,
         ws_type_sub,
@@ -29,6 +29,7 @@ function SubWs(props) {
     } = useContext(context_post);
 
     const {
+        user: c_user,
         openScreenConfirm,
         openScreenHistory,
         openScreenUpdate,
@@ -38,9 +39,7 @@ function SubWs(props) {
         closeScreenFetching,
     } = useContext(context_api);
 
-    // 
-    const { sub, focusInputSub } = props;
-
+    //
     const {
         id,
         user,
@@ -53,7 +52,7 @@ function SubWs(props) {
         user_type_like,
     } = sub;
 
-    // hook
+    //
     const forceUpdate = useForceUpdate();
 
     /* -------------------------------- */
@@ -78,14 +77,9 @@ function SubWs(props) {
 
     //
     function openHistorySub() {
-        openScreenHistory(
-            'History',
-            on_API_HistorySub_L,
-            CmtSubHistory,
-            {
-                handle_API_MoreContent: handle_API_MoreContentHisSub_R,
-            }
-        );
+        openScreenHistory('History', on_API_HistorySub_L, CmtSubHistory, {
+            handle_API_MoreContent: handle_API_MoreContentHisSub_R,
+        });
     }
 
     //
@@ -162,6 +156,8 @@ function SubWs(props) {
                     <div className="Sub_head">
                         <SubWsHead
                             user={user}
+                            is_user={user.id == c_user.id}
+                            is_commenter={is_commenter}
                             //
                             content_obj={content_obj}
                             seeMoreContentSub={seeMoreContentSub}

@@ -44,7 +44,7 @@ function ProfilePrFriend({ id }) {
     //
     useEffect(() => {
         observeToDo(ref_component.current, getData_API_FriendPreview, 0);
-    }, [id]);
+    }, []);
 
     //
     async function getData_API_FriendPreview() {

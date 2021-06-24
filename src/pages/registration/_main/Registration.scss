@@ -1,21 +1,23 @@
 //
-.Registration_form{
+.Registration_form {
     margin-top: 1rem;
-    max-width: 27rem;
+    max-width: 500px;
+
+    background-image: linear-gradient(45deg, var(--success), var(--blue-tear));
 }
 
 /* btn ripple bg */
-.App_submit display-flex-center .ButtonRipple{
+.App_submit display-flex-center .ButtonRipple {
     background-color: var(--green);
 }
 
-.Registration_error{
+.Registration_error {
     margin-top: 1rem;
     padding: 0.5rem;
     border: 2px solid var(--danger);
     background-color: var(--heart-blur);
 }
 
-.Registration_input{
+.Registration_input {
     margin: 1rem 0;
 }

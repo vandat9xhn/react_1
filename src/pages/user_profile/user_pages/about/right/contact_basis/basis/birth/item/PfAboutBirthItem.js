@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { formatLocalDateString } from '../../../../../../../../../_some_function/FormatDate';
+// 
 import { IconsProfileAbout } from '../../../../../../../../../_groups_icon/about/GroupIconProfileAbout';
 //
 import { handle_API_Birth_U } from '../../../../../../../__handle_api/ProfileHandleAPI';
@@ -14,17 +16,14 @@ PfAboutBirthItem.propTypes = {
 };
 
 //
-function PfAboutBirthItem(props) {
-    //
-    const { birth_obj } = props;
-
+function PfAboutBirthItem({ birth_obj }) {
     //
     function handleUpdateItemObj(data) {
         const { birth, permission } = data;
 
-        birth_obj.title = birth;
-        birth_obj.permission = permission;
+        birth_obj.title = formatLocalDateString(birth);
         birth_obj.birth = birth;
+        birth_obj.permission = permission;
     }
 
     //

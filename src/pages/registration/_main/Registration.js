@@ -69,12 +69,20 @@ function Registration(props) {
 
     //
     useEffect(() => {
-        document.title = 'Registration';
-
         dispatch(actionLocationRegister(true));
 
         return () => {
             dispatch(actionLocationRegister(false));
+        };
+    }, []);
+
+    useEffect(() => {
+        document.title = 'Registration';
+        document.documentElement.setAttribute('data-theme', 'light');
+        
+        return () => {
+            localStorage.light_mode != 1 &&
+                document.documentElement.setAttribute('data-theme', 'dark');
         };
     }, []);
 

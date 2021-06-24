@@ -21,8 +21,8 @@ import './CommentWs.scss';
 CommentWs.propTypes = {};
 
 //
-function CommentWs(props) {
-    // context
+function CommentWs({ comment, is_poster }) {
+    //
     const {
         ws_send,
         ws_type_cmt,
@@ -45,30 +45,28 @@ function CommentWs(props) {
     } = useContext(context_api);
 
     //
-    const { comment } = props;
-
     const {
         id,
         user,
         vid_pic,
         updated_time,
         content_obj,
-        //
+
         likes,
         count_like,
         user_type_like,
-        //
+
         subs,
         count_sub,
     } = comment;
 
-    // state
+    //
     const [open_input_sub, setOpenInputSub] = useState(false);
 
-    // 
-    const ref_subs_ws = useRef(null)
+    //
+    const ref_subs_ws = useRef(null);
 
-    // hook
+    //
     const forceUpdate = useForceUpdate();
 
     /* -------------------------------- */
@@ -107,14 +105,9 @@ function CommentWs(props) {
 
     //
     function openHistoryCmt() {
-        openScreenHistory(
-            'History',
-            on_API_HistoryCmt_L,
-            CmtSubHistory,
-            {
-                handle_API_MoreContent: handle_API_MoreContentHisCmt_R,
-            }
-        );
+        openScreenHistory('History', on_API_HistoryCmt_L, CmtSubHistory, {
+            handle_API_MoreContent: handle_API_MoreContentHisCmt_R,
+        });
     }
 
     //
@@ -204,6 +197,8 @@ function CommentWs(props) {
                         <div className="Comment_head">
                             <CommentWsHead
                                 user={user}
+                                is_user={c_user.id == user.id}
+                                is_poster={is_poster}
                                 content_obj={content_obj}
                                 onSeeMoreContentCmt={onSeeMoreContentCmt}
                                 //
@@ -234,6 +229,7 @@ function CommentWs(props) {
                         <div className="Comment_subs" ref={ref_subs_ws}>
                             <SubsWs
                                 cmt_id={id}
+                                is_commenter={c_user.id == user.id}
                                 subs={subs}
                                 count_sub={count_sub}
                                 open_input_sub={open_input_sub}

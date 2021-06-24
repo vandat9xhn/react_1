@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import PictureName from '../../../../../picture_name/pic_name/PictureName';
 import ContentMore from '../../../../../content_more/Content_more';
-// 
+//
 import SubActionsWs from '../../../ws_actions/sub/SubActionsWs';
 //
 import './SubWsHead.scss';
@@ -11,19 +11,19 @@ import './SubWsHead.scss';
 //
 SubWsHead.propTypes = {};
 
-function SubWsHead(props) {
-    const {
-        user,
+function SubWsHead({
+    user,
+    is_user,
+    is_commenter,
 
-        content_obj,
-        seeMoreContentSub,
-        
-        openHistorySub,
-        openUpdateSub,
-        openDeleteSub,
-        openReportSub,
-    } = props;
+    content_obj,
+    seeMoreContentSub,
 
+    openHistorySub,
+    openUpdateSub,
+    openDeleteSub,
+    openReportSub,
+}) {
     //
     return (
         <div className="CmtSub_head">
@@ -40,6 +40,8 @@ function SubWsHead(props) {
 
             <div className="CmtSub_edit">
                 <SubActionsWs
+                    is_user={is_user}
+                    is_commenter={is_commenter}
                     openHistorySub={openHistorySub}
                     openUpdateSub={openUpdateSub}
                     openDeleteSub={openDeleteSub}

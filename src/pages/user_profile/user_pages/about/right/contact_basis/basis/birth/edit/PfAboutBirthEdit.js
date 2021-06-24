@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { useInputDate } from '../../../../../../../../../_custom_hooks/useInputDate';
+//
+import InputDate from '../../../../../../../../../component/input/date/_main/InputDate';
+//
 import PfAboutConfirm from '../../../../_component/confirm/PfAboutConfirm';
 
 //
@@ -11,22 +15,40 @@ PfAboutBirthEdit.propTypes = {
 };
 
 //
-function PfAboutBirthEdit(props) {
+function PfAboutBirthEdit({ item_obj, handleSave, handleCancel }) {
     //
-    const { item_obj, handleSave, handleCancel } = props;
-
     const { permission, birth } = item_obj;
 
     //
-    const [cur_birth, setCurBirth] = useState(birth);
+    const [invalid, setInvalid] = useState(false);
 
     //
-    function handleChangeBirth(e) {
-        setCurBirth(e.target.value);
-    }
+    const {
+        day,
+        month,
+        year,
 
+        handleChangeDay,
+        handleChangeMonth,
+        handleChangeYear,
+    } = useInputDate({
+        initial_day: new Date(birth).getDate(),
+        initial_month: new Date(birth).getMonth() + 1,
+        initial_year: new Date(birth).getFullYear(),
+    });
+
+    //
     function onSave(new_permission) {
-        handleSave({ permission: new_permission, birth: cur_birth });
+        // const new_birth = new Date(year, month - 1, day);
+        const new_birth = new Date(`${year}-${month}-${day}`);
+
+        if (new_birth >= new Date() || new_birth <= new Date(1960)) {
+            setInvalid(true);
+
+            return;
+        }
+
+        handleSave({ permission: new_permission, birth: new_birth.getTime() });
     }
 
     //
@@ -34,11 +56,20 @@ function PfAboutBirthEdit(props) {
         <div>
             <div>
                 <div className="PfAbout_input">
-                    <input
-                        value={cur_birth}
-                        type="date"
-                        max={new Date().toJSON().slice(0, 10)}
-                        onChange={handleChangeBirth}
+                    <InputDate
+                        day={day}
+                        month={month}
+                        year={year}
+                        //
+                        min_year={1960}
+                        max_year={2021}
+                        //
+                        invalid={invalid}
+                        title_invalid="Date must be from 1960 to now"
+                        //
+                        handleChangeDay={handleChangeDay}
+                        handleChangeMonth={handleChangeMonth}
+                        handleChangeYear={handleChangeYear}
                     />
                 </div>
             </div>

@@ -7,31 +7,27 @@ import CommentPost from '../../../../input_img_vid_preview/comment_post/CommentP
 import ScreenBlurShowMore from '../../../../_screen_blur/_component/foot/ScreenBlurShowMore';
 //
 import SubWs from '../sub_ws/_main/SubWs';
-// 
+//
 import './SubsWs.scss';
 
 //
 SubsWs.propTypes = {};
 
 //
-function SubsWs(props) {
-    const {
-        cmt_id,
-        subs,
-        count_sub,
-        //
-        open_input_sub,
-        focusInputSub,
-    } = props;
+function SubsWs({
+    cmt_id,
+    is_commenter,
+    subs,
+    count_sub,
+    //
+    open_input_sub,
+    focusInputSub,
+}) {
     //
     const [fetching_sub, setFetchingSub] = useState(false);
     //
-    const {
-        ws_send,
-        ws_type_sub,
-        handle_API_Sub_L,
-        handle_API_Sub_C,
-    } = useContext(context_post);
+    const { ws_send, ws_type_sub, handle_API_Sub_L, handle_API_Sub_C } =
+        useContext(context_post);
 
     //
     async function onGetSubsWs() {
@@ -68,18 +64,16 @@ function SubsWs(props) {
 
             <div className="SubsWs_list">
                 {subs.map((sub) => (
-                    <div
-                        className="SubsWs_item"
-                        key={`SubsWs_${sub.id}`}
-                    >
-                    <SubWs
-                        sub={sub}
-                        focusInputSub={focusInputSub}
-                    />
+                    <div className="SubsWs_item" key={`SubsWs_${sub.id}`}>
+                        <SubWs
+                            is_commenter={is_commenter}
+                            sub={sub}
+                            focusInputSub={focusInputSub}
+                        />
                     </div>
                 ))}
             </div>
-            
+
             <div className="Subs_input">
                 <div className={open_input_sub ? '' : 'display-none'}>
                     <CommentPost is_sub={true} handleSend={onSendSub} />

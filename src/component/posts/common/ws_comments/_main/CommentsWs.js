@@ -22,16 +22,18 @@ CommentsWs.defaultProps = {
 };
 
 //
-function CommentsWs(props) {
-    const {
-        parent_id,
-        comments,
-        count_comment,
-        open_input,
-        fetching_first_cmt,
-    } = props;
+function CommentsWs({
+    is_poster,
+    parent_id,
+    comments,
+    count_comment,
+
+    open_input,
+    fetching_first_cmt,
+}) {
     //
     const [fetching_cmt, setFetchingCmt] = useState(false);
+
     //
     const {
         ws_send,
@@ -82,6 +84,7 @@ function CommentsWs(props) {
                 {comments.map((comment) => (
                     <CommentWs
                         key={`Comment_${comment.id}`}
+                        is_poster={is_poster}
                         comment={comment}
                     />
                 ))}

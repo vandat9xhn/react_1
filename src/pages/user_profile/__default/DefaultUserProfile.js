@@ -6,7 +6,9 @@ import naruto_x_hinata from '../../../../image/naruto_x_hinata.jpg';
 import contact_phone from '../../../../image/contact phone.png';
 import giay_the_thao from '../../../../image/giay_the_thao.jpg';
 import white_person from '../../../../image/white person.png';
-
+// 
+import { formatLocalDateString } from '../../../_some_function/FormatDate';
+// 
 import {
     permission_add_friend_obj,
     user_related_obj,
@@ -160,115 +162,117 @@ const user_related_arr = [
     'c_user',
 ];
 
-const gender_arr = ['Male', 'Female', 'Other']
+const gender_arr = ['Male', 'Female', 'Other'];
 
 export const default_user_about_r = () => {
-    const gender = getRandomItemArr(gender_arr)
+    const gender = getRandomItemArr(gender_arr);
+    const birth = Math.random() * 631152000000 + 631152000000;
 
-    return({
-    id: Math.floor(Math.random() * 1000),
-    first_name: getRandomItemArr(first_name_arr),
-    last_name: 'Day',
-    picture: getRandomItemArr(picture_arr, ''),
-    cover: getRandomItemArr(cover_arr, ''),
+    return {
+        id: Math.floor(Math.random() * 1000),
+        first_name: getRandomItemArr(first_name_arr),
+        last_name: 'Day',
+        picture: getRandomItemArr(picture_arr, ''),
+        cover: getRandomItemArr(cover_arr, ''),
 
-    user_related: getRandomItemArr(user_related_arr),
-    permission_add_friend: 0,
-    is_block_message: 0,
+        user_related: getRandomItemArr(user_related_arr),
+        permission_add_friend: 0,
+        is_block_message: 0,
 
-    gender_obj: {
-        id: 5,
-        title: gender,
-        gender: gender.toLowerCase(),
-        permission: 0,
-        profile_model: 11,
-    },
-
-    birth_obj: {
-        id: 5,
-        title: '2000-11-10',
-        birth: '2000-11-10',
-        permission: 0,
-        profile_model: 11,
-    },
-
-    lang_obj: {
-        id: 5,
-        title: '',
-        lang: '',
-        permission: 0,
-        profile_model: 11,
-    },
-
-    life_event_arr: [],
-
-    mail_obj: {
-        id: 8,
-        title: 'monday@gmail.com',
-        mail: 'monday@gmail.com',
-        permission: 0,
-        profile_model: 11,
-    },
-
-    phone_arr: [],
-    address_arr: [],
-    town_arr: [
-        {
-            id: 1,
-            title: 'Ha Noi',
-            town: 'Ha Noi',
+        gender_obj: {
+            id: 5,
+            title: gender,
+            gender: gender.toLowerCase(),
             permission: 0,
-        }
-    ],
-    city_arr: [],
+            profile_model: 11,
+        },
 
-    family_arr: [],
-
-    relationship_obj: {
-        id: 5,
-        title: '',
-        relation: '',
-        permission: 0,
-        profile_model: 11,
-    },
-
-    work_arr: [],
-    school_arr: [],
-    university_arr: [
-        {
-            id: 1,
-            title: 'Dai Hoc Buon Long Ga',
-            university: 'Dai Hoc Buon Long Ga',
+        birth_obj: {
+            id: 5,
+            title: formatLocalDateString(birth),
+            birth: birth,
             permission: 0,
-        }
-    ],
+            profile_model: 11,
+        },
 
-    hobby_obj: {
-        id: 5,
-        title: '',
-        hobby: '',
-        permission: 0,
-        profile_model: 11,
-    },
+        lang_obj: {
+            id: 5,
+            title: '',
+            lang: '',
+            permission: 0,
+            profile_model: 11,
+        },
 
-    you_obj: {
-        id: 5,
-        title: '',
-        you: '',
-        permission: 0,
-        profile_model: 11,
-    },
+        life_event_arr: [],
 
-    favour_obj: {
-        id: 5,
-        title: '',
-        favour: '',
-        permission: 0,
-        profile_model: 11,
-    },
+        email_obj: {
+            id: 8,
+            title: 'monday@gmail.com',
+            email: 'monday@gmail.com',
+            permission: 0,
+            profile_model: 11,
+        },
 
-    other_name_arr: [],
+        phone_arr: [],
+        address_arr: [],
+        town_arr: [
+            {
+                id: 1,
+                title: 'Ha Noi',
+                town: 'Ha Noi',
+                permission: 0,
+            },
+        ],
+        city_arr: [],
 
-    is_online: true,
-    created_time: '2021-06-10T01:15:38.302083Z',
-})};
+        family_arr: [],
+
+        relationship_obj: {
+            id: 5,
+            title: '',
+            relation: '',
+            permission: 0,
+            profile_model: 11,
+        },
+
+        work_arr: [],
+        school_arr: [],
+        university_arr: [
+            {
+                id: 1,
+                title: 'Dai Hoc Buon Long Ga',
+                university: 'Dai Hoc Buon Long Ga',
+                permission: 0,
+            },
+        ],
+
+        hobby_obj: {
+            id: 5,
+            title: '',
+            hobby: '',
+            permission: 0,
+            profile_model: 11,
+        },
+
+        you_obj: {
+            id: 5,
+            title: '',
+            you: '',
+            permission: 0,
+            profile_model: 11,
+        },
+
+        favour_obj: {
+            id: 5,
+            title: '',
+            favour: '',
+            permission: 0,
+            profile_model: 11,
+        },
+
+        other_name_arr: [],
+
+        is_online: true,
+        created_time: '2021-06-10T01:15:38.302083Z',
+    };
+};

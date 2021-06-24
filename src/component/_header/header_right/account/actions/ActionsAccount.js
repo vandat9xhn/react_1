@@ -108,7 +108,12 @@ function ActionsAccount({ closeAccount }) {
 
     //
     function handleBeForeLog() {
-        sessionStorage.url_before_login = location.pathname + location.search;
+        let url_before_login = location.pathname + location.search;
+        
+        if (url_before_login.search(/(login-form|registration-form)/) == -1) {
+            sessionStorage.url_before_login = url_before_login
+        }
+
     }
 
     //

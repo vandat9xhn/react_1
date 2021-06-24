@@ -1,13 +1,10 @@
 .LoginForm {
-    margin: 0 2rem;
+    min-height: inherit;
 }
 .LoginForm_contain {
-    display: flex;
-    align-items: center;
-
-    min-height: 100vh;
-    padding: 2rem 0;
-    background-color: var(--green);
+    min-height: inherit;
+    padding: 3rem 0;
+    background-image: linear-gradient(45deg, var(--success), var(--blue-tear));
 }
 
 // .
@@ -30,8 +27,8 @@
 }
 
 // ....
-.LoginForm_login{
-    .ButtonRipple{
+.LoginForm_login {
+    .ButtonRipple {
         height: 3rem;
     }
 }
@@ -50,17 +47,17 @@
 }
 
 // ....
-.LoginForm_or{
+.LoginForm_or {
     margin: 1rem 0;
 }
 // .....
-.LoginForm_or_row{
-    & > div:nth-child(2n + 1){
+.LoginForm_or_row {
+    & > div:nth-child(2n + 1) {
         width: 30%;
         border-bottom: 1px solid var(--green);
     }
 
-    & > div{
+    & > div {
         margin: 0 0.25rem;
 
         color: var(--green);
@@ -69,26 +66,21 @@
 }
 
 // ....
-.LoginForm_sign_up{
-    .ButtonRipple{
+.LoginForm_sign_up {
+    .ButtonRipple {
         width: 12.5rem;
         max-width: 80%;
-        background-color: var(--green)
+        background-color: var(--green);
     }
 }
 
 //
-@media (max-width: 1400px) {
-    .LoginForm {
-        margin: 0 0.5rem;
-    }
-}
-
 @media (max-width: 800px) {
-    .LoginForm {
-        margin: 0 0.2rem;
+    .LoginForm_contain {
+        padding: 1rem 0 4rem;
+        background-image: linear-gradient(90deg, var(--success), var(--blue-tear));
     }
-
+    
     // .
     .LoginForm_col-left {
         margin-bottom: 1rem;
@@ -97,5 +89,14 @@
     .LoginForm_col-left,
     .LoginForm_col-right {
         width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .LoginForm_contain{
+        .IconFav{
+            width: 5rem;
+            height: 5rem;
+        }
     }
 }

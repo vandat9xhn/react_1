@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { is_api_fake } from '../../../../api/_ConstAPI';
+//
 import Actions from '../../../actions/_main/Actions';
 import ActionHistory from '../../../actions/common_actions/history/ActionHistory';
 import ActionUpdate from '../../../actions/common_actions/update/ActionUpdate';
@@ -9,21 +11,20 @@ import ActionReport from '../../../actions/common_actions/report/ActionReport';
 import ActionPermission from '../../../actions/common_actions/permission/ActionPermission';
 //
 import './ActionsPost.scss';
-import ActionBack from '../../../actions/common_actions/back/ActionBack';
 
 //
 ActionsPost.propTypes = {};
 
 //
-function ActionsPost(props) {
-    const {
-        openHistoryPost,
-        openUpdatePost,
-        openDeletePost,
-        openReportPost,
-        openPermissionPost,
-    } = props;
+function ActionsPost({
+    is_poster,
 
+    openHistoryPost,
+    openUpdatePost,
+    openDeletePost,
+    openReportPost,
+    openPermissionPost,
+}) {
     //
     return (
         <div className="ActionsPost">
@@ -33,20 +34,38 @@ function ActionsPost(props) {
                         <ActionHistory handleOpenHistory={openHistoryPost} />
                     </li>
 
-                    <li>
+                    <li
+                        className={`${
+                            is_poster || is_api_fake ? '' : 'display-none'
+                        }`}
+                    >
                         <ActionUpdate handleUpdate={openUpdatePost} />
                     </li>
 
-                    <li>
-                        <ActionDelete handleDelete={openDeletePost} />
+                    <li
+                        className={`${
+                            is_poster || is_api_fake ? '' : 'display-none'
+                        }`}
+                    >
+                        <ActionPermission
+                            handleOpenPermission={openPermissionPost}
+                        />
                     </li>
 
-                    <li>
+                    <li
+                        className={`${
+                            !is_poster || is_api_fake ? '' : 'display-none'
+                        }`}
+                    >
                         <ActionReport handleOpenReport={openReportPost} />
                     </li>
 
-                    <li>
-                        <ActionPermission handleOpenPermission={openPermissionPost} />
+                    <li
+                        className={`${
+                            is_poster || is_api_fake ? '' : 'display-none'
+                        }`}
+                    >
+                        <ActionDelete handleDelete={openDeletePost} />
                     </li>
                 </ul>
             </Actions>

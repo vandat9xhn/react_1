@@ -87,6 +87,8 @@ function Post({
         count_comment,
     } = post;
 
+    const is_poster = c_user.id == user.id
+
     //
     const [open_input, setOpenInput] = useState(false);
     const [fetching_cmt, setFetchingCmt] = useState(false);
@@ -240,6 +242,7 @@ function Post({
 
                     <div className="Post__actions">
                         <ActionsPost
+                            is_poster={is_poster}
                             openHistoryPost={openHistoryPost}
                             openUpdatePost={openUpdatePost}
                             openDeletePost={openDeletePost}
@@ -299,6 +302,7 @@ function Post({
 
                 <div ref={ref_comments} className="Post_comment">
                     <CommentsWs
+                        is_poster={is_poster}
                         parent_id={id}
                         comments={comments}
                         count_comment={count_comment}

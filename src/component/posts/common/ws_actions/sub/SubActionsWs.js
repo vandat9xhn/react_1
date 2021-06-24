@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { is_api_fake } from '../../../../../api/_ConstAPI';
+//
 import Actions from '../../../../actions/_main/Actions';
 import ActionHistory from '../../../../actions/common_actions/history/ActionHistory';
 import ActionUpdate from '../../../../actions/common_actions/update/ActionUpdate';
@@ -13,14 +15,15 @@ import './SubActionsWs.scss';
 SubActionsWs.propTypes = {};
 
 //
-function SubActionsWs(props) {
-    const {
-        openHistorySub,
-        openUpdateSub,
-        openDeleteSub,
-        openReportSub,
-    } = props;
+function SubActionsWs({
+    is_user,
+    is_commenter,
 
+    openHistorySub,
+    openUpdateSub,
+    openDeleteSub,
+    openReportSub,
+}) {
     //
     return (
         <Actions>
@@ -29,16 +32,28 @@ function SubActionsWs(props) {
                     <ActionHistory handleOpenHistory={openHistorySub} />
                 </li>
 
-                <li>
+                <li
+                    className={`${
+                        is_user || is_api_fake ? '' : 'display-none'
+                    }`}
+                >
                     <ActionUpdate handleUpdate={openUpdateSub} />
                 </li>
 
-                <li>
-                    <ActionDelete handleDelete={openDeleteSub} />
+                <li
+                    className={`${
+                        !is_user || is_api_fake ? '' : 'display-none'
+                    }`}
+                >
+                    <ActionReport handleOpenReport={openReportSub} />
                 </li>
 
-                <li>
-                    <ActionReport handleOpenReport={openReportSub} />
+                <li
+                    className={`${
+                        is_user || is_commenter || is_api_fake ? '' : 'display-none'
+                    }`}
+                >
+                    <ActionDelete handleDelete={openDeleteSub} />
                 </li>
             </ul>
         </Actions>

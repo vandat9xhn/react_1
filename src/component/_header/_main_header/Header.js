@@ -17,7 +17,11 @@ function Header() {
 
     //
     useEffect(() => {
-        localStorage.is_mobile = navigator.userAgent.includes('Mobile') ? 1 : 0;
+        const is_mobile = navigator.userAgent.includes('Mobile')
+
+        localStorage.is_mobile = is_mobile ? 1 : 0;
+
+        is_mobile && document.getElementsByTagName('body')[0].classList.add('device-mobile')
     }, []);
 
     useEffect(() => {

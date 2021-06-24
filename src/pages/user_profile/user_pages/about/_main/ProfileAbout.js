@@ -11,8 +11,7 @@ import './ProfileAboutCommon.scss';
 ProfileAbout.propTypes = {};
 
 //
-function ProfileAbout({ name }) {
-
+function ProfileAbout({ name, user_id }) {
     //
     return (
         <div className="ProfileAbout width-fit-content margin-auto box-shadow-1 brs-8px-md bg-primary">
@@ -22,7 +21,7 @@ function ProfileAbout({ name }) {
                 </div>
 
                 <div className="ProfileAbout_right padding-8px">
-                    <AboutRight name={name} />
+                    <AboutRight name={name} user_id={user_id} />
                 </div>
             </div>
         </div>

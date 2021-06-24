@@ -6,21 +6,23 @@ import ActionHistory from '../../../../actions/common_actions/history/ActionHist
 import ActionUpdate from '../../../../actions/common_actions/update/ActionUpdate';
 import ActionDelete from '../../../../actions/common_actions/delete/ActionDelete';
 import ActionReport from '../../../../actions/common_actions/report/ActionReport';
-// 
+//
 import './CmtActionsWs.scss';
+import { is_api_fake } from '../../../../../api/_ConstAPI';
 
 //
 CmtActionsWs.propTypes = {};
 
 //
-function CmtActionsWs(props) {
-    const {
-        openHistoryCmt,
-        openUpdateCmt,
-        openDeleteCmt,
-        openReportCmt,
-    } = props;
+function CmtActionsWs({
+    is_user,
+    is_poster,
 
+    openHistoryCmt,
+    openUpdateCmt,
+    openDeleteCmt,
+    openReportCmt,
+}) {
     //
     return (
         <Actions>
@@ -29,16 +31,30 @@ function CmtActionsWs(props) {
                     <ActionHistory handleOpenHistory={openHistoryCmt} />
                 </li>
 
-                <li>
+                <li
+                    className={`${
+                        is_user || is_api_fake ? '' : 'display-none'
+                    }`}
+                >
                     <ActionUpdate handleUpdate={openUpdateCmt} />
                 </li>
 
-                <li>
-                    <ActionDelete handleDelete={openDeleteCmt} />
+                <li
+                    className={`${
+                        !is_user || is_api_fake ? '' : 'display-none'
+                    }`}
+                >
+                    <ActionReport handleOpenReport={openReportCmt} />
                 </li>
 
-                <li>
-                    <ActionReport handleOpenReport={openReportCmt} />
+                <li
+                    className={`${
+                        is_user || is_poster || is_api_fake
+                            ? ''
+                            : 'display-none'
+                    }`}
+                >
+                    <ActionDelete handleDelete={openDeleteCmt} />
                 </li>
             </ul>
         </Actions>

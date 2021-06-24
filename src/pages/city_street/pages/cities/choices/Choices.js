@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { is_api_fake } from '../../../../../api/_ConstAPI';
+// 
 import Actions from '../../../../../component/actions/_main/Actions';
 import ActionHistory from '../../../../../component/actions/common_actions/history/ActionHistory';
 import ActionUpdate from '../../../../../component/actions/common_actions/update/ActionUpdate';
@@ -18,35 +20,45 @@ Choices.propTypes = {
 Choices.defaultProps = {};
 
 //
-function Choices(props) {
-    const {
-        is_user,
-        count_his,
+function Choices({
+    is_user,
+    count_his,
 
-        openHistory,
-        openUpdate,
-        openDelete,
-        openReport,
-    } = props;
-
+    openHistory,
+    openUpdate,
+    openDelete,
+    openReport,
+}) {
     //
     return (
         <Actions>
             <ul className="Choices_list list-none">
-                <li>
+                <li className={`${count_his || is_api_fake ? '' : 'display-none'}`}>
                     <ActionHistory handleOpenHistory={openHistory} />
                 </li>
 
-                <li>
+                <li
+                    className={`${
+                        is_user || is_api_fake ? '' : 'display-none'
+                    }`}
+                >
                     <ActionUpdate handleUpdate={openUpdate} />
                 </li>
 
-                <li>
-                    <ActionDelete handleDelete={openDelete} />
+                <li
+                    className={`${
+                        !is_user || is_api_fake ? '' : 'display-none'
+                    }`}
+                >
+                    <ActionReport handleOpenReport={openReport} />
                 </li>
 
-                <li>
-                    <ActionReport handleOpenReport={openReport} />
+                <li
+                    className={`${
+                        is_user || is_api_fake ? '' : 'display-none'
+                    }`}
+                >
+                    <ActionDelete handleDelete={openDelete} />
                 </li>
             </ul>
         </Actions>

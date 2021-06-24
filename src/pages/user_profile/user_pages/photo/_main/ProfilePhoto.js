@@ -28,12 +28,13 @@ const group_photo_arr = [
 ProfilePhoto.propTypes = {};
 
 //
-function ProfilePhoto(props) {
+function ProfilePhoto({ user_id, name }) {
     //
     const { route_arr } = useRouteLoaded({
         initial_route_arr: PhotosRoutes,
         part_location: 'search',
         allow_routes_str: photos_searches_str,
+        deps: [user_id],
     });
 
     //

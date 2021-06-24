@@ -1,13 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+// 
 import './IconFav.scss';
-//
-function IconFav(props) {
-    const {size_icon} = props;
 
+//
+function IconFav({ size_icon }) {
+    //
     return (
-        <svg className="IconFav" height={size_icon} width={size_icon} viewBox="0 0 200 200">
+        <svg
+            className="IconFav"
+            height={size_icon}
+            width={size_icon}
+            viewBox="0 0 200 200"
+        >
             <g fill="none" strokeLinecap="round">
                 {/* circle */}
                 <g className="IconFav_circle" strokeWidth="8">
@@ -22,7 +27,10 @@ function IconFav(props) {
                         stroke="var(--color-django)"
                     />
 
-                    <path d="M100,180 100,180 100,180" stroke="var(--color-react)" />
+                    <path
+                        d="M100,180 100,180 100,180"
+                        stroke="var(--color-react)"
+                    />
                 </g>
 
                 <g className="IconFav_text">
@@ -71,6 +79,6 @@ IconFav.propTypes = {
 
 IconFav.defaultProps = {
     size_icon: '2rem',
-}
+};
 
 export default IconFav;

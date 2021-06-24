@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { useForceUpdate } from '../../../../../../../../../_custom_hooks/UseForceUpdate';
+// 
+import { formatLocalDateString } from '../../../../../../../../../_some_function/FormatDate';
 //
 import { handle_API_Birth_U } from '../../../../../../../__handle_api/ProfileHandleAPI';
 
@@ -16,10 +18,7 @@ PfAboutBirth.propTypes = {
 };
 
 //
-function PfAboutBirth(props) {
-    //
-    const { birth_obj } = props;
-
+function PfAboutBirth({ birth_obj }) {
     //
     const forceUpdate = useForceUpdate();
 
@@ -27,7 +26,7 @@ function PfAboutBirth(props) {
     function handleCreate(data) {
         const { birth, permission } = data;
 
-        birth_obj.title = birth;
+        birth_obj.title = formatLocalDateString(birth);
         birth_obj.birth = birth;
         birth_obj.permission = permission;
         forceUpdate();

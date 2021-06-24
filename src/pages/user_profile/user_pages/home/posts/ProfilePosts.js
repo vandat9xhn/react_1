@@ -46,7 +46,7 @@ function ProfilePosts({ name }) {
     useEffect(() => {
         resetStopScrollDown();
         observeToDo(ref_component.current, handleChangeId, 0);
-    }, [id]);
+    }, []);
 
     //
     return (
