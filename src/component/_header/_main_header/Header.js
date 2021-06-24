@@ -16,17 +16,13 @@ function Header() {
     const { is_register } = useSelector((state) => state.location_obj);
 
     //
-    // const [is_hidden, setIsHidden] = useState(false);
-
-    //
     useEffect(() => {
         localStorage.is_mobile = navigator.userAgent.includes('Mobile') ? 1 : 0;
-        handleNewMember();
     }, []);
 
-    // useEffect(() => {
-    //     setIsHidden(location.pathname.search(/registration-form/) > 0);
-    // }, [location.pathname.search(/registration-form/)]);
+    useEffect(() => {
+        handleNewMember();
+    }, [is_register]);
 
     //
     function handleNewMember() {

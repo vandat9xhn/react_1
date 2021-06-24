@@ -9,9 +9,7 @@ Select.propTypes = {
 };
 
 //
-function Select(props) {
-    const { options, current_option, onSelectOption } = props;
-
+function Select({ options, current_option, onSelectOption }) {
     //
     return (
         <select name="" value={current_option} onChange={onSelectOption}>

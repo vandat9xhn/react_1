@@ -98,28 +98,28 @@ function LoginForm() {
 
     //
     if (user.id) {
-        return <Redirect to={sessionStorage.url_before_login || '/home'} />;
+        // return <Redirect to={sessionStorage.url_before_login || '/home'} />;
     }
     //
     return (
         <div className="LoginForm">
-            <div className="LoginForm_contain brs-5px">
-                <div className="LoginForm_row display-flex">
-                    <div className="LoginForm_col-left">
-                        <div className="LoginForm_col-info">
+            <div className="LoginForm_contain brs-5px-md">
+                <div className="LoginForm_row display-flex flex-wrap">
+                    <div className="LoginForm_col-left display-flex-center">
+                        <div className="LoginForm_col-info text-align-center">
                             <IconFav size_icon="6rem" />
 
                             <div>This web was built by ReactJs and Django</div>
                         </div>
                     </div>
 
-                    <div className="LoginForm_col-right">
+                    <div className="LoginForm_col-right display-flex justify-content-center">
                         <form
-                            className="LoginForm_form App_Form brs-5px App_box_shadow"
+                            className="LoginForm_form App_Form brs-5px-md"
                             autoComplete="off"
                             onSubmit={handleLogin}
                         >
-                            <div className="App_title">Login</div>
+                            <h2 className="App_title margin-0">Login</h2>
                             <hr className="App_hr-bg" />
 
                             <div
@@ -157,20 +157,36 @@ function LoginForm() {
                                 />
                             </div>
 
-                            <div className="App_submit display-flex-center">
+                            <div className="LoginForm_login App_submit display-flex-center">
                                 <ButtonRipple type="submit" title="Login">
                                     Login
                                 </ButtonRipple>
                             </div>
 
-                            <div>Do you have a account?</div>
-                            <br />
-
-                            <div className="App_submit display-flex-center">
-                                <Link to="/registration-form">
-                                    <div title="Sign up">Sign up now</div>
-                                </Link>
+                            <div>
+                                <Link to="#">Forgot password?</Link>
                             </div>
+
+                            <div className="LoginForm_or">
+                                <div className="LoginForm_or_row display-flex-center">
+                                    <div></div>
+
+                                    <div>or</div>
+
+                                    <div></div>
+                                </div>
+                            </div>
+
+                            <Link
+                                className="text-light"
+                                to="/registration-form"
+                            >
+                                <div className="LoginForm_sign_up display-flex-center">
+                                    <ButtonRipple type="text" title="sign up">
+                                        <div>Sign up now</div>
+                                    </ButtonRipple>
+                                </div>
+                            </Link>
                         </form>
                     </div>
                 </div>

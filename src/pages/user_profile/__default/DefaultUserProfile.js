@@ -160,7 +160,12 @@ const user_related_arr = [
     'c_user',
 ];
 
-export const default_user_about_r = () => ({
+const gender_arr = ['Male', 'Female', 'Other']
+
+export const default_user_about_r = () => {
+    const gender = getRandomItemArr(gender_arr)
+
+    return({
     id: Math.floor(Math.random() * 1000),
     first_name: getRandomItemArr(first_name_arr),
     last_name: 'Day',
@@ -173,8 +178,8 @@ export const default_user_about_r = () => ({
 
     gender_obj: {
         id: 5,
-        title: 'Male',
-        gender: 'male',
+        title: gender,
+        gender: gender.toLowerCase(),
         permission: 0,
         profile_model: 11,
     },
@@ -266,4 +271,4 @@ export const default_user_about_r = () => ({
 
     is_online: true,
     created_time: '2021-06-10T01:15:38.302083Z',
-});
+})};

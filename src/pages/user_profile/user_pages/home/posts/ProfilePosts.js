@@ -20,7 +20,7 @@ ProfilePosts.propTypes = {
 };
 
 //
-function ProfilePosts({name}) {
+function ProfilePosts({ name }) {
     //
     const { user } = useContext(context_api);
 
@@ -30,7 +30,7 @@ function ProfilePosts({name}) {
     //
     const ref_component = useRef(null);
 
-    // state
+    // 
     const {
         data_state: post_obj,
         getData_API_at_first: handleChangeId,

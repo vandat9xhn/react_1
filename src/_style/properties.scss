@@ -210,7 +210,10 @@
     color: var(--white);
 }
 
-/* red */
+.text-light{
+    color: var(--color-light);
+}
+
 .text-red{
     color: var(--danger);
 }

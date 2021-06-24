@@ -23,11 +23,3 @@
 .InputText_invalid{
     border: 1px solid var(--danger);
 }
-
-
-//
-@media (max-width: 500px){
-    .InputText_input{
-        padding: 0.25rem;
-    }
-}
