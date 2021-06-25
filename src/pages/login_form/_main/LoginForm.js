@@ -103,7 +103,7 @@ function LoginForm() {
     //
     return (
         <div className="LoginForm">
-            <div className="LoginForm_contain">
+            <div className="LoginForm_contain padding-8px">
                 <div className="LoginForm_row display-flex flex-wrap">
                     <div className="LoginForm_col-left display-flex-center">
                         <div className="LoginForm_col-info text-align-center">
@@ -115,7 +115,7 @@ function LoginForm() {
 
                     <div className="LoginForm_col-right display-flex justify-content-center">
                         <form
-                            className="LoginForm_form App_Form brs-5px-md"
+                            className="LoginForm_form App_Form padding-8px brs-5px-md bg-react"
                             autoComplete="off"
                             onSubmit={handleLogin}
                         >

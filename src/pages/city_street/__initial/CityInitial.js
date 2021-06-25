@@ -24,7 +24,7 @@ export const validationSchema = Yup.object().shape({
 export const initialValues = {
     city: '',
     street: '',
-    bg_color: '#ffffff',
+    bg_color: 'bg-primary.text-primary',
     quote: '',
     image: '',
 };

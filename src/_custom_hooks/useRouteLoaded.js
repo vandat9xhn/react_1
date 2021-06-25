@@ -53,7 +53,7 @@ export const useRouteLoaded = ({
 
             setTimeout(() => {
                 handleChangeRoute();
-            }, 100);
+            }, 0);
 
             return;
         } else {

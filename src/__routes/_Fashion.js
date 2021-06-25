@@ -32,36 +32,43 @@ export const fashion_route_arr = [
         path: '/fashion',
         component: Fashion,
         exact: true,
+        auth: false,
     },
     {
         path: '/fashion/shop/:id',
         component: FashionShop,
         exact: true,
+        auth: false,
     },
     {
         path: '/fashion::id',
         component: FashionItem,
         exact: true,
+        auth: false,
     },
     {
         path: '/fashion/cart',
         component: FashionCart,
         exact: true,
+        auth: true,
     },
     {
         path: '/fashion/buy',
         component: FashionBuy,
         exact: true,
+        auth: true,
     },
     {
         path: '/fashion/search',
         component: FashionSearch,
         exact: true,
+        auth: false,
     },
     {
         path: '/fashion/personal',
         component: FashionPersonal,
         exact: false,
+        auth: true,
     },
 
     // on work
@@ -69,30 +76,36 @@ export const fashion_route_arr = [
         path: '/fashion/mall',
         component: FashionOnWork,
         exact: true,
+        auth: false,
     },
     {
         path: '/fashion/extra-ship',
         component: FashionOnWork,
         exact: true,
+        auth: false,
     },
     {
         path: '/fashion/premium',
         component: FashionOnWork,
         exact: true,
+        auth: false,
     },
     {
         path: '/fashion/brand-discount',
         component: FashionOnWork,
         exact: true,
+        auth: false,
     },
     {
         path: '/fashion/brand-1',
         component: FashionOnWork,
         exact: true,
+        auth: false,
     },
     {
         path: '/fashion/condition',
         component: FashionOnWork,
         exact: true,
+        auth: false,
     },
 ];

@@ -13,11 +13,13 @@ export const city_route_arr = [
     {
         path: '/city-street',
         component: CityStreet,
-        export: true,
+        exact: true,
+        auth: false,
     },
     {
         path: '/new-city',
         component: NewCity,
-        export: true,
+        exact: true,
+        auth: true,
     },
 ];

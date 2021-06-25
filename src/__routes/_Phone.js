@@ -21,21 +21,25 @@ export const phone_route_arr = [
     {
         path: '/phone-laptop',
         component: PhoneLaptop,
-        export: true,
+        exact: true,
+        auth: false,
     },
     {
         path: '/phone-laptop::id',
         component: PhoneLaptopDetail,
-        export: true,
+        exact: true,
+        auth: false,
     },
     {
         path: '/phone-laptop-phones',
         component: Phones,
-        export: true,
+        exact: true,
+        auth: false,
     },
     {
         path: '/phone-laptop-laptops',
         component: Laptops,
-        export: true,
+        exact: true,
+        auth: false,
     },
 ];

@@ -35,6 +35,7 @@ import ScreenLike from './component/_screen_post/like/_main/ScreenLike';
 import ScreenPermission from './component/_screen_post/permission/_main/ScreenPermission';
 import ScreenBlurFetching from './component/_screen_blur/fetching/_main/ScreenBlurFetching';
 import ScreenNotice from './component/_screen_blur/notice/ScreenNotice';
+import Auth from './_auth/Auth';
 
 // App
 class App extends Component {
@@ -128,8 +129,8 @@ class App extends Component {
     };
 
     handleRefresh = () => {
-        this.setState({})
-    }
+        this.setState({});
+    };
 
     //
     render() {
@@ -138,7 +139,7 @@ class App extends Component {
                 <BrowserRouter>
                     <ContextAPI
                         handleRefresh={this.handleRefresh}
-                        // 
+                        //
                         openMessage={this.openMessage}
                         openZoomVidPics={this.openZoomVidPics}
                         toggleCanvasFixed={this.toggleCanvasFixed}
@@ -168,7 +169,7 @@ class App extends Component {
                                         <Route
                                             key={`App_route_${index}`}
                                             path={route.path}
-                                            component={route.component}
+                                            render={props => <Auth route={route} {...props} />}
                                             exact={route.exact}
                                         />
                                     ))}

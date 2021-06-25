@@ -182,7 +182,7 @@ function Registration(props) {
                 {(form_props) => (
                     <Form
                         autoComplete="off"
-                        className="Registration_form App_Form brs-5px-md"
+                        className="Registration_form App_Form brs-5px-md padding-8px"
                         onClick={closeMoreError}
                     >
                         <h2 className="App_title margin-0">Sign up</h2>{' '}

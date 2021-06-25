@@ -34,7 +34,11 @@ function RouteLoaded({ route_arr, fallback, use_loaded }) {
                 ))}
             </Suspense>
 
-            {!route_arr.some((item) => item.is_active) ? fallback : <div></div>}
+            {!route_arr.some((item) => item.is_active) ? (
+                <div className="opacity-0">{fallback}</div>
+            ) : (
+                <div></div>
+            )}
         </div>
     );
 }

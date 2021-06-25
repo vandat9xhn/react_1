@@ -13,7 +13,7 @@ CityItemSkeleton.propTypes = {};
 //
 function CityItemSkeleton() {
     return (
-        <div className="CityItem brs-5px">
+        <div className="CityItem brs-5px bg-primary">
             <div className="CityItemSkeleton_head">
                 <SkeletonDiv />
             </div>
@@ -27,7 +27,9 @@ function CityItemSkeleton() {
             </div>
 
             <div className="CityItem_img-contain bg-loader brs-5px">
-                <img src={image_loading} alt="" />
+                <div className="display-flex-center h-100per">
+                    <img src={image_loading} alt="" />
+                </div>
             </div>
         </div>
     );

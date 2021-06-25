@@ -20,26 +20,31 @@ export const profile_route_arr = [
     {
         path: '/profile/:id',
         component: Profile,
-        export: true,
+        exact: true,
+        auth: true,
     },
     {
         path: '/posts/:id',
         component: UserPost,
-        export: true,
+        exact: true,
+        auth: true,
     },
     {
         path: '/new-feed',
         component: NewFeed,
-        export: true,
+        exact: true,
+        auth: true,
     },
     {
         path: '/post/photos/:id',
         component: ZoomVidPicItem,
-        export: true,
+        exact: true,
+        auth: true,
     },
     {
         path: '/add-friend-add',
         component: AddFriend,
-        export: true,
+        exact: true,
+        auth: true,
     },
 ];

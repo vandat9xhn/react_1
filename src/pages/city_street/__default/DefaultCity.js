@@ -14,7 +14,7 @@ export const default_arr_city = [
         city: 'Ha Noi',
         street: 'Nguyen Trai',
         quote: 'This is a street of Ha Noi',
-        bg_color: '#28a745',
+        bg_color: 'bg-linear-45-success-tear.text-white',
         image: image_loading,
         is_user: true,
         count_his: 2,

@@ -54,7 +54,7 @@ function Actions({ title_action, symbol_post, children }) {
                 </div>
 
                 {is_open && (
-                    <div className="Actions_choices box-shadow-1 brs-5px">
+                    <div className="Actions_choices box-shadow-1 brs-5px text-primary">
                         <div className="Actions_choices_actions">
                             <div className="ActionsChoices_back display-none">
                                 <ActionBack />

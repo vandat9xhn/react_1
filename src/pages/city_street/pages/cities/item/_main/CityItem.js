@@ -139,8 +139,9 @@ function CityItem({ city_obj }) {
     return (
         !is_del && (
             <div
-                className="CityItem brs-5px box-shadow-1"
-                style={{ backgroundColor: bg_color }}
+                className={`CityItem brs-5px-md box-shadow-1 ${
+                    bg_color.split('.')[0]
+                } ${bg_color.split('.')[1]}`}
             >
                 <div className="CityItem_user">
                     <PictureName user={user} />
@@ -159,7 +160,9 @@ function CityItem({ city_obj }) {
                 <div className="CityItem_img">
                     <a href={image} target="_blank">
                         <div className="CityItem_img-contain bg-loader brs-5px">
-                            <img src={image} alt="" />
+                            <div className="display-flex-center h-100per">
+                                <img src={image} alt="" />
+                            </div>
                         </div>
                     </a>
                 </div>

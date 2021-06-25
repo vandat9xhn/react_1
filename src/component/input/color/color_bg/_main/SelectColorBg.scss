@@ -1,0 +1,19 @@
+.SelectColorBg{
+    width: 8rem;
+    user-select: none;
+}
+
+// 
+.SelectColorBg_btn-item{
+    border: 1px solid var(--md-color-secondary);
+}
+
+// 
+.SelectColorBg_list{
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: var(--z-index-lv1);
+
+    width: 100%;
+}

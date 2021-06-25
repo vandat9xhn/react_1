@@ -14,12 +14,14 @@ export const account_route_arr = [
     {
         path: '/login-form',
         component: LoginForm,
-        export: true,
+        exact: true,
+        auth: false,
     },
 
     {
         path: '/registration-form',
         component: Registration,
-        export: true,
+        exact: true,
+        auth: false,
     },
 ];

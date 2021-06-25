@@ -1,33 +1,11 @@
 //
-@media (max-width: 1200px) {
-    .CityItem {
-        width: 50vw;
-    }
-}
-
-@media (max-width: 900px) {
-    .CityItem {
-        width: 60vw;
-    }
-}
-
-@media (max-width: 600px) {
-    .CityItem {
-        width: 80vw;
-    }
+@media (max-width: 400px) {
     .CityItem_img-contain {
         height: 13rem;
     }
 }
 
-@media (max-width: 400px) {
-    .CityItem {
-        width: 100vw;
-        border-radius: 0;
-    }
-}
-
-@media (max-width: 300px) {
+@media (max-width: 250px) {
     .CityItem_img-contain {
         height: 11rem;
     }

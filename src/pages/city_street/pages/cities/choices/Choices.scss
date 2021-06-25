@@ -1,21 +1,2 @@
 
-.Choices_symbol {
-    font-weight: bolder;
-    letter-spacing: 0.2rem;
-    opacity: 0.6;
-    &:hover {
-        opacity: 1;
-    }
-}
 
-//
-.Choices__item {
-    padding: 0.5rem;
-    min-width: 12rem;
-    &:hover {
-        background-color: var(--md-bg-hover);
-    }
-}
-.Choices__item-none{
-    cursor: default;
-}

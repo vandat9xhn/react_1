@@ -1,0 +1,6 @@
+.SelectColorBgItem{
+    box-shadow: 0 0 0.5px 0.25px var(--md-color);
+    &:hover {
+        font-weight: bold;
+    }
+}
