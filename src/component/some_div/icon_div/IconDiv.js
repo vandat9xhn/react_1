@@ -10,6 +10,9 @@ IconDiv.propTypes = {
     is_reverse: PropTypes.bool,
     space_between: PropTypes.bool,
 
+    class_left: PropTypes.string,
+    class_right: PropTypes.string,
+
     Icon: PropTypes.func,
     x: PropTypes.number,
     y: PropTypes.number,
@@ -21,32 +24,33 @@ IconDiv.propTypes = {
 };
 
 IconDiv.defaultProps = {
-    is_reverse: false,
-    space_between: false,
     icon_props: {},
 };
 
 //
-function IconDiv(props) {
-    const {
-        is_reverse,
-        space_between,
+function IconDiv({
+    is_reverse,
+    space_between,
 
-        x,
-        y,
-        color,
-        Icon,
-        size_icon,
-        icon_props,
+    class_left,
+    class_right,
 
-        children,
-    } = props;
+    x,
+    y,
+    color,
+    Icon,
+    size_icon,
+    icon_props,
 
+    children,
+}) {
     //
     return (
         <FlexDiv
             is_reverse={is_reverse}
             space_between={space_between}
+            class_left={class_left}
+            class_right={class_right}
             ComponentLeft={
                 <div className="IconDiv_left">
                     <Icon

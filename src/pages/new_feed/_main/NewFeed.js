@@ -10,12 +10,12 @@ import Posts from '../../../component/posts/_posts/_main/PostsWs';
 import { handle_API_NewFeedPost_L } from '../__handle_api/NewFeedHandleAPI';
 // 
 import './NewFeedCommon.scss';
-import './NewFeed.scss';
 // 
 import NewFeedSearch from '../search/NewFeedSearch';
 import NewFeedRight from '../right/_main/NewFeedRight';
 import NewFeedLeft from '../left/_main/NewFeedLeft';
 //
+import './NewFeed.scss';
 import './NewFeedRes.scss';
 
 //
@@ -63,7 +63,7 @@ function NewFeed() {
                     <NewFeedSearch handleSearch={handleSearch} />
                 </div>
 
-                <div className="NewFeed_row">
+                <div className="NewFeed_row display-flex space-between">
                     <div className="NewFeed_col-left">
                         <NewFeedLeft />
                     </div>

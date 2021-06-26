@@ -8,11 +8,10 @@ import {
     handle_API_FriendRequest,
 } from '../__handle_api/AddFriendHandleAPI';
 //
-import './AddFriend.scss';
-//
 import AddFriendBody from '../body/_main/AddFriendBody';
 import AddFriendHead from '../head/_main/AddFriendHead';
-// 
+//
+import './AddFriend.scss';
 import './AddFriendRes.scss';
 
 //
@@ -42,11 +41,10 @@ function AddFriend(props) {
         is_fetching: false,
     });
 
-    const { may_know_obj, requested_obj, sent_obj, c_request, is_fetching } =
-        add_friend_obj;
+    const { c_request, is_fetching } = add_friend_obj;
 
     const { arr, has_fetched, count } = add_friend_obj[c_request];
-    
+
     //
     const mounted = useMounted();
 
@@ -129,7 +127,7 @@ function AddFriend(props) {
         }
     }
 
-    /* ------------------ SEND + DELETE ------------------- */
+    /* ------------- SEND + DELETE ------------- */
 
     // send
     async function handleRequesting(ix, new_status_requested) {
@@ -159,7 +157,7 @@ function AddFriend(props) {
     //
     return (
         <div className="AddFriend">
-            <div className="AddFriend_contain">
+            <div className="AddFriend_contain padding-8px">
                 <div className="AddFriend_head">
                     <AddFriendHead
                         c_request={c_request}

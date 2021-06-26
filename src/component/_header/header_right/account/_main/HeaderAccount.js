@@ -43,7 +43,7 @@ function HeaderAccount(props) {
                 </div>
 
                 <div
-                    className={`header_hidden ${
+                    className={`header_hidden right-0 ${
                         open_account ? '' : 'display-none'
                     }`}
                 >

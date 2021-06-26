@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMouseEnterLeave } from '../../../../../_custom_hooks/UseMouseEnterLeave';
@@ -25,60 +25,85 @@ MouseEnterLeaveInfo.propTypes = {
 };
 
 //
-function MouseEnterLeaveInfo(props) {
-    const {
-        count,
-        title,
-        total_people,
-        content_pic,
+function MouseEnterLeaveInfo({
+    count,
+    title,
+    total_people,
+    content_pic,
 
-        is_pic_name,
-        PeopleComponent,
-        //
-        handle_API_L,
-        handleOpenScreen,
-        LoadingComponent,
-    } = props;
+    is_pic_name,
+    PeopleComponent,
     //
-    const [
-        { list, count: new_count, is_fetching, open_list },
-        handleMouseEnter,
-        handleMouseOut,
-    ] = useMouseEnterLeave(handle_API_L);
+    handle_API_L,
+    handleOpenScreen,
+    LoadingComponent,
+}) {
+    // 
+    const ref_child_elm = useRef(null);
+    const ref_parent_elm = useRef(null);
 
+    //
+    const {
+        mouse_state: {
+            is_open,
+            transform_x,
+            position_y,
+
+            list,
+            count: new_count,
+            is_fetching,
+        },
+        handleMouseenter,
+        handleMouseleave,
+    } = useMouseEnterLeave(handle_API_L, ref_child_elm, ref_parent_elm);
+
+    // console.log(position_y);
     //
     return (
-        <div className="MouseEnterLeaveInfo position_rel cursor-pointer">
+        <div
+            ref={ref_parent_elm}
+            className="MouseEnterLeaveInfo position_rel cursor-pointer"
+        >
             <div
                 // className={`${count ? '' : 'display-none'}`}
                 className={`${true ? '' : 'display-none'}`}
                 onClick={handleOpenScreen}
-                onMouseEnter={localStorage.is_mobile == 1 ? undefined : handleMouseEnter}
-                onMouseLeave={localStorage.is_mobile == 1 ? undefined : handleMouseOut}
+                onMouseEnter={
+                    localStorage.is_mobile == 1 ? undefined : handleMouseenter
+                }
+                onMouseLeave={
+                    localStorage.is_mobile == 1 ? undefined : handleMouseleave
+                }
             >
                 {title || count}
             </div>
 
             <div
                 className={`MouseEnterLeaveInfo_list ${
-                    open_list ? '' : 'display-none'
-                }`}
+                    is_open ? 'visibility-visible' : 'visibility-hidden'
+                } ${position_y == 'top' ? 'bottom-100per' : 'top-100per'}`}
+                style={{
+                    transform: `translateX(-50%) translateX(${transform_x}px)`,
+                }}
             >
-                <ListPeople
-                    list_people={list}
-                    count_people={total_people || new_count || count}
-                    content={content_pic}
+                <div ref={ref_child_elm} className="w-100per"></div>
 
-                    is_pic_name={is_pic_name}
-                    PeopleComponent={PeopleComponent}
-                />
-            </div>
+                <div className={`${is_open ? '' : 'display-none'}`}>
+                    <div className={`${is_fetching ? 'display-none' : ''}`}>
+                        <ListPeople
+                            list_people={list}
+                            count_people={total_people || new_count || count}
+                            content={content_pic}
+                            is_pic_name={is_pic_name}
+                            PeopleComponent={PeopleComponent}
+                        />
+                    </div>
 
-            <div className="MouseEnterLeaveInfo_fetching">
-                <LoaderDiv
-                    LoadingComponent={LoadingComponent}
-                    is_fetching={is_fetching}
-                />
+                    <LoaderDiv
+                        LoadingComponent={LoadingComponent}
+                        is_fetching={is_fetching}
+                    />
+                </div>
             </div>
         </div>
     );

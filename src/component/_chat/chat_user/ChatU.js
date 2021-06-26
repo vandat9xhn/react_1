@@ -22,7 +22,7 @@ ChatU.propTypes = {};
 //
 function ChatU() {
     //
-    const { openMessage, chat_class } = useContext(context_api);
+    const { openMessage, auth_class } = useContext(context_api);
 
     //
     const [friend_obj, setFriendObj] = useState({
@@ -113,7 +113,7 @@ function ChatU() {
 
     //
     return (
-        <div className={`ChatU ${chat_class}`}>
+        <div className={`ChatU ${auth_class}`}>
             <div
                 className={`ChatU_toggle hv-opacity brs-5px ${
                     is_open ? '' : 'ChatU_open'

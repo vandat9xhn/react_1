@@ -9,14 +9,18 @@ import './HeaderHItemHasSub.scss';
 HeaderHItemHasSub.propTypes = {};
 
 //
-function HeaderHItemHasSub({ title, sub_list }) {
+function HeaderHItemHasSub({ item }) {
+    //
+    const { Icon, x, y, title, sub_list } = item;
+
+    //
     return (
         <div className="HeaderHItemHasSub position-rel">
-            <div className="HeaderH_item header_item">
-                {title}
+            <div className="HeaderHItemHasSub_icon HeaderH_item header_item header_item_horizontal">
+                {Icon ? <Icon x={x} y={y} size_icon="1.8rem" /> : title}
             </div>
 
-            <div className="HeaderHItemHasSub_sub header_hidden">
+            <div className="HeaderHItemHasSub_sub header_hidden left-0">
                 <div className="header_hidden-contain">
                     <ul className="list-none">
                         {sub_list.map((item, ix) => (

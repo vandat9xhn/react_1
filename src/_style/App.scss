@@ -1,6 +1,6 @@
 /* html */
 // html {
-//     scroll-behavior: smooth;
+    // scroll-behavior: smooth;
 // }
 
 *,
@@ -71,7 +71,6 @@ img {
 
 /* ------------ APP -------------- */
 .App {
-    // background-color:  var(--md-bg-primary);
     background-color: var(--md-bg-fb);
     color: var(--md-color);
     overflow-x: hidden;
@@ -79,6 +78,7 @@ img {
 
 /* ------------ HEADER -------------- */
 .AppHeader {
+    // position: sticky;
     position: fixed;
     top: 0;
     width: 100%;
@@ -88,6 +88,7 @@ img {
 /* ------------ CONTENT -------------- */
 .AppContent {
     margin-top: calc(var(--height-header));
+    // margin-top: 0.5rem;
     margin-bottom: 1rem;
     min-height: calc(100vh + 5rem - var(--height-header));
 }
@@ -98,12 +99,12 @@ img {
 }
 
 //
-@media (max-width: 300px) {
-    body {
-        font-size: 15px;
-    }
+@media (max-width: 350px) {
+    // body {
+    //     font-size: 15px;
+    // }
 
     .AppContent {
-        margin-top: calc(var(--height-header-300));
+        margin-top: calc(var(--height-header-350));
     }
 }

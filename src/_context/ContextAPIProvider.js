@@ -61,6 +61,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
             localStorage.is_login = 0;
             localStorage.access_token = '';
         }
+        
         setContextState({
             user: new_user,
             has_fetched: has_fetched,
@@ -72,7 +73,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
         <context_api.Provider
             value={{
                 ...rest_props,
-                chat_class: user.id ? '' : 'display-none',
+                auth_class: user.id ? '' : 'display-none',
                 user: user,
                 setDataUser: setDataUser,
             }}

@@ -39,18 +39,18 @@ function Header() {
     //
     return (
         <div
-            className={`Header App_box_shadow ${
+            className={`Header App_box_shadow h-100-per bg-primary ${
                 is_register ? 'display-none' : ''
             }`}
         >
-            <div className="Header_contain">
-                <div className="Header_row">
-                    <div className="Header_col-left">
+            <div className="Header_contain h-100per">
+                <div className="Header_row flex-between-center h-100per">
+                    <div className="Header_col-left h-100per">
                         <HeaderV />
                         <HeaderH />
                     </div>
 
-                    <div className="Header_col-right">
+                    <div className="Header_col-right h-100per">
                         <RightHeader />
                     </div>
                 </div>

@@ -15,17 +15,21 @@
 .HeaderVItemHasSub_item {
     position: relative;
     padding-left: 2rem;
-    &::before {
-        content: '-';
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
+    a{
+        &::before {
+            content: '-';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+    
+            font-weight: 600;
+        }
 
-        font-weight: 500;
-        color: var(--black-brown);
+        &.nav-active{
+            &::before{
+                color: var(--blue);
+            }
+        }
     }
-}
-.nav-active .HeaderVItemHasSub_item::before {
-    color: var(--blue-tear);
 }

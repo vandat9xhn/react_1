@@ -9,10 +9,11 @@ import { useScreenFetching } from '../../../_custom_hooks/UseScreenFetching';
 //
 import makeFormData from '../../../_some_function/makeFormData';
 //
-import ButtonRipple from '../../../component/button/button_ripple/ButtonRipple';
-import IconDiv from '../../../component/some_div/icon_div/IconDiv';
 import IconsAction from '../../../_icons_svg/icons_action/IconsAction';
 import IconFav from '../../../_icons_svg/_icon_fav/IconFav';
+// 
+import IconDiv from '../../../component/some_div/icon_div/IconDiv';
+import ButtonRipple from '../../../component/button/button_ripple/ButtonRipple';
 import InputNotValid from '../../../component/input/input_not_valid/InputNotValid';
 import InputNotValidPass from '../../../component/input/input_not_valid_pass/InputNotValidPass';
 //
@@ -96,10 +97,10 @@ function LoginForm() {
         }
     }
 
-    //
-    if (user.id) {
-        return <Redirect to={sessionStorage.url_before_login || '/home'} />;
-    }
+    // //
+    // if (user.id) {
+    //     return <Redirect to={sessionStorage.url_before_login || '/home'} />;
+    // }
     //
     return (
         <div className="LoginForm">

@@ -79,7 +79,7 @@ function Registration(props) {
     useEffect(() => {
         document.title = 'Registration';
         document.documentElement.setAttribute('data-theme', 'light');
-        
+
         return () => {
             localStorage.light_mode != 1 &&
                 document.documentElement.setAttribute('data-theme', 'dark');
@@ -165,9 +165,10 @@ function Registration(props) {
         invalid && setInvalid(false);
     }
 
-    if (user.id) {
-        return <Redirect to="/home" />;
-    }
+    //
+    // if (user.id) {
+    //     return <Redirect to="/home" />;
+    // }
 
     //
     return (

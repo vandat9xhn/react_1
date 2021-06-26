@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import IconDiv from '../../../../some_div/icon_div/IconDiv';
+// 
 import ArrowAndString from '../../../../some_div/arrow_div/ArrowAndString';
 import HeaderVItem from '../item/HeaderVItem';
 //
@@ -10,7 +12,11 @@ import './HeaderVItemHasSub.scss';
 HeaderVItemHasSub.propTypes = {};
 
 //
-function HeaderVItemHasSub({ title, sub_list }) {
+function HeaderVItemHasSub({ item }) {
+    //
+    const { Icon, x, y, title, sub_list } = item;
+
+    //
     const [open_list, setOpenList] = useState(false);
 
     //
@@ -22,9 +28,20 @@ function HeaderVItemHasSub({ title, sub_list }) {
     //
     return (
         <div className="HeaderVItemHasSub">
-            <div className="padding-8px label-field" onClick={toggleOpenList}>
+            <div
+                className={`padding-8px label-field ${
+                    open_list ? 'nav-active text-blue' : ''
+                }`}
+                onClick={toggleOpenList}
+            >
                 <ArrowAndString open_list={open_list} size_icon="0.8rem">
-                    {title}
+                    {Icon ? (
+                        <IconDiv Icon={Icon} x={x} y={y}>
+                            {title}
+                        </IconDiv>
+                    ) : (
+                        title
+                    )}
                 </ArrowAndString>
             </div>
 

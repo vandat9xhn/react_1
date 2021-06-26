@@ -47,10 +47,6 @@ function AddNewCity() {
     }
 
     //
-    // if (localStorage.is_login != 1 && location.pathname != '/login-form') {
-    //     use_history.push('/login-form')
-    // }
-    //
     return (
         <div className="AddNewCity">
             <h3 className="label-field text-align-center">

@@ -23,19 +23,18 @@ ListPeople.defaultProps = {
 };
 
 //
-function ListPeople(props) {
-    const {
-        list_people,
-        count_people,
-        max_size,
-        
-        is_pic_name,
-        PeopleComponent,
-    } = props;
+function ListPeople({
+    list_people,
+    count_people,
+    max_size,
 
+    is_pic_name,
+    PeopleComponent,
+}) {
+    //
     return (
-        <div className="ListPeople">
-            <div className="ListPeople_contain brs-5px">
+        <div className="ListPeople bg-loader brs-5px">
+            <div>
                 {list_people.map((item, index) => (
                     <div
                         key={`ListPeople_${index}`}

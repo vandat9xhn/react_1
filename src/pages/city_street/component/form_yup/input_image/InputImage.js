@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// 
-import ImgVidPreview from '../../../../../component/input_img_vid_preview/img_vid_preview/ImgVidPreview';
-import InputFile from '../../../../../component/input/input_file/InputFile';
+//
 import IconsInput from '../../../../../_icons_svg/Icons_input/IconsInput';
 // 
+import InputFile from '../../../../../component/input/input_file/InputFile';
+import ImgVidPreview from '../../../../../component/input_img_vid_preview/img_vid_preview/ImgVidPreview';
+//
 import './InputImage.scss';
 
-// 
+//
 InputImage.propTypes = {
-    // from formik
     form: PropTypes.object,
     field: PropTypes.object,
-    // type label
+
     type: PropTypes.string,
     label: PropTypes.string,
-    // func image change
+
     onImageChange: PropTypes.func,
 };
 
@@ -24,22 +24,21 @@ InputImage.defaultProps = {
 };
 
 //
-function InputImage(props) {
-    const { form, field, type, label, handleImageChange } = props;
-
+function InputImage({ form, field, type, label, handleImageChange }) {
+    //
     const { name, value } = field;
     const { touched, errors } = form;
     const showError = touched[name] && errors[name];
-    
+
     //
-    const [urls, setUrls] = useState(value ? [{ url: value, type: name}] : []);
+    const [urls, setUrls] = useState(value ? [{ url: value, type: name }] : []);
 
-/* ------------------- IMAGE ----------------------*/
+    /* -------------- IMAGE -------------*/
 
-    // on image change
+    //
     function onImageChange(event) {
         const files = event.target.files;
-        // 
+        //
         if (files.length) {
             const reader = new FileReader();
             reader.onload = () => {
@@ -51,14 +50,14 @@ function InputImage(props) {
         }
     }
 
-    // delete image
-    function handleDeleteAnItem(){
+    //
+    function handleDeleteAnItem() {
         setUrls([]);
         handleImageChange('');
         form.setFieldValue('image', '');
-    };
+    }
 
-    // 
+    //
     return (
         <div className="InputImage">
             <div>
@@ -79,10 +78,8 @@ function InputImage(props) {
                 </InputFile>
             </div>
 
-            {/* error */}
             {showError && <div className="error-field">{showError}</div>}
 
-            {/* image preview */}
             <div className="InputImage_preview">
                 <ImgVidPreview
                     deleteAnItem={handleDeleteAnItem}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import {
@@ -15,6 +15,7 @@ import BadgeDiv from '../../../../some_div/badge_div/BadgeDiv';
 import ListNotices from '../list/_main/ListNotices';
 //
 import './HeaderNotice.scss';
+import { useAppearancePosition } from '../../../../../_custom_hooks/useAppearancePosition';
 
 //
 HeaderNotice.propTypes = {};
@@ -22,23 +23,58 @@ HeaderNotice.propTypes = {};
 //
 function HeaderNotice({}) {
     //
-    const [notice_state, setNoticeState] = useState({
-        notices: [],
-        count: 0,
-        count_new: 0,
+    const ref_child_elm = useRef(null);
+    const ref_parent_elm = useRef(null);
 
-        open_notice: false,
-        is_fetching: false,
-        has_fetched: false,
+    //
+    const {
+        handleOpen,
+        handleClose,
+
+        position_state: notice_state,
+        setPositionState: setNoticeState,
+    } = useAppearancePosition({
+        ref_child_elm: ref_child_elm,
+        ref_parent_elm: ref_parent_elm,
+        other_state: {
+            notices: [],
+            count: 0,
+            count_new: 0,
+
+            is_fetching: false,
+            has_fetched: false,
+        },
+        extra_transform_x: 0,
     });
 
-    const { notices, count, count_new, open_notice, is_fetching, has_fetched } =
-        notice_state;
+    const {
+        is_open,
+        transform_x,
+
+        notices,
+        count,
+        count_new,
+
+        is_fetching,
+        has_fetched,
+    } = notice_state;
 
     //
     useEffect(() => {
         getData_API_CountNewNotice();
     }, []);
+
+    /* ------------------- COMMON ------------------ */
+
+    //
+    function handleCallbackOpen(callback_open_state = {}) {
+        getData_API_Notice(callback_open_state);
+    }
+
+    //
+    function closeNotice() {
+        handleClose();
+    }
 
     /* ------------------- GET API ------------------ */
 
@@ -81,36 +117,27 @@ function HeaderNotice({}) {
 
     //
     function toggleOpenNotice() {
-        if (!open_notice) {
-            openNotice();
-        } else {
+        if (is_open) {
             closeNotice();
-        }
-    }
 
-    //
-    function openNotice() {
-        if (has_fetched) {
-            setNoticeState((notice_state) => ({
-                ...notice_state,
-                open_notice: true,
-            }));
-        } else {
-            getData_API_Notice({ open_notice: true });
+            return;
         }
-    }
 
-    //
-    function closeNotice() {
-        setNoticeState((notice_state) => ({
-            ...notice_state,
-            open_notice: false,
-        }));
+        if (!has_fetched) {
+            handleOpen({
+                self_handle: false,
+                handleCallbackOpen: handleCallbackOpen,
+            });
+
+            return;
+        }
+
+        handleOpen({ self_handle: true });
     }
 
     //
     function makeDivHidden() {
-        open_notice && closeNotice();
+        closeNotice();
     }
 
     /* ----------------------------- */
@@ -161,8 +188,9 @@ function HeaderNotice({}) {
     return (
         <CloseDiv makeDivHidden={makeDivHidden}>
             <div
+                ref={ref_parent_elm}
                 className={`header_menu Header_notice ${
-                    open_notice ? 'nav-active bottom-blue' : ''
+                    is_open ? 'nav-active bottom-blue' : ''
                 }`}
             >
                 <div
@@ -178,22 +206,29 @@ function HeaderNotice({}) {
                 </div>
 
                 <div
-                    className={`header_hidden ${
-                        open_notice ? '' : 'display-none'
-                    } ${has_fetched ? '' : 'pointer-events-none'}
+                    className={`header-hidden-position header_hidden left-50per ${
+                        is_open ? 'visibility-visible' : 'visibility-hidden'
+                    }
+                    ${has_fetched ? '' : 'pointer-events-none'}
                     `}
-
+                    style={{
+                        transform: `translateX(-50%) translateX(${transform_x}px)`,
+                    }}
                     onClick={hasReceivedNotices}
                 >
-                    <ListNotices
-                        notices={notices}
-                        count={count}
-                        is_fetching={is_fetching}
-                        //
-                        MarkAllAsRead={MarkAllAsRead}
-                        handleClickItem={handleClickItem}
-                        getMoreNotice={getData_API_Notice}
-                    />
+                    <div ref={ref_child_elm}></div>
+
+                    <div className={`${is_open ? '' : 'display-none'}`}>
+                        <ListNotices
+                            notices={notices}
+                            count={count}
+                            is_fetching={is_fetching}
+                            //
+                            MarkAllAsRead={MarkAllAsRead}
+                            handleClickItem={handleClickItem}
+                            getMoreNotice={getData_API_Notice}
+                        />
+                    </div>
                 </div>
             </div>
         </CloseDiv>

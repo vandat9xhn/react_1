@@ -1,57 +1,101 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+//
+import { useAppearancePosition } from './useAppearancePosition';
 
 //
-export function useMouseEnterLeave(handle_API_L) {
-    const [data_obj, setDataObj] = useState({
-        list: [],
-        count: 0,
-        is_fetching: false,
-        open_list: false,
-    });
-    // 
-    const is_mouse_enter = useRef(false)
+export function useMouseEnterLeave(
+    handle_API_L,
+    ref_child_elm,
+    ref_parent_elm,
+    handleChildWidth = () => 0,
+    handleParentBoundingClientRect = function () {
+        return {};
+    }
+) {
+    //
+    const is_mouse_enter = useRef(false);
 
     //
-    async function handleMouseEnter() {
-        is_mouse_enter.current = true
-        if (!data_obj.list.length) {
-            setDataObj(data_obj => ({
-                ...data_obj,
-                is_fetching: true,
-            }));
-            // 
-            const [data, count] = await handle_API_L();
-            if (is_mouse_enter.current) {
-                setDataObj(data_obj => ({
-                    ...data_obj,
-                    list: data,
-                    count: count,
-                    is_fetching: false,
-                    open_list: true,
+    const {
+        handleOpen,
+        handleClose,
 
-                }))
-            } else {
-                setDataObj(data_obj => ({
-                    ...data_obj,
-                    is_fetching: false,
-                    open_list: false,
-                }))
-            }
-        } else {
-            setDataObj({ ...data_obj, open_list: true });
+        position_state: mouse_state,
+        setPositionState: setMouseState,
+    } = useAppearancePosition({
+        ref_child_elm: ref_child_elm,
+        ref_parent_elm: ref_parent_elm,
+        other_state: {
+            list: [],
+            count: 0,
+            is_fetching: false,
+        },
+        extra_transform_x: 0,
+        handleChildWidth: handleChildWidth,
+        handleParentBoundingClientRect: handleParentBoundingClientRect,
+    });
+
+    //
+    async function onMouseenter(callback_state = {}) {
+        is_mouse_enter.current = true;
+
+        if (mouse_state.list.length) {
+            setMouseState((mouse_state) => ({
+                ...mouse_state,
+                ...callback_state,
+            }));
+
+            return;
         }
+
+        setMouseState((mouse_state) => ({
+            ...mouse_state,
+            ...callback_state,
+            is_fetching: true,
+        }));
+
+        const [data, new_count] = await handle_API_L();
+
+        if (is_mouse_enter.current) {
+            setMouseState((mouse_state) => ({
+                ...mouse_state,
+                list: data,
+                count: new_count,
+                is_fetching: false,
+                // is_open: true,
+            }));
+
+            return;
+        }
+
+        handleMouseleave()
     }
 
     //
-    function handleMouseOut() {
-        is_mouse_enter.current = false
-        setDataObj(data_obj => ({
-            ...data_obj,
+    function onMouseleave() {
+        is_mouse_enter.current = false;
+
+        setMouseState((mouse_state) => ({
+            ...mouse_state,
             is_fetching: false,
-            open_list: false,
+            is_open: false,
         }));
     }
 
     //
-    return [data_obj, handleMouseEnter, handleMouseOut];
+    function handleMouseenter() {
+        handleOpen({
+            self_handle: false,
+            handleCallbackOpen: (callback_state) =>
+                onMouseenter(callback_state),
+        });
+    }
+
+    //
+    function handleMouseleave() {
+        handleClose(false, onMouseleave);
+    }
+
+    //
+    return { mouse_state, handleMouseenter, handleMouseleave };
 }

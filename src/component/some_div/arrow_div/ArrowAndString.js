@@ -20,9 +20,7 @@ ArrowAndString.defaultProps = {
 };
 
 //
-function ArrowAndString(props) {
-    const { size_icon, children, open_list } = props;
-
+function ArrowAndString({ size_icon, children, open_list }) {
     //
     return (
         <div className="ArrowAndString">
@@ -36,6 +34,8 @@ function ArrowAndString(props) {
                     size_icon={size_icon}
                     is_reverse={true}
                     space_between={true}
+
+                    class_left="ArrowAndString_icon"
                 >
                     {children}
                 </IconDiv>

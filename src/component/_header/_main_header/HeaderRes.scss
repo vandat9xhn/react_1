@@ -4,11 +4,10 @@
         padding: 0.75rem;
     }
 
-    .header_hidden {
-        position: fixed;
-        top: 3rem;
-        right: 2px;
+    .header-hidden-position {
+        left: 50%;
     }
+
     .header_hidden-contain {
         &::-webkit-scrollbar {
             width: 0;
@@ -16,22 +15,9 @@
     }
 }
 
-@media (max-width: 330px) {
-    .Header,
-    .Header_contain,
-    .Header_row,
-    .Header_col-left,
-    .Header_col-right {
-        height: 2.5rem;
-    }
-
-    .header_hidden {
-        position: fixed;
-        top: 2.6rem;
-        right: 0;
-    }
+@media (max-width: 350px) {
     // .
-    .header_hidden-contain{
+    .header_hidden-contain {
         border-radius: 0;
     }
 
@@ -53,10 +39,6 @@
 @media (max-width: 265px) {
     .header_menu {
         padding: 0.4rem;
-    }
-
-    .header_hidden {
-        right: 0;
     }
 
     .header_icon {

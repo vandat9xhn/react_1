@@ -1,8 +1,4 @@
-
-.RightHeader {
-    margin-right: 1rem;
-}
-
+//
 .RightHeader_ul {
     display: flex;
     padding-left: 0;
@@ -12,12 +8,12 @@
     position: relative;
 }
 
-.RightHeader__num-notice{
+.RightHeader__num-notice {
     position: absolute;
     left: 75%;
     top: -5px;
 }
 
-.RightHeader__icon{
+.RightHeader__icon {
     position: relative;
 }

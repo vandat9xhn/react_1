@@ -865,7 +865,7 @@ class Chat extends Component {
 
         //
         return (
-            <div className={`Chat ${this.context.chat_class}`}>
+            <div className={`Chat ${this.context.auth_class}`}>
                 {current_chats.map(
                     (chat, chat_ix) =>
                         chat.chat_obj.is_active && (

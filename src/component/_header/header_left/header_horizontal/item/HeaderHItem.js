@@ -18,7 +18,7 @@ function HeaderHItem({ item }) {
             activeClassName="nav-active"
             to={link_to}
         >
-            <div className="HeaderHItem_title HeaderH_item header_item nav-bottom nav-text">
+            <div className="HeaderHItem_title HeaderH_item header_item header_item_horizontal nav-bottom nav-text">
                 {Icon ? <Icon x={x} y={y} size_icon="1.8rem" /> : title}
             </div>
         </NavLink>

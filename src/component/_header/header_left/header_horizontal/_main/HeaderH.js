@@ -1,7 +1,9 @@
 import React from 'react';
 //
 import { data_menu_left } from '../../_data/HeaderLeftData';
-
+// 
+import './HeaderHCommon.scss';
+// 
 import HeaderHItem from '../item/HeaderHItem';
 import HeaderHItemHasSub from '../item_has_sub/HeaderHItemHasSub';
 //
@@ -19,8 +21,7 @@ function HeaderH() {
                             <HeaderHItem item={item} />
                         ) : (
                             <HeaderHItemHasSub
-                                title={item.title}
-                                sub_list={item.sub_list}
+                                item={item}
                             />
                         )}
                     </li>

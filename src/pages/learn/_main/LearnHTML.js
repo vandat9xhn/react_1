@@ -9,6 +9,7 @@ import './LearnHTML.scss';
 import TestSearchAnimate from '../test_search_animate/TestSearchAnimate';
 import FbLogin from '../fb/test_login/FbLogin';
 import LearnSelectColorBg from '../color_bg/LearnSelectColorBg';
+import LearnAppearancePosition from '../appearance_position/LearnAppearancePosition';
 
 //
 LearnHTML.propTypes = {
@@ -95,6 +96,10 @@ function LearnHTML() {
                     </div>
                 </div>
             </div>
+            <br />
+            <LearnAppearancePosition />
+
+            <br />
 
             <div>
                 <TestHook />
@@ -112,6 +117,8 @@ function LearnHTML() {
             {/* <FbLogin /> */}
 
             <LearnSelectColorBg />
+
+            <br /><br /><br /><br /><br />
             
         </div>
     );

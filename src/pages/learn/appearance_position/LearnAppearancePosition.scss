@@ -1,0 +1,17 @@
+.LearnAppearancePosition{
+    width: 10rem;
+    margin-left: 5rem;
+}
+
+.LearnAppearancePosition_hidden{
+    position: absolute;
+    left: 50%;
+    z-index: var(--z-index-lv1);
+}
+// .
+.LearnAppearancePosition_hidden-contain{
+    width: 22.5rem;
+    height: 25rem;
+
+    border: 1px solid;
+}

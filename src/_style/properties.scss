@@ -57,11 +57,15 @@
 
 /* ---------------- Box Shadow ------------------ */
 .App_box_shadow{
-    box-shadow: 0 0.2rem 0.5rem 0.07rem var(--md-box-shadow);
+    box-shadow: 0 0.25px 5px 1px var(--md-box-shadow);
 }
 
 .box-shadow-1{
     box-shadow: 0 0.3px 3.2px var(--md-box-shadow);
+}
+
+.box-shadow-action{
+    box-shadow: 0 0 2.5px 1px var(--md-box-shadow);
 }
 
 /* hr */
@@ -278,7 +282,18 @@
     text-align: center;
 }
 
-/* ---------------------------- ICON -------------------------*/
+/* ----------- V -------------*/
+
+.visibility-hidden{
+    visibility: hidden;
+}
+
+.visibility-visible{
+    visibility: visible;
+}
+
+
+/* ------------- ICON --------------*/
 .size_icon{
     width: 1.5rem;
 }

@@ -7,10 +7,10 @@
     }
 }
 
-.MouseEnterLeaveInfo_list,
-.MouseEnterLeaveInfo_fetching {
+.MouseEnterLeaveInfo_list {
     position: absolute;
     left: 50%;
-    bottom: 100%;
-    transform: translateX(-50%);
+    z-index: var(--z-index-lv1);
+
+    width: 15rem;
 }

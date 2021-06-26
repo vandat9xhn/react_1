@@ -1,10 +1,4 @@
-
-@media (max-width: 600px) {
-    .RightHeader {
-        margin-right: 0.5rem;
-    }
-}
-
+// 
 @media (max-width: 300px) {
     .RightHeader__icon{
         padding: 0.25rem;
@@ -12,9 +6,6 @@
 }
 
 @media (max-width: 250px) {
-    .RightHeader {
-        margin-right: 0;
-    }
     .RightHeader__icon{
         svg{
             width: 1rem;

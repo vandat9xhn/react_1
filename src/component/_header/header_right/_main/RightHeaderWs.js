@@ -16,7 +16,7 @@ import './RightHeaderRes.scss';
 //
 function RightHeader() {
     // 
-    const { chat_class, user } = useContext(context_api);
+    const { auth_class, user } = useContext(context_api);
 
     // 
     const ws = useRef(null);
@@ -62,7 +62,7 @@ function RightHeader() {
         };
     }, []);
 
-    /* ------------------ HANDLE ---------------------- */
+    /* --------------- HANDLE --------------- */
 
     //
     function handleHasMessage(
@@ -73,38 +73,12 @@ function RightHeader() {
         count_new,
         count_zoom
     ) {
-        // const new_zoom_obj = { ...zoom_obj };
-        // const { zooms } = new_zoom_obj;
-        // //
-        // if (zooms.length) {
-        //     const zoom_ix = zooms.findIndex(
-        //         (item) => item.zoom_chat == zoom_chat
-        //     );
-        //     const zoom_item = {
-        //         zoom_chat: zoom_chat,
-        //         messages: [
-        //             {
-        //                 user: user,
-        //                 message: message,
-        //             },
-        //         ],
-        //         count_new_mess: count_new_mess,
-        //         updated_time: new Date(),
-        //     };
-        //     //
-        //     zoom_ix >= 0 && zooms.splice(zoom_ix, 1);
-        //     zooms.unshift(zoom_item);
-        //     setZoomObj(new_zoom_obj);
-        // }
-        // //
-        // new_zoom_obj.count_zoom = count_zoom;
-        // new_zoom_obj.count_new_zoom = count_new;
-        // setZoomObj(new_zoom_obj);
+        
     }
 
     //
     function handleHasFriendAdd() {
-        // setCountNewAddFriend(count_new_add_friend + 1);
+        
     }
 
     //
@@ -116,46 +90,26 @@ function RightHeader() {
         count_notice,
         count_new
     ) {
-        // const new_notice_obj = { ...notice_obj };
-        // const { notices } = new_notice_obj;
-        // //
-        // if (notices.length) {
-        //     const notice_ix = notices.findIndex((item) => item.id == notice_id);
-        //     const notice_item = {
-        //         id: notice_id,
-        //         link_id: link_id,
-        //         user: user,
-        //         content: content,
-        //         status_seen: 0,
-        //         updated_time: new Date(),
-        //     };
-        //     //
-        //     notice_ix >= 0 && notices.splice(notice_ix, 1);
-        //     notices.unshift(notice_item);
-        // }
-        // //
-        // new_notice_obj.count_notice = count_notice;
-        // new_notice_obj.count_new_notice = count_new;
-        // setZoomObj(new_notice_obj);
+        
     }
 
     //
     return (
         <div className="RightHeader">
             <ul className="RightHeader_ul list-none">
-                <li className={`RightHeader_li  ${chat_class}`}>
+                <li className={`RightHeader_li  ${auth_class}`}>
                     <HeaderFriend />
                 </li>
 
-                <li className={`RightHeader_li  ${chat_class}`}>
+                <li className={`RightHeader_li  ${auth_class}`}>
                     <HeaderNewFeed />
                 </li>
 
-                <li className={`RightHeader_li ${chat_class}`}>
+                <li className={`RightHeader_li ${auth_class}`}>
                     <HeaderMessage />
                 </li>
 
-                <li className={`RightHeader_li ${chat_class}`}>
+                <li className={`RightHeader_li ${auth_class}`}>
                     <HeaderNotice />
                 </li>
 
