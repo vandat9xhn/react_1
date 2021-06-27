@@ -6,7 +6,7 @@ import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { is_api_fake } from '../../../../../api/_ConstAPI';
 //
-import { useMounted } from '../../../../../_custom_hooks/useMounted';
+import { useMounted } from '../../../../../_hooks/useMounted';
 //
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 //

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useObserveVidPic } from '../../../_custom_hooks/useObserveVidPic';
+import { useObserveVidPic } from '../../../_hooks/useObserveVidPic';
 //
 import { type_video_or_img } from '../../../_some_function/VideoOrImage';
 

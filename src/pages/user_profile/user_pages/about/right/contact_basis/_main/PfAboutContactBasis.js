@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useMounted } from '../../../../../../../_custom_hooks/useMounted';
+import { useMounted } from '../../../../../../../_hooks/useMounted';
 // 
 import { GetIdSlug } from '../../../../../../../_some_function/GetIdSlug';
 //

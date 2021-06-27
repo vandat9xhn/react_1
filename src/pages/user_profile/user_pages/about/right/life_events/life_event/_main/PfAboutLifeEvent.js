@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useForceUpdate } from '../../../../../../../../_custom_hooks/UseForceUpdate';
+import { useForceUpdate } from '../../../../../../../../_hooks/UseForceUpdate';
 //
 import { handle_API_LifeEvent_C } from '../../../../../../__handle_api/ProfileHandleAPI';
 

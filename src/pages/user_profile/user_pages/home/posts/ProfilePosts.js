@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 
-import { useScrollDownWindow } from '../../../../../_custom_hooks/useScrollDown';
+import { useScrollDownWindow } from '../../../../../_hooks/useScrollDown';
 
 import observeToDo from '../../../../../_some_function/observerToDo';
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';

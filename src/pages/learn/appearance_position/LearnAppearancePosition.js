@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useAppearancePosition } from '../../../_custom_hooks/useAppearancePosition';
+import { useAppearancePosition } from '../../../_hooks/useAppearancePosition';
 //
 import './LearnAppearancePosition.scss';
 

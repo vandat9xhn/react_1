@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useRouteLoaded } from '../../../../../_custom_hooks/useRouteLoaded';
+import { useRouteLoaded } from '../../../../../_hooks/useRouteLoaded';
 //
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 // 

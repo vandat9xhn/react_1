@@ -28,8 +28,8 @@ function HeaderVItemHasSub({ item }) {
     //
     return (
         <div className="HeaderVItemHasSub">
-            <div
-                className={`padding-8px label-field ${
+            <h2
+                className={`margin-0 padding-8px font-16px cursor-pointer ${
                     open_list ? 'nav-active text-blue' : ''
                 }`}
                 onClick={toggleOpenList}
@@ -43,7 +43,7 @@ function HeaderVItemHasSub({ item }) {
                         title
                     )}
                 </ArrowAndString>
-            </div>
+            </h2>
 
             <ul
                 className={`HeaderVItemHasSub_list list-none ${
@@ -54,7 +54,7 @@ function HeaderVItemHasSub({ item }) {
             >
                 {sub_list.map((item, ix) => (
                     <li
-                        className="HeaderV__item HeaderVItemHasSub_item"
+                        className="HeaderV__item HeaderVItemHasSub_item bg-fb"
                         key={`HeaderVItemHasSub_${ix}`}
                     >
                         <HeaderVItem item={item} />

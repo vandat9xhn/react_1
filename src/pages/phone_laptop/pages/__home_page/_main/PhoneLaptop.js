@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { API_PhoneLaptop_L } from '../../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
 // 
-import { useMounted } from '../../../../../_custom_hooks/useMounted';
+import { useMounted } from '../../../../../_hooks/useMounted';
 // 
 import observeToDo from '../../../../../_some_function/observerToDo';
 // 

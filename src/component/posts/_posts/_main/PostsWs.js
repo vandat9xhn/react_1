@@ -5,8 +5,8 @@ import { context_api } from '../../../../_context/ContextAPI';
 
 import { is_api_fake } from '../../../../api/_ConstAPI';
 
-import { useMounted } from '../../../../_custom_hooks/useMounted';
-import { useForceUpdate } from '../../../../_custom_hooks/UseForceUpdate';
+import { useMounted } from '../../../../_hooks/useMounted';
+import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
 //
 import ContextPost from '../../__context_post/ContextPost';
 // 

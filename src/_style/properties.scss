@@ -249,6 +249,14 @@
     color: var(--green);
 }
 
+.color-react{
+    color: var(--color-react);
+}
+
+.color-django{
+    color: var(--color-django);
+}
+
 /* don vi vnd */
 .dv-vnd {
     font-size: 0.6rem;
@@ -266,12 +274,8 @@
     font-size: 12px;
 }
 
-.color-react{
-    color: var(--color-react);
-}
-
-.color-django{
-    color: var(--color-django);
+.font-16px{
+    font-size: 16px;
 }
 
 // align

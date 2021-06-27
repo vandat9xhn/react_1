@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_post } from '../../../../__context_post/ContextPost';
-import { useForceUpdate } from '../../../../../../_custom_hooks/UseForceUpdate';
+import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 //
 import SubWsFoot from '../foot/SubWsFoot';
 import SubWsHead from '../head/SubWsHead';

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useMouseEnterLeave } from '../../../../../_custom_hooks/UseMouseEnterLeave';
+import { useMouseEnterLeave } from '../../../../../_hooks/UseMouseEnterLeave';
 import { content_pic_name_props } from '../../../../../_prop-types/_CommonPropTypes';
 //
 import LoaderDiv from '../../../../some_div/loader_div/LoaderDiv';

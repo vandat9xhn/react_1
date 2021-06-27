@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useMounted } from '../../../_custom_hooks/useMounted';
+import { useMounted } from '../../../_hooks/useMounted';
 //
 import {
     handle_API_AddFriend_L,

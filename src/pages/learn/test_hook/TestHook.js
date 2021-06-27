@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 // 
-import { useHoldPress } from '../../../_custom_hooks/useHoldPress';
+import { useHoldPress } from '../../../_hooks/useHoldPress';
 
 //
 TestHook.propTypes = {

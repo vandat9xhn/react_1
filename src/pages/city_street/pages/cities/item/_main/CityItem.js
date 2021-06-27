@@ -5,7 +5,7 @@ import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import { API_City_UD } from '../../../../../../api/api_django/api01/API01';
 //
-import { useForceUpdate } from '../../../../../../_custom_hooks/UseForceUpdate';
+import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 //
 import makeFormData from '../../../../../../_some_function/makeFormData';
 //
@@ -17,7 +17,7 @@ import './CityItem.scss';
 //
 import Choices from '../../choices/Choices';
 import CityUpdate from '../../actions/action_update/CityUpdate';
-import { useScreenFetching } from '../../../../../../_custom_hooks/UseScreenFetching';
+import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 
 //
 CityItem.propTypes = {

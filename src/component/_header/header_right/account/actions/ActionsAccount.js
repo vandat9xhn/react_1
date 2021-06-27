@@ -6,7 +6,7 @@ import { context_api } from '../../../../../_context/ContextAPI';
 
 import { LogoutRequest } from '../../../../../api/api_django_no_token/login_logout/LoginLogout';
 
-import { useScreenFetching } from '../../../../../_custom_hooks/UseScreenFetching';
+import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 //
 import IconsMode from '../../../../../_icons_svg/icons_mode/IconsMode';
 import IconsAccount from '../../../../../_icons_svg/icons_account/IconsAccount';

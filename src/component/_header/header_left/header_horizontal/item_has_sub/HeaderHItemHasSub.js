@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import HeaderHItem from '../item/HeaderHItem';
-//
+import IconDiv from '../../../../some_div/icon_div/IconDiv';
+// 
 import './HeaderHItemHasSub.scss';
 
 //
@@ -23,9 +24,28 @@ function HeaderHItemHasSub({ item }) {
             <div className="HeaderHItemHasSub_sub header_hidden left-0">
                 <div className="header_hidden-contain">
                     <ul className="list-none">
-                        {sub_list.map((item, ix) => (
+                        {sub_list.map((sub_item, ix) => (
                             <li key={`HeaderHItemHasSub_item_${ix}`}>
-                                <HeaderHItem item={item} />
+                                <NavLink
+                                    className="normal-text"
+                                    activeClassName="nav-active"
+                                    to={sub_item.link_to}
+                                >
+                                    <h2 className="margin-0 header_item font-16px nav-text">
+                                        {sub_item.Icon ? (
+                                            <IconDiv
+                                                Icon={sub_item.Icon}
+                                                x={sub_item.x}
+                                                y={sub_item.y}
+                                                size_icon="1.8rem"
+                                            >
+                                                {sub_item.title}
+                                            </IconDiv>
+                                        ) : (
+                                            sub_item.title
+                                        )}
+                                    </h2>
+                                </NavLink>
                             </li>
                         ))}
                     </ul>

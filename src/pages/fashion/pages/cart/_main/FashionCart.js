@@ -9,8 +9,8 @@ import {
     API_FashionCart_UD,
 } from '../../../../../api/api_django/fashion/APIFashionToken';
 //
-import { useMounted } from '../../../../../_custom_hooks/useMounted';
-import { useScreenFetching } from '../../../../../_custom_hooks/UseScreenFetching';
+import { useMounted } from '../../../../../_hooks/useMounted';
+import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 //
 import makeFormData from '../../../../../_some_function/makeFormData';
 //

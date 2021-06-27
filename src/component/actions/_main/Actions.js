@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useAppearancePosition } from '../../../_custom_hooks/useAppearancePosition';
+import { useAppearancePosition } from '../../../_hooks/useAppearancePosition';
 //
 import CloseDiv from '../../some_div/close_div/CloseDiv';
 import ActionBack from '../common_actions/back/ActionBack';
@@ -31,7 +31,7 @@ function Actions({ title_action, symbol_post, children }) {
     //
     const {
         is_open,
-        transform_x,
+        // transform_x,
         position_y,
         max_height,
 
@@ -91,7 +91,7 @@ function Actions({ title_action, symbol_post, children }) {
 
                     {is_open && (
                         <div
-                            className="Actions_choices_actions scroll-thin bg-primary box-shadow-action brs-5px text-primary cursor-pointer"
+                            className="Actions_choices_actions scroll-thin bg-primary box-shadow-action brs-5px-md text-primary cursor-pointer"
                             style={{
                                 maxHeight:
                                     window.innerWidth <= 400

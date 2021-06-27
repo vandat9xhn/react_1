@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { loadFile } from '../../../_some_function/loadFile';
 //
-import { useMounted } from '../../../_custom_hooks/useMounted';
+import { useMounted } from '../../../_hooks/useMounted';
 //
 import IconsInput from '../../../_icons_svg/Icons_input/IconsInput';
 import IconsAction from '../../../_icons_svg/icons_action/IconsAction';

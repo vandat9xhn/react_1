@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useCloseScreen } from '../../../_custom_hooks/useCloseScreen';
-import { useFullScreen } from '../../../_custom_hooks/useFullScreen';
-import { useMakeBodyHidden } from '../../../_custom_hooks/useMakeBodyHidden';
+import { useCloseScreen } from '../../../_hooks/useCloseScreen';
+import { useFullScreen } from '../../../_hooks/useFullScreen';
+import { useMakeBodyHidden } from '../../../_hooks/useMakeBodyHidden';
 //
 import ScreenTitle from '../title/ScreenTitle';
 //

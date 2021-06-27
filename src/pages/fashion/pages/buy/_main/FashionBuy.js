@@ -9,7 +9,7 @@ import {
     API_FashionBuy_LC,
 } from '../../../../../api/api_django/fashion/APIFashionToken';
 //
-import { useScreenFetching } from '../../../../../_custom_hooks/UseScreenFetching';
+import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 //
 import makeFormData from '../../../../../_some_function/makeFormData';
 //

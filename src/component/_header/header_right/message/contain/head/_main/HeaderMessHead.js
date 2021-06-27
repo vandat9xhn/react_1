@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { API_Friends_LC } from '../../../../../../../api/api_django/user/user_friend/UserFriend';
 //
-import { useMouseDragScrollToX } from '../../../../../../../_custom_hooks/useMouseDragScrollToX';
+import { useMouseDragScrollToX } from '../../../../../../../_hooks/useMouseDragScrollToX';
 //
 import observeToDo from '../../../../../../../_some_function/observerToDo';
 //

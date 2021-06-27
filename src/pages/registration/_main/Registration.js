@@ -8,8 +8,8 @@ import { context_api } from '../../../_context/ContextAPI';
 //
 import { SignupRequest } from '../../../api/api_django_no_token/signup/Signup';
 //
-import { useScreenFetching } from '../../../_custom_hooks/UseScreenFetching';
-import { useInputDate } from '../../../_custom_hooks/useInputDate';
+import { useScreenFetching } from '../../../_hooks/UseScreenFetching';
+import { useInputDate } from '../../../_hooks/useInputDate';
 //
 import makeFormData from '../../../_some_function/makeFormData';
 import { handleScrollSmooth } from '../../../_some_function/handleScrollSmooth';

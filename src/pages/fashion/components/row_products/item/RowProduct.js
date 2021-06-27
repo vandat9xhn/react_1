@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useMouseDragScrollToX } from '../../../../../_custom_hooks/useMouseDragScrollToX';
+import { useMouseDragScrollToX } from '../../../../../_hooks/useMouseDragScrollToX';
 //
 import NextPrevDiv from '../../../../../component/some_div/next_prev_div/NextPrevDiv';
 import ProductItem from '../../../../../component/products/product_item/ProductItem';

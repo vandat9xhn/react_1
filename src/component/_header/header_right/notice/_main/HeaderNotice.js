@@ -15,7 +15,7 @@ import BadgeDiv from '../../../../some_div/badge_div/BadgeDiv';
 import ListNotices from '../list/_main/ListNotices';
 //
 import './HeaderNotice.scss';
-import { useAppearancePosition } from '../../../../../_custom_hooks/useAppearancePosition';
+import { useAppearancePosition } from '../../../../../_hooks/useAppearancePosition';
 
 //
 HeaderNotice.propTypes = {};

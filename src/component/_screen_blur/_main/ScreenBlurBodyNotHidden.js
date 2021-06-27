@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useCloseScreen } from '../../../_custom_hooks/useCloseScreen';
+import { useCloseScreen } from '../../../_hooks/useCloseScreen';
 //
 import './ScreenBlurBodyNotHidden.scss';
 

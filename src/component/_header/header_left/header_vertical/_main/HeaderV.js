@@ -31,14 +31,14 @@ function HeaderV() {
     //
     return (
         <CloseDiv makeDivHidden={closeMenu}>
-            <div className="HeaderV position-rel cursor-pointer">
-                <div
-                    className={`HeaderV_menu header_menu ${
-                        open_menu ? 'nav-active' : ''
-                    }`}
-                    onClick={ToggleMenu}
-                >
-                    <div className="header_item">
+            <div className="HeaderV position-rel">
+                <div>
+                    <div
+                        className={`HeaderV_menu header_menu cursor-pointer ${
+                            open_menu ? 'nav-active' : ''
+                        }`}
+                        onClick={ToggleMenu}
+                    >
                         <IconsMenu />
                     </div>
                 </div>

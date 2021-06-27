@@ -5,7 +5,7 @@ import { context_api } from '../../../_context/ContextAPI';
 //
 import { LoginRequest } from '../../../api/api_django_no_token/login_logout/LoginLogout';
 //
-import { useScreenFetching } from '../../../_custom_hooks/UseScreenFetching';
+import { useScreenFetching } from '../../../_hooks/UseScreenFetching';
 //
 import makeFormData from '../../../_some_function/makeFormData';
 //

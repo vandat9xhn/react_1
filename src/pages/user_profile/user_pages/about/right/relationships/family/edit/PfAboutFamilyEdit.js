@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useInputSelectLoading } from '../../../../../../../../_custom_hooks/useInputSelectLoading';
+import { useInputSelectLoading } from '../../../../../../../../_hooks/useInputSelectLoading';
 //
 import InputSelect from '../../../../../../../../component/input/input_select/_main/InputSelect';
 import Select from '../../../../../../../../component/input/select/Select';

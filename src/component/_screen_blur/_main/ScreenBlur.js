@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useMakeBodyHidden } from '../../../_custom_hooks/useMakeBodyHidden';
+import { useMakeBodyHidden } from '../../../_hooks/useMakeBodyHidden';
 // 
 import ScreenBlurBodyNotHidden from './ScreenBlurBodyNotHidden';
 // 

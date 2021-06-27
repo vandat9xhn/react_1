@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+// 
 import './IconsMenu.scss';
 
 //
@@ -24,9 +24,10 @@ IconsMenu.defaultProps = {
 *   @.icon new feed: (0, 200)
 *   @.icon shopping: (400, 0)
 */
-function IconsMenu(props){
-    const { size_icon, x, y } = props;
+function IconsMenu({size_icon, x, y}){
+   
 
+    // 
     return (
         <svg
             className="IconsMenu"
@@ -41,9 +42,9 @@ function IconsMenu(props){
             {/* menu x=0, y=0 */}
             <path
                 className="IconsMenu_menu"
-                d="M0,20 200,20
-                M0,80 200,80
-                M0,140 200,140"
+                d="M0,30 200,30
+                M0,100 200,100
+                M0,170 200,170"
                 strokeWidth="40"
             />
 

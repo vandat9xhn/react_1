@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useHoldPress } from '../../../_custom_hooks/useHoldPress';
+import { useHoldPress } from '../../../_hooks/useHoldPress';
 //
 import ListTypeLike from '../list_type_like/_main/ListTypeLike';
 import { type_likes } from '../list_type_like/type_likes/TypeLikes';

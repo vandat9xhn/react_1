@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import { useRouteLoaded } from '../../../../../_custom_hooks/useRouteLoaded';
+import { useRouteLoaded } from '../../../../../_hooks/useRouteLoaded';
 //
 import RouteLoaded from '../../../../../component/_route/route_loaded/RouteLoaded';
 //

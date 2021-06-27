@@ -5,7 +5,7 @@ import { context_api } from '../../../_context/ContextAPI';
 
 import { API_Friends_LC } from '../../../api/api_django/user/user_friend/UserFriend';
 
-import { useMounted } from '../../../_custom_hooks/useMounted';
+import { useMounted } from '../../../_hooks/useMounted';
 
 import { ScrollDownBool } from '../../../_some_function/ScrollDown';
 import observeToDo from '../../../_some_function/observerToDo';

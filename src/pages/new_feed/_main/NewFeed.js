@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useScrollDownWindow } from '../../../_custom_hooks/useScrollDown';
+import { useScrollDownWindow } from '../../../_hooks/useScrollDown';
 //
 import { initial_posts } from '../../../component/posts/__common/InitialPosts';
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { API_Post_RD } from '../../../api/api_django/user/user_post/UserPost';
 
-import { useMounted } from '../../../_custom_hooks/useMounted';
+import { useMounted } from '../../../_hooks/useMounted';
 //
 import Posts from '../../../component/posts/_posts/_main/PostsWs';
 //

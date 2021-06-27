@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useInputSelect } from '../../../../../../../../../_custom_hooks/useInputSelect';
+import { useInputSelect } from '../../../../../../../../../_hooks/useInputSelect';
 //
 import InputSelect from '../../../../../../../../../component/input/input_select/_main/InputSelect';
 //

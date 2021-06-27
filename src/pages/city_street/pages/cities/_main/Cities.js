@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 //
-import { useScrollDownWindow } from '../../../../../_custom_hooks/useScrollDown';
+import { useScrollDownWindow } from '../../../../../_hooks/useScrollDown';
 //
 import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
 //

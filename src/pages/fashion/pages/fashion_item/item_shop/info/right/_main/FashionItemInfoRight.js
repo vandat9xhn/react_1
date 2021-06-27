@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../../../_context/ContextAPI';
 //
-import { useNewCount } from '../../../../../../../../_custom_hooks/useCount';
+import { useNewCount } from '../../../../../../../../_hooks/useCount';
 //
 import ComponentSkeleton from '../../../../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 import SkeletonDiv from '../../../../../../../../component/skeleton/skeleton_div/SkeletonDiv';

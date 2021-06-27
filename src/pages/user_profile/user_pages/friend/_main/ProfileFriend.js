@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { API_Friend_D } from '../../../../../api/api_django/user/user_friend/UserFriend';
 
-import { useMounted } from '../../../../../_custom_hooks/useMounted';
+import { useMounted } from '../../../../../_hooks/useMounted';
 
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 //

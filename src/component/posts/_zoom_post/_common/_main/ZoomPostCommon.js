@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 //
-import { useMakeBodyHidden } from '../../../../../_custom_hooks/useMakeBodyHidden';
+import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
 // 
 import ScreenTitle from '../../../../_screen_fixed/title/ScreenTitle';
 import ContentMore from '../../../../content_more/Content_more';

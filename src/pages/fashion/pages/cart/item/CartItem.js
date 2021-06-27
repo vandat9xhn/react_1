@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useWaitingLastAction } from '../../../../../_custom_hooks/useWaitingLastAction';
-import { useNewCount } from '../../../../../_custom_hooks/useCount';
+import { useWaitingLastAction } from '../../../../../_hooks/useWaitingLastAction';
+import { useNewCount } from '../../../../../_hooks/useCount';
 //
 import ProductCartBuy from '../../../components/product_cart_buy/ProductCartBuy';
 //

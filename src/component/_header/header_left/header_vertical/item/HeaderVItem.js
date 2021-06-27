@@ -19,7 +19,7 @@ function HeaderVItem({item}) {
             activeClassName="nav-active"
             to={link_to}
         >
-            <div className="HeaderVItem header_item nav-text label-field">
+            <h2 className="HeaderVItem margin-0 header_item nav-text">
                 {Icon ? (
                     <IconDiv Icon={Icon} x={x} y={y}>
                         {title}
@@ -27,7 +27,7 @@ function HeaderVItem({item}) {
                 ) : (
                     title
                 )}
-            </div>
+            </h2>
         </NavLink>
     );
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
-import { useScreenFetching } from '../../../../../../_custom_hooks/UseScreenFetching';
+import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 //
 import observeToDo from '../../../../../../_some_function/observerToDo';
 //

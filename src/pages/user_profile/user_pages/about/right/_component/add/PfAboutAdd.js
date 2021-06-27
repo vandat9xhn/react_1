@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../../_context/ContextAPI';
 //
-import { useScreenFetching } from '../../../../../../../_custom_hooks/UseScreenFetching';
-import { useMounted } from '../../../../../../../_custom_hooks/useMounted';
+import { useScreenFetching } from '../../../../../../../_hooks/UseScreenFetching';
+import { useMounted } from '../../../../../../../_hooks/useMounted';
 //
 import { GetIdSlug } from '../../../../../../../_some_function/GetIdSlug';
 //

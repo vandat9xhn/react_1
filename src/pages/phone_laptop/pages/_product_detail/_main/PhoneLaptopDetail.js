@@ -9,7 +9,7 @@ import {
     API_PhoneLaptop_R,
 } from '../../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
 //
-import { useScreenFetching } from '../../../../../_custom_hooks/UseScreenFetching';
+import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 //
 import makeFormData from '../../../../../_some_function/makeFormData';
 import observeToDo from '../../../../../_some_function/observerToDo';

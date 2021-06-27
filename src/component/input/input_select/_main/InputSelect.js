@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useFocusBlur } from '../../../../_custom_hooks/useFocusBlur';
+import { useFocusBlur } from '../../../../_hooks/useFocusBlur';
 //
 import CloseDiv from '../../../some_div/close_div/CloseDiv';
 //

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_post } from '../../../../__context_post/ContextPost';
-import { useForceUpdate } from '../../../../../../_custom_hooks/UseForceUpdate';
+import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 //
 // import { handle_API_HistoryCmt_L } from '../../../../__handle_api/PostHandleAPI';
 

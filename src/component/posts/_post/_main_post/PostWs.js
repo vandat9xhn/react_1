@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
 //
-import { useForceUpdate } from '../../../../_custom_hooks/UseForceUpdate';
-import { useScreenFetching } from '../../../../_custom_hooks/UseScreenFetching';
+import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
+import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
 //
 import PictureName from '../../../picture_name/pic_name/PictureName';
 import ContentMore from '../../../content_more/Content_more';

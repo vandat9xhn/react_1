@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useInputDate } from '../../../../../../../../../_custom_hooks/useInputDate';
+import { useInputDate } from '../../../../../../../../../_hooks/useInputDate';
 //
 import InputDate from '../../../../../../../../../component/input/date/_main/InputDate';
 //

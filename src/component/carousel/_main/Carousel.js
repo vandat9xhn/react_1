@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useInterval } from '../../../_custom_hooks/UseInterval';
+import { useInterval } from '../../../_hooks/UseInterval';
 //
 import NextPrevDiv from '../../some_div/next_prev_div/NextPrevDiv';
 //
