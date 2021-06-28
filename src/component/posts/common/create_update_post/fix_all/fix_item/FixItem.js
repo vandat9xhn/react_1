@@ -23,18 +23,17 @@ FixItem.propTypes = {
 };
 
 //
-function FixItem(props) {
+function FixItem({
+    ix,
+    content,
+    vid_pic,
+
+    deleteAnItem,
+    handleChangeContentVidPic,
+}) {
     //
     const { openScreenConfirm } = useContext(context_api);
-    //
-    const {
-        ix,
-        content,
-        vid_pic,
 
-        deleteAnItem,
-        handleChangeContentVidPic,
-    } = props;
     //
     const [open_content, setOpenContent] = useState(!!content);
     const [is_editing, setIsEditing] = useState(false);
@@ -46,12 +45,12 @@ function FixItem(props) {
         setOpenContent(!open_content);
     }
 
-    // on blur
+    //
     function onBlur() {
         setIsEditing(false);
     }
 
-    // on focus
+    //
     function handleFocus() {
         setIsEditing(true);
     }
@@ -79,45 +78,45 @@ function FixItem(props) {
     //
     return (
         <div className="FixItem">
-            <div className="FixItem_contain">
-                <div className="FixItem_pic margin-auto">
-                    {VideoOrImage(vid_pic)}
-                </div>
+            <div className="FixItem_pic margin-auto">
+                {VideoOrImage(vid_pic)}
+            </div>
 
-                <div className="FixItem_choice">
-                    <div className="FixItem__tag" title="Tag your friends">
-                        <IconsPost />
-                    </div>
-                    
-                    <div
-                        className="FixItem__add-content"
-                        onClick={toggleOpenContent}
-                        title="Add content"
-                    >
-                        <IconsEdit is_editing={is_editing} />
-                    </div>
+            <div className="FixItem_choice">
+                <div className="FixItem__tag" title="Tag your friends">
+                    <IconsPost />
                 </div>
 
                 <div
-                    className={`FixItem_content ${
-                        open_content ? '' : 'display-none'
-                    }`}
+                    className="FixItem__add-content"
+                    onClick={toggleOpenContent}
+                    title="Add content"
                 >
-                    <Textarea
-                        text={content}
-                        placeholder="Write something..."
-                        textarea_class="FixItem_content-textarea scroll-thin"
-                        //
-                        onChange={onChangeContentVidPic}
-                        handleFocus={handleFocus}
-                        handleBlur={onBlur}
-                    />
+                    <IconsEdit is_editing={is_editing} />
                 </div>
+            </div>
 
+            <div
+                className={`FixItem_content ${
+                    open_content ? '' : 'display-none'
+                }`}
+            >
+                <Textarea
+                    text={content}
+                    placeholder="Write something..."
+                    textarea_class="FixItem_content-textarea scroll-thin"
+                    //
+                    onChange={onChangeContentVidPic}
+                    handleFocus={handleFocus}
+                    handleBlur={onBlur}
+                />
+            </div>
+
+            <div className="FixItem_delete">
                 <div
-                    className="FixItem_deleteItem hv-opacity cursor-pointer brs-50"
-                    onClick={openConfirm}
+                    className="FixItem_delete_item close-icon-small brs-50 cursor-pointer hv-opacity"
                     title="Delete"
+                    onClick={openConfirm}
                 >
                     <IconsArrow y={400} size_icon="1rem" />
                 </div>

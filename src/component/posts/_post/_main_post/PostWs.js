@@ -54,6 +54,7 @@ function Post({
         openScreenUpdate,
         openScreenPermission,
 
+        hasChangeScreenUpdate,
         closeScreenUpdate,
     } = useContext(context_api);
 
@@ -87,7 +88,7 @@ function Post({
         count_comment,
     } = post;
 
-    const is_poster = c_user.id == user.id
+    const is_poster = c_user.id == user.id;
 
     //
     const [open_input, setOpenInput] = useState(false);
@@ -122,6 +123,7 @@ function Post({
             vid_pics: vid_pics_update,
 
             title_action: 'Update',
+            handleCheckHasChange: hasChangeScreenUpdate,
             handleCUPost: handleUpdate,
         });
     }
@@ -161,14 +163,16 @@ function Post({
         const data = await handleScreenFetching(() =>
             handle_API_Post_U(id, data_update)
         );
-        closeScreenUpdate();
-        console.log(data, data_update);
         // Do something and force_update
         content_obj.content = data_update.main_content;
         content_obj.has_more_content = false;
+        post.vid_pics = data_update.c_vid_pics;
         forceUpdate();
+
+        closeScreenUpdate(true);
+        console.log(data_update);
     }
-    
+
     //
     async function handleDelete() {
         await handleScreenFetching(() => handle_API_Post_D(id));

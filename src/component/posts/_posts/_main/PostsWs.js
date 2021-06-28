@@ -40,6 +40,7 @@ import { handleCreateNewPost } from '../../__handle_create/PostHandleCreate';
 import './Posts.scss';
 import Post from '../../_post/_main_post/PostWs';
 import PostSkeleton from '../../_post/skeleton/PostSkeleton';
+import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
 
 //
 Posts.propTypes = {
@@ -81,6 +82,7 @@ function Posts({
     //
     const mounted = useMounted();
     const forceUpdate = useForceUpdate();
+    const handleScreenFetching = useScreenFetching()
 
     //
     useEffect(() => {
@@ -123,7 +125,7 @@ function Posts({
     /* -------------------------------- CREATE --------------------------------- */
 
     async function handleCreatePost(data) {
-        openScreenFetching();
+        await handleScreenFetching(() => handle_API_Post_C(data))
 
         // const new_data = await handle_API_Post_C({
         //     content: data.main_content,
@@ -131,13 +133,12 @@ function Posts({
         //     'contents[]': data.vid_pics.map(item => item.content),
         //      'is_friend_wall': location.pathname.search('/profile') >= 0 && user.id =! id,
         // });
-        await handle_API_Post_C(data);
-        const new_data = handleCreateNewPost(data.main_content, data.vid_pics);
+        const new_data = handleCreateNewPost(data.main_content, data.c_vid_pics);
 
         posts.unshift(new_data);
-        closeScreenUpdate();
-        closeScreenFetching();
         forceUpdate();
+
+        closeScreenUpdate(true);
     }
 
     //

@@ -60,7 +60,6 @@
 
     /* HEIGHT */
     --height-header: 48px;
-    --height-header-350: 42px;
 
     /* border */
     --border-fashion: #ff6600;
@@ -131,5 +130,10 @@
     
     /* BOX SHADOW */
     --box-shadow-action: 0 0 2.5px 1px var(--md-box-shadow);
+
+    //
+    @media (max-width: 350px) {
+        --height-header: 42px;
+    }
 }
 

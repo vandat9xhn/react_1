@@ -13,8 +13,12 @@ LoaderDiv.propTypes = {
 function LoaderDiv({ LoadingComponent, is_fetching }) {
     //
     return (
-        <div className={is_fetching ? 'LoaderDiv' : 'display-none'}>
-            <div className="LoaderDiv_contain brs-5px">
+        <div
+            className={
+                is_fetching ? 'LoaderDiv bg-loader brs-5px' : 'display-none'
+            }
+        >
+            <div className="LoaderDiv_row display-flex-center">
                 <LoadingComponent is_fetching={is_fetching} />
             </div>
         </div>

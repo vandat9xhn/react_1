@@ -16,23 +16,22 @@ AddNewPost.propTypes = {
     handleCreatePost: PropTypes.func,
 };
 AddNewPost.defaultProps = {
-    title: 'How do you feel?',
+    title: "What 's on your mind?",
 };
 
 //
-function AddNewPost(props) {
-    const { user, openScreenUpdate } = useContext(context_api);
-
-    //
-    const { handleCreatePost, title } = props;
+function AddNewPost({ handleCreatePost, title }) {
+    const { user, openScreenUpdate, hasChangeScreenUpdate } =
+        useContext(context_api);
 
     //
     function onOpenScreenUpdate() {
         openScreenUpdate('Create', UpdateCreatePost, {
-            handleCUPost: handleCreatePost,
             main_content: '',
             vid_pics: [],
             title_action: 'Post',
+            handleCheckHasChange: hasChangeScreenUpdate,
+            handleCUPost: handleCreatePost,
         });
     }
 

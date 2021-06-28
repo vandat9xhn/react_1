@@ -1,7 +1,7 @@
 /* -------------- CONTENT ------------------ */
 .CUPostHomeContent {
-    max-height: calc(100vh - 12rem);
-    padding: 0.5rem;
+    height: 16rem;
+    // max-height: calc(100vh - 12rem);
     overflow: auto;
 }
 
@@ -39,37 +39,18 @@
     }
 
     .ImgVidPreviewItem_delete {
-        right: 0;
-        left: auto;
+        // right: 0;
+        // left: auto;
+        display: none;
     }
 }
 
 /* -------------- FIX ------------------ */
 .CUPostHomeContent__fixAll {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    padding: 0.2rem 0.5rem;
-    background-color: var(--bg-loader);
-    color: var(--white);
-    cursor: pointer;
+    padding: 0.25rem 1rem;
 }
 
-/* -------------------------------- */
-.CUPostHomeContent__no-pic {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
-
-    text-align: center;
-    font-weight: 800;
-    font-size: 20px;
-    color: var(--md-bg-ccc);
-}
+// 
 .CUPostHomeContent_loading {
     position: absolute;
     top: 2%;
@@ -98,7 +79,7 @@
 //
 @media (max-width: 300px) {
     .CUPostHomeContent {
-        max-height: calc(100vh - 10.5rem);
+        // max-height: calc(100vh - 10.5rem);
     }
 
     .CUPostHome_files-tag {

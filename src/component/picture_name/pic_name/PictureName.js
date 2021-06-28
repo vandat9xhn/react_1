@@ -24,14 +24,21 @@ PictureName.defaultProps = {
 };
 
 //
-function PictureName(props) {
-    const { link_class, content, is_inline_block, align_center } = props;
-    const { id, picture, first_name, last_name } = props.user;
+function PictureName({
+    link_class,
+    user,
+    content,
+    is_inline_block,
+    align_center,
+}) {
+    //
+    const { id, picture, first_name, last_name } = user;
 
     //
     function handleClickLink(e) {
         !id && e.preventDefault();
     }
+
     //
     return (
         <div className="PictureName">

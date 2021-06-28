@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { VideoOrImage } from '../../../../../_some_function/VideoOrImage';
 //
 import { context_post } from '../../../__context_post/ContextPost';
+// 
+import './VidPicPostItem.scss';
 
 //
 VidPicPostItem.propTypes = {};
@@ -23,7 +25,9 @@ function VidPicPostItem({ count_vid_pic, index, post_ix, id, vid_pic }) {
     //
     return (
         <div
-            className={`VidPics_count_${count_vid_pic > 4 ? 5 : count_vid_pic}`}
+            className={`VidPicPostItem VidPics_count_${
+                count_vid_pic > 4 ? 5 : count_vid_pic
+            }`}
             data-length={
                 index == 3 && count_vid_pic > 4 ? count_vid_pic - 4 : undefined
             }

@@ -16,12 +16,12 @@ function HeaderAccount(props) {
     // 
     const [open_account, setOpenAccount] = useState(false);
 
-    // Toggle
+    // 
     async function toggleOpenAccount() {
         setOpenAccount(!open_account);
     }
 
-    // Close
+    // 
     function closeAccount() {
         open_account && setOpenAccount(false);
     }

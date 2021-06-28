@@ -1,32 +1,10 @@
-
 // user
-.CUPostHome_user{
+.CUPostHome_user {
     width: fit-content;
     max-width: 15rem;
 }
 
 // .
-.CUPostHome_files-tag{
+.CUPostHome_files-tag {
     margin: 0.25rem 0;
 }
-
-// .
-.CUPostHome_post{
-    width: 100%;
-    padding: 0.25rem;
-
-    text-align: center;
-    color: var(--white);
-    font-weight: 500;
-}
-.CUPostHome_post-disable{
-    background-color: var(--md-bg-ccc);
-    opacity: 0.5;
-}
-.CUPostHome_post-active{
-    background-color: var(--blue);
-    &:hover{
-        cursor: pointer;
-    }
-}
-

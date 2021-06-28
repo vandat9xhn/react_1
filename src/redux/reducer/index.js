@@ -2,11 +2,10 @@ import {
   combineReducers, createStore, compose, applyMiddleware,
 } from 'redux';
 import thunk from 'redux-thunk';
-// 
 import createSagaMiddleware from 'redux-saga';
 import watcherSaga from '../saga/ReduxSaga';
-import reducer_saga from './ReducerSaga';
 // 
+import reducer_saga from './ReducerSaga';
 import reducer_count_cart from './reducer_count_cart';
 import reducerLocation from './reducer_location';
 

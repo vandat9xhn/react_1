@@ -14,12 +14,9 @@ class ScreenUpdate extends Component {
     };
 
     //
-    handleAction = (data_state, callback) => {
-        setTimeout(() => {
-            console.log(data_state);
-            callback();
-        }, 1000);
-    };
+    componentDidMount() {
+        this.has_change = false;
+    }
 
     //
     openScreenUpdate = (title, UpdateComponent, data_update) => {
@@ -32,7 +29,13 @@ class ScreenUpdate extends Component {
     };
 
     //
-    closeScreenUpdate = () => {
+    closeScreenUpdate = (force_close = false) => {
+        if (this.has_change && !force_close) {
+            if (!confirm('Do you want to close this?\nAny thing changed will be lost!')) {
+                return;
+            }
+        }
+
         this.setState({
             open_screen: false,
             title: '',
@@ -42,27 +45,33 @@ class ScreenUpdate extends Component {
     };
 
     //
+    hasChangeScreenUpdate = (new_has_change) => {
+        this.has_change != new_has_change && (this.has_change = new_has_change);
+    };
+
+    //
     render() {
         const { open_screen, title, UpdateComponent, data_update } = this.state;
 
         //
         return (
-            open_screen &&
-            <ScreenBlur
-                // open_screen={open_screen}
-                closeScreen={this.closeScreenUpdate}
-            >
-                <div>
-                    <ScreenBlurHead
-                        title={title}
-                        closeScreenBlur={this.closeScreenUpdate}
-                    />
-
+            open_screen && (
+                <ScreenBlur
+                    // open_screen={open_screen}
+                    closeScreen={this.closeScreenUpdate}
+                >
                     <div>
-                        <UpdateComponent {...data_update} />
+                        <ScreenBlurHead
+                            title={title}
+                            closeScreenBlur={this.closeScreenUpdate}
+                        />
+
+                        <div>
+                            <UpdateComponent {...data_update} />
+                        </div>
                     </div>
-                </div>
-            </ScreenBlur>
+                </ScreenBlur>
+            )
         );
     }
 }

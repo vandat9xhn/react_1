@@ -1,9 +1,17 @@
 //
-.ListPeople_item {
-    padding: 0.5rem;
-
+%name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--color-light);
+}
+
+//
+.ListPeople_item {
+    padding: 0.5rem;
+    @extend %name;
+
+    .PictureNameCommon_right {
+        @extend %name;
+    }
 }

@@ -1,8 +1,8 @@
 import React, { Component, Suspense } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 //
-import './_style/App.scss';
 import './_style/root.scss';
+import './_style/App.scss';
 import './_style/display.scss';
 import './_style/position.scss';
 import './_style/properties.scss';
@@ -103,6 +103,7 @@ class App extends Component {
         if (elm !== null) {
             this.openScreenUpdate = elm.openScreenUpdate;
             this.closeScreenUpdate = elm.closeScreenUpdate;
+            this.hasChangeScreenUpdate = elm.hasChangeScreenUpdate;
         }
     };
 
@@ -153,43 +154,54 @@ class App extends Component {
                         openScreenLike={this.openScreenLike}
                         openScreenPermission={this.openScreenPermission}
                         openScreenFetching={this.openScreenFetching}
+                        // 
+                        hasChangeScreenUpdate={this.hasChangeScreenUpdate}
                         //
                         closeScreenUpdate={this.closeScreenUpdate}
                         closeScreenNotice={this.closeScreenNotice}
                         closeScreenFetching={this.closeScreenFetching}
                     >
                         <div className="App">
-                            <header className="AppHeader">
-                                <Header />
-                            </header>
+                            <div className="App_contain">
+                                <header className="AppHeader">
+                                    <Header />
+                                </header>
 
-                            <main className="AppContent">
-                                <Switch>
-                                    {Routes.map((route, index) => (
-                                        <Route
-                                            key={`App_route_${index}`}
-                                            path={route.path}
-                                            render={props => <Auth route={route} {...props} />}
-                                            exact={route.exact}
-                                        />
-                                    ))}
+                                <main className="AppContent">
+                                    <Switch>
+                                        {Routes.map((route, index) => (
+                                            <Route
+                                                key={`App_route_${index}`}
+                                                path={route.path}
+                                                render={(props) => (
+                                                    <Auth
+                                                        route={route}
+                                                        {...props}
+                                                    />
+                                                )}
+                                                exact={route.exact}
+                                            />
+                                        ))}
 
-                                    <Redirect from="" to="/home" />
-                                </Switch>
-                            </main>
+                                        <Redirect from="" to="/home" />
+                                    </Switch>
+                                </main>
 
-                            <div className="AppBackTop">
-                                <BackTop />
+                                <footer className="AppFooter">
+                                    <Footer />
+                                </footer>
                             </div>
+                        </div>
 
-                            <div className="AppChat">
-                                <Chat ref={this.refChat} />
-                            </div>
+                        <div className="AppBackTop">
+                            <BackTop />
+                        </div>
 
-                            <footer className="AppFooter">
-                                <Footer />
-                            </footer>
+                        <div className="AppChat">
+                            <Chat ref={this.refChat} />
+                        </div>
 
+                        <div className="AppFixed">
                             <div>
                                 <CanvasFixed ref={this.refCanvas} />
                             </div>

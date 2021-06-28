@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 //
 import { loadFile } from '../../../../../_some_function/loadFile';
 //
-import './CUPost.scss';
-//
 import CUPostHome from '../home/_main/CUPostHome';
 import FixAll from '../fix_all/_main/FixAll';
 //
+import './CUPost.scss';
 import './CUPostRes.scss';
 
 //
@@ -23,20 +22,22 @@ CUPost.propTypes = {
     ),
 
     title_action: PropTypes.string,
+    handleCheckHasChange: PropTypes.func,
     handleCUPost: PropTypes.func,
 };
 
 CUPost.defaultProps = {
     main_content: '',
     vid_pics: [
-        {
-            id: 0,
-            vid_pic: '',
-            content: '',
-            type: '',
-        },
+        // {
+        //     id: 0,
+        //     vid_pic: '',
+        //     content: '',
+        //     type: '',
+        // },
     ],
 
+    handleCheckHasChange: () => {},
     title_action: 'Post',
 };
 
@@ -46,165 +47,198 @@ function CUPost({
     vid_pics: old_vid_pics,
 
     title_action,
+    handleCheckHasChange,
     handleCUPost,
 }) {
     //
-    const [update_create_obj, setUpdateCreateObj] = useState({
+    const [update_create_state, setUpdateCreateState] = useState({
         main_content: old_main_content || '',
-        vid_pics: [...old_vid_pics] || [],
-        files: old_vid_pics ? Array(old_vid_pics.length).fill({}) : [],
+        c_vid_pics: JSON.parse(JSON.stringify(old_vid_pics)),
 
-        deleted_ids: [],
-        updated_ids: [],
-        updated_contents: [],
+        created_arr: Array(old_vid_pics.length).fill(''),
+        deleted_arr: [],
+        updated_arr: [],
 
-        has_text: false,
-        has_file: false,
         is_loading: false,
         open_fix_all: false,
     });
 
     const {
         main_content,
-        vid_pics,
-        files,
+        c_vid_pics,
 
-        deleted_ids,
-        updated_ids,
-        updated_contents,
+        created_arr,
+        deleted_arr,
+        updated_arr,
 
-        has_text,
-        has_file,
         is_loading,
         open_fix_all,
-    } = update_create_obj;
+    } = update_create_state;
 
-    /* ---------------------------- MAIN CONTENT ---------------------------------- */
+    /* ----------------- COMMON -------------- */
 
-    // 
+    //
+    function checkHasChange() {
+        if (old_main_content != main_content) {
+            return true;
+        }
+
+        if (created_arr.some((item) => item != '')) {
+            return true;
+        }
+
+        if (deleted_arr.length) {
+            return true;
+        }
+
+        if (updated_arr.length) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /* ----------------- MAIN CONTENT -------------- */
+
+    //
     function handleChangeMainContent(event) {
         const new_main_content = event.target.value;
 
-        setUpdateCreateObj({
-            ...update_create_obj,
+        setUpdateCreateState((update_create_state) => ({
+            ...update_create_state,
             main_content: new_main_content,
-            has_file: vid_pics.length > 0,
-            has_text: !!new_main_content.trim(),
-        });
+        }));
     }
 
-    /* ---------------------------- VID_PIC ---------------------------------- */
+    /* ---------------- VID_PIC --------------- */
 
-    // 
+    //
     async function handleChooseFiles(event) {
         const new_files = event.target.files;
 
         if (new_files.length) {
-            setUpdateCreateObj({
-                ...update_create_obj,
+            setUpdateCreateState((update_create_state) => ({
+                ...update_create_state,
                 is_loading: true,
-            });
+            }));
 
-            const { files: load_files, vid_pics: load_vid_pics } =
-                await loadFile(new_files);
+            const { files, vid_pics } = await loadFile(new_files);
 
-            const new_vid_pics = load_vid_pics.map((item) => {
+            const new_vid_pics = vid_pics.map((item) => {
                 item.content = '';
                 item.id = 0;
 
                 return item;
             });
 
-            setUpdateCreateObj({
-                ...update_create_obj,
-                files: [...files, ...load_files],
-                vid_pics: [...vid_pics, ...new_vid_pics],
+            setUpdateCreateState((update_create_state) => ({
+                ...update_create_state,
+                created_arr: [...created_arr, ...files],
+                c_vid_pics: [...c_vid_pics, ...new_vid_pics],
                 is_loading: false,
-                has_file: true,
-                has_text: !!main_content.trim(),
-            });
+            }));
         }
     }
 
-    // 
+    //
     function deleteAnItem(index) {
-        const deleted_item = vid_pics[index];
+        const deleted_item = c_vid_pics[index];
+        const new_c_vid_pics = c_vid_pics.filter((_, ix) => ix != index);
 
-        deleted_item.id && deleted_ids.push(deleted_item.id);
-        files.splice(index, 1);
-        vid_pics.splice(index, 1);
-        //
-        if (vid_pics.length) {
-            setUpdateCreateObj((update_create_obj) => ({
-                ...update_create_obj,
-                has_file: true,
-            }));
-        } else {
-            setUpdateCreateObj((update_create_obj) => ({
-                ...update_create_obj,
-                open_fix_all: false,
-                has_file: false,
-                has_text: !!main_content.trim(),
-            }));
-        }
+        deleted_item.id && deleted_arr.push(deleted_item.id);
+
+        setUpdateCreateState((update_create_state) => ({
+            ...update_create_state,
+            c_vid_pics: new_c_vid_pics,
+            created_arr: created_arr.filter((_, ix) => ix != index),
+            open_fix_all: !!new_c_vid_pics.length ? open_fix_all : false,
+        }));
     }
 
-    /* ---------------------------- FIX DETAIL ---------------------------------- */
+    /* ------------- FIX DETAIL --------------- */
 
     //
     function showFixAll() {
-        setUpdateCreateObj({
-            ...update_create_obj,
-            open_fix_all: true,
-        });
+        c_vid_pics.length &&
+            setUpdateCreateState((update_create_state) => ({
+                ...update_create_state,
+                open_fix_all: true,
+            }));
     }
 
     //
     function closeFixAll() {
-        setUpdateCreateObj({
-            ...update_create_obj,
+        setUpdateCreateState((update_create_state) => ({
+            ...update_create_state,
             open_fix_all: false,
+        }));
+    }
+
+    //
+    function getNewUpdatedArr(updated_id, content) {
+        if (!updated_id) {
+            return updated_arr;
+        }
+
+        const old_item = old_vid_pics.find((item) => item.id == updated_id);
+
+        if (old_item.content == content) {
+            return updated_arr.filter((item) => item.id != updated_id);
+        }
+
+        const new_updated_arr = [...updated_arr]
+
+        const old_item_updated = new_updated_arr.find(
+            (item) => item.id == updated_id
+        );
+        
+        if (old_item_updated) {
+            old_item_updated.content = content;
+        } else {
+            new_updated_arr.push({ id: updated_id, content: content });
+        }
+
+        return new_updated_arr
+    }
+
+    function handleChangeContentVidPic(content, index) {
+        const new_c_vid_pics = [...c_vid_pics];
+        new_c_vid_pics[index].content = content;
+
+        const updated_id = c_vid_pics[index].id;
+        const new_updated_arr = getNewUpdatedArr(updated_id, content);
+
+        setUpdateCreateState({
+            ...update_create_state,
+            c_vid_pics: new_c_vid_pics,
+            updated_arr: new_updated_arr,
         });
     }
 
     //
-    function handleChangeContentVidPic(content, index) {
-        vid_pics[index].content = content;
-        // update contents to updated
-        const updated_id = vid_pics[index].id;
-        if (updated_id) {
-            updated_ids.push(updated_id);
-            updated_contents.push(content);
-        }
-
-        setUpdateCreateObj({
-            ...update_create_obj,
-            has_text: !!main_content.trim(),
-            has_file: true,
-        });
-    }
+    const has_change = checkHasChange();
+    handleCheckHasChange(has_change);
 
     //
     function onCUPost() {
-        handleCUPost(update_create_obj);
+        has_change && handleCUPost(update_create_state);
     }
 
     //
     return (
-        <div className="CUPost">
+        <div className="CUPost bg-primary">
             <div className={open_fix_all ? 'display-none' : ''}>
                 <CUPostHome
                     main_content={main_content}
-                    vid_pics={vid_pics}
+                    vid_pics={c_vid_pics}
                     title_action={title_action}
                     //
-                    has_file={has_file}
-                    has_text={has_text}
+                    has_change={has_change}
                     is_loading={is_loading}
                     //
                     showFixAll={showFixAll}
                     handleChangeMainContent={handleChangeMainContent}
-                    deleteAnItem={deleteAnItem}
+                    // deleteAnItem={deleteAnItem}
                     handleChooseFiles={handleChooseFiles}
                     handleCUPost={onCUPost}
                 />
@@ -213,7 +247,7 @@ function CUPost({
             <div className={open_fix_all ? '' : 'display-none'}>
                 <FixAll
                     open_fix_all={open_fix_all}
-                    vid_pics={vid_pics}
+                    vid_pics={c_vid_pics}
                     //
                     closeFixAll={closeFixAll}
                     deleteAnItem={deleteAnItem}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 import { context_post } from '../../../__context_post/ContextPost';
-
+//
 import { UnitNumber } from '../../../../../_some_function/UnitNumber';
 //
 import InfoCmt from '../cmt/InfoCmt';
@@ -22,26 +22,25 @@ Info.defaultProps = {
 };
 
 //
-function Info(props) {
-    const {
-        parent_id,
-        count_comment,
+function Info({
+    parent_id,
+    count_comment,
 
-        likes,
-        count_like,
-        user_type_like,
+    likes,
+    count_like,
+    user_type_like,
 
-        enabled_share,
-        shares,
-        count_share,
-        count_unique_share,
-        //
-        handleClickBtnCmt,
-    } = props;
-
-    // context
-    const { handle_API_Like_L, handle_API_Share_L } = useContext(context_post);
+    enabled_share,
+    shares,
+    count_share,
+    count_unique_share,
+    //
+    handleClickBtnCmt,
+}) {
+    //
     const { openScreenShare, openScreenLike } = useContext(context_api);
+
+    const { handle_API_Like_L, handle_API_Share_L } = useContext(context_post);
 
     /* ------------- OPEN SCREEN ------------ */
 
@@ -65,7 +64,7 @@ function Info(props) {
         return handle_API_Like_L(parent_id, 0, type_like);
     }
 
-    // title
+    //
     const title_like =
         count_like > 1
             ? user_type_like >= 0
@@ -90,7 +89,6 @@ function Info(props) {
                         title={title_like}
                         count_like={count_like}
                         arr_unique_like={arr_unique_like}
-                        
                         on_API_Like_L={on_API_Like_L}
                         onOpenDetailLike={onOpenDetailLike}
                     />
@@ -105,7 +103,11 @@ function Info(props) {
                     </div>
 
                     {enabled_share && (
-                        <div className="Info_share">
+                        <div
+                            className={`Info_share ${
+                                count_share ? '' : 'display-none'
+                            }`}
+                        >
                             <MouseEnterLeaveInfo
                                 count={count_share}
                                 title={title_share}

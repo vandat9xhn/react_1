@@ -75,8 +75,6 @@ export function useAppearancePosition({
             return;
         }
 
-        console.log(1);
-
         const child_width = getChildWidth();
         const {
             x: parent_x,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
-import PictureName from '../../../../../picture_name/pic_name/PictureName';
+import PicNameContent from '../../../../../picture_name/pic_name_content/PicNameContent';
 import CUPostHomeContent from '../content/CUPostHomeContent';
 import CUPostHomeMoreInput from '../more_input/CUPostHomeMoreInput';
 //
@@ -18,13 +18,12 @@ function CUPostHome({
     vid_pics,
     title_action,
 
-    has_file,
-    has_text,
+    has_change,
     is_loading,
 
     showFixAll,
     handleChangeMainContent,
-    deleteAnItem,
+    // deleteAnItem,
     handleChooseFiles,
     handleCUPost,
 }) {
@@ -35,7 +34,7 @@ function CUPostHome({
     return (
         <div>
             <div className="CUPostHome_user">
-                <PictureName user={user} />
+                <PicNameContent user={user} />
             </div>
 
             <div>
@@ -46,7 +45,7 @@ function CUPostHome({
                     //
                     showFixAll={showFixAll}
                     handleChangeMainContent={handleChangeMainContent}
-                    deleteAnItem={deleteAnItem}
+                    // deleteAnItem={deleteAnItem}
                 />
             </div>
 
@@ -57,15 +56,14 @@ function CUPostHome({
                     />
                 </div>
 
-                {/* btn post */}
                 <div>
                     <button
-                        className={`CUPostHome_post brs-5px ${
-                            !has_text && !has_file
-                                ? 'CUPostHome_post-disable'
-                                : 'CUPostHome_post-active'
+                        className={`CUPostHome_post w-100per padding-8px brs-5px text-secondary label-field text-align-center ${
+                            !has_change
+                                ? 'bg-ccc opacity-5'
+                                : 'bg-blue text-white cursor-pointer'
                         }`}
-                        disabled={!has_text && !has_file}
+                        disabled={!has_change}
                         title={title_action}
                         onClick={handleCUPost}
                     >

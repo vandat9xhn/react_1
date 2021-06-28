@@ -1,11 +1,11 @@
 /* -------------- FIX ------------------ */
-.UpdateCreatePostFix_content{
+.FixAll_content{
     max-height: calc(100vh - 6rem);
     overflow-y: auto;
 }
 
 // close
-.UpdateCreatePostFix_close{
+.FixAll_close{
     display: flex;
 
     border-bottom: 1px solid var(--bg-blur);
@@ -14,7 +14,7 @@
 
 }
 // .
-.UpdateCreatePostFix_arrowLeft{
+.FixAll_arrowLeft{
     padding: 0.3rem 0.8rem;
     background-color: var(--danger);
     cursor: pointer;
@@ -23,7 +23,7 @@
 
 // 
 @media (max-width: 300px) {
-    .UpdateCreatePostFix_arrowLeft {
+    .FixAll_arrowLeft {
         padding: 0.15rem 0.5rem;
     }
 }

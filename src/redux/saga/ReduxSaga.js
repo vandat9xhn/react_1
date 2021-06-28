@@ -6,6 +6,7 @@ import { allProducts } from '../../api/api_heroku/get_api/GetAPI';
 export default function* watcherSaga() {
   yield takeLatest('API_REQUEST', workerSaga);
 }
+
 // worker
 function* workerSaga() {
   try {
@@ -17,6 +18,7 @@ function* workerSaga() {
     yield put({ type: 'API_FAIL', error: e });
   }
 }
+
 // fetch
 function fetchData() {
   return allProducts({ _page: 4, _limit: 10 });

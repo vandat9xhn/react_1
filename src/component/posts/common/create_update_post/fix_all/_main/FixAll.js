@@ -10,26 +10,19 @@ import './FixAll.scss';
 FixAll.propTypes = {};
 
 //
-function FixAll(props) {
-    const {
-        open_fix_all,
-        vid_pics,
+function FixAll({
+    vid_pics,
 
-        closeFixAll,
-        deleteAnItem,
-        handleChangeContentVidPic,
-    } = props;
-
+    closeFixAll,
+    deleteAnItem,
+    handleChangeContentVidPic,
+}) {
     //
     return (
-        <div
-            className={
-                open_fix_all ? 'UpdateCreatePostCmt_fix' : 'display-none'
-            }
-        >
-            <div className="UpdateCreatePostFix_close">
+        <div>
+            <div className="FixAll_close">
                 <div
-                    className="UpdateCreatePostFix_arrowLeft hv-opacity brs-5px"
+                    className="FixAll_arrowLeft hv-opacity brs-5px"
                     title="Back"
                     onClick={closeFixAll}
                 >
@@ -37,7 +30,7 @@ function FixAll(props) {
                 </div>
             </div>
 
-            <div className="UpdateCreatePostFix_content scroll-thin">
+            <div className="FixAll_content scroll-thin">
                 {vid_pics.map(
                     (item, index) =>
                         item.vid_pic && (

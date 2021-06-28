@@ -45,17 +45,12 @@
     max-height: 5rem;
 }
 
-.FixItem_deleteItem{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.FixItem_delete{
     position: absolute;
     top: 5rem;
     left: 10%;
-
-    width: 2rem;
-    height: 2rem;
-    padding: 0.5rem;
-    background-color: gray;
+}
+// .
+.FixItem_delete_item{
+    background-color: var(--bg-loader);
 }

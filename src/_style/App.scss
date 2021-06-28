@@ -1,6 +1,7 @@
 /* html */
 // html {
     // scroll-behavior: smooth;
+    // overflow-y: scroll !important;
 // }
 
 *,
@@ -9,13 +10,13 @@
     box-sizing: border-box;
 }
 
-// from bootstrap:
+//
 body {
     margin: 0;
-    font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif,
-        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-        Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
     font-size: 15px;
     font-weight: 400;
     line-height: 1.5;
@@ -23,12 +24,17 @@ body {
 
     &[data-count-hidden] {
         overflow-y: hidden;
+        &::-webkit-scrollbar{
+            background-color: var(--bg-through);
+        }
     }
 
-    &[data-count-hidden='0'] {
-        overflow-y: auto;
+    &.device-mobile[data-count-hidden]{
+        overflow-y: hidden;
     }
 }
+
+
 svg {
     overflow: hidden;
     vertical-align: middle;
@@ -71,9 +77,14 @@ img {
 
 /* ------------ APP -------------- */
 .App {
+    position: relative;
+    overflow-y: auto;
+}
+
+.App_contain {
     background-color: var(--md-bg-fb);
     color: var(--md-color);
-    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* ------------ HEADER -------------- */
@@ -96,15 +107,4 @@ img {
 .AppNatureDrop {
     position: relative;
     z-index: var(--z-index-lv5);
-}
-
-//
-@media (max-width: 350px) {
-    // body {
-    //     font-size: 15px;
-    // }
-
-    .AppContent {
-        margin-top: calc(var(--height-header-350));
-    }
 }
