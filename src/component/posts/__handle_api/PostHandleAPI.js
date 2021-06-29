@@ -24,6 +24,7 @@ import {
     API_PostSub_R,
     API_PostHisSub_R,
     API_PostHistory_R,
+    API_PostVidPicID_L,
 } from '../../../api/api_django/user/user_post/UserPost';
 
 import makeFormData from '../../../_some_function/makeFormData';
@@ -428,11 +429,12 @@ export async function handle_API_MoreContentHisSub_R(
 /* ------------ VID PIC POST ----------- */
 
 export async function handle_API_PostVidPicID_L(post_id = 0) {
-    const res = await API_Post_RD(post_id, 'GET', {
+    const res = await API_PostVidPicID_L({
+        post_model: post_id,
         ...params_id_vid_pic_post_l,
     });
 
-    return res.data.vid_pics;
+    return res.data;
 }
 
 export async function handle_API_PostVidPic_R(vid_pic_id = 0) {

@@ -14,6 +14,7 @@ import './ListUniqueLike.scss';
 ListUniqueLike.propTypes = {
     count_like: PropTypes.number,
     arr_unique_like: PropTypes.array,
+    use_transform_x: PropTypes.bool,
 };
 
 ListUniqueLike.defaultProps = {
@@ -29,6 +30,8 @@ function ListUniqueLike({
 
     on_API_Like_L,
     onOpenDetailLike,
+
+    use_transform_x,
 }) {
     //
     function on_API_LikeAll_L() {
@@ -58,6 +61,8 @@ function ListUniqueLike({
                             //
                             handle_API_L={on_API_Like_L}
                             handleOpenScreen={onOpenDetailLike}
+                            //
+                            use_transform_x={use_transform_x}
                         />
                     </div>
                 ))}
@@ -72,6 +77,8 @@ function ListUniqueLike({
                         handle_API_L={on_API_LikeAll_L}
                         handleOpenScreen={onOpenDetailLikeAll}
                         LoadingComponent={CircleLoading}
+                        //
+                        use_transform_x={use_transform_x}
                     />
                 </div>
             </div>

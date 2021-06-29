@@ -37,7 +37,8 @@ function ActionsAccount({ closeAccount }) {
     const use_history = useHistory();
 
     //
-    const { user, setDataUser, toggleSnowFlower } = useContext(context_api);
+    const { user, setDataUser, resetChat, toggleSnowFlower } =
+        useContext(context_api);
 
     //
     const [light_mode, setLightMode] = useState(
@@ -101,7 +102,9 @@ function ActionsAccount({ closeAccount }) {
     //
     function changeNature(new_which_nature) {
         toggleSnowFlower(new_which_nature);
-        setWhichNature(new_which_nature == which_nature ? '' : new_which_nature);
+        setWhichNature(
+            new_which_nature == which_nature ? '' : new_which_nature
+        );
     }
 
     /* ----------- LOG ---------- */
@@ -109,11 +112,10 @@ function ActionsAccount({ closeAccount }) {
     //
     function handleBeForeLog() {
         let url_before_login = location.pathname + location.search;
-        
-        if (url_before_login.search(/(login-form|registration-form)/) == -1) {
-            sessionStorage.url_before_login = url_before_login
-        }
 
+        if (url_before_login.search(/(login-form|registration-form)/) == -1) {
+            sessionStorage.url_before_login = url_before_login;
+        }
     }
 
     //
@@ -125,17 +127,18 @@ function ActionsAccount({ closeAccount }) {
     //
     async function handleLogout() {
         try {
+            handleBeForeLog();
+            closeAccount();
+            resetChat();
+
+            await handleScreenFetching(() => LogoutRequest());
+
             setDataUser({
                 id: 0,
                 first_name: '',
                 last_name: '',
                 picture: '',
             });
-
-            handleBeForeLog();
-            closeAccount();
-
-            await handleScreenFetching(() => LogoutRequest());
 
             use_history.push('/login-form');
         } catch (e) {

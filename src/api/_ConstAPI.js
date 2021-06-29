@@ -16,7 +16,9 @@ const API_Fake = (new_data, params = {}) =>
                       item.id =
                           ix +
                           1 +
-                          (params['c_count'] + 1 || params['page'] * 20);
+                          (is_pagination
+                              ? params['c_count'] + 1 || params['page'] * 20
+                              : 0);
                       return item;
                   })
                 : is_obj

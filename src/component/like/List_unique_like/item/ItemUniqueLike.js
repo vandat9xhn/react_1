@@ -16,6 +16,8 @@ function ItemUniqueLike({
     onOpenDetailLike,
     handle_API_L,
     PeopleComponent,
+
+    use_transform_x
 }) {
     //
     function on_API_Like_L() {
@@ -37,6 +39,8 @@ function ItemUniqueLike({
             handle_API_L={on_API_Like_L}
             handleOpenScreen={openDetailLike}
             LoadingComponent={CircleLoading}
+            // 
+            use_transform_x={use_transform_x}
         />
     );
 }

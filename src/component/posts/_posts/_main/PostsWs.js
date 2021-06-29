@@ -67,8 +67,6 @@ function Posts({
     //
     const {
         // user,
-        openScreenFetching,
-        closeScreenFetching,
         closeScreenUpdate,
     } = useContext(context_api);
 
@@ -76,8 +74,8 @@ function Posts({
     const [show_zoom_vid_pic, setShowZoomVidPic] = useState(false);
 
     //
-    ;
     const ws = useRef(null);
+    const c_zoom_post = useRef(-1);
 
     //
     const mounted = useMounted();
@@ -111,6 +109,7 @@ function Posts({
     //
     function zoomVidPicPost(index, post_ix) {
         const { id: photo_id } = posts[post_ix].vid_pics[index];
+        c_zoom_post.current = index
 
         history.pushState('', '', '/post/photos/' + photo_id);
         setShowZoomVidPic(true);
@@ -118,8 +117,14 @@ function Posts({
 
     //
     function closeScreenTitle() {
+        c_zoom_post.current = -1
         setShowZoomVidPic(false);
         history.back();
+    }
+
+    // 
+    function handleDeleteVidPicPost(del_vid_pic_ix) {
+        console.log(del_vid_pic_ix, posts[c_zoom_post.current].vid_pics);
     }
 
     /* -------------------------------- CREATE --------------------------------- */
@@ -136,8 +141,8 @@ function Posts({
         const new_data = handleCreateNewPost(data.main_content, data.c_vid_pics);
 
         posts.unshift(new_data);
+        
         forceUpdate();
-
         closeScreenUpdate(true);
     }
 
@@ -220,6 +225,7 @@ function Posts({
                 <ZoomVidPicItem
                     show_screen_title={true}
                     closeScreenTitle={closeScreenTitle}
+                    handleDeleteVidPicPost={handleDeleteVidPicPost}
                 />
             )}
         </div>

@@ -21,27 +21,19 @@ CmtSubHistoryItem.defaultProps = {
 };
 
 //
-function CmtSubHistoryItem(props) {
-    const {
-        id,
-        created_time,
-        content_obj,
-        vid_pic,
-        handle_API_MoreContent,
-    } = props;
-
-    const { content, has_more_content } = content_obj;
-
+function CmtSubHistoryItem({
+    id,
+    created_time,
+    content_obj,
+    vid_pic,
+    handle_API_MoreContent,
+}) {
     //
-    const [is_fetching, setIsFetching] = useState(false);
+    const { content } = content_obj;
 
     //
     async function seeMoreContent() {
-        setIsFetching(true);
-        const more_content = await handle_API_MoreContent(id);
-        content_obj.content += more_content;
-        content_obj.has_more_content = false;
-        setIsFetching(false);
+        return await handle_API_MoreContent(id);
     }
 
     //
@@ -53,9 +45,7 @@ function CmtSubHistoryItem(props) {
 
             <div className={content ? '' : 'display-none'}>
                 <ContentMore
-                    content={content}
-                    has_more_content={has_more_content}
-                    is_fetching={is_fetching}
+                    content_obj={content_obj}
                     seeMoreContent={seeMoreContent}
                 />
             </div>

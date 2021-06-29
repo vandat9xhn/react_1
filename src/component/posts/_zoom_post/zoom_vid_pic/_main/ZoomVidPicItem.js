@@ -7,8 +7,11 @@ import { context_api } from '../../../../../_context/ContextAPI';
 import { is_api_fake } from '../../../../../api/_ConstAPI';
 //
 import { useMounted } from '../../../../../_hooks/useMounted';
+import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
+import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 //
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
+import { getIndexNextPrevArr } from '../../../../../_some_function/getIndexNextPrevArr';
 //
 import ContextPost from '../../../__context_post/ContextPost';
 //
@@ -39,28 +42,29 @@ import ZoomPostCommon from '../../_common/_main/ZoomPostCommon';
 import LikeShareCmt from '../../../common/like_share_cmt/_main/LikeShareCmtWs';
 import CommentsWs from '../../../common/ws_comments/_main/CommentsWs';
 import ActionsVidPic from '../actions/ActionsVidPic';
-//
-import './ZoomVidPicItem.scss';
 import VidPicHistory from '../history/_main/VidPicHistory';
 import VidPicUpdate from '../actions/update/VidPicUpdate';
-import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
-import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
+//
+import './ZoomVidPicItem.scss';
 
 //
 ZoomVidPicItem.propTypes = {
     show_screen_title: PropTypes.bool,
     closeScreenTitle: PropTypes.func,
+    handleDeleteVidPicPost: PropTypes.func,
 };
 
 ZoomVidPicItem.defaultProps = {
     show_screen_title: false,
+    handleDeleteVidPicPost: () => {},
 };
 
 //
-function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
-    //
-    const id = GetIdSlug();
-
+function ZoomVidPicItem({
+    show_screen_title,
+    closeScreenTitle,
+    handleDeleteVidPicPost,
+}) {
     //
     const {
         user: c_user,
@@ -77,12 +81,25 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
 
     //
     const [vid_pic_state, setVidPicState] = useState({
-        vid_pic_obj: { [id]: {} },
+        vid_pic_obj: { 0: {} },
+        c_id: 0,
+        vid_pic_id_arr: [],
         has_fetched: false,
     });
-    const [vid_pic_id_arr, setVidPicIdArr] = useState([]);
 
-    const { vid_pic_obj, has_fetched } = vid_pic_state;
+    const { vid_pic_obj, c_id, vid_pic_id_arr, has_fetched } = vid_pic_state;
+
+    const c_index = vid_pic_id_arr.indexOf(c_id);
+
+    // const is_has_next =
+    //     has_fetched && c_index != -1
+    //         ? c_index < vid_pic_id_arr.length - 1
+    //         : false;
+
+    // const is_has_prev = has_fetched ? c_index > 0 : false;
+
+    const is_has_next = true;
+    const is_has_prev = true;
 
     const {
         is_del,
@@ -100,7 +117,7 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
         count_comment,
 
         count_his,
-    } = vid_pic_obj[id];
+    } = vid_pic_obj[c_id];
 
     //
     const ws = useRef(null);
@@ -112,15 +129,15 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
 
     //
     useEffect(() => {
-        getData_API_VidPic();
-    }, [id]);
+        getData_API_VidPic(GetIdSlug());
+    }, []);
 
     //
     useEffect(() => {
-        if (vid_pic_obj[id].post_model) {
-            getData_API_VidPicId(vid_pic_obj[id].post_model);
+        if (vid_pic_obj[c_id].post_model) {
+            getData_API_VidPicId(vid_pic_obj[c_id].post_model);
         }
-    }, [vid_pic_obj[id].post_model]);
+    }, [vid_pic_obj[c_id].post_model]);
 
     //
     useEffect(() => {
@@ -146,38 +163,85 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
                     console.log('close');
                 });
         };
-    }, [vid_pic_obj[id].post_model]);
+    }, [vid_pic_obj[c_id].post_model]);
 
     //
     function handle_fake_ws_send(data) {
         console.log(data);
     }
 
+    /* ------------- COMMON -------------- */
+
+    //
+    function getNewVidPicId(is_next = true) {
+        const count = vid_pic_id_arr.length;
+        const new_index = getIndexNextPrevArr(c_index, count, is_next);
+
+        return vid_pic_id_arr[new_index];
+    }
+
+    //
+    function handleChangeId(new_vid_pic_id) {
+        history.replaceState('', '', '/post/photos/' + new_vid_pic_id);
+
+        if (vid_pic_obj[new_vid_pic_id]) {
+            setVidPicState({
+                ...vid_pic_state,
+                c_id: new_vid_pic_id,
+            });
+
+            return;
+        }
+
+        getData_API_VidPic(new_vid_pic_id);
+    }
+
+    //
+    function handleNextPrevVidPic(is_next = true) {
+        const new_vid_pic_id = getNewVidPicId(is_next);
+        handleChangeId(new_vid_pic_id);
+    }
+
     /* ------------- GET API -------------- */
 
     //
-    async function getData_API_VidPic() {
-        const data = await handle_API_PostVidPic_R(id);
+    async function getData_API_VidPic(vid_pic_id = 0) {
+        const data = await handleScreenFetching(() =>
+            handle_API_PostVidPic_R(vid_pic_id)
+        );
 
-        setVidPicState({
-            ...vid_pic_state,
-            vid_pic_obj: { ...vid_pic_obj, [id]: data },
-            has_fetched: true,
-        });
+        mounted &&
+            setVidPicState((vid_pic_state) => ({
+                ...vid_pic_state,
+                vid_pic_obj: vid_pic_state.has_fetched
+                    ? {
+                          ...vid_pic_state.vid_pic_obj,
+                          [vid_pic_id]: data,
+                      }
+                    : { [vid_pic_id]: data },
+                c_id: vid_pic_id,
+                has_fetched: true,
+            }));
     }
 
     //
     async function getData_API_VidPicId(post_id) {
         const data = await handle_API_PostVidPicID_L(post_id);
-        const new_vid_pic_id_arr = data.map((item) => item.id);
-        mounted && setVidPicIdArr(new_vid_pic_id_arr);
+
+        const new_vid_pic_id_arr = data.map((item) => item.vid_pic_id);
+
+        mounted &&
+            setVidPicState((vid_pic_state) => ({
+                ...vid_pic_state,
+                vid_pic_id_arr: new_vid_pic_id_arr,
+            }));
     }
 
     /* ------------------------- */
 
     //
     function seeMoreContent() {
-        return handle_API_PostVidPicContent_R(id);
+        return handle_API_PostVidPicContent_R(c_id);
     }
 
     //
@@ -187,12 +251,12 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
 
     //
     function handleNextVidPic() {
-        console.log('next');
+        handleNextPrevVidPic(true);
     }
 
     //
     function handlePrevVidPic() {
-        console.log('prev');
+        handleNextPrevVidPic(false);
     }
 
     /* ------------- ACTIONS -------------- */
@@ -210,7 +274,7 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
     async function openUpdateVidPic() {
         const content = content_obj.has_more_content
             ? await handleScreenFetching(() =>
-                  handle_API_PostVidPicContent_R(id)
+                  handle_API_PostVidPicContent_R(c_id)
               )
             : content_obj.content;
 
@@ -240,13 +304,13 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
     //
     async function handleUpdate(new_content) {
         await handleScreenFetching(() =>
-            handle_API_PostVidPic_U(id, new_content)
+            handle_API_PostVidPic_U(c_id, new_content)
         );
 
         content_obj.content = new_content;
         forceUpdate();
-        
-        closeScreenUpdate()
+
+        closeScreenUpdate();
     }
 
     //
@@ -256,24 +320,31 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
 
     //
     function handleDelete() {
-        console.log('delete');
         const count_vid_pic = vid_pic_id_arr.length;
 
         if (count_vid_pic == 1) {
             if (show_screen_title) {
                 closeScreenTitle();
-            } else {
-                use_history.push('/new-feed');
+
+                return;
             }
-        } else {
-            const vid_pic_ix = vid_pic_id_arr.indexOf(id);
-            const new_vid_pic_id = vid_pic_id_arr(
-                vid_pic_ix == count_vid_pic ? vid_pic_ix - 1 : vid_pic_ix + 1
-            );
-            vid_pic_obj[id].is_del = true;
-            history.replaceState('', '', '/post/photos/' + new_vid_pic_id);
-            setVidPicIdArr(vid_pic_id_arr.filter((item) => item != id));
+
+            use_history.push('/new-feed');
+
+            return;
         }
+
+        // vid_pic_obj[c_id].is_del = true;
+        const new_vid_pic_id = getNewVidPicId();
+
+        vid_pic_id_arr.splice(c_index, 1);
+        handleDeleteVidPicPost(c_index);
+        handleChangeId(new_vid_pic_id);
+    }
+
+    //
+    if (!has_fetched || is_del) {
+        return <div></div>;
     }
 
     //
@@ -305,57 +376,58 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
                     handle_API_VidPicMoreContentHisSub_R
                 }
             >
-                {!is_del && has_fetched && (
-                    <ZoomPostCommon
-                        show_screen_title={show_screen_title}
-                        closeScreenTitle={closeScreenTitle}
-                        //
-                        vid_pic={vid_pic}
-                        handleNextVidPic={handleNextVidPic}
-                        handlePrevVidPic={handlePrevVidPic}
-                        user={user}
-                        updated_time={updated_time}
-                        //
-                        content_obj={content_obj}
-                        seeMoreContent={seeMoreContent}
-                        //
-                        count_like={count_like}
-                        arr_unique_like={arr_unique_like}
-                        on_API_Like_L={handle_API_PostVidPicLike_L}
-                        //
-                        action_component={
-                            <ActionsVidPic
-                                is_user={user.id == c_user.id}
-                                count_his={count_his}
-                                openHistoryVidPic={openHistoryVidPic}
-                                openUpdateVidPic={openUpdateVidPic}
-                                openDeleteVidPic={openDeleteVidPic}
-                                openReportVidPic={openReportVidPic}
-                            />
-                        }
-                        like_share_cmt_component={
-                            <LikeShareCmt
-                                parent_id={id}
-                                user_type_like={user_type_like}
-                                enabled_like={true}
-                                enabled_cmt={true}
-                                count_comment={count_comment}
-                                enabled_share={false}
-                                count_share={0}
-                                count_user_shared={0}
-                                handleClickBtnCmt={handleClickBtnCmt}
-                            />
-                        }
-                        comment_component={
-                            <CommentsWs
-                                parent_id={id}
-                                comments={comments}
-                                count_comment={count_comment}
-                                open_input={true}
-                            />
-                        }
-                    />
-                )}
+                <ZoomPostCommon
+                    show_screen_title={show_screen_title}
+                    closeScreenTitle={closeScreenTitle}
+                    //
+                    vid_pic={vid_pic}
+                    is_has_next={is_has_next}
+                    is_has_prev={is_has_prev}
+                    handleNextVidPic={handleNextVidPic}
+                    handlePrevVidPic={handlePrevVidPic}
+                    //
+                    user={user}
+                    updated_time={updated_time}
+                    //
+                    content_obj={content_obj}
+                    seeMoreContent={seeMoreContent}
+                    //
+                    count_like={count_like}
+                    arr_unique_like={arr_unique_like}
+                    on_API_Like_L={handle_API_PostVidPicLike_L}
+                    //
+                    action_component={
+                        <ActionsVidPic
+                            is_user={user.id == c_user.id}
+                            count_his={count_his}
+                            openHistoryVidPic={openHistoryVidPic}
+                            openUpdateVidPic={openUpdateVidPic}
+                            openDeleteVidPic={openDeleteVidPic}
+                            openReportVidPic={openReportVidPic}
+                        />
+                    }
+                    like_share_cmt_component={
+                        <LikeShareCmt
+                            parent_id={c_id}
+                            user_type_like={user_type_like}
+                            enabled_like={true}
+                            enabled_cmt={true}
+                            count_comment={count_comment}
+                            enabled_share={false}
+                            count_share={0}
+                            count_user_shared={0}
+                            handleClickBtnCmt={handleClickBtnCmt}
+                        />
+                    }
+                    comment_component={
+                        <CommentsWs
+                            parent_id={c_id}
+                            comments={comments}
+                            count_comment={count_comment}
+                            open_input={true}
+                        />
+                    }
+                />
             </ContextPost>
         </div>
     );

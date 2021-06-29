@@ -22,7 +22,13 @@ MouseEnterLeaveInfo.propTypes = {
     handle_API_L: PropTypes.func,
     handleOpenScreen: PropTypes.func,
     LoadingComponent: PropTypes.func,
+
+    use_transform_x: PropTypes.bool,
 };
+
+MouseEnterLeaveInfo.defaultProps = {
+    use_transform_x: true,
+}
 
 //
 function MouseEnterLeaveInfo({
@@ -33,12 +39,14 @@ function MouseEnterLeaveInfo({
 
     is_pic_name,
     PeopleComponent,
-    //
+    
     handle_API_L,
     handleOpenScreen,
     LoadingComponent,
+    
+    use_transform_x,
 }) {
-    // 
+    //
     const ref_child_elm = useRef(null);
     const ref_parent_elm = useRef(null);
 
@@ -80,10 +88,14 @@ function MouseEnterLeaveInfo({
 
             <div
                 className={`MouseEnterLeaveInfo_list ${
-                    is_open ? 'visibility-visible' : 'visibility-hidden'
-                } ${position_y == 'top' ? 'bottom-100per' : 'top-100per'}`}
+                    use_transform_x ? 'left-50per' : 'left-0'
+                } ${is_open ? 'visibility-visible' : 'visibility-hidden'} ${
+                    position_y == 'top' ? 'bottom-100per' : 'top-100per'
+                }`}
                 style={{
-                    transform: `translateX(-50%) translateX(${transform_x}px)`,
+                    transform: use_transform_x
+                        ? `translateX(-50%) translateX(${transform_x}px)`
+                        : undefined,
                 }}
             >
                 <div ref={ref_child_elm} className="w-100per"></div>

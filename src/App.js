@@ -45,6 +45,7 @@ class App extends Component {
     refChat = (elm) => {
         if (elm !== null) {
             this.openMessage = elm.openMessage;
+            this.resetChat = elm.resetChat;
         }
     };
 
@@ -142,6 +143,7 @@ class App extends Component {
                         handleRefresh={this.handleRefresh}
                         //
                         openMessage={this.openMessage}
+                        resetChat={this.resetChat}
                         openZoomVidPics={this.openZoomVidPics}
                         toggleCanvasFixed={this.toggleCanvasFixed}
                         toggleSnowFlower={this.toggleSnowFlower}

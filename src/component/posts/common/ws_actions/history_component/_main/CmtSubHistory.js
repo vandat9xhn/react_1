@@ -12,9 +12,7 @@ CmtSubHistory.propTypes = {
 };
 
 //
-function CmtSubHistory(props) {
-    const { histories, handle_API_MoreContent } = props;
-
+function CmtSubHistory({ histories, handle_API_MoreContent }) {
     //
     return (
         <div>

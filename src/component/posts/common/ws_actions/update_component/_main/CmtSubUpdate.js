@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import TextareaNotSend from '../../../../../input/textarea/TextareaNotSend';
-import ButtonRipple from '../../../../../button/button_ripple/ButtonRipple';
+import { type_video_or_img } from '../../../../../../_some_function/VideoOrImage';
+//
 import InputFile from '../../../../../input/input_file/InputFile';
 import IconsInput from '../../../../../../_icons_svg/Icons_input/IconsInput';
+//
+import TextareaNotSend from '../../../../../input/textarea/TextareaNotSend';
+import ButtonRipple from '../../../../../button/button_ripple/ButtonRipple';
 import ImgVidPreviewItem from '../../../../../input_img_vid_preview/img_vid_preview/_item/ImgVidPreviewItem';
 //
 import './CmtSubUpdate.scss';
@@ -18,40 +21,66 @@ CmtSubUpdate.propTypes = {
 };
 
 //
-function CmtSubUpdate(props) {
-    const { text, vid_pic, handleUpdate } = props;
+function CmtSubUpdate({ text, vid_pic, handleUpdate, handleHasChange }) {
     //
-    const [new_text, setNewText] = useState(text);
-    const [file, setFile] = useState('');
-    const [vid_pic_obj, setVidPicObj] = useState({
+    const [update_state, setUpdateState] = useState({
+        new_text: text,
+        file: '',
         url: vid_pic,
-        type: vid_pic.search('.mp4') > 0 ? 'video' : 'image',
+        type: type_video_or_img(vid_pic),
     });
+
+    const { new_text, file, url, type } = update_state;
+
+    //
+    function hasChangeUpdate() {
+        if (text != new_text) {
+            return true;
+        }
+
+        if (file != '') {
+            return true;
+        }
+
+        if (vid_pic != url) {
+            return true;
+        }
+
+        return false;
+    }
 
     //
     function handleChangeText(value) {
-        setNewText(value);
+        setUpdateState({
+            ...update_state,
+            new_text: value,
+        });
     }
 
     //
     function handleChangeFile(e) {
         const new_file = e.target.files[0];
+
         if (new_file) {
             const reader = new FileReader();
 
             reader.onload = () => {
-                vid_pic_obj.url = reader.result;
-                vid_pic_obj.type = new_file.type;
-                setFile(new_file);
+                setUpdateState((update_state) => ({
+                    ...update_state,
+                    url: reader.result,
+                    type: new_file.type,
+                }));
             };
+
             reader.readAsDataURL(new_file);
         }
     }
 
     //
     function handleDeleteFile() {
-        setFile('');
-        setVidPicObj({
+        setUpdateState({
+            ...update_state,
+            file: '',
             url: '',
             type: '',
         });
@@ -59,12 +88,12 @@ function CmtSubUpdate(props) {
 
     //
     function onUpdate() {
-        handleUpdate({
-            text: new_text,
-            file: file,
-            vid_pic_obj: vid_pic_obj,
-        });
+        handleUpdate(update_state);
     }
+
+    //
+    const has_change = hasChangeUpdate();
+    handleHasChange(has_change);
 
     //
     return (
@@ -84,16 +113,16 @@ function CmtSubUpdate(props) {
                         <div className="display-flex justify-content-center">
                             <div
                                 className={
-                                    vid_pic_obj.url
+                                    url
                                         ? 'CmtSubUpdate_pic-item brs-5px'
                                         : 'display-none'
                                 }
                             >
                                 <ImgVidPreviewItem
                                     item_ix={0}
-                                    urls={[vid_pic_obj]}
-                                    url={vid_pic_obj.url}
-                                    type={vid_pic_obj.type}
+                                    urls={[{ url: url, type: type || 'image' }]}
+                                    url={url}
+                                    type={type || 'image'}
                                     deleteAnItem={handleDeleteFile}
                                 />
                             </div>
@@ -117,10 +146,7 @@ function CmtSubUpdate(props) {
                 </div>
 
                 <div>
-                    <ButtonRipple
-                        disabled={new_text.trim() + vid_pic_obj.url == ''}
-                        onClick={onUpdate}
-                    >
+                    <ButtonRipple disabled={!has_change} onClick={onUpdate}>
                         Update
                     </ButtonRipple>
                 </div>

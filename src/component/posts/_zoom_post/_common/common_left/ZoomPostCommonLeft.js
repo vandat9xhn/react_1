@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
-// 
+import NextPrevDiv from '../../../../some_div/next_prev_div/NextPrevDiv';
+//
 import './ZoomPostCommonLeft.scss';
 
 //
 ZoomPostCommonLeft.propTypes = {};
 
 //
-function ZoomPostCommonLeft(props) {
-    const { vid_pic, handleNextVidPic, handlePrevVidPic } = props;
-
+function ZoomPostCommonLeft({
+    vid_pic,
+    is_has_next,
+    is_has_prev,
+    
+    handleNextVidPic,
+    handlePrevVidPic,
+}) {
     //
     return (
         <div className="ZoomPostCommonLeft">
@@ -19,17 +24,15 @@ function ZoomPostCommonLeft(props) {
                 <img className="wh-100" src={vid_pic} alt="" />
             </div>
 
-            <div className="ZoomPostCommonLeft_btn ZoomPostCommonLeft_next">
-                <div onClick={handleNextVidPic}>
-                    <IconsArrow x={200} />
-                </div>
-            </div>
-
-            <div className="ZoomPostCommonLeft_btn ZoomPostCommonLeft_prev">
-                <div onClick={handlePrevVidPic}>
-                    <IconsArrow x={400} />
-                </div>
-            </div>
+            <NextPrevDiv
+                is_btn_circle={true}
+                is_has_next={is_has_next}
+                is_has_prev={is_has_prev}
+                // size_icon=""
+                //
+                handleNext={handleNextVidPic}
+                handlePrev={handlePrevVidPic}
+            />
         </div>
     );
 }

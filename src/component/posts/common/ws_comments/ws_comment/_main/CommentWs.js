@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_post } from '../../../../__context_post/ContextPost';
+// 
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
+import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 //
-// import { handle_API_HistoryCmt_L } from '../../../../__handle_api/PostHandleAPI';
-
 import SubsWs from '../../../ws_subs/_main/SubsWs';
 import CommentWsFoot from '../foot/CommentWsFoot';
 import CommentWsHead from '../head/CommentWsHead';
@@ -24,25 +24,26 @@ CommentWs.propTypes = {};
 function CommentWs({ comment, is_poster }) {
     //
     const {
-        ws_send,
-        ws_type_cmt,
-        handle_API_MoreContentCmt_R,
-        handle_API_HistoryCmt_L,
-        handle_API_Cmt_U,
-        handle_API_MoreContentHisCmt_R,
-    } = useContext(context_post);
-
-    const {
         user: c_user,
 
         openScreenConfirm,
         openScreenHistory,
         openScreenUpdate,
-        openScreenFetching,
 
         closeScreenUpdate,
-        closeScreenFetching,
+
+        hasChangeScreenUpdate,
     } = useContext(context_api);
+
+    const {
+        ws_send,
+        ws_type_cmt,
+
+        handle_API_MoreContentCmt_R,
+        handle_API_HistoryCmt_L,
+        handle_API_Cmt_U,
+        handle_API_MoreContentHisCmt_R,
+    } = useContext(context_post);
 
     //
     const {
@@ -68,15 +69,16 @@ function CommentWs({ comment, is_poster }) {
 
     //
     const forceUpdate = useForceUpdate();
+    const handleScreenFetching = useScreenFetching();
 
-    /* -------------------------------- */
+    /* ------------------------- */
 
     //
     function onSeeMoreContentCmt() {
         return handle_API_MoreContentCmt_R(id);
     }
 
-    /* ---------------- SUB ---------------- */
+    /* ------------- SUB ------------- */
 
     //
     function focusInputSub() {
@@ -90,7 +92,7 @@ function CommentWs({ comment, is_poster }) {
         }
     }
 
-    /* ---------------- WS ---------------- */
+    /* ---------- WS ----------- */
 
     //
     function changeTypeLike(new_type_like) {
@@ -101,7 +103,7 @@ function CommentWs({ comment, is_poster }) {
         });
     }
 
-    /* --------------- OPEN SCREEN ACTIONS ---------------- */
+    /* ------------- OPEN ACTIONS ------------- */
 
     //
     function openHistoryCmt() {
@@ -111,11 +113,16 @@ function CommentWs({ comment, is_poster }) {
     }
 
     //
-    function openUpdateCmt() {
+    async function openUpdateCmt() {
+        const content = content_obj.has_more_content
+            ? await handleScreenFetching(() => handle_API_MoreContentCmt_R(id))
+            : content_obj.content;
+
         openScreenUpdate('Update', CmtSubUpdate, {
-            text: content_obj.content,
+            text: content,
             vid_pic: vid_pic,
             handleUpdate: handleUpdate,
+            handleHasChange: hasChangeScreenUpdate,
         });
     }
 
@@ -146,24 +153,23 @@ function CommentWs({ comment, is_poster }) {
 
     //
     async function handleUpdate(data) {
-        openScreenFetching();
-        //
-        const { text, file, vid_pic_obj } = data;
+        await handleScreenFetching(() => handle_API_Cmt_U(id, data_update))
+        
+        const { new_text, file, url, type } = data;
 
         const data_update = {
-            text: text,
+            text: new_text,
         };
-        if ((!file && !vid_pic_obj.url) || file) {
+
+        if ((!file && !url) || file) {
             data_update['file'] = file;
         }
+        
+        content_obj.content = new_text;
+        comment.vid_pic = url;
 
-        await handle_API_Cmt_U(id, data_update);
-        //
-        content_obj.content = text;
-        comment.vid_pic = vid_pic_obj.url;
         forceUpdate();
-        closeScreenUpdate();
-        closeScreenFetching();
+        closeScreenUpdate(true);
     }
     //
     function handleDelete() {

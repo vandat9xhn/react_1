@@ -769,12 +769,7 @@ class Chat extends Component {
     };
 
     //
-    handleAddFriendToGroup = ({
-        chat_ix,
-        user_id,
-        friend,
-        begin_mess,
-    }) => {
+    handleAddFriendToGroup = ({ chat_ix, user_id, friend, begin_mess }) => {
         const { zoom_obj } = this.state.current_chats[chat_ix];
         const { zoom_users } = zoom_obj;
         const user = zoom_users.find((item) => item.user.id == user_id);
@@ -856,6 +851,17 @@ class Chat extends Component {
     };
 
     //
+    resetChat = () => {
+        this.setState({
+            current_chats: [initial_chat_current(), initial_chat_current()],
+            canvas_index: -1,
+            new_chat_ix: 1,
+        });
+
+        sessionStorage.removeItem('initialMessageID')
+    };
+
+    //
     render() {
         const { current_chats, new_chat_ix } = this.state;
         //
@@ -865,7 +871,7 @@ class Chat extends Component {
 
         //
         return (
-            <div className={`Chat ${this.context.auth_class}`}>
+            <div className="Chat">
                 {current_chats.map(
                     (chat, chat_ix) =>
                         chat.chat_obj.is_active && (
@@ -891,7 +897,9 @@ class Chat extends Component {
                                 closeActionsMess={this.closeActionsMess}
                                 getMoreUserLiked={this.getMoreUserLiked}
                                 getMoreTimeLineGroup={this.getMoreTimeLineGroup}
-                                getMoreFriendsAddToGroup={this.getMoreFriendsAddToGroup}
+                                getMoreFriendsAddToGroup={
+                                    this.getMoreFriendsAddToGroup
+                                }
                                 //
                                 handleToggleActionsGroup={
                                     this.handleToggleActionsGroup

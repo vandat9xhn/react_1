@@ -2,9 +2,9 @@ import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { context_api } from '../../../../_context/ContextAPI';
-// 
+//
 import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
-// 
+//
 import './ImgVidPreviewItem.scss';
 
 //
@@ -16,49 +16,49 @@ ImgVidPreviewItem.propTypes = {
 
     video_controls: PropTypes.bool,
     video_preload: PropTypes.string,
-    
+
     deleteAnItem: PropTypes.func,
 };
 
 ImgVidPreviewItem.defaultProps = {
     video_controls: false,
     video_preload: 'metadata',
-}
+};
 
 //
-function ImgVidPreviewItem(props) {
+function ImgVidPreviewItem({
+    item_ix,
+    urls,
+    url,
+    type,
+
+    video_controls,
+    video_preload,
+
+    deleteAnItem,
+}) {
     //
     const { openZoomVidPics } = useContext(context_api);
+
     //
-    const {
-        item_ix,
-        urls,
-        url,
-        type,
-
-        video_controls,
-        video_preload,
-
-        deleteAnItem,
-    } = props;
-
-    // ref
     const ref_video = useRef(null);
-    
-    // 
+
+    /*------------------*/
+
+    //
     function zoomOutVideo(e) {
-        e.preventDefault()
+        e.preventDefault();
 
         openZoomVidPics(urls, item_ix);
-        // stop video
+        //
         !ref_video.current.paused && ref_video.current.pause();
     }
 
-    // 
+    //
     function zoomOutPic() {
         openZoomVidPics(urls, item_ix);
     }
-    
+
     //
     function onDeleteAnItem() {
         deleteAnItem(item_ix);
@@ -66,9 +66,7 @@ function ImgVidPreviewItem(props) {
 
     //
     return (
-        <div
-            className="ImgVidPreviewItem"
-        >
+        <div className="ImgVidPreviewItem">
             {type.startsWith('video') ? (
                 <video
                     src={url}
@@ -82,7 +80,6 @@ function ImgVidPreviewItem(props) {
                 <img src={url} alt="" onClick={zoomOutPic} />
             )}
 
-            {/* delete */}
             <div className="ImgVidPreviewItem_delete">
                 <div
                     className="ImgVidPreviewItem__icon-arrow display-flex-center brs-50 hv-opacity cursor-pointer"

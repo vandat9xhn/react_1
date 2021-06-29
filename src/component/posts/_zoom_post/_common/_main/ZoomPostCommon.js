@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
-// 
+//
 import ScreenTitle from '../../../../_screen_fixed/title/ScreenTitle';
 import ContentMore from '../../../../content_more/Content_more';
 import PictureName from '../../../../picture_name/pic_name/PictureName';
@@ -20,37 +20,38 @@ ZoomPostCommon.propTypes = {};
 //
 function ZoomPostCommon({
     show_screen_title,
-        closeScreenTitle,
+    closeScreenTitle,
 
-        vid_pic,
-        handleNextVidPic,
-        handlePrevVidPic,
+    vid_pic,
+    is_has_next,
+    is_has_prev,
+    handleNextVidPic,
+    handlePrevVidPic,
 
-        user,
-        updated_time,
+    user,
+    updated_time,
 
-        content_obj,
-        seeMoreContent,
+    content_obj,
+    seeMoreContent,
 
-        count_like,
-        arr_unique_like,
-        on_API_Like_L,
+    count_like,
+    arr_unique_like,
+    on_API_Like_L,
 
-        action_component,
-        like_share_cmt_component,
-        comment_component,
+    action_component,
+    like_share_cmt_component,
+    comment_component,
 }) {
     //
     const { openScreenLike } = useContext(context_api);
 
-    // 
-    useMakeBodyHidden()
+    //
+    useMakeBodyHidden();
 
     //
     function onOpenDetailLike(type_like) {
         openScreenLike(on_API_Like_L, type_like);
     }
-    
 
     //
     return (
@@ -69,6 +70,8 @@ function ZoomPostCommon({
 
                         <ZoomPostCommonLeft
                             vid_pic={vid_pic}
+                            is_has_next={is_has_next}
+                            is_has_prev={is_has_prev}
                             handleNextVidPic={handleNextVidPic}
                             handlePrevVidPic={handlePrevVidPic}
                         />
@@ -103,6 +106,8 @@ function ZoomPostCommon({
                                         arr_unique_like={arr_unique_like}
                                         on_API_Like_L={on_API_Like_L}
                                         onOpenDetailLike={onOpenDetailLike}
+                                        // 
+                                        use_transform_x={false}
                                     />
                                 </div>
 

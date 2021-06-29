@@ -46,11 +46,13 @@ function CommentsWs({
     //
     async function onGetCommentsWs() {
         setFetchingCmt(true);
+
         const [new_comments] = await handle_API_Cmt_L(
             parent_id,
             comments.length
         );
         comments.push(...new_comments);
+        
         setFetchingCmt(false);
     }
 

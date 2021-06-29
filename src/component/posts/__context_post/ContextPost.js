@@ -4,9 +4,8 @@ import React from 'react';
 export const context_post = React.createContext();
 
 //
-const ContextPost = (props) => {
-    const { children, ...rest_props } = props;
-
+const ContextPost = ({ children, ...rest_props }) => {
+    //
     return (
         <context_post.Provider
             value={{

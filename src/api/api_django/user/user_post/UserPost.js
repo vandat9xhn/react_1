@@ -10,6 +10,8 @@ import {
     default_like_post_arr,
     default_like_sub_post_arr,
     default_post_arr,
+    default_post_vid_pic_arr,
+    default_post_vid_pic_id,
     default_share_post_arr,
     default_sub_post_arr,
 } from '../../../../component/posts/__default_post/DefaultPosts';
@@ -64,7 +66,7 @@ export const API_Post_U = (pk, data = {}) =>
 // Get
 export const API_PostPic_L = (params = {}) =>
     API_FakeReal(
-        Array(6).fill(default_post_arr[0].vid_pics),
+        default_post_vid_pic_arr(),
         () =>
             axiosDjangoClient({
                 url: '/user/l-vid-pic-post/',
@@ -72,6 +74,16 @@ export const API_PostPic_L = (params = {}) =>
                 params: params,
             }),
         params
+    );
+
+//
+export const API_PostVidPicID_L = (params = {}) =>
+    API_FakeReal(default_post_vid_pic_id, () =>
+        axiosDjangoClient({
+            url: '/user/post-vid-pic-id-l/',
+            method: 'GET',
+            params: params,
+        })
     );
 
 // Create
@@ -84,7 +96,7 @@ export const API_PostPic_C = (data = {}) =>
 
 //
 export const API_PostPic_RUD = (pk = 1, method, params = {}, data = {}) =>
-    API_FakeReal(default_post_arr[0].vid_pics[0], () =>
+    API_FakeReal(default_post_vid_pic_arr()[0], () =>
         axiosDjangoClient({
             url: '/user/rud-vid-pic-post/' + pk + '/',
             method: method,
@@ -206,7 +218,7 @@ export const API_PostHistory_R = (params) =>
 // Get Create comment
 export const API_PostCmt_LC = (method, params, data, is_vid_pic = false) =>
     API_FakeReal(
-        method == 'GET' ? (is_vid_pic ? [] : default_cmt_post_arr) : data,
+        method == 'GET' ? default_cmt_post_arr : data,
         () =>
             axiosDjangoClient({
                 url: `/user/lc-comment${is_vid_pic ? '-vid-pic' : ''}/`,
@@ -219,7 +231,7 @@ export const API_PostCmt_LC = (method, params, data, is_vid_pic = false) =>
 
 // Retrieve comment
 export const API_PostCmt_R = (pk, params, is_vid_pic = false) =>
-    API_FakeReal(is_vid_pic ? [] : default_cmt_post_arr[0], () =>
+    API_FakeReal(default_cmt_post_arr[0], () =>
         axiosDjangoClient({
             url: `/user/ud-comment${is_vid_pic ? '-vid-pic' : ''}/${pk}/`,
             method: 'GET',
@@ -240,7 +252,7 @@ export const API_PostCmt_UD = (pk, method, data, is_vid_pic = false) =>
 // Get
 export const API_PostCmtLike_L = (params, is_vid_pic = false) =>
     API_FakeReal(
-        is_vid_pic ? [] : default_like_cmt_post_arr,
+        default_like_cmt_post_arr,
         () =>
             axiosDjangoClient({
                 url: `/user/l-like-comment${is_vid_pic ? '-vid-pic' : ''}/`,
@@ -271,7 +283,7 @@ export const API_PostCmtLike_U = (pk, data, is_vid_pic = false) =>
 //
 export const API_PostCmtHistory_L = (params, is_vid_pic = false) =>
     API_FakeReal(
-        is_vid_pic ? [] : default_history_cmt_post_arr,
+        default_history_cmt_post_arr,
         () =>
             axiosDjangoClient({
                 url: `/user/lc-history-cmt${is_vid_pic ? '-vid-pic' : ''}/`,
@@ -283,7 +295,7 @@ export const API_PostCmtHistory_L = (params, is_vid_pic = false) =>
 
 //
 export const API_PostHisCmt_R = (pk, params, is_vid_pic = false) =>
-    API_FakeReal(is_vid_pic ? [] : default_history_cmt_post_arr[0], () =>
+    API_FakeReal(default_history_cmt_post_arr[0], () =>
         axiosDjangoClient({
             url: `/user/r-history-cmt${is_vid_pic ? '-vid-pic' : ''}/${pk}/`,
             method: 'GET',
@@ -291,12 +303,12 @@ export const API_PostHisCmt_R = (pk, params, is_vid_pic = false) =>
         })
     );
 
-/* ---------------------------- SUB ----------------------------------------- */
+/* --------- SUB ---------- */
 
 // Get Create sub
 export const API_PostSub_LC = (method, params, data, is_vid_pic = false) =>
     API_FakeReal(
-        is_vid_pic ? [] : default_sub_post_arr,
+        default_sub_post_arr,
         () =>
             axiosDjangoClient({
                 url: `/user/l-sub-comment${is_vid_pic ? '-vid-pic' : ''}/`,
@@ -309,7 +321,7 @@ export const API_PostSub_LC = (method, params, data, is_vid_pic = false) =>
 
 // Retrieve
 export const API_PostSub_R = (pk, params, is_vid_pic = false) =>
-    API_FakeReal(is_vid_pic ? [] : default_sub_post_arr[0], () =>
+    API_FakeReal(default_sub_post_arr[0], () =>
         axiosDjangoClient({
             url: `/user/ud-sub-comment${is_vid_pic ? '-vid-pic' : ''}/${pk}/`,
             method: 'GET',
@@ -361,7 +373,7 @@ export const API_PostSubLike_U = (pk, data, is_vid_pic = false) =>
 //
 export const API_PostSubHistory_L = (params, is_vid_pic = false) =>
     API_FakeReal(
-        is_vid_pic ? [] : default_history_sub_post_arr,
+        default_history_sub_post_arr,
         () =>
             axiosDjangoClient({
                 url: `/user/lc-history-sub${is_vid_pic ? '-vid-pic' : ''}/`,
@@ -373,7 +385,7 @@ export const API_PostSubHistory_L = (params, is_vid_pic = false) =>
 
 //
 export const API_PostHisSub_R = (pk, params, is_vid_pic = false) =>
-    API_FakeReal(is_vid_pic ? [] : default_history_sub_post_arr[0], () =>
+    API_FakeReal(default_history_sub_post_arr[0], () =>
         axiosDjangoClient({
             url: `/user/r-history-sub${is_vid_pic ? '-vid-pic' : ''}/${pk}/`,
             method: 'GET',

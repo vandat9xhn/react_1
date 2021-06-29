@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_post } from '../../../../__context_post/ContextPost';
+// 
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
+import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 //
 import SubWsFoot from '../foot/SubWsFoot';
 import SubWsHead from '../head/SubWsHead';
@@ -33,10 +35,10 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
         openScreenConfirm,
         openScreenHistory,
         openScreenUpdate,
-        openScreenFetching,
 
         closeScreenUpdate,
-        closeScreenFetching,
+
+        hasChangeScreenUpdate,
     } = useContext(context_api);
 
     //
@@ -54,6 +56,7 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
 
     //
     const forceUpdate = useForceUpdate();
+    const handleScreenFetching = useScreenFetching()
 
     /* -------------------------------- */
 
@@ -83,11 +86,16 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
     }
 
     //
-    function openUpdateSub() {
+    async function openUpdateSub() {
+        const content = content_obj.has_more_content
+            ? await handleScreenFetching(() => handle_API_MoreContentSub_R(id))
+            : content_obj.content;
+
         openScreenUpdate('Update', CmtSubUpdate, {
-            text: content_obj.content,
+            text: content,
             vid_pic: vid_pic,
             handleUpdate: handleUpdate,
+            handleHasChange: hasChangeScreenUpdate,
         });
     }
 
@@ -118,24 +126,23 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
 
     //
     async function handleUpdate(data) {
-        openScreenFetching();
-        //
-        const { text, file, vid_pic_obj } = data;
+        await handleScreenFetching(() => handle_API_Sub_U(id, data_update));
+
+        const { new_text, file, url, type } = data;
 
         const data_update = {
-            text: text,
+            text: new_text,
         };
-        if ((!file && !vid_pic_obj.url) || file) {
+
+        if ((!file && !url) || file) {
             data_update['file'] = file;
         }
 
-        await handle_API_Sub_U(id, data_update);
-        //
-        content_obj.content = text;
-        sub.vid_pic = vid_pic_obj.url;
+        content_obj.content = new_text;
+        sub.vid_pic = url;
+
         forceUpdate();
-        closeScreenUpdate();
-        closeScreenFetching();
+        closeScreenUpdate(true);
     }
     //
     function handleDelete() {
