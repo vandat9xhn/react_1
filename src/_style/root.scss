@@ -71,6 +71,7 @@
     /* Mode Light*/
     --md-color: #050505;
     --md-color-secondary: #65676b;
+    --md-color-secondary-50per: #65676b80;
     --md-color-smoke: #d3d1d1;
     --md-gold: var(--gold-through);
     --md-heart: var(--heart-through);
@@ -101,6 +102,7 @@
     &[data-theme='dark'] {
         --md-color: var(--color-light);
         --md-color-secondary: #b0b3b8;
+        --md-color-secondary-50per: #b0b3b880;
         --md-color-smoke: #3a3939;
         --md-gold: var(--gold);
         --md-heart: var(--heart);

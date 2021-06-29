@@ -7,6 +7,19 @@ export function formatLocalDateString(date, locale = 'vi-VN') {
     });
 }
 
+//
+export function formatLocalDateTimeString(date = new Date(), locale = 'vi-VN') {
+    return new Intl.DateTimeFormat(locale, {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit',
+    }).format(date);
+}
+
 // const localesList = ["af-ZA",
 //   "am-ET",
 //   "ar-AE",

@@ -91,6 +91,7 @@ function FashionItemShop({ id }) {
             ...rest_data
         } = data;
 
+        //  format information
         changeOwnerInfo(new_shop_obj.owner_info);
 
         setItemShopState({

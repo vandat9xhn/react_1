@@ -5,6 +5,7 @@ import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import { API_City_UD } from '../../../../../../api/api_django/api01/API01';
 //
+import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 //
 import makeFormData from '../../../../../../_some_function/makeFormData';
@@ -13,11 +14,11 @@ import PictureName from '../../../../../../component/picture_name/pic_name/Pictu
 //
 import { handle_API_CityHistory_L } from '../../../../__handle_api/CityHandleAPI';
 //
-import './CityItem.scss';
-//
 import Choices from '../../choices/Choices';
 import CityUpdate from '../../actions/action_update/CityUpdate';
-import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
+import CityHistories from '../../actions/history/_main/CityHistories';
+//
+import './CityItem.scss';
 
 //
 CityItem.propTypes = {
@@ -56,14 +57,14 @@ function CityItem({ city_obj }) {
 
     const handleScreenFetching = useScreenFetching();
 
-    /* -------------------- OPEN ACTIONS ----------------- */
+    /* ------------- OPEN ACTIONS ------------- */
 
     //
     function openHistory() {
         openScreenHistory(
             'History',
             on_API_History_L,
-            () => <div></div> // HisComponent
+            CityHistories
         );
     }
     //
@@ -154,7 +155,7 @@ function CityItem({ city_obj }) {
                         <div>Street: {street}</div>
                     </address>
 
-                    <blockquote className="CityItem_quote">{quote}</blockquote>
+                    <article className="CityItem_quote">"{quote}"</article>
                 </div>
 
                 <div className="CityItem_img">

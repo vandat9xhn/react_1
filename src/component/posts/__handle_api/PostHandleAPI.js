@@ -443,6 +443,17 @@ export async function handle_API_PostVidPic_R(vid_pic_id = 0) {
     return res.data;
 }
 
+export async function handle_API_PostVidPic_U(vid_pic_id = 0, content) {
+    const res = await API_PostPic_RUD(
+        vid_pic_id,
+        'PATCH',
+        {},
+        { content: content }
+    );
+
+    return res.data;
+}
+
 export async function handle_API_PostVidPicContent_R(vid_pic_id = 0) {
     const res = await API_PostPic_RUD(vid_pic_id, 'GET', {
         ...params_vid_pic_content_post_r,

@@ -186,19 +186,19 @@ function CUPost({
             return updated_arr.filter((item) => item.id != updated_id);
         }
 
-        const new_updated_arr = [...updated_arr]
+        const new_updated_arr = [...updated_arr];
 
         const old_item_updated = new_updated_arr.find(
             (item) => item.id == updated_id
         );
-        
+
         if (old_item_updated) {
             old_item_updated.content = content;
         } else {
             new_updated_arr.push({ id: updated_id, content: content });
         }
 
-        return new_updated_arr
+        return new_updated_arr;
     }
 
     function handleChangeContentVidPic(content, index) {
@@ -227,32 +227,42 @@ function CUPost({
     //
     return (
         <div className="CUPost bg-primary">
-            <div className={open_fix_all ? 'display-none' : ''}>
-                <CUPostHome
-                    main_content={main_content}
-                    vid_pics={c_vid_pics}
-                    title_action={title_action}
-                    //
-                    has_change={has_change}
-                    is_loading={is_loading}
-                    //
-                    showFixAll={showFixAll}
-                    handleChangeMainContent={handleChangeMainContent}
-                    // deleteAnItem={deleteAnItem}
-                    handleChooseFiles={handleChooseFiles}
-                    handleCUPost={onCUPost}
-                />
-            </div>
+            <div
+                className={`CUPost_row display-flex ${
+                    open_fix_all ? 'CUPost_row-fix' : ''
+                }`}
+            >
+                <div>
+                    <div className={open_fix_all ? 'display-none' : ''}>
+                        <CUPostHome
+                            main_content={main_content}
+                            vid_pics={c_vid_pics}
+                            title_action={title_action}
+                            //
+                            has_change={has_change}
+                            is_loading={is_loading}
+                            //
+                            showFixAll={showFixAll}
+                            handleChangeMainContent={handleChangeMainContent}
+                            // deleteAnItem={deleteAnItem}
+                            handleChooseFiles={handleChooseFiles}
+                            handleCUPost={onCUPost}
+                        />
+                    </div>
+                </div>
 
-            <div className={open_fix_all ? '' : 'display-none'}>
-                <FixAll
-                    open_fix_all={open_fix_all}
-                    vid_pics={c_vid_pics}
-                    //
-                    closeFixAll={closeFixAll}
-                    deleteAnItem={deleteAnItem}
-                    handleChangeContentVidPic={handleChangeContentVidPic}
-                />
+                <div>
+                    <div className={open_fix_all ? '' : 'display-none'}>
+                        <FixAll
+                            open_fix_all={open_fix_all}
+                            vid_pics={c_vid_pics}
+                            //
+                            closeFixAll={closeFixAll}
+                            deleteAnItem={deleteAnItem}
+                            handleChangeContentVidPic={handleChangeContentVidPic}
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );

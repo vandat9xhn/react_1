@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { useScrollDownWindow } from '../../../_hooks/useScrollDown';
 //
-import { initial_posts } from '../../../component/posts/__common/InitialPosts';
+import { initial_posts } from '../../../component/posts/__initial/InitialPosts';
 
 import Posts from '../../../component/posts/_posts/_main/PostsWs';
 // 

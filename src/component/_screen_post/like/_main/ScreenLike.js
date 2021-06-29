@@ -133,19 +133,25 @@ class ScreenLike extends Component {
             has_fetched: false,
         };
 
+        // 
+        if (!open_screen) {
+            return <div></div>;
+        }
+
         //
         return (
-            open_screen &&
             <ScreenBlur
                 // open_screen={open_screen}
                 closeScreen={this.closeScreenLike}
             >
                 <div className="ScreenLike">
                     <div className="ScreenLike_head-contain">
-                        <div className="ScreenLike_head-row">
+                        <div className="ScreenLike_head-row display-flex align-items-center margin-auto width-fit-content">
                             <div
+                                className={`padding-8px cursor-pointer ${
+                                    type_like == -1 ? 'bottom-blue' : ''
+                                }`}
                                 onClick={this.changeListTypeLikeAll}
-                                className={type_like == -1 ? 'bottom-blue' : ''}
                             >
                                 All
                             </div>
@@ -153,9 +159,9 @@ class ScreenLike extends Component {
                             {type_likes.map((item, ix) => (
                                 <div
                                     key={`ScreenLike_type_like_${ix}`}
-                                    className={
+                                    className={`padding-8px cursor-pointer ${
                                         type_like == ix ? 'bottom-blue' : ''
-                                    }
+                                    }`}
                                 >
                                     <ScreenLikeType
                                         ix={ix}

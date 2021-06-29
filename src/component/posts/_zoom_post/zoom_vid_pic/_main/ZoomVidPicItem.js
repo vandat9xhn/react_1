@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Redirect } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
@@ -9,6 +9,8 @@ import { is_api_fake } from '../../../../../api/_ConstAPI';
 import { useMounted } from '../../../../../_hooks/useMounted';
 //
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
+//
+import ContextPost from '../../../__context_post/ContextPost';
 //
 import {
     handle_API_MoreContentHisVidPicCmt_R,
@@ -30,15 +32,19 @@ import {
     handle_API_VidPicSub_L,
     handle_API_VidPicSub_U,
     handle_API_VidPicMoreContentHisSub_R,
+    handle_API_PostVidPic_U,
 } from '../../../__handle_api/PostHandleAPI';
-import ContextPost from '../../../__context_post/ContextPost';
-
+//
 import ZoomPostCommon from '../../_common/_main/ZoomPostCommon';
 import LikeShareCmt from '../../../common/like_share_cmt/_main/LikeShareCmtWs';
 import CommentsWs from '../../../common/ws_comments/_main/CommentsWs';
 import ActionsVidPic from '../actions/ActionsVidPic';
 //
 import './ZoomVidPicItem.scss';
+import VidPicHistory from '../history/_main/VidPicHistory';
+import VidPicUpdate from '../actions/update/VidPicUpdate';
+import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
+import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 
 //
 ZoomVidPicItem.propTypes = {
@@ -56,13 +62,27 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
     const id = GetIdSlug();
 
     //
-    const { openScreenConfirm, openScreenHistory, openScreenUpdate } =
-        useContext(context_api);
+    const {
+        user: c_user,
+        openScreenConfirm,
+        openScreenHistory,
+        openScreenUpdate,
+
+        hasChangeScreenUpdate,
+        closeScreenUpdate,
+    } = useContext(context_api);
 
     //
-    const [vid_pic_obj, setVidPicObj] = useState({ [id]: {} });
+    const use_history = useHistory();
+
+    //
+    const [vid_pic_state, setVidPicState] = useState({
+        vid_pic_obj: { [id]: {} },
+        has_fetched: false,
+    });
     const [vid_pic_id_arr, setVidPicIdArr] = useState([]);
-    const [is_del_all, setIsDeleteAll] = useState(false);
+
+    const { vid_pic_obj, has_fetched } = vid_pic_state;
 
     const {
         is_del,
@@ -78,6 +98,8 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
 
         comments,
         count_comment,
+
+        count_his,
     } = vid_pic_obj[id];
 
     //
@@ -85,6 +107,8 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
 
     //
     const mounted = useMounted();
+    const forceUpdate = useForceUpdate();
+    const handleScreenFetching = useScreenFetching();
 
     //
     useEffect(() => {
@@ -129,14 +153,16 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
         console.log(data);
     }
 
-    /* ---------------------GET API --------------------- */
+    /* ------------- GET API -------------- */
 
     //
     async function getData_API_VidPic() {
         const data = await handle_API_PostVidPic_R(id);
-        setVidPicObj({
-            ...vid_pic_obj,
-            [id]: data,
+
+        setVidPicState({
+            ...vid_pic_state,
+            vid_pic_obj: { ...vid_pic_obj, [id]: data },
+            has_fetched: true,
         });
     }
 
@@ -147,7 +173,7 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
         mounted && setVidPicIdArr(new_vid_pic_id_arr);
     }
 
-    /* ------------------------------------------ */
+    /* ------------------------- */
 
     //
     function seeMoreContent() {
@@ -169,20 +195,30 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
         console.log('prev');
     }
 
-    /* ------------------- ACTIONS ----------------------- */
-
-    // open
+    /* ------------- ACTIONS -------------- */
 
     //
     function openHistoryVidPic() {
-        openScreenHistory('Update', handle_API_PostVidPicHistory_L, () => (
-            <div></div>
-        ));
+        openScreenHistory(
+            'Update',
+            handle_API_PostVidPicHistory_L,
+            VidPicHistory
+        );
     }
 
     //
-    function openUpdateVidPic() {
-        openScreenUpdate('Update', () => <div></div>, {});
+    async function openUpdateVidPic() {
+        const content = content_obj.has_more_content
+            ? await handleScreenFetching(() =>
+                  handle_API_PostVidPicContent_R(id)
+              )
+            : content_obj.content;
+
+        openScreenUpdate('Update', VidPicUpdate, {
+            content: content,
+            handleUpdate: handleUpdate,
+            handleHasChange: hasChangeScreenUpdate,
+        });
     }
 
     //
@@ -199,7 +235,19 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
         openScreenConfirm('Delete', 'Do you report this', handleReport);
     }
 
-    // handle actions
+    /*------------- HANDLE ACTIONS -------------*/
+
+    //
+    async function handleUpdate(new_content) {
+        await handleScreenFetching(() =>
+            handle_API_PostVidPic_U(id, new_content)
+        );
+
+        content_obj.content = new_content;
+        forceUpdate();
+        
+        closeScreenUpdate()
+    }
 
     //
     function handleReport() {
@@ -215,7 +263,7 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
             if (show_screen_title) {
                 closeScreenTitle();
             } else {
-                setIsDeleteAll(true);
+                use_history.push('/new-feed');
             }
         } else {
             const vid_pic_ix = vid_pic_id_arr.indexOf(id);
@@ -228,10 +276,6 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
         }
     }
 
-    //
-    if (is_del_all) {
-        return <Redirect to="/new-feed" />;
-    }
     //
     return (
         <div className="ZoomVidPicItem">
@@ -261,7 +305,7 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
                     handle_API_VidPicMoreContentHisSub_R
                 }
             >
-                {!is_del && (
+                {!is_del && has_fetched && (
                     <ZoomPostCommon
                         show_screen_title={show_screen_title}
                         closeScreenTitle={closeScreenTitle}
@@ -281,6 +325,8 @@ function ZoomVidPicItem({ show_screen_title, closeScreenTitle }) {
                         //
                         action_component={
                             <ActionsVidPic
+                                is_user={user.id == c_user.id}
+                                count_his={count_his}
                                 openHistoryVidPic={openHistoryVidPic}
                                 openUpdateVidPic={openUpdateVidPic}
                                 openDeleteVidPic={openDeleteVidPic}

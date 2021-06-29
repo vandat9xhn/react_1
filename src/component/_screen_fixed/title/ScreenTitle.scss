@@ -1,49 +1,32 @@
-
-.ScreenTitle_row{
-    display: flex;
-    align-items: center;
-}
-
 //
-.ScreenTitle_close{
+.ScreenTitle_close {
     margin: 0.5rem;
 }
 
 //
-.ScreenTitle__icon-arrow{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 2rem;
-    height: 2rem;
-    padding: 0.2rem;
-    background-color: var(--bg-loader);
-
-    opacity: 0.5;
-    cursor: pointer;
-    &:hover{
-        background-color: var(--bg-loader-hover);
-        opacity: 1;
-    }
+.ScreenTitle__icon-arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    background-color: var(--bg-loader-hover);
 }
 
-
-// 
-@media (max-width: 400px){
-    .ScreenTitle{
-        .IconFav{
-            width: 2rem;
-            height: 2rem;
+//
+@media (max-width: 400px) {
+    .ScreenTitle {
+        .IconFav {
+            width: 3rem;
+            height: 3rem;
         }
-        .IconsArrow{
-            width: 1rem;
-            height: 1rem;
+        .IconsArrow {
+            width: 1.25rem;
+            height: 1.25rem;
         }
     }
 
-    .ScreenTitle__icon-arrow{
-        width: 1.5rem;
-        height: 1.5rem;
+    .ScreenTitle__icon-arrow {
+        width: 2rem;
+        height: 2rem;
+        padding: 0.25rem;
     }
 }

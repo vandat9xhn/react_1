@@ -14,7 +14,7 @@ export function changeOwnerInfo(owner_info) {
 
         if (item.title == 'Reply time') {
             item.value = UnitTime(
-                new Date().getTime() - new Date(item.value).getTime()
+                new Date().getTime() - new Date(item.value).getTime(), 'For 1 min'
             );
 
             return item;

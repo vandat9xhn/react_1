@@ -1,13 +1,19 @@
-
-.PostHistoryItem__title-pic{
+.PostHistoryItem__title-pic {
     font-size: 12px;
     color: var(--blue);
     opacity: 0.5;
-    &::before{
+    &::before {
         content: '•';
         margin-right: 0.25rem;
     }
 }
-.PostHistoryItem__pic{
+.PostHistoryItem__pic {
     overflow-x: auto;
+
+    img,
+    video {
+        margin-right: 0.5rem;
+        width: 100px;
+        height: 100px;
+    }
 }

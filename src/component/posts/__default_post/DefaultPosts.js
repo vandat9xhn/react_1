@@ -137,9 +137,9 @@ export const default_history_post_arr = [
         "count_vid_pic_del": 1,
         "content_obj": {
             "has_more_content": false,
-            "content": "aa"
+            "content": ""
         },
-        "content": "aa",
+        "content": "",
         "created_time": "2021-05-10T03:27:29.438225Z",
         "version": 1,
         "post_model": 11
@@ -197,7 +197,7 @@ export const default_history_post_arr = [
                 "his_post": 3
             },
         ],
-        "count_vid_pic_del": 1,
+        "count_vid_pic_del": 3,
         "content_obj": {
             "has_more_content": true,
             "content": "as ad asd asd asd asd ads a"
@@ -805,7 +805,23 @@ export const default_post_arr = [
                     },
                 ],
                 "count_comment": 1,
-                "histories": [],
+                "histories": [
+                    {
+                        content_obj: {
+                            content: 'ad as asd asd asd asd asd asd',
+                            has_more_content: false,
+                        },
+                        created_time: '2021-04-01T07:48:48.176630Z'
+                    },
+                    {
+                        content_obj: {
+                            content: 'ae dg fgh dhd fg d fd hgw ew wr',
+                            has_more_content: false,
+                        },
+                        created_time: '2021-06-01T07:48:48.176630Z'
+                    },
+                ],
+                "count_history": 2,
                 "created_time": "2021-04-01T07:48:48.176630Z",
                 "updated_time": "2021-04-01T15:18:30.339347Z",
             }

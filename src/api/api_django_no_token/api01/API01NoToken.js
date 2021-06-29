@@ -1,4 +1,7 @@
-import { default_arr_city } from '../../../pages/city_street/__default/DefaultCity';
+import {
+    default_arr_city,
+    default_arr_city_histories,
+} from '../../../pages/city_street/__default/DefaultCity';
 import { API_IsLogin_URL } from '../../_common/API_IsLogin';
 import { API_FakeReal } from '../../_ConstAPI';
 import axiosClientNoToken from '../_axios/AxiosNoToken';
@@ -7,14 +10,15 @@ import axiosClientNoToken from '../_axios/AxiosNoToken';
 export const API_City_L = (params) =>
     API_FakeReal(
         Array(6).fill(default_arr_city[0]),
-        () => API_IsLogin_URL(
-            {
-                method: 'GET',
-                params: params,
-            },
-            '/api01/l-city-token/',
-            '/api01/l-city-no-token/'
-        ),
+        () =>
+            API_IsLogin_URL(
+                {
+                    method: 'GET',
+                    params: params,
+                },
+                '/api01/l-city-token/',
+                '/api01/l-city-no-token/'
+            ),
         params
     );
 
@@ -29,7 +33,7 @@ export const API_City_R = (pk, params = {}) =>
 //
 export const API_CityHistory_L = (params) =>
     API_FakeReal(
-        Array(6).fill(default_arr_city[0]),
+        default_arr_city_histories,
         () =>
             axiosClientNoToken({
                 url: '/api01/l-city-history/',

@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { formatLocalDateTimeString } from '../../../../../_some_function/FormatDate';
+//
 import ContentMore from '../../../../content_more/Content_more';
-// 
+//
 import './PostHistoryItem.scss';
+import { VideoOrImage } from '../../../../../_some_function/VideoOrImage';
 
 //
 PostHistoryItem.propTypes = {};
 
 //
-function PostHistoryItem(props) {
-    const {
-        his_item,
-        handle_API_MoreContent,
-    } = props;
-
+function PostHistoryItem({ his_item, handle_API_MoreContent }) {
+    //
     const {
         id,
         created_time,
@@ -26,33 +25,25 @@ function PostHistoryItem(props) {
         count_vid_pic_del,
     } = his_item;
 
-    const { content, has_more_content } = content_obj;
-
-    // 
-    const [is_fetching, setIsFetching] = useState(false)
+    const { content } = content_obj;
 
     //
     async function seeMoreContent() {
-        setIsFetching(true);
-        const more_content = await handle_API_MoreContent(id);
-        content_obj.content += more_content;
-        content_obj.has_more_content = false;
-        setIsFetching(false);
+        return await handle_API_MoreContent(id);
     }
 
     //
     return (
-        <div className="PostHistoryItem ScreenBlurItem">
+        <div className="PostHistoryItem">
             <div>
                 <div className="PostHistoryItem_time ScreenBlurItem_time">
-                    Updated at {new Date(created_time).toLocaleString()}
+                    Updated at{' '}
+                    {formatLocalDateTimeString(new Date(created_time))}
                 </div>
 
                 <div className={content ? '' : 'display-none'}>
                     <ContentMore
-                        content={content}
-                        has_more_content={has_more_content}
-                        is_fetching={is_fetching}
+                        content_obj={content_obj}
                         seeMoreContent={seeMoreContent}
                     />
                 </div>
@@ -66,8 +57,10 @@ function PostHistoryItem(props) {
                         <div className="PostHistoryItem__pic">
                             <div className="display-flex">
                                 {vid_pics_create.map((item, ix) => (
-                                    <div key={`PostHistoryItem_pic_create_${ix}`}>
-                                        <img src={item.vid_pic} alt="" width={100} height={100} />
+                                    <div
+                                        key={`PostHistoryItem_pic_create_${ix}`}
+                                    >
+                                        {VideoOrImage(item.vid_pic)}
                                     </div>
                                 ))}
                             </div>
@@ -85,7 +78,7 @@ function PostHistoryItem(props) {
                             <div className="display-flex">
                                 {vid_pics_del.map((item, ix) => (
                                     <div key={`PostHistoryItem_pic_del_${ix}`}>
-                                        <img src={item.vid_pic} alt="" width={100} height={100} />
+                                        {VideoOrImage(item.vid_pic)}
                                     </div>
                                 ))}
                             </div>

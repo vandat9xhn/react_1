@@ -10,7 +10,7 @@ FashionH.propTypes = {
 
 //
 function FashionH(props) {
-    // state
+    // 
     const [search, setSearch] = useState('');
     
     //

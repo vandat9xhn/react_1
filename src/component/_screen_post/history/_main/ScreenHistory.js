@@ -65,6 +65,7 @@ class ScreenHistory extends Component {
             this.getAPI_History();
         }, 1);
     };
+
     //
     showMoreHistory = async () => {
         this.setState({
@@ -72,6 +73,7 @@ class ScreenHistory extends Component {
         });
         this.getAPI_History();
     };
+
     //
     closeScreenHistory = () => {
         this.setState({
@@ -79,7 +81,7 @@ class ScreenHistory extends Component {
             histories: [],
             count_his: 0,
             has_fetched: false,
-            //
+            
             title: '',
             handle_API_History_L: () => new Promise(),
             HisComponent: () => <div></div>,

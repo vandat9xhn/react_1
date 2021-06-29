@@ -191,7 +191,7 @@ export const API_PostHistory_L = (params) =>
 // Get
 export const API_PostHistory_R = (params) =>
     API_FakeReal(
-        default_history_post_arr[0],
+        default_history_post_arr[2],
         () =>
             axiosDjangoClient({
                 url: '/user/r-history-post/',

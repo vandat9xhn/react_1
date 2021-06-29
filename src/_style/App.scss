@@ -22,6 +22,8 @@ body {
     line-height: 1.5;
     text-align: left;
 
+    color: var(--md-color);
+
     &[data-count-hidden] {
         overflow-y: hidden;
         &::-webkit-scrollbar{
@@ -83,7 +85,6 @@ img {
 
 .App_contain {
     background-color: var(--md-bg-fb);
-    color: var(--md-color);
     overflow-y: auto;
 }
 

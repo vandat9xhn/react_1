@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMounted } from '../../_hooks/useMounted';
@@ -30,9 +30,6 @@ function ContentMore({ content_obj, seeMoreContent }) {
 
     //
     const [is_fetching, setIsFetching] = useState(false);
-
-    //
-    ;
 
     //
     const mounted = useMounted();

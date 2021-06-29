@@ -15,13 +15,13 @@ FashionHR.propTypes = {};
 
 //
 function FashionHR(props) {
-    // redux
+    // 
     const { count_cart, has_fetched } = useSelector(
         (state) => state.count_cart_obj
     );
     const dispatch = useDispatch();
 
-    // effect
+    // 
     useEffect(() => {
         if (!has_fetched) {
             dispatch(requestFashionGetCountCart());

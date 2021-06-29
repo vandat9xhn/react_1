@@ -8,17 +8,15 @@ import MouseEnterLeaveInfo from '../../../posts/common/mouse_enter_leave_info/_m
 ItemUniqueLike.propTypes = {};
 
 //
-function ItemUniqueLike(props) {
-    const {
-        count_like,
-        title,
-        ix,
-        
-        onOpenDetailLike,
-        handle_API_L,
-        PeopleComponent,
-    } = props;
+function ItemUniqueLike({
+    count_like,
+    title,
+    ix,
 
+    onOpenDetailLike,
+    handle_API_L,
+    PeopleComponent,
+}) {
     //
     function on_API_Like_L() {
         return handle_API_L(ix);

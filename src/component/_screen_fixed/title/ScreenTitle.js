@@ -14,20 +14,19 @@ ScreenTitle.propTypes = {
 };
 
 // 
-function ScreenTitle(props) {
-    const {closeScreenTitle, url, handleDownload} = props;
+function ScreenTitle({closeScreenTitle, url, handleDownload}) {
 
     // 
     return (
         <div className="ScreenTitle">
-            <div className="ScreenTitle_row">
+            <div className="ScreenTitle_row display-flex align-items-center">
                 <div>
-                    <IconFav size_icon="3rem" />
+                    <IconFav size_icon="4rem" />
                 </div>
 
                 <div className="ScreenTitle_close">
                     <div
-                        className="ScreenTitle__icon-arrow brs-50"
+                        className="ScreenTitle__icon-arrow display-flex-center brs-50 cursor-pointer hv-opacity"
                         onClick={closeScreenTitle}
                         title="Close"
                     >
@@ -43,7 +42,7 @@ function ScreenTitle(props) {
                         onClick={handleDownload}
                     >
                         <div
-                            className="ScreenTitle__icon-arrow brs-50"
+                            className="ScreenTitle__icon-arrow display-flex-center brs-50 hv-opacity"
                             title="Download"
                         >
                             <IconsArrow x={600} size_icon="1.5rem" />

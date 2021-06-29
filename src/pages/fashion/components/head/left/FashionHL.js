@@ -15,7 +15,7 @@ FashionHL.propTypes = {
 function FashionHL(props) {
     return (
         <div>
-            <div className="display-flex">
+            <div className="display-flex-center">
                 <div className="FashionHL_col">
                     <Link className="normal-text" to="/fashion">
                         <div className="FashionHL_icon">

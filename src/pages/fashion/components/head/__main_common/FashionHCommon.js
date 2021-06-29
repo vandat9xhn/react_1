@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+//
+import { context_api } from '../../../../../_context/ContextAPI';
 //
 import FashionHL from '../left/FashionHL';
 import FashionHC from '../center/FashionHC';
@@ -16,13 +18,14 @@ FashionHCommon.propTypes = {
 };
 
 //
-function FashionHCommon(props) {
-    const {
-        value_search,
-        handled,
-        handleChangeValueSearch,
-        handleSearchFashion,
-    } = props;
+function FashionHCommon({
+    value_search,
+    handled,
+    handleChangeValueSearch,
+    handleSearchFashion,
+}) {
+    //
+    const { user } = useContext(context_api);
 
     //
     return (
@@ -42,7 +45,7 @@ function FashionHCommon(props) {
                 </div>
 
                 <div className="FashionHCommon_right">
-                    {localStorage.is_login == 1 && <FashionHR />}
+                    {user.id && <FashionHR />}
                 </div>
             </div>
         </div>

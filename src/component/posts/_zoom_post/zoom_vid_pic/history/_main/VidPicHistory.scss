@@ -1,0 +1,10 @@
+// 
+// .VidPicHistory_row{
+//     padding: 0;
+// }
+// .
+.VidPicHistory_item{
+    &:not(:last-child){
+        margin-bottom: 0.5rem;
+    }
+}

@@ -1,5 +1,17 @@
 // 
 .CUPost {
-    padding: 0.2rem;
+    overflow-x: hidden;
 }
 
+.CUPost_row{
+    width: 200%;
+    transition: all 250ms;
+    &>div{
+        flex-shrink: 0;
+        width: 50%;
+        padding: 0.25rem;
+    }
+}
+.CUPost_row-fix{
+    transform: translateX(-50%);
+}

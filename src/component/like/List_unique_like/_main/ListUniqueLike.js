@@ -19,27 +19,25 @@ ListUniqueLike.propTypes = {
 ListUniqueLike.defaultProps = {
     count_like: 0,
     arr_unique_like: [],
-}
+};
 
 //
-function ListUniqueLike(props) {
-    const {
-        title,
-        count_like,
-        arr_unique_like,
+function ListUniqueLike({
+    title,
+    count_like,
+    arr_unique_like,
 
-        on_API_Like_L,
-        onOpenDetailLike,
-    } = props;
-
-    // 
-    function on_API_LikeAll_L(){
-        return on_API_Like_L(-1)
+    on_API_Like_L,
+    onOpenDetailLike,
+}) {
+    //
+    function on_API_LikeAll_L() {
+        return on_API_Like_L(-1);
     }
 
-    // 
-    function onOpenDetailLikeAll(){
-        return onOpenDetailLike(-1)
+    //
+    function onOpenDetailLikeAll() {
+        return onOpenDetailLike(-1);
     }
 
     //
@@ -68,7 +66,6 @@ function ListUniqueLike(props) {
                     <MouseEnterLeaveInfo
                         // title={title}
                         count={count_like}
-
                         is_pic_name={false}
                         PeopleComponent={PeopleUniqueLike}
                         //
