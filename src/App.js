@@ -36,16 +36,41 @@ import ScreenPermission from './component/_screen_post/permission/_main/ScreenPe
 import ScreenBlurFetching from './component/_screen_blur/fetching/_main/ScreenBlurFetching';
 import ScreenNotice from './component/_screen_blur/notice/ScreenNotice';
 import Auth from './_auth/Auth';
+import DivFixLike from './component/_div_fix/like/DivFixLike';
+import DivFixPeople from './component/_div_fix/people/DivFixPeople';
+import DivFixAction from './component/_div_fix/action/DivFixAction';
 
 // App
 class App extends Component {
     /* --------------- REF ---------------- */
 
-    // chat
+    // 
     refChat = (elm) => {
         if (elm !== null) {
             this.openMessage = elm.openMessage;
             this.resetChat = elm.resetChat;
+        }
+    };
+
+    // 
+    refFixLike = (elm) => {
+        if (elm !== null) {
+            this.openDivFixLike = elm.openDivFixLike;
+            this.closeDivFixLike = elm.closeDivFixLike;
+        }
+    };
+
+    refFixPeople = (elm) => {
+        if (elm !== null) {
+            this.openDivFixPeople = elm.openDivFixPeople;
+            this.closeDivFixPeople = elm.closeDivFixPeople;
+        }
+    };
+
+    refFixAction = (elm) => {
+        if (elm !== null) {
+            this.openDivFixAction = elm.openDivFixAction;
+            this.closeDivFixAction = elm.closeDivFixAction;
         }
     };
 
@@ -144,6 +169,12 @@ class App extends Component {
                         //
                         openMessage={this.openMessage}
                         resetChat={this.resetChat}
+                        openDivFixLike={this.openDivFixLike}
+                        closeDivFixLike={this.closeDivFixLike}
+                        openDivFixPeople={this.openDivFixPeople}
+                        closeDivFixPeople={this.closeDivFixPeople}
+                        openDivFixAction={this.openDivFixAction}
+                        closeDivFixAction={this.closeDivFixAction}
                         openZoomVidPics={this.openZoomVidPics}
                         toggleCanvasFixed={this.toggleCanvasFixed}
                         toggleSnowFlower={this.toggleSnowFlower}
@@ -189,21 +220,33 @@ class App extends Component {
                                     </Switch>
                                 </main>
 
-                                <footer className="AppFooter">
+                                <footer>
                                     <Footer />
                                 </footer>
                             </div>
                         </div>
 
-                        <div className="AppBackTop">
+                        <div>
                             <BackTop />
                         </div>
 
-                        <div className="AppChat">
+                        <div>
                             <Chat ref={this.refChat} />
                         </div>
 
-                        <div className="AppFixed">
+                        <div>
+                            <DivFixLike ref={this.refFixLike} />
+                        </div>
+
+                        <div>
+                            <DivFixPeople ref={this.refFixPeople} />
+                        </div>
+
+                        <div>
+                            <DivFixAction ref={this.refFixAction} />
+                        </div>
+
+                        <div>
                             <div>
                                 <CanvasFixed ref={this.refCanvas} />
                             </div>

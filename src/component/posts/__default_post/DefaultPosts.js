@@ -2,7 +2,18 @@ import white_person from '../../../../image/white_person.svg';
 import naruto_x_hinata from '../../../../image/naruto_x_hinata.jpg';
 //
 import { getRandomVidPic } from '../../../_default/default_image';
-import { getRandomContent } from '../../../_default/default_content';
+import {
+    getRandomContent,
+    getRandomContentMore,
+} from '../../../_default/default_content';
+import { getRandomBool } from '../../../_default/default_bool';
+
+//
+export const default_content_more = () => ({
+    content_obj: {
+        content_more: getRandomContentMore(),
+    },
+});
 
 //
 export const default_like_post_arr = [
@@ -75,6 +86,7 @@ export const default_history_post_arr = [
         ],
         count_vid_pic_del: 1,
         content_obj: {
+            content_more: '',
             has_more_content: false,
             content: '',
         },
@@ -97,6 +109,7 @@ export const default_history_post_arr = [
         vid_pics_del: [],
         count_vid_pic_del: 0,
         content_obj: {
+            content_more: '',
             has_more_content: true,
             content: 'as ad asd asd asd asd ads a',
         },
@@ -138,6 +151,7 @@ export const default_history_post_arr = [
         ],
         count_vid_pic_del: 3,
         content_obj: {
+            content_more: '',
             has_more_content: true,
             content: 'as ad asd asd asd asd ads a',
         },
@@ -160,6 +174,7 @@ export const default_cmt_post_arr = [
             is_online: false,
         },
         content_obj: {
+            content_more: '',
             has_more_content: false,
             content: 'Comment',
         },
@@ -191,6 +206,7 @@ export const default_cmt_post_arr = [
                     is_online: false,
                 },
                 content_obj: {
+                    content_more: '',
                     has_more_content: false,
                     content: 'Sub comment',
                 },
@@ -251,6 +267,7 @@ export const default_history_cmt_post_arr = [
     {
         id: 1,
         content_obj: {
+            content_more: '',
             has_more_content: false,
             content: 'This is history comment 1',
         },
@@ -263,6 +280,7 @@ export const default_history_cmt_post_arr = [
     {
         id: 2,
         content_obj: {
+            content_more: '',
             has_more_content: true,
             content: 'This is history comment 2. ',
         },
@@ -286,6 +304,7 @@ export const default_sub_post_arr = [
             is_online: false,
         },
         content_obj: {
+            content_more: '',
             has_more_content: true,
             content: 'Sub comment',
         },
@@ -336,6 +355,7 @@ export const default_history_sub_post_arr = [
     {
         id: 1,
         content_obj: {
+            content_more: '',
             has_more_content: true,
             content: 'This is history sub 1. ',
         },
@@ -348,6 +368,7 @@ export const default_history_sub_post_arr = [
     {
         id: 2,
         content_obj: {
+            content_more: '',
             has_more_content: false,
             content: '',
         },
@@ -383,13 +404,16 @@ export const default_post_vid_pic_id = [
 
 export const default_post_vid_pic_arr = () => {
     const vid_pic = getRandomVidPic();
-    const id = default_post_vid_pic_id[Math.round(Math.random() * 4)].vid_pic_id;
+    const id =
+        default_post_vid_pic_id[Math.round(Math.random() * 4)].vid_pic_id;
+    const has_more_content = getRandomBool()
 
     return [
         {
             id: id,
             content_obj: {
-                has_more_content: false,
+                content_more: '',
+                has_more_content: has_more_content,
                 content: getRandomContent(),
             },
             likes: [
@@ -431,6 +455,7 @@ export const default_post_vid_pic_arr = () => {
                         is_online: false,
                     },
                     content_obj: {
+                        content_more: '',
                         has_more_content: false,
                         content: 'Comment ' + getRandomContent(),
                     },
@@ -462,6 +487,7 @@ export const default_post_vid_pic_arr = () => {
                                 is_online: false,
                             },
                             content_obj: {
+                                content_more: '',
                                 has_more_content: false,
                                 content: 'Sub comment ' + getRandomContent(),
                             },
@@ -521,6 +547,7 @@ export const default_post_vid_pic_arr = () => {
             histories: [
                 {
                     content_obj: {
+                        content_more: '',
                         content: 'ad as asd asd asd asd asd asd',
                         has_more_content: false,
                     },
@@ -528,6 +555,7 @@ export const default_post_vid_pic_arr = () => {
                 },
                 {
                     content_obj: {
+                        content_more: '',
                         content: 'ae dg fgh dhd fg d fd hgw ew wr',
                         has_more_content: false,
                     },
@@ -569,6 +597,7 @@ export const default_post_arr = [
             is_online: false,
         },
         content_obj: {
+            content_more: '',
             has_more_content: true,
             content: 'ad asd sd sd dsa d',
         },
@@ -576,6 +605,7 @@ export const default_post_arr = [
             {
                 id: 6,
                 content_obj: {
+                    content_more: '',
                     has_more_content: false,
                     content: 'note 1',
                 },
@@ -618,6 +648,7 @@ export const default_post_arr = [
                             is_online: false,
                         },
                         content_obj: {
+                            content_more: '',
                             has_more_content: false,
                             content: 'Comment',
                         },
@@ -649,6 +680,7 @@ export const default_post_arr = [
                                     is_online: false,
                                 },
                                 content_obj: {
+                                    content_more: '',
                                     has_more_content: false,
                                     content: 'Sub comment',
                                 },
@@ -692,6 +724,7 @@ export const default_post_arr = [
                 histories: [
                     {
                         content_obj: {
+                            content_more: '',
                             content: 'ad as asd asd asd asd asd asd',
                             has_more_content: false,
                         },
@@ -699,6 +732,7 @@ export const default_post_arr = [
                     },
                     {
                         content_obj: {
+                            content_more: '',
                             content: 'ae dg fgh dhd fg d fd hgw ew wr',
                             has_more_content: false,
                         },
@@ -793,6 +827,7 @@ export const default_post_arr = [
                     is_online: false,
                 },
                 content_obj: {
+                    content_more: '',
                     has_more_content: false,
                     content: 'Comment',
                 },
@@ -824,6 +859,7 @@ export const default_post_arr = [
                             is_online: false,
                         },
                         content_obj: {
+                            content_more: '',
                             has_more_content: false,
                             content: 'Sub comment',
                         },
@@ -881,6 +917,7 @@ export const default_post_arr = [
             is_online: false,
         },
         content_obj: {
+            content_more: '',
             has_more_content: false,
             content: 'ad asd sd sd dsa d',
         },

@@ -17,6 +17,7 @@ import './Info.scss';
 Info.propTypes = {
     enabled_share: PropTypes.bool,
 };
+
 Info.defaultProps = {
     enabled_share: true,
 };

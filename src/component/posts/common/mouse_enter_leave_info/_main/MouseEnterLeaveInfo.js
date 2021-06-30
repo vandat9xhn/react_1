@@ -1,7 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
+import { context_api } from '../../../../../_context/ContextAPI';
+// 
 import { useMouseEnterLeave } from '../../../../../_hooks/UseMouseEnterLeave';
+// 
+import { definePositionXY } from '../../../../../_some_function/definePositionXY';
+// 
 import { content_pic_name_props } from '../../../../../_prop-types/_CommonPropTypes';
 //
 import LoaderDiv from '../../../../some_div/loader_div/LoaderDiv';
@@ -28,44 +33,85 @@ MouseEnterLeaveInfo.propTypes = {
 
 MouseEnterLeaveInfo.defaultProps = {
     use_transform_x: true,
-}
+};
 
 //
 function MouseEnterLeaveInfo({
     count,
     title,
     total_people,
-    content_pic,
 
     is_pic_name,
     PeopleComponent,
-    
+
     handle_API_L,
     handleOpenScreen,
     LoadingComponent,
-    
-    use_transform_x,
 }) {
     //
-    const ref_child_elm = useRef(null);
+    const { openDivFixPeople, closeDivFixPeople } = useContext(context_api);
+
+    //
     const ref_parent_elm = useRef(null);
 
     //
-    const {
-        mouse_state: {
-            is_open,
-            transform_x,
-            position_y,
+    const { mouse_state, handleMouseenter, handleMouseleave } =
+        useMouseEnterLeave({
+            handle_API_L: handle_API_L,
 
-            list,
-            count: new_count,
-            is_fetching,
-        },
-        handleMouseenter,
-        handleMouseleave,
-    } = useMouseEnterLeave(handle_API_L, ref_child_elm, ref_parent_elm);
+            handleOpenDivFixLoading: handleOpenDivFixLoading,
+            handleOpenDivFixPeople: handleOpenDivFixPeople,
+            handleCloseDivFixPeople: handleCloseDivFixPeople,
+        });
 
-    // console.log(position_y);
+    //
+    function handleOpenDivFix(FixElement) {
+        const div_fix_width = 200;
+
+        const { x, y, width, height } =
+            ref_parent_elm.current.getBoundingClientRect();
+
+        const { transform_x, position_y, max_height } =
+            definePositionXY(div_fix_width, x, width, y, height);
+
+        openDivFixPeople({
+            width: div_fix_width,
+            left: x + pageXOffset + width / 2,
+            top: y + pageYOffset,
+            transform_x: `calc(-50% + ${transform_x}px)`,
+            transform_y: position_y == 'top' ? '-100%' : `${height}px`,
+
+            FixElement: FixElement,
+        });
+    }
+
+    //
+    function handleOpenDivFixLoading() {
+        handleOpenDivFix(
+            <LoaderDiv LoadingComponent={LoadingComponent} is_fetching={true} />
+        );
+    }
+
+    //
+    function handleOpenDivFixPeople() {
+        handleOpenDivFix(
+            <ListPeople
+                list_people={mouse_state.list}
+                count_people={total_people || mouse_state.count}
+                is_pic_name={is_pic_name}
+                PeopleComponent={PeopleComponent}
+            />
+        );
+    }
+
+    //
+    function handleCloseDivFixPeople() {
+        closeDivFixPeople();
+    }
+
+    //
+    const is_mobile = localStorage.is_mobile == 1;
+
     //
     return (
         <div
@@ -76,46 +122,10 @@ function MouseEnterLeaveInfo({
                 // className={`${count ? '' : 'display-none'}`}
                 className={`${true ? '' : 'display-none'}`}
                 onClick={handleOpenScreen}
-                onMouseEnter={
-                    localStorage.is_mobile == 1 ? undefined : handleMouseenter
-                }
-                onMouseLeave={
-                    localStorage.is_mobile == 1 ? undefined : handleMouseleave
-                }
+                onMouseEnter={is_mobile ? undefined : handleMouseenter}
+                onMouseLeave={is_mobile ? undefined : handleMouseleave}
             >
                 {title || count}
-            </div>
-
-            <div
-                className={`MouseEnterLeaveInfo_list ${
-                    use_transform_x ? 'left-50per' : 'left-0'
-                } ${is_open ? 'visibility-visible' : 'visibility-hidden'} ${
-                    position_y == 'top' ? 'bottom-100per' : 'top-100per'
-                }`}
-                style={{
-                    transform: use_transform_x
-                        ? `translateX(-50%) translateX(${transform_x}px)`
-                        : undefined,
-                }}
-            >
-                <div ref={ref_child_elm} className="w-100per"></div>
-
-                <div className={`${is_open ? '' : 'display-none'}`}>
-                    <div className={`${is_fetching ? 'display-none' : ''}`}>
-                        <ListPeople
-                            list_people={list}
-                            count_people={total_people || new_count || count}
-                            content={content_pic}
-                            is_pic_name={is_pic_name}
-                            PeopleComponent={PeopleComponent}
-                        />
-                    </div>
-
-                    <LoaderDiv
-                        LoadingComponent={LoadingComponent}
-                        is_fetching={is_fetching}
-                    />
-                </div>
             </div>
         </div>
     );

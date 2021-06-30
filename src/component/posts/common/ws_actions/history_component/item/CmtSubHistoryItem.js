@@ -13,12 +13,7 @@ CmtSubHistoryItem.propTypes = {
     created_time: PropTypes.string,
     handle_API_MoreContent: PropTypes.func,
 };
-CmtSubHistoryItem.defaultProps = {
-    id: 1,
-    content_obj: {},
-    vid_pic: '',
-    created_time: '',
-};
+
 
 //
 function CmtSubHistoryItem({

@@ -1,34 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// 
-import { useHoldPress } from '../../../_hooks/useHoldPress';
+//
+import { useHold } from '../../../_hooks/useHold';
 
 //
-TestHook.propTypes = {
-    
-};
+TestHook.propTypes = {};
 
 //
-function TestHook(props) {    
+function TestHook(props) {
     //
-    const [hold_success, setHoldSuccess] = useState(false)
+    const [hold_success, setHoldSuccess] = useState(false);
 
     //
-    const [StartHoldPress, StopHoldPress] = useHoldPress(6, () => {
-        setHoldSuccess(true)
-    })
+    const { StartHold, StopHold } = useHold(6, () => {
+        setHoldSuccess(true);
+    });
 
     //
     function handleMouseDown() {
-        StartHoldPress()
+        StartHold();
     }
     //
     function handleMouseUp() {
-        StopHoldPress()
+        StopHold();
     }
     //
     function handleReset() {
-        setHoldSuccess(false)
+        setHoldSuccess(false);
     }
 
     //
@@ -44,12 +42,12 @@ function TestHook(props) {
                 >
                     Hold press
                 </div>
-                <div className={hold_success ? '' : 'display-none'}>Hold success</div>
-                
-                <br/>
-                <div onClick={handleReset}>
-                    Reset
+                <div className={hold_success ? '' : 'display-none'}>
+                    Hold success
                 </div>
+
+                <br />
+                <div onClick={handleReset}>Reset</div>
             </div>
         </div>
     );

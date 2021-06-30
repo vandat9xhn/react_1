@@ -1,0 +1,37 @@
+//
+.DivFixLike_fixed {
+    .ListTypeLike_row {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .DivFixLike_like {
+        width: 22.5rem;
+        max-width: calc(100vw - 1rem);
+    }
+}
+
+.DivFixLike_like {
+
+    .ListTypeLike_item {
+        &:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+    }
+
+    .IconsTypeLike {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+.DivFixeLike_small {
+    .IconsTypeLike {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .ListTypeLike_item {
+        &:not(:last-child) {
+            margin-right: 0.4rem;
+        }
+    }
+}

@@ -85,9 +85,11 @@ function ZoomVidPicItem({
         c_id: 0,
         vid_pic_id_arr: [],
         has_fetched: false,
+        is_fetching: false,
     });
 
-    const { vid_pic_obj, c_id, vid_pic_id_arr, has_fetched } = vid_pic_state;
+    const { vid_pic_obj, c_id, vid_pic_id_arr, has_fetched, is_fetching } =
+        vid_pic_state;
 
     const c_index = vid_pic_id_arr.indexOf(c_id);
 
@@ -182,13 +184,21 @@ function ZoomVidPicItem({
 
     //
     function handleChangeId(new_vid_pic_id) {
+        setVidPicState((vid_pic_state) => ({
+            ...vid_pic_state,
+            is_fetching: true,
+        }));
+
         history.replaceState('', '', '/post/photos/' + new_vid_pic_id);
 
         if (vid_pic_obj[new_vid_pic_id]) {
-            setVidPicState({
+            // setTimeout(() => {
+            setVidPicState((vid_pic_state) => ({
                 ...vid_pic_state,
                 c_id: new_vid_pic_id,
-            });
+                is_fetching: false,
+            }));
+            // }, 1);
 
             return;
         }
@@ -221,6 +231,7 @@ function ZoomVidPicItem({
                     : { [vid_pic_id]: data },
                 c_id: vid_pic_id,
                 has_fetched: true,
+                is_fetching: false,
             }));
     }
 
@@ -272,14 +283,14 @@ function ZoomVidPicItem({
 
     //
     async function openUpdateVidPic() {
-        const content = content_obj.has_more_content
+        const content_more = content_obj.has_more_content
             ? await handleScreenFetching(() =>
                   handle_API_PostVidPicContent_R(c_id)
               )
-            : content_obj.content;
+            : '';
 
         openScreenUpdate('Update', VidPicUpdate, {
-            content: content,
+            content: content_obj.content + content_more,
             handleUpdate: handleUpdate,
             handleHasChange: hasChangeScreenUpdate,
         });
@@ -308,6 +319,9 @@ function ZoomVidPicItem({
         );
 
         content_obj.content = new_content;
+        content_obj.content_more = '';
+        content_obj.has_more_content = false;
+
         forceUpdate();
 
         closeScreenUpdate();
@@ -395,6 +409,8 @@ function ZoomVidPicItem({
                     count_like={count_like}
                     arr_unique_like={arr_unique_like}
                     on_API_Like_L={handle_API_PostVidPicLike_L}
+                    //
+                    is_fetching={is_fetching}
                     //
                     action_component={
                         <ActionsVidPic

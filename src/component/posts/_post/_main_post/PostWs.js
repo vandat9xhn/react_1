@@ -165,6 +165,7 @@ function Post({
         );
         // Do something and force_update
         content_obj.content = data_update.main_content;
+        content_obj.content_more = ''
         content_obj.has_more_content = false;
         post.vid_pics = data_update.c_vid_pics;
         forceUpdate();

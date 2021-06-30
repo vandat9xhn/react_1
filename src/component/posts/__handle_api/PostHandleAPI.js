@@ -25,6 +25,8 @@ import {
     API_PostHisSub_R,
     API_PostHistory_R,
     API_PostVidPicID_L,
+    API_PostPicContentMore_R,
+    API_PostMoreContent_R,
 } from '../../../api/api_django/user/user_post/UserPost';
 
 import makeFormData from '../../../_some_function/makeFormData';
@@ -73,10 +75,10 @@ export async function handle_API_Post_C(data) {
 }
 
 export async function handle_API_MoreContent_R(post_id = 0) {
-    const res = await API_Post_RD(post_id, 'GET', params_more_content_post);
-    const { content } = res.data.content_obj;
+    const res = await API_PostMoreContent_R(post_id, params_more_content_post);
+    const { content_more } = res.data.content_obj;
 
-    return content;
+    return content_more
 }
 
 export function handle_API_Permission_U(post_id = 0, permission_post = 0) {
@@ -143,9 +145,9 @@ export async function handle_API_ContentMoreHistory_R(his_id = 0) {
         ...params_more_content_history_post,
         his_model: his_id,
     });
-    const { content } = res.data.content_obj;
+    const { content_more } = res.data.content_obj;;
 
-    return content;
+    return content_more
 }
 
 /* ------------ COMMENT ----------- */
@@ -223,9 +225,9 @@ export async function handle_API_MoreContentCmt_R(
         },
         is_vid_pic
     );
-    const { content } = res.data.content_obj;
+    const { content_more } = res.data.content_obj;;
 
-    return content;
+    return content_more
 }
 
 export async function handle_API_LikeCmt_L(
@@ -282,9 +284,9 @@ export async function handle_API_MoreContentHisCmt_R(
         },
         is_vid_pic
     );
-    const { content } = res.data.content_obj;
+    const { content_more } = res.data.content_obj;;
 
-    return content;
+    return content_more
 }
 
 /* ------------ Sub ----------- */
@@ -362,9 +364,9 @@ export async function handle_API_MoreContentSub_R(
         },
         is_vid_pic
     );
-    const { content } = res.data.content_obj;
+    const { content_more } = res.data.content_obj;;
 
-    return content;
+    return content_more
 }
 
 export async function handle_API_LikeSub_L(
@@ -421,9 +423,9 @@ export async function handle_API_MoreContentHisSub_R(
         },
         is_vid_pic
     );
-    const { content } = res.data.content_obj;
+    const { content_more } = res.data.content_obj;;
 
-    return content;
+    return content_more
 }
 
 /* ------------ VID PIC POST ----------- */
@@ -457,12 +459,12 @@ export async function handle_API_PostVidPic_U(vid_pic_id = 0, content) {
 }
 
 export async function handle_API_PostVidPicContent_R(vid_pic_id = 0) {
-    const res = await API_PostPic_RUD(vid_pic_id, 'GET', {
+    const res = await API_PostPicContentMore_R(vid_pic_id, 'GET', {
         ...params_vid_pic_content_post_r,
     });
-    const { content } = res.data.content_obj;
+    const { content_more } = res.data.content_obj;;
 
-    return content;
+    return content_more
 }
 
 export async function handle_API_PostVidPicLike_L(vid_pic_id = 0, c_count = 0) {

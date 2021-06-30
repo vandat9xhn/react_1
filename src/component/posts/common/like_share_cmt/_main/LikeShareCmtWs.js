@@ -27,23 +27,22 @@ LikeShareCmt.defaultProps = {
     enabled_cmt: true,
 };
 
-// class
-function LikeShareCmt(props) {
-    const {
-        parent_id,
-        //
-        user_type_like,
-        enabled_like,
-        //
-        enabled_cmt,
-        count_comment,
-        //
-        enabled_share,
-        count_share,
-        count_user_shared,
-        //
-        handleClickBtnCmt,
-    } = props;
+//
+function LikeShareCmt({
+    parent_id,
+    //
+    user_type_like,
+    enabled_like,
+    //
+    enabled_cmt,
+    count_comment,
+    //
+    enabled_share,
+    count_share,
+    count_user_shared,
+    //
+    handleClickBtnCmt,
+}) {
     //
     const { ws_send, ws_type_post } = useContext(context_post);
 

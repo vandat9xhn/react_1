@@ -10,6 +10,7 @@ import {
     default_arr_product_r,
     default_arr_rate,
     default_arr_shop,
+    default_content_more_fashion,
     default_rate_content,
 } from '../../../pages/fashion/_default/FashionDefault';
 
@@ -109,7 +110,7 @@ export const API_FashionComment_L = (params) =>
 
 export const API_FashionUserContentComment_R = (params) =>
     API_FakeReal(
-        default_arr_cmt[0],
+        default_content_more_fashion(),
         () =>
             axiosClientNoToken({
                 url: '/fashion-api/comment-r/',

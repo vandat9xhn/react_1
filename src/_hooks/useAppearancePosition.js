@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 //
-import { defineAppearancePosition } from '../_some_function/defineAppearancePosition';
 import { useWaitingLastAction } from './useWaitingLastAction';
+// 
+import { definePositionXY } from '../_some_function/definePositionXY';
 
 //
 export function useAppearancePosition({
@@ -83,7 +84,7 @@ export function useAppearancePosition({
             height: parent_height,
         } = getParentBoundingClientRect();
 
-        const data_define_state = defineAppearancePosition(
+        const data_define_state = definePositionXY(
             child_width,
             parent_x,
             parent_width,

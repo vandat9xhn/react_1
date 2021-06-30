@@ -46,11 +46,9 @@ export async function handle_API_FashionContentComment_R({
         comment_model: comment_model,
         is_user: is_user,
     });
-    const {
-        content_obj: { content },
-    } = res.data;
+    const { content_more } = res.data.content_obj;
 
-    return content;
+    return content_more;
 }
 
 export async function handle_API_FashionUserContentComment_R({

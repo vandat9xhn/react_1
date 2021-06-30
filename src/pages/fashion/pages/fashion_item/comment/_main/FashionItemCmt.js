@@ -141,7 +141,11 @@ function FashionItemCmt({ id: product_id }) {
             cmt_pages_obj[1].unshift({
                 id: data.id,
                 user: user,
-                content_obj: { content: content, has_more_content: false },
+                content_obj: {
+                    content_more: '',
+                    content: content,
+                    has_more_content: false,
+                },
                 vid_pics: urls,
                 created_time: new Date().getTime(),
             });

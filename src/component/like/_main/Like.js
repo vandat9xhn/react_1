@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useHoldPress } from '../../../_hooks/useHoldPress';
+import { context_api } from '../../../_context/ContextAPI';
 //
-import ListTypeLike from '../list_type_like/_main/ListTypeLike';
+import { useHold } from '../../../_hooks/useHold';
+//
 import { type_likes } from '../list_type_like/type_likes/TypeLikes';
 //
 import './Like.scss';
@@ -24,62 +25,84 @@ Like.defaultProps = {
 //
 function Like({ changeTypeLike, icon_small, type_like }) {
     //
-    const [open_type_like, setOpenTypeLike] = useState(false);
+    const { openDivFixLike, closeDivFixLike } = useContext(context_api);
 
     //
-    const [StartHoldPress, StopHoldPress] = useHoldPress(8, () => {
-        setOpenTypeLike(true);
-    });
+    const is_mobile = localStorage.is_mobile == 1;
 
-    const [StartOutPress, StopOutPress] = useHoldPress(10, () => {
-        setOpenTypeLike(false);
-    });
+    //
+    const ref_like_elm = useRef(null);
 
-    /* ############ LAPTOP ############# */
+    const { StartHold, StopHold } = useHold(is_mobile ? 400 : 600);
+    const { StartHold: StartOut, StopHold: StopOut } = useHold(
+        is_mobile ? 100 : 600
+    );
+
+    //
+    function openFixLike() {
+        const { x, y } = ref_like_elm.current.getBoundingClientRect();
+
+        const fixed_state = {
+            icon_small: icon_small,
+            onMouseEnter: onMouseEnter,
+            onMouseLeave: onMouseLeave,
+            chooseListTypeLike: ChooseListTypeLike,
+        };
+
+        !is_mobile
+            ? openDivFixLike({
+                  left: x + window.pageXOffset,
+                  top: y + window.pageYOffset,
+                  transform_x: 0,
+                  transform_y: '-100%',
+
+                  ...fixed_state,
+              })
+            : openDivFixLike({
+                  left: '50%',
+                  top: '50%',
+                  transform_x: '-50%',
+                  transform_y: '-50%',
+
+                  ...fixed_state,
+              });
+    }
 
     /* ------------- MAIN LIKE ------------ */
 
     //
     function onMouseEnter() {
-        StopOutPress();
+        StopOut();
     }
     //
     function onMouseLeave() {
-        StartOutPress();
+        StartOut(closeListTypeLike);
     }
 
     /* ------------- TYPE LIKE --------------- */
 
     //
     function onMouseEnterLike() {
-        StartHoldPress();
+        StartHold(openFixLike);
     }
 
     //
     function onMouseLeaveLike() {
-        StopHoldPress();
-    }
-
-    /* ########## PHONE IPAD ############# */
-
-    //
-    function onTouchStartLike() {
-        StartHoldPress();
-    }
-    //
-    function onTouchEndLike() {
-        StopHoldPress();
+        StopHold();
     }
 
     /* ------- CHOOSE TYPE --------------- */
 
     //
+    function closeListTypeLike() {
+        closeDivFixLike();
+    }
+
+    //
     function handleLike() {
-        StopHoldPress();
-        if (open_type_like) {
-            setOpenTypeLike(false);
-        }
-        //
+        StopHold();
+        closeListTypeLike();
+
         if (type_like >= 0) {
             changeTypeLike(-1);
         } else {
@@ -89,68 +112,32 @@ function Like({ changeTypeLike, icon_small, type_like }) {
 
     //
     function ChooseListTypeLike(index) {
-        setOpenTypeLike(false);
+        closeListTypeLike();
         changeTypeLike(index);
     }
 
     //
-    function closeListTypeLike() {
-        setOpenTypeLike(false);
-    }
-
-    //
-    const is_mobile = localStorage.is_mobile == 1;
-
-    //
     return (
         <div
+            ref={ref_like_elm}
             className="Like"
-            onMouseLeave={onMouseLeave}
-            onMouseEnter={onMouseEnter}
+            onMouseLeave={is_mobile ? undefined : onMouseLeave}
+            onMouseEnter={is_mobile ? undefined : onMouseEnter}
         >
-            <div className="Like_contain">
-                <div
-                    className={`Like_type ${
-                        icon_small ? 'Like_icon-small' : ''
-                    } ${type_like == 0 ? 'nav-active active-color' : ''}`}
-                    onClick={handleLike}
-                    onTouchStart={onTouchStartLike}
-                    onTouchEnd={onTouchEndLike}
-                    onMouseEnter={is_mobile ? undefined : onMouseEnterLike}
-                    onMouseLeave={is_mobile ? undefined : onMouseLeaveLike}
-                >
-                    {type_like < 0
-                        ? type_likes[0].component
-                        : type_likes[type_like].component}
-                </div>
-
-                {!is_mobile && open_type_like && (
-                    <div
-                        className={`Like_list-type ${
-                            icon_small ? 'Like_list-small' : ''
-                        }`}
-                    >
-                        <ListTypeLike
-                            chooseListTypeLike={ChooseListTypeLike}
-                            open_type_like={open_type_like}
-                        />
-                    </div>
-                )}
+            <div
+                className={`Like_type display-flex-center padding-8px cursor-pointer ${
+                    icon_small ? 'Like_icon-small' : ''
+                } ${type_like == 0 ? 'nav-active active-color' : ''}`}
+                onClick={handleLike}
+                onTouchStart={onMouseEnterLike}
+                onTouchEnd={onMouseLeaveLike}
+                onMouseEnter={is_mobile ? undefined : onMouseEnterLike}
+                onMouseLeave={is_mobile ? undefined : onMouseLeaveLike}
+            >
+                {type_like < 0
+                    ? type_likes[0].component
+                    : type_likes[type_like].component}
             </div>
-
-            {is_mobile && open_type_like && (
-                <div
-                    className="Like_screen-list-type screen-blur"
-                    onClick={closeListTypeLike}
-                >
-                    <div className="Like_list-type-touch">
-                        <ListTypeLike
-                            chooseListTypeLike={ChooseListTypeLike}
-                            open_type_like={open_type_like}
-                        />
-                    </div>
-                </div>
-            )}
         </div>
     );
 }

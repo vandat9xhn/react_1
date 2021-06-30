@@ -22,7 +22,7 @@ import ConfirmRate from '../confirm_rate/ConfirmRate';
 import FashionRateChart from '../chart/_main/FashionRateChart';
 import FashionRateList from '../list/_main/FashionRateList';
 
-// 
+//
 function calculateAvgCount(arr) {
     const rate_total = arr.reduce((a, b, ix) => a + b * (ix + 1));
     const count = arr.reduce((a, b) => a + b);
@@ -138,6 +138,7 @@ function FashionRate({ id }) {
                 id: data.id,
                 user: user,
                 content_obj: {
+                    content_more: '',
                     content: content_rate,
                     has_more_content: false,
                 },

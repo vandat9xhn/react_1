@@ -10,6 +10,7 @@ export const initial_posts = [
             is_online: false,
         },
         content_obj: {
+            content_more: '',
             has_more_content: false,
             content: '',
         },
@@ -21,6 +22,7 @@ export const initial_posts = [
                 count_like: 0,
                 vid_pic: '',
                 content_obj: {
+                    content_more: '',
                     has_more_content: false,
                     content: '',
                 },

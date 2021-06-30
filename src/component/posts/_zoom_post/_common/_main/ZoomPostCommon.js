@@ -41,6 +41,8 @@ function ZoomPostCommon({
     action_component,
     like_share_cmt_component,
     comment_component,
+
+    is_fetching,
 }) {
     //
     const { openScreenLike } = useContext(context_api);
@@ -68,57 +70,65 @@ function ZoomPostCommon({
                             </div>
                         )}
 
-                        <ZoomPostCommonLeft
-                            vid_pic={vid_pic}
-                            is_has_next={is_has_next}
-                            is_has_prev={is_has_prev}
-                            handleNextVidPic={handleNextVidPic}
-                            handlePrevVidPic={handlePrevVidPic}
-                        />
+                        {!is_fetching ? (
+                            <ZoomPostCommonLeft
+                                vid_pic={vid_pic}
+                                is_has_next={is_has_next}
+                                is_has_prev={is_has_prev}
+                                handleNextVidPic={handleNextVidPic}
+                                handlePrevVidPic={handlePrevVidPic}
+                            />
+                        ) : (
+                            <div></div>
+                        )}
                     </div>
 
-                    <div className="ZoomPostCommon_right">
-                        <div className="ZoomPostCommon_right-contain scroll-thin">
-                            <div className="ZoomPostCommon_right-head">
-                                <div>
-                                    <PictureName
-                                        user={user}
-                                        content={new Date(
-                                            updated_time
-                                        ).toLocaleString()}
-                                    />
+                    {!is_fetching ? (
+                        <div className="ZoomPostCommon_right">
+                            <div className="ZoomPostCommon_right-contain scroll-thin">
+                                <div className="ZoomPostCommon_right-head">
+                                    <div>
+                                        <PictureName
+                                            user={user}
+                                            content={new Date(
+                                                updated_time
+                                            ).toLocaleString()}
+                                        />
+                                    </div>
+
+                                    <div className="ZoomPostCommon_actions">
+                                        {action_component}
+                                    </div>
+
+                                    <div>
+                                        <ContentMore
+                                            content_obj={content_obj}
+                                            seeMoreContent={seeMoreContent}
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <ListUniqueLike
+                                            count_like={count_like}
+                                            arr_unique_like={arr_unique_like}
+                                            on_API_Like_L={on_API_Like_L}
+                                            onOpenDetailLike={onOpenDetailLike}
+                                            //
+                                            use_transform_x={false}
+                                        />
+                                    </div>
+
+                                    <div>{like_share_cmt_component}</div>
                                 </div>
 
-                                <div className="ZoomPostCommon_actions">
-                                    {action_component}
+                                <div className="ZoomPostCommon_right-cmt">
+                                    {comment_component}
                                 </div>
-
-                                <div>
-                                    <ContentMore
-                                        content_obj={content_obj}
-                                        seeMoreContent={seeMoreContent}
-                                    />
-                                </div>
-
-                                <div>
-                                    <ListUniqueLike
-                                        count_like={count_like}
-                                        arr_unique_like={arr_unique_like}
-                                        on_API_Like_L={on_API_Like_L}
-                                        onOpenDetailLike={onOpenDetailLike}
-                                        // 
-                                        use_transform_x={false}
-                                    />
-                                </div>
-
-                                <div>{like_share_cmt_component}</div>
-                            </div>
-
-                            <div className="ZoomPostCommon_right-cmt">
-                                {comment_component}
                             </div>
                         </div>
-                    </div>
+                    ) : (
+                        <div></div>
+                    )}
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { default_login } from "../../../pages/login_form/_default/DefaultLogin";
+import { default_login } from '../../../pages/login_form/_default/DefaultLogin';
 
 //
 export function handleCreateNewPost(content_post, vid_pics) {
@@ -7,6 +7,7 @@ export function handleCreateNewPost(content_post, vid_pics) {
     const new_vid_pics = vid_pics.map((item) => ({
         id: 6,
         content_obj: {
+            content_more: '',
             has_more_content: false,
             content: item.content,
         },
@@ -33,6 +34,7 @@ export function handleCreateNewPost(content_post, vid_pics) {
             is_online: true,
         },
         content_obj: {
+            content_more: '',
             has_more_content: false,
             content: content_post,
         },

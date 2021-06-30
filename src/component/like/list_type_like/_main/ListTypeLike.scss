@@ -1,13 +1,13 @@
 //
 .ListTypeLike {
-    animation: move-down 0.3s ease-out;
+    animation: move-down 0.25s ease-out;
     //
     .open_type-like {
         transition: transform 0.2s;
         cursor: pointer;
 
         &:hover {
-            transform: scale(1.1);
+            transform: scale(1.025);
         }
     }
 }
@@ -21,7 +21,7 @@
 @keyframes move-down {
     from {
         opacity: 0;
-        top: -70px;
+        top: -60px;
     }
     to {
         opacity: 1;

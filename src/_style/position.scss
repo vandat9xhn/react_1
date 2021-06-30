@@ -7,7 +7,13 @@
     position: absolute;
 }
 
-.pos-abs-0{
+.position-fixed {
+    position: fixed;
+}
+
+//
+
+.pos-abs-0 {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,31 +34,41 @@
     right: 0;
 }
 
+//
+
+.pos-fixed-100 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
 /* ------------- */
 .bottom-100per {
     bottom: 100%;
 }
 
-/* ------------- */ 
+/* ------------- */
 .top-100per {
     top: 100%;
 }
 
-/* ------------- */ 
+/* ------------- */
 .left-0 {
     left: 0;
 }
 
-.left-50per{
+.left-50per {
     left: 50%;
 }
 
-/* ------------- */ 
+/* ------------- */
 .right-0 {
     right: 0;
 }
 
-/* ------------- */ 
+/* ------------- */
 .x-center {
     left: 50%;
     transform: translateX(-50%);

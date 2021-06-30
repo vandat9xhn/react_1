@@ -1,12 +1,5 @@
-.Like_contain {
-    position: relative;
-}
-// type like
+// 
 .Like_type {
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-
     .IconsTypeLike {
         width: 1.5rem;
         height: 1.5rem;
@@ -19,69 +12,3 @@
         height: 1.3rem;
     }
 }
-
-// list type like
-.Like_list-type {
-    position: absolute;
-    bottom: 95%;
-
-    .IconsTypeLike {
-        width: 2rem;
-        height: 2rem;
-    }
-}
-.Like_list-small {
-    .IconsTypeLike {
-        width: 1.6rem;
-        height: 1.6rem;
-    }
-}
-
-//
-.Like_type {
-    padding: 0.5rem 0.3rem;
-}
-
-.Like_screen-list-type {
-    background-color: var(--bg-loader);
-}
-// when device can touch
-.Like_list-type-touch {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    .ListTypeLike_contain {
-        width: 80vw;
-        .ListTypeLike_row {
-            justify-content: space-around;
-            flex-wrap: wrap;
-            .ListTypeLike__item {
-                padding: 0.5rem;
-                .IconsTypeLike {
-                    width: 2.5rem;
-                    height: 2.5rem;
-                }
-            }
-        }
-    }
-}
-
-@media (min-width: 600px) {
-    // when device can touch
-    .Like_list-type-touch {
-        .ListTypeLike_contain {
-            width: auto;
-        }
-    }
-}
-
-// @media (max-width: 350px){
-//     // list type like
-//     .Like_list-type {
-//         position: fixed;
-//         top: 50%;
-//         left: 50%;
-//         transform: translate(-50%, -50%);
-//     }
-// }

@@ -3,6 +3,7 @@ import { API_FakeReal } from '../../../_ConstAPI';
 //
 import {
     default_cmt_post_arr,
+    default_content_more,
     default_history_cmt_post_arr,
     default_history_post_arr,
     default_history_sub_post_arr,
@@ -38,6 +39,16 @@ export const API_Post_C = (data) =>
             url: '/user/c-post/',
             method: 'POST',
             data: data,
+        })
+    );
+
+// Retrieve 
+export const API_PostMoreContent_R = (pk, params = {}) =>
+    API_FakeReal(default_content_more(), () =>
+        axiosDjangoClient({
+            url: '/user/post-rd/' + pk + '/',
+            method: 'GET',
+            params: params,
         })
     );
 
@@ -102,6 +113,16 @@ export const API_PostPic_RUD = (pk = 1, method, params = {}, data = {}) =>
             method: method,
             params: params,
             data: data,
+        })
+    );
+
+//
+export const API_PostPicContentMore_R = (pk = 1, params = {}) =>
+    API_FakeReal(default_content_more(), () =>
+        axiosDjangoClient({
+            url: '/user/rud-vid-pic-post/' + pk + '/',
+            method: 'GET',
+            params: params,
         })
     );
 

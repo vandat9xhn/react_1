@@ -7,28 +7,27 @@ import UnitTime from '../../../../../../_some_function/UnitTime';
 //
 import ListUniqueLike from '../../../../../like/List_unique_like/_main/ListUniqueLike';
 import Like from '../../../../../like/_main/Like';
-// 
+//
 import './CommentWsFoot.scss';
 
 //
 CommentWsFoot.propTypes = {};
 
 //
-function CommentWsFoot(props) {
-    const {
-        id,
-        count_like,
-        likes,
-        user_type_like,
-        updated_time,
-        //
-        focusInputSub,
-        changeTypeLike,
-    } = props;
-    // 
+function CommentWsFoot({
+    id,
+    count_like,
+    likes,
+    user_type_like,
+    updated_time,
+    //
+    focusInputSub,
+    changeTypeLike,
+}) {
+    //
     const { handle_API_LikeCmt_L } = useContext(context_post);
 
-    const {openScreenLike} = useContext(context_api)
+    const { openScreenLike } = useContext(context_api);
 
     //
     function onOpenScreenLike(type_like) {
@@ -52,10 +51,7 @@ function CommentWsFoot(props) {
                     />
                 </div>
 
-                <div
-                    className="CmtSub_reply"
-                    onClick={focusInputSub}
-                >
+                <div className="CmtSub_reply" onClick={focusInputSub}>
                     <div className="Comment__btn-sub">Reply</div>
                 </div>
 
@@ -63,7 +59,6 @@ function CommentWsFoot(props) {
                     <ListUniqueLike
                         count_like={count_like}
                         arr_unique_like={[1, 2, 3]}
-                        
                         on_API_Like_L={on_API_LikeCmt_L}
                         onOpenDetailLike={onOpenScreenLike}
                     />

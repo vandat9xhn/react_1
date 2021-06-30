@@ -22,7 +22,10 @@ function ListTypeLike({ chooseListTypeLike, open_type_like }) {
                 <div className="ListTypeLike_contain bg-primary box-shadow-1 brs-8px">
                     <div className="ListTypeLike_row display-flex">
                         {type_likes.map((item, index) => (
-                            <div key={`ListTypeLike_${index}`}>
+                            <div
+                                key={`ListTypeLike_${index}`}
+                                className="ListTypeLike_item"
+                            >
                                 <TypeLikeItem
                                     index={index}
                                     title={item.title}
