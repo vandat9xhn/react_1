@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// 
+//
 InfoCmt.propTypes = {};
 
-// 
-function InfoCmt(props) {
-    const {count_comment, handleClickBtnCmt} = props;
-
-    // 
+//
+function InfoCmt({ count_comment, handleClickBtnCmt }) {
+    //
     return (
         <div>
             <div

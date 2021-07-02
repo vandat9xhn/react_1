@@ -7,7 +7,7 @@ import { context_post } from '../../../__context_post/ContextPost';
 import { UnitNumber } from '../../../../../_some_function/UnitNumber';
 //
 import InfoCmt from '../cmt/InfoCmt';
-import MouseEnterLeaveInfo from '../../mouse_enter_leave_info/_main/MouseEnterLeaveInfo';
+import MouseEnterLeaveInfoNormal from '../../mouse_enter_leave_info/_main/MouseEnterLeaveInfoNormal';
 import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
 import ListUniqueLike from '../../../../like/List_unique_like/_main/ListUniqueLike';
 //
@@ -109,7 +109,7 @@ function Info({
                                 count_share ? '' : 'display-none'
                             }`}
                         >
-                            <MouseEnterLeaveInfo
+                            <MouseEnterLeaveInfoNormal
                                 count={count_share}
                                 title={title_share}
                                 total_people={count_unique_share}

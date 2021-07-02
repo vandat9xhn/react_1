@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { is_api_fake } from '../../../../../api/_ConstAPI';
 //
-import Actions from '../../../../actions/_main/Actions';
+import ActionsNormal from '../../../../actions/_main/ActionsNormal';
 import ActionHistory from '../../../../actions/common_actions/history/ActionHistory';
 import ActionUpdate from '../../../../actions/common_actions/update/ActionUpdate';
 import ActionDelete from '../../../../actions/common_actions/delete/ActionDelete';
@@ -24,9 +24,10 @@ function SubActionsWs({
     openDeleteSub,
     openReportSub,
 }) {
+    
     //
     return (
-        <Actions>
+        <ActionsNormal>
             <ul className="ActionsCmt__list App_box_shadow brs-5px list-none">
                 <li>
                     <ActionHistory handleOpenHistory={openHistorySub} />
@@ -56,7 +57,7 @@ function SubActionsWs({
                     <ActionDelete handleDelete={openDeleteSub} />
                 </li>
             </ul>
-        </Actions>
+        </ActionsNormal>
     );
 }
 

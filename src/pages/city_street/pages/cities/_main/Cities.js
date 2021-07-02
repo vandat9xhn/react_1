@@ -16,6 +16,7 @@ import CityItemSkeleton from '../item/skeleton/CityItemSkeleton';
 //
 import './Cities.scss';
 import './CitiesRes.scss';
+import DivFixContextConsumer from '../../../../../component/_div_fix/context/DivFixContextConsumer';
 
 //
 function Cities() {
@@ -49,7 +50,7 @@ function Cities() {
 
     //
     return (
-        <div>
+        <DivFixContextConsumer>
             <div className={`Cities ${has_fetched ? '' : 'display-none'}`}>
                 <div className="Cities_search">
                     <CitySearch handleSearch={handleSearch} />
@@ -91,7 +92,7 @@ function Cities() {
                     has_fetched={has_fetched}
                 />
             </div>
-        </div>
+        </DivFixContextConsumer>
     );
 }
 

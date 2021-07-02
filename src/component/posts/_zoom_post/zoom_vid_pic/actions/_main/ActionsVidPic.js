@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
-import { is_api_fake } from '../../../../../api/_ConstAPI';
-// 
-import { context_api } from '../../../../../_context/ContextAPI';
-// 
-import Actions from '../../../../actions/_main/Actions';
-import ActionHistory from '../../../../actions/common_actions/history/ActionHistory';
-import ActionUpdate from '../../../../actions/common_actions/update/ActionUpdate';
-import ActionDelete from '../../../../actions/common_actions/delete/ActionDelete';
-import ActionReport from '../../../../actions/common_actions/report/ActionReport';
+import { is_api_fake } from '../../../../../../api/_ConstAPI';
+//
+import { context_api } from '../../../../../../_context/ContextAPI';
+//
+import ActionsNormal from '../../../../../actions/_main/ActionsNormal';
+import ActionHistory from '../../../../../actions/common_actions/history/ActionHistory';
+import ActionUpdate from '../../../../../actions/common_actions/update/ActionUpdate';
+import ActionDelete from '../../../../../actions/common_actions/delete/ActionDelete';
+import ActionReport from '../../../../../actions/common_actions/report/ActionReport';
 //
 // import './ActionsVidPic.scss';
 
@@ -31,7 +31,7 @@ function ActionsVidPic({
 
     //
     return (
-        <Actions>
+        <ActionsNormal>
             <ul className="ActionsVidPic_list list-none box-shadow-1 brs-5px">
                 <li
                     className={`${
@@ -65,7 +65,7 @@ function ActionsVidPic({
                     <ActionDelete handleDelete={openDeleteVidPic} />
                 </li>
             </ul>
-        </Actions>
+        </ActionsNormal>
     );
 }
 

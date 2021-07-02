@@ -41,8 +41,9 @@ import {
 import ZoomPostCommon from '../../_common/_main/ZoomPostCommon';
 import LikeShareCmt from '../../../common/like_share_cmt/_main/LikeShareCmtWs';
 import CommentsWs from '../../../common/ws_comments/_main/CommentsWs';
-import ActionsVidPic from '../actions/ActionsVidPic';
+
 import VidPicHistory from '../history/_main/VidPicHistory';
+import ActionsVidPic from '../actions/_main/ActionsVidPic';
 import VidPicUpdate from '../actions/update/VidPicUpdate';
 //
 import './ZoomVidPicItem.scss';

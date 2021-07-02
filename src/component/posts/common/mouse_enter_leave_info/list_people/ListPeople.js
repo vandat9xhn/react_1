@@ -10,6 +10,7 @@ ListPeople.propTypes = {
     list_people: PropTypes.array,
     count_people: PropTypes.number,
     max_size: PropTypes.number,
+
     PeopleComponent: PropTypes.func,
     is_pic_name: PropTypes.bool,
 };
@@ -18,6 +19,7 @@ ListPeople.defaultProps = {
     list_people: [],
     count_people: 0,
     max_size: 1,
+    
     PeopleComponent: () => <div></div>,
     is_pic_name: true,
 };

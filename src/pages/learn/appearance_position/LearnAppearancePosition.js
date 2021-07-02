@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useAppearancePosition } from '../../../_hooks/useAppearancePosition';
+import { usePositionXY } from '../../../_hooks/usePositionXY';
 //
 import './LearnAppearancePosition.scss';
 
@@ -12,15 +12,16 @@ LearnAppearancePosition.propTypes = {};
 function LearnAppearancePosition(props) {
     //
     const ref_child_elm = useRef(null);
-    const ref_parent_elm = useRef(null);
+    const ref_btn_elm = useRef(null);
 
     //
-    const { is_open, transform_x, position_y, handleOpen, handleClose } =
-        useAppearancePosition({
-            ref_parent_elm: ref_parent_elm,
-            ref_child_elm: ref_child_elm,
-            extra_transform_x: 2,
-        });
+    const { position_state, handleOpen, handleClose } = usePositionXY({
+        ref_btn_elm: ref_btn_elm,
+        ref_child_elm: ref_child_elm,
+        extra_transform_x: 2,
+    });
+
+    const { is_open, position_x, transform_x, position_y } = position_state;
 
     //
     function handleToggleOpen(e) {
@@ -31,22 +32,23 @@ function LearnAppearancePosition(props) {
     //
     return (
         <div className="LearnAppearancePosition">
-            <div className="position-rel" ref={ref_parent_elm}>
+            <div className="position-rel" ref={ref_btn_elm}>
                 <div>
                     <div
                         className="LearnAppearancePosition_menu"
                         onClick={handleToggleOpen}
                     >
-                        useAppearancePosition
+                        usePositionXY
                     </div>
                 </div>
 
                 <div
                     className={`LearnAppearancePosition_hidden ${
                         is_open ? 'visibility-visible' : 'visibility-hidden'
-                    } ${position_y == 'top' ? 'bottom-100per' : 'top-100per'}`}
+                    } ${position_y == 'top' ? 'bottom-100per' : 'top-100per'}
+                    ${position_x}`}
                     style={{
-                        transform: `translateX(-50%) translateX(${transform_x}px)`,
+                        transform: `translateX(${transform_x}px)`,
                     }}
                 >
                     <div

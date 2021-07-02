@@ -1,7 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
+// 
+import { usePositionXY } from '../../../../../_hooks/usePositionXY';
 //
 import { API_ZoomCountNew_R } from '../../../../../api/api_django/header/APIHeaderToken';
 import {
@@ -11,11 +13,21 @@ import {
 //
 import CloseDiv from '../../../../some_div/close_div/CloseDiv';
 //
-import './HeaderMessage.scss';
-//
 import ListMessages from '../contain/_main/HeaderMessContain';
 import HeaderMessageIcon from '../icon/HeaderMessageIcon';
-import { useAppearancePosition } from '../../../../../_hooks/useAppearancePosition';
+// 
+import './HeaderMessage.scss';
+//
+
+//
+const other_state = {
+    zooms: [],
+    count: 0,
+    count_new: 0,
+
+    is_fetching: false,
+    has_fetched: false,
+};
 
 //
 HeaderMessage.propTypes = {};
@@ -27,7 +39,7 @@ function HeaderMessage() {
 
     //
     const ref_child_elm = useRef(null);
-    const ref_parent_elm = useRef(null);
+    const ref_btn_elm = useRef(null);
 
     //
     const {
@@ -36,22 +48,16 @@ function HeaderMessage() {
 
         position_state: zoom_state,
         setPositionState: setZoomState,
-    } = useAppearancePosition({
+    } = usePositionXY({
         ref_child_elm: ref_child_elm,
-        ref_parent_elm: ref_parent_elm,
-        other_state: {
-            zooms: [],
-            count: 0,
-            count_new: 0,
-
-            is_fetching: false,
-            has_fetched: false,
-        },
+        ref_btn_elm: ref_btn_elm,
+        other_state: other_state,
         extra_transform_x: 0,
     });
 
     const {
         is_open,
+        position_x,
         transform_x,
 
         zooms,
@@ -177,7 +183,7 @@ function HeaderMessage() {
     return (
         <CloseDiv makeDivHidden={makeDivHidden}>
             <div
-                ref={ref_parent_elm}
+                ref={ref_btn_elm}
                 className={`HeaderMessage header_menu ${
                     is_open ? 'bottom-blue nav-active' : ''
                 }`}
@@ -192,9 +198,11 @@ function HeaderMessage() {
                 <div
                     className={`header-hidden-position header_hidden left-50per ${
                         is_open ? 'visibility-visible' : 'visibility-hidden'
+                    } ${position_x} ${
+                        has_fetched ? '' : 'pointer-events-none'
                     }`}
                     style={{
-                        transform: `translateX(-50%) translateX(${transform_x}px)`,
+                        transform: `translateX(${transform_x}px)`,
                     }}
                     onClick={hasReceiveListZooms}
                 >

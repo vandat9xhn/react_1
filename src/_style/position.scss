@@ -73,3 +73,10 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+
+/* ------- Z INDEX ------ */
+
+.z-index-lv3{
+    z-index: var(--z-index-lv3);
+}

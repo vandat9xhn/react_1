@@ -1,17 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 //
 import { useWaitingLastAction } from './useWaitingLastAction';
-// 
+//
 import { definePositionXY } from '../_some_function/definePositionXY';
 
 //
-export function useAppearancePosition({
+export function usePositionXY({
     ref_child_elm,
-    ref_parent_elm,
-    handleChildWidth = () => 0,
-    handleParentBoundingClientRect = function () {
-        return {};
-    },
+    ref_btn_elm,
+
     extra_transform_x = 0,
     other_state = {},
 }) {
@@ -19,12 +16,13 @@ export function useAppearancePosition({
     const [position_state, setPositionState] = useState({
         ...other_state,
         is_open: false,
+        position_x: 'center',
         transform_x: 0,
         position_y: 'bottom',
         max_height: 0,
     });
 
-    const { is_open, transform_x, position_y, max_height } = position_state;
+    const { is_open } = position_state;
 
     //
     const ref_is_open = useRef(false);
@@ -47,26 +45,6 @@ export function useAppearancePosition({
     /* --------------------- */
 
     //
-    function getChildWidth() {
-        if (ref_child_elm) {
-            return ref_child_elm.current.getBoundingClientRect().width;
-        }
-
-        return handleChildWidth();
-    }
-
-    //
-    function getParentBoundingClientRect() {
-        if (ref_parent_elm) {
-            return ref_parent_elm.current.getBoundingClientRect();
-        }
-
-        return handleParentBoundingClientRect();
-    }
-
-    /* --------------------- */
-
-    //
     function handleOpen({
         self_handle = true,
         is_resize = false,
@@ -76,22 +54,11 @@ export function useAppearancePosition({
             return;
         }
 
-        const child_width = getChildWidth();
-        const {
-            x: parent_x,
-            y: parent_y,
-            width: parent_width,
-            height: parent_height,
-        } = getParentBoundingClientRect();
-
-        const data_define_state = definePositionXY(
-            child_width,
-            parent_x,
-            parent_width,
-            parent_y,
-            parent_height,
-            extra_transform_x
-        );
+        const data_define_state = definePositionXY({
+            child_width: ref_child_elm.current.getBoundingClientRect().width,
+            ref_btn_elm: ref_btn_elm,
+            extra_transform_x: extra_transform_x,
+        });
 
         ref_is_open.current = true;
 
@@ -141,11 +108,6 @@ export function useAppearancePosition({
     }
 
     return {
-        is_open,
-        transform_x,
-        position_y,
-        max_height,
-
         handleOpen,
         handleClose,
 

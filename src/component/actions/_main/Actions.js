@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../_context/ContextAPI';
 //
-import { definePositionY } from '../../../_some_function/definePositionXY';
+import { definePositionFromParent } from '../../../_some_function/definePositionFromParent';
 //
 import ActionBack from '../common_actions/back/ActionBack';
 //
@@ -41,19 +41,18 @@ function Actions({ title_action, symbol_post, children }) {
 
     //
     function openActions() {
-        const { x, y, width, height } =
-            ref_action_elm.current.getBoundingClientRect();
-
-        const { position_y, max_height } = definePositionY(y, height);
+        const { x_0, y_0, w_left, w_right, h_top, h_bottom } =
+            definePositionFromParent({
+                btn_elm: ref_action_elm.current,
+            });
 
         const position_open =
             window.innerWidth > 400
                 ? {
-                      top: pageYOffset + y,
-                      left: x + width + pageXOffset,
-                      transform_x: `calc(-100% - ${width / 2}px)`,
-                      transform_y:
-                          position_y == 'top' ? '-100%' : `${height}px`,
+                      left: x_0,
+                      top: y_0,
+                      transform_x: `calc(-100% + 10px)`,
+                      transform_y: position_y == 'top' ? '-100%' : `25px`,
                   }
                 : {
                       bottom: 0,

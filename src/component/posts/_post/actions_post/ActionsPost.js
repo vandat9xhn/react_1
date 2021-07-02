@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { is_api_fake } from '../../../../api/_ConstAPI';
 //
-import Actions from '../../../actions/_main/Actions';
+import ActionsNormal from '../../../actions/_main/ActionsNormal';
 import ActionHistory from '../../../actions/common_actions/history/ActionHistory';
 import ActionUpdate from '../../../actions/common_actions/update/ActionUpdate';
 import ActionDelete from '../../../actions/common_actions/delete/ActionDelete';
@@ -25,10 +25,11 @@ function ActionsPost({
     openReportPost,
     openPermissionPost,
 }) {
+    
     //
     return (
         <div className="ActionsPost">
-            <Actions>
+            <ActionsNormal>
                 <ul className="ActionsPost__list">
                     <li>
                         <ActionHistory handleOpenHistory={openHistoryPost} />
@@ -68,7 +69,7 @@ function ActionsPost({
                         <ActionDelete handleDelete={openDeletePost} />
                     </li>
                 </ul>
-            </Actions>
+            </ActionsNormal>
         </div>
     );
 }

@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 
 import { user_propTypes } from '../../../../../_prop-types/_CommonPropTypes';
 //
-import IconDiv from '../../../../../component/some_div/icon_div/IconDiv';
 import IconsAction from '../../../../../_icons_svg/icons_action/IconsAction';
-import Actions from '../../../../../component/actions/_main/Actions';
+//
+import IconDiv from '../../../../../component/some_div/icon_div/IconDiv';
+import ActionsNormal from '../../../../../component/actions/_main/ActionsNormal';
 //
 import './FriendEdit.scss';
-import { Link } from 'react-router-dom';
 
 //
 FriendEdit.propTypes = {
@@ -19,21 +20,16 @@ FriendEdit.propTypes = {
 };
 
 //
-function FriendEdit(props) {
-    // context
+function FriendEdit({ user, handelDeleteFriend }) {
+    //
     const { openMessage, openScreenConfirm } = useContext(context_api);
 
-    // props
-    const { user, handelDeleteFriend } = props;
-
-    /* --------------- HANDLE EDIT --------------- */
-
-    // open message
+    //
     const onOpenMessage = () => {
         openMessage(user.id);
     };
 
-    //  delete friend
+    //
     function confirmDelete() {
         openScreenConfirm(
             'Delete',
@@ -71,10 +67,10 @@ function FriendEdit(props) {
             </div>
 
             <div className="FriendEdit_right">
-                <Actions title_action="Friend" symbol_post={false}>
+                <ActionsNormal title_action="Friend" symbol_post={false}>
                     <div className="FriendEdit_action brs-5px box-shadow-1">
                         <div
-                            className="FriendEdit_action_item"
+                            className="FriendEdit_action_item label-field"
                             onClick={onOpenMessage}
                         >
                             <IconDiv x={200} Icon={IconsAction}>
@@ -83,13 +79,13 @@ function FriendEdit(props) {
                         </div>
 
                         <div
-                            className="FriendEdit_action_item"
+                            className="FriendEdit_action_item label-field"
                             onClick={confirmDelete}
                         >
                             <IconDiv Icon={IconsAction}>Unfriend</IconDiv>
                         </div>
                     </div>
-                </Actions>
+                </ActionsNormal>
             </div>
         </div>
     );

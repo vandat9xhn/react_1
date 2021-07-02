@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../_context/ContextAPI';
@@ -51,8 +51,11 @@ function Like({ changeTypeLike, icon_small, type_like }) {
 
         !is_mobile
             ? openDivFixLike({
-                  left: x + window.pageXOffset,
-                  top: y + window.pageYOffset,
+                  scroll_elm: ref_like_elm.current.closest(
+                      '[class~=div_fix_scroll]'
+                  ),
+                  left: x,
+                  top: y + pageYOffset,
                   transform_x: 0,
                   transform_y: '-100%',
 

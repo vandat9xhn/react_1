@@ -16,6 +16,8 @@ import { Routes } from './__routes/__main';
 //
 import ContextAPI from './_context/ContextAPIProvider';
 //
+import Auth from './_auth/Auth';
+//
 import WaitingBall from './component/waiting/waiting_ball/WaitingBall';
 //
 import Header from './component/_header/_main_header/Header';
@@ -27,6 +29,10 @@ import ZoomVidPics from './component/_zoom_vid_pics/_main/ZoomVidPics';
 import CanvasFixed from './component/canvas_draw/_main/CanvasFixed';
 import NatureDropMain from './component/_snow_drop/_main/NatureDropMain';
 
+import DivFixLike from './component/_div_fix/like/DivFixLike';
+import DivFixPeople from './component/_div_fix/people/DivFixPeople';
+import DivFixAction from './component/_div_fix/action/DivFixAction';
+
 import ScreenConfirm from './component/_screen_blur/confirm/ScreenConfirm';
 import ScreenHistory from './component/_screen_post/history/_main/ScreenHistory';
 import ScreenShare from './component/_screen_post/share/_main/ScreenShare';
@@ -35,16 +41,12 @@ import ScreenLike from './component/_screen_post/like/_main/ScreenLike';
 import ScreenPermission from './component/_screen_post/permission/_main/ScreenPermission';
 import ScreenBlurFetching from './component/_screen_blur/fetching/_main/ScreenBlurFetching';
 import ScreenNotice from './component/_screen_blur/notice/ScreenNotice';
-import Auth from './_auth/Auth';
-import DivFixLike from './component/_div_fix/like/DivFixLike';
-import DivFixPeople from './component/_div_fix/people/DivFixPeople';
-import DivFixAction from './component/_div_fix/action/DivFixAction';
 
 // App
 class App extends Component {
     /* --------------- REF ---------------- */
 
-    // 
+    //
     refChat = (elm) => {
         if (elm !== null) {
             this.openMessage = elm.openMessage;
@@ -52,7 +54,7 @@ class App extends Component {
         }
     };
 
-    // 
+    //
     refFixLike = (elm) => {
         if (elm !== null) {
             this.openDivFixLike = elm.openDivFixLike;
@@ -187,7 +189,7 @@ class App extends Component {
                         openScreenLike={this.openScreenLike}
                         openScreenPermission={this.openScreenPermission}
                         openScreenFetching={this.openScreenFetching}
-                        // 
+                        //
                         hasChangeScreenUpdate={this.hasChangeScreenUpdate}
                         //
                         closeScreenUpdate={this.closeScreenUpdate}
@@ -226,72 +228,39 @@ class App extends Component {
                             </div>
                         </div>
 
-                        <div>
-                            <BackTop />
-                        </div>
+                        <BackTop />
+
+                        <Chat ref={this.refChat} />
+
+                        <DivFixLike ref={this.refFixLike} />
+
+                        <DivFixPeople ref={this.refFixPeople} />
+
+                        <DivFixAction ref={this.refFixAction} />
 
                         <div>
-                            <Chat ref={this.refChat} />
-                        </div>
-
-                        <div>
-                            <DivFixLike ref={this.refFixLike} />
-                        </div>
-
-                        <div>
-                            <DivFixPeople ref={this.refFixPeople} />
-                        </div>
-
-                        <div>
-                            <DivFixAction ref={this.refFixAction} />
-                        </div>
-
-                        <div>
-                            <div>
-                                <CanvasFixed ref={this.refCanvas} />
-                            </div>
+                            <CanvasFixed ref={this.refCanvas} />
 
                             {/* screen */}
-                            <div>
-                                <ScreenHistory ref={this.refScreenHistory} />
-                            </div>
+                            <ScreenHistory ref={this.refScreenHistory} />
 
-                            <div>
-                                <ScreenShare ref={this.refScreenShare} />
-                            </div>
+                            <ScreenShare ref={this.refScreenShare} />
 
-                            <div>
-                                <ScreenUpdate ref={this.refScreenUpdate} />
-                            </div>
+                            <ScreenUpdate ref={this.refScreenUpdate} />
 
-                            <div>
-                                <ScreenLike ref={this.refScreenLike} />
-                            </div>
+                            <ScreenLike ref={this.refScreenLike} />
 
-                            <div>
-                                <ScreenPermission
-                                    ref={this.refScreenPermission}
-                                />
-                            </div>
+                            <ScreenPermission ref={this.refScreenPermission} />
 
-                            <div>
-                                <ScreenConfirm ref={this.refScreenConfirm} />
-                            </div>
+                            <ScreenConfirm ref={this.refScreenConfirm} />
 
-                            <div>
-                                <ScreenNotice ref={this.refScreenNotice} />
-                            </div>
+                            <ScreenNotice ref={this.refScreenNotice} />
 
-                            <div>
-                                <ScreenBlurFetching
-                                    ref={this.refScreenFetching}
-                                />
-                            </div>
+                            <ScreenBlurFetching ref={this.refScreenFetching} />
 
                             {/* fix */}
-                            <div>
-                                <ZoomVidPics ref={this.refZoom} />
-                            </div>
+
+                            <ZoomVidPics ref={this.refZoom} />
 
                             <div className="AppNatureDrop">
                                 <NatureDropMain ref={this.refNatureDropMain} />

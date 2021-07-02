@@ -38,9 +38,6 @@ function ProfileFriend() {
     const { friend_arr, count_friend, has_fetched, is_fetching } = friend_obj;
 
     //
-    ;
-
-    //
     const mounted = useMounted();
 
     //

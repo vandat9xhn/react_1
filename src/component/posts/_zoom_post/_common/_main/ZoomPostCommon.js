@@ -1,16 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-//
-import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
 //
 import ScreenTitle from '../../../../_screen_fixed/title/ScreenTitle';
-import ContentMore from '../../../../content_more/Content_more';
-import PictureName from '../../../../picture_name/pic_name/PictureName';
-import ListUniqueLike from '../../../../like/List_unique_like/_main/ListUniqueLike';
 //
 import ZoomPostCommonLeft from '../common_left/ZoomPostCommonLeft';
+import ZoomPostCommonRight from '../right/ZoomPostCommonRight';
 //
 import './ZoomPostCommon.scss';
 
@@ -45,15 +41,7 @@ function ZoomPostCommon({
     is_fetching,
 }) {
     //
-    const { openScreenLike } = useContext(context_api);
-
-    //
     useMakeBodyHidden();
-
-    //
-    function onOpenDetailLike(type_like) {
-        openScreenLike(on_API_Like_L, type_like);
-    }
 
     //
     return (
@@ -85,46 +73,20 @@ function ZoomPostCommon({
 
                     {!is_fetching ? (
                         <div className="ZoomPostCommon_right">
-                            <div className="ZoomPostCommon_right-contain scroll-thin">
-                                <div className="ZoomPostCommon_right-head">
-                                    <div>
-                                        <PictureName
-                                            user={user}
-                                            content={new Date(
-                                                updated_time
-                                            ).toLocaleString()}
-                                        />
-                                    </div>
-
-                                    <div className="ZoomPostCommon_actions">
-                                        {action_component}
-                                    </div>
-
-                                    <div>
-                                        <ContentMore
-                                            content_obj={content_obj}
-                                            seeMoreContent={seeMoreContent}
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <ListUniqueLike
-                                            count_like={count_like}
-                                            arr_unique_like={arr_unique_like}
-                                            on_API_Like_L={on_API_Like_L}
-                                            onOpenDetailLike={onOpenDetailLike}
-                                            //
-                                            use_transform_x={false}
-                                        />
-                                    </div>
-
-                                    <div>{like_share_cmt_component}</div>
-                                </div>
-
-                                <div className="ZoomPostCommon_right-cmt">
-                                    {comment_component}
-                                </div>
-                            </div>
+                            <ZoomPostCommonRight
+                                user={user}
+                                updated_time={updated_time}
+                                content_obj={content_obj}
+                                seeMoreContent={seeMoreContent}
+                                count_like={count_like}
+                                arr_unique_like={arr_unique_like}
+                                on_API_Like_L={on_API_Like_L}
+                                action_component={action_component}
+                                like_share_cmt_component={
+                                    like_share_cmt_component
+                                }
+                                comment_component={comment_component}
+                            />
                         </div>
                     ) : (
                         <div></div>

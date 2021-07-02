@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { node } from 'prop-types';
 //
 import ListTypeLike from '../../like/list_type_like/_main/ListTypeLike';
+//
+import {
+    funcHandleBeforeOpen,
+    funcHandleScrollDiff,
+} from '../__func/scroll_elm';
 //
 import DivFix from '../_main/DivFix';
 //
@@ -13,6 +18,11 @@ const initial_div_fix_state = {
     left: '0%',
     transform_x: 0,
     transform_y: 0,
+
+    scroll_elm: null,
+    scroll_x_diff: 0,
+    scroll_y_diff: 0,
+
     icon_small: false,
 
     open_div_fix: false,
@@ -28,24 +38,42 @@ class DivFixLike extends Component {
     };
 
     //
+    handleScrollDiff = (e) => {
+        funcHandleScrollDiff(this, e);
+    };
+
+    //
+    handleBeforeOpen = (scroll_elm) => {
+        funcHandleBeforeOpen(this, scroll_elm);
+    };
+
+    //
     openDivFixLike = ({
         top,
         left,
         transform_x,
         transform_y,
 
+        scroll_elm,
         icon_small,
 
         onMouseLeave,
         onMouseEnter,
         chooseListTypeLike,
     }) => {
+        this.handleBeforeOpen(scroll_elm);
+
         this.setState({
             top: top,
             left: left,
             transform_x: transform_x,
             transform_y: transform_y,
+
             icon_small: icon_small,
+
+            scroll_elm: scroll_elm,
+            scroll_x_diff: 0,
+            scroll_y_diff: 0,
 
             open_div_fix: true,
             onMouseLeave: onMouseLeave,
@@ -56,9 +84,15 @@ class DivFixLike extends Component {
 
     //
     closeDivFixLike = () => {
-        this.setState({
-            ...initial_div_fix_state,
-        });
+        this.state.open_div_fix &&
+            this.setState({
+                ...initial_div_fix_state,
+            });
+    };
+
+    //
+    closeDivFix = () => {
+        this.closeDivFixLike();
     };
 
     //
@@ -69,6 +103,10 @@ class DivFixLike extends Component {
             left,
             transform_x,
             transform_y,
+
+            scroll_elm,
+            scroll_x_diff,
+            scroll_y_diff,
             icon_small,
 
             open_div_fix,
@@ -95,8 +133,15 @@ class DivFixLike extends Component {
                     left={left}
                     transform_x={transform_x}
                     transform_y={transform_y}
-                    position_class="position-abs"
-                    closeDivFix={this.closeDivFixLike}
+                    //
+                    scroll_elm={scroll_elm}
+                    scroll_x_diff={scroll_x_diff}
+                    scroll_y_diff={scroll_y_diff}
+                    //
+                    position_class={`position-abs`}
+                    //
+                    handleScrollDiff={this.handleScrollDiff}
+                    closeDivFix={this.closeDivFix}
                 >
                     <div
                         className={`DivFixLike_like ${

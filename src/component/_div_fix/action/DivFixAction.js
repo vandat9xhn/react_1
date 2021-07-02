@@ -74,7 +74,7 @@ class DivFixAction extends Component {
         if (this.state.open_div_fix) {
             if (ref_action_elm == this.state.ref_action_elm) {
                 this.closeDivFixAction();
-                
+
                 return;
             }
         }
@@ -95,9 +95,10 @@ class DivFixAction extends Component {
 
     //
     closeDivFixAction = () => {
-        this.setState({
-            ...initial_div_fix_state,
-        });
+        this.state.open_div_fix &&
+            this.setState({
+                ...initial_div_fix_state,
+            });
     };
 
     //
@@ -136,7 +137,7 @@ class DivFixAction extends Component {
                         right={right}
                         transform_x={transform_x}
                         transform_y={transform_y}
-                        position_class="position-abs"
+                        position_class={`position-abs`}
                         closeDivFix={this.closeDivFixAction}
                         is_mobile={is_mobile}
                     >

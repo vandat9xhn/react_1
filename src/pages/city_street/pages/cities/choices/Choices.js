@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { is_api_fake } from '../../../../../api/_ConstAPI';
 // 
-import Actions from '../../../../../component/actions/_main/Actions';
+import ActionsNormal from '../../../../../component/actions/_main/ActionsNormal';
 import ActionHistory from '../../../../../component/actions/common_actions/history/ActionHistory';
 import ActionUpdate from '../../../../../component/actions/common_actions/update/ActionUpdate';
 import ActionDelete from '../../../../../component/actions/common_actions/delete/ActionDelete';
@@ -29,9 +29,10 @@ function Choices({
     openDelete,
     openReport,
 }) {
+    
     //
     return (
-        <Actions>
+        <ActionsNormal>
             <ul className="Choices_list list-none">
                 <li className={`${count_his || is_api_fake ? '' : 'display-none'}`}>
                     <ActionHistory handleOpenHistory={openHistory} />
@@ -61,7 +62,7 @@ function Choices({
                     <ActionDelete handleDelete={openDelete} />
                 </li>
             </ul>
-        </Actions>
+        </ActionsNormal>
     );
 }
 

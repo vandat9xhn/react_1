@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
+import { usePositionXY } from '../../../../../_hooks/usePositionXY';
+// 
 import {
     API_NoticeCountNew_R,
     API_Notice_L,
@@ -15,7 +17,6 @@ import BadgeDiv from '../../../../some_div/badge_div/BadgeDiv';
 import ListNotices from '../list/_main/ListNotices';
 //
 import './HeaderNotice.scss';
-import { useAppearancePosition } from '../../../../../_hooks/useAppearancePosition';
 
 //
 HeaderNotice.propTypes = {};
@@ -24,7 +25,7 @@ HeaderNotice.propTypes = {};
 function HeaderNotice({}) {
     //
     const ref_child_elm = useRef(null);
-    const ref_parent_elm = useRef(null);
+    const ref_btn_elm = useRef(null);
 
     //
     const {
@@ -33,9 +34,9 @@ function HeaderNotice({}) {
 
         position_state: notice_state,
         setPositionState: setNoticeState,
-    } = useAppearancePosition({
+    } = usePositionXY({
         ref_child_elm: ref_child_elm,
-        ref_parent_elm: ref_parent_elm,
+        ref_btn_elm: ref_btn_elm,
         other_state: {
             notices: [],
             count: 0,
@@ -49,6 +50,7 @@ function HeaderNotice({}) {
 
     const {
         is_open,
+        position_x,
         transform_x,
 
         notices,
@@ -188,7 +190,7 @@ function HeaderNotice({}) {
     return (
         <CloseDiv makeDivHidden={makeDivHidden}>
             <div
-                ref={ref_parent_elm}
+                ref={ref_btn_elm}
                 className={`header_menu Header_notice ${
                     is_open ? 'nav-active bottom-blue' : ''
                 }`}
@@ -208,11 +210,11 @@ function HeaderNotice({}) {
                 <div
                     className={`header-hidden-position header_hidden left-50per ${
                         is_open ? 'visibility-visible' : 'visibility-hidden'
-                    }
-                    ${has_fetched ? '' : 'pointer-events-none'}
-                    `}
+                    } ${position_x} ${
+                        has_fetched ? '' : 'pointer-events-none'
+                    }`}
                     style={{
-                        transform: `translateX(-50%) translateX(${transform_x}px)`,
+                        transform: `translateX(${transform_x}px)`,
                     }}
                     onClick={hasReceivedNotices}
                 >
