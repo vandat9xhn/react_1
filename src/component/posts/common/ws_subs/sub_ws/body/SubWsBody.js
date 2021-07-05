@@ -2,22 +2,24 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
+//
 import { VideoOrImage } from '../../../../../../_some_function/VideoOrImage';
 //
-import ContentMore from '../../../../../content_more/Content_more';
+import { openScreenVidPic } from '../../../../../_screen/type/vid_pics/_main/ZoomVidPics';
 
 //
 SubWsBody.propTypes = {};
 
 //
-function SubWsBody(props) {
-    const { vid_pic } = props;
-
+function SubWsBody({ vid_pic }) {
     //
-    const { openZoomVidPics } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
     //
     function handleZoomVidPicCmt() {
-        openZoomVidPics([{ vid_pic: vid_pic }]);
+        openScreenVidPic({
+            openScreenFloor: openScreenFloor,
+            urls: [{ vid_pic: vid_pic }],
+        });
     }
 
     //

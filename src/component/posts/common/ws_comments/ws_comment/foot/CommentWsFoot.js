@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
-import { context_post } from '../../../../__context_post/ContextPost';
 import { context_api } from '../../../../../../_context/ContextAPI';
+//
 import UnitTime from '../../../../../../_some_function/UnitTime';
+//
+import { openScreenLike } from '../../../../../_screen/type/like/_main/ScreenLike';
+//
+import { context_post } from '../../../../__context_post/ContextPost';
 //
 import ListUniqueLike from '../../../../../like/List_unique_like/_main/ListUniqueLike';
 import Like from '../../../../../like/_main/Like';
@@ -27,11 +31,15 @@ function CommentWsFoot({
     //
     const { handle_API_LikeCmt_L } = useContext(context_post);
 
-    const { openScreenLike } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
 
     //
     function onOpenScreenLike(type_like) {
-        openScreenLike(on_API_LikeCmt_L, type_like);
+        openScreenLike({
+            openScreenFloor: openScreenFloor,
+            handle_API_Like_L: on_API_LikeCmt_L,
+            type_like: type_like,
+        });
     }
 
     //

@@ -135,7 +135,7 @@ function Registration(props) {
         try {
             const res = await handleScreenFetching(
                 () => SignupRequest(formData),
-                FetchingDiv
+                <FetchingDiv is_fetching={true} />
             );
             const data = res.data;
 

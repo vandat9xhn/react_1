@@ -9,14 +9,14 @@ import './VidPicUpdate.scss';
 VidPicUpdate.propTypes = {};
 
 //
-function VidPicUpdate({ content, handleUpdate, handleHasChange }) {
+function VidPicUpdate({ content, handleUpdate, detectHasChange }) {
     //
     const [new_content, setNewContent] = useState(content);
 
     //
     function handleChange(value) {
         setNewContent(value);
-        handleHasChange(value == content);
+        detectHasChange(value == content);
     }
 
     //

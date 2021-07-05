@@ -13,6 +13,10 @@ import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 import { getIndexNextPrevArr } from '../../../../../_some_function/getIndexNextPrevArr';
 //
+import { openScreenConfirm } from '../../../../_screen/type/confirm/ScreenConfirm';
+import { openScreenHistory } from '../../../../_screen/type/history/ScreenHistory';
+import { openScreenUpdate } from '../../../../_screen/type/update/_main/ScreenUpdate';
+//
 import ContextPost from '../../../__context_post/ContextPost';
 //
 import {
@@ -69,12 +73,8 @@ function ZoomVidPicItem({
     //
     const {
         user: c_user,
-        openScreenConfirm,
-        openScreenHistory,
-        openScreenUpdate,
-
-        hasChangeScreenUpdate,
-        closeScreenUpdate,
+        openScreenFloor,
+        closeScreenFloor,
     } = useContext(context_api);
 
     //
@@ -275,11 +275,13 @@ function ZoomVidPicItem({
 
     //
     function openHistoryVidPic() {
-        openScreenHistory(
-            'Update',
-            handle_API_PostVidPicHistory_L,
-            VidPicHistory
-        );
+        openScreenHistory({
+            openScreenFloor: openScreenFloor,
+
+            title: 'History',
+            handle_API_History_L: handle_API_PostVidPicHistory_L,
+            HisComponent: VidPicHistory,
+        });
     }
 
     //
@@ -290,25 +292,35 @@ function ZoomVidPicItem({
               )
             : '';
 
-        openScreenUpdate('Update', VidPicUpdate, {
+        openScreenUpdate({
+            openScreenFloor: openScreenFloor,
+
+            title: 'Update',
+            UpdateComponent: VidPicUpdate,
+
             content: content_obj.content + content_more,
             handleUpdate: handleUpdate,
-            handleHasChange: hasChangeScreenUpdate,
         });
     }
 
     //
     function openDeleteVidPic() {
-        openScreenConfirm(
-            'Delete',
-            'Do you really want to delete this',
-            handleDelete
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Delete',
+            notification: 'Do you really want to delete this',
+            handleConfirm: handleDelete,
+        });
     }
 
     //
     function openReportVidPic() {
-        openScreenConfirm('Delete', 'Do you report this', handleReport);
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Report',
+            notification: 'Do you report this',
+            handleConfirm: handleReport,
+        });
     }
 
     /*------------- HANDLE ACTIONS -------------*/
@@ -325,7 +337,7 @@ function ZoomVidPicItem({
 
         forceUpdate();
 
-        closeScreenUpdate();
+        closeScreenFloor();
     }
 
     //

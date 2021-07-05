@@ -10,6 +10,8 @@ import TestSearchAnimate from '../test_search_animate/TestSearchAnimate';
 import FbLogin from '../fb/test_login/FbLogin';
 import LearnSelectColorBg from '../color_bg/LearnSelectColorBg';
 import LearnAppearancePosition from '../appearance_position/LearnAppearancePosition';
+import LearnScreen from '../screen/LearnScreen';
+import LearnWaitingToken from '../waiting_token/LearnWaitingToken';
 
 //
 LearnHTML.propTypes = {
@@ -117,6 +119,14 @@ function LearnHTML() {
             {/* <FbLogin /> */}
 
             <LearnSelectColorBg />
+
+            <div>
+                <LearnScreen />
+            </div>
+
+            <div>
+                <LearnWaitingToken />
+            </div>
 
             <br /><br /><br /><br /><br />
             

@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import { context_api } from '../../../../../../_context/ContextAPI';
+//
 import { VideoOrImage } from '../../../../../../_some_function/VideoOrImage';
+//
+import { openScreenVidPic } from '../../../../../_screen/type/vid_pics/_main/ZoomVidPics';
 
 //
 CommentWsBody.propTypes = {
@@ -10,20 +13,18 @@ CommentWsBody.propTypes = {
 };
 CommentWsBody.defaultProps = {
     vid_pic: '',
-}
+};
 
 //
-function CommentWsBody(props) {
-    const {
-        vid_pic,
-        type,
-    } = props;
-
+function CommentWsBody({ vid_pic, type }) {
     //
-    const { openZoomVidPics } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
     //
     function handleZoomVidPicCmt() {
-        openZoomVidPics([{vid_pic: vid_pic}]);
+        openScreenVidPic({
+            openScreenFloor: openScreenFloor,
+            urls: [{ vid_pic: vid_pic }],
+        });
     }
 
     //

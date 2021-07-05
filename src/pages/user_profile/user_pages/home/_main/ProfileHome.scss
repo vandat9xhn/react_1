@@ -1,11 +1,17 @@
 
 // .
-.ProfileHome_col-left{
+.ProfileHome_left{
     width: 360px;
     margin-right: 1rem;
 }
+// ..
+.ProfileHome_left-preview{
+    position: sticky;
+    top: 0;
+}
+
 // .
-.ProfileHome_col-right {
+.ProfileHome_right {
     width: 500px;
     max-width: 100%;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
@@ -41,13 +41,21 @@ function ZoomPostCommon({
     is_fetching,
 }) {
     //
-    useMakeBodyHidden();
+    useMakeBodyHidden({
+        hidden_scroll: true,
+        hidden_app: show_screen_title,
+        hidden_header: !show_screen_title,
+    });
 
     //
     return (
-        <div className="ZoomPostCommon">
+        <div
+            className={`ZoomPostCommon ${
+                show_screen_title ? '' : 'ZoomPostCommon_fixed'
+            }`}
+        >
             <div className="ZoomPostCommon_contain">
-                <div className="ZoomPostCommon_row">
+                <div className="ZoomPostCommon_row display-flex h-100per">
                     <div className="ZoomPostCommon_left bg-loader position-rel">
                         {show_screen_title && (
                             <div className="ZoomPostCommon_title">

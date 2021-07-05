@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../_context/ContextAPI';
 //
+import { openScreenPermission } from '../../_screen/type/permission/_main/ScreenPermission';
+// 
 import IconsEdit from '../../../_icons_svg/icons_edit/IconsEdit';
 import PermissionDiv from '../permission_div/PermissionDiv';
 //
@@ -18,22 +20,23 @@ PermissionEditDiv.propTypes = {
 };
 
 //
-function PermissionEditDiv(props) {
-    //
-    const { openScreenPermission } = useContext(context_api);
+function PermissionEditDiv({
+    permission,
+    is_editing,
 
+    handleChoosePermission,
+    toggleEdit,
+}) {
     //
-    const {
-        permission,
-        is_editing,
-
-        handleChoosePermission,
-        toggleEdit,
-    } = props;
+    const { openScreenFloor } = useContext(context_api);
 
     //
     function handlePermission() {
-        openScreenPermission(permission, handleChoosePermission);
+        openScreenPermission({
+            openScreenFloor: openScreenFloor,
+            permission: permission,
+            handleChoosePermission: handleChoosePermission,
+        });
     }
 
     //
@@ -41,7 +44,9 @@ function PermissionEditDiv(props) {
         <div>
             <div className="display-flex align-item-center">
                 <div
-                    className={`PermissionEditDiv_left ${is_editing ? 'display-none' : ''}`}
+                    className={`PermissionEditDiv_left ${
+                        is_editing ? 'display-none' : ''
+                    }`}
                     onClick={handlePermission}
                     title="Change permission"
                 >
@@ -51,9 +56,7 @@ function PermissionEditDiv(props) {
                     />
                 </div>
 
-                <div
-                    className="display-flex-center"
-                >
+                <div className="display-flex-center">
                     <div
                         className="PermissionEditDiv_right-icon display-flex-center brs-50 cursor-pointer hv-bg-blur"
                         onClick={toggleEdit}

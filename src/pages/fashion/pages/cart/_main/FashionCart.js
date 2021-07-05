@@ -14,6 +14,8 @@ import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 //
 import makeFormData from '../../../../../_some_function/makeFormData';
 //
+import { openScreenConfirm } from '../../../../../component/_screen/type/confirm/ScreenConfirm';
+// 
 import CircleLoading from '../../../../../component/waiting/circle_loading/CircleLoading';
 import NoItemHasFetched from '../../../../../component/some_div/no_item/NoItemHasFetched';
 //
@@ -33,7 +35,7 @@ import './FashionCartRes.scss';
 //
 function FashionCart(props) {
     //
-    const { openScreenConfirm } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
 
     //
     const { count_cart } = useSelector((state) => state.count_cart_obj);
@@ -148,11 +150,15 @@ function FashionCart(props) {
 
     //
     function openConfirmDel() {
-        openScreenConfirm(
-            'Delete',
-            'Do you want to remove this product from cart?',
-            handleDeleteCart
-        );
+        
+
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Delete',
+            notification: 'Do you want to remove this product from cart?',
+            handleConfirm: handleDeleteCart,
+        })
+        
     }
 
     //

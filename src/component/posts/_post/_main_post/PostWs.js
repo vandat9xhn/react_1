@@ -9,6 +9,11 @@ import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
 import PictureName from '../../../picture_name/pic_name/PictureName';
 import ContentMore from '../../../content_more/Content_more';
 //
+import { openScreenConfirm } from '../../../_screen/type/confirm/ScreenConfirm';
+import { openScreenHistory } from '../../../_screen/type/history/ScreenHistory';
+import { openScreenPermission } from '../../../_screen/type/permission/_main/ScreenPermission';
+import { openScreenUpdate } from '../../../_screen/type/update/_main/ScreenUpdate';
+//
 import { context_post } from '../../__context_post/ContextPost';
 //
 import {
@@ -49,13 +54,8 @@ function Post({
     //
     const {
         user: c_user,
-        openScreenConfirm,
-        openScreenHistory,
-        openScreenUpdate,
-        openScreenPermission,
-
-        hasChangeScreenUpdate,
-        closeScreenUpdate,
+        openScreenFloor,
+        closeScreenFloor,
     } = useContext(context_api);
 
     const { handle_API_Cmt_L } = useContext(context_post);
@@ -101,8 +101,15 @@ function Post({
 
     //
     function openHistoryPost() {
-        openScreenHistory('History', on_API_History_L, PostHistory, {
-            handle_API_MoreContent: handle_API_ContentMoreHistory_R,
+        openScreenHistory({
+            openScreenFloor: openScreenFloor,
+
+            title: 'History',
+            handle_API_History_L: on_API_History_L,
+            HisComponent: PostHistory,
+            data_his: {
+                handle_API_MoreContent: handle_API_ContentMoreHistory_R,
+            },
         });
     }
     //
@@ -118,37 +125,45 @@ function Post({
             type: item.vid_pic.endsWith('./mp4') ? 'video' : 'image',
         }));
 
-        openScreenUpdate('Update', CUPost, {
+        openScreenUpdate({
+            openScreenFloor: openScreenFloor,
+
+            title: 'Update',
+            UpdateComponent: CUPost,
+
             main_content: data.content,
             vid_pics: vid_pics_update,
-
-            title_action: 'Update',
-            handleCheckHasChange: hasChangeScreenUpdate,
             handleCUPost: handleUpdate,
         });
     }
 
     //
     function openDeletePost() {
-        openScreenConfirm(
-            'Delete',
-            'Do you really want to delete this post?',
-            handleDelete
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Delete',
+            notification: 'Do you really want to delete this post?',
+            handleConfirm: handleDelete,
+        });
     }
 
     //
     function openReportPost() {
-        openScreenConfirm(
-            'Report',
-            'Do you want to report this post?',
-            handleReport
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Report',
+            notification: 'Do you want to report this post?',
+            handleConfirm: handleReport,
+        });
     }
 
     //
     function openPermissionPost() {
-        openScreenPermission(permission_post, handleChoosePermission);
+        openScreenPermission({
+            openScreenFloor: openScreenFloor,
+            permission: permission_post,
+            handleChoosePermission: handleChoosePermission,
+        });
     }
 
     /* --------------- ON HANDLE ACTIONS ---------------- */
@@ -165,12 +180,12 @@ function Post({
         );
         // Do something and force_update
         content_obj.content = data_update.main_content;
-        content_obj.content_more = ''
+        content_obj.content_more = '';
         content_obj.has_more_content = false;
         post.vid_pics = data_update.c_vid_pics;
         forceUpdate();
 
-        closeScreenUpdate(true);
+        closeScreenFloor();
         console.log(data_update);
     }
 

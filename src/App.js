@@ -41,6 +41,7 @@ import ScreenLike from './component/_screen_post/like/_main/ScreenLike';
 import ScreenPermission from './component/_screen_post/permission/_main/ScreenPermission';
 import ScreenBlurFetching from './component/_screen_blur/fetching/_main/ScreenBlurFetching';
 import ScreenNotice from './component/_screen_blur/notice/ScreenNotice';
+import AppScreen from './component/_screen/_main/AppScreen';
 
 // App
 class App extends Component {
@@ -157,6 +158,15 @@ class App extends Component {
         }
     };
 
+    //
+    refAppScreen = (elm) => {
+        if (elm != null) {
+            this.openScreenFloor = elm.openScreenFloor;
+            this.closeScreenFloor = elm.closeScreenFloor;
+        }
+    };
+
+    //
     handleRefresh = () => {
         this.setState({});
     };
@@ -171,12 +181,14 @@ class App extends Component {
                         //
                         openMessage={this.openMessage}
                         resetChat={this.resetChat}
+                        //
                         openDivFixLike={this.openDivFixLike}
                         closeDivFixLike={this.closeDivFixLike}
                         openDivFixPeople={this.openDivFixPeople}
                         closeDivFixPeople={this.closeDivFixPeople}
                         openDivFixAction={this.openDivFixAction}
                         closeDivFixAction={this.closeDivFixAction}
+                        //
                         openZoomVidPics={this.openZoomVidPics}
                         toggleCanvasFixed={this.toggleCanvasFixed}
                         toggleSnowFlower={this.toggleSnowFlower}
@@ -195,6 +207,9 @@ class App extends Component {
                         closeScreenUpdate={this.closeScreenUpdate}
                         closeScreenNotice={this.closeScreenNotice}
                         closeScreenFetching={this.closeScreenFetching}
+                        //
+                        openScreenFloor={this.openScreenFloor}
+                        closeScreenFloor={this.closeScreenFloor}
                     >
                         <div className="App">
                             <div className="App_contain">
@@ -226,23 +241,25 @@ class App extends Component {
                                     <Footer />
                                 </footer>
                             </div>
+
+                            <BackTop />
+
+                            <Chat ref={this.refChat} />
+                        </div>
+                        
+                        <div>
+                            <DivFixLike ref={this.refFixLike} />
+
+                            <DivFixPeople ref={this.refFixPeople} />
+
+                            <DivFixAction ref={this.refFixAction} />
                         </div>
 
-                        <BackTop />
-
-                        <Chat ref={this.refChat} />
-
-                        <DivFixLike ref={this.refFixLike} />
-
-                        <DivFixPeople ref={this.refFixPeople} />
-
-                        <DivFixAction ref={this.refFixAction} />
-
                         <div>
-                            <CanvasFixed ref={this.refCanvas} />
+                            {/* <CanvasFixed ref={this.refCanvas} /> */}
 
                             {/* screen */}
-                            <ScreenHistory ref={this.refScreenHistory} />
+                            {/* <ScreenHistory ref={this.refScreenHistory} />
 
                             <ScreenShare ref={this.refScreenShare} />
 
@@ -256,15 +273,18 @@ class App extends Component {
 
                             <ScreenNotice ref={this.refScreenNotice} />
 
-                            <ScreenBlurFetching ref={this.refScreenFetching} />
+                            <ScreenBlurFetching ref={this.refScreenFetching} /> */}
 
                             {/* fix */}
+                            {/* <ZoomVidPics ref={this.refZoom} /> */}
+                        </div>
 
-                            <ZoomVidPics ref={this.refZoom} />
+                        <div className="AppNatureDrop">
+                            <NatureDropMain ref={this.refNatureDropMain} />
+                        </div>
 
-                            <div className="AppNatureDrop">
-                                <NatureDropMain ref={this.refNatureDropMain} />
-                            </div>
+                        <div>
+                            <AppScreen ref={this.refAppScreen} />
                         </div>
                     </ContextAPI>
                 </BrowserRouter>

@@ -16,7 +16,7 @@ export const useScrollDown = ({
     thresh_hold = 0.7,
     elm = window,
 }) => {
-    // state
+    //
     const [data_state, setDataState] = useState({
         data_arr: initial_data_arr,
         count: 0,
@@ -24,8 +24,7 @@ export const useScrollDown = ({
         has_fetched: false,
     });
 
-    // ref
-    ;
+    //
     const pos = useRef(0);
     const is_max = useRef(false);
     const just_fetching = useRef(true);
@@ -34,9 +33,9 @@ export const useScrollDown = ({
     //
     const mounted = useMounted();
 
-    /*---------------------------- GET API ---------------------------------*/
+    /*--------- GET API ---------*/
 
-    // get post
+    //
     async function getData_API(start_obj_state = {}) {
         try {
             setDataState((data_state) => ({
@@ -72,7 +71,7 @@ export const useScrollDown = ({
         }
     }
 
-    /* --------------------------------------------- */
+    /* -------------------- */
 
     //
     function handleGetMoreData() {
@@ -84,6 +83,10 @@ export const useScrollDown = ({
     //
     function handleScroll() {
         if (data_count.current == 0) {
+            return;
+        }
+
+        if (document.getElementsByTagName('body')[0].dataset.countHidden) {
             return;
         }
 

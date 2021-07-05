@@ -13,18 +13,21 @@ ProfileHome.propTypes = {
 };
 
 //
-function ProfileHome({name}) {
-
+function ProfileHome({ name }) {
     //
     return (
         <div className="ProfileHome">
             <div className="ProfileHome_row display-flex justify-content-center">
-                <div className="ProfileHome_col-left">
-                    <ProfilePreview />
+                <div className="ProfileHome_left position-rel">
+                    <div style={{ height: '0px' }}></div>
+
+                    <div className="ProfileHome_left-preview">
+                        <ProfilePreview />
+                    </div>
                 </div>
 
-                <div className="ProfileHome_col-right">
-                    <ProfilePosts name={name}/>
+                <div className="ProfileHome_right">
+                    <ProfilePosts name={name} />
                 </div>
             </div>
         </div>

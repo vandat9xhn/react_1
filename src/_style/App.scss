@@ -1,7 +1,7 @@
 /* html */
 // html {
-    // scroll-behavior: smooth;
-    // overflow-y: scroll !important;
+// scroll-behavior: smooth;
+// overflow-y: scroll !important;
 // }
 
 *,
@@ -25,17 +25,35 @@ body {
     color: var(--md-color);
 
     &[data-count-hidden] {
-        overflow-y: hidden;
-        &::-webkit-scrollbar{
-            background-color: var(--bg-through);
+        .App {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            z-index: -1;
+
+            &::-webkit-scrollbar {
+                width: 0;
+            }
         }
     }
 
-    &.device-mobile[data-count-hidden]{
+    &[data-hidden-scroll] {
         overflow-y: hidden;
     }
-}
 
+    &[data-hidden-app] {
+        .App {
+            display: none;
+        }
+    }
+
+    &[data-hidden-header] {
+        .AppHeader {
+            display: none;
+        }
+    }
+}
 
 svg {
     overflow: hidden;

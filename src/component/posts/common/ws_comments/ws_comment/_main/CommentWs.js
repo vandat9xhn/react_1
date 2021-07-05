@@ -4,16 +4,20 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_post } from '../../../../__context_post/ContextPost';
-// 
+//
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 //
-import SubsWs from '../../../ws_subs/_main/SubsWs';
+import { openScreenConfirm } from '../../../../../_screen/type/confirm/ScreenConfirm';
+import { openScreenHistory } from '../../../../../_screen/type/history/ScreenHistory';
+import { openScreenUpdate } from '../../../../../_screen/type/update/_main/ScreenUpdate';
+//
 import CommentWsFoot from '../foot/CommentWsFoot';
 import CommentWsHead from '../head/CommentWsHead';
 import CommentWsBody from '../body/CommentWsBody';
 import CmtSubUpdate from '../../../ws_actions/update_component/_main/CmtSubUpdate';
 import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
+import SubsWs from '../../../ws_subs/_main/SubsWs';
 //
 import './CommentWs.scss';
 
@@ -26,11 +30,8 @@ function CommentWs({ comment, is_poster }) {
     const {
         user: c_user,
 
-        openScreenConfirm,
-        openScreenHistory,
-        openScreenUpdate,
-
-        closeScreenUpdate,
+        openScreenFloor,
+        closeScreenFloor,
 
         hasChangeScreenUpdate,
     } = useContext(context_api);
@@ -107,8 +108,12 @@ function CommentWs({ comment, is_poster }) {
 
     //
     function openHistoryCmt() {
-        openScreenHistory('History', on_API_HistoryCmt_L, CmtSubHistory, {
-            handle_API_MoreContent: handle_API_MoreContentHisCmt_R,
+        openScreenHistory({
+            openScreenFloor: openScreenFloor,
+
+            title: 'History',
+            handle_API_History_L: on_API_HistoryCmt_L,
+            HisComponent: CmtSubHistory,
         });
     }
 
@@ -118,7 +123,12 @@ function CommentWs({ comment, is_poster }) {
             ? await handleScreenFetching(() => handle_API_MoreContentCmt_R(id))
             : content_obj.content;
 
-        openScreenUpdate('Update', CmtSubUpdate, {
+        openScreenUpdate({
+            openScreenFloor: openScreenFloor,
+        
+            title: 'Update',
+            UpdateComponent: CmtSubUpdate,
+
             text: content,
             vid_pic: vid_pic,
             handleUpdate: handleUpdate,
@@ -128,20 +138,22 @@ function CommentWs({ comment, is_poster }) {
 
     //
     function openDeleteCmt() {
-        openScreenConfirm(
-            'Delete',
-            'Do you really want to delete this post?',
-            handleDelete
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Delete',
+            notification: 'Do you really want to delete this post?',
+            handleConfirm: handleDelete,
+        });
     }
 
     //
     function openReportCmt() {
-        openScreenConfirm(
-            'Report',
-            'Do you want to report this post?',
-            handleReport
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Report',
+            notification: 'Do you want to report this post?',
+            handleConfirm: handleReport,
+        });
     }
 
     /* --------------- ON HANDLE ACTIONS ---------------- */
@@ -153,8 +165,8 @@ function CommentWs({ comment, is_poster }) {
 
     //
     async function handleUpdate(data) {
-        await handleScreenFetching(() => handle_API_Cmt_U(id, data_update))
-        
+        await handleScreenFetching(() => handle_API_Cmt_U(id, data_update));
+
         const { new_text, file, url, type } = data;
 
         const data_update = {
@@ -164,12 +176,12 @@ function CommentWs({ comment, is_poster }) {
         if ((!file && !url) || file) {
             data_update['file'] = file;
         }
-        
+
         content_obj.content = new_text;
         comment.vid_pic = url;
 
         forceUpdate();
-        closeScreenUpdate(true);
+        closeScreenFloor();
     }
     //
     function handleDelete() {

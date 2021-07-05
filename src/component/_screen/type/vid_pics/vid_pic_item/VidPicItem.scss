@@ -1,0 +1,11 @@
+
+//
+.VidPicItem_item{
+    margin: 0.5rem;
+    img, video{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+}

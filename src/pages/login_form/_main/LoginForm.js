@@ -78,7 +78,7 @@ function LoginForm() {
 
         const res = await handleScreenFetching(
             () => LoginRequest(formData),
-            LoginFetching
+            <LoginFetching is_fetching={true} />
         );
 
         if (res.data == 'wrong') {

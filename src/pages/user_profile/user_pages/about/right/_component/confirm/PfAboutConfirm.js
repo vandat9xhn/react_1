@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../../_context/ContextAPI';
 //
+import { openScreenPermission } from '../../../../../../../component/_screen/type/permission/_main/ScreenPermission';
+//
 import PermissionDiv from '../../../../../../../component/some_div/permission_div/PermissionDiv';
 //
 import './PfAboutConfirm.scss';
@@ -16,16 +18,18 @@ PfAboutConfirm.propTypes = {
 
 //
 function PfAboutConfirm({ permission, handleCancel, handleSave }) {
-    const { openScreenPermission } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
 
     //
     const [cur_permission, setCurPermission] = useState(permission);
 
     //
     function onChangePermission() {
-        openScreenPermission(cur_permission, (new_permission) =>
-            setCurPermission(new_permission)
-        );
+        openScreenPermission({
+            openScreenFloor: openScreenFloor,
+            permission: cur_permission,
+            handleChoosePermission: setCurPermission,
+        });
     }
 
     //

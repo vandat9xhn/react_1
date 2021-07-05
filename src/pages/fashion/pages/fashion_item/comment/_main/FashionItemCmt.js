@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import observeToDo from '../../../../../../_some_function/observerToDo';
+// 
+import { openScreenVidPic } from '../../../../../../component/_screen/type/vid_pics/_main/ZoomVidPics';
 //
 import Pagination from '../../../../../../component/pagination/_main/Pagination';
-import SkeletonDiv from '../../../../../../component/skeleton/skeleton_div/SkeletonDiv';
 import CommentInput from '../../../../../../component/input_img_vid_preview/comment_input/CommentInput';
 //
 import {
@@ -27,7 +28,7 @@ FashionItemCmt.propTypes = {
 //
 function FashionItemCmt({ id: product_id }) {
     //
-    const { user, openZoomVidPics } = useContext(context_api);
+    const { user, openScreenFloor } = useContext(context_api);
 
     //
     const [cmt_state, setCmtState] = useState({
@@ -113,7 +114,11 @@ function FashionItemCmt({ id: product_id }) {
 
     //
     function zoomVidPics(comments_ix, vid_pic_ix) {
-        openZoomVidPics(cmt_pages_obj[page][comments_ix].vid_pics, vid_pic_ix);
+        openScreenVidPic({
+            openScreenFloor: openScreenFloor,
+            urls: cmt_pages_obj[page][comments_ix].vid_pics,
+            current: vid_pic_ix,
+        })
     }
 
     //

@@ -18,10 +18,11 @@ CmtSubUpdate.propTypes = {
     text: PropTypes.string,
     vid_pic_obj: PropTypes.string,
     handleUpdate: PropTypes.func,
+    detectHasChange: PropTypes.func,
 };
 
 //
-function CmtSubUpdate({ text, vid_pic, handleUpdate, handleHasChange }) {
+function CmtSubUpdate({ text, vid_pic, handleUpdate, detectHasChange }) {
     //
     const [update_state, setUpdateState] = useState({
         new_text: text,
@@ -93,7 +94,7 @@ function CmtSubUpdate({ text, vid_pic, handleUpdate, handleHasChange }) {
 
     //
     const has_change = hasChangeUpdate();
-    handleHasChange(has_change);
+    detectHasChange(has_change);
 
     //
     return (

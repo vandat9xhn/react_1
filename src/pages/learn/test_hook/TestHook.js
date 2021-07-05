@@ -12,13 +12,13 @@ function TestHook(props) {
     const [hold_success, setHoldSuccess] = useState(false);
 
     //
-    const { StartHold, StopHold } = useHold(6, () => {
-        setHoldSuccess(true);
-    });
+    const { StartHold, StopHold } = useHold(500);
 
     //
     function handleMouseDown() {
-        StartHold();
+        StartHold(() => {
+            setHoldSuccess(true);
+        });
     }
     //
     function handleMouseUp() {

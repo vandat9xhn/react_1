@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 //
+import { openScreenLike } from '../../../../_screen/type/like/_main/ScreenLike';
+// 
 import ContentMore from '../../../../content_more/Content_more';
 import PictureName from '../../../../picture_name/pic_name/PictureName';
 import ListUniqueLike from '../../../../like/List_unique_like/_main/ListUniqueLike';
-//
-import DivFixContextConsumer from '../../../../_div_fix/context/DivFixContextConsumer';
 //
 // import './ZoomPostCommonRight.scss';
 
@@ -31,11 +31,15 @@ function ZoomPostCommonRight({
     comment_component,
 }) {
     //
-    const { openScreenLike } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
 
     //
     function onOpenDetailLike(type_like) {
-        openScreenLike(on_API_Like_L, type_like);
+        openScreenLike({
+            openScreenFloor: openScreenFloor,
+            handle_API_Like_L: on_API_Like_L,
+            type_like: type_like,
+        })
     }
 
     //

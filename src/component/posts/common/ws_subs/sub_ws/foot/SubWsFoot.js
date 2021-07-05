@@ -2,37 +2,44 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
-import { context_post } from '../../../../__context_post/ContextPost';
+//
 import UnitTime from '../../../../../../_some_function/UnitTime';
+//
+import { openScreenLike } from '../../../../../_screen/type/like/_main/ScreenLike';
+//
+import { context_post } from '../../../../__context_post/ContextPost';
 //
 import Like from '../../../../../like/_main/Like';
 import ListUniqueLike from '../../../../../like/List_unique_like/_main/ListUniqueLike';
-// 
+//
 // import './SubWsFoot.scss';
 
 //
 SubWsFoot.propTypes = {};
 
 //
-function SubWsFoot(props) {
-    const {
-        id,
-        count_like,
-        likes,
-        user_type_like,
-        updated_time,
+function SubWsFoot({
+    id,
+    count_like,
+    likes,
+    user_type_like,
+    updated_time,
 
-        focusInputSub,
-        changeTypeLike,
-    } = props;
+    focusInputSub,
+    changeTypeLike,
+}) {
     //
-    const { handle_API_LikeSub_L } = useContext(context_post);
+    const { openScreenFloor } = useContext(context_api);
 
-    const { openScreenLike } = useContext(context_api);
+    const { handle_API_LikeSub_L } = useContext(context_post);
 
     //
     function onOpenScreenLike(type_like) {
-        openScreenLike(on_API_LikeSub_L, type_like);
+        openScreenLike({
+            openScreenFloor: openScreenFloor,
+            handle_API_Like_L: on_API_LikeSub_L,
+            type_like: type_like,
+        });
     }
 
     //
@@ -52,10 +59,7 @@ function SubWsFoot(props) {
                     />
                 </div>
 
-                <div
-                    className="CmtSub_reply"
-                    onClick={focusInputSub}
-                >
+                <div className="CmtSub_reply" onClick={focusInputSub}>
                     <div className="SubWsFoot__btn-sub">Reply</div>
                 </div>
 
@@ -63,7 +67,6 @@ function SubWsFoot(props) {
                     <ListUniqueLike
                         count_like={count_like}
                         arr_unique_like={[1, 2, 3]}
-                        
                         on_API_Like_L={on_API_LikeSub_L}
                         onOpenDetailLike={onOpenScreenLike}
                     />

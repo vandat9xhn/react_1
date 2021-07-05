@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../../_context/ContextAPI';
 
 import { API_FashionBuy_LC } from '../../../../../../../api/api_django/fashion/APIFashionToken';
-
+// 
 import { ParseLocationSearch } from '../../../../../../../_some_function/ParseLocationSearch';
+// 
+import { openScreenConfirm } from '../../../../../../../component/_screen/type/confirm/ScreenConfirm';
 //
 import CircleLoading from '../../../../../../../component/waiting/circle_loading/CircleLoading';
 import ScreenBlurShowMore from '../../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
@@ -26,7 +28,7 @@ BillBuying.propTypes = {};
 //
 function BillBuying(props) {
     //
-    const { openScreenConfirm } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
 
     //
     const [buying_state, setBuyingState] = useState({
@@ -198,11 +200,13 @@ function BillBuying(props) {
     //
     function openConFirmCancelBuying(buy_shop_ix, item_ix, item_id) {
         cancel_obj.current = { buy_shop_ix, item_ix, item_id };
-        openScreenConfirm(
-            'Cancel Product',
-            'Do you really want to cancel buying this product?',
-            conFirmCancelBuying
-        );
+
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Cancel Product',
+            notification: 'Do you really want to cancel buying this product?',
+            handleConfirm: conFirmCancelBuying,
+        })
     }
 
     //

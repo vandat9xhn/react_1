@@ -51,7 +51,7 @@ class ScreenConfirm extends Component {
         return (
             open_confirm && (
                 <ScreenBlur
-                    open_screen={open_confirm}
+                    // open_screen={open_confirm}
                     closeScreen={this.closeScreenConfirm}
                 >
                     <div className="ScreenConfirm_contain">

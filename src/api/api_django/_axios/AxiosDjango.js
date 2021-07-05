@@ -1,10 +1,13 @@
 import 'regenerator-runtime/runtime';
 import Axios from 'axios';
 import queryString from 'query-string';
-// 
+//
 import { csrftoken } from '../../_ConstAPI';
 
-// Create Axios
+//
+let is_refreshing = false;
+
+//
 const axiosDjangoClient = Axios.create({
     baseURL: process.env.AXIOS_DJANGO,
     headers: {
@@ -17,83 +20,85 @@ const axiosDjangoClient = Axios.create({
     paramsSerializer: (params) => queryString.stringify(params),
 });
 
-
-// refresh token
+//
 export const RefreshToken = () =>
     Axios({
         url: '/log/refresh-token/',
         method: 'POST',
     });
 
-
-// token is expired
+//
 export const TokenIsExpired = () => {
     const access_token = localStorage.access_token;
     const time_set = localStorage.time_set || 0;
     const time_now = new Date().getTime();
-    const access_life = + localStorage.life_time || 0
-    // 
-    return (time_now - time_set > access_life) || !access_token;
+    const access_life = +localStorage.life_time || 0;
+    //
+    return time_now - time_set > access_life || !access_token;
 };
-
 
 //
 const GetRefreshToken = async () => {
     try {
         const res = await RefreshToken();
-        const {access: access_token, life_time} = res.data;
-        // 
+        const { access: access_token, life_time } = res.data;
+
         localStorage.access_token = access_token;
-        localStorage.life_time = life_time
+        localStorage.life_time = life_time;
         localStorage.time_set = new Date().getTime();
-        //
+
         return access_token;
-    // 
     } catch (e) {
-        throw e
-    // 
-    } finally {
-        localStorage.token_fetching = 0
+        throw e;
     }
-}
+};
 
 //
-const waitRefreshToken = () => new Promise(res => {
-    let times_interval = 0
-        const fetching_interval = setInterval(() => {
-            if (localStorage.token_fetching == 0) {
-                clearInterval(fetching_interval)
-                res()
+const waitRefreshToken = () =>
+    new Promise((res) => {
+        let times = 0;
+
+        const interval = setInterval(() => {
+            if (!is_refreshing) {
+                clearInterval(interval);
+
+                res();
             }
-            
-            times_interval++
-            if (times_interval == 10) {
-                clearInterval(fetching_interval)
-                throw new Error("Something wrong")
+
+            times++;
+
+            if (times == 10) {
+                clearInterval(interval);
+
+                throw new Error('Something went wrong');
             }
-        }, 500);
-}) 
+        }, 100);
+    });
 
 // Axios request: Handle token here
-axiosDjangoClient.interceptors.request.use(async config => {
+axiosDjangoClient.interceptors.request.use(async (config) => {
     const is_expired = TokenIsExpired();
-    // 
-    if(!is_expired) {
+
+    if (!is_expired) {
         config.headers.Authorization = `Bearer ${localStorage.access_token}`;
+
         return config;
-    } 
-    // 
-    if (localStorage.token_fetching != 1) {
-        localStorage.token_fetching = 1
-        // 
-        const access_token = await GetRefreshToken()
+    }
+
+    if (!is_refreshing) {
+        is_refreshing = true;
+
+        const access_token = await GetRefreshToken();
         config.headers.Authorization = `Bearer ${access_token}`;
-        return config
-    // 
+
+        is_refreshing = false
+
+        return config;
     } else {
-        await waitRefreshToken()
+        await waitRefreshToken();
         config.headers.Authorization = `Bearer ${localStorage.access_token}`;
-        return config
+
+        return config;
     }
 });
 
@@ -107,7 +112,7 @@ axiosDjangoClient.interceptors.response.use(
         return response;
     },
     (err) => {
-        console.log(err);;
+        console.log(err);
     }
 );
 

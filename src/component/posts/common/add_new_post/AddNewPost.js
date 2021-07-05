@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
+// 
+import { openScreenUpdate } from '../../../_screen/type/update/_main/ScreenUpdate';
 //
 import IconsInput from '../../../../_icons_svg/Icons_input/IconsInput';
 //
-import UpdateCreatePost from '../create_update_post/_main/CUPost';
+import UCPost from '../create_update_post/_main/CUPost';
 //
 import './AddNewPost.scss';
 
@@ -21,16 +23,19 @@ AddNewPost.defaultProps = {
 
 //
 function AddNewPost({ handleCreatePost, title }) {
-    const { user, openScreenUpdate, hasChangeScreenUpdate } =
-        useContext(context_api);
+    const { user, openScreenFloor } = useContext(context_api);
 
     //
     function onOpenScreenUpdate() {
-        openScreenUpdate('Create', UpdateCreatePost, {
+        openScreenUpdate({
+            openScreenFloor: openScreenFloor,
+
+            title: 'Create',
+            UpdateComponent: UCPost,
+
             main_content: '',
             vid_pics: [],
             title_action: 'Post',
-            handleCheckHasChange: hasChangeScreenUpdate,
             handleCUPost: handleCreatePost,
         });
     }

@@ -21,12 +21,9 @@ ScreenFixed.defaultProps = {
 };
 
 //
-function ScreenFixed(props) {
+function ScreenFixed({ url, handleDownload, children, closeScreenFixed }) {
     //
-    const { url, handleDownload, children, closeScreenFixed } = props;
-
-    //
-    useFullScreen()
+    useFullScreen();
     useCloseScreen(closeScreenFixed);
     useMakeBodyHidden();
 

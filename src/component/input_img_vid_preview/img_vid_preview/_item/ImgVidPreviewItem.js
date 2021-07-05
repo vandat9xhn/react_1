@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { context_api } from '../../../../_context/ContextAPI';
 //
+import { openScreenVidPic } from '../../../_screen/type/vid_pics/_main/ZoomVidPics';
+// 
 import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import './ImgVidPreviewItem.scss';
@@ -38,7 +40,7 @@ function ImgVidPreviewItem({
     deleteAnItem,
 }) {
     //
-    const { openZoomVidPics } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
 
     //
     const ref_video = useRef(null);
@@ -49,14 +51,24 @@ function ImgVidPreviewItem({
     function zoomOutVideo(e) {
         e.preventDefault();
 
-        openZoomVidPics(urls, item_ix);
+        openScreenVidPic({
+            openScreenFloor: openScreenFloor,
+        
+            urls: urls,
+            current: item_ix,
+        })
         //
         !ref_video.current.paused && ref_video.current.pause();
     }
 
     //
     function zoomOutPic() {
-        openZoomVidPics(urls, item_ix);
+        openScreenVidPic({
+            openScreenFloor: openScreenFloor,
+        
+            urls: urls,
+            current: item_ix,
+        })
     }
 
     //

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { content_pic_name_props } from '../../../../_prop-types/_CommonPropTypes';
+import { content_pic_name_props } from '../../_prop-types/_CommonPropTypes';
 //
-import IconsAction from '../../../../_icons_svg/icons_action/IconsAction';
-import PictureName from '../../../picture_name/pic_name/PictureName';
+import IconsAction from '../../_icons_svg/icons_action/IconsAction';
+import PictureName from '../picture_name/pic_name/PictureName';
 //
 import './UserAdd.scss';
 

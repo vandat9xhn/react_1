@@ -37,10 +37,13 @@ CityForm.propTypes = {
     initialValues: PropTypes.object,
     title_submit: PropTypes.string,
     handleSubmit: PropTypes.func,
+    use_has_change: PropTypes.bool,
+    detectHasChange: PropTypes.func,
 };
 
 CityForm.defaultProps = {
     title_submit: 'Upload',
+    use_has_change: false,
 };
 
 //
@@ -48,6 +51,8 @@ function CityForm({
     initialValues: { bg_color, ...rest_initialValues },
     title_submit,
     handleSubmit,
+    use_has_change,
+    detectHasChange,
 }) {
     //
     const [file, setFile] = useState('');
@@ -62,6 +67,40 @@ function CityForm({
 
     //
     const ref_city_elm = useRef(null);
+
+    //
+    function handleHasChange(new_city, new_street, new_quote) {
+        if (!use_has_change) {
+            return false;
+        }
+
+        if (new_city != rest_initialValues.city) {
+            return true;
+        }
+
+        if (new_street != rest_initialValues.street) {
+            return true;
+        }
+
+        if (new_quote != rest_initialValues.quote) {
+            return true;
+        }
+
+        if (file) {
+            return true;
+        }
+
+        if (
+            city_color_bg_arr[active_color_ix].bg +
+                '.' +
+                city_color_bg_arr[active_color_ix].color !=
+            bg_color
+        ) {
+            return true;
+        }
+
+        return false;
+    }
 
     //
     function handleImageChange(new_file) {
@@ -101,6 +140,13 @@ function CityForm({
             onSubmit={onSubmit}
         >
             {(props) => {
+                //
+                use_has_change &&
+                    detectHasChange(
+                        handleHasChange(props.city, props.street, props.quote)
+                    );
+
+                //
                 return (
                     <div className={`CityForm`}>
                         <Form

@@ -1,0 +1,73 @@
+.ScreenBlur {
+    min-height: 100vh;
+    padding: 5rem 0;
+}
+.ScreenBlur_center {
+    padding-top: 0;
+}
+
+.ScreenBlur_contain {
+    width: 100%;
+    background-color: var(--md-bg-primary);
+
+    transition: all 500ms ease;
+}
+.ScreenBlur_contain-waiting {
+    transform: scale(0);
+}
+.ScreenBlur_contain-scale {
+    transform: scale(0);
+    animation: screen-contain-scale 500ms ease forwards;
+}
+
+// .
+.ScreenBlur_body_contain {
+    min-height: 5rem;
+}
+
+/* ---------------- LIST ---------------- */
+
+.ScreenBlur_list {
+    margin: 0.5rem 0 0 0;
+    padding-left: 1.5rem;
+    list-style-type: circle;
+}
+// .
+.ScreenBlur_item {
+    margin-bottom: 0.5rem;
+    &::marker {
+        font-weight: 500;
+    }
+}
+
+.ScreenBlurItem {
+    padding: 0.25rem;
+}
+
+.ScreenBlurItem_time {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+//
+@keyframes screen-contain-scale {
+    to {
+        transform: scale(1);
+    }
+}
+
+//
+@media (max-width: 400px) {
+    .ScreenBlur{
+        padding: 0;
+    }
+
+    .ScreenBlur_contain{
+        min-height: 100vh;
+
+        .CUPostHomeContent{
+            height: auto;
+        }
+    }
+}

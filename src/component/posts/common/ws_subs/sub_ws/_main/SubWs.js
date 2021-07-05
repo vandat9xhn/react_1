@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_post } from '../../../../__context_post/ContextPost';
-// 
+//
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
+//
+import { openScreenConfirm } from '../../../../../_screen/type/confirm/ScreenConfirm';
+import { openScreenHistory } from '../../../../../_screen/type/history/ScreenHistory';
+import { openScreenUpdate } from '../../../../../_screen/type/update/_main/ScreenUpdate';
 //
 import SubWsFoot from '../foot/SubWsFoot';
 import SubWsHead from '../head/SubWsHead';
@@ -32,9 +36,7 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
 
     const {
         user: c_user,
-        openScreenConfirm,
-        openScreenHistory,
-        openScreenUpdate,
+        openScreenFloor,
 
         closeScreenUpdate,
 
@@ -56,7 +58,7 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
 
     //
     const forceUpdate = useForceUpdate();
-    const handleScreenFetching = useScreenFetching()
+    const handleScreenFetching = useScreenFetching();
 
     /* -------------------------------- */
 
@@ -80,8 +82,12 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
 
     //
     function openHistorySub() {
-        openScreenHistory('History', on_API_HistorySub_L, CmtSubHistory, {
-            handle_API_MoreContent: handle_API_MoreContentHisSub_R,
+        openScreenHistory({
+            openScreenFloor: openScreenFloor,
+
+            title: 'History',
+            handle_API_History_L: on_API_HistorySub_L,
+            HisComponent: CmtSubHistory,
         });
     }
 
@@ -91,7 +97,12 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
             ? await handleScreenFetching(() => handle_API_MoreContentSub_R(id))
             : content_obj.content;
 
-        openScreenUpdate('Update', CmtSubUpdate, {
+        openScreenUpdate({
+            openScreenFloor: openScreenFloor,
+
+            title: 'Update',
+            UpdateComponent: CmtSubUpdate,
+
             text: content,
             vid_pic: vid_pic,
             handleUpdate: handleUpdate,
@@ -101,20 +112,22 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
 
     //
     function openDeleteSub() {
-        openScreenConfirm(
-            'Delete',
-            'Do you really want to delete this post?',
-            handleDelete
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Delete',
+            notification: 'Do you really want to delete this comment?',
+            handleConfirm: handleDelete,
+        });
     }
 
     //
     function openReportSub() {
-        openScreenConfirm(
-            'Report',
-            'Do you want to report this post?',
-            handleReport
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Report',
+            notification: 'Do you want to report this comment?',
+            handleConfirm: handleReport,
+        });
     }
 
     /* --------------- ON HANDLE ACTIONS ---------------- */

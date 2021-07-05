@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ScreenBlur from '../../../_screen_blur/_main/ScreenBlur';
 import ScreenBlurHead from '../../../_screen_blur/_component/head/ScreenBlurHead';
 import ScreenBlurShowMore from '../../../_screen_blur/_component/foot/ScreenBlurShowMore';
-import UserAdd from '../../_component/user_add/UserAdd';
+import UserAdd from '../../../user_add/UserAdd';
 //
 import './ScreenShare.scss';
 

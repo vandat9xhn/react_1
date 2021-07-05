@@ -8,8 +8,6 @@ import { definePositionXY } from '../_some_function/definePositionXY';
 export function usePositionXY({
     ref_child_elm,
     ref_btn_elm,
-
-    extra_transform_x = 0,
     other_state = {},
 }) {
     //
@@ -57,7 +55,6 @@ export function usePositionXY({
         const data_define_state = definePositionXY({
             child_width: ref_child_elm.current.getBoundingClientRect().width,
             ref_btn_elm: ref_btn_elm,
-            extra_transform_x: extra_transform_x,
         });
 
         ref_is_open.current = true;

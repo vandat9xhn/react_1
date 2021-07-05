@@ -6,6 +6,9 @@ import { context_api } from '../../../_context/ContextAPI';
 //
 import { loadFile } from '../../../_some_function/loadFile';
 //
+import { openScreenVidPic } from '../../_screen/type/vid_pics/_main/ZoomVidPics';
+import { openScreenCanvas } from '../../_screen/type/canvas/_main/CanvasFixed';
+// 
 import {
     handle_API_ChatLike_L,
     handle_API_ChatMessage_L,
@@ -318,8 +321,14 @@ class Chat extends Component {
         count_vid_pic,
         ix
     ) => {
+        const { openScreenFloor } = this.context;
+
         if (vid_pics.length >= count_vid_pic) {
-            this.context.openZoomVidPics(vid_pics, ix);
+            openScreenVidPic({
+                openScreenFloor: openScreenFloor,
+                urls: vid_pics,
+                current: ix,
+            });
         } else {
             const new_vid_pics = await handle_API_ChatVidPic_L(
                 mess_id,
@@ -327,7 +336,11 @@ class Chat extends Component {
             );
 
             vid_pics.push(...new_vid_pics);
-            this.context.openZoomVidPics(vid_pics, ix);
+            openScreenVidPic({
+                openScreenFloor: openScreenFloor,
+                urls: vid_pics,
+                current: ix,
+            });
         }
     };
 
@@ -337,13 +350,11 @@ class Chat extends Component {
     letDrawCanvas = (chat_ix) => {
         const { canvas_obj } = this.state.current_chats[chat_ix];
 
-        this.context.toggleCanvasFixed({
-            type: 'open',
+        openScreenCanvas({
+            openScreenFloor: this.context.openScreenFloor,
             completeCanvas: (canvas_data) =>
                 this.completeCanvas(canvas_data, chat_ix),
-            canvas_draws: {
-                ...canvas_obj,
-            },
+            canvas_draws: canvas_obj,
         });
     };
 
@@ -858,7 +869,7 @@ class Chat extends Component {
             new_chat_ix: 1,
         });
 
-        sessionStorage.removeItem('initialMessageID')
+        sessionStorage.removeItem('initialMessageID');
     };
 
     //

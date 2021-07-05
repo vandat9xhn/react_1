@@ -7,7 +7,7 @@ import { type_likes } from '../../../like/list_type_like/type_likes/TypeLikes';
 
 import ScreenBlur from '../../../_screen_blur/_main/ScreenBlur';
 import ScreenBlurShowMore from '../../../_screen_blur/_component/foot/ScreenBlurShowMore';
-import UserAdd from '../../_component/user_add/UserAdd';
+import UserAdd from '../../../user_add/UserAdd';
 //
 import ScreenLikeType from '../type_like/ScreenLikeType';
 //

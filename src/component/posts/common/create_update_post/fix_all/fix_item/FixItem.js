@@ -5,6 +5,8 @@ import { context_api } from '../../../../../../_context/ContextAPI';
 
 import { VideoOrImage } from '../../../../../../_some_function/VideoOrImage';
 //
+import { openScreenConfirm } from '../../../../../_screen/type/confirm/ScreenConfirm';
+//
 import IconsPost from '../../../../../../_icons_svg/icons_post/IconsPost';
 import IconsEdit from '../../../../../../_icons_svg/icons_edit/IconsEdit';
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
@@ -32,7 +34,7 @@ function FixItem({
     handleChangeContentVidPic,
 }) {
     //
-    const { openScreenConfirm } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
 
     //
     const [open_content, setOpenContent] = useState(!!content);
@@ -63,11 +65,12 @@ function FixItem({
 
     //
     function openConfirm() {
-        openScreenConfirm(
-            'Delete',
-            'Do you really want to delete this?',
-            handleDeleteItem
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Delete',
+            notification: 'Do you really want to delete this?',
+            handleConfirm: handleDeleteItem,
+        });
     }
 
     //

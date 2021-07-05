@@ -8,8 +8,7 @@ import { API_FashionProduct_R } from '../../../../../../api/api_django_no_token/
 //
 import { useMounted } from '../../../../../../_hooks/useMounted';
 //
-import UnitTime from '../../../../../../_some_function/UnitTime';
-import { UnitNumber } from '../../../../../../_some_function/UnitNumber';
+import { openScreenNotice } from '../../../../../../component/_screen/type/notice/ScreenNotice';
 //
 import { actionFashionChangeCountCartNum } from '../../../../../../redux/action/action_count_cart';
 //
@@ -32,7 +31,7 @@ FashionItemShop.propTypes = {};
 //
 function FashionItemShop({ id }) {
     //
-    const { openScreenNotice, closeScreenNotice } = useContext(context_api);
+    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
 
     //
     const dispatch = useDispatch();
@@ -52,7 +51,6 @@ function FashionItemShop({ id }) {
     const { owner_info, ...rest_shop_obj } = shop_obj;
 
     //
-    ;
     const ref_item_shop = useRef(null);
 
     //
@@ -136,11 +134,13 @@ function FashionItemShop({ id }) {
             wait_add_cart: false,
         });
 
-        //
-        openScreenNotice(<FashionCartSuccess />);
+        openScreenNotice({
+            openScreenFloor: openScreenFloor,
+            ComponentNotice: <FashionCartSuccess />,
+        });
 
         setTimeout(() => {
-            closeScreenNotice();
+            closeScreenFloor();
         }, 500);
     }
 

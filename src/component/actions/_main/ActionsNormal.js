@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { usePositionXY } from '../../../_hooks/usePositionXY';
 //
+import IconThreeDot from '../../../_icons_svg/icon_three_dot/IconThreeDot';
+//
 import CloseDiv from '../../some_div/close_div/CloseDiv';
 import ActionBack from '../common_actions/back/ActionBack';
 //
@@ -12,14 +14,14 @@ import './Actions.scss';
 
 //
 ActionsNormal.propTypes = {
-    title_action: PropTypes.string,
+    title_action: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     symbol_post: PropTypes.bool,
     children: PropTypes.element,
 };
 
 ActionsNormal.defaultProps = {
     symbol_post: true,
-    title_action: '...',
+    title_action: <IconThreeDot size_icon="1.25rem" />,
 };
 
 //
@@ -73,18 +75,23 @@ function ActionsNormal({ title_action, symbol_post, children }) {
             >
                 <div
                     ref={ref_btn_elm}
-                    className={`Actions_symbol display-flex-center brs-50 hv-opacity ${
+                    className={`Actions_symbol ${
                         symbol_post ? 'Actions_symbol-post' : ''
                     }`}
-                    title="More actions"
                 >
-                    {title_action}
+                    <div className="Actions_symbol-contain display-flex-center brs-50 hv-opacity hv-bg-s-through">
+                        {title_action}
+                    </div>
                 </div>
 
                 <div
                     className={`Actions_choices ${
                         is_open ? 'visibility-visible' : 'visibility-hidden'
-                    } ${position_y == 'top' ? 'bottom-100per' : 'top-100per'}`}
+                    } ${
+                        position_y == 'top'
+                            ? 'Actions_choices-top'
+                            : 'Actions_choices-bottom'
+                    }`}
                     // style={{
                     //     transform: `translateX(${transform_x}px)`,
                     // }}

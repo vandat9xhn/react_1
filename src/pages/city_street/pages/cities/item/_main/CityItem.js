@@ -10,6 +10,10 @@ import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 //
 import makeFormData from '../../../../../../_some_function/makeFormData';
 //
+import { openScreenConfirm } from '../../../../../../component/_screen/type/confirm/ScreenConfirm';
+import { openScreenHistory } from '../../../../../../component/_screen/type/history/ScreenHistory';
+import { openScreenUpdate } from '../../../../../../component/_screen/type/update/_main/ScreenUpdate';
+//
 import PictureName from '../../../../../../component/picture_name/pic_name/PictureName';
 //
 import { handle_API_CityHistory_L } from '../../../../__handle_api/CityHandleAPI';
@@ -29,13 +33,7 @@ CityItem.propTypes = {
 //
 function CityItem({ city_obj }) {
     //
-    const {
-        openScreenConfirm,
-        openScreenHistory,
-        openScreenUpdate,
-        //
-        closeScreenUpdate,
-    } = useContext(context_api);
+    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
 
     //
     const {
@@ -61,15 +59,21 @@ function CityItem({ city_obj }) {
 
     //
     function openHistory() {
-        openScreenHistory(
-            'History',
-            on_API_History_L,
-            CityHistories
-        );
+        openScreenHistory({
+            openScreenFloor: openScreenFloor,
+
+            title: 'History',
+            handle_API_History_L: on_API_History_L,
+            HisComponent: CityHistories,
+        });
     }
     //
     function openUpdate() {
-        openScreenUpdate('Update', CityUpdate, {
+        openScreenUpdate({
+            openScreenFloor: openScreenFloor,
+
+            title: 'Update',
+            UpdateComponent: CityUpdate,
             initialValues: {
                 city: city,
                 street: street,
@@ -83,20 +87,22 @@ function CityItem({ city_obj }) {
 
     //
     function openDelete() {
-        openScreenConfirm(
-            'Delete',
-            'Do you really want to delete this city?',
-            handleDelete
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Delete',
+            notification: 'Do you really want to delete this city?',
+            handleConfirm: handleDelete,
+        });
     }
 
     //
     function openReport() {
-        openScreenConfirm(
-            'Report',
-            'Do you want to report this city?',
-            handleReport
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Report',
+            notification: 'Do you want to report this city?',
+            handleConfirm: handleReport,
+        });
     }
 
     /* --------------- ON HANDLE ACTIONS ---------------- */
@@ -120,7 +126,7 @@ function CityItem({ city_obj }) {
         city_obj.bg_color = data.bg_color;
 
         forceUpdate();
-        closeScreenUpdate();
+        closeScreenFloor();
     }
 
     //

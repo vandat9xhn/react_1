@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
-// 
+//
 import { usePositionXY } from '../../../../../_hooks/usePositionXY';
 //
 import { API_ZoomCountNew_R } from '../../../../../api/api_django/header/APIHeaderToken';
@@ -15,7 +15,7 @@ import CloseDiv from '../../../../some_div/close_div/CloseDiv';
 //
 import ListMessages from '../contain/_main/HeaderMessContain';
 import HeaderMessageIcon from '../icon/HeaderMessageIcon';
-// 
+//
 import './HeaderMessage.scss';
 //
 
@@ -52,7 +52,6 @@ function HeaderMessage() {
         ref_child_elm: ref_child_elm,
         ref_btn_elm: ref_btn_elm,
         other_state: other_state,
-        extra_transform_x: 0,
     });
 
     const {
@@ -196,13 +195,11 @@ function HeaderMessage() {
                 </div>
 
                 <div
-                    className={`header-hidden-position header_hidden left-50per ${
+                    className={`header_hidden ${position_x} ${
                         is_open ? 'visibility-visible' : 'visibility-hidden'
-                    } ${position_x} ${
-                        has_fetched ? '' : 'pointer-events-none'
-                    }`}
+                    } ${has_fetched ? '' : 'pointer-events-none'}`}
                     style={{
-                        transform: `translateX(${transform_x}px)`,
+                        transform: `translateX(${transform_x}) translateX(-10px)`,
                     }}
                     onClick={hasReceiveListZooms}
                 >

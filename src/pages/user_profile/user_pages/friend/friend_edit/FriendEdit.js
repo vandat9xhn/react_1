@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
-
+//
 import { user_propTypes } from '../../../../../_prop-types/_CommonPropTypes';
+//
+import { openScreenConfirm } from '../../../../../component/_screen/type/confirm/ScreenConfirm';
 //
 import IconsAction from '../../../../../_icons_svg/icons_action/IconsAction';
 //
@@ -22,7 +24,7 @@ FriendEdit.propTypes = {
 //
 function FriendEdit({ user, handelDeleteFriend }) {
     //
-    const { openMessage, openScreenConfirm } = useContext(context_api);
+    const { openMessage, openScreenFloor } = useContext(context_api);
 
     //
     const onOpenMessage = () => {
@@ -31,11 +33,12 @@ function FriendEdit({ user, handelDeleteFriend }) {
 
     //
     function confirmDelete() {
-        openScreenConfirm(
-            'Delete',
-            'Do you really want to delete this friend',
-            () => handelDeleteFriend(user.id)
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Delete',
+            notification: 'Do you really want to delete this friend',
+            handleConfirm: () => handelDeleteFriend(user.id),
+        });
     }
 
     //

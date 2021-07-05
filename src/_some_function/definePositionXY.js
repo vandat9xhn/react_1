@@ -15,7 +15,6 @@ export function definePositionY(ref_btn_elm, header_head = 55) {
 export function definePositionX(
     child_width,
     ref_btn_elm,
-    extra_transform_x = 0
 ) {
     const { left, right } = ref_btn_elm.current.getBoundingClientRect();
     const center = (left + right) / 2;
@@ -27,29 +26,31 @@ export function definePositionX(
     if (center <= child_width / 2) {
         return {
             position_x: 'left-0',
-            transform_x: `${-left + extra_transform_x}px`,
-        };
-    }
-    
-    if (window_width - center <= child_width / 2) {
-        return {
-            position_x: 'right-0',
-            transform_x: `${right - extra_transform_x}px`,
+            transform_x: `${-left}px`,
         };
     }
 
-    return { position_x: 'left-50per', transform_x: '-50%' };
+    if (window_width - center <= child_width / 2) {
+        return {
+            position_x: 'right-0',
+            transform_x: `${window_width - right}px`,
+        };
+    }
+
+    return {
+        position_x: 'left-50per',
+        transform_x: `-50%`,
+    };
 }
 
 //
 export function definePositionXY({
     child_width,
     ref_btn_elm,
-    extra_transform_x = 0,
     header_head = 55,
 }) {
     return {
-        ...definePositionX(child_width, ref_btn_elm, extra_transform_x),
+        ...definePositionX(child_width, ref_btn_elm),
         ...definePositionY(ref_btn_elm, header_head),
     };
 }

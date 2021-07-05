@@ -9,18 +9,21 @@ import './CityUpdate.scss';
 CityUpdate.propTypes = {
     initialValues: PropTypes.object,
     handleSubmit: PropTypes.func,
+    detectHasChange: PropTypes.func,
 };
 
 //
-function CityUpdate({ initialValues, handleSubmit }) {
+function CityUpdate({ initialValues, handleSubmit, detectHasChange }) {
     //
     return (
         <div className="CityUpdate">
             <div>
                 <CityForm
+                    title_submit="Update"
                     initialValues={initialValues}
                     handleSubmit={handleSubmit}
-                    title_submit="Update"
+                    use_has_change={true}
+                    detectHasChange={detectHasChange}
                 />
             </div>
         </div>

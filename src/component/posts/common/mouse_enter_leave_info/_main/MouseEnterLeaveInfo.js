@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { useMouseEnterLeave } from '../../../../../_hooks/UseMouseEnterLeave';
-//
-import { definePositionFromParent } from '../../../../../_some_function/definePositionFromParent';
+// 
+import { definePositionXY } from '../../../../../_some_function/definePositionXY';
 //
 import { content_pic_name_props } from '../../../../../_prop-types/_CommonPropTypes';
 //
@@ -13,7 +13,6 @@ import LoaderDiv from '../../../../some_div/loader_div/LoaderDiv';
 import ListPeople from '../list_people/ListPeople';
 //
 import './MouseEnterLeaveInfo.scss';
-import { definePositionXY } from '../../../../../_some_function/definePositionXY';
 
 //
 MouseEnterLeaveInfo.propTypes = {

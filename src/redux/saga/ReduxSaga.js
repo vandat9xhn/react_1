@@ -2,7 +2,7 @@ import { takeLatest, put, call } from 'redux-saga/effects';
 
 import { allProducts } from '../../api/api_heroku/get_api/GetAPI';
 
-// watch
+// watcher
 export default function* watcherSaga() {
   yield takeLatest('API_REQUEST', workerSaga);
 }

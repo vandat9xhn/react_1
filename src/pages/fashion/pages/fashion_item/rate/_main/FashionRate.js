@@ -6,6 +6,8 @@ import { context_api } from '../../../../../../_context/ContextAPI';
 import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 //
 import observeToDo from '../../../../../../_some_function/observerToDo';
+// 
+import { openScreenConfirm } from '../../../../../../component/_screen/type/confirm/ScreenConfirm';
 //
 import ComponentSkeleton from '../../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 //
@@ -39,7 +41,7 @@ FashionRate.propTypes = {};
 //
 function FashionRate({ id }) {
     //
-    const { user, openScreenConfirm } = useContext(context_api);
+    const { user, openScreenFloor } = useContext(context_api);
 
     //
     const [rate_state, setRateState] = useState({
@@ -169,17 +171,20 @@ function FashionRate({ id }) {
             );
         }
 
-        openScreenConfirm(
-            'Rate Now',
-            <div ref={ref_confirm_rate}>
-                <ConfirmRate
-                    content_rate={content_rate}
-                    rate_avg={user_rate}
-                    handleChangeRate={handleChangeRate}
-                />
-            </div>,
-            handleRate
-        );
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Rate Now',
+            notification: (
+                <div ref={ref_confirm_rate}>
+                    <ConfirmRate
+                        content_rate={content_rate}
+                        rate_avg={user_rate}
+                        handleChangeRate={handleChangeRate}
+                    />
+                </div>
+            ),
+            handleConfirm: handleRate,
+        });
     }
 
     //

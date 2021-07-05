@@ -8,6 +8,8 @@ import {
     exitFullscreen,
 } from '../../../_some_function/handelFullScreen';
 //
+import { openScreenConfirm } from '../../_screen/type/confirm/ScreenConfirm';
+//
 import CanvasDraw from '../canvas/CanvasDraw';
 import ScreenFixed from '../../_screen_fixed/_main/ScreenFixed';
 
@@ -32,11 +34,11 @@ class CanvasFixed extends Component {
     //
     openCanvasFixed = (completeCanvas, canvas_draws) => {
         this.completeCanvasDraw = completeCanvas;
-        
+
         this.setState({
             show_canvas: true,
         });
-        
+
         setTimeout(() => {
             this.ref_canvas_draw.startReadyCanvas(canvas_draws);
             requestFullscreen();
@@ -77,12 +79,13 @@ class CanvasFixed extends Component {
     };
 
     //
-    openCloseCanvasFixed = () => {
-        this.context.openScreenConfirm(
-            'Canvas not saved',
-            'Your changes will not be saved!',
-            this.closeCanvasFixed
-        );
+    showCloseCanvasFixed = () => {
+        openScreenConfirm({
+            openScreenFloor: this.context.openScreenFloor,
+            title: 'Canvas not saved',
+            notification: 'Your changes will not be saved!',
+            handleConfirm: this.closeCanvasFixed,
+        });
     };
 
     //
@@ -94,7 +97,7 @@ class CanvasFixed extends Component {
                 {show_canvas && (
                     <ScreenFixed
                         url={url}
-                        closeScreenFixed={this.openCloseCanvasFixed}
+                        closeScreenFixed={this.showCloseCanvasFixed}
                         onDownload={this.onDownload}
                     >
                         <CanvasDraw

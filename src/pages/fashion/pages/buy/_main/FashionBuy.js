@@ -13,6 +13,8 @@ import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 //
 import makeFormData from '../../../../../_some_function/makeFormData';
 //
+import { openScreenConfirm } from '../../../../../component/_screen/type/confirm/ScreenConfirm';
+// 
 import CircleLoading from '../../../../../component/waiting/circle_loading/CircleLoading';
 //
 import { actionFashionChangeCountCartNum } from '../../../../../redux/action/action_count_cart';
@@ -20,7 +22,6 @@ import { actionFashionChangeCountCartNum } from '../../../../../redux/action/act
 import { params_buy } from '../../../__params/home/FashionParams';
 //
 import './FashionBuyCommon.scss';
-import './FashionBuy.scss';
 //
 import FashionH from '../../../components/head/_main/FashionH';
 import BuyProductList from '../product_list/_main/BuyProductList';
@@ -29,7 +30,8 @@ import NoItemHasFetched from '../../../../../component/some_div/no_item/NoItemHa
 import FashionBuyExtra from '../extra/choices/FashionBuyExtra';
 import FashionBuyExtraCurrent from '../extra/current/FashionBuyExtraCurrent';
 import BuyFetching from '../fetching/BuyFetching';
-// 
+//
+import './FashionBuy.scss';
 import './FashionBuyRes.scss';
 
 //
@@ -41,7 +43,7 @@ function FashionBuy(props) {
     const dispatch = useDispatch();
 
     //
-    const { openScreenConfirm } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
 
     //
     const [buy_state, setBuyState] = useState({
@@ -87,9 +89,10 @@ function FashionBuy(props) {
     //
     const handleScreenFetching = useScreenFetching();
 
-    // effect
+    //
     useEffect(() => {
         document.title = 'Buying';
+
         getAPI_CartBuy();
     }, []);
 
@@ -162,22 +165,29 @@ function FashionBuy(props) {
         closeExtraBuy();
     }
 
-    /* --------------------- CONFIRM BUY ----------------------- */
+    /* ----------- CONFIRM BUY ------------ */
 
-    // confirm
+    //
     function openConfirmBuy() {
+        const open_screen_common = {
+            openScreenFloor: openScreenFloor,
+            title: 'Fashion Buying',
+        };
+
         if (transport_has_choose) {
-            openScreenConfirm(
-                'Fashion Buying',
-                'Do you want to buy now!',
-                confirmBuy
-            );
+            openScreenConfirm({
+                ...open_screen_common,
+                notification: 'Do you want to buy now!',
+                handleConfirm: confirmBuy,
+            });
         } else {
-            openScreenConfirm(
-                'Fashion Buying',
-                <div className="text-red">You must choose transport!</div>,
-                () => handleExtraBuy('transport')
-            );
+            openScreenConfirm({
+                ...open_screen_common,
+                notification: (
+                    <div className="text-red">You must choose transport!</div>
+                ),
+                handleConfirm: () => handleExtraBuy('transport'),
+            });
         }
     }
 
@@ -191,7 +201,7 @@ function FashionBuy(props) {
 
         await handleScreenFetching(
             () => API_FashionBuy_LC('POST', {}, formData),
-            BuyFetching
+            <BuyFetching is_fetching={true} />
         );
 
         const count_checked = buy_shops.reduce(

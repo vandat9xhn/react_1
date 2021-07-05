@@ -22,7 +22,7 @@ CUPost.propTypes = {
     ),
 
     title_action: PropTypes.string,
-    handleCheckHasChange: PropTypes.func,
+    detectHasChange: PropTypes.func,
     handleCUPost: PropTypes.func,
 };
 
@@ -37,7 +37,7 @@ CUPost.defaultProps = {
         // },
     ],
 
-    handleCheckHasChange: () => {},
+    detectHasChange: () => {},
     title_action: 'Post',
 };
 
@@ -47,7 +47,7 @@ function CUPost({
     vid_pics: old_vid_pics,
 
     title_action,
-    handleCheckHasChange,
+    detectHasChange,
     handleCUPost,
 }) {
     //
@@ -217,7 +217,7 @@ function CUPost({
 
     //
     const has_change = checkHasChange();
-    handleCheckHasChange(has_change);
+    detectHasChange(has_change);
 
     //
     function onCUPost() {

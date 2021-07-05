@@ -14,6 +14,8 @@ import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 import makeFormData from '../../../../../_some_function/makeFormData';
 import observeToDo from '../../../../../_some_function/observerToDo';
 //
+import { openScreenNotice } from '../../../../../component/_screen/type/notice/ScreenNotice';
+//
 import ProductDetail from '../detail/ProductDetail';
 import RelativeProducts from '../relative/RelativeProducts';
 import PhoneLaptopType from '../type_buy/_main/PhoneLaptopType';
@@ -37,10 +39,10 @@ PhoneLaptopDetail.propTypes = {};
 //
 function PhoneLaptopDetail() {
     //
-    const product_id = + useParams().id;
+    const product_id = +useParams().id;
 
     //
-    const { openScreenNotice, closeScreenNotice } = useContext(context_api);
+    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
 
     //
     const [product_state, setProductState] = useState(initial_product_state);
@@ -71,7 +73,7 @@ function PhoneLaptopDetail() {
             const res = await API_PhoneLaptop_R(product_id);
 
             document.title = res.data.name;
-            setProductState(product_state => ({
+            setProductState((product_state) => ({
                 ...product_state,
                 product: res.data,
                 has_fetched: true,
@@ -151,16 +153,19 @@ function PhoneLaptopDetail() {
             action: '',
             type_buy_ix: 0,
             open_discount: false,
-        })
+        });
 
-        openScreenNotice(
-            <div className="PhoneLaptopDetail_notice-success brs-5px bg-loader">
-                Order successfully
-            </div>
-        );
+        openScreenNotice({
+            openScreenFloor: openScreenFloor,
+            ComponentNotice: (
+                <div className="PhoneLaptopDetail_notice-success brs-5px bg-loader">
+                    Order successfully
+                </div>
+            ),
+        });
 
         setTimeout(() => {
-            closeScreenNotice();
+            closeScreenFloor();
         }, 800);
     }
 

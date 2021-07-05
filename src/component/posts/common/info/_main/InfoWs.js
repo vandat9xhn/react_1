@@ -2,14 +2,19 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
-import { context_post } from '../../../__context_post/ContextPost';
 //
 import { UnitNumber } from '../../../../../_some_function/UnitNumber';
 //
-import InfoCmt from '../cmt/InfoCmt';
+import { openScreenLike } from '../../../../_screen/type/like/_main/ScreenLike';
+import { openScreenShare } from '../../../../_screen/type/share/_main/ScreenShare';
+// 
+import { context_post } from '../../../__context_post/ContextPost';
+// 
 import MouseEnterLeaveInfoNormal from '../../mouse_enter_leave_info/_main/MouseEnterLeaveInfoNormal';
 import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
 import ListUniqueLike from '../../../../like/List_unique_like/_main/ListUniqueLike';
+// 
+import InfoCmt from '../cmt/InfoCmt';
 //
 import './Info.scss';
 
@@ -39,7 +44,7 @@ function Info({
     handleClickBtnCmt,
 }) {
     //
-    const { openScreenShare, openScreenLike } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
 
     const { handle_API_Like_L, handle_API_Share_L } = useContext(context_post);
 
@@ -47,12 +52,20 @@ function Info({
 
     //
     function onOpenDetailShare() {
-        openScreenShare('Share', on_API_Share_L);
+        openScreenShare({
+            openScreenFloor: openScreenFloor,
+            title: 'Share',
+            handle_API_Share_L: on_API_Share_L,
+        }) 
     }
 
     //
-    function onOpenDetailLike(ix) {
-        openScreenLike(on_API_Like_L, ix);
+    function onOpenDetailLike(type_like) {
+        openScreenLike({
+            openScreenFloor: openScreenFloor,
+            handle_API_Like_L: on_API_Like_L,
+            type_like: type_like,
+        });
     }
 
     //

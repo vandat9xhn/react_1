@@ -1,12 +1,14 @@
-.ZoomPostCommon {
+.ZoomPostCommon_fixed {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: var(--z-index-lv3);
+    z-index: var(--z-index-lv1);
 }
 //
 .ZoomPostCommon_title {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 1;
 }
 
@@ -19,11 +21,6 @@
     .PictureName {
         max-width: 15rem;
     }
-}
-//
-.ZoomPostCommon_row {
-    display: flex;
-    height: 100%;
 }
 
 //.

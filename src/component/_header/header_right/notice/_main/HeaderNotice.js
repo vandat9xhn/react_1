@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { usePositionXY } from '../../../../../_hooks/usePositionXY';
-// 
+//
 import {
     API_NoticeCountNew_R,
     API_Notice_L,
@@ -45,7 +45,6 @@ function HeaderNotice({}) {
             is_fetching: false,
             has_fetched: false,
         },
-        extra_transform_x: 0,
     });
 
     const {
@@ -208,13 +207,11 @@ function HeaderNotice({}) {
                 </div>
 
                 <div
-                    className={`header-hidden-position header_hidden left-50per ${
+                    className={`header_hidden ${position_x} ${
                         is_open ? 'visibility-visible' : 'visibility-hidden'
-                    } ${position_x} ${
-                        has_fetched ? '' : 'pointer-events-none'
-                    }`}
+                    } ${has_fetched ? '' : 'pointer-events-none'}`}
                     style={{
-                        transform: `translateX(${transform_x}px)`,
+                        transform: `translateX(${transform_x}) translateX(-10px)`,
                     }}
                     onClick={hasReceivedNotices}
                 >
