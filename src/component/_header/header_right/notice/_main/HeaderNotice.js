@@ -211,7 +211,9 @@ function HeaderNotice({}) {
                         is_open ? 'visibility-visible' : 'visibility-hidden'
                     } ${has_fetched ? '' : 'pointer-events-none'}`}
                     style={{
-                        transform: `translateX(${transform_x}) translateX(-10px)`,
+                        transform: `translateX(${transform_x}) translateX(${
+                            innerWidth > 400 ? '-10px' : 0
+                        })`,
                     }}
                     onClick={hasReceivedNotices}
                 >

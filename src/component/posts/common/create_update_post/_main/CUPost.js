@@ -259,7 +259,9 @@ function CUPost({
                             //
                             closeFixAll={closeFixAll}
                             deleteAnItem={deleteAnItem}
-                            handleChangeContentVidPic={handleChangeContentVidPic}
+                            handleChangeContentVidPic={
+                                handleChangeContentVidPic
+                            }
                         />
                     </div>
                 </div>

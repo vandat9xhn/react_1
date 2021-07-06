@@ -7,7 +7,7 @@ import { useMounted } from '../../../../../_hooks/useMounted';
 
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 //
-import ScreenBlurShowMore from '../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
 import { handle_API_Friend_L } from '../../../__handle_api/ProfileHandleAPI';
 

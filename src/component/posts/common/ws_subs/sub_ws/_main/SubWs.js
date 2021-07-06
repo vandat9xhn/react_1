@@ -37,9 +37,7 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
     const {
         user: c_user,
         openScreenFloor,
-
-        closeScreenUpdate,
-
+        closeScreenFloor,
         hasChangeScreenUpdate,
     } = useContext(context_api);
 
@@ -155,7 +153,7 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
         sub.vid_pic = url;
 
         forceUpdate();
-        closeScreenUpdate(true);
+        closeScreenFloor(true);
     }
     //
     function handleDelete() {

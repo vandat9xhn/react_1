@@ -75,7 +75,6 @@ function Posts({
     //
     const forceUpdate = useForceUpdate();
     const handleScreenFetching = useScreenFetching();
-    useCloseScreen(closeScreenWhenPopstate);
 
     //
     useEffect(() => {
@@ -116,12 +115,6 @@ function Posts({
         closeScreenFloor();
 
         history.back();
-    }
-
-    //
-    function closeScreenWhenPopstate() {
-        c_zoom_post.current = -1;
-        closeScreenFloor();
     }
 
     //

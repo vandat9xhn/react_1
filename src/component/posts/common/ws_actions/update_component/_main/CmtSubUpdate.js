@@ -99,7 +99,7 @@ function CmtSubUpdate({ text, vid_pic, handleUpdate, detectHasChange }) {
     //
     return (
         <div className="CmtSubUpdate">
-            <div className="CmtSubUpdate_body">
+            <div className="CmtSubUpdate_body padding-8px">
                 <div className="CmtSubUpdate_div-textarea brs-5px">
                     <TextareaNotSend
                         text={new_text}

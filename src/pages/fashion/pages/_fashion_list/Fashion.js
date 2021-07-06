@@ -8,7 +8,7 @@ import {
 import ButtonRipple from '../../../../component/button/button_ripple/ButtonRipple';
 import WaitingBall from '../../../../component/waiting/waiting_ball/WaitingBall';
 import ProductItem from '../../../../component/products/product_item/ProductItem';
-import ScreenBlurShowMore from '../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
 import FashionBC from '../../components/banner/banner_carousel/_main/FashionBC';
 import FashionLN from '../../components/banner/list_names/FashionLN';

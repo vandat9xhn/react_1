@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import ScreenBlurShowMore from '../../../../_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../_screen/components/part/foot/ScreenBlurShowMore';
 //
 import './ActionsTimeLineList.scss';
 

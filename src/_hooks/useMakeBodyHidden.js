@@ -1,16 +1,11 @@
 import { useLayoutEffect } from 'react';
-
 //
-const window_scroll_arr = [
-    // {
-    //     x: 0,
-    //     y: 0,
-    // }
-];
+import { window_screen_scroll_arr } from '../component/_screen/_main/AppScreen';
 
 //
 export const useMakeBodyHidden = (
     hidden_obj = {
+        not_use: false,
         hidden_scroll: false,
         hidden_app: false,
         hidden_header: false,
@@ -22,15 +17,6 @@ export const useMakeBodyHidden = (
     //
     useLayoutEffect(() => {
         const body = document.getElementsByTagName('body')[0];
-
-        // if (!body.dataset.countHidden || body.dataset.countHidden == 0) {
-        window_scroll_arr.push({
-            x: window.scrollX,
-            y: window.scrollY,
-        });
-
-        console.log(document.getElementsByTagName('html')[0].scrollTop);
-        // }
 
         body.dataset.countHidden =
             (body.dataset ? +body.dataset.countHidden || 0 : 0) + 1;
@@ -47,13 +33,21 @@ export const useMakeBodyHidden = (
             (body.dataset.hiddenHeader =
                 (body.dataset ? +body.dataset.hiddenHeader || 0 : 0) + 1);
 
-        setTimeout(() => {
-            window.scrollTo(0, 0);
-        }, 0);
+        window.scrollTo(0, 0);
+
+        const screen_floor_ix = window_screen_scroll_arr.length - 1;
+        const { x, y } =
+            window_screen_scroll_arr[window_screen_scroll_arr.length - 1];
 
         if (body.dataset.countHidden == 1) {
             const App = document.getElementsByClassName('App')[0];
-            App.scrollTo(window_scroll_arr[0].x, window_scroll_arr[0].y);
+            App.scrollTo(x, y);
+        } else {
+            const app_screen_floor =
+                document.getElementsByClassName('AppScreen_floor')[
+                    screen_floor_ix - 1
+                ];
+            app_screen_floor.scrollTo(x, y);
         }
 
         return () => {
@@ -78,12 +72,13 @@ export const useMakeBodyHidden = (
                 body.removeAttribute('data-hidden-header');
             }
 
-            const { x, y } = window_scroll_arr[window_scroll_arr.length - 1];
-            console.log(x, y, window_scroll_arr);
-            window.scrollTo(x, y);
-
             setTimeout(() => {
-                window_scroll_arr.splice(window_scroll_arr.length - 1, 1);
+                window.scrollTo(x, y);
+
+                window_screen_scroll_arr.splice(
+                    window_screen_scroll_arr.length - 1,
+                    1
+                );
             }, 0);
         };
     }, []);

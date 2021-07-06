@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
 //
-import ScreenTitle from '../../../../_screen_fixed/title/ScreenTitle';
+import ScreenTitle from '../../../../_screen/components/frame/has_title/title/ScreenTitle';
 //
 import ZoomPostCommonLeft from '../common_left/ZoomPostCommonLeft';
 import ZoomPostCommonRight from '../right/ZoomPostCommonRight';

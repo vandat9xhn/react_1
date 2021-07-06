@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import ScreenBlur from '../../../component/_screen_blur/_main/ScreenBlur';
-import ScreenBlurHead from '../../../component/_screen_blur/_component/head/ScreenBlurHead';
-import ScreenBlurFootYesNo from '../../../component/_screen_blur/_component/foot_yes_no/ScreenBlurFootYesNo';
+import ScreenBlur from '../../../component/_screen/components/frame/blur/ScreenBlur';
+
+import ScreenBlurHead from '../../../component/_screen/components/part/head/ScreenBlurHead';
+import ScreenBlurFootYesNo from '../../../component/_screen/components/part/foot_yes_no/ScreenBlurFootYesNo';
 
 //
 LearnScreenConfirm.propTypes = {};

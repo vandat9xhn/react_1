@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import ScreenBlurShowMore from '../../../../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 import NoItemHasFetched from '../../../../../../../../../component/some_div/no_item/NoItemHasFetched';
 //
 import PfRelationOptionItem from '../item/PfRelationOptionItem';

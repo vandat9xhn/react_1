@@ -8,7 +8,7 @@ import { API_FashionProduct_R } from '../../../../../../api/api_django_no_token/
 //
 import { useMounted } from '../../../../../../_hooks/useMounted';
 //
-import { openScreenNotice } from '../../../../../../component/_screen/type/notice/ScreenNotice';
+import { openScreenNotice } from '../../../../../../component/_screen_once/notice/ScreenNotice';
 //
 import { actionFashionChangeCountCartNum } from '../../../../../../redux/action/action_count_cart';
 //
@@ -31,7 +31,7 @@ FashionItemShop.propTypes = {};
 //
 function FashionItemShop({ id }) {
     //
-    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
+    const { openScreenOnce, closeScreenOnce } = useContext(context_api);
 
     //
     const dispatch = useDispatch();
@@ -135,12 +135,12 @@ function FashionItemShop({ id }) {
         });
 
         openScreenNotice({
-            openScreenFloor: openScreenFloor,
+            openScreenOnce: openScreenOnce,
             ComponentNotice: <FashionCartSuccess />,
         });
 
         setTimeout(() => {
-            closeScreenFloor();
+            closeScreenOnce();
         }, 500);
     }
 

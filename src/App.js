@@ -25,23 +25,14 @@ import BackTop from './component/_back_to_top/BackTop';
 import Footer from './component/_footer/_main/Footer';
 
 import Chat from './component/_chat/_main/ChatRealtime';
-import ZoomVidPics from './component/_zoom_vid_pics/_main/ZoomVidPics';
-import CanvasFixed from './component/canvas_draw/_main/CanvasFixed';
 import NatureDropMain from './component/_snow_drop/_main/NatureDropMain';
 
 import DivFixLike from './component/_div_fix/like/DivFixLike';
 import DivFixPeople from './component/_div_fix/people/DivFixPeople';
 import DivFixAction from './component/_div_fix/action/DivFixAction';
 
-import ScreenConfirm from './component/_screen_blur/confirm/ScreenConfirm';
-import ScreenHistory from './component/_screen_post/history/_main/ScreenHistory';
-import ScreenShare from './component/_screen_post/share/_main/ScreenShare';
-import ScreenUpdate from './component/_screen_post/update/_main/ScreenUpdate';
-import ScreenLike from './component/_screen_post/like/_main/ScreenLike';
-import ScreenPermission from './component/_screen_post/permission/_main/ScreenPermission';
-import ScreenBlurFetching from './component/_screen_blur/fetching/_main/ScreenBlurFetching';
-import ScreenNotice from './component/_screen_blur/notice/ScreenNotice';
 import AppScreen from './component/_screen/_main/AppScreen';
+import ScreenOnce from './component/_screen_once/_main/ScreenOnce';
 
 // App
 class App extends Component {
@@ -78,91 +69,26 @@ class App extends Component {
     };
 
     //
-    refZoom = (elm) => {
-        if (elm !== null) {
-            this.openZoomVidPics = elm.openZoomVidPics;
-        }
-    };
-
-    //
-    refCanvas = (elm) => {
-        if (elm !== null) {
-            this.toggleCanvasFixed = elm.toggleCanvasFixed;
-        }
-    };
-
-    // p
-    refNatureDropMain = (elm) => {
-        if (elm !== null) {
-            this.toggleSnowFlower = elm.toggleSnowFlower;
-        }
-    };
-
-    //
-    refScreenConfirm = (elm) => {
-        if (elm !== null) {
-            this.openScreenConfirm = elm.openScreenConfirm;
-        }
-    };
-
-    //
-    refScreenNotice = (elm) => {
-        if (elm !== null) {
-            this.openScreenNotice = elm.openScreenNotice;
-            this.closeScreenNotice = elm.closeScreenNotice;
-        }
-    };
-
-    //
-    refScreenHistory = (elm) => {
-        if (elm !== null) {
-            this.openScreenHistory = elm.openScreenHistory;
-        }
-    };
-
-    //
-    refScreenShare = (elm) => {
-        if (elm !== null) {
-            this.openScreenShare = elm.openScreenShare;
-        }
-    };
-
-    //
-    refScreenUpdate = (elm) => {
-        if (elm !== null) {
-            this.openScreenUpdate = elm.openScreenUpdate;
-            this.closeScreenUpdate = elm.closeScreenUpdate;
-            this.hasChangeScreenUpdate = elm.hasChangeScreenUpdate;
-        }
-    };
-
-    //
-    refScreenLike = (elm) => {
-        if (elm !== null) {
-            this.openScreenLike = elm.openScreenLike;
-        }
-    };
-
-    //
-    refScreenPermission = (elm) => {
-        if (elm !== null) {
-            this.openScreenPermission = elm.openScreenPermission;
-        }
-    };
-
-    //
-    refScreenFetching = (elm) => {
-        if (elm != null) {
-            this.openScreenFetching = elm.openScreenFetching;
-            this.closeScreenFetching = elm.closeScreenFetching;
-        }
-    };
-
-    //
     refAppScreen = (elm) => {
         if (elm != null) {
             this.openScreenFloor = elm.openScreenFloor;
             this.closeScreenFloor = elm.closeScreenFloor;
+            this.detectScreenHasChange = elm.detectScreenHasChange;
+        }
+    };
+
+    //
+    refScreenOnce = (elm) => {
+        if (elm != null) {
+            this.openScreenOnce = elm.openScreenOnce;
+            this.closeScreenOnce = elm.closeScreenOnce;
+        }
+    };
+
+    // 
+    refNatureDropMain = (elm) => {
+        if (elm !== null) {
+            this.toggleSnowFlower = elm.toggleSnowFlower;
         }
     };
 
@@ -189,27 +115,14 @@ class App extends Component {
                         openDivFixAction={this.openDivFixAction}
                         closeDivFixAction={this.closeDivFixAction}
                         //
-                        openZoomVidPics={this.openZoomVidPics}
-                        toggleCanvasFixed={this.toggleCanvasFixed}
                         toggleSnowFlower={this.toggleSnowFlower}
                         //
-                        openScreenConfirm={this.openScreenConfirm}
-                        openScreenNotice={this.openScreenNotice}
-                        openScreenHistory={this.openScreenHistory}
-                        openScreenShare={this.openScreenShare}
-                        openScreenUpdate={this.openScreenUpdate}
-                        openScreenLike={this.openScreenLike}
-                        openScreenPermission={this.openScreenPermission}
-                        openScreenFetching={this.openScreenFetching}
-                        //
-                        hasChangeScreenUpdate={this.hasChangeScreenUpdate}
-                        //
-                        closeScreenUpdate={this.closeScreenUpdate}
-                        closeScreenNotice={this.closeScreenNotice}
-                        closeScreenFetching={this.closeScreenFetching}
-                        //
+                        openScreenOnce={this.openScreenOnce}
+                        closeScreenOnce={this.closeScreenOnce}
+                        // 
                         openScreenFloor={this.openScreenFloor}
                         closeScreenFloor={this.closeScreenFloor}
+                        detectScreenHasChange={this.detectScreenHasChange}
                     >
                         <div className="App">
                             <div className="App_contain">
@@ -246,7 +159,7 @@ class App extends Component {
 
                             <Chat ref={this.refChat} />
                         </div>
-                        
+
                         <div>
                             <DivFixLike ref={this.refFixLike} />
 
@@ -255,36 +168,14 @@ class App extends Component {
                             <DivFixAction ref={this.refFixAction} />
                         </div>
 
-                        <div>
-                            {/* <CanvasFixed ref={this.refCanvas} /> */}
-
-                            {/* screen */}
-                            {/* <ScreenHistory ref={this.refScreenHistory} />
-
-                            <ScreenShare ref={this.refScreenShare} />
-
-                            <ScreenUpdate ref={this.refScreenUpdate} />
-
-                            <ScreenLike ref={this.refScreenLike} />
-
-                            <ScreenPermission ref={this.refScreenPermission} />
-
-                            <ScreenConfirm ref={this.refScreenConfirm} />
-
-                            <ScreenNotice ref={this.refScreenNotice} />
-
-                            <ScreenBlurFetching ref={this.refScreenFetching} /> */}
-
-                            {/* fix */}
-                            {/* <ZoomVidPics ref={this.refZoom} /> */}
-                        </div>
-
                         <div className="AppNatureDrop">
                             <NatureDropMain ref={this.refNatureDropMain} />
                         </div>
 
                         <div>
                             <AppScreen ref={this.refAppScreen} />
+
+                            <ScreenOnce ref={this.refScreenOnce}/>
                         </div>
                     </ContextAPI>
                 </BrowserRouter>

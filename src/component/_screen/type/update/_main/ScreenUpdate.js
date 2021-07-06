@@ -1,8 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
+//
+import { context_api } from '../../../../../_context/ContextAPI';
 //
 import ScreenBlur from '../../../components/frame/blur/ScreenBlur';
 import ScreenBlurHead from '../../../components/part/head/ScreenBlurHead';
+//
+import { openScreenConfirm } from '../../confirm/ScreenConfirm';
 
 //
 export function openScreenUpdate({
@@ -29,19 +33,23 @@ ScreenUpdate.propTypes = {};
 //
 function ScreenUpdate({
     closeScreen,
+
     title,
     UpdateComponent,
     is_fetching,
     ...update_props
 }) {
     //
+    const { openScreenFloor, detectScreenHasChange } = useContext(context_api);
+
+    //
     const has_change = useRef(false);
     const use_scale = useRef(true);
 
-    // 
+    //
     useEffect(() => {
-        use_scale.current = false
-    })
+        use_scale.current = false;
+    }, []);
 
     //
     function closeScreenUpdate(force_close = false) {
@@ -57,24 +65,31 @@ function ScreenUpdate({
             return;
         }
 
-        if (
-            confirm(
-                'Do you want to close this?\nAny thing changed will be lost!'
-            )
-        ) {
-            closeScreen();
-        }
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Unsaved changes',
+            notification: "Changes you've made will not be saved.",
+            handleConfirm: () => {
+                closeScreen();
+                detectScreenHasChange(false);
+            },
+        });
     }
 
     //
     function detectHasChange(new_has_change) {
-        has_change.current != new_has_change &&
-            (has_change.current = new_has_change);
+        if (has_change.current != new_has_change) {
+            has_change.current = new_has_change;
+            detectScreenHasChange(new_has_change);
+        }
     }
 
     //
     return (
-        <ScreenBlur closeScreen={closeScreenUpdate} use_scale={use_scale.current}>
+        <ScreenBlur
+            closeScreen={closeScreenUpdate}
+            use_scale={use_scale.current}
+        >
             <div>
                 <ScreenBlurHead
                     title={title}

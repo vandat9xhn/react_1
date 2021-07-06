@@ -14,7 +14,7 @@ import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 import makeFormData from '../../../../../_some_function/makeFormData';
 import observeToDo from '../../../../../_some_function/observerToDo';
 //
-import { openScreenNotice } from '../../../../../component/_screen/type/notice/ScreenNotice';
+import { openScreenNotice } from '../../../../../component/_screen_once/notice/ScreenNotice';
 //
 import ProductDetail from '../detail/ProductDetail';
 import RelativeProducts from '../relative/RelativeProducts';
@@ -42,7 +42,7 @@ function PhoneLaptopDetail() {
     const product_id = +useParams().id;
 
     //
-    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
+    const { openScreenOnce, closeScreenOnce } = useContext(context_api);
 
     //
     const [product_state, setProductState] = useState(initial_product_state);
@@ -156,7 +156,7 @@ function PhoneLaptopDetail() {
         });
 
         openScreenNotice({
-            openScreenFloor: openScreenFloor,
+            openScreenOnce: openScreenOnce,
             ComponentNotice: (
                 <div className="PhoneLaptopDetail_notice-success brs-5px bg-loader">
                     Order successfully
@@ -165,7 +165,7 @@ function PhoneLaptopDetail() {
         });
 
         setTimeout(() => {
-            closeScreenFloor();
+            closeScreenOnce();
         }, 800);
     }
 

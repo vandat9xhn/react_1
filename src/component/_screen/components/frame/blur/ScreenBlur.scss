@@ -20,6 +20,13 @@
     animation: screen-contain-scale 500ms ease forwards;
 }
 
+//
+.ScreenBlur_waiting {
+    .ScreenBlurFetching {
+        background-color: transparent;
+    }
+}
+
 // .
 .ScreenBlur_body_contain {
     min-height: 5rem;
@@ -59,14 +66,15 @@
 
 //
 @media (max-width: 400px) {
-    .ScreenBlur{
+    .ScreenBlur {
         padding: 0;
     }
 
-    .ScreenBlur_contain{
+    .ScreenBlur_contain {
         min-height: 100vh;
+        padding-top: 0.5rem;
 
-        .CUPostHomeContent{
+        .CUPostHomeContent {
             height: auto;
         }
     }

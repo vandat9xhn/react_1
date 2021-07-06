@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { GetIdSlug } from '../../../../../../_some_function/GetIdSlug';
 //
 import ComponentSkeleton from '../../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
-import ScreenBlurShowMore from '../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
 import './ProfilePhotoMain.scss';
 

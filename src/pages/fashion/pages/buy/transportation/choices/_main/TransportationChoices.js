@@ -5,7 +5,7 @@ import { API_FashionTransport_L } from '../../../../../../../api/api_django/fash
 //
 import observeToDo from '../../../../../../../_some_function/observerToDo';
 //
-import ScreenBlurFootYesNo from '../../../../../../../component/_screen_blur/_component/foot_yes_no/ScreenBlurFootYesNo';
+import ScreenBlurFootYesNo from '../../../../../../../component/_screen/components/part/foot_yes_no/ScreenBlurFootYesNo';
 import CircleLoading from '../../../../../../../component/waiting/circle_loading/CircleLoading';
 //
 import './TransportationChoices.scss';

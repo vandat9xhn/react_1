@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes, { func } from 'prop-types';
 //
-import ScreenBlurShowMore from '../../../../_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../_screen/components/part/foot/ScreenBlurShowMore';
 import WaitingBall from '../../../../waiting/waiting_ball/WaitingBall';
 import FetchingDiv from '../../../../some_div/fetching/FetchingDiv';
 //

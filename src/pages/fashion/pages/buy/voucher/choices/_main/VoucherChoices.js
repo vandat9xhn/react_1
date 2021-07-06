@@ -5,8 +5,8 @@ import { API_FashionVoucher_L } from '../../../../../../../api/api_django/fashio
 //
 import observeToDo from '../../../../../../../_some_function/observerToDo';
 //
-import ScreenBlurShowMore from '../../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
-import ScreenBlurFootYesNo from '../../../../../../../component/_screen_blur/_component/foot_yes_no/ScreenBlurFootYesNo';
+import ScreenBlurShowMore from '../../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
+import ScreenBlurFootYesNo from '../../../../../../../component/_screen/components/part/foot_yes_no/ScreenBlurFootYesNo';
 //
 import './VoucherChoices.scss';
 //

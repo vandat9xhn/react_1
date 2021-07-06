@@ -2,12 +2,12 @@ import { useContext } from 'react';
 //
 import { context_api } from '../_context/ContextAPI';
 //
-import { openScreenFetching } from '../component/_screen/type/fetching/ScreenBlurFetching';
+import { openScreenFetching } from '../component/_screen_once/fetching/ScreenBlurFetching';
 
 //
 export const useScreenFetching = () => {
     //
-    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
+    const { openScreenOnce, closeScreenOnce } = useContext(context_api);
 
     //
     async function handleScreenFetching(
@@ -15,13 +15,13 @@ export const useScreenFetching = () => {
         FetchingComponent
     ) {
         openScreenFetching({
-            openScreenFloor: openScreenFloor,
+            openScreenOnce: openScreenOnce,
             FetchingComponent: FetchingComponent,
         });
 
         const data = await callback_handle_API();
 
-        closeScreenFloor();
+        closeScreenOnce();
 
         return data;
     }

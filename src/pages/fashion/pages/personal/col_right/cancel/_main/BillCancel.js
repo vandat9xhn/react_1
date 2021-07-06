@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { API_FashionCancelProduct_L } from '../../../../../../../api/api_django/fashion/APIFashionToken';
 //
 import CircleLoading from '../../../../../../../component/waiting/circle_loading/CircleLoading';
-import ScreenBlurShowMore from '../../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
 import { params_cancel } from '../../../../../__params/home/FashionParams';
 //

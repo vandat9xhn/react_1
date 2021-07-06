@@ -21,7 +21,7 @@ import ProductCFilter from '../current_filter/_main/ProductCFilter';
 import ProductPrices from '../prices_row/ProductPrices';
 //
 import './AllProductsRes.scss';
-import ScreenBlurShowMore from '../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 
 //
 AllProducts.propTypes = {

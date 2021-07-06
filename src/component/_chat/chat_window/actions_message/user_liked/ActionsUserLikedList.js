@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { type_likes } from '../../../../like/list_type_like/type_likes/TypeLikes';
 import PictureName from '../../../../picture_name/pic_name/PictureName';
-import ScreenBlurShowMore from '../../../../_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../_screen/components/part/foot/ScreenBlurShowMore';
 // 
 import './ActionsUserLikedList.scss'
 

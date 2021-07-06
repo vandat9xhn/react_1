@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { context_post } from '../../../__context_post/ContextPost';
 //
 import CommentPost from '../../../../input_img_vid_preview/comment_post/CommentPost';
-import ScreenBlurShowMore from '../../../../_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../_screen/components/part/foot/ScreenBlurShowMore';
 //
 import SubWs from '../sub_ws/_main/SubWs';
 //

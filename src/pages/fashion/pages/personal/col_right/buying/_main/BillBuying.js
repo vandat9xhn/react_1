@@ -10,7 +10,7 @@ import { ParseLocationSearch } from '../../../../../../../_some_function/ParseLo
 import { openScreenConfirm } from '../../../../../../../component/_screen/type/confirm/ScreenConfirm';
 //
 import CircleLoading from '../../../../../../../component/waiting/circle_loading/CircleLoading';
-import ScreenBlurShowMore from '../../../../../../../component/_screen_blur/_component/foot/ScreenBlurShowMore';
+import ScreenBlurShowMore from '../../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
 import { params_buy } from '../../../../../__params/home/FashionParams';
 //

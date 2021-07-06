@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
-import ScreenBlurBodyNotHidden from '../../../../../../component/_screen_blur/_main/ScreenBlurBodyNotHidden';
 //
+import { useCloseScreen } from '../../../../../../_hooks/useCloseScreen';
+// 
 import TransportationChoices from '../../transportation/choices/_main/TransportationChoices';
 import PaymentChoices from '../../payment/choices/_main/PaymentChoices';
 import VoucherChoices from '../../voucher/choices/_main/VoucherChoices';
@@ -21,8 +21,12 @@ function FashionBuyExtra({
 
     closeExtraBuy,
 }) {
+    //
+    useCloseScreen(closeExtraBuy);
+
+    //
     return (
-        <ScreenBlurBodyNotHidden closeScreen={closeExtraBuy}>
+        <div className="pos-fixed-100 bg-screen">
             <div>
                 <div
                     className={`${
@@ -58,7 +62,7 @@ function FashionBuyExtra({
                     />
                 </div>
             </div>
-        </ScreenBlurBodyNotHidden>
+        </div>
     );
 }
 

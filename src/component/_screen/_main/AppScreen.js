@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
+import AppScreenFloors from './AppScreenFloors';
+//
+import './AppScreen.scss';
 import ScreenFloor from '../floor/ScreenFloor';
+
+//
+export const window_screen_scroll_arr = [];
 
 //
 class AppScreen extends Component {
@@ -10,8 +16,19 @@ class AppScreen extends Component {
     };
 
     //
-    openScreenFloor = (new_floor = {}) => {
+    componentDidMount() {
+        this.count_has_change = 0;
+        this.has_change_obj = { current: false };
+    }
+
+    //
+    openScreenFloor = (new_floor) => {
         const { floor_arr } = this.state;
+
+        window_screen_scroll_arr.push({
+            x: window.scrollX,
+            y: window.scrollY,
+        });
 
         this.setState({
             floor_arr: [...floor_arr, new_floor],
@@ -21,9 +38,25 @@ class AppScreen extends Component {
     //
     closeScreenFloor = () => {
         const { floor_arr } = this.state;
-        floor_arr.pop();
 
+        floor_arr.pop();
         this.setState({});
+    };
+
+    //
+    detectScreenHasChange = (has_change) => {
+        this.count_has_change += has_change ? 1 : -1;
+        this.has_change_obj.current = this.count_has_change > 0;
+    };
+
+    //
+    closeAllScreen = () => {
+        this.setState({
+            floor_arr: [],
+        });
+
+        this.count_has_change = 0;
+        this.has_change_obj = { current: false };
     };
 
     //
@@ -34,19 +67,18 @@ class AppScreen extends Component {
         //
         return (
             <div>
-                {floor_arr.map((floor_obj, ix) => (
-                    <div
-                        key={`${ix}`}
-                        className={`${
-                            ix != floor_arr.length - 1 ? 'display-none' : ''
-                        }`}
-                    >
-                        <ScreenFloor
-                            closeScreen={this.closeScreenFloor}
-                            {...floor_obj}
-                        />
-                    </div>
-                ))}
+                {floor_arr.length ? (
+                    <AppScreenFloors
+                        floor_arr={floor_arr}
+                        //
+                        openScreenFloor={this.openScreenFloor}
+                        closeScreenFloor={this.closeScreenFloor}
+                        closeAllScreen={this.closeAllScreen}
+                        //
+                        has_change={this.has_change_obj}
+                        c_location={location.pathname + location.search}
+                    />
+                ) : null}
             </div>
         );
     }
