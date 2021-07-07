@@ -83,7 +83,6 @@ function AppScreenFloors({
                     <div
                         key={`${ix}`}
                         className={`AppScreen_floor ${
-                            // ix != floor_arr.length - 1 ? 'display-none' : ''
                             ix != floor_arr.length - 1
                                 ? 'AppScreen_inactive'
                                 : 'bg-screen'

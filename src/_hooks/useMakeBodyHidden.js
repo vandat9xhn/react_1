@@ -5,7 +5,6 @@ import { window_screen_scroll_arr } from '../component/_screen/_main/AppScreen';
 //
 export const useMakeBodyHidden = (
     hidden_obj = {
-        not_use: false,
         hidden_scroll: false,
         hidden_app: false,
         hidden_header: false,
@@ -41,13 +40,17 @@ export const useMakeBodyHidden = (
 
         if (body.dataset.countHidden == 1) {
             const App = document.getElementsByClassName('App')[0];
-            App.scrollTo(x, y);
+
+            App.style.top = `${-y}px`;
+            App.style.left = `${-x}px`;
         } else {
             const app_screen_floor =
                 document.getElementsByClassName('AppScreen_floor')[
                     screen_floor_ix - 1
                 ];
-            app_screen_floor.scrollTo(x, y);
+
+            app_screen_floor.style.top = `${-y}px`;
+            app_screen_floor.style.left = `${-x}px`;
         }
 
         return () => {
@@ -73,6 +76,15 @@ export const useMakeBodyHidden = (
             }
 
             setTimeout(() => {
+                if (body.dataset.countHidden) {
+                    const app_screen_floor =
+                        document.getElementsByClassName('AppScreen_floor')[
+                            screen_floor_ix - 1
+                        ];
+                    app_screen_floor.style.top = `0px`;
+                    app_screen_floor.style.left = `0px`;
+                }
+
                 window.scrollTo(x, y);
 
                 window_screen_scroll_arr.splice(

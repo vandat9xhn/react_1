@@ -12,6 +12,7 @@ ScreenBlur.propTypes = {
     closeScreen: PropTypes.func,
     children: PropTypes.element,
 
+    use_body_hidden: PropTypes.bool,
     screen_center: PropTypes.bool,
     waiting: PropTypes.bool,
     use_scale: PropTypes.bool,
@@ -19,6 +20,7 @@ ScreenBlur.propTypes = {
 };
 
 ScreenBlur.defaultProps = {
+    use_body_hidden: true,
     screen_center: false,
     waiting: false,
     use_scale: false,
@@ -29,13 +31,14 @@ function ScreenBlur({
     closeScreen,
     children,
 
+    use_body_hidden,
     screen_center,
     waiting,
     use_scale,
     FetchingComponent,
 }) {
     //
-    useMakeBodyHidden();
+    useMakeBodyHidden({ use_body_hidden: use_body_hidden });
 
     //
     return (

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import AppScreenFloors from './AppScreenFloors';
 //
 import './AppScreen.scss';
-import ScreenFloor from '../floor/ScreenFloor';
+import ScreenNoFloor from './ScreenNoFloor';
 
 //
 export const window_screen_scroll_arr = [];
@@ -78,7 +78,7 @@ class AppScreen extends Component {
                         has_change={this.has_change_obj}
                         c_location={location.pathname + location.search}
                     />
-                ) : null}
+                ) : <ScreenNoFloor />}
             </div>
         );
     }

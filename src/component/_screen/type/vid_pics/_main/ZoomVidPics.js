@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import VidPics from '../vid_pics/VidPics';
 import ScreenFixed from '../../../components/frame/has_title/_main/ScreenFixed';
+// 
+import './ZoomVidPics.scss';
 
 //
 export function openScreenVidPic({
@@ -48,13 +50,15 @@ function ZoomVidPics({ closeScreen, urls, current: initial_current }) {
 
     //
     return (
-        <ScreenFixed url={urls[current].url} closeScreenFixed={closeScreen}>
-            <VidPics
-                urls={urls}
-                current={current}
-                changeCurrent={changeCurrent}
-            />
-        </ScreenFixed>
+        <div className="ZoomVidPics">
+            <ScreenFixed url={urls[current].url} closeScreenFixed={closeScreen}>
+                <VidPics
+                    urls={urls}
+                    current={current}
+                    changeCurrent={changeCurrent}
+                />
+            </ScreenFixed>
+        </div>
     );
 }
 

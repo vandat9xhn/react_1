@@ -21,7 +21,8 @@ function Auth({ route, ...props }) {
     if (route.path.search(/(\/login-form|\/registration-form)/) >= 0 && user.id) {
         return <Redirect to={sessionStorage.url_before_login || '/home'} />
     }
-
+    
+    window.scrollTo(0, 0)
     // 
     return <route.component {...props} />;
 }

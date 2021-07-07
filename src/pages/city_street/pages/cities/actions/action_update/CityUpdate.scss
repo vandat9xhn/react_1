@@ -1,8 +1,7 @@
 
 .CityUpdate{
     .CityForm_contain{
-        border-radius: 0;
-        max-height: calc(100vh - 3rem);
-        overflow-y: auto;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
     }
 }

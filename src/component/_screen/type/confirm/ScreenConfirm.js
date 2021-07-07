@@ -14,11 +14,11 @@ export function openScreenConfirm({
     title,
     notification,
     handleConfirm,
-    ...other_props = {},
+    ...other_props
 }) {
     openScreenFloor({
         FloorComponent: ScreenConfirm,
-        
+
         title: title,
         notification: notification,
         handleConfirm: handleConfirm,
@@ -30,10 +30,16 @@ export function openScreenConfirm({
 ScreenConfirm.propTypes = {};
 
 //
-function ScreenConfirm({ closeScreen, title, notification, handleConfirm }) {
+function ScreenConfirm({
+    closeScreen,
+    title,
+    notification,
+    handleConfirm,
+}) {
     //
     function onConfirm() {
         closeScreen();
+
         handleConfirm();
     }
 

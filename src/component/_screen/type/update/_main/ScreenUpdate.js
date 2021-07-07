@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useContext } from 'react';
+import React, { useEffect, useRef, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
@@ -7,6 +7,7 @@ import ScreenBlur from '../../../components/frame/blur/ScreenBlur';
 import ScreenBlurHead from '../../../components/part/head/ScreenBlurHead';
 //
 import { openScreenConfirm } from '../../confirm/ScreenConfirm';
+import ScreenBlurFetching from '../../../../_screen_once/fetching/ScreenBlurFetching';
 
 //
 export function openScreenUpdate({
@@ -43,6 +44,9 @@ function ScreenUpdate({
     const { openScreenFloor, detectScreenHasChange } = useContext(context_api);
 
     //
+    const [closing, setClosing] = useState(false);
+
+    //
     const has_change = useRef(false);
     const use_scale = useRef(true);
 
@@ -51,15 +55,31 @@ function ScreenUpdate({
         use_scale.current = false;
     }, []);
 
+    /* ---------------- */
+
+    //
+    function detectHasChange(new_has_change) {
+        if (has_change.current != new_has_change) {
+            has_change.current = new_has_change;
+            detectScreenHasChange(new_has_change);
+        }
+    }
+
+    //
+    function handleConfirmToClose() {
+        setClosing(true);
+
+        setTimeout(() => {
+            closeScreen();
+            detectScreenHasChange(false);
+        }, 250);
+    }
+
+    /* ---------------- */
+
     //
     function closeScreenUpdate(force_close = false) {
-        if (force_close) {
-            closeScreen();
-
-            return;
-        }
-
-        if (!has_change.current) {
+        if (force_close || !has_change.current) {
             closeScreen();
 
             return;
@@ -69,19 +89,8 @@ function ScreenUpdate({
             openScreenFloor: openScreenFloor,
             title: 'Unsaved changes',
             notification: "Changes you've made will not be saved.",
-            handleConfirm: () => {
-                closeScreen();
-                detectScreenHasChange(false);
-            },
+            handleConfirm: handleConfirmToClose,
         });
-    }
-
-    //
-    function detectHasChange(new_has_change) {
-        if (has_change.current != new_has_change) {
-            has_change.current = new_has_change;
-            detectScreenHasChange(new_has_change);
-        }
     }
 
     //
@@ -103,6 +112,14 @@ function ScreenUpdate({
                             {...update_props}
                         />
                     }
+                </div>
+
+                <div
+                    className={`${
+                        closing ? 'pos-fixed-100 z-index-lv5' : 'display-none'
+                    }`}
+                >
+                    <ScreenBlurFetching />
                 </div>
             </div>
         </ScreenBlur>
