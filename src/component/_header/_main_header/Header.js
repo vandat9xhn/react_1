@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 //
 import './HeaderCommon.scss';
 //
@@ -13,34 +13,24 @@ import './HeaderRes.scss';
 //
 function Header() {
     //
-    const { is_register } = useSelector((state) => state.location_obj);
-
-    //
     useEffect(() => {
-        const is_mobile = navigator.userAgent.includes('Mobile')
+        const is_mobile = navigator.userAgent.includes('Mobile');
 
         localStorage.is_mobile = is_mobile ? 1 : 0;
 
-        is_mobile && document.getElementsByTagName('body')[0].classList.add('device-mobile')
+        is_mobile &&
+            document
+                .getElementsByTagName('body')[0]
+                .classList.add('device-mobile');
     }, []);
-
-    useEffect(() => {
-        handleNewMember();
-    }, [is_register]);
-
-    //
-    function handleNewMember() {
-        if (sessionStorage.new_member) {
-            alert('Welcome ' + sessionStorage.new_member);
-            sessionStorage.removeItem('new_member');
-        }
-    }
 
     //
     return (
         <div
             className={`Header App_box_shadow h-100-per bg-primary ${
-                is_register ? 'display-none' : ''
+                location.pathname.search('registration-form') > 0
+                    ? 'display-none'
+                    : ''
             }`}
         >
             <div className="Header_contain h-100per">
@@ -59,4 +49,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default withRouter(Header);

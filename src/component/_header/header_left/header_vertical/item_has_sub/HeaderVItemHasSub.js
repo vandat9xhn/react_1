@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import IconDiv from '../../../../some_div/icon_div/IconDiv';
-// 
+//
 import ArrowAndString from '../../../../some_div/arrow_div/ArrowAndString';
 import HeaderVItem from '../item/HeaderVItem';
 //
@@ -30,13 +30,20 @@ function HeaderVItemHasSub({ item }) {
         <div className="HeaderVItemHasSub">
             <h2
                 className={`margin-0 padding-8px font-16px cursor-pointer ${
-                    open_list ? 'nav-active text-blue' : ''
+                    open_list ? 'HeaderVItemHasSub_title-active' : ''
                 }`}
                 onClick={toggleOpenList}
             >
                 <ArrowAndString open_list={open_list} size_icon="0.8rem">
                     {Icon ? (
-                        <IconDiv Icon={Icon} x={x} y={y}>
+                        <IconDiv
+                            Icon={Icon}
+                            x={x}
+                            y={y}
+                            color={
+                                open_list ? 'var(--base-seafoam)' : undefined
+                            }
+                        >
                             {title}
                         </IconDiv>
                     ) : (

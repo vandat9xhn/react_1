@@ -5,15 +5,17 @@ import './IconLearn.scss';
 
 //
 IconLearn.propTypes = {
+    color: PropTypes.string,
     size_icon: PropTypes.string,
 };
 
 IconLearn.defaultProps = {
+    color: 'var(--md-color)',
     size_icon: '1.5rem',
 };
 
 //
-function IconLearn({ size_icon }) {
+function IconLearn({ size_icon, color }) {
     //
     return (
         <svg
@@ -30,7 +32,7 @@ function IconLearn({ size_icon }) {
                 74.6491M136.102 74.6491L101.525 54.3684L68.9831 74.6491L101.525 94.9298L136.102 74.6491ZM83.7288 
                 185H10L31.3559 144.5H163.559L190 185H119.831M83.7288 185L87.2881 167.105H115.763L119.831 
                 185M83.7288 185H119.831M45.5932 135.491H150.339V37.6667H45.5932V135.491Z"
-                stroke="var(--md-color)"
+                stroke={color}
                 strokeWidth="5"
                 // strokeLinecap="round"
                 strokeLinejoin="round"

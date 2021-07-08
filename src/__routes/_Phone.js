@@ -23,6 +23,7 @@ export const phone_route_arr = [
         component: PhoneLaptop,
         exact: true,
         auth: false,
+        reset_position: true,
     },
     {
         path: '/phone-laptop::id',
@@ -35,11 +36,13 @@ export const phone_route_arr = [
         component: Phones,
         exact: true,
         auth: false,
+        reset_position: true,
     },
     {
         path: '/phone-laptop-laptops',
         component: Laptops,
         exact: true,
         auth: false,
+        reset_position: true,
     },
 ];

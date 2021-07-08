@@ -143,7 +143,11 @@ function CityForm({
                 //
                 use_has_change &&
                     detectHasChange(
-                        handleHasChange(props.city, props.street, props.quote)
+                        handleHasChange(
+                            props.values.city,
+                            props.values.street,
+                            props.values.quote
+                        )
                     );
 
                 //

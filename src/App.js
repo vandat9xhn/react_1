@@ -20,11 +20,13 @@ import Auth from './_auth/Auth';
 //
 import WaitingBall from './component/waiting/waiting_ball/WaitingBall';
 //
-import Header from './component/_header/_main_header/Header';
+import Chat from './component/_chat/_main/ChatRealtime';
+import Contact from './component/_contact/Contact';
 import BackTop from './component/_back_to_top/BackTop';
+
+import Header from './component/_header/_main_header/Header';
 import Footer from './component/_footer/_main/Footer';
 
-import Chat from './component/_chat/_main/ChatRealtime';
 import NatureDropMain from './component/_snow_drop/_main/NatureDropMain';
 
 import DivFixLike from './component/_div_fix/like/DivFixLike';
@@ -156,6 +158,8 @@ class App extends Component {
                             </div>
 
                             <BackTop />
+
+                            <Contact />
 
                             <Chat ref={this.refChat} />
                         </div>

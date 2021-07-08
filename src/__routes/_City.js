@@ -15,11 +15,13 @@ export const city_route_arr = [
         component: CityStreet,
         exact: true,
         auth: false,
+        reset_position: true,
     },
     {
         path: '/new-city',
         component: NewCity,
         exact: true,
         auth: true,
+        reset_position: true,
     },
 ];

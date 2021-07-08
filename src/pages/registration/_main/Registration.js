@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import { Formik, Form, FastField } from 'formik';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../_context/ContextAPI';
@@ -15,8 +13,6 @@ import makeFormData from '../../../_some_function/makeFormData';
 import { handleScrollSmooth } from '../../../_some_function/handleScrollSmooth';
 //
 import IconsAction from '../../../_icons_svg/icons_action/IconsAction';
-//
-import { actionLocationRegister } from '../../../redux/action/action_location';
 //
 import ButtonRipple from '../../../component/button/button_ripple/ButtonRipple';
 import IconDiv from '../../../component/some_div/icon_div/IconDiv';
@@ -44,9 +40,6 @@ function Registration(props) {
     const { user, setDataUser } = useContext(context_api);
 
     //
-    const dispatch = useDispatch();
-
-    //
     const [username_existed, setUserExisted] = useState(false);
     const [email_existed, setEmailExisted] = useState(false);
     const [invalid, setInvalid] = useState(false);
@@ -68,14 +61,6 @@ function Registration(props) {
     } = useInputDate({});
 
     //
-    useEffect(() => {
-        dispatch(actionLocationRegister(true));
-
-        return () => {
-            dispatch(actionLocationRegister(false));
-        };
-    }, []);
-
     useEffect(() => {
         document.title = 'Registration';
         document.documentElement.setAttribute('data-theme', 'light');
@@ -164,11 +149,6 @@ function Registration(props) {
         email_existed && setEmailExisted(false);
         invalid && setInvalid(false);
     }
-
-    //
-    // if (user.id) {
-    //     return <Redirect to="/home" />;
-    // }
 
     //
     return (

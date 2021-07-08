@@ -2,7 +2,7 @@
 //
 .ArrowAndString_arrow{
     .ArrowAndString_icon{
-        transition: all 0.3s linear;
+        transition: all 0.3s ease;
     }
 }
 //
@@ -11,6 +11,6 @@
         transform: rotate(90deg);
     }
     .IconsArrow_dropdown{
-        fill: aqua;
+        fill: var(--base-seafoam);
     }
 }

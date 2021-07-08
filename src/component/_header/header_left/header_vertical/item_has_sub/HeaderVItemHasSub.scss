@@ -1,8 +1,11 @@
+.HeaderVItemHasSub_title-active {
+    color: var(--base-seafoam);
+}
 
 // .
 .HeaderVItemHasSub_list {
     overflow: hidden;
-    transition: all 0.35s;
+    transition: all 0.35s ease;
 }
 .HeaderVItemHasSub_list-hidden {
     max-height: 0;
@@ -14,21 +17,18 @@
 // ..
 .HeaderVItemHasSub_item {
     position: relative;
-    padding-left: 2rem;
-    a{
-        &::before {
-            content: '-';
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-    
-            font-weight: 600;
-        }
+    a {
+        .HeaderVItem {
+            padding-left: 2rem;
 
-        &.nav-active{
-            &::before{
-                color: var(--blue);
+            &::before {
+                content: '-';
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+
+                font-weight: bold;
             }
         }
     }

@@ -34,6 +34,7 @@ export const profile_route_arr = [
         component: NewFeed,
         exact: true,
         auth: true,
+        reset_position: true,
     },
     {
         path: '/post/photos/:id',
@@ -46,5 +47,6 @@ export const profile_route_arr = [
         component: AddFriend,
         exact: true,
         auth: true,
+        reset_position: true,
     },
 ];

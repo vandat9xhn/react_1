@@ -1,3 +1,9 @@
+.nav-active{
+    .HeaderVItem{
+        background-color: var(--md-bg-active-fb);
+    }
+}
+
 .HeaderVItem {
     font-size: 16px;
     .IconsMenu_new-feed {

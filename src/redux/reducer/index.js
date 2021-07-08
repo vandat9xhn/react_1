@@ -7,15 +7,11 @@ import watcherSaga from '../saga/ReduxSaga';
 // 
 import reducer_saga from './ReducerSaga';
 import reducer_count_cart from './reducer_count_cart';
-import reducerLocation from './reducer_location';
-import { reducerDivFix } from './reducer_div_fix';
 
 // Combine reducers
 const rootReducer = combineReducers({
   list2: reducer_saga,
   count_cart_obj: reducer_count_cart,
-  location_obj: reducerLocation,
-  div_fix: reducerDivFix,
 });
 
 // window dev

@@ -15,8 +15,7 @@ ActionReport.defaultProps = {
 };
 
 //
-function ActionReport(props) {
-    const { handleOpenReport, title } = props;
+function ActionReport({ handleOpenReport, title }) {
     //
     return (
         <div className="action-item" onClick={handleOpenReport} title="Report">

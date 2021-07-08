@@ -15,8 +15,7 @@ ActionDelete.defaultProps = {
 };
 
 //
-function ActionDelete(props) {
-    const { handleDelete, title } = props;
+function ActionDelete({ handleDelete, title }) {
     //
     return (
         <div className="action-item" onClick={handleDelete} title="Delete">

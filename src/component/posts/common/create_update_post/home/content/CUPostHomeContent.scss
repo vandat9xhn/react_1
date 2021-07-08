@@ -1,7 +1,6 @@
 /* -------------- CONTENT ------------------ */
 .CUPostHomeContent {
-    height: 16rem;
-    // max-height: calc(100vh - 12rem);
+    height: 18rem;
     overflow: auto;
 }
 
@@ -39,8 +38,6 @@
     }
 
     .ImgVidPreviewItem_delete {
-        // right: 0;
-        // left: auto;
         display: none;
     }
 }
@@ -77,9 +74,9 @@
 }
 
 //
-@media (max-width: 300px) {
+@media (max-width: 400px) {
     .CUPostHomeContent {
-        // max-height: calc(100vh - 10.5rem);
+        height: auto;
     }
 
     .CUPostHome_files-tag {

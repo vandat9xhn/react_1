@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 //
 import IconsArrow from '../../_icons_svg/icons_arrow/IconsArrow';
 //
@@ -80,4 +81,4 @@ function Contact(props) {
     );
 }
 
-export default Contact;
+export default withRouter(Contact);

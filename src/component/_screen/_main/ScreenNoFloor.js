@@ -7,7 +7,7 @@ import { window_screen_scroll_arr } from './AppScreen';
 ScreenNoFloor.propTypes = {};
 
 /**
- * To make scrolling smoother
+ * ScreenNoFloor + ScreenHasFloor :To make scrolling smoother
 */
 function ScreenNoFloor(props) {
     //
@@ -18,7 +18,7 @@ function ScreenNoFloor(props) {
 
         const App = document.getElementsByClassName('App')[0];
         App.style.top = `0px`;
-        App.style.left = `$0px`;
+        App.style.left = `0px`;
 
         window.scrollTo(
             window_screen_scroll_arr[0].x,
@@ -29,7 +29,7 @@ function ScreenNoFloor(props) {
     }, []);
 
     //
-    return <div></div>;
+    return null;
 }
 
 export default ScreenNoFloor;

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useCloseScreen } from '../../../../../../_hooks/useCloseScreen';
 import { useFullScreen } from '../../../../../../_hooks/useFullScreen';
 import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
 //
@@ -24,8 +23,7 @@ ScreenFixed.defaultProps = {
 function ScreenFixed({ url, handleDownload, children, closeScreenFixed }) {
     //
     useFullScreen();
-    // useCloseScreen(closeScreenFixed);
-    useMakeBodyHidden({ hidden_scroll: true, hidden_app: true });
+    useMakeBodyHidden({ hidden_scroll: true, hidden_app: true, scroll_contain: true, });
 
     //
     return (

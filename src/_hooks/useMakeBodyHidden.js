@@ -1,13 +1,14 @@
 import { useLayoutEffect } from 'react';
-//
-import { window_screen_scroll_arr } from '../component/_screen/_main/AppScreen';
 
-//
+/**
+ * This hook is used for screen
+*/
 export const useMakeBodyHidden = (
     hidden_obj = {
         hidden_scroll: false,
         hidden_app: false,
         hidden_header: false,
+        scroll_contain: false,
     }
 ) => {
     //
@@ -19,6 +20,9 @@ export const useMakeBodyHidden = (
 
         body.dataset.countHidden =
             (body.dataset ? +body.dataset.countHidden || 0 : 0) + 1;
+        
+        body.dataset.scrollBehavior =
+            (body.dataset ? +body.dataset.scrollBehavior || 0 : 0) + 1;
 
         hidden_app &&
             (body.dataset.hiddenApp =
@@ -32,35 +36,19 @@ export const useMakeBodyHidden = (
             (body.dataset.hiddenHeader =
                 (body.dataset ? +body.dataset.hiddenHeader || 0 : 0) + 1);
 
-        window.scrollTo(0, 0);
-
-        const screen_floor_ix = window_screen_scroll_arr.length - 1;
-        const { x, y } =
-            window_screen_scroll_arr[window_screen_scroll_arr.length - 1];
-
-        if (body.dataset.countHidden == 1) {
-            const App = document.getElementsByClassName('App')[0];
-
-            App.style.top = `${-y}px`;
-            App.style.left = `${-x}px`;
-        } else {
-            const app_screen_floor =
-                document.getElementsByClassName('AppScreen_floor')[
-                    screen_floor_ix - 1
-                ];
-
-            app_screen_floor.style.top = `${-y}px`;
-            app_screen_floor.style.left = `${-x}px`;
-        }
-
         return () => {
             body.dataset.countHidden -= 1;
+            body.dataset.scrollBehavior -= 1;
             hidden_scroll && (body.dataset.hiddenScroll -= 1);
             hidden_app && (body.dataset.hiddenApp -= 1);
             hidden_header && (body.dataset.hiddenHeader -= 1);
 
             if (body.dataset.countHidden == 0) {
                 body.removeAttribute('data-count-hidden');
+            }
+
+            if (body.dataset.scrollBehavior == 0) {
+                body.removeAttribute('data-scroll-behavior');
             }
 
             if (hidden_app && body.dataset.hiddenApp == 0) {
@@ -74,24 +62,6 @@ export const useMakeBodyHidden = (
             if (hidden_header && body.dataset.hiddenHeader == 0) {
                 body.removeAttribute('data-hidden-header');
             }
-
-            setTimeout(() => {
-                if (body.dataset.countHidden) {
-                    const app_screen_floor =
-                        document.getElementsByClassName('AppScreen_floor')[
-                            screen_floor_ix - 1
-                        ];
-                    app_screen_floor.style.top = `0px`;
-                    app_screen_floor.style.left = `0px`;
-                }
-
-                window.scrollTo(x, y);
-
-                window_screen_scroll_arr.splice(
-                    window_screen_scroll_arr.length - 1,
-                    1
-                );
-            }, 0);
         };
     }, []);
 };

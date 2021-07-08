@@ -6,8 +6,6 @@ import { API_PhoneLaptop_L } from '../../../../../api/api_django_no_token/phone_
 import { useMounted } from '../../../../../_hooks/useMounted';
 // 
 import observeToDo from '../../../../../_some_function/observerToDo';
-// 
-import Contact from '../../../../../component/_contact/Contact';
 //
 import ProductsAnimate from '../products_animate/ProductsAnimate';
 import SpecProducts from '../products_spec/SpecProducts';
@@ -128,8 +126,6 @@ function PhoneLaptop(props) {
                     link="/phone-laptop-laptops"
                 />
             </div>
-
-            <Contact />
         </div>
     );
 }

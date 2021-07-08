@@ -15,8 +15,7 @@ ActionUpdate.defaultProps = {
 };
 
 //
-function ActionUpdate(props) {
-    const { handleUpdate, title } = props;
+function ActionUpdate({ handleUpdate, title }) {
     //
     return (
         <div className="action-item" onClick={handleUpdate} title="Update">

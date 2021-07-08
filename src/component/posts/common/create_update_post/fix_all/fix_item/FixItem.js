@@ -81,8 +81,10 @@ function FixItem({
     //
     return (
         <div className="FixItem">
-            <div className="FixItem_pic margin-auto">
-                {VideoOrImage(vid_pic)}
+            <div className="display-flex-center">
+                <div className="FixItem_pic display-flex-center">
+                    {VideoOrImage(vid_pic)}
+                </div>
             </div>
 
             <div className="FixItem_choice">

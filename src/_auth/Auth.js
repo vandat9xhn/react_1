@@ -17,13 +17,22 @@ function Auth({ route, ...props }) {
         return <Redirect to="/login-form" />;
     }
 
-    // 
-    if (route.path.search(/(\/login-form|\/registration-form)/) >= 0 && user.id) {
-        return <Redirect to={sessionStorage.url_before_login || '/home'} />
+    //
+    if (
+        route.path.search(/(\/login-form|\/registration-form)/) >= 0 &&
+        user.id
+    ) {
+        return <Redirect to={sessionStorage.url_before_login || '/home'} />;
     }
-    
-    window.scrollTo(0, 0)
-    // 
+
+    if (sessionStorage.new_member) {
+        alert('Welcome ' + sessionStorage.new_member);
+        sessionStorage.removeItem('new_member');
+    }
+
+    route.reset_position && window.scrollTo(0, 0);
+
+    //
     return <route.component {...props} />;
 }
 

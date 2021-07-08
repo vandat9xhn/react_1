@@ -33,6 +33,7 @@ export const fashion_route_arr = [
         component: Fashion,
         exact: true,
         auth: false,
+        reset_position: true,
     },
     {
         path: '/fashion/shop/:id',
@@ -51,6 +52,7 @@ export const fashion_route_arr = [
         component: FashionCart,
         exact: true,
         auth: true,
+        reset_position: true,
     },
     {
         path: '/fashion/buy',

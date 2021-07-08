@@ -49,9 +49,11 @@ function ScreenBlur({
         >
             <div className={`${waiting ? 'width-0 height-0' : 'App_Form'}`}>
                 <div
-                    className={`ScreenBlur_contain brs-5px-md box-shadow-fb ${
+                    className={`ScreenBlur_contain bg-primary brs-5px-md box-shadow-fb ${
                         waiting ? 'ScreenBlur_contain-waiting' : ''
-                    } ${use_scale ? 'ScreenBlur_contain-scale' : ''}`}
+                    } ${use_scale ? 'ScreenBlur_contain-scale' : ''} ${
+                        screen_center ? '' : 'ScreenBlur_contain-normal'
+                    }`}
                 >
                     {children}
                 </div>

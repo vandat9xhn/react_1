@@ -17,6 +17,7 @@ export const Routes = [
         path: '/home',
         component: Home,
         export: true,
+        reset_position: true,
     },
 
     ...account_route_arr,
@@ -29,5 +30,6 @@ export const Routes = [
         path: '/learn-html',
         component: LearnHTML,
         export: true,
+        reset_position: true,
     },
 ];

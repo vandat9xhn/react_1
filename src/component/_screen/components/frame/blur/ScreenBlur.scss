@@ -7,9 +7,6 @@
 }
 
 .ScreenBlur_contain {
-    width: 100%;
-    background-color: var(--md-bg-primary);
-
     transition: all 500ms ease;
 }
 .ScreenBlur_contain-waiting {
@@ -69,13 +66,9 @@
     .ScreenBlur {
         padding: 0;
     }
-
-    .ScreenBlur_contain {
+    
+    .ScreenBlur_contain-normal {
         min-height: 100vh;
         padding-top: 0.5rem;
-
-        .CUPostHomeContent {
-            height: auto;
-        }
     }
 }

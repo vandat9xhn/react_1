@@ -5,6 +5,7 @@ import AppScreenFloors from './AppScreenFloors';
 //
 import './AppScreen.scss';
 import ScreenNoFloor from './ScreenNoFloor';
+import ScreenHasFloor from './ScreenHasFloor';
 
 //
 export const window_screen_scroll_arr = [];
@@ -68,17 +69,23 @@ class AppScreen extends Component {
         return (
             <div>
                 {floor_arr.length ? (
-                    <AppScreenFloors
-                        floor_arr={floor_arr}
-                        //
-                        openScreenFloor={this.openScreenFloor}
-                        closeScreenFloor={this.closeScreenFloor}
-                        closeAllScreen={this.closeAllScreen}
-                        //
-                        has_change={this.has_change_obj}
-                        c_location={location.pathname + location.search}
-                    />
-                ) : <ScreenNoFloor />}
+                    <React.Fragment>
+                        <AppScreenFloors
+                            floor_arr={floor_arr}
+                            //
+                            openScreenFloor={this.openScreenFloor}
+                            closeScreenFloor={this.closeScreenFloor}
+                            closeAllScreen={this.closeAllScreen}
+                            //
+                            has_change={this.has_change_obj}
+                            c_location={location.pathname + location.search}
+                        />
+
+                        <ScreenHasFloor count_floor={floor_arr.length} />
+                    </React.Fragment>
+                ) : (
+                    <ScreenNoFloor />
+                )}
             </div>
         );
     }

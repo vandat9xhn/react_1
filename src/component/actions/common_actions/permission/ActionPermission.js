@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IconsPermission } from '../../../../_groups_icon/permission/GroupIconPermission';
-// 
+//
 import FlexDiv from '../../../some_div/flex_div/FlexDiv';
 
 //
@@ -18,9 +18,7 @@ ActionPermission.defaultProps = {
 };
 
 //
-function ActionPermission(props) {
-    const { current_permission, handleOpenPermission, title } = props;
-
+function ActionPermission({ current_permission, handleOpenPermission, title }) {
     //
     return (
         <div

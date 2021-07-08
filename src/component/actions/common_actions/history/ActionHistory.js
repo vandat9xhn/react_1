@@ -15,11 +15,14 @@ ActionHistory.defaultProps = {
 };
 
 //
-function ActionHistory(props) {
-    const { handleOpenHistory, title } = props;
+function ActionHistory({ handleOpenHistory, title }) {
     //
     return (
-        <div className="action-item" onClick={handleOpenHistory} title="History">
+        <div
+            className="action-item"
+            onClick={handleOpenHistory}
+            title="History"
+        >
             <IconDiv Icon={IconsAction} y={400}>
                 {title}
             </IconDiv>

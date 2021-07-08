@@ -1,11 +1,9 @@
-
 // ..
-.Cities_item{
+.Cities_item {
     margin-bottom: 1rem;
 }
 
-
-// 
+//
 .Cities_add-city {
     position: fixed;
     left: 0%;
@@ -20,8 +18,9 @@
     box-shadow: 0 0 1px 2px 1px var(--md-bg-ccc);
     transition: transform 0.3s;
     &:hover {
-        transform: translateX(0);    }
-    &::after{
+        transform: translateX(0);
+    }
+    &::after {
         content: '+';
         position: absolute;
         top: 50%;
@@ -30,8 +29,7 @@
     }
 }
 
-
-.Cities_input-report{
+.Cities_input-report {
     width: 100%;
     padding: 0.5rem;
     overflow-y: scroll;
@@ -39,8 +37,7 @@
     resize: none;
 }
 
-
 // .
-.Cities_skeleton{
+.Cities_skeleton {
     margin-top: 6.5rem;
 }

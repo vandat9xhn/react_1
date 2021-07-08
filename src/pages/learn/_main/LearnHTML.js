@@ -12,6 +12,7 @@ import LearnSelectColorBg from '../color_bg/LearnSelectColorBg';
 import LearnAppearancePosition from '../appearance_position/LearnAppearancePosition';
 import LearnScreen from '../screen/LearnScreen';
 import LearnWaitingToken from '../waiting_token/LearnWaitingToken';
+import LearnDnD from '../dnd/LearnDnD';
 
 //
 LearnHTML.propTypes = {
@@ -126,6 +127,10 @@ function LearnHTML() {
 
             <div>
                 <LearnWaitingToken />
+            </div>
+
+            <div>
+                <LearnDnD />
             </div>
 
             <br /><br /><br /><br /><br />
