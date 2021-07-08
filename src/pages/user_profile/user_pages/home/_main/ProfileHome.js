@@ -18,12 +18,8 @@ function ProfileHome({ name }) {
     return (
         <div className="ProfileHome">
             <div className="ProfileHome_row display-flex justify-content-center">
-                <div className="ProfileHome_left position-rel">
-                    <div style={{ height: '0px' }}></div>
-
-                    <div className="ProfileHome_left-preview">
-                        <ProfilePreview />
-                    </div>
+                <div className="ProfileHome_left">
+                    <ProfilePreview />
                 </div>
 
                 <div className="ProfileHome_right">

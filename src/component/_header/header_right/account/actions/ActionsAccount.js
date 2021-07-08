@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
@@ -62,22 +62,22 @@ function ActionsAccount({ closeAccount }) {
 
     //
     function changeMode(new_mode) {
-        if (new_mode != 1) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-        }
+        document.documentElement.setAttribute(
+            'data-theme',
+            new_mode != 1 ? 'dark' : 'light'
+        );
 
         //
         const iframe = document.getElementById('LearnHTML__iframe');
-        iframe &&
-            iframe.contentWindow.document
-                .getElementsByTagName('BODY')[0]
-                .style.setProperty(
-                    'color',
-                    // new_mode == 1 ? 'black' : 'rgba(236, 229, 229, 0.8)'
-                    'var(--md-color)'
-                );
+        if (iframe) {
+            const i_body =
+                iframe.contentWindow.document.getElementsByTagName('BODY')[0];
+
+            i_body.style.setProperty(
+                'color',
+                new_mode == 1 ? 'black' : 'rgba(236, 229, 229, 0.8)'
+            );
+        }
     }
 
     //

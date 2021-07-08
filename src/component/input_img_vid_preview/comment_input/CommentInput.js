@@ -30,9 +30,7 @@ CommentInput.defaultProps = {
 };
 
 //
-function CommentInput(props) {
-    const { file_multiple, placeholder, handleSend, deps_reset } = props;
-
+function CommentInput({ file_multiple, placeholder, handleSend, deps_reset }) {
     //
     const [cmt_obj, setCmtObj] = useState({
         text: '',
@@ -44,7 +42,6 @@ function CommentInput(props) {
     const { text, urls, files, file_reading } = cmt_obj;
 
     //
-    ;
     const ref_comment_input = useRef(null);
 
     //
@@ -61,7 +58,7 @@ function CommentInput(props) {
             });
     }, [deps_reset]);
 
-    /* -------------------------------- INPUT -------------------------------------- */
+    /* ------------- INPUT ------------ */
 
     //
     function onChangeCmt(value) {

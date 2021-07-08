@@ -86,6 +86,7 @@ function SubWs({ sub, is_commenter, focusInputSub }) {
             title: 'History',
             handle_API_History_L: on_API_HistorySub_L,
             HisComponent: CmtSubHistory,
+            handle_API_MoreContent: handle_API_MoreContentHisSub_R,
         });
     }
 

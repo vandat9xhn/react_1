@@ -14,14 +14,14 @@ export function openScreenHistory({
     title,
     handle_API_History_L,
     HisComponent,
-    data_his = {},
+    ...data_his,
 }) {
     openScreenFloor({
         FloorComponent: ScreenHistory,
         title: title,
         handle_API_History_L: handle_API_History_L,
         HisComponent: HisComponent,
-        data_his: data_his,
+        ...data_his,
     });
 }
 
@@ -36,7 +36,7 @@ function ScreenHistory({
     handle_API_History_L,
 
     HisComponent,
-    data_his,
+    ...data_his,
 }) {
     //
     const [history_state, setHistoryState] = useState({

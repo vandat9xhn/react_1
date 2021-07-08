@@ -107,9 +107,7 @@ function Post({
             title: 'History',
             handle_API_History_L: on_API_History_L,
             HisComponent: PostHistory,
-            data_his: {
-                handle_API_MoreContent: handle_API_ContentMoreHistory_R,
-            },
+            handle_API_MoreContent: handle_API_ContentMoreHistory_R,
         });
     }
     //

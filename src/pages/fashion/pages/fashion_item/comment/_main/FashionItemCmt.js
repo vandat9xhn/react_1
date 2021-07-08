@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import observeToDo from '../../../../../../_some_function/observerToDo';
-// 
+//
 import { openScreenVidPic } from '../../../../../../component/_screen/type/vid_pics/_main/ZoomVidPics';
 //
 import Pagination from '../../../../../../component/pagination/_main/Pagination';
@@ -15,10 +15,10 @@ import {
     handle_API_FashionComment_L,
 } from '../../../../__handle_api/item/comment/FashionItemCmtHandleAPI';
 //
-import './FashionItemCmt.scss';
-//
 import FashionItemCmtItem from '../item/FashionItemCmtItem';
 import FashionItemCmtSkeleton from '../skeleton/FashionItemCmtSkeleton';
+//
+import './FashionItemCmt.scss';
 
 //
 FashionItemCmt.propTypes = {
@@ -118,7 +118,7 @@ function FashionItemCmt({ id: product_id }) {
             openScreenFloor: openScreenFloor,
             urls: cmt_pages_obj[page][comments_ix].vid_pics,
             current: vid_pic_ix,
-        })
+        });
     }
 
     //
@@ -174,7 +174,7 @@ function FashionItemCmt({ id: product_id }) {
             <hr className="App_hr-bg" />
 
             <div>
-                {!is_fetching &&
+                {!is_fetching ? (
                     cmt_pages_obj[page].map((item, cmt_ix) => (
                         <FashionItemCmtItem
                             key={`CommentContent_${item.id}`}
@@ -182,9 +182,10 @@ function FashionItemCmt({ id: product_id }) {
                             item={item}
                             zoomVidPics={zoomVidPics}
                         />
-                    ))}
-
-                {is_fetching && <FashionItemCmtSkeleton />}
+                    ))
+                ) : (
+                    <FashionItemCmtSkeleton />
+                )}
             </div>
             <br />
 
@@ -199,7 +200,7 @@ function FashionItemCmt({ id: product_id }) {
                 </div>
             </div>
 
-            {user.id && (
+            {user.id ? (
                 <div className="FashionItemCmt_input">
                     <CommentInput
                         deps_reset={product_id}
@@ -207,7 +208,7 @@ function FashionItemCmt({ id: product_id }) {
                         handleSend={handleSend}
                     />
                 </div>
-            )}
+            ) : null}
         </div>
     );
 }

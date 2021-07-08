@@ -23,7 +23,7 @@ ScreenFixed.defaultProps = {
 function ScreenFixed({ url, handleDownload, children, closeScreenFixed }) {
     //
     useFullScreen();
-    useMakeBodyHidden({ hidden_scroll: true, hidden_app: true, scroll_contain: true, });
+    useMakeBodyHidden({ hidden_scroll: true, hidden_app: true });
 
     //
     return (

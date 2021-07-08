@@ -45,7 +45,7 @@ function FashionHCommon({
                 </div>
 
                 <div className="FashionHCommon_right">
-                    {user.id && <FashionHR />}
+                    {user.id ? <FashionHR /> : null}
                 </div>
             </div>
         </div>

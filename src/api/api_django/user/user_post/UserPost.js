@@ -42,7 +42,7 @@ export const API_Post_C = (data) =>
         })
     );
 
-// Retrieve 
+// Retrieve
 export const API_PostMoreContent_R = (pk, params = {}) =>
     API_FakeReal(default_content_more(), () =>
         axiosDjangoClient({
@@ -224,7 +224,7 @@ export const API_PostHistory_L = (params) =>
 // Get
 export const API_PostHistory_R = (params) =>
     API_FakeReal(
-        default_history_post_arr[2],
+        default_content_more(),
         () =>
             axiosDjangoClient({
                 url: '/user/r-history-post/',
@@ -316,7 +316,7 @@ export const API_PostCmtHistory_L = (params, is_vid_pic = false) =>
 
 //
 export const API_PostHisCmt_R = (pk, params, is_vid_pic = false) =>
-    API_FakeReal(default_history_cmt_post_arr[0], () =>
+    API_FakeReal(default_content_more(), () =>
         axiosDjangoClient({
             url: `/user/r-history-cmt${is_vid_pic ? '-vid-pic' : ''}/${pk}/`,
             method: 'GET',
@@ -406,7 +406,7 @@ export const API_PostSubHistory_L = (params, is_vid_pic = false) =>
 
 //
 export const API_PostHisSub_R = (pk, params, is_vid_pic = false) =>
-    API_FakeReal(default_history_sub_post_arr[0], () =>
+    API_FakeReal(default_content_more(), () =>
         axiosDjangoClient({
             url: `/user/r-history-sub${is_vid_pic ? '-vid-pic' : ''}/${pk}/`,
             method: 'GET',

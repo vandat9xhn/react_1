@@ -42,6 +42,11 @@ class AppScreen extends Component {
 
         floor_arr.pop();
         this.setState({});
+
+        if (floor_arr.length == 0) {
+            this.count_has_change = 0;
+            this.has_change_obj = { current: false };
+        }
     };
 
     //

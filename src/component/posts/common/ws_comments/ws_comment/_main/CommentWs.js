@@ -114,6 +114,7 @@ function CommentWs({ comment, is_poster }) {
             title: 'History',
             handle_API_History_L: on_API_HistoryCmt_L,
             HisComponent: CmtSubHistory,
+            handle_API_MoreContent: handle_API_MoreContentHisCmt_R,
         });
     }
 

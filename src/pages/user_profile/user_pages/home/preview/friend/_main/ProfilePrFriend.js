@@ -18,7 +18,7 @@ import './ProfilePrFriend.scss';
 ProfilePrFriend.propTypes = {};
 
 //
-function ProfilePrFriend({ id }) {
+function ProfilePrFriend({ id, handleAfterGetFriend }) {
     //
     const [friend_state, setFriendState] = useState({
         friend_arr: [
@@ -64,6 +64,8 @@ function ProfilePrFriend({ id }) {
                 friend_count: new_count,
                 is_fetching: false,
             });
+
+            handleAfterGetFriend()
         }
     }
 

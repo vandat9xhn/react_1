@@ -11,6 +11,10 @@
     position: fixed;
 }
 
+.position-sticky{
+    position: sticky;
+}
+
 //
 
 .pos-abs-0 {
@@ -42,6 +46,13 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+}
+
+// 
+
+.pos-sticky-from-header{
+    position: sticky;
+    top: 56px;
 }
 
 /* ------------- */

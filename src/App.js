@@ -172,14 +172,14 @@ class App extends Component {
                             <DivFixAction ref={this.refFixAction} />
                         </div>
 
-                        <div className="AppNatureDrop">
-                            <NatureDropMain ref={this.refNatureDropMain} />
-                        </div>
-
                         <div>
                             <AppScreen ref={this.refAppScreen} />
 
                             <ScreenOnce ref={this.refScreenOnce}/>
+                        </div>
+
+                        <div className="AppNatureDrop">
+                            <NatureDropMain ref={this.refNatureDropMain} />
                         </div>
                     </ContextAPI>
                 </BrowserRouter>

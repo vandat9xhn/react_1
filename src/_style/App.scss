@@ -12,8 +12,7 @@
 //
 body {
     margin: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    // overflow-x: hidden;
     overscroll-behavior-y: none;
 
     font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
@@ -25,6 +24,8 @@ body {
     color: var(--md-color);
 
     &[data-count-hidden] {
+        overflow-y: scroll;
+        
         .App {
             position: fixed;
             width: 100%;
@@ -34,10 +35,6 @@ body {
 
     &[data-hidden-scroll] {
         overflow-y: hidden;
-    }
-    
-    &[data-scroll-behavior] {
-        overscroll-behavior-y: contain;
     }
 
     &[data-hidden-app] {
@@ -96,17 +93,14 @@ img {
 /* ------------ APP -------------- */
 .App {
     position: relative;
-    overflow-y: auto;
 }
 
 .App_contain {
     background-color: var(--md-bg-fb);
-    overflow-y: auto;
 }
 
 /* ------------ HEADER -------------- */
 .AppHeader {
-    // position: sticky;
     position: fixed;
     top: 0;
     width: 100%;
@@ -116,7 +110,6 @@ img {
 /* ------------ CONTENT -------------- */
 .AppContent {
     margin-top: calc(var(--height-header));
-    // margin-top: 0.5rem;
     margin-bottom: 1rem;
     min-height: calc(100vh + 5rem - var(--height-header));
 }

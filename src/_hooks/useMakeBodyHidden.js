@@ -20,9 +20,6 @@ export const useMakeBodyHidden = (
 
         body.dataset.countHidden =
             (body.dataset ? +body.dataset.countHidden || 0 : 0) + 1;
-        
-        body.dataset.scrollBehavior =
-            (body.dataset ? +body.dataset.scrollBehavior || 0 : 0) + 1;
 
         hidden_app &&
             (body.dataset.hiddenApp =
@@ -38,17 +35,12 @@ export const useMakeBodyHidden = (
 
         return () => {
             body.dataset.countHidden -= 1;
-            body.dataset.scrollBehavior -= 1;
             hidden_scroll && (body.dataset.hiddenScroll -= 1);
             hidden_app && (body.dataset.hiddenApp -= 1);
             hidden_header && (body.dataset.hiddenHeader -= 1);
 
             if (body.dataset.countHidden == 0) {
                 body.removeAttribute('data-count-hidden');
-            }
-
-            if (body.dataset.scrollBehavior == 0) {
-                body.removeAttribute('data-scroll-behavior');
             }
 
             if (hidden_app && body.dataset.hiddenApp == 0) {

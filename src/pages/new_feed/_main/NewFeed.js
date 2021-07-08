@@ -6,11 +6,11 @@ import { useScrollDownWindow } from '../../../_hooks/useScrollDown';
 import { initial_posts } from '../../../component/posts/__initial/InitialPosts';
 
 import Posts from '../../../component/posts/_posts/_main/PostsWs';
-// 
+//
 import { handle_API_NewFeedPost_L } from '../__handle_api/NewFeedHandleAPI';
-// 
+//
 import './NewFeedCommon.scss';
-// 
+//
 import NewFeedSearch from '../search/NewFeedSearch';
 import NewFeedRight from '../right/_main/NewFeedRight';
 import NewFeedLeft from '../left/_main/NewFeedLeft';
@@ -40,7 +40,7 @@ function NewFeed() {
 
     //
     useEffect(() => {
-        document.title = 'New Feed'
+        document.title = 'New Feed';
         getData_API_Post_first();
     }, []);
 
@@ -65,7 +65,9 @@ function NewFeed() {
 
                 <div className="NewFeed_row display-flex space-between">
                     <div className="NewFeed_col-left">
-                        <NewFeedLeft />
+                        <div className="pos-sticky-from-header">
+                            <NewFeedLeft />
+                        </div>
                     </div>
 
                     <div className="NewFeed_col-center">
@@ -79,7 +81,9 @@ function NewFeed() {
                     </div>
 
                     <div className="NewFeed_col-right">
-                        <NewFeedRight />
+                        <div className="pos-sticky-from-header">
+                            <NewFeedRight />
+                        </div>
                     </div>
                 </div>
             </div>

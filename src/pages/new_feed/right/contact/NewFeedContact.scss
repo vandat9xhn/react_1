@@ -1,6 +1,6 @@
 //
 .NewFeedContact {
-    max-height: 30rem;
+    max-height: calc(100vh - 12rem);
     overflow-y: scroll;
 
     border-top: 1px solid var(--md-bg-ccc);

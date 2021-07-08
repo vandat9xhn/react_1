@@ -18,8 +18,7 @@ CommentPost.defaultProps = {
 };
 
 //
-function CommentPost(props) {
-    const { is_sub, handleSend } = props;
+function CommentPost({ is_sub, handleSend }) {
     //
     const { user } = useContext(context_api);
 
