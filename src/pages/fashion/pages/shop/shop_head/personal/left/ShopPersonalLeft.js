@@ -14,10 +14,10 @@ ShopPersonalLeft.propTypes = {
 };
 
 //
-function ShopPersonalLeft(props) {
-    const { profile_model, picture, name, banner } = props;
+function ShopPersonalLeft({profile_model, picture, name, banner}) {
     //
     const { openMessage } = useContext(context_api);
+
     //
     function onOpenMessage() {
         openMessage(profile_model);
@@ -31,16 +31,16 @@ function ShopPersonalLeft(props) {
                 style={{ backgroundImage: `url(${banner})` }}
             ></div>
 
-            <div className="ShopPersonalLeft_main position-rel bg-film">
-                <div className="ShopPersonalLeft_row">
-                    <div className="ShopPersonalLeft_info">
-                        <div className="ShopPersonalLeft_info-row">
+            <div className="ShopPersonalLeft_main position-rel padding-8px bg-film">
+                <div className="ShopPersonalLeft_row display-flex space-between">
+                    <div className="ShopPersonalLeft_info flex-grow-1">
+                        <div className="ShopPersonalLeft_info-row display-flex">
                             <div className="ShopPersonalLeft_info-left brs-50">
                                 <img src={picture} alt="" />
                             </div>
 
                             <div className="ShopPersonalLeft_info-right">
-                                <div className="label-field">{name}</div>
+                                <h1 className="margin-0 font-16px">{name}</h1>
 
                                 <div>
                                     <span>Online</span>
@@ -51,7 +51,7 @@ function ShopPersonalLeft(props) {
                     </div>
 
                     <div className="ShopPersonalLeft_actions">
-                        <div className="ShopPersonalLeft_actions-row">
+                        <div className="ShopPersonalLeft_actions-row display-block">
                             <div className="ShopPersonalLeft_actions-elm">
                                 Follow
                             </div>

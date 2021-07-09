@@ -17,7 +17,7 @@ import './ProfilePrAbout.scss';
 ProfilePrAbout.propTypes = {};
 
 //
-function ProfilePrAbout({ id }) {
+function ProfilePrAbout({ id, handleReady }) {
     //
     const [about_state, setAboutState] = useState({
         about_arr: [
@@ -39,7 +39,7 @@ function ProfilePrAbout({ id }) {
 
     //
     useEffect(() => {
-        observeToDo(ref_component.current, getData_API_About, 0);
+        observeToDo(ref_component.current, getData_API_About, 0, true);
     }, []);
 
     //
@@ -76,6 +76,8 @@ function ProfilePrAbout({ id }) {
                 ],
                 is_fetching: false,
             });
+
+            handleReady();
         }
     }
 
@@ -97,7 +99,7 @@ function ProfilePrAbout({ id }) {
                             <span className="label-field text-secondary">
                                 {item.title}:{' '}
                             </span>
-                            
+
                             <span className="label-field">{item.content}</span>
                         </div>
                     ))}

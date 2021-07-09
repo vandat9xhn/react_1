@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+//
+import { useStickyAuto } from '../../../../../../_hooks/useStickyAuto';
 //
 import { GetIdSlug } from '../../../../../../_some_function/GetIdSlug';
 //
@@ -21,94 +23,23 @@ function ProfilePreview(props) {
     const ref_main_elm = useRef(null);
     const ref_fake_elm = useRef(null);
     const ref_preview_elm = useRef(null);
-    const ref_fetched = useRef(false);
 
-    const more_height = useRef(0);
-    const ref_scroll_y = useRef(0);
-    const is_last_scroll_down = useRef(true);
+    const count_ready = useRef(0);
 
     //
-    useEffect(() => {
-        ref_preview_elm.current.style.bottom = '0px';
-        ref_fake_elm.current.style.height = '0px';
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    useEffect(() => {
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    const { handleStartStickyAuto } = useStickyAuto({
+        ref_main_elm: ref_main_elm,
+        ref_fake_elm: ref_fake_elm,
+        ref_preview_elm: ref_preview_elm,
+    });
 
     //
-    function handleScroll() {
-        if (innerWidth < 900 || !ref_fetched.current) {
-            ref_fake_elm.current.style.height = '0px';
+    function handleReady() {
+        count_ready.current += 1;
 
-            return;
+        if ((count_ready.current == 3)) {
+            handleStartStickyAuto();
         }
-
-        const { top, bottom } = ref_preview_elm.current.getBoundingClientRect();
-        const hide_height_main =
-            -ref_main_elm.current.getBoundingClientRect().top;
-
-        const is_scroll_down = pageYOffset - ref_scroll_y.current > 0;
-        const at_bottom = bottom <= innerHeight;
-        const at_top = top > 0;
-
-        // scroll down
-        if (is_scroll_down) {
-            if (at_top && !is_scroll_down.current) {
-                ref_fake_elm.current.style.height = '0px';
-            }
-
-            ref_preview_elm.current.style.top = -more_height.current + 'px';
-            ref_preview_elm.current.style.bottom = 'auto';
-
-            is_last_scroll_down.current = true;
-        }
-
-        //  scroll up
-        else {
-            if (at_bottom && is_last_scroll_down.current) {
-                ref_fake_elm.current.style.height =
-                    hide_height_main - more_height.current + 'px';
-            }
-
-            ref_preview_elm.current.style.top = 'auto';
-            ref_preview_elm.current.style.bottom =
-                -more_height.current - 56 + 'px';
-
-            is_last_scroll_down.current = false;
-        }
-
-        ref_scroll_y.current = pageYOffset;
-    }
-
-    //
-    function changeMoreHeight() {
-        const { height } = ref_preview_elm.current.getBoundingClientRect();
-        more_height.current =
-            height - innerHeight >= 0 ? height - innerHeight : 0;
-    }
-
-    //
-    function handleResize() {
-        changeMoreHeight();
-        handleScroll();
-    }
-
-    //
-    function handleAfterGetFriend() {
-        ref_fetched.current = true;
-        changeMoreHeight();
     }
 
     //
@@ -118,18 +49,15 @@ function ProfilePreview(props) {
 
             <div ref={ref_preview_elm} className={`position-sticky`}>
                 <div className="ProfilePreview_item">
-                    <ProfilePrIntro id={id} />
+                    <ProfilePrIntro id={id} handleReady={handleReady} />
                 </div>
 
                 <div className="ProfilePreview_pic ProfilePreview_item">
-                    <ProfilePrPic id={id} />
+                    <ProfilePrPic id={id} handleReady={handleReady} />
                 </div>
 
                 <div className="ProfilePreview_item">
-                    <ProfilePrFriend
-                        id={id}
-                        handleAfterGetFriend={handleAfterGetFriend}
-                    />
+                    <ProfilePrFriend id={id} handleReady={handleReady} />
                 </div>
             </div>
         </div>

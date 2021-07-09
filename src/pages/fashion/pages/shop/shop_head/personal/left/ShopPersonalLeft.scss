@@ -11,23 +11,10 @@
 }
 
 .ShopPersonalLeft_main{
-    padding: 0.5rem;
     border: 1px solid var(--md-bg-ccc);
     color: var(--white);
 }
-// 
-.ShopPersonalLeft_row{
-    display: flex;
-    justify-content: space-between;
-}
 
-.ShopPersonalLeft_info{
-    flex-grow: 1;
-}
-//
-.ShopPersonalLeft_info-row{
-    display: flex;
-}
 ///
 .ShopPersonalLeft_info-left{
     margin-right: 0.5rem;
@@ -45,10 +32,7 @@
 .ShopPersonalLeft_actions{
     width: 10rem;
 }
-// 
-.ShopPersonalLeft_actions-row{
-    display: block;
-}
+
 ///
 .ShopPersonalLeft_actions-elm{
     margin: 0.5rem;

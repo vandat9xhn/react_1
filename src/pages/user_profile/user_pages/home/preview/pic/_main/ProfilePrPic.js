@@ -15,7 +15,7 @@ import ProfilePrPicItem from '../item/ProfilePrPicItem';
 import './ProfilePrPic.scss';
 
 //
-function ProfilePrPic({ id }) {
+function ProfilePrPic({ id, handleReady }) {
     //
     const [vid_pic_state, setVidPicState] = useState({
         vid_pics: [
@@ -30,7 +30,6 @@ function ProfilePrPic({ id }) {
     const { vid_pics, is_fetching } = vid_pic_state;
 
     //
-    ;
     const ref_component = useRef(null);
 
     //
@@ -38,7 +37,7 @@ function ProfilePrPic({ id }) {
 
     //
     useEffect(() => {
-        observeToDo(ref_component.current, getData_API_PicPreview, 0);
+        observeToDo(ref_component.current, getData_API_PicPreview, 0, true);
     }, []);
 
     //
@@ -55,6 +54,8 @@ function ProfilePrPic({ id }) {
                 vid_pics: data,
                 is_fetching: false,
             });
+
+            handleReady();
         }
     }
 

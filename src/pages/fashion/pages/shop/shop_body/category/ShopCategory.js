@@ -16,19 +16,16 @@ function ShopCategory({ list_name }) {
         <div className="ShopCategory bg-primary">
             <div className="ShopCategory_row display-flex">
                 <div>
-                    <Link
-                        to={location.pathname}
-                        className="normal-text"
-                    >
-                        <div
-                            className={`ShopCategory_item label-field ${
+                    <Link to={location.pathname} className="normal-text">
+                        <h3
+                            className={`ShopCategory_item margin-0 font-16px ${
                                 !ParseLocationSearch()['category']
                                     ? 'ShopCategory_item-active pointer-events-none'
                                     : ''
                             }`}
                         >
                             All
-                        </div>
+                        </h3>
                     </Link>
                 </div>
 

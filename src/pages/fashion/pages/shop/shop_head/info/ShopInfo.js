@@ -13,7 +13,9 @@ function ShopInfo({ info }) {
     //
     return (
         <div className="ShopInfo">
-            <div className="ShopInfo_title label-field">SHOP INFORMATION</div>
+            <h2 className="ShopInfo_title margin-0 font-16px">
+                SHOP INFORMATION
+            </h2>
 
             <div className="ShopInfo_info">{info}</div>
         </div>
