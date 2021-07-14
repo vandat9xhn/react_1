@@ -7,37 +7,42 @@ import { is_api_fake } from '../../../../api/_ConstAPI';
 
 import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
-import { useCloseScreen } from '../../../../_hooks/useCloseScreen';
 //
 import { openScreenPostVidPic } from '../../../_screen/type/vid_pics_post/ZoomVidPicPost';
 //
-import ContextPost from '../../__context_post/ContextPost';
+import ContextPost from '../../../../_context/post/ContextPost';
 //
 import ComponentSkeleton from '../../../skeleton/component_skeleton/ComponentSkeleton';
 import FetchingDiv from '../../../some_div/fetching/FetchingDiv';
 import AddNewPost from '../../common/add_new_post/AddNewPost';
 //
 import {
+    handle_API_Like_L,
+    handle_API_Post_C,
+    handle_API_Share_L,
+} from '../../../../_handle_api/post/HandleAPIPost';
+
+import {
     handle_API_Cmt_C,
     handle_API_Cmt_L,
     handle_API_Cmt_U,
     handle_API_HistoryCmt_L,
-    handle_API_HistorySub_L,
     handle_API_LikeCmt_L,
-    handle_API_LikeSub_L,
-    handle_API_Like_L,
     handle_API_MoreContentCmt_R,
     handle_API_MoreContentHisCmt_R,
+} from '../../../../_handle_api/post/HandleAPICmt';
+
+import {
+    handle_API_HistorySub_L,
+    handle_API_LikeSub_L,
     handle_API_MoreContentHisSub_R,
     handle_API_MoreContentSub_R,
-    handle_API_Post_C,
-    handle_API_Share_L,
     handle_API_Sub_C,
     handle_API_Sub_L,
     handle_API_Sub_U,
-} from '../../__handle_api/PostHandleAPI';
+} from '../../../../_handle_api/post/HandleAPISub';
 
-import { handleCreateNewPost } from '../../__handle_create/PostHandleCreate';
+import { handleCreateNewPost } from '../../../../_default/post/PostHandleCreate';
 //
 import Post from '../../_post/_main_post/PostWs';
 import PostSkeleton from '../../_post/skeleton/PostSkeleton';

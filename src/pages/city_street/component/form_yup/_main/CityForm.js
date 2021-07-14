@@ -6,7 +6,7 @@ import InputText from '../../../../../component/input/input_text/InputText';
 import ButtonRipple from '../../../../../component/button/button_ripple/ButtonRipple';
 import SelectColorBg from '../../../../../component/input/color/color_bg/_main/SelectColorBg';
 //
-import { validationSchema } from '../../../__initial/CityInitial';
+import { validationSchema } from '../../../../../_initial/city/CityInitial';
 //
 import InputImage from '../input_image/InputImage';
 //

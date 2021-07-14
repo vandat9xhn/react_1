@@ -5,7 +5,7 @@ import { useMounted } from '../../../../../../../_hooks/useMounted';
 
 import observeToDo from '../../../../../../../_some_function/observerToDo';
 //
-import { handle_API_Friend_L } from '../../../../../__handle_api/ProfileHandleAPI';
+import { handle_API_Friend_L } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import ProfilePrCommon from '../../_common/preview_common/ProfilePrCommon';
 

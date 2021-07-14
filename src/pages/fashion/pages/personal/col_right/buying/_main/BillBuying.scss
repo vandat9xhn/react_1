@@ -1,4 +1,6 @@
-
-.BillBuying_item{
-    margin-bottom: 10px;
+//
+.BillBuying_item {
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
 }

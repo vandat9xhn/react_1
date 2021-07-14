@@ -12,10 +12,7 @@ import './HeaderVItemHasSub.scss';
 HeaderVItemHasSub.propTypes = {};
 
 //
-function HeaderVItemHasSub({ item }) {
-    //
-    const { Icon, x, y, title, sub_list } = item;
-
+function HeaderVItemHasSub({ item: { Icon, x, y, title, sub_list } }) {
     //
     const [open_list, setOpenList] = useState(false);
 
@@ -29,7 +26,7 @@ function HeaderVItemHasSub({ item }) {
     return (
         <div className="HeaderVItemHasSub">
             <h2
-                className={`margin-0 padding-8px font-16px cursor-pointer ${
+                className={`HeaderVItemHasSub_title margin-0 font-16px cursor-pointer ${
                     open_list ? 'HeaderVItemHasSub_title-active' : ''
                 }`}
                 onClick={toggleOpenList}

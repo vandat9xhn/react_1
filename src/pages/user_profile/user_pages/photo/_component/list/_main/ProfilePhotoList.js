@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { handle_API_VidPic_L } from '../../../../../__handle_api/ProfileHandleAPI';
+import { handle_API_VidPic_L } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import ProfilePhotoMain from '../../_main/ProfilePhotoMain';
 import ProfilePhotoItem from '../item/ProfilePhotoItem';

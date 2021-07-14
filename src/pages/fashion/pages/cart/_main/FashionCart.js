@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 //
@@ -12,15 +12,15 @@ import {
 import { useMounted } from '../../../../../_hooks/useMounted';
 import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 //
+import { params_cart } from '../../../../../_params/fashion/FashionParams';
+//
 import makeFormData from '../../../../../_some_function/makeFormData';
 //
 import { openScreenConfirm } from '../../../../../component/_screen/type/confirm/ScreenConfirm';
 // 
 import CircleLoading from '../../../../../component/waiting/circle_loading/CircleLoading';
 import NoItemHasFetched from '../../../../../component/some_div/no_item/NoItemHasFetched';
-//
-import { params_cart } from '../../../__params/home/FashionParams';
-
+// 
 import { actionFashionChangeCountCart } from '../../../../../redux/action/action_count_cart';
 
 import FashionH from '../../../components/head/_main/FashionH';
@@ -238,7 +238,7 @@ function FashionCart(props) {
                         }`}
                     >
                         <Link to="/fashion/buy">
-                            <button className="FashionCart_buy-now btn btn-hv btn-active brs-5px">
+                            <button className="FashionCart_buy-now btn btn-hv btn-active brs-5px cursor-pointer">
                                 Buy now
                             </button>
                         </Link>

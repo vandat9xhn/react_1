@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import IconsStar from '../../../../../../../_icons_svg/icons_star/IconsStar';
+// 
+import { handle_API_FashionUserContentRate_R } from '../../../../../../../_handle_api/fashion/FashionItemRateHandleAPI';
 //
 import PictureName from '../../../../../../../component/picture_name/pic_name/PictureName';
 import ContentMore from '../../../../../../../component/content_more/Content_more';
-//
-import { handle_API_FashionUserContentRate_R } from '../../../../../__handle_api/item/rate/FashionItemRateHandleAPI';
 
 //
 FashionRateItem.propTypes = {};

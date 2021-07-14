@@ -23,7 +23,7 @@ function ScreenLikeHead({
 
     //
     return (
-        <div className="ScreenLike_head">
+        <div className="ScreenLike_head position-rel">
             <div className="ScreenLike_head-row display-flex align-items-center margin-auto width-fit-content">
                 <div
                     className={`padding-8px cursor-pointer ${

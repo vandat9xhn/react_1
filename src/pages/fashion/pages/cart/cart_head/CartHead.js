@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+//
 CartHead.propTypes = {
     count_checked: PropTypes.number,
     count_cart: PropTypes.number,
@@ -8,10 +9,8 @@ CartHead.propTypes = {
     onCheckAll: PropTypes.func,
 };
 
-function CartHead(props) {
-    const {count_checked, openConfirmDel, count_cart, onCheckAll} = props;
-
-    // 
+function CartHead({ count_checked, openConfirmDel, count_cart, onCheckAll }) {
+    //
     return (
         <div>
             <div>

@@ -10,7 +10,7 @@ import observeToDo from '../../../../_some_function/observerToDo';
 import CircleLoading from '../../../../component/waiting/circle_loading/CircleLoading';
 import PicNameContent from '../../../../component/picture_name/pic_name_content/PicNameContent';
 //
-import { handle_API_NewFeedContact_L } from '../../__handle_api/NewFeedHandleAPI';
+import { handle_API_NewFeedContact_L } from '../../../../_handle_api/new_feed/NewFeedHandleAPI';
 //
 import './NewFeedContact.scss';
 

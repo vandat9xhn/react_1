@@ -26,8 +26,8 @@ function FashionBuyExtra({
 
     //
     return (
-        <div className="pos-fixed-100 bg-screen">
-            <div>
+        <div className="pos-fixed-100 z-index-lv5 bg-screen">
+            <div className="form-fixed bg-primary">
                 <div
                     className={`${
                         extra_buy == 'transport' ? '' : 'display-none'

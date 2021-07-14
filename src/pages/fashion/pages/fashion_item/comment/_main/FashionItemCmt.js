@@ -13,7 +13,7 @@ import CommentInput from '../../../../../../component/input_img_vid_preview/comm
 import {
     handle_API_FashionComment_C,
     handle_API_FashionComment_L,
-} from '../../../../__handle_api/item/comment/FashionItemCmtHandleAPI';
+} from '../../../../../../_handle_api/fashion/FashionItemCmtHandleAPI';
 //
 import FashionItemCmtItem from '../item/FashionItemCmtItem';
 import FashionItemCmtSkeleton from '../skeleton/FashionItemCmtSkeleton';
@@ -133,6 +133,10 @@ function FashionItemCmt({ id: product_id }) {
         else {
             getData_API_Comment({ new_page: new_page });
         }
+
+        setTimeout(() => {
+            ref_comment.current.scrollIntoView(false)
+        }, 0);
     }
 
     //

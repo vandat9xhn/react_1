@@ -18,9 +18,7 @@ BuyProductList.defaultProps = {
 };
 
 //
-function BuyProductList(props) {
-    const { buy_shops, amount } = props;
-
+function BuyProductList({ buy_shops, amount }) {
     //
     return (
         <div>
@@ -35,7 +33,7 @@ function BuyProductList(props) {
                         key={`BuyProductList${action_ix}`}
                     >
                         <BuyShop
-                            checked_products={buy_shop.checked_products}
+                            checked_products={buy_shop.products}
                             shop={buy_shop.shop}
                         />
                     </div>

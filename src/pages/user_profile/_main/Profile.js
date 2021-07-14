@@ -9,9 +9,9 @@ import RouteLoaded from '../../../component/_route/route_loaded/RouteLoaded';
 //
 import { ProfileRoutes, profile_search_arr } from '../__common/routes/routes';
 //
-import { initial_profile } from '../__common/initial/Initial';
+import { initial_profile } from '../../../_initial/profile/InitialProfile';
 //
-import { handle_API_ProfileUser_R } from '../__handle_api/ProfileHandleAPI';
+import { handle_API_ProfileUser_R } from '../../../_handle_api/profile/ProfileHandleAPI';
 //
 import ProfileSkeleton from '../__common/skeleton/ProfileSkeleton';
 import ProfileInfo from '../info/_main/ProfileInfo';

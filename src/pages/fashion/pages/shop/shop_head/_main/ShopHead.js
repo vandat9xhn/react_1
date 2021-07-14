@@ -5,7 +5,7 @@ import { API_FashionShop_R } from '../../../../../../api/api_django_no_token/fas
 //
 import observeToDo from '../../../../../../_some_function/observerToDo';
 //
-import { initial_fashion_shop } from '../../../../__initial/initial';
+import { initial_fashion_shop } from '../../../../../../_initial/fashion/FashionInitial';
 import { changeOwnerInfo } from '../../../../__function/FashionFunction';
 //
 import image_loading from '../../../../../../../image/image_loading.svg';

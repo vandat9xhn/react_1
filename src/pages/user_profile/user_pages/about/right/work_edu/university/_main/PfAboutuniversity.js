@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { useForceUpdate } from '../../../../../../../../_hooks/UseForceUpdate';
 //
-import { handle_API_University_C } from '../../../../../../__handle_api/ProfileHandleAPI';
+import { handle_API_University_C } from '../../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import PfAboutAdd from '../../../_component/add/PfAboutAdd';
 

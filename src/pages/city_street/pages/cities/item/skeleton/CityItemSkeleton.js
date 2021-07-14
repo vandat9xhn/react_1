@@ -12,6 +12,7 @@ CityItemSkeleton.propTypes = {};
 
 //
 function CityItemSkeleton() {
+    // 
     return (
         <div className="CityItem brs-5px bg-primary">
             <div className="CityItemSkeleton_head">

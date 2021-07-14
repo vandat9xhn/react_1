@@ -1,9 +1,11 @@
-import React, { Component, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 //
 import {
     API_FashionProduct_L,
     API_FashionHotImage_L,
 } from '../../../../api/api_django_no_token/fashion/APIFashionNoToken';
+// 
+import observeToDo from '../../../../_some_function/observerToDo';
 //
 import ButtonRipple from '../../../../component/button/button_ripple/ButtonRipple';
 import WaitingBall from '../../../../component/waiting/waiting_ball/WaitingBall';
@@ -17,7 +19,6 @@ import FashionH from '../../components/head/_main/FashionH';
 //
 import image_loading from '../../../../../image/image_loading.svg';
 import './Fashion.scss';
-import observeToDo from '../../../../_some_function/observerToDo';
 
 //
 function Fashion(props) {

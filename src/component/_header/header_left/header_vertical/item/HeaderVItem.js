@@ -1,18 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// 
+//
 import IconDiv from '../../../../some_div/icon_div/IconDiv';
-// 
+//
 import './HeaderVItem.scss';
 
-// 
+//
 HeaderVItem.propTypes = {};
 
-// 
-function HeaderVItem({item}) {
-    const {link_to, Icon, x, y, title} = item;
-
+//
+function HeaderVItem({ item: { link_to, Icon, x, y, title } }) {
+    //
     return (
         <NavLink
             className="normal-text"

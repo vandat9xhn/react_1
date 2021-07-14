@@ -8,9 +8,9 @@ import { useScrollDownWindow } from '../../../../../_hooks/useScrollDown';
 import observeToDo from '../../../../../_some_function/observerToDo';
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 //
-import { initial_posts } from '../../../../../component/posts/__initial/InitialPosts';
+import { initial_posts } from '../../../../../_initial/post/InitialPosts';
 
-import { handle_API_ProfilePost_L } from '../../../__handle_api/ProfileHandleAPI';
+import { handle_API_ProfilePost_L } from '../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import Posts from '../../../../../component/posts/_posts/_main/PostsWs';
 

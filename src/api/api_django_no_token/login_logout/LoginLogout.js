@@ -1,7 +1,7 @@
 import { API_FakeReal } from '../../_ConstAPI';
 import axiosClientNoToken from '../_axios/AxiosNoToken';
 //
-import { default_login } from '../../../pages/login_form/_default/DefaultLogin';
+import { default_login } from '../../../_default/login/DefaultLogin';
 
 // login
 export const LoginRequest = (data) =>

@@ -7,7 +7,7 @@ import UnitTime from '../../../../../../_some_function/UnitTime';
 //
 import { openScreenLike } from '../../../../../_screen/type/like/_main/ScreenLike';
 //
-import { context_post } from '../../../../__context_post/ContextPost';
+import { context_post } from '../../../../../../_context/post/ContextPost';
 //
 import ListUniqueLike from '../../../../../like/List_unique_like/_main/ListUniqueLike';
 import Like from '../../../../../like/_main/Like';

@@ -34,7 +34,7 @@ function FashionBuyTotal({
 
                     <div>
                         <button
-                            className="FashionBuyTotal_buy btn btn-hv btn-active w-100per brs-5px"
+                            className="FashionBuyTotal_buy btn btn-hv btn-active w-100per brs-5px cursor-pointer"
                             onClick={openConfirmBuy}
                         >
                             Buy now

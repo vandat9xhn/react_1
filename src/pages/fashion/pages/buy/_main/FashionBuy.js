@@ -19,7 +19,7 @@ import CircleLoading from '../../../../../component/waiting/circle_loading/Circl
 //
 import { actionFashionChangeCountCartNum } from '../../../../../redux/action/action_count_cart';
 //
-import { params_buy } from '../../../__params/home/FashionParams';
+import { params_buy } from '../../../../../_params/fashion/FashionParams';
 //
 import './FashionBuyCommon.scss';
 //
@@ -205,7 +205,7 @@ function FashionBuy(props) {
         );
 
         const count_checked = buy_shops.reduce(
-            (a, b) => a + b.checked_products.length,
+            (a, b) => a + b.products.length,
             0
         );
         dispatch(actionFashionChangeCountCartNum(-count_checked));
@@ -219,7 +219,7 @@ function FashionBuy(props) {
     const amount = buy_shops.reduce(
         (acc, buy_shop) =>
             acc +
-            buy_shop.checked_products.reduce(
+            buy_shop.products.reduce(
                 (acc_2, checked_product) =>
                     acc_2 +
                     checked_product.quantity *

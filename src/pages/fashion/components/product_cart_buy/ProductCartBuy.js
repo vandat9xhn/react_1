@@ -47,7 +47,7 @@ function ProductCartBuy({ product, quantity, children }) {
     //
     return (
         <div className="ProductCartBuy">
-            <div className="ProductCartBuy_row display-flex justify-content-center">
+            <div className="ProductCartBuy_row display-flex-center">
                 <div className="ProductCartBuy_product display-flex">
                     <Link
                         className={id <= 0 ? 'pointer-events-none' : ''}

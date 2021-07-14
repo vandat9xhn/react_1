@@ -1,7 +1,10 @@
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
-//
-import { window_screen_scroll_arr } from './AppScreen';
+// 
+import { USE_APP_SCROLL } from '../../../_constant/Constant';
+// 
+import { window_screen_scroll_arr } from './window_screen_scroll_arr';
+
 
 //
 ScreenNoFloor.propTypes = {};
@@ -17,8 +20,11 @@ function ScreenNoFloor(props) {
         }
 
         const App = document.getElementsByClassName('App')[0];
-        App.style.top = `0px`;
-        App.style.left = `0px`;
+
+        if (!USE_APP_SCROLL) {
+            App.style.top = `0px`;
+            App.style.left = `0px`;
+        }
 
         window.scrollTo(
             window_screen_scroll_arr[0].x,

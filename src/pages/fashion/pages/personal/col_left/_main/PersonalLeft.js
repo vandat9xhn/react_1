@@ -11,9 +11,7 @@ import './PersonalLeft.scss';
 //
 PersonalLeft.propTypes = {};
 
-function PersonalLeft(props) {
-    const { active_ix, handleChangeActiveIx } = props;
-
+function PersonalLeft({ active_ix, handleChangeActiveIx }) {
     //
     function onChangeActiveIx(ix) {
         handleChangeActiveIx(ix);
@@ -26,7 +24,7 @@ function PersonalLeft(props) {
 
     //
     return (
-        <div className="PersonalLeft">
+        <div className="PersonalLeft bg-primary box-shadow-1">
             <ul className="PersonalLeft_list list-none">
                 {data_personal_list.map((item, ix) => (
                     <li key={`PersonalLeft_${ix}`}>
@@ -41,7 +39,7 @@ function PersonalLeft(props) {
                         ) : (
                             <NavLink
                                 className="normal-text"
-                                activeClassName="text-blue"
+                                activeClassName="color-fashion"
                                 to={`/fashion/personal${item.link}`}
                                 replace
                             >

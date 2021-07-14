@@ -8,7 +8,7 @@ import { ParseLocationSearch } from '../../../../../_some_function/ParseLocation
 import FetchingDiv from '../../../../../component/some_div/fetching/FetchingDiv';
 import ComponentSkeleton from '../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 //
-import { handle_API_City_L } from '../../../__handle_api/CityHandleAPI';
+import { handle_API_City_L } from '../../../../../_handle_api/city/CityHandleAPI';
 //
 import CitySearch from '../search/CitySearch';
 import CityItem from '../item/_main/CityItem';
@@ -16,7 +16,6 @@ import CityItemSkeleton from '../item/skeleton/CityItemSkeleton';
 //
 import './Cities.scss';
 import './CitiesRes.scss';
-import DivFixContextConsumer from '../../../../../component/_div_fix/context/DivFixContextConsumer';
 
 //
 function Cities() {
@@ -50,7 +49,7 @@ function Cities() {
 
     //
     return (
-        <DivFixContextConsumer>
+        <div>
             <div className={`Cities ${has_fetched ? '' : 'display-none'}`}>
                 <div className="Cities_search">
                     <CitySearch handleSearch={handleSearch} />
@@ -85,14 +84,14 @@ function Cities() {
                     </Link>
                 )}
             </div>
-            
+
             <div className={`${has_fetched ? '' : 'Cities_skeleton'}`}>
                 <ComponentSkeleton
                     component={<CityItemSkeleton />}
                     has_fetched={has_fetched}
                 />
             </div>
-        </DivFixContextConsumer>
+        </div>
     );
 }
 

@@ -10,8 +10,8 @@ import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 import Pagination from '../../../../../component/pagination/_main/Pagination';
 import WaitingBall from '../../../../../component/waiting/waiting_ball/WaitingBall';
 //
-import { handle_API_FashionProduct_L } from '../../../__handle_api/home/FashionHandleAPI';
-import { initial_fashion_search_products_obj } from '../../../__initial/initial';
+import { handle_API_FashionProduct_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
+import { initial_fashion_search_products_obj } from '../../../../../_initial/fashion/FashionInitial';
 //
 import './FashionSearch.scss';
 //

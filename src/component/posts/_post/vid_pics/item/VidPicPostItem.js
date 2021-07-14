@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 //
 import { VideoOrImage } from '../../../../../_some_function/VideoOrImage';
 //
-import { context_post } from '../../../__context_post/ContextPost';
+import { context_post } from '../../../../../_context/post/ContextPost';
 // 
 import './VidPicPostItem.scss';
 

@@ -9,18 +9,16 @@ import './HeaderMessItem.scss';
 HeaderMessItem.propTypes = {};
 
 //
-function HeaderMessItem(props) {
-    const {
-        id,
-        ix,
-        user,
-        message,
-        updated_time,
-        //
-        count_new,
-        handleClickItem,
-    } = props;
-
+function HeaderMessItem({
+    id,
+    ix,
+    user,
+    message,
+    updated_time,
+    //
+    count_new,
+    handleClickItem,
+}) {
     //
     function onClickItem() {
         handleClickItem(id, ix);

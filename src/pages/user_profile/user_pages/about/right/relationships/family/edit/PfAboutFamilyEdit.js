@@ -6,7 +6,7 @@ import { useInputSelectLoading } from '../../../../../../../../_hooks/useInputSe
 import InputSelect from '../../../../../../../../component/input/input_select/_main/InputSelect';
 import Select from '../../../../../../../../component/input/select/Select';
 //
-import { handle_API_Family_L } from '../../../../../../__handle_api/ProfileHandleAPI';
+import { handle_API_Family_L } from '../../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import { relation_arr } from '../../../../__common/data/ProfileIntroData';
 

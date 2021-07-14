@@ -2,7 +2,7 @@ import axiosClientNoToken from '../_axios/AxiosNoToken';
 //
 import { API_FakeReal } from '../../_ConstAPI';
 //
-import { default_phone_arr } from '../../../pages/phone_laptop/__default/DefaultPhone';
+import { default_phone_arr } from '../../../_default/phone/DefaultPhone';
 
 // list
 export const API_PhoneLaptop_L = (params) =>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import SearchAnimateDiv from '../../../component/some_div/search_animate_div/SearchAnimateDiv';
 // 
 import './TestSearchAnimate.scss';
-import { context_post } from '../../../component/posts/__context_post/ContextPost';
+import { context_post } from '../../../_context/post/ContextPost';
 
 // 
 TestSearchAnimate.propTypes = {};

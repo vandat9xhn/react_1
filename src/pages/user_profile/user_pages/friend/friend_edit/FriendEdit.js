@@ -70,10 +70,10 @@ function FriendEdit({ user, handelDeleteFriend }) {
             </div>
 
             <div className="FriendEdit_right">
-                <ActionsNormal title_action="Friend" symbol_post={false}>
+                <ActionsNormal symbol_post={false}>
                     <div className="FriendEdit_action brs-5px box-shadow-1">
                         <div
-                            className="FriendEdit_action_item label-field"
+                            className="FriendEdit_action_item label-field cursor-pointer"
                             onClick={onOpenMessage}
                         >
                             <IconDiv x={200} Icon={IconsAction}>
@@ -82,7 +82,7 @@ function FriendEdit({ user, handelDeleteFriend }) {
                         </div>
 
                         <div
-                            className="FriendEdit_action_item label-field"
+                            className="FriendEdit_action_item label-field cursor-pointer"
                             onClick={confirmDelete}
                         >
                             <IconDiv Icon={IconsAction}>Unfriend</IconDiv>

@@ -16,16 +16,16 @@ BuyingItem.propTypes = {
 };
 
 //
-function BuyingItem(props) {
-    const {
-        buy_product,
-        status,
-        buy_shop_ix,
-        buy_product_ix,
-        openConFirmCancelBuying,
-    } = props;
-
+function BuyingItem({
+    buy_product,
+    status,
+    buy_shop_ix,
+    buy_product_ix,
+    openConFirmCancelBuying,
+}) {
+    //
     const { product, quantity } = buy_product;
+
     //
     function onOpenConFirmCancelBuying() {
         openConFirmCancelBuying(buy_shop_ix, buy_product_ix, product.id);
@@ -33,12 +33,14 @@ function BuyingItem(props) {
 
     //
     return (
-        <div className="BuyingItem position-rel">
+        <div className="BuyingItem position-rel padding-8px">
             <ProductCartBuy product={product} quantity={quantity}>
-                <div className="text-align-center">x{quantity}</div>
+                <div className="BuyingItem_quantity text-align-center">
+                    x{quantity}
+                </div>
             </ProductCartBuy>
 
-            {status == 'BUYING' && (
+            {status == 'BUYING' && location.search == '?stage=buying' && (
                 <div
                     className="BuyingItem_cancel close-icon-small brs-50 cursor-pointer hv-opacity"
                     onClick={onOpenConFirmCancelBuying}

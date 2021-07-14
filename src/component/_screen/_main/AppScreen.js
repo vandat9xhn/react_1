@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 //
 import AppScreenFloors from './AppScreenFloors';
 //
-import './AppScreen.scss';
+import { window_screen_scroll_arr } from './window_screen_scroll_arr';
+// 
 import ScreenNoFloor from './ScreenNoFloor';
 import ScreenHasFloor from './ScreenHasFloor';
-
-//
-export const window_screen_scroll_arr = [];
+// 
+import './AppScreen.scss';
 
 //
 class AppScreen extends Component {

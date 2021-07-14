@@ -9,9 +9,9 @@ import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 //
 import ScreenBlurShowMore from '../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
-import { handle_API_Friend_L } from '../../../__handle_api/ProfileHandleAPI';
+import { handle_API_Friend_L } from '../../../../../_handle_api/profile/ProfileHandleAPI';
 
-import { initial_friend } from '../../../__common/initial/Initial';
+import { initial_friend } from '../../../../../_initial/profile/InitialProfile';
 
 import ProfileFrSkeleton from '../skeleton/ProfileFrSkeleton';
 

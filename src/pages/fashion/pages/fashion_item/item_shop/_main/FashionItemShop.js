@@ -15,9 +15,9 @@ import { actionFashionChangeCountCartNum } from '../../../../../../redux/action/
 import {
     initial_fashion_info_right,
     initial_fashion_shop,
-} from '../../../../__initial/initial';
+} from '../../../../../../_initial/fashion/FashionInitial';
 
-import { handle_API_FashionCart_C } from '../../../../__handle_api/personal/cart/FashionCartHandleAPi';
+import { handle_API_FashionCart_C } from '../../../../../../_handle_api/fashion/FashionCartHandleAPi';
 
 import FashionItemInfo from '../info/_main/FashionItemInfo';
 import FashionOwner from '../owner/_main/FashionOwner';

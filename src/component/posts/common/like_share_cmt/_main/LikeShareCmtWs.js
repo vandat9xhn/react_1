@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
-import { context_post } from '../../../__context_post/ContextPost';
+import { context_post } from '../../../../../_context/post/ContextPost';
 //
 import BtnPostLike from '../like/BtnPostLike';
 import BtnPostCmt from '../cmt/BtnPostCmt';

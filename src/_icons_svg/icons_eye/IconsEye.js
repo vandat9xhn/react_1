@@ -23,8 +23,8 @@ IconsEye.defaultProps = {
     IconsEye: (x, y)
         1. Eye show password: (200, 200)
 */
-function IconsEye(props){
-    const { size_icon, x, y, close_eye } = props;
+function IconsEye({size_icon, x, y, close_eye}){
+    // 
     return (
         <svg
             className="IconsEye"

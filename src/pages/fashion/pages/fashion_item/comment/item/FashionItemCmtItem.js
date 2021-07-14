@@ -6,7 +6,7 @@ import { VideoOrImage } from '../../../../../../_some_function/VideoOrImage';
 import PictureName from '../../../../../../component/picture_name/pic_name/PictureName';
 import ContentMore from '../../../../../../component/content_more/Content_more';
 //
-import { handle_API_FashionContentComment_R } from '../../../../__handle_api/item/comment/FashionItemCmtHandleAPI';
+import { handle_API_FashionContentComment_R } from '../../../../../../_handle_api/fashion/FashionItemCmtHandleAPI';
 //
 import './FashionItemCmtItem.scss';
 

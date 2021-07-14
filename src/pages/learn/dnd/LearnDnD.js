@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { default_vid_pic_arr } from '../../../_default/default_image';
+import { default_vid_pic_arr } from '../../../_default/_common/default_image';
 //
 import './LearnDnD.scss';
 

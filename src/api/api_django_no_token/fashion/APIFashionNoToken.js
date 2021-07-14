@@ -1,23 +1,17 @@
 import axiosClientNoToken from '../_axios/AxiosNoToken';
-// 
+//
 import { API_IsLogin_URL } from '../../_common/API_IsLogin';
 import { API_FakeReal } from '../../_ConstAPI';
-// 
-import {
-    default_arr_cmt,
-    default_arr_hot_image,
-    default_arr_product,
-    default_arr_product_r,
-    default_arr_rate,
-    default_arr_shop,
-    default_content_more_fashion,
-    default_rate_content,
-} from '../../../pages/fashion/_default/FashionDefault';
+import { default_shop_obj } from '../../../_default/fashion/DefaultShop';
+import { default_hot_image_arr } from '../../../_default/fashion/FashionDefault';
+import { base_product_arr } from '../../../_default/fashion/DefaultProductList';
+import { default_product_cmt_arr, default_product_obj, default_rate_arr, default_rate_content } from '../../../_default/fashion/DefaultProductItem';
+import { default_content_more } from '../../../_default/post/DefaultPosts';
 
 // list shop
 export const API_FashionShop_L = (params = {}) =>
     API_FakeReal(
-        Array(6).fill(default_arr_shop[0]),
+        Array(6).fill(),
         () =>
             axiosClientNoToken({
                 url: '/fashion-api/l-shop/',
@@ -26,9 +20,10 @@ export const API_FashionShop_L = (params = {}) =>
             }),
         params
     );
+
 // retrieve shop
 export const API_FashionShop_R = (id) =>
-    API_FakeReal(default_arr_shop[0], () =>
+    API_FakeReal(default_shop_obj(), () =>
         axiosClientNoToken({
             url: '/fashion-api/r-shop/' + id + '/',
             method: 'GET',
@@ -37,7 +32,7 @@ export const API_FashionShop_R = (id) =>
 
 // hot image
 export const API_FashionHotImage_L = (params = {}) =>
-    API_FakeReal(default_arr_hot_image, () =>
+    API_FakeReal(default_hot_image_arr(), () =>
         axiosClientNoToken({
             url: '/fashion-api/l-hot-image/',
             method: 'GET',
@@ -48,7 +43,7 @@ export const API_FashionHotImage_L = (params = {}) =>
 // product
 export const API_FashionProduct_L = (params = {}) =>
     API_FakeReal(
-        Array(20).fill(default_arr_product[0]),
+        base_product_arr(),
         () =>
             axiosClientNoToken({
                 url: '/fashion-api/l-product/',
@@ -59,7 +54,7 @@ export const API_FashionProduct_L = (params = {}) =>
     );
 //
 export const API_FashionProduct_R = (id, params = {}) =>
-    API_FakeReal(default_arr_product_r, () =>
+    API_FakeReal(default_product_obj(), () =>
         API_IsLogin_URL(
             {
                 method: 'GET',
@@ -73,7 +68,7 @@ export const API_FashionProduct_R = (id, params = {}) =>
 // rate
 export const API_FashionRate_L = (params) =>
     API_FakeReal(
-        default_arr_rate,
+        default_rate_arr(),
         () =>
             axiosClientNoToken({
                 url: '/fashion-api/l-rate/',
@@ -85,7 +80,7 @@ export const API_FashionRate_L = (params) =>
 
 export const API_FashionUserContentRate_R = (params) =>
     API_FakeReal(
-        default_rate_content,
+        default_rate_content(),
         () =>
             axiosClientNoToken({
                 url: '/fashion-api/l-rate/',
@@ -98,7 +93,7 @@ export const API_FashionUserContentRate_R = (params) =>
 // comment
 export const API_FashionComment_L = (params) =>
     API_FakeReal(
-        default_arr_cmt,
+        default_product_cmt_arr(),
         () =>
             axiosClientNoToken({
                 url: '/fashion-api/l-comment/',
@@ -110,7 +105,7 @@ export const API_FashionComment_L = (params) =>
 
 export const API_FashionUserContentComment_R = (params) =>
     API_FakeReal(
-        default_content_more_fashion(),
+        default_content_more(),
         () =>
             axiosClientNoToken({
                 url: '/fashion-api/comment-r/',

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
-import { context_post } from '../../../../__context_post/ContextPost';
+import { context_post } from '../../../../../../_context/post/ContextPost';
 //
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';

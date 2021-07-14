@@ -19,14 +19,13 @@ BuyingShop.propTypes = {
 };
 
 //
-function BuyingShop(props) {
-    const {
-        buy_shop,
-        buy_shop_ix,
+function BuyingShop({
+    buy_shop,
+    buy_shop_ix,
 
-        openConFirmCancelBuying,
-    } = props;
-
+    openConFirmCancelBuying,
+}) {
+    //
     const {
         shop,
         products,
@@ -78,7 +77,7 @@ function BuyingShop(props) {
                 </div>
             </div>
 
-            <div className="BuyingShop_bot width-fit-content margin-auto">
+            <div className="BuyingShop_bot width-fit-content margin-auto padding-8px">
                 <div className="label-field">
                     Total: {formatNum(amount)} VND
                 </div>

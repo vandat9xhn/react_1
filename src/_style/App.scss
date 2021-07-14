@@ -30,11 +30,21 @@ body {
             position: fixed;
             width: 100%;
             z-index: -1;
+
+            height: 100%;
+            overflow: auto;
+
+            &::-webkit-scrollbar{
+                display: none;
+            }
         }
     }
 
     &[data-hidden-scroll] {
-        overflow-y: hidden;
+        // overflow-y: hidden;
+        &::-webkit-scrollbar{
+            display: none;
+        }
     }
 
     &[data-hidden-app] {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { API_FilterPhoneLaptop_L } from '../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
 //
-import { initial_phone_arr } from '../../__initial/InitialPhone';
+import { initial_phone_arr } from '../../../../_initial/phone/InitialPhone';
 import { data_sort_arr } from '../../__data/AllProductData';
 import {
     addOrRemoveItem,

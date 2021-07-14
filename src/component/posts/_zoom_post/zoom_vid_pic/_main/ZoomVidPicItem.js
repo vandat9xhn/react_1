@@ -17,30 +17,34 @@ import { openScreenConfirm } from '../../../../_screen/type/confirm/ScreenConfir
 import { openScreenHistory } from '../../../../_screen/type/history/ScreenHistory';
 import { openScreenUpdate } from '../../../../_screen/type/update/_main/ScreenUpdate';
 //
-import ContextPost from '../../../__context_post/ContextPost';
+import ContextPost from '../../../../../_context/post/ContextPost';
 //
 import {
-    handle_API_MoreContentHisVidPicCmt_R,
     handle_API_PostVidPicContent_R,
     handle_API_PostVidPicHistory_L,
     handle_API_PostVidPicID_L,
     handle_API_PostVidPicLike_L,
     handle_API_PostVidPic_R,
-    handle_API_VidPicCmt_C,
-    handle_API_VidPicCmt_L,
-    handle_API_VidPicCmt_U,
-    handle_API_VidPicHistoryCmt_L,
-    handle_API_VidPicHistorySub_L,
-    handle_API_VidPicLikeCmt_L,
-    handle_API_VidPicLikeSub_L,
-    handle_API_VidPicMoreContentCmt_R,
-    handle_API_VidPicMoreContentSub_R,
-    handle_API_VidPicSub_C,
-    handle_API_VidPicSub_L,
-    handle_API_VidPicSub_U,
-    handle_API_VidPicMoreContentHisSub_R,
     handle_API_PostVidPic_U,
-} from '../../../__handle_api/PostHandleAPI';
+} from '../../../../../_handle_api/post/HandleAPIVidPic';
+
+import {
+    handle_API_VidPicMoreContentCmt_R,
+    handle_API_VidPicCmt_L,
+    handle_API_VidPicCmt_C,
+    handle_API_VidPicCmt_U,
+    handle_API_VidPicLikeCmt_L,
+    handle_API_VidPicHistoryCmt_L,
+    handle_API_MoreContentHisVidPicCmt_R,
+    // 
+    handle_API_VidPicMoreContentSub_R,
+    handle_API_VidPicSub_L,
+    handle_API_VidPicSub_C,
+    handle_API_VidPicSub_U,
+    handle_API_VidPicLikeSub_L,
+    handle_API_VidPicHistorySub_L,
+    handle_API_VidPicMoreContentHisSub_R,
+} from '../../../../../_handle_api/post/PostHandleVidPicCmtSub';
 //
 import ZoomPostCommon from '../../_common/_main/ZoomPostCommon';
 import LikeShareCmt from '../../../common/like_share_cmt/_main/LikeShareCmtWs';

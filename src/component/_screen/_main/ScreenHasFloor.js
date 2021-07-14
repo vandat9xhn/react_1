@@ -1,7 +1,10 @@
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 //
-import { window_screen_scroll_arr } from './AppScreen';
+import { USE_APP_SCROLL } from '../../../_constant/Constant';
+// 
+import { window_screen_scroll_arr } from './window_screen_scroll_arr';
+
 
 //
 ScreenHasFloor.propTypes = {};
@@ -36,8 +39,12 @@ function ScreenHasFloor({ count_floor }) {
             if (count_floor == 1) {
                 const App = document.getElementsByClassName('App')[0];
 
-                App.style.top = `${-y}px`;
-                App.style.left = `${-x}px`;
+                if (USE_APP_SCROLL) {
+                    App.scrollTo(x, y)
+                } else {
+                    App.style.top = `${-y}px`;
+                    App.style.left = `${-x}px`;
+                }
             } else {
                 const app_screen_floor =
                     document.getElementsByClassName('AppScreen_floor')[

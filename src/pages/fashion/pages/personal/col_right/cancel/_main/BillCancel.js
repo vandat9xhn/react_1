@@ -6,7 +6,7 @@ import { API_FashionCancelProduct_L } from '../../../../../../../api/api_django/
 import CircleLoading from '../../../../../../../component/waiting/circle_loading/CircleLoading';
 import ScreenBlurShowMore from '../../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
-import { params_cancel } from '../../../../../__params/home/FashionParams';
+import { params_cancel } from '../../../../../../../_params/fashion/FashionParams';
 //
 import './BillCancel.scss';
 //

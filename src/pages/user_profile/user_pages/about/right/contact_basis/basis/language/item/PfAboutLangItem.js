@@ -5,7 +5,7 @@ import { joinArrayWithAnd } from '../../../../../../../../../_some_function/join
 //
 import { IconsProfileAbout } from '../../../../../../../../../_groups_icon/about/GroupIconProfileAbout';
 //
-import { handle_API_Lang_U } from '../../../../../../../__handle_api/ProfileHandleAPI';
+import { handle_API_Lang_U } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import AboutRowItemEdit from '../../../../_component/row_item_edit/AboutRowItemEdit';
 import PfAboutLangEdit from '../edit/PfAboutLangEdit';

@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
+import { context_post } from '../../../../_context/post/ContextPost';
 //
 import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
@@ -14,8 +15,6 @@ import { openScreenHistory } from '../../../_screen/type/history/ScreenHistory';
 import { openScreenPermission } from '../../../_screen/type/permission/_main/ScreenPermission';
 import { openScreenUpdate } from '../../../_screen/type/update/_main/ScreenUpdate';
 //
-import { context_post } from '../../__context_post/ContextPost';
-//
 import {
     handle_API_ContentMoreHistory_R,
     handle_API_History_L,
@@ -24,7 +23,7 @@ import {
     handle_API_PostUpdate_R,
     handle_API_Post_D,
     handle_API_Post_U,
-} from '../../__handle_api/PostHandleAPI';
+} from '../../../../_handle_api/post/HandleAPIPost';
 //
 import CUPost from '../../common/create_update_post/_main/CUPost';
 import VidPicsPost from '../vid_pics/_main/VidPicsPost';

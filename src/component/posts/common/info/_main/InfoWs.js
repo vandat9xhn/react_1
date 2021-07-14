@@ -8,7 +8,7 @@ import { UnitNumber } from '../../../../../_some_function/UnitNumber';
 import { openScreenLike } from '../../../../_screen/type/like/_main/ScreenLike';
 import { openScreenShare } from '../../../../_screen/type/share/_main/ScreenShare';
 // 
-import { context_post } from '../../../__context_post/ContextPost';
+import { context_post } from '../../../../../_context/post/ContextPost';
 // 
 import MouseEnterLeaveInfoNormal from '../../mouse_enter_leave_info/_main/MouseEnterLeaveInfoNormal';
 import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';

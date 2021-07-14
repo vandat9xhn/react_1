@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 //
 import { useScrollDownWindow } from '../../../_hooks/useScrollDown';
 //
-import { initial_posts } from '../../../component/posts/__initial/InitialPosts';
+import { initial_posts } from '../../../_initial/post/InitialPosts';
 
 import Posts from '../../../component/posts/_posts/_main/PostsWs';
 //
-import { handle_API_NewFeedPost_L } from '../__handle_api/NewFeedHandleAPI';
+import { handle_API_NewFeedPost_L } from '../../../_handle_api/new_feed/NewFeedHandleAPI';
 //
 import './NewFeedCommon.scss';
 //

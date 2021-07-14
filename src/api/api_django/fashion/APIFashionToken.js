@@ -1,18 +1,19 @@
 import axiosDjangoClient from '../_axios/AxiosDjango';
+//
 import { API_FakeReal } from '../../_ConstAPI';
-// 
+//
+import { default_fashion_cart_buy_arr } from '../../../_default/fashion/DefaultProductCart';
+import { default_fashion_buy_arr } from '../../../_default/fashion/DefaultProductBuy';
+import { default_product_cancel_arr } from '../../../_default/fashion/DefaultProductCancel';
 import {
-    DefaultFashionCartBuy,
-    default_arr_payment,
-    default_arr_transporter,
-    default_arr_voucher,
-    default_arr_buy,
-    default_arr_cancel,
-} from '../../../pages/fashion/_default/FashionDefault';
+    default_payment_arr,
+    default_transporter_arr,
+    default_voucher_arr,
+} from '../../../_default/fashion/DefaultProductBuying';
 
 // get create cart
 export const API_FashionCart_LC = (method, params = {}, data = {}) =>
-    API_FakeReal(DefaultFashionCartBuy, () =>
+    API_FakeReal(default_fashion_cart_buy_arr(), () =>
         axiosDjangoClient({
             url: '/fashion-api/lc-cart/',
             method: method,
@@ -32,9 +33,8 @@ export const API_FashionCountCart = () =>
 
 // Update delete cart
 export const API_FashionCart_UD = (method, data = {}) =>
-    API_FakeReal(
-        {},
-        () => axiosDjangoClient({
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
             url: '/fashion-api/ud-cart/',
             method: method,
             data: data,
@@ -44,9 +44,7 @@ export const API_FashionCart_UD = (method, data = {}) =>
 // get create buy
 export const API_FashionBuy_LC = (method, params = {}, data = {}) =>
     API_FakeReal(
-        default_arr_buy.filter(
-            (item) => item.status.toLocaleLowerCase() == params.status
-        ),
+        default_fashion_buy_arr(),
         () =>
             axiosDjangoClient({
                 url: '/fashion-api/lc-buy/',
@@ -67,7 +65,7 @@ export const API_FashionBuyProduct_D = (buy_product_id) =>
 // cancel buy product
 export const API_FashionCancelProduct_L = (params = {}) =>
     API_FakeReal(
-        default_arr_cancel,
+        default_product_cancel_arr(),
         () =>
             axiosDjangoClient({
                 url: '/fashion-api/l-cancel/',
@@ -100,7 +98,7 @@ export const API_FashionComment_C = (data) =>
 // transport
 export const API_FashionTransport_L = (params) =>
     API_FakeReal(
-        default_arr_transporter,
+        default_transporter_arr(),
         () =>
             axiosDjangoClient({
                 url: '/transporter/l-transport/',
@@ -113,7 +111,7 @@ export const API_FashionTransport_L = (params) =>
 // voucher
 export const API_FashionVoucher_L = (params) =>
     API_FakeReal(
-        default_arr_voucher,
+        default_voucher_arr(),
         () =>
             axiosDjangoClient({
                 url: '/transporter/l-voucher/',
@@ -126,7 +124,7 @@ export const API_FashionVoucher_L = (params) =>
 // create user voucher
 export const API_FashionUserVoucher_LC = (method, params = {}, data = {}) =>
     API_FakeReal(
-        default_arr_voucher,
+        default_voucher_arr(),
         () =>
             axiosDjangoClient({
                 url: '/transporter/lc-user-voucher/',
@@ -139,7 +137,7 @@ export const API_FashionUserVoucher_LC = (method, params = {}, data = {}) =>
 
 // create user voucher
 export const API_FashionPayment_L = (params = {}) =>
-    API_FakeReal(default_arr_payment, () =>
+    API_FakeReal(default_payment_arr(), () =>
         axiosDjangoClient({
             url: '/transporter/l-payment/',
             method: 'GET',

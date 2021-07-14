@@ -21,9 +21,13 @@ ProfilePrCommon.defaultProps = {
 };
 
 //
-function ProfilePrCommon(props) {
-    const { children, title, sk, is_fetching, ProfilePrSkeleton } = props;
-
+function ProfilePrCommon({
+    children,
+    title,
+    sk,
+    is_fetching,
+    ProfilePrSkeleton,
+}) {
     //
     return (
         <div className="ProfilePrCommon bg-primary box-shadow-1 brs-5px">

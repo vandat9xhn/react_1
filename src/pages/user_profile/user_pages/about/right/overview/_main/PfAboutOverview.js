@@ -7,7 +7,7 @@ import ComponentSkeleton from '../../../../../../../component/skeleton/component
 //
 import { common_overview_icon } from '../../../__common/data/ProfileIntroData';
 import { initial_overview_obj } from '../../../__common/initial/initial';
-import { handle_API_UserOverview_r } from '../../../../../__handle_api/ProfileHandleAPI';
+import { handle_API_UserOverview_r } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import PfAboutOverviewItem from '../item/PfAboutOverviewItem';
 import PfAbOvSkeleton from '../skeleton/PfAbOvSkeleton';

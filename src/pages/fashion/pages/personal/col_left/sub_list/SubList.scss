@@ -1,9 +1,12 @@
+.SubList_contain {
+    margin-left: 0.5rem;
+}
+
 //
 .SubList_list {
     display: flex;
     flex-direction: column;
 
-    margin-left: 0.5rem;
     overflow: hidden;
     transition: max-height 0.3s;
 }

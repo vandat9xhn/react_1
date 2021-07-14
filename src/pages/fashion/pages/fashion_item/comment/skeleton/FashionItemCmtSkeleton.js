@@ -8,9 +8,10 @@ FashionItemCmtSkeleton.propTypes = {};
 
 // 
 function FashionItemCmtSkeleton(props) {
+    // 
     return (
         <div>
-            {[1, 2, 3].map((ix) => (
+            {[1, 2, 3, 4, 5].map((ix) => (
                 <div
                     key={`FashionItemCmt_skeleton_${ix}`}
                     className="FashionItemCmt_skeleton"
@@ -21,7 +22,7 @@ function FashionItemCmtSkeleton(props) {
 
                     <div className="FashionItemCmt_skeleton-content">
                         <SkeletonDiv />
-                    </div>
+                    </div><br />
                 </div>
             ))}
         </div>

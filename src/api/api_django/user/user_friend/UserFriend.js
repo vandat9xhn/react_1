@@ -1,14 +1,15 @@
-import { API_FakeReal } from '../../../_ConstAPI';
 import axiosDjangoClient from '../../_axios/AxiosDjango';
+// 
+import { API_FakeReal } from '../../../_ConstAPI';
 //
-import { default_friend_arr } from '../../../../pages/user_profile/__default/DefaultUserProfile';
+import { default_friend_arr } from '../../../../_default/user_post/DefaultUserProfile';
 
 // Friends
 
 // Get
 export const API_Friends_LC = (method, params = {}, data = {}) =>
     API_FakeReal(
-        default_friend_arr,
+        default_friend_arr(),
         () =>
             axiosDjangoClient({
                 url: '/user/friend-lc/',

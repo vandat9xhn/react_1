@@ -27,12 +27,12 @@ function ItemNotice({
 
     //
     return (
-        <div className="ItemNotice">
+        <div className={`ItemNotice ${
+            is_new ? 'bg-film' : ''
+        }`}>
             <Link to={'/posts/' + id} onClick={onClickItem}>
                 <div
-                    className={`ItemNotice_contain header_item position-rel ${
-                        is_new ? 'bg-film' : ''
-                    }`}
+                    className={`ItemNotice_contain header_item position-rel `}
                 >
                     <div className="ItemNotice_row">
                         <PicNameContent

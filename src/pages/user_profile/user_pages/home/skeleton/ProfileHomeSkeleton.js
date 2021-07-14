@@ -13,6 +13,7 @@ ProfileHomeSkeleton.propTypes = {
 
 // 
 function ProfileHomeSkeleton() {
+    // 
     return (
         <div className="ProfileHomeSkeleton">
             <div className="ProfileHome_row display-flex justify-content-center">

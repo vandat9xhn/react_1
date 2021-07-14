@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+//
+import { context_api } from '../../../../../../../_context/ContextAPI';
 //
 import StarsRate from '../../../../../../../component/stars_rate/_main/StarsRate';
 //
 import FashionRateBody from '../body/_main/FashionRateBody';
 import FashionRateFoot from '../foot/_main/FashionRateFoot';
-// 
+//
 import './FashionRateChart.scss';
 
-// 
+//
 FashionRateChart.propTypes = {};
 
 //
@@ -19,6 +21,10 @@ function FashionRateChart({
     user_rate,
     openRateNow,
 }) {
+    //
+    const { user } = useContext(context_api);
+
+    //
     return (
         <div className="FashionRateChart">
             <div className="FashionRateChart_head">
@@ -40,14 +46,14 @@ function FashionRateChart({
                 />
             </div>
 
-            {localStorage.is_login == 1 && (
+            {user.id ? (
                 <div className="FashionRateChart_foot">
                     <FashionRateFoot
                         user_rate={user_rate}
                         openRateNow={openRateNow}
                     />
                 </div>
-            )}
+            ) : null}
         </div>
     );
 }

@@ -92,7 +92,7 @@ function LearnHTML() {
                 </div>
             </div>
             <br />
-            <LearnAppearancePosition />
+            {/* <LearnAppearancePosition /> */}
 
             <br />
 

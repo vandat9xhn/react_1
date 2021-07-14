@@ -12,12 +12,12 @@ import { openScreenConfirm } from '../../../../../../../component/_screen/type/c
 import CircleLoading from '../../../../../../../component/waiting/circle_loading/CircleLoading';
 import ScreenBlurShowMore from '../../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
-import { params_buy } from '../../../../../__params/home/FashionParams';
-//
-import './BillBuying.scss';
+import { params_buy } from '../../../../../../../_params/fashion/FashionParams';
 //
 import BuyingStage from '../buying_stage/_main/BuyingStage';
 import BuyingShop from '../buying_shop/BuyingShop';
+//
+import './BillBuying.scss';
 
 //
 const arr_stage = ['buying', 'ready', 'delivery', 'bought'];
@@ -92,7 +92,7 @@ function BillBuying(props) {
             });
     }
 
-    /* --------------------------------------- */
+    /* --------------- */
 
     //
     function getBuyingStage() {
@@ -133,6 +133,8 @@ function BillBuying(props) {
             ...params_buy,
         });
 
+        console.log(res.data);
+
         setBuyingState((buying_state) => ({
             ...buying_state,
             buy_obj: {
@@ -150,8 +152,8 @@ function BillBuying(props) {
     //
     async function getMore_API_Buying() {
         startFetchingData();
+        
         const stage = arr_stage[cur_stage];
-        //
         const params = {
             ...params_buy,
             page: 1,
@@ -159,7 +161,7 @@ function BillBuying(props) {
             c_count: buy_arr.length,
             status: stage,
         };
-        //
+        
         const res = await API_FashionBuy_LC('GET', params);
 
         setBuyingState({

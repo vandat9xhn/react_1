@@ -75,7 +75,7 @@ function FashionPersonal(props) {
                     <div className="FashionPersonal_contain position-rel">
                         <div className="FashionPersonal_row display-flex">
                             <div
-                                className={`FashionPersonal_left bg-primary box-shadow-1 ${
+                                className={`FashionPersonal_left ${
                                     is_open ? '' : 'FashionPersonal_left-hidden'
                                 }`}
                             >
@@ -104,7 +104,7 @@ function FashionPersonal(props) {
                                 </div>
                             </div>
 
-                            <div className="FashionPersonal_right">
+                            <div className="FashionPersonal_right box-shadow-1">
                                 <RouteLoaded route_arr={route_arr} />
                             </div>
                         </div>

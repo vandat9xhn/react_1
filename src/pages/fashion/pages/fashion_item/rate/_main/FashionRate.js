@@ -6,7 +6,7 @@ import { context_api } from '../../../../../../_context/ContextAPI';
 import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 //
 import observeToDo from '../../../../../../_some_function/observerToDo';
-// 
+//
 import { openScreenConfirm } from '../../../../../../component/_screen/type/confirm/ScreenConfirm';
 //
 import ComponentSkeleton from '../../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
@@ -15,14 +15,14 @@ import {
     handle_API_FashionRate_C,
     handle_API_FashionRate_L,
     handle_API_FashionUserContentRate_R,
-} from '../../../../__handle_api/item/rate/FashionItemRateHandleAPI';
-//
-import './FashionRate.scss';
+} from '../../../../../../_handle_api/fashion/FashionItemRateHandleAPI';
 //
 import FashionRateSkeleton from '../skeleton/FashionRateSkeleton';
 import ConfirmRate from '../confirm_rate/ConfirmRate';
 import FashionRateChart from '../chart/_main/FashionRateChart';
 import FashionRateList from '../list/_main/FashionRateList';
+//
+import './FashionRate.scss';
 
 //
 function calculateAvgCount(arr) {

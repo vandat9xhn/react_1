@@ -100,7 +100,7 @@ function ActionsNormal({ title_action, symbol_post, children }) {
 
                     {is_open && (
                         <div
-                            className="Actions_choices_actions scroll-thin bg-primary box-shadow-action brs-5px-md text-primary"
+                            className="Actions_choices_actions scroll-thin bg-primary box-shadow-fb brs-5px-md text-primary"
                             style={{
                                 maxHeight:
                                     window.innerWidth <= 400

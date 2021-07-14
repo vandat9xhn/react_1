@@ -6,7 +6,7 @@ import { useMounted } from '../../../_hooks/useMounted';
 import {
     handle_API_AddFriend_L,
     handle_API_FriendRequest,
-} from '../__handle_api/AddFriendHandleAPI';
+} from '../../../_handle_api/add_friend/AddFriendHandleAPI';
 //
 import AddFriendBody from '../body/_main/AddFriendBody';
 import AddFriendHead from '../head/_main/AddFriendHead';

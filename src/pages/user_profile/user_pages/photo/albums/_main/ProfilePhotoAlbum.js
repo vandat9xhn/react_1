@@ -5,7 +5,7 @@ import { handleScrollSmooth } from '../../../../../../_some_function/handleScrol
 // 
 import CircleLoading from '../../../../../../component/waiting/circle_loading/CircleLoading';
 // 
-import { handle_API_AlbumVidPic_L } from '../../../../__handle_api/ProfileHandleAPI';
+import { handle_API_AlbumVidPic_L } from '../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import ProfilePhotoMain from '../../_component/_main/ProfilePhotoMain';
 import ProfilePhotoAlbumItem from '../item/ProfilePhotoAlbumItem';

@@ -1,17 +1,13 @@
 import { API_FakeReal } from '../../../_ConstAPI';
 import axiosDjangoClient from '../../_axios/AxiosDjango';
 //
-import { default_user_about_r } from '../../../../pages/user_profile/__default/DefaultUserProfile';
-
-import {
-    default_album_vid_pic_arr,
-    default_post_arr,
-} from '../../../../component/posts/__default_post/DefaultPosts';
+import { default_user_about_r } from '../../../../_default/user_post/DefaultUserProfile';
+import { default_album_vid_pic_arr, default_profile_vid_pic_arr } from '../../../../_default/user_post/DefaultProfileVidPic';
 
 // vid_pic
 export const API_UserVidPic_L = (params) =>
     API_FakeReal(
-        Array(9).fill(default_post_arr[0].vid_pics[0]),
+        default_profile_vid_pic_arr(),
         () =>
             axiosDjangoClient({
                 url: 'api/profile/vid-pic-l/',
@@ -24,7 +20,7 @@ export const API_UserVidPic_L = (params) =>
 // vid_pic album
 export const API_UserAlbumVidPic_L = (params) =>
     API_FakeReal(
-        Array(4).fill(default_album_vid_pic_arr[0]),
+        default_album_vid_pic_arr(),
         () =>
             axiosDjangoClient({
                 url: 'api/profile/album-vid-pic-l/',

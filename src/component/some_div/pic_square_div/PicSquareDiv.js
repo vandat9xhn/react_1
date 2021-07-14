@@ -12,6 +12,7 @@ PicSquareDiv.propTypes = {
 
 //
 function PicSquareDiv({ vid_pic }) {
+    // 
     return (
         <div className="PicSquareDiv position-rel">
             <div className="pos-abs-100">
