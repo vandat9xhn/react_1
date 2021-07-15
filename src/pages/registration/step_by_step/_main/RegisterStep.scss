@@ -1,0 +1,38 @@
+.RegistrationStep_form {
+    max-width: 500px;
+    overflow: hidden;
+
+    background-image: linear-gradient(45deg, var(--success), var(--blue-tear));
+
+    /* btn ripple bg */
+    .App_submit display-flex-center .ButtonRipple {
+        background-color: var(--green);
+    }
+}
+
+.RegistrationStep_error {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: 2px solid var(--danger);
+    background-color: var(--heart-blur);
+}
+
+.RegistrationStep_row {
+    width: 400%;
+    transition: transform 250ms ease;
+}
+// .
+.RegistrationStep_part {
+    width: 100%;
+    min-height: 20rem;
+    padding: 8px;
+
+    input {
+        border-radius: 20px;
+        padding: 8px 15px;
+    }
+}
+
+.RegisterStep_next_prev{
+    margin: 0 0.25rem;
+}

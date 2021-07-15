@@ -6,7 +6,7 @@ const LoginForm = React.lazy(() =>
 );
 
 const Registration = React.lazy(() =>
-    import('../pages/registration/_main/Registration')
+    import('../pages/registration/_main/RegisterCommon')
 );
 
 //

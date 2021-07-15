@@ -4,11 +4,11 @@
     max-width: 500px;
 
     background-image: linear-gradient(45deg, var(--success), var(--blue-tear));
-}
 
-/* btn ripple bg */
-.App_submit display-flex-center .ButtonRipple {
-    background-color: var(--green);
+    /* btn ripple bg */
+    .App_submit display-flex-center .ButtonRipple {
+        background-color: var(--green);
+    }
 }
 
 .Registration_error {
@@ -20,7 +20,7 @@
 
 .Registration_input {
     margin: 1rem 0;
-    input{
+    input {
         border-radius: 20px;
         padding: 8px 15px;
     }
