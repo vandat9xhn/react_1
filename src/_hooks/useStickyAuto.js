@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-//
-import { useMounted } from './useMounted';
+// 
+import { HEADER_HEAD } from '../_constant/Constant';
 
 //
-const header_head = 56;
+const header_head = HEADER_HEAD + 10;
 
 //
 export function useStickyAuto({ ref_main_elm, ref_preview_elm, ref_fake_elm }) {
@@ -14,9 +14,6 @@ export function useStickyAuto({ ref_main_elm, ref_preview_elm, ref_fake_elm }) {
     const more_height = useRef(0);
     const ref_scroll_y = useRef(0);
     const is_last_scroll_down = useRef(true);
-
-    //
-    const mounted = useMounted();
 
     //
     useEffect(() => {
@@ -44,9 +41,10 @@ export function useStickyAuto({ ref_main_elm, ref_preview_elm, ref_fake_elm }) {
             innerWidth < 900 ||
             !ref_fetched.current ||
             more_height.current <= 0 ||
-            !mounted
+            !ref_preview_elm.current ||
+            !ref_main_elm.current
         ) {
-            ref_fake_elm.current.style.height = '0px';
+            ref_fake_elm.current  && (ref_fake_elm.current.style.height = '0px');
 
             return;
         }

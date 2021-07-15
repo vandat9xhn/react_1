@@ -13,6 +13,7 @@ import LearnAppearancePosition from '../appearance_position/LearnAppearancePosit
 import LearnScreen from '../screen/LearnScreen';
 import LearnWaitingToken from '../waiting_token/LearnWaitingToken';
 import LearnDnD from '../dnd/LearnDnD';
+import LearnObserverScroll from '../observer_scroll/LearnObserverScroll';
 
 //
 LearnHTML.propTypes = {};
@@ -123,6 +124,10 @@ function LearnHTML() {
 
             <div>
                 <LearnDnD />
+            </div>
+
+            <div>
+                <LearnObserverScroll />
             </div>
 
             <br />

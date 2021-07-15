@@ -54,7 +54,7 @@ const default_post_history_obj = () => {
 
     return {
         id: getRandomId(),
-        
+
         vid_pics_create: has_created
             ? getDefaultArr(default_vid_pic_cd, 1, 4)
             : [],
@@ -76,16 +76,19 @@ export const default_post_history_arr = () =>
     getDefaultArr(default_post_history_obj, 1, 10);
 
 //
+const post_vid_pic_obj = () => ({
+    id: getRandomId(),
+    vid_pic: getRandomVidPic(),
+});
+
+const post_vid_pic_arr = () =>
+    getDefaultArr(post_vid_pic_obj, 0, getRandomBool() ? 6 : 0);
+
 export const default_post_obj = () => ({
     id: getRandomId(),
     ...getRandomUser(),
     ...getRandomContentObj(),
-    vid_pics: [
-        {
-            id: getRandomId(),
-            vid_pic: getRandomVidPic(),
-        },
-    ],
+    vid_pics: post_vid_pic_arr(),
     count_vid_pic: 1,
     likes: [],
     count_like: 2,

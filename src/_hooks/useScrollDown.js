@@ -11,10 +11,12 @@ import {
 
 //
 export const useScrollDown = ({
+    elm = window,
+    thresh_hold = 1,
+    more_bottom = 100,
+
     initial_data_arr = [],
     handle_API_L = () => new Promise(),
-    thresh_hold = 0.7,
-    elm = window,
 }) => {
     //
     const [data_state, setDataState] = useState({
@@ -67,7 +69,24 @@ export const useScrollDown = ({
         } catch (e) {
             console.log(e);
         } finally {
+            handleWhenFinally();
+
             just_fetching.current = false;
+        }
+    }
+
+    //
+    function handleWhenFinally() {
+        if (is_max.current || data_count.current > 0) {
+            return;
+        }
+
+        if (elm == window) {
+            if (pageYOffset == document.body.offsetHeight - innerHeight) {
+                window.scrollTop = pageYOffset - 250;
+            }
+        } else if (elm.scrollTop == elm.scrollHeight - elm.clientHeight) {
+            elm.scrollTop -= 100;
         }
     }
 
@@ -82,11 +101,10 @@ export const useScrollDown = ({
 
     //
     function handleScroll() {
-        if (data_count.current == 0) {
-            return;
-        }
-
-        if (document.getElementsByTagName('body')[0].dataset.countHidden) {
+        if (
+            data_count.current == 0 ||
+            document.getElementsByTagName('body')[0].dataset.countHidden
+        ) {
             return;
         }
 
@@ -96,14 +114,16 @@ export const useScrollDown = ({
                       pos.current,
                       just_fetching.current,
                       is_api_fake ? false : is_max.current,
-                      thresh_hold
+                      thresh_hold,
+                      more_bottom
                   )
                 : ScrollDownBool(
                       elm,
                       pos.current,
                       just_fetching.current,
                       is_api_fake ? false : is_max.current,
-                      thresh_hold
+                      thresh_hold,
+                      more_bottom
                   )
         ) {
             handleGetMoreData();
@@ -140,7 +160,8 @@ export const useScrollDown = ({
 export function useScrollDownWindow({
     initial_data_arr = [],
     handle_API_L = () => new Promise(),
-    thresh_hold = 0.7,
+    thresh_hold = 1,
+    more_bottom = 500,
 }) {
     //
     const {
@@ -150,7 +171,12 @@ export function useScrollDownWindow({
         handleScroll,
         getData_API_at_first,
         resetStopScrollDown,
-    } = useScrollDown({ initial_data_arr, handle_API_L, thresh_hold });
+    } = useScrollDown({
+        initial_data_arr,
+        handle_API_L,
+        thresh_hold,
+        more_bottom,
+    });
 
     //
     useEffect(() => {

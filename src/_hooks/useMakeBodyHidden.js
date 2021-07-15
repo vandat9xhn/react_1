@@ -16,6 +16,8 @@ export const useMakeBodyHidden = (
 
     //
     useLayoutEffect(() => {
+        !hidden_scroll && window.scrollTo(0, 0);
+        
         const body = document.getElementsByTagName('body')[0];
 
         body.dataset.countHidden =

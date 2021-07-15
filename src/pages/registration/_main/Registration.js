@@ -24,7 +24,7 @@ import {
     fields,
     initialValues,
     validationSchema,
-} from '../../../_initial/register/ResgitrationInitial';
+} from '../../../_initial/register/RegistrationInitial';
 //
 import InputDate from '../../../component/input/date/_main/InputDate';
 //

@@ -31,7 +31,7 @@ function ScreenHasFloor({ count_floor }) {
 
             window_screen_scroll_arr.pop();
         } else if (count_floor == window_screen_scroll_arr.length) {
-            window.scrollTo(0, 0);
+            // window.scrollTo(0, 0);
 
             const c_floor_ix = count_floor - 1;
             const { x, y } = window_screen_scroll_arr[c_floor_ix];

@@ -26,7 +26,6 @@ function Cities() {
     const { data_state: city_obj, getData_API_at_first } = useScrollDownWindow({
         handle_API_L: (c_count) =>
             handle_API_City_L(value_search.current, c_count),
-        thresh_hold: 0.8,
     });
 
     const { data_arr: cities_arr, is_fetching, has_fetched } = city_obj;

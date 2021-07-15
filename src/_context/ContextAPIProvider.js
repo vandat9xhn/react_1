@@ -1,10 +1,10 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 //
 import { context_api } from './ContextAPI';
 //
 import { DefineUser } from '../api/api_django_no_token/define_user/DefineUser';
 //
-import WaitingBall from '../component/waiting/waiting_ball/WaitingBall';
+// import WaitingBall from '../component/waiting/waiting_ball/WaitingBall';
 
 //
 const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
@@ -82,7 +82,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
                 <div>{children}</div>
             ) : (
                 <div>
-                    <WaitingBall waitingBall_center={true} />
+                    {/* <WaitingBall waitingBall_center={true} /> */}
                 </div>
             )}
         </context_api.Provider>

@@ -5,9 +5,11 @@ import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import { API_City_UD } from '../../../../../../api/api_django/api01/API01';
 //
+import { handle_API_CityHistory_L } from '../../../../../../_handle_api/city/CityHandleAPI';
+//
 import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
-//
+// 
 import makeFormData from '../../../../../../_some_function/makeFormData';
 //
 import { openScreenConfirm } from '../../../../../../component/_screen/type/confirm/ScreenConfirm';
@@ -15,8 +17,8 @@ import { openScreenHistory } from '../../../../../../component/_screen/type/hist
 import { openScreenUpdate } from '../../../../../../component/_screen/type/update/_main/ScreenUpdate';
 //
 import PictureName from '../../../../../../component/picture_name/pic_name/PictureName';
+import VirtualScroll from '../../../../../../component/virtual_scroll/VirtualScroll';
 //
-import { handle_API_CityHistory_L } from '../../../../../../_handle_api/city/CityHandleAPI';
 //
 import Choices from '../../choices/Choices';
 import CityUpdate from '../../actions/action_update/CityUpdate';
@@ -145,47 +147,49 @@ function CityItem({ city_obj }) {
     //
     return (
         !is_del && (
-            <div
-                className={`CityItem brs-5px-md box-shadow-1 ${
-                    bg_color.split('.')[0]
-                } ${bg_color.split('.')[1]}`}
-            >
-                <div className="CityItem_user">
-                    <PictureName user={user} />
-                </div>
+            <VirtualScroll>
+                <div
+                    className={`CityItem brs-5px-md box-shadow-1 ${
+                        bg_color.split('.')[0]
+                    } ${bg_color.split('.')[1]}`}
+                >
+                    <div className="CityItem_user">
+                        <PictureName user={user} />
+                    </div>
 
-                <div>
-                    <address>
-                        <div>City: {city}</div>
+                    <div>
+                        <address>
+                            <div>City: {city}</div>
 
-                        <div>Street: {street}</div>
-                    </address>
+                            <div>Street: {street}</div>
+                        </address>
 
-                    <article className="CityItem_quote">"{quote}"</article>
-                </div>
+                        <article className="CityItem_quote">"{quote}"</article>
+                    </div>
 
-                <div className="CityItem_img">
-                    <a href={image} target="_blank">
-                        <div className="CityItem_img-contain bg-loader brs-5px">
-                            <div className="display-flex-center h-100per">
-                                <img src={image} alt="" />
+                    <div className="CityItem_img">
+                        <a href={image} target="_blank">
+                            <div className="CityItem_img-contain bg-loader brs-5px">
+                                <div className="display-flex-center h-100per">
+                                    <img src={image} alt="" />
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-                <div className="CityItem_choices">
-                    <Choices
-                        is_user={is_user}
-                        count_his={count_his}
-                        //
-                        openHistory={openHistory}
-                        openUpdate={openUpdate}
-                        openDelete={openDelete}
-                        openReport={openReport}
-                    />
+                    <div className="CityItem_choices">
+                        <Choices
+                            is_user={is_user}
+                            count_his={count_his}
+                            //
+                            openHistory={openHistory}
+                            openUpdate={openUpdate}
+                            openDelete={openDelete}
+                            openReport={openReport}
+                        />
+                    </div>
                 </div>
-            </div>
+            </VirtualScroll>
         )
     );
 }

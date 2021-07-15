@@ -244,7 +244,7 @@ function ZoomVidPicItem({
     async function getData_API_VidPicId(post_id) {
         const data = await handle_API_PostVidPicID_L(post_id);
 
-        const new_vid_pic_id_arr = data.map((item) => item.vid_pic_id);
+        const new_vid_pic_id_arr = data.map((item) => item.id);
 
         mounted &&
             setVidPicState((vid_pic_state) => ({

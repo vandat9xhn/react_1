@@ -1,7 +1,7 @@
 /* html */
-// html {
-//     background-color: var(--md-bg-fb);
-// }
+html {
+    background-color: var(--md-bg-fb);
+}
 
 *,
 ::after,
@@ -120,7 +120,7 @@ img {
 /* ------------ CONTENT -------------- */
 .AppContent {
     margin-top: calc(var(--height-header));
-    padding-bottom: 1rem;
+    // padding-bottom: 1rem;
     min-height: calc(100vh + 5rem - var(--height-header));
 }
 

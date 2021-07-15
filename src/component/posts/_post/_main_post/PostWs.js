@@ -35,6 +35,7 @@ import LikeShareCmt from '../../common/like_share_cmt/_main/LikeShareCmtWs';
 import PostHistory from '../history/_main/PostHistory';
 //
 import './Post.scss';
+import VirtualScroll from '../../../virtual_scroll/VirtualScroll';
 
 //
 Post.propTypes = {
@@ -58,10 +59,6 @@ function Post({
     } = useContext(context_api);
 
     const { handle_API_Cmt_L } = useContext(context_post);
-
-    //
-    const forceUpdate = useForceUpdate();
-    const handleScreenFetching = useScreenFetching();
 
     //
     const {
@@ -95,6 +92,10 @@ function Post({
 
     //
     const ref_comments = useRef(null);
+
+    //
+    const forceUpdate = useForceUpdate();
+    const handleScreenFetching = useScreenFetching();
 
     /* -------------------- OPEN ACTIONS ----------------- */
 
@@ -243,91 +244,96 @@ function Post({
     //
     return (
         !is_del && (
-            <div className="Post box-shadow-1 brs-5px">
-                <div className="Post_head position-rel">
-                    <div className="Post__user">
-                        <PictureName
-                            user={user}
-                            content={
-                                <PermissionPost
-                                    permission_post={+permission_post}
-                                    updated_time={updated_time}
-                                />
-                            }
+            <VirtualScroll>
+                <div className="Post box-shadow-1 brs-5px">
+                    <div className="Post_head position-rel">
+                        <div className="Post__user">
+                            <PictureName
+                                user={user}
+                                content={
+                                    <PermissionPost
+                                        permission_post={+permission_post}
+                                        updated_time={updated_time}
+                                    />
+                                }
+                            />
+                        </div>
+
+                        <div className="Post__actions">
+                            <ActionsPost
+                                is_poster={is_poster}
+                                openHistoryPost={openHistoryPost}
+                                openUpdatePost={openUpdatePost}
+                                openDeletePost={openDeletePost}
+                                openReportPost={openReportPost}
+                                openPermissionPost={openPermissionPost}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="Post_content">
+                        <div className="Post__text">
+                            <ContentMore
+                                content_obj={content_obj}
+                                seeMoreContent={on_API_MoreContent_R}
+                            />
+                        </div>
+
+                        <div className="Post__pic">
+                            <VidPicsPost
+                                post_ix={post_ix}
+                                vid_pics={vid_pics}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="Post_Info">
+                        <Info
+                            parent_id={id}
+                            count_comment={count_comment}
+                            //
+                            likes={likes}
+                            count_like={count_like}
+                            user_type_like={user_type_like}
+                            //
+                            enabled_share={enabled_share}
+                            shares={shares}
+                            count_share={count_share}
+                            count_unique_share={count_unique_share}
+                            handleClickBtnCmt={handleClickBtnCmt}
                         />
                     </div>
 
-                    <div className="Post__actions">
-                        <ActionsPost
+                    <div className="Post_btn">
+                        <LikeShareCmt
+                            parent_id={id}
+                            //
+                            enabled_like={true}
+                            user_type_like={user_type_like}
+                            //
+                            enabled_cmt={true}
+                            count_comment={count_comment}
+                            //
+                            enabled_share={true}
+                            count_share={count_share}
+                            count_user_shared={count_user_shared}
+                            //
+                            handleClickBtnCmt={handleClickBtnCmt}
+                        />
+                    </div>
+
+                    <div ref={ref_comments} className="Post_comment">
+                        <CommentsWs
                             is_poster={is_poster}
-                            openHistoryPost={openHistoryPost}
-                            openUpdatePost={openUpdatePost}
-                            openDeletePost={openDeletePost}
-                            openReportPost={openReportPost}
-                            openPermissionPost={openPermissionPost}
+                            parent_id={id}
+                            comments={comments}
+                            count_comment={count_comment}
+                            open_input={open_input}
+                            fetching_first_cmt={fetching_cmt}
                         />
                     </div>
                 </div>
-
-                <div className="Post_content">
-                    <div className="Post__text">
-                        <ContentMore
-                            content_obj={content_obj}
-                            seeMoreContent={on_API_MoreContent_R}
-                        />
-                    </div>
-
-                    <div className="Post__pic">
-                        <VidPicsPost post_ix={post_ix} vid_pics={vid_pics} />
-                    </div>
-                </div>
-
-                <div className="Post_Info">
-                    <Info
-                        parent_id={id}
-                        count_comment={count_comment}
-                        //
-                        likes={likes}
-                        count_like={count_like}
-                        user_type_like={user_type_like}
-                        //
-                        enabled_share={enabled_share}
-                        shares={shares}
-                        count_share={count_share}
-                        count_unique_share={count_unique_share}
-                        handleClickBtnCmt={handleClickBtnCmt}
-                    />
-                </div>
-
-                <div className="Post_btn">
-                    <LikeShareCmt
-                        parent_id={id}
-                        //
-                        enabled_like={true}
-                        user_type_like={user_type_like}
-                        //
-                        enabled_cmt={true}
-                        count_comment={count_comment}
-                        //
-                        enabled_share={true}
-                        count_share={count_share}
-                        count_user_shared={count_user_shared}
-                        //
-                        handleClickBtnCmt={handleClickBtnCmt}
-                    />
-                </div>
-
-                <div ref={ref_comments} className="Post_comment">
-                    <CommentsWs
-                        is_poster={is_poster}
-                        parent_id={id}
-                        comments={comments}
-                        count_comment={count_comment}
-                        open_input={open_input}
-                        fetching_first_cmt={fetching_cmt}
-                    />
-                </div>
-            </div>
+            </VirtualScroll>
         )
     );
 }

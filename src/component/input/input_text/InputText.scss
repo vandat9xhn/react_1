@@ -1,25 +1,37 @@
-// 
-.InputText_textarea{
+.InputText {
+    .IconDiv_left {
+        display: flex;
+        align-items: center;
+    }
+}
+
+//
+.InputText_textarea {
     height: auto;
     max-height: 100px;
     resize: none;
 }
 
 //
-.InputText_input{
+.InputText_input {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid var(--md-color-secondary);
 
-    &:focus{
+    &:focus {
         outline: none;
     }
 }
 //
-.InputText_valid{
+.InputText_valid {
     border: 1px solid var(--success);
 }
 //
-.InputText_invalid{
+.InputText_invalid {
     border: 1px solid var(--danger);
+}
+
+.InputText_help,
+.InputText_help_error {
+    padding: 0.25rem 0;
 }

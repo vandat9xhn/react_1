@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { makeAutoHeight } from '../../../_some_function/makeAutoHeight';
+//
 import IconDiv from '../../some_div/icon_div/IconDiv';
 import IconsAction from '../../../_icons_svg/icons_action/IconsAction';
 //
-import TextareaNotSend from '../textarea/TextareaNotSend';
-//
 import './InputText.scss';
-import { makeAutoHeight } from '../../../_some_function/makeAutoHeight';
 
 //
 InputText.propTypes = {
@@ -107,15 +106,15 @@ function InputText({
             </datalist>
 
             {help && (
-                <div className="help-text">
+                <div className="InputText_help help-text">
                     <IconDiv Icon={IconsAction} x={600}>
-                        * {help}
+                        *{help}
                     </IconDiv>
                 </div>
             )}
 
             {showError && (
-                <div className="error-field">
+                <div className="InputText_help_error error-field">
                     <IconDiv Icon={IconsAction} x={400} y={400}>
                         {errors[name]}
                     </IconDiv>
