@@ -37,7 +37,7 @@ function ActionsAccount({ closeAccount }) {
     const use_history = useHistory();
 
     //
-    const { user, setDataUser, resetChat, toggleSnowFlower } =
+    const { user, setDataUser, closeAllZoomChat, toggleSnowFlower } =
         useContext(context_api);
 
     //
@@ -129,7 +129,7 @@ function ActionsAccount({ closeAccount }) {
         try {
             handleBeForeLog();
             closeAccount();
-            resetChat();
+            closeAllZoomChat();
 
             await handleScreenFetching(() => LogoutRequest());
 

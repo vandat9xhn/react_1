@@ -6,32 +6,22 @@ import { useObserverVirtualScroll } from '../../_hooks/useObserverVirtualScroll'
 //
 VirtualScroll.propTypes = {
     children: PropTypes.element,
+    rootMargin_y: PropTypes.number,
 };
 
 //
-function VirtualScroll({ children }) {
+function VirtualScroll({ children, rootMargin_y }) {
     //
     const ref_virtual_elm = useRef(null);
     const ref_contain_elm = useRef(null);
 
     //
-    // const { height, is_intersecting } =
-        useObserverVirtualScroll(ref_virtual_elm, ref_contain_elm);
+    useObserverVirtualScroll(ref_virtual_elm, ref_contain_elm, rootMargin_y);
 
     //
     return (
-        <div>
-            <div ref={ref_virtual_elm}>
-                {/* <div style={{ height: `${height}px` }}></div>
-
-                <div className={`${is_intersecting ? '' : 'display-none'}`}>
-                    {children}
-                </div> */}
-
-                <div ref={ref_contain_elm}>
-                    {children}
-                </div>
-            </div>
+        <div ref={ref_virtual_elm}>
+            <div ref={ref_contain_elm}>{children}</div>
         </div>
     );
 }

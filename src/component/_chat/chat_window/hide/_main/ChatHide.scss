@@ -1,0 +1,24 @@
+.ChatHide{
+    &:hover{
+        .ChatHide_close{
+            display: block;
+        }
+
+        .ChatHide_info_user{
+            display: block;
+        }
+    }
+}
+
+.ChatHide_close{
+    position: absolute;
+    right: 0;
+    bottom: calc(100% - 0.75rem);
+}
+
+.ChatHide_info_user{
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}

@@ -1,0 +1,11 @@
+
+.ChatScreenAddFriendItem{
+    border-bottom: 1px solid var(--md-bg-ccc);
+}
+// .
+.ChatScreenAddFriendItem_row{
+    .PictureName__name{
+        width: 10rem;
+        max-width: calc(100vw - 6rem);
+    }
+}

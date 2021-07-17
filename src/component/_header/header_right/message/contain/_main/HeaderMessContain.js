@@ -36,7 +36,7 @@ function HeaderMessContain({
                 {zooms.map((zoom_item, ix) => (
                     <HeaderMessItem
                         key={`HeaderMessContain_item_${ix}`}
-                        id={zoom_item.zoom_chat}
+                        id={zoom_item.room_chat}
                         ix={ix}
                         user={zoom_item.messages[0].user}
                         message={zoom_item.messages[0].message}

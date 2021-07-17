@@ -38,8 +38,8 @@ function RightHeader() {
                 const { type } = e.data;
                 //
                 if (type == 'has_mess') {
-                    const { user, message, zoom_chat } = e.data;
-                    handleHasMessage(user, message, zoom_chat);
+                    const { user, message, room_chat } = e.data;
+                    handleHasMessage(user, message, room_chat);
                 }
                 //
                 else if (type == 'friend') {
@@ -66,7 +66,7 @@ function RightHeader() {
 
     //
     function handleHasMessage(
-        zoom_chat,
+        room_chat,
         user,
         message,
         count_new_mess,

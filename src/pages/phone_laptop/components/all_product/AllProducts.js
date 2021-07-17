@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { API_FilterPhoneLaptop_L } from '../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
 //
 import { initial_phone_arr } from '../../../../_initial/phone/InitialPhone';
+//
+import ScreenBlurShowMore from '../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
+//
 import { data_sort_arr } from '../../__data/AllProductData';
 import {
     addOrRemoveItem,
@@ -21,7 +24,6 @@ import ProductCFilter from '../current_filter/_main/ProductCFilter';
 import ProductPrices from '../prices_row/ProductPrices';
 //
 import './AllProductsRes.scss';
-import ScreenBlurShowMore from '../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 
 //
 AllProducts.propTypes = {
@@ -54,31 +56,18 @@ function AllProducts({
 }) {
     //
     const [product_obj, setProductObj] = useState({
-        // current_brands: [-1],
-        // current_prices: [-1],
-        // current_rams: [-1],
-        // current_memories: [-1],
-        // current_cpus: [-1],
-        // current_oses: [-1],
-        // current_sort: 0,
-
-        // choose_memories: [-1],
-        // choose_rams: [-1],
-        // choose_cpus: [-1],
-        // choose_oses: [-1],
-
-        current_brands: [],
-        current_prices: [],
-        current_rams: [],
-        current_memories: [],
-        current_cpus: [],
-        current_oses: [],
+        current_brands: [] || [-1],
+        current_prices: [] || [-1],
+        current_rams: [] || [-1],
+        current_memories: [] || [-1],
+        current_cpus: [] || [-1],
+        current_oses: [] || [-1],
         current_sort: 0,
 
-        choose_memories: [],
-        choose_rams: [],
-        choose_cpus: [],
-        choose_oses: [],
+        choose_memories: [] || [-1],
+        choose_rams: [] || [-1],
+        choose_cpus: [] || [-1],
+        choose_oses: [] || [-1],
 
         products: initial_phone_arr,
         has_fetched: false,
@@ -221,26 +210,26 @@ function AllProducts({
 
     /* --------------------------- FILTER + SORT ------------------------------ */
 
-    // 
+    //
     function handleChooseFilter(choose_name, index) {
         handleAddOrRemoveItem(choose_name, index, {
             should_filter: true,
         });
     }
 
-    // 
+    //
     function handleStartFilter() {
         getData_API_FilterSortProducts();
     }
 
-    // 
+    //
     function handleChooseSort(index) {
         getData_API_FilterSortProducts({
             current_sort: index,
         });
     }
 
-    // 
+    //
     function closeCurrentItem(name = '', index = 0) {
         const choose_name = 'choose_' + name;
         const current_name = 'current_' + name;

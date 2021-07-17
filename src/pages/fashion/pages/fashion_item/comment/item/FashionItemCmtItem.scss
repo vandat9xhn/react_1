@@ -1,39 +1,21 @@
 //
-.FashionItemCmtItem {
-    width: 100%;
-}
-
-//
 .FashionItemCmtItem_text {
     margin-left: 1rem;
 }
 
 .FashionItemCmtItem_images {
     display: flex;
-    width: 30%;
+    width: 25rem;
+    max-width: 100%;
     overflow: auto;
 }
 .FashionItemCmtItem_image {
     margin: 0.25rem;
-    video,img {
+    video,
+    img {
         height: 3rem;
         width: 3rem;
         border-radius: 5px;
         object-fit: cover;
-    }
-}
-
-.FashionItemCmtItem_time {
-    width: fit-content;
-    margin-left: auto;
-
-    font-size: 11px;
-    font-style: italic;
-}
-
-//
-@media (max-width: 600px) {
-    .FashionItemCmtItem_images {
-        width: 80%;
     }
 }

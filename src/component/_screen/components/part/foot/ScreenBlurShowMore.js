@@ -20,21 +20,19 @@ ScreenBlurShowMore.defaultProps = {
 };
 
 //
-function ScreenBlurShowMore(props) {
-    const {
-        title,
-        is_show_more,
-        is_fetching,
-        //
-        handleShowMore,
-        FetchingComponent,
-    } = props;
-
+function ScreenBlurShowMore({
+    title,
+    is_show_more,
+    is_fetching,
+    //
+    handleShowMore,
+    FetchingComponent,
+}) {
     //
     return (
         <div
             className={
-                !is_fetching && !is_show_more ? '' : 'ScreenBlurShowMore'
+                !is_fetching && !is_show_more ? '' : 'ScreenBlurShowMore padding-8px'
             }
         >
             <div className="display-flex justify-content-center">

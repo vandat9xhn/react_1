@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { API_Post_RD } from '../../../api/api_django/user/user_post/UserPost';
 
+import { initial_posts } from '../../../_initial/post/InitialPosts';
+//
 import { useMounted } from '../../../_hooks/useMounted';
 //
 import Posts from '../../../component/posts/_posts/_main/PostsWs';
@@ -19,14 +21,11 @@ function UserPost(props) {
 
     //
     const [post_state, setPostState] = useState({
-        post: [],
+        post_arr: initial_posts,
         has_fetched: false,
     });
 
-    const { post, has_fetched } = post_state;
-
-    //
-    ;
+    const { post_arr, has_fetched } = post_state;
 
     //
     const mounted = useMounted();
@@ -39,7 +38,7 @@ function UserPost(props) {
     //
     async function getData_API_Post() {
         setPostState({
-            post: [],
+            post_arr: [],
             has_fetched: false,
         });
 
@@ -47,7 +46,7 @@ function UserPost(props) {
 
         mounted &&
             setPostState({
-                post: [res.data],
+                post_arr: [res.data],
                 has_fetched: true,
             });
     }
@@ -58,7 +57,7 @@ function UserPost(props) {
             <div className="UserPost_contain bg-fb">
                 <div className="UserPost_posts">
                     <Posts
-                        posts={post}
+                        posts={post_arr}
                         has_add_new={false}
                         has_fetched={has_fetched}
                         is_fetching={false}

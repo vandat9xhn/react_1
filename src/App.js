@@ -20,7 +20,7 @@ import Auth from './_auth/Auth';
 //
 import WaitingBall from './component/waiting/waiting_ball/WaitingBall';
 //
-import Chat from './component/_chat/_main/ChatRealtime';
+import Chat from './component/_chat/_main/Chat';
 import Contact from './component/_contact/Contact';
 import BackTop from './component/_back_to_top/BackTop';
 
@@ -43,8 +43,10 @@ class App extends Component {
     //
     refChat = (elm) => {
         if (elm !== null) {
-            this.openMessage = elm.openMessage;
-            this.resetChat = elm.resetChat;
+            this.openZoomChat = elm.openZoomChat;
+            this.hideZoomChat = elm.hideZoomChat;
+            this.closeZoomChat = elm.closeZoomChat;
+            this.closeAllZoomChat = elm.closeAllZoomChat;
         }
     };
 
@@ -107,8 +109,10 @@ class App extends Component {
                     <ContextAPI
                         handleRefresh={this.handleRefresh}
                         //
-                        openMessage={this.openMessage}
-                        resetChat={this.resetChat}
+                        openZoomChat={this.openZoomChat}
+                        hideZoomChat={this.hideZoomChat}
+                        closeZoomChat={this.closeZoomChat}
+                        closeAllZoomChat={this.closeAllZoomChat}
                         //
                         openDivFixLike={this.openDivFixLike}
                         closeDivFixLike={this.closeDivFixLike}

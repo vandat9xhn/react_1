@@ -35,7 +35,7 @@ HeaderMessage.propTypes = {};
 //
 function HeaderMessage() {
     //
-    const { openMessage } = useContext(context_api);
+    const { openZoomChat } = useContext(context_api);
 
     //
     const ref_child_elm = useRef(null);
@@ -172,7 +172,7 @@ function HeaderMessage() {
             is_open: false,
         }));
 
-        openMessage(zooms[ix].zoom_chat, false);
+        openZoomChat(zooms[ix].room_chat, false);
 
         await API_Zoom_U(id);
     }

@@ -1,0 +1,40 @@
+.ChatWd_body-contain{
+    height: 360px;
+    max-height: calc(100vh - 10rem);
+    padding: 0.5rem 0.7rem 0.5rem 0.3rem;
+    border-bottom: 1px solid var(--bg-blur);
+
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    overflow-y: auto;
+}
+
+.ChatWd_body-last{
+    margin-top: 1rem;
+}
+
+.ChatWd_body-mess {
+    margin: 1rem 0.75rem 1rem 0.5rem;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.ChatWd_friend-texting{
+    width: 50%;
+    border-radius: 10px;
+    background-color: var(--bg-blur);
+
+    height: 2rem;
+    transform: translateY(0);
+    transition: all 0.5s linear;
+    // 
+    .WaitingBall_ball{
+        background-color: var(--md-bg-hover);
+        width: 0.45rem;
+        height: 0.45rem;
+    }
+}
+.ChatWd_friend-texting_close{
+    height: 0;
+    transform: translateY(100px);
+}

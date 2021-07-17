@@ -1,0 +1,17 @@
+//
+.ChatScreenLike {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: var(--z-index-lv1);
+}
+
+.ChatScreenLike_del {
+    margin: 0.25rem;
+}
+// .
+.ChatScreenLike_del-item {
+    width: 2rem;
+    height: 2rem;
+}

@@ -77,7 +77,7 @@ function HeaderNotice({}) {
         handleClose();
     }
 
-    /* ------------------- GET API ------------------ */
+    /* ----------- GET API ---------- */
 
     //
     async function getData_API_CountNewNotice() {

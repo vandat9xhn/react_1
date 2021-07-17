@@ -5,11 +5,16 @@ import { observeVirtualScroll } from '../_some_function/observeVirtualScroll';
 //
 export function useObserverVirtualScroll(
     ref_observer_elm = { current: null },
-    ref_contain_elm = { current: null }
+    ref_contain_elm = { current: null },
+    rootMargin_y
 ) {
     //
     useEffect(() => {
-        observeVirtualScroll(ref_observer_elm.current, handleIntersecting);
+        observeVirtualScroll(
+            ref_observer_elm.current,
+            handleIntersecting,
+            rootMargin_y
+        );
     }, []);
 
     //

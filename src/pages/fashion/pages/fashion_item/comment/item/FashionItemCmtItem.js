@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { VideoOrImage } from '../../../../../../_some_function/VideoOrImage';
+import { formatLocalDateTimeString } from '../../../../../../_some_function/FormatDate';
 //
 import PictureName from '../../../../../../component/picture_name/pic_name/PictureName';
 import ContentMore from '../../../../../../component/content_more/Content_more';
@@ -27,9 +28,9 @@ function FashionItemCmtItem({ ix, item, zoomVidPics }) {
         zoomVidPics(ix, vid_pic_ix);
     }
 
-    // 
+    //
     function on_API_FashionContentComment_R() {
-        return handle_API_FashionContentComment_R({comment_model: id, })
+        return handle_API_FashionContentComment_R({ comment_model: id });
     }
 
     //
@@ -63,10 +64,8 @@ function FashionItemCmtItem({ ix, item, zoomVidPics }) {
                 ))}
             </div>
 
-            <div className="FashionItemCmtItem_time">
-                {new Date(created_time).toLocaleDateString() +
-                    ' ' +
-                    new Date(created_time).toLocaleTimeString()}
+            <div className="text-align-end font-italic font-11px">
+                {formatLocalDateTimeString(new Date(created_time))}
             </div>
         </div>
     );
