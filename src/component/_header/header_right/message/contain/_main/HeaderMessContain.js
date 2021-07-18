@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 //
 import ScreenBlurShowMore from '../../../../../_screen/components/part/foot/ScreenBlurShowMore';
 //
-import './HeaderMessContain.scss';
-//
 import MessageFriendHead from '../head/_main/HeaderMessHead';
 import HeaderMessItem from '../body/item/HeaderMessItem';
+//
+import './HeaderMessContain.scss';
 
 //
 HeaderMessContain.propTypes = {};

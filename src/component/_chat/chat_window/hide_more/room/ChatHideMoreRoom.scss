@@ -1,0 +1,11 @@
+.ChatHideMoreRoom_left{
+    width: 15rem;
+    max-width: calc(100vw - 100px);
+    overflow: hidden;
+}
+
+.ChatHideMoreRoom_close {
+    .IconsArrow_close {
+        stroke: var(--md-color-secondary);
+    }
+}

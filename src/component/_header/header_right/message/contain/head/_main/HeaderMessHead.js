@@ -8,12 +8,12 @@ import { useMouseDragScrollToX } from '../../../../../../../_hooks/useMouseDragS
 import observeToDo from '../../../../../../../_some_function/observerToDo';
 //
 import NextPrevDiv from '../../../../../../some_div/next_prev_div/NextPrevDiv';
+import ComponentSkeleton from '../../../../../../skeleton/component_skeleton/ComponentSkeleton';
+//
+import MessageFriend from '../friend/HeaderMessFriend';
 //
 import white_person from '../../../../../../../../image/white_person.svg';
 import './HeaderMessHead.scss';
-//
-import MessageFriend from '../friend/HeaderMessFriend';
-import ComponentSkeleton from '../../../../../../skeleton/component_skeleton/ComponentSkeleton';
 
 //
 HeaderMessHead.propTypes = {

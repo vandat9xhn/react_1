@@ -110,6 +110,7 @@ function ChatMess({ mess_item }) {
                                     >
                                         <ChatMessageVidPic
                                             id={id}
+                                            ix={index}
                                             vid_pics={vid_pics}
                                             count_vid_pic={count_vid_pic}
                                             index={index}

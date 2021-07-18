@@ -35,15 +35,7 @@ function CmtSubUpdate({ text, vid_pic, handleUpdate, detectHasChange }) {
 
     //
     function hasChangeUpdate() {
-        if (text != new_text) {
-            return true;
-        }
-
-        if (file != '') {
-            return true;
-        }
-
-        if (vid_pic != url) {
+        if (text != new_text || file != '' || vid_pic != url) {
             return true;
         }
 

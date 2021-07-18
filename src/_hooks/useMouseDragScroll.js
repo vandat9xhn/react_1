@@ -26,11 +26,16 @@ export function useMouseDragScroll(elm, handleAfterMouseUp = () => {}) {
 
     //
     function handleMouseUp() {
-        ref_should_scroll.current = false;
-        setTimeout(() => {
-            setIsMouseDown(false);
-            handleAfterMouseUp();
-        }, 0);
+        if (ref_should_scroll.current) {
+            ref_should_scroll.current = false;
+
+            if (is_mouse_down) {
+                setTimeout(() => {
+                    setIsMouseDown(false);
+                    handleAfterMouseUp();
+                }, 0);
+            }
+        }
     }
 
     return { handleMouseDown, handleMouseMove, handleMouseUp, is_mouse_down };

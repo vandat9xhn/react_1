@@ -1,0 +1,17 @@
+// 
+.chat-hide-padding {
+    position: relative;
+    padding-right: 0.5rem;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 20px;
+        right: 0;
+
+        border-top: 0.5rem solid transparent;
+        border-bottom: 0.5rem solid transparent;
+        border-left: 0.5rem solid white;
+        border-right: 0;
+    }
+}

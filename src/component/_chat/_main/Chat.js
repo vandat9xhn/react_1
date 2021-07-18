@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
+import { is_api_fake } from '../../../api/_ConstAPI';
+//
 import { handle_API_ChatZoom_R } from '../../../_handle_api/chat/ChatHandleAPI';
 //
 import { initial_chat_item } from '../../../_initial/chat/ChatInitial';
 //
 import { makeNewChat } from '../_func/makeNewChat';
 //
-import ChatItem from '../chat_window/_main/ChatItem';
+import ChatShow from '../chat_window/show/_main/ChatShow';
+import ChatHide from '../chat_window/hide/_main/ChatHide';
 //
 import './Chat.scss';
+import ChatHideMore from '../chat_window/hide_more/_main/ChatHideMore';
 
 //
 class Chat extends Component {
@@ -20,6 +24,7 @@ class Chat extends Component {
                 index: 0,
                 scroll_y: 0,
                 chat_item: initial_chat_item(),
+                ws: null,
             },
         ],
         chat_inactive_arr: [] || [
@@ -28,25 +33,53 @@ class Chat extends Component {
                 index: 0,
                 scroll_y: 0,
                 chat_item: initial_chat_item(),
+                ws: null,
             },
         ],
     };
 
     //
     componentDidMount() {
-        // const session_room_chat = sessionStorage.session_room_chat;
-        // if (!session_room_chat) {
-        //     return;
-        // }
-        // const room_chat_arr = session_room_chat.split(',');
-        // setTimeout(() => {
-        //     for (const room_chat of room_chat_arr) {
-        //         this.openZoomChat(room_chat);
-        //     }
-        // }, 250);
+        const session_room_chat = sessionStorage.session_room_chat;
+        if (!session_room_chat) {
+            return;
+        }
+        const room_chat_arr = session_room_chat.split(',').reverse();
+        setTimeout(() => {
+            for (const room_chat of room_chat_arr) {
+                this.openZoomChat(room_chat);
+            }
+        }, 250);
     }
 
     /* ----------- */
+
+    //
+    getZoomChatWebsocket = (new_room_chat) => {
+        const ws = !is_api_fake
+            ? new WebSocket('ws://127.0.0.1:8000/ws/message/' + new_room_chat)
+            : {
+                  send: (data) => {
+                      console.log(data);
+                  },
+              };
+
+        return ws;
+    };
+
+    //
+    saveRoomChatToSession = () => {
+        sessionStorage.session_room_chat = this.state.chat_active_arr
+            .map((item) => item.room_chat)
+            .join(',');
+    };
+
+    //
+    removeRoomChatFromSession = (remove_room_chat = '') => {
+        sessionStorage.session_room_chat = sessionStorage.session_room_chat
+            .replace(remove_room_chat, '')
+            .replace(',', '');
+    };
 
     //
     getChatBodyScrollY = (active_ix) => {
@@ -67,7 +100,6 @@ class Chat extends Component {
         }
 
         const chat_active_two_obj = chat_active_arr.splice(1, 1)[0];
-
         if (chat_active_two_obj) {
             chat_active_two_obj.scroll_y = this.getChatBodyScrollY(1);
 
@@ -77,17 +109,12 @@ class Chat extends Component {
         const chat_inactive_ix = chat_inactive_arr.findIndex(
             (item) => item.room_chat == new_room_chat
         );
-
         if (chat_inactive_ix >= 0) {
             const chat_inactive_obj = chat_inactive_arr.splice(
                 chat_inactive_ix,
                 1
             )[0];
             chat_active_arr.unshift(chat_inactive_obj);
-
-            // console.log(chat_inactive_obj);
-
-            this.setState({});
         } else {
             const data = await handle_API_ChatZoom_R(new_room_chat);
 
@@ -96,10 +123,12 @@ class Chat extends Component {
                 index: chat_active_arr.length + chat_inactive_arr.length,
                 scroll_y: 0,
                 chat_item: makeNewChat(data),
+                ws: this.getZoomChatWebsocket(new_room_chat),
             });
-
-            this.setState({});
         }
+
+        this.setState({});
+        this.saveRoomChatToSession();
     };
 
     //
@@ -111,6 +140,8 @@ class Chat extends Component {
 
         chat_inactive_arr.push(chat_active_splice_obj);
         this.setState({});
+
+        this.removeRoomChatFromSession(chat_active_splice_obj.room_chat);
     };
 
     //
@@ -118,7 +149,10 @@ class Chat extends Component {
         const { chat_active_arr, chat_inactive_arr } = this.state;
 
         if (is_chat_open) {
-            chat_active_arr.splice(close_index, 1);
+            const remove_room_chat = chat_active_arr.splice(close_index, 1)[0]
+                .room_chat;
+
+            this.removeRoomChatFromSession(remove_room_chat);
         } else {
             chat_inactive_arr.splice(close_index, 1);
         }
@@ -132,12 +166,16 @@ class Chat extends Component {
             chat_active_arr: [],
             chat_inactive_arr: [],
         });
+
+        sessionStorage.session_room_chat = '';
     };
 
     //
     render() {
         //
         const { chat_active_arr, chat_inactive_arr } = this.state;
+
+        const is_long_chat_inactive = chat_inactive_arr.length >= 6;
 
         // console.log(chat_active_arr, chat_inactive_arr);
 
@@ -151,13 +189,14 @@ class Chat extends Component {
                                 key={`${item.room_chat}`}
                                 className="Chat_active-item"
                             >
-                                <ChatItem
+                                <ChatShow
                                     chat_ix={ix}
-                                    index={item.index}
-                                    is_active={true}
-                                    room_chat={item.room_chat}
-                                    scroll_y={item.scroll_y}
                                     is_two_chat={chat_active_arr.length == 2}
+                                    //
+                                    index={item.index}
+                                    ws={item.ws}
+                                    scroll_y={item.scroll_y}
+                                    room_chat={item.room_chat}
                                     chat_item={item.chat_item}
                                 />
                             </div>
@@ -165,22 +204,45 @@ class Chat extends Component {
                     </div>
 
                     <div className="Chat_hidden">
-                        <div className="Chat_hidden-contain display-flex col-reverse">
-                            {chat_inactive_arr.map((item, ix) => (
+                        <div>
+                            <div>
+                                
+                            </div>
+                        </div>
+
+                        {chat_inactive_arr
+                            .slice(0, is_long_chat_inactive ? 4 : 5)
+                            .map((item, ix) => (
                                 <div
                                     key={`${item.room_chat}`}
                                     className="Chat_hidden-item"
                                 >
-                                    <ChatItem
-                                        index={item.index}
+                                    <ChatHide
                                         chat_ix={ix}
-                                        is_active={false}
+                                        num_transform_y={
+                                            is_long_chat_inactive
+                                                ? 4 - ix
+                                                : chat_inactive_arr.length -
+                                                  1 -
+                                                  ix
+                                        }
+                                        //
+                                        ws={item.ws}
+                                        index={item.index}
                                         room_chat={item.room_chat}
-                                        scroll_y={item.scroll_y}
                                         chat_item={item.chat_item}
                                     />
                                 </div>
                             ))}
+
+                        <div>
+                            {is_long_chat_inactive ? (
+                                <ChatHideMore
+                                    chat_inactive_more_arr={chat_inactive_arr.slice(
+                                        4
+                                    )}
+                                />
+                            ) : null}
                         </div>
                     </div>
                 </div>

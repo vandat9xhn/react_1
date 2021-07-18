@@ -6,6 +6,8 @@ import { context_post } from '../../../../_context/post/ContextPost';
 //
 import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
+// 
+import VirtualScroll from '../../../virtual_scroll/VirtualScroll';
 //
 import PictureName from '../../../picture_name/pic_name/PictureName';
 import ContentMore from '../../../content_more/Content_more';
@@ -35,7 +37,6 @@ import LikeShareCmt from '../../common/like_share_cmt/_main/LikeShareCmtWs';
 import PostHistory from '../history/_main/PostHistory';
 //
 import './Post.scss';
-import VirtualScroll from '../../../virtual_scroll/VirtualScroll';
 
 //
 Post.propTypes = {

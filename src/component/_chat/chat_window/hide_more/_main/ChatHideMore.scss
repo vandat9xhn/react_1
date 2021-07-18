@@ -1,0 +1,47 @@
+.ChatHideMore {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+
+    // transform: translateY(calc(-400% - 1rem));
+
+    &:hover {
+        .ChatHideMore_room {
+            display: block;
+        }
+    }
+}
+// .
+.ChatHideMore_picture {
+    position: relative;
+    &::after {
+        content: '+' attr(data-length);
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 50%;
+        background-color: var(--md-bg-through);
+
+        font-weight: bold;
+        color: var(--md-color-secondary);
+    }
+}
+// .
+.ChatHideMore_room {
+    position: absolute;
+    right: 100%;
+    bottom: 0;
+}
+// ...
+.ChatHideMore_room-contain {
+    max-height: calc(100vh - var(--height-header));
+    overflow-y: auto;
+    overflow-x: hidden;
+}

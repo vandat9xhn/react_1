@@ -19,18 +19,6 @@
 }
 
 // .
-.ChatShow_reverse {
-    position: absolute;
-    bottom: 100%;
-    right: 10%;
-
-    padding: 0.2rem 0.5rem;
-    background-color: var(--gold);
-    color: var(--white);
-    cursor: pointer;
-}
-
-// .
 .ChatShow_contain {
     position: relative;
     @extend %chat-width;
@@ -69,9 +57,6 @@
     .ChatShow {
         right: auto;
         left: calc((100vw - 20rem) / 2);
-    }
-    .ChatShow_reverse-display {
-        display: block;
     }
 
     .ChatShow_second {

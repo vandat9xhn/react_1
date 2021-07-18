@@ -60,7 +60,7 @@ const default_message_obj = () => {
     return {
         id: getRandomId(),
         ...getRandomUser(),
-        vid_pics: _vid_pic_arr,
+        vid_pics: _vid_pic_arr.slice(0, 4),
         count_vid_pic: _vid_pic_arr.length,
         // user_likes: default_message_user_like_arr(),
         user_like: getRandomNumber(-1, 5),
