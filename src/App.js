@@ -45,6 +45,7 @@ class App extends Component {
         if (elm !== null) {
             this.openZoomChat = elm.openZoomChat;
             this.hideZoomChat = elm.hideZoomChat;
+            this.hideAllZoomChat = elm.hideAllZoomChat;
             this.closeZoomChat = elm.closeZoomChat;
             this.closeAllZoomChat = elm.closeAllZoomChat;
         }
@@ -89,7 +90,7 @@ class App extends Component {
         }
     };
 
-    // 
+    //
     refNatureDropMain = (elm) => {
         if (elm !== null) {
             this.toggleSnowFlower = elm.toggleSnowFlower;
@@ -111,6 +112,7 @@ class App extends Component {
                         //
                         openZoomChat={this.openZoomChat}
                         hideZoomChat={this.hideZoomChat}
+                        hideAllZoomChat={this.hideAllZoomChat}
                         closeZoomChat={this.closeZoomChat}
                         closeAllZoomChat={this.closeAllZoomChat}
                         //
@@ -125,7 +127,7 @@ class App extends Component {
                         //
                         openScreenOnce={this.openScreenOnce}
                         closeScreenOnce={this.closeScreenOnce}
-                        // 
+                        //
                         openScreenFloor={this.openScreenFloor}
                         closeScreenFloor={this.closeScreenFloor}
                         detectScreenHasChange={this.detectScreenHasChange}
@@ -160,7 +162,9 @@ class App extends Component {
                                     <Footer />
                                 </footer>
                             </div>
+                        </div>
 
+                        <div>
                             <BackTop />
 
                             <Contact />
@@ -179,7 +183,7 @@ class App extends Component {
                         <div>
                             <AppScreen ref={this.refAppScreen} />
 
-                            <ScreenOnce ref={this.refScreenOnce}/>
+                            <ScreenOnce ref={this.refScreenOnce} />
                         </div>
 
                         <div className="AppNatureDrop">

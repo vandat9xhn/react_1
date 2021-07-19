@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+// 
 import { funcHandleBeforeOpen, funcHandleScrollDiff } from '../__func/scroll_elm';
 // 
 import DivFix from '../_main/DivFix';
@@ -121,11 +123,8 @@ class DivFixPeople extends Component {
         } = this.state;
 
         //
-        const is_mobile = localStorage.is_mobile == 1;
-
-        //
-        if (is_mobile || !open_div_fix) {
-            return <div></div>;
+        if (IS_MOBILE || !open_div_fix) {
+            return null
         }
 
         //

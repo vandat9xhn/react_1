@@ -33,7 +33,7 @@ function FashionItem(props) {
                 <FashionH />
             </div>
 
-            <div>
+            <div className="fashion-width">
                 <div className="FashionItem_part">
                     <FashionItemShop id={id}/>
                 </div>

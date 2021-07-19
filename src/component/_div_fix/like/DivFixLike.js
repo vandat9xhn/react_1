@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes, { node } from 'prop-types';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+//
 import ListTypeLike from '../../like/list_type_like/_main/ListTypeLike';
 //
 import {
@@ -116,17 +118,16 @@ class DivFixLike extends Component {
         } = this.state;
 
         //
-        const is_mobile = localStorage.is_mobile == 1;
-
-        //
         if (!open_div_fix) {
-            return <div></div>;
+            return null;
         }
 
         //
         return (
             <div
-                className={`DivFixLike ${is_mobile ? 'DivFixLike_fixed' : ''}`}
+                className={`DivFixLike ${
+                    innerWidth <= 400 ? 'DivFixLike_fixed' : ''
+                }`}
             >
                 <DivFix
                     top={top}
@@ -147,8 +148,8 @@ class DivFixLike extends Component {
                         className={`DivFixLike_like ${
                             icon_small ? 'DivFixeLike_small' : ''
                         }`}
-                        onMouseEnter={is_mobile ? undefined : onMouseEnter}
-                        onMouseLeave={is_mobile ? undefined : onMouseLeave}
+                        onMouseEnter={IS_MOBILE ? undefined : onMouseEnter}
+                        onMouseLeave={IS_MOBILE ? undefined : onMouseLeave}
                     >
                         <ListTypeLike
                             open_type_like={open_div_fix}

@@ -27,7 +27,7 @@ DivFix.propTypes = {
     children: PropTypes.element,
     closeDivFix: PropTypes.func,
 
-    is_mobile: PropTypes.bool,
+    is_width_lte_400: PropTypes.bool,
 };
 
 DivFix.defaultProps = {
@@ -39,7 +39,7 @@ DivFix.defaultProps = {
     scroll_x_diff: 0,
     scroll_y_diff: 0,
 
-    is_mobile: localStorage.is_mobile == 1,
+    is_width_lte_400: innerWidth <= 400,
 };
 
 //
@@ -60,8 +60,7 @@ function DivFix({
     children,
     closeDivFix,
     handleScrollDiff,
-
-    is_mobile,
+    is_width_lte_400,
 }) {
     //
     useEffect(() => {
@@ -85,10 +84,10 @@ function DivFix({
     return (
         <div
             className={`DivFix ${
-                is_mobile ? 'DivFix_fixed pos-fixed-100 bg-loader' : ''
+                is_width_lte_400 ? 'DivFix_fixed pos-fixed-100 bg-loader' : ''
             }`}
         >
-            {is_mobile && (
+            {is_width_lte_400 && (
                 <div
                     className="pos-fixed-100 bg-loader"
                     onClick={closeDivFix}

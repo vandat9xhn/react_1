@@ -5,6 +5,7 @@ import {
     API_PostCmtLike_L,
     API_PostCmtHistory_L,
     API_PostHisCmt_R,
+    API_PostCmtContentMore_R,
 } from '../../api/api_django/user/user_post/UserPost';
 // 
 import makeFormData from '../../_some_function/makeFormData';
@@ -83,7 +84,7 @@ export async function handle_API_MoreContentCmt_R(
     cmt_id = 0,
     is_vid_pic = false
 ) {
-    const res = await API_PostCmt_R(
+    const res = await API_PostCmtContentMore_R(
         cmt_id,
         {
             ...params_cmt_post_more_content,

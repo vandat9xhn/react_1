@@ -5,6 +5,7 @@ import {
     API_PostSubHistory_L,
     API_PostSub_R,
     API_PostHisSub_R,
+    API_PostSubContentMore_R,
 } from '../../api/api_django/user/user_post/UserPost';
 // 
 import makeFormData from '../../_some_function/makeFormData';
@@ -83,7 +84,7 @@ export async function handle_API_MoreContentSub_R(
     sub_id = 0,
     is_vid_pic = false
 ) {
-    const res = await API_PostSub_R(
+    const res = await API_PostSubContentMore_R(
         sub_id,
         {
             ...params_sub_post_more_content,

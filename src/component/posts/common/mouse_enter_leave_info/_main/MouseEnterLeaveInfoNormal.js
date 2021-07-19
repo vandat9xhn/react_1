@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+// 
 import { useMouseEnterLeaveNormal } from '../../../../../_hooks/UseMouseEnterLeave';
 //
 import { content_pic_name_props } from '../../../../../_prop-types/_CommonPropTypes';
@@ -58,9 +60,6 @@ function MouseEnterLeaveInfoNormal({
         handleMouseleave,
     } = useMouseEnterLeaveNormal(handle_API_L, ref_child_elm, ref_btn_elm);
 
-    //
-    const is_mobile = localStorage.is_mobile == 1;
-
     // console.log(position_y);
     //
     return (
@@ -70,8 +69,8 @@ function MouseEnterLeaveInfoNormal({
                 // className={`${count ? '' : 'display-none'}`}
                 className={`${true ? '' : 'display-none'} cursor-pointer`}
                 onClick={handleOpenScreen}
-                onMouseEnter={is_mobile ? undefined : handleMouseenter}
-                onMouseLeave={is_mobile ? undefined : handleMouseleave}
+                onMouseEnter={IS_MOBILE ? undefined : handleMouseenter}
+                onMouseLeave={IS_MOBILE ? undefined : handleMouseleave}
             >
                 {title || count}
             </div>

@@ -117,7 +117,7 @@ class DivFixAction extends Component {
         } = this.state;
 
         //
-        const is_mobile = window.innerWidth <= 400;
+        const is_width_lte_400 = window.innerWidth <= 400;
 
         // console.log(this.state);
 
@@ -127,7 +127,7 @@ class DivFixAction extends Component {
                 <div
                     ref={this.refFixElm}
                     className={`DivFixAction ${
-                        is_mobile ? 'DivFixAction_fixed' : ''
+                        is_width_lte_400 ? 'DivFixAction_fixed' : ''
                     }`}
                 >
                     <DivFix
@@ -139,7 +139,6 @@ class DivFixAction extends Component {
                         transform_y={transform_y}
                         position_class={`position-abs`}
                         closeDivFix={this.closeDivFixAction}
-                        is_mobile={is_mobile}
                     >
                         <div className="DivFixAction_contain bg-primary box-shadow-action brs-5px">
                             {FixComponent}

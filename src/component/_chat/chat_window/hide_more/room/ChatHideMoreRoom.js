@@ -13,17 +13,28 @@ import './ChatHideMoreRoom.scss';
 ChatHideMoreRoom.propTypes = {};
 
 //
-function ChatHideMoreRoom({ chat_ix, room_chat, scroll_y, index, chat_item }) {
+function ChatHideMoreRoom({
+    chat_ix,
+    
+    room_chat,
+    scroll_y,
+    index,
+    chat_item,
+
+    closeRoomHideMore,
+}) {
     //
     const { openZoomChat, closeZoomChat } = useContext(context_api);
 
     //
     function reOpenZoomChat() {
         openZoomChat(room_chat);
+        closeRoomHideMore();
     }
 
     //
-    function onCloseZoomChat() {
+    function onCloseZoomChat(e) {
+        e.stopPropagation()
         closeZoomChat(false, chat_ix);
     }
 
@@ -35,7 +46,7 @@ function ChatHideMoreRoom({ chat_ix, room_chat, scroll_y, index, chat_item }) {
     return (
         <div className="ChatHideMoreRoom padding-8px text-nowrap">
             <div className="flex-between-center">
-                <div className="ChatHideMoreRoom_left cursor-pointer hv-bg-blur">
+                <div className="ChatHideMoreRoom_left chat-hide-contain cursor-pointer hv-bg-blur">
                     <PicNameContent
                         user={f_user}
                         content={

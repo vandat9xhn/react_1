@@ -1,4 +1,24 @@
-// .Chat{
-//     position: relative;
-//     z-index: calc(var(--z-index-lv3) + 1);
+.Chat_hidden{
+    &:hover{
+        .Chat_hidden-options{
+            display: block;
+        }
+    }
+}
+
+.Chat_hidden{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+// .
+.Chat_hidden-contain{
+    display: flex;
+    flex-direction: column;
+}
+// 
+// .Chat_hidden-options{
+//     position: absolute;
+//     right: 0;
+//     bottom: 0.5rem;
 // }

@@ -11,7 +11,7 @@
 
 /* ------------------------- B ---------------------- */
 
-.btn{
+.btn {
     outline: none;
     border: none;
 }
@@ -20,17 +20,25 @@
     opacity: 0.9;
 }
 
-.btn-active:active{
+.btn-active:active {
     transform: scale(0.95);
+}
+
+/* ------------------------- F ---------------------- */
+
+.fashion-width {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 /* ------------------------- H ---------------------- */
 
-.height-0{
+.height-0 {
     height: 0;
 }
 
-.h-100per{
+.h-100per {
     height: 100%;
 }
 
@@ -39,7 +47,7 @@
 }
 
 /* ------------------------- I ---------------------- */
-.input{
+.input {
     // border: none;
     &:focus {
         outline: none;
@@ -59,7 +67,7 @@
         font-weight: 500;
     }
 
-    .input-placeholder-active{
+    .input-placeholder-active {
         color: var(--blue);
     }
 }
@@ -134,7 +142,7 @@
 
 /* -------- T -------- */
 
-.text-nowrap{
+.text-nowrap {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -142,7 +150,7 @@
 
 /* -------- W -------- */
 
-.width-0{
+.width-0 {
     width: 0;
 }
 

@@ -5,7 +5,7 @@ import { API_FakeReal } from '../../_ConstAPI';
 import { default_shop_obj } from '../../../_default/fashion/DefaultShop';
 import { default_hot_image_arr } from '../../../_default/fashion/FashionDefault';
 import { base_product_arr } from '../../../_default/fashion/DefaultProductList';
-import { default_product_cmt_arr, default_product_obj, default_rate_arr, default_rate_content } from '../../../_default/fashion/DefaultProductItem';
+import { default_product_cmt_arr, default_product_obj, default_rate_arr, default_rate_content, product_cmt_vid_pic_arr } from '../../../_default/fashion/DefaultProductItem';
 import { default_content_more } from '../../../_default/post/DefaultPosts';
 
 // list shop
@@ -97,6 +97,18 @@ export const API_FashionComment_L = (params) =>
         () =>
             axiosClientNoToken({
                 url: '/fashion-api/l-comment/',
+                method: 'GET',
+                params: params,
+            }),
+        params
+    );
+
+export const API_FashionCommentVidPicMore_L = (params) =>
+    API_FakeReal(
+        product_cmt_vid_pic_arr(),
+        () =>
+            axiosClientNoToken({
+                url: '/fashion-api/comment-vid-pic-l/',
                 method: 'GET',
                 params: params,
             }),

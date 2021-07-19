@@ -1,8 +1,4 @@
 .ChatHide {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-
     transition: all 250ms ease;
 
     &:hover {
@@ -43,10 +39,6 @@
         bottom: 50%;
         transform: translateY(50%);
     }
-}
-// ..
-.ChatHide_info_user-contain{
-    width: 12.5rem;
 }
 
 // 

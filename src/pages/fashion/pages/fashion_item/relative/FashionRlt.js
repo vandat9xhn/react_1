@@ -52,7 +52,7 @@ function FashionRlt({ id }) {
     return (
         <div ref={ref_product_rlt} className="FashionRlt">
             <RowProducts list_products={[products, products]}>
-                <h3 className="margin-0">RELATIVE PRODUCTS:</h3>
+                <h2 className="margin-0 font-20px">Relative products</h2>
             </RowProducts>
         </div>
     );

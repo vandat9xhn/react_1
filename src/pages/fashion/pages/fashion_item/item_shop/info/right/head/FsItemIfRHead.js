@@ -10,7 +10,7 @@ FsItemIfRHead.propTypes = {};
 function FsItemIfRHead({ name, description }) {
     return (
         <div className="FsItemIfRHead">
-            <h2 className="margin-0">{name}</h2><br />
+            <h1 className="margin-0 font-20px">{name}</h1><br />
 
             <div>
                 <span className="label-field">Description: </span>

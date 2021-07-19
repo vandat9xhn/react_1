@@ -1,6 +1,8 @@
 import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+// 
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { useMouseEnterLeave } from '../../../../../_hooks/UseMouseEnterLeave';
@@ -118,9 +120,6 @@ function MouseEnterLeaveInfo({
     }
 
     //
-    const is_mobile = localStorage.is_mobile == 1;
-
-    //
     return (
         <div
             ref={ref_btn_elm}
@@ -130,8 +129,8 @@ function MouseEnterLeaveInfo({
                 // className={`${count ? '' : 'display-none'}`}
                 className={`${true ? '' : 'display-none'}`}
                 onClick={handleOpenScreen}
-                onMouseEnter={is_mobile ? undefined : handleMouseenter}
-                onMouseLeave={is_mobile ? undefined : handleMouseleave}
+                onMouseEnter={IS_MOBILE ? undefined : handleMouseenter}
+                onMouseLeave={IS_MOBILE ? undefined : handleMouseleave}
             >
                 {title || count}
             </div>

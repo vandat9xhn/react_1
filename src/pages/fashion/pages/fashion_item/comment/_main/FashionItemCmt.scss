@@ -1,5 +1,13 @@
 //
 .FashionItemCmt_ {
+    &left{
+        flex-grow: 1;
+        flex-basis: 300px;
+        max-width: 100%;
+    }
+    &right{
+        width: 300px;
+    }
     //
     &skeleton {
         margin: 0.5rem;
@@ -40,6 +48,18 @@
     }
 
     //
+    @media (max-width: 1150px) {
+        &right{
+            width: 250px;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        &right {
+            display: none;
+        }
+    }
+
     @media (max-width: 1000px) {
         &input {
             width: 50%;

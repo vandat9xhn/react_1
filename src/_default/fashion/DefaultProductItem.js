@@ -51,20 +51,22 @@ const product_cmt_vid_pic_obj = () => ({
     comment_model: 2,
 });
 
-const product_cmt_vid_pic_arr = () =>
+export const product_cmt_vid_pic_arr = () =>
     getDefaultArr(product_cmt_vid_pic_obj, 0, 10);
 
 //
-const default_product_cmt_obj = () => ({
+const default_product_cmt_obj = () => {
+    const vid_pics = product_cmt_vid_pic_arr()
+    return ({
     id: getRandomId(),
     ...getRandomUser(),
-    vid_pics: product_cmt_vid_pic_arr(),
-    count_vid_pic: 0,
+    vid_pics: vid_pics.slice(0, 3),
+    count_vid_pic: vid_pics.length,
     ...getRandomContentObj(),
     created_time: '2021-04-18T07:21:04.632269Z',
     product_model: 4,
     profile_model: 1,
-});
+})};
 
 export const default_product_cmt_arr = () =>
     getDefaultArr(default_product_cmt_obj, 0, 10);

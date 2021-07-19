@@ -1,13 +1,11 @@
+import { IS_MOBILE } from "../_constant/Constant";
+
 // 
 const should_full_screen = false
 
 //
 export function requestFullscreen() {
-    if (!should_full_screen) {
-        return;
-    }
-
-    if (localStorage.is_mobile == 0) {
+    if (!should_full_screen || !IS_MOBILE) {
         return;
     }
 
@@ -28,11 +26,7 @@ export function requestFullscreen() {
 
 //
 export function exitFullscreen() {
-    if (!should_full_screen) {
-        return;
-    }
-    
-    if (localStorage.is_mobile == 0) {
+    if (!should_full_screen || !IS_MOBILE) {
         return;
     }
 

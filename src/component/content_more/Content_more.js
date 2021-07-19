@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../_constant/Constant';
+// 
 import { useMounted } from '../../_hooks/useMounted';
+import { useForceUpdate } from '../../_hooks/UseForceUpdate';
 //
 import CircleLoading from '../waiting/circle_loading/CircleLoading';
 //
 import './ContentMore.scss';
-import { useForceUpdate } from '../../_hooks/UseForceUpdate';
 
 //
 ContentMore.propTypes = {
@@ -43,9 +45,6 @@ function ContentMore({ content_obj, seeMoreContent }) {
     const forceUpdate = useForceUpdate();
 
     //
-    const is_mobile = localStorage.is_mobile == 1;
-
-    //
     function onSeeMoreContent(start_obj_state = {}) {
         setContentState((content_state) => ({
             ...content_state,
@@ -66,7 +65,7 @@ function ContentMore({ content_obj, seeMoreContent }) {
 
     // not mobile
     function handleClickSeeMore() {
-        if (is_mobile) {
+        if (IS_MOBILE) {
             return;
         }
 
@@ -75,7 +74,7 @@ function ContentMore({ content_obj, seeMoreContent }) {
 
     // mobile
     function handleToggleContent() {
-        if (!is_mobile) {
+        if (!IS_MOBILE) {
             return;
         }
 

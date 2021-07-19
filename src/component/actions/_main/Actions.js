@@ -41,13 +41,12 @@ function Actions({ title_action, symbol_post, children }) {
 
     //
     function openActions() {
-        const { x_0, y_0, w_left, w_right, h_top, h_bottom } =
-            definePositionFromParent({
-                btn_elm: ref_action_elm.current,
-            });
+        const { x_0, y_0 } = definePositionFromParent({
+            btn_elm: ref_action_elm.current,
+        });
 
-        const position_open =
-            window.innerWidth > 400
+        openDivFixAction({
+            ...(window.innerWidth > 400
                 ? {
                       left: x_0,
                       top: y_0,
@@ -59,10 +58,7 @@ function Actions({ title_action, symbol_post, children }) {
                       left: 0,
                       transform_x: 0,
                       transform_y: 0,
-                  };
-
-        openDivFixAction({
-            ...position_open,
+                  }),
             ref_action_elm: ref_action_elm,
             FixComponent: (
                 <div onClick={closeDivFixAction}>

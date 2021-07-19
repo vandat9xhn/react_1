@@ -274,6 +274,15 @@ export const API_PostCmt_R = (pk, params, is_vid_pic = false) =>
         })
     );
 
+export const API_PostCmtContentMore_R = (pk, params, is_vid_pic = false) =>
+    API_FakeReal(default_content_more(), () =>
+        axiosDjangoClient({
+            url: `/user/ud-comment${is_vid_pic ? '-vid-pic' : ''}/${pk}/`,
+            method: 'GET',
+            params: params,
+        })
+    );
+
 // Update Delete comment
 export const API_PostCmt_UD = (pk, method, data, is_vid_pic = false) =>
     API_FakeReal(data, () =>
@@ -357,6 +366,15 @@ export const API_PostSub_LC = (method, params, data, is_vid_pic = false) =>
 // Retrieve
 export const API_PostSub_R = (pk, params, is_vid_pic = false) =>
     API_FakeReal(default_post_sub_arr[0], () =>
+        axiosDjangoClient({
+            url: `/user/ud-sub-comment${is_vid_pic ? '-vid-pic' : ''}/${pk}/`,
+            method: 'GET',
+            params: params,
+        })
+    );
+
+export const API_PostSubContentMore_R = (pk, params, is_vid_pic = false) =>
+    API_FakeReal(default_content_more(), () =>
         axiosDjangoClient({
             url: `/user/ud-sub-comment${is_vid_pic ? '-vid-pic' : ''}/${pk}/`,
             method: 'GET',

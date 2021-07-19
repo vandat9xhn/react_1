@@ -1,28 +1,24 @@
 //
-.FashionRate{
-    margin: 1rem 0;
-}
-
-.FashionRate_list{
+.FashionRate_list {
     margin-top: 1rem;
 }
 
 //
-.FashionRate_row{
+.FashionRate_row {
     display: flex;
     align-items: center;
     margin: 0.5rem 0;
 }
 //
-.FashionRate_title{
+.FashionRate_title {
     width: 3rem;
 }
 
-.FashionRate_rate{
+.FashionRate_rate {
     min-width: 3rem;
     text-align: end;
 }
 
-.FashionRate_rate-user{
+.FashionRate_rate-user {
     margin-right: 0.25rem;
 }

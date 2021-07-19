@@ -2,6 +2,7 @@ import { params_fashion_cmt_l } from '../../_params/fashion/FashionCmtParams';
 //
 import { API_FashionComment_C } from '../../api/api_django/fashion/APIFashionToken';
 import {
+    API_FashionCommentVidPicMore_L,
     API_FashionComment_L,
     API_FashionUserContentComment_R,
 } from '../../api/api_django_no_token/fashion/APIFashionNoToken';
@@ -34,6 +35,20 @@ export async function handle_API_FashionComment_C({
             'vid_pics[]': files,
         })
     );
+
+    return res.data;
+}
+
+export async function handle_API_FashionCommentVidPicMore_L({
+    comment_model,
+    c_count,
+    ...rest_params
+}) {
+    const res = await API_FashionCommentVidPicMore_L({
+        ...rest_params,
+        comment_model: comment_model,
+        c_count: c_count,
+    });
 
     return res.data;
 }

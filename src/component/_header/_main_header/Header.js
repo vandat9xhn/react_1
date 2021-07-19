@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 //
 import './HeaderCommon.scss';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+// 
 import HeaderH from '../header_left/header_horizontal/_main/HeaderH';
 import HeaderV from '../header_left/header_vertical/_main/HeaderV';
 import RightHeader from '../header_right/_main/RightHeaderWs';
@@ -14,11 +16,7 @@ import './HeaderRes.scss';
 function Header() {
     //
     useEffect(() => {
-        const is_mobile = navigator.userAgent.includes('Mobile');
-
-        localStorage.is_mobile = is_mobile ? 1 : 0;
-
-        is_mobile &&
+        IS_MOBILE &&
             document
                 .getElementsByTagName('body')[0]
                 .classList.add('device-mobile');

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
-import ChatScreenFloor from '../floor/ChatScreenFloor';
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
-// 
-import './ChatScreenCommon.scss'
+//
+import './ChatScreenCommon.scss';
+//
+import ChatScreenFloor from '../floor/ChatScreenFloor';
+//
+import './ChatScreen.scss';
 
 //
 class ChatScreen extends Component {
@@ -43,6 +46,8 @@ class ChatScreen extends Component {
                             key={`${ix}`}
                             className="pos-fixed-100per z-index-lv5"
                         >
+                            <div className="ChatScreen_blur pos-abs-100 bg-active-fb"></div>
+
                             <div className="position-rel wh-100 bg-through">
                                 <ChatScreenFloor
                                     closeChatScreen={this.closeChatScreen}

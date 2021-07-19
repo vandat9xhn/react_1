@@ -191,7 +191,7 @@ function FashionRate({ id }) {
     return (
         <div className="padding-8px" ref={ref_fashion_rate}>
             <div className={`FashionRate ${has_fetched ? '' : 'display-none'}`}>
-                <h3 className="margin-0">ASSESSMENT:</h3>
+                <h2 className="margin-0 font-20px">Customer reviews</h2>
 
                 <div>
                     <FashionRateChart

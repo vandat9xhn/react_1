@@ -1,6 +1,8 @@
 import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+//
 import { context_api } from '../../../_context/ContextAPI';
 //
 import { useHold } from '../../../_hooks/useHold';
@@ -28,47 +30,40 @@ function Like({ changeTypeLike, icon_small, type_like }) {
     const { openDivFixLike, closeDivFixLike } = useContext(context_api);
 
     //
-    const is_mobile = localStorage.is_mobile == 1;
-
-    //
     const ref_like_elm = useRef(null);
 
-    const { StartHold, StopHold } = useHold(is_mobile ? 400 : 600);
+    const { StartHold, StopHold } = useHold(IS_MOBILE ? 400 : 600);
     const { StartHold: StartOut, StopHold: StopOut } = useHold(
-        is_mobile ? 100 : 600
+        IS_MOBILE ? 100 : 600
     );
 
     //
     function openFixLike() {
         const { x, y } = ref_like_elm.current.getBoundingClientRect();
 
-        const fixed_state = {
+        openDivFixLike({
+            ...(!IS_MOBILE
+                ? {
+                      scroll_elm: ref_like_elm.current.closest(
+                          '[class~=div_fix_scroll]'
+                      ),
+                      left: x,
+                      top: y + pageYOffset,
+                      transform_x: 0,
+                      transform_y: '-100%',
+                  }
+                : {
+                      left: '50%',
+                      top: '50%',
+                      transform_x: '-50%',
+                      transform_y: '-50%',
+                  }),
+
             icon_small: icon_small,
             onMouseEnter: onMouseEnter,
             onMouseLeave: onMouseLeave,
             chooseListTypeLike: ChooseListTypeLike,
-        };
-
-        !is_mobile
-            ? openDivFixLike({
-                  scroll_elm: ref_like_elm.current.closest(
-                      '[class~=div_fix_scroll]'
-                  ),
-                  left: x,
-                  top: y + pageYOffset,
-                  transform_x: 0,
-                  transform_y: '-100%',
-
-                  ...fixed_state,
-              })
-            : openDivFixLike({
-                  left: '50%',
-                  top: '50%',
-                  transform_x: '-50%',
-                  transform_y: '-50%',
-
-                  ...fixed_state,
-              });
+        });
     }
 
     /* ------------- MAIN LIKE ------------ */
@@ -124,8 +119,8 @@ function Like({ changeTypeLike, icon_small, type_like }) {
         <div
             ref={ref_like_elm}
             className="Like"
-            onMouseLeave={is_mobile ? undefined : onMouseLeave}
-            onMouseEnter={is_mobile ? undefined : onMouseEnter}
+            onMouseLeave={IS_MOBILE ? undefined : onMouseLeave}
+            onMouseEnter={IS_MOBILE ? undefined : onMouseEnter}
         >
             <div
                 className={`Like_type display-flex-center padding-8px cursor-pointer ${
@@ -134,8 +129,8 @@ function Like({ changeTypeLike, icon_small, type_like }) {
                 onClick={handleLike}
                 onTouchStart={onMouseEnterLike}
                 onTouchEnd={onMouseLeaveLike}
-                onMouseEnter={is_mobile ? undefined : onMouseEnterLike}
-                onMouseLeave={is_mobile ? undefined : onMouseLeaveLike}
+                onMouseEnter={IS_MOBILE ? undefined : onMouseEnterLike}
+                onMouseLeave={IS_MOBILE ? undefined : onMouseLeaveLike}
             >
                 {type_like < 0
                     ? type_likes[0].component

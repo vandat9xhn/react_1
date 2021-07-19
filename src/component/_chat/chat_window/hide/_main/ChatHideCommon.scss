@@ -15,3 +15,15 @@
         border-right: 0;
     }
 }
+
+.chat-hide-contain{
+    max-width: 240px;
+    overflow-x: hidden;
+}
+
+// 
+@media (max-width: 350px) {
+    .chat-hide-contain{
+        max-width: calc(100vw - 100px);
+    }
+}

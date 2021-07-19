@@ -1,0 +1,39 @@
+.ChatOptions_menu{
+    width: 45px;
+}
+
+.ChatOptions_menu-contain{
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
+.ChatOptions_list{
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+// .
+.ChatOptions_list-contain{
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        
+        transform: translateY(-50%);
+
+        border-top: 0.5rem solid transparent;
+        border-bottom: 0.5rem solid transparent;
+        border-left: 0.5rem solid var(--md-bg-primary);
+    }
+}
+// ..
+.ChatOptions_item{
+    min-width: 15rem;
+    max-width: 100%;
+
+    font-weight: 600;
+    line-height: 1.3333rem;
+}

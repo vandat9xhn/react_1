@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+// 
 import TextareaNotSend from './TextareaNotSend';
 
 //
@@ -29,7 +31,7 @@ function Textarea({
     //
     const onKeyDown = (e) => {
         if (!e.shiftKey && e.keyCode == 13) {
-            if (localStorage.is_mobile == 0) {
+            if (!IS_MOBILE) {
                 e.preventDefault();
                 handleSend();
                 e.target.style.height = 'auto';

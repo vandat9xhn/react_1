@@ -15,7 +15,6 @@ ChatHide.propTypes = {};
 
 //
 function ChatHide({
-    num_transform_y,
     chat_ix,
     //
     ws,
@@ -42,14 +41,7 @@ function ChatHide({
 
     //
     return (
-        <div
-            className="ChatHide"
-            style={{
-                transform: `translateY(calc(${-num_transform_y * 100}% - ${
-                    num_transform_y * 0.25
-                }rem))`,
-            }}
-        >
+        <div className="ChatHide padding-4px">
             <div className="ChatHide_contain position-rel">
                 <div
                     className={`ChatHide_close ${
@@ -76,12 +68,14 @@ function ChatHide({
 
                 <div className="ChatHide_info_user display-none">
                     <div className="ChatHide_info_user-padding chat-hide-padding">
-                        <div className="ChatHide_info_user-contain padding-4px bg-primary brs-5px box-shadow-fb">
+                        <div className="chat-hide-contain padding-4px bg-primary brs-5px box-shadow-fb">
                             <div className="w-100per text-nowrap label-field">
                                 {f_user.first_name + ' ' + f_user.last_name}
                             </div>
 
-                            <div className="w-100per text-nowrap">{last_message}</div>
+                            <div className="w-100per text-nowrap">
+                                {last_message}
+                            </div>
                         </div>
                     </div>
                 </div>
