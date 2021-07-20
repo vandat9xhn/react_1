@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useObserverVirtualScroll } from '../../_hooks/useObserverVirtualScroll';
@@ -7,21 +7,62 @@ import { useObserverVirtualScroll } from '../../_hooks/useObserverVirtualScroll'
 VirtualScroll.propTypes = {
     children: PropTypes.element,
     rootMargin_y: PropTypes.number,
+    extra_height: PropTypes.string,
+};
+
+VirtualScroll.defaultProps = {
+    extra_height: '0px',
 };
 
 //
-function VirtualScroll({ children, rootMargin_y }) {
+function VirtualScroll({ children, rootMargin_y, extra_height }) {
+    //
+    const [state_obj, setStateObj] = useState({
+        display: 'block',
+        height: 'auto',
+    });
+
+    const { display, height } = state_obj;
+
     //
     const ref_virtual_elm = useRef(null);
     const ref_contain_elm = useRef(null);
 
     //
-    useObserverVirtualScroll(ref_virtual_elm, ref_contain_elm, rootMargin_y);
+    useObserverVirtualScroll({
+        ref_observer_elm: ref_virtual_elm,
+        ref_contain_elm: ref_contain_elm,
+        rootMargin_y: rootMargin_y,
+        has_callback: true,
+        callback: handleVirtualScroll,
+    });
+
+    //
+    function handleVirtualScroll(height, display) {
+        setStateObj({
+            ...state_obj,
+            display: display,
+            height: height,
+        });
+    }
 
     //
     return (
-        <div ref={ref_virtual_elm}>
-            <div ref={ref_contain_elm}>{children}</div>
+        <div
+            ref={ref_virtual_elm}
+            style={{
+                height:
+                    height == 'auto'
+                        ? 'auto'
+                        : `calc(${height} + ${extra_height})`,
+            }}
+        >
+            <div
+                ref={ref_contain_elm}
+                className={`${display == 'block' ? '' : 'display-none'}`}
+            >
+                {children}
+            </div>
         </div>
     );
 }

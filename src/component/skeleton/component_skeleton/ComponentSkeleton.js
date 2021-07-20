@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// 
+import './ComponentSkeleton.scss';
 
 //
 ComponentSkeleton.propTypes = {
@@ -25,7 +27,12 @@ function ComponentSkeleton({ component, has_fetched, num, skeleton_class }) {
                 {Array(num)
                     .fill(1)
                     .map((_, ix) => (
-                        <div key={`ComponentSkeleton_${ix}`}>{component}</div>
+                        <div
+                            key={`ComponentSkeleton_${ix}`}
+                            className="ComponentSkeleton_item"
+                        >
+                            {component}
+                        </div>
                     ))}
             </div>
         )

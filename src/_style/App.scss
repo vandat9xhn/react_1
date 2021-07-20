@@ -124,6 +124,11 @@ img {
     min-height: calc(100vh + 5rem - var(--height-header));
 }
 
+.AppFixed{
+    position: relative;
+    z-index: var(--z-index-lv4);
+}
+
 .AppNatureDrop {
     position: relative;
     z-index: var(--z-index-lv5);

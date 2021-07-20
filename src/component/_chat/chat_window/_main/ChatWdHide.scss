@@ -1,0 +1,33 @@
+.ChatWdHidden {
+    &:hover {
+        .ChatWdHidden_options {
+            display: block;
+        }
+    }
+}
+
+.ChatWdHidden_options {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+
+    transition: all 250ms ease;
+}
+.ChatWdHidden_options-hide {
+    bottom: 52px;
+}
+
+.ChatWdHidden_room {
+    transition: all 250ms ease;
+}
+.ChatWdHidden_room-open {
+    transform: translateX(0%);
+}
+.ChatWdHidden_room-hide {
+    transform: translateX(100%);
+}
+// .
+.ChatWdHidden_room-contain {
+    display: flex;
+    flex-direction: column;
+}

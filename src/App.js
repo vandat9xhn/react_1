@@ -164,7 +164,7 @@ class App extends Component {
                             </div>
                         </div>
 
-                        <div>
+                        <div className="AppFixed">
                             <BackTop />
 
                             <Contact />

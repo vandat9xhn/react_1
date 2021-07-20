@@ -1,24 +1,6 @@
-.Chat_hidden{
-    &:hover{
-        .Chat_hidden-options{
-            display: block;
-        }
-    }
-}
-
-.Chat_hidden{
+// 
+.Chat_hidden {
     position: fixed;
     right: 0;
-    bottom: 0;
+    bottom: 0.5rem;
 }
-// .
-.Chat_hidden-contain{
-    display: flex;
-    flex-direction: column;
-}
-// 
-// .Chat_hidden-options{
-//     position: absolute;
-//     right: 0;
-//     bottom: 0.5rem;
-// }

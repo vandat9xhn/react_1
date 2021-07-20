@@ -12,9 +12,7 @@ import { initial_chat_item } from '../../../_initial/chat/ChatInitial';
 import { makeNewChat } from '../_func/makeNewChat';
 //
 import ChatShow from '../chat_window/show/_main/ChatShow';
-import ChatHide from '../chat_window/hide/_main/ChatHide';
-import ChatHideMore from '../chat_window/hide_more/_main/ChatHideMore';
-import ChatOptions from '../chat_window/options/ChatOptions';
+import ChatWdHide from '../chat_window/_main/ChatWdHide';
 //
 import './Chat.scss';
 
@@ -197,9 +195,6 @@ class Chat extends Component {
         //
         const { chat_active_arr, chat_inactive_arr } = this.state;
 
-        const is_two_long_chat_inactive =
-            chat_inactive_arr.length >= CHAT_INACTIVE_NUM + 2;
-
         //
         return (
             <div>
@@ -224,48 +219,17 @@ class Chat extends Component {
                         ))}
                     </div>
 
-                    <div className="Chat_hidden">
-                        <div className="Chat_hidden-contain position-rel">
-                            <div
-                                className={`display-none ${
-                                    chat_inactive_arr.length == 0
-                                        ? ''
-                                        : 'Chat_hidden-options'
-                                }`}
-                            >
-                                <ChatOptions />
-                            </div>
-
-                            <div>
-                                {chat_inactive_arr
-                                    .slice(0, CHAT_INACTIVE_NUM + 1)
-                                    .map((item, ix) => (
-                                        <div
-                                            key={`${item.room_chat}`}
-                                            className="Chat_hidden-item display-flex col-reverse"
-                                        >
-                                            <ChatHide
-                                                chat_ix={ix}
-                                                ws={item.ws}
-                                                index={item.index}
-                                                room_chat={item.room_chat}
-                                                chat_item={item.chat_item}
-                                            />
-                                        </div>
-                                    ))}
-                            </div>
-
-                            <div>
-                                {is_two_long_chat_inactive ? (
-                                    <ChatHideMore
-                                        chat_inactive_more_arr={chat_inactive_arr.slice(
-                                            CHAT_INACTIVE_NUM
-                                        )}
-                                    />
-                                ) : null}
-                            </div>
+                    {chat_inactive_arr.length ? (
+                        <div className="Chat_hidden">
+                            <ChatWdHide
+                                chat_inactive_arr={chat_inactive_arr}
+                                is_two_long_chat_inactive={
+                                    chat_inactive_arr.length >=
+                                    CHAT_INACTIVE_NUM + 2
+                                }
+                            />
                         </div>
-                    </div>
+                    ) : null}
                 </div>
             </div>
         );

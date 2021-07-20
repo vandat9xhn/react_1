@@ -6,7 +6,7 @@ import { context_post } from '../../../../_context/post/ContextPost';
 //
 import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
-// 
+//
 import VirtualScroll from '../../../virtual_scroll/VirtualScroll';
 //
 import PictureName from '../../../picture_name/pic_name/PictureName';
@@ -246,7 +246,7 @@ function Post({
     return (
         !is_del && (
             <VirtualScroll>
-                <div className="Post box-shadow-1 brs-5px">
+                <div className="Post padding-8px bg-primary box-shadow-1 brs-8px-md">
                     <div className="Post_head position-rel">
                         <div className="Post__user">
                             <PictureName

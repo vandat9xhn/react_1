@@ -8,6 +8,7 @@ PostSkeleton.propTypes = {};
 
 //
 function PostSkeleton(props) {
+    // 
     return (
         <div className="Post brs-5px-md box-shadow-1">
             <div className="padding-8px">

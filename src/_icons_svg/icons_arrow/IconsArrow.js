@@ -16,18 +16,17 @@ IconsArrow.defaultProps = {
 };
 
 /**
-*icons arrow: (x, y)
-*   @1. dropdown: (0, 0),
-*   @2. next: (200, 0),
-*   @3. previous: (400, 0),
-*   @4. back to previous: (200, 200),
-*   @5. back to top: (0, 200),
-*   @6. close: (0, 400),
-*   @7. download (600, 0),
-*/
-function IconsArrow(props){
-    const { size_icon, x, y } = props;
-
+ *icons arrow: (x, y)
+ *   @1. dropdown: (0, 0),
+ *   @2. next: (200, 0),
+ *   @3. previous: (400, 0),
+ *   @4. back to previous: (200, 200),
+ *   @5. back to top: (0, 200),
+ *   @6. close: (0, 400),
+ *   @7. download (600, 0),
+ */
+function IconsArrow({ size_icon, x, y }) {
+    //
     return (
         <svg
             className="IconsArrow"
@@ -86,7 +85,6 @@ function IconsArrow(props){
             />
         </svg>
     );
-};
-
+}
 
 export default IconsArrow;

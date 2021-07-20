@@ -192,16 +192,15 @@ function Posts({
                     }
                 >
                     {posts.map((post, index) => (
-                        <Post
-                            key={`Posts_${post.id}`}
-                            post={post}
-                            post_ix={index}
-                        />
+                        <div key={`Posts_${post.id}`} className="Posts_item">
+                            <Post post={post} post_ix={index} />
+                        </div>
                     ))}
 
                     <ComponentSkeleton
                         has_fetched={has_fetched}
                         component={<PostSkeleton />}
+                        num={3}
                     />
 
                     <div className="width-fit-content margin-auto">
