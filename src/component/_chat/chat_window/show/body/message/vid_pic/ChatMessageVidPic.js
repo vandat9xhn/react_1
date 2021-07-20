@@ -28,7 +28,6 @@ function ChatMessageVidPic({ mess_id, vid_pics, count_vid_pic, ix, item }) {
             vid_pics.push(...new_vid_pics);
         }
 
-        console.log(2);
         openScreenVidPic({
             openScreenFloor: openScreenFloor,
             urls: vid_pics,

@@ -22,7 +22,7 @@ VidPics.defaultProps = {
 function VidPics({ urls, current, changeCurrent }) {
     //
     return (
-        <div className="VidPics position-rel wh-100">
+        <div className="VidPics position-rel wh-100 z-index-lv5">
             <div className="VidPics_blur wh-100 position-abs">
                 <div
                     className="VidPics_blur-img wh-100"

@@ -32,18 +32,22 @@ function SubsWs({
     //
     async function onGetSubsWs() {
         setFetchingSub(true);
-        //
-        const [data, count] = await handle_API_Sub_L(cmt_id);
+
+        const { data } = await handle_API_Sub_L(cmt_id);
         subs.push(...data);
+
         setFetchingSub(false);
     }
 
     //
     async function onSendSub(content, files) {
-        const [new_content, vid_pic] = await handle_API_Sub_C(cmt_id, {
-            content: content,
-            vid_pic: files[0],
-        });
+        const { content: new_content, vid_pic } = await handle_API_Sub_C(
+            cmt_id,
+            {
+                content: content,
+                vid_pic: files[0],
+            }
+        );
 
         ws_send({
             type: ws_type_sub + '_input',

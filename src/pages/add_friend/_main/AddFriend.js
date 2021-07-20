@@ -69,10 +69,11 @@ function AddFriend(props) {
             is_fetching: true,
         }));
 
-        const [new_data, new_count] = await handle_API_AddFriend_L(
-            new_request.split('_')[0],
-            add_friend_obj[new_request].count
-        );
+        const { data: new_data, count: new_count } =
+            await handle_API_AddFriend_L(
+                new_request.split('_')[0],
+                add_friend_obj[new_request].count
+            );
 
         const data = new_data.map((item) =>
             new_request == 'sent_obj'

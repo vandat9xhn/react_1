@@ -7,11 +7,15 @@ export function observeVirtualScroll(
     const observer_scroll = new IntersectionObserver(
         (entries, observer) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    handleIntersecting(true);
-                } else {
-                    handleIntersecting(false);
+                if (entry.boundingClientRect.height) {
+                    if (entry.isIntersecting) {
+                        handleIntersecting(true);
+                    } else {
+                        handleIntersecting(false);
+                    }
                 }
+
+                // console.log(entry);
             });
         },
         {

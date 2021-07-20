@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import IconsInput from '../../../../../_icons_svg/Icons_input/IconsInput';
-// 
+//
 import InputFile from '../../../../../component/input/input_file/InputFile';
 import ImgVidPreview from '../../../../../component/input_img_vid_preview/img_vid_preview/ImgVidPreview';
 //
@@ -36,18 +36,13 @@ function InputImage({ form, field, type, label, handleImageChange }) {
     /* -------------- IMAGE -------------*/
 
     //
-    function onImageChange(event) {
-        const files = event.target.files;
-        //
-        if (files.length) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                setUrls([{ url: reader.result, type: files[0].type }]);
-                form.setFieldValue('image', reader.result);
-            };
-            reader.readAsDataURL(files[0]);
-            handleImageChange(files[0]);
-        }
+    function onImageChange(data_files) {
+        const { files, vid_pics } = data_files;
+
+        setUrls(vid_pics);
+        form.setFieldValue('image', vid_pics[0].url);
+
+        handleImageChange(files[0]);
     }
 
     //
@@ -71,8 +66,9 @@ function InputImage({ form, field, type, label, handleImageChange }) {
                     width="2rem"
                     type={type}
                     {...field}
-                    onChange={onImageChange}
                     accept="image/*"
+                    vid_pic_key="url"
+                    handleChange={onImageChange}
                 >
                     <IconsInput />
                 </InputFile>

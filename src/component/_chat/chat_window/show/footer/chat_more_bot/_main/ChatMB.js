@@ -15,6 +15,8 @@ function ChatMB({
     more_input,
     moreActionsIp,
     letDrawCanvas,
+
+    handleStartLoadFile,
     handleChooseFiles,
 }) {
     //
@@ -56,7 +58,8 @@ function ChatMB({
                                 title="Choose your images and videos"
                             >
                                 <InputFile
-                                    onChange={handleChooseFiles}
+                                    handleStartLoadFile={handleStartLoadFile}
+                                    handleChange={handleChooseFiles}
                                     file_multiple={true}
                                     accept="image/*,video/*"
                                     title="Choose images/videos"

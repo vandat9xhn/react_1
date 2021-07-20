@@ -108,7 +108,7 @@ function FashionSearch(props) {
         });
     }
 
-    /* -------------------- GET API ---------------------*/
+    /* -------- GET API -------- */
 
     //
     async function getData_API_Search({
@@ -182,7 +182,7 @@ function FashionSearch(props) {
         }
     }
 
-    /* -------------------- COMMON ---------------------*/
+    /* -------- COMMON ---------*/
 
     //
     function getData_API_Search_Refresh({
@@ -262,7 +262,7 @@ function FashionSearch(props) {
         );
     }
 
-    /* -------------------- SEARCH ---------------------*/
+    /* ----------- SEARCH -----------*/
 
     //
     function handleSearchFashion(new_value_search) {
@@ -273,7 +273,7 @@ function FashionSearch(props) {
         use_history.push(location.pathname + '?q=' + new_value_search);
     }
 
-    /* -------------------- PAGE ---------------------*/
+    /* -------- PAGE ----------*/
 
     //
     function handleChangePage(new_page) {
@@ -314,7 +314,7 @@ function FashionSearch(props) {
         }
     }
 
-    /* -------------------- FILTER ---------------------*/
+    /* --------- FILTER --------*/
 
     //
     function openFilter() {

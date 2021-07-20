@@ -8,7 +8,7 @@ import {
     API_PostHistory_R,
     API_PostMoreContent_R,
 } from '../../api/api_django/user/user_post/UserPost';
-// 
+//
 import makeFormData from '../../_some_function/makeFormData';
 //
 import {
@@ -20,7 +20,7 @@ import {
     params_more_content_history_post,
 } from '../../_params/post/PostParams';
 
-// 
+//
 export async function handle_API_PostUpdate_R(post_id = 0) {
     const res = await API_Post_RD(post_id, 'GET', params_post_update);
 
@@ -66,9 +66,8 @@ export async function handle_API_Like_L(post_id = 0, c_count = 0, type_like) {
         c_count: c_count,
         type_like: type_like,
     });
-    const { data, count } = res.data;
 
-    return [data, count];
+    return res.data;
 }
 
 // export async function handle_API_Like_C(post_id=0) {
@@ -82,9 +81,7 @@ export async function handle_API_Share_L(post_id = 0, c_count = 0) {
         post_model: post_id,
         c_count: c_count,
     });
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }
 
 // export async function handle_API_Share_C(post_id=0) {
@@ -98,9 +95,8 @@ export async function handle_API_History_L(post_id = 0, c_count = 0) {
         post_model: post_id,
         c_count: c_count,
     });
-    const { data, count } = res.data;
 
-    return [data, count];
+    return res.data;
 }
 
 export async function handle_API_ContentMoreHistory_R(his_id = 0) {

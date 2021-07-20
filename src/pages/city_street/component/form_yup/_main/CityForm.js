@@ -74,27 +74,15 @@ function CityForm({
             return false;
         }
 
-        if (new_city != rest_initialValues.city) {
-            return true;
-        }
-
-        if (new_street != rest_initialValues.street) {
-            return true;
-        }
-
-        if (new_quote != rest_initialValues.quote) {
-            return true;
-        }
-
-        if (file) {
-            return true;
-        }
-
         if (
+            new_city != rest_initialValues.city ||
+            new_street != rest_initialValues.street ||
+            new_quote != rest_initialValues.quote ||
+            file ||
             city_color_bg_arr[active_color_ix].bg +
                 '.' +
                 city_color_bg_arr[active_color_ix].color !=
-            bg_color
+                bg_color
         ) {
             return true;
         }

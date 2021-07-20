@@ -5,6 +5,8 @@ import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import observeToDo from '../../../../../../_some_function/observerToDo';
 //
+import { useMultiPages } from '../../../../../../_hooks/useMultiPages';
+//
 import Pagination from '../../../../../../component/pagination/_main/Pagination';
 import CommentInput from '../../../../../../component/input_img_vid_preview/comment_input/CommentInput';
 //
@@ -29,99 +31,30 @@ function FashionItemCmt({ id: product_id }) {
     const { user } = useContext(context_api);
 
     //
-    const [cmt_state, setCmtState] = useState({
-        cmt_pages_obj: { 1: [] },
-
-        count: 0,
-        page: 1,
-        pages: 1,
-
-        is_fetching: false,
-    });
-
-    const { cmt_pages_obj, count, page, pages, is_fetching, has_fetched } =
-        cmt_state;
-
-    //
     const ref_comment = useRef(null);
     const ref_comment_head = useRef(null);
 
     //
-    useEffect(() => {
-        const new_page = 1;
-
-        observeToDo(
-            ref_comment.current,
-            () =>
-                getData_API_Comment({
-                    new_page: new_page,
-                    start_obj_state: {
-                        cmt_pages_obj: { [new_page]: [] },
-                        has_fetched: false,
-                    },
+    const { state_obj, setStateObj, getData_API, handleChangePage } =
+        useMultiPages({
+            initial_page: 1,
+            handle_API_L: (new_key) =>
+                handle_API_FashionComment_L({
+                    product_model: product_id,
+                    page: new_key,
                 }),
-            0
-        );
-    }, [product_id]);
+        });
 
-    /* ---------------- GET API ---------------- */
+    const { page_obj, count, page, pages, is_fetching } = state_obj;
 
     //
-    async function getData_API_Comment({ new_page = 1, start_obj_state = {} }) {
-        try {
-            setCmtState({
-                ...cmt_state,
-                is_fetching: true,
-                page: new_page,
-                ...start_obj_state,
-            });
-
-            const c_count = 0;
-
-            const {
-                data,
-                pages: new_pages,
-                count: new_count,
-            } = await handle_API_FashionComment_L({
-                product_model: product_id,
-                c_count: c_count,
-                page: new_page,
-            });
-
-            setCmtState((cmt_state) => ({
-                ...cmt_state,
-                cmt_pages_obj: {
-                    ...cmt_state.cmt_pages_obj,
-                    [new_page]:
-                        new_page == 1 && has_fetched
-                            ? [...cmt_state.cmt_pages_obj[1], ...data]
-                            : data,
-                },
-                count: has_fetched ? cmt_state.count : new_count,
-                page: new_page,
-                pages: has_fetched ? cmt_state.pages : new_pages,
-
-                is_fetching: false,
-                has_fetched: true,
-            }));
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    /* -------------------------------- */
+    useEffect(() => {
+        observeToDo(ref_comment.current, () => getData_API(page), 0);
+    }, [product_id]);
 
     //
     function changeCurrentPage(new_page) {
-        if (cmt_pages_obj[new_page]) {
-            setCmtState({
-                ...cmt_state,
-                page: new_page,
-            });
-        } else {
-            getData_API_Comment({ new_page: new_page });
-        }
-
+        handleChangePage(new_page);
         ref_comment_head.current.scrollIntoView();
     }
 
@@ -133,7 +66,7 @@ function FashionItemCmt({ id: product_id }) {
                 files: files,
             });
 
-            cmt_pages_obj[1].unshift({
+            page_obj[1].unshift({
                 id: data.id,
                 user: user,
                 content_obj: {
@@ -142,13 +75,16 @@ function FashionItemCmt({ id: product_id }) {
                     has_more_content: false,
                 },
                 vid_pics: urls,
+                count_vid_pic: urls.length,
                 created_time: new Date().getTime(),
             });
 
-            setCmtState({
-                ...cmt_state,
+            setStateObj({
+                ...state_obj,
                 count: count + 1,
             });
+
+            ref_comment_head.current.scrollIntoView();
         } catch (e) {
             console.log(e);
         }
@@ -166,7 +102,7 @@ function FashionItemCmt({ id: product_id }) {
 
                     <div>
                         {!is_fetching ? (
-                            cmt_pages_obj[page].map((item, cmt_ix) => (
+                            page_obj[page].map((item, cmt_ix) => (
                                 <FashionItemCmtItem
                                     key={`CommentContent_${item.id}`}
                                     ix={cmt_ix}
@@ -201,7 +137,9 @@ function FashionItemCmt({ id: product_id }) {
                     ) : null}
                 </div>
 
-                <div className="FashionItemCmt_right"></div>
+                <div className="FashionItemCmt_right">
+                    <div className="bg-primary h-100per brs-5px"></div>
+                </div>
             </div>
         </div>
     );

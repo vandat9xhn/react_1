@@ -60,9 +60,7 @@ export async function handle_API_PostVidPicLike_L(vid_pic_id = 0, c_count = 0) {
         vid_pic_model: vid_pic_id,
         c_count: c_count,
     });
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }
 
 export async function handle_API_PostVidPicHistory_L(
@@ -74,7 +72,5 @@ export async function handle_API_PostVidPicHistory_L(
         vid_pic_model: vid_pic_id,
         c_count: c_count,
     });
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }

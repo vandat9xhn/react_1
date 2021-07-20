@@ -6,18 +6,17 @@ import ImgVidPreviewItem from './_item/ImgVidPreviewItem';
 import './ImgVidPreview.scss';
 
 //
-function ImgVidPreview(props) {
-    const {
-        urls,
-        show_all,
-        vid_pic_count,
+function ImgVidPreview({
+    urls,
+    show_all,
+    vid_pic_count,
 
-        video_controls,
-        video_preload,
+    video_controls,
+    video_preload,
 
-        deleteAnItem,
-    } = props;
-
+    deleteAnItem,
+}) {
+    //
     const count_url = urls.length;
 
     //
@@ -30,15 +29,11 @@ function ImgVidPreview(props) {
                     key={`image_preview_${index}`}
                     className={`ImgVidPreview__elm ${
                         vid_pic_count
-                            ? `VidPics_count_${
-                                  count_url > 4 ? 5 : count_url
-                              }`
+                            ? `VidPics_count_${count_url > 4 ? 5 : count_url}`
                             : ''
                     }`}
                     data-length={
-                        index == 3 && count_url > 4
-                            ? count_url - 4
-                            : undefined
+                        index == 3 && count_url > 4 ? count_url - 4 : undefined
                     }
                 >
                     <ImgVidPreviewItem

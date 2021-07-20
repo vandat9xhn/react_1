@@ -11,14 +11,15 @@ import './CUPostHomeMoreInput.scss';
 CUPostHomeMoreInput.propTypes = {};
 
 //
-function CUPostHomeMoreInput({ handleChooseFiles }) {
+function CUPostHomeMoreInput({ handleStartLoadFile, handleChooseFiles }) {
     //
     return (
         <div className="CUPostHomeMoreInput bg-primary brs-5px-md">
             <div className="CUPostHomeMoreInput_row display-flex align-items-center">
                 <div className="CUPostHomeContent__files">
                     <InputFile
-                        onChange={handleChooseFiles}
+                        handleStartLoadFile={handleStartLoadFile}
+                        handleChange={handleChooseFiles}
                         accept="image/*, video/*"
                         file_multiple={true}
                         title="Choose images/videos"

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
-import './DivFix.scss';
+// import './DivFixItem.scss';
 
 //
 const propTypes_str_num = PropTypes.oneOfType([
@@ -10,7 +10,7 @@ const propTypes_str_num = PropTypes.oneOfType([
 ]);
 
 //
-DivFix.propTypes = {
+DivFixItem.propTypes = {
     scroll_elm: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
     position_class: PropTypes.string,
 
@@ -30,7 +30,7 @@ DivFix.propTypes = {
     is_width_lte_400: PropTypes.bool,
 };
 
-DivFix.defaultProps = {
+DivFixItem.defaultProps = {
     top: 'auto',
     bottom: 'auto',
     left: 'auto',
@@ -43,7 +43,7 @@ DivFix.defaultProps = {
 };
 
 //
-function DivFix({
+function DivFixItem({
     scroll_elm,
     position_class,
 
@@ -83,7 +83,7 @@ function DivFix({
     //
     return (
         <div
-            className={`DivFix ${
+            className={`DivFixItem ${
                 is_width_lte_400
                     ? 'DivFixItem_fixed pos-fixed-100 bg-loader'
                     : ''
@@ -113,4 +113,4 @@ function DivFix({
     );
 }
 
-export default DivFix;
+export default DivFixItem;

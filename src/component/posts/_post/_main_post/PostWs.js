@@ -219,7 +219,7 @@ function Post({
     async function handleClickBtnCmt() {
         if (!comments.length && count_comment) {
             setFetchingCmt(true);
-            const [new_comments] = await handle_API_Cmt_L(id);
+            const { data: new_comments } = await handle_API_Cmt_L(id);
             comments.push(...new_comments);
             setFetchingCmt(false);
             focusInput();

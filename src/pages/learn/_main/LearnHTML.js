@@ -15,6 +15,7 @@ import LearnWaitingToken from '../waiting_token/LearnWaitingToken';
 import LearnDnD from '../dnd/LearnDnD';
 import LearnObserverScroll from '../observer_scroll/LearnObserverScroll';
 import LearnChild from '../child_state/_main/LearnChild';
+import LearnPortalModel from '../portal/LearnPortalModel';
 
 //
 LearnHTML.propTypes = {};
@@ -135,6 +136,10 @@ function LearnHTML() {
                 <LearnChild />
             </div>
 
+            <div>
+                <LearnPortalModel />
+            </div>
+            
             <br />
             <br />
             <br />

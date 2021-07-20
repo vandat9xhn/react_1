@@ -11,9 +11,7 @@ export async function handle_API_AddFriend_L(request_title, c_count) {
         c_count: c_count,
         request_title: request_title,
     });
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }
 
 //

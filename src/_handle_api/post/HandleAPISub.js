@@ -7,7 +7,7 @@ import {
     API_PostHisSub_R,
     API_PostSubContentMore_R,
 } from '../../api/api_django/user/user_post/UserPost';
-// 
+//
 import makeFormData from '../../_some_function/makeFormData';
 //
 import {
@@ -32,9 +32,7 @@ export async function handle_API_Sub_L(
         },
         is_vid_pic
     );
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }
 
 export async function handle_API_Sub_C(
@@ -51,10 +49,8 @@ export async function handle_API_Sub_C(
         }),
         is_vid_pic
     );
-    // const { content, vid_pic } = res.data;
-    const { content, vid_pic } = data;
-
-    return [content, vid_pic];
+    // return res.data;
+    return data;
 }
 
 export async function handle_API_Sub_U(
@@ -70,9 +66,7 @@ export async function handle_API_Sub_U(
         }),
         is_vid_pic
     );
-    const { content, vid_pic } = res.data;
-
-    return [content, vid_pic];
+    return res.data;;
 }
 
 // export async function handle_API_Sub_D(sub_id=0) {
@@ -111,9 +105,7 @@ export async function handle_API_LikeSub_L(
         },
         is_vid_pic
     );
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }
 
 // export async function handle_API_LikeSub_C(sub_id=0) {
@@ -134,9 +126,7 @@ export async function handle_API_HistorySub_L(
         },
         is_vid_pic
     );
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }
 
 export async function handle_API_MoreContentHisSub_R(

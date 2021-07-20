@@ -47,21 +47,24 @@ function CommentsWs({
     async function onGetCommentsWs() {
         setFetchingCmt(true);
 
-        const [new_comments] = await handle_API_Cmt_L(
+        const { data: new_comments } = await handle_API_Cmt_L(
             parent_id,
             comments.length
         );
         comments.push(...new_comments);
-        
+
         setFetchingCmt(false);
     }
 
     //
     async function onSendCmt(content, files) {
-        const [new_content, vid_pic] = await handle_API_Cmt_C(parent_id, {
-            content: content,
-            vid_pic: files[0],
-        });
+        const { content: new_content, vid_pic } = await handle_API_Cmt_C(
+            parent_id,
+            {
+                content: content,
+                vid_pic: files[0],
+            }
+        );
 
         ws_send({
             type: ws_type_cmt + '_input',

@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+// 
+import { useDataShowMore } from '../../../../_hooks/useDataShowMore';
 //
 import ScreenBlur from '../../components/frame/blur/ScreenBlur';
 import ScreenBlurHead from '../../components/part/head/ScreenBlurHead';
@@ -14,7 +16,7 @@ export function openScreenHistory({
     title,
     handle_API_History_L,
     HisComponent,
-    ...data_his,
+    ...data_his
 }) {
     openScreenFloor({
         FloorComponent: ScreenHistory,
@@ -36,50 +38,24 @@ function ScreenHistory({
     handle_API_History_L,
 
     HisComponent,
-    ...data_his,
+    ...data_his
 }) {
     //
-    const [history_state, setHistoryState] = useState({
-        histories: [],
-        count_his: 0,
-        has_fetched: false,
-        is_fetching: false,
+    const { data_state, getData_API } = useDataShowMore({
+        initial_arr: [],
+        handle_API_L: handle_API_History_L,
     });
 
-    const { histories, count_his, has_fetched, is_fetching } = history_state;
+    const { data_arr, count, has_fetched, is_fetching } = data_state;
 
     //
     useEffect(() => {
-        getAPI_History();
+        getData_API();
     }, []);
 
     //
-    async function getAPI_History() {
-        try {
-            setHistoryState({
-                ...history_state,
-                is_fetching: true,
-            });
-
-            const [data, new_count] = await handle_API_History_L(
-                histories.length
-            );
-
-            setHistoryState({
-                ...history_state,
-                is_fetching: false,
-                count_his: has_fetched ? count_his : new_count,
-                has_fetched: true,
-                histories: has_fetched ? [...histories, ...data] : data,
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    //
     function showMoreHistory() {
-        getAPI_History();
+        getData_API();
     }
 
     //
@@ -92,11 +68,11 @@ function ScreenHistory({
                 <ScreenBlurHead title={title} closeScreenBlur={closeScreen} />
 
                 <div className="ScreenBlur_body_contain scroll-thin">
-                    <HisComponent histories={histories} {...data_his} />
+                    <HisComponent histories={data_arr} {...data_his} />
                 </div>
 
                 <ScreenBlurShowMore
-                    is_show_more={count_his > histories.length}
+                    is_show_more={count > data_arr.length}
                     is_fetching={is_fetching}
                     handleShowMore={showMoreHistory}
                 />

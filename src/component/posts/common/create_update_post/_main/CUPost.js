@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { loadFile } from '../../../../../_some_function/loadFile';
-//
 import CUPostHome from '../home/_main/CUPostHome';
 import FixAll from '../fix_all/_main/FixAll';
 //
@@ -28,13 +26,13 @@ CUPost.propTypes = {
 
 CUPost.defaultProps = {
     main_content: '',
-    vid_pics: [
-        // {
-        //     id: 0,
-        //     vid_pic: '',
-        //     content: '',
-        //     type: '',
-        // },
+    vid_pics: [] || [
+        {
+            id: 0,
+            vid_pic: '',
+            content: '',
+            type: '',
+        },
     ],
 
     detectHasChange: () => {},
@@ -56,8 +54,13 @@ function CUPost({
         c_vid_pics: JSON.parse(JSON.stringify(old_vid_pics)),
 
         created_arr: Array(old_vid_pics.length).fill(''),
-        deleted_arr: [],
-        updated_arr: [],
+        deleted_arr: [] || [-1],
+        updated_arr: [] || [
+            {
+                id: -1,
+                content: '',
+            },
+        ],
 
         is_loading: false,
         open_fix_all: false,
@@ -79,19 +82,12 @@ function CUPost({
 
     //
     function checkHasChange() {
-        if (old_main_content != main_content) {
-            return true;
-        }
-
-        if (created_arr.some((item) => item != '')) {
-            return true;
-        }
-
-        if (deleted_arr.length) {
-            return true;
-        }
-
-        if (updated_arr.length) {
+        if (
+            old_main_content != main_content ||
+            created_arr.some((item) => item != '') ||
+            deleted_arr.length ||
+            updated_arr.length
+        ) {
             return true;
         }
 
@@ -113,31 +109,30 @@ function CUPost({
     /* ---------------- VID_PIC --------------- */
 
     //
-    async function handleChooseFiles(event) {
-        const new_files = event.target.files;
+    function handleStartLoadFile() {
+        setUpdateCreateState((update_create_state) => ({
+            ...update_create_state,
+            is_loading: true,
+        }));
+    }
 
-        if (new_files.length) {
-            setUpdateCreateState((update_create_state) => ({
-                ...update_create_state,
-                is_loading: true,
-            }));
+    //
+    function handleChooseFiles(data_files) {
+        const { files, vid_pics } = data_files;
 
-            const { files, vid_pics } = await loadFile(new_files);
+        const new_vid_pics = vid_pics.map((item) => {
+            item.content = '';
+            item.id = 0;
 
-            const new_vid_pics = vid_pics.map((item) => {
-                item.content = '';
-                item.id = 0;
+            return item;
+        });
 
-                return item;
-            });
-
-            setUpdateCreateState((update_create_state) => ({
-                ...update_create_state,
-                created_arr: [...created_arr, ...files],
-                c_vid_pics: [...c_vid_pics, ...new_vid_pics],
-                is_loading: false,
-            }));
-        }
+        setUpdateCreateState((update_create_state) => ({
+            ...update_create_state,
+            created_arr: [...created_arr, ...files],
+            c_vid_pics: [...c_vid_pics, ...new_vid_pics],
+            is_loading: false,
+        }));
     }
 
     //
@@ -245,6 +240,7 @@ function CUPost({
                             showFixAll={showFixAll}
                             handleChangeMainContent={handleChangeMainContent}
                             // deleteAnItem={deleteAnItem}
+                            handleStartLoadFile={handleStartLoadFile}
                             handleChooseFiles={handleChooseFiles}
                             handleCUPost={onCUPost}
                         />

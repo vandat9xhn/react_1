@@ -4,7 +4,7 @@ import { usePositionXY } from './usePositionXY';
 //
 export function useMouseEnterLeave({
     handle_API_L,
-    
+
     handleOpenDivFixLoading,
     handleOpenDivFixPeople,
     handleCloseDivFixPeople,
@@ -32,12 +32,11 @@ export function useMouseEnterLeave({
 
         handleOpenDivFixLoading();
 
-        const [data, new_count] = await handle_API_L();
+        const { data, count: new_count } = await handle_API_L();
 
         if (is_mouse_enter.current) {
             mouse_state.list = data;
             mouse_state.count = new_count;
-
             handleOpenDivFixPeople();
 
             return;
@@ -47,7 +46,6 @@ export function useMouseEnterLeave({
     //
     function handleMouseleave() {
         is_mouse_enter.current = false;
-
         handleCloseDivFixPeople();
     }
 
@@ -59,7 +57,7 @@ export function useMouseEnterLeave({
 export function useMouseEnterLeaveNormal(
     handle_API_L,
     ref_child_elm,
-    ref_btn_elm,
+    ref_btn_elm
 ) {
     //
     const is_mouse_enter = useRef(false);
@@ -101,7 +99,7 @@ export function useMouseEnterLeaveNormal(
             is_fetching: true,
         }));
 
-        const [data, new_count] = await handle_API_L();
+        const {data, count: new_count} = await handle_API_L();
 
         if (is_mouse_enter.current) {
             setMouseState((mouse_state) => ({
@@ -115,7 +113,7 @@ export function useMouseEnterLeaveNormal(
             return;
         }
 
-        handleMouseleave()
+        handleMouseleave();
     }
 
     //

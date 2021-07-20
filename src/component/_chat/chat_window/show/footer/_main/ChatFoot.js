@@ -11,7 +11,6 @@ import { openScreenCanvas } from '../../../../../_screen/type/canvas/_main/Canva
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 //
 import { WsSend } from '../../../../../../_some_function/WsSend';
-import { loadFile } from '../../../../../../_some_function/loadFile';
 //
 import Textarea from '../../../../../input/textarea/Textarea';
 //
@@ -81,25 +80,24 @@ function ChatF({ canvas_obj, input_obj }) {
     }
 
     //
-    async function handleChooseFiles(event) {
-        const new_files = event.target.files;
+    function handleStartLoadFile() {
+        setFootState({
+            ...foot_state,
+            file_reading: true,
+        });
+    }
 
-        if (new_files.length) {
-            setFootState({
-                ...foot_state,
-                file_reading: true,
-            });
+    //
+    function handleChooseFiles(data_files) {
+        const { files: new_files, vid_pics } = data_files;
 
-            const { vid_pics } = await loadFile(new_files, 'url');
+        files.push(...new_files);
+        urls.push(...vid_pics);
 
-            files.push(...new_files);
-            urls.push(...vid_pics);
-
-            setFootState({
-                ...foot_state,
-                file_reading: false,
-            });
-        }
+        setFootState({
+            ...foot_state,
+            file_reading: false,
+        });
     }
 
     function deleteAnItemPreview(delete_ix) {
@@ -158,7 +156,7 @@ function ChatF({ canvas_obj, input_obj }) {
             return;
         }
 
-        const data_send = [text, current_canvas, files];
+        const data_send = [text, current_canvas, JSON.stringify(files)];
 
         resetCanvas();
         resetInput();
@@ -215,6 +213,7 @@ function ChatF({ canvas_obj, input_obj }) {
                             more_input={more_input}
                             moreActionsIp={handleMoreInput}
                             letDrawCanvas={letDrawCanvas}
+                            handleStartLoadFile={handleStartLoadFile}
                             handleChooseFiles={handleChooseFiles}
                         />
                     </div>

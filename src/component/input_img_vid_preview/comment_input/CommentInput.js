@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { loadFile } from '../../../_some_function/loadFile';
-//
 import { useMounted } from '../../../_hooks/useMounted';
 //
 import IconsInput from '../../../_icons_svg/Icons_input/IconsInput';
@@ -69,27 +67,23 @@ function CommentInput({ file_multiple, placeholder, handleSend, deps_reset }) {
     }
 
     //
-    async function onChooseFile(event) {
-        const new_files = event.target.files;
+    function handleStartLoadFile() {
+        setCmtObj((cmt_obj) => ({
+            ...cmt_obj,
+            file_reading: true,
+        }));
+    }
 
-        if (new_files.length) {
-            setCmtObj((cmt_obj) => ({
-                ...cmt_obj,
-                file_reading: true,
-            }));
+    //
+    function onChooseFile(data_files) {
+        const { files: load_files, vid_pics } = data_files;
 
-            const { files: load_files, vid_pics } = await loadFile(
-                new_files,
-                'url'
-            );
-
-            setCmtObj((cmt_obj) => ({
-                ...cmt_obj,
-                urls: file_multiple ? [...urls, ...vid_pics] : vid_pics,
-                files: file_multiple ? [...files, ...load_files] : new_files,
-                file_reading: false,
-            }));
-        }
+        setCmtObj((cmt_obj) => ({
+            ...cmt_obj,
+            urls: file_multiple ? [...urls, ...vid_pics] : vid_pics,
+            files: file_multiple ? [...files, ...load_files] : load_files,
+            file_reading: false,
+        }));
     }
 
     //
@@ -111,11 +105,13 @@ function CommentInput({ file_multiple, placeholder, handleSend, deps_reset }) {
     function onSendCmt() {
         if (text.trim() || files.length) {
             handleSend(text, files, urls);
+
             setCmtObj({
                 text: '',
                 files: [],
                 urls: [],
             });
+
             ref_comment_input.current.querySelector(
                 'textarea.CommentInput_textarea'
             ).style.height = 'auto';
@@ -143,7 +139,8 @@ function CommentInput({ file_multiple, placeholder, handleSend, deps_reset }) {
                         <div className="CommentInput_files-row display-flex-center">
                             <div className="CommentInput_files-col">
                                 <InputFile
-                                    onChange={onChooseFile}
+                                    handleChange={onChooseFile}
+                                    handleStartLoadFile={handleStartLoadFile}
                                     file_multiple={file_multiple}
                                     accept="image/*,video/*"
                                     title="Choose images/videos"

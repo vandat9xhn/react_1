@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import './InputFile.scss';
+import { loadFile } from '../../../_some_function/loadFile';
 
 //
 InputFile.propTypes = {
@@ -28,19 +29,23 @@ InputFile.defaultProps = {
 };
 
 //
-function InputFile(props) {
-    const {
-        name,
-        type,
-        file_multiple,
-        accept,
-        title,
-        should_reset,
-        //
-        children,
-        onBlur,
-    } = props;
+function InputFile({
+    name,
+    type,
+    file_multiple,
+    accept,
+    title,
 
+    children,
+
+    should_reset,
+    vid_pic_key,
+
+    handleNoFiles = () => {},
+    handleStartLoadFile = () => {},
+    handleChange = () => {},
+    onBlur,
+}) {
     //
     const refInput = useRef(null);
 
@@ -50,12 +55,19 @@ function InputFile(props) {
     }
 
     //
-    function onChange(event) {
-        props.onChange(event);
-        should_reset &&
-            setTimeout(() => {
-                event.target.value = '';
-            }, 500);
+    async function onChange(event) {
+        const new_files = event.target.files;
+
+        if (new_files.length) {
+            handleStartLoadFile();
+
+            const data_files = await loadFile(new_files, vid_pic_key);
+
+            handleChange(data_files);
+            should_reset && (event.target.value = '');
+        } else {
+            handleNoFiles();
+        }
     }
 
     //
@@ -72,6 +84,7 @@ function InputFile(props) {
                     multiple={file_multiple}
                     accept={accept}
                     title={title}
+                    hidden
                 />
             </div>
 

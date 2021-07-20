@@ -24,6 +24,7 @@ function CUPostHome({
     showFixAll,
     handleChangeMainContent,
     // deleteAnItem,
+    handleStartLoadFile,
     handleChooseFiles,
     handleCUPost,
 }) {
@@ -52,6 +53,7 @@ function CUPostHome({
             <div className="CUPostHome_footer">
                 <div className="CUPostHome_files-tag">
                     <CUPostHomeMoreInput
+                        handleStartLoadFile={handleStartLoadFile}
                         handleChooseFiles={handleChooseFiles}
                     />
                 </div>

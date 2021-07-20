@@ -191,17 +191,17 @@ function Posts({
                         handle_API_MoreContentHisSub_R
                     }
                 >
+                    <ComponentSkeleton
+                        has_fetched={has_fetched}
+                        component={<PostSkeleton />}
+                        num={1}
+                    />
+
                     {posts.map((post, index) => (
                         <div key={`Posts_${post.id}`} className="Posts_item">
                             <Post post={post} post_ix={index} />
                         </div>
                     ))}
-
-                    <ComponentSkeleton
-                        has_fetched={has_fetched}
-                        component={<PostSkeleton />}
-                        num={3}
-                    />
 
                     <div className="width-fit-content margin-auto">
                         <FetchingDiv is_fetching={is_fetching && has_fetched} />

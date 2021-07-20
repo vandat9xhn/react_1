@@ -31,7 +31,7 @@ function ScreenFixed({ url, handleDownload, children, closeScreenFixed }) {
             <div className="ScreenFixed_contain wh-100">
                 {children}
 
-                <div className="ScreenFixed_title">
+                <div className="ScreenFixed_title z-index-lv5">
                     <ScreenTitle
                         closeScreenTitle={closeScreenFixed}
                         url={url}

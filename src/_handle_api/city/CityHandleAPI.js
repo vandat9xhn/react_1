@@ -22,7 +22,5 @@ export async function handle_API_CityHistory_L(city_id, c_count = 0) {
         city_model: city_id,
         c_count: c_count,
     });
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }

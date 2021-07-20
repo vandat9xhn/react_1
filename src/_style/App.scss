@@ -25,7 +25,7 @@ body {
 
     &[data-count-hidden] {
         overflow-y: scroll;
-        
+
         .App {
             position: fixed;
             width: 100%;
@@ -34,7 +34,7 @@ body {
             height: 100%;
             overflow: auto;
 
-            &::-webkit-scrollbar{
+            &::-webkit-scrollbar {
                 display: none;
             }
         }
@@ -42,7 +42,7 @@ body {
 
     &[data-hidden-scroll] {
         // overflow-y: hidden;
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
             display: none;
         }
     }
@@ -114,7 +114,7 @@ img {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: var(--z-index-lv3);
+    z-index: calc(var(--z-index-lv3) + 2);
 }
 
 /* ------------ CONTENT -------------- */
@@ -124,9 +124,9 @@ img {
     min-height: calc(100vh + 5rem - var(--height-header));
 }
 
-.AppFixed{
+.AppFixed {
     position: relative;
-    z-index: var(--z-index-lv4);
+    z-index: calc(var(--z-index-lv3) + 1);
 }
 
 .AppNatureDrop {

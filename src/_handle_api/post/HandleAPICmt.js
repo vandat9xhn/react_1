@@ -32,9 +32,7 @@ export async function handle_API_Cmt_L(
         },
         is_vid_pic
     );
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }
 
 export async function handle_API_Cmt_C(
@@ -51,10 +49,8 @@ export async function handle_API_Cmt_C(
         }),
         is_vid_pic
     );
-    // const { content, vid_pic } = res.data;
-    const { content, vid_pic } = data;
-
-    return [content, vid_pic];
+    // return res.data;
+    return data;
 }
 
 export async function handle_API_Cmt_U(
@@ -70,9 +66,9 @@ export async function handle_API_Cmt_U(
         }),
         is_vid_pic
     );
-    const { content, vid_pic } = res.data;
+    // return res.data;
 
-    return [content, vid_pic];
+    return data
 }
 
 // export async function handle_API_Cmt_D(cmt_id=0) {
@@ -111,9 +107,7 @@ export async function handle_API_LikeCmt_L(
         },
         is_vid_pic
     );
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }
 
 // export async function handle_API_LikeCmt_C(cmt_id=0) {
@@ -134,9 +128,7 @@ export async function handle_API_HistoryCmt_L(
         },
         is_vid_pic
     );
-    const { data, count } = res.data;
-
-    return [data, count];
+    return res.data;
 }
 
 export async function handle_API_MoreContentHisCmt_R(
