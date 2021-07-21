@@ -26,7 +26,7 @@ function SearchFilter({
 }) {
     //
     return (
-        <div className="SearchFilter bg-primary brs-5px box-shadow-1">
+        <div className="SearchFilter bg-primary brs-5px box-shadow-1 scroll-thin">
             <div className="SearchFilter_row">
                 <div className="SearchFilter_col">
                     <FilterArea

@@ -3,13 +3,18 @@ import { useRef, useState } from 'react';
 import { useMounted } from './useMounted';
 
 //
-export function useDataShowMore({ initial_arr, handle_API_L }) {
+export function useDataShowMore({
+    initial_arr = [],
+    other_state = {},
+    handle_API_L,
+}) {
     //
     const [data_state, setDataState] = useState({
         data_arr: initial_arr,
         count: 0,
         has_fetched: false,
         is_fetching: false,
+        ...other_state,
     });
 
     //
@@ -58,9 +63,9 @@ export function useDataShowMore({ initial_arr, handle_API_L }) {
                 });
         } catch (e) {
             console.log(e);
-        } finally {
-            handleWhenFinally();
         }
+        
+        handleWhenFinally();
     }
 
     return {

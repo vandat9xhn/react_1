@@ -79,7 +79,7 @@ function ProfileFriend() {
 
     //
     async function handelDeleteFriend(user_id) {
-        await API_Friend_D(user_id, 'DELETE');
+        await API_Friend_D(user_id);
         setFriendObj({
             ...friend_obj,
             friend_arr: friend_arr.filter((item) => item.friend.id != user_id),

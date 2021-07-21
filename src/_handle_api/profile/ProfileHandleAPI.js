@@ -1,4 +1,4 @@
-import { API_Friends_LC } from '../../api/api_django/user/user_friend/UserFriend';
+import { API_Friend_LC } from '../../api/api_django/user/user_friend/UserFriend';
 import { API_Post_L } from '../../api/api_django/user/user_post/UserPost';
 
 import {
@@ -31,7 +31,7 @@ export async function handle_API_ProfilePost_L(c_count) {
 
 // friends
 export async function handle_API_Friend_L(user_id, c_count = 0) {
-    const res = await API_Friends_LC('GET', {
+    const res = await API_Friend_LC('GET', {
         profile_model: user_id,
         page: 1,
         size: 10,
@@ -378,7 +378,7 @@ export async function handle_API_Relationship_U({
 
 // family
 export async function handle_API_Family_L(c_count = 0) {
-    const res = await API_Friends_LC('GET', {
+    const res = await API_Friend_LC('GET', {
         page: 1,
         size: 10,
         c_count: c_count,

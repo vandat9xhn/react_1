@@ -43,7 +43,7 @@ function FriendEdit({ user, handelDeleteFriend }) {
 
     //
     return (
-        <div className="FriendEdit position-rel box-shadow-1 brs-5px bg-primary">
+        <div className="FriendEdit position-rel box-shadow-fb brs-5px bg-primary">
             <div className="FriendEdit_left">
                 <div>
                     <Link

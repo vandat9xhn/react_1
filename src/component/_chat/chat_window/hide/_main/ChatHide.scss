@@ -11,7 +11,13 @@
 }
 
 .ChatHide_contain{
-    animation: chat-hide-zoom 250ms forwards ease;
+    transition: transform 250ms ease;
+}
+.ChatHide_contain-mounted-yet{
+    transform: scale(0);
+}
+.ChatHide_contain-mounted-done{
+    transform: scale(1);
 }
 
 .ChatHide_close {
@@ -36,15 +42,5 @@
     &::after{
         bottom: 50%;
         transform: translateY(50%);
-    }
-}
-
-// 
-@keyframes chat-hide-zoom {
-    from{
-        transform: scale(0);
-    }
-    to{
-        transform: scale(1);
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import './BtnAction.scss';
 
 //
@@ -12,9 +12,7 @@ BtnAction.propTypes = {
 };
 
 //
-function BtnAction(props) {
-    const { btn_class, handleBtnAction, disabled, children } = props;
-
+function BtnAction({ btn_class, handleBtnAction, disabled, children }) {
     //
     return (
         <button

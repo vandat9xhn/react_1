@@ -1,5 +1,5 @@
 import axiosDjangoClient from '../../_axios/AxiosDjango';
-// 
+//
 import { API_FakeReal } from '../../../_ConstAPI';
 //
 import { default_friend_arr } from '../../../../_default/user_post/DefaultUserProfile';
@@ -7,7 +7,7 @@ import { default_friend_arr } from '../../../../_default/user_post/DefaultUserPr
 // Friends
 
 // Get
-export const API_Friends_LC = (method, params = {}, data = {}) =>
+export const API_Friend_LC = (method, params = {}, data = {}) =>
     API_FakeReal(
         default_friend_arr(),
         () =>
@@ -21,36 +21,49 @@ export const API_Friends_LC = (method, params = {}, data = {}) =>
     );
 
 // Delete
-export const API_Friend_D = (pk = 1, method, data = {}) =>
+export const API_Friend_D = (pk = 0) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
             url: '/user/d-friend/' + pk + '/',
-            method: method,
-            data: data,
+            method: 'DELETE',
         })
     );
 
 // Add friends
 
-// Get
-export const Get_UserAddFriends = (params, search = '') =>
-    axiosDjangoClient({
-        url: '/user/lc-add-friend/',
-        method: 'GET',
-        params: search ? { q: search, ...params } : params,
-    });
+export const API_AddFriends_L = (params, search = '') =>
+    API_FakeReal(
+        default_friend_arr(),
+        () =>
+            axiosDjangoClient({
+                url: '/user/add-friend-lc/',
+                method: 'GET',
+                params: search ? { q: search, ...params } : params,
+            }),
+        params
+    );
 
-// Create
-export const Create_UserAddFriends = (data) =>
-    axiosDjangoClient({
-        url: '/user/lc-add-friend/',
-        method: 'POST',
-        data: data,
-    });
+export const API_AddFriends_C = (data) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/add-friend-lc/',
+            method: 'POST',
+            data: data,
+        })
+    );
 
-// Delete
-export const D_UserAddFriends = (pk) =>
-    axiosDjangoClient({
-        url: '/user/d-add-friend/' + pk + '/',
-        method: 'DELETE',
-    });
+export const API_AddFriends_D = (pk) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/add-friend-d/' + pk + '/',
+            method: 'DELETE',
+        })
+    );
+
+export const API_FriendRemove_D = (pk) =>
+    API_FakeReal({}, () =>
+        axiosDjangoClient({
+            url: '/user/add-friend-remove/' + pk + '/',
+            method: 'DELETE',
+        })
+    );

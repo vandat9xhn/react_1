@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
@@ -26,6 +26,20 @@ function ChatHide({
     const { openZoomChat, closeZoomChat } = useContext(context_api);
 
     //
+    const [state_obj, setStateObj] = useState({
+        mounted_done: false,
+    });
+
+    const { mounted_done } = state_obj;
+
+    //
+    useEffect(() => {
+        setStateObj({
+            mounted_done: true,
+        });
+    }, []);
+
+    //
     function reOpenZoomChat() {
         openZoomChat(room_chat);
     }
@@ -42,7 +56,13 @@ function ChatHide({
     //
     return (
         <div className="ChatHide padding-4px">
-            <div className="ChatHide_contain position-rel">
+            <div
+                className={`ChatHide_contain position-rel ${
+                    mounted_done
+                        ? 'ChatHide_contain-mounted-done'
+                        : 'ChatHide_contain-mounted-yet'
+                }`}
+            >
                 <div
                     className={`ChatHide_close ${
                         IS_MOBILE ? '' : 'display-none'

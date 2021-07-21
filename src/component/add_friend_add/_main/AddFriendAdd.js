@@ -12,9 +12,7 @@ AddFriendAdd.propTypes = {
 };
 
 //
-function AddFriendAdd(props) {
-    const { id, pic, name, children } = props;
-
+function AddFriendAdd({ id, pic, name, children }) {
     //
     return (
         <div className="AddFriendAdd position-rel">
@@ -23,7 +21,7 @@ function AddFriendAdd(props) {
                     <img src={pic} alt="" />
                 </div>
 
-                <div className="AddFriendAdd_name">{name}</div>
+                <div className="AddFriendAdd_name label-field">{name}</div>
             </Link>
 
             <div className="AddFriendAdd_reply">{children}</div>

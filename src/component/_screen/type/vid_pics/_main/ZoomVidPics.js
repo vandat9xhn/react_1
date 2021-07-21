@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import VidPics from '../vid_pics/VidPics';
 import ScreenFixed from '../../../components/frame/has_title/_main/ScreenFixed';
-// 
+//
 import './ZoomVidPics.scss';
 
 //
@@ -51,7 +51,12 @@ function ZoomVidPics({ closeScreen, urls, current: initial_current }) {
     //
     return (
         <div className="ZoomVidPics">
-            <ScreenFixed url={urls[current].url} closeScreenFixed={closeScreen}>
+            <ScreenFixed
+                url={
+                    urls[current].url || urls[current].vid_pic || urls[current]
+                }
+                closeScreenFixed={closeScreen}
+            >
                 <VidPics
                     urls={urls}
                     current={current}

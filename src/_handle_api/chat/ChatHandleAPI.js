@@ -6,7 +6,7 @@ import {
     API_MessageLike_L,
     API_ChatTimeLine_LC,
 } from '../../api/api_django/chat/APIChat';
-import { API_Friends_LC } from '../../api/api_django/user/user_friend/UserFriend';
+import { API_Friend_LC } from '../../api/api_django/user/user_friend/UserFriend';
 //
 import makeFormData from '../../_some_function/makeFormData';
 //
@@ -85,7 +85,7 @@ export async function handle_API_ChatLike_L(mess_id, c_count = 0) {
 
 //
 export async function handle_API_ProfileFriend_L(exclude_ids, c_count) {
-    const res = await API_Friends_LC('GET', {
+    const res = await API_Friend_LC('GET', {
         page: 1,
         size: 5,
         c_count: c_count,

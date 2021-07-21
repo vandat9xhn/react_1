@@ -8,14 +8,14 @@ ListRequestFriend.propTypes = {
     title: PropTypes.string,
     request: PropTypes.string,
     is_active: PropTypes.bool,
-    changeCurrentList: PropTypes.func,
+    changeTypeFriend: PropTypes.func,
 };
 
 //
-function ListRequestFriend({ title, request, is_active, changeCurrentList }) {
+function ListRequestFriend({ title, request, is_active, changeTypeFriend }) {
     //
     function onChangeCurrentList() {
-        changeCurrentList(request);
+        changeTypeFriend(request);
     }
 
     //

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import IconSent from '../../../../../../../_icons_svg/icons_status_message/icon_sent/IconSent';
-// 
+//
 import './FilterSortItem.scss';
 
 //
@@ -14,8 +14,7 @@ FilterSortItem.propTypes = {
 };
 
 //
-function FilterSortItem(props) {
-    const { is_active, title, sort_by, handleFilterSort } = props;
+function FilterSortItem({ is_active, title, sort_by, handleFilterSort }) {
     //
     function onFilterSort() {
         handleFilterSort(sort_by);
@@ -23,12 +22,23 @@ function FilterSortItem(props) {
 
     //
     return (
-        <div className="FilterSortItem position-rel cursor-pointer" onClick={onFilterSort}>
-            <div className={is_active ? 'FilterSortItem_icon' : 'display-none'}>
+        <div
+            className="FilterSortItem position-rel cursor-pointer"
+            onClick={onFilterSort}
+        >
+            <div
+                className={
+                    is_active
+                        ? 'FilterSortItem_icon display-flex align-items-center'
+                        : 'display-none'
+                }
+            >
                 <IconSent />
             </div>
 
-            <div className={is_active ? 'text-blue' : ''}>{title}</div>
+            <div className={is_active ? 'text-blue label-field' : ''}>
+                {title}
+            </div>
         </div>
     );
 }

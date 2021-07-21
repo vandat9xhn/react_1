@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { API_Friends_LC } from '../../../../../../../api/api_django/user/user_friend/UserFriend';
+import { API_Friend_LC } from '../../../../../../../api/api_django/user/user_friend/UserFriend';
 //
 import { useMouseDragScrollToX } from '../../../../../../../_hooks/useMouseDragScrollToX';
 //
@@ -40,7 +40,7 @@ function HeaderMessHead({ closeZoom }) {
 
     //
     async function getData_API_Friend_L() {
-        const res = await API_Friends_LC('GET', {});
+        const res = await API_Friend_LC('GET', {});
 
         const new_friend_arr = res.data.map((item) => item.friend);
 

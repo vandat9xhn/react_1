@@ -7,7 +7,13 @@
 
 
 .SearchFilter{
+    position: sticky;
+    top: 56px;
+    
     width: 14.5rem;
+    height: calc(100vh - 56px);
+    overflow: auto;
+
     padding: 0.5rem;
     border: 1px solid var(--md-bg-ccc);
 }

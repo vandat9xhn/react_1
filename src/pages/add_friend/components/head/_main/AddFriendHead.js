@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { title_add_friend_arr } from '../../__common_data/AddFriendObj';
+import { title_add_friend_arr } from '../../../__common_data/AddFriendObj';
 
 import ListRequestFriend from '../list_request_friend/ListRequestFriend';
 //
@@ -9,12 +9,12 @@ import './AddFriendHead.scss';
 
 //
 AddFriendHead.propTypes = {
-    c_request: PropTypes.string,
-    changeCurrentList: PropTypes.func,
+    type_friend: PropTypes.string,
+    changeTypeFriend: PropTypes.func,
 };
 
 //
-function AddFriendHead({ c_request, changeCurrentList }) {
+function AddFriendHead({ type_friend, changeTypeFriend }) {
     //
     return (
         <div className="AddFriendHead">
@@ -27,8 +27,8 @@ function AddFriendHead({ c_request, changeCurrentList }) {
                         <ListRequestFriend
                             title={item.title}
                             request={item.request}
-                            is_active={c_request == item.request}
-                            changeCurrentList={changeCurrentList}
+                            is_active={type_friend == item.request}
+                            changeTypeFriend={changeTypeFriend}
                         />
                     </div>
                 ))}

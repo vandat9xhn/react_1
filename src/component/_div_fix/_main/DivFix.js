@@ -85,7 +85,7 @@ function DivFix({
         <div
             className={`DivFix ${
                 is_width_lte_400
-                    ? 'DivFixItem_fixed pos-fixed-100 bg-loader'
+                    ? 'DivFixItem_fixed pos-fixed-100 z-index-lv5 bg-loader'
                     : ''
             }`}
         >

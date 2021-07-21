@@ -1,4 +1,4 @@
-import { API_Friends_LC } from '../../api/api_django/user/user_friend/UserFriend';
+import { API_Friend_LC } from '../../api/api_django/user/user_friend/UserFriend';
 import { API_Post_L } from '../../api/api_django/user/user_post/UserPost';
 //
 import {
@@ -19,7 +19,7 @@ export async function handle_API_NewFeedPost_L({ c_count = 0, params = {} }) {
 
 //
 export async function handle_API_NewFeedContact_L({ c_count = 0 }) {
-    const res = await API_Friends_LC('GET', {
+    const res = await API_Friend_LC('GET', {
         ...params_new_feed_contact_l,
         c_count: c_count,
     });
