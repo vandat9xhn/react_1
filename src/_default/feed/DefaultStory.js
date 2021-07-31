@@ -1,3 +1,5 @@
+import { IS_MOBILE } from '../../_constant/Constant';
+//
 import { getRandomId } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
@@ -10,4 +12,5 @@ const default_story_obj = () => ({
     ...getRandomUser(),
 });
 
-export const default_story_arr = () => getDefaultArr(default_story_obj, 0, 12);
+export const default_story_arr = () =>
+    getDefaultArr(default_story_obj, 0, 8).slice(0, IS_MOBILE ? 6 : 4);

@@ -5,23 +5,40 @@ export const baseURL = is_api_fake
     : 'https://react-django-heroku.herokuapp.com/';
 
 //
-const API_Fake = (new_data, params = {}) =>
+const API_Fake = ({ data, followed_size, params = {} }) =>
     new Promise((res) => {
-        // const data = JSON.parse(JSON.stringify(new_data));
         const is_pagination = 'page' in params;
+        const size = params['size'] || 10;
 
         setTimeout(() => {
             res(
                 is_pagination
-                    ? { data: { data: new_data, pages: 10, count: 222 } }
-                    : { data: new_data }
+                    ? {
+                          data: {
+                              data: data,
+                              pages: 10,
+                              count: followed_size
+                                  ? data.length < size
+                                      ? data.length
+                                      : size * 3 + 6
+                                  : 222,
+                          },
+                      }
+                    : { data: data }
             );
         }, 250);
     });
 
 //
-export const API_FakeReal = (data, API_Real = () => new Promise(), params) =>
-    is_api_fake ? API_Fake(data, params) : API_Real();
+export const API_FakeReal = (
+    data,
+    API_Real = () => new Promise(),
+    params = {},
+    followed_size = false
+) =>
+    is_api_fake
+        ? API_Fake({ data: data, params: params, followed_size: followed_size })
+        : API_Real();
 
 /* --------- CSRF TOKEN --------- */
 

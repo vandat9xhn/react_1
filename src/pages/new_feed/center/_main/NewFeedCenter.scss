@@ -1,0 +1,21 @@
+.NewFeedCenter{
+    display: flex;
+    flex-direction: column;
+}
+// .
+.NewFeedCenter_story{
+    margin-bottom: 1rem;
+}
+// .
+.NewFeedCenter_new{
+    margin: 0 auto 1rem ;
+    width: 500px;
+    max-width: 100%;
+}
+
+// 
+@media (max-width: 500px) {
+    .NewFeedCenter_new{
+        order: -1;
+    }
+}

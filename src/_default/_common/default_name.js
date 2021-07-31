@@ -13,6 +13,10 @@ const default_arr_name = [
     'Hai',
     'My',
     'Ngoc',
+    'Tran Nguyen',
+    'Tran Le',
+    'Nguyen Le',
+    'Le Nguyen',
 ];
 
 //

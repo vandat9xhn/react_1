@@ -18,7 +18,7 @@ AddNewPost.propTypes = {
     handleCreatePost: PropTypes.func,
 };
 AddNewPost.defaultProps = {
-    title: "What 's on your mind?",
+    title: "What's on your mind?",
 };
 
 //

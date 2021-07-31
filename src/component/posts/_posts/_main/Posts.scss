@@ -1,31 +1,11 @@
-.Posts_head{
-    display: flex;
-    flex-direction: column;
-}
-// .
-.Posts_story{
-    margin-bottom: 1rem;
-}
-// .
-.Posts_new{
-    margin: 0 auto 1rem ;
-    width: 500px;
-    max-width: 100%;
-}
-
-.Posts_item{
-    margin-bottom: 1rem;
-}
-
 // 
-@media (max-width: 500px) {
-    .Posts_head{
-        flex-direction: column-reverse;
-    }
+.Posts_item {
+    margin-bottom: 1rem;
 }
 
+//
 @media (max-width: 330px) {
-    .Posts_new{
+    .Posts_new {
         margin-bottom: 0.75rem;
     }
 }
