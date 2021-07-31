@@ -15,6 +15,7 @@ import ContextPost from '../../../../_context/post/ContextPost';
 import ComponentSkeleton from '../../../skeleton/component_skeleton/ComponentSkeleton';
 import FetchingDiv from '../../../some_div/fetching/FetchingDiv';
 import AddNewPost from '../../common/add_new_post/AddNewPost';
+import NewFeedStory from '../../../../pages/new_feed/story/NewFeedStory';
 //
 import {
     handle_API_Like_L,
@@ -51,15 +52,19 @@ import './Posts.scss';
 //
 Posts.propTypes = {
     posts: PropTypes.array,
-    has_add_new: PropTypes.bool,
-    title_add_new: PropTypes.string,
     has_fetched: PropTypes.bool,
     is_fetching: PropTypes.bool,
+
+    title_add_new: PropTypes.string,
+    has_add_new: PropTypes.bool,
+    has_story: PropTypes.bool,
 };
 Posts.defaultProps = {
-    has_add_new: true,
     has_fetched: false,
     is_fetching: false,
+
+    has_add_new: true,
+    has_story: false,
 };
 
 //
@@ -67,7 +72,9 @@ function Posts({
     posts,
     has_fetched,
     is_fetching,
+    
     has_add_new,
+    has_story,
     title_add_new,
 }) {
     //
@@ -152,14 +159,22 @@ function Posts({
     //
     return (
         <div className="Posts">
-            {has_add_new && (
-                <div className="Posts_new">
-                    <AddNewPost
-                        title={title_add_new}
-                        handleCreatePost={handleCreatePost}
-                    />
-                </div>
-            )}
+            <div className="Posts_head">
+                {has_story && (
+                    <div className="Posts_story">
+                        <NewFeedStory />
+                    </div>
+                )}
+
+                {has_add_new && (
+                    <div className="Posts_new">
+                        <AddNewPost
+                            title={title_add_new}
+                            handleCreatePost={handleCreatePost}
+                        />
+                    </div>
+                )}
+            </div>
 
             <div>
                 <ContextPost

@@ -117,7 +117,7 @@ export function useScrollDownWindow({
     initial_data_arr = [],
     handle_API_L = () => new Promise(),
     thresh_hold = 1,
-    more_bottom = 500,
+    more_bottom = 1000,
 }) {
     //
     const {

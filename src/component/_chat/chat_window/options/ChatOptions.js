@@ -1,63 +1,32 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
 //
 import IconThreeDot from '../../../../_icons_svg/icon_three_dot/IconThreeDot';
+import IconSubtract from '../../../../_icons_svg/subtract/IconSubtract';
+import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
+import IconsEye from '../../../../_icons_svg/icons_eye/IconsEye';
 //
 import CloseDiv from '../../../some_div/close_div/CloseDiv';
 //
 import './ChatOptions.scss';
-import IconSubtract from '../../../../_icons_svg/subtract/IconSubtract';
-import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
-import IconsEye from '../../../../_icons_svg/icons_eye/IconsEye';
 
 //
 ChatOptions.propTypes = {};
 
 //
-function ChatOptions({ is_show_chat_hide, toggleChatInactive }) {
+function ChatOptions({
+    is_show_chat_hide,
+    open_options,
+
+    toggleOptions,
+    closeOptions,
+    toggleChatInactive,
+    handleHideAllZoomChat,
+}) {
     //
-    const { closeAllZoomChat, hideAllZoomChat } = useContext(context_api);
-
-    //
-    const [state_obj, setStateObj] = useState({
-        open_options: false,
-    });
-
-    const { open_options } = state_obj;
-
-    //
-    function toggleOptions() {
-        setStateObj({
-            ...state_obj,
-            open_options: !open_options,
-        });
-    }
-
-    //
-    function closeOptions() {
-        open_options &&
-            setStateObj({
-                ...state_obj,
-                open_options: false,
-            });
-    }
-
-    //
-    function onHideAllZoomChat() {
-        hideAllZoomChat();
-        closeOptions();
-    }
-
-    //
-    function onToggleChatInactive() {
-        setStateObj({
-            open_options: false,
-        });
-
-        toggleChatInactive();
-    }
+    const { closeAllZoomChat } = useContext(context_api);
 
     //
     return (
@@ -99,7 +68,7 @@ function ChatOptions({ is_show_chat_hide, toggleChatInactive }) {
                                             <IconSubtract size_icon="0.75rem" />
                                         ),
                                         title: 'Minimise open chats',
-                                        funcHandle: onHideAllZoomChat,
+                                        funcHandle: handleHideAllZoomChat,
                                     },
                                     {
                                         icon: (
@@ -113,7 +82,7 @@ function ChatOptions({ is_show_chat_hide, toggleChatInactive }) {
                                         title: is_show_chat_hide
                                             ? 'Hide'
                                             : 'Unhide',
-                                        funcHandle: onToggleChatInactive,
+                                        funcHandle: toggleChatInactive,
                                     },
                                 ].map((item, ix) => (
                                     <div

@@ -1,51 +1,56 @@
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import { HEADER_HEAD } from '../_constant/Constant';
 
 //
 const header_head = HEADER_HEAD + 10;
+const isInnerWidthOk = () => innerWidth > 900;
+const isHrefOk = (sticky_location) =>
+    location.href.search(sticky_location) >= 0;
 
 //
-export function useStickyAuto({ ref_main_elm, ref_preview_elm, ref_fake_elm }) {
+export function useStickyAuto({ sticky_location = /./ }) {
     //
-    const ref_fetched = useRef(false);
+    const ref_main_elm = useRef(null);
+    const ref_fake_elm = useRef(null);
+    const ref_preview_elm = useRef(null);
 
-    const more_height = useRef(0);
+    const ref_is_innerWidth_ok = useRef(isInnerWidthOk());
+    const ref_is_href_ok = useRef(isHrefOk(sticky_location));
+
+    const ref_more_height = useRef(0);
     const ref_scroll_y = useRef(0);
-    const is_last_scroll_down = useRef(true);
+    const ref_is_last_scroll_down = useRef(true);
 
     //
-    useEffect(() => {
-        ref_preview_elm.current.style.bottom = '0px';
-        ref_fake_elm.current.style.height = '0px';
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
     useEffect(() => {
         window.addEventListener('resize', handleResize);
 
         return () => {
             window.removeEventListener('resize', handleResize);
+            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    useEffect(() => {
+        ref_is_href_ok.current = isHrefOk(sticky_location);
+
+        setTimeout(() => {
+            if (ref_is_href_ok.current) {
+                ref_more_height.current = getNewMoreHeight();
+                document.getElementsByTagName('html')[0].scrollTop += 1;
+            }
+        }, 0);
+    }, [location.href]);
 
     //
     function handleScroll() {
         if (
-            innerWidth < 900 ||
-            !ref_fetched.current ||
-            more_height.current <= 0 ||
-            !ref_preview_elm.current ||
-            !ref_main_elm.current
+            !ref_is_innerWidth_ok.current ||
+            !ref_is_href_ok.current ||
+            ref_more_height.current <= 0
         ) {
-            ref_fake_elm.current  && (ref_fake_elm.current.style.height = '0px');
-
             return;
         }
 
@@ -60,7 +65,7 @@ export function useStickyAuto({ ref_main_elm, ref_preview_elm, ref_fake_elm }) {
 
         // scroll down
         if (is_scroll_down) {
-            if (!is_last_scroll_down.current) {
+            if (!ref_is_last_scroll_down.current) {
                 if (at_last_top) {
                     ref_fake_elm.current.style.height = '0px';
                 } else if (at_temp_top) {
@@ -69,48 +74,95 @@ export function useStickyAuto({ ref_main_elm, ref_preview_elm, ref_fake_elm }) {
                 }
             }
 
-            ref_preview_elm.current.style.top = -more_height.current + 'px';
+            ref_preview_elm.current.style.top = -ref_more_height.current + 'px';
             ref_preview_elm.current.style.bottom = 'auto';
 
-            is_last_scroll_down.current = true;
+            ref_is_last_scroll_down.current = true;
         }
 
         //  scroll up
         else {
-            if (at_bottom && is_last_scroll_down.current) {
-                ref_fake_elm.current.style.height =
-                    hide_height_main - more_height.current + 'px';
+            if (ref_is_last_scroll_down.current) {
+                if (at_bottom) {
+                    ref_fake_elm.current.style.height =
+                        hide_height_main - ref_more_height.current + 'px';
+                }
             }
 
             ref_preview_elm.current.style.top = 'auto';
             ref_preview_elm.current.style.bottom =
-                -more_height.current - header_head + 'px';
+                -ref_more_height.current - header_head + 'px';
 
-            is_last_scroll_down.current = false;
+            ref_is_last_scroll_down.current = false;
         }
 
         ref_scroll_y.current = pageYOffset;
     }
 
     //
-    function changeMoreHeight() {
+    function getNewMoreHeight() {
         const { height } = ref_preview_elm.current.getBoundingClientRect();
-        more_height.current =
-            height - innerHeight >= 0 ? height - innerHeight : 0;
+
+        return height - innerHeight > 0 ? height - innerHeight : 0;
     }
 
     //
     function handleResize() {
-        changeMoreHeight();
-        handleScroll();
+        if (!isHrefOk(sticky_location)) {
+            return;
+        }
+
+        const new_innerWidth_ok = isInnerWidthOk();
+
+        if (!new_innerWidth_ok) {
+            ref_fake_elm.current.style.height = '0px';
+            ref_preview_elm.current.style.position = 'static';
+
+            if (ref_is_innerWidth_ok.current) {
+                ref_scroll_y.current +=
+                    ref_preview_elm.current.getBoundingClientRect().height;
+            }
+        } else {
+            if (!ref_is_innerWidth_ok.current) {
+                ref_scroll_y.current -=
+                    ref_preview_elm.current.getBoundingClientRect().height;
+            }
+        }
+
+        document.getElementsByTagName('html')[0].scrollTop =
+            ref_scroll_y.current;
+        ref_is_innerWidth_ok.current = new_innerWidth_ok;
+
+        if (!new_innerWidth_ok) {
+            return;
+        }
+
+        const new_more_height = getNewMoreHeight();
+        ref_preview_elm.current.style.position = '';
+
+        if (ref_more_height.current > 0 && new_more_height <= 0) {
+            ref_preview_elm.current.style.top = `${header_head}px`;
+            ref_preview_elm.current.style.bottom = 'auto';
+            ref_fake_elm.current.style.height = '0px';
+        }
+
+        ref_more_height.current = new_more_height;
+        ref_scroll_y.current = pageYOffset;
+
+        document.getElementsByTagName('html')[0].scrollTop += 1;
     }
 
     //
     function handleStartStickyAuto() {
-        ref_fetched.current = true;
-        changeMoreHeight();
+        ref_more_height.current = getNewMoreHeight();
+        window.addEventListener('scroll', handleScroll);
     }
 
     //
-    return { handleStartStickyAuto };
+    return {
+        handleStartStickyAuto,
+        ref_main_elm,
+        ref_preview_elm,
+        ref_fake_elm,
+    };
 }

@@ -1,15 +1,18 @@
 import 'regenerator-runtime/runtime';
-import Axios from 'axios';
+import axios from 'axios';
 import queryString from 'query-string';
+// 
+import { baseURL, csrftoken } from '../../_ConstAPI';
 //
-import { csrftoken } from '../../_ConstAPI';
+
+axios.defaults.baseURL = baseURL
 
 //
 let is_refreshing = false;
 
 //
-const axiosDjangoClient = Axios.create({
-    baseURL: process.env.AXIOS_DJANGO,
+const axiosDjangoClient = axios.create({
+    // baseURL: is_api_fake ? process.env.AXIOS_DJANGO : process.env.HEROKU_API,
     headers: {
         Accept: '*/*',
         // 'content-type': 'application/json',
@@ -22,8 +25,8 @@ const axiosDjangoClient = Axios.create({
 
 //
 export const RefreshToken = () =>
-    Axios({
-        url: '/log/refresh-token/',
+    axios({
+        url: 'api/account/refresh-token/',
         method: 'POST',
     });
 
@@ -91,7 +94,7 @@ axiosDjangoClient.interceptors.request.use(async (config) => {
         const access_token = await GetRefreshToken();
         config.headers.Authorization = `Bearer ${access_token}`;
 
-        is_refreshing = false
+        is_refreshing = false;
 
         return config;
     } else {

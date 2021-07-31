@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../_constant/Constant';
-// 
-import { funcHandleBeforeOpen, funcHandleScrollDiff } from '../__func/scroll_elm';
-// 
+//
+import {
+    funcHandleBeforeOpen,
+    funcHandleScrollDiff,
+} from '../__func/scroll_elm';
+//
 import DivFix from '../_main/DivFix';
 //
 import './DivFixPeople.scss';
@@ -28,6 +31,8 @@ const initial_div_fix_state = {
 
     open_div_fix: false,
     FixElement: <div></div>,
+
+    closing: false,
 };
 
 //
@@ -36,14 +41,20 @@ class DivFixPeople extends Component {
         ...initial_div_fix_state,
     };
 
+    // 
+    componentDidMount() {
+        this.closing_time_out = null
+    }
+    
+
     //
     handleScrollDiff = (e) => {
-        funcHandleScrollDiff(this, e)
+        funcHandleScrollDiff(this, e);
     };
 
     //
     handleBeforeOpen = (scroll_elm) => {
-        funcHandleBeforeOpen(this, scroll_elm)
+        funcHandleBeforeOpen(this, scroll_elm);
     };
 
     //
@@ -63,6 +74,7 @@ class DivFixPeople extends Component {
 
         FixElement,
     }) => {
+        clearTimeout(this.closing_time_out)
         this.handleBeforeOpen(scroll_elm);
 
         this.setState({
@@ -80,24 +92,35 @@ class DivFixPeople extends Component {
             scroll_y_diff: 0,
 
             width: width,
-
+            
             open_div_fix: true,
             FixElement: FixElement,
+            
+            closing: false,
         });
     };
 
     //
     closeDivFixPeople = () => {
-        this.state.open_div_fix &&
+        if (!this.state.open_div_fix) {
+            return;
+        }
+
+        this.setState({
+            closing: true,
+        });
+
+        this.closing_time_out = setTimeout(() => {
             this.setState({
                 ...initial_div_fix_state,
             });
+        }, 250);
     };
 
-    // 
+    //
     closeDivFix = () => {
-        this.closeDivFixPeople()
-    }
+        this.closeDivFixPeople();
+    };
 
     //
     render() {
@@ -120,11 +143,13 @@ class DivFixPeople extends Component {
 
             open_div_fix,
             FixElement,
+
+            closing,
         } = this.state;
 
         //
         if (IS_MOBILE || !open_div_fix) {
-            return null
+            return null;
         }
 
         //
@@ -148,7 +173,9 @@ class DivFixPeople extends Component {
                     closeDivFix={this.closeDivFix}
                 >
                     <div
-                        className="DivFixPeople_contain"
+                        className={`DivFixPeople_contain ${
+                            closing ? 'opacity-0' : 'opacity-1'
+                        }`}
                         style={{ width: `${width}px` }}
                     >
                         {FixElement}

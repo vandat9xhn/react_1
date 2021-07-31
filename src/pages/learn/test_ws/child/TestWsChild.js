@@ -1,42 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// 
-import { API_Heroku1_Phone_L } from '../../../../api/api_heroku/get_api/GetAPI';
+//
+import { API_PhoneLaptop_L } from '../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
 
-// 
-TestWsChild.propTypes = {
-    
-};
+//
+TestWsChild.propTypes = {};
 
-// 
-function TestWsChild(props) {
-    const {arr} = props;
-    // 
-    const [force_update, setForceUpdate] = useState(false)
+//
+function TestWsChild({ arr }) {
+    //
+    const [force_update, setForceUpdate] = useState(false);
 
-    // 
+    //
     useEffect(() => {
-        getDataHeroku_Phone()
-    }, [])
+        getDataHeroku_Phone();
+    }, []);
 
-    // 
-    async function getDataHeroku_Phone(){
-        const res = await API_Heroku1_Phone_L({
+    //
+    async function getDataHeroku_Phone() {
+        const res = await API_PhoneLaptop_L({
             page: 1,
             size: 10,
-        })
+        });
 
         console.log(res);
     }
 
-    // 
-    function handleTestUpdate(){
-        arr.push(arr.length + 1)
-        setForceUpdate(!force_update)
+    //
+    function handleTestUpdate() {
+        arr.push(arr.length + 1);
+        setForceUpdate(!force_update);
     }
 
     console.log(arr);
-    // 
+    //
     return (
         <div>
             <div className="cursor-pointer" onClick={handleTestUpdate}>
@@ -44,10 +41,8 @@ function TestWsChild(props) {
             </div>
 
             <div>
-                {arr.map(item => (
-                    <div key={`TestWsChild_${item}`}>
-                        {item}
-                    </div>
+                {arr.map((item) => (
+                    <div key={`TestWsChild_${item}`}>{item}</div>
                 ))}
             </div>
         </div>

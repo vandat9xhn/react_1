@@ -9,7 +9,8 @@ LearnPortal.propTypes = {};
 function LearnPortal({ children }) {
     return ReactDOM.createPortal(
         <div id="portal">{children}</div>,
-        document.getElementsByTagName('body')[0]
+        // document.getElementsByTagName('body')[0]
+        document.getElementsByClassName('App')[0]
     );
 }
 

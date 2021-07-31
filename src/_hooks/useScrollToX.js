@@ -1,43 +1,51 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 //
 import { handleScrollSmooth } from '../_some_function/handleScrollSmooth';
 
 //
-export function useScrollToX(elm, scroll_percent = 1) {
+export function useScrollToX(ref_elm, scroll_percent = 1) {
     //
-    const [mess_head_state, setMessHeadState] = useState({
-        is_has_next: true,
+    const [state_obj, setStateObj] = useState({
+        is_has_next: false,
         is_has_prev: false,
     });
 
-    const { is_has_next, is_has_prev } = mess_head_state;
+    const { is_has_next, is_has_prev } = state_obj;
 
     //
-    useEffect(() => {
-        elm && hasNextPrev();
-    }, []);
+    function hasNextPrev(
+        new_scroll_left = ref_elm.current ? ref_elm.current.scrollLeft : 0
+    ) {
+        if (!ref_elm.current) {
+            return;
+        }
 
-    //
-    function hasNextPrev(new_scroll_left = elm ? elm.scrollLeft : 0) {
-        const client_width = elm.clientWidth;
-        const scroll_width = elm.scrollWidth;
+        const client_width = ref_elm.current.clientWidth;
+        const scroll_width = ref_elm.current.scrollWidth;
 
-        if (new_scroll_left >= scroll_width - client_width) {
-            setMessHeadState({
+        if (scroll_width == client_width) {
+            setStateObj({
+                is_has_next: false,
+                is_has_prev: false,
+            });
+        }
+        //
+        else if (new_scroll_left >= scroll_width - client_width) {
+            setStateObj({
                 is_has_next: false,
                 is_has_prev: true,
             });
         }
         //
         else if (new_scroll_left <= 0) {
-            setMessHeadState({
+            setStateObj({
                 is_has_next: true,
                 is_has_prev: false,
             });
         }
         //
         else {
-            setMessHeadState({
+            setStateObj({
                 is_has_next: true,
                 is_has_prev: true,
             });
@@ -46,21 +54,22 @@ export function useScrollToX(elm, scroll_percent = 1) {
 
     //
     function handleNextPrev(is_next) {
-        const client_width = elm.clientWidth;
-        const scroll_left = elm.scrollLeft;
+        const client_width = ref_elm.current.clientWidth;
+        const scroll_left = ref_elm.current.scrollLeft;
         const new_scroll_left =
             scroll_left +
             (is_next ? 1 : -1) *
-                (client_width - parseInt(getComputedStyle(elm).padding)) *
+                (client_width -
+                    parseInt(getComputedStyle(ref_elm.current).padding)) *
                 scroll_percent;
 
         hasNextPrev(new_scroll_left);
-        elm.scrollTo(new_scroll_left, 0);
+        ref_elm.current.scrollTo(new_scroll_left, 0);
     }
 
     //
     function handleScrollTo(is_next = true) {
-        handleScrollSmooth(() => handleNextPrev(is_next), elm);
+        handleScrollSmooth(() => handleNextPrev(is_next), ref_elm.current);
     }
 
     /* ---------------------------------- */

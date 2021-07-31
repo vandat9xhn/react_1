@@ -12,7 +12,7 @@ export const API_Friend_LC = (method, params = {}, data = {}) =>
         default_friend_arr(),
         () =>
             axiosDjangoClient({
-                url: '/user/friend-lc/',
+                url: 'api/friend/friend-lc/',
                 method: method,
                 params: params,
                 data: data,
@@ -24,7 +24,7 @@ export const API_Friend_LC = (method, params = {}, data = {}) =>
 export const API_Friend_D = (pk = 0) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
-            url: '/user/d-friend/' + pk + '/',
+            url: 'api/friend/friend-d/' + pk + '/',
             method: 'DELETE',
         })
     );
@@ -36,7 +36,7 @@ export const API_AddFriends_L = (params, search = '') =>
         default_friend_arr(),
         () =>
             axiosDjangoClient({
-                url: '/user/add-friend-lc/',
+                url: 'api/friend/add-friend-lc/',
                 method: 'GET',
                 params: search ? { q: search, ...params } : params,
             }),
@@ -46,7 +46,7 @@ export const API_AddFriends_L = (params, search = '') =>
 export const API_AddFriends_C = (data) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
-            url: '/user/add-friend-lc/',
+            url: 'api/friend/add-friend-lc/',
             method: 'POST',
             data: data,
         })
@@ -55,7 +55,7 @@ export const API_AddFriends_C = (data) =>
 export const API_AddFriends_D = (pk) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
-            url: '/user/add-friend-d/' + pk + '/',
+            url: 'api/friend/add-friend-d/' + pk + '/',
             method: 'DELETE',
         })
     );
@@ -63,7 +63,7 @@ export const API_AddFriends_D = (pk) =>
 export const API_FriendRemove_D = (pk) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
-            url: '/user/add-friend-remove/' + pk + '/',
+            url: 'api/friend/add-friend-remove/' + pk + '/',
             method: 'DELETE',
         })
     );

@@ -1,0 +1,43 @@
+.StoryFaceCreate{
+    &:hover{
+        .StoryFaceCreate_head-img{
+            transform: scale(1.025);
+        }
+
+        .story-bg-hv{
+            display: block;
+        }
+    }
+}
+
+.StoryFaceCreate_row{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.StoryFaceCreate_head{
+    height: 5rem;
+}
+
+.StoryFaceCreate_foot{
+    height: 3rem;
+    padding-top: 0.75rem;
+    background-color: var(--md-bg-primary);
+
+    z-index: 2;
+}
+// .
+.StoryFaceCreate_add{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+// ..
+.StoryFaceCreate_add-contain{
+    width: 2rem;
+    height: 2rem;
+    border: 4px solid var(--md-bg-primary);
+    transform: rotate(45deg);
+}

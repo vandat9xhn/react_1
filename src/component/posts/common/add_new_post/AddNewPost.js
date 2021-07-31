@@ -47,7 +47,7 @@ function AddNewPost({ handleCreatePost, title }) {
     //
     return (
         <div
-            className="AddNewPost box-shadow-1 brs-5px"
+            className="AddNewPost padding-8px bg-primary box-shadow-1 brs-5px-md"
             onClick={onOpenScreenUpdate}
         >
             <div className="AddNewPost_row">
@@ -69,7 +69,7 @@ function AddNewPost({ handleCreatePost, title }) {
                         </div>
 
                         <div className="AddNewPost_head-right bg-fb flex-grow-1">
-                            <div className="AddNewPost_head-right_title opacity-05">
+                            <div className="AddNewPost_head-right_title text-nowrap opacity-05">
                                 {title}
                             </div>
                         </div>
@@ -77,8 +77,8 @@ function AddNewPost({ handleCreatePost, title }) {
                 </div>
 
                 <div className="AddNewPost_foot">
-                    <div className="AddNewPost_foot-row">
-                        <div className="AddNewPost_foot-item">
+                    <div className="AddNewPost_foot-row display-flex">
+                        <div className="AddNewPost_foot-item flex-grow-1 display-flex-center">
                             <IconsInput size_icon="1rem" />
                         </div>
                     </div>

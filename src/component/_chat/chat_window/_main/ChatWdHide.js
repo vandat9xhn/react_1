@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { CHAT_INACTIVE_NUM, IS_MOBILE } from '../../../../_constant/Constant';
+//
+import { context_api } from '../../../../_context/ContextAPI';
 //
 import ChatOptions from '../options/ChatOptions';
 import ChatHide from '../hide/_main/ChatHide';
@@ -15,11 +17,20 @@ ChatWdHide.propTypes = {};
 //
 function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
     //
+    const { hideAllZoomChat } = useContext(context_api);
+
+    //
+    const count_hide_item = !is_two_long_chat_inactive
+        ? chat_inactive_arr.length
+        : CHAT_INACTIVE_NUM + 1;
+
+    //
     const [state_obj, setStateObj] = useState({
         is_show_chat_hide: true,
+        open_options: false,
     });
 
-    const { is_show_chat_hide } = state_obj;
+    const { is_show_chat_hide, open_options } = state_obj;
 
     //
     function toggleChatInactive() {
@@ -29,16 +40,61 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
     }
 
     //
+    function toggleOptions() {
+        setStateObj({
+            ...state_obj,
+            open_options: !open_options,
+        });
+    }
+
+    //
+    function closeOptions() {
+        open_options &&
+            setStateObj({
+                ...state_obj,
+                open_options: false,
+            });
+    }
+
+    //
+    function handleHideAllZoomChat() {
+        hideAllZoomChat();
+        closeOptions();
+    }
+
+    //
+    function toggleChatInactive() {
+        setStateObj({
+            open_options: false,
+            is_show_chat_hide: !is_show_chat_hide,
+        });
+    }
+
+    //
     return (
         <div className="ChatWdHidden position-rel">
             <div
                 className={`ChatWdHidden_options ${
-                    IS_MOBILE || !is_show_chat_hide ? '' : 'display-none'
-                } ${is_show_chat_hide ? '' : 'ChatWdHidden_options-hide'}`}
+                    IS_MOBILE || !is_show_chat_hide || open_options
+                        ? ''
+                        : 'display-none'
+                } 
+               
+                `}
+                style={{
+                    bottom: `${
+                        !is_show_chat_hide ? 52 : count_hide_item * 52
+                    }px`,
+                }}
             >
                 <ChatOptions
                     is_show_chat_hide={is_show_chat_hide}
+                    open_options={open_options}
+                    //
                     toggleChatInactive={toggleChatInactive}
+                    toggleOptions={toggleOptions}
+                    closeOptions={closeOptions}
+                    handleHideAllZoomChat={handleHideAllZoomChat}
                 />
             </div>
 
@@ -49,7 +105,10 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
                         : 'ChatWdHidden_room-hide'
                 }`}
             >
-                <div className="ChatWdHidden_room-contain">
+                <div
+                    className="ChatWdHidden_room-contain"
+                    style={{ height: `${count_hide_item * 52}px` }}
+                >
                     <div>
                         {chat_inactive_arr
                             .slice(
@@ -61,6 +120,16 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
                                 <div
                                     key={`${item.room_chat}`}
                                     className="ChatWdHidden_item display-flex col-reverse"
+                                    style={{
+                                        transform: `translateY(-${
+                                            ((is_two_long_chat_inactive
+                                                ? CHAT_INACTIVE_NUM + 1
+                                                : chat_inactive_arr.length) -
+                                                1 -
+                                                ix) *
+                                            52
+                                        }px)`,
+                                    }}
                                 >
                                     <ChatHide
                                         chat_ix={ix}
@@ -73,7 +142,7 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
                             ))}
                     </div>
 
-                    <div>
+                    <div className="ChatWdHidden_more">
                         {is_two_long_chat_inactive ? (
                             <ChatHideMore
                                 chat_inactive_more_arr={chat_inactive_arr.slice(

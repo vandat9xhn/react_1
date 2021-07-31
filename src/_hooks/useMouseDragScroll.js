@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
 
 //
-export function useMouseDragScroll(elm, handleAfterMouseUp = () => {}) {
+export function useMouseDragScroll(ref_elm, handleAfterMouseUp = () => {}) {
     //
     const [is_mouse_down, setIsMouseDown] = useState(false);
-    
+
     //
     const ref_should_scroll = useRef(false);
     const ref_clientX = useRef(0);
@@ -19,7 +19,10 @@ export function useMouseDragScroll(elm, handleAfterMouseUp = () => {}) {
     function handleMouseMove(e) {
         if (ref_should_scroll.current) {
             !is_mouse_down && setIsMouseDown(true);
-            elm.scrollTo(elm.scrollLeft - e.clientX + ref_clientX.current, 0);
+            ref_elm.current.scrollTo(
+                ref_elm.current.scrollLeft - e.clientX + ref_clientX.current,
+                0
+            );
             ref_clientX.current = e.clientX;
         }
     }

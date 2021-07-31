@@ -8,7 +8,7 @@ export const LoginRequest = (data) =>
     API_FakeReal(
         default_login,
         () => axiosClientNoToken({
-            url: '/log/login/',
+            url: 'api/account/login/',
             method: 'POST',
             data: data,
         })
@@ -20,6 +20,6 @@ export const LogoutRequest = () =>
         {},
         () => axiosClientNoToken({
             method: 'GET',
-            url: '/log/logout/',
+            url: 'api/account/logout/',
         })
     );

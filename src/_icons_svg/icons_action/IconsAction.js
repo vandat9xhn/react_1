@@ -4,18 +4,17 @@ import PropTypes from 'prop-types';
 import './IconsAction.scss';
 /**
  * icons: (x, y) start of view box
-*   @delete: (0, 0),
-*   @message origin: (200, 0), 
-*   @add friend: (0, 200), 
-*   @send message: (200, 200),
-*   @friends: (400, 0)
-*   @update: (0, 400)
-*   @warning: (400, 400)
-*   @info: (600, 0)
-*/
-function IconsAction(props) {
-    const { size_icon, x, y } = props;
-    
+ *   @delete: (0, 0),
+ *   @message origin: (200, 0),
+ *   @add friend: (0, 200),
+ *   @send message: (200, 200),
+ *   @friends: (400, 0)
+ *   @update: (0, 400)
+ *   @warning: (400, 400)
+ *   @info: (600, 0)
+ */
+function IconsAction({ size_icon, x, y }) {
+    //
     return (
         <svg
             className="IconsAction stroke-md-color fill-md-color stroke-round"
@@ -26,22 +25,9 @@ function IconsAction(props) {
             fill="var(--md-color)"
             strokeLinecap="round"
         >
-
             {/* icon delete x=0 y=0 */}
-            <line
-                x1="90"
-                y1="40"
-                x2="110"
-                y2="40"
-                strokeWidth="20"
-            />
-            <line
-                x1="40"
-                y1="50"
-                x2="160"
-                y2="50"
-                strokeWidth="15"
-            />
+            <line x1="90" y1="40" x2="110" y2="40" strokeWidth="20" />
+            <line x1="40" y1="50" x2="160" y2="50" strokeWidth="15" />
             <path d="M40,65 L50,180 Q5,180 60,200 L140,200 Q148,190 150,180 L160,65 Z" />
 
             <g stroke="white" strokeWidth="10">
@@ -58,14 +44,18 @@ function IconsAction(props) {
             </g>
 
             {/* add friend x=0 y=200*/}
-            <g className="IconsAction_add-friend_friend" strokeWidth="5" fill="none">
-                <circle cx="100" cy="250" r="45" />
-                <path d="M5,395 Q5,300 100,300 Q195,300 195,395 Z" />
+            <g
+                className="IconsAction_add-friend_friend"
+                strokeWidth="5"
+                fill="none"
+            >
+                <circle cx="100" cy="250" r="35" />
+                <path d="M15,385 Q15,300 100,300 Q185,300 185,385 Z" />
             </g>
 
-            <g className="IconsAction_add-friend_plus" strokeWidth="10">
-                <line x1="150" y1="290" x2="150" y2="360" />
-                <line x1="115" y1="325" x2="185" y2="325" />
+            <g className="IconsAction_add-friend_plus" strokeWidth="5">
+                <line x1="160" y1="220" x2="160" y2="280" />
+                <line x1="120" y1="250" x2="180" y2="250" />
             </g>
 
             {/* send message x=200 y=200*/}
@@ -122,7 +112,6 @@ function IconsAction(props) {
                 stroke="white"
                 strokeWidth="20"
             />
-
         </svg>
     );
 }
@@ -130,7 +119,7 @@ function IconsAction(props) {
 IconsAction.propTypes = {
     x: PropTypes.number,
     y: PropTypes.number,
-    size_icon:PropTypes.string,
+    size_icon: PropTypes.string,
 };
 
 IconsAction.defaultProps = {

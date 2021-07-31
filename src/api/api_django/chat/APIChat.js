@@ -21,7 +21,7 @@ export const API_Zoom_L = (params = {}) =>
 export const API_Zoom_R = (room_chat, params = {}) =>
     API_FakeReal(default_room_chat_obj(room_chat), () =>
         axiosDjangoClient({
-            url: 'chat/chat-friend/' + room_chat + '/',
+            url: 'api/chat/room-r/' + room_chat + '/',
             method: 'GET',
             params: params,
         })
@@ -45,7 +45,7 @@ export const API_ChatTimeLine_LC = (method, data = {}, params = {}) =>
             : { id: Math.floor(Math.random() * 100), ...data },
         () =>
             axiosDjangoClient({
-                url: 'chat/chat-time-line/',
+                url: 'api/chat/time-line-lc/',
                 method: method,
                 params: params,
             }),
@@ -60,7 +60,7 @@ export const API_Message_LC = (method, data = {}, params = {}) =>
             : { id: Math.floor(Math.random() * 100), ...data },
         () =>
             axiosDjangoClient({
-                url: 'chat/lc-message/',
+                url: 'api/chat/message-lc/',
                 method: method,
                 data: data,
                 params: params,
@@ -74,7 +74,7 @@ export const API_MessageVidPic_L = (params = {}) =>
         default_message_vid_pic_arr(),
         () =>
             axiosDjangoClient({
-                url: 'chat/l-message-vid-pic/',
+                url: 'api/chat/message-vid-pic-l/',
                 method: 'GET',
                 params: params,
             }),
@@ -87,7 +87,7 @@ export const API_MessageLike_L = (params = {}) =>
         default_message_user_like_arr(),
         () =>
             axiosDjangoClient({
-                url: 'chat/l-message-like/',
+                url: 'api/chat/message-like-l/',
                 method: 'GET',
                 params: params,
             }),

@@ -1,12 +1,15 @@
-import 'regenerator-runtime/runtime';
-import Axios from 'axios';
+import 'regenerator-runtime';
+import axios from 'axios';
 import queryString from 'query-string';
 //
-import { csrftoken } from '../../_ConstAPI';
+import { baseURL, csrftoken } from '../../_ConstAPI';
 
-// Create Axios
-const axiosClientNoToken = Axios.create({
-    baseURL: process.env.AXIOS_DJANGO,
+axios.defaults.baseURL = baseURL;
+
+//
+const axiosClientNoToken = axios.create({
+    // baseURL: is_api_fake ? process.env.AXIOS_DJANGO : process.env.HEROKU_API,
+    withCredentials: true,
     headers: {
         Accept: '*/*',
         // 'content-type': 'application/json',

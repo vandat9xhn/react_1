@@ -9,7 +9,7 @@ import { handle_API_CityHistory_L } from '../../../../../../_handle_api/city/Cit
 //
 import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
-// 
+//
 import makeFormData from '../../../../../../_some_function/makeFormData';
 //
 import { openScreenConfirm } from '../../../../../../component/_screen/type/confirm/ScreenConfirm';
@@ -25,6 +25,7 @@ import CityUpdate from '../../actions/action_update/CityUpdate';
 import CityHistories from '../../actions/history/_main/CityHistories';
 //
 import './CityItem.scss';
+import { city_bg_color_arr } from '../../../../_data/bg_color';
 
 //
 CityItem.propTypes = {
@@ -51,6 +52,8 @@ function CityItem({ city_obj }) {
         is_user,
         is_del,
     } = city_obj;
+
+    const {bg, color} = city_bg_color_arr[bg_color]
 
     //
     const forceUpdate = useForceUpdate();
@@ -149,9 +152,7 @@ function CityItem({ city_obj }) {
         !is_del && (
             <VirtualScroll>
                 <div
-                    className={`CityItem brs-5px-md box-shadow-1 ${
-                        bg_color.split('.')[0]
-                    } ${bg_color.split('.')[1]}`}
+                    className={`CityItem brs-5px-md box-shadow-1 ${bg} ${color}`}
                 >
                     <div className="CityItem_user">
                         <PictureName user={user} />

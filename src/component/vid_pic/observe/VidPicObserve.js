@@ -45,9 +45,7 @@ function VidPicObserve({ vid_pic, type, video_props, img_props }) {
             data-src={vid_pic}
             {...video_props}
         />
-    ) : (
-        <div></div>
-    );
+    ) : null;
 }
 
 export default VidPicObserve;

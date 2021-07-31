@@ -17,6 +17,7 @@ import NewFeedLeft from '../left/_main/NewFeedLeft';
 //
 import './NewFeed.scss';
 import './NewFeedRes.scss';
+import NewFeedStory from '../story/NewFeedStory';
 
 //
 function NewFeed() {
@@ -70,12 +71,13 @@ function NewFeed() {
                         </div>
                     </div>
 
-                    <div className="NewFeed_col-center">
-                        <div>
+                    <div className="NewFeed_col-center flex-grow-1">
+                        <div className="NewFeed_posts margin-auto">
                             <Posts
                                 posts={has_fetched ? post_arr : []}
                                 has_fetched={has_fetched}
                                 is_fetching={is_fetching}
+                                has_story={true}
                             />
                         </div>
                     </div>

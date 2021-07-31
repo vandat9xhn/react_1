@@ -1,5 +1,8 @@
-/* ------------------ FAKE API ----------------- */
+/* ------- FAKE API -------- */
 export const is_api_fake = true;
+export const baseURL = is_api_fake
+    ? 'http://localhost:8000/'
+    : 'https://react-django-heroku.herokuapp.com/';
 
 //
 const API_Fake = (new_data, params = {}) =>
@@ -20,7 +23,7 @@ const API_Fake = (new_data, params = {}) =>
 export const API_FakeReal = (data, API_Real = () => new Promise(), params) =>
     is_api_fake ? API_Fake(data, params) : API_Real();
 
-/* ------------------ CSRF TOKEN ----------------- */
+/* --------- CSRF TOKEN --------- */
 
 export const csrftoken = () =>
     document.cookie &&

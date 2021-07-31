@@ -5,6 +5,7 @@
 
 // ..
 .NewFeed_col-left {
+    flex-shrink: 0;
     margin-right: 0.5rem;
     width: 300px;
 }
@@ -14,6 +15,7 @@
 }
 // ..
 .NewFeed_col-right{
+    flex-shrink: 0;
     margin-left: 0.5rem;
     width: 300px;
 }

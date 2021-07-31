@@ -31,7 +31,7 @@ export const owner_info = [
         value: '100%',
     },
     {
-        title: 'Time join',
+        title: 'Time joined',
         value: '2021-04-13T21:25:13.739874Z',
     },
     {

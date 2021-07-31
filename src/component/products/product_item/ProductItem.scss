@@ -42,11 +42,13 @@
 .ProductItem_name {
     display: -webkit-box;
     -webkit-box-orient: horizontal;
-    -webkit-line-clamp: 3;
-
+    -webkit-line-clamp: 2;
+    
     line-height: 1.5rem;
     max-height: 3rem;
     overflow: hidden;
+    
+    text-overflow: ellipsis;
     text-transform: lowercase;
 }
 // .

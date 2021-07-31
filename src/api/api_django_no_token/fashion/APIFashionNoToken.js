@@ -2,10 +2,17 @@ import axiosClientNoToken from '../_axios/AxiosNoToken';
 //
 import { API_IsLogin_URL } from '../../_common/API_IsLogin';
 import { API_FakeReal } from '../../_ConstAPI';
+//
 import { default_shop_obj } from '../../../_default/fashion/DefaultShop';
 import { default_hot_image_arr } from '../../../_default/fashion/FashionDefault';
 import { base_product_arr } from '../../../_default/fashion/DefaultProductList';
-import { default_product_cmt_arr, default_product_obj, default_rate_arr, default_rate_content, product_cmt_vid_pic_arr } from '../../../_default/fashion/DefaultProductItem';
+import {
+    default_product_cmt_arr,
+    default_product_obj,
+    default_rate_arr,
+    default_rate_content,
+    product_cmt_vid_pic_arr,
+} from '../../../_default/fashion/DefaultProductItem';
 import { default_content_more } from '../../../_default/post/DefaultPosts';
 
 // list shop
@@ -14,7 +21,7 @@ export const API_FashionShop_L = (params = {}) =>
         Array(6).fill(),
         () =>
             axiosClientNoToken({
-                url: '/fashion-api/l-shop/',
+                url: 'api/shopee/product-l/',
                 method: 'GET',
                 params: params,
             }),
@@ -25,7 +32,7 @@ export const API_FashionShop_L = (params = {}) =>
 export const API_FashionShop_R = (id) =>
     API_FakeReal(default_shop_obj(), () =>
         axiosClientNoToken({
-            url: '/fashion-api/r-shop/' + id + '/',
+            url: 'api/shopee/shop-r/' + id + '/',
             method: 'GET',
         })
     );
@@ -34,7 +41,7 @@ export const API_FashionShop_R = (id) =>
 export const API_FashionHotImage_L = (params = {}) =>
     API_FakeReal(default_hot_image_arr(), () =>
         axiosClientNoToken({
-            url: '/fashion-api/l-hot-image/',
+            url: 'api/shopee/l-hot-image/',
             method: 'GET',
             params: params,
         })
@@ -46,7 +53,7 @@ export const API_FashionProduct_L = (params = {}) =>
         base_product_arr(),
         () =>
             axiosClientNoToken({
-                url: '/fashion-api/l-product/',
+                url: 'api/shopee/product-l/',
                 method: 'GET',
                 params: params,
             }),

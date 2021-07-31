@@ -16,6 +16,7 @@ import LearnDnD from '../dnd/LearnDnD';
 import LearnObserverScroll from '../observer_scroll/LearnObserverScroll';
 import LearnChild from '../child_state/_main/LearnChild';
 import LearnPortalModel from '../portal/LearnPortalModel';
+import LearnAPIHeroku from '../api_heroku/LearnAPIHeroku';
 
 //
 LearnHTML.propTypes = {};
@@ -138,6 +139,10 @@ function LearnHTML() {
 
             <div>
                 <LearnPortalModel />
+            </div>
+
+            <div>
+                <LearnAPIHeroku />
             </div>
             
             <br />

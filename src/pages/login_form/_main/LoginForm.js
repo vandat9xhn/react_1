@@ -81,7 +81,7 @@ function LoginForm() {
             <LoginFetching is_fetching={true} />
         );
 
-        if (res.data == 'wrong') {
+        if (res.data == 'Wrong') {
             setLoginState((login_state) => ({
                 ...login_state,
                 account_wrong: true,

@@ -8,11 +8,11 @@ export const funcHandleBeforeOpen = (context, scroll_elm) => {
 
 //
 export const funcHandleScrollDiff = (context, e) => {
-    if (Math.abs(context.start_scroll_y - e.target.scrollTop) > 100) {
-        context.closeDivFix();
+    // if (Math.abs(context.start_scroll_y - e.target.scrollTop) > 100) {
+    //     context.closeDivFix();
 
-        return;
-    }
+    //     return;
+    // }
 
     context.setState({
         scroll_x_diff: context.start_scroll_x - e.target.scrollLeft,

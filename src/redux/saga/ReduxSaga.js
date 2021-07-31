@@ -1,6 +1,6 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-
-import { allProducts } from '../../api/api_heroku/get_api/GetAPI';
+// 
+import { API_PhoneLaptop_L } from '../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
 
 // watcher
 export default function* watcherSaga() {
@@ -21,5 +21,5 @@ function* workerSaga() {
 
 // fetch
 function fetchData() {
-  return allProducts({ _page: 4, _limit: 10 });
+  return API_PhoneLaptop_L({ _page: 4, _limit: 10 });
 }

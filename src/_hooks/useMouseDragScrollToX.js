@@ -5,16 +5,16 @@ import { useScrollToX } from './useScrollToX';
 import { useWaitingLastAction } from './useWaitingLastAction';
 
 //
-export function useMouseDragScrollToX(elm, scroll_percent) {
+export function useMouseDragScrollToX(ref_elm, scroll_percent) {
     //
     const just_click_btn = useRef(false);
 
     //
     const { handleMouseDown, handleMouseMove, handleMouseUp, is_mouse_down } =
-        useMouseDragScroll(elm, handleAfterMouseUp);
+        useMouseDragScroll(ref_elm, handleAfterMouseUp);
 
     const { is_has_next, is_has_prev, handleNext, handlePrev, hasNextPrev } =
-        useScrollToX(elm, scroll_percent);
+        useScrollToX(ref_elm, scroll_percent);
 
     const { handleWaitingLastAction } = useWaitingLastAction({
         time_waiting: 200,
@@ -56,6 +56,6 @@ export function useMouseDragScrollToX(elm, scroll_percent) {
         is_has_prev,
         handleNext,
         handlePrev,
-        // hasNextPrev,
+        hasNextPrev,
     };
 }

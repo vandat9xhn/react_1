@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMouseDragScrollToX } from '../../../../../_hooks/useMouseDragScrollToX';
@@ -29,7 +29,13 @@ function RowProduct({ products }) {
         is_has_prev,
         handleNext,
         handlePrev,
-    } = useMouseDragScrollToX(ref_row_product.current);
+        hasNextPrev,
+    } = useMouseDragScrollToX(ref_row_product);
+
+    // 
+    useEffect(() => {
+        hasNextPrev()
+    }, [products.length])
 
     //
     return (
@@ -54,7 +60,6 @@ function RowProduct({ products }) {
                         >
                             <ProductItem
                                 link={`/fashion:${product.id}`}
-                                img_or_dataset={ix < 5}
                                 img={product.vid_pics[0].vid_pic}
                                 name={product.name}
                                 new_price={product.new_price}

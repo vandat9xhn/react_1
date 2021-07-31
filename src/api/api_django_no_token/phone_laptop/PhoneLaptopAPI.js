@@ -10,7 +10,7 @@ export const API_PhoneLaptop_L = (params) =>
         Array(12).fill(default_phone_arr[0]),
         () =>
             axiosClientNoToken({
-                url: '/phone/list/',
+                url: 'api/phone/phone-lap-l/',
                 params: params,
             }),
         params
@@ -22,7 +22,7 @@ export const API_FilterPhoneLaptop_L = (params) =>
         Array(12).fill(default_phone_arr[0]),
         () =>
             axiosClientNoToken({
-                url: '/phone/list-filter/',
+                url: 'api/phone/phone-lap-l/',
                 params: params,
             }),
         params
@@ -32,23 +32,15 @@ export const API_FilterPhoneLaptop_L = (params) =>
 export const API_PhoneLaptop_R = (id) =>
     API_FakeReal(default_phone_arr[0], () =>
         axiosClientNoToken({
-            url: '/phone/' + id + '/',
+            url: 'api/phone/phone-lap-r/' + id + '/',
         })
     );
-
-// create - just for testing, it will not create anything
-export const CreateFilterAllProducts = (data) =>
-    axiosClientNoToken({
-        method: 'POST',
-        url: '/phone/create/',
-        data: data,
-    });
 
 // order
 export const API_PhoneOrder_C = (data) =>
     API_FakeReal({}, () =>
         axiosClientNoToken({
-            url: '/phone/order-c/',
+            url: 'api/phone/order-c/',
             method: 'POST',
             data: data,
         })

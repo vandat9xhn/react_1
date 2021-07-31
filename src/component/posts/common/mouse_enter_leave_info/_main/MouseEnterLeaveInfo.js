@@ -86,6 +86,7 @@ function MouseEnterLeaveInfo({
         openDivFixPeople({
             scroll_elm: ref_btn_elm.current.closest('[class~=div_fix_scroll]'),
             width: div_fix_width,
+            max_height: max_height,
             ...left_obj[position_x],
             top: pageYOffset + (position_y == 'top' ? top : bottom),
             transform_x: transform_x,

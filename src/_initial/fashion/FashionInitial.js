@@ -29,7 +29,7 @@ export const initial_fashion_shop = {
             value: '',
         },
         {
-            title: 'Time join',
+            title: 'Time joined',
             value: '',
         },
         {

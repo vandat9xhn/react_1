@@ -8,7 +8,7 @@ export const DefineUser = () =>
     API_FakeReal(
         default_define_user,
         () => axiosClientNoToken({
-            url: '/log/define-user/',
+            url: 'api/account/define-user/',
             method: 'GET',
         })
     );

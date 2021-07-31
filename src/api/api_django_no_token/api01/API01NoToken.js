@@ -18,8 +18,8 @@ export const API_City_L = (params) =>
                     method: 'GET',
                     params: params,
                 },
-                '/api01/l-city-token/',
-                '/api01/l-city-no-token/'
+                'api/city/city-l/',
+                'api/city/city-no-token-l/'
             ),
         params
     );
@@ -27,7 +27,7 @@ export const API_City_L = (params) =>
 //
 export const API_City_R = (pk, params = {}) =>
     axiosClientNoToken({
-        url: '/api01/r-city/' + pk + '/',
+        url: '/city/city-r/' + pk + '/',
         method: 'GET',
         params: params,
     });
@@ -38,7 +38,7 @@ export const API_CityHistory_L = (params) =>
         default_city_history_arr(),
         () =>
             axiosClientNoToken({
-                url: '/api01/l-city-history/',
+                url: '/city/history-l/',
                 method: 'GET',
                 params: params,
             }),

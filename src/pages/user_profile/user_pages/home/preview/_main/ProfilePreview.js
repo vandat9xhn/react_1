@@ -20,24 +20,23 @@ function ProfilePreview(props) {
     const id = GetIdSlug();
 
     //
-    const ref_main_elm = useRef(null);
-    const ref_fake_elm = useRef(null);
-    const ref_preview_elm = useRef(null);
-
     const count_ready = useRef(0);
 
     //
-    const { handleStartStickyAuto } = useStickyAuto({
-        ref_main_elm: ref_main_elm,
-        ref_fake_elm: ref_fake_elm,
-        ref_preview_elm: ref_preview_elm,
+    const {
+        handleStartStickyAuto,
+        ref_main_elm,
+        ref_preview_elm,
+        ref_fake_elm,
+    } = useStickyAuto({
+        sticky_location: /\/profile\/\d+$/,
     });
 
     //
     function handleReady() {
         count_ready.current += 1;
 
-        if ((count_ready.current == 3)) {
+        if (count_ready.current == 3) {
             handleStartStickyAuto();
         }
     }
@@ -47,7 +46,7 @@ function ProfilePreview(props) {
         <div ref={ref_main_elm} className="ProfilePreview h-100per">
             <div ref={ref_fake_elm}></div>
 
-            <div ref={ref_preview_elm} className={`position-sticky`}>
+            <div ref={ref_preview_elm} className="position-sticky">
                 <div className="ProfilePreview_item">
                     <ProfilePrIntro id={id} handleReady={handleReady} />
                 </div>

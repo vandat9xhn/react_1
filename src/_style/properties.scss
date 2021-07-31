@@ -68,6 +68,10 @@
     background-color: var(--color-react);
 }
 
+.bg-shadow-1{
+    background-color: var(--shadow-1);
+}
+
 .bg-linear-45-success-tear {
     background-image: linear-gradient(45deg, var(--success), var(--blue-tear));
 }
@@ -299,7 +303,7 @@
     font-style: italic;
 }
 
-.font-weight-600 {
+.font-600 {
     font-weight: 600;
 }
 
@@ -309,6 +313,10 @@
 
 .font-12px {
     font-size: 12px;
+}
+
+.font-13px {
+    font-size: 13px;
 }
 
 .font-16px {

@@ -23,32 +23,15 @@ HeaderMessHead.propTypes = {
 //
 function HeaderMessHead({ closeZoom }) {
     //
-    const [friend_state, setFriendState] = useState({
+    const [state_obj, setStateObj] = useState({
         friend_arr: [],
         has_fetched: false,
     });
 
-    const { friend_arr, has_fetched } = friend_state;
+    const { friend_arr, has_fetched } = state_obj;
 
     //
     const ref_list_friend = useRef(null);
-
-    //
-    useEffect(() => {
-        observeToDo(ref_list_friend.current, getData_API_Friend_L, 0);
-    }, []);
-
-    //
-    async function getData_API_Friend_L() {
-        const res = await API_Friend_LC('GET', {});
-
-        const new_friend_arr = res.data.map((item) => item.friend);
-
-        setFriendState({
-            friend_arr: new_friend_arr,
-            has_fetched: true,
-        });
-    }
 
     //
     const {
@@ -63,7 +46,33 @@ function HeaderMessHead({ closeZoom }) {
         is_has_prev,
         handleNext,
         handlePrev,
-    } = useMouseDragScrollToX(ref_list_friend.current);
+        hasNextPrev,
+    } = useMouseDragScrollToX(ref_list_friend);
+
+    //
+    useEffect(() => {
+        observeToDo(
+            ref_list_friend.current,
+            getData_API_Friend_L,
+            0,
+            false,
+            ''
+        );
+    }, []);
+
+    //
+    async function getData_API_Friend_L() {
+        const res = await API_Friend_LC('GET', {});
+
+        const new_friend_arr = res.data.map((item) => item.friend);
+
+        setStateObj({
+            friend_arr: new_friend_arr,
+            has_fetched: true,
+        });
+
+        hasNextPrev();
+    }
 
     //
     return (

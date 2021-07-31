@@ -7,30 +7,11 @@ import ButtonRipple from '../../../../../component/button/button_ripple/ButtonRi
 import SelectColorBg from '../../../../../component/input/color/color_bg/_main/SelectColorBg';
 //
 import { validationSchema } from '../../../../../_initial/city/CityInitial';
+import { city_bg_color_arr } from '../../../_data/bg_color';
 //
 import InputImage from '../input_image/InputImage';
 //
 import './CityForm.scss';
-
-//
-const city_color_bg_arr = [
-    {
-        color: 'text-primary',
-        bg: 'bg-primary',
-    },
-    {
-        color: 'color-react',
-        bg: 'bg-green',
-    },
-    {
-        color: 'text-secondary',
-        bg: 'bg-active-fb',
-    },
-    {
-        color: 'text-white',
-        bg: 'bg-linear-45-success-tear',
-    },
-];
 
 //
 CityForm.propTypes = {
@@ -57,13 +38,11 @@ function CityForm({
     //
     const [file, setFile] = useState('');
     const [active_color_ix, setActiveColorIx] = useState(
-        city_color_bg_arr.findIndex(
-            (item) => `${item.bg}.${item.color}` == bg_color
-        )
+        city_bg_color_arr[bg_color]
     );
 
-    const color = city_color_bg_arr[active_color_ix].color;
-    const bg = city_color_bg_arr[active_color_ix].bg;
+    const color = city_bg_color_arr[active_color_ix].color;
+    const bg = city_bg_color_arr[active_color_ix].bg;
 
     //
     const ref_city_elm = useRef(null);
@@ -79,9 +58,9 @@ function CityForm({
             new_street != rest_initialValues.street ||
             new_quote != rest_initialValues.quote ||
             file ||
-            city_color_bg_arr[active_color_ix].bg +
+            city_bg_color_arr[active_color_ix].bg +
                 '.' +
-                city_color_bg_arr[active_color_ix].color !=
+                city_bg_color_arr[active_color_ix].color !=
                 bg_color
         ) {
             return true;
@@ -115,7 +94,7 @@ function CityForm({
     function onSubmit(values, action) {
         handleSubmit({
             ...values,
-            bg_color: `${bg}.${color}`,
+            bg_color: active_color_ix,
             file: file,
         });
     }
@@ -190,7 +169,7 @@ function CityForm({
                                 <div className="CityForm_field">
                                     <SelectColorBg
                                         active_ix={active_color_ix}
-                                        color_bg_arr={city_color_bg_arr}
+                                        color_bg_arr={city_bg_color_arr}
                                         handleChangeColorBg={
                                             handleChangeColorBg
                                         }

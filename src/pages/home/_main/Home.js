@@ -74,8 +74,10 @@ function Home() {
 
     //
     function getClothes() {
-        getAPI_Common(API_FashionProduct_L, { page: 1, size: 10 }, (data) =>
-            setClothes(data)
+        getAPI_Common(
+            API_FashionProduct_L,
+            { page: 1, size: 20, type_request: 'home' },
+            (data) => setClothes(data)
         );
     }
 

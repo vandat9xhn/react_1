@@ -1,11 +1,11 @@
 import axiosDjangoClient from '../api_django/_axios/AxiosDjango';
 import axiosClientNoToken from '../api_django_no_token/_axios/AxiosNoToken';
-// 
+//
 import { is_api_fake } from '../_ConstAPI';
 
 //
 export function API_IsLogin(conf_token = {}, conf_no_token = {}) {
-    return localStorage.is_login && !is_api_fake
+    return localStorage.is_login == 1 && !is_api_fake
         ? axiosDjangoClient(conf_token)
         : axiosClientNoToken(conf_no_token);
 }

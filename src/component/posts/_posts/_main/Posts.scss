@@ -1,7 +1,16 @@
-
+.Posts_head{
+    display: flex;
+    flex-direction: column;
+}
+// .
+.Posts_story{
+    margin-bottom: 1rem;
+}
+// .
 .Posts_new{
     margin: 0 auto 1rem ;
-    max-width: 500px;
+    width: 500px;
+    max-width: 100%;
 }
 
 .Posts_item{
@@ -9,6 +18,12 @@
 }
 
 // 
+@media (max-width: 500px) {
+    .Posts_head{
+        flex-direction: column-reverse;
+    }
+}
+
 @media (max-width: 330px) {
     .Posts_new{
         margin-bottom: 0.75rem;

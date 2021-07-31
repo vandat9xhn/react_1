@@ -10,6 +10,6 @@ export const SignupRequest = (data) =>
         () => axiosClientNoToken({
             method: 'POST',
             data: data,
-            url: '/registration/sign-up/',
+            url: 'api/account/register/',
         })
     );

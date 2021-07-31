@@ -1,12 +1,11 @@
 
-//
-.UserAdd{
-    padding: 0.5rem;
-}
 
-//
-.UserAdd_row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+// 
+@media (max-width: 350px) {
+    .UserAdd_btn{
+        background-color: transparent;
+    }
+    .UserAdd_btn-title {
+        display: none;
+    }
 }

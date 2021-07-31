@@ -2,21 +2,16 @@ import React, { useLayoutEffect, useState } from 'react';
 //
 import { context_api } from './ContextAPI';
 //
+import { initial_user } from '../_initial/user/initialUser';
+// 
 import { DefineUser } from '../api/api_django_no_token/define_user/DefineUser';
-//
-// import WaitingBall from '../component/waiting/waiting_ball/WaitingBall';
 
 //
 const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
     //
 
     const [context_state, setContextState] = useState({
-        user: {
-            id: 0,
-            first_name: '',
-            last_name: '',
-            picture: '',
-        },
+        user: initial_user(),
         has_fetched: false,
     });
 
@@ -32,17 +27,22 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
     async function getDataUser() {
         try {
             const res = await DefineUser();
+            console.log(res);
 
             if (typeof res.data == 'object') {
                 setContextState({
                     user: res.data,
                     has_fetched: true,
                 });
+
+                localStorage.is_login = 1;
             } else {
                 setContextState({
                     ...context_state,
                     has_fetched: true,
                 });
+
+                localStorage.is_login = 0;
             }
 
             handleRefresh();
@@ -61,7 +61,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
             localStorage.is_login = 0;
             localStorage.access_token = '';
         }
-        
+
         setContextState({
             user: new_user,
             has_fetched: has_fetched,
@@ -78,13 +78,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
                 setDataUser: setDataUser,
             }}
         >
-            {has_fetched ? (
-                <div>{children}</div>
-            ) : (
-                <div>
-                    {/* <WaitingBall waitingBall_center={true} /> */}
-                </div>
-            )}
+            {has_fetched ? children : null}
         </context_api.Provider>
     );
 };

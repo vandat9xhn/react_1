@@ -1,6 +1,7 @@
 /* html */
 html {
     background-color: var(--md-bg-fb);
+    overflow-y: scroll;
 }
 
 *,
@@ -24,7 +25,7 @@ body {
     color: var(--md-color);
 
     &[data-count-hidden] {
-        overflow-y: scroll;
+        // overflow-y: scroll;
 
         .App {
             position: fixed;
