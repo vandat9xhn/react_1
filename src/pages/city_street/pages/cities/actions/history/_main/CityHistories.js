@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { formatLocalDateTimeString } from '../../../../../../../_some_function/FormatDate';
+// 
+import { city_bg_color_arr } from '../../../../../_data/bg_color';
+// 
 import CityHistoryItem from '../item/CityHistoryItem';
 //
 import './CityHistories.scss';
-import { formatLocalDateTimeString } from '../../../../../../../_some_function/FormatDate';
 
 //
 CityHistories.propTypes = {};
@@ -32,9 +35,9 @@ function CityHistories({ histories, ...rest_props }) {
                                 street={item.street}
                                 quote={item.quote}
                                 image={item.image}
+                                bg={city_bg_color_arr[item.bg_color].bg}
+                                color={city_bg_color_arr[item.bg_color].color}
                                 created_time={item.created_time}
-                                bg={item.bg_color.split('.')[0]}
-                                color={item.bg_color.split('.')[1]}
                             />
                         </div>
                     </li>

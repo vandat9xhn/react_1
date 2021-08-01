@@ -8,9 +8,18 @@ import { useMounted } from './useMounted';
 
 //
 const header_head = HEADER_HEAD + 10;
+
 const isInnerWidthOk = () => innerWidth > 900;
 const isHrefOk = (sticky_location) =>
     location.href.search(sticky_location) >= 0;
+
+function getScrollTop() {
+    return document.getElementsByTagName('html')[0].scrollTop;
+}
+
+function handleScrollTo(new_pos = 0) {
+    document.getElementsByTagName('html')[0].scrollTop = new_pos;
+}
 
 //
 export function useStickyAuto({ sticky_location = /./ }) {
@@ -36,12 +45,6 @@ export function useStickyAuto({ sticky_location = /./ }) {
 
         return () => {
             window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    useEffect(() => {
-        return () => {
-            // window.removeEventListener('scroll', handleScroll);
             window.onscroll = null;
         };
     }, []);
@@ -50,6 +53,8 @@ export function useStickyAuto({ sticky_location = /./ }) {
         handleChangeHref();
     }, [location.href]);
 
+    /* --------- COMMON --------- */
+
     //
     function getNewMoreHeight() {
         const { height } = ref_preview_elm.current.getBoundingClientRect();
@@ -57,16 +62,18 @@ export function useStickyAuto({ sticky_location = /./ }) {
         return height - innerHeight > 0 ? height - innerHeight : 0;
     }
 
-    /* --------- COMMON --------- */
-
     //
-    function getScrollTop() {
-        return document.getElementsByTagName('html')[0].scrollTop;
+    function handleRefWhenMoreHeightNotOk() {
+        ref_preview_elm.current.style.position = 'sticky';
+        ref_preview_elm.current.style.top = `${header_head}px`;
+        ref_fake_elm.current.style.height = '0px';
     }
 
     //
-    function handleScrollTo(new_pos = 0) {
-        document.getElementsByTagName('html')[0].scrollTop = new_pos;
+    function handleRefWhenInnerWidthNotOk() {
+        ref_preview_elm.current.style.position = 'static';
+        ref_fake_elm.current.style.height = '0px';
+        ref_is_innerWidth_ok.current = false;
     }
 
     //
@@ -89,12 +96,20 @@ export function useStickyAuto({ sticky_location = /./ }) {
         }
     }
 
+    /* ------------ */
+
     //
     function handleInnerWidthToOk() {
-        handleAddScroll();
-
-        ref_preview_elm.current.style.position = 'sticky';
+        ref_more_height.current = getNewMoreHeight();
         ref_is_innerWidth_ok.current = true;
+
+        if (ref_more_height.current > 0) {
+            ref_preview_elm.current.style.position = 'sticky';
+            handleAddScroll();
+        } else {
+            handleRefWhenMoreHeightNotOk();
+        }
+
         ref_scroll_y.current =
             pageYOffset -
             296 -
@@ -104,10 +119,7 @@ export function useStickyAuto({ sticky_location = /./ }) {
     //
     function handleInnerWidthToNotOk() {
         handleRemoveScroll();
-
-        ref_preview_elm.current.style.position = '';
-        ref_fake_elm.current.style.height = '0px';
-        ref_is_innerWidth_ok.current = false;
+        handleRefWhenInnerWidthNotOk();
         ref_scroll_y.current =
             pageYOffset +
             16 +
@@ -119,9 +131,9 @@ export function useStickyAuto({ sticky_location = /./ }) {
     //
     function handleScroll() {
         if (!ref_preview_elm.current) {
-            return
+            return;
         }
-        
+
         const { top, bottom } = ref_preview_elm.current.getBoundingClientRect();
         const hide_height_main =
             -ref_main_elm.current.getBoundingClientRect().top;
@@ -169,16 +181,26 @@ export function useStickyAuto({ sticky_location = /./ }) {
 
     //
     function handleResize() {
+        if (!ref_is_href_ok.current) {
+            return;
+        }
+
         const new_innerWidth_ok = isInnerWidthOk();
-        const new_more_height = getNewMoreHeight();
 
         if (new_innerWidth_ok) {
             if (!ref_is_innerWidth_ok.current) {
                 handleInnerWidthToOk();
                 handleScrollTo(ref_scroll_y.current);
-            }
+            } else {
+                ref_more_height.current = getNewMoreHeight();
 
-            ref_more_height.current = new_more_height;
+                if (ref_more_height.current <= 0) {
+                    handleRefWhenMoreHeightNotOk();
+                    handleRemoveScroll();
+                } else {
+                    handleAddScroll()
+                }
+            }
         } else if (!new_innerWidth_ok && ref_is_innerWidth_ok.current) {
             handleInnerWidthToNotOk();
             handleScrollTo(ref_scroll_y.current);
@@ -187,13 +209,29 @@ export function useStickyAuto({ sticky_location = /./ }) {
 
     //
     function handleChangeHref() {
-        const is_new_href_ok = isHrefOk(sticky_location);
-        ref_is_href_ok.current = is_new_href_ok;
-
         setTimeout(() => {
-            if (is_new_href_ok && mounted) {
+            if (!mounted) {
+                return;
+            }
+
+            ref_is_href_ok.current = isHrefOk(sticky_location);
+            ref_is_innerWidth_ok.current = isInnerWidthOk();
+            ref_more_height.current = getNewMoreHeight();
+
+            if (ref_is_innerWidth_ok.current) {
+                if (ref_more_height.current <= 0) {
+                    handleRefWhenMoreHeightNotOk();
+                }
+            } else {
+                handleRefWhenInnerWidthNotOk();
+            }
+
+            if (
+                ref_more_height.current > 0 &&
+                ref_is_href_ok.current &&
+                ref_is_innerWidth_ok.current
+            ) {
                 handleAddScroll();
-                ref_more_height.current = getNewMoreHeight();
             } else {
                 handleRemoveScroll();
             }

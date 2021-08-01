@@ -10,9 +10,9 @@ function CityHistoryItem({
     street,
     quote,
     image,
-    created_time,
     bg,
     color,
+    created_time,
 }) {
     //
     return (

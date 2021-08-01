@@ -8,11 +8,9 @@ CityItemSkeleton.propTypes = {};
 
 //
 function CityItemSkeleton() {
-    // 
+    //
     return (
-        <div className="CityItemSkeleton brs-5px-md bg-primary">
-            
-        </div>
+        <div className="CityItemSkeleton brs-5px-md bg-primary bax-shadow-1"></div>
     );
 }
 
