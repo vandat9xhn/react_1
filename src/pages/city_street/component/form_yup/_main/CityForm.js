@@ -37,9 +37,7 @@ function CityForm({
 }) {
     //
     const [file, setFile] = useState('');
-    const [active_color_ix, setActiveColorIx] = useState(
-        city_bg_color_arr[bg_color]
-    );
+    const [active_color_ix, setActiveColorIx] = useState(bg_color);
 
     const color = city_bg_color_arr[active_color_ix].color;
     const bg = city_bg_color_arr[active_color_ix].bg;
@@ -58,10 +56,7 @@ function CityForm({
             new_street != rest_initialValues.street ||
             new_quote != rest_initialValues.quote ||
             file ||
-            city_bg_color_arr[active_color_ix].bg +
-                '.' +
-                city_bg_color_arr[active_color_ix].color !=
-                bg_color
+            active_color_ix != bg_color
         ) {
             return true;
         }
@@ -189,7 +184,7 @@ function CityForm({
                                 <div
                                     className={`App_submit display-flex-center  ${
                                         props.dirty ||
-                                        `${bg}.${color}` != bg_color
+                                        active_color_ix != bg_color
                                             ? ''
                                             : 'pointer-events-none opacity-05'
                                     }`}

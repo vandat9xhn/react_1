@@ -1,0 +1,23 @@
+
+// .
+.StoryItem_head{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+// ..
+.StoryItem_step{
+    margin: 0.5rem 0.5rem 1rem;
+}
+// .
+.StoryItem_close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+// .
+.StoryItem_control{
+    z-index: 1;
+}

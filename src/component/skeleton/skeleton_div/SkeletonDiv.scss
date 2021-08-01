@@ -5,8 +5,9 @@
 
 .SkeletonDiv_div{
     height: 0.75rem;
-    border-radius: 20px;
     background-color: var(--bg-skeleton);
+    border-radius: 20px;
+    opacity: 0.25;
 
     animation: loading 2s infinite alternate;
 }

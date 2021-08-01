@@ -5,12 +5,12 @@ import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import { API_City_UD } from '../../../../../../api/api_django/api01/API01';
 //
+import makeFormData from '../../../../../../_some_function/makeFormData';
+//
 import { handle_API_CityHistory_L } from '../../../../../../_handle_api/city/CityHandleAPI';
 //
 import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
-//
-import makeFormData from '../../../../../../_some_function/makeFormData';
 //
 import { openScreenConfirm } from '../../../../../../component/_screen/type/confirm/ScreenConfirm';
 import { openScreenHistory } from '../../../../../../component/_screen/type/history/ScreenHistory';
@@ -20,12 +20,13 @@ import PictureName from '../../../../../../component/picture_name/pic_name/Pictu
 import VirtualScroll from '../../../../../../component/virtual_scroll/VirtualScroll';
 //
 //
+import { city_bg_color_arr } from '../../../../_data/bg_color';
+// 
 import Choices from '../../choices/Choices';
 import CityUpdate from '../../actions/action_update/CityUpdate';
 import CityHistories from '../../actions/history/_main/CityHistories';
 //
 import './CityItem.scss';
-import { city_bg_color_arr } from '../../../../_data/bg_color';
 
 //
 CityItem.propTypes = {

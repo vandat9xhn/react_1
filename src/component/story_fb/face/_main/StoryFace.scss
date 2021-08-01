@@ -20,9 +20,12 @@
     padding: 14px;
 }
 // ..
-.StoryFace_pic-border{
-    border-radius: 50%;
+.StoryFace_pic-border-new{
     border: 4px solid var(--blue);
+}
+// ..
+.StoryFace_pic-border-old{
+    border: 4px solid var(--white);
 }
 
 .StoryFace_name{
@@ -46,4 +49,18 @@
 
     overflow: hidden;
     word-wrap: break-word;
+}
+
+// .
+.StoryFace_count_new{
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .BadgeDiv{
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: var(--blue);
+        font-size: 14px;
+    }
 }

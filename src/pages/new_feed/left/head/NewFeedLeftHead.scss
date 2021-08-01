@@ -1,13 +1,26 @@
-// 
-.NewFeedLeftHead{
+//
+.NewFeedLeftHead {
     max-height: 100vh;
     overflow-y: auto;
-    
-    .FlexDiv_left{
+
+    .FlexDiv_left {
         margin-right: 0.5rem;
-        svg{
+        svg {
             width: 1.5rem;
             height: 1.5rem;
         }
+    }
+
+    .PictureNameCommon {
+        padding: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        &:hover {
+            background-color: var(--md-bg-ccc);
+        }
+    }
+    .PictureNameCommon__pic {
+        width: 2rem;
+        height: 2rem;
     }
 }

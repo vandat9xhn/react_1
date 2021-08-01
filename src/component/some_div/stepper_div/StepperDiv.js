@@ -21,9 +21,12 @@ StepperDiv.defaultProps = {
 };
 
 //
-function StepperDiv(props) {
-    const { stage_arr, count_stage, completed_stage_ix, handleChooseStep } = props;
-
+function StepperDiv({
+    stage_arr,
+    count_stage,
+    completed_stage_ix,
+    handleChooseStep,
+}) {
     //
     return (
         <div className="StepperDiv">

@@ -11,10 +11,10 @@ NewFeedStorySeeAllMobile.propTypes = {};
 function NewFeedStorySeeAllMobile(props) {
     //
     return (
-        <Link to={`/stories?type=all`}>
-            <div className="NewFeedStorySeeAllMobile bg-active-fb padding-8px brs-8px">
+        <Link to={`/stories`}>
+            <div className="NewFeedStorySeeAllMobile bg-active-fb padding-4px brs-8px">
                 <div className="display-flex-center">
-                    <span className="text-blue label-field">See all stories</span>
+                    <span className="text-blue label-field">See All Stories</span>
                 </div>
             </div>
         </Link>

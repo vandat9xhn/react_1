@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import { type_video_or_img } from '../../../../_some_function/VideoOrImage';
 //
 import './StoryFace.scss';
+import BadgeDiv from '../../../some_div/badge_div/BadgeDiv';
 
 //
 StoryFace.propTypes = {};
 
 //
-function StoryFace({ id, vid_pic, user }) {
+function StoryFace({ vid_pic, user, count_new }) {
     //
     const { first_name, last_name, picture } = user;
 
@@ -34,7 +35,13 @@ function StoryFace({ id, vid_pic, user }) {
 
             <div className="StoryFace_pic">
                 <div className="StoryFace_pic-contain brs-50">
-                    <div className="StoryFace_pic-border">
+                    <div
+                        className={`brs-50 ${
+                            count_new > 0
+                                ? 'StoryFace_pic-border-new'
+                                : 'StoryFace_pic-border-old'
+                        }`}
+                    >
                         <img
                             src={picture}
                             alt=""
@@ -57,6 +64,10 @@ function StoryFace({ id, vid_pic, user }) {
             <div className="story-bg"></div>
 
             <div className="story-bg-hv"></div>
+
+            <div className="StoryFace_count_new">
+                <BadgeDiv num={count_new} />
+            </div>
         </div>
     );
 }

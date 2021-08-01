@@ -23,19 +23,17 @@ function NewFeedLeftHead(props) {
     return (
         <div className="NewFeedLeftHead scroll-thin">
             <div>
-                <div className="NewFeed_side_item">
+                <div>
                     <PictureName user={user} align_center={false} />
                 </div>
 
                 {common_left_head_link_arr.map((item, ix) => (
-                    <div
-                        className="NewFeed_side_item"
+                    <Link
+                        to={item.link_to}
                         key={`NewFeedLeftHead_item_${ix}`}
+                        className="normal-text hv-cl-blue w-100per"
                     >
-                        <Link
-                            to={item.link_to}
-                            className="normal-text hv-cl-blue w-100per"
-                        >
+                        <div className="NewFeed_side_item">
                             <FlexDiv
                                 ComponentLeft={item.Icon}
                                 ComponentRight={
@@ -57,8 +55,8 @@ function NewFeedLeftHead(props) {
                                 }
                                 align_center={false}
                             />
-                        </Link>
-                    </div>
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>

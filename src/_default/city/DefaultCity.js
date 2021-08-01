@@ -1,5 +1,5 @@
 import { getRandomBool } from '../_common/default_bool';
-import { getRandomId } from '../_common/default_id';
+import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic, getRandomVidPicOrNull } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
@@ -29,12 +29,12 @@ const street_name_arr = [
     'To Huu',
 ];
 
-const bg_color_arr = [
-    'bg-linear-45-success-tear.text-white',
-    'bg-primary.text-primary',
-    'bg-active-fb.text-secondary',
-    'bg-green.color-react',
-];
+// const bg_color_arr = [
+//     'bg-linear-45-success-tear.text-white',
+//     'bg-primary.text-primary',
+//     'bg-active-fb.text-secondary',
+//     'bg-green.color-react',
+// ];
 
 const quote_arr = [
     'This is a street of Ha Noi',
@@ -50,7 +50,7 @@ const getRandomCommonCityObj = () => ({
     city: getRandomFromArr(city_name_arr),
     street: getRandomFromArr(street_name_arr),
     quote: getRandomFromArr(quote_arr),
-    bg_color: getRandomFromArr(bg_color_arr),
+    bg_color: getRandomNumber(0, 3),
 });
 
 //

@@ -13,9 +13,9 @@ NewFeedStorySeeAllPc.propTypes = {};
 function NewFeedStorySeeAllPc(props) {
     //
     return (
-        <Link to={`/stories?type=all`} title="See all stories">
+        <Link to={`/stories`} title="See all stories">
             <div className="NewFeedStorySeeAllPc padding-8px bg-primary brs-50 box-shadow-fb hv-bg-blur">
-                <IconsArrow x={200} y={200} />
+                <IconsArrow x={200} y={200} size_icon="2rem" />
             </div>
         </Link>
     );
