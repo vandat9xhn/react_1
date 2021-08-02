@@ -1,0 +1,14 @@
+// .
+.StoryFaceName_contain{
+    padding: 8px;
+    max-width: 100%;
+}
+// ..
+.StoryFaceName_item{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+
+    overflow: hidden;
+    word-wrap: break-word;
+}

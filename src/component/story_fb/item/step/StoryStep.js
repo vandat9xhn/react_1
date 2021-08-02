@@ -4,11 +4,14 @@ import PropTypes from 'prop-types';
 import './StoryStep.scss';
 
 //
-StoryStep.propTypes = {};
+StoryStep.propTypes = {
+    count_step: PropTypes.number,
+    active_step: PropTypes.number,
+};
 
 //
 function StoryStep({ count_step, active_step }) {
-    console.log(count_step, active_step);
+    // console.log(count_step, active_step);
     //
     return (
         <div className="display-flex-center flex-nowrap">

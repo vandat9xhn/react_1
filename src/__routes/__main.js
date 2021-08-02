@@ -5,6 +5,7 @@ import { city_route_arr } from './_City';
 import { fashion_route_arr } from './_Fashion';
 import { phone_route_arr } from './_Phone';
 import { profile_route_arr } from './_ProfilePost';
+import { story_route_arr } from './_story';
 
 //
 const Home = React.lazy(() => import('../pages/home/_main/Home'));
@@ -25,6 +26,7 @@ export const Routes = [
     ...phone_route_arr,
     ...city_route_arr,
     ...fashion_route_arr,
+    ...story_route_arr,
 
     {
         path: '/learn-html',

@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
-import { getRandomUser } from '../../../_default/_common/default_user';
-import { getRandomVidPic } from '../../../_default/_common/default_image';
+import { context_api } from '../../../_context/ContextAPI';
 //
-import StoryItem from '../../../component/story_fb/item/_main/StoryItem';
+import { openScreenStoryMenuMobile } from '../../../component/_screen/type/story/mobile/menu/ScreenStoryMenuMobile';
 //
 import './LearnStoryItem.scss';
 
@@ -14,9 +13,7 @@ LearnStoryItem.propTypes = {};
 //
 function LearnStoryItem(props) {
     //
-    function handleNextUserStory() {
-        console.log('next');
-    }
+    const { openScreenFloor } = useContext(context_api);
 
     //
     function handlePrevUserStory() {
@@ -24,19 +21,20 @@ function LearnStoryItem(props) {
     }
 
     //
+    function handleOpenScreenStoryMenu() {
+        openScreenStoryMenuMobile({ openScreenFloor: openScreenFloor });
+        history.pushState('', '', '/stories');
+    }
+
+    //
     return (
-        <div className="LearnStoryItem position-rel">
-            <StoryItem
-                ix={2}
-                count_user={6}
-                handleNextUserStory={handleNextUserStory}
-                handlePrevUserStory={handlePrevUserStory}
-                {...getRandomUser()}
-                count={4}
-                count_new={2}
-                vid_pic={getRandomVidPic()}
-                created_time={new Date().getTime() - 5 * 60 * 60 * 1000}
-            />
+        <div>
+            <div
+                className="label-field cursor-pointer"
+                onClick={handleOpenScreenStoryMenu}
+            >
+                Open Screen Story Menu
+            </div>
         </div>
     );
 }

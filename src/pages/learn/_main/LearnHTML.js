@@ -140,7 +140,7 @@ function LearnHTML() {
             </div>
 
             <div>
-                <LearnPortalModel />
+                {/* <LearnPortalModel /> */}
             </div>
 
             <div>

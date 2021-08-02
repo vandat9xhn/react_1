@@ -17,7 +17,7 @@ import './ProfilePrPic.scss';
 //
 function ProfilePrPic({ id, handleReady }) {
     //
-    const [vid_pic_state, setVidPicState] = useState({
+    const [state_obj, setStateObj] = useState({
         vid_pics: [
             {
                 id: 0,
@@ -27,7 +27,7 @@ function ProfilePrPic({ id, handleReady }) {
         is_fetching: true,
     });
 
-    const { vid_pics, is_fetching } = vid_pic_state;
+    const { vid_pics, is_fetching } = state_obj;
 
     //
     const ref_component = useRef(null);
@@ -42,15 +42,15 @@ function ProfilePrPic({ id, handleReady }) {
 
     //
     async function getData_API_PicPreview() {
-        setVidPicState((vid_pic_state) => ({
-            ...vid_pic_state,
+        setStateObj((state_obj) => ({
+            ...state_obj,
             is_fetching: true,
         }));
 
         const { data } = await handle_API_VidPic_L(id, vid_pics.length);
 
         if (mounted) {
-            setVidPicState({
+            setStateObj({
                 vid_pics: data,
                 is_fetching: false,
             });
@@ -82,6 +82,8 @@ function ProfilePrPic({ id, handleReady }) {
                             </div>
                         ))}
                     </div>
+
+                    {vid_pics.length ? null : <div>No video, image</div>}
                 </div>
             </ProfilePrCommon>
         </div>

@@ -126,6 +126,31 @@ export function useStickyAuto({ sticky_location = /./ }) {
             ref_preview_elm.current.getBoundingClientRect().height;
     }
 
+    //
+    function calculateAgain() {
+        ref_is_href_ok.current = isHrefOk(sticky_location);
+        ref_is_innerWidth_ok.current = isInnerWidthOk();
+        ref_more_height.current = getNewMoreHeight();
+
+        if (ref_is_innerWidth_ok.current) {
+            if (ref_more_height.current <= 0) {
+                handleRefWhenMoreHeightNotOk();
+            }
+        } else {
+            handleRefWhenInnerWidthNotOk();
+        }
+
+        if (
+            ref_more_height.current > 0 &&
+            ref_is_href_ok.current &&
+            ref_is_innerWidth_ok.current
+        ) {
+            handleAddScroll();
+        } else {
+            handleRemoveScroll();
+        }
+    }
+
     /* ---------- */
 
     //
@@ -198,7 +223,7 @@ export function useStickyAuto({ sticky_location = /./ }) {
                     handleRefWhenMoreHeightNotOk();
                     handleRemoveScroll();
                 } else {
-                    handleAddScroll()
+                    handleAddScroll();
                 }
             }
         } else if (!new_innerWidth_ok && ref_is_innerWidth_ok.current) {
@@ -210,42 +235,15 @@ export function useStickyAuto({ sticky_location = /./ }) {
     //
     function handleChangeHref() {
         setTimeout(() => {
-            if (!mounted) {
-                return;
-            }
-
-            ref_is_href_ok.current = isHrefOk(sticky_location);
-            ref_is_innerWidth_ok.current = isInnerWidthOk();
-            ref_more_height.current = getNewMoreHeight();
-
-            if (ref_is_innerWidth_ok.current) {
-                if (ref_more_height.current <= 0) {
-                    handleRefWhenMoreHeightNotOk();
-                }
-            } else {
-                handleRefWhenInnerWidthNotOk();
-            }
-
-            if (
-                ref_more_height.current > 0 &&
-                ref_is_href_ok.current &&
-                ref_is_innerWidth_ok.current
-            ) {
-                handleAddScroll();
-            } else {
-                handleRemoveScroll();
+            if (mounted) {
+                calculateAgain();
             }
         }, 0);
     }
 
     //
-    function handleStartStickyAuto() {
-        ref_more_height.current = getNewMoreHeight();
-    }
-
-    //
     return {
-        handleStartStickyAuto,
+        calculateAgain,
         ref_main_elm,
         ref_preview_elm,
         ref_fake_elm,

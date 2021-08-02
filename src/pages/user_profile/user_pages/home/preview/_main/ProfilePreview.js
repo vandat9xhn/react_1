@@ -24,7 +24,7 @@ function ProfilePreview(props) {
 
     //
     const {
-        handleStartStickyAuto,
+        calculateAgain,
         ref_main_elm,
         ref_preview_elm,
         ref_fake_elm,
@@ -37,7 +37,7 @@ function ProfilePreview(props) {
         count_ready.current += 1;
 
         if (count_ready.current == 3) {
-            handleStartStickyAuto();
+            calculateAgain();
         }
     }
 

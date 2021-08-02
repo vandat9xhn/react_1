@@ -20,7 +20,7 @@ ProfilePrFriend.propTypes = {};
 //
 function ProfilePrFriend({ id, handleReady }) {
     //
-    const [friend_state, setFriendState] = useState({
+    const [state_obj, setStateObj] = useState({
         friend_arr: [
             {
                 id: 0,
@@ -32,10 +32,9 @@ function ProfilePrFriend({ id, handleReady }) {
         is_fetching: true,
     });
 
-    const { friend_arr, friend_count, is_fetching } = friend_state;
+    const { friend_arr, friend_count, is_fetching } = state_obj;
 
     //
-    ;
     const ref_component = useRef(null);
 
     //
@@ -48,24 +47,24 @@ function ProfilePrFriend({ id, handleReady }) {
 
     //
     async function getData_API_FriendPreview() {
-        setFriendState((friend_state) => ({
-            ...friend_state,
+        setStateObj((state_obj) => ({
+            ...state_obj,
             is_fetching: true,
         }));
 
-        const { data, count: new_count } = await handle_API_Friend_L(
+        const { data, count: count } = await handle_API_Friend_L(
             id,
             friend_arr.length
         );
 
         if (mounted) {
-            setFriendState({
+            setStateObj({
                 friend_arr: data.map((item) => item.friend),
-                friend_count: new_count,
+                friend_count: count,
                 is_fetching: false,
             });
 
-            handleReady()
+            handleReady();
         }
     }
 
@@ -79,7 +78,7 @@ function ProfilePrFriend({ id, handleReady }) {
                 ProfilePrSkeleton={ProfilePrFrSkeleton}
             >
                 <div>
-                    <div>{friend_count} friends</div>
+                    <div>{friend_count ? friend_count : 'No'} ' friends'</div>
 
                     <div className="ProfilePrFriend_pic">
                         <div className="ProfilePrFriend_pic-row display-flex flex-wrap">

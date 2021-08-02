@@ -6,7 +6,7 @@ import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
 import { initial_user } from '../../../../../_initial/user/initialUser';
 //
-import { handle_API_FeedStory } from '../../../../../_handle_api/feed/HandleAPIStory';
+import { handle_API_FeedStory_L } from '../../../../../_handle_api/feed/HandleAPIStory';
 //
 import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 //
@@ -14,12 +14,13 @@ import IconUpdate from '../../../../../_icons_svg/icon_update/IconUpdate';
 //
 import VirtualScroll from '../../../../../component/virtual_scroll/VirtualScroll';
 //
-import StoryFace from '../../../../../component/story_fb/face/_main/StoryFace';
+import StoryFace from '../../../../../component/story_fb/face/item/_main/StoryFace';
 import StoryFaceCreate from '../../../../../component/story_fb/face/create/_main/StoryFaceCreate';
 import NewFeedStorySeeAllMobile from '../see_all/mobile/NewFeedStorySeeAllMobile';
 import NewFeedStorySeeAllPc from '../see_all/pc/NewFeedStorySeeAllPc';
 //
 import './NewFeedStory.scss';
+import { initial_story_obj } from '../../../../../_initial/story/InitialStory';
 
 //
 NewFeedStory.propTypes = {};
@@ -28,14 +29,8 @@ NewFeedStory.propTypes = {};
 function NewFeedStory(props) {
     //
     const { data_state, getData_API } = useDataShowMore({
-        initial_arr: [] || [
-            {
-                id: 0,
-                vid_pic: '',
-                user: initial_user(),
-            },
-        ],
-        handle_API_L: handle_API_FeedStory,
+        initial_arr: [] || [initial_story_obj()],
+        handle_API_L: handle_API_FeedStory_L,
     });
 
     const { data_arr, count, is_fetching, has_fetched } = data_state;
@@ -89,9 +84,16 @@ function NewFeedStory(props) {
                                     className="normal-text"
                                 >
                                     <StoryFace
-                                        vid_pic={item.newest_story.vid_pic}
                                         count_new={item.count_new}
                                         user={item.user}
+                                        vid_pic={item.list[0].vid_pic}
+                                        text={item.list[0].text}
+                                        top_text={item.list[0].top_text}
+                                        left_text={item.list[0].left_text}
+                                        color_text_ix={
+                                            item.list[0].color_text_ix
+                                        }
+                                        scale_text={item.list[0].scale_text}
                                     />
                                 </Link>
                             </div>

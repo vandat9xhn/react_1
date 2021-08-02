@@ -12,6 +12,8 @@
   "author": "van dat",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^7.1.5",
@@ -30,6 +32,7 @@
     "eslint-plugin-react": "^7.21.5",
     "file-loader": "^6.1.1",
     "html-webpack-plugin": "^4.5.2",
+    "jest": "^27.0.6",
     "mini-css-extract-plugin": "^1.2.0",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.4",
