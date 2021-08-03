@@ -27,11 +27,11 @@ function ProfileInfoActions({
     handleFollowFriend,
 }) {
     //
-    const { openZoomChat } = useContext(context_api);
+    const { openRoomChat } = useContext(context_api);
 
     //
     function onOpenMessage() {
-        openZoomChat(id);
+        openRoomChat(id);
     }
 
     //

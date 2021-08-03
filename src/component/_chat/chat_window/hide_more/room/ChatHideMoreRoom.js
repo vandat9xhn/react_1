@@ -24,18 +24,18 @@ function ChatHideMoreRoom({
     closeRoomHideMore,
 }) {
     //
-    const { openZoomChat, closeZoomChat } = useContext(context_api);
+    const { openRoomChat, closeRoomChat } = useContext(context_api);
 
     //
     function reOpenZoomChat() {
-        openZoomChat(room_chat);
+        openRoomChat(room_chat);
         closeRoomHideMore();
     }
 
     //
     function onCloseZoomChat(e) {
         e.stopPropagation()
-        closeZoomChat(false, chat_ix);
+        closeRoomChat(false, chat_ix);
     }
 
     //

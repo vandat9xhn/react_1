@@ -21,7 +21,7 @@ ChatGroup.propTypes = {};
 //
 function ChatGroup({ room_users }) {
     //
-    const { closeZoomChat } = useContext(context_api);
+    const { closeRoomChat } = useContext(context_api);
 
     const { openChatScreen, ws, room_chat, chat_ix } = useContext(context_chat);
 
@@ -85,7 +85,7 @@ function ChatGroup({ room_users }) {
 
     //
     function handleQuitGroup() {
-        closeZoomChat(true, chat_ix);
+        closeRoomChat(true, chat_ix);
 
         WsSend(ws, {
             type: 'quit',

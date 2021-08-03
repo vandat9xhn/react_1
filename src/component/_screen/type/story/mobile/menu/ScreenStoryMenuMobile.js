@@ -3,16 +3,32 @@ import PropTypes from 'prop-types';
 //
 import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
 //
-import StoryCreate from '../../../../../story_fb/menu/create/StoryCreate';
-import StoryFollowedMobile from '../../../../../story_fb/menu/mobile/followed/StoryFollowedMobile';
-import StorySuggestsMobile from '../../../../../story_fb/menu/mobile/suggest/StorySuggestsMobile';
+import StoryCreate from '../../../../../story_fb/menu/mobile/create/StoryCreate';
+import StoryMenuMobile from '../../../../../story_fb/menu/mobile/_main/StoryMenuMobile';
 //
 import './ScreenStoryMenuMobile.scss';
 
 //
-export function openScreenStoryMenuMobile({ openScreenFloor }) {
+export function openScreenStoryMenuMobile({
+    story_arr_yours,
+    story_arr_followed,
+    story_arr_suggested,
+
+    count_story_followed,
+    count_story_yours,
+    count_story_suggested,
+    openScreenFloor,
+}) {
     openScreenFloor({
         FloorComponent: ScreenStoryMenuMobile,
+
+        story_arr_yours: story_arr_yours,
+        story_arr_followed: story_arr_followed,
+        story_arr_suggested: story_arr_suggested,
+
+        count_story_followed: count_story_followed,
+        count_story_yours: count_story_yours,
+        count_story_suggested: count_story_suggested,
     });
 }
 
@@ -20,7 +36,17 @@ export function openScreenStoryMenuMobile({ openScreenFloor }) {
 ScreenStoryMenuMobile.propTypes = {};
 
 //
-function ScreenStoryMenuMobile({ closeScreen }) {
+function ScreenStoryMenuMobile({
+    story_arr_yours,
+    story_arr_followed,
+    story_arr_suggested,
+
+    count_story_followed,
+    count_story_yours,
+    count_story_suggested,
+
+    closeScreen,
+}) {
     //
     useMakeBodyHidden({
         // hidden_scroll: true,
@@ -37,11 +63,30 @@ function ScreenStoryMenuMobile({ closeScreen }) {
                 </div>
 
                 <div className="ScreenStoryMenuMobile_item">
-                    <StoryFollowedMobile />
+                    <StoryMenuMobile
+                        story_arr={story_arr_yours}
+                        count_story={count_story_yours}
+                        story_type="yours"
+                        heading="Your stories"
+                    />
                 </div>
 
                 <div className="ScreenStoryMenuMobile_item">
-                    <StorySuggestsMobile />
+                    <StoryMenuMobile
+                        story_arr={story_arr_followed}
+                        count_story={count_story_followed}
+                        story_type="followed"
+                        heading="Followed stories"
+                    />
+                </div>
+
+                <div className="ScreenStoryMenuMobile_item">
+                    <StoryMenuMobile
+                        story_arr={story_arr_suggested}
+                        count_story={count_story_suggested}
+                        story_type="suggested"
+                        heading="Suggested for you"
+                    />
                 </div>
             </div>
         </div>

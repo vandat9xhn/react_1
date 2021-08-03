@@ -43,11 +43,11 @@ class App extends Component {
     //
     refChat = (elm) => {
         if (elm !== null) {
-            this.openZoomChat = elm.openZoomChat;
-            this.hideZoomChat = elm.hideZoomChat;
-            this.hideAllZoomChat = elm.hideAllZoomChat;
-            this.closeZoomChat = elm.closeZoomChat;
-            this.closeAllZoomChat = elm.closeAllZoomChat;
+            this.openRoomChat = elm.openRoomChat;
+            this.hideRoomChat = elm.hideRoomChat;
+            this.hideAllRoomChat = elm.hideAllRoomChat;
+            this.closeRoomChat = elm.closeRoomChat;
+            this.closeAllRoomChat = elm.closeAllRoomChat;
         }
     };
 
@@ -110,11 +110,11 @@ class App extends Component {
                     <ContextAPI
                         handleRefresh={this.handleRefresh}
                         //
-                        openZoomChat={this.openZoomChat}
-                        hideZoomChat={this.hideZoomChat}
-                        hideAllZoomChat={this.hideAllZoomChat}
-                        closeZoomChat={this.closeZoomChat}
-                        closeAllZoomChat={this.closeAllZoomChat}
+                        openRoomChat={this.openRoomChat}
+                        hideRoomChat={this.hideRoomChat}
+                        hideAllRoomChat={this.hideAllRoomChat}
+                        closeRoomChat={this.closeRoomChat}
+                        closeAllRoomChat={this.closeAllRoomChat}
                         //
                         openDivFixLike={this.openDivFixLike}
                         closeDivFixLike={this.closeDivFixLike}
@@ -133,11 +133,11 @@ class App extends Component {
                         detectScreenHasChange={this.detectScreenHasChange}
                     >
                         <div className="App">
-                            <div className="App_contain">
-                                <header className="AppHeader">
-                                    <Header />
-                                </header>
+                            <header className="AppHeader">
+                                <Header />
+                            </header>
 
+                            <div className="App_contain">
                                 <main className="AppContent">
                                     <Switch>
                                         {Routes.map((route, index) => (

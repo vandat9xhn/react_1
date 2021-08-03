@@ -20,7 +20,7 @@ NewFeedContact.propTypes = {};
 //
 function NewFeedContact() {
     //
-    const { openZoomChat } = useContext(context_api);
+    const { openRoomChat } = useContext(context_api);
 
     //
     const ref_contact = useRef(null);
@@ -66,7 +66,7 @@ function NewFeedContact() {
                                 <PicNameContent
                                     user={item.friend}
                                     handleClick={() =>
-                                        openZoomChat(item.friend.id)
+                                        openRoomChat(item.friend.id)
                                     }
                                 />
                             </div>

@@ -1,0 +1,23 @@
+// .
+.StoryMenuPcAction_close {
+    margin-right: 0.5rem;
+    .IconsArrow_close {
+        stroke: var(--danger);
+    }
+}
+
+// .
+.StoryMenuPcAction_toggle-contain {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    .IconsArrow_back-top {
+        fill: var(--blue);
+    }
+}
+.StoryMenuPcAction_toggle-contain-show {
+    transform: rotate(-90deg) scale(1.25, 0.9);
+}
+.StoryMenuPcAction_toggle-contain-hide {
+    transform: rotate(90deg) scale(1.25, 0.9);
+}

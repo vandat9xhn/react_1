@@ -21,7 +21,7 @@ ChatH.defaultProps = {};
 //
 function ChatH({ room_users, room_owner, count_user }) {
     //
-    const { hideZoomChat, closeZoomChat } = useContext(context_api);
+    const { hideRoomChat, closeRoomChat } = useContext(context_api);
 
     const { openChatScreen, ws, chat_ix, is_group } = useContext(context_chat);
 
@@ -33,12 +33,12 @@ function ChatH({ room_users, room_owner, count_user }) {
 
     //
     function handleHideZoomChat() {
-        hideZoomChat(chat_ix);
+        hideRoomChat(chat_ix);
     }
 
     //
     function handleCloseZoomChat() {
-        closeZoomChat(true, chat_ix);
+        closeRoomChat(true, chat_ix);
     }
 
     //

@@ -22,12 +22,12 @@ function HeaderMessFriend({
     closeZoom,
 }) {
     //
-    const { openZoomChat } = useContext(context_api);
+    const { openRoomChat } = useContext(context_api);
 
     //
     function onOpenMessage() {
         if (!is_mouse_down) {
-            openZoomChat(friend_id);
+            openRoomChat(friend_id);
             closeZoom();
         }
     }

@@ -24,11 +24,11 @@ FriendEdit.propTypes = {
 //
 function FriendEdit({ user, handelDeleteFriend }) {
     //
-    const { openZoomChat, openScreenFloor } = useContext(context_api);
+    const { openRoomChat, openScreenFloor } = useContext(context_api);
 
     //
     const onOpenMessage = () => {
-        openZoomChat(user.id);
+        openRoomChat(user.id);
     };
 
     //

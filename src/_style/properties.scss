@@ -230,6 +230,10 @@
     overflow-y: auto;
 }
 
+.overflow-hidden {
+    overflow: hidden;
+}
+
 /* -------------- POINTER EVENTS -----------*/
 .pointer-events-none {
     pointer-events: none;
@@ -331,6 +335,10 @@
     font-size: 20px;
 }
 
+.font-22px {
+    font-size: 22px;
+}
+
 // align
 .text-align-left {
     text-align: left;
@@ -341,6 +349,12 @@
 }
 .text-align-center {
     text-align: center;
+}
+
+/* ----------- u -------------*/
+
+.user-select-none{
+    user-select: none;
 }
 
 /* ----------- V -------------*/

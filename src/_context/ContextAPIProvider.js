@@ -27,7 +27,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
     async function getDataUser() {
         try {
             const res = await DefineUser();
-            console.log(res);
+            // console.log(res);
 
             if (typeof res.data == 'object') {
                 setContextState({

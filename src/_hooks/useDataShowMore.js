@@ -11,8 +11,8 @@ export function useDataShowMore({
     //
     const [data_state, setDataState] = useState({
         data_arr: initial_arr,
-        count: 0,
-        has_fetched: false,
+        count: initial_arr.length,
+        has_fetched: initial_arr.length > 0,
         is_fetching: false,
         ...other_state,
     });

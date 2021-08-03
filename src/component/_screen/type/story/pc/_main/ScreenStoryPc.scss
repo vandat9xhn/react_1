@@ -1,0 +1,36 @@
+.ScreenStoryPc-has_head{
+    height: calc(100vh - var(--height-header));
+    margin-top: calc(var(--height-header));
+}
+
+.ScreenStoryPc_left{
+    // width: 350px;
+    flex-shrink: 0;
+    transition: all 250ms;
+    z-index: 1;
+}
+.ScreenStoryPc_left-show{
+    width: 350px;
+    // transform: translateX(0%);
+}
+.ScreenStoryPc_left-hide{
+    width: 0;
+    // transform: translateX(-100%);
+}
+
+.ScreenStoryPc_close{
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+// 
+@media (max-width: 700px) {
+    .ScreenStoryPc_left{
+        display: none;
+    }
+    .ScreenStoryPc_close{
+        display: block;
+    }
+}

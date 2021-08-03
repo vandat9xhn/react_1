@@ -16,11 +16,11 @@ ShopPersonalLeft.propTypes = {
 //
 function ShopPersonalLeft({profile_model, picture, name, banner}) {
     //
-    const { openZoomChat } = useContext(context_api);
+    const { openRoomChat } = useContext(context_api);
 
     //
     function onOpenMessage() {
-        openZoomChat(profile_model);
+        openRoomChat(profile_model);
     }
 
     //

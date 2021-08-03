@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
-import VidPicObserve from '../../../../vid_pic/observe/VidPicObserve';
+import { context_api } from '../../../../../_context/ContextAPI';
 // 
+import VidPicObserve from '../../../../vid_pic/observe/VidPicObserve';
+//
 import BadgeDiv from '../../../../some_div/badge_div/BadgeDiv';
 //
 import StoryText from '../../../_components/text/StoryText';
 import StoryFaceUserPic from '../user_pic/StoryFaceUserPic';
 import StoryFaceName from '../name/StoryFaceName';
-// 
+//
 import './StoryFace.scss';
 
 //
@@ -27,7 +29,10 @@ function StoryFace({
     scale_text,
 }) {
     //
-    const { first_name, last_name, picture } = user;
+    const { user: c_user } = useContext(context_api);
+
+    //
+    const { id, first_name, last_name, picture } = user;
 
     //
     return (
@@ -52,7 +57,13 @@ function StoryFace({
             </div>
 
             <div className="StoryFace_name">
-                <StoryFaceName name={first_name + ' ' + last_name} />
+                <StoryFaceName
+                    name={
+                        c_user.id == id
+                            ? 'Your story'
+                            : first_name + ' ' + last_name
+                    }
+                />
             </div>
 
             <div className="story-bg"></div>

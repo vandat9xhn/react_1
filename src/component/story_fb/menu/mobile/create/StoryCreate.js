@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
-import { context_api } from '../../../../_context/ContextAPI';
-//
-import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
+import { context_api } from '../../../../../_context/ContextAPI';
+// 
+import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import './StoryCreate.scss';
 

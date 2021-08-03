@@ -48,7 +48,7 @@ class Chat extends Component {
         const room_chat_arr = session_room_chat.split(',').reverse();
         setTimeout(() => {
             for (const room_chat of room_chat_arr) {
-                this.openZoomChat(room_chat);
+                this.openRoomChat(room_chat);
             }
         }, 250);
     }
@@ -107,7 +107,7 @@ class Chat extends Component {
     /* ----------- */
 
     //
-    openZoomChat = async (new_room_chat) => {
+    openRoomChat = async (new_room_chat) => {
         const { chat_active_arr, chat_inactive_arr } = this.state;
 
         if (chat_active_arr.some((item) => item.room_chat == new_room_chat)) {
@@ -147,13 +147,13 @@ class Chat extends Component {
     };
 
     //
-    hideZoomChat = (active_index = 0) => {
+    hideRoomChat = (active_index = 0) => {
         this.handleHideZoomChat(active_index);
         this.setState({});
     };
 
     //
-    hideAllZoomChat = () => {
+    hideAllRoomChat = () => {
         const { chat_active_arr, chat_inactive_arr } = this.state;
 
         this.setState({
@@ -165,7 +165,7 @@ class Chat extends Component {
     };
 
     //
-    closeZoomChat = (is_chat_open = true, close_index = 0) => {
+    closeRoomChat = (is_chat_open = true, close_index = 0) => {
         const { chat_active_arr, chat_inactive_arr } = this.state;
 
         if (is_chat_open) {
@@ -181,7 +181,7 @@ class Chat extends Component {
     };
 
     //
-    closeAllZoomChat = () => {
+    closeAllRoomChat = () => {
         this.setState({
             chat_active_arr: [],
             chat_inactive_arr: [],

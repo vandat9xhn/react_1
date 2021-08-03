@@ -26,7 +26,7 @@ function ChatOptions({
     handleHideAllZoomChat,
 }) {
     //
-    const { closeAllZoomChat } = useContext(context_api);
+    const { closeAllRoomChat } = useContext(context_api);
 
     //
     return (
@@ -61,7 +61,7 @@ function ChatOptions({
                                             />
                                         ),
                                         title: 'Close all chats',
-                                        funcHandle: closeAllZoomChat,
+                                        funcHandle: closeAllRoomChat,
                                     },
                                     {
                                         icon: (

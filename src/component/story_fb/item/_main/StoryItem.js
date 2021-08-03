@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../_constant/Constant';
@@ -8,7 +8,6 @@ import UnitTime from '../../../../_some_function/UnitTime';
 import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import PictureName from '../../../picture_name/pic_name/PictureName';
-import NextPrevDiv from '../../../some_div/next_prev_div/NextPrevDiv';
 //
 import StoryItemMain from '../vid_pic_text/StoryItemMain';
 import StoryStep from '../step/StoryStep';
@@ -22,11 +21,6 @@ StoryItem.propTypes = {};
 function StoryItem({
     handleCloseStoryItem,
     active_step,
-
-    is_has_next,
-    is_has_prev,
-    handleNext,
-    handlePrev,
 
     user,
     count,
@@ -95,14 +89,6 @@ function StoryItem({
 
                 <div className="story-bg"></div>
             </div>
-
-            <NextPrevDiv
-                is_btn_circle={true}
-                is_has_next={is_has_next}
-                is_has_prev={is_has_prev}
-                handleNext={handleNext}
-                handlePrev={handlePrev}
-            />
         </div>
     );
 }

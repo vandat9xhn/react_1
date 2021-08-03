@@ -1,0 +1,28 @@
+.ScreenStoryMenuPc_action {
+    position: absolute;
+    top: 0.5rem;
+    z-index: 1;
+}
+.ScreenStoryMenuPc_action-show {
+    right: 1rem;
+}
+.ScreenStoryMenuPc_action-hide {
+    right: auto;
+    left: 100%;
+}
+
+.ScreenStoryMenuPc {
+    transition: all 250ms;
+}
+.ScreenStoryMenuPc_show {
+    transform: translateX(0);
+    overflow-y: auto;
+}
+.ScreenStoryMenuPc_hide {
+    transform: translateX(-100%);
+    overflow-y: hidden;
+}
+
+.ScreenStoryMenuPc_head {
+    margin: 0 0 1rem 0;
+}

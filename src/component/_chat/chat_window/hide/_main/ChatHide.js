@@ -23,7 +23,7 @@ function ChatHide({
     chat_item,
 }) {
     //
-    const { openZoomChat, closeZoomChat } = useContext(context_api);
+    const { openRoomChat, closeRoomChat } = useContext(context_api);
 
     //
     const [state_obj, setStateObj] = useState({
@@ -41,12 +41,12 @@ function ChatHide({
 
     //
     function reOpenZoomChat() {
-        openZoomChat(room_chat);
+        openRoomChat(room_chat);
     }
 
     //
     function onCloseZoomChat() {
-        closeZoomChat(false, chat_ix);
+        closeRoomChat(false, chat_ix);
     }
 
     //

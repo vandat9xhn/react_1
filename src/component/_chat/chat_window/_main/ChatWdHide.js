@@ -17,7 +17,7 @@ ChatWdHide.propTypes = {};
 //
 function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
     //
-    const { hideAllZoomChat } = useContext(context_api);
+    const { hideAllRoomChat } = useContext(context_api);
 
     //
     const count_hide_item = !is_two_long_chat_inactive
@@ -58,7 +58,7 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
 
     //
     function handleHideAllZoomChat() {
-        hideAllZoomChat();
+        hideAllRoomChat();
         closeOptions();
     }
 

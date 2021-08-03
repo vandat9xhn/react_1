@@ -27,7 +27,7 @@ body {
     &[data-count-hidden] {
         // overflow-y: scroll;
 
-        .App {
+        .App_contain {
             position: fixed;
             width: 100%;
             z-index: -1;
@@ -41,6 +41,12 @@ body {
         }
     }
 
+    &[data-blur-header]{
+        .AppHeader{
+            z-index: -1;
+        }
+    }
+
     &[data-hidden-scroll] {
         // overflow-y: hidden;
         &::-webkit-scrollbar {
@@ -49,7 +55,7 @@ body {
     }
 
     &[data-hidden-app] {
-        .App {
+        .App_contain {
             display: none;
         }
     }
