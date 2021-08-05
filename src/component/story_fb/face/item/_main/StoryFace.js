@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
-// 
+//
 import VidPicObserve from '../../../../vid_pic/observe/VidPicObserve';
 //
 import BadgeDiv from '../../../../some_div/badge_div/BadgeDiv';
@@ -40,7 +40,12 @@ function StoryFace({
             <div className="StoryFace_img h-100per story-transition">
                 <VidPicObserve
                     vid_pic={vid_pic}
-                    className="wh-100 object-fit-cover"
+                    img_props={{
+                        className: 'wh-100 object-fit-cover',
+                    }}
+                    video_props={{
+                        className: 'wh-100 object-fit-cover',
+                    }}
                 />
             </div>
 

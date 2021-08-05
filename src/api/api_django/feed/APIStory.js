@@ -11,7 +11,7 @@ import {
 //
 export const API_FeedStory_L = (params = {}) =>
     API_FakeReal(
-        default_story_arr(params['story_type']),
+        default_story_arr(params['story_type'], params['c_count']),
         () =>
             axiosDjangoClient({
                 url: 'api/facebook/story-lc/',

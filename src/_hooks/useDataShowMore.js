@@ -6,7 +6,7 @@ import { useMounted } from './useMounted';
 export function useDataShowMore({
     initial_arr = [],
     other_state = {},
-    handle_API_L,
+    handle_API_L = (c_count = 0) => new Promise(),
 }) {
     //
     const [data_state, setDataState] = useState({
@@ -54,6 +54,7 @@ export function useDataShowMore({
                         : false;
 
                     return {
+                        ...data_state,
                         data_arr: has_fetched ? [...data_arr, ...data] : data,
                         // data_arr: [...data_arr, ...data],
                         count: has_fetched ? count : new_count,
@@ -64,7 +65,7 @@ export function useDataShowMore({
         } catch (e) {
             console.log(e);
         }
-        
+
         handleWhenFinally();
     }
 

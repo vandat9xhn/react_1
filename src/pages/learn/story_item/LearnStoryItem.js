@@ -7,6 +7,7 @@ import { openScreenStoryMenuMobile } from '../../../component/_screen/type/story
 //
 import './LearnStoryItem.scss';
 import { openScreenStoryPc } from '../../../component/_screen/type/story/pc/_main/ScreenStoryPc';
+import StoryCreateTextChoice from '../../../component/story_fb/_components/create/choose/text/StoryCreateTextChoice';
 
 //
 LearnStoryItem.propTypes = {};
@@ -36,7 +37,7 @@ function LearnStoryItem(props) {
 
     //
     return (
-        <div>
+        <div className="padding-8px">
             <div
                 className="label-field cursor-pointer"
                 onClick={handleOpenScreenStoryMenu}
@@ -50,6 +51,10 @@ function LearnStoryItem(props) {
                 onClick={handleOpenScreenStoryPc}
             >
                 Open Screen Story Pc
+            </div>
+
+            <div className="Learn_StoryCreateTextChoice">
+                <StoryCreateTextChoice />
             </div>
         </div>
     );

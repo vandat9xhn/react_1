@@ -170,6 +170,18 @@
     }
 }
 
+.hv-bg-icon {
+    &:hover {
+        background-color: var(--bg-icon);
+    }
+}
+
+.hv-bg-hv {
+    &:hover {
+        background-color: var(--md-bg-hover);
+    }
+}
+
 .hv-bg-blur {
     &:hover {
         background-color: var(--md-bg-blur);

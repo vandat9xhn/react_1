@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsArrow from '../../../_icons_svg/icons_arrow/IconsArrow';
+import BtnNexPrev from '../../button/next_prev/BtnNexPrev';
 //
 import './NextPrevDiv.scss';
 
@@ -35,35 +35,31 @@ function NextPrevDiv({
     return (
         <div className="NextPrevDiv">
             <div className="NextPrevDiv_next">
-                <div
-                    className={`bg-ccc cursor-pointer hv-opacity ${
+                <BtnNexPrev
+                    is_next={true}
+                    btn_class={`${is_has_next ? '' : 'display-none'} ${
                         is_btn_circle
-                            ? 'NextPrevDiv_icon_circle display-flex-center brs-50'
+                            ? 'NextPrevDiv_icon_circle brs-50'
                             : 'NextPrevDiv_icon NextPrevDiv_next_icon'
-                    }
-                    ${is_has_next ? '' : 'NextPrevDiv_btn_none'}
-                    `}
-                    onClick={handleNext}
-                    title="next"
-                >
-                    <IconsArrow x={200} size_icon={size_icon} />
-                </div>
+                    }`}
+                    size_icon={size_icon}
+                    disabled={!is_has_next}
+                    handleClick={handleNext}
+                />
             </div>
 
             <div className="NextPrevDiv_prev">
-                <div
-                    className={`bg-ccc cursor-pointer hv-opacity ${
+                <BtnNexPrev
+                    is_next={false}
+                    btn_class={`${is_has_prev ? '' : 'display-none'} ${
                         is_btn_circle
-                            ? 'NextPrevDiv_icon_circle display-flex-center brs-50'
+                            ? 'NextPrevDiv_icon_circle brs-50'
                             : 'NextPrevDiv_icon NextPrevDiv_prev_icon'
-                    }
-                    ${is_has_prev ? '' : 'NextPrevDiv_btn_none'}
-                    `}
-                    onClick={handlePrev}
-                    title="previous"
-                >
-                    <IconsArrow x={400} size_icon={size_icon} />
-                </div>
+                    }`}
+                    size_icon={size_icon}
+                    disabled={!is_has_prev}
+                    handleClick={handlePrev}
+                />
             </div>
         </div>
     );

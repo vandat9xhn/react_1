@@ -3,19 +3,17 @@ import PropTypes from 'prop-types';
 //
 import {
     handle_API_FeedStoryItemViewer_L,
-    handle_API_FeedStory_R,
-} from '../../../../../../_handle_api/feed/HandleAPIStory';
+    handle_API_StoryItem_R,
+} from '../../../../../../../_handle_api/feed/HandleAPIStory';
 //
-import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
+import { useForceUpdate } from '../../../../../../../_hooks/UseForceUpdate';
 //
-import CircleLoading from '../../../../../waiting/circle_loading/CircleLoading';
-import NextPrevDiv from '../../../../../some_div/next_prev_div/NextPrevDiv';
-//
-import StoryItem from '../../../../../story_fb/item/_main/StoryItem';
-import StoryViewerList from '../../../../../story_fb/viewer/list/_main/StoryViewerList';
-import StoryViewerTitle from '../../../../../story_fb/viewer/title/StoryViewerTitle';
+import ScreenStoryNextPrev from '../next_prev/ScreenStoryNextPrev';
+import ScreenStoryItemCenter from '../center/_main/ScreenStoryItemCenter';
 //
 import './ScreenStoryItem.scss';
+import ScreenStoryFoot from '../foot/_main/ScreenStoryFoot';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 ScreenStoryItem.propTypes = {};
@@ -36,25 +34,8 @@ function ScreenStoryItem({
 }) {
     //
     const story_obj = story_arr[active_ix];
-
-    const { list, user, count, count_new, active_step, active_item_ix } =
-        story_obj;
-
-    const {
-        id,
-        vid_pic,
-        created_time,
-
-        text,
-        top_text,
-        left_text,
-        color_text_ix,
-        scale_text,
-
-        viewer_arr,
-        count_viewer,
-        count_friend_viewer,
-    } = list[active_item_ix];
+    const { list, count, active_step, active_item_ix } = story_obj;
+    const { id, viewer_arr } = list[active_item_ix];
 
     const is_has_next =
         active_step < count - 1 ||
@@ -87,7 +68,7 @@ function ScreenStoryItem({
             is_fetching: true,
         }));
 
-        const data = await handle_API_FeedStory_R({
+        const data = await handle_API_StoryItem_R({
             is_next: is_next,
             story_id: id,
             story_type: story_type,
@@ -120,7 +101,6 @@ function ScreenStoryItem({
             c_count: viewer_arr.length,
         });
 
-        console.log(data);
         viewer_arr.push(...data);
 
         setStateObj((state_obj) => ({
@@ -213,73 +193,80 @@ function ScreenStoryItem({
         getData_StoryViewer();
     }
 
-    // 
+    /* ---------- */
+
+    function handleShare() {
+        console.log(id);
+    }
+
+    function handleSend(text) {
+        console.log(text);
+    }
+
+    function chooseListTypeLike(type_like) {
+        console.log(type_like);
+    }
+
+    /* ---------- */
     function handleCloseStoryItem() {
-        history.back()
+        IS_MOBILE ? closeScreen() : history.back();
     }
 
     //
     return (
         <div
+            key={id}
             className={`ScreenStoryItem wh-100 user-select-none ${
                 is_fetching ? 'pointer-events-none opacity-05' : ''
             }`}
         >
-            <div className="ScreenStoryItem_item ScreenStoryItem_wh">
-                <StoryItem
-                    handleCloseStoryItem={handleCloseStoryItem}
-                    active_step={active_step}
-                    //
-                    user={user}
-                    count={count}
-                    vid_pic={vid_pic}
-                    created_time={created_time}
-                    //
-                    text={`${text}`}
-                    top_text={top_text}
-                    left_text={left_text}
-                    color_text_ix={color_text_ix}
-                    scale_text={scale_text}
-                />
-            </div>
+            <div className="ScreenStoryItem_head position-rel flex-grow-1">
+                <div className="display-flex h-100per">
+                    <div className="flex-grow-1">
+                        <ScreenStoryNextPrev
+                            is_next={false}
+                            disabled={!is_has_prev}
+                            handleClick={handlePrev}
+                        />
+                    </div>
 
-            <div className="pos-abs-center">
-                <CircleLoading is_fetching={is_fetching || is_fetching_story} />
-            </div>
+                    <div className="ScreenStoryItem_head_center">
+                        <ScreenStoryItemCenter
+                            story_obj={story_obj}
+                            //
+                            is_fetching={is_fetching}
+                            is_fetching_story={is_fetching_story}
+                            is_fetching_viewer={is_fetching_viewer}
+                            is_show_viewer={is_show_viewer}
+                            //
+                            handleCloseStoryItem={handleCloseStoryItem}
+                            handleShowMoreViewer={handleShowMoreViewer}
+                            handleCloseFriendViewer={handleCloseFriendViewer}
+                            handleToggleFriendView={handleToggleFriendView}
+                        />
+                    </div>
 
-            <div>
-                <NextPrevDiv
-                    is_btn_circle={true}
-                    is_has_next={is_has_next}
-                    is_has_prev={is_has_prev}
-                    handleNext={handleNext}
-                    handlePrev={handlePrev}
-                />
-            </div>
-
-            <div
-                className={`ScreenStoryItem_viewer_list ScreenStoryItem_wh pos-abs-center ${
-                    is_show_viewer ? '' : 'display-none'
-                }`}
-            >
-                <div className="ScreenStoryItem_viewer_list-contain h-100per margin-auto">
-                    <StoryViewerList
-                        viewer_arr={viewer_arr}
-                        count_friend_viewer={count_friend_viewer}
-                        is_fetching={is_fetching_viewer}
-                        handleShowMore={handleShowMoreViewer}
-                        handleCloseFriendViewer={handleCloseFriendViewer}
-                    />
+                    <div className="flex-grow-1">
+                        <ScreenStoryNextPrev
+                            is_next={true}
+                            disabled={!is_has_next}
+                            handleClick={handleNext}
+                        />
+                    </div>
                 </div>
             </div>
 
-            <div className="ScreenStoryItem_bottom">
-                <StoryViewerTitle
-                    count_viewer={count_viewer}
-                    count_friend_viewer={count_friend_viewer}
-                    count_other_viewer={count_viewer - count_friend_viewer}
-                    handleToggleFriendView={handleToggleFriendView}
-                />
+            <div className="ScreenStoryItem_foot position-rel">
+                <div className="ScreenStoryItem_foot_contain">
+                    <ScreenStoryFoot
+                        can_rep={true}
+                        can_like={true}
+                        can_share={true}
+                        handleShare={handleShare}
+                        chooseListTypeLike={chooseListTypeLike}
+                        handleSend={handleSend}
+                    />
+                </div>
             </div>
         </div>
     );

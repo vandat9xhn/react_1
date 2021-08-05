@@ -50,7 +50,9 @@ function ScreenStoryMenuPc({
                         : 'ScreenStoryMenuPc_hide'
                 }`}
             >
-                <h1 className="ScreenStoryMenuPc_head font-22px label-field">Stories</h1>
+                <h1 className="ScreenStoryMenuPc_head font-22px label-field">
+                    Stories
+                </h1>
 
                 <div>
                     <StoryMenuPc

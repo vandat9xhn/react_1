@@ -42,7 +42,7 @@ export async function handle_API_FeedStoryItemViewer_L({
 }
 
 //
-export async function handle_API_FeedStory_R({
+export async function handle_API_StoryItem_R({
     is_next = true,
     story_id = 0,
     story_type = '',

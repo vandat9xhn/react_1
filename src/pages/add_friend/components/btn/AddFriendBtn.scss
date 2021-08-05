@@ -6,10 +6,9 @@
 // .
 .AddFriendBtn_col{
     width: 45%;
-    border: 1px solid var(--md-bg-ccc);
 }
-.AddFriendBtn_left{
-    .BtnAction{
-        background-color: var(--blue);
-    }
+// ...
+.AddFriendBtn_btn{
+    padding: 5px;
+    border: 1px solid var(--md-bg-ccc);
 }

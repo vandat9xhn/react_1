@@ -38,11 +38,13 @@ ScreenStoryMenuMobile.propTypes = {};
 //
 function ScreenStoryMenuMobile({
     story_arr_yours,
+    story_arr_friends,
     story_arr_followed,
     story_arr_suggested,
 
-    count_story_followed,
     count_story_yours,
+    count_story_friend,
+    count_story_followed,
     count_story_suggested,
 
     closeScreen,
@@ -68,6 +70,15 @@ function ScreenStoryMenuMobile({
                         count_story={count_story_yours}
                         story_type="yours"
                         heading="Your stories"
+                    />
+                </div>
+
+                <div className="ScreenStoryMenuMobile_item">
+                    <StoryMenuMobile
+                        story_arr={story_arr_friends}
+                        count_story={count_story_friend}
+                        story_type="friends"
+                        heading="Friend's stories"
                     />
                 </div>
 

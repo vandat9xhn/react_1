@@ -40,6 +40,7 @@ const default_story_viewer_first_obj = () => {
 const default_story_item_obj = () => ({
     id: getRandomId(),
     vid_pic: getRandomVidPic(),
+    story_link: getRandomBool() ? null : '/posts/' + getRandomId(),
     created_time: new Date().toString(),
 
     text: getRandomBool() ? `Text ${getRandomNumber(0, 10000)}` : '',
@@ -72,7 +73,7 @@ const default_story_obj = (has_new = false) => {
     };
 };
 
-export const default_story_arr = (story_type = '') => {
+export const default_story_arr = (story_type = '', c_count = 0) => {
     const story_yours_arr = getRandomBool()
         ? [{ ...default_story_obj(getRandomBool()), user: default_define_user }]
         : [];
@@ -86,9 +87,9 @@ export const default_story_arr = (story_type = '') => {
         ...getDefaultArr(() => default_story_obj(false), 0, 4),
     ].slice(0, IS_MOBILE ? 6 : 4);
 
-    if (story_type == 'followed' || 'suggested') {
+    if (story_type == 'followed' || 'suggested' || 'friends') {
         return story_followed_arr;
     }
 
-    return [...story_yours_arr, ...story_followed_arr];
+    return [...(c_count ? [] : story_yours_arr), ...story_followed_arr];
 };

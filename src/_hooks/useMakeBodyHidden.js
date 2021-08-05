@@ -12,8 +12,12 @@ export const useMakeBodyHidden = (
     }
 ) => {
     //
-    const { blur_header, hidden_scroll, hidden_app, hidden_header } =
-        hidden_obj;
+    const {
+        blur_header = true,
+        hidden_scroll = false,
+        hidden_app = false,
+        hidden_header = false,
+    } = hidden_obj;
 
     //
     useLayoutEffect(() => {

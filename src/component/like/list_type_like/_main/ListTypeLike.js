@@ -24,7 +24,7 @@ function ListTypeLike({ chooseListTypeLike, open_type_like }) {
                         {type_likes.map((item, index) => (
                             <div
                                 key={`ListTypeLike_${index}`}
-                                className="ListTypeLike_item"
+                                className="ListTypeLike_item cursor-pointer"
                             >
                                 <TypeLikeItem
                                     index={index}

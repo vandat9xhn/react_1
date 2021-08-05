@@ -3,7 +3,7 @@ const observeToDo = (
     elm,
     callback = () => {},
     threshold = 0.9,
-    when_over = false.valueOf,
+    when_over = false,
     rootMargin = `100px 100px`,
 ) => {
     const observer = new IntersectionObserver(

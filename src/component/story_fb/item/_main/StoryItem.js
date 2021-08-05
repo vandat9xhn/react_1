@@ -36,6 +36,8 @@ function StoryItem({
     //
     return (
         <div className={`StoryItem wh-100 ${IS_MOBILE ? 'position-rel' : ''}`}>
+            <div className="story-bg"></div>
+            
             <div className="StoryItem-contain position-rel wh-100">
                 <StoryItemMain
                     vid_pic={vid_pic}
@@ -87,7 +89,6 @@ function StoryItem({
                     </div>
                 </div>
 
-                <div className="story-bg"></div>
             </div>
         </div>
     );

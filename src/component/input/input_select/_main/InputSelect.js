@@ -23,7 +23,7 @@ InputSelect.propTypes = {
 
     handleKeyDown: PropTypes.func,
     handleKeyUp: PropTypes.func,
-    
+
     handleChangeInput: PropTypes.func,
     handleSelectOption: PropTypes.func,
     handleRemoveSelectedItem: PropTypes.func,
@@ -50,31 +50,28 @@ InputSelect.defaultProps = {
 };
 
 //
-function InputSelect(props) {
-    //
-    const {
-        selected_item_arr,
-        option_item_arr,
-        value,
-        multiple,
-        placeholder,
+function InputSelect({
+    selected_item_arr,
+    option_item_arr,
+    value,
+    multiple,
+    placeholder,
 
-        handleFocusInput,
-        handleBlurInput,
+    handleFocusInput,
+    handleBlurInput,
 
-        handleKeyDown,
-        handleKeyUp,
-        handleChangeInput,
-        handleSelectOption,
-        handleRemoveSelectedItem,
+    handleKeyDown,
+    handleKeyUp,
+    handleChangeInput,
+    handleSelectOption,
+    handleRemoveSelectedItem,
 
-        ComponentSelectedList,
-        ComponentOptionList,
+    ComponentSelectedList,
+    ComponentOptionList,
 
-        selected_props,
-        option_props,
-    } = props;
-
+    selected_props,
+    option_props,
+}) {
     //
     const ref_input = useRef(null);
     const ref_input_select = useRef(null);
@@ -117,7 +114,7 @@ function InputSelect(props) {
                         ? 'input-active'
                         : ''
                 }`}
-                >
+            >
                 <div
                     className={`InputSelect_head padding-8px brs-5px ${
                         is_focus ? 'InputSelect_head-active' : ''

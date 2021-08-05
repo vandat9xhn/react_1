@@ -1,0 +1,67 @@
+.ScreenStoryNextPrev {
+    &:hover {
+        .ScreenStoryNextPrev_btn_contain {
+            transform: scale(1.25);
+            opacity: 1;
+        }
+    }
+}
+
+.ScreenStoryNextPrev_btn_contain {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+
+    opacity: 0.5;
+    transition: all 250ms ease-in-out;
+}
+
+.ScreenStoryNextPrev_btn {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+// .
+.ScreenStoryNextPrev_btn-prev {
+    right: 4rem;
+}
+
+// .
+.ScreenStoryNextPrev_btn-next {
+    left: 4rem;
+}
+
+//
+@media (max-width: 900px) {
+    // .
+    .ScreenStoryNextPrev_btn-prev {
+        right: 50%;
+        transform: translateX(50%);
+    }
+    
+    // .
+    .ScreenStoryNextPrev_btn-next {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+//
+@media (max-width: 400px) {
+    // .
+    .ScreenStoryNextPrev_btn-prev {
+        transform: translateX(0%);
+        right: auto;
+        left: 0;
+    }
+
+    // .
+    .ScreenStoryNextPrev_btn-next {
+        transform: translateX(0%);
+        left: auto;
+        right: 0;
+    }
+}

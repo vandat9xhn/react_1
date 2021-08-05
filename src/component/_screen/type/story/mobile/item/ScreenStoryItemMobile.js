@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
 //
-import ScreenStoryItem from '../../_components/item/ScreenStoryItem';
+import ScreenStoryItem from '../../_components/item/_main/ScreenStoryItem';
 //
 import './ScreenStoryItemMobile.scss';
 import { handle_API_FeedStory_L } from '../../../../../../_handle_api/feed/HandleAPIStory';

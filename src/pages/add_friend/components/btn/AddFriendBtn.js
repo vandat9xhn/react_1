@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import BtnAction from '../../../../component/button/btn_action/BtnAction';
-//
 import './AddFriendBtn.scss';
 
 //
@@ -20,11 +18,10 @@ AddFriendBtn.propTypes = {
 };
 
 AddFriendBtn.defaultProps = {
-    btn_class_requesting: 'btn btn-active btn-hv cursor-pointer',
-
+    btn_class_requesting: '',
+    btn_class_removing: '',
     title_remove: 'Remove',
-    btn_class_removing: 'btn btn-active btn-hv cursor-pointer',
-}
+};
 
 //
 function AddFriendBtn({
@@ -41,26 +38,30 @@ function AddFriendBtn({
 }) {
     //
     return (
-        <div>
+        <div className="AddFriendBtn">
             <div className="AddFriendBtn_row">
-                <div className="AddFriendBtn_col AddFriendBtn_left">
-                    <BtnAction
-                        btn_class={btn_class_requesting}
+                <div className="AddFriendBtn_col">
+                    <button
+                        className={`AddFriendBtn_btn wh-100 bg-blue btn btn-hv btn-active cursor-pointer ${btn_class_requesting}`}
                         disabled={requesting || removing}
-                        handleBtnAction={handleRequesting}
+                        onClick={handleRequesting}
                     >
-                        {requesting ? '...' : title_request}
-                    </BtnAction>
+                        <div className="AddFriendBtn_btn-contain">
+                            {requesting ? '...' : title_request}
+                        </div>
+                    </button>
                 </div>
 
-                <div className="AddFriendBtn_col AddFriendBtn_right">
-                    <BtnAction
-                        btn_class={btn_class_removing}
+                <div className="AddFriendBtn_col">
+                    <button
+                        className={`AddFriendBtn_btn wh-100 btn btn-hv btn-active cursor-pointer ${btn_class_removing}`}
                         disabled={removing || requesting}
-                        handleBtnAction={handleRemoving}
+                        onClick={handleRemoving}
                     >
-                        {removing ? '...' : title_remove}
-                    </BtnAction>
+                        <div className="AddFriendBtn_btn-contain">
+                            {removing ? '...' : title_remove}
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>

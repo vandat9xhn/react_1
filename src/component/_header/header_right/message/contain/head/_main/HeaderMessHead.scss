@@ -2,6 +2,7 @@
 .HeaderMessHead{
     max-width: 100%;
     overflow-x: auto;
+    scroll-snap-type: x mandatory;
     user-select: none;
     
     &::-webkit-scrollbar{
@@ -10,4 +11,17 @@
     img{
         -webkit-user-drag: none;
     }
+
+    .BtnNexPrev{
+        box-shadow: var(--box-shadow-fb);
+        opacity: 0.75;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+}
+
+.HeaderMessHead_item{
+    scroll-snap-align: start end;
 }

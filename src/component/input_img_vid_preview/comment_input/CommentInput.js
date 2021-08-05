@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useMounted } from '../../../_hooks/useMounted';
-//
 import IconsInput from '../../../_icons_svg/Icons_input/IconsInput';
 import IconsAction from '../../../_icons_svg/icons_action/IconsAction';
 //
@@ -18,17 +16,15 @@ CommentInput.propTypes = {
     file_multiple: PropTypes.bool,
     placeholder: PropTypes.string,
     handleSend: PropTypes.func,
-    deps_reset: PropTypes.any,
 };
 
 CommentInput.defaultProps = {
     file_multiple: false,
     placeholder: 'Comment...',
-    deps_reset: '',
 };
 
 //
-function CommentInput({ file_multiple, placeholder, handleSend, deps_reset }) {
+function CommentInput({ file_multiple, placeholder, handleSend }) {
     //
     const [cmt_obj, setCmtObj] = useState({
         text: '',
@@ -41,20 +37,6 @@ function CommentInput({ file_multiple, placeholder, handleSend, deps_reset }) {
 
     //
     const ref_comment_input = useRef(null);
-
-    //
-    const mounted = useMounted();
-
-    //
-    useEffect(() => {
-        mounted &&
-            setCmtObj({
-                text: '',
-                urls: [],
-                files: [],
-                file_reading: false,
-            });
-    }, [deps_reset]);
 
     /* ------------- INPUT ------------ */
 

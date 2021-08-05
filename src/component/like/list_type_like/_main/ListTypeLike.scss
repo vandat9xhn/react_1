@@ -1,10 +1,9 @@
 //
 .ListTypeLike {
     animation: move-down 0.25s ease-out;
-    //
+
     .open-type-like {
         transition: transform 0.2s;
-        cursor: pointer;
 
         &:hover {
             transform: scale(1.025);

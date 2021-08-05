@@ -1,0 +1,19 @@
+
+.StoryReply {
+    padding: 0 0.5rem;
+    border: 1px solid var(--md-bg-ccc);
+    border-radius: 25px;
+}
+
+.StoryReply_textarea{
+    max-height: 12.5rem;
+}
+
+.StoryReply_send{
+    align-self: flex-end;
+}
+// .
+.StoryReply_send_contain {
+    width: 2.25rem;
+    height: 2.25rem;
+}

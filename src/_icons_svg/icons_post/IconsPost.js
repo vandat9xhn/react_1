@@ -17,14 +17,13 @@ IconsPost.defaultProps = {
 };
 
 /**
-*icons post: (x, y)
-*   @.icon tag: (0, 0)
-*   @.icon comment: (200, 0)
-*   @.icon share: (0, 200)
-*/
-function IconsPost(props) {
-    const { size_icon, x, y } = props;
-    
+ *icons post: (x, y)
+ *   @.icon tag: (0, 0)
+ *   @.icon comment: (200, 0)
+ *   @.icon share: (0, 200)
+ */
+function IconsPost({ size_icon, x, y }) {
+    //
     return (
         <svg
             className="IconsPost"
@@ -37,7 +36,10 @@ function IconsPost(props) {
             strokeLinecap="round"
         >
             {/* icon tag x=0 y=0*/}
-            <path fill="var(--blue)" d="M10,95 L0,0 L95,10 L200,115 L115,200 Z" />
+            <path
+                fill="var(--blue)"
+                d="M10,95 L0,0 L95,10 L200,115 L115,200 Z"
+            />
             <g stroke="var(--blue)" fill="white" strokeWidth="5">
                 <circle cx="50" cy="50" r="20" />
                 <circle cx="80" cy="165" r="30" />
@@ -59,12 +61,12 @@ function IconsPost(props) {
 
             {/* icon share x=0 y=200 */}
             <path
+                className="IconsPost_share"
                 d="M180,300 L125,240 L125,280 Q40,290 25,380 Q40,330 125,320 L125,360 Z"
                 strokeWidth="10"
             />
         </svg>
     );
 }
-
 
 export default IconsPost;

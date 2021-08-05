@@ -14,6 +14,7 @@ import MessageFriend from '../friend/HeaderMessFriend';
 //
 import white_person from '../../../../../../../../image/white_person.svg';
 import './HeaderMessHead.scss';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 HeaderMessHead.propTypes = {
@@ -90,7 +91,12 @@ function HeaderMessHead({ closeZoom }) {
                 <div className={`${has_fetched ? '' : 'display-none'}`}>
                     <div className="display-flex align-items-center">
                         {friend_arr.map((friend, ix) => (
-                            <div key={`ListMessages_friend_${ix}`}>
+                            <div
+                                key={`ListMessages_friend_${ix}`}
+                                className={`${
+                                    IS_MOBILE ? 'HeaderMessHead_item' : ''
+                                }`}
+                            >
                                 <MessageFriend
                                     is_mouse_down={is_mouse_down}
                                     friend_id={friend.id}
@@ -111,22 +117,20 @@ function HeaderMessHead({ closeZoom }) {
                     />
                 </div>
 
-                <div>
-                    <ComponentSkeleton
-                        component={
-                            <MessageFriend
-                                is_mouse_down={true}
-                                friend_id={0}
-                                picture={white_person}
-                                last_name=""
-                                closeZoom={closeZoom}
-                            />
-                        }
-                        has_fetched={has_fetched}
-                        num={4}
-                        skeleton_class="display-flex align-items-center"
-                    />
-                </div>
+                <ComponentSkeleton
+                    component={
+                        <MessageFriend
+                            is_mouse_down={true}
+                            friend_id={0}
+                            picture={white_person}
+                            last_name=""
+                            closeZoom={closeZoom}
+                        />
+                    }
+                    has_fetched={has_fetched}
+                    num={4}
+                    skeleton_class="display-flex align-items-center"
+                />
             </div>
         </div>
     );

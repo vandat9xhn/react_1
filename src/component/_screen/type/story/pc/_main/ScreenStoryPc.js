@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { initial_story_menu_obj } from '../../../../../../_initial/story/InitialStory';
@@ -19,9 +19,12 @@ export function openScreenStoryPc({
     openScreenFloor,
 
     story_arr_followed,
+    count_story_followed,
+    has_fetched_followed,
+
     story_arr_yours,
     count_story_yours,
-    count_story_followed,
+    has_fetched_yours,
 
     active_ix,
     story_type,
@@ -31,9 +34,12 @@ export function openScreenStoryPc({
         FloorComponent: ScreenStoryPc,
 
         story_arr_followed: story_arr_followed,
+        count_story_followed: count_story_followed,
+        has_fetched_followed: has_fetched_followed,
+
         story_arr_yours: story_arr_yours,
         count_story_yours: count_story_yours,
-        count_story_followed: count_story_followed,
+        has_fetched_yours: has_fetched_yours,
 
         old_active_ix: active_ix,
         old_story_type: story_type,
@@ -44,9 +50,12 @@ export function openScreenStoryPc({
 //
 ScreenStoryPc.propTypes = {
     story_arr_followed: PropTypes.array,
+    count_story_followed: PropTypes.number,
+    has_fetched_followed: PropTypes.bool,
+
     story_arr_yours: PropTypes.array,
     count_story_yours: PropTypes.number,
-    count_story_followed: PropTypes.number,
+    has_fetched_yours: PropTypes.bool,
 
     old_active_ix: PropTypes.number,
     old_story_type: PropTypes.string,
@@ -56,9 +65,12 @@ ScreenStoryPc.propTypes = {
 
 ScreenStoryPc.defaultProps = {
     story_arr_followed: [],
+    count_story_followed: 0,
+    has_fetched_followed: false,
+
     story_arr_yours: [],
     count_story_yours: 0,
-    count_story_followed: 0,
+    has_fetched_yours: false,
 
     old_active_ix: 0,
     old_story_type: 'followed',
@@ -68,9 +80,12 @@ ScreenStoryPc.defaultProps = {
 //
 function ScreenStoryPc({
     story_arr_followed,
+    count_story_followed,
+    has_fetched_followed,
+
     story_arr_yours,
     count_story_yours,
-    count_story_followed,
+    has_fetched_yours,
 
     old_active_ix,
     old_story_type,
@@ -86,34 +101,17 @@ function ScreenStoryPc({
         followed: {
             story_arr: story_arr_followed || [initial_story_menu_obj()],
             count_story: count_story_followed,
-            has_fetched: count_story_followed > 0,
+            has_fetched: has_fetched_followed,
         },
         yours: {
             story_arr: story_arr_yours || [initial_story_menu_obj()],
             count_story: count_story_yours,
-            has_fetched: count_story_followed > 0,
+            has_fetched: has_fetched_yours,
         },
     });
 
     const { active_ix, story_type, is_show_menu, followed, yours } = state_obj;
     const { story_arr, count_story, has_fetched } = state_obj[story_type];
-
-    //
-    async function getData_Story(story_type) {
-        const { data, count: new_count } = await handle_API_FeedStory_L(
-            0,
-            story_type
-        );
-
-        setStateObj((state_obj) => ({
-            ...state_obj,
-            [story_type]: {
-                story_arr: [...state_obj[story_type].story_arr, ...data],
-                count_story: new_count,
-                has_fetched: true,
-            },
-        }));
-    }
 
     //
     useMakeBodyHidden({
@@ -125,10 +123,32 @@ function ScreenStoryPc({
 
     //
     useEffect(() => {
-        count_story_followed > story_arr_followed.length &&
-            getData_Story('followed');
-        count_story_yours == 0 && getData_Story('yours');
+        !has_fetched_followed && getData_Story('followed');
+        !has_fetched_yours && getData_Story('yours');
     }, []);
+
+    /* ----------- */
+
+    //
+    async function getData_Story(story_type) {
+        const { data, count: new_count } = await handle_API_FeedStory_L(
+            0,
+            story_type
+        );
+
+        setStateObj((state_obj) => {
+            const { story_arr } = state_obj[story_type];
+
+            return {
+                ...state_obj,
+                [story_type]: {
+                    story_arr: [...story_arr, ...data],
+                    count_story: new_count,
+                    has_fetched: true,
+                },
+            };
+        });
+    }
 
     /* ----------- */
 
@@ -188,7 +208,7 @@ function ScreenStoryPc({
         }));
     }
 
-    // console.log(story_arr);
+    // console.log(story_arr, count_story);
     //
     return (
         <div

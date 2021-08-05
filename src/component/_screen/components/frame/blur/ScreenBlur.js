@@ -38,7 +38,7 @@ function ScreenBlur({
     FetchingComponent,
 }) {
     //
-    useMakeBodyHidden({ use_body_hidden: use_body_hidden });
+    useMakeBodyHidden({ hidden_app: use_body_hidden });
 
     //
     return (

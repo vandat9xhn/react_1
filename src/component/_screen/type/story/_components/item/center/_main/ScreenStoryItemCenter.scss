@@ -1,33 +1,30 @@
-.ScreenStoryItem_wh {
-    width: 20rem;
+// .
+.ScreenStoryItemCenter_item {
+    width: 100%;
     height: 30rem;
-    max-width: 100%;
     max-height: 100%;
 }
 
-.ScreenStoryItem_item {
-    margin: 0 auto;
-}
-
-.ScreenStoryItem_viewer_list {
+// .
+.ScreenStoryItemCenter_viewer_list {
     z-index: 2;
 }
-//
-// .ScreenStoryItem_viewer_list-contain{
-
-// }
-
-.ScreenStoryItem_bottom {
+// .
+.ScreenStoryItemCenter_bottom {
     position: absolute;
     bottom: 0;
-    left: 0;
     z-index: 1;
+}
+// ..
+.ScreenStoryItemCenter_link{
+    &:hover{
+        text-decoration-line: underline;
+    }
 }
 
 //
 @media (max-width: 350px) {
     .ScreenStoryItem_wh {
-        width: 100%;
         height: 100%;
     }
 

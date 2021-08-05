@@ -6,6 +6,8 @@ import { context_api } from '../../../../../_context/ContextAPI';
 import { type_likes } from '../../../../like/list_type_like/type_likes/TypeLikes';
 //
 import PicNameContent from '../../../../picture_name/pic_name_content/PicNameContent';
+// 
+import './StoryViewerItem.scss';
 
 //
 StoryViewerItem.propTypes = {};
@@ -23,7 +25,7 @@ function StoryViewerItem({ user, type_like_arr, has_reply }) {
     //
     return (
         <div
-            className="StoryViewerItem padding-8px"
+            className="StoryViewerItem padding-8px cursor-pointer hv-bg-blur"
             onClick={handleOpenMessage}
         >
             <div className="flex-between-center">
@@ -35,9 +37,12 @@ function StoryViewerItem({ user, type_like_arr, has_reply }) {
                 </div>
 
                 <div>
-                    <ul className="list-none display-flex">
+                    <ul className="StoryViewerItem_like-row list-none display-flex flex-wrap">
                         {type_like_arr.map((item, ix) => (
-                            <li key={`${ix}`}>
+                            <li
+                                key={`${ix}`}
+                                className="StoryViewerItem_like-item"
+                            >
                                 {type_likes[item].component}
                             </li>
                         ))}

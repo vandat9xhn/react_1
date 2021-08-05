@@ -129,7 +129,7 @@ function FashionItemCmt({ id: product_id }) {
                     {user.id ? (
                         <div className="FashionItemCmt_input">
                             <CommentInput
-                                deps_reset={product_id}
+                                key={product_id}
                                 file_multiple={true}
                                 handleSend={handleSend}
                             />
