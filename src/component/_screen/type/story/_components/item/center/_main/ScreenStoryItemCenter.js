@@ -9,12 +9,14 @@ import StoryViewerList from '../../../../../../../story_fb/viewer/list/_main/Sto
 import StoryViewerTitle from '../../../../../../../story_fb/viewer/title/StoryViewerTitle';
 //
 import './ScreenStoryItemCenter.scss';
+import { IS_MOBILE } from '../../../../../../../../_constant/Constant';
 
 //
 ScreenStoryItemCenter.propTypes = {};
 
 //
 function ScreenStoryItemCenter({
+    is_user,
     story_obj,
 
     is_fetching,
@@ -54,7 +56,11 @@ function ScreenStoryItemCenter({
             key={`${id}`}
             className="ScreenStoryItemCenter wh-100 position-rel"
         >
-            <div className="ScreenStoryItemCenter_item h-100per position-rel">
+            <div
+                className={`position-rel ${
+                    IS_MOBILE ? 'wh-100' : 'ScreenStoryItemCenter_item'
+                }`}
+            >
                 <StoryItem
                     handleCloseStoryItem={handleCloseStoryItem}
                     active_step={active_step}
@@ -71,46 +77,54 @@ function ScreenStoryItemCenter({
                     scale_text={scale_text}
                 />
 
-                <div
-                    className={`ScreenStoryItemCenter_viewer_list pos-abs-100 ${
-                        is_show_viewer ? '' : 'display-none'
-                    }`}
-                >
-                    <StoryViewerList
-                        viewer_arr={viewer_arr}
-                        count_friend_viewer={count_friend_viewer}
-                        is_fetching={is_fetching_viewer}
-                        handleShowMore={handleShowMoreViewer}
-                        handleCloseFriendViewer={handleCloseFriendViewer}
+                {is_user ? (
+                    <div
+                        className={`ScreenStoryItemCenter_viewer_list pos-abs-100 ${
+                            is_show_viewer ? '' : 'display-none'
+                        }`}
+                    >
+                        <StoryViewerList
+                            viewer_arr={viewer_arr}
+                            count_friend_viewer={count_friend_viewer}
+                            is_fetching={is_fetching_viewer}
+                            handleShowMore={handleShowMoreViewer}
+                            handleCloseFriendViewer={handleCloseFriendViewer}
+                        />
+                    </div>
+                ) : null}
+
+                {story_link ? (
+                    <div className="ScreenStoryItemCenter_bottom right-0">
+                        <Link
+                            to={story_link}
+                            className="ScreenStoryItemCenter_link label-field text-white"
+                        >
+                            <div className="padding-4px">
+                                <span>See more</span>
+                            </div>
+                        </Link>
+                    </div>
+                ) : null}
+
+                <div className="pos-abs-center">
+                    <CircleLoading
+                        is_fetching={is_fetching || is_fetching_story}
                     />
                 </div>
-            </div>
 
-            <div className="pos-abs-center">
-                <CircleLoading is_fetching={is_fetching || is_fetching_story} />
+                {is_user ? (
+                    <div className="ScreenStoryItemCenter_bottom left-0">
+                        <StoryViewerTitle
+                            count_viewer={count_viewer}
+                            count_friend_viewer={count_friend_viewer}
+                            count_other_viewer={
+                                count_viewer - count_friend_viewer
+                            }
+                            handleToggleFriendView={handleToggleFriendView}
+                        />
+                    </div>
+                ) : null}
             </div>
-
-            <div className="ScreenStoryItemCenter_bottom left-0">
-                <StoryViewerTitle
-                    count_viewer={count_viewer}
-                    count_friend_viewer={count_friend_viewer}
-                    count_other_viewer={count_viewer - count_friend_viewer}
-                    handleToggleFriendView={handleToggleFriendView}
-                />
-            </div>
-
-            {story_link ? (
-                <div className="ScreenStoryItemCenter_bottom right-0">
-                    <Link
-                        to={story_link}
-                        className="ScreenStoryItemCenter_link label-field text-white"
-                    >
-                        <div className="padding-4px">
-                            <span>See more</span>
-                        </div>
-                    </Link>
-                </div>
-            ) : null}
         </div>
     );
 }

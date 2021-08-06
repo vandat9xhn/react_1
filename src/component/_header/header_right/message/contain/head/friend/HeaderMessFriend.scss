@@ -1,3 +1,8 @@
+.HeaderMessFriend{
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+}
 
 .HeaderMessFriend_pic{
     margin-bottom: 0.5rem;
@@ -5,11 +10,4 @@
 // .
 .HeaderMessFriend_img{
     border: 1px solid var(--md-bg-ccc);
-}
-
-.HeaderMessFriend_name{
-    width: 70px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }

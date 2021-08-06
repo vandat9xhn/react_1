@@ -57,14 +57,13 @@ function ZoomPostCommon({
             <div className="ZoomPostCommon_contain">
                 <div className="ZoomPostCommon_row display-flex h-100per">
                     <div className="ZoomPostCommon_left bg-loader position-rel">
-                        {show_screen_title && (
-                            <div className="ZoomPostCommon_title">
-                                <ScreenTitle
-                                    closeScreenTitle={closeScreenTitle}
-                                    url={vid_pic}
-                                />
-                            </div>
-                        )}
+                        <div className="ZoomPostCommon_title">
+                            <ScreenTitle
+                                show_screen_title={show_screen_title}
+                                closeScreenTitle={closeScreenTitle}
+                                url={vid_pic}
+                            />
+                        </div>
 
                         {!is_fetching ? (
                             <ZoomPostCommonLeft

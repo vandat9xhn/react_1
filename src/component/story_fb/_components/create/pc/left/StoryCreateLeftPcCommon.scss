@@ -1,0 +1,26 @@
+.StoryCreateLeftPcCommon_main {
+    padding: 0 16px;
+}
+
+.StoryCreateLeftPcCommon_fav {
+    padding: 0 18px;
+    // border-bottom: 1px solid var(--md-bg-ccc);
+    box-shadow: 0 1px 1px 0.5px var(--shadow-1);
+}
+
+.StoryCreateLeftPcCommon_title {
+    font-weight: 700;
+    padding: 20px 0;
+}
+// ..
+.StoryCreateLeftPcCommon_setting_contain{
+    width: 2.25rem;
+    height: 2.25rem;
+}
+
+.StoryCreateLeftPcCommon_user {
+    .PictureNameCommon__pic {
+        width: 60px;
+        height: 60px;
+    }
+}

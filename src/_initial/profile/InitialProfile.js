@@ -86,13 +86,9 @@ export const initial_profile = {
 };
 
 //
-export const initial_friend = [
-    {
-        friend: {
-            id: 0,
-            first_name: '',
-            last_name: '',
-            picture: '',
-        },
-    },
-];
+export const initial_friend = () => ({
+    id: 0,
+    first_name: '',
+    last_name: '',
+    picture: '',
+});

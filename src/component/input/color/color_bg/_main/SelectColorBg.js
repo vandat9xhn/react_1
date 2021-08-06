@@ -33,45 +33,43 @@ function SelectColorBg({ active_ix, color_bg_arr, handleChangeColorBg }) {
 
     //
     return (
-        <div className="SelectColorBg position-rel">
-            <CloseDiv makeDivHidden={closeSelectColorBg}>
+        <CloseDiv makeDivHidden={closeSelectColorBg}>
+            <div className="SelectColorBg position-rel">
                 <div>
-                    <div>
-                        <div
-                            className={`SelectColorBg_btn-item padding-4px text-align-center label-field cursor-pointer ${color_bg_arr[active_ix].bg} ${color_bg_arr[active_ix].color}`}
-                            onClick={toggleSelectColorBg}
-                            type="text"
-                        >
-                            Color
-                        </div>
-                    </div>
-
                     <div
-                        className={`SelectColorBg_list ${
-                            is_open ? '' : 'display-none'
-                        }`}
+                        className={`SelectColorBg_btn-item padding-4px text-align-center label-field cursor-pointer ${color_bg_arr[active_ix].bg} ${color_bg_arr[active_ix].color}`}
+                        onClick={toggleSelectColorBg}
+                        type="text"
                     >
-                        <div onClick={closeSelectColorBg}>
-                            {color_bg_arr.map((item, ix) => (
-                                <div
-                                    className="SelectColorBg_item"
-                                    key={`${ix}`}
-                                >
-                                    <SelectColorBgItem
-                                        ix={ix}
-                                        bg={item.bg}
-                                        color={item.color}
-                                        handleChangeColorBg={
-                                            handleChangeColorBg
-                                        }
-                                    />
-                                </div>
-                            ))}
-                        </div>
+                        Color
                     </div>
                 </div>
-            </CloseDiv>
-        </div>
+
+                <div
+                    className={`SelectColorBg_list ${
+                        is_open ? '' : 'display-none'
+                    }`}
+                >
+                    <div onClick={closeSelectColorBg}>
+                        {color_bg_arr.map((item, ix) => (
+                            <div
+                                className={`SelectColorBg_item ${
+                                    active_ix == ix ? 'display-none' : ''
+                                }`}
+                                key={`${ix}`}
+                            >
+                                <SelectColorBgItem
+                                    ix={ix}
+                                    bg={item.bg}
+                                    color={item.color}
+                                    handleChangeColorBg={handleChangeColorBg}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </CloseDiv>
     );
 }
 

@@ -51,14 +51,14 @@ function PfAboutConfirm({ permission, handleCancel, handleSave }) {
                 <div>
                     <div className="display-flex align-items-center">
                         <button
-                            className="PfAboutConfirm_right_btn bg-ccc label-field hv-btn act-scale-sm"
+                            className="PfAboutConfirm_right_btn bg-ccc label-field hv-btn active-scale-sm"
                             onClick={handleCancel}
                         >
                             Cancel
                         </button>
 
                         <button
-                            className="PfAboutConfirm_right_btn bg-blue label-field text-white hv-btn act-scale-sm"
+                            className="PfAboutConfirm_right_btn bg-blue label-field text-white hv-btn active-scale-sm"
                             onClick={onSave}
                         >
                             Save

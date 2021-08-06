@@ -1,0 +1,8 @@
+.StoryCreatePc_has_fav {
+    height: 100vh;
+}
+
+.StoryCreatePc_not_fav {
+    margin-top: var(--height-header);
+    height: calc(100vh - var(--height-header));
+}

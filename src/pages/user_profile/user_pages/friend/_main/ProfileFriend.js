@@ -1,20 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { API_Friend_D } from '../../../../../api/api_django/user/user_friend/UserFriend';
-
-import { useMounted } from '../../../../../_hooks/useMounted';
-
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
+//
+import { initial_friend } from '../../../../../_initial/profile/InitialProfile';
+//
+import { API_Friend_D } from '../../../../../api/api_django/user/user_friend/UserFriend';
+import { handle_API_Friend_L } from '../../../../../_handle_api/profile/ProfileHandleAPI';
+//
+import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 //
 import ScreenBlurShowMore from '../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
-import { handle_API_Friend_L } from '../../../../../_handle_api/profile/ProfileHandleAPI';
-
-import { initial_friend } from '../../../../../_initial/profile/InitialProfile';
-
 import ProfileFrSkeleton from '../skeleton/ProfileFrSkeleton';
-
 import FriendEdit from '../friend_edit/FriendEdit';
 //
 import './ProfileFriend.scss';
@@ -28,62 +26,39 @@ function ProfileFriend() {
     const id = GetIdSlug();
 
     //
-    const [friend_obj, setFriendObj] = useState({
-        friend_arr: [...initial_friend],
-        count_friend: 0,
-        has_fetched: false,
-        is_fetching: false,
+    const { data_state, setDataState, getData_API } = useDataShowMore({
+        initial_arr: [] || [initial_friend()],
+        handle_API_L: (c_count) =>
+            handle_API_Friend_L({
+                user_id: id,
+                c_count: c_count,
+                params: { size: 20 },
+            }),
     });
 
-    const { friend_arr, count_friend, has_fetched, is_fetching } = friend_obj;
+    const { data_arr, count, is_fetching, has_fetched } = data_state;
 
     //
-    const mounted = useMounted();
+    const ref_component = useRef(null);
 
     //
     useEffect(() => {
-        getData_API_Friend({
-            has_fetched: false,
-            friend_arr: [],
-            count_friend: 0,
-        });
+        observeToDo(ref_component.current, getData_API, 0);
     }, []);
-
-    /* --------- Get Friend -------------*/
-
-    async function getData_API_Friend(start_obj_state = {}) {
-        setFriendObj({
-            ...friend_obj,
-            is_fetching: true,
-            ...start_obj_state,
-        });
-
-        const { data, count: new_count } = await handle_API_Friend_L(
-            id,
-            friend_arr.length
-        );
-
-        mounted &&
-            setFriendObj({
-                friend_arr: has_fetched ? [...friend_arr, ...data] : data,
-                count_friend: has_fetched ? count_friend : new_count,
-                has_fetched: true,
-                is_fetching: false,
-            });
-    }
 
     //
     function handleShowMoreFriends() {
-        getData_API_Friend();
+        getData_API();
     }
 
     //
-    async function handelDeleteFriend(user_id) {
-        await API_Friend_D(user_id);
-        setFriendObj({
-            ...friend_obj,
-            friend_arr: friend_arr.filter((item) => item.friend.id != user_id),
-        });
+    async function handelDeleteFriend(friend_id_del) {
+        await API_Friend_D(friend_id_del);
+
+        setDataState((data_state) => ({
+            ...data_state,
+            data_arr: data_arr.filter((item) => item.id != friend_id_del),
+        }));
     }
 
     //
@@ -97,14 +72,14 @@ function ProfileFriend() {
                 <h2 className=" margin-0">Friends</h2>
 
                 <div className="display-flex flex-wrap space-between">
-                    {friend_arr.map((item, ix) => (
+                    {data_arr.map((item, ix) => (
                         <div
                             key={`ProfileFriend_${ix}`}
                             className="ProfileFriend_item col-12 col-sm-6 col-lg-4"
                         >
                             <FriendEdit
                                 ix={ix}
-                                user={item.friend}
+                                user={item}
                                 handelDeleteFriend={handelDeleteFriend}
                             />
                         </div>
@@ -114,7 +89,7 @@ function ProfileFriend() {
 
             <ScreenBlurShowMore
                 title="See more friends"
-                is_show_more={count_friend > friend_arr.length}
+                is_show_more={count > data_arr.length}
                 is_fetching={is_fetching && has_fetched}
                 handleShowMore={handleShowMoreFriends}
             />

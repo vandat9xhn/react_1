@@ -34,25 +34,21 @@ function HeaderMessFriend({
 
     //
     return (
-        <div className="HeaderMessFriend padding-8px" onClick={onOpenMessage}>
-            <div className="display-flex justify-content-center">
-                <div>
-                    <div className="HeaderMessFriend_pic display-flex justify-content-center">
-                        <img
-                            className="HeaderMessFriend_img brs-50"
-                            src={picture}
-                            alt=""
-                            width="60"
-                            height="60"
-                        />
-                    </div>
+        <div className="HeaderMessFriend padding-4px" onClick={onOpenMessage}>
+            <div className="HeaderMessFriend_pic display-flex-center">
+                <img
+                    className="HeaderMessFriend_img brs-50"
+                    src={picture}
+                    alt=""
+                    width="60"
+                    height="60"
+                />
+            </div>
 
-                    <div className="HeaderMessFriend_name">
-                        <div className="text-align-center label-field">
-                            {last_name}
-                        </div>
-                    </div>
-                </div>
+            <div className="w-100per text-nowrap text-align-center">
+                <span className="label-field">
+                    {last_name}
+                </span>
             </div>
         </div>
     );

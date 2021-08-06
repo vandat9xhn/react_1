@@ -41,8 +41,8 @@ body {
         }
     }
 
-    &[data-blur-header]{
-        .AppHeader{
+    &[data-blur-header] {
+        .AppHeader {
             z-index: -1;
         }
     }
@@ -67,6 +67,15 @@ body {
     }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
 svg {
     overflow: hidden;
     vertical-align: middle;

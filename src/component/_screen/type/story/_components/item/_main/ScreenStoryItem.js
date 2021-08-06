@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+//
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+//
+import { context_api } from '../../../../../../../_context/ContextAPI';
 //
 import {
     handle_API_FeedStoryItemViewer_L,
@@ -10,10 +14,9 @@ import { useForceUpdate } from '../../../../../../../_hooks/UseForceUpdate';
 //
 import ScreenStoryNextPrev from '../next_prev/ScreenStoryNextPrev';
 import ScreenStoryItemCenter from '../center/_main/ScreenStoryItemCenter';
+import ScreenStoryFoot from '../foot/_main/ScreenStoryFoot';
 //
 import './ScreenStoryItem.scss';
-import ScreenStoryFoot from '../foot/_main/ScreenStoryFoot';
-import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 ScreenStoryItem.propTypes = {};
@@ -33,8 +36,11 @@ function ScreenStoryItem({
     closeScreen,
 }) {
     //
+    const { user: c_user } = useContext(context_api);
+
+    //
     const story_obj = story_arr[active_ix];
-    const { list, count, active_step, active_item_ix } = story_obj;
+    const { list, user, count, active_step, active_item_ix } = story_obj;
     const { id, viewer_arr } = list[active_item_ix];
 
     const is_has_next =
@@ -230,8 +236,15 @@ function ScreenStoryItem({
                         />
                     </div>
 
-                    <div className="ScreenStoryItem_head_center">
+                    <div
+                        className={`${
+                            IS_MOBILE
+                                ? 'w-100per'
+                                : 'ScreenStoryItem_head_center'
+                        }`}
+                    >
                         <ScreenStoryItemCenter
+                            is_user={c_user.id == user.id}
                             story_obj={story_obj}
                             //
                             is_fetching={is_fetching}
@@ -256,18 +269,24 @@ function ScreenStoryItem({
                 </div>
             </div>
 
-            <div className="ScreenStoryItem_foot position-rel">
-                <div className="ScreenStoryItem_foot_contain">
-                    <ScreenStoryFoot
-                        can_rep={true}
-                        can_like={true}
-                        can_share={true}
-                        handleShare={handleShare}
-                        chooseListTypeLike={chooseListTypeLike}
-                        handleSend={handleSend}
-                    />
+            {true && user.id != c_user.id ? (
+                <div className="ScreenStoryItem_foot position-rel">
+                    <div
+                        className={`ScreenStoryItem_foot_contain ${
+                            IS_MOBILE ? '' : 'ScreenStoryItem_foot_contain-pc'
+                        }`}
+                    >
+                        <ScreenStoryFoot
+                            can_rep={true}
+                            can_like={true}
+                            can_share={true}
+                            handleShare={handleShare}
+                            chooseListTypeLike={chooseListTypeLike}
+                            handleSend={handleSend}
+                        />
+                    </div>
                 </div>
-            </div>
+            ) : null}
         </div>
     );
 }

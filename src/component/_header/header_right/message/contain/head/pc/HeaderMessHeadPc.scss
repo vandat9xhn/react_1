@@ -1,0 +1,18 @@
+// 
+.HeaderMessHeadPc{
+    user-select: none;
+    
+    img{
+        -webkit-user-drag: none;
+    }
+
+    .BtnNexPrev{
+        box-shadow: var(--box-shadow-fb);
+        background-color: var(--md-bg-ccc);
+        opacity: 0.75;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+}

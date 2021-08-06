@@ -84,20 +84,6 @@ export async function handle_API_ChatLike_L(mess_id, c_count = 0) {
 }
 
 //
-export async function handle_API_ProfileFriend_L(exclude_ids, c_count) {
-    const res = await API_Friend_LC('GET', {
-        page: 1,
-        size: 5,
-        c_count: c_count,
-        exclude_ids: exclude_ids,
-    });
-    const { data, count } = res.data;
-    const new_data = data.map((item) => item.friend);
-
-    return { data: new_data, count };
-}
-
-//
 export async function handle_API_ChatTimeLine_L(room_chat, c_count = 0) {
     const res = await API_ChatTimeLine_LC(
         'GET',

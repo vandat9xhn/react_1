@@ -90,6 +90,11 @@ function CanvasFixed({ closeScreen, completeCanvas, canvas_draws }) {
     return (
         <ScreenFixed
             url={canvas_draws.list_canvas[canvas_draws.c_step]}
+            body_hidden_params={{
+                use_z_index: true,
+                screen_z_index: 999,
+
+            }}
             closeScreenFixed={showCloseCanvasFixed}
             handleDownload={onDownload}
         >

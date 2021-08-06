@@ -85,7 +85,7 @@ function AppScreenFloors({
                         className={`AppScreen_floor ${
                             ix != floor_arr.length - 1
                                 ? 'AppScreen_inactive'
-                                : 'bg-screen'
+                                : 'AppScreen_floor-active bg-screen position-rel'
                         }`}
                     >
                         <ScreenFloor

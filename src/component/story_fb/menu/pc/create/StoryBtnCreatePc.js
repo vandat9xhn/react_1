@@ -5,30 +5,30 @@ import { context_api } from '../../../../../_context/ContextAPI';
 //
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import './StoryCreatePc.scss';
+import './StoryBtnCreatePc.scss';
 
 //
-StoryCreatePc.propTypes = {};
+StoryBtnCreatePc.propTypes = {};
 
 //
-function StoryCreatePc(props) {
+function StoryBtnCreatePc(props) {
     //
     const { openScreenCreateStory } = useContext(context_api);
 
     //
     return (
         <div
-            className="StoryCreatePc padding-8px cursor-pointer"
+            className="StoryBtnCreatePc padding-8px cursor-pointer"
             onClick={openScreenCreateStory}
         >
             <div className="display-flex align-items-center">
-                <div className="StoryCreatePc_left">
-                    <div className="StoryCreatePc_left-contain display-flex-center bg-ccc brs-50">
+                <div className="StoryBtnCreatePc_left">
+                    <div className="StoryBtnCreatePc_left-contain display-flex-center bg-ccc brs-50">
                         <IconsArrow y={400} size_icon="1.25rem" />
                     </div>
                 </div>
 
-                <div className="StoryCreatePc_right">
+                <div className="StoryBtnCreatePc_right">
                     <div>
                         <span className="label-field">
                             Create a story
@@ -44,4 +44,4 @@ function StoryCreatePc(props) {
     );
 }
 
-export default StoryCreatePc;
+export default StoryBtnCreatePc;

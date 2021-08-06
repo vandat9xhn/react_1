@@ -78,9 +78,14 @@ function StoryMenuMobile({
         });
     }
 
+    // 
+    if (has_fetched && story_arr.length == 0) {
+        return null;
+    }
+
     //
     return (
-        <div>
+        <div className="screen-story-menu-mobile">
             <h2 className="margin-0 font-20px padding-8px">{heading}</h2>
 
             <div className={`${has_fetched ? '' : 'display-none'}`}>

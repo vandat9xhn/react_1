@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import RowProduct from '../item/RowProduct';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+// 
+import RowProductPc from '../pc/RowProductPc';
+import RowProductMobile from '../mobile/RowProductMobile';
 //
 import './RowProducts.scss';
 
@@ -39,9 +42,7 @@ RowProducts.defaultProps = {
 };
 
 //
-function RowProducts(props) {
-    const { list_products, children } = props;
-
+function RowProducts({ list_products, children }) {
     //
     return (
         <div className="RowProducts padding-8px">
@@ -49,11 +50,12 @@ function RowProducts(props) {
 
             <div>
                 {list_products.map((products, list_ix) => (
-                    <div
-                        key={`RowProducts_list_${list_ix}`}
-                        className="RowProducts_products"
-                    >
-                        <RowProduct products={products} />
+                    <div key={`${list_ix}`} className="RowProducts_products">
+                        {IS_MOBILE ? (
+                            <RowProductMobile products={products} />
+                        ) : (
+                            <RowProductPc products={products} />
+                        )}
                     </div>
                 ))}
             </div>

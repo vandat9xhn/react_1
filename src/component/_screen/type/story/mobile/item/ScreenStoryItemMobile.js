@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+// 
+import { handle_API_FeedStory_L } from '../../../../../../_handle_api/feed/HandleAPIStory';
 //
 import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
 //
 import ScreenStoryItem from '../../_components/item/_main/ScreenStoryItem';
 //
 import './ScreenStoryItemMobile.scss';
-import { handle_API_FeedStory_L } from '../../../../../../_handle_api/feed/HandleAPIStory';
 
 //
 export function openScreenStoryItemMobile({
@@ -99,7 +100,7 @@ function ScreenStoryItemMobile({
 
     //
     return (
-        <div className="ScreenStoryItemMobile wh-100v padding-8px bg-loader">
+        <div className="ScreenStoryItemMobile wh-100v bg-loader">
             <ScreenStoryItem
                 story_arr={story_arr}
                 count_story={count}

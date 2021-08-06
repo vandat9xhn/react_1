@@ -22,7 +22,17 @@
     left: 50%;
     z-index: 2;
 
-    width: 500px;
     max-width: 100%;
     transform: translateX(-50%);
+}
+.ScreenStoryItem_foot_contain-pc{
+    width: 500px;
+}
+
+//
+@media (max-width: 500px) {
+    // .
+    .ScreenStoryItem_head_center {
+        width: 100%;
+    }
 }

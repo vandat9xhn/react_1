@@ -3,25 +3,26 @@ import PropTypes from 'prop-types';
 
 //
 IconSetting.propTypes = {
+    fill: PropTypes.string,
     size_icon: PropTypes.string,
     stroke: PropTypes.string,
 };
 
 IconSetting.defaultProps = {
+    fill: 'none',
     size_icon: '1rem',
     stroke: 'var(--md-color)',
 };
 
 //
-function IconSetting(props) {
-    const { size_icon, stroke } = props;
+function IconSetting({ size_icon, fill, stroke }) {
     //
     return (
         <svg
             width={size_icon}
             height={size_icon}
             viewBox="0 0 200 200"
-            fill="none"
+            fill={fill}
             strokeWidth="10"
             stroke={stroke}
         >
@@ -39,6 +40,8 @@ function IconSetting(props) {
                 146.453L15 125.203L31.6571 110.378V93.5756L15 77.2674L24.7983 56.5116L42.9251
                 58.9826L59.092244.157Z"
             />
+
+            <circle cx="100" cy="100" r="35" fill="var(--white)" />
         </svg>
     );
 }

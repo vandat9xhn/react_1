@@ -158,7 +158,7 @@
     background-image: linear-gradient(
         0deg,
         var(--always-dark-overlay),
-        transparent
+        var(--shadow-1),
     );
 }
 .story-bg-hv {
@@ -174,7 +174,7 @@
     border-radius: 15px;
     box-shadow: var(--box-shadow-1);
     overflow: hidden;
-    &:active{
+    &:active {
         transform: scale(0.95);
     }
 }
@@ -205,4 +205,8 @@
 
 .w-100per {
     width: 100%;
+}
+
+.max-w-100per {
+    max-width: 100%;
 }

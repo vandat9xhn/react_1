@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useMounted } from '../../../../../../../_hooks/useMounted';
-
 import observeToDo from '../../../../../../../_some_function/observerToDo';
 //
 import { handle_API_Friend_L } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
+//
+import { useDataShowMore } from '../../../../../../../_hooks/useDataShowMore';
 
 import ProfilePrCommon from '../../_common/preview_common/ProfilePrCommon';
 
@@ -20,52 +20,37 @@ ProfilePrFriend.propTypes = {};
 //
 function ProfilePrFriend({ id, handleReady }) {
     //
-    const [state_obj, setStateObj] = useState({
-        friend_arr: [
+    const { data_state, getData_API } = useDataShowMore({
+        initial_arr: [] || [
             {
                 id: 0,
                 picture: '',
                 last_name: '',
             },
         ],
-        friend_count: 0,
-        is_fetching: true,
+        handle_API_L: (c_count) =>
+            handle_API_Friend_L({
+                user_id: id,
+                c_count: c_count,
+                params: { size: 9 },
+            }),
     });
 
-    const { friend_arr, friend_count, is_fetching } = state_obj;
+    const { data_arr, count, is_fetching, has_fetched } = data_state;
 
     //
     const ref_component = useRef(null);
 
     //
-    const mounted = useMounted();
-
-    //
     useEffect(() => {
-        observeToDo(ref_component.current, getData_API_FriendPreview, 0);
+        observeToDo(ref_component.current, handleGetData_API, 0);
     }, []);
 
     //
-    async function getData_API_FriendPreview() {
-        setStateObj((state_obj) => ({
-            ...state_obj,
-            is_fetching: true,
-        }));
-
-        const { data, count: count } = await handle_API_Friend_L(
-            id,
-            friend_arr.length
-        );
-
-        if (mounted) {
-            setStateObj({
-                friend_arr: data.map((item) => item.friend),
-                friend_count: count,
-                is_fetching: false,
-            });
-
-            handleReady();
-        }
+    function handleGetData_API() {
+        getData_API({
+            handleWhenFinally: handleReady,
+        });
     }
 
     //
@@ -78,11 +63,11 @@ function ProfilePrFriend({ id, handleReady }) {
                 ProfilePrSkeleton={ProfilePrFrSkeleton}
             >
                 <div>
-                    <div>{friend_count ? friend_count : 'No'} ' friends'</div>
+                    <div>{has_fetched && count ? count : 'No'} ' friends'</div>
 
                     <div className="ProfilePrFriend_pic">
                         <div className="ProfilePrFriend_pic-row display-flex flex-wrap">
-                            {friend_arr.map((friend_obj, ix) => (
+                            {data_arr.map((friend_obj, ix) => (
                                 <div
                                     className="ProfilePrFriend_pic-item"
                                     key={`ProfilePrFriend_${ix}`}

@@ -30,15 +30,23 @@ export async function handle_API_ProfilePost_L(c_count) {
 }
 
 // friends
-export async function handle_API_Friend_L(user_id, c_count = 0) {
+export async function handle_API_Friend_L({
+    user_id = -1,
+    c_count = 0,
+    params = {},
+}) {
     const res = await API_Friend_LC('GET', {
         profile_model: user_id,
         page: 1,
-        size: 10,
+        size: 20,
         c_count: c_count,
+        ...params,
     });
 
-    return res.data;
+    const { data, ...rest_data } = res.data;
+    const new_data = data.map((item) => item.friend);
+
+    return { ...rest_data, data: new_data };
 }
 
 // vid_pic

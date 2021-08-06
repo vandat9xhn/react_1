@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 //
 import BtnNexPrev from '../../../../../../button/next_prev/BtnNexPrev';
-// 
-import './ScreenStoryNextPrev.scss'
+//
+import './ScreenStoryNextPrev.scss';
 
 //
 ScreenStoryNextPrev.propTypes = {};
@@ -22,7 +22,11 @@ function ScreenStoryNextPrev({ is_next, disabled, handleClick }) {
         >
             <div
                 className={`ScreenStoryNextPrev_btn ${
-                    is_next
+                    IS_MOBILE
+                        ? is_next
+                            ? 'right-0'
+                            : 'left-0'
+                        : is_next
                         ? 'ScreenStoryNextPrev_btn-next'
                         : 'ScreenStoryNextPrev_btn-prev'
                 }`}
@@ -33,7 +37,7 @@ function ScreenStoryNextPrev({ is_next, disabled, handleClick }) {
                         btn_class={`${disabled ? 'display-none' : ''}`}
                         // size_icon="1rem"
                         disabled={disabled}
-                        handleClick={IS_MOBILE ? handleClick : undefined}
+                        // handleClick={IS_MOBILE ? handleClick : undefined}
                         // btn_props={btn_props}
                     />
                 </div>

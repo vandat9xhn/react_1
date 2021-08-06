@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import StoryMenuPc from '../../../../../story_fb/menu/pc/_main/StoryMenuPc';
-import StoryCreatePc from '../../../../../story_fb/menu/pc/create/StoryCreatePc';
+import StoryBtnCreatePc from '../../../../../story_fb/menu/pc/create/StoryBtnCreatePc';
 import StoryMenuPcAction from '../../../../../story_fb/menu/pc/action/StoryMenuPcAction';
 //
 import './ScreenStoryMenuPc.scss';
@@ -63,7 +63,7 @@ function ScreenStoryMenuPc({
                         handleChangeStory={handleChangeYourStory}
                     />
 
-                    <StoryCreatePc />
+                    <StoryBtnCreatePc />
                 </div>
 
                 <div>

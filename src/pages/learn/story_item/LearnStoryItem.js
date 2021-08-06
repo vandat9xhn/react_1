@@ -8,7 +8,7 @@ import { openScreenStoryMenuMobile } from '../../../component/_screen/type/story
 import './LearnStoryItem.scss';
 import { openScreenStoryPc } from '../../../component/_screen/type/story/pc/_main/ScreenStoryPc';
 import StoryCreateTextChoice from '../../../component/story_fb/_components/create/choose/text/StoryCreateTextChoice';
-
+import { openScreenCreateStoryPc } from '../../../component/_screen/type/story/pc/create/ScreenStoryCreate';
 //
 LearnStoryItem.propTypes = {};
 
@@ -34,6 +34,16 @@ function LearnStoryItem(props) {
         });
         history.pushState('', '', `/stories?i=${old_active_ix}`);
     }
+    
+    //
+    function handleOpenCreateStoryPc() {
+        openScreenCreateStoryPc({
+            openScreenFloor: openScreenFloor,
+            show_fav: true,
+        });
+
+        history.pushState('', '', `/story/create`);
+    }
 
     //
     return (
@@ -52,9 +62,21 @@ function LearnStoryItem(props) {
             >
                 Open Screen Story Pc
             </div>
+            <br />
 
-            <div className="Learn_StoryCreateTextChoice">
+            <div
+                className="Learn_StoryCreateTextChoice"
+                onClick={handleOpenCreateStoryPc}
+            >
                 <StoryCreateTextChoice />
+            </div>
+            <br />
+
+            <div
+                className="Learn_StoryCreateTextChoice"
+                onClick={handleOpenCreateStoryPc}
+            >
+                Open Screen Story Create Home Pc
             </div>
         </div>
     );

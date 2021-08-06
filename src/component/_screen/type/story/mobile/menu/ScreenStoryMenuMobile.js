@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
 //
-import StoryCreate from '../../../../../story_fb/menu/mobile/create/StoryCreate';
+import StoryBtnCreate from '../../../../../story_fb/menu/mobile/create/StoryBtnCreate';
 import StoryMenuMobile from '../../../../../story_fb/menu/mobile/_main/StoryMenuMobile';
 //
 import './ScreenStoryMenuMobile.scss';
@@ -58,47 +58,45 @@ function ScreenStoryMenuMobile({
 
     //
     return (
-        <div className="bg-primary">
-            <div>
-                <div className="ScreenStoryMenuMobile_create margin-auto padding-8px">
-                    <StoryCreate />
-                </div>
+        <div className="bg-primary padding-4px">
+            <div className="ScreenStoryMenuMobile_create">
+                <StoryBtnCreate />
+            </div>
 
-                <div className="ScreenStoryMenuMobile_item">
-                    <StoryMenuMobile
-                        story_arr={story_arr_yours}
-                        count_story={count_story_yours}
-                        story_type="yours"
-                        heading="Your stories"
-                    />
-                </div>
+            <div className="ScreenStoryMenuMobile_item">
+                <StoryMenuMobile
+                    story_arr={story_arr_yours}
+                    count_story={count_story_yours}
+                    story_type="yours"
+                    heading="Your stories"
+                />
+            </div>
 
-                <div className="ScreenStoryMenuMobile_item">
-                    <StoryMenuMobile
-                        story_arr={story_arr_friends}
-                        count_story={count_story_friend}
-                        story_type="friends"
-                        heading="Friend's stories"
-                    />
-                </div>
+            <div className="ScreenStoryMenuMobile_item">
+                <StoryMenuMobile
+                    story_arr={story_arr_friends}
+                    count_story={count_story_friend}
+                    story_type="friends"
+                    heading="Friend's stories"
+                />
+            </div>
 
-                <div className="ScreenStoryMenuMobile_item">
-                    <StoryMenuMobile
-                        story_arr={story_arr_followed}
-                        count_story={count_story_followed}
-                        story_type="followed"
-                        heading="Followed stories"
-                    />
-                </div>
+            <div className="ScreenStoryMenuMobile_item">
+                <StoryMenuMobile
+                    story_arr={story_arr_followed}
+                    count_story={count_story_followed}
+                    story_type="followed"
+                    heading="Followed stories"
+                />
+            </div>
 
-                <div className="ScreenStoryMenuMobile_item">
-                    <StoryMenuMobile
-                        story_arr={story_arr_suggested}
-                        count_story={count_story_suggested}
-                        story_type="suggested"
-                        heading="Suggested for you"
-                    />
-                </div>
+            <div className="ScreenStoryMenuMobile_item">
+                <StoryMenuMobile
+                    story_arr={story_arr_suggested}
+                    count_story={count_story_suggested}
+                    story_type="suggested"
+                    heading="Suggested for you"
+                />
             </div>
         </div>
     );

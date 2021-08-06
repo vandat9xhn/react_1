@@ -6,13 +6,13 @@ import { useMouseDragScrollToX } from '../../../../../_hooks/useMouseDragScrollT
 import NextPrevDiv from '../../../../../component/some_div/next_prev_div/NextPrevDiv';
 import ProductItem from '../../../../../component/products/product_item/ProductItem';
 //
-import './RowProduct.scss';
+import './RowProductPc.scss';
 
 //
-RowProduct.propTypes = {};
+RowProductPc.propTypes = {};
 
 //
-function RowProduct({ products }) {
+function RowProductPc({ products }) {
     //
     const ref_row_product = useRef(null);
 
@@ -42,7 +42,7 @@ function RowProduct({ products }) {
         <div className="position-rel">
             <div
                 ref={ref_row_product}
-                className="RowProduct scroll-x-none"
+                className="RowProductPc scroll-height-0 overflow-x-auto max-w-100per"
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 // 
@@ -50,10 +50,10 @@ function RowProduct({ products }) {
                 onMouseLeave={handleMouseUp}
                 onScroll={handleScroll}
             >
-                <div className="RowProduct_row display-flex">
+                <div className="RowProductPc_row display-flex">
                     {products.map((product, ix) => (
                         <div
-                            key={`RowProduct_item_${product.id || ix}`}
+                            key={`RowProductPc_item_${product.id || ix}`}
                             className={
                                 is_mouse_down ? 'pointer-events-none' : ''
                             }
@@ -82,4 +82,4 @@ function RowProduct({ products }) {
     );
 }
 
-export default RowProduct;
+export default RowProductPc;
