@@ -12,6 +12,7 @@ import {
 import { getRandomVidPic } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
+import { getRandomFromArr } from '../_common/getRandomFromArr';
 
 //
 const default_story_viewer_obj = () => ({
@@ -39,9 +40,14 @@ const default_story_viewer_first_obj = () => {
 //
 const default_story_item_obj = () => ({
     id: getRandomId(),
-    vid_pic: getRandomVidPic(),
     story_link: getRandomBool() ? null : '/posts/' + getRandomId(),
     created_time: new Date().toString(),
+
+    vid_pic: getRandomVidPic(),
+    top_pic: getRandomNumber(30, 60) + '%',
+    left_pic: getRandomNumber(30, 60) + '%',
+    scale_pic: Math.floor(Math.random() * 10 + 10) / 10,
+    rotate_pic: getRandomFromArr([-90, 90, 180]),
 
     text: getRandomBool() ? `Text ${getRandomNumber(0, 10000)}` : '',
     top_text: getRandomNumber(30, 60) + '%',

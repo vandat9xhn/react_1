@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import StoryCommonPcC from '../../../../_components/create/pc/_common/StoryCommonPcC';
+import StoryCommonPcC from '../../../../_components/create/pc/_main/StoryCommonPcC';
 
 //
 StoryCreatePicPc.propTypes = {};

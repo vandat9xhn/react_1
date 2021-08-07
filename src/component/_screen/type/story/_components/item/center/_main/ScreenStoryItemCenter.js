@@ -35,11 +35,18 @@ function ScreenStoryItemCenter({
 
     const {
         id,
-        vid_pic,
         story_link,
+        is_story_text,
         created_time,
+        // 
+        vid_pic,
+        top_pic,
+        left_pic,
+        scale_pic,
+        rotate_pic,
 
         text,
+        font_family,
         top_text,
         left_text,
         color_text_ix,
@@ -67,10 +74,18 @@ function ScreenStoryItemCenter({
                     //
                     user={user}
                     count={count}
-                    vid_pic={vid_pic}
+                    // 
+                    is_story_text={is_story_text}
                     created_time={created_time}
+                    // 
+                    vid_pic={vid_pic}
+                    top_pic={top_pic}
+                    left_pic={left_pic}
+                    scale_pic={scale_pic}
+                    rotate_pic={rotate_pic}
                     //
                     text={`${text}`}
+                    font_family={font_family}
                     top_text={top_text}
                     left_text={left_text}
                     color_text_ix={color_text_ix}

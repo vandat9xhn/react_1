@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 //
 import StoryTextPcC from '../textarea/StoryTextPcC';
 import StoryFontPcC from '../font_family/StoryFontPcC';
-import StoryBgList from '../../../../../_components/create/bg/_main/StoryBgList';
+import StoryBgPcC from '../bg/StoryBgPcC';
+//
+import './StoryCreateTextLeftPc.scss';
 
 //
 StoryCreateTextLeftPc.propTypes = {};
@@ -15,6 +17,7 @@ function StoryCreateTextLeftPc({
 
     text,
     active_font_ix,
+    active_bg_ix,
 
     handleChange,
     handleChangeFont,
@@ -22,12 +25,12 @@ function StoryCreateTextLeftPc({
 }) {
     //
     return (
-        <div>
-            <div>
+        <div className="StoryCreateTextLeftPc">
+            <div className="StoryCreateTextLeftPc_part padding-4px">
                 <StoryTextPcC text={text} handleChange={handleChange} />
             </div>
 
-            <div>
+            <div className="StoryCreateTextLeftPc_part">
                 <StoryFontPcC
                     font_arr={font_arr}
                     active_ix={active_font_ix}
@@ -35,8 +38,12 @@ function StoryCreateTextLeftPc({
                 />
             </div>
 
-            <div>
-                <StoryBgList bg_arr={bg_arr} handleChooseBg={handleChooseBg} />
+            <div className="StoryCreateTextLeftPc_part">
+                <StoryBgPcC
+                    active_ix={active_bg_ix}
+                    bg_arr={bg_arr}
+                    handleChooseBg={handleChooseBg}
+                />
             </div>
         </div>
     );

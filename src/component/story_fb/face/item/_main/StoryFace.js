@@ -49,13 +49,16 @@ function StoryFace({
                 />
             </div>
 
-            <StoryText
-                text={text}
-                top_text={top_text}
-                left_text={left_text}
-                color_text_ix={color_text_ix}
-                scale_text={scale_text}
-            />
+            <div
+                className="position-abs"
+                style={{ top: top_text, left: left_text }}
+            >
+                <StoryText
+                    text={text}
+                    color_text_ix={color_text_ix}
+                    scale_text={scale_text}
+                />
+            </div>
 
             <div className="StoryFace_pic">
                 <StoryFaceUserPic count_new={count_new} picture={picture} />

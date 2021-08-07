@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../_constant/Constant';
 //
-import UnitTime from '../../../../_some_function/UnitTime';
-//
 import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import PictureName from '../../../picture_name/pic_name/PictureName';
+import { data_story_text_color_arr } from '../../../../_data/story/text';
 //
 import StoryItemMain from '../vid_pic_text/StoryItemMain';
-import StoryStep from '../step/StoryStep';
+import StoryItemHead from '../head/StoryItemHead';
 // .
 import './StoryItem.scss';
 
@@ -24,10 +22,17 @@ function StoryItem({
 
     user,
     count,
-    vid_pic,
+    is_story_text,
     created_time,
 
+    vid_pic,
+    top_pic,
+    left_pic,
+    scale_pic,
+    rotate_pic,
+
     text,
+    font_family,
     top_text,
     left_text,
     color_text_ix,
@@ -40,40 +45,29 @@ function StoryItem({
             
             <div className="StoryItem-contain position-rel wh-100">
                 <StoryItemMain
+                    is_story_text={is_story_text}
+                    //
                     vid_pic={vid_pic}
+                    top_pic={top_pic}
+                    left_pic={left_pic}
+                    scale_pic={scale_pic}
+                    rotate_pic={rotate_pic}
+                    //
                     text={text}
+                    font_family={font_family}
+                    color_text={data_story_text_color_arr[color_text_ix]}
                     top_text={top_text}
                     left_text={left_text}
-                    color_text_ix={color_text_ix}
                     scale_text={scale_text}
                 />
 
                 <div className="StoryItem_head">
-                    <div className="StoryItem_head-contain padding-8px">
-                        {count > 1 ? (
-                            <div className="StoryItem_step">
-                                <StoryStep
-                                    count_step={count}
-                                    active_step={active_step}
-                                />
-                            </div>
-                        ) : null}
-
-                        <div className="StoryItem_user width-fit-content">
-                            <PictureName
-                                user={user}
-                                content={
-                                    <span className="font-12px margin-left-5px">
-                                        {UnitTime(
-                                            new Date().getTime() -
-                                                new Date(created_time).getTime()
-                                        )}
-                                    </span>
-                                }
-                                is_inline_block={true}
-                            />
-                        </div>
-                    </div>
+                    <StoryItemHead
+                        count={count}
+                        active_step={active_step}
+                        user={user}
+                        created_time={created_time}
+                    />
                 </div>
 
                 <div
@@ -88,7 +82,6 @@ function StoryItem({
                         <IconsArrow y={400} size_icon="1rem" />
                     </div>
                 </div>
-
             </div>
         </div>
     );

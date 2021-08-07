@@ -1,0 +1,10 @@
+.StoryBgItem_img{
+    transition: all 100ms ease-in;
+}
+.StoryBgItem_img-active{
+    border: 4px solid var(--blue);
+    transform: scale(1.15);
+}
+.StoryBgItem_img-inactive{
+    transform: scale(1);
+}

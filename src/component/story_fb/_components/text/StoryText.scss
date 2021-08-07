@@ -1,9 +1,18 @@
-.StoryText{
-    position: absolute;
+.StoryText_contain-more{
+    height: 210px;
+    overflow-y: auto;
 }
-// ..
-.StoryText_item{
+
+
+.StoryText_contain-less{
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
+
+    line-height: 30px;
+}
+
+// .
+.StoryText_item{
+    white-space: pre-wrap;
 }

@@ -1,29 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { data_story_text_color_arr } from '../../../../_data/story/text';
-//
 import './StoryText.scss';
 
 //
 StoryText.propTypes = {};
 
 //
-function StoryText({ text, top_text, left_text, color_text_ix, scale_text }) {
+function StoryText({
+    is_story_text,
+    is_show_more,
+
+    text,
+    color_text,
+    font_family,
+}) {
     //
     return (
-        <div className="StoryText" style={{ top: top_text, left: left_text }}>
+        <div className="StoryText">
             <div
-                className="StoryText_contain"
-                style={{ transform: `scale(${scale_text})` }}
+                className={`StoryText_contain font-22px ${color_text} ${
+                    is_story_text
+                        ? `${
+                              is_show_more
+                                  ? 'StoryText_contain-more scroll-thin'
+                                  : 'StoryText_contain-less overflow-hidden'
+                          }`
+                        : ''
+                }`}
+                style={{ fontFamily: font_family }}
             >
-                <div className="StoryText_item">
-                    <span
-                        className={`${data_story_text_color_arr[color_text_ix]}`}
-                    >
-                        {text}
-                    </span>
-                </div>
+                <span className="StoryText_item">{text}</span>
             </div>
         </div>
     );

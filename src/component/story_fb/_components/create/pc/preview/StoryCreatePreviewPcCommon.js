@@ -7,14 +7,18 @@ import './StoryCreatePreviewPcCommon.scss';
 StoryCreatePreviewPcCommon.propTypes = {};
 
 //
-function StoryCreatePreviewPcCommon({ children_right }) {
+function StoryCreatePreviewPcCommon({ children }) {
     //
     return (
-        <div className="StoryCreatePreviewPcCommon h-100per">
-            <h2>Preview</h2>
+        <div className="StoryCreatePreviewPcCommon h-100per padding-8px bg-primary brs-8px box-shadow-fb">
+            <h2 className="StoryCreatePreviewPcCommon_title font-16px label-field">
+                Preview
+            </h2>
 
             <div className="flex-grow-1">
-                <div>{children_right}</div>
+                <div className="StoryCreatePreviewPcCommon_body_contain wh-100 bg-loader brs-8px">
+                    {children}
+                </div>
             </div>
         </div>
     );

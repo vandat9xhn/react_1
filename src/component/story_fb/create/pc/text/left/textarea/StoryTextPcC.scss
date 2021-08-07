@@ -1,22 +1,32 @@
 .StoryTextPcC{
-    height: 8rem;
-    border: 2px solid var(--md-bg-ccc);
+    height: 11.5rem;
+    border: 1px solid var(--md-bg-blur);
 }
 
 .StoryTextPcC_textarea {
-    resize: none;
+    padding: 10px;
     border: none;
+    resize: none;
+
+    transition: padding 250ms ease-in;
+
     &:focus,
     &:not(:empty) {
         outline: 1px solid var(--blue);
-        outline-offset: 4px;
-        padding-top: 1rem;
+        outline-offset: 3px;
+        padding-top: 1.5rem;
 
         & + .StoryTextPcC_title {
             top: 0;
             background-color: var(--md-bg-primary);
             opacity: 1;
             color: var(--blue);
+        }
+    }
+
+    &:focus{
+        &::placeholder{
+            opacity: 0.75;
         }
     }
 }

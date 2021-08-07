@@ -7,15 +7,16 @@ import StoryBgItem from '../item/StoryBgItem';
 StoryBgList.propTypes = {};
 
 //
-function StoryBgList({ bg_arr, handleChooseBg }) {
+function StoryBgList({ active_ix, bg_arr, handleChooseBg }) {
     //
     return (
-        <div>
-            <div className="display-flex flex-wrap">
+        <div className="StoryBgList">
+            <div className="StoryBgList_row display-flex flex-wrap">
                 {bg_arr.map((bg, ix) => (
                     <div key={`${ix}`}>
                         <StoryBgItem
                             ix={ix}
+                            is_active={active_ix == ix}
                             bg={bg}
                             handleChooseBg={handleChooseBg}
                         />

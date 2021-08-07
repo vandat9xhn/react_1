@@ -1,0 +1,19 @@
+.StoryCreateTextRightPc_item{
+    width: 20rem;
+    max-width: 100%;
+}
+
+.StoryCreateTextRightPc_text{
+    z-index: 2;
+}
+// .
+.StoryCreateTextRightPc_text_contain{
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+// ..
+.StoryCreateTextRightPc_text_item{
+    white-space: pre-wrap;
+}

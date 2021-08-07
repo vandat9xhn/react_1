@@ -15,6 +15,8 @@ function StoryTextPcC({ text, handleChange }) {
                 className="StoryTextPcC_textarea overflow-y-auto scroll-thin wh-100"
                 rows="1"
                 value={text}
+                placeholder="Start typing"
+                spellCheck={false}
                 onChange={handleChange}
             />
 

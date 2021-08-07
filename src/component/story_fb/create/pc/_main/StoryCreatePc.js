@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { context_api } from '../../../../../_context/ContextAPI';
+//
 import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
-// 
+//
+import { openScreenConfirm } from '../../../../_screen/type/confirm/ScreenConfirm';
+//
 import './StoryCreatePcCommon.scss';
-// 
+//
 import StoryCreateHomePc from '../home/_main/StoryCreateHomePc';
 import StoryCreateTextPc from '../text/_main/StoryCreateTextPc';
 import StoryCreatePicPc from '../pic/_main/StoryCreatePicPc';
@@ -19,10 +23,13 @@ StoryCreatePc.propTypes = {
 
 StoryCreatePc.defaultProps = {
     show_fav: false,
-}
+};
 
 //
 function StoryCreatePc({ show_fav, closeScreen }) {
+    //
+    const { openScreenFloor } = useContext(context_api);
+
     //
     const [state_obj, setStateObj] = useState({
         create_type: '',
@@ -38,23 +45,57 @@ function StoryCreatePc({ show_fav, closeScreen }) {
     });
 
     //
-    function openScreenStoryText() {
+    function changeScreenStory(new_type = '') {
         setStateObj((state_obj) => ({
             ...state_obj,
-            create_type: 'text',
+            create_type: new_type,
         }));
+    }
+
+    //
+    function openScreenStoryText() {
+        changeScreenStory('text');
     }
 
     //
     function openScreenStoryPic() {
-        setStateObj((state_obj) => ({
-            ...state_obj,
-            create_type: 'pic',
-        }));
+        changeScreenStory('pic');
     }
 
     //
-    function handleCloseScreen() {}
+    function handleCreate(data) {
+        console.log(data);
+    }
+
+    //
+    function handleDiscard() {
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Discard story?',
+            notification:
+                "Are you sure that you want to discard this story? Your story won't be saved.",
+            handleConfirm: changeScreenStory,
+        });
+    }
+
+    //
+    function handleCloseScreen() {
+        if (create_type == '') {
+            history.back();
+
+            return;
+        }
+
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Discard story?',
+            notification:
+                "Are you sure that you want to discard this story? Your story won't be saved.",
+            handleConfirm: () => {
+                history.back();
+            },
+        });
+    }
 
     //
     return (
@@ -73,6 +114,8 @@ function StoryCreatePc({ show_fav, closeScreen }) {
             ) : create_type == 'text' ? (
                 <StoryCreateTextPc
                     show_fav={show_fav}
+                    handleCreate={handleCreate}
+                    handleDiscard={handleDiscard}
                     handleClose={handleCloseScreen}
                 />
             ) : (

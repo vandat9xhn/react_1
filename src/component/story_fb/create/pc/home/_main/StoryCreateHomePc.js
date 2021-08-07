@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import StoryCreateLeftPcCommon from '../../../../_components/create/pc/left/StoryCreateLeftPcCommon';
+import StoryLeftCommonPcC from '../../../../_components/create/pc/left/_main/StoryLeftCommonPcC';
 import StoryCreatePicChoice from '../../../../_components/create/choose/vid_pic/StoryCreatePicChoice';
 import StoryCreateTextChoice from '../../../../_components/create/choose/text/StoryCreateTextChoice';
 //
@@ -22,8 +22,9 @@ function StoryCreateHomePc({
         <div className="StoryCreateHomePc h-100per">
             <div className="display-flex h-100per">
                 <div className="StoryCreateHomePc_left story-create-left bg-primary">
-                    <StoryCreateLeftPcCommon
+                    <StoryLeftCommonPcC
                         show_fav={show_fav}
+                        is_home={true}
                         handleClose={handleCloseScreen}
                     />
                 </div>

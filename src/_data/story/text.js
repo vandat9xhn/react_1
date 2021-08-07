@@ -1,3 +1,5 @@
+import { default_vid_pic_arr } from '../../_default/_common/default_image';
+
 //
 export const data_story_text_color_arr = [
     'text-primary',
@@ -15,9 +17,4 @@ export const data_story_font_arr = [
     'sans-serif',
 ];
 
-export const data_story_bg_arr = [
-    'bg-primary',
-    'bg-ccc',
-    'bg-blue',
-    'bg-green'
-]
+export const data_story_bg_arr = default_vid_pic_arr;

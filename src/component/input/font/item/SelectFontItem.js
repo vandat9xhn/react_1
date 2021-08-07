@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// 
+import './SelectFontItem.scss'
 
 //
 SelectFontItem.propTypes = {
@@ -17,7 +19,7 @@ function SelectFontItem({ ix, font_family, handleChangeFont }) {
     //
     return (
         <div
-            className="SelectFontItem padding-8px cursor-pointer"
+            className="SelectFontItem cursor-pointer hv-bg-blur"
             onClick={onChangeFont}
         >
             <span className="label-field" style={{ fontFamily: font_family }}>

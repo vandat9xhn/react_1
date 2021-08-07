@@ -10,7 +10,7 @@ StoryFontPcC.propTypes = {};
 function StoryFontPcC({ font_arr, active_ix, handleChangeFont }) {
     //
     return (
-        <div>
+        <div className="StoryFontPcC">
             <SelectFont
                 active_ix={active_ix}
                 font_arr={font_arr}

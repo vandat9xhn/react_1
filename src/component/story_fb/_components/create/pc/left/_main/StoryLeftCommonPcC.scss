@@ -1,0 +1,23 @@
+.StoryLeftCommonPcC_fav {
+    padding: 0 18px;
+    box-shadow: 0 1px 1px 0.5px var(--shadow-1);
+}
+
+
+.StoryLeftCommonPcC_main {
+    padding: 0 16px;
+}
+
+// ..
+.StoryLeftCommonPcC_user {
+    padding-bottom: 1rem;
+    
+    .PictureNameCommon__pic {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.StoryLeftCommonPcC_foot{
+    padding: 0.5rem 0;
+}

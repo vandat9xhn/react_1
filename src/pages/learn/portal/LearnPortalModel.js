@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import LearnPortal from './LearnPortal';
+import { useMakeBodyHidden } from '../../../_hooks/useMakeBodyHidden';
 
 //
 LearnPortalModel.propTypes = {};
 
 //
-function LearnPortalModel(props) {
+function LearnPortalModel({ children }) {
     //
-    function handleClick(e) {
-        console.log(e.target);
+    const [state_obj, setStateObj] = useState({
+        data_arr: [],
+    });
+
+    const { data_arr } = state_obj;
+
+    //
+    useMakeBodyHidden({ hidden_header: false });
+
+    //
+    function handleClick() {
+        setStateObj({
+            ...state_obj,
+            data_arr: [...data_arr, data_arr.length + 1],
+        });
     }
 
+    console.log(data_arr);
     //
     return (
         <div>
@@ -21,9 +36,11 @@ function LearnPortalModel(props) {
                     <div>
                         <div className="pos-abs-center bg-blue">
                             <h2>Learn portal</h2>
-                            
+
                             <div>This is portal</div>
+                        <div>{children}</div>
                         </div>
+
                     </div>
                 </LearnPortal>
             </div>

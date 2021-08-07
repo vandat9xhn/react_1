@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 //
 import {
     data_story_bg_arr,
     data_story_font_arr,
 } from '../../../../../../_data/story/text';
 //
-import StoryCreatePcCommon from '../../../../_components/create/pc/_common/StoryCommonPcC';
-import StoryCreateTextLeftPc from '../left/_main/StoryTextLeftPcC';
-import StoryTextRightPcC from '../right/_main/StoryTextRightPcC';
+import StoryCreatePcCommon from '../../../../_components/create/pc/_main/StoryCommonPcC';
+import StoryCreateTextLeftPc from '../left/_main/StoryCreateTextLeftPc';
+import StoryCreateTextRightPc from '../right/_main/StoryCreateTextRightPc';
 
 //
 StoryCreateTextPc.propTypes = {};
 
 //
-function StoryCreateTextPc({ show_fav, handleClose }) {
+function StoryCreateTextPc({
+    show_fav,
+    handleCreate,
+    handleDiscard,
+    handleClose,
+}) {
     //
     const [state_obj, setStateObj] = useState({
         text: '',
@@ -52,29 +57,38 @@ function StoryCreateTextPc({ show_fav, handleClose }) {
     }
 
     //
+    function onCreate() {
+        handleCreate({ ...state_obj });
+    }
+
+    //
     return (
         <StoryCreatePcCommon
             show_fav={show_fav}
+            handleCreate={onCreate}
+            handleDiscard={handleDiscard}
+            handleClose={handleClose}
+            //
             children_left={
                 <StoryCreateTextLeftPc
                     font_arr={data_story_font_arr}
                     bg_arr={data_story_bg_arr}
                     text={text}
                     active_font_ix={font_ix}
-                    // 
+                    active_bg_ix={bg_ix}
+                    //
                     handleChange={handleChangeText}
                     handleChangeFont={handleChangeFont}
                     handleChooseBg={handleChooseBg}
                 />
             }
             children_right={
-                <StoryTextRightPcC
+                <StoryCreateTextRightPc
                     bg={bg}
                     text={text}
                     font_family={font_family}
                 />
             }
-            handleClose={handleClose}
         />
     );
 }
