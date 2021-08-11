@@ -1,0 +1,22 @@
+// .
+.StoryCreateHomePc_choice {
+    margin: 0 10px;
+    width: 220px;
+    height: 330px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+// 
+@media (max-height: 386px) {
+    .StoryCreateHomePc_right-no_fav{
+        align-items: flex-start;
+    }
+}
+
+// 
+@media (max-height: 330px) {
+    .StoryCreateHomePc_right-has_fav{
+        align-items: flex-start;
+    }
+}

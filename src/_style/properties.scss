@@ -76,6 +76,11 @@
     background-image: linear-gradient(45deg, var(--success), var(--blue-tear));
 }
 
+// 
+.bg-always-white{
+    background-color: var(--white);
+}
+
 /* --------- Box Shadow ---------- */
 .App_box_shadow {
     box-shadow: 0 0.25px 5px 1px var(--md-box-shadow);
@@ -156,6 +161,14 @@
 
 .cursor-wait {
     cursor: wait;
+}
+
+.cursor-not-allowed{
+    cursor: not-allowed;
+}
+
+.cursor-move{
+    cursor: move;
 }
 
 /* -------- HOVER ----------*/
@@ -401,6 +414,9 @@
 
 .user-select-none {
     user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
 }
 
 /* ----------- V -------------*/
@@ -452,7 +468,7 @@
 }
 
 //
-.scroll-y-none::-webkit-scrollbar {
+.scroll-width-0::-webkit-scrollbar {
     width: 0;
 }
 

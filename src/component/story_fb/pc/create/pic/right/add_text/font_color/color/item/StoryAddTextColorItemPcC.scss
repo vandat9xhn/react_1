@@ -1,0 +1,12 @@
+.StoryAddTextColorItemPcC{
+    width: 20px;
+    height: 20px;
+    transition: all 100ms ease-in;
+}
+.StoryAddTextColorItemPcC_active{
+    border: 2px solid var(--blue);
+    transform: scale(1.15);
+}
+.StoryAddTextColorItemPcC_inactive{
+    border: 1px solid var(--md-bg-ccc);
+}

@@ -1,0 +1,17 @@
+%slider-active {
+    box-shadow: 0 0 0 1px transparent, 0 0 2px 2px white,
+        0 0 2px 3px var(--snow-flake);
+    transform: scale(1.15);
+    transition: all 100ms ease-in;
+}
+
+/* ---------- */
+.input-range-running {
+    .StoryZoomSlider {
+        @extend %slider-active;
+    }
+}
+
+.StoryZoomSlider:hover {
+    @extend %slider-active;
+}

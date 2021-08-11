@@ -13,7 +13,7 @@ function Footer() {
         <div
             className={`Footer ${
                 location.pathname.search(
-                    /(\/profile|\/new-feed|\/city-street)/
+                    /(\/profile|\/stor(ies|y)|\/new-feed|\/city-street)/
                 ) >= 0
                     ? 'display-none'
                     : ''

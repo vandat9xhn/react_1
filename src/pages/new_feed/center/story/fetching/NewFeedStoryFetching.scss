@@ -1,0 +1,15 @@
+
+.NewFeedStoryFetching_active{
+    animation: rotate_360 2s infinite;
+}
+
+//
+@keyframes rotate_360 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

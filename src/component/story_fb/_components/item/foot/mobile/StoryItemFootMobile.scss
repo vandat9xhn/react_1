@@ -1,0 +1,18 @@
+.StoryItemFootMobile{
+    overflow-x: auto;
+    
+    &::-webkit-scrollbar{
+        width: 0;
+        height: 0;
+    }
+}
+
+.StoryItemFootMobile_row{
+    align-items: flex-end;
+}
+
+.StoryItemFootMobile_center{
+    min-width: 250px;
+    max-width: 100%;
+    margin: 0 0.25rem;
+}

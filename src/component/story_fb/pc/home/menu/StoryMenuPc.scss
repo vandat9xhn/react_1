@@ -1,0 +1,28 @@
+.StoryMenuPc_action {
+    position: absolute;
+    top: 0.5rem;
+    z-index: 1;
+}
+.StoryMenuPc_action-show {
+    right: 1rem;
+}
+.StoryMenuPc_action-hide {
+    right: auto;
+    left: 100%;
+}
+
+.StoryMenuPc {
+    transition: all 250ms;
+}
+.StoryMenuPc_show {
+    transform: translateX(0);
+    overflow-y: auto;
+}
+.StoryMenuPc_hide {
+    transform: translateX(-100%);
+    overflow-y: hidden;
+}
+
+.StoryMenuPc_head {
+    margin: 0 0 1rem 0;
+}

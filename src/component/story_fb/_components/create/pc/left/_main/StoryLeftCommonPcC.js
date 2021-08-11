@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../../_context/ContextAPI';
 //
+import { openScreenPermission } from '../../../../../../_screen/type/permission/_main/ScreenPermission';
+// 
 import FavTitle from '../../../../../../fav_title/FavTitle';
 import PicNameContent from '../../../../../../picture_name/pic_name_content/PicNameContent';
 //
@@ -28,19 +30,34 @@ StoryLeftCommonPcC.defaultProps = {
 //
 function StoryLeftCommonPcC({
     show_fav,
+    permission,
     is_home,
     children,
-    
+
+    handleChoosePermission,
     handleCreate,
     handleDiscard,
     handleClose,
 }) {
     //
-    const { user } = useContext(context_api);
+    const { user, openScreenFloor } = useContext(context_api);
+
+    // 
+    function openChangeSetting() {
+        openScreenPermission({
+            permission: permission,
+            openScreenFloor: openScreenFloor,
+            handleChoosePermission: handleChoosePermission,
+        });
+    }
 
     //
     return (
-        <div className="StoryLeftCommonPcC h-100per display-flex flex-col">
+        <div
+            className={`StoryLeftCommonPcC position-fixed story-create-left h-100per display-flex flex-col ${
+                show_fav ? '' : 'StoryLeftCommonPcC-no_fav'
+            }`}
+        >
             {show_fav ? (
                 <div className="StoryLeftCommonPcC_fav">
                     <FavTitle handleClose={handleClose} />
@@ -49,7 +66,7 @@ function StoryLeftCommonPcC({
 
             <div className="StoryLeftCommonPcC_main flex-grow-1 display-flex flex-col overflow-hidden">
                 <div className="StoryLeftCommonPcC_title">
-                    <StoryLeftPcCommonTitleC />
+                    <StoryLeftPcCommonTitleC openChangeSetting={openChangeSetting} />
                 </div>
 
                 <div className="StoryLeftCommonPcC_body flex-grow-1 overflow-y-auto scroll-thin">

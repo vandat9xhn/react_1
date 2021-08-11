@@ -24,6 +24,19 @@
     transform: scale(0.95);
 }
 
+/* -------- C ------- */
+
+.crop-border {
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+
+    border-left: 100vw solid rgba(24, 25, 26, 0.5);
+    border-right: 100vw solid rgba(24, 25, 26, 0.5);
+    border-top: 100vh solid rgba(24, 25, 26, 0.5);
+    border-bottom: 100vh solid rgba(24, 25, 26, 0.5);
+}
+
 /* ------------------------- F ---------------------- */
 
 .fashion-width {
@@ -44,6 +57,10 @@
 
 .height-100vh {
     height: 100vh;
+}
+
+.max-h-100per{
+    max-height: 100%;
 }
 
 /* ------------------------- I ---------------------- */
@@ -158,7 +175,7 @@
     background-image: linear-gradient(
         0deg,
         var(--always-dark-overlay),
-        var(--shadow-1),
+        var(--shadow-1)
     );
 }
 .story-bg-hv {

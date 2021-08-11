@@ -1,0 +1,32 @@
+.StoryContent {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+// .
+.StoryContent_head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+}
+
+// .
+.StoryContent_close {
+    position: absolute;
+    top: 22px;
+    right: 0;
+    z-index: 2;
+}
+// ..
+.StoryContent_close-contain{
+    width: 1.5rem;
+    height: 1.5rem;
+
+    background-color: var(--shadow-2);
+}
+// .
+.StoryContent_control {
+    z-index: 1;
+}

@@ -1,3 +1,8 @@
+.StoryLeftCommonPcC-no_fav{
+    top: var(--height-header);
+    height: calc(100% - var(--height-header));
+}
+
 .StoryLeftCommonPcC_fav {
     padding: 0 18px;
     box-shadow: 0 1px 1px 0.5px var(--shadow-1);

@@ -68,6 +68,10 @@
     bottom: 100%;
 }
 
+.bottom-0{
+    bottom: 0;
+}
+
 /* ------------- */
 .top-100per {
     top: 100%;
@@ -82,21 +86,65 @@
     left: 50%;
 }
 
+.left-100per {
+    left: 100%;
+}
+
 /* ------------- */
 .right-0 {
     right: 0;
+}
+
+.right-100per{
+    right: 100%;
 }
 /* ------------- */
 .top-0{
     top: 0;
 }
 
-/* ------------- */
+.top-50per{
+    top: 50%;
+}
+
+/* ------ CENTER ------- */
+
 .x-center {
     left: 50%;
     transform: translateX(-50%);
 }
 
+.y-center{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* ------- TRANSFORM ------ */
+
+.top-left-center{
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.top-right-center{
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.bottom-left-center{
+    bottom: 0;
+    left: 0;
+    transform: translate(-50%, 50%);
+}
+
+.bottom-right-center{
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%);
+}
 
 /* ------- Z INDEX ------ */
 

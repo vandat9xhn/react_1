@@ -9,10 +9,13 @@ import './NewFeedStorySeeAllPc.scss';
 NewFeedStorySeeAllPc.propTypes = {};
 
 //
-function NewFeedStorySeeAllPc(props) {
+function NewFeedStorySeeAllPc({ handleSeeAllPc }) {
     //
     return (
-        <div className="NewFeedStorySeeAllPc padding-8px bg-primary brs-50 box-shadow-fb hv-bg-blur">
+        <div
+            className="NewFeedStorySeeAllPc padding-8px bg-primary brs-50 box-shadow-fb cursor-pointer hv-bg-blur"
+            onClick={handleSeeAllPc}
+        >
             <IconsArrow x={200} y={200} size_icon="2rem" />
         </div>
     );

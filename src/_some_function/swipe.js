@@ -1,9 +1,8 @@
+import { getClientXY } from "./getClientXY";
+
 //
 export function getPositionTouched(event) {
-    return {
-        client_x: event.touches[0].clientX,
-        client_y: event.touches[0].clientY,
-    };
+    return getClientXY(event)
 }
 
 //

@@ -1,0 +1,26 @@
+.LearnResizeRotate {
+    height: 200px;
+    user-select: none;
+}
+
+.LearnResizeRotate_transform{
+    cursor: move;
+}
+
+.LearnResizeRotate_resize{
+    cursor: nw-resize;
+    width: 20px;
+    height: 20px;
+
+    z-index: 1;
+}
+// .
+.LearnResizeRotate_resize_contain {
+    width: 8px;
+    height: 8px;
+}
+
+// .
+.LearnResizeRotate_rotate_contain {
+    cursor: pointer;
+}

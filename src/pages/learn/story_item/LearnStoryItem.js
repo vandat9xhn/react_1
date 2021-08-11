@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../_context/ContextAPI';
 //
 import { openScreenStoryMenuMobile } from '../../../component/_screen/type/story/mobile/menu/ScreenStoryMenuMobile';
-//
-import './LearnStoryItem.scss';
-import { openScreenStoryPc } from '../../../component/_screen/type/story/pc/_main/ScreenStoryPc';
 import StoryCreateTextChoice from '../../../component/story_fb/_components/create/choose/text/StoryCreateTextChoice';
 import { openScreenCreateStoryPc } from '../../../component/_screen/type/story/pc/create/ScreenStoryCreate';
+import { openStoryHomePc } from '../../../component/_screen/type/story/pc/home/ScreenStoryHomePc';
+//
+import './LearnStoryItem.scss';
 //
 LearnStoryItem.propTypes = {};
 
@@ -27,14 +27,14 @@ function LearnStoryItem(props) {
     function handleOpenScreenStoryPc() {
         const old_active_ix = 0;
 
-        openScreenStoryPc({
+        openStoryHomePc({
             openScreenFloor: openScreenFloor,
             old_active_ix: old_active_ix,
             has_close: true,
         });
         history.pushState('', '', `/stories?i=${old_active_ix}`);
     }
-    
+
     //
     function handleOpenCreateStoryPc() {
         openScreenCreateStoryPc({

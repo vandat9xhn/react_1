@@ -137,7 +137,7 @@ img {
 .AppContent {
     margin-top: calc(var(--height-header));
     // padding-bottom: 1rem;
-    min-height: calc(100vh + 5rem - var(--height-header));
+    min-height: calc(100vh - var(--height-header));
 }
 
 .AppFixed {

@@ -1,0 +1,32 @@
+.StoryItemFootPc{
+    padding-top: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.StoryItemFootPc_row{
+    align-items: flex-end;
+}
+
+.StoryItemFootPc_center{
+    margin: 0 0.25rem;
+    transition: all 250ms ease-in;
+}
+
+.StoryItemFootPc_right {
+    transition: all 250ms ease-in;
+}
+
+.StoryItemFootPc_like{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    transition: all 250ms ease-in;
+}
+.StoryItemFootPc_like-hide{
+    transform: translateY(125%);
+}
+.StoryItemFootPc_like-show{
+    transform: translateY(0%);
+}

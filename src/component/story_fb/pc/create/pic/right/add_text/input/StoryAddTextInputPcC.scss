@@ -1,0 +1,10 @@
+.StoryAddTextInputPcC{
+    background-color: transparent;
+    outline: none;
+    resize: none;
+    border: none;
+
+    &::placeholder{
+        color: currentColor;
+    }
+}

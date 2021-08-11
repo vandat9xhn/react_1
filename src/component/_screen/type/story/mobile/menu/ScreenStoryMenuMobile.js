@@ -3,31 +3,35 @@ import PropTypes from 'prop-types';
 //
 import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
 //
-import StoryBtnCreate from '../../../../../story_fb/menu/mobile/create/StoryBtnCreate';
-import StoryMenuMobile from '../../../../../story_fb/menu/mobile/_main/StoryMenuMobile';
-//
-import './ScreenStoryMenuMobile.scss';
+import StoryMenuMobile from '../../../../../story_fb/mobile/menu/StoryMenuMobile';
 
 //
 export function openScreenStoryMenuMobile({
-    story_arr_yours,
-    story_arr_followed,
-    story_arr_suggested,
+    openScreenFloor = () => {},
+    has_history = true,
 
-    count_story_followed,
-    count_story_yours,
-    count_story_suggested,
-    openScreenFloor,
+    story_arr_yours = [],
+    story_arr_friends = [],
+    story_arr_followed = [],
+    story_arr_suggested = [],
+
+    count_story_friends = 0,
+    count_story_yours = 0,
+    count_story_followed = 0,
+    count_story_suggested = 0,
 }) {
     openScreenFloor({
         FloorComponent: ScreenStoryMenuMobile,
+        has_history: has_history,
 
         story_arr_yours: story_arr_yours,
+        story_arr_friends: story_arr_friends,
         story_arr_followed: story_arr_followed,
         story_arr_suggested: story_arr_suggested,
 
-        count_story_followed: count_story_followed,
         count_story_yours: count_story_yours,
+        count_story_friends: count_story_friends,
+        count_story_followed: count_story_followed,
         count_story_suggested: count_story_suggested,
     });
 }
@@ -36,19 +40,7 @@ export function openScreenStoryMenuMobile({
 ScreenStoryMenuMobile.propTypes = {};
 
 //
-function ScreenStoryMenuMobile({
-    story_arr_yours,
-    story_arr_friends,
-    story_arr_followed,
-    story_arr_suggested,
-
-    count_story_yours,
-    count_story_friend,
-    count_story_followed,
-    count_story_suggested,
-
-    closeScreen,
-}) {
+function ScreenStoryMenuMobile(props) {
     //
     useMakeBodyHidden({
         // hidden_scroll: true,
@@ -56,50 +48,7 @@ function ScreenStoryMenuMobile({
         hidden_header: true,
     });
 
-    //
-    return (
-        <div className="bg-primary padding-4px">
-            <div className="ScreenStoryMenuMobile_create">
-                <StoryBtnCreate />
-            </div>
-
-            <div className="ScreenStoryMenuMobile_item">
-                <StoryMenuMobile
-                    story_arr={story_arr_yours}
-                    count_story={count_story_yours}
-                    story_type="yours"
-                    heading="Your stories"
-                />
-            </div>
-
-            <div className="ScreenStoryMenuMobile_item">
-                <StoryMenuMobile
-                    story_arr={story_arr_friends}
-                    count_story={count_story_friend}
-                    story_type="friends"
-                    heading="Friend's stories"
-                />
-            </div>
-
-            <div className="ScreenStoryMenuMobile_item">
-                <StoryMenuMobile
-                    story_arr={story_arr_followed}
-                    count_story={count_story_followed}
-                    story_type="followed"
-                    heading="Followed stories"
-                />
-            </div>
-
-            <div className="ScreenStoryMenuMobile_item">
-                <StoryMenuMobile
-                    story_arr={story_arr_suggested}
-                    count_story={count_story_suggested}
-                    story_type="suggested"
-                    heading="Suggested for you"
-                />
-            </div>
-        </div>
-    );
+    return <StoryMenuMobile {...props} />;
 }
 
 export default ScreenStoryMenuMobile;

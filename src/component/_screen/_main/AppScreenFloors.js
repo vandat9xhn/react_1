@@ -12,9 +12,11 @@ AppScreenFloors.propTypes = {};
 //
 function AppScreenFloors({
     floor_arr,
+    count_history,
 
     openScreenFloor,
     closeScreenFloor,
+    closeScreenHasHistory,
     closeAllScreen,
 
     has_change,
@@ -35,7 +37,11 @@ function AppScreenFloors({
     //
     function showModalConfirm(last_location) {
         if (!has_change.current) {
-            closeAllScreen();
+            if (count_history) {
+                closeScreenHasHistory();
+            } else {
+                closeAllScreen();
+            }
 
             return true;
         }
@@ -86,11 +92,16 @@ function AppScreenFloors({
                             ix != floor_arr.length - 1
                                 ? 'AppScreen_inactive'
                                 : 'AppScreen_floor-active bg-screen position-rel'
+                        } ${
+                            ix != floor_arr.length - 1 &&
+                            floor_arr[floor_arr.length - 1].hidden_before
+                                ? 'opacity-0'
+                                : ''
                         }`}
                     >
                         <ScreenFloor
                             closeScreen={closeScreenFloor}
-                            {...floor_obj}
+                            {...floor_obj.floor_props}
                         />
                     </div>
                 ))}

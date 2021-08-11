@@ -15,7 +15,7 @@ function StoryCreatePreviewPcCommon({ children }) {
                 Preview
             </h2>
 
-            <div className="flex-grow-1">
+            <div className="flex-grow-1 ">
                 <div className="StoryCreatePreviewPcCommon_body_contain wh-100 bg-loader brs-8px">
                     {children}
                 </div>

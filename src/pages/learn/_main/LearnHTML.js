@@ -19,6 +19,8 @@ import LearnPortalModel from '../portal/LearnPortalModel';
 import LearnAPIHeroku from '../api_heroku/LearnAPIHeroku';
 import LearnStoryItem from '../story_item/LearnStoryItem';
 import LearnWriteHtml from '../write_html/LearnWriteHtml';
+import LearnResizeRotate from '../resize_rotate/LearnResizeRotate';
+import LearnColorThief from '../color_thief/LearnColorThief';
 
 //
 LearnHTML.propTypes = {};
@@ -74,7 +76,7 @@ function LearnHTML() {
                 <LearnStoryItem />
             </div>
 
-            <div>
+            {/* <div>
                 <LearnPortalModel >
                     asdas asd asd asd
                 </LearnPortalModel>
@@ -84,10 +86,20 @@ function LearnHTML() {
                 <LearnPortalModel >
                     123 123 123
                 </LearnPortalModel>
-            </div>
+            </div> */}
 
             <div>
                 <LearnAPIHeroku />
+            </div>
+
+            <br />
+            <div>
+                <LearnResizeRotate /> 
+            </div>
+
+            <br />
+            <div>
+                <LearnColorThief />
             </div>
             
             <br />

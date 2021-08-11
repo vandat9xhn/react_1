@@ -2,11 +2,16 @@ import { default_vid_pic_arr } from '../../_default/_common/default_image';
 
 //
 export const data_story_text_color_arr = [
-    'text-primary',
-    'color-white',
-    'text-red',
-    'text-blue',
-    'text-green',
+    'var(--white)',
+    'var(--danger)',
+    'var(--blue)',
+    'var(--success)',
+    'var(--blue-tear)',
+    'var(--gold)',
+    'var(--snow-flake)',
+    'var(--heart)',
+    'var(--warning)',
+
 ];
 
 export const data_story_font_arr = [

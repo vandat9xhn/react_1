@@ -15,3 +15,12 @@ export const IS_MOBILE =
 
 //
 export const CHAT_INACTIVE_NUM = IS_MOBILE ? 2 : 4;
+
+// STORY
+
+export const ROTATE_RATIO = 100
+
+//
+export const SCALE_PIC_RATIO = 25;
+
+export const STORY_WIDTH_HEIGHT_RATIO = 0.55

@@ -38,23 +38,40 @@ const default_story_viewer_first_obj = () => {
 };
 
 //
-const default_story_item_obj = () => ({
-    id: getRandomId(),
-    story_link: getRandomBool() ? null : '/posts/' + getRandomId(),
-    created_time: new Date().toString(),
-
+const default_vid_pic_obj = () => ({
     vid_pic: getRandomVidPic(),
-    top_pic: getRandomNumber(30, 60) + '%',
-    left_pic: getRandomNumber(30, 60) + '%',
-    scale_pic: Math.floor(Math.random() * 10 + 10) / 10,
-    rotate_pic: getRandomFromArr([-90, 90, 180]),
-
-    text: getRandomBool() ? `Text ${getRandomNumber(0, 10000)}` : '',
-    top_text: getRandomNumber(30, 60) + '%',
-    left_text: getRandomNumber(30, 60) + '%',
-    color_text_ix: getRandomId(data_story_text_color_arr.length - 1),
-    scale_text: Math.floor(Math.random() * 10 + 10) / 10,
+    trans_x: getRandomNumber(-200, 200),
+    trans_y: getRandomNumber(-200, 200),
+    scale: Math.floor(Math.random() * 20 + 5) / 10,
+    rotate: getRandomFromArr([0, 90, 180, 270]),
 });
+
+const default_text_obj = (type_story = 'pic') => ({
+    text: getRandomBool() ? `Text ${getRandomNumber(0, 10000)}` : '',
+    trans_x: type_story == 'text' ? 0 : getRandomNumber(-200, 200),
+    trans_y: getRandomNumber(-200, 200),
+    color: getRandomFromArr(data_story_text_color_arr),
+    scale: Math.floor(Math.random() * 20 + 5) / 10,
+    rotate: Math.floor(Math.random() * 360),
+});
+
+const default_text_arr = (min = 0, max = 3) =>
+    getDefaultArr(default_text_obj, min, max);
+
+const default_story_item_obj = () => {
+    const type_story = getRandomFromArr(['text', 'pic']);
+
+    return {
+        id: getRandomId(),
+        story_link: getRandomBool() ? null : '/posts/' + getRandomId(),
+        created_time: new Date().toString(),
+        type_story: type_story,
+
+        vid_pic_obj: default_vid_pic_obj(),
+        text_arr:
+            type_story == 'text' ? default_text_arr(1, 1) : default_text_arr(),
+    };
+};
 
 export const default_story_item_viewer_obj = () => {
     return {

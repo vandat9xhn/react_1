@@ -112,7 +112,7 @@ function ChatGroup({ room_users }) {
                 className={`ChatGroup_contain box-shadow-1 ${
                     !show_action_group || open_quit
                         ? 'ChatGroup_close'
-                        : 'ChatGroup_show scroll-y-none'
+                        : 'ChatGroup_show scroll-width-0'
                 }`}
             >
                 {[

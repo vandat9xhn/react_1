@@ -1,0 +1,10 @@
+.BgImgItem{
+    transition: all 100ms ease-in;
+}
+.BgImgItem-active{
+    border: 4px solid var(--blue);
+    transform: scale(1.15);
+}
+.BgImgItem-inactive{
+    transform: scale(1);
+}

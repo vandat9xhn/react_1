@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
@@ -12,18 +11,17 @@ import { handle_API_FeedStory_L } from '../../../../../_handle_api/feed/HandleAP
 //
 import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 //
-import IconUpdate from '../../../../../_icons_svg/icon_update/IconUpdate';
-//
 import { openScreenStoryItemMobile } from '../../../../../component/_screen/type/story/mobile/item/ScreenStoryItemMobile';
-import { openScreenStoryPc } from '../../../../../component/_screen/type/story/pc/_main/ScreenStoryPc';
 import { openScreenStoryMenuMobile } from '../../../../../component/_screen/type/story/mobile/menu/ScreenStoryMenuMobile';
+import { openScreenCreateStoryPc } from '../../../../../component/_screen/type/story/pc/create/ScreenStoryCreate';
+import { openStoryHomePc } from '../../../../../component/_screen/type/story/pc/home/ScreenStoryHomePc';
 //
 import VirtualScroll from '../../../../../component/virtual_scroll/VirtualScroll';
 //
-import StoryFace from '../../../../../component/story_fb/face/item/_main/StoryFace';
-import StoryFaceCreate from '../../../../../component/story_fb/face/create/_main/StoryFaceCreate';
-import NewFeedStorySeeAllMobile from '../see_all/mobile/NewFeedStorySeeAllMobile';
-import NewFeedStorySeeAllPc from '../see_all/pc/NewFeedStorySeeAllPc';
+import StoryFaceCreate from '../../../../../component/story_fb/_components/face/create/_main/StoryFaceCreate';
+import NewFeedStorySeeAll from '../see_all/_main/NewFeedStorySeeAll';
+import NewFeedStoryList from '../list/NewFeedStoryList';
+import NewFeedStoryFetching from '../fetching/NewFeedStoryFetching';
 //
 import './NewFeedStory.scss';
 
@@ -104,7 +102,7 @@ function NewFeedStory(props) {
             story_arr_followed: data_arr,
             count_story_followed: count,
             has_fetched_followed: true,
-            
+
             story_arr_yours: story_arr_yours,
             count_story_yours: story_arr_yours.length,
             has_fetched_yours: true,
@@ -122,12 +120,10 @@ function NewFeedStory(props) {
                 story_type: 'yours_followed',
             });
 
-            // history.pushState('', '', `/stories?i=${data_arr[ix].user.id}`);
-
             return;
         }
 
-        openScreenStoryPc({
+        openStoryHomePc({
             openScreenFloor: openScreenFloor,
             ...getStoryYoursFollowed(),
             ...getActiveIxStoryType(ix),
@@ -139,9 +135,11 @@ function NewFeedStory(props) {
 
     //
     function handleSeeAllPc() {
-        openScreenStoryPc({
+        openStoryHomePc({
             openScreenFloor: openScreenFloor,
             ...getStoryYoursFollowed(),
+            story_type: 'followed',
+            active_ix: 0,
             has_close: true,
         });
 
@@ -159,6 +157,17 @@ function NewFeedStory(props) {
     }
 
     //
+    function openScreenCreateStory() {
+        openScreenCreateStoryPc({
+            openScreenFloor: openScreenFloor,
+            show_fav: true,
+            hidden_before: true,
+        });
+
+        history.pushState('', '', `/story/create`);
+    }
+
+    //
     return (
         <VirtualScroll>
             <div className="NewFeedStory position-rel padding-8px brs-8px-md">
@@ -166,76 +175,30 @@ function NewFeedStory(props) {
                     className="NewFeedStory_contain"
                     onScroll={IS_MOBILE ? handleScroll : undefined}
                 >
-                    <div className="NewFeedStory_row display-flex flex-nowrap">
-                        <div className="NewFeedStory_item cursor-pointer">
-                            <Link to={`/story/create`} className="normal-text">
-                                <StoryFaceCreate />
-                            </Link>
-                        </div>
-
-                        {feed_story_arr
-                            .slice(0, IS_MOBILE ? undefined : 4)
-                            .map((item, ix) => (
-                                <div
-                                    key={item.user.id}
-                                    className="NewFeedStory_item cursor-pointer"
-                                    onClick={() => openScreenStory(ix)}
-                                >
-                                    <StoryFace
-                                        count_new={item.count_new}
-                                        user={item.user}
-                                        vid_pic={item.list[0].vid_pic}
-                                        text={item.list[0].text}
-                                        top_text={item.list[0].top_text}
-                                        left_text={item.list[0].left_text}
-                                        color_text_ix={
-                                            item.list[0].color_text_ix
-                                        }
-                                        scale_text={item.list[0].scale_text}
-                                    />
-                                </div>
-                            ))}
-
+                    <div className="display-flex align-items-center">
                         <div
-                            className={`NewFeedStory_fetching ${
-                                is_fetching ? '' : 'display-none'
-                            }`}
+                            className="NewFeedStory_item cursor-pointer"
+                            onClick={openScreenCreateStory}
                         >
-                            <div className="display-flex-center h-100per">
-                                <div
-                                    className={`NewFeedStory_fetching-contain padding-8px ${
-                                        is_fetching
-                                            ? 'NewFeedStory_fetching-active'
-                                            : ''
-                                    }`}
-                                >
-                                    <IconUpdate stroke="var(--blue)" />
-                                </div>
-                            </div>
+                            <StoryFaceCreate />
                         </div>
+
+                        <NewFeedStoryList
+                            feed_story_arr={feed_story_arr}
+                            openScreenStory={openScreenStory}
+                        />
+
+                        <NewFeedStoryFetching is_fetching={is_fetching} />
                     </div>
                 </div>
 
-                {IS_MOBILE ? (
-                    (count <= data_arr.length || data_arr.length > 6) &&
-                    has_fetched ? (
-                        <div
-                            className="NewFeedStory_all-mobile cursor-pointer"
-                            onClick={handleSeeMenuMobile}
-                        >
-                            <NewFeedStorySeeAllMobile />
-                        </div>
-                    ) : null
-                ) : (
-                    <div
-                        className={`NewFeedStory_all-pc cursor-pointer ${
-                            data_arr.length < 4 ? 'display-none' : ''
-                        }`}
-                        onClick={handleSeeAllPc}
-                    >
-                        <NewFeedStorySeeAllPc />
-                    </div>
-                )}
+                <NewFeedStorySeeAll
+                    count={count}
+                    data_length={data_arr.length}
+                    has_fetched={has_fetched}
+                    handleSeeMenuMobile={handleSeeMenuMobile}
+                    handleSeeAllPc={handleSeeAllPc}
+                />
             </div>
         </VirtualScroll>
     );

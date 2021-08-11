@@ -37,7 +37,7 @@
     --bg-skeleton: #c5c5c5;
     --bg-fetching: #1a0f0f80;
     --bg-loader: #000000f0;
-    --bg-film: rgba(0, 0, 0, 0.6);
+    --bg-film: rgba(0, 0, 0, 0.5);
     --bg-vid-pic: #000000cf;
     --bg-cmt: #a3a3a3;
     --bg-loader-hover: #3a3434d9;
@@ -60,7 +60,7 @@
     --z-index-lv5: 50;
 
     /* HEIGHT */
-    --height-header: 48px;
+    --height-header: 56px;
 
     /* border */
     --border-fashion: #ff6600;
@@ -699,6 +699,6 @@
 
     //
     @media (max-width: 350px) {
-        --height-header: 42px;
+        --height-header: 48px;
     }
 }

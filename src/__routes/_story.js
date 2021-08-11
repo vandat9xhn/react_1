@@ -1,25 +1,31 @@
 import React from 'react';
+// 
+import { IS_MOBILE } from '../_constant/Constant';
 
 //
-const StoryMenu = React.lazy(() =>
-    import('../component/story_fb/menu/_main/StoryMenu')
+const StoryCreatePc = React.lazy(() =>
+    import('../component/story_fb/pc/create/_main/StoryCreatePc')
 );
 
-const StoryCreate = React.lazy(() =>
-    import('../component/story_fb/create/_main/StoryCreate')
+const StoryHomePc = React.lazy(() =>
+    import('../component/story_fb/pc/home/_main/StoryHomePc')
+);
+
+const StoryMenuMobile = React.lazy(() =>
+    import('../component/story_fb/mobile/menu/StoryMenuMobile')
 );
 
 //
 export const story_route_arr = [
     {
         path: '/stories',
-        component: StoryMenu,
+        component: IS_MOBILE ? StoryMenuMobile : StoryHomePc,
         exact: true,
         auth: true,
     },
     {
         path: '/story/create',
-        component: StoryCreate,
+        component: IS_MOBILE ? null : StoryCreatePc,
         exact: true,
         auth: true,
     },

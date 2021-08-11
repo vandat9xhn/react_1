@@ -12,9 +12,9 @@ import './ScreenPermission.scss';
 
 //
 export function openScreenPermission({
-    openScreenFloor,
-    permission,
-    handleChoosePermission,
+    openScreenFloor = () => {},
+    permission = 0,
+    handleChoosePermission = () => {},
 }) {
     openScreenFloor({
         FloorComponent: ScreenPermission,
@@ -24,10 +24,18 @@ export function openScreenPermission({
 }
 
 //
-ScreenPermission.propTypes = {};
+ScreenPermission.propTypes = {
+    permission: PropTypes.number,
+    closeScreen: PropTypes.func,
+    handleChoosePermission: PropTypes.func,
+};
+
+ScreenPermission.defaultProps = {
+    permission: 0,
+};
 
 //
-function ScreenPermission({ closeScreen, permission, handleChoosePermission }) {
+function ScreenPermission({ permission, closeScreen, handleChoosePermission }) {
     //
     const [permission_state, setPermissionState] = useState({
         active_permission: permission,

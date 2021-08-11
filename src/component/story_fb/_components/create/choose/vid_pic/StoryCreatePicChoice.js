@@ -15,9 +15,7 @@ StoryCreatePicChoice.propTypes = {};
 function StoryCreatePicChoice({ openScreenStoryPic }) {
     //
     function handleChange(data_files) {
-        const vid_pic = data_files.vid_pics[0].vid_pic;
-
-        openScreenStoryPic(vid_pic);
+        openScreenStoryPic(data_files);
     }
 
     //
@@ -28,7 +26,7 @@ function StoryCreatePicChoice({ openScreenStoryPic }) {
                 accept="image/*"
                 handleChange={handleChange}
             >
-                <StoryCreateChoice title="Create a Picture Story">
+                <StoryCreateChoice title="Create a Photo Story">
                     <div>
                         <IconsInput />
                     </div>

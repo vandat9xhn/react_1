@@ -1,0 +1,38 @@
+.StoryItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.StoryItem_head {
+    height: 1rem;
+}
+// .
+.StoryItem_head_center {
+    width: 20rem;
+    max-width: 100%;
+}
+
+.StoryItem_foot {
+    height: 3rem;
+}
+// .
+.StoryItem_foot_contain {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 2;
+
+    max-width: 100%;
+    transform: translateX(-50%);
+}
+.StoryItem_foot_contain-pc{
+    width: 500px;
+}
+
+//
+@media (max-width: 500px) {
+    // .
+    .StoryItem_head_center {
+        width: 100%;
+    }
+}
