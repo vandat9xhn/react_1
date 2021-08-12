@@ -113,7 +113,7 @@ function ProductSearch({
 
     //
     return (
-        <div className="ProductSearch position-rel bg-primary">
+        <div className="ProductSearch pos-rel bg-primary">
             <div className="display-flex">
                 <div>
                     <button

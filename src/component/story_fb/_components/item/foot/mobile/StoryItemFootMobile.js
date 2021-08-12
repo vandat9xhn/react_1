@@ -35,7 +35,7 @@ function StoryItemFootMobile({
                 ) : null}
 
                 {can_rep ? (
-                    <div className="StoryItemFootMobile_center position-rel flex-grow-1">
+                    <div className="StoryItemFootMobile_center pos-rel flex-grow-1">
                         <StoryReply
                             text={text}
                             handleChange={handleChange}

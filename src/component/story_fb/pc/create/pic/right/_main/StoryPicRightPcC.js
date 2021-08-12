@@ -42,7 +42,7 @@ function StoryPicRightPcC({
                 className="flex-grow-1 display-flex-center overflow-hidden"
             >
                 <div
-                    className="position-rel h-100per"
+                    className="pos-rel h-100per"
                     style={{
                         width: `${story_width}px`,
                     }}

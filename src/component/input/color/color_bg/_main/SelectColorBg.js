@@ -34,7 +34,7 @@ function SelectColorBg({ active_ix, color_bg_arr, handleChangeColorBg }) {
     //
     return (
         <CloseDiv makeDivHidden={closeSelectColorBg}>
-            <div className="SelectColorBg position-rel">
+            <div className="SelectColorBg pos-rel">
                 <div>
                     <div
                         className={`SelectColorBg_btn-item padding-4px text-align-center label-field cursor-pointer ${color_bg_arr[active_ix].bg} ${color_bg_arr[active_ix].color}`}

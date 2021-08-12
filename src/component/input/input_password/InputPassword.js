@@ -43,7 +43,7 @@ function InputPassword({ field, form, label, placeholder, max_length, help }) {
                 <label className="label-field">{label}</label>
             </div>
 
-            <div className="InputPassword_password position-rel">
+            <div className="InputPassword_password pos-rel">
                 <input
                     className={`InputPassword_input w-100per padding-8px brs-5px ${
                         touched[name] && !errors[name]

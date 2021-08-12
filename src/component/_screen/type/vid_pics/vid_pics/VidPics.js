@@ -22,8 +22,8 @@ VidPics.defaultProps = {
 function VidPics({ urls, current, changeCurrent }) {
     //
     return (
-        <div className="VidPics position-rel wh-100 z-index-lv5">
-            <div className="VidPics_blur wh-100 position-abs">
+        <div className="VidPics pos-rel wh-100 z-index-lv5">
+            <div className="VidPics_blur wh-100 pos-abs">
                 <div
                     className="VidPics_blur-img wh-100"
                     style={{
@@ -36,7 +36,7 @@ function VidPics({ urls, current, changeCurrent }) {
                 ></div>
             </div>
             
-            <div className="VidPics_bg wh-100 position-abs bg-loader"></div>
+            <div className="VidPics_bg wh-100 pos-abs bg-loader"></div>
 
             <div className="VidPics_current">
                 <div className="VidPics_current-contain display-flex-center wh-100">

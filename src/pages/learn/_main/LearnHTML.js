@@ -21,6 +21,8 @@ import LearnStoryItem from '../story_item/LearnStoryItem';
 import LearnWriteHtml from '../write_html/LearnWriteHtml';
 import LearnResizeRotate from '../resize_rotate/LearnResizeRotate';
 import LearnColorThief from '../color_thief/LearnColorThief';
+import LearnTouches from '../touches/LearnTouches';
+import LearnSaveScroll from '../save_scroll/LearnSaveScroll';
 
 //
 LearnHTML.propTypes = {};
@@ -98,9 +100,15 @@ function LearnHTML() {
             </div>
 
             <br />
-            <div>
+            {/* <div>
                 <LearnColorThief />
-            </div>
+            </div> */}
+
+            <LearnTouches />
+
+            <br />
+
+            <LearnSaveScroll />
             
             <br />
             <br />

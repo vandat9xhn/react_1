@@ -73,7 +73,7 @@ function InputFile({
     //
 
     return (
-        <div className="InputFile position-rel">
+        <div className="InputFile pos-rel">
             <div className="InputFile_input display-none">
                 <input
                     ref={refInput}

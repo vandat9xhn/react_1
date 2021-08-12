@@ -73,7 +73,7 @@ function StoryAddTextPcC({ add_text_obj, handleAddText }) {
                     />
                 </div>
 
-                <div className="position-abs left-100per y-center">
+                <div className="pos-abs left-100per y-center">
                     <StoryAddTextFontColorPcC
                         font_arr={data_story_font_arr}
                         color_arr={data_story_text_color_arr}

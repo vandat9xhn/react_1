@@ -51,13 +51,15 @@ function ZoomPostCommon({
     return (
         <div
             className={`ZoomPostCommon ${
-                show_screen_title ? '' : 'ZoomPostCommon_fixed'
+                show_screen_title
+                    ? ''
+                    : 'pos-fixed left-0 top-0 z-index-lv1'
             }`}
         >
             <div className="ZoomPostCommon_contain">
                 <div className="ZoomPostCommon_row display-flex h-100per">
-                    <div className="ZoomPostCommon_left bg-loader position-rel">
-                        <div className="ZoomPostCommon_title">
+                    <div className="ZoomPostCommon_left bg-loader pos-rel">
+                        <div className="ZoomPostCommon_title pos-fixed top-0 left-0">
                             <ScreenTitle
                                 show_screen_title={show_screen_title}
                                 closeScreenTitle={closeScreenTitle}

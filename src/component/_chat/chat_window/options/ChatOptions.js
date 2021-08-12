@@ -31,7 +31,7 @@ function ChatOptions({
     //
     return (
         <CloseDiv makeDivHidden={closeOptions}>
-            <div className="padding-4px position-rel">
+            <div className="padding-4px pos-rel">
                 <div>
                     <div>
                         <div className="ChatOptions_menu display-flex-center">

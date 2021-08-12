@@ -33,7 +33,7 @@ function BuyingItem({
 
     //
     return (
-        <div className="BuyingItem position-rel padding-8px">
+        <div className="BuyingItem pos-rel padding-8px">
             <ProductCartBuy product={product} quantity={quantity}>
                 <div className="BuyingItem_quantity text-align-center">
                     x{quantity}

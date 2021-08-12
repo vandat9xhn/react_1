@@ -406,7 +406,7 @@ function FashionSearch(props) {
                     />
                 </div>
 
-                <div className="position-rel flex-grow-1">
+                <div className="pos-rel flex-grow-1">
                     <div
                         className={`FashionSearch_product ${
                             is_fetching || !has_fetched ? 'display-none' : ''
@@ -428,7 +428,7 @@ function FashionSearch(props) {
                         </div>
                     </div>
 
-                    <div className="FashionSearch_fetching position-abs width-fit-content margin-auto">
+                    <div className="FashionSearch_fetching pos-abs width-fit-content margin-auto">
                         <WaitingBall
                             is_fetching={is_fetching || !has_fetched}
                         />

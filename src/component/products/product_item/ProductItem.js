@@ -42,7 +42,7 @@ function ProductItem({
 }) {
     //
     return name ? (
-        <div className="ProductItem padding-8px position-rel" title={name}>
+        <div className="ProductItem padding-8px pos-rel" title={name}>
             <Link to={link} className="normal-text hv-cl-blue">
                 <div className="ProductItem_head">
                     <div className="ProductItem_head-img pos-abs-100">

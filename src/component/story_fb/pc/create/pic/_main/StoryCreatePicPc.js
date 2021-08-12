@@ -300,6 +300,7 @@ function StoryCreatePicPc({
         setStateObj((state_obj) => {
             const new_text_arr = [...state_obj.text_arr];
             new_text_arr[ix].scale += scale_change;
+            new_text_arr[ix].scale <= 0 && (new_text_arr[ix].scale = 0);
 
             return { ...state_obj, text_arr: new_text_arr };
         });

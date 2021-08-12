@@ -25,7 +25,7 @@ function StoryTextContentPicC({
     //
     return (
         <div
-            className="StoryTextContentPicC position-rel cursor-move"
+            className="StoryTextContentPicC pos-rel cursor-move"
             onDoubleClick={openChangeText}
             onMouseDown={handleStart}
         >

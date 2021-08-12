@@ -155,9 +155,9 @@ function Carousel({
 
     //
     return (
-        <div className="Carousel position-rel wh-100">
+        <div className="Carousel pos-rel wh-100">
             <div
-                className="Carousel_row position-rel display-flex"
+                className="Carousel_row pos-rel display-flex"
                 style={{
                     width: `${100 * vid_pics.length}%`,
                     transform: `translateX(-${

@@ -7,10 +7,18 @@ import MessageFriend from '../friend/HeaderMessFriend';
 HeaderMessHeadMobile.propTypes = {};
 
 //
-function HeaderMessHeadMobile({ friend_arr, has_fetched, closeZoom }) {
+function HeaderMessHeadMobile({
+    ref_head_elm,
+    friend_arr,
+    has_fetched,
+    closeZoom,
+}) {
     //
     return (
-        <div className="max-w-100per overflow-x-auto snap-x-mandatory scroll-height-0">
+        <div
+            ref={ref_head_elm}
+            className="max-w-100per overflow-x-auto snap-x-mandatory scroll-height-0"
+        >
             <div className={`${has_fetched ? '' : 'display-none'}`}>
                 <div className="display-flex align-items-center">
                     {friend_arr.map((friend, ix) => (

@@ -18,11 +18,11 @@ function StoryCreateTextRightPc({
 }) {
     //
     return (
-        <div className="StoryCreateTextRightPc position-rel wh-100 padding-8px">
+        <div className="StoryCreateTextRightPc pos-rel wh-100 padding-8px">
             <div className="display-flex-center h-100per">
                 <div
                     ref={ref_body_elm}
-                    className="StoryCreateTextRightPc_item position-rel h-100per brs-8px overflow-hidden"
+                    className="StoryCreateTextRightPc_item pos-rel h-100per brs-8px overflow-hidden"
                     style={{ width: `${story_width}px` }}
                 >
                     <StoryTextContentC

@@ -72,7 +72,7 @@ function ChatMess({ mess_item }) {
         <VirtualScroll rootMargin_y={200}>
             <div className="ChatMess">
                 <div
-                    className={`ChatMess_common position-rel display-flex ${
+                    className={`ChatMess_common pos-rel display-flex ${
                         profile_model == c_user_id
                             ? 'ChatMess_user'
                             : 'ChatMess_Friend'

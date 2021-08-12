@@ -32,7 +32,7 @@ function FashionHR(props) {
     return (
         <div className="FashionHR">
             <div className="FashionHR_row display-flex-center">
-                <div className="FashionHR_cart position-rel">
+                <div className="FashionHR_cart pos-rel">
                     <Link to="/fashion/cart">
                         <div className="FashionHR_cart-icon FashionHR_item">
                             <IconsMenu x={400} size_icon="2rem" />

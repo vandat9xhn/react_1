@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import PictureName from '../../../../picture_name/pic_name/PictureName';
-//
 import './ListPeople.scss';
 
 //
@@ -10,52 +8,36 @@ ListPeople.propTypes = {
     list_people: PropTypes.array,
     count_people: PropTypes.number,
     max_size: PropTypes.number,
-
     PeopleComponent: PropTypes.func,
-    is_pic_name: PropTypes.bool,
 };
 
 ListPeople.defaultProps = {
     list_people: [],
     count_people: 0,
     max_size: 1,
-    
     PeopleComponent: () => <div></div>,
-    is_pic_name: true,
 };
 
 //
-function ListPeople({
-    list_people,
-    count_people,
-    max_size,
-
-    is_pic_name,
-    PeopleComponent,
-}) {
+function ListPeople({ list_people, count_people, max_size, PeopleComponent }) {
     //
     return (
         <div className="ListPeople bg-loader brs-5px">
-            <div>
+            <ul className="list-none">
                 {list_people.map((item, index) => (
-                    <div
-                        key={`ListPeople_${index}`}
-                        className="ListPeople_item"
-                    >
-                        {is_pic_name ? (
-                            <PictureName user={item.user} />
-                        ) : (
-                            <PeopleComponent item={item} />
-                        )}
-                    </div>
+                    <li key={`${index}`} className="ListPeople_item">
+                        <PeopleComponent item={item} />
+                    </li>
                 ))}
+            </ul>
 
-                {count_people > max_size && (
-                    <div className="ListPeople_item">
+            {count_people > max_size && (
+                <div className="text-white padding-4px">
+                    <span className="font-13px label-field">
                         {`And ${count_people - max_size} others...`}
-                    </div>
-                )}
-            </div>
+                    </span>
+                </div>
+            )}
         </div>
     );
 }

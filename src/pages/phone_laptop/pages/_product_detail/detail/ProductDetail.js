@@ -65,7 +65,7 @@ function ProductDetail({ product, openTypeBuy, has_fetched }) {
                 <div className="ProductDetail_row display-flex">
                     <div className="ProductDetail_col">
                         <div className="ProductDetail_image">
-                            <div className="ProductDetail__img position-rel">
+                            <div className="ProductDetail__img pos-rel">
                                 <img
                                     className="wh-100"
                                     src={url || image_loading}

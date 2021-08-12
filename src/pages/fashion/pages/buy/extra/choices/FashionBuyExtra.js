@@ -26,7 +26,7 @@ function FashionBuyExtra({
 
     //
     return (
-        <div className="pos-fixed-100 z-index-lv5 bg-screen">
+        <div className="pos-fixed-100v z-index-lv5 bg-screen">
             <div className="form-fixed bg-primary">
                 <div
                     className={`${

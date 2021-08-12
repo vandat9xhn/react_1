@@ -26,7 +26,7 @@ function HeaderMessItem({
 
     //
     return (
-        <div className="HeaderMessItem header_item position-rel">
+        <div className="HeaderMessItem header_item pos-rel">
             <div className="HeaderMessItem_row">
                 <PicNameContent
                     user={user}

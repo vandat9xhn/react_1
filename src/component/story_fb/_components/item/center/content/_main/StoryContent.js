@@ -30,11 +30,11 @@ function StoryContent({
     //
     return (
         <div
-            className={`StoryContent wh-100 ${IS_MOBILE ? 'position-rel' : ''}`}
+            className={`StoryContent wh-100 ${IS_MOBILE ? 'pos-rel' : ''}`}
         >
             <div className="story-bg"></div>
 
-            <div className="StoryContent-contain position-rel wh-100">
+            <div className="StoryContent-contain pos-rel wh-100">
                 {type_story == 'text' ? (
                     <StoryContentStoryText
                         vid_pic={vid_pic_obj.vid_pic}

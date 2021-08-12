@@ -34,7 +34,7 @@ function SelectFont({ active_ix, font_arr, handleChangeFont }) {
     //
     return (
         <CloseDiv makeDivHidden={handleClose}>
-            <div className="position-rel">
+            <div className="pos-rel">
                 <div className="SelectFont_current brs-8px">
                     <SelectFontItem
                         font_family={font_arr[active_ix]}

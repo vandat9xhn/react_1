@@ -13,7 +13,7 @@ function StoryPicText({ text_obj }) {
     //
     return (
         <div
-            className="position-abs"
+            className="pos-abs"
             style={{
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg)`,
             }}

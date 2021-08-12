@@ -48,13 +48,13 @@ class ChatScreen extends Component {
                         >
                             <div className="ChatScreen_blur pos-abs-100 bg-active-fb"></div>
 
-                            <div className="position-rel wh-100 bg-through">
+                            <div className="pos-rel wh-100 bg-through">
                                 <ChatScreenFloor
                                     closeChatScreen={this.closeChatScreen}
                                     {...item}
                                 />
 
-                                <div className="ChatScreen_close position-abs right-0 top-0">
+                                <div className="ChatScreen_close pos-abs right-0 top-0">
                                     <div
                                         className="bg-loader brs-50 cursor-pointer hv-opacity"
                                         onClick={this.closeChatScreen}

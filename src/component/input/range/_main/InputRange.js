@@ -68,26 +68,26 @@ function InputRange({
     return (
         <div
             ref={ref_range_elm}
-            className={`InputRange position-rel wh-100 ${
+            className={`InputRange pos-rel wh-100 ${
                 is_run ? 'input-range-running' : ''
             }`}
         >
             <div
-                className="InputRange_range position-abs left-0 y-center w-100per cursor-pointer"
+                className="InputRange_range pos-abs left-0 y-center w-100per cursor-pointer"
                 onClick={handleChange}
             >
                 {range}
             </div>
 
             <div
-                className="InputRange_active position-abs left-0 y-center pointer-events-none"
+                className="InputRange_active pos-abs left-0 y-center pointer-events-none"
                 style={{ width: `${value}%` }}
             >
                 {active_range}
             </div>
 
             <div
-                className="InputRange_slider position-abs"
+                className="InputRange_slider pos-abs"
                 style={{ left: `${value}%` }}
                 //
                 onMouseDown={handleStart}

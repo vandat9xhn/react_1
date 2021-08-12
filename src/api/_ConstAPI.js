@@ -21,7 +21,7 @@ const API_Fake = ({ data, followed_size, params = {} }) =>
                                   ? data.length < size
                                       ? data.length
                                       : size * 3 + 6
-                                  : 222,
+                                  : 80,
                           },
                       }
                     : { data: data }

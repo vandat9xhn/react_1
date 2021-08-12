@@ -64,16 +64,17 @@ class AppScreen extends Component {
     closeScreenFloor = () => {
         const { floor_arr } = this.state;
 
-        const floor_close = floor_arr.pop();
-        this.setState({});
+        if (floor_arr[floor_arr.length - 1].has_history) {
+            history.back();
+        } else {
+            floor_arr.pop();
 
-        if (floor_arr.length == 0) {
-            this.count_has_change = 0;
-            this.has_change_obj = { current: false };
-        }
+            this.setState({});
 
-        if (floor_close.has_history) {
-            history.back()
+            if (floor_arr.length == 0) {
+                this.count_has_change = 0;
+                this.has_change_obj = { current: false };
+            }
         }
     };
 

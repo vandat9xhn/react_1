@@ -35,7 +35,7 @@ class ScreenOnce extends Component {
 
         //
         return (
-            <div className="ScreenOnce_fixed pos-fixed-100 z-index-lv5">
+            <div className="ScreenOnce_fixed pos-fixed-100v z-index-lv5">
                 {ScreenOneComponent}
             </div>
         );

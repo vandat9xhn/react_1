@@ -170,7 +170,7 @@ function NewFeedStory(props) {
     //
     return (
         <VirtualScroll>
-            <div className="NewFeedStory position-rel padding-8px brs-8px-md">
+            <div className="NewFeedStory pos-rel padding-8px brs-8px-md">
                 <div
                     className="NewFeedStory_contain"
                     onScroll={IS_MOBILE ? handleScroll : undefined}

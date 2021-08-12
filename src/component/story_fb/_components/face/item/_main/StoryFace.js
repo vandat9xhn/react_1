@@ -24,7 +24,7 @@ function StoryFace({ user, count_new, type_story, vid_pic_obj, text_arr }) {
 
     //
     return (
-        <div className="StoryFace position-rel h-100per story-active font-13px">
+        <div className="StoryFace pos-rel h-100per story-active font-13px">
             <StoryFaceContent
                 type_story={type_story}
                 vid_pic_obj={vid_pic_obj}

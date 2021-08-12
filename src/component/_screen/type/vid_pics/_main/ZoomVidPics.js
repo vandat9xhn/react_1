@@ -7,12 +7,7 @@ import ScreenFixed from '../../../components/frame/has_title/_main/ScreenFixed';
 import './ZoomVidPics.scss';
 
 //
-export function openScreenVidPic({
-    openScreenFloor,
-
-    urls,
-    current,
-}) {
+export function openScreenVidPic({ openScreenFloor, urls, current }) {
     openScreenFloor({
         FloorComponent: ZoomVidPics,
         urls: urls,
@@ -55,6 +50,7 @@ function ZoomVidPics({ closeScreen, urls, current: initial_current }) {
                 url={
                     urls[current].url || urls[current].vid_pic || urls[current]
                 }
+                show_screen_title={true}
                 closeScreenFixed={closeScreen}
             >
                 <VidPics

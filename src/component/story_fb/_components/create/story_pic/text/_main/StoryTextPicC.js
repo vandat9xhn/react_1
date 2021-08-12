@@ -104,7 +104,7 @@ function StoryTextPicC({
     return (
         <div
             ref={ref_main_elm}
-            className="StoryTextPicC position-abs max-w-100per"
+            className="StoryTextPicC pos-abs max-w-100per"
             style={{
                 transform: `translate(${-50}%, ${-50}%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg)`,
             }}
@@ -113,7 +113,7 @@ function StoryTextPicC({
                 className={`StoryTextPicC_content padding-8px ${
                     show_action ? 'StoryTextPicC_content-active brs-5px' : ''
                 }`}
-                style={{ fontSize: `${16 * scale}px` }}
+                style={{ fontSize: `${14 * scale + 2}px` }}
             >
                 <StoryTextContentPicC
                     text={text}
@@ -125,18 +125,18 @@ function StoryTextPicC({
             </div>
 
             <div className={`${show_action ? '' : 'display-none'}`}>
-                <div className="StoryTextPicC_del position-abs top-left-center">
+                <div className="StoryTextPicC_del pos-abs top-left-center">
                     <StoryTextPicDel handleDelete={onDelete} />
                 </div>
 
                 <div>
                     {!IS_MOBILE ? (
-                        <div className="StoryTextPicC_resize position-abs bottom-right-center">
+                        <div className="StoryTextPicC_resize pos-abs bottom-right-center">
                             <StoryTextResizePicC handleResize={onResize} />
                         </div>
                     ) : null}
 
-                    <div className="StoryTextPicC_rotate position-abs top-right-center ">
+                    <div className="StoryTextPicC_rotate pos-abs top-right-center ">
                         <StoryTextRotatePicC handleRotate={onRotate} />
                     </div>
                 </div>

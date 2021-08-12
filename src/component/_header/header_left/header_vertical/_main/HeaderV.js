@@ -31,7 +31,7 @@ function HeaderV() {
     //
     return (
         <CloseDiv makeDivHidden={closeMenu}>
-            <div className="HeaderV position-rel">
+            <div className="HeaderV pos-rel">
                 <div>
                     <div
                         className={`HeaderV_menu header_menu cursor-pointer ${

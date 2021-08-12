@@ -54,7 +54,7 @@ function StoryTextContentC({ vid_pic, text, font_family, scale }) {
 
     //
     return (
-        <div className="wh-100 position-rel">
+        <div className="wh-100 pos-rel">
             <img src={vid_pic} alt="" className="wh-100" />
 
             <div className="StoryTextContentC_text pos-abs-center display-flex flex-col justify-content-center w-100per text-white">

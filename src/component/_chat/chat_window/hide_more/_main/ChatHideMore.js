@@ -57,7 +57,7 @@ function ChatHideMore({ chat_inactive_more_arr }) {
                         IS_MOBILE ? '' : 'ChatHideMore_hv'
                     }`}
                 >
-                    <div className="position-rel">
+                    <div className="pos-rel">
                         <div
                             className="ChatHideMore_picture"
                             data-length={count_room}

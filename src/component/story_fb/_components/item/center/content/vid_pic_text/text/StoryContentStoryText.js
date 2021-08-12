@@ -12,7 +12,7 @@ StoryContentStoryText.propTypes = {};
 function StoryContentStoryText({ vid_pic, text, font_family, scale }) {
     //
     return (
-        <div className="StoryContentStoryText wh-100 position-rel">
+        <div className="StoryContentStoryText wh-100 pos-rel">
             <img src={vid_pic} alt="" className="wh-100" />
 
             <StoryTextText

@@ -17,7 +17,7 @@ function StoryFaceCreate(props) {
 
     //
     return (
-        <div className="StoryFaceCreate position-rel h-100per story-active">
+        <div className="StoryFaceCreate pos-rel h-100per story-active">
             <div className="StoryFaceCreate_row h-100per">
                 <div className="StoryFaceCreate_head flex-grow-1">
                     <img
@@ -29,7 +29,7 @@ function StoryFaceCreate(props) {
 
                 <div className="story-bg"></div>
 
-                <div className="StoryFaceCreate_foot position-rel display-flex-center">
+                <div className="StoryFaceCreate_foot pos-rel display-flex-center">
                     <div className="StoryFaceCreate_add">
                         <div className="StoryFaceCreate_add-contain display-flex-center bg-blue brs-50">
                             <IconsArrow y={400} size_icon="1rem" />

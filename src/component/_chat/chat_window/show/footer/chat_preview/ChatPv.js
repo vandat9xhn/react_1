@@ -41,7 +41,7 @@ function ChatPv({
 
     //
     return (
-        <div className="ChatPv position-rel">
+        <div className="ChatPv pos-rel">
             <div
                 className={`ChatPv_toggle hv-opacity ${
                     show_preview ? 'ÇhatPv_toggle-show' : 'ChatPv_toggle-hide'
@@ -53,7 +53,7 @@ function ChatPv({
             </div>
 
             <div
-                className={`ChatPv_contain position-rel bg-loader ${
+                className={`ChatPv_contain pos-rel bg-loader ${
                     show_preview ? 'ChatPv_show' : 'ChatPv_hide'
                 } `}
             >

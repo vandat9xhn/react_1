@@ -72,7 +72,7 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
 
     //
     return (
-        <div className="ChatWdHidden position-rel">
+        <div className="ChatWdHidden pos-rel">
             <div
                 className={`ChatWdHidden_options ${
                     IS_MOBILE || !is_show_chat_hide || open_options
@@ -99,7 +99,7 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
             </div>
 
             <div
-                className={`ChatWdHidden_room position-rel ${
+                className={`ChatWdHidden_room pos-rel ${
                     is_show_chat_hide
                         ? 'ChatWdHidden_room-show'
                         : 'ChatWdHidden_room-hide'

@@ -55,7 +55,7 @@ function SearchAnimateDiv(props) {
 
     //
     return (
-        <div className={`SearchAnimateDiv position-rel ${is_open ? '' : 'SearchAnimateDiv_close'}`}>
+        <div className={`SearchAnimateDiv pos-rel ${is_open ? '' : 'SearchAnimateDiv_close'}`}>
             <div className="SearchAnimateDiv_key">
                 <div
                     className={`SearchAnimateDiv_key-contain display-flex justify-content-center align-items-center cursor-pointer ${

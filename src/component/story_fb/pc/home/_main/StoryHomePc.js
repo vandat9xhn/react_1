@@ -179,7 +179,7 @@ function StoryHomePc({
         >
             <div className="display-flex h-100per">
                 <div
-                    className={`StoryHomePc_left position-rel ${
+                    className={`StoryHomePc_left pos-rel ${
                         is_show_menu
                             ? 'StoryHomePc_left-show'
                             : 'StoryHomePc_left-hide'
@@ -201,7 +201,7 @@ function StoryHomePc({
                     />
                 </div>
 
-                <div className="flex-grow-1 position-rel">
+                <div className="flex-grow-1 pos-rel">
                     {has_fetched && story_arr.length > 0 ? (
                         <StoryItemPc
                             count_story={count_story}

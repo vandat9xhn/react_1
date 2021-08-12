@@ -109,7 +109,7 @@ function InputSelect({
         <CloseDiv makeDivHidden={onBlurInput}>
             <div
                 ref={ref_input_select}
-                className={`position-rel ${
+                className={`pos-rel ${
                     is_focus || value || selected_item_arr.length
                         ? 'input-active'
                         : ''

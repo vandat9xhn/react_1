@@ -12,7 +12,7 @@ ProductItemSkeleton.propTypes = {};
 function ProductItemSkeleton({ num_row_info }) {
     //
     return (
-        <div className="ProductItem padding-8px position-rel">
+        <div className="ProductItem padding-8px pos-rel">
             <div className="ProductItem_head">
                 <div className="ProductItem_head-img pos-abs-100">
                     <img src={image_loading} alt="" />

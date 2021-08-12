@@ -187,7 +187,7 @@ function ChatF({ canvas_obj, input_obj }) {
 
     //
     return (
-        <div className="ChatF position-rel">
+        <div className="ChatF pos-rel">
             <div className="ChatF_contain">
                 <div
                     className={`ChatF_MT ${

@@ -137,7 +137,7 @@ class DivFixAction extends Component {
                         right={right}
                         transform_x={transform_x}
                         transform_y={transform_y}
-                        position_class={`position-abs`}
+                        position_class={`pos-abs`}
                         closeDivFix={this.closeDivFixAction}
                     >
                         <div className="DivFixAction_contain bg-primary box-shadow-action brs-5px">

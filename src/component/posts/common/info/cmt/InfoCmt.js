@@ -8,15 +8,15 @@ InfoCmt.propTypes = {};
 function InfoCmt({ count_comment, handleClickBtnCmt }) {
     //
     return (
-        <div>
-            <div
-                className={`Info_cmt cursor-pointer ${
-                    count_comment ? '' : 'display-none'
-                }`}
-                onClick={handleClickBtnCmt}
-            >
-                {count_comment} comments
-            </div>
+        <div
+            className={`Info_cmt cursor-pointer ${
+                count_comment ? '' : 'display-none'
+            }`}
+            onClick={handleClickBtnCmt}
+        >
+            <span className="font-14px label-field">
+                {count_comment} comment{count_comment > 1 ? 's' : ''}
+            </span>
         </div>
     );
 }

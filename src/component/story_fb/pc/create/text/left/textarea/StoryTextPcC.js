@@ -10,7 +10,7 @@ StoryTextPcC.propTypes = {};
 function StoryTextPcC({ text, handleChange }) {
     //
     return (
-        <div className="StoryTextPcC position-rel brs-5px">
+        <div className="StoryTextPcC pos-rel brs-5px">
             <textarea
                 className="StoryTextPcC_textarea overflow-y-auto scroll-thin wh-100"
                 rows="1"

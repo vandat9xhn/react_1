@@ -37,7 +37,7 @@ function InputNotValid({
     //
     return (
         <div
-            className={`InputNotValid position-rel ${
+            className={`InputNotValid pos-rel ${
                 value !== '' || is_focus
                     ? 'InputNotValid_text input-active'
                     : ''

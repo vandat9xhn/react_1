@@ -7,8 +7,8 @@ import observeToDo from '../../../../../../../_some_function/observerToDo';
 //
 import { handle_API_Friend_L } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
 //
-import { useDataShowMore } from '../../../../../../../_hooks/useDataShowMore';
-// 
+import { useScrollRightShowMore } from '../../../../../../../_hooks/useScrollRightShowMore';
+//
 import ComponentSkeleton from '../../../../../../skeleton/component_skeleton/ComponentSkeleton';
 //
 import MessageFriend from '../friend/HeaderMessFriend';
@@ -25,39 +25,44 @@ HeaderMessHead.propTypes = {
 
 //
 function HeaderMessHead({ closeZoom }) {
-    // 
-    const {data_state, getData_API} = useDataShowMore({
-        initial_arr: [],
-        handle_API_L: (c_count) => handle_API_Friend_L({
-            c_count: c_count,
-            params: {
-                type: 'recently',
-                size: 10,
-            }
-        }),
-    })
-
-    const { data_arr, has_fetched } = data_state;
-
     //
     const ref_head_elm = useRef(null);
+    const ref_main_elm = useRef(null);
+
+    //
+    const { data_state, getData_API } = useScrollRightShowMore({
+        ref_elm: ref_head_elm,
+        initial_arr: [],
+        handle_API_L: (c_count) =>
+            handle_API_Friend_L({
+                c_count: c_count,
+                params: {
+                    type: 'recently',
+                    size: 10,
+                },
+            }),
+    });
+
+    const { data_arr, count, has_fetched } = data_state;
 
     //
     useEffect(() => {
-        observeToDo(ref_head_elm.current, getData_API, 0, false, '');
+        observeToDo(ref_main_elm.current, getData_API, 0)
     }, []);
 
     //
     return (
-        <div ref={ref_head_elm}>
+        <div ref={ref_main_elm}>
             {IS_MOBILE ? (
                 <HeaderMessHeadMobile
+                    ref_head_elm={ref_head_elm}
                     friend_arr={data_arr}
                     has_fetched={has_fetched}
                     closeZoom={closeZoom}
                 />
             ) : (
                 <HeaderMessHeadPc
+                    ref_head_elm={ref_head_elm}
                     friend_arr={data_arr}
                     has_fetched={has_fetched}
                     closeZoom={closeZoom}
@@ -68,14 +73,14 @@ function HeaderMessHead({ closeZoom }) {
                 component={
                     <MessageFriend
                         is_mouse_down={true}
-                        friend_id={0}
+                        friend_id={4}
                         picture={white_person}
                         last_name=""
                         closeZoom={closeZoom}
                     />
                 }
                 has_fetched={has_fetched}
-                num={4}
+                num={1}
                 skeleton_class="display-flex align-items-center"
             />
         </div>

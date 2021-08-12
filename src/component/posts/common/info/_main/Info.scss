@@ -1,25 +1,6 @@
-.Info_row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.Info_share {
+    margin-left: 1rem;
 }
-
-// .
-.Info_like {
-    position: relative;
-}
-
-// .
-.Info_cmt-share {
-    display: flex;
-    padding: 0.25rem;
-
-    .Info_share {
-        position: relative;
-        margin-left: 1rem;
-    }
-}
-
 
 //
 @media (max-width: 500px) {

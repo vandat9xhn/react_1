@@ -17,8 +17,6 @@ MouseEnterLeaveInfoNormal.propTypes = {
     count: PropTypes.number,
     title: content_pic_name_props,
     total_people: PropTypes.number,
-
-    is_pic_name: PropTypes.bool,
     PeopleComponent: PropTypes.func,
 
     handle_API_L: PropTypes.func,
@@ -31,8 +29,6 @@ function MouseEnterLeaveInfoNormal({
     count,
     title,
     total_people,
-
-    is_pic_name,
     PeopleComponent,
 
     handle_API_L,
@@ -92,7 +88,6 @@ function MouseEnterLeaveInfoNormal({
                         <ListPeople
                             list_people={list}
                             count_people={total_people || new_count || count}
-                            is_pic_name={is_pic_name}
                             PeopleComponent={PeopleComponent}
                         />
                     </div>

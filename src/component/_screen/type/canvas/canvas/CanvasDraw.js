@@ -262,8 +262,8 @@ class CanvasDraw extends Component {
 
         //
         return (
-            <div className="CanvasDraw bg-vid-pic">
-                <div className="CanvasDraw_contain brs-5px App_box_shadow">
+            <div className="CanvasDraw pos-rel wh-100 bg-vid-pic user-select-none">
+                <div className="CanvasDraw_contain pos-abs-center brs-5px box-shadow-fb">
                     <canvas
                         ref={this.refCanvas}
                         className="CanvasDraw_canvas"
@@ -281,49 +281,69 @@ class CanvasDraw extends Component {
                         onTouchEnd={this.onTouchEnd}
                     ></canvas>
 
-                    <div className="CanvasDraw_bg">
-                        <div>
-                            <input
-                                type="color"
-                                value={bg}
-                                onChange={this.onChangeBg}
-                            />
-                        </div>
+                    <div className="CanvasDraw_bg pos-abs top-50per right-100per">
+                        <input
+                            className="text-align-center text-white"
+                            type="color"
+                            value={bg}
+                            onChange={this.onChangeBg}
+                        />
                     </div>
                 </div>
 
-                <div className="CanvasDraw_actions">
-                    <div className="CanvasDraw_actions-row">
-                        <div>
-                            <Select
-                                options={Array.from(
-                                    { length: 15 },
-                                    (_, k) => k
-                                )}
-                                current_option={stroke_width}
-                                onSelectOption={this.onChangeWidth}
-                            />
-                        </div>
+                <div className="CanvasDraw_actions pos-abs bottom-0 x-center">
+                    <div className="CanvasDraw_actions-row display-flex align-items-center">
+                        <select
+                            className="CanvasDraw_actions-item CanvasDraw_actions-select"
+                            name=""
+                            value={stroke_width}
+                            onChange={this.onChangeWidth}
+                        >
+                            {Array.from({ length: 15 }, (_, k) => k).map(
+                                (option, ix) => (
+                                    <option key={`Select_${ix}`}>
+                                        {option}
+                                    </option>
+                                )
+                            )}
+                        </select>
 
-                        <div>
-                            <input
-                                type="color"
-                                value={color}
-                                onChange={this.onChangeColor}
-                            />
-                        </div>
+                        <input
+                            className="CanvasDraw_actions-item text-align-center"
+                            type="color"
+                            value={color}
+                            onChange={this.onChangeColor}
+                        />
 
-                        <div onClick={this.undo} title="Undo">
+                        <div
+                            className="CanvasDraw_actions-item"
+                            onClick={this.undo}
+                            title="Undo"
+                        >
                             <IconReUndo />
                         </div>
 
-                        <div onClick={this.redo} title="Redo">
+                        <div
+                            className="CanvasDraw_actions-item"
+                            onClick={this.redo}
+                            title="Redo"
+                        >
                             <IconReUndo is_redo={true} />
                         </div>
 
-                        <div onClick={this.clearCanvas}>Clear</div>
+                        <div
+                            className="CanvasDraw_actions-item"
+                            onClick={this.clearCanvas}
+                        >
+                            <span className="label-field font-14px">Clear</span>
+                        </div>
 
-                        <div onClick={this.completeCanvas}>Complete</div>
+                        <div
+                            className="CanvasDraw_actions-item"
+                            onClick={this.completeCanvas}
+                        >
+                            <span className="label-field font-14px">Done</span>
+                        </div>
                     </div>
                 </div>
 

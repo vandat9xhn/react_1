@@ -102,18 +102,18 @@ function LearnResizeRotate(props) {
     return (
         <div className="LearnResizeRotate display-flex-center">
             <div
-                className="LearnResizeRotate_transform position-rel"
+                className="LearnResizeRotate_transform pos-rel"
                 style={{ transform: `translate(${trans_x}px, ${trans_y}px)` }}
                 onMouseDown={handleStart}
             >
                 <div
-                    className="LearnResizeRotate_rotate position-rel"
+                    className="LearnResizeRotate_rotate pos-rel"
                     style={{
                         transform: `rotate(${rotate}deg)`,
                     }}
                 >
                     <div
-                        className="LearnResizeRotate_contain position-rel bg-primary box-shadow-1"
+                        className="LearnResizeRotate_contain pos-rel bg-primary box-shadow-1"
                         style={{
                             transform: `scale(${scale})`,
                         }}
@@ -124,7 +124,7 @@ function LearnResizeRotate(props) {
                             />
                         </div>
 
-                        <div className="LearnResizeRotate_resize position-abs bottom-100per right-100per">
+                        <div className="LearnResizeRotate_resize pos-abs bottom-100per right-100per">
                             <div className="wh-100">
                                 <StoryTextResizePicC
                                     handleResize={handleResize}
@@ -134,7 +134,7 @@ function LearnResizeRotate(props) {
                             <div className="LearnResizeRotate_resize_contain pos-abs-center brs-50 bg-blue pointer-events-none"></div>
                         </div>
 
-                        <div className="LearnResizeRotate_rotate position-abs left-100per top-100per">
+                        <div className="LearnResizeRotate_rotate pos-abs left-100per top-100per">
                             <div className="LearnResizeRotate_rotate_contain">
                                 <StoryTextRotatePicC
                                     handleRotate={handleRotate}

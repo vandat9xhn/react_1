@@ -10,7 +10,7 @@ StoryCreateChoice.propTypes = {};
 function StoryCreateChoice({ children, title }) {
     //
     return (
-        <div className="StoryCreateChoice wh-100 position-rel cursor-pointer">
+        <div className="StoryCreateChoice wh-100 pos-rel cursor-pointer">
             <div className="pos-abs-center w-100per">
                 <div className="display-flex justify-content-center">
                     <div className="StoryCreateChoice_icon display-flex-center bg-primary brs-50 box-shadow-fb">

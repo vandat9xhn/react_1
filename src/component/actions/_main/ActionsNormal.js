@@ -70,7 +70,7 @@ function ActionsNormal({ title_action, symbol_post, children }) {
     return (
         <CloseDiv makeDivHidden={closeActions}>
             <div
-                className="Actions_contain position-rel"
+                className="Actions_contain pos-rel"
                 onClick={toggleActions}
             >
                 <div

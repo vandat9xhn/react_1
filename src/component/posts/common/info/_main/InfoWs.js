@@ -2,19 +2,19 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
+import { context_post } from '../../../../../_context/post/ContextPost';
 //
 import { UnitNumber } from '../../../../../_some_function/UnitNumber';
 //
 import { openScreenLike } from '../../../../_screen/type/like/_main/ScreenLike';
 import { openScreenShare } from '../../../../_screen/type/share/_main/ScreenShare';
-// 
-import { context_post } from '../../../../../_context/post/ContextPost';
-// 
-import MouseEnterLeaveInfoNormal from '../../mouse_enter_leave_info/_main/MouseEnterLeaveInfoNormal';
+//
+import MouseEnterLeaveInfo from '../../mouse_enter_leave_info/_main/MouseEnterLeaveInfo';
 import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
 import ListUniqueLike from '../../../../like/List_unique_like/_main/ListUniqueLike';
-// 
+//
 import InfoCmt from '../cmt/InfoCmt';
+import PeopleShare from '../share/PeopleShare';
 //
 import './Info.scss';
 
@@ -56,7 +56,7 @@ function Info({
             openScreenFloor: openScreenFloor,
             title: 'Share',
             handle_API_Share_L: on_API_Share_L,
-        }) 
+        });
     }
 
     //
@@ -96,9 +96,9 @@ function Info({
 
     //
     return (
-        <div className="Info_contain">
-            <div className="Info_row">
-                <div className="Info_like">
+        <div className="Info">
+            <div className="Info_row flex-between-center">
+                <div className="Info_like pos-rel">
                     <ListUniqueLike
                         title={title_like}
                         count_like={count_like}
@@ -108,7 +108,7 @@ function Info({
                     />
                 </div>
 
-                <div className="Info_cmt-share">
+                <div className="Info_cmt-share display-flex padding-4px">
                     <div>
                         <InfoCmt
                             count_comment={count_comment}
@@ -118,14 +118,19 @@ function Info({
 
                     {enabled_share && (
                         <div
-                            className={`Info_share ${
+                            className={`Info_share pos-rel ${
                                 count_share ? '' : 'display-none'
                             }`}
                         >
-                            <MouseEnterLeaveInfoNormal
+                            <MouseEnterLeaveInfo
                                 count={count_share}
-                                title={title_share}
+                                title={
+                                    <span className="font-14px label-field">
+                                        {title_share}
+                                    </span>
+                                }
                                 total_people={count_unique_share}
+                                PeopleComponent={PeopleShare}
                                 //
                                 handle_API_L={on_API_Share_L}
                                 handleOpenScreen={onOpenDetailShare}

@@ -24,7 +24,7 @@ function StoryPicBdPcC({
 }) {
     //
     return (
-        <div className="StoryPicBdPcC position-rel wh-100 user-select-none">
+        <div className="StoryPicBdPcC pos-rel wh-100 user-select-none">
             <div
                 className="StoryPicBdPcC_bg pos-abs-100"
                 style={{ backgroundImage: `url(${vid_pic_obj.vid_pic})` }}

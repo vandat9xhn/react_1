@@ -11,6 +11,7 @@ import './ScreenFixed.scss';
 //
 ScreenFixed.propTypes = {
     url: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    show_screen_title: PropTypes.bool,
     body_hidden_params: PropTypes.shape({
         blur_header: PropTypes.bool,
         hidden_app: PropTypes.bool,
@@ -31,8 +32,9 @@ ScreenFixed.defaultProps = {
 //
 function ScreenFixed({
     url,
-    body_hidden_params,
+    show_screen_title,
     children,
+    body_hidden_params,
 
     handleDownload,
     closeScreenFixed,
@@ -53,9 +55,10 @@ function ScreenFixed({
 
                 <div className="ScreenFixed_title z-index-lv5">
                     <ScreenTitle
-                        closeScreenTitle={closeScreenFixed}
+                        show_screen_title={show_screen_title}
                         url={url}
                         handleDownload={handleDownload}
+                        closeScreenTitle={closeScreenFixed}
                     />
                 </div>
             </div>

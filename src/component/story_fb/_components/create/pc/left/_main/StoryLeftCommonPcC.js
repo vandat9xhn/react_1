@@ -54,7 +54,7 @@ function StoryLeftCommonPcC({
     //
     return (
         <div
-            className={`StoryLeftCommonPcC position-fixed story-create-left h-100per display-flex flex-col ${
+            className={`StoryLeftCommonPcC pos-fixed story-create-left h-100per display-flex flex-col ${
                 show_fav ? '' : 'StoryLeftCommonPcC-no_fav'
             }`}
         >

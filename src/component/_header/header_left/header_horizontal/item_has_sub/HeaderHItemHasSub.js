@@ -19,7 +19,7 @@ function HeaderHItemHasSub({ item }) {
 
     //
     return (
-        <div className="HeaderHItemHasSub position-rel">
+        <div className="HeaderHItemHasSub pos-rel">
             <div
                 className={`HeaderHItemHasSub_icon HeaderH_item header_item header_item_horizontal ${
                     is_active ? 'HeaderHItemHasSub_icon-active' : ''

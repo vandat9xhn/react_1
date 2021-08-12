@@ -9,15 +9,13 @@ ItemUniqueLike.propTypes = {};
 
 //
 function ItemUniqueLike({
-    count_like,
-    title,
     ix,
+    title,
+    count_like,
 
     onOpenDetailLike,
     handle_API_L,
     PeopleComponent,
-
-    use_transform_x
 }) {
     //
     function on_API_Like_L() {
@@ -31,16 +29,13 @@ function ItemUniqueLike({
     //
     return (
         <MouseEnterLeaveInfo
-            count={count_like}
             title={title}
-            is_pic_name={false}
+            count={count_like}
             PeopleComponent={PeopleComponent}
             //
             handle_API_L={on_API_Like_L}
             handleOpenScreen={openDetailLike}
             LoadingComponent={CircleLoading}
-            // 
-            use_transform_x={use_transform_x}
         />
     );
 }

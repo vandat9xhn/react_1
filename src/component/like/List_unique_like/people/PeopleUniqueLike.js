@@ -15,10 +15,18 @@ PeopleUniqueLike.propTypes = {
 function PeopleUniqueLike({ item }) {
     //
     return (
-        <div className="PeopleUniqueLike display-flex align-items-center">
-            <PicNameContent user={item.user} />
+        <div className="PeopleUniqueLike">
+            <div className="flex-between-center">
+                <div className="PeopleUniqueLike_left flex-grow-1 text-nowrap">
+                    <span className="font-13px text-white">
+                        {item.user.first_name} {item.user.last_name}
+                    </span>
+                </div>
 
-            {type_likes[item.type_like].component}
+                <div className="PeopleUniqueLike_right">
+                    {type_likes[item.type_like].component}
+                </div>
+            </div>
         </div>
     );
 }

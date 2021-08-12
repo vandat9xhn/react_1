@@ -97,7 +97,7 @@ function ContentMore({ content_obj, seeMoreContent }) {
 
     //
     return (
-        <div className="ContentMore position-rel">
+        <div className="ContentMore pos-rel">
             <div
                 className={`${
                     is_fetching ? 'opacity-05 pointer-events-none' : ''

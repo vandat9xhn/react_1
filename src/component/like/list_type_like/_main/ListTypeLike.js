@@ -17,7 +17,7 @@ ListTypeLike.propTypes = {
 function ListTypeLike({ chooseListTypeLike, open_type_like }) {
     //
     return (
-        <div className="ListTypeLike position-rel">
+        <div className="ListTypeLike pos-rel">
             <div className={open_type_like ? 'open-type-like' : 'display-none'}>
                 <div className="ListTypeLike_contain bg-primary box-shadow-1 brs-8px">
                     <div className="ListTypeLike_row display-flex">

@@ -247,7 +247,7 @@ function Post({
         !is_del && (
             <VirtualScroll rootMargin_y={1000}>
                 <div className="Post padding-8px bg-primary box-shadow-1 brs-8px-md">
-                    <div className="Post_head position-rel">
+                    <div className="Post_head pos-rel">
                         <div className="Post__user">
                             <PictureName
                                 user={user}

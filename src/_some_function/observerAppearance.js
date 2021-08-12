@@ -1,3 +1,4 @@
+// 
 const observerAppearance = (elm) => {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {

@@ -40,7 +40,7 @@ function CaseReceivedRequest({ handleAcceptRequest, handleCancelRequest }) {
     //
     return (
         <CloseDiv makeDivHidden={makeDivHidden}>
-            <div className="position-rel">
+            <div className="pos-rel">
                 <div onClick={handleToggleReply}>Reply request</div>
 
                 <div

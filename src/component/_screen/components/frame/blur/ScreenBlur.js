@@ -60,7 +60,7 @@ function ScreenBlur({
             </div>
 
             <div
-                className={`ScreenBlur_waiting pos-fixed-100 ${
+                className={`ScreenBlur_waiting pos-fixed-100v ${
                     waiting ? '' : 'display-none'
                 }`}
             >

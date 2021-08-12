@@ -139,7 +139,7 @@ class DivFixLike extends Component {
                     scroll_x_diff={scroll_x_diff}
                     scroll_y_diff={scroll_y_diff}
                     //
-                    position_class={`position-abs`}
+                    position_class={`pos-abs`}
                     //
                     handleScrollDiff={this.handleScrollDiff}
                     closeDivFix={this.closeDivFix}

@@ -179,7 +179,7 @@ function ChatShow({
                         />
 
                         {is_group && (
-                            <div className="ChatShow_group position-abs">
+                            <div className="ChatShow_group pos-abs">
                                 <ChatGroup room_users={room_users} />
                             </div>
                         )}

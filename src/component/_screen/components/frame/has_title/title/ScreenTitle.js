@@ -9,15 +9,16 @@ import './ScreenTitle.scss';
 
 //
 ScreenTitle.propTypes = {
-    closeScreenTitle: PropTypes.func,
     url: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    show_screen_title: PropTypes.bool,
     handleDownload: PropTypes.func,
+    closeScreenTitle: PropTypes.func,
 };
 
 //
 function ScreenTitle({
-    show_screen_title,
     url,
+    show_screen_title,
     handleDownload,
     closeScreenTitle,
 }) {
@@ -31,7 +32,7 @@ function ScreenTitle({
                     </Link>
                 </div>
 
-                {show_screen_title ? ( 
+                {show_screen_title ? (
                     <div className="ScreenTitle_close padding-4px">
                         <div
                             className="ScreenTitle__icon-arrow display-flex-center brs-50 cursor-pointer hv-opacity"
@@ -42,7 +43,7 @@ function ScreenTitle({
                         </div>
                     </div>
                 ) : null}
-                
+
                 <div className="ScreenTitle_download padding-4px">
                     <a
                         className="normal-text"

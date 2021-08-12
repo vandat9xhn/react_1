@@ -15,7 +15,7 @@ AddFriendAdd.propTypes = {
 function AddFriendAdd({ id, pic, name, children }) {
     //
     return (
-        <div className="AddFriendAdd position-rel">
+        <div className="AddFriendAdd pos-rel">
             <Link to={`/profile/${id}`} className="normal-text">
                 <div className="AddFriendAdd_pic">
                     <img src={pic} alt="" />

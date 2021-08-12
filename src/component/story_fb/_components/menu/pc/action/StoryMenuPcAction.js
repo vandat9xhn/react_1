@@ -12,7 +12,7 @@ StoryMenuPcAction.propTypes = {};
 function StoryMenuPcAction({ is_show, has_close, handleClose, handleToggle }) {
     //
     return (
-        <div className="position-rel">
+        <div className="pos-rel">
             <div className="display-flex align-items-center">
                 {has_close ? (
                     <div className="StoryMenuPcAction_close">

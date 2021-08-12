@@ -27,7 +27,7 @@ function VoucherChoice({
 
     return (
         <div
-            className="VoucherChoice position-rel cursor-pointer hv-bg-blur"
+            className="VoucherChoice pos-rel cursor-pointer hv-bg-blur"
             onClick={onChangeVoucher}
         >
             <div

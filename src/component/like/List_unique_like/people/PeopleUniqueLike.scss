@@ -1,4 +1,8 @@
-
 .PeopleUniqueLike{
-    justify-content: space-between;
+    padding: 0 5px;
+}
+ 
+.PeopleUniqueLike_right{
+    flex-shrink: 0;
+    width: 1rem;
 }

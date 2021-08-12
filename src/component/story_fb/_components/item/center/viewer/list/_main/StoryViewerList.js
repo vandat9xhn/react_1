@@ -23,7 +23,7 @@ function StoryViewerList({
 }) {
     //
     return (
-        <div className="StoryViewerList position-rel h-100per overflow-y-auto bg-primary brs-8px">
+        <div className="StoryViewerList pos-rel h-100per overflow-y-auto bg-primary brs-8px">
             <div className="StoryViewerList_hide">
                 <div
                     className="cursor-pointer"

@@ -36,7 +36,7 @@ function PhoneLaptopType(props) {
 
     //
     return (
-        <div className="PhoneLaptopType position-rel scroll-thin bg-primary brs-5px box-shadow-1">
+        <div className="PhoneLaptopType pos-rel scroll-thin bg-primary brs-5px box-shadow-1">
             <div className="PhoneLaptopType_head padding-8px">
                 <h3 className="margin-0">{name}</h3>
                 <div>

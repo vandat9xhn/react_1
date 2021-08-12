@@ -226,7 +226,7 @@ function StoryItem({
                 is_fetching ? 'pointer-events-none opacity-05' : ''
             }`}
         >
-            <div className="StoryItem_head position-rel flex-grow-1">
+            <div className="StoryItem_head pos-rel flex-grow-1">
                 <div className="display-flex h-100per">
                     <div className="flex-grow-1">
                         <StoryItemNextPrev
@@ -270,7 +270,7 @@ function StoryItem({
             </div>
 
             {true && user.id != c_user.id ? (
-                <div className="StoryItem_foot position-rel">
+                <div className="StoryItem_foot pos-rel">
                     <div
                         className={`StoryItem_foot_contain ${
                             IS_MOBILE ? '' : 'StoryItem_foot_contain-pc'

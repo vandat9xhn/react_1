@@ -23,7 +23,7 @@ function FilterSortItem({ is_active, title, sort_by, handleFilterSort }) {
     //
     return (
         <div
-            className="FilterSortItem position-rel cursor-pointer"
+            className="FilterSortItem pos-rel cursor-pointer"
             onClick={onFilterSort}
         >
             <div

@@ -102,8 +102,8 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
 
     //
     return (
-        <div className="CommentInput position-rel">
-            <div className="CommentInput_contain position-rel">
+        <div className="CommentInput pos-rel">
+            <div className="CommentInput_contain pos-rel">
                 <div className="display-flex align-items-center">
                     <div className="CommentInput_input" ref={ref_comment_input}>
                         <div className="display-flex align-items-center">

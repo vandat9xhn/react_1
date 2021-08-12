@@ -16,7 +16,7 @@ export function useScrollToX(ref_elm, scroll_percent = 1) {
     function hasNextPrev(
         new_scroll_left = ref_elm.current ? ref_elm.current.scrollLeft : 0
     ) {
-        if (!ref_elm.current) {
+        if (!ref_elm.current || ref_elm.current.scrollWidth == 0) {
             return;
         }
 

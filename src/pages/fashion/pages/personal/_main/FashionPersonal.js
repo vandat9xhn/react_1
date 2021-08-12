@@ -72,7 +72,7 @@ function FashionPersonal(props) {
                 </div>
 
                 <div className="FashionPersonal_ctg">
-                    <div className="FashionPersonal_contain position-rel">
+                    <div className="FashionPersonal_contain pos-rel">
                         <div className="FashionPersonal_row display-flex">
                             <div
                                 className={`FashionPersonal_left ${

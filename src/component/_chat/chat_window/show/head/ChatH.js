@@ -53,7 +53,7 @@ function ChatH({ room_users, room_owner, count_user }) {
 
     //
     return (
-        <div className="ChatH position-rel">
+        <div className="ChatH pos-rel">
             <div className="ChatH_row flex-between-center">
                 {is_group ? (
                     <div

@@ -74,7 +74,7 @@ function Actions({ title_action, symbol_post, children }) {
 
     //
     return (
-        <div className="Actions_contain position-rel">
+        <div className="Actions_contain pos-rel">
             <div
                 ref={ref_action_elm}
                 className={`Actions_symbol display-flex-center brs-50 hv-opacity ${

@@ -13,7 +13,7 @@ StoryFaceContentStoryPic.propTypes = {};
 function StoryFaceContentStoryPic({ vid_pic_obj, text_arr }) {
     //
     return (
-        <div className="wh-100 position-rel">
+        <div className="wh-100 pos-rel">
             <StoryPicPic {...vid_pic_obj} />
 
             {text_arr.map((text_obj, ix) => (

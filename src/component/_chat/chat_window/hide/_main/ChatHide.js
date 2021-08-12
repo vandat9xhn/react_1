@@ -57,7 +57,7 @@ function ChatHide({
     return (
         <div className="ChatHide padding-4px">
             <div
-                className={`ChatHide_contain position-rel ${
+                className={`ChatHide_contain pos-rel ${
                     mounted_done
                         ? 'ChatHide_contain-mounted-done'
                         : 'ChatHide_contain-mounted-yet'

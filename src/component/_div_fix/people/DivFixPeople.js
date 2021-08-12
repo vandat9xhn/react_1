@@ -15,7 +15,7 @@ import './DivFixPeople.scss';
 //
 const initial_div_fix_state = {
     scroll_elm: null,
-    position_class: 'position-abs',
+    position_class: 'pos-abs',
 
     top: '0',
     left: '0',
@@ -167,7 +167,7 @@ class DivFixPeople extends Component {
                     scroll_y_diff={scroll_y_diff}
                     //
                     scroll_elm={scroll_elm}
-                    position_class={`${position_class} position-abs`}
+                    position_class={`${position_class} pos-abs`}
                     //
                     handleScrollDiff={this.handleScrollDiff}
                     closeDivFix={this.closeDivFix}

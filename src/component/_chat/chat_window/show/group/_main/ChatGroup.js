@@ -94,7 +94,7 @@ function ChatGroup({ room_users }) {
 
     //
     return (
-        <div className="ChatGroup position-rel">
+        <div className="ChatGroup pos-rel">
             <div className="ChatGroup_row-icon display-flex">
                 <div
                     className={`ChatGroup_icon brs-50 close-icon-small hv-opacity cursor-pointer ${

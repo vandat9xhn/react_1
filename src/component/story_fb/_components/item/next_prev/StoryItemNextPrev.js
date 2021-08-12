@@ -15,7 +15,7 @@ function StoryItemNextPrev({ is_next, disabled, handleClick }) {
     //
     return (
         <div
-            className={`StoryItemNextPrev wh-100 position-rel ${
+            className={`StoryItemNextPrev wh-100 pos-rel ${
                 disabled ? '' : 'cursor-pointer'
             }`}
             onClick={handleClick}

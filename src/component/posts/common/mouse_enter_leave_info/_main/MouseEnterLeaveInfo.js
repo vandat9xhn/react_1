@@ -21,8 +21,6 @@ MouseEnterLeaveInfo.propTypes = {
     count: PropTypes.number,
     title: content_pic_name_props,
     total_people: PropTypes.number,
-
-    is_pic_name: PropTypes.bool,
     PeopleComponent: PropTypes.func,
 
     handle_API_L: PropTypes.func,
@@ -39,8 +37,6 @@ function MouseEnterLeaveInfo({
     count,
     title,
     total_people,
-
-    is_pic_name,
     PeopleComponent,
 
     handle_API_L,
@@ -109,7 +105,6 @@ function MouseEnterLeaveInfo({
             <ListPeople
                 list_people={mouse_state.list}
                 count_people={total_people || mouse_state.count}
-                is_pic_name={is_pic_name}
                 PeopleComponent={PeopleComponent}
             />
         );

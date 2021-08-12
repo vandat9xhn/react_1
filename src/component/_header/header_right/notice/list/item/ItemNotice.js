@@ -32,7 +32,7 @@ function ItemNotice({
         }`}>
             <Link to={'/posts/' + id} onClick={onClickItem}>
                 <div
-                    className={`ItemNotice_contain header_item position-rel `}
+                    className={`ItemNotice_contain header_item pos-rel `}
                 >
                     <div className="ItemNotice_row">
                         <PicNameContent

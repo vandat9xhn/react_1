@@ -33,7 +33,7 @@ function StoryItemFootPc({
     //
     return (
         <div className="StoryItemFootPc padding-4px">
-            <div className="StoryItemFootPc_row display-flex flex-nowrap position-rel">
+            <div className="StoryItemFootPc_row display-flex flex-nowrap pos-rel">
                 {can_share ? (
                     <div className="StoryItemFootPc_left">
                         <StoryShare handleShare={handleShare} />
@@ -41,7 +41,7 @@ function StoryItemFootPc({
                 ) : null}
 
                 {can_rep ? (
-                    <div className="StoryItemFootPc_center position-rel flex-grow-1">
+                    <div className="StoryItemFootPc_center pos-rel flex-grow-1">
                         <StoryReply
                             text={text}
                             handleFocus={handleFocus}

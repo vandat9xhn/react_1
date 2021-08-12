@@ -39,7 +39,7 @@ function RowProductPc({ products }) {
 
     //
     return (
-        <div className="position-rel">
+        <div className="pos-rel">
             <div
                 ref={ref_row_product}
                 className="RowProductPc scroll-height-0 overflow-x-auto max-w-100per"

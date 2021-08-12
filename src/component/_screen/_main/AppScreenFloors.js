@@ -28,14 +28,22 @@ function AppScreenFloors({
     //
     useEffect(() => {
         window.addEventListener('beforeunload', handleBeforeunload);
+        // window.addEventListener('popstate', handlePopState);
 
         return () => {
             window.removeEventListener('beforeunload', handleBeforeunload);
+            // window.removeEventListener('popstate', handlePopState);
         };
     }, []);
 
+    // // 
+    // function handlePopState(e) {
+    //     console.log(e, );
+    // }
+
     //
-    function showModalConfirm(last_location) {
+    function showModalConfirm(last_location, action) {
+        // console.log(last_location, action);
         if (!has_change.current) {
             if (count_history) {
                 closeScreenHasHistory();
@@ -91,11 +99,11 @@ function AppScreenFloors({
                         className={`AppScreen_floor ${
                             ix != floor_arr.length - 1
                                 ? 'AppScreen_inactive'
-                                : 'AppScreen_floor-active bg-screen position-rel'
+                                : 'AppScreen_floor-active bg-screen pos-rel'
                         } ${
                             ix != floor_arr.length - 1 &&
                             floor_arr[floor_arr.length - 1].hidden_before
-                                ? 'opacity-0'
+                                ? 'display-none'
                                 : ''
                         }`}
                     >

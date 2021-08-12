@@ -32,7 +32,7 @@ function LearnAppearancePosition(props) {
     //
     return (
         <div className="LearnAppearancePosition">
-            <div className="position-rel" ref={ref_btn_elm}>
+            <div className="pos-rel" ref={ref_btn_elm}>
                 <div>
                     <div
                         className="LearnAppearancePosition_menu"

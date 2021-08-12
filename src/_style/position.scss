@@ -1,13 +1,13 @@
 //
-.position-rel {
+.pos-rel {
     position: relative;
 }
 
-.position-abs {
+.pos-abs {
     position: absolute;
 }
 
-.position-fixed {
+.pos-fixed {
     position: fixed;
 }
 
@@ -40,7 +40,7 @@
 
 //
 
-.pos-fixed-100 {
+.pos-fixed-100v {
     position: fixed;
     top: 0;
     left: 0;
@@ -147,6 +147,10 @@
 }
 
 /* ------- Z INDEX ------ */
+
+.z-index-lv1{
+    z-index: var(--z-index-lv1);
+}
 
 .z-index-lv3{
     z-index: var(--z-index-lv3);

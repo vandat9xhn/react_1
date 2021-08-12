@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMouseDragScrollToX } from '../../../../../../../_hooks/useMouseDragScrollToX';
@@ -12,10 +12,12 @@ import './HeaderMessHeadPc.scss';
 HeaderMessHeadPc.propTypes = {};
 
 //
-function HeaderMessHeadPc({ friend_arr, has_fetched, closeZoom }) {
-    //
-    const ref_list_friend = useRef(null);
-
+function HeaderMessHeadPc({
+    ref_head_elm,
+    friend_arr,
+    has_fetched,
+    closeZoom,
+}) {
     //
     const {
         handleMouseDown,
@@ -30,7 +32,7 @@ function HeaderMessHeadPc({ friend_arr, has_fetched, closeZoom }) {
         handleNext,
         handlePrev,
         hasNextPrev,
-    } = useMouseDragScrollToX(ref_list_friend);
+    } = useMouseDragScrollToX(ref_head_elm);
 
     //
     useEffect(() => {
@@ -39,14 +41,14 @@ function HeaderMessHeadPc({ friend_arr, has_fetched, closeZoom }) {
 
     //
     return (
-        <div className="HeaderMessHeadPc position-rel">
+        <div className="HeaderMessHeadPc pos-rel">
             <div
                 className={`${
                     has_fetched
                         ? 'HeaderMessHeadPc_contain max-w-100per overflow-x-auto scroll-height-0'
                         : 'display-none'
                 }`}
-                ref={ref_list_friend}
+                ref={ref_head_elm}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 //

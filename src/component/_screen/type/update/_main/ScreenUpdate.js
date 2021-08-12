@@ -116,7 +116,7 @@ function ScreenUpdate({
 
                 <div
                     className={`${
-                        closing ? 'pos-fixed-100 z-index-lv5' : 'display-none'
+                        closing ? 'pos-fixed-100v z-index-lv5' : 'display-none'
                     }`}
                 >
                     <ScreenBlurFetching />

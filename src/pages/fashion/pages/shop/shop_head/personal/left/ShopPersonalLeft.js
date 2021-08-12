@@ -25,13 +25,13 @@ function ShopPersonalLeft({profile_model, picture, name, banner}) {
 
     //
     return (
-        <div className="ShopPersonalLeft position-rel brs-5px">
+        <div className="ShopPersonalLeft pos-rel brs-5px">
             <div
                 className="ShopPersonalLeft_bg pos-abs-100"
                 style={{ backgroundImage: `url(${banner})` }}
             ></div>
 
-            <div className="ShopPersonalLeft_main position-rel padding-8px bg-film">
+            <div className="ShopPersonalLeft_main pos-rel padding-8px bg-film">
                 <div className="ShopPersonalLeft_row display-flex space-between">
                     <div className="ShopPersonalLeft_info flex-grow-1">
                         <div className="ShopPersonalLeft_info-row display-flex">

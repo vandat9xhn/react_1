@@ -52,10 +52,10 @@ function StoryItemCenter({
     return (
         <div
             key={`${id}`}
-            className="StoryItemCenter wh-100 position-rel display-flex flex-col justify-content-center"
+            className="StoryItemCenter wh-100 pos-rel display-flex flex-col justify-content-center"
         >
             <div
-                className={`position-rel ${
+                className={`pos-rel ${
                     IS_MOBILE ? 'wh-100' : 'StoryItemCenter_item'
                 }`}
             >
