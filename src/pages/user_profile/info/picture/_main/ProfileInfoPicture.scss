@@ -3,47 +3,31 @@ $pic_width_500: 25vw;
 
 // 
 .ProfileInfoPicture {
-    position: relative;
     margin-bottom: 2.5rem;
 }
-// .
+
 .ProfileInfoPicture_cover {
     padding: 0 8%;
     img {
-        width: 100%;
         height: 25rem;
-        border-radius: 5px;
     }
 }
-// .
-.ProfileInfoPicture_profile {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
 
+.ProfileInfoPicture_profile {
     width: $pic_width;
     height: 2rem;
 }
-// ..
+// .
 .ProfileInfoPicture_profile-contain {
-    position: absolute;
-    bottom: 0%;
-    left: 50%;
-    transform: translateX(-50%);
-
     img {
         width: $pic_width;
         height: $pic_width;
-        border-radius: 50%;
         border: 2px solid white;
     }
-
-    .ProfileInfoPicture_profile-fetching{
-        overflow: hidden;
-        border: 1px solid var(--md-color-secondary);
-        background: white;
-    }
+}
+// ..
+.ProfileInfoPicture_profile-fetching{
+    border: 1px solid var(--md-color-secondary);
 }
 
 

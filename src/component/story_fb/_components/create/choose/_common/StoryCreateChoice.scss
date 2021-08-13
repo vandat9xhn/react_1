@@ -8,3 +8,19 @@
     width: 44px;
     height: 44px;
 }
+
+
+// 
+@media (max-width: 400px) {
+    .StoryCreateChoice_icon{
+        width: 30px;
+        height: 30px;
+    }
+    .StoryCreateTextChoice_title{
+        font-size: 14px;
+    }
+    .IconsInput{
+        width: 1rem;
+        height: 1rem;
+    }
+}

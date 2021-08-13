@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
+import observeToDo from '../../../../../_some_function/observerToDo';
 //
 import { initial_friend } from '../../../../../_initial/profile/InitialProfile';
 //
@@ -63,18 +64,17 @@ function ProfileFriend() {
 
     //
     return (
-        <div className="ProfileFriend">
-            <div
-                className={`ProfileFriend_contain brs-8px padding-8px bg-primary margin-auto ${
-                    has_fetched ? '' : 'display-none'
-                }`}
-            >
-                <h2 className=" margin-0">Friends</h2>
+        <div
+            ref={ref_component}
+            className="ProfileFriend padding-8px brs-8px-md bg-primary box-shadow-1"
+        >
+            <div className={`${has_fetched ? '' : 'display-none'}`}>
+                <h2 className="padding-8px">Friends</h2>
 
                 <div className="display-flex flex-wrap space-between">
                     {data_arr.map((item, ix) => (
                         <div
-                            key={`ProfileFriend_${ix}`}
+                            key={`${item.id}`}
                             className="ProfileFriend_item col-12 col-sm-6 col-lg-4"
                         >
                             <FriendEdit
@@ -85,14 +85,14 @@ function ProfileFriend() {
                         </div>
                     ))}
                 </div>
-            </div>
 
-            <ScreenBlurShowMore
-                title="See more friends"
-                is_show_more={count > data_arr.length}
-                is_fetching={is_fetching && has_fetched}
-                handleShowMore={handleShowMoreFriends}
-            />
+                <ScreenBlurShowMore
+                    title="See more friends"
+                    is_show_more={count > data_arr.length}
+                    is_fetching={is_fetching && has_fetched}
+                    handleShowMore={handleShowMoreFriends}
+                />
+            </div>
 
             <div className={has_fetched ? 'display-none' : ''}>
                 <ProfileFrSkeleton />

@@ -1,0 +1,27 @@
+.StoryCTFootMb_bg {
+    margin-bottom: 5px;
+
+    .BgImgList {
+        width: 100%;
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    .BgImgList_row {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    .BgImgList_item {
+        scroll-snap-align: start end;
+        flex-shrink: 0;
+        margin: 2px;
+    }
+    .BgImgItem {
+        width: 25px;
+        height: 25px;
+        border-radius: 0;
+    }
+}

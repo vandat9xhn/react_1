@@ -5,10 +5,12 @@ import { context_api } from '../../../_context/ContextAPI';
 //
 import { openScreenStoryMenuMobile } from '../../../component/_screen/type/story/mobile/menu/ScreenStoryMenuMobile';
 import StoryCreateTextChoice from '../../../component/story_fb/_components/create/choose/text/StoryCreateTextChoice';
-import { openScreenCreateStoryPc } from '../../../component/_screen/type/story/pc/create/ScreenStoryCreate';
+import { openScreenCreateStoryPc } from '../../../component/_screen/type/story/pc/create/ScreenStoryCreatePc';
 import { openStoryHomePc } from '../../../component/_screen/type/story/pc/home/ScreenStoryHomePc';
+import { openScreenCreateStoryMb } from '../../../component/_screen/type/story/mobile/create/ScreenStoryCreateMb';
 //
 import './LearnStoryItem.scss';
+
 //
 LearnStoryItem.propTypes = {};
 
@@ -46,6 +48,15 @@ function LearnStoryItem(props) {
     }
 
     //
+    function handleOpenCreateStoryMobile() {
+        openScreenCreateStoryMb({
+            openScreenFloor: openScreenFloor,
+        });
+
+        history.pushState('', '', `/story/create`);
+    }
+
+    //
     return (
         <div className="padding-8px">
             <div
@@ -73,10 +84,18 @@ function LearnStoryItem(props) {
             <br />
 
             <div
-                className="Learn_StoryCreateTextChoice"
+                className="labe-field cursor-pointer"
                 onClick={handleOpenCreateStoryPc}
             >
                 Open Screen Story Create Home Pc
+            </div>
+            <br />
+
+            <div
+                className="labe-field cursor-pointer"
+                onClick={handleOpenCreateStoryMobile}
+            >
+                Open Screen Story Create Home Mobile
             </div>
         </div>
     );

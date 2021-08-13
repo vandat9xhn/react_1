@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
-import { openScreenCreateStoryPc } from '../../../../../_screen/type/story/pc/create/ScreenStoryCreate';
+import { openScreenCreateStoryPc } from '../../../../../_screen/type/story/pc/create/ScreenStoryCreatePc';
 // 
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //

@@ -65,19 +65,21 @@ function StoryTextContentC({ vid_pic, text, font_family, scale }) {
                             ? 'overflow-y-auto scroll-thin max-h-100per'
                             : 'StoryTextContentC_text_contain-less overflow-hidden'
                     }`}
-                    style={{
-                        fontFamily: font_family,
-                        fontSize: `${scale * 22}px`,
-                    }}
                 >
-                    <span className="StoryTextContentC_text_contain_item">
+                    <span
+                        className="StoryTextContentC_text_contain_item font-700"
+                        style={{
+                            fontFamily: font_family,
+                            fontSize: `${scale * 22}px`,
+                        }}
+                    >
                         {text}
                     </span>
                 </div>
 
                 {has_more_text.current ? (
                     <div
-                        className="padding-8px cursor-pointer"
+                        className="width-fit-content padding-8px cursor-pointer"
                         onClick={handleToggleText}
                     >
                         <div className="display-flex align-items-center">

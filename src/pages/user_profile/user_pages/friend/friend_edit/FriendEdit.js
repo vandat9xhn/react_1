@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
@@ -45,28 +45,26 @@ function FriendEdit({ user, handelDeleteFriend }) {
     return (
         <div className="FriendEdit pos-rel box-shadow-fb brs-5px bg-primary">
             <div className="FriendEdit_left">
-                <div>
-                    <Link
-                        to={`/profile/${user.id}`}
-                        className="normal-text hv-cl-blue label-field"
-                    >
-                        <div className="display-flex align-items-center">
-                            <div>
-                                <img
-                                    className="brs-8px"
-                                    src={user.picture}
-                                    alt=""
-                                    width="80"
-                                    height="80"
-                                />
-                            </div>
-
-                            <div className="FriendEdit_left_name">
-                                {user.first_name + ' ' + user.last_name}
-                            </div>
+                <Link
+                    to={`/profile/${user.id}`}
+                    className="normal-text hv-cl-blue label-field"
+                >
+                    <div className="display-flex align-items-center">
+                        <div>
+                            <img
+                                className="brs-8px"
+                                src={user.picture}
+                                alt=""
+                                width="80"
+                                height="80"
+                            />
                         </div>
-                    </Link>
-                </div>
+
+                        <div className="FriendEdit_left_name">
+                            {user.first_name + ' ' + user.last_name}
+                        </div>
+                    </div>
+                </Link>
             </div>
 
             <div className="FriendEdit_right">
@@ -85,7 +83,9 @@ function FriendEdit({ user, handelDeleteFriend }) {
                             className="FriendEdit_action_item label-field cursor-pointer"
                             onClick={confirmDelete}
                         >
-                            <IconDiv Icon={IconsAction}>Unfriend</IconDiv>
+                            <IconDiv Icon={IconsAction}>
+                                <span>Unfriend</span>
+                            </IconDiv>
                         </div>
                     </div>
                 </ActionsNormal>

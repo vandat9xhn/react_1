@@ -19,14 +19,14 @@ function ProfileInfoPicture({
     //
     return (
         <div
-            className={`ProfileInfoPicture ${
+            className={`ProfileInfoPicture pos-rel ${
                 is_fetching ? 'pointer-events-none' : ''
             }`}
         >
             <div className="ProfileInfoPicture_cover">
                 <Link to="/posts/1">
                     <img
-                        className="object-fit-cover"
+                        className="w-100per brs-5px object-fit-cover box-shadow-1"
                         src={is_fetching ? '' : cover}
                         alt=""
                         onClick={openCoverPicture}
@@ -34,13 +34,13 @@ function ProfileInfoPicture({
                 </Link>
             </div>
 
-            <div className="ProfileInfoPicture_profile">
-                <div className="ProfileInfoPicture_profile-contain">
+            <div className="ProfileInfoPicture_profile pos-abs top-100per x-center">
+                <div className="ProfileInfoPicture_profile-contain pos-abs bottom-0 x-center">
                     <Link to="/posts/1">
                         <img
-                            className={`object-fit-cover ${
+                            className={`object-fit-cover brs-50 box-shadow-1 ${
                                 is_fetching
-                                    ? 'ProfileInfoPicture_profile-fetching'
+                                    ? 'ProfileInfoPicture_profile-fetching overflow-hidden bg-primary'
                                     : ''
                             }`}
                             src={is_fetching ? '' : picture}

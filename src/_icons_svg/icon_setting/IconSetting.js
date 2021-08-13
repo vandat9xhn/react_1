@@ -41,7 +41,7 @@ function IconSetting({ size_icon, fill, stroke }) {
                 58.9826L59.092244.157Z"
             />
 
-            <circle cx="100" cy="100" r="35" fill="var(--white)" />
+            <circle cx="100" cy="100" r="35" fill="none" />
         </svg>
     );
 }

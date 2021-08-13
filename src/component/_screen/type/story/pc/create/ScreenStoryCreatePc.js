@@ -10,15 +10,11 @@ export function openScreenCreateStoryPc({
     openScreenFloor = () => {},
     has_history = true,
     hidden_before = false,
-
-    show_fav = false,
 }) {
     openScreenFloor({
         FloorComponent: ScreenStoryCreate,
         has_history: has_history,
         hidden_before: hidden_before,
-        
-        show_fav: show_fav,
     });
 }
 

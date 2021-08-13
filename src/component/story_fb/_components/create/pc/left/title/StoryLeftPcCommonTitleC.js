@@ -23,7 +23,7 @@ function StoryLeftPcCommonTitleC({ openChangeSetting }) {
                     >
                         <IconSetting
                             size_icon="1.25rem"
-                            fill="var(--md-color)"
+                            fill="none"
                         />
                     </div>
                 </div>

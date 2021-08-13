@@ -9,10 +9,17 @@ import StoryCreateChoice from '../_common/StoryCreateChoice';
 import './StoryCreatePicChoice.scss';
 
 //
-StoryCreatePicChoice.propTypes = {};
+StoryCreatePicChoice.propTypes = {
+    title: PropTypes.string,
+    openScreenStoryText: PropTypes.func,
+};
+
+StoryCreatePicChoice.defaultProps = {
+    title: 'Create a Photo Story',
+};
 
 //
-function StoryCreatePicChoice({ openScreenStoryPic }) {
+function StoryCreatePicChoice({ title, openScreenStoryPic }) {
     //
     function handleChange(data_files) {
         openScreenStoryPic(data_files);
@@ -26,7 +33,7 @@ function StoryCreatePicChoice({ openScreenStoryPic }) {
                 accept="image/*"
                 handleChange={handleChange}
             >
-                <StoryCreateChoice title="Create a Photo Story">
+                <StoryCreateChoice title={title}>
                     <div>
                         <IconsInput />
                     </div>

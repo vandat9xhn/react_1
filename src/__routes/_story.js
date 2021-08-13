@@ -1,10 +1,15 @@
 import React from 'react';
-// 
+//
 import { IS_MOBILE } from '../_constant/Constant';
 
 //
 const StoryCreatePc = React.lazy(() =>
     import('../component/story_fb/pc/create/_main/StoryCreatePc')
+);
+
+//
+const ScreenStoryCreateMb = React.lazy(() =>
+    import('../component/_screen/type/story/mobile/create/ScreenStoryCreateMb')
 );
 
 const StoryHomePc = React.lazy(() =>
@@ -25,7 +30,7 @@ export const story_route_arr = [
     },
     {
         path: '/story/create',
-        component: IS_MOBILE ? null : StoryCreatePc,
+        component: IS_MOBILE ? ScreenStoryCreateMb : StoryCreatePc,
         exact: true,
         auth: true,
     },

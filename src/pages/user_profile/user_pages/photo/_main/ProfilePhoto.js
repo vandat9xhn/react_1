@@ -39,22 +39,20 @@ function ProfilePhoto({ user_id, name }) {
 
     //
     return (
-        <div className="ProfilePhoto bg-primary padding-8px brs-8px-md margin-auto">
-            <h2 className="ProfilePhoto_title margin-0">Photos</h2>
+        <div className="ProfilePhoto padding-8px bg-primary brs-8px-md box-shadow-1">
+            <h2 className="ProfilePhoto_title">Photos</h2>
 
             <div>
                 <div className="display-flex">
                     {group_photo_arr.map((item, ix) => (
-                        <div
-                            key={`ProfilePhoto_group_${ix}`}
-                            className="padding-8px"
+                        <Link
+                            key={`${ix}`}
+                            to={`?sk=photos_${item.search}`}
+                            className="normal-text"
+                            replace
                         >
-                            <Link
-                                to={`?sk=photos_${item.search}`}
-                                className="normal-text"
-                                replace
-                            >
-                                <div
+                            <div className="padding-8px">
+                                <span
                                     className={`label-field hv-cl-blue ${
                                         `?sk=photos_${item.search}` ==
                                         location.search
@@ -63,18 +61,16 @@ function ProfilePhoto({ user_id, name }) {
                                     }`}
                                 >
                                     {item.title}
-                                </div>
-                            </Link>
-                        </div>
+                                </span>
+                            </div>
+                        </Link>
                     ))}
                 </div>
 
-                <div>
-                    <RouteLoaded
-                        route_arr={route_arr}
-                        fallback={<ProfileSkeleton />}
-                    />
-                </div>
+                <RouteLoaded
+                    route_arr={route_arr}
+                    fallback={<ProfileSkeleton />}
+                />
             </div>
         </div>
     );

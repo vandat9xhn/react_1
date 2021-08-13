@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { openScreenConfirm } from '../../../../_screen/type/confirm/ScreenConfirm';
+import { openScreenPermission } from '../../../../_screen/type/permission/_main/ScreenPermission';
+// 
+import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
 //
 import StoryCHomeMb from '../home/_main/StoryCHomeMb';
+import StoryCreateTextMb from '../text/_main/StoryCreateTextMb';
 
 //
 StoryCreateMb.propTypes = {
@@ -26,6 +30,15 @@ function StoryCreateMb({ closeScreen }) {
     });
 
     const { create_type, vid_pic, vid_pic_width, permission } = state_obj;
+
+    // 
+    useMakeBodyHidden({
+        hidden_app: true,
+        hidden_header: true,
+        blur_header: true,
+    });
+
+    /* ---- TYPE ---- */
 
     //
     function changeScreenStory(new_type = '') {
@@ -54,6 +67,8 @@ function StoryCreateMb({ closeScreen }) {
         });
     }
 
+    /* ----- PERMISSION + CREATE ---- */
+
     //
     function handleChoosePermission(ix) {
         setStateObj({
@@ -62,10 +77,21 @@ function StoryCreateMb({ closeScreen }) {
         });
     }
 
+    // 
+    function openPrivacy() {
+        openScreenPermission({
+            openScreenFloor: openScreenFloor,
+            permission: permission,
+            handleChoosePermission: handleChoosePermission,
+        })
+    }
+
     //
-    function handleCreate(data) {
+    function handleCreateStory(data) {
         console.log(data);
     }
+
+    /* ----- DISCARD ----- */
 
     //
     function handleDiscard() {
@@ -76,6 +102,15 @@ function StoryCreateMb({ closeScreen }) {
                 "Are you sure that you want to discard this story? Your story won't be saved.",
             handleConfirm: changeScreenStory,
         });
+    }
+
+    // 
+    function handleDiscardText(has_text = false) {
+        if (has_text) {
+            handleDiscard()
+        } else {
+            changeScreenStory()
+        }
     }
 
     //
@@ -102,13 +137,19 @@ function StoryCreateMb({ closeScreen }) {
 
     //
     return (
-        <div className="StoryCreateMb">
+        <div className="StoryCreateMb wh-100v">
             {create_type == '' ? (
                 <StoryCHomeMb
                     openScreenStoryText={openScreenStoryText}
                     openScreenStoryPic={openScreenStoryPic}
                 />
-            ) : create_type == 'text' ? null : null}
+            ) : create_type == 'text' ? (
+                <StoryCreateTextMb
+                    handleCreateStory={handleCreateStory}
+                    openPrivacy={openPrivacy}
+                    handleDiscard={handleDiscardText}
+                />
+            ) : null}
         </div>
     );
 }

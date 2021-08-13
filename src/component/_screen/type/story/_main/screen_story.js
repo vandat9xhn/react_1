@@ -1,14 +1,15 @@
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
+import { openStoryHomePc } from '../pc/home/ScreenStoryHomePc';
 import { openScreenStoryItemMobile } from '../mobile/item/ScreenStoryItemMobile';
 import { openScreenStoryMenuMobile } from '../mobile/menu/ScreenStoryMenuMobile';
 
-import { openScreenCreateStoryPc } from '../pc/create/ScreenStoryCreate';
-import { openStoryHomePc } from '../pc/home/ScreenStoryHomePc';
+import { openScreenCreateStoryMb } from '../mobile/create/ScreenStoryCreateMb';
+import { openScreenCreateStoryPc } from '../pc/create/ScreenStoryCreatePc';
 
 //
 export const openScreenStoryCreate = IS_MOBILE
-    ? openScreenCreateStoryPc
+    ? openScreenCreateStoryMb
     : openScreenCreateStoryPc;
 
 //

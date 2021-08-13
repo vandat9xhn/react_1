@@ -13,7 +13,7 @@ import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 //
 import { openScreenStoryItemMobile } from '../../../../../component/_screen/type/story/mobile/item/ScreenStoryItemMobile';
 import { openScreenStoryMenuMobile } from '../../../../../component/_screen/type/story/mobile/menu/ScreenStoryMenuMobile';
-import { openScreenCreateStoryPc } from '../../../../../component/_screen/type/story/pc/create/ScreenStoryCreate';
+import { openScreenStoryCreate } from '../../../../../component/_screen/type/story/_main/screen_story';
 import { openStoryHomePc } from '../../../../../component/_screen/type/story/pc/home/ScreenStoryHomePc';
 //
 import VirtualScroll from '../../../../../component/virtual_scroll/VirtualScroll';
@@ -157,8 +157,8 @@ function NewFeedStory(props) {
     }
 
     //
-    function openScreenCreateStory() {
-        openScreenCreateStoryPc({
+    function handleOpenStoryCreate() {
+        openScreenStoryCreate({
             openScreenFloor: openScreenFloor,
             show_fav: true,
             hidden_before: true,
@@ -178,7 +178,7 @@ function NewFeedStory(props) {
                     <div className="display-flex align-items-center">
                         <div
                             className="NewFeedStory_item cursor-pointer"
-                            onClick={openScreenCreateStory}
+                            onClick={handleOpenStoryCreate}
                         >
                             <StoryFaceCreate />
                         </div>

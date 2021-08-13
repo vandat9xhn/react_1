@@ -2,9 +2,9 @@ import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { handleScrollSmooth } from '../../../../../../_some_function/handleScrollSmooth';
-// 
+//
 import CircleLoading from '../../../../../../component/waiting/circle_loading/CircleLoading';
-// 
+//
 import { handle_API_AlbumVidPic_L } from '../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import ProfilePhotoMain from '../../_component/_main/ProfilePhotoMain';
@@ -47,7 +47,7 @@ function ProfilePhotoAlbum(props) {
 
             handleScrollSmooth(() => {
                 ref_photos_in_album.current.scrollIntoView();
-            })
+            });
         }, 100);
     }
 
@@ -80,10 +80,10 @@ function ProfilePhotoAlbum(props) {
 
             {album_model ? (
                 <div
-                    id={`#ProfilePhotoAlbumItem_${album_model}`}
+                    id={`${album_model}`}
                     className="ProfilePhotoAlbum_current"
                 >
-                    <h3>
+                    <h3 className="padding-y-8px">
                         {album_name} {album_model}
                     </h3>
 

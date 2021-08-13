@@ -19,6 +19,7 @@ export function useDataShowMore({
 
     //
     const is_max = useRef(false);
+    const ref_fetching = useRef(false);
     const data_count = useRef(0);
 
     //
@@ -31,6 +32,12 @@ export function useDataShowMore({
             handleWhenFinally: () => {},
         }
     ) {
+        if (ref_fetching.current) {
+            return;
+        }
+
+        ref_fetching.current = true;
+
         const { start_obj_state, handleWhenFinally } = data_get_api;
 
         try {
@@ -67,6 +74,7 @@ export function useDataShowMore({
         }
 
         handleWhenFinally();
+        ref_fetching.current = false;
     }
 
     return {
@@ -74,7 +82,9 @@ export function useDataShowMore({
         setDataState,
 
         is_max,
+        ref_fetching,
         data_count,
+
         getData_API,
     };
 }
