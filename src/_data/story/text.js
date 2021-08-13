@@ -86,3 +86,32 @@ export const data_story_bg_arr = [
     story_text_bg_29,
     story_text_bg_30,
 ];
+
+// 
+export const data_story_effect_arr = [
+    'none',
+    'blur(1px)',
+    'grayscale(50%)',
+    'sepia(40%)',
+    'contrast(200%)',
+]
+
+// 
+export const data_story_tag_bg_color_arr = [
+    {
+        bg: 'var(--green)',
+        color: 'var(--white)'
+    },
+    {
+        bg: 'var(--white)',
+        color: 'var(--green)'
+    },
+    {
+        bg: 'var(--blue)',
+        color: 'var(--white)'
+    },
+    {
+        bg: 'var(--white)',
+        color: 'var(--blue)'
+    },
+]

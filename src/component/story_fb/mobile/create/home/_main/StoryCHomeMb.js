@@ -8,9 +8,11 @@ StoryCHomeMb.propTypes = {};
 
 //
 function StoryCHomeMb({ openScreenStoryText, openScreenStoryPic }) {
-    // 
+    //
     return (
         <div>
+            <h2 className="padding-8px text-align-center">Create story</h2>
+
             <div>
                 <StoryCHHeadMb
                     openScreenStoryText={openScreenStoryText}

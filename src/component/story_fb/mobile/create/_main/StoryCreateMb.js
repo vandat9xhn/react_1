@@ -5,11 +5,12 @@ import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { openScreenConfirm } from '../../../../_screen/type/confirm/ScreenConfirm';
 import { openScreenPermission } from '../../../../_screen/type/permission/_main/ScreenPermission';
-// 
+//
 import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
 //
 import StoryCHomeMb from '../home/_main/StoryCHomeMb';
 import StoryCreateTextMb from '../text/_main/StoryCreateTextMb';
+import StoryCreatePicMb from '../pic/_main/StoryCreatePicMb';
 
 //
 StoryCreateMb.propTypes = {
@@ -31,7 +32,7 @@ function StoryCreateMb({ closeScreen }) {
 
     const { create_type, vid_pic, vid_pic_width, permission } = state_obj;
 
-    // 
+    //
     useMakeBodyHidden({
         hidden_app: true,
         hidden_header: true,
@@ -77,14 +78,16 @@ function StoryCreateMb({ closeScreen }) {
         });
     }
 
-    // 
+    //
     function openPrivacy() {
         openScreenPermission({
             openScreenFloor: openScreenFloor,
             permission: permission,
             handleChoosePermission: handleChoosePermission,
-        })
+        });
     }
+
+    /* ----- CREATE ----- */
 
     //
     function handleCreateStory(data) {
@@ -104,12 +107,12 @@ function StoryCreateMb({ closeScreen }) {
         });
     }
 
-    // 
+    //
     function handleDiscardText(has_text = false) {
         if (has_text) {
-            handleDiscard()
+            handleDiscard();
         } else {
-            changeScreenStory()
+            changeScreenStory();
         }
     }
 
@@ -119,21 +122,21 @@ function StoryCreateMb({ closeScreen }) {
     }
 
     //
-    function handleCloseScreen() {
-        if (create_type == '') {
-            handleCloseStoryCreate();
+    // function handleCloseScreen() {
+    //     if (create_type == '') {
+    //         handleCloseStoryCreate();
 
-            return;
-        }
+    //         return;
+    //     }
 
-        openScreenConfirm({
-            openScreenFloor: openScreenFloor,
-            title: 'Discard story?',
-            notification:
-                "Are you sure that you want to discard this story? Your story won't be saved.",
-            handleConfirm: handleCloseStoryCreate,
-        });
-    }
+    //     openScreenConfirm({
+    //         openScreenFloor: openScreenFloor,
+    //         title: 'Discard story?',
+    //         notification:
+    //             "Are you sure that you want to discard this story? Your story won't be saved.",
+    //         handleConfirm: handleCloseStoryCreate,
+    //     });
+    // }
 
     //
     return (
@@ -149,7 +152,14 @@ function StoryCreateMb({ closeScreen }) {
                     openPrivacy={openPrivacy}
                     handleDiscard={handleDiscardText}
                 />
-            ) : null}
+            ) : (
+                <StoryCreatePicMb
+                    vid_pic={vid_pic}
+                    handleCreateStory={handleCreateStory}
+                    openPrivacy={openPrivacy}
+                    handleDiscard={handleDiscardText}
+                />
+            )}
         </div>
     );
 }

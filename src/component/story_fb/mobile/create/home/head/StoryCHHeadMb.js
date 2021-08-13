@@ -16,7 +16,7 @@ function StoryCHHeadMb({ openScreenStoryText, openScreenStoryPic }) {
         <div className="StoryCHHeadMb">
             <div className="display-flex">
                 <div className="StoryCHHeadMb_item pos-rel">
-                    <div className="pos-abs-100 padding-8px ">
+                    <div className="pos-abs-100 padding-4px ">
                         <div className="wh-100 brs-8px overflow-hidden">
                             <StoryCreateTextChoice
                                 title="Text"
@@ -27,10 +27,10 @@ function StoryCHHeadMb({ openScreenStoryText, openScreenStoryPic }) {
                 </div>
 
                 <div className="StoryCHHeadMb_item pos-rel">
-                    <div className="pos-abs-100 padding-8px">
+                    <div className="pos-abs-100 padding-4px">
                         <div className="wh-100 brs-8px overflow-hidden">
                             <StoryCreatePicChoice
-                                title="Picture"
+                                title="Photo"
                                 openScreenStoryPic={openScreenStoryPic}
                             />
                         </div>

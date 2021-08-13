@@ -1,0 +1,17 @@
+.StoryCPTagFriendItemMb{
+    max-width: 10rem;
+    
+    &:hover{
+        .StoryCPTagFriendItemMb_close{
+            display: block;
+        }
+    }
+}
+
+.StoryCPTagFriendItemMb_close_contain{
+    width: 1.5rem;
+    height: 1.5rem;
+    .IconsArrow_close{
+        stroke: var(--md-color-secondary);
+    }
+}

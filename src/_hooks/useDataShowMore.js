@@ -38,7 +38,8 @@ export function useDataShowMore({
 
         ref_fetching.current = true;
 
-        const { start_obj_state, handleWhenFinally } = data_get_api;
+        const { start_obj_state = {}, handleWhenFinally = () => {} } =
+            data_get_api;
 
         try {
             setDataState((data_state) => ({

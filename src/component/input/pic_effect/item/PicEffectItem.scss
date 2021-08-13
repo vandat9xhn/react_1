@@ -1,0 +1,10 @@
+.PicEffectItem{
+    flex-shrink: 0;
+    width: 75px;
+    height: 75px;
+    transition: all 100ms ease-in;
+}
+.PicEffectItem-active{
+    border: 3px solid var(--blue);
+    transform: scale(1.15);
+}

@@ -16,13 +16,11 @@ function StoryBtnPrivacyMb({ openPrivacy }) {
         >
             <div className="display-flex flex-col align-items-center">
                 <div>
-                    <span className="label-field text-white">
-                        Privacy
-                    </span>
+                    <IconSetting stroke="white" />
                 </div>
 
                 <div>
-                    <IconSetting stroke="white" />
+                    <span className="label-field text-white">Privacy</span>
                 </div>
             </div>
         </div>
