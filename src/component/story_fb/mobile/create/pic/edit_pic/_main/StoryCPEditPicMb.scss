@@ -1,0 +1,23 @@
+.StoryCPEditPicMb_toggle{
+    flex-shrink: 0;
+    margin-right: 5px;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: all 200ms ease-in;
+}
+.StoryCPEditPicMb_toggle-open{
+    transform: rotate(-45deg);
+}
+.StoryCPEditPicMb_toggle-close{
+    transform: rotate(0deg);
+}
+
+.StoryCPEditPicMb_right{
+    transition: all 200ms ease-in;
+}
+.StoryCPEditPicMb_right-show{
+    width: 100%;
+}
+.StoryCPEditPicMb_right-hide{
+    width: 0%;
+}

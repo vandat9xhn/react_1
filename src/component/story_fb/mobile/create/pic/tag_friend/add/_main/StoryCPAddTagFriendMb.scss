@@ -1,7 +1,12 @@
 .StoryCPAddTagFriendMb_head{
     border-bottom: 1px solid var(--md-bg-blur);
+
+    &:focus{
+        outline: none;
+        border-bottom: 1px solid var(--blue);
+    }
 }
 
 .StoryCPAddTagFriendMb_body{
-    max-height: calc(100% - 4rem);
+    max-height: calc(100% - 5rem);
 }

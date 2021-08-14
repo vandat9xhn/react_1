@@ -74,7 +74,7 @@ export const data_story_bg_arr = [
     story_text_bg_18,
     story_text_bg_19,
     story_text_bg_20,
-    
+
     story_text_bg_21,
     story_text_bg_22,
     story_text_bg_23,
@@ -87,31 +87,39 @@ export const data_story_bg_arr = [
     story_text_bg_30,
 ];
 
-// 
+//
 export const data_story_effect_arr = [
     'none',
     'blur(1px)',
     'grayscale(50%)',
     'sepia(40%)',
     'contrast(200%)',
-]
+];
 
-// 
+//
+export const data_story_pic_edit_mode_arr = [
+    'Fixed',
+    'Move',
+    'Resize',
+    'Rotate',
+];
+
+//
 export const data_story_tag_bg_color_arr = [
     {
         bg: 'var(--green)',
-        color: 'var(--white)'
+        color: 'var(--white)',
     },
     {
         bg: 'var(--white)',
-        color: 'var(--green)'
+        color: 'var(--green)',
     },
     {
         bg: 'var(--blue)',
-        color: 'var(--white)'
+        color: 'var(--white)',
     },
     {
         bg: 'var(--white)',
-        color: 'var(--blue)'
+        color: 'var(--blue)',
     },
-]
+];

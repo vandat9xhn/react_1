@@ -79,7 +79,5 @@ export function useMouseMoveXY({
     //
     return {
         handleStart,
-        handleMove,
-        handleEnd,
     };
 }

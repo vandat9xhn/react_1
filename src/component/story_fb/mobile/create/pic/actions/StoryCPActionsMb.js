@@ -9,7 +9,7 @@ import './StoryCPActionsMb.scss';
 StoryCPActionsMb.propTypes = {};
 
 //
-function StoryCPActionsMb({ openAddText, openEffectPic, openTagFriend }) {
+function StoryCPActionsMb({ mode, openAddText, changeModePic, openTagFriend }) {
     //
     return (
         <div className="StoryCPActionsMb text-white label-field font-13px">
@@ -27,14 +27,14 @@ function StoryCPActionsMb({ openAddText, openEffectPic, openTagFriend }) {
                 </div>
             </div>
 
-            <div className="StoryCPActionsMb_part" onClick={openEffectPic}>
+            <div className="StoryCPActionsMb_part" onClick={changeModePic}>
                 <div className="display-flex flex-end align-items-center">
                     <div>
-                        <span>Effect</span>
+                        <span>Pic</span>
                     </div>
 
                     <div className="StoryCPActionsMb_part_right">
-                        <span>Pic</span>
+                        <span>{mode}</span>
                     </div>
                 </div>
             </div>

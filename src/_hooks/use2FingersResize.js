@@ -81,6 +81,16 @@ export function use2FingersResize({
         is_run.current = false;
         handleResizeEnd();
 
+        // window.ontouchstart = null
+        window.ontouchmove = null;
+        window.ontouchend = null;
+    }
+
+    //
+    function handleElmTouchEnd() {
+        is_run.current = false;
+        handleResizeEnd();
+
         window.ontouchstart = null
         window.ontouchmove = null;
         window.ontouchend = null;
@@ -89,5 +99,6 @@ export function use2FingersResize({
     //
     return {
         handleStart,
+        handleElmTouchEnd,
     };
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { SCALE_PIC_RATIO } from '../../../../../../_constant/Constant';
@@ -6,6 +6,7 @@ import { SCALE_PIC_RATIO } from '../../../../../../_constant/Constant';
 import { initial_user } from '../../../../../../_initial/user/initialUser';
 import {
     data_story_effect_arr,
+    data_story_pic_edit_mode_arr,
     data_story_tag_bg_color_arr,
 } from '../../../../../../_data/story/text';
 //
@@ -19,6 +20,10 @@ import StoryCPAddTextMb from '../add_text/StoryCPAddTextMb';
 import StoryCPEffectPicMb from '../effect_pic/StoryCPEffectPicMb';
 import StoryCPTagFriendItemMb from '../tag_friend/tag/StoryCPTagFriendItemMb';
 import StoryCPAddTagFriendMb from '../tag_friend/add/_main/StoryCPAddTagFriendMb';
+import StoryCPEditPicMb from '../edit_pic/_main/StoryCPEditPicMb';
+//
+import './StoryCreatePicMb.scss';
+import StoryRotatePic from '../../../../_components/create/story_pic/rotate/StoryRotatePic';
 
 //
 StoryCreatePicMb.propTypes = {};
@@ -36,8 +41,10 @@ function StoryCreatePicMb({
 
         vid_pic_obj: {
             vid_pic: vid_pic,
-            effect_ix: 0,
+            mode: data_story_pic_edit_mode_arr[0],
+            mode_ix: 0,
             effect: data_story_effect_arr[0],
+            effect_ix: 0,
             trans_x: 0,
             trans_y: 0,
             scale: 0.3,
@@ -67,6 +74,7 @@ function StoryCreatePicMb({
         open_add_text: false,
         open_effect_pic: false,
         open_add_friend: false,
+        open_edit_pic: false,
     });
 
     const {
@@ -75,15 +83,68 @@ function StoryCreatePicMb({
         tag_user_arr,
 
         open_add_text,
-        open_effect_pic,
         open_add_friend,
+        open_effect_pic,
+        open_edit_pic,
     } = state_obj;
 
     const bg_pic = '';
 
+    //
+    const history_touch_arr = useRef([
+        {
+            trans_x: 0,
+            trans_y: 0,
+            scale: 0.3,
+            rotate: 0,
+        },
+    ]);
+    const active_touch_ix = useRef(0);
+
     /* ------- PIC ------- */
 
     //
+    function toggleEditPic() {
+        setStateObj({
+            ...state_obj,
+            open_edit_pic: !open_edit_pic,
+        });
+    }
+
+    /*------*/
+    function undoRedoEditPic(undo_or_redo = true) {
+        setStateObj((state_obj) => {
+            active_touch_ix.current += undo_or_redo ? -1 : 1;
+
+            return {
+                ...state_obj,
+                vid_pic_obj: {
+                    ...state_obj.vid_pic_obj,
+                    ...history_touch_arr.current[active_touch_ix.current],
+                },
+            };
+        });
+    }
+
+    //
+    function undoEditPic() {
+        if (active_touch_ix.current == 0) {
+            return;
+        }
+
+        undoRedoEditPic(true);
+    }
+
+    //
+    function redoEditPic() {
+        if (active_touch_ix.current == history_touch_arr.length - 1) {
+            return;
+        }
+
+        undoRedoEditPic(false);
+    }
+
+    /*------*/
     function openEffectPic() {
         setStateObj({
             ...state_obj,
@@ -113,6 +174,24 @@ function StoryCreatePicMb({
         });
     }
 
+    /*------*/
+    function changeModePic() {
+        setStateObj((state_obj) => {
+            const new_vid_pic_obj = { ...state_obj.vid_pic_obj };
+            const new_mode_ix =
+                (new_vid_pic_obj.mode_ix + 1) %
+                data_story_pic_edit_mode_arr.length;
+
+            new_vid_pic_obj.mode_ix = new_mode_ix;
+            new_vid_pic_obj.mode = data_story_pic_edit_mode_arr[new_mode_ix];
+
+            return {
+                ...state_obj,
+                vid_pic_obj: new_vid_pic_obj,
+            };
+        });
+    }
+
     //
     function handleMovePic({ client_x_change, client_y_change }) {
         setStateObj((state_obj) => {
@@ -131,13 +210,62 @@ function StoryCreatePicMb({
     function handleResizePic({ client_change }) {
         setStateObj((state_obj) => {
             const new_vid_pic_obj = { ...state_obj.vid_pic_obj };
-            new_vid_pic_obj.scale += client_change / SCALE_PIC_RATIO;
+            new_vid_pic_obj.scale += client_change / (SCALE_PIC_RATIO * 4);
 
             return {
                 ...state_obj,
                 vid_pic_obj: new_vid_pic_obj,
             };
         });
+    }
+
+    //
+    function handleRotatePic() {
+        setStateObj((state_obj) => {
+            const new_vid_pic_obj = { ...state_obj.vid_pic_obj };
+            const new_rotate = new_vid_pic_obj.rotate + 90;
+            new_vid_pic_obj.rotate = new_rotate >= 360 ? 0 : new_rotate;
+
+            return {
+                ...state_obj,
+                vid_pic_obj: new_vid_pic_obj,
+            };
+        });
+    }
+
+    //
+    function handleTouchEndPic() {
+        const { trans_x, trans_y, scale, rotate } = vid_pic_obj;
+        const {
+            trans_x: c_trans_x,
+            trans_y: c_trans_y,
+            scale: c_scale,
+            rotate: c_rotate,
+        } = history_touch_arr.current[active_touch_ix.current];
+
+        if (
+            trans_x == c_trans_x &&
+            trans_y == c_trans_y &&
+            scale == c_scale &&
+            rotate == c_rotate
+        ) {
+            return;
+        }
+
+        active_touch_ix.current += 1;
+
+        history_touch_arr.current.splice(
+            active_touch_ix.current,
+            history_touch_arr.current.length,
+            {
+                trans_x: trans_x,
+                trans_y: trans_y,
+                scale: scale,
+                rotate: rotate,
+            }
+        );
+
+        console.log(history_touch_arr.current);
     }
 
     /* ----- TEXT ----- */
@@ -187,7 +315,7 @@ function StoryCreatePicMb({
     function handleResizeText({ client_change }) {
         setStateObj((state_obj) => {
             const new_text_obj = { ...state_obj.text_obj };
-            new_text_obj.scale += client_change / SCALE_PIC_RATIO;
+            new_text_obj.scale += client_change / (SCALE_PIC_RATIO * 4);
 
             return {
                 ...state_obj,
@@ -250,7 +378,7 @@ function StoryCreatePicMb({
     function handleResizeTagFriend({ ix, client_change }) {
         setStateObj((state_obj) => {
             const new_tag_user_arr = [...state_obj.tag_user_arr];
-            new_tag_user_arr[ix].scale += client_change / SCALE_PIC_RATIO;
+            new_tag_user_arr[ix].scale += client_change / (SCALE_PIC_RATIO * 4);
 
             return {
                 ...state_obj,
@@ -310,6 +438,7 @@ function StoryCreatePicMb({
 
             <StoryCPPicMb
                 vid_pic_obj={vid_pic_obj}
+                handleTouchEnd={handleTouchEndPic}
                 handleResizePic={handleResizePic}
                 handleMovePic={handleMovePic}
             />
@@ -355,10 +484,30 @@ function StoryCreatePicMb({
             ))}
 
             <div className="pos-abs right-0 top-0">
-                <StoryCPActionsMb
-                    openAddText={openAddText}
+                <div className="padding-4px">
+                    <StoryCPActionsMb
+                        mode={vid_pic_obj.mode}
+                        openAddText={openAddText}
+                        changeModePic={changeModePic}
+                        openTagFriend={openTagFriend}
+                    />
+                </div>
+            </div>
+
+            <div
+                className={`StoryCreatePicMb_edit_pic pos-abs left-0 ${
+                    open_edit_pic ? 'w-100per' : ''
+                }`}
+            >
+                <StoryCPEditPicMb
+                    mode={vid_pic_obj.mode}
+                    open_edit_pic={open_edit_pic}
+                    //
+                    toggleEditPic={toggleEditPic}
                     openEffectPic={openEffectPic}
-                    openTagFriend={openTagFriend}
+                    undoEditPic={undoEditPic}
+                    redoEditPic={redoEditPic}
+                    changeModePic={changeModePic}
                 />
             </div>
 
@@ -371,11 +520,23 @@ function StoryCreatePicMb({
             </div>
 
             <div className="pos-abs right-0 bottom-0">
-                <div className="padding-4px">
+                <div className="StoryCreatePicMb_share_contain">
                     <StoryBtnShareMb
                         can_share={true}
                         handleCreateStory={onCreateStory}
                     />
+                </div>
+            </div>
+
+            <div
+                className={`StoryCreatePicMb_rotate pos-abs left-0 w-100per bottom-0 ${
+                    vid_pic_obj.mode.toUpperCase() == 'ROTATE'
+                        ? 'StoryCreatePicMb_rotate-show'
+                        : 'StoryCreatePicMb_rotate-hide'
+                }`}
+            >
+                <div className="display-flex-center padding-4px bg-loader">
+                    <StoryRotatePic handleRotate={handleRotatePic} />
                 </div>
             </div>
 

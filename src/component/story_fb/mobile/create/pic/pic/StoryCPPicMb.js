@@ -8,9 +8,15 @@ import { useMouseMoveXY } from '../../../../../../_hooks/useMouseMoveXY';
 StoryCPPicMb.propTypes = {};
 
 //
-function StoryCPPicMb({ vid_pic_obj, handleResizePic, handleMovePic }) {
+function StoryCPPicMb({
+    vid_pic_obj,
+    handleResizePic,
+    handleMovePic,
+    handleTouchEnd,
+}) {
     //
-    const { vid_pic, effect, trans_x, trans_y, rotate, scale } = vid_pic_obj;
+    const { vid_pic, mode, effect, trans_x, trans_y, rotate, scale } =
+        vid_pic_obj;
 
     //
     const { handleStart: handleStartResize } = use2FingersResize({
@@ -24,9 +30,9 @@ function StoryCPPicMb({ vid_pic_obj, handleResizePic, handleMovePic }) {
     //
     function handleTouchStart(e) {
         if (e.touches.length == 1) {
-            handleStartMove(e);
+            mode.toUpperCase() == 'MOVE' && handleStartMove(e);
         } else {
-            handleStartResize(e);
+            mode.toUpperCase() == 'RESIZE' && handleStartResize(e);
         }
     }
 
@@ -38,6 +44,7 @@ function StoryCPPicMb({ vid_pic_obj, handleResizePic, handleMovePic }) {
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
             }}
             onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
         >
             <img src={vid_pic} alt="" style={{ filter: effect }} />
 

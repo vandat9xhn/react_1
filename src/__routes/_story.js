@@ -16,15 +16,15 @@ const StoryHomePc = React.lazy(() =>
     import('../component/story_fb/pc/home/_main/StoryHomePc')
 );
 
-const StoryMenuMobile = React.lazy(() =>
-    import('../component/story_fb/mobile/menu/StoryMenuMobile')
+const ScreenStoryMenuMobile = React.lazy(() =>
+    import('../component/_screen/type/story/mobile/menu/ScreenStoryMenuMobile')
 );
 
 //
 export const story_route_arr = [
     {
         path: '/stories',
-        component: IS_MOBILE ? StoryMenuMobile : StoryHomePc,
+        component: IS_MOBILE ? ScreenStoryMenuMobile : StoryHomePc,
         exact: true,
         auth: true,
     },

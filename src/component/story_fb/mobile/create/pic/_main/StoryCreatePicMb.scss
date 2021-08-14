@@ -1,0 +1,17 @@
+.StoryCreatePicMb_edit_pic{
+    bottom: 5rem;
+}
+
+.StoryCreatePicMb_share_contain{
+    padding: 8px 4px;
+}
+
+.StoryCreatePicMb_rotate{
+    transition: all 200ms ease-in;
+}
+.StoryCreatePicMb_rotate-hide{
+    transform: translateY(100%);
+}
+.StoryCreatePicMb_rotate-show{
+    transform: translateY(0);
+}

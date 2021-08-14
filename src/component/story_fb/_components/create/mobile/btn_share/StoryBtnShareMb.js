@@ -11,23 +11,23 @@ function StoryBtnShareMb({ can_share, handleCreateStory }) {
     //
     return (
         <div
-            className={`StoryBtnShareMb brs-5px cursor-pointer ${
+            className={`StoryBtnShareMb padding-8px brs-5px cursor-pointer ${
                 can_share ? 'bg-blue' : 'bg-always-white pointer-events-none'
             }`}
             onClick={handleCreateStory}
         >
             <div className="display-flex align-items-center">
-                <div className="padding-4px">
+                <div>
                     <span
                         className={`label-field ${
-                            can_share ? 'text-white' : 'text-secondary'
+                            can_share ? 'text-white' : 'text-secondary-50per'
                         }`}
                     >
                         Share story
                     </span>
                 </div>
 
-                <div className="padding-4px">
+                <div className="margin-left-5px">
                     <IconsAction x={200} y={200} />
                 </div>
             </div>

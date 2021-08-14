@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+// 
 import './IconReUndo.scss';
+
 //
 IconReUndo.propTypes = {
     size_icon: PropTypes.string,
@@ -16,15 +17,13 @@ IconReUndo.defaultProps = {
     y: 0,
     stroke: 'var(--blue)',
     is_redo: false,
-}
-
+};
 
 /**
  * redo - undo icon
  */
-function IconReUndo(props) {
-    const {size_icon, x, y, stroke, is_redo} = props;
-
+function IconReUndo({ size_icon, x, y, stroke, is_redo }) {
+    //
     return (
         <svg
             className={`IconReUndo ${is_redo ? 'IconReUndo_redo' : ''}`}

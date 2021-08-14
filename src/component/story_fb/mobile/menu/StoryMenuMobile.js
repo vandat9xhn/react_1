@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
+import { useMakeBodyHidden } from '../../../../_hooks/useMakeBodyHidden';
+// 
 import StoryMenuPartMobile from '../../_components/menu/mobile/_main/StoryMenuPartMobile';
-import StoryBtnCreatePc from '../../_components/menu/pc/btn_create/StoryBtnCreatePc';
+import StoryBtnCreateMb from '../../_components/menu/mobile/btn_create/StoryBtnCreateMb';
 //
 import './StoryMenuMobile.scss';
 
@@ -24,16 +26,22 @@ function StoryMenuMobile({
     closeScreen,
 }) {
     // 
-    useEffect(() => {
-        document.title = 'Story Menu'
-    }, [])
+    useMakeBodyHidden({
+            // hidden_scroll: true,
+            hidden_app: true,
+            hidden_header: true,
+        });
 
+    //
+    useEffect(() => {
+        document.title = 'Story Menu';
+    }, []);
 
     //
     return (
         <div className="bg-primary padding-4px">
             <div className="StoryMenuMobile_create">
-                <StoryBtnCreatePc />
+                <StoryBtnCreateMb />
             </div>
 
             <div className="StoryMenuMobile_item">

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
+import { context_api } from '../../../../../../_context/ContextAPI';
+//
+// import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
 //
 import StoryMenuMobile from '../../../../../story_fb/mobile/menu/StoryMenuMobile';
 
@@ -21,7 +23,7 @@ export function openScreenStoryMenuMobile({
     count_story_suggested = 0,
 }) {
     openScreenFloor({
-        FloorComponent: ScreenStoryMenuMobile,
+        FloorComponent: StoryMenuMobile,
         has_history: has_history,
 
         story_arr_yours: story_arr_yours,
@@ -42,13 +44,23 @@ ScreenStoryMenuMobile.propTypes = {};
 //
 function ScreenStoryMenuMobile(props) {
     //
-    useMakeBodyHidden({
-        // hidden_scroll: true,
-        hidden_app: true,
-        hidden_header: true,
-    });
+    const { openScreenFloor } = useContext(context_api);
 
-    return <StoryMenuMobile {...props} />;
+    //
+    // useMakeBodyHidden({
+    //     // hidden_scroll: true,
+    //     hidden_app: true,
+    //     hidden_header: true,
+    // });
+
+    //
+    useEffect(() => {
+        openScreenStoryMenuMobile({
+            openScreenFloor: openScreenFloor,
+        });
+    }, []);
+
+    return null;
 }
 
 export default ScreenStoryMenuMobile;
