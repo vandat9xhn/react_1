@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
@@ -38,6 +38,11 @@ function StoryCreateMb({ closeScreen }) {
         hidden_header: true,
         blur_header: true,
     });
+
+    //
+    useEffect(() => {
+        document.title = 'Create story';
+    }, []);
 
     /* ---- TYPE ---- */
 

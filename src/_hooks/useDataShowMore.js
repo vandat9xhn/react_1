@@ -78,6 +78,20 @@ export function useDataShowMore({
         ref_fetching.current = false;
     }
 
+    // 
+    function refreshData_API() {
+        data_count.current = 0;
+
+        getData_API({
+            start_obj_state: {
+                data_arr: [],
+                count: 0,
+                has_fetched: false,
+            },
+        });
+    }
+
+    // 
     return {
         data_state,
         setDataState,
@@ -87,5 +101,6 @@ export function useDataShowMore({
         data_count,
 
         getData_API,
+        refreshData_API,
     };
 }

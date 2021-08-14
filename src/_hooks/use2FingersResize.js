@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 //
 import { getTouchClientXY } from '../_some_function/getClientXY';
 
@@ -39,8 +39,8 @@ export function use2FingersResize({
     }
 
     //
-    function handleStart(e) {
-        if (e.touches.length < 2) {
+    function handleStartResize(e) {
+        if (e.touches.length != 2) {
             return;
         }
 
@@ -51,6 +51,11 @@ export function use2FingersResize({
 
         client_length_start.current = getClientLength(e);
         client_length.current = client_length_start.current;
+    }
+
+    //
+    function handleStart(e) {
+        window.ontouchstart = handleStartResize;
     }
 
     //
@@ -76,6 +81,7 @@ export function use2FingersResize({
         is_run.current = false;
         handleResizeEnd();
 
+        window.ontouchstart = null
         window.ontouchmove = null;
         window.ontouchend = null;
     }

@@ -33,7 +33,7 @@ function StoryCPPicMb({ vid_pic_obj, handleResizePic, handleMovePic }) {
     //
     return (
         <div
-            className="StoryCPPicMb pos-abs left-50per top-50per"
+            className="StoryCPPicMb pos-abs left-50per top-50per touch-action-none"
             style={{
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
             }}

@@ -39,7 +39,7 @@ function StoryCPTextMb({
     //
     return (
         <div
-            className="StoryCPTextMb pos-abs left-50per top-50per padding-8px brs-8px bg-loader"
+            className="StoryCPTextMb pos-abs left-50per top-50per padding-8px brs-8px bg-loader touch-action-none"
             style={{
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg)`,
             }}

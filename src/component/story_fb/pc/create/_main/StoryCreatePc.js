@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
@@ -37,6 +37,11 @@ function StoryCreatePc({ show_fav, closeScreen }) {
     });
 
     const { create_type, vid_pic, vid_pic_width, permission } = state_obj;
+
+    // 
+    useEffect(() => {
+        document.title = 'Create story'
+    }, [])
 
     //
     function changeScreenStory(new_type = '') {

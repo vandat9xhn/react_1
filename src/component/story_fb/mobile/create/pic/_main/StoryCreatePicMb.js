@@ -131,7 +131,7 @@ function StoryCreatePicMb({
     function handleResizePic({ client_change }) {
         setStateObj((state_obj) => {
             const new_vid_pic_obj = { ...state_obj.vid_pic_obj };
-            new_vid_pic_obj.scale = +client_change / SCALE_PIC_RATIO;
+            new_vid_pic_obj.scale += client_change / SCALE_PIC_RATIO;
 
             return {
                 ...state_obj,
@@ -187,7 +187,7 @@ function StoryCreatePicMb({
     function handleResizeText({ client_change }) {
         setStateObj((state_obj) => {
             const new_text_obj = { ...state_obj.text_obj };
-            new_text_obj.scale = +client_change / SCALE_PIC_RATIO;
+            new_text_obj.scale += client_change / SCALE_PIC_RATIO;
 
             return {
                 ...state_obj,
@@ -250,7 +250,7 @@ function StoryCreatePicMb({
     function handleResizeTagFriend({ ix, client_change }) {
         setStateObj((state_obj) => {
             const new_tag_user_arr = [...state_obj.tag_user_arr];
-            new_tag_user_arr[ix].scale = +client_change / SCALE_PIC_RATIO;
+            new_tag_user_arr[ix].scale += client_change / SCALE_PIC_RATIO;
 
             return {
                 ...state_obj,

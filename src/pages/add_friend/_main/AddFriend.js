@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import AddFriendHead from '../components/head/_main/AddFriendHead';
@@ -23,6 +23,12 @@ function AddFriend(props) {
     });
 
     const { type_friend } = state_obj;
+
+    // 
+    useEffect(() => {
+        document.title = 'Friends'
+    }, [])
+
 
     //
     function changeTypeFriend(new_type_friend) {

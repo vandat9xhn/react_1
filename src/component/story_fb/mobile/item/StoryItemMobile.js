@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 // 
 import { handle_API_FeedStory_L } from '../../../../_handle_api/feed/HandleAPIStory';
@@ -26,6 +26,12 @@ function StoryItemMobile({
 
     //
     const { active_ix, is_fetching } = state_obj;
+
+    // 
+    useEffect(() => {
+        document.title = 'Story'
+    }, [])
+
 
     /* ----------- */
 

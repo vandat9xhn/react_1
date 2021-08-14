@@ -35,6 +35,7 @@ import DivFixAction from './component/_div_fix/action/DivFixAction';
 
 import AppScreen from './component/_screen/_main/AppScreen';
 import ScreenOnce from './component/_screen_once/_main/ScreenOnce';
+import CustomSwitch from './__routes/__switch';
 
 // App
 class App extends Component {
@@ -139,7 +140,7 @@ class App extends Component {
 
                             <div className="App_contain">
                                 <main className="AppContent">
-                                    <Switch>
+                                    {/* <Switch location={location}>
                                         {Routes.map((route, index) => (
                                             <Route
                                                 key={`App_route_${index}`}
@@ -155,7 +156,8 @@ class App extends Component {
                                         ))}
 
                                         <Redirect from="" to="/home" />
-                                    </Switch>
+                                    </Switch> */}
+                                    <CustomSwitch />
                                 </main>
 
                                 <footer>

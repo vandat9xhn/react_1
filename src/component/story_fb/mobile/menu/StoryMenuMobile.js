@@ -23,6 +23,12 @@ function StoryMenuMobile({
 
     closeScreen,
 }) {
+    // 
+    useEffect(() => {
+        document.title = 'Story Menu'
+    }, [])
+
+
     //
     return (
         <div className="bg-primary padding-4px">

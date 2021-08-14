@@ -15,7 +15,7 @@ function BgImgList({ active_ix, bg_img_arr, handleChooseBg }) {
         <div className="BgImgList">
             <div className="BgImgList_row display-flex flex-wrap justify-content-center">
                 {bg_img_arr.map((bg_img, ix) => (
-                    <div key={`${ix}`} className="BgImgList_item">
+                    <div key={`${ix}`} className="BgImgList_item padding-4px">
                         <BgImgItem
                             ix={ix}
                             is_active={active_ix == ix}

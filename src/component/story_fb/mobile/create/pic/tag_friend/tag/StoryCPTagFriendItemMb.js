@@ -65,7 +65,7 @@ function StoryCPTagFriendItemMb({
     //
     return (
         <div
-            className="StoryCPTagFriendItemMb pos-abs left-50per top-50per"
+            className="StoryCPTagFriendItemMb pos-abs left-50per top-50per touch-action-none"
             style={{
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg)`,
             }}

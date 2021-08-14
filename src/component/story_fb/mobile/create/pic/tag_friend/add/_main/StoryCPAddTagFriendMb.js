@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { handle_API_Friend_L } from '../../../../../../../../_handle_api/profile/ProfileHandleAPI';
@@ -21,13 +21,16 @@ function StoryCPAddTagFriendMb({ handleTagFriend }) {
     const [value, setValue] = useState('');
 
     //
-    const { data_state, getData_API } = useDataShowMore({
+    const ref_value = useRef('');
+
+    //
+    const { data_state, refreshData_API, getData_API } = useDataShowMore({
         initial_arr: [],
         handle_API_L: (c_count) =>
             handle_API_Friend_L({
                 c_count: c_count,
                 params: {
-                    search: value,
+                    search: ref_value.current,
                 },
             }),
     });
@@ -50,18 +53,14 @@ function StoryCPAddTagFriendMb({ handleTagFriend }) {
     }
 
     //
-    function refreshData_API() {
-        getData_API({
-            start_obj_state: {
-                data_arr: [],
-            },
-        });
-    }
-
-    //
     function handleChange(e) {
-        setValue(e.target.value);
-        handleWaitingLastAction();
+        const new_value = e.target.value;
+        setValue(new_value);
+
+        if (new_value.trim() != ref_value.current.trim()) {
+            ref_value.current = new_value;
+            handleWaitingLastAction();
+        }
     }
 
     //

@@ -84,6 +84,10 @@ function StoryHomePc({
         !has_fetched_yours && getData_Story('yours');
     }, []);
 
+    useEffect(() => {
+        document.title = 'Story'
+    }, [])
+
     /* ----------- */
 
     //
