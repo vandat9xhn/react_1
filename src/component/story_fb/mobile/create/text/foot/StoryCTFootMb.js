@@ -22,7 +22,7 @@ function StoryCTFootMb({
 }) {
     //
     return (
-        <div className="StoryCTFootMb padding-4px">
+        <div className="StoryCTFootMb padding-8px">
             <div className="StoryCTFootMb_bg">
                 <BgImgList
                     active_ix={active_bg_ix}

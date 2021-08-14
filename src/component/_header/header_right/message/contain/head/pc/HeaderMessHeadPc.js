@@ -14,6 +14,7 @@ HeaderMessHeadPc.propTypes = {};
 //
 function HeaderMessHeadPc({
     ref_head_elm,
+    ref_fake_elm_end,
     friend_arr,
     has_fetched,
     closeZoom,
@@ -68,6 +69,8 @@ function HeaderMessHeadPc({
                             />
                         </div>
                     ))}
+
+                    <div ref={ref_fake_elm_end} className="padding-4px" style={{width: '1rem'}}></div>
                 </div>
             </div>
 

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { use2FingersResize } from '../../../../../../_hooks/use2FingersResize';
 import { useMouseMoveXY } from '../../../../../../_hooks/useMouseMoveXY';
+// 
+import './StoryCPPicMb.scss'
 
 //
 StoryCPPicMb.propTypes = {};
@@ -19,7 +21,7 @@ function StoryCPPicMb({
         vid_pic_obj;
 
     //
-    const { handleStart: handleStartResize } = use2FingersResize({
+    const { handleStart: handleStartResize, handleElmTouchEnd } = use2FingersResize({
         handleResize: handleResizePic,
     });
 
@@ -36,6 +38,12 @@ function StoryCPPicMb({
         }
     }
 
+    // 
+    function onTouchEnd() {
+        handleTouchEnd()
+        handleElmTouchEnd()
+    }
+
     //
     return (
         <div
@@ -44,9 +52,14 @@ function StoryCPPicMb({
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
             }}
             onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
+            onTouchEnd={onTouchEnd}
         >
-            <img src={vid_pic} alt="" style={{ filter: effect }} />
+            <img
+                className="StoryCPPicMb_img"
+                src={vid_pic}
+                alt=""
+                style={{ filter: effect }}
+            />
 
             <div className="pos-abs-100"></div>
         </div>

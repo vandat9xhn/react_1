@@ -19,9 +19,10 @@ function StoryCPTextMb({
     const { text, trans_x, trans_y, rotate, scale } = text_obj;
 
     //
-    const { handleStart: handleStartResize } = use2FingersResize({
-        handleResize: handleResizeText,
-    });
+    const { handleStart: handleStartResize, handleElmTouchEnd } =
+        use2FingersResize({
+            handleResize: handleResizeText,
+        });
 
     const { handleStart: handleStartMove } = useMouseMoveXY({
         handleMouseMove: handleMoveText,
@@ -30,9 +31,9 @@ function StoryCPTextMb({
     //
     function handleTouchStart(e) {
         // if (e.touches.length == 1) {
-            handleStartMove(e);
+        handleStartMove(e);
         // } else {
-            handleStartResize(e);
+        handleStartResize(e);
         // }
     }
 
@@ -41,14 +42,15 @@ function StoryCPTextMb({
         <div
             className="StoryCPTextMb pos-abs left-50per top-50per padding-8px brs-8px bg-loader touch-action-none"
             style={{
-                transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg)`,
+                transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
             }}
             onTouchStart={handleTouchStart}
-            onDoubleClick={openChangeText}
+            onTouchEnd={handleElmTouchEnd}
+            onClick={openChangeText}
         >
             <span
-                className="StoryCPTextMb_text text-white label-field"
-                style={{ fontSize: `${scale * 14 + 2}px` }}
+                className="StoryCPTextMb_text text-white label-field font-18px"
+                // style={{ fontSize: `${scale * 14 + 2}px` }}
             >
                 {text}
             </span>

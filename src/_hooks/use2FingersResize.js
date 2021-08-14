@@ -45,7 +45,7 @@ export function use2FingersResize({
         }
 
         window.ontouchmove = handleMove;
-        window.ontouchend = handleEnd;
+        window.ontouchend = handleWindowTouchEnd;
 
         is_run.current = true;
 
@@ -77,9 +77,9 @@ export function use2FingersResize({
     }
 
     //
-    function handleEnd() {
+    function handleWindowTouchEnd() {
         is_run.current = false;
-        handleResizeEnd();
+        // handleResizeEnd();
 
         // window.ontouchstart = null
         window.ontouchmove = null;

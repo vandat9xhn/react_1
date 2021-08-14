@@ -2,14 +2,8 @@ import { useDataShowMore } from './useDataShowMore';
 
 //
 export function useObserverShowMore({
-    ref_elm,
     initial_arr = [],
     handle_API_L = (c_count = 0) => new Promise(),
-
-    options_observer = {
-        threshold: 1,
-        rootMargin: '0px 0px',
-    },
 }) {
     //
     const {
@@ -26,26 +20,33 @@ export function useObserverShowMore({
     });
 
     //
-    function observerShowMore() {
+    function observerShowMore({
+        elm,
+        options_observer = {
+            root: null,
+            threshold: 0,
+            rootMargin: '0px 0px',
+        },
+    }) {
         const observe = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (is_max.current) {
-                        observe.unobserve(entry.target);
-                    } else if (
-                        !ref_fetching.current &&
-                        entry.target.scrollLeft + entry.target.clientWidth >=
-                            entry.target.scrollWidth - 200
-                    ) {
-                        getData_API();
-                        console.log(is_max.current);
+                    if (entry.isIntersecting) {
+                        console.log(options_observer);
+                        if (is_max.current) {
+                            observe.unobserve(entry.target);
+                        } else if (!ref_fetching.current) {
+                            getData_API();
+                        }
                     }
                 });
             },
-            { ...options_observer, root: ref_elm.current.parentElement }
+            {
+                ...options_observer,
+            }
         );
 
-        observe.observe(ref_elm.current);
+        observe.observe(elm);
     }
 
     return {

@@ -8,6 +8,7 @@ import {
     data_story_effect_arr,
     data_story_pic_edit_mode_arr,
     data_story_tag_bg_color_arr,
+    MIN_SCALE_TEXT_TAG,
 } from '../../../../../../_data/story/text';
 //
 import StoryIconCloseMb from '../../../../_components/create/mobile/icon_close/StoryIconCloseMb';
@@ -21,9 +22,11 @@ import StoryCPEffectPicMb from '../effect_pic/StoryCPEffectPicMb';
 import StoryCPTagFriendItemMb from '../tag_friend/tag/StoryCPTagFriendItemMb';
 import StoryCPAddTagFriendMb from '../tag_friend/add/_main/StoryCPAddTagFriendMb';
 import StoryCPEditPicMb from '../edit_pic/_main/StoryCPEditPicMb';
+import StoryRotatePic from '../../../../_components/create/story_pic/rotate/StoryRotatePic';
 //
 import './StoryCreatePicMb.scss';
-import StoryRotatePic from '../../../../_components/create/story_pic/rotate/StoryRotatePic';
+import { getValueHasMinMax } from '../../../../../../_some_function/getValueHasMinMax';
+import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 
 //
 StoryCreatePicMb.propTypes = {};
@@ -47,7 +50,7 @@ function StoryCreatePicMb({
             effect_ix: 0,
             trans_x: 0,
             trans_y: 0,
-            scale: 0.3,
+            scale: 1,
             rotate: 0, // 0 90 180 270
         },
 
@@ -75,6 +78,9 @@ function StoryCreatePicMb({
         open_effect_pic: false,
         open_add_friend: false,
         open_edit_pic: false,
+
+        can_undo: false,
+        can_redo: false,
     });
 
     const {
@@ -95,11 +101,14 @@ function StoryCreatePicMb({
         {
             trans_x: 0,
             trans_y: 0,
-            scale: 0.3,
+            scale: 1,
             rotate: 0,
         },
     ]);
     const active_touch_ix = useRef(0);
+
+    // 
+    const forceUpdate = useForceUpdate()
 
     /* ------- PIC ------- */
 
@@ -210,7 +219,12 @@ function StoryCreatePicMb({
     function handleResizePic({ client_change }) {
         setStateObj((state_obj) => {
             const new_vid_pic_obj = { ...state_obj.vid_pic_obj };
-            new_vid_pic_obj.scale += client_change / (SCALE_PIC_RATIO * 4);
+
+            if (new_vid_pic_obj.scale <= 0.25 && client_change < 0) {
+                new_vid_pic_obj.scale = 0.25;
+            } else {
+                new_vid_pic_obj.scale += client_change / (SCALE_PIC_RATIO * 4);
+            }
 
             return {
                 ...state_obj,
@@ -265,7 +279,9 @@ function StoryCreatePicMb({
             }
         );
 
-        console.log(history_touch_arr.current);
+        open_edit_pic && forceUpdate()
+
+        // console.log(history_touch_arr.current);
     }
 
     /* ----- TEXT ----- */
@@ -315,7 +331,12 @@ function StoryCreatePicMb({
     function handleResizeText({ client_change }) {
         setStateObj((state_obj) => {
             const new_text_obj = { ...state_obj.text_obj };
-            new_text_obj.scale += client_change / (SCALE_PIC_RATIO * 4);
+
+            new_text_obj.scale = getValueHasMinMax(
+                new_text_obj.scale + client_change / (SCALE_PIC_RATIO * 4),
+                0.5,
+                4
+            );
 
             return {
                 ...state_obj,
@@ -378,7 +399,13 @@ function StoryCreatePicMb({
     function handleResizeTagFriend({ ix, client_change }) {
         setStateObj((state_obj) => {
             const new_tag_user_arr = [...state_obj.tag_user_arr];
-            new_tag_user_arr[ix].scale += client_change / (SCALE_PIC_RATIO * 4);
+
+            new_tag_user_arr[ix].scale = getValueHasMinMax(
+                new_tag_user_arr[ix].scale +
+                    client_change / (SCALE_PIC_RATIO * 4),
+                0.5,
+                2
+            );
 
             return {
                 ...state_obj,
@@ -456,7 +483,7 @@ function StoryCreatePicMb({
                     />
 
                     <div className="pos-abs right-0 bottom-0">
-                        <div className="padding-4px" onClick={closeAddText}>
+                        <div className="padding-8px" onClick={closeAddText}>
                             <span className="label-field text-white">Done</span>
                         </div>
                     </div>
@@ -502,6 +529,11 @@ function StoryCreatePicMb({
                 <StoryCPEditPicMb
                     mode={vid_pic_obj.mode}
                     open_edit_pic={open_edit_pic}
+                    can_undo={active_touch_ix.current > 0}
+                    can_redo={
+                        active_touch_ix.current <
+                        history_touch_arr.current.length - 1
+                    }
                     //
                     toggleEditPic={toggleEditPic}
                     openEffectPic={openEffectPic}
@@ -516,11 +548,13 @@ function StoryCreatePicMb({
             </div>
 
             <div className="pos-abs left-0 bottom-0">
-                <StoryBtnPrivacyMb openPrivacy={openPrivacy} />
+                <div className="padding-8px">
+                    <StoryBtnPrivacyMb openPrivacy={openPrivacy} />
+                </div>
             </div>
 
             <div className="pos-abs right-0 bottom-0">
-                <div className="StoryCreatePicMb_share_contain">
+                <div className="padding-8px">
                     <StoryBtnShareMb
                         can_share={true}
                         handleCreateStory={onCreateStory}
@@ -535,7 +569,7 @@ function StoryCreatePicMb({
                         : 'StoryCreatePicMb_rotate-hide'
                 }`}
             >
-                <div className="display-flex-center padding-4px bg-loader">
+                <div className="display-flex-center padding-8px bg-loader">
                     <StoryRotatePic handleRotate={handleRotatePic} />
                 </div>
             </div>
@@ -557,7 +591,7 @@ function StoryCreatePicMb({
                         className="pos-abs right-0 bottom-0"
                         onClick={closeTagFriend}
                     >
-                        <div className="padding-4px">
+                        <div className="padding-8px">
                             <span className="text-white label-field">Done</span>
                         </div>
                     </div>

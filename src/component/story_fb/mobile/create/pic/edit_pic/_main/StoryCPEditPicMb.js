@@ -14,6 +14,8 @@ StoryCPEditPicMb.propTypes = {};
 function StoryCPEditPicMb({
     open_edit_pic,
     mode,
+    can_undo,
+    can_redo,
 
     toggleEditPic,
     openEffectPic,
@@ -46,6 +48,8 @@ function StoryCPEditPicMb({
                     <div className="StoryCPEditPicMb_right_contain">
                         <StoryCPEditPicActionsMb
                             mode={mode}
+                            can_undo={can_undo}
+                            can_redo={can_redo}
                             openEffectPic={openEffectPic}
                             undoEditPic={undoEditPic}
                             redoEditPic={redoEditPic}

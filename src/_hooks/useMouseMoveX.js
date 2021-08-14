@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { IS_MOBILE } from '../_constant/Constant';
 //
 import { getClientX } from '../_some_function/getClientXY';
 
@@ -14,14 +15,19 @@ export function useMouseMoveX({
 
     //
     function handleStart(e) {
-        e.stopPropagation()
-        
+        e.stopPropagation();
+
         is_run.current = true;
         client_x.current = getClientX(e);
         handleMouseDown();
 
-        window.onmousemove = handleMove
-        window.onmouseup = handleEnd
+        if (IS_MOBILE) {
+            window.ontouchmove = handleMove;
+            window.ontouchend = handleEnd;
+        } else {
+            window.onmousemove = handleMove;
+            window.onmouseup = handleEnd;
+        }
     }
 
     //
@@ -39,10 +45,11 @@ export function useMouseMoveX({
     //
     function handleEnd() {
         is_run.current = false;
+        
+        window.onmousemove = null;
+        window.onmouseup = null;
+        
         handleMouseEnd();
-
-        window.onmousemove = null
-        window.onmouseup = null
     }
 
     //

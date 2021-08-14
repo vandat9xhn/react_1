@@ -24,7 +24,7 @@ function FashionBC({ images, has_fetched }) {
                     />
                 </div>
 
-                <div>
+                <div className="FashionBC_right">
                     <FashionBCR />
                 </div>
             </div>

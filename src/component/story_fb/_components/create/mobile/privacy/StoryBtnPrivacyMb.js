@@ -11,7 +11,7 @@ function StoryBtnPrivacyMb({ openPrivacy }) {
     //
     return (
         <div
-            className="StoryBtnPrivacyMb padding-4px brs-5px cursor-pointer"
+            className="StoryBtnPrivacyMb brs-5px cursor-pointer"
             onClick={openPrivacy}
         >
             <div className="display-flex flex-col align-items-center">

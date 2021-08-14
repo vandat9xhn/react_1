@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+//
 import { useInterval } from '../../../_hooks/UseInterval';
+import { useMouseMoveX } from '../../../_hooks/useMouseMoveX';
+import { useForceUpdate } from '../../../_hooks/UseForceUpdate';
 //
 import NextPrevDiv from '../../some_div/next_prev_div/NextPrevDiv';
 //
@@ -25,24 +29,37 @@ function Carousel({
     has_fetched,
     time_interval = 6000,
     time_trans = 300,
+
     disabled_btn_when_trans = true,
     time_disabled_btn = 100,
 }) {
     //
-    const [vid_pic_ix, setVidPicIx] = useState(1);
+    const [extra_trans_x, setExtraTransX] = useState(0);
 
     //
+    const ref_carousel_elm = useRef(null);
+
     const mounted = useRef(true);
     const btn_disable = useRef(false);
     const transition_none = useRef(true);
+
+    const ref_vid_pic_ix = useRef(1);
     const ref_count = useRef(vid_pics.length);
 
     //
-
     const { doSkipInterval, stopInterval } = useInterval({
         time: time_interval,
         callback: handleAutoNext,
     });
+
+    //
+    const { handleStart, handleMove, handleEnd } = useMouseMoveX({
+        handleMouseDown: handleTouchStart,
+        handleMouseMove: handleTouchMove,
+        handleMouseEnd: handleTouchEnd,
+    });
+
+    const forceUpdate = useForceUpdate();
 
     //
     useEffect(() => {
@@ -76,53 +93,42 @@ function Carousel({
             disabled_btn_when_trans || is_last ? time_trans : time_disabled_btn
         );
     }
-    //
-    function startNextPrev(is_last = false) {
-        disableBtnNextPrev(is_last);
-        doSkipInterval();
-    }
 
     //
     function changeImgIxNext() {
-        setVidPicIx((vid_pic_ix) => {
-            if (vid_pic_ix == ref_count.current - 2) {
-                disableBtnNextPrev(true);
-                setVidPicIx(ref_count.current - 1);
+        disableBtnNextPrev(true);
+        ref_vid_pic_ix.current += 1;
+        forceUpdate();
 
-                setTimeout(() => {
-                    if (mounted.current) {
-                        transition_none.current = true;
-                        setVidPicIx(1);
-                    }
-                }, time_trans);
-            } else if (vid_pic_ix < ref_count.current - 2) {
-                disableBtnNextPrev();
-                setVidPicIx(vid_pic_ix + 1);
-            }
-        });
+        if (ref_vid_pic_ix.current == ref_count.current - 1) {
+            setTimeout(() => {
+                if (mounted.current) {
+                    ref_vid_pic_ix.current = 1;
+                    transition_none.current = true;
+                    forceUpdate();
+                }
+            }, time_trans);
+        }
     }
 
     //
     function changeImgIxPrev() {
-        setVidPicIx((vid_pic_ix) => {
-            if (vid_pic_ix == 1) {
-                disableBtnNextPrev(true);
-                setVidPicIx(0);
+        disableBtnNextPrev(true);
+        ref_vid_pic_ix.current -= 1;
+        forceUpdate();
 
-                setTimeout(() => {
-                    if (mounted.current) {
-                        transition_none.current = true;
-                        setVidPicIx(ref_count.current - 2);
-                    }
-                }, time_trans);
-            } else if (vid_pic_ix > 1) {
-                disableBtnNextPrev()
-                setVidPicIx(vid_pic_ix - 1);
-            }
-        });
+        if (ref_vid_pic_ix.current == 0) {
+            setTimeout(() => {
+                if (mounted.current) {
+                    ref_vid_pic_ix.current = ref_count.current - 2;
+                    transition_none.current = true;
+                    forceUpdate();
+                }
+            }, time_trans);
+        }
     }
 
-    /* ------------------------- NEXT PREV ----------------------- */
+    /* -------- NEXT PREV -------- */
 
     //
     function handleNext() {
@@ -153,36 +159,71 @@ function Carousel({
         changeImgIxNext();
     }
 
+    /* --- TOUCH --- */
+
+    //
+    function handleTouchStart() {
+        stopInterval(true);
+        doSkipInterval();
+    }
+
+    //
+    function handleTouchMove(client_change) {
+        setExtraTransX((extra_trans_x) => {
+            return extra_trans_x + client_change;
+        });
+    }
+
+    //
+    function handleTouchEnd() {
+        const ratio_trans_x =
+            -extra_trans_x / ref_carousel_elm.current.clientWidth;
+
+        if (ratio_trans_x >= 0.3) {
+            handleNext();
+        } else if (ratio_trans_x <= -0.3) {
+            handlePrev();
+        }
+
+        setExtraTransX(0);
+        stopInterval(false);
+    }
+
     //
     return (
-        <div className="Carousel pos-rel wh-100">
+        <div ref={ref_carousel_elm} className="Carousel pos-rel wh-100">
             <div
                 className="Carousel_row pos-rel display-flex"
                 style={{
                     width: `${100 * vid_pics.length}%`,
                     transform: `translateX(-${
-                        (vid_pic_ix * 100) / vid_pics.length
-                    }%)`,
+                        (ref_vid_pic_ix.current * 100) / vid_pics.length
+                    }%) translateX(${extra_trans_x}px)`,
                     transition: transition_none.current
                         ? 'none'
                         : `transform ${time_trans}ms`,
                 }}
+                onTouchStart={IS_MOBILE ? handleStart : undefined}
+                onTouchMove={IS_MOBILE ? handleMove : undefined}
+                onTouchEnd={IS_MOBILE ? handleEnd : undefined}
             >
                 {vid_pics.map((vid_pic, ix) => (
                     <CarouselItem
-                        key={`Carousel_${ix}`}
+                        key={`${ix}`}
                         vid_pic={vid_pic}
                         width_vid_pic={`${100 / vid_pics.length}%`}
                     />
                 ))}
             </div>
 
-            <NextPrevDiv
-                is_btn_circle={true}
-                size_icon="0.8rem"
-                handleNext={handleNext}
-                handlePrev={handlePrev}
-            />
+            {IS_MOBILE ? null : (
+                <NextPrevDiv
+                    is_btn_circle={true}
+                    size_icon="0.8rem"
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                />
+            )}
         </div>
     );
 }

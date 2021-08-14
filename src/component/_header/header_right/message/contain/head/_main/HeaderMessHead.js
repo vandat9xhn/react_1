@@ -17,6 +17,7 @@ import HeaderMessHeadMobile from '../mobile/HeaderMessHeadMobile';
 //
 import white_person from '../../../../../../../../image/white_person.svg';
 import './HeaderMessHead.scss';
+import { useObserverShowMore } from '../../../../../../../_hooks/useObserverShowMore';
 
 //
 HeaderMessHead.propTypes = {
@@ -28,10 +29,11 @@ function HeaderMessHead({ closeZoom }) {
     //
     const ref_head_elm = useRef(null);
     const ref_main_elm = useRef(null);
+    const ref_fake_elm_end = useRef(null);
 
     //
-    const { data_state, getData_API } = useScrollRightShowMore({
-        ref_elm: ref_head_elm,
+    const { data_state, observerShowMore, getData_API } = useObserverShowMore({
+        // ref_fake_elm_end: ref_fake_elm_end,
         initial_arr: [],
         handle_API_L: (c_count) =>
             handle_API_Friend_L({
@@ -41,18 +43,52 @@ function HeaderMessHead({ closeZoom }) {
                     size: 10,
                 },
             }),
+        // options_observer: {
+        //     root: ref_head_elm,
+        //     rootMargin: '0px 0px 0px 500px',
+        // }
     });
+
+    // //
+    // const { data_state, getData_API } = useScrollRightShowMore({
+    //     ref_elm: ref_head_elm,
+    //     initial_arr: [],
+    //     handle_API_L: (c_count) =>
+    //         handle_API_Friend_L({
+    //             c_count: c_count,
+    //             params: {
+    //                 type: 'recently',
+    //                 size: 10,
+    //             },
+    //         }),
+    // });
 
     const { data_arr, count, has_fetched } = data_state;
 
-    //
+    // //
     useEffect(() => {
-        observeToDo(ref_main_elm.current, getData_API, 0)
+        observeToDo(
+            ref_main_elm.current,
+            () => {
+                observerShowMore({
+                    elm: ref_fake_elm_end.current,
+                    options_observer: {
+                        root: ref_main_elm.current,
+                        rootMargin: '500px',
+                    },
+                });
+
+                getData_API()
+            },
+            0
+        );
+        // observerShowMore()
     }, []);
 
     //
     return (
         <div ref={ref_main_elm}>
+            {/* <div className="display-flex"> */}
             {IS_MOBILE ? (
                 <HeaderMessHeadMobile
                     ref_head_elm={ref_head_elm}
@@ -63,6 +99,7 @@ function HeaderMessHead({ closeZoom }) {
             ) : (
                 <HeaderMessHeadPc
                     ref_head_elm={ref_head_elm}
+                    ref_fake_elm_end={ref_fake_elm_end}
                     friend_arr={data_arr}
                     has_fetched={has_fetched}
                     closeZoom={closeZoom}
@@ -83,6 +120,9 @@ function HeaderMessHead({ closeZoom }) {
                 num={1}
                 skeleton_class="display-flex align-items-center"
             />
+
+            {/* <div className="padding-4px" ref={ref_fake_elm_end}></div> */}
+            {/* </div> */}
         </div>
     );
 }

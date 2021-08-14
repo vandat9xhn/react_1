@@ -1,21 +1,21 @@
-
-.FashionBC{
+.FashionBC {
     user-select: none;
 }
 
-.FashionBC_row{
+.FashionBC_row {
     justify-content: space-around;
 }
-// 
-.FashionBC_carousel{
+//
+.FashionBC_carousel {
     width: 40rem;
     max-width: 95vw;
     height: 15rem;
     overflow: hidden;
 }
 
-
 //
-@media (max-width: 42rem){
-
+@media (max-width: 1000px) {
+    .FashionBC_right {
+        display: none;
+    }
 }

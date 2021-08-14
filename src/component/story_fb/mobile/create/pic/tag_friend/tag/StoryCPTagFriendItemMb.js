@@ -25,9 +25,10 @@ function StoryCPTagFriendItemMb({
     const { user, bg, color, trans_x, trans_y, rotate, scale } = tag_user_obj;
 
     //
-    const { handleStart: handleStartResize } = use2FingersResize({
-        handleResize: onResizeTag,
-    });
+    const { handleStart: handleStartResize, handleElmTouchEnd } =
+        use2FingersResize({
+            handleResize: onResizeTag,
+        });
 
     const { handleStart: handleStartMove } = useMouseMoveXY({
         handleMouseMove: onMoveTag,
@@ -67,9 +68,10 @@ function StoryCPTagFriendItemMb({
         <div
             className="StoryCPTagFriendItemMb pos-abs left-50per top-50per touch-action-none"
             style={{
-                transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg)`,
+                transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
             }}
             onTouchStart={handleTouchStart}
+            onTouchEnd={handleElmTouchEnd}
         >
             <div
                 className="padding-8px brs-8px text-nowrap"
@@ -77,16 +79,21 @@ function StoryCPTagFriendItemMb({
                 onClick={onChangeBgColorIx}
             >
                 <span
-                    className="label-field"
-                    style={{ fontSize: `${scale * 14 + 2}px` }}
+                    className="label-field font-18px"
+                    // style={{ fontSize: `${scale * 14 + 2}px` }}
                 >
                     @ {user.first_name} {user.last_name}
                 </span>
             </div>
 
-            <div className="StoryCPTagFriendItemMb_close pos-abs left-100per bottom-100per display-none">
+            <div
+                className="StoryCPTagFriendItemMb_close pos-abs left-100per bottom-100per display-none"
+                style={{
+                    transform: `translate(-50%, 50%) scale(${1 / scale})`,
+                }}
+            >
                 <div
-                    className="StoryCPTagFriendItemMb_close_contain display-flex-center bg-always-white brs-50"
+                    className="StoryCPTagFriendItemMb_close_contain display-flex-center bg-always-white brs-50 box-shadow-1"
                     onClick={onDelTagFriend}
                 >
                     <IconsArrow y={400} size_icon="1rem" />

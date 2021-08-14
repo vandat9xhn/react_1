@@ -123,3 +123,6 @@ export const data_story_tag_bg_color_arr = [
         color: 'var(--blue)',
     },
 ];
+
+// 
+export const MIN_SCALE_TEXT_TAG = 0.5 
