@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import './FashionOnWork.scss';
+// 
 import FashionH from '../../components/head/_main/FashionH';
 import FashionLN from '../../components/banner/list_names/FashionLN';
 //
-FashionOnWork.propTypes = {
-    
-};
+import './FashionOnWork.scss';
+
+// 
+FashionOnWork.propTypes = {};
 
 function FashionOnWork(props) {
     return (
@@ -17,7 +17,9 @@ function FashionOnWork(props) {
 
             <div className="FashionOnWork_contain">
                 <div className="FashionOnWork_row">
-                    <div className="fashion_title">I am working on it</div>
+                    <div className="font-700 text-secondary font-18px">
+                        I am working on it
+                    </div>
                 </div>
             </div>
         </div>

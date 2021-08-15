@@ -1,63 +1,39 @@
-/* ------------------- COMMON ----------------------- */
-.fashion_title{
-    font-weight: 600;
-    font-size: 18px;
-    color: var(--md-color-secondary);
-}
-
-.fashion_padding{
-    padding: 0.5rem;
-}
-
-.fashion_center{
-    text-align: center;
-}
-
-.fashion_border-bottom{
-    border-bottom: 1px solid var(--md-bg-ccc);
-}
-
-
-/* ------------------------------------------ */
-.FashionHCommon{
-    padding: 0.5rem;
-    background-color: var(--fashion-hover);
-    box-shadow: 0 0 6px 1px var(--md-bg-ccc);
+.FashionHCommon_contain{
+    width: 1250px;
+    max-width: 100%;
 }
 
 // ..
-.FashionHCommon_left{
-    width: 6rem;
-}
-// ..
-.FashionHCommon_center{
-    flex-grow: 1;
-}
-// ..
-.FashionHCommon_right{
-    width: 8rem;
+.FashionHCommon_side {
+    width: 200px;
 }
 
 //
-@media (max-width: 600px){
-    .FashionHCommon{
+@media (max-width: 1000px) {
+    .FashionHCommon_side{
+        width: 150px;
+    }
+}
+//
+@media (max-width: 750px) {
+    .FashionHCommon {
         position: relative;
     }
 
-    .FashionHCommon_row{
+    .FashionHCommon_row {
         display: block;
     }
     // .
-    .FashionHCommon_left{
+    .FashionHCommon_left {
         width: fit-content;
         margin-bottom: 0.5rem;
     }
     // ..
-    .FashionHCommon_center{
+    .FashionHCommon_center {
         width: 100%;
     }
     // ..
-    .FashionHCommon_right{
+    .FashionHCommon_right {
         position: absolute;
         right: 0.5rem;
         top: 1rem;

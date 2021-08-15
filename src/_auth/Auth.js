@@ -10,7 +10,7 @@ Auth.propTypes = {};
 //
 function Auth({ route, ...props }) {
     //
-    const { user } = useContext(context_api);
+    const { user, root_floor_url_arr } = useContext(context_api);
 
     //
     if (route.auth && !user.id) {
@@ -30,7 +30,7 @@ function Auth({ route, ...props }) {
         sessionStorage.removeItem('new_member');
     }
 
-    route.reset_position && window.scrollTo(0, 0);
+    // route.reset_position && window.scrollTo(0, 0);
 
     //
     return <route.component {...props} />;

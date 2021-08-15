@@ -40,7 +40,7 @@ function StoryCreatePicPc({
             vid_pic: vid_pic,
             trans_x: 0,
             trans_y: 0,
-            scale: 0.3,
+            scale: 1,
             rotate: 0, // 0 90 180 270
         },
 

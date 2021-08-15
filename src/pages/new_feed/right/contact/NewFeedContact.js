@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
 //
-import { useScrollDown } from '../../../../_hooks/useScrollDown';
+import { initial_user } from '../../../../_initial/user/initialUser';
 //
 import observeToDo from '../../../../_some_function/observerToDo';
+//
+import { handle_API_NewFeedContact_L } from '../../../../_handle_api/new_feed/NewFeedHandleAPI';
+//
+import { useObserverShowMore } from '../../../../_hooks/useObserverShowMore';
 //
 import CircleLoading from '../../../../component/waiting/circle_loading/CircleLoading';
 import PicNameContent from '../../../../component/picture_name/pic_name_content/PicNameContent';
 //
-import { handle_API_NewFeedContact_L } from '../../../../_handle_api/new_feed/NewFeedHandleAPI';
 //
 import './NewFeedContact.scss';
 
@@ -24,60 +27,67 @@ function NewFeedContact() {
 
     //
     const ref_contact = useRef(null);
+    const ref_fake_elm_end = useRef(null);
 
     //
     const {
         data_state: contact_state,
-        getData_API_at_first,
-        handleScroll,
-    } = useScrollDown({
+        getData_API,
+        observerShowMore,
+    } = useObserverShowMore({
+        initial_arr: [] || [initial_user()],
         handle_API_L: (c_count) =>
             handle_API_NewFeedContact_L({ c_count: c_count }),
-        thresh_hold: 0.8,
-        elm: ref_contact.current,
     });
 
     const { data_arr: friend_arr, has_fetched, is_fetching } = contact_state;
 
     //
     useEffect(() => {
-        observeToDo(ref_contact.current, getData_API_at_first, 0);
+        observeToDo(
+            ref_contact.current,
+            () => {
+                getData_API();
+                observerShowMore({
+                    fake_elm_end: ref_fake_elm_end.current,
+                    root: ref_contact.current,
+                    rootMargin: '0px 0px 500px 0px',
+                    way_scroll: 'to_bottom',
+                    margin: 300,
+                });
+            },
+            0
+        );
     }, []);
 
     //
     return (
-        <div
-            ref={ref_contact}
-            className="NewFeedContact scroll-thin"
-            onScroll={handleScroll}
-        >
-            <div>
-                <h3 className="text-secondary">Contacts</h3>
-            </div>
+        <div ref={ref_contact} className="NewFeedContact scroll-thin">
+            <h3 className="padding-8px text-secondary">Contacts</h3>
 
             <div className={`${has_fetched ? '' : 'pointer-events-none'}`}>
-                <div>
-                    {(has_fetched ? friend_arr : [{ friend: {} }]).map(
-                        (item, index) => (
-                            <div
-                                key={`NewFeedContact_item_${item.id || index}`}
-                                className="NewFeedContact_item NewFeed_side_item"
-                            >
-                                <PicNameContent
-                                    user={item.friend}
-                                    handleClick={() =>
-                                        openRoomChat(item.friend.id)
-                                    }
-                                />
-                            </div>
-                        )
-                    )}
-                </div>
+                {friend_arr.map((friend) => (
+                    <div
+                        key={`${friend.id}`}
+                        className="NewFeedContact_item NewFeed_side_item"
+                    >
+                        <PicNameContent
+                            user={friend}
+                            handleClick={() => openRoomChat(friend.id)}
+                        />
+                    </div>
+                ))}
             </div>
 
             <div className="display-flex-center">
                 <CircleLoading is_fetching={is_fetching} />
             </div>
+
+            <div ref={ref_fake_elm_end} className="padding-1px"></div>
+
+            {has_fetched ? null : (
+                <div className="NewFeedContact_not_fetched"></div>
+            )}
         </div>
     );
 }

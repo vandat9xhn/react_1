@@ -44,8 +44,8 @@ export function use2FingersResize({
             return;
         }
 
-        window.ontouchmove = handleMove;
-        window.ontouchend = handleWindowTouchEnd;
+        window.addEventListener('touchmove', handleMove);
+        window.addEventListener('touchend', handleWindowTouchEnd);
 
         is_run.current = true;
 
@@ -55,7 +55,7 @@ export function use2FingersResize({
 
     //
     function handleStart(e) {
-        window.ontouchstart = handleStartResize;
+        window.addEventListener('touchstart', handleStartResize);
     }
 
     //
@@ -82,8 +82,8 @@ export function use2FingersResize({
         // handleResizeEnd();
 
         // window.ontouchstart = null
-        window.ontouchmove = null;
-        window.ontouchend = null;
+        window.removeEventListener('touchmove', handleMove);
+        window.removeEventListener('touchend', handleWindowTouchEnd);
     }
 
     //
@@ -91,9 +91,9 @@ export function use2FingersResize({
         is_run.current = false;
         handleResizeEnd();
 
-        window.ontouchstart = null
-        window.ontouchmove = null;
-        window.ontouchend = null;
+        window.removeEventListener('touchstart', handleStartResize);
+        window.removeEventListener('touchmove', handleMove);
+        window.removeEventListener('touchend', handleWindowTouchEnd);
     }
 
     //

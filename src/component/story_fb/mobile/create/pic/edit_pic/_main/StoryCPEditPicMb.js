@@ -26,7 +26,11 @@ function StoryCPEditPicMb({
     //
     return (
         <div className="StoryCPEditPicMb pos-rel">
-            <div className="display-flex align-items-center">
+            <div
+                className={`StoryCPEditPicMb_row display-flex align-items-center ${
+                    open_edit_pic ? 'w-100per' : 'width-0'
+                }`}
+            >
                 <div
                     className={`StoryCPEditPicMb_toggle display-flex-center brs-50 bg-blue ${
                         open_edit_pic

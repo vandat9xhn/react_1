@@ -68,6 +68,14 @@
     background-color: var(--color-react);
 }
 
+.bg-fashion-head {
+    background-image: linear-gradient(to bottom, #f53d2d, #f63);
+}
+
+.bg-fashion-carousel-active {
+    background-color: var(--fashion-carousel-active);
+}
+
 .bg-shadow-1 {
     background-color: var(--shadow-1);
 }
@@ -76,8 +84,8 @@
     background-image: linear-gradient(45deg, var(--success), var(--blue-tear));
 }
 
-// 
-.bg-always-white{
+//
+.bg-always-white {
     background-color: var(--white);
 }
 
@@ -149,7 +157,7 @@
     border: 1px solid transparent;
 }
 
-.border-none{
+.border-none {
     border: none;
 }
 
@@ -167,11 +175,11 @@
     cursor: wait;
 }
 
-.cursor-not-allowed{
+.cursor-not-allowed {
     cursor: not-allowed;
 }
 
-.cursor-move{
+.cursor-move {
     cursor: move;
 }
 
@@ -277,12 +285,21 @@
 }
 
 /* ---------------- PADDING ---------------*/
+
 .padding-8px {
     padding: 8px;
 }
 
+.padding-5px {
+    padding: 4px;
+}
+
 .padding-4px {
     padding: 4px;
+}
+
+.padding-1px {
+    padding: 1px;
 }
 
 .padding-y-8px {
@@ -416,7 +433,6 @@
 
 .font-22px {
     font-size: 22px;
-
 }
 .font-24px {
     font-size: 24px;
@@ -436,7 +452,7 @@
 
 /* ----------- TOUCH -------------*/
 
-.touch-action-none{
+.touch-action-none {
     touch-action: none;
 }
 

@@ -11,6 +11,8 @@ import ScreenBlurShowMore from '../../../../../component/_screen/components/part
 import ButtonRipple from '../../../../../component/button/button_ripple/ButtonRipple';
 import WaitingBall from '../../../../../component/waiting/waiting_ball/WaitingBall';
 import ProductItem from '../../../../../component/products/product_item/ProductItem';
+// 
+import './FashionBody.scss'
 
 //
 FashionBody.propTypes = {};
@@ -39,7 +41,7 @@ function FashionBody(props) {
             c_count: c_count,
             page: 1,
             size: 20,
-            type_request: 'home'
+            type_request: 'home',
         });
 
         return res.data;
@@ -49,11 +51,23 @@ function FashionBody(props) {
     function handleShowMore() {
         getData_API();
     }
-    
+
     //
     return (
         <div ref={ref_product_elm}>
-            <div>
+            <div className="FashionBody_title padding-8px bg-primary">
+                <div className="display-flex">
+                    <h2 className="padding-8px font-18px label-field cursor-pointer">
+                        <span className="color-fashion">TO DAY</span>
+                    </h2>
+
+                    <h2 className="padding-8px font-18px label-field cursor-pointer">
+                        <span className="color-fashion">COINS BACK</span>
+                    </h2>
+                </div>
+            </div>
+
+            <div className="bg-primary">
                 <ul className="Fashion__list">
                     {(has_fetched ? data_arr : Array(5).fill({})).map(
                         (item, ix) => (
@@ -82,20 +96,24 @@ function FashionBody(props) {
                         )
                     )}
                 </ul>
-            </div>
-            <br />
 
-            <ScreenBlurShowMore
-                title={
-                    <ButtonRipple disabled={is_fetching} ripple_type="center">
-                        More product...
-                    </ButtonRipple>
-                }
-                is_show_more={count > data_arr.length}
-                is_fetching={is_fetching && has_fetched}
-                handleShowMore={handleShowMore}
-                FetchingComponent={WaitingBall}
-            />
+                <br />
+
+                <ScreenBlurShowMore
+                    title={
+                        <ButtonRipple
+                            disabled={is_fetching}
+                            ripple_type="center"
+                        >
+                            More product...
+                        </ButtonRipple>
+                    }
+                    is_show_more={count > data_arr.length}
+                    is_fetching={is_fetching && has_fetched}
+                    handleShowMore={handleShowMore}
+                    FetchingComponent={WaitingBall}
+                />
+            </div>
         </div>
     );
 }

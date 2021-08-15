@@ -1,41 +1,51 @@
+// .Fashion_head {
+//     margin-bottom: 0.5rem;
+// }
 
-/* ------------------------------------------ */
-//
-.Fashion_body{
-    margin: 0 0.5rem;
+.Fashion_carousel {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem 0;
 }
 
-//
-.Fashion_head{
-    margin-bottom: 0.5rem;
-}
-.Fashion_carousel{
-    margin: 1rem 0;
+
+.Fashion_body {
+    width: 1200px;
+    max-width: 100%;
+    margin: 1rem auto;
 }
 
-.Fashion_banner{
+.Fashion_banner {
     background-image: url('/image/banner_shopping.jpg');
     background-position: center;
     background-size: cover;
 }
 
-.Fashion__list{
+.Fashion__list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
+
     margin: auto;
     padding: 0;
     list-style-type: none;
 }
-.Fashion_more{
+.Fashion_more {
     text-align: center;
 }
 
+.Fashion_banner_new{
+    margin-bottom: 1rem;
+}
+
+.Fashion_body_mont{
+    margin-bottom: 1rem;
+}
+
 //
-@media (max-width: 300px){
-    .Fashion_body{
+@media (max-width: 300px) {
+    .Fashion_body {
         margin: 0 0.25rem;
     }
 }
-

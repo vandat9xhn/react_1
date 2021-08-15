@@ -8,20 +8,29 @@ import {
 } from '../_some_function/ScrollDown';
 
 //
-export const useScrollDown = ({
+export function useScrollDown({
     elm = window,
     thresh_hold = 1,
     more_bottom = 100,
 
     initial_data_arr = [],
     handle_API_L = () => new Promise(),
-}) => {
+}) {
     //
-    const { data_state, setDataState, getData_API, is_max, data_count } =
-        useDataShowMore({
-            initial_arr: initial_data_arr,
-            handle_API_L: handle_API_L,
-        });
+    const {
+        data_state,
+        setDataState,
+
+        is_max,
+        data_count,
+        ref_fetching,
+
+        getData_API,
+        refreshData_API,
+    } = useDataShowMore({
+        initial_arr: initial_data_arr,
+        handle_API_L: handle_API_L,
+    });
 
     //
     const pos = useRef(0);
@@ -107,10 +116,17 @@ export const useScrollDown = ({
         setDataState,
 
         handleScroll,
+
+        is_max,
+        ref_fetching,
+        data_count,
+
+        getData_API,
+        refreshData_API,
         getData_API_at_first,
         resetStopScrollDown,
     };
-};
+}
 
 //
 export function useScrollDownWindow({

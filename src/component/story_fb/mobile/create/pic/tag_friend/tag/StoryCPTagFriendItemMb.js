@@ -36,11 +36,11 @@ function StoryCPTagFriendItemMb({
 
     //
     function handleTouchStart(e) {
-        if (e.touches.length == 1) {
+        // if (e.touches.length == 1) {
             handleStartMove(e);
-        } else {
+        // } else {
             handleStartResize(e);
-        }
+        // }
     }
 
     //

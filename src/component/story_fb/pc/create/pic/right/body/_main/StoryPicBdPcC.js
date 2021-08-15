@@ -30,7 +30,7 @@ function StoryPicBdPcC({
                 style={{ backgroundImage: `url(${vid_pic_obj.vid_pic})` }}
             ></div>
 
-            <div className="pos-abs-center h-100per">
+            <div className="pos-abs-center w-100per">
                 <StoryPicBdPicPcC
                     vid_pic_obj={vid_pic_obj}
                     handleMove={handleMovePic}

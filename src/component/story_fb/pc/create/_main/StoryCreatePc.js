@@ -96,7 +96,8 @@ function StoryCreatePc({ show_fav, closeScreen }) {
 
     //
     function handleCloseStoryCreate() {
-        closeScreen();
+        // closeScreen();
+        history.back()
     }
 
     //

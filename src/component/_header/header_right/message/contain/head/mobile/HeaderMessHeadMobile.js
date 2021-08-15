@@ -9,6 +9,8 @@ HeaderMessHeadMobile.propTypes = {};
 //
 function HeaderMessHeadMobile({
     ref_head_elm,
+    ref_fake_elm_end,
+
     friend_arr,
     has_fetched,
     closeZoom,
@@ -17,15 +19,12 @@ function HeaderMessHeadMobile({
     return (
         <div
             ref={ref_head_elm}
-            className="max-w-100per overflow-x-auto snap-x-mandatory scroll-height-0"
+            className="max-w-100per overflow-x-auto scroll-height-0"
         >
             <div className={`${has_fetched ? '' : 'display-none'}`}>
                 <div className="display-flex align-items-center">
                     {friend_arr.map((friend, ix) => (
-                        <div
-                            key={`ListMessages_friend_${ix}`}
-                            className="snap-align-end"
-                        >
+                        <div key={`${friend.id}`}>
                             <MessageFriend
                                 is_mouse_down={false}
                                 friend_id={friend.id}
@@ -35,6 +34,8 @@ function HeaderMessHeadMobile({
                             />
                         </div>
                     ))}
+
+                    <div ref={ref_fake_elm_end} className="padding-4px"></div>
                 </div>
             </div>
         </div>

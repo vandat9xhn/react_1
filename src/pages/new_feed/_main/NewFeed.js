@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../_context/ContextAPI';
 //
-import { useScrollDownWindow } from '../../../_hooks/useScrollDown';
+import { useObserverShowMore } from '../../../_hooks/useObserverShowMore';
 import { useScreenFetching } from '../../../_hooks/UseScreenFetching';
 //
 import { initial_posts } from '../../../_initial/post/InitialPosts';
@@ -30,13 +30,16 @@ function NewFeed() {
 
     //
     const params_api = useRef({});
+    const ref_fake_elm_end = useRef(null);
 
     //
     const {
         data_state,
-        getData_API_at_first: getData_API_Post_first,
         setDataState,
-    } = useScrollDownWindow({
+
+        refreshData_API,
+        observerShowMore,
+    } = useObserverShowMore({
         initial_data_arr: initial_posts,
         handle_API_L: (c_count) =>
             handle_API_NewFeedPost_L({
@@ -47,13 +50,21 @@ function NewFeed() {
 
     const { data_arr, is_fetching, has_fetched } = data_state;
 
-    // 
-    const handleScreenFetching = useScreenFetching()
+    //
+    const handleScreenFetching = useScreenFetching();
 
     //
     useEffect(() => {
         document.title = 'New Feed';
-        getData_API_Post_first();
+
+        refreshData_API();
+
+        observerShowMore({
+            fake_elm_end: ref_fake_elm_end.current,
+            rootMargin: '0px 0px 1000px 0px',
+            way_scroll: 'to_bottom',
+            margin: 1000,
+        });
     }, []);
 
     /* ----------- SEARCH ---------- */
@@ -63,7 +74,7 @@ function NewFeed() {
             search: search,
         };
 
-        getData_API_Post_first();
+        refreshData_API();
     };
 
     /* ----------- CREATE ----------- */
@@ -109,11 +120,16 @@ function NewFeed() {
                     <div className="NewFeed_col-center flex-grow-1">
                         <NewFeedCenter
                             // title_add_new={title_add_new}
-                            handleCreatePost={handleCreatePost}
-                            post_arr={has_fetched ? data_arr : []}
+                            post_arr={data_arr}
                             has_fetched={has_fetched}
                             is_fetching={is_fetching}
+                            handleCreatePost={handleCreatePost}
                         />
+
+                        <div
+                            ref={ref_fake_elm_end}
+                            className="padding-1px"
+                        ></div>
                     </div>
 
                     <div className="NewFeed_col-right">

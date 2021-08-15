@@ -12,6 +12,7 @@ import NextPrevDiv from '../../some_div/next_prev_div/NextPrevDiv';
 import CarouselItem from '../item/CarouselItem';
 //
 import './Carousel.scss';
+import CarouselDot from '../dot/CarouselDot';
 
 //
 Carousel.propTypes = {
@@ -74,6 +75,7 @@ function Carousel({
         if (has_fetched) {
             transition_none.current = false;
             stopInterval(false);
+            forceUpdate()
         }
     }, [vid_pics]);
 
@@ -164,6 +166,7 @@ function Carousel({
     //
     function handleTouchStart() {
         stopInterval(true);
+        transition_none.current = true;
         doSkipInterval();
     }
 
@@ -185,23 +188,27 @@ function Carousel({
             handlePrev();
         }
 
+        transition_none.current = false;
         setExtraTransX(0);
         stopInterval(false);
     }
 
     //
     return (
-        <div ref={ref_carousel_elm} className="Carousel pos-rel wh-100">
+        <div
+            ref={ref_carousel_elm}
+            className="Carousel pos-rel wh-100 overflow-hidden"
+        >
             <div
-                className="Carousel_row pos-rel display-flex"
+                className="Carousel_row pos-rel display-flex h-100per"
                 style={{
                     width: `${100 * vid_pics.length}%`,
                     transform: `translateX(-${
                         (ref_vid_pic_ix.current * 100) / vid_pics.length
                     }%) translateX(${extra_trans_x}px)`,
                     transition: transition_none.current
-                        ? 'none'
-                        : `transform ${time_trans}ms`,
+                        ? undefined
+                        : `all ${time_trans}ms`,
                 }}
                 onTouchStart={IS_MOBILE ? handleStart : undefined}
                 onTouchMove={IS_MOBILE ? handleMove : undefined}
@@ -214,6 +221,17 @@ function Carousel({
                         width_vid_pic={`${100 / vid_pics.length}%`}
                     />
                 ))}
+            </div>
+
+            <div className="pos-abs bottom-0 x-center padding-8px">
+                <CarouselDot
+                    count={ref_count.current - 2}
+                    active_ix={
+                        ref_vid_pic_ix.current - 1 == ref_count.current - 1
+                            ? 0
+                            : ref_vid_pic_ix.current - 1
+                    }
+                />
             </div>
 
             {IS_MOBILE ? null : (

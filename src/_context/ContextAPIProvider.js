@@ -1,9 +1,9 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 //
 import { context_api } from './ContextAPI';
 //
 import { initial_user } from '../_initial/user/initialUser';
-// 
+//
 import { DefineUser } from '../api/api_django_no_token/define_user/DefineUser';
 
 //
@@ -16,6 +16,9 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
     });
 
     const { user, has_fetched } = context_state;
+
+    //
+    const root_floor_url_arr = useRef([]);
 
     /* ---------------------- USER ------------------- */
     //
@@ -76,6 +79,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
                 auth_class: user.id ? '' : 'display-none',
                 user: user,
                 setDataUser: setDataUser,
+                root_floor_url_arr: root_floor_url_arr,
             }}
         >
             {has_fetched ? children : null}

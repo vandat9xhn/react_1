@@ -70,7 +70,7 @@ function HeaderMessHeadPc({
                         </div>
                     ))}
 
-                    <div ref={ref_fake_elm_end} className="padding-4px" style={{width: '1rem'}}></div>
+                    <div ref={ref_fake_elm_end} className="padding-4px"></div>
                 </div>
             </div>
 

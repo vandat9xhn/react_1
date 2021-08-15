@@ -9,6 +9,7 @@ import ScreenNoFloor from './ScreenNoFloor';
 import ScreenHasFloor from './ScreenHasFloor';
 //
 import './AppScreen.scss';
+import { context_api } from '../../../_context/ContextAPI';
 
 //
 class AppScreen extends Component {
@@ -37,12 +38,19 @@ class AppScreen extends Component {
             hidden_before = false,
             ...rest_floor_props
         } = new_floor;
+        const { root_floor_url_arr } = this.context;
         const { floor_arr, history_arr, count_history } = this.state;
 
         window_screen_scroll_arr.push({
             x: window.scrollX,
             y: window.scrollY,
         });
+
+        if (has_history) {
+            root_floor_url_arr.current.push(location.pathname);
+
+            // console.log(root_floor_url_arr.current);
+        }
 
         this.setState({
             floor_arr: [
@@ -64,17 +72,13 @@ class AppScreen extends Component {
     closeScreenFloor = () => {
         const { floor_arr } = this.state;
 
-        if (floor_arr[floor_arr.length - 1].has_history) {
-            history.back();
-        } else {
-            floor_arr.pop();
+        floor_arr.pop();
 
-            this.setState({});
+        this.setState({});
 
-            if (floor_arr.length == 0) {
-                this.count_has_change = 0;
-                this.has_change_obj = { current: false };
-            }
+        if (floor_arr.length == 0) {
+            this.count_has_change = 0;
+            this.has_change_obj = { current: false };
         }
     };
 
@@ -86,7 +90,10 @@ class AppScreen extends Component {
 
     //
     closeScreenHasHistory = () => {
+        const { root_floor_url_arr } = this.context;
         const { floor_arr, history_arr, count_history } = this.state;
+
+        root_floor_url_arr.current.pop();
         const last_history = history_arr.pop();
 
         this.setState({
@@ -142,5 +149,7 @@ class AppScreen extends Component {
 }
 
 AppScreen.propTypes = {};
+
+AppScreen.contextType = context_api;
 
 export default AppScreen;

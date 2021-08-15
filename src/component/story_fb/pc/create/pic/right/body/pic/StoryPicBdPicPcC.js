@@ -21,14 +21,14 @@ function StoryPicBdPicPcC({ vid_pic_obj, handleMove }) {
     //
     return (
         <div
-            className="StoryPicBdPicPcC pos-abs cursor-move h-100per left-50per top-50per"
+            className="StoryPicBdPicPcC pos-abs cursor-move w-100per left-50per top-50per"
             style={{
                 transform: `translate(${-50}%, ${-50}%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
             }}
             onMouseDown={handleStart}
         >
             <img
-                className="pointer-events-none h-100per"
+                className="StoryPicBdPicPcC_img pointer-events-none w-100per"
                 src={vid_pic}
                 alt=""
             />

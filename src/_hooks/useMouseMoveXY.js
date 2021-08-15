@@ -44,6 +44,12 @@ export function useMouseMoveXY({
             return;
         };
 
+        if (e.touches && e.touches.length > 1) {
+            window.onmousemove = null
+            window.onmouseup = null
+            return
+        }
+
         const { client_x: new_client_x, client_y: new_client_y } =
             getClientXY(e);
 

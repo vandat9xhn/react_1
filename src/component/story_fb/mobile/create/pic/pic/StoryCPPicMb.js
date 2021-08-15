@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { use2FingersResize } from '../../../../../../_hooks/use2FingersResize';
 import { useMouseMoveXY } from '../../../../../../_hooks/useMouseMoveXY';
-// 
-import './StoryCPPicMb.scss'
+//
+import './StoryCPPicMb.scss';
 
 //
 StoryCPPicMb.propTypes = {};
@@ -21,9 +21,10 @@ function StoryCPPicMb({
         vid_pic_obj;
 
     //
-    const { handleStart: handleStartResize, handleElmTouchEnd } = use2FingersResize({
-        handleResize: handleResizePic,
-    });
+    const { handleStart: handleStartResize, handleElmTouchEnd } =
+        use2FingersResize({
+            handleResize: handleResizePic,
+        });
 
     const { handleStart: handleStartMove } = useMouseMoveXY({
         handleMouseMove: handleMovePic,
@@ -31,23 +32,25 @@ function StoryCPPicMb({
 
     //
     function handleTouchStart(e) {
-        if (e.touches.length == 1) {
-            mode.toUpperCase() == 'MOVE' && handleStartMove(e);
-        } else {
-            mode.toUpperCase() == 'RESIZE' && handleStartResize(e);
-        }
+        // if (e.touches.length == 1) {
+            ['MOVE', 'AUTO'].includes(mode.toUpperCase()) && handleStartMove(e);
+        // } else {
+            ['RESIZE', 'AUTO'].includes(mode.toUpperCase()) && handleStartResize(e);
+        // }
     }
 
-    // 
+    //
     function onTouchEnd() {
-        handleTouchEnd()
-        handleElmTouchEnd()
+        handleTouchEnd();
+        handleElmTouchEnd();
     }
 
     //
     return (
         <div
-            className="StoryCPPicMb pos-abs left-50per top-50per touch-action-none"
+            className={`StoryCPPicMb pos-abs left-50per top-50per ${
+                mode.toUpperCase() == 'FIXED' ? '' : 'touch-action-none'
+            }`}
             style={{
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
             }}

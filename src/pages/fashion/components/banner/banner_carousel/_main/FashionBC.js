@@ -14,8 +14,8 @@ FashionBC.propTypes = {};
 function FashionBC({ images, has_fetched }) {
     //
     return (
-        <div className="FashionBC">
-            <div className="FashionBC_row display-flex align-items-center flex-wrap">
+        <div className="FashionBC user-select-none">
+            <div className="FashionBC_row flex-between-center flex-wrap">
                 <div className="FashionBC_carousel">
                     <Carousel
                         vid_pics={images}

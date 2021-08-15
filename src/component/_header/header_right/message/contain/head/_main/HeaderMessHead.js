@@ -7,7 +7,8 @@ import observeToDo from '../../../../../../../_some_function/observerToDo';
 //
 import { handle_API_Friend_L } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
 //
-import { useScrollRightShowMore } from '../../../../../../../_hooks/useScrollRightShowMore';
+// import { useScrollRightShowMore } from '../../../../../../../_hooks/useScrollRightShowMore';
+import { useObserverShowMore } from '../../../../../../../_hooks/useObserverShowMore';
 //
 import ComponentSkeleton from '../../../../../../skeleton/component_skeleton/ComponentSkeleton';
 //
@@ -17,7 +18,6 @@ import HeaderMessHeadMobile from '../mobile/HeaderMessHeadMobile';
 //
 import white_person from '../../../../../../../../image/white_person.svg';
 import './HeaderMessHead.scss';
-import { useObserverShowMore } from '../../../../../../../_hooks/useObserverShowMore';
 
 //
 HeaderMessHead.propTypes = {
@@ -33,7 +33,6 @@ function HeaderMessHead({ closeZoom }) {
 
     //
     const { data_state, observerShowMore, getData_API } = useObserverShowMore({
-        // ref_fake_elm_end: ref_fake_elm_end,
         initial_arr: [],
         handle_API_L: (c_count) =>
             handle_API_Friend_L({
@@ -43,10 +42,6 @@ function HeaderMessHead({ closeZoom }) {
                     size: 10,
                 },
             }),
-        // options_observer: {
-        //     root: ref_head_elm,
-        //     rootMargin: '0px 0px 0px 500px',
-        // }
     });
 
     // //
@@ -70,28 +65,28 @@ function HeaderMessHead({ closeZoom }) {
         observeToDo(
             ref_main_elm.current,
             () => {
-                observerShowMore({
-                    elm: ref_fake_elm_end.current,
-                    options_observer: {
-                        root: ref_main_elm.current,
-                        rootMargin: '500px',
-                    },
-                });
+                getData_API();
 
-                getData_API()
+                observerShowMore({
+                    fake_elm_end: ref_fake_elm_end.current,
+                    root: ref_head_elm.current,
+                    rootMargin: '0px 350px 0px 0px',
+                    way_scroll: 'to_right',
+                    margin: 350,
+                });
             },
             0
         );
-        // observerShowMore()
     }, []);
 
     //
     return (
         <div ref={ref_main_elm}>
-            {/* <div className="display-flex"> */}
             {IS_MOBILE ? (
                 <HeaderMessHeadMobile
                     ref_head_elm={ref_head_elm}
+                    ref_fake_elm_end={ref_fake_elm_end}
+                    //
                     friend_arr={data_arr}
                     has_fetched={has_fetched}
                     closeZoom={closeZoom}
@@ -100,6 +95,7 @@ function HeaderMessHead({ closeZoom }) {
                 <HeaderMessHeadPc
                     ref_head_elm={ref_head_elm}
                     ref_fake_elm_end={ref_fake_elm_end}
+                    //
                     friend_arr={data_arr}
                     has_fetched={has_fetched}
                     closeZoom={closeZoom}
@@ -120,9 +116,6 @@ function HeaderMessHead({ closeZoom }) {
                 num={1}
                 skeleton_class="display-flex align-items-center"
             />
-
-            {/* <div className="padding-4px" ref={ref_fake_elm_end}></div> */}
-            {/* </div> */}
         </div>
     );
 }

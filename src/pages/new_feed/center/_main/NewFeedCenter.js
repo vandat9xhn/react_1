@@ -13,11 +13,12 @@ NewFeedCenter.propTypes = {};
 //
 function NewFeedCenter({
     title_add_new,
-    handleCreatePost,
-
+    
     post_arr,
     has_fetched,
     is_fetching,
+    
+    handleCreatePost,
 }) {
     return (
         <div className="NewFeedCenter">

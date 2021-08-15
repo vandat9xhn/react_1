@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import CustomLink from '../../../../../component/link/link/CustomLink';
-import InputSearch from '../../../../../component/input/input_search/InputSearch';
+import CustomLink from '../../../../../../component/link/link/CustomLink';
+import InputSearch from '../input/InputSearch';
 //
 import './FashionHC.scss';
 
@@ -18,14 +18,12 @@ FashionHC.propTypes = {
 };
 
 //
-function FashionHC(props) {
-    const {
-        value_search,
-        handled,
-        handleChangeValueSearch,
-        handleSearchFashion,
-    } = props;
-
+function FashionHC({
+    value_search,
+    handled,
+    handleChangeValueSearch,
+    handleSearchFashion,
+}) {
     //
     return (
         <div className="FashionHC">
@@ -41,12 +39,12 @@ function FashionHC(props) {
             </div>
 
             <div className="FashionHC_search">
-                <div className="FashionHC_search-row">
+                <div className="display-flex">
                     {searches.map((search, ix) => (
-                        <div key={`FashionHC_${ix}`}>
+                        <div key={`${ix}`} className="padding-x-8px">
                             <CustomLink
                                 to={`/fashion/search?q=${search}`}
-                                className="normal-text"
+                                className="text-white font-12px label-field"
                             >
                                 {search}
                             </CustomLink>

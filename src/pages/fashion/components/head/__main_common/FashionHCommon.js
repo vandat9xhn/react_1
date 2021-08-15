@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import FashionHL from '../left/FashionHL';
-import FashionHC from '../center/FashionHC';
+import FashionHC from '../center/_main/FashionHC';
 import FashionHR from '../right/FashionHR';
 //
 import './FashionHCommon.scss';
@@ -29,23 +29,25 @@ function FashionHCommon({
 
     //
     return (
-        <div className="FashionHCommon">
-            <div className="FashionHCommon_row display-flex align-items-center">
-                <div className="FashionHCommon_left">
-                    <FashionHL />
-                </div>
+        <div className="FashionHCommon padding-8px bg-fashion-head">
+            <div className="FashionHCommon_contain margin-auto">
+                <div className="FashionHCommon_row display-flex align-items-center">
+                    <div className="FashionHCommon_left FashionHCommon_side">
+                        <FashionHL />
+                    </div>
 
-                <div className="FashionHCommon_center">
-                    <FashionHC
-                        handled={handled}
-                        value_search={value_search}
-                        handleChangeValueSearch={handleChangeValueSearch}
-                        handleSearchFashion={handleSearchFashion}
-                    />
-                </div>
+                    <div className="FashionHCommon_center flex-grow-1">
+                        <FashionHC
+                            handled={handled}
+                            value_search={value_search}
+                            handleChangeValueSearch={handleChangeValueSearch}
+                            handleSearchFashion={handleSearchFashion}
+                        />
+                    </div>
 
-                <div className="FashionHCommon_right">
-                    {user.id ? <FashionHR /> : null}
+                    <div className="FashionHCommon_right FashionHCommon_side">
+                        {user.id ? <FashionHR /> : null}
+                    </div>
                 </div>
             </div>
         </div>

@@ -20,11 +20,13 @@ import { params_profile_post_l } from '../../_params/profile/paramsProfileHome';
 import makeFormData from '../../_some_function/makeFormData';
 
 // posts
-export async function handle_API_ProfilePost_L(c_count) {
+export async function handle_API_ProfilePost_L(c_count = 0, user_id = -1) {
     const res = await API_Post_L({
         ...params_profile_post_l,
         c_count: c_count,
+        user_id: user_id,
     });
+    console.log(c_count, user_id, res.data);
 
     return res.data;
 }
@@ -46,7 +48,7 @@ export async function handle_API_Friend_L({
     const { data, ...rest_data } = res.data;
     const new_data = data.map((item) => item.friend);
     
-    console.log(params, 'c_count: ', c_count, 'user_id: ', user_id, res.data);
+    // console.log(params, 'c_count: ', c_count, 'user_id: ', user_id, res.data);
 
     return { ...rest_data, data: new_data };
 }

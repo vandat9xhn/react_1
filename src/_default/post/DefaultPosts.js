@@ -107,4 +107,4 @@ export const default_post_obj = () => ({
     profile_model: 1,
 });
 
-export const default_post_arr = () => getDefaultArr(default_post_obj, 4, 4);
+export const default_post_arr = () => getDefaultArr(default_post_obj, 6, 10);

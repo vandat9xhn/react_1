@@ -2,19 +2,22 @@
     user-select: none;
 }
 
-.FashionBC_row {
-    justify-content: space-around;
-}
 //
 .FashionBC_carousel {
-    width: 40rem;
-    max-width: 95vw;
+    width: 66%;
     height: 15rem;
     overflow: hidden;
+}
+// .
+.FashionBC_right{
+    width: 33%;
 }
 
 //
 @media (max-width: 1000px) {
+    .FashionBC_carousel{
+        width: 100%;
+    }
     .FashionBC_right {
         display: none;
     }

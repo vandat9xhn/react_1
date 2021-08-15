@@ -158,11 +158,11 @@ function StoryHomePc({
 
     //
     function handleClose() {
-        if (has_close) {
-            closeScreen()
-        } else {
+        // if (has_close) {
+        //     closeScreen()
+        // } else {
             history.back();
-        }
+        // }
     }
 
     //

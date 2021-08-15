@@ -114,7 +114,7 @@ function NewFeedStory(props) {
         if (IS_MOBILE) {
             openScreenStoryItemMobile({
                 openScreenFloor: openScreenFloor,
-                story_arr: data_arr,
+                story_arr: feed_story_arr,
                 active_ix: ix,
                 count: count,
                 story_type: 'yours_followed',

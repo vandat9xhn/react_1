@@ -35,7 +35,7 @@ import DivFixAction from './component/_div_fix/action/DivFixAction';
 
 import AppScreen from './component/_screen/_main/AppScreen';
 import ScreenOnce from './component/_screen_once/_main/ScreenOnce';
-import CustomSwitch from './__routes/__switch';
+import CustomSwitch from './__Switch/__switch';
 
 // App
 class App extends Component {

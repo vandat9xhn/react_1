@@ -11,10 +11,11 @@ FashionHSearch.propTypes = {
 };
 
 //
-function FashionHSearch(props) {
-    // props
-    const { handleSearchFashion, value_search, handleChangeValueSearch } =
-        props;
+function FashionHSearch({
+    handleSearchFashion,
+    value_search,
+    handleChangeValueSearch,
+}) {
     //
     return (
         <div className="FashionHSearch">

@@ -8,8 +8,10 @@ import FashionCtg from '../../../components/categories/FashionCtg';
 import FashionH from '../../../components/head/_main/FashionH';
 import FashionBody from '../body/FashionBody';
 //
+import fashion_home_new from '../../../../../../image/fashion_home_new.jpg';
 import image_loading from '../../../../../../image/image_loading.svg';
 import './Fashion.scss';
+import FashionMonth from '../month/_main/FashionMonth';
 
 //
 function Fashion(props) {
@@ -60,27 +62,33 @@ function Fashion(props) {
                 <FashionH />
             </div>
 
-            <div className="Fashion_body">
-                <div>
-                    <div className="Fashion_carousel">
-                        <FashionBC
-                            images={
-                                has_fetched_hot
-                                    ? hot_images
-                                    : Array(3).fill(image_loading)
-                            }
-                            has_fetched={has_fetched_hot}
-                        />
-                    </div>
+            <div className="bg-primary">
+                <div className="Fashion_carousel">
+                    <FashionBC
+                        images={
+                            has_fetched_hot
+                                ? hot_images
+                                : Array(3).fill(image_loading)
+                        }
+                        has_fetched={has_fetched_hot}
+                    />
 
-                    <div className="Fashion_banner">
-                        <FashionLN />
+                    <FashionLN />
 
-                        <FashionCtg />
-                    </div>
+                    <FashionCtg />
                 </div>
-                <hr className="App_hr-bg" />
+            </div>
 
+
+            <div className="Fashion_body">
+                <div className="Fashion_banner_new">
+                    <img className="w-100per" src={fashion_home_new} alt="" />
+                </div>
+                
+                <div className="Fashion_body_mont">
+                    <FashionMonth />
+                </div>
+                
                 <div>
                     <FashionBody />
                 </div>

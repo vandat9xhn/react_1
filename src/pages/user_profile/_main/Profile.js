@@ -103,7 +103,7 @@ function Profile(props) {
     // console.log(route_arr);
     //
     return (
-        <div className="Profile">
+        <div key={id} className="Profile">
             <div className="Profile_info">
                 <ProfileInfo
                     profile={profile}

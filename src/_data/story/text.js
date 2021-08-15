@@ -98,6 +98,7 @@ export const data_story_effect_arr = [
 
 //
 export const data_story_pic_edit_mode_arr = [
+    'Auto',
     'Fixed',
     'Move',
     'Resize',
