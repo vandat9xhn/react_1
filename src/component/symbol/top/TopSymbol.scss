@@ -1,0 +1,15 @@
+$sym-width: 40;
+
+/* ------------- */
+
+.TopSymbol {
+    width: #{$sym-width}px;
+    padding: 5px 2px 2px;
+    background-color: var(--border-fashion);
+
+    &::after {
+        border-width: 5px #{$sym-width / 2}px 0px;
+        border-style: solid;
+        border-color: var(--border-fashion);
+    }
+}

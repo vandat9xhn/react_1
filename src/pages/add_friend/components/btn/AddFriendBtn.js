@@ -46,7 +46,7 @@ function AddFriendBtn({
                         disabled={requesting || removing}
                         onClick={handleRequesting}
                     >
-                        <div className="AddFriendBtn_btn-contain">
+                        <div className="AddFriendBtn_btn_contain">
                             {requesting ? '...' : title_request}
                         </div>
                     </button>
@@ -58,7 +58,7 @@ function AddFriendBtn({
                         disabled={removing || requesting}
                         onClick={handleRemoving}
                     >
-                        <div className="AddFriendBtn_btn-contain">
+                        <div className="AddFriendBtn_btn_contain">
                             {removing ? '...' : title_remove}
                         </div>
                     </button>

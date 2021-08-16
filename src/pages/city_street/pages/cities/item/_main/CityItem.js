@@ -171,7 +171,7 @@ function CityItem({ city_obj }) {
 
                     <div className="CityItem_img">
                         <a href={image} target="_blank">
-                            <div className="CityItem_img-contain bg-loader brs-5px">
+                            <div className="CityItem_img_contain bg-loader brs-5px">
                                 <div className="display-flex-center h-100per">
                                     <img src={image} alt="" />
                                 </div>

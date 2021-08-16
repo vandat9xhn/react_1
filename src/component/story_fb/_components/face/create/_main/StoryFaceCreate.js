@@ -31,7 +31,7 @@ function StoryFaceCreate(props) {
 
                 <div className="StoryFaceCreate_foot pos-rel display-flex-center">
                     <div className="StoryFaceCreate_add">
-                        <div className="StoryFaceCreate_add-contain display-flex-center bg-blue brs-50">
+                        <div className="StoryFaceCreate_add_contain display-flex-center bg-blue brs-50">
                             <IconsArrow y={400} size_icon="1rem" />
                         </div>
                     </div>

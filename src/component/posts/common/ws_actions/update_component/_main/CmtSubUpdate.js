@@ -102,7 +102,7 @@ function CmtSubUpdate({ text, vid_pic, handleUpdate, detectHasChange }) {
                 </div>
 
                 <div className="CmtSubUpdate_pic">
-                    <div className="CmtSubUpdate_pic-contain">
+                    <div className="CmtSubUpdate_pic_contain">
                         <div className="display-flex justify-content-center">
                             <div
                                 className={

@@ -23,7 +23,7 @@ function HeaderMessContain({
 }) {
     //
     return (
-        <div className="RightHeader_hidden-contain header_hidden-contain">
+        <div className="RightHeader_hidden_contain header_hidden_contain">
             <h2 className="padding-8px margin-0">Messages</h2>
 
             <div className="HeaderMessContain_friend">

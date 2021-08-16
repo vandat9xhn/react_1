@@ -67,7 +67,7 @@ function PfAboutAdd({
             <div className="PfAbout_add">
                 <div>
                     <div
-                        className={`PfAboutAdd_add-contain ${
+                        className={`PfAboutAdd_add_contain ${
                             is_adding ? 'display-none' : ''
                         }`}
                         onClick={openAdding}

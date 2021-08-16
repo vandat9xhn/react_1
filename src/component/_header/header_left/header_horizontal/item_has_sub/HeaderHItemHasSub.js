@@ -38,7 +38,7 @@ function HeaderHItemHasSub({ item }) {
             </div>
 
             <div className="HeaderHItemHasSub_sub header_hidden left-0">
-                <div className="header_hidden-contain">
+                <div className="header_hidden_contain">
                     <ul className="list-none">
                         {sub_list.map((sub_item, ix) => (
                             <li key={`HeaderHItemHasSub_item_${ix}`}>

@@ -12,7 +12,7 @@ FashionBCR.propTypes = {};
 function FashionBCR(props) {
     //
     return (
-        <div className="FashionBCR display-flex flex-col space-between">
+        <div className="FashionBCR h-100per display-flex flex-col space-between">
             <div className="FashionBCR_part">
                 <img className="wh-100" src={banner_laptop} alt="" />
             </div>

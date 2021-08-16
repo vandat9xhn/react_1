@@ -1,4 +1,16 @@
+.RowProducts_not_fetched{
+    height: 310px;
+}
 
 .RowProducts_title{
     margin-bottom: 0.5rem;
+}
+
+.row-product-item{
+    flex-shrink: 0;
+    margin-right: 5px;
+    width: 188px;
+    max-width: 45%;
+
+    border: 1px solid var(--md-bg-blur);
 }

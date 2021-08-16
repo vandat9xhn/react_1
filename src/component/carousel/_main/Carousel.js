@@ -33,6 +33,7 @@ function Carousel({
 
     disabled_btn_when_trans = true,
     time_disabled_btn = 100,
+    is_btn_circle,
 }) {
     //
     const [extra_trans_x, setExtraTransX] = useState(0);
@@ -70,14 +71,18 @@ function Carousel({
     }, []);
 
     useEffect(() => {
-        ref_count.current = vid_pics.length;
-
         if (has_fetched) {
+            ref_count.current = vid_pics.length;
             transition_none.current = false;
             stopInterval(false);
-            forceUpdate()
+
+            setTimeout(() => {
+                forceUpdate();
+            }, 0);
+        } else {
+            stopInterval(true);
         }
-    }, [vid_pics]);
+    }, [has_fetched]);
 
     /* --------------- COMMON ------------- */
 
@@ -223,7 +228,11 @@ function Carousel({
                 ))}
             </div>
 
-            <div className="pos-abs bottom-0 x-center padding-8px">
+            <div
+                className={`pos-abs bottom-0 x-center padding-8px ${
+                    has_fetched ? '' : 'display-none'
+                }`}
+            >
                 <CarouselDot
                     count={ref_count.current - 2}
                     active_ix={
@@ -236,7 +245,7 @@ function Carousel({
 
             {IS_MOBILE ? null : (
                 <NextPrevDiv
-                    is_btn_circle={true}
+                    is_btn_circle={is_btn_circle}
                     size_icon="0.8rem"
                     handleNext={handleNext}
                     handlePrev={handlePrev}

@@ -8,8 +8,11 @@ import {
     data_story_effect_arr,
     data_story_pic_edit_mode_arr,
     data_story_tag_bg_color_arr,
-    MIN_SCALE_TEXT_TAG,
 } from '../../../../../../_data/story/text';
+//
+import { getValueHasMinMax } from '../../../../../../_some_function/getValueHasMinMax';
+//
+import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 //
 import StoryIconCloseMb from '../../../../_components/create/mobile/icon_close/StoryIconCloseMb';
 import StoryBtnPrivacyMb from '../../../../_components/create/mobile/privacy/StoryBtnPrivacyMb';
@@ -25,8 +28,6 @@ import StoryCPEditPicMb from '../edit_pic/_main/StoryCPEditPicMb';
 import StoryRotatePic from '../../../../_components/create/story_pic/rotate/StoryRotatePic';
 //
 import './StoryCreatePicMb.scss';
-import { getValueHasMinMax } from '../../../../../../_some_function/getValueHasMinMax';
-import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 
 //
 StoryCreatePicMb.propTypes = {};
@@ -107,8 +108,8 @@ function StoryCreatePicMb({
     ]);
     const active_touch_ix = useRef(0);
 
-    // 
-    const forceUpdate = useForceUpdate()
+    //
+    const forceUpdate = useForceUpdate();
 
     /* ------- PIC ------- */
 
@@ -279,7 +280,7 @@ function StoryCreatePicMb({
             }
         );
 
-        open_edit_pic && forceUpdate()
+        open_edit_pic && forceUpdate();
 
         // console.log(history_touch_arr.current);
     }

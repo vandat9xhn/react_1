@@ -7,7 +7,7 @@
         transform: translateX(-50%);
         width: 100%;
 
-        .Comments_input-contain{
+        .Comments_input_contain{
             width: 100%;
             padding: 0.25rem;
             background-color: var(--md-bg-primary);
@@ -39,7 +39,7 @@
         .Comments_input {
             transform: translateX(-51.5%);
             width: auto;
-            .Comments_input-contain{
+            .Comments_input_contain{
                 width: 500px;
             }
             // .
@@ -58,7 +58,7 @@
     .ZoomVidPicItem {
         .Comments_input {
             transform: translateX(-50%);
-            .Comments_input-contain{
+            .Comments_input_contain{
                 width: 100vw;
             }
         }

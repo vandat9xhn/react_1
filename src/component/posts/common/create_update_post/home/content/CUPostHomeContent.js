@@ -23,7 +23,7 @@ function CUPostHomeContent({
     return (
         <div className="CUPostHomeContent brs-5px-md scroll-thin">
             <div className="CUPostHomeContent_input">
-                <div className="CUPostHomeContent_input-contain brs-5px">
+                <div className="CUPostHomeContent_input_contain brs-5px">
                     <textarea
                         className="CUPostHomeContent__textarea scroll-thin"
                         rows="4"
@@ -35,7 +35,7 @@ function CUPostHomeContent({
             </div>
 
             <div className="CUPostHomeContent_preview">
-                <div className="CUPostHomeContent_preview-contain brs-5px">
+                <div className="CUPostHomeContent_preview_contain brs-5px">
                     <ImgVidPreview
                         urls={urls_preview}
                         vid_pic_count={true}

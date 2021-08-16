@@ -22,7 +22,7 @@ function FashionItemInfo({
 
     //
     return (
-        <div className="FashionItemInfo">
+        <div className="FashionItemInfo bg-primary">
             <div className="FashionItemInfo_row display-flex">
                 <div className="FashionItemInfo_col">
                     <FashionItemInfoLeft

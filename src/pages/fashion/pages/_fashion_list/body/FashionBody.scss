@@ -1,3 +1,18 @@
-.FashionBody_title{
-    margin-bottom: 0.5rem;
+.FashionBody_title {
+    margin-bottom: 0.25rem;
+}
+
+.FashionBody_title_item-active{
+    border-bottom: 2px solid var(--fashion-head);
+}
+
+.FashionBody_item {
+    width: 198px;
+}
+
+//
+@media (max-width: 400px) {
+    .FashionBody_item {
+        width: 50%;
+    }
 }

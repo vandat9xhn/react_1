@@ -22,7 +22,7 @@ function ListNotices({
 }) {
     //
     return (
-        <div className="RightHeader_hidden-contain header_hidden-contain">
+        <div className="RightHeader_hidden_contain header_hidden_contain">
             <h2 className="margin-0 padding-8px">Notices</h2>
 
             <h4

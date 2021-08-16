@@ -106,7 +106,7 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
                 }`}
             >
                 <div
-                    className="ChatWdHidden_room-contain"
+                    className="ChatWdHidden_room_contain"
                     style={{ height: `${count_hide_item * 52}px` }}
                 >
                     <div>

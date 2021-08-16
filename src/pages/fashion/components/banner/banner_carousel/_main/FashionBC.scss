@@ -2,20 +2,50 @@
     user-select: none;
 }
 
-//
+// .
 .FashionBC_carousel {
     width: 66%;
-    height: 15rem;
-    overflow: hidden;
+
+    &:hover{
+        .BtnNexPrev{
+            opacity: 1;
+            transition: all 200ms ease-in;
+        }
+    }
+
+    .BtnNexPrev {
+        opacity: 0;
+        height: 60px;
+        width: 35px;
+        background: #00000052;
+    }
+    .IconsArrow {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+    .IconsArrow_next,
+    .IconsArrow_prev {
+        stroke: var(--white);
+        stroke-width: 30;
+    }
 }
+// ..
+.FashionBC_carousel_contain {
+    padding-top: 33%;
+}
+
 // .
-.FashionBC_right{
+.FashionBC_right {
     width: 33%;
+}
+// ..
+.FashionBC_right_contain {
+    padding-top: 66%;
 }
 
 //
 @media (max-width: 1000px) {
-    .FashionBC_carousel{
+    .FashionBC_carousel {
         width: 100%;
     }
     .FashionBC_right {

@@ -1,0 +1,33 @@
+// 
+.FashionFaceItem-pc {
+    transition: all 150ms ease-in;
+
+    &:hover {
+        bottom: 1px;
+
+        .FashionFaceItem_contain {
+            border: 1px solid var(--border-fashion);
+            box-shadow: var(--box-shadow-fb);
+        }
+
+        .FashionFaceItem_same {
+            display: block;
+        }
+    }
+}
+
+.FashionFaceItem_contain {
+    border: 1px solid transparent;
+    border-radius: 2.5px;
+    transition: all 150ms ease-in;
+}
+// .
+.FashionFaceItem_head {
+    padding-top: 100%;
+}
+
+// .
+.FashionFaceItem_same_contain {
+    border-bottom-left-radius: 2.5px;
+    border-bottom-right-radius: 2.5px;
+}

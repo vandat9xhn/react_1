@@ -1,17 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
 //
+import { data_fashion_application_arr } from '../../../../../_data/fashion/application';
+// 
 import { API_FashionHotImage_L } from '../../../../../api/api_django_no_token/fashion/APIFashionNoToken';
 //
 import FashionBC from '../../../components/banner/banner_carousel/_main/FashionBC';
-import FashionLN from '../../../components/banner/list_names/FashionLN';
-import FashionCtg from '../../../components/categories/FashionCtg';
 import FashionH from '../../../components/head/_main/FashionH';
 import FashionBody from '../body/FashionBody';
-//
+import FashionHomeSelling from '../selling/FashionHomeSelling';
+import FashionApplication from '../../../components/application/_main/FashionApplication';
+// 
 import fashion_home_new from '../../../../../../image/fashion_home_new.jpg';
 import image_loading from '../../../../../../image/image_loading.svg';
 import './Fashion.scss';
-import FashionMonth from '../month/_main/FashionMonth';
+import FashionCtg from '../../../components/categories/_main/FashionCtg';
+import FashionHomeFlashSale from '../flash_sale/FashionHomeFlashSale';
+import FashionHomeTrend from '../trend/FashionHomeTrend';
 
 //
 function Fashion(props) {
@@ -62,8 +66,8 @@ function Fashion(props) {
                 <FashionH />
             </div>
 
-            <div className="bg-primary">
-                <div className="Fashion_carousel">
+            <div className="Fashion_banner bg-primary margin-bottom-1rem">
+                <div className="fashion-width">
                     <FashionBC
                         images={
                             has_fetched_hot
@@ -72,24 +76,35 @@ function Fashion(props) {
                         }
                         has_fetched={has_fetched_hot}
                     />
-
-                    <FashionLN />
-
-                    <FashionCtg />
+                    
+                    <FashionApplication
+                        application_arr={data_fashion_application_arr}
+                    />
                 </div>
             </div>
 
-
-            <div className="Fashion_body">
-                <div className="Fashion_banner_new">
+            <div className="fashion-width">
+                <div className="margin-bottom-1rem">
                     <img className="w-100per" src={fashion_home_new} alt="" />
                 </div>
-                
-                <div className="Fashion_body_mont">
-                    <FashionMonth />
+
+                <div className="margin-bottom-1rem">
+                    <FashionHomeSelling />
                 </div>
-                
-                <div>
+
+                <div className="margin-bottom-1rem">
+                    <FashionCtg />
+                </div>
+
+                <div className="margin-bottom-1rem">
+                    <FashionHomeFlashSale />
+                </div>
+
+                {/* <div className="margin-bottom-1rem">
+                    <FashionHomeTrend/>
+                </div> */}
+
+                <div className="margin-bottom-1rem">
                     <FashionBody />
                 </div>
             </div>

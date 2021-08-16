@@ -68,8 +68,16 @@
     background-color: var(--color-react);
 }
 
-.bg-fashion-head {
+.bg-fashion-red {
+    background-color: var(--fashion-head);
+}
+
+.bg-img-fashion-head {
     background-image: linear-gradient(to bottom, #f53d2d, #f63);
+}
+
+.bg-fashion-mall{
+    background-color: var(--fashion-mall);
 }
 
 .bg-fashion-carousel-active {
@@ -219,6 +227,12 @@
     }
 }
 
+/* ----------- LINE -----------*/
+
+.line-14px {
+    line-height: 14px;
+}
+
 /* ----------- NavLink active -----------*/
 .active-color {
     color: var(--blue);
@@ -252,6 +266,10 @@
 
 .margin-left-8px {
     margin-left: 8px;
+}
+
+.margin-bottom-1rem {
+    margin-bottom: 1rem;
 }
 
 /* -------------- OPACITY ---------------- */
@@ -300,6 +318,10 @@
 
 .padding-1px {
     padding: 1px;
+}
+
+.padding-0 {
+    padding: 0;
 }
 
 .padding-y-8px {
@@ -367,6 +389,10 @@
     color: var(--danger);
 }
 
+.text-fashion-red{
+    color: var(--fashion-head);
+}
+
 .text-blue {
     color: var(--blue);
 }
@@ -386,6 +412,10 @@
     color: var(--border-fashion);
 }
 
+.color-fashion-mall {
+    color: var(--fashion-mall);
+}
+
 /* don vi vnd */
 .dv-vnd {
     font-size: 0.6rem;
@@ -401,6 +431,10 @@
 
 .font-700 {
     font-weight: 700;
+}
+
+.font-10px {
+    font-size: 10px;
 }
 
 .font-11px {

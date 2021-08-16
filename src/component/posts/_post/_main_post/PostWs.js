@@ -235,7 +235,7 @@ function Post({
             setTimeout(() => {
                 ref_comments.current
                     .querySelector(
-                        '.Comments_input-contain textarea.CommentInput_textarea'
+                        '.Comments_input_contain textarea.CommentInput_textarea'
                     )
                     .focus();
             }, 1);

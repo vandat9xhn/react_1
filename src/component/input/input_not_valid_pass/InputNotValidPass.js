@@ -56,7 +56,7 @@ function InputNotValidPass({
 
             <div className="InputNotValidPass_eye">
                 <div
-                    className="InputNotValidPass_eye-contain hv-opacity"
+                    className="InputNotValidPass_eye_contain hv-opacity"
                     onClick={toggleType}
                 >
                     <IconsEye x={200} y={200} close_eye={type == 'password'} />

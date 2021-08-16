@@ -88,7 +88,7 @@ function VoucherChoices({ amount, handleVoucher, closeVoucher }) {
                 FREE SHIP
             </h2>
 
-            <div className="VoucherChoices_vouchers-contain scroll-thin">
+            <div className="VoucherChoices_vouchers_contain scroll-thin">
                 {voucher_arr.map((vch, vch_ix) => (
                     <VoucherChoice
                         key={`VoucherChoices_${vch.id || vch_ix}`}

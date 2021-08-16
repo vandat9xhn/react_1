@@ -86,7 +86,7 @@ class Chat extends Component {
     getChatBodyScrollY = (active_ix) => {
         return document
             .getElementsByClassName('Chat_active-item')
-            [active_ix].getElementsByClassName('ChatWd_body-contain')[0]
+            [active_ix].getElementsByClassName('ChatWd_body_contain')[0]
             .scrollTop;
     };
 

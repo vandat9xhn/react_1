@@ -1,0 +1,21 @@
+.FashionCtgItem_contain{
+    border: 1px solid var(--md-bg-blur);
+
+    &:hover{
+        box-shadow: var(--box-shadow-action);
+    }
+}
+
+.FashionCtgItem_head{
+    height: 1rem;
+}
+
+.FashionCtgItem_head_img{
+    width: 70%;
+    height: 70%;
+}
+
+.FashionCtgItem_foot{
+    flex-shrink: 0;
+    height: 3.25rem;
+}

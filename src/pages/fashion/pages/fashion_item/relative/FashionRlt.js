@@ -26,7 +26,7 @@ function FashionRlt({ id }) {
 
     //
     useEffect(() => {
-        setProducts(Array(10).fill({ vid_pics: [{ vid_pic: '' }] }));
+        // setProducts(Array(10).fill({ vid_pics: [{ vid_pic: '' }] }));
 
         setTimeout(() => {
             observeToDo(

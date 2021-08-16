@@ -44,7 +44,7 @@ function ZoomPostCommonRight({
 
     //
     return (
-        <div className="ZoomPostCommon_right-contain scroll-thin div_fix_scroll">
+        <div className="ZoomPostCommon_right_contain scroll-thin div_fix_scroll">
             <div>
                 <div className="ZoomPostCommon_right-head">
                     <div>

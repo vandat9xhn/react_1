@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useMouseDragScrollToX } from '../../../../../_hooks/useMouseDragScrollToX';
 //
 import NextPrevDiv from '../../../../../component/some_div/next_prev_div/NextPrevDiv';
-import ProductItem from '../../../../../component/products/product_item/ProductItem';
+import FashionFaceItem from '../../face_item/_main/FashionFaceItem';
 //
 import './RowProductPc.scss';
 
@@ -32,43 +32,53 @@ function RowProductPc({ products }) {
         hasNextPrev,
     } = useMouseDragScrollToX(ref_row_product);
 
-    // 
+    //
     useEffect(() => {
-        hasNextPrev()
-    }, [products.length])
+        hasNextPrev();
+    }, [products.length]);
 
     //
     return (
         <div className="pos-rel">
             <div
                 ref={ref_row_product}
-                className="RowProductPc scroll-height-0 overflow-x-auto max-w-100per"
+                className="RowProductPc scroll-height-0 scroll-width-0 overflow-x-auto max-w-100per"
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
-                // 
+                //
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
                 onScroll={handleScroll}
             >
-                <div className="RowProductPc_row display-flex">
-                    {products.map((product, ix) => (
-                        <div
-                            key={`RowProductPc_item_${product.id || ix}`}
-                            className={
+                <ul className="RowProductPc_row list-none display-flex">
+                    {products.map((item, ix) => (
+                        <li
+                            key={`RowProductPc_item_${
+                                item.id || `RowProductPc_${ix}`
+                            }`}
+                            className={`row-product-item ${
                                 is_mouse_down ? 'pointer-events-none' : ''
-                            }
+                            }`}
                         >
-                            <ProductItem
-                                link={`/fashion:${product.id}`}
-                                img={product.vid_pics[0].vid_pic}
-                                name={product.name}
-                                new_price={product.new_price}
-                                old_price={product.old_price}
-                                discount={product.discount}
+                            <FashionFaceItem
+                                use_same={false}
+                                id={item.id}
+                                img={item.vid_pics[0].vid_pic}
+                                mall_like={item.mall_like ? '' : ''}
+                                flash_img={item.flash_img}
+                                discount={item.discount}
+                                name={item.name}
+                                shop_discount={item.shop_discount}
+                                tag_arr={item.tag_arr}
+                                old_price={item.old_price}
+                                new_price={item.new_price}
+                                rate_avg={item.rate_avg}
+                                sold={item.sold}
+                                address={item.address}
                             />
-                        </div>
+                        </li>
                     ))}
-                </div>
+                </ul>
             </div>
 
             <NextPrevDiv

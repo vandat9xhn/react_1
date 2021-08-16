@@ -78,7 +78,7 @@ function ChatHideMore({ chat_inactive_more_arr }) {
                             }`}
                         >
                             <div className="chat-hide-padding">
-                                <div className="ChatHideMore_room-contain bg-primary box-shadow-fb brs-5px">
+                                <div className="ChatHideMore_room_contain bg-primary box-shadow-fb brs-5px">
                                     {chat_inactive_more_arr.map((item, ix) => (
                                         <div key={`${item.room_chat}`}>
                                             <ChatHideMoreRoom

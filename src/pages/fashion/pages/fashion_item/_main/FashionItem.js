@@ -10,6 +10,7 @@ import FashionRate from '../rate/_main/FashionRate';
 import FashionItemCmt from '../comment/_main/FashionItemCmt';
 import FashionRlt from '../relative/FashionRlt';
 import FashionOtherItem from '../other_shop_item/FashionOtherItem';
+import FashionItemMayLike from '../may_like/FashionItemMayLike';
 
 // 
 FashionItem.propTypes = {
@@ -52,6 +53,10 @@ function FashionItem(props) {
 
                 <div className="FashionItem_part">
                     <FashionRlt id={id}/>
+                </div>
+
+                <div className="FashionItem_part">
+                    <FashionItemMayLike id={id}/>
                 </div>
             </div>
         </div>

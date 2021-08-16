@@ -49,7 +49,7 @@ function HeaderV() {
                     }`}
                     onClick={closeMenu}
                 >
-                    <div className="header_hidden-contain">
+                    <div className="header_hidden_contain">
                         <ul className="list-none">
                             {data_menu_left.map((item, ix) => (
                                 <li

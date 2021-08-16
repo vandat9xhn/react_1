@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
-// 
+//
 import RowProductPc from '../pc/RowProductPc';
 import RowProductMobile from '../mobile/RowProductMobile';
 //
@@ -55,6 +55,9 @@ function RowProducts({ list_products, children }) {
                             <RowProductMobile products={products} />
                         ) : (
                             <RowProductPc products={products} />
+                        )}
+                        {products.length ? null : (
+                            <div className="RowProducts_not_fetched"></div>
                         )}
                     </div>
                 ))}

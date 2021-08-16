@@ -33,7 +33,7 @@ function InputDate({
             <div>
                 <div className="InputDate_row display-flex align-items-center">
                     <div className="InputDate_item">
-                        <div className="InputDate_item-contain">
+                        <div className="InputDate_item_contain">
                             <InputDay
                                 day={day}
                                 month={month}
@@ -44,7 +44,7 @@ function InputDate({
                     </div>
 
                     <div className="InputDate_item">
-                        <div className="InputDate_item-contain">
+                        <div className="InputDate_item_contain">
                             <Select
                                 options={makeRange(1, 13)}
                                 current_option={month}
@@ -54,7 +54,7 @@ function InputDate({
                     </div>
 
                     <div className="InputDate_item">
-                        <div className="InputDate_item-contain">
+                        <div className="InputDate_item_contain">
                             <Select
                                 options={makeRange(min_year, max_year + 1)}
                                 current_option={year}

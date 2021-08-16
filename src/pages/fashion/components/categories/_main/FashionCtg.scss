@@ -1,0 +1,22 @@
+.FashionCtg {
+    .BtnNexPrev {
+        box-shadow: var(--box-shadow-fb);
+    }
+
+    &:hover {
+        .NextPrevDiv_icon_circle {
+            transform: scale(1.75);
+        }
+    }
+}
+
+.FashionCtg_contain {
+    height: 300px;
+    overflow-y: hidden;
+}
+
+// .
+.FashionCtg_item {
+    width: 120px;
+    height: 50%;
+}

@@ -58,7 +58,7 @@ function SearchAnimateDiv(props) {
         <div className={`SearchAnimateDiv pos-rel ${is_open ? '' : 'SearchAnimateDiv_close'}`}>
             <div className="SearchAnimateDiv_key">
                 <div
-                    className={`SearchAnimateDiv_key-contain display-flex justify-content-center align-items-center cursor-pointer ${
+                    className={`SearchAnimateDiv_key_contain display-flex justify-content-center align-items-center cursor-pointer ${
                         is_open ? 'nav-active' : ''
                     }`}
                     onClick={onClick}

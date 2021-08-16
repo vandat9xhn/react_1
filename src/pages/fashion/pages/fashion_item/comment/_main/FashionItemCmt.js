@@ -116,7 +116,7 @@ function FashionItemCmt({ id: product_id }) {
                     <br />
 
                     <div className="FashionItemCmt_pages">
-                        <div className="FashionItemCmt_pages-contain">
+                        <div className="FashionItemCmt_pages_contain">
                             <Pagination
                                 count={pages}
                                 num_side_center={2}

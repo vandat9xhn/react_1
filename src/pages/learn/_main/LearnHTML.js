@@ -23,6 +23,7 @@ import LearnResizeRotate from '../resize_rotate/LearnResizeRotate';
 import LearnColorThief from '../color_thief/LearnColorThief';
 import LearnTouches from '../touches/LearnTouches';
 import LearnSaveScroll from '../save_scroll/LearnSaveScroll';
+import LearnFashion from '../fashion/LearnFashion';
 
 //
 LearnHTML.propTypes = {};
@@ -91,12 +92,12 @@ function LearnHTML() {
             </div> */}
 
             <div>
-                <LearnAPIHeroku />
+                {/* <LearnAPIHeroku /> */}
             </div>
 
             <br />
             <div>
-                <LearnResizeRotate /> 
+                {/* <LearnResizeRotate />  */}
             </div>
 
             <br />
@@ -104,11 +105,11 @@ function LearnHTML() {
                 <LearnColorThief />
             </div> */}
 
-            <LearnTouches />
+            {/* <LearnTouches /> */}
 
             <br />
-
-            <LearnSaveScroll />
+            <LearnFashion />
+            {/* <LearnSaveScroll /> */}
             
             <br />
             <br />

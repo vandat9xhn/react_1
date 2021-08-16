@@ -36,7 +36,7 @@ function ChatOptions({
                     <div>
                         <div className="ChatOptions_menu display-flex-center">
                             <div
-                                className="ChatOptions_menu-contain bg-primary display-flex-center hv-bg-blur box-shadow-fb brs-50 cursor-pointer"
+                                className="ChatOptions_menu_contain bg-primary display-flex-center hv-bg-blur box-shadow-fb brs-50 cursor-pointer"
                                 onClick={toggleOptions}
                                 title="Options"
                             >
@@ -50,7 +50,7 @@ function ChatOptions({
                             open_options ? '' : 'display-none'
                         }`}
                     >
-                        <div className="ChatOptions_list-contain padding-8px bg-primary brs-8px box-shadow-fb">
+                        <div className="ChatOptions_list_contain padding-8px bg-primary brs-8px box-shadow-fb">
                             <div className="chat-hide-contain">
                                 {[
                                     {

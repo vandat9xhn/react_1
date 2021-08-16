@@ -1,16 +1,18 @@
+.FashionItem {
+    font-family: Helvetica, Arial, sans-serif;
+}
 
-.FashionItem_{
-    &head{
+.FashionItem_ {
+    &head {
         margin-bottom: 1rem;
     }
-    
-    &mid{
+
+    &mid {
         margin-right: 1rem;
         margin-left: 1rem;
     }
     // .
-    &part{
-        margin-bottom: 1rem;
-        background-color: var(--md-bg-primary);
+    &part {
+        margin-bottom: 1.5rem;
     }
 }

@@ -15,17 +15,25 @@ function FashionBC({ images, has_fetched }) {
     //
     return (
         <div className="FashionBC user-select-none">
-            <div className="FashionBC_row flex-between-center flex-wrap">
+            <div className="FashionBC_row flex-between-center">
                 <div className="FashionBC_carousel">
-                    <Carousel
-                        vid_pics={images}
-                        has_fetched={has_fetched}
-                        // disabled_btn_when_trans={false}
-                    />
+                    <div className="FashionBC_carousel_contain pos-rel">
+                        <div className="pos-abs-100 overflow-hidden">
+                            <Carousel
+                                vid_pics={images}
+                                has_fetched={has_fetched}
+                                // disabled_btn_when_trans={false}
+                            />
+                        </div>
+                    </div>
                 </div>
 
                 <div className="FashionBC_right">
-                    <FashionBCR />
+                    <div className="FashionBC_right_contain pos-rel">
+                        <div className="pos-abs-100 overflow-hidden">
+                            <FashionBCR />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

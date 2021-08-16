@@ -14,7 +14,7 @@ FashionOwner.propTypes = {};
 function FashionOwner({ owner_profile, owner_info }) {
     //
     return (
-        <div className="FashionOwner brs-5px-md box-shadow-1">
+        <div className="FashionOwner bg-primary">
             <div className="FashionOwner_row flex-between-center">
                 <div className="FashionOwner_left">
                     <FashionOL {...owner_profile} />

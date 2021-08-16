@@ -15,7 +15,7 @@
     height: 80%;
     width: 80%;
 }
-.VidPics_current-contain {
+.VidPics_current_contain {
     img,
     video {
         background-color: var(--white);
@@ -32,14 +32,14 @@
     bottom: 0;
     transform: translateX(-50%);
 }
-.VidPics_all-contain {
+.VidPics_all_contain {
     max-width: 20rem;
     overflow-x: auto;
 }
 
 //
 @media (max-width: 20rem) {
-    .VidPics_all-contain {
+    .VidPics_all_contain {
         max-width: 100vw;
     }
 }

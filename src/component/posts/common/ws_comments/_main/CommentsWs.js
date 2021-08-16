@@ -98,7 +98,7 @@ function CommentsWs({
             <div
                 className={`Comments_input ${open_input ? '' : 'display-none'}`}
             >
-                <div className="Comments_input-contain">
+                <div className="Comments_input_contain">
                     <CommentPost handleSend={onSendCmt} />
                 </div>
             </div>

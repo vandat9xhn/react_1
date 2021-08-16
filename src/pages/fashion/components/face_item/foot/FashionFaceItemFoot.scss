@@ -1,0 +1,26 @@
+.FashionFaceItemFoot_name{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+// .
+.FashionFaceItemFoot_tag_item{
+    border: 1px solid var(--fashion-head);
+}
+
+// ..
+.FashionFaceItemFoot_heart{
+    .IconHeart{
+        width: 1rem;
+        height: 1rem;
+
+    }
+    
+    .IconHeart_face{
+        fill: none;
+    }
+    .IconHeart_heart{
+        fill: var(--md-bg-blur);
+    }
+}

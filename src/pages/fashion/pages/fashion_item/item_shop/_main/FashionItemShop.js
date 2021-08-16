@@ -147,24 +147,22 @@ function FashionItemShop({ id }) {
     //
     return (
         <div ref={ref_item_shop}>
-            <div>
-                <div>
-                    <FashionItemInfo
-                        id={id}
-                        vid_pic_arr={vid_pic_arr}
-                        info_right={info_right}
-                        has_fetched={has_fetched}
-                        wait_add_cart={wait_add_cart}
-                        addToCart={addToCart}
-                    />
-                </div>
+            <div className="margin-bottom-1rem">
+                <FashionItemInfo
+                    id={id}
+                    vid_pic_arr={vid_pic_arr}
+                    info_right={info_right}
+                    has_fetched={has_fetched}
+                    wait_add_cart={wait_add_cart}
+                    addToCart={addToCart}
+                />
+            </div>
 
-                <div>
-                    <FashionOwner
-                        owner_profile={rest_shop_obj}
-                        owner_info={owner_info}
-                    />
-                </div>
+            <div>
+                <FashionOwner
+                    owner_profile={rest_shop_obj}
+                    owner_info={owner_info}
+                />
             </div>
         </div>
     );

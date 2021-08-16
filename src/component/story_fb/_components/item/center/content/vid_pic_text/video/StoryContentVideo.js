@@ -59,7 +59,7 @@ function StoryContentVideo({ vid_pic }) {
                 src={vid_pic}
                 alt=""
                 ref={ref_video_elm}
-                className="wh-100 object-fit-contain"
+                className="wh-100 object-fit_contain"
             />
 
             <div
@@ -68,7 +68,7 @@ function StoryContentVideo({ vid_pic }) {
                 }`}
             >
                 <div
-                    className="StoryContent_control-contain"
+                    className="StoryContent_control_contain"
                     onClick={handleTogglePlayVideo}
                 >
                     <IconsInput x={200} />

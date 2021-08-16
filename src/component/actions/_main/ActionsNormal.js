@@ -79,7 +79,7 @@ function ActionsNormal({ title_action, symbol_post, children }) {
                         symbol_post ? 'Actions_symbol-post' : ''
                     }`}
                 >
-                    <div className="Actions_symbol-contain display-flex-center brs-50 hv-opacity hv-bg-s-through">
+                    <div className="Actions_symbol_contain display-flex-center brs-50 hv-opacity hv-bg-s-through">
                         {title_action}
                     </div>
                 </div>

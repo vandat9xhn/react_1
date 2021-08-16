@@ -53,7 +53,7 @@ function LearnAppearancePosition(props) {
                 >
                     <div
                         ref={ref_child_elm}
-                        className="LearnAppearancePosition_hidden-contain bg-green"
+                        className="LearnAppearancePosition_hidden_contain bg-green"
                     >
                         1 asda asd asd
                     </div>

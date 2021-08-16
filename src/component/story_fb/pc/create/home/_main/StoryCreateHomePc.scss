@@ -8,6 +8,13 @@
 }
 
 // 
+@media (max-width: 900px) {
+    .StoryCreateHomePc_right{
+        display: none;
+    }
+}
+
+// 
 @media (max-height: 386px) {
     .StoryCreateHomePc_right-no_fav{
         align-items: flex-start;

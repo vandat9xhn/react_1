@@ -47,7 +47,7 @@ function HeaderAccount(props) {
                         open_account ? '' : 'display-none'
                     }`}
                 >
-                    <div className="header_hidden-contain">
+                    <div className="header_hidden_contain">
                         <ActionsAccount closeAccount={closeAccount} />
                     </div>
                 </div>

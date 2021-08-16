@@ -90,7 +90,7 @@ function InputFile({
 
             <div className="InputFile_face wh-100">
                 <div
-                    className="InputFile_face-contain wh-100 brs-50"
+                    className="InputFile_face_contain wh-100 brs-50"
                     onClick={onClick}
                 >
                     <div className="wh-100 display-flex justify-content-center align-items-center">

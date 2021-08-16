@@ -8,7 +8,7 @@
         left: 50%;
     }
 
-    .header_hidden-contain {
+    .header_hidden_contain {
         &::-webkit-scrollbar {
             width: 0;
         }
@@ -17,7 +17,7 @@
 
 @media (max-width: 350px) {
     // .
-    .header_hidden-contain {
+    .header_hidden_contain {
         border-radius: 0;
     }
 

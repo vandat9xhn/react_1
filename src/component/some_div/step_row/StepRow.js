@@ -20,7 +20,7 @@ function StepRow({ count_step, active_step }) {
                 .map((_, ix) => (
                     <div key={`${ix}`} className="StepRow_item flex-grow-1">
                         <div
-                            className={`StepRow_item-contain bg-primary ${
+                            className={`StepRow_item_contain bg-primary ${
                                 ix <= active_step ? 'opacity-1' : 'opacity-05'
                             }`}
                         ></div>

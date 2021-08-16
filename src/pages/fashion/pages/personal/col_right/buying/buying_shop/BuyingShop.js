@@ -55,7 +55,7 @@ function BuyingShop({
             </div>
 
             <div>
-                <div className="BuyingShop_items-contain">
+                <div className="BuyingShop_items_contain">
                     {products.map((buy_product, ix) => (
                         <div
                             key={`BillBuying_item_${ix}`}

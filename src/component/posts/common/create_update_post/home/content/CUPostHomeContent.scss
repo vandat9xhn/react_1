@@ -10,7 +10,7 @@
     border: 1px solid var(--bg-blur);
 }
 // .
-.CUPostHomeContent_input-contain {
+.CUPostHomeContent_input_contain {
     padding: 0.5rem;
     textarea {
         width: 100%;
@@ -30,7 +30,7 @@
     }
 }
 // .
-.CUPostHomeContent_preview-contain {
+.CUPostHomeContent_preview_contain {
     .ImgVidPreviewItem {
         position: relative;
         width: 100%;
@@ -61,7 +61,7 @@
         display: block;
     }
 
-    .CUPostHomeContent_preview-contain {
+    .CUPostHomeContent_preview_contain {
         .ImgVidPreview {
             min-height: 15rem;
         }

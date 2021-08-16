@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './StarRate.scss';
 import IconsStar from '../../../_icons_svg/icons_star/IconsStar';
+// 
+import './StarRate.scss';
 
 //
 StarRate.propTypes = {
@@ -13,14 +14,13 @@ StarRate.propTypes = {
 };
 StarRate.defaultProps = {
     handleChangeRate: () => {},
-}
+};
 
 //
-function StarRate(props) {
-    const { star_ix, rate_icon, size_icon, handleChangeRate } = props;
+function StarRate({ star_ix, rate_icon, size_icon, handleChangeRate }) {
     //
-    function onChangeRate(){
-        handleChangeRate && handleChangeRate(star_ix)
+    function onChangeRate() {
+        handleChangeRate && handleChangeRate(star_ix);
     }
 
     //
@@ -32,10 +32,16 @@ function StarRate(props) {
                 </div>
 
                 <div
-                    className={`StarRate_rate ${rate_icon ? '' : 'display-none'}`}
-                    style={{ width: rate_icon ? rate_icon * size_icon.replace('rem', '') + 'rem' : undefined}}
+                    className={`StarRate_rate ${
+                        rate_icon ? '' : 'display-none'
+                    }`}
+                    style={{
+                        width: rate_icon
+                            ? rate_icon * size_icon.replace('rem', '') + 'rem'
+                            : undefined,
+                    }}
                 >
-                    <IconsStar size_icon={size_icon}/>
+                    <IconsStar size_icon={size_icon} />
                 </div>
             </div>
         </div>

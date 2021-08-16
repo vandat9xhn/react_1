@@ -29,7 +29,7 @@ function FashionHCommon({
 
     //
     return (
-        <div className="FashionHCommon padding-8px bg-fashion-head">
+        <div className="FashionHCommon padding-8px bg-img-fashion-head">
             <div className="FashionHCommon_contain margin-auto">
                 <div className="FashionHCommon_row display-flex align-items-center">
                     <div className="FashionHCommon_left FashionHCommon_side">

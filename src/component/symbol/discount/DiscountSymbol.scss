@@ -1,0 +1,22 @@
+$sym-width: 36;
+
+/* ------- */ 
+
+.DiscountSymbol{
+    width: #{$sym-width}px;
+    padding: 0 0 4px;
+    background-color: gold;
+
+    line-height: 14px;
+
+    &::after{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 100%;
+        
+        border-width: 0 #{$sym-width / 2}px 4px;
+        border-style: solid;
+        border-color: transparent gold;
+    }
+}

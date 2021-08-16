@@ -7,7 +7,7 @@
 }
 
 // .
-.StoryMenuPcAction_toggle-contain {
+.StoryMenuPcAction_toggle_contain {
     width: 1.5rem;
     height: 1.5rem;
 
@@ -15,9 +15,9 @@
         fill: var(--blue);
     }
 }
-.StoryMenuPcAction_toggle-contain-show {
+.StoryMenuPcAction_toggle_contain-show {
     transform: rotate(-90deg) scale(1.25, 0.9);
 }
-.StoryMenuPcAction_toggle-contain-hide {
+.StoryMenuPcAction_toggle_contain-hide {
     transform: rotate(90deg) scale(1.25, 0.9);
 }

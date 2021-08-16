@@ -35,7 +35,7 @@ function ProfileInfoPicture({
             </div>
 
             <div className="ProfileInfoPicture_profile pos-abs top-100per x-center">
-                <div className="ProfileInfoPicture_profile-contain pos-abs bottom-0 x-center">
+                <div className="ProfileInfoPicture_profile_contain pos-abs bottom-0 x-center">
                     <Link to="/posts/1">
                         <img
                             className={`object-fit-cover brs-50 box-shadow-1 ${

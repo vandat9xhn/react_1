@@ -34,7 +34,7 @@ function StoryContent({
         >
             <div className="story-bg"></div>
 
-            <div className="StoryContent-contain pos-rel wh-100">
+            <div className="StoryContent_contain pos-rel wh-100">
                 {type_story == 'text' ? (
                     <StoryContentStoryText
                         vid_pic={vid_pic_obj.vid_pic}
@@ -64,7 +64,7 @@ function StoryContent({
                     }`}
                 >
                     <div
-                        className="StoryContent_close-contain display-flex-center bg-ccc brs-50"
+                        className="StoryContent_close_contain display-flex-center bg-ccc brs-50"
                         onClick={handleCloseStoryItem}
                     >
                         <IconsArrow y={400} size_icon="1rem" />

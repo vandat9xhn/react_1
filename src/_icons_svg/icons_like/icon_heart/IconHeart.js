@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 
 import './IconHeart.scss';
 
+//
+IconHeart.propTypes = {};
+
 /*
     icon type like: (x, y):
         4. heart: (600, 0)
@@ -36,9 +39,5 @@ function IconHeart() {
         </svg>
     );
 }
-
-IconHeart.propTypes = {};
-
-IconHeart.defaultProps = {};
 
 export default IconHeart;

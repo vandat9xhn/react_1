@@ -2,7 +2,7 @@
     width: 45px;
 }
 
-.ChatOptions_menu-contain {
+.ChatOptions_menu_contain {
     width: 2.25rem;
     height: 2.25rem;
 }
@@ -14,7 +14,7 @@
     transform: translateY(-50%);
 }
 // .
-.ChatOptions_list-contain {
+.ChatOptions_list_contain {
     position: relative;
     &::after {
         content: '';

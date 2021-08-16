@@ -17,7 +17,7 @@ function StoryMenuPcAction({ is_show, has_close, handleClose, handleToggle }) {
                 {has_close ? (
                     <div className="StoryMenuPcAction_close">
                         <div
-                            className="StoryMenuPcAction_close-contain cursor-pointer"
+                            className="StoryMenuPcAction_close_contain cursor-pointer"
                             onClick={handleClose}
                             title="Close stories"
                         >
@@ -28,10 +28,10 @@ function StoryMenuPcAction({ is_show, has_close, handleClose, handleToggle }) {
 
                 <div className="StoryMenuPcAction_toggle">
                     <div
-                        className={`StoryMenuPcAction_toggle-contain display-flex-center cursor-pointer ${
+                        className={`StoryMenuPcAction_toggle_contain display-flex-center cursor-pointer ${
                             is_show
-                                ? 'StoryMenuPcAction_toggle-contain-show'
-                                : 'StoryMenuPcAction_toggle-contain-hide'
+                                ? 'StoryMenuPcAction_toggle_contain-show'
+                                : 'StoryMenuPcAction_toggle_contain-hide'
                         }`}
                         onClick={handleToggle}
                         title={is_show ? 'Hide menu' : 'Show menu'}

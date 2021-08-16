@@ -36,7 +36,7 @@ function StoryBtnCreatePc(props) {
         >
             <div className="display-flex align-items-center">
                 <div className="StoryBtnCreatePc_left">
-                    <div className="StoryBtnCreatePc_left-contain display-flex-center bg-ccc brs-50">
+                    <div className="StoryBtnCreatePc_left_contain display-flex-center bg-ccc brs-50">
                         <IconsArrow y={400} size_icon="1.25rem" />
                     </div>
                 </div>

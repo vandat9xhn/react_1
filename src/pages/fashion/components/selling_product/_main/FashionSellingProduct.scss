@@ -1,0 +1,20 @@
+.FashionSellingProduct{
+    padding: 1rem;
+}
+
+.FashionSellingProduct_bd{
+    width: 10rem;
+    height: 10rem;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+
+// 
+@media (max-width: 400px) {
+    .FashionSellingProduct_bd{
+        width: 8rem;
+        height: 8rem;}
+}
