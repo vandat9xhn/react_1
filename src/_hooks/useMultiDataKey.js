@@ -23,11 +23,6 @@ export function useMultiDataKey({ initial_key, handle_API_L }) {
     const mounted = useMounted()
 
     //
-    useEffect(() => {
-        getData_API(initial_key);
-    }, []);
-
-    //
     async function getData_API(new_key) {
         setStateObj((state_obj) => {
             const has_existed = state_obj.obj[new_key];

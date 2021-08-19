@@ -1,0 +1,20 @@
+.FashionHomeSelling_not_fetched{
+    height: 250px;
+}
+
+.FashionHomeSelling_contain{
+    padding: 0 1rem;
+}
+
+.FashionHomeSelling_item{
+    margin: 0 2px;
+    width: 200px;
+    max-width: 48%;
+}
+
+// 
+@media (max-width: 500px) {
+    .FashionHomeSelling_contain{
+        padding: 0 0.5rem;
+    }
+}

@@ -30,6 +30,9 @@ export function useDataShowMore({
         data_get_api = {
             start_obj_state: {},
             handleWhenFinally: () => {},
+            getOtherDataStateWhenSetState: () => {
+                return {};
+            },
         }
     ) {
         if (ref_fetching.current) {
@@ -38,8 +41,13 @@ export function useDataShowMore({
 
         ref_fetching.current = true;
 
-        const { start_obj_state = {}, handleWhenFinally = () => {} } =
-            data_get_api;
+        const {
+            start_obj_state = {},
+            handleWhenFinally = () => {},
+            getOtherDataStateWhenSetState = () => {
+                return {};
+            },
+        } = data_get_api;
 
         try {
             setDataState((data_state) => ({
@@ -60,6 +68,9 @@ export function useDataShowMore({
                     is_max.current = has_fetched
                         ? data_arr.length >= count
                         : false;
+                        
+                    const other_data_state =
+                        getOtherDataStateWhenSetState(data_state);
 
                     return {
                         ...data_state,
@@ -68,6 +79,7 @@ export function useDataShowMore({
                         count: has_fetched ? count : new_count,
                         is_fetching: false,
                         has_fetched: true,
+                        ...other_data_state,
                     };
                 });
         } catch (e) {
@@ -78,7 +90,7 @@ export function useDataShowMore({
         ref_fetching.current = false;
     }
 
-    // 
+    //
     function refreshData_API() {
         data_count.current = 0;
 
@@ -91,7 +103,7 @@ export function useDataShowMore({
         });
     }
 
-    // 
+    //
     return {
         data_state,
         setDataState,

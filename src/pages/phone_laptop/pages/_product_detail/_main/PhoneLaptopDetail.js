@@ -60,7 +60,10 @@ function PhoneLaptopDetail() {
     useEffect(() => {
         window.scrollTo(0, 0);
 
-        observeToDo(ref_product.current, getData_API_Product, 0);
+        observeToDo({
+            elm: ref_product.current,
+            callback: getData_API_Product,
+        });
     }, [product_id]);
 
     /* ---------------------- GET API ---------------------- */

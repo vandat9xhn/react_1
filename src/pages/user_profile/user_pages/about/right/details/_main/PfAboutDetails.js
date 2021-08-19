@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../../_context/ContextAPI';
-// 
+//
 import { GetIdSlug } from '../../../../../../../_some_function/GetIdSlug';
 //
-import { handle_API_UserOverview_r } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
+import { initial_detail_state } from '../../../../../../../_initial/profile/about';
 //
-import { initial_detail_state } from '../../../__common/initial/initial';
+import { handle_API_UserOverview_r } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
 //
 import PfAboutYou from '../about_you/_main/PfAboutYou';
 import PfAboutOtherName from '../other_name/_main/PfAboutOtherName';
@@ -26,9 +26,7 @@ function PfAboutDetails({ name }) {
     const user_id = GetIdSlug();
 
     //
-    const [about_state, setAboutState] = useState({
-        ...initial_detail_state,
-    });
+    const [about_state, setAboutState] = useState(initial_detail_state());
 
     const {
         you_obj,
@@ -65,7 +63,9 @@ function PfAboutDetails({ name }) {
     //
     return (
         <div>
-            <h3 className="PfAbout_title">Details about {id == user_id ? 'you' : name}</h3>
+            <h3 className="PfAbout_title">
+                Details about {id == user_id ? 'you' : name}
+            </h3>
 
             <div>
                 <AboutNoItem

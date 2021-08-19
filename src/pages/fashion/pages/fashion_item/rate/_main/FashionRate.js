@@ -80,7 +80,10 @@ function FashionRate({ id }) {
                 has_fetched: false,
             });
 
-        observeToDo(ref_fashion_rate.current, getData_API_Rate, 0);
+        observeToDo({
+            elm: ref_fashion_rate.current,
+            callback: getData_API_Rate,
+        });
     }, [id]);
 
     /* --------------- GET API ---------------- */
@@ -191,7 +194,9 @@ function FashionRate({ id }) {
     return (
         <div className="padding-8px bg-primary" ref={ref_fashion_rate}>
             <div className={`FashionRate ${has_fetched ? '' : 'display-none'}`}>
-                <h2 className="margin-0 font-20px">Customer reviews</h2>
+                <h2 className="font-18px text-secondary label-field">
+                    ĐÁNH GIÁ SẢN PHẨM
+                </h2>
 
                 <div>
                     <FashionRateChart

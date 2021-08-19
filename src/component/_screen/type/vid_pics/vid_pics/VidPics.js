@@ -35,13 +35,15 @@ function VidPics({ urls, current, changeCurrent }) {
                     }}
                 ></div>
             </div>
-            
+
             <div className="VidPics_bg wh-100 pos-abs bg-loader"></div>
 
             <div className="VidPics_current">
                 <div className="VidPics_current_contain display-flex-center wh-100">
                     {VideoOrImage(
-                        urls[current].url || urls[current].vid_pic,
+                        urls[current].url ||
+                            urls[current].vid_pic ||
+                            urls[current],
                         urls[current].type,
                         <video
                             src={urls[current].url}
@@ -62,7 +64,7 @@ function VidPics({ urls, current, changeCurrent }) {
                                 item_ix={index}
                                 is_active={current == index}
                                 changeCurrent={changeCurrent}
-                                url={item.url || item.vid_pic}
+                                url={item.url || item.vid_pic || item}
                                 type={item.type}
                             />
                         ))}

@@ -34,13 +34,13 @@ function NextPrevDiv({
 }) {
     return (
         <div className="NextPrevDiv">
-            <div className="NextPrevDiv_next">
+            <div className="NextPrevDiv_next pos-abs right-0 y-center">
                 <BtnNexPrev
                     is_next={true}
                     btn_class={`${is_has_next ? '' : 'display-none'} ${
                         is_btn_circle
-                            ? 'NextPrevDiv_icon_circle brs-50'
-                            : 'NextPrevDiv_icon NextPrevDiv_next_icon'
+                            ? 'NextPrevDiv_icon-circle brs-50'
+                            : 'NextPrevDiv_icon-rect NextPrevDiv_icon-rect-next'
                     }`}
                     size_icon={size_icon}
                     disabled={!is_has_next}
@@ -48,13 +48,13 @@ function NextPrevDiv({
                 />
             </div>
 
-            <div className="NextPrevDiv_prev">
+            <div className="NextPrevDiv_prev pos-abs left-0 y-center">
                 <BtnNexPrev
                     is_next={false}
                     btn_class={`${is_has_prev ? '' : 'display-none'} ${
                         is_btn_circle
-                            ? 'NextPrevDiv_icon_circle brs-50'
-                            : 'NextPrevDiv_icon NextPrevDiv_prev_icon'
+                            ? 'NextPrevDiv_icon-circle brs-50'
+                            : 'NextPrevDiv_icon-rect NextPrevDiv_icon-rect-prev'
                     }`}
                     size_icon={size_icon}
                     disabled={!is_has_prev}

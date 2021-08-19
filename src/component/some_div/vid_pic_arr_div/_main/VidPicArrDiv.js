@@ -19,7 +19,7 @@ VidPicArrDiv.propTypes = {
 };
 VidPicArrDiv.defaultProps = {
     has_fetched: false,
-}
+};
 
 //
 function VidPicArrDiv({
@@ -30,17 +30,21 @@ function VidPicArrDiv({
 }) {
     //
     return (
-        <div className={has_fetched ? '' : 'pointer-events-none'}>
-            <div className="display-flex">
+        <div
+            className={`VidPicArrDiv ${
+                has_fetched ? '' : 'pointer-events-none'
+            }`}
+        >
+            <div className="VidPicArrDiv_row display-flex">
                 {(has_fetched
                     ? vid_pic_arr
                     : [image_loading, image_loading]
                 ).map((vid_pic, ix) => (
-                    <div key={`VidPicArrDiv_${ix}`}>
+                    <div key={`${ix}`} className="VidPicArrDiv_item">
                         <VidPicArrDivItem
                             vid_pic={vid_pic}
                             ix={ix}
-                            is_active={ix == active_ix && has_fetched}
+                            is_active={ix == active_ix}
                             handleChangeImage={handleChangeImage}
                         />
                     </div>

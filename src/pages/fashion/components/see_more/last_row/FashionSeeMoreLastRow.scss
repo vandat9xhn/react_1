@@ -1,5 +1,9 @@
 .FashionSeeMoreLastRow_icon{
     width: 1.5rem;
     height: 1.5rem;
-    background-color: #D0011B;
+    border: 1px solid currentColor;
+
+    .IconsArrow_next{
+        stroke: currentColor;
+    }
 }

@@ -1,8 +1,4 @@
 .FashionCtg {
-    .BtnNexPrev {
-        box-shadow: var(--box-shadow-fb);
-    }
-
     &:hover {
         .NextPrevDiv_icon_circle {
             transform: scale(1.75);

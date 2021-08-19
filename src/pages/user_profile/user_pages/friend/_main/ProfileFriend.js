@@ -44,7 +44,7 @@ function ProfileFriend() {
 
     //
     useEffect(() => {
-        observeToDo(ref_component.current, getData_API, 0);
+        observeToDo({ elm: ref_component.current, callback: getData_API });
     }, []);
 
     //

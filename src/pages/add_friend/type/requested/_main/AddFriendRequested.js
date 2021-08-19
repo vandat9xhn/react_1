@@ -29,7 +29,7 @@ function AddFriendRequested() {
 
     //
     useEffect(() => {
-        observeToDo(ref_main_elm.current, getData_API, 0);
+        observeToDo({ elm: ref_main_elm.current, callback: getData_API });
     }, []);
 
     //

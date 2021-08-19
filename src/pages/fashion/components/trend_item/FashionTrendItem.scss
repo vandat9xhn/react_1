@@ -1,9 +1,14 @@
-
-
-.FashionTrendItem_left{
-    flex: 13 0;
+.FashionTrendItem_left {
+    width: 1rem;
 }
 
-.FashionTrendItem_right{
-    flex: 10 0;
+//
+@media (max-width: 700px) {
+    .FashionTrendItem_right_img {
+        width: 62px;
+        height: 62px;
+    }
+    .FashionTrendItem_left_count{
+        font-size: 12px;
+    }
 }

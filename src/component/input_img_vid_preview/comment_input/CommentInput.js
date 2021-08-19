@@ -103,14 +103,17 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
     //
     return (
         <div className="CommentInput pos-rel">
-            <div className="CommentInput_contain pos-rel">
+            <div className="CommentInput_contain pos-rel bg-fb">
                 <div className="display-flex align-items-center">
-                    <div className="CommentInput_input" ref={ref_comment_input}>
+                    <div
+                        ref={ref_comment_input}
+                        className="CommentInput_input flex-grow-1 overflow-hidden"
+                    >
                         <div className="display-flex align-items-center">
                             <Textarea
                                 text={text}
                                 placeholder={placeholder}
-                                textarea_class="CommentInput_textarea scroll-thin"
+                                textarea_class="CommentInput_textarea scroll-thin padding-0"
                                 onChange={onChangeCmt}
                                 handleSend={onSendCmt}
                             />
@@ -131,7 +134,7 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
                                 </InputFile>
                             </div>
 
-                            <div className="CommentInput_files-col CommentInput__send">
+                            <div className="CommentInput_files-col CommentInput__send display-none">
                                 <div
                                     className={`display-flex ${
                                         text.trim() || urls.length
@@ -148,7 +151,7 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
                 </div>
             </div>
 
-            <div className="CommentInput_preview">
+            <div className="CommentInput_preview max-w-100per overflow-x-auto">
                 <div className="display-flex">
                     <ImgVidPreview
                         urls={urls || []}

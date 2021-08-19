@@ -5,9 +5,10 @@ import { API_FilterPhoneLaptop_L } from '../../../../api/api_django_no_token/pho
 //
 import { initial_phone_arr } from '../../../../_initial/phone/InitialPhone';
 //
+import { data_phone_sort_arr } from '../../../../_data/phone/sort';
+//
 import ScreenBlurShowMore from '../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
-import { data_sort_arr } from '../../__data/AllProductData';
 import {
     addOrRemoveItem,
     ListOrEmpty,
@@ -113,7 +114,7 @@ function AllProducts({
             in_stock: '',
             current_brands: ListOrRegex(current_brands, arr_brands, false),
             current_prices: ListOrEmpty(current_prices),
-            current_sort: data_sort_arr[current_sort],
+            current_sort: data_phone_sort_arr[current_sort],
 
             page: 1,
             size: has_fetched ? 15 : 20,

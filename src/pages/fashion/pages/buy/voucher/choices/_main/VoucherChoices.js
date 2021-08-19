@@ -37,7 +37,7 @@ function VoucherChoices({ amount, handleVoucher, closeVoucher }) {
 
     //
     useEffect(() => {
-        observeToDo(ref_voucher.current, getData_Voucher, 0);
+        observeToDo({ elm: ref_voucher.current, callback: getData_Voucher });
     }, []);
 
     /* ---------------- GET API -------------- */

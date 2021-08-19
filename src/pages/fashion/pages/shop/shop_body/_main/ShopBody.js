@@ -47,7 +47,7 @@ function ShopBody({ id }) {
     const products = products_obj[page];
 
     //
-    const mounted = useRef(true)
+    const mounted = useRef(true);
 
     const is_location_changed = useRef(true);
     const ref_body = useRef(null);
@@ -56,19 +56,22 @@ function ShopBody({ id }) {
     //
     useEffect(() => {
         return () => {
-            mounted.current = false
-        }
+            mounted.current = false;
+        };
     }, []);
 
     //
     useEffect(() => {
-        observeToDo(ref_body.current, getData_API_ListName, 0);
+        observeToDo({ elm: ref_body.current, callback: getData_API_ListName });
     }, []);
 
     //
     useEffect(() => {
         if (is_location_changed.current) {
-            observeToDo(ref_body.current, getData_API_Products_Refresh, 0);
+            observeToDo({
+                elm: ref_body.current,
+                callback: getData_API_Products_Refresh,
+            });
         }
     }, [location.search]);
 
@@ -77,7 +80,7 @@ function ShopBody({ id }) {
     //
     async function getData_API_ListName() {
         const res = await API_FashionShop_R(id);
-        
+
         if (!mounted.current) {
             return;
         }
@@ -151,7 +154,7 @@ function ShopBody({ id }) {
                 })
         );
 
-        ref_category.current.scrollIntoView()
+        ref_category.current.scrollIntoView();
 
         if (
             products_obj[new_page] == undefined ||

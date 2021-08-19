@@ -1,0 +1,43 @@
+.FashionHomeMall_foot-pc {
+    height: 450px;
+}
+.FashionHomeMall_foot-mobile {
+    display: block;
+    height: auto;
+}
+// .
+.FashionHomeMall_foot_left-pc {
+    width: 400px;
+}
+.FashionHomeMall_foot_left-mobile {
+    width: 100%;
+    padding-top: 30%;
+}
+// .
+.FashionHomeMall_foot_right-pc {
+    width: 1rem;
+}
+.FashionHomeMall_foot_right-mobile {
+    width: 100%;
+}
+// ..
+.FashionHomeMall_col{
+    flex-shrink: 0;
+    overflow: hidden;
+}
+.FashionHomeMall_col-pc {
+    width: 200px;
+    max-width: 48%;
+
+    flex-direction: column;
+}
+.FashionHomeMall_col-mobile {
+    width: 96%;
+}
+
+.FashionHomeMall_item-pc {
+    height: 50%;
+}
+.FashionHomeMall_item-mobile {
+    width: 50%;
+}

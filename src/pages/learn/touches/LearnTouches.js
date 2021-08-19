@@ -30,7 +30,7 @@ function LearnTouches(props) {
     } = state_obj;
 
     //
-    const { handleStart } = use2FingersResize({
+    const { handleTouchStart } = use2FingersResize({
         handleResize: handleResize,
     });
 
@@ -56,7 +56,7 @@ function LearnTouches(props) {
     return (
         <div
             className="LearnTouches pos-rel bg-blue"
-            onTouchStart={handleStart}
+            onTouchStart={handleTouchStart}
         >
             <div
                 className="pos-abs-center"

@@ -20,10 +20,10 @@ import {
 import { handle_API_FashionCart_C } from '../../../../../../_handle_api/fashion/FashionCartHandleAPi';
 
 import FashionItemInfo from '../info/_main/FashionItemInfo';
-import FashionOwner from '../owner/_main/FashionOwner';
+import FashionOwner from '../../owner/_main/FashionOwner';
 import FashionCartSuccess from '../../add_cart_success/FashionCartSuccess';
 import observeToDo from '../../../../../../_some_function/observerToDo';
-import { changeOwnerInfo } from '../../../../__function/FashionFunction';
+import { changeOwnerInfo } from '../../../../../../_some_function/fashion/FashionFunction';
 
 //
 FashionItemShop.propTypes = {};
@@ -39,8 +39,8 @@ function FashionItemShop({ id }) {
     //
     const [item_shop_state, setItemShopState] = useState({
         vid_pic_arr: [''],
-        info_right: { ...initial_fashion_info_right },
-        shop_obj: { ...initial_fashion_shop },
+        info_right: initial_fashion_info_right(),
+        shop_obj: initial_fashion_shop(),
         has_fetched: false,
         wait_add_cart: false,
     });
@@ -60,13 +60,13 @@ function FashionItemShop({ id }) {
     useEffect(() => {
         setItemShopState({
             vid_pic_arr: [''],
-            info_right: { ...initial_fashion_info_right },
-            shop_obj: { ...initial_fashion_shop },
+            info_right: initial_fashion_info_right(),
+            shop_obj: initial_fashion_shop(),
             has_fetched: false,
             wait_add_cart: false,
         });
 
-        observeToDo(ref_item_shop.current, getData_API_Item, 0);
+        observeToDo({ elm: ref_item_shop.current, callback: getData_API_Item });
     }, [id]);
 
     /* ---------------- COMMON ---------------- */
@@ -77,8 +77,8 @@ function FashionItemShop({ id }) {
         has_fetched &&
             setItemShopState({
                 vid_pic_arr: [''],
-                info_right: { ...initial_fashion_info_right },
-                shop_obj: { ...initial_fashion_shop },
+                info_right: initial_fashion_info_right(),
+                shop_obj: initial_fashion_shop(),
                 has_fetched: false,
                 wait_add_cart: false,
             });

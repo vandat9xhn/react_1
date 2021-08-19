@@ -18,13 +18,13 @@ function VidPicArrDivItem({ vid_pic, ix, is_active, handleChangeImage }) {
 
     //
     return (
-        <div>
-            <div
-                className={is_active ? 'border-active' : ''}
-                onClick={onChangeImage}
-            >
-                <img src={vid_pic} alt="" />
-            </div>
+        <div
+            className={`VidPicArrDivItem wh-100 ${
+                is_active ? 'VidPicArrDivItem-active border-active' : ''
+            }`}
+            onClick={onChangeImage}
+        >
+            <img className="wh-100 object-fit-cover" src={vid_pic} alt="" />
         </div>
     );
 }

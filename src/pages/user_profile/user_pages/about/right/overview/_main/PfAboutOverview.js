@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 //
 import { GetIdSlug } from '../../../../../../../_some_function/GetIdSlug';
 //
+import { initial_overview_obj } from '../../../../../../../_initial/profile/about';
+//
+import { data_about_overview_icon_arr } from '../../../../../../../_data/profile/overview';
+//
+import { handle_API_UserOverview_r } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
+//
 import ComponentSkeleton from '../../../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 //
-import { common_overview_icon } from '../../../__common/data/ProfileIntroData';
-import { initial_overview_obj } from '../../../__common/initial/initial';
-import { handle_API_UserOverview_r } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
-
 import PfAboutOverviewItem from '../item/PfAboutOverviewItem';
 import PfAbOvSkeleton from '../skeleton/PfAbOvSkeleton';
 //
@@ -23,7 +25,7 @@ function PfAboutOverview(props) {
 
     //
     const [overview_state, setOverviewState] = useState({
-        overview_obj: initial_overview_obj,
+        overview_obj: initial_overview_obj(),
         has_fetched: false,
     });
 
@@ -48,7 +50,7 @@ function PfAboutOverview(props) {
     return (
         <div>
             <div className={has_fetched ? '' : 'display-none'}>
-                {common_overview_icon.map((item, ix) =>
+                {data_about_overview_icon_arr.map((item, ix) =>
                     overview_obj[item.key_data + '_arr'] &&
                     overview_obj[item.key_data + '_arr'].length ? (
                         <div
@@ -59,7 +61,8 @@ function PfAboutOverview(props) {
                                 link_to={`?sk=about_${item.search}`}
                                 Icon={item.Icon}
                                 title={
-                                    overview_obj[item.key_data + '_arr'][0].title
+                                    overview_obj[item.key_data + '_arr'][0]
+                                        .title
                                 }
                                 permission={
                                     overview_obj[item.key_data + '_arr'][0]

@@ -48,7 +48,10 @@ function TransportationChoices({ handleTransport, closeTransport }) {
 
     //
     useEffect(() => {
-        observeToDo(ref_transport.current, getData_Transport, 0);
+        observeToDo({
+            elm: ref_transport.current,
+            callback: getData_Transport,
+        });
     }, []);
 
     /* ---------------- GET API -------------- */

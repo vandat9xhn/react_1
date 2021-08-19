@@ -10,18 +10,34 @@ import { useForceUpdate } from '../../../_hooks/UseForceUpdate';
 import NextPrevDiv from '../../some_div/next_prev_div/NextPrevDiv';
 //
 import CarouselItem from '../item/CarouselItem';
+import CarouselDot from '../dot/CarouselDot';
 //
 import './Carousel.scss';
-import CarouselDot from '../dot/CarouselDot';
+import { observerDisplay } from '../../../_some_function/observerDisplay';
 
 //
 Carousel.propTypes = {
-    vid_pics: PropTypes.array.isRequired,
+    vid_pics: PropTypes.array,
     has_fetched: PropTypes.bool,
+    time_interval: PropTypes.number,
+    time_trans: PropTypes.number,
+
+    disabled_btn_when_trans: PropTypes.bool,
+    time_disabled_btn: PropTypes.number,
+    is_btn_circle: PropTypes.bool,
+
+    use_next_prev: PropTypes.bool,
 };
 
 Carousel.defaultProps = {
     has_fetched: false,
+    time_interval: 6000,
+    time_trans: 300,
+
+    disabled_btn_when_trans: true,
+    time_disabled_btn: 100,
+
+    use_next_prev: true,
 };
 
 //
@@ -34,6 +50,8 @@ function Carousel({
     disabled_btn_when_trans = true,
     time_disabled_btn = 100,
     is_btn_circle,
+
+    use_next_prev,
 }) {
     //
     const [extra_trans_x, setExtraTransX] = useState(0);
@@ -65,6 +83,12 @@ function Carousel({
 
     //
     useEffect(() => {
+        observerDisplay({
+            elm: ref_carousel_elm.current,
+            callbackDisplay: () => stopInterval(false),
+            callbackNoDisplay: () => stopInterval(true),
+        });
+
         return () => {
             mounted.current = false;
         };
@@ -243,7 +267,7 @@ function Carousel({
                 />
             </div>
 
-            {IS_MOBILE ? null : (
+            {!use_next_prev || IS_MOBILE ? null : (
                 <NextPrevDiv
                     is_btn_circle={is_btn_circle}
                     size_icon="0.8rem"

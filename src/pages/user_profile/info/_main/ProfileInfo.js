@@ -10,6 +10,7 @@ import './ProfileInfo.scss';
 import ProfileInfoActions from '../actions/_main/ProfileInfoActions';
 import ProfileInfoStory from '../story/_main/ProfileInfoStory';
 import ProfileInfoPicture from '../picture/_main/ProfileInfoPicture';
+import VirtualScroll from '../../../../component/virtual_scroll/VirtualScroll';
 
 //
 ProfileInfo.propTypes = {
@@ -74,8 +75,8 @@ function ProfileInfo({ profile, is_fetching, openCoverPicture, openPicture }) {
 
     //
     return (
-        <div className="ProfileInfo bg-primary">
-            <div className="ProfileInfo_pics">
+        <VirtualScroll>
+            <div className="ProfileInfo bg-primary">
                 <ProfileInfoPicture
                     cover={cover}
                     picture={picture}
@@ -83,9 +84,7 @@ function ProfileInfo({ profile, is_fetching, openCoverPicture, openPicture }) {
                     openCoverPicture={openCoverPicture}
                     openPicture={openPicture}
                 />
-            </div>
 
-            <div className="ProfileInfo_name-story">
                 {!is_fetching ? (
                     <ProfileInfoStory
                         name={first_name + ' ' + last_name}
@@ -100,28 +99,28 @@ function ProfileInfo({ profile, is_fetching, openCoverPicture, openPicture }) {
                         <SkeletonDiv num={2} />
                     </div>
                 )}
-            </div>
 
-            {!is_fetching ? (
-                <ProfileInfoActions
-                    id={id}
-                    is_user={user.id == id}
-                    user_related={user_related}
-                    permission_add_friend={permission_add_friend}
-                    is_block_message={is_block_message}
-                    //
-                    handleAddStory={handleAddStoryNewFeed}
-                    handleAcceptRequest={handleAcceptRequest}
-                    handleCancelRequest={handleCancelRequest}
-                    handleAddFriend={handleAddFriend}
-                    handleFollowFriend={handleFollowFriend}
-                />
-            ) : (
-                <div className="ProfileInfo_actions">
-                    <br /> <SkeletonDiv />
-                </div>
-            )}
-        </div>
+                {!is_fetching ? (
+                    <ProfileInfoActions
+                        id={id}
+                        is_user={user.id == id}
+                        user_related={user_related}
+                        permission_add_friend={permission_add_friend}
+                        is_block_message={is_block_message}
+                        //
+                        handleAddStory={handleAddStoryNewFeed}
+                        handleAcceptRequest={handleAcceptRequest}
+                        handleCancelRequest={handleCancelRequest}
+                        handleAddFriend={handleAddFriend}
+                        handleFollowFriend={handleFollowFriend}
+                    />
+                ) : (
+                    <div className="ProfileInfo_actions">
+                        <br /> <SkeletonDiv />
+                    </div>
+                )}
+            </div>
+        </VirtualScroll>
     );
 }
 

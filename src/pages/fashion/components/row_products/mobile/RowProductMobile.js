@@ -2,12 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import FashionFaceItem from '../../face_item/_main/FashionFaceItem';
+import FashionSeeMoreLastRow from '../../see_more/last_row/FashionSeeMoreLastRow';
 
 //
 RowProductMobile.propTypes = {};
 
 //
-function RowProductMobile({ products }) {
+function RowProductMobile({
+    products,
+    link_to_more,
+    title_more,
+    class_color_more,
+}) {
     //
     return (
         <div className="max-w-100per overflow-x-auto snap-x-mandatory">
@@ -35,6 +41,14 @@ function RowProductMobile({ products }) {
                         />
                     </li>
                 ))}
+
+                <li className="row-product-item snap-align-end">
+                    <FashionSeeMoreLastRow
+                        link_to={link_to_more}
+                        title={title_more}
+                        class_color={class_color_more}
+                    />
+                </li>
             </ul>
         </div>
     );

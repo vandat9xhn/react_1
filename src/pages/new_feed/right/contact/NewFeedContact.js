@@ -44,20 +44,19 @@ function NewFeedContact() {
 
     //
     useEffect(() => {
-        observeToDo(
-            ref_contact.current,
-            () => {
+        observeToDo({
+            elm: ref_contact.current,
+            callback: () => {
                 getData_API();
                 observerShowMore({
                     fake_elm_end: ref_fake_elm_end.current,
                     root: ref_contact.current,
-                    rootMargin: '0px 0px 500px 0px',
+                    rootMargin: '300px 0px 0px 0px',
                     way_scroll: 'to_bottom',
                     margin: 300,
                 });
             },
-            0
-        );
+        });
     }, []);
 
     //

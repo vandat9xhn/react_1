@@ -89,3 +89,9 @@ export const about_searches_str = AboutCommonRoutes.reduce(
     (a, b) => a + b.search,
     ''
 );
+
+//
+export const common_about_title = AboutCommonRoutes.map((item) => ({
+    search: item.search,
+    title: item.title,
+}));

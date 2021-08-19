@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { use2FingersResize } from '../../../../../../_hooks/use2FingersResize';
@@ -19,7 +19,10 @@ function StoryCPTextMb({
     const { text, trans_x, trans_y, rotate, scale } = text_obj;
 
     //
-    const { handleStart: handleStartResize, handleElmTouchEnd } =
+    const ref_fake_elm = useRef(null);
+
+    //
+    const { handleTouchStart, handleTouchMove, handleTouchEnd } =
         use2FingersResize({
             handleResize: handleResizeText,
         });
@@ -29,12 +32,28 @@ function StoryCPTextMb({
     });
 
     //
-    function handleTouchStart(e) {
-        // if (e.touches.length == 1) {
-        handleStartMove(e);
-        // } else {
-        handleStartResize(e);
-        // }
+    function onTouchStart(e) {
+        if (e.touches.length == 1) {
+            handleStartMove(e);
+        } else {
+            handleTouchStart(e);
+
+            ref_fake_elm.current.style.display = 'block';
+        }
+    }
+
+    //
+    function onTouchMove(e) {
+        handleTouchMove(e);
+    }
+
+    //
+    function onTouchEnd(e) {
+        handleTouchEnd(e);
+
+        if (e.touches.length == 0) {
+            ref_fake_elm.current.style.display = '';
+        }
     }
 
     //
@@ -44,16 +63,22 @@ function StoryCPTextMb({
             style={{
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
             }}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleElmTouchEnd}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
             onClick={openChangeText}
         >
-            <span
-                className="StoryCPTextMb_text text-white label-field font-18px"
-                // style={{ fontSize: `${scale * 14 + 2}px` }}
-            >
+            <span className="StoryCPTextMb_text text-white label-field font-18px">
                 {text}
             </span>
+
+            <div className="pos-abs-100"></div>
+
+            <div
+                ref={ref_fake_elm}
+                className="pos-abs-center wh-200v display-none"
+                style={{ transform: `scale(${1 / scale})` }}
+            ></div>
         </div>
     );
 }

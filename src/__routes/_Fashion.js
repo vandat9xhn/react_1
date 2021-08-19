@@ -2,7 +2,7 @@ import React from 'react';
 
 //
 const Fashion = React.lazy(() =>
-    import('../pages/fashion/pages/_fashion_list/_main/Fashion')
+    import('../pages/fashion/pages/home/_main/Fashion')
 );
 const FashionShop = React.lazy(() =>
     import('../pages/fashion/pages/shop/_main/Shop')

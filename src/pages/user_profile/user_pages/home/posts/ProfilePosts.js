@@ -58,9 +58,9 @@ function ProfilePosts({ name }) {
 
     //
     useEffect(() => {
-        observeToDo(
-            ref_component.current,
-            () => {
+        observeToDo({
+            elm: ref_component.current,
+            callback: () => {
                 refreshData_API();
 
                 observerShowMore({
@@ -71,8 +71,7 @@ function ProfilePosts({ name }) {
                     margin: 500,
                 });
             },
-            0
-        );
+        });
     }, []);
 
     /* ----------- CREATE ----------- */

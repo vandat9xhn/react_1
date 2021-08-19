@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { GetIdSlug } from '../../../../../../../_some_function/GetIdSlug';
-// 
+//
 import { handle_API_UserOverview_r } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
-// 
-import { initial_life_state } from '../../../__common/initial/initial';
+//
 //
 import PfAboutLifeEvent from '../life_event/_main/PfAboutLifeEvent';
+import { initial_life_state } from '../../../../../../../_initial/profile/about';
 
 //
 PfAboutLifeEvents.propTypes = {};
@@ -18,9 +18,7 @@ function PfAboutLifeEvents(props) {
     const user_id = GetIdSlug();
 
     //
-    const [about_state, setAboutState] = useState({
-        ...initial_life_state,
-    });
+    const [about_state, setAboutState] = useState(initial_life_state());
 
     const { life_event_arr, has_fetched } = about_state;
 

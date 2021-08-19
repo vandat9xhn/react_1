@@ -1,8 +1,5 @@
-.FashionSellingProduct{
-    padding: 1rem;
-}
-
-.FashionSellingProduct_bd{
+//
+.FashionSellingProduct_bd {
     width: 10rem;
     height: 10rem;
 
@@ -11,10 +8,22 @@
     background-position: center;
 }
 
+//
+@media (max-width: 500px) {
+    .FashionSellingProduct{
+        padding: 8px;
+    }
 
-// 
-@media (max-width: 400px) {
-    .FashionSellingProduct_bd{
+    .FashionSellingProduct_bd {
         width: 8rem;
-        height: 8rem;}
+        height: 8rem;
+    }
+
+    .FashionSellingProduct_foot{
+        padding: 4px 0 0;
+    }
+    // 
+    .FashionSellingProduct_price{
+        font-size: 16px;
+    }
 }

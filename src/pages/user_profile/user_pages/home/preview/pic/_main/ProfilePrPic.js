@@ -37,7 +37,11 @@ function ProfilePrPic({ id, handleReady }) {
 
     //
     useEffect(() => {
-        observeToDo(ref_component.current, getData_API_PicPreview, 0, true);
+        observeToDo({
+            elm: ref_component.current,
+            callback: getData_API_PicPreview,
+            when_over: true,
+        });
     }, []);
 
     //

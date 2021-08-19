@@ -1,6 +1,6 @@
 import React from 'react';
 // 
-import { user_related_obj } from '../../../../__some_obj/InfoObj';
+import { user_related_obj } from '../../../../../../_data/profile/InfoObj';
 //
 import CaseFollow from '../follow/CaseFollow';
 import CaseFriend from '../friend/CaseFriend';

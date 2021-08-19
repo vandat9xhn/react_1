@@ -49,7 +49,10 @@ function FashionItemCmt({ id: product_id }) {
 
     //
     useEffect(() => {
-        observeToDo(ref_comment.current, () => getData_API(page), 0);
+        observeToDo({
+            elm: ref_comment.current,
+            callback: () => getData_API(page),
+        });
     }, [product_id]);
 
     //
@@ -95,7 +98,10 @@ function FashionItemCmt({ id: product_id }) {
         <div ref={ref_comment} className="FashionItemCmt bg-fb">
             <div className="FashionItemCmt_row display-flex space-between">
                 <div className="FashionItemCmt_left padding-8px bg-primary brs-5px-md">
-                    <h2 ref={ref_comment_head} className="margin-0 font-20px">
+                    <h2
+                        ref={ref_comment_head}
+                        className="font-18px text-secondary label-field"
+                    >
                         Comment ({count})
                     </h2>
                     <hr className="App_hr-bg" />

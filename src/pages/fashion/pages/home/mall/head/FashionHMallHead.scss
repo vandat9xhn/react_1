@@ -1,0 +1,28 @@
+.FashionHMallHead_contain {
+    border-bottom: 1px solid var(--md-bg-blur);
+}
+
+//
+@media (max-width: 800px) {
+    .FashionHMallHead {
+        padding-bottom: 2rem;
+    }
+    // .
+    .FashionHMallHead_right {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        justify-content: space-around;
+
+        margin: 0;
+        width: 100%;
+        transform: translateY(-50%);
+
+        font-size: 11px;
+    }
+    // ..
+    .FashionHMallHead_right_item {
+        padding: 0;
+    }
+}

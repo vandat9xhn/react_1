@@ -35,9 +35,9 @@ function Home() {
     useEffect(() => {
         document.title = 'Home';
 
-        observeToDo(ref_phone.current, getPhones, 0);
-        observeToDo(ref_cloth.current, getClothes, 0);
-        observeToDo(ref_city.current, getCities, 0);
+        observeToDo({ elm: ref_phone.current, callback: getPhones });
+        observeToDo({ elm: ref_cloth.current, callback: getClothes });
+        observeToDo({ elm: ref_city.current, callback: getCities });
     }, []);
 
     /* ----------------- COMMON ------------------ */

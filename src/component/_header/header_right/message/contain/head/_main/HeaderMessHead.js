@@ -7,7 +7,6 @@ import observeToDo from '../../../../../../../_some_function/observerToDo';
 //
 import { handle_API_Friend_L } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
 //
-// import { useScrollRightShowMore } from '../../../../../../../_hooks/useScrollRightShowMore';
 import { useObserverShowMore } from '../../../../../../../_hooks/useObserverShowMore';
 //
 import ComponentSkeleton from '../../../../../../skeleton/component_skeleton/ComponentSkeleton';
@@ -44,27 +43,13 @@ function HeaderMessHead({ closeZoom }) {
             }),
     });
 
-    // //
-    // const { data_state, getData_API } = useScrollRightShowMore({
-    //     ref_elm: ref_head_elm,
-    //     initial_arr: [],
-    //     handle_API_L: (c_count) =>
-    //         handle_API_Friend_L({
-    //             c_count: c_count,
-    //             params: {
-    //                 type: 'recently',
-    //                 size: 10,
-    //             },
-    //         }),
-    // });
-
     const { data_arr, count, has_fetched } = data_state;
 
     // //
     useEffect(() => {
-        observeToDo(
-            ref_main_elm.current,
-            () => {
+        observeToDo({
+            elm: ref_main_elm.current,
+            callback: () => {
                 getData_API();
 
                 observerShowMore({
@@ -75,8 +60,7 @@ function HeaderMessHead({ closeZoom }) {
                     margin: 350,
                 });
             },
-            0
-        );
+        });
     }, []);
 
     //

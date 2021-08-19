@@ -29,11 +29,10 @@ function FashionOtherItem({ id }) {
         // setProducts(Array(10).fill({ vid_pics: [{ vid_pic: '' }] }));
 
         setTimeout(() => {
-            observeToDo(
-                ref_product_rlt.current,
-                () => getData_API_Product(id),
-                0
-            );
+            observeToDo({
+                elm: ref_product_rlt.current,
+                callback: () => getData_API_Product(id),
+            });
         }, 0);
     }, [id]);
 
@@ -51,8 +50,14 @@ function FashionOtherItem({ id }) {
     //
     return (
         <div ref={ref_product_rlt} className="FashionOtherItem">
-            <RowProducts list_products={[products, products]}>
-                <h2 className="margin-0 font-20px">Other products</h2>
+            <RowProducts
+                list_products={[products]}
+                link_to_more={`/fashion/shop/${id}`}
+                title_more="Xem tất cả"
+            >
+                <h2 className="padding-y-8px font-16px text-secondary label-field">
+                    CÁC SẢN PHẨM KHÁC CỦA SHOP
+                </h2>
             </RowProducts>
         </div>
     );

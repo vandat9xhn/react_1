@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import fire from '../../../../../image/fire.png';
 import flash_sale_bar from '../../../../../image/flash_sale_bar.png';
 import './FashionFlashSaleBar.scss';
+import { IS_MOBILE } from '../../../../_constant/Constant';
 
 //
 FashionFlashSaleBar.propTypes = {};
@@ -12,9 +13,13 @@ FashionFlashSaleBar.propTypes = {};
 function FashionFlashSaleBar({ sold, total }) {
     //
     return (
-        <div className="FashionFlashSaleBar pos-rel padding-8px">
+        <div
+            className={`FashionFlashSaleBar pos-rel margin-auto ${
+                IS_MOBILE ? 'padding-6px' : 'padding-8px'
+            }`}
+        >
             <div
-                className="FashionFlashSaleBar_bg_sold pos-abs-100 padding-8px brs-8px"
+                className="FashionFlashSaleBar_bg_sold pos-abs-100 brs-8px"
                 style={{
                     backgroundImage: `url(${flash_sale_bar})`,
                 }}
@@ -28,8 +33,16 @@ function FashionFlashSaleBar({ sold, total }) {
             </div>
 
             <div className="pos-abs-100">
-                <div className="line-14px text-align-center">
-                    <span className="text-white label-field font-12px">
+                <div
+                    className={`text-align-center ${
+                        IS_MOBILE ? 'line-11px' : 'line-14px'
+                    }`}
+                >
+                    <span
+                        className={`text-white label-field ${
+                            IS_MOBILE ? 'font-11px' : 'font-12px'
+                        }`}
+                    >
                         {sold / total >= 0.8
                             ? 'SẮP CHÁY HÀNG'
                             : `ĐÃ BÁN ${sold}`}

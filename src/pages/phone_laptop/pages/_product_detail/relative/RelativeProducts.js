@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { API_PhoneLaptop_L } from '../../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
-// 
+//
 import observeToDo from '../../../../../_some_function/observerToDo';
-// 
+//
 import ProductItem from '../../../../../component/products/product_item/ProductItem';
 //
 import './RelativeProducts.scss';
@@ -29,7 +29,10 @@ function RelativeProducts({ product_id }) {
 
     //
     useEffect(() => {
-        observeToDo(ref_relative.current, getData_API_Relative, 0);
+        observeToDo({
+            elm: ref_relative.current,
+            callback: getData_API_Relative,
+        });
     }, [product_id]);
 
     //

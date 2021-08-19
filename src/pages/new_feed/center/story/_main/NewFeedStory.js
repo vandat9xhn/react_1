@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
@@ -9,7 +9,7 @@ import { initial_story_obj } from '../../../../../_initial/story/InitialStory';
 //
 import { handle_API_FeedStory_L } from '../../../../../_handle_api/feed/HandleAPIStory';
 //
-import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
+import { useObserverShowMore } from '../../../../../_hooks/useObserverShowMore';
 //
 import { openScreenStoryItemMobile } from '../../../../../component/_screen/type/story/mobile/item/ScreenStoryItemMobile';
 import { openScreenStoryMenuMobile } from '../../../../../component/_screen/type/story/mobile/menu/ScreenStoryMenuMobile';
@@ -34,13 +34,19 @@ function NewFeedStory(props) {
     const { user, openScreenFloor } = useContext(context_api);
 
     //
-    const { data_state, setDataState, getData_API } = useDataShowMore({
-        initial_arr: [] || [initial_story_obj()],
-        handle_API_L: (c_count) => handle_API_FeedStory_L(c_count, 'followed'),
-        other_state: {
-            story_arr_yours: [],
-        },
-    });
+    const ref_scroll_elm = useRef(null);
+    const ref_fake_elm_end = useRef(null);
+
+    //
+    const { data_state, setDataState, getData_API, observerShowMore } =
+        useObserverShowMore({
+            initial_arr: [] || [initial_story_obj()],
+            handle_API_L: (c_count) =>
+                handle_API_FeedStory_L(c_count, 'followed'),
+            other_state: {
+                story_arr_yours: [],
+            },
+        });
 
     const { data_arr, story_arr_yours, count, is_fetching, has_fetched } =
         data_state;
@@ -50,7 +56,16 @@ function NewFeedStory(props) {
     //
     useEffect(() => {
         getData_StoryYours();
-        getData_API();
+
+        IS_MOBILE
+            ? observerShowMore({
+                  fake_elm_end: ref_fake_elm_end.current,
+                  root: ref_scroll_elm.current,
+                  rootMargin: '0px 0px 0px 350px',
+                  way_scroll: 'to_right',
+                  margin: 350,
+              })
+            : getData_API();
     }, []);
 
     //
@@ -61,25 +76,6 @@ function NewFeedStory(props) {
             ...data_state,
             story_arr_yours: data,
         }));
-    }
-
-    //
-    function handleShowMore() {
-        getData_API();
-    }
-
-    //
-    function handleScroll(e) {
-        if (count <= data_arr.length) {
-            return;
-        }
-
-        if (
-            e.target.scrollLeft ==
-            e.target.scrollWidth - e.target.clientWidth
-        ) {
-            handleShowMore();
-        }
     }
 
     /* ------------ */
@@ -108,6 +104,8 @@ function NewFeedStory(props) {
             has_fetched_yours: true,
         };
     }
+
+    /* ------------ */
 
     //
     function openScreenStory(ix = 0) {
@@ -171,10 +169,7 @@ function NewFeedStory(props) {
     return (
         <VirtualScroll>
             <div className="NewFeedStory pos-rel padding-8px brs-8px-md">
-                <div
-                    className="NewFeedStory_contain"
-                    onScroll={IS_MOBILE ? handleScroll : undefined}
-                >
+                <div ref={ref_scroll_elm} className="NewFeedStory_contain">
                     <div className="display-flex align-items-center">
                         <div
                             className="NewFeedStory_item cursor-pointer"
@@ -187,6 +182,11 @@ function NewFeedStory(props) {
                             feed_story_arr={feed_story_arr}
                             openScreenStory={openScreenStory}
                         />
+
+                        <div
+                            ref={ref_fake_elm_end}
+                            className="padding-1px"
+                        ></div>
 
                         <NewFeedStoryFetching is_fetching={is_fetching} />
                     </div>

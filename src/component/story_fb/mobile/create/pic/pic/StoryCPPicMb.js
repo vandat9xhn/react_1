@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { use2FingersResize } from '../../../../../../_hooks/use2FingersResize';
@@ -21,28 +21,52 @@ function StoryCPPicMb({
         vid_pic_obj;
 
     //
-    const { handleStart: handleStartResize, handleElmTouchEnd } =
-        use2FingersResize({
-            handleResize: handleResizePic,
-        });
+    const ref_fake_elm = useRef(null);
+
+    //
+    const {
+        handleTouchStart,
+        handleTouchMove,
+        handleTouchEnd: handleResizeEnd,
+    } = use2FingersResize({
+        handleResize: handleResizePic,
+    });
 
     const { handleStart: handleStartMove } = useMouseMoveXY({
         handleMouseMove: handleMovePic,
     });
 
     //
-    function handleTouchStart(e) {
-        // if (e.touches.length == 1) {
-            ['MOVE', 'AUTO'].includes(mode.toUpperCase()) && handleStartMove(e);
-        // } else {
-            ['RESIZE', 'AUTO'].includes(mode.toUpperCase()) && handleStartResize(e);
-        // }
+    function onTouchStart(e) {
+        if (
+            mode.toUpperCase() == 'MOVE' ||
+            (mode.toUpperCase() == 'AUTO' && e.touches.length == 1)
+        ) {
+            handleStartMove(e);
+
+            return;
+        }
+
+        if (['RESIZE', 'AUTO'].includes(mode.toUpperCase())) {
+            handleTouchStart(e);
+
+            ref_fake_elm.current.style.display = 'block';
+        }
     }
 
     //
-    function onTouchEnd() {
+    function onTouchMove(e) {
+        handleTouchMove(e);
+    }
+
+    //
+    function onTouchEnd(e) {
+        handleResizeEnd(e);
         handleTouchEnd();
-        handleElmTouchEnd();
+
+        if (e.touches.length == 0) {
+            ref_fake_elm.current.style.display = '';
+        }
     }
 
     //
@@ -54,8 +78,10 @@ function StoryCPPicMb({
             style={{
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
             }}
-            onTouchStart={handleTouchStart}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
+            onTouchEnd={handleTouchEnd}
         >
             <img
                 className="StoryCPPicMb_img"
@@ -65,6 +91,12 @@ function StoryCPPicMb({
             />
 
             <div className="pos-abs-100"></div>
+
+            <div
+                ref={ref_fake_elm}
+                className="pos-abs-center wh-200v display-none"
+                style={{ transform: `scale(${1 / scale})` }}
+            ></div>
         </div>
     );
 }

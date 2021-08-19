@@ -1,20 +1,11 @@
-
 //
 .CommentInput_contain {
-    background-color: var(--md-bg-fb);
     border-radius: 15px;
 }
 // ..
 .CommentInput_input {
     flex-basis: 1rem;
-    flex-grow: 1;
-
-    padding-left: 0.5rem;
-    overflow: hidden;
-}
-// ...
-.CommentInput_textarea{
-    padding: 0;
+    padding-left: 0.75rem;
 }
 
 // ..
@@ -23,16 +14,8 @@
     padding-right: 0.25rem;
 }
 
-// ....
-.CommentInput__send {
-    display: none;
-}
-
-
 // preview
 .CommentInput_preview {
-    max-width: 100%;
-    overflow-x: auto;
     .ImgVidPreview {
         display: flex;
         .ImgVidPreview__elm {

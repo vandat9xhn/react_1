@@ -42,7 +42,15 @@ RowProducts.defaultProps = {
 };
 
 //
-function RowProducts({ list_products, children }) {
+function RowProducts({
+    list_products,
+
+    link_to_more,
+    title_more,
+    class_color_more,
+    
+    children,
+}) {
     //
     return (
         <div className="RowProducts padding-8px">
@@ -52,7 +60,12 @@ function RowProducts({ list_products, children }) {
                 {list_products.map((products, list_ix) => (
                     <div key={`${list_ix}`} className="RowProducts_products">
                         {IS_MOBILE ? (
-                            <RowProductMobile products={products} />
+                            <RowProductMobile
+                                products={products}
+                                link_to_more={link_to_more}
+                                title_more={title_more}
+                                class_color_more={class_color_more}
+                            />
                         ) : (
                             <RowProductPc products={products} />
                         )}

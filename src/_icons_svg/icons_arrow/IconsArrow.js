@@ -35,7 +35,7 @@ function IconsArrow({ size_icon, x, y }) {
             height={size_icon}
             //
             fill="none"
-            stroke="var(--md-color)"
+            stroke="var(--md-color-secondary)"
             strokeLinecap="round"
         >
             {/* dropdown x=0, y=0 */}
@@ -45,7 +45,7 @@ function IconsArrow({ size_icon, x, y }) {
                 fill="var(--md-color)"
             />
 
-            <g strokeWidth="10">
+            <g strokeWidth="25">
                 {/* next > x=200, y=0 */}
                 <path d="M275,20 325,100 275,180" className="IconsArrow_next" />
 

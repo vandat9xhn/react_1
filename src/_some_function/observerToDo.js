@@ -1,11 +1,13 @@
 //
-const observeToDo = (
+function observeToDo({
     elm,
-    callback = () => {},
-    threshold = 0.9,
     when_over = false,
-    rootMargin = `100px 100px`,
-) => {
+    callback = () => {},
+
+    root = null,
+    rootMargin = `500px`,
+    threshold = 0,
+}) {
     const observer = new IntersectionObserver(
         (entries, observer) => {
             entries.forEach((entry) => {
@@ -19,11 +21,13 @@ const observeToDo = (
             });
         },
         {
+            root: root,
             threshold: threshold,
             rootMargin: rootMargin,
         }
     );
+
     observer.observe(elm);
-};
+}
 
 export default observeToDo;

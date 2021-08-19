@@ -1,0 +1,26 @@
+.FashionHomeTrend_not_fetched {
+    height: 160px;
+}
+
+.FashionHomeTrend_head {
+    border-bottom: 1px solid var(--md-bg-blur);
+}
+
+// .
+.FashionHomeTrend_item {
+    flex-shrink: 0;
+}
+.FashionHomeTrend_item-pc {
+    width: 240px;
+    max-width: 50%;
+    padding-right: 10px;
+
+    &:not(:last-child) {
+        border-right: 1px solid var(--md-bg-blur);
+    }
+}
+.FashionHomeTrend_item-mobile {
+    width: 50%;
+    padding: 4px;
+    border: 1px solid var(--md-bg-blur);
+}

@@ -76,7 +76,7 @@
     background-image: linear-gradient(to bottom, #f53d2d, #f63);
 }
 
-.bg-fashion-mall{
+.bg-fashion-mall {
     background-color: var(--fashion-mall);
 }
 
@@ -233,6 +233,10 @@
     line-height: 14px;
 }
 
+.line-11px {
+    line-height: 11px;
+}
+
 /* ----------- NavLink active -----------*/
 .active-color {
     color: var(--blue);
@@ -304,8 +308,24 @@
 
 /* ---------------- PADDING ---------------*/
 
+.padding-16px {
+    padding: 16px;
+}
+
+.padding-10px {
+    padding: 10px;
+}
+
 .padding-8px {
     padding: 8px;
+}
+
+.padding-7px {
+    padding: 7px;
+}
+
+.padding-6px {
+    padding: 6px;
 }
 
 .padding-5px {
@@ -389,15 +409,15 @@
     color: var(--danger);
 }
 
-.text-fashion-red{
-    color: var(--fashion-head);
-}
-
 .text-blue {
     color: var(--blue);
 }
 .text-green {
     color: var(--green);
+}
+
+.text-del{
+    color: var(--del);
 }
 
 .color-react {
@@ -447,6 +467,10 @@
 
 .font-13px {
     font-size: 13px;
+}
+
+.font-14px {
+    font-size: 14px;
 }
 
 .font-16px {

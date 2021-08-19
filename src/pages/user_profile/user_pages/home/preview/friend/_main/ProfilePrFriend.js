@@ -43,7 +43,10 @@ function ProfilePrFriend({ id, handleReady }) {
 
     //
     useEffect(() => {
-        observeToDo(ref_component.current, handleGetData_API, 0);
+        observeToDo({
+            elm: ref_component.current,
+            callback: handleGetData_API,
+        });
     }, []);
 
     //

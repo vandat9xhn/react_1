@@ -37,7 +37,7 @@ function PaymentChoices({ handlePayment, closePayment }) {
 
     //
     useEffect(() => {
-        observeToDo(ref_payment.current, getData_Payment, 0);
+        observeToDo({ elm: ref_payment.current, callback: getData_Payment });
     }, []);
 
     /* ---------------- GET API -------------- */

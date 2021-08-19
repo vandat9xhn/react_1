@@ -8,8 +8,10 @@ import './_style/position.scss';
 import './_style/properties.scss';
 import './_style/classes.scss';
 import './_style/form.scss';
+
 import './_style/post.scss';
 import './_style/vid_pics.scss';
+import './_style/fashion.scss';
 import './_style/device.scss';
 //
 import { Routes } from './__routes/__main';

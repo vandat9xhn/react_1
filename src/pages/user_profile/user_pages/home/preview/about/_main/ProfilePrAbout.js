@@ -39,7 +39,11 @@ function ProfilePrAbout({ id, handleReady }) {
 
     //
     useEffect(() => {
-        observeToDo(ref_component.current, getData_API_About, 0, true);
+        observeToDo({
+            elm: ref_component.current,
+            callback: getData_API_About,
+            when_over: true,
+        });
     }, []);
 
     //

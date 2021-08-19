@@ -3,16 +3,9 @@ import { useRef } from 'react';
 import { getTouchClientXY } from '../_some_function/getClientXY';
 
 //
-export function use2FingersResize({
-    handleResize = () => {},
-    handleResizeEnd = () => {},
-}) {
+export function use2FingersResize({ handleResize = () => {} }) {
     //
     const is_run = useRef(false);
-
-    const is_start = useRef(false);
-    const is_move = useRef(false);
-    const is_end = useRef(false);
 
     const client_x_0 = useRef(0);
     const client_y_0 = useRef(0);
@@ -43,38 +36,18 @@ export function use2FingersResize({
     }
 
     //
-    function handleStartResize(e) {
+    function handleTouchStart(e) {
         if (e.touches.length != 2) {
             return;
         }
 
-        if (!is_move.current) {
-            is_move.current = true;
-            window.addEventListener('touchmove', handleMove, true);
-        }
-        if (!is_end.current) {
-            is_end.current = true;
-            window.addEventListener('touchend', handleTouchEnd, true);
-        }
-
         is_run.current = true;
-
         client_length_start.current = getClientLength(e);
         client_length.current = client_length_start.current;
     }
 
     //
-    function handleStart(e) {
-        // e.stopPropagation();
-
-        if (!is_start.current) {
-            is_start.current = true;
-            window.addEventListener('touchstart', handleStartResize, true);
-        }
-    }
-
-    //
-    function handleMove(e) {
+    function handleTouchMove(e) {
         if (!is_run.current) {
             return;
         }
@@ -92,36 +65,14 @@ export function use2FingersResize({
     }
 
     //
-    function handleTouchEnd() {
+    function handleTouchEnd(e) {
         is_run.current = false;
-        // handleResizeEnd();
-
-        is_start.current = false
-        is_end.current = false;
-        is_move.current = false;
-        // window.ontouchstart = null
-        window.removeEventListener('touchstart', handleStart, true);
-        window.removeEventListener('touchmove', handleMove, true);
-        window.removeEventListener('touchend', handleTouchEnd, true);
     }
 
     //
-    // function handleElmTouchEnd() {
-    //     is_run.current = false;
-    //     handleResizeEnd();
-
-    //     is_start.current = false;
-    //     is_end.current = false;
-    //     is_move.current = false;
-
-    //     window.removeEventListener('touchstart', handleStartResize, true);
-    //     window.removeEventListener('touchmove', handleMove, true);
-    //     window.removeEventListener('touchend', handleTouchEnd, true);
-    // }
-
-    //
     return {
-        handleStart,
-        // handleElmTouchEnd,
+        handleTouchStart,
+        handleTouchMove,
+        handleTouchEnd,
     };
 }

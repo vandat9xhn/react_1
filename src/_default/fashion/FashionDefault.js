@@ -51,7 +51,7 @@ export const owner_info = [
 //
 export const product_name_arr = [
     'Product name 1',
-    'Product name 2',
+    'Product name sd asd asd asd asd asd asd asd ada sd as da sd asd  as da sda sda sd ada',
     'Product name 3',
     'Product name 4',
     'Product name 5',

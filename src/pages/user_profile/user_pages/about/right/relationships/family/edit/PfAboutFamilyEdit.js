@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { handle_API_Family_L } from '../../../../../../../../_handle_api/profile/ProfileHandleAPI';
+//
+import { data_about_relation_arr } from '../../../../../../../../_data/profile/relative';
+//
 import { useInputSelectLoading } from '../../../../../../../../_hooks/useInputSelectLoading';
 //
 import InputSelect from '../../../../../../../../component/input/input_select/_main/InputSelect';
 import Select from '../../../../../../../../component/input/select/Select';
 //
-import { handle_API_Family_L } from '../../../../../../../../_handle_api/profile/ProfileHandleAPI';
-
-import { relation_arr } from '../../../../__common/data/ProfileIntroData';
-
 import PfAboutConfirm from '../../../_component/confirm/PfAboutConfirm';
 import PfRelationOptionList from '../option_list/_main/PfRelationOptionList';
 import PfRelationSelectedList from '../selected_list/_main/PfRelationSelectedList';
@@ -25,15 +25,13 @@ PfAboutFamilyEdit.propTypes = {
 };
 
 //
-function PfAboutFamilyEdit(props) {
+function PfAboutFamilyEdit({ item_obj, handleSave, handleCancel }) {
     //
-    const { item_obj, handleSave, handleCancel } = props;
-
     const { permission, member, relation } = item_obj;
 
     //
     const [family_state, setFamilyState] = useState({
-        cur_relation: relation || relation_arr[0],
+        cur_relation: relation || data_about_relation_arr[0],
         is_error: false,
     });
 
@@ -138,7 +136,7 @@ function PfAboutFamilyEdit(props) {
 
                 <div className="PfAbout_input">
                     <Select
-                        options={relation_arr}
+                        options={data_about_relation_arr}
                         current_option={cur_relation}
                         onSelectOption={handleChangeRelation}
                     />

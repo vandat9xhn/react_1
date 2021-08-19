@@ -14,7 +14,7 @@ function FashionSellingProduct({ id, img, price, discount }) {
     //
     return (
         <Link to={`/fashion:${id}`}>
-            <div className="FashionSellingProduct pos-rel wh-100 bg-primary">
+            <div className="FashionSellingProduct pos-rel wh-100 bg-primary padding-16px">
                 <div className="pos-abs right-0 top-0">
                     <DiscountSymbol discount={discount} />
                 </div>
@@ -24,13 +24,15 @@ function FashionSellingProduct({ id, img, price, discount }) {
                     style={{ backgroundImage: `url(${img})` }}
                 ></div>
 
-                <div className="padding-8px">
-                    <div className="text-align-center text-fashion-red">
+                <div className="FashionSellingProduct_foot padding-8px">
+                    <div className="text-align-center color-fashion">
                         <span>
                             <sup>₫</sup>
                         </span>
 
-                        <span className="font-18px">{price}</span>
+                        <span className="FashionSellingProduct_price font-18px">
+                            {price}
+                        </span>
                     </div>
                 </div>
             </div>

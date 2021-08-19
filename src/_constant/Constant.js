@@ -24,3 +24,7 @@ export const ROTATE_RATIO = 100
 export const SCALE_PIC_RATIO = 25;
 
 export const STORY_WIDTH_HEIGHT_RATIO = 0.55
+
+// SHOPEE
+
+export const CLASS_PC_OR_MOBILE = IS_MOBILE ? '-mobile' : '-pc'

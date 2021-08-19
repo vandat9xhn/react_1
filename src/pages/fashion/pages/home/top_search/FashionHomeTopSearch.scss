@@ -1,0 +1,18 @@
+.FashionHomeTopSearch_head {
+    border-bottom: 1px solid var(--md-bg-blur);
+}
+
+.FashionHomeTopSearch_item {
+    flex-shrink: 0;
+    width: 200px;
+    max-width: 48%;
+    padding: 10px;
+}
+
+.FashionHomeTopSearch {
+    &:hover {
+        .NextPrevDiv_icon_circle {
+            transform: scale(1.5);
+        }
+    }
+}

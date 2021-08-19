@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import './ProfileSkeleton.scss';
 
-ProfileSkeleton.propTypes = {
-    
-};
+//
+ProfileSkeleton.propTypes = {};
 
+//
 function ProfileSkeleton(props) {
     return (
-        <div className="ProfileSkeleton margin-auto height-100vh bg-primary">
-            
-        </div>
+        <div className="ProfileSkeleton margin-auto height-100vh bg-primary"></div>
     );
 }
 

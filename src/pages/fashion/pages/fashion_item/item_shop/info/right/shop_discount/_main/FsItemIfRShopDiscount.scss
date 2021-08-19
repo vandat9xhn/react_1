@@ -1,0 +1,7 @@
+.FsItemIfRShopDiscount{
+    &:hover{
+        .FsItemIfRShopDiscount_detail{
+            display: block;
+        }
+    }
+}

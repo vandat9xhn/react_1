@@ -14,13 +14,12 @@ function ProfileMoreItem({ sk, title }) {
     return (
         <NavLink
             to={location.pathname + `${sk ? '?sk=' : ''}${sk}`}
-            className="normal-text"
-            activeClassName={
+            className={
                 (location.search.startsWith(`?sk=${sk.split('_')[0]}`) &&
                     sk != '') ||
                 (location.search == '' && sk == '')
                     ? 'nav-active'
-                    : ''
+                    : 'normal-text'
             }
             replace
         >

@@ -5,7 +5,7 @@ import { useInputSelect } from '../../../../../../../../../_hooks/useInputSelect
 //
 import InputSelect from '../../../../../../../../../component/input/input_select/_main/InputSelect';
 //
-import { data_lang_arr } from '../../../../../../../__common/data/data';
+import { data_profile_lang_arr } from '../../../../../../../../../_data/profile/language';
 
 import PfAboutConfirm from '../../../../_component/confirm/PfAboutConfirm';
 
@@ -17,10 +17,8 @@ PfAboutLangEdit.propTypes = {
 };
 
 //
-function PfAboutLangEdit(props) {
+function PfAboutLangEdit({ item_obj, handleSave, handleCancel }) {
     //
-    const { item_obj, handleSave, handleCancel } = props;
-
     const { permission, lang } = item_obj;
 
     //
@@ -32,7 +30,10 @@ function PfAboutLangEdit(props) {
         handleChangeInput,
         handleSelectOption,
         handleRemoveSelectedItem,
-    } = useInputSelect({ all_data_arr: data_lang_arr, initial_data_str: lang });
+    } = useInputSelect({
+        all_data_arr: data_profile_lang_arr,
+        initial_data_str: lang,
+    });
 
     //
     function onSave(new_permission) {

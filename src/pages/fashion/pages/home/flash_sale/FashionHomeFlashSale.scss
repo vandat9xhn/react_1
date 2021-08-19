@@ -1,0 +1,33 @@
+.FashionHomeFlashSale_not_fetched{
+    height: 250px;
+}
+
+.FashionHomeFlashSale_head {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+// .
+.FashionHomeFlashSale_title {
+    width: 125px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+}
+
+// .
+.FashionHomeFlashSale_item {
+    flex-shrink: 0;
+    width: 200px;
+    max-width: 45%;
+    padding: 2px;
+}
+
+//
+@media (max-width: 500px) {
+    .FashionFlashSaleItem{
+        padding: 0;
+    }
+    .FashionFlashSaleItem_foot_price{
+        font-size: 18px;
+    }
+}

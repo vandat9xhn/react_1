@@ -6,14 +6,15 @@ import { API_FashionShop_R } from '../../../../../../api/api_django_no_token/fas
 import observeToDo from '../../../../../../_some_function/observerToDo';
 //
 import { initial_fashion_shop } from '../../../../../../_initial/fashion/FashionInitial';
-import { changeOwnerInfo } from '../../../../__function/FashionFunction';
+import { changeOwnerInfo } from '../../../../../../_some_function/fashion/FashionFunction';
 //
 import image_loading from '../../../../../../../image/image_loading.svg';
-import './ShopHead.scss';
 //
 import ShopBanner from '../banner/ShopBanner';
 import ShopInfo from '../info/ShopInfo';
 import ShopPersonal from '../personal/_main/ShopPersonal';
+//
+import './ShopHead.scss';
 
 //
 ShopHead.propTypes = {};
@@ -21,30 +22,32 @@ ShopHead.propTypes = {};
 //
 function ShopHead({ id }) {
     //
-    const [shop_head_state, setShopHeadState] = useState({
-        shop_obj: { ...initial_fashion_shop },
+    const [state_obj, setStateObj] = useState({
+        shop_obj: initial_fashion_shop(),
         has_fetched: false,
     });
 
-    const { shop_obj, has_fetched } = shop_head_state;
-
+    const { shop_obj, has_fetched } = state_obj;
     const { vid_pics, info, ...rest_shop_obj } = shop_obj;
 
     //
-    const mounted = useRef(true)
-    
-    const ref_shop_head = useRef(null);
+    const mounted = useRef(true);
 
-    // 
-    useEffect(() => {
-        return () => {
-            mounted.current = false
-        }
-    }, [])
+    const ref_shop_head = useRef(null);
 
     //
     useEffect(() => {
-        observeToDo(ref_shop_head.current, () => getData_API_Shop(id), 0);
+        return () => {
+            mounted.current = false;
+        };
+    }, []);
+
+    //
+    useEffect(() => {
+        observeToDo({
+            elm: ref_shop_head.current,
+            callback: () => getData_API_Shop(id),
+        });
     }, [id]);
 
     /* -------------------- GET API ----------------------- */
@@ -53,18 +56,18 @@ function ShopHead({ id }) {
     async function getData_API_Shop() {
         const res = await API_FashionShop_R(id);
 
-        const new_shop_obj = res.data
-        
-        changeOwnerInfo(new_shop_obj.owner_info)
-        
+        const new_shop_obj = res.data;
+
+        changeOwnerInfo(new_shop_obj.owner_info);
+
         if (!mounted.current) {
             return;
         }
 
-        document.title = new_shop_obj.name
-        
-        setShopHeadState({
-            ...shop_head_state,
+        document.title = new_shop_obj.name;
+
+        setStateObj({
+            ...state_obj,
             shop_obj: new_shop_obj,
             has_fetched: true,
         });
@@ -74,9 +77,7 @@ function ShopHead({ id }) {
     return (
         <div
             ref={ref_shop_head}
-            className={`ShopHead ${
-                has_fetched ? '' : 'pointer-events-none'
-            }`}
+            className={`ShopHead ${has_fetched ? '' : 'pointer-events-none'}`}
         >
             <div className="ShopHead_part">
                 <ShopPersonal {...rest_shop_obj} />

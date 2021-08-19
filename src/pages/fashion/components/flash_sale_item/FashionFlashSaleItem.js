@@ -6,6 +6,7 @@ import DiscountSymbol from '../../../../component/symbol/discount/DiscountSymbol
 import FashionFlashSaleBar from '../flash_sale_bar/FashionFlashSaleBar';
 //
 import './FashionFlashSaleItem.scss';
+import { IS_MOBILE } from '../../../../_constant/Constant';
 
 //
 FashionFlashSaleItem.propTypes = {};
@@ -39,17 +40,19 @@ function FashionFlashSaleItem({
                 </div>
 
                 <div className="FashionFlashSaleItem_foot">
-                    <div className="text-align-center color-fashion">
+                    <div className="text-align-center color-fashion-mall">
                         <span>₫</span>
 
-                        <span className="FashionFlashSaleItem_foot_price font-22px">
+                        <span
+                            className={`FashionFlashSaleItem_foot_price ${
+                                IS_MOBILE ? 'font-18px' : 'font-22px'
+                            }`}
+                        >
                             {price}
                         </span>
                     </div>
 
-                    <div>
-                        <FashionFlashSaleBar sold={sold} total={total} />
-                    </div>
+                    <FashionFlashSaleBar sold={sold} total={total} />
                 </div>
 
                 <div className="pos-abs right-0 top-0">

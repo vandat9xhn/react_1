@@ -33,7 +33,7 @@ function FashionCtg(props) {
     //
     return (
         <div className="FashionCtg pos-rel bg-primary">
-            <h2 className="padding-8px label-field text-secondary font-16px">
+            <h2 className="fashion-head-padding label-field text-secondary font-16px">
                 DANH MỤC
             </h2>
 

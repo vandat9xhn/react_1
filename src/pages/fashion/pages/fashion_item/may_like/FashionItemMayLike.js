@@ -39,7 +39,7 @@ function FashionItemMayLike({ id }) {
     //
     return (
         <div ref={ref_main_elm}>
-            <h2 className="font-16px label-field padding-8px text-secondary">
+            <h2 className="font-16px label-field padding-y-8px text-secondary">
                 CÓ THỂ BẠN CŨNG THÍCH
             </h2>
 

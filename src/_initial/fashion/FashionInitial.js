@@ -1,15 +1,15 @@
 //
-export const initial_fashion_info_right = {
+export const initial_fashion_info_right = () => ({
     name: '',
     description: '',
     new_price: 0,
     old_price: 0,
     total_add_cart: 0,
     quantity: 0,
-};
+});
 
 //
-export const initial_fashion_shop = {
+export const initial_fashion_shop = () => ({
     id: 0,
     name: '',
     picture: '',
@@ -44,11 +44,10 @@ export const initial_fashion_shop = {
             title: 'Follow',
             value: 0,
         },
-    ]
-};
+    ],
+});
 
-
-// 
+//
 export const initial_fashion_search_products_obj = {
     0: [
         {
@@ -72,4 +71,4 @@ export const initial_fashion_search_products_obj = {
             sold: 0,
         },
     ],
-}
+};

@@ -36,7 +36,7 @@ function FashionFaceItem({
     //
     return (
         <div
-            className={`FashionFaceItem pos-rel bg-primary ${
+            className={`FashionFaceItem pos-rel bg-primary h-100per ${
                 IS_MOBILE ? '' : 'FashionFaceItem-pc'
             }`}
         >

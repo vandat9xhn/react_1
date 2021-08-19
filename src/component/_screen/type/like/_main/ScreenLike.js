@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMultiDataKey } from '../../../../../_hooks/useMultiDataKey';
-// 
+//
 import { type_likes } from '../../../../like/list_type_like/type_likes/TypeLikes';
 import UserAdd from '../../../../user_add/UserAdd';
 //
@@ -35,14 +35,19 @@ function ScreenLike({
     handle_API_Like_L,
     type_like: initial_type_like,
 }) {
-    // 
-    const {state_obj, getData_API, handleChangeKey} = useMultiDataKey({
+    //
+    const { state_obj, getData_API, handleChangeKey } = useMultiDataKey({
         initial_key: initial_type_like,
         handle_API_L: handle_API_Like_L,
-    })
+    });
 
     const { obj, c_key, is_fetching } = state_obj;
     const { data_arr, count, has_fetched } = obj[c_key];
+
+    //
+    useEffect(() => {
+        getData_API(initial_type_like);
+    }, []);
 
     //
     function showMoreLike() {

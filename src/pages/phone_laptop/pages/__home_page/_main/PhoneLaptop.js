@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { API_PhoneLaptop_L } from '../../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
-// 
+//
 import { useMounted } from '../../../../../_hooks/useMounted';
-// 
+//
 import observeToDo from '../../../../../_some_function/observerToDo';
 //
 import ProductsAnimate from '../products_animate/ProductsAnimate';
@@ -49,9 +49,9 @@ function PhoneLaptop(props) {
 
     //
     function getAPIWhenCDM() {
-        observeToDo(
-            ref_hot.current,
-            () =>
+        observeToDo({
+            elm: ref_hot.current,
+            callback: () =>
                 getPhonesLaptops(
                     {
                         is_hot: 1,
@@ -59,12 +59,11 @@ function PhoneLaptop(props) {
                     },
                     setHotProductArr
                 ),
-            0
-        );
+        });
 
-        observeToDo(
-            ref_phone.current,
-            () =>
+        observeToDo({
+            elm: ref_phone.current,
+            callback: () =>
                 getPhonesLaptops(
                     {
                         type_product: 'phone',
@@ -72,12 +71,11 @@ function PhoneLaptop(props) {
                     },
                     setPhoneArr
                 ),
-            0
-        );
+        });
 
-        observeToDo(
-            ref_lap.current,
-            () =>
+        observeToDo({
+            elm: ref_lap.current,
+            callback: () =>
                 getPhonesLaptops(
                     {
                         type_product: 'laptop',
@@ -85,8 +83,7 @@ function PhoneLaptop(props) {
                     },
                     setLaptopArr
                 ),
-            0
-        );
+        });
     }
 
     /* ------------------- GET API --------------------*/

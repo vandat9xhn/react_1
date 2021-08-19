@@ -1,62 +1,71 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import FashionH from '../../../components/head/_main/FashionH';
-// 
+//
 import './FashionItem.scss';
-// 
+//
 import FashionItemShop from '../item_shop/_main/FashionItemShop';
 import FashionRate from '../rate/_main/FashionRate';
 import FashionItemCmt from '../comment/_main/FashionItemCmt';
 import FashionRlt from '../relative/FashionRlt';
 import FashionOtherItem from '../other_shop_item/FashionOtherItem';
 import FashionItemMayLike from '../may_like/FashionItemMayLike';
+import VirtualScroll from '../../../../../component/virtual_scroll/VirtualScroll';
 
-// 
-FashionItem.propTypes = {
-    
-};
+//
+FashionItem.propTypes = {};
 
-// 
+//
 function FashionItem(props) {
-    // 
-    const id = + props.match.params.id
+    //
+    const id = +props.match.params.id;
 
-    // 
+    //
     useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [id])
+        window.scrollTo(0, 0);
+    }, [id]);
 
-    // 
+    //
     return (
         <div className="FashionItem">
-            <div>
-                <FashionH />
-            </div>
+            <FashionH />
 
             <div className="fashion-width">
                 <div className="FashionItem_part">
-                    <FashionItemShop id={id}/>
-                </div>
-                
-                <div className="FashionItem_part">
-                    <FashionRate id={id}/>
+                    <VirtualScroll>
+                        <FashionItemShop id={id} />
+                    </VirtualScroll>
                 </div>
 
                 <div className="FashionItem_part">
-                    <FashionItemCmt id={id}/>
+                    <VirtualScroll>
+                        <FashionRate id={id} />
+                    </VirtualScroll>
                 </div>
 
                 <div className="FashionItem_part">
-                    <FashionOtherItem id={id}/>
+                    <VirtualScroll>
+                        <FashionItemCmt id={id} />
+                    </VirtualScroll>
                 </div>
 
                 <div className="FashionItem_part">
-                    <FashionRlt id={id}/>
+                    <VirtualScroll>
+                        <FashionOtherItem id={id} />
+                    </VirtualScroll>
                 </div>
 
                 <div className="FashionItem_part">
-                    <FashionItemMayLike id={id}/>
+                    <VirtualScroll>
+                        <FashionRlt id={id} />
+                    </VirtualScroll>
+                </div>
+
+                <div className="FashionItem_part">
+                    <VirtualScroll>
+                        <FashionItemMayLike id={id} />
+                    </VirtualScroll>
                 </div>
             </div>
         </div>

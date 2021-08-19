@@ -1,15 +1,22 @@
-$sym-width: 40;
+$sym-width: 24;
 
 /* ------------- */
 
 .TopSymbol {
     width: #{$sym-width}px;
-    padding: 5px 2px 2px;
+    padding: 2.5px;
     background-color: var(--border-fashion);
+    line-height: 16px;
 
     &::after {
+        content: '';
+
+        position: absolute;
+        top: 100%;
+        left: 0;
+
         border-width: 5px #{$sym-width / 2}px 0px;
         border-style: solid;
-        border-color: var(--border-fashion);
+        border-color: var(--border-fashion) transparent transparent;
     }
 }

@@ -6,6 +6,7 @@ import { useDataShowMore } from './useDataShowMore';
 export function useObserverShowMore({
     initial_arr = [],
     handle_API_L = (c_count = 0) => new Promise(),
+    other_state = {},
 }) {
     //
     const ref_fake_elm_end = useRef(null);
@@ -26,6 +27,7 @@ export function useObserverShowMore({
     } = useDataShowMore({
         initial_arr: initial_arr,
         handle_API_L: handle_API_L,
+        other_state: other_state,
     });
 
     //
@@ -38,9 +40,7 @@ export function useObserverShowMore({
 
     //
     const observerShowMore = IntersectionObserver
-    // && false
-        ? 
-          intersectShowMore
+        ? intersectShowMore
         : scrollShowMore;
 
     //

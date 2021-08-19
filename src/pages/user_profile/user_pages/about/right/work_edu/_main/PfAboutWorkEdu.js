@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { GetIdSlug } from '../../../../../../../_some_function/GetIdSlug';
-// 
+//
+import { initial_work_edu_state } from '../../../../../../../_initial/profile/about';
+//
 import { handle_API_UserOverview_r } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
-// 
-import { initial_work_edu_state } from '../../../__common/initial/initial';
-// 
+//
 import PfAboutWork from '../work/_main/PfAboutWork';
 import PfAboutUniversity from '../university/_main/PfAboutUniversity';
 import PfAboutSchool from '../high_school/_main/PfAboutSchool';
@@ -20,9 +20,7 @@ function PfAboutWorkEdu(props) {
     const user_id = GetIdSlug();
 
     //
-    const [about_state, setAboutState] = useState({
-        ...initial_work_edu_state,
-    });
+    const [about_state, setAboutState] = useState(initial_work_edu_state());
 
     const { school_arr, university_arr, work_arr, has_fetched } = about_state;
 

@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
 //
+import { data_left_head_link_arr } from '../../../../_data/feed/left_link';
+// 
 import FlexDiv from '../../../../component/some_div/flex_div/FlexDiv';
 import PictureName from '../../../../component/picture_name/pic_name/PictureName';
-//
-import { common_left_head_link_arr } from '../../__common/NewFeedCommon';
 //
 import './NewFeedLeftHead.scss';
 
@@ -27,7 +27,7 @@ function NewFeedLeftHead(props) {
                     <PictureName user={user} align_center={false} />
                 </div>
 
-                {common_left_head_link_arr.map((item, ix) => (
+                {data_left_head_link_arr.map((item, ix) => (
                     <Link
                         to={item.link_to}
                         key={`NewFeedLeftHead_item_${ix}`}

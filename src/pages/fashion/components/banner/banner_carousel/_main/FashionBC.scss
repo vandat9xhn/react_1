@@ -1,32 +1,16 @@
-.FashionBC {
-    user-select: none;
-}
-
 // .
 .FashionBC_carousel {
     width: 66%;
 
-    &:hover{
-        .BtnNexPrev{
+    &:hover {
+        .BtnNexPrev {
             opacity: 1;
-            transition: all 200ms ease-in;
         }
     }
 
     .BtnNexPrev {
+        transition: all 200ms ease-in;
         opacity: 0;
-        height: 60px;
-        width: 35px;
-        background: #00000052;
-    }
-    .IconsArrow {
-        width: 1.25rem;
-        height: 1.25rem;
-    }
-    .IconsArrow_next,
-    .IconsArrow_prev {
-        stroke: var(--white);
-        stroke-width: 30;
     }
 }
 // ..
