@@ -1,7 +1,11 @@
 import { useState } from 'react';
 
 //
-export function useMultiPages({ initial_page = 1, handle_API_L }) {
+export function useMultiPages({
+    initial_page = 1,
+    handle_API_L,
+    other_state = {},
+}) {
     //
     const [state_obj, setStateObj] = useState({
         page_obj: {
@@ -10,18 +14,26 @@ export function useMultiPages({ initial_page = 1, handle_API_L }) {
         page: initial_page,
         pages: 1,
         count: 0,
+
         has_fetched: false,
         is_fetching: false,
+
+        ...other_state,
     });
 
     const { page_obj, page, has_fetched } = state_obj;
 
     //
-    async function getData_API(new_page) {
+    async function getData_API(new_page = initial_page, start_obj_state = {}) {
         setStateObj((state_obj) => ({
             ...state_obj,
             page: new_page,
+            page_obj: {
+                ...state_obj.page_obj,
+                [new_page]: state_obj.page_obj[new_page] || [],
+            },
             is_fetching: true,
+            ...start_obj_state,
         }));
 
         const {
@@ -36,7 +48,11 @@ export function useMultiPages({ initial_page = 1, handle_API_L }) {
                 ...state_obj.page_obj,
                 [new_page]: data,
             },
-            ...(has_fetched ? {} : { count: new_count, pages: new_pages }),
+            ...(state_obj.has_fetched
+                ? {}
+                : { count: new_count, pages: new_pages }),
+
+            has_fetched: true,
             is_fetching: false,
         }));
     }
@@ -59,5 +75,24 @@ export function useMultiPages({ initial_page = 1, handle_API_L }) {
         getData_API(new_page);
     }
 
-    return { state_obj, setStateObj, getData_API, handleChangePage };
+    //
+    function refreshData_API({ new_page, start_obj_state = {} }) {
+        getData_API(new_page, {
+            has_fetched: false,
+            page_obj: { [new_page]: [] },
+            pages: 1,
+            count: 0,
+
+            ...start_obj_state,
+        });
+    }
+
+    //
+    return {
+        state_obj,
+        setStateObj,
+        getData_API,
+        refreshData_API,
+        handleChangePage,
+    };
 }

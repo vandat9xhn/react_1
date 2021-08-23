@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react';
 
 //
-export const useNewCount = (
+export const useNewCount = ({
     initial_count,
     initial_min,
     initial_max,
-    callback = () => {}
-) => {
+    callback = () => {},
+}) => {
     // state
     const [count, setCount] = useState(initial_count);
 
@@ -38,11 +38,11 @@ export const useNewCount = (
         }
     }
 
-    // 
+    //
     function handleInitialCount(new_max, new_min, new_count) {
-        max.current = new_max
-        min.current = new_min
-        handleSetCount(new_count)
+        max.current = new_max;
+        min.current = new_min;
+        handleSetCount(new_count);
     }
 
     /* ---------------- COUNT ------------------ */

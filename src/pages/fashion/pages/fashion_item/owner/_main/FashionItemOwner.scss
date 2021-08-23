@@ -1,0 +1,25 @@
+// 
+.FashionItemOwner_{
+    &left{
+        width: 400px;
+    }
+    
+    &right{
+        padding-left: 4rem;
+    }
+
+    @media (max-width: 800px){
+        &row{
+            display: block;
+        }
+        // .
+        &left{
+            width: 100%;
+        }
+        // .
+        &right{
+            padding: 0.5rem;
+        }
+    }
+
+}

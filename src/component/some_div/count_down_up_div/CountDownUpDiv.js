@@ -50,19 +50,17 @@ function CountDownUpDiv({
             }`}
         >
             <div className="display-flex align-items-center">
-                <div>
-                    <button
-                        className={`CountDownUpDiv_btn btn btn-active ${
-                            count <= min
-                                ? 'CountDownUpDiv_btn_disabled opacity-05'
-                                : 'btn-hv'
-                        }`}
-                        disabled={count <= min}
-                        onClick={countDown}
-                    >
-                        -
-                    </button>
-                </div>
+                <button
+                    className={`CountDownUpDiv_btn btn btn-active cursor-pointer ${
+                        count <= min
+                            ? 'CountDownUpDiv_btn_disabled opacity-05'
+                            : 'btn-hv'
+                    }`}
+                    disabled={count <= min}
+                    onClick={countDown}
+                >
+                    -
+                </button>
 
                 <div className="CountDownUpDiv_input">
                     <input
@@ -75,19 +73,17 @@ function CountDownUpDiv({
                     />
                 </div>
 
-                <div>
-                    <button
-                        className={`CountDownUpDiv_btn btn btn-active ${
-                            count >= max
-                                ? 'CountDownUpDiv_btn_disabled opacity-05'
-                                : 'btn-hv'
-                        }`}
-                        disabled={count >= max}
-                        onClick={countUp}
-                    >
-                        +
-                    </button>
-                </div>
+                <button
+                    className={`CountDownUpDiv_btn btn btn-active cursor-pointer ${
+                        count >= max
+                            ? 'CountDownUpDiv_btn_disabled opacity-05'
+                            : 'btn-hv'
+                    }`}
+                    disabled={count >= max}
+                    onClick={countUp}
+                >
+                    +
+                </button>
             </div>
         </div>
     );

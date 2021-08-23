@@ -49,7 +49,12 @@ function CartItem({
         beforeCountNum,
         countNum,
         countNumDone,
-    } = useNewCount(quantity, 1, product.total, handleWaitingLastAction);
+    } = useNewCount({
+        initial_count: quantity,
+        initial_min: 1,
+        initial_max: product.total,
+        callback: handleWaitingLastAction,
+    });
 
     //
     function onCount(value) {

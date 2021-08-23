@@ -1,0 +1,16 @@
+.FsItemIfRCount {
+    .CountDownUpDiv_btn {
+        width: 2rem;
+        height: 2rem;
+        background-color: var(--fashion-hover);
+
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+    }
+    .CountDownUpDiv_input {
+        width: 6.5rem;
+        border-radius: 5px;
+        background-color: var(--fashion-hover);
+    }
+}

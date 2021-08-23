@@ -1,0 +1,18 @@
+.FashionRateItem {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--md-bg-blur);
+
+    .FashionRateItem_text {
+        margin: 1rem 0;
+        line-height: 15px;
+    }
+}
+
+.FashionRateItem_left {
+    width: 40px;
+    margin-right: 10px;
+}
+// .
+.FashionRateItem_left_contain {
+    padding-top: 100%;
+}

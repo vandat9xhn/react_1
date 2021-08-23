@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 import './ShopActivity.scss';
 
 //
-ShopActivity.propTypes = {};
+ShopActivity.propTypes = {
+    owner_info: PropTypes.arrayOf(
+        PropTypes.shape({
+            title: PropTypes.string,
+            value: PropTypes.string,
+        })
+    ),
+};
 
 //
 function ShopActivity({ owner_info }) {
@@ -13,7 +20,10 @@ function ShopActivity({ owner_info }) {
         <div className="ShopActivity">
             <div className="ShopActivity_row display-flex flex-wrap">
                 {owner_info.map((info, info_ix) => (
-                    <div key={`${info_ix}`} className="ShopActivity_col padding-8px">
+                    <div
+                        key={`${info_ix}`}
+                        className="ShopActivity_col padding-8px"
+                    >
                         <span className="ShopActivity_col-title">
                             {info.title}:
                         </span>

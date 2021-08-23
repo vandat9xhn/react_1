@@ -11,27 +11,43 @@ import './FashionFaceItem.scss';
 import './FashionFaceItemRes.scss';
 
 //
-FashionFaceItem.propTypes = {};
+FashionFaceItem.propTypes = {
+    id: PropTypes.number,
+    ...FashionFaceItemBd.propTypes,
+    ...FashionFaceItemFoot.propTypes,
+    use_same: PropTypes.bool,
+};
+
+FashionFaceItem.defaultProps = {
+    use_same: true
+}
 
 //
 function FashionFaceItem({
-    use_same = true,
-
     id,
 
     img,
     mall_like,
     flash_img,
     discount,
-
+    
     name,
-    shop_discount,
-    tag_arr,
-    old_price,
-    new_price,
     rate_avg,
     sold,
+    
+    shop_deals,
+    shop_discount,
     address,
+    
+    old_price,
+    old_price_max,
+    new_price,
+    new_price_max,
+    
+    show_heart_rate,
+    show_sold,
+    show_address,
+    use_same,
 }) {
     //
     return (
@@ -56,13 +72,21 @@ function FashionFaceItem({
                     <div>
                         <FashionFaceItemFoot
                             name={name}
-                            shop_discount={shop_discount}
-                            tag_arr={tag_arr}
-                            old_price={old_price}
-                            new_price={new_price}
                             rate_avg={rate_avg}
                             sold={sold}
+                            // 
                             address={address}
+                            shop_deals={shop_deals}
+                            shop_discount={shop_discount}
+                            // 
+                            old_price={old_price}
+                            new_price={new_price}
+                            old_price_max={old_price_max}
+                            new_price_max={new_price_max}
+                            // 
+                            show_heart_rate={show_heart_rate}
+                            show_sold={show_sold}
+                            show_address={show_address}
                         />
                     </div>
                 </div>

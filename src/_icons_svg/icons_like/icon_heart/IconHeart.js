@@ -4,18 +4,27 @@ import PropTypes from 'prop-types';
 import './IconHeart.scss';
 
 //
-IconHeart.propTypes = {};
+IconHeart.propTypes = {
+    size_icon: PropTypes.string,
+};
+
+IconHeart.defaultProps = {
+    size_icon: '1rem',
+};
 
 /*
     icon type like: (x, y):
         4. heart: (600, 0)
 */
 //
-function IconHeart() {
+function IconHeart({ size_icon }) {
+    // 
     return (
         <svg
             className="IconsTypeLike IconHeart"
             viewBox="600 0 200 200"
+            width={size_icon}
+            height={size_icon}
             stroke="none"
             strokeLinecap="round"
         >

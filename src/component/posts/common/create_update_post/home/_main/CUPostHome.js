@@ -62,7 +62,7 @@ function CUPostHome({
                     <button
                         className={`CUPostHome_post w-100per padding-8px brs-5px text-secondary label-field text-align-center ${
                             !has_change
-                                ? 'bg-ccc opacity-5 text-secondary-50per'
+                                ? 'bg-ccc opacity-5 text-third'
                                 : 'bg-blue text-white cursor-pointer'
                         }`}
                         disabled={!has_change}

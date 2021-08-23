@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 //
 import { use2FingersResize } from '../../../../../../_hooks/use2FingersResize';
 import { useMouseMoveXY } from '../../../../../../_hooks/useMouseMoveXY';
+//
+import './StoryCPTextMb.scss';
+import StoryBgTouch from '../../../../_components/create/mobile/bg_touch/StoryBgTouch';
 
 //
 StoryCPTextMb.propTypes = {};
@@ -19,6 +22,7 @@ function StoryCPTextMb({
     const { text, trans_x, trans_y, rotate, scale } = text_obj;
 
     //
+    const ref_main_elm = useRef(null);
     const ref_fake_elm = useRef(null);
 
     //
@@ -33,12 +37,12 @@ function StoryCPTextMb({
 
     //
     function onTouchStart(e) {
+        ref_main_elm.current.style.zIndex = 100;
+        ref_fake_elm.current.style.display = 'block';
         if (e.touches.length == 1) {
             handleStartMove(e);
         } else {
             handleTouchStart(e);
-
-            ref_fake_elm.current.style.display = 'block';
         }
     }
 
@@ -52,13 +56,15 @@ function StoryCPTextMb({
         handleTouchEnd(e);
 
         if (e.touches.length == 0) {
-            ref_fake_elm.current.style.display = '';
+            ref_main_elm.current.style.removeProperty('z-index');
+            ref_fake_elm.current.style.removeProperty('display');
         }
     }
 
     //
     return (
         <div
+            ref={ref_main_elm}
             className="StoryCPTextMb pos-abs left-50per top-50per padding-8px brs-8px bg-loader touch-action-none"
             style={{
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
@@ -74,11 +80,8 @@ function StoryCPTextMb({
 
             <div className="pos-abs-100"></div>
 
-            <div
-                ref={ref_fake_elm}
-                className="pos-abs-center wh-200v display-none"
-                style={{ transform: `scale(${1 / scale})` }}
-            ></div>
+            <StoryBgTouch ref_fake_elm={ref_fake_elm} scale={scale} />
+
         </div>
     );
 }

@@ -60,7 +60,7 @@ function FashionHMallRight({ ref_scroll_elm, data_arr }) {
                     >
                         <FashionSeeMoreLastRow
                             link_to="/fashion/top_search"
-                            title="Xem tất cả"
+                            title="Xem thêm"
                         />
                     </div>
                 ) : null}

@@ -20,7 +20,7 @@ function StoryBtnShareMb({ can_share, handleCreateStory }) {
                 <div>
                     <span
                         className={`label-field ${
-                            can_share ? 'text-white' : 'text-secondary-50per'
+                            can_share ? 'text-white' : 'text-third'
                         }`}
                     >
                         Share story

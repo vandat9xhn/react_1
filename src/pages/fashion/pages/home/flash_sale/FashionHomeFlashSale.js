@@ -62,7 +62,7 @@ function FashionHomeFlashSale(props) {
                         <li key={item.id} className="FashionHomeFlashSale_item">
                             <FashionFlashSaleItem
                                 id={item.id}
-                                img={item.vid_pics[0].vid_pic}
+                                img={item.img}
                                 flash_img={item.flash_img}
                                 price={item.new_price}
                                 sold={item.sold}

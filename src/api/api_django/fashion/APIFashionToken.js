@@ -10,7 +10,6 @@ import {
     default_transporter_arr,
     default_voucher_arr,
 } from '../../../_default/fashion/DefaultProductBuying';
-import { getRandomId } from '../../../_default/_common/default_id';
 
 // get create cart
 export const API_FashionCart_LC = (method, params = {}, data = {}) =>
@@ -81,16 +80,6 @@ export const API_FashionRate_C = (data) =>
     API_FakeReal({}, () =>
         axiosDjangoClient({
             url: '/fashion-api/rate-c/',
-            method: 'POST',
-            data: data,
-        })
-    );
-
-// create comment
-export const API_FashionComment_C = (data) =>
-    API_FakeReal({ id: getRandomId() }, () =>
-        axiosDjangoClient({
-            url: '/fashion-api/comment-c/',
             method: 'POST',
             data: data,
         })

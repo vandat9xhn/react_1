@@ -7,6 +7,7 @@ import { useMouseMoveXY } from '../../../../../../../_hooks/useMouseMoveXY';
 import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import './StoryCPTagFriendItemMb.scss';
+import StoryBgTouch from '../../../../../_components/create/mobile/bg_touch/StoryBgTouch';
 
 //
 StoryCPTagFriendItemMb.propTypes = {};
@@ -25,6 +26,7 @@ function StoryCPTagFriendItemMb({
     const { user, bg, color, trans_x, trans_y, rotate, scale } = tag_user_obj;
 
     //
+    const ref_main_elm = useRef(null);
     const ref_fake_elm = useRef(null);
 
     //
@@ -39,12 +41,13 @@ function StoryCPTagFriendItemMb({
 
     //
     function onTouchStart(e) {
+        ref_main_elm.current.style.zIndex = 100;
+        ref_fake_elm.current.style.display = 'block';
+
         if (e.touches.length == 1) {
             handleStartMove(e);
         } else {
             handleTouchStart(e);
-
-            ref_fake_elm.current.style.display = 'block';
         }
     }
 
@@ -58,7 +61,8 @@ function StoryCPTagFriendItemMb({
         handleTouchEnd(e);
 
         if (e.touches.length == 0) {
-            ref_fake_elm.current.style.display = '';
+            ref_main_elm.current.style.removeProperty('z-index');
+            ref_fake_elm.current.style.removeProperty('display');
         }
     }
 
@@ -85,6 +89,7 @@ function StoryCPTagFriendItemMb({
     //
     return (
         <div
+            ref={ref_main_elm}
             className="StoryCPTagFriendItemMb pos-abs left-50per top-50per touch-action-none"
             style={{
                 transform: `translate(-50%, -50%) translate(${trans_x}px, ${trans_y}px) rotate(${rotate}deg) scale(${scale})`,
@@ -119,11 +124,7 @@ function StoryCPTagFriendItemMb({
 
             <div className="pos-abs-100"></div>
 
-            <div
-                ref={ref_fake_elm}
-                className="pos-abs-center wh-200v display-none"
-                style={{ transform: `scale(${1 / scale})` }}
-            ></div>
+            <StoryBgTouch ref_fake_elm={ref_fake_elm} scale={scale} />
         </div>
     );
 }

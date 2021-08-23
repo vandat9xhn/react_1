@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import './IconsMenu.scss';
 
 //
@@ -17,17 +17,15 @@ IconsMenu.defaultProps = {
 };
 
 /**
-*icons menu: (x, y)
-*   @.icon menu: (0, 0)
-*   @.icon home: (200, 0)
-*   @.icon message (200, 200)
-*   @.icon new feed: (0, 200)
-*   @.icon shopping: (400, 0)
-*/
-function IconsMenu({size_icon, x, y}){
-   
-
-    // 
+ *icons menu: (x, y)
+ *   @.icon menu: (0, 0)
+ *   @.icon home: (200, 0)
+ *   @.icon message (200, 200)
+ *   @.icon new feed: (0, 200)
+ *   @.icon shopping: (400, 0)
+ */
+function IconsMenu({ size_icon, x, y }) {
+    //
     return (
         <svg
             className="IconsMenu"
@@ -47,7 +45,6 @@ function IconsMenu({size_icon, x, y}){
                 M20,180 180,180"
                 strokeWidth="30"
             />
-
 
             {/* home x=200, y=0*/}
             <path
@@ -86,28 +83,29 @@ function IconsMenu({size_icon, x, y}){
                 strokeWidth="5"
                 fill="none"
             />
-            
 
             {/* shopping x=400 y=0 */}
-            <path
-                d="M420,20 440,20 475,135 560,135
-                M450,45 570,45 550,110 470,110"
-                fill="none"
-                strokeWidth="10"
-            />
+            <g className="IconsMenu_fashion">
+                <path
+                    d="M420,20 440,20 475,135 560,135
+                    M450,45 570,45 550,110 470,110"
+                    fill="none"
+                    strokeWidth="10"
+                />
 
-            <path
-                d="M465,65 555,65
-                M460,85 555,85"
-                strokeWidth="5"
-            />
+                <path
+                    d="M465,65 555,65
+                    M460,85 555,85"
+                    strokeWidth="5"
+                />
 
-            <g className="IconsMenu_shopping" fill="none" strokeWidth="13">
-                <circle cx="475" cy="150" r="15" />
-                <circle cx="550" cy="150" r="15" />
+                <g className="IconsMenu_shopping" fill="none" strokeWidth="13">
+                    <circle cx="475" cy="150" r="15" />
+                    <circle cx="550" cy="150" r="15" />
+                </g>
             </g>
         </svg>
     );
-};
+}
 
 export default IconsMenu;

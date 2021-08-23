@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 // import './IconSent.scss';
 
 //
-function IconSent(props) {
-    const { size_icon, x, y, stroke } = props;
-
+function IconSent({ size_icon, x, y, stroke }) {
+    //
     return (
         <svg
             className="IconSent"
@@ -21,7 +20,6 @@ function IconSent(props) {
                 stroke={stroke}
                 fill="none"
             />
-            
         </svg>
     );
 }

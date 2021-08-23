@@ -3,30 +3,35 @@ import PropTypes from 'prop-types';
 
 import './IconLike.scss';
 
-/*
-    icon type like: (x, y):
-        1. like: (0, 0)
-        2. laugh: (200, 0)
-        3. wow: (400, 0)
-        4. heart: (600, 0)
-        5. sad: (800, 0)
-        6. angry: (1000, 0)
-*/
 //
-function IconLike() {
+IconLike.propTypes = {
+    size_icon: PropTypes.string,
+    stroke: PropTypes.string,
+    fill: PropTypes.string,
+};
+
+IconLike.defaultProps = {
+    size_icon: '1rem',
+    stroke: 'var(--md-black-brown)',
+    fill: 'none',
+};
+
+//
+function IconLike({ stroke, fill, size_icon }) {
+    //
     return (
         <svg
             className="IconsTypeLike IconLike"
             viewBox="0 0 200 200"
-            fill="none"
-            stroke="var(--md-black-brown)"
+            width={size_icon}
+            height={size_icon}
+            fill={fill}
+            stroke={stroke}
             strokeLinecap="round"
         >
-            {/* like x=0 y=0 */}
             <g className="IconLike_g" strokeWidth="10">
-                <path
-                    d="M25 175H60V90H25V175Z"
-                />
+                <path d="M25 175H60V90H25V175Z" />
+
                 <path
                     d="M111.52 63.3861C108.616 83.9462 85 101.324 85 101.324V164.29C85 164.29 97.7313 172.073 
                     101.59 174.099C105.448 176.126 155.273 174.099 155.273 174.099C155.273 174.099 171.394 
@@ -41,9 +46,5 @@ function IconLike() {
         </svg>
     );
 }
-
-IconLike.propTypes = {};
-
-IconLike.defaultProps = {};
 
 export default IconLike;

@@ -87,47 +87,10 @@ export const API_FashionRate_L = (params) =>
 
 export const API_FashionUserContentRate_R = (params) =>
     API_FakeReal(
-        default_rate_content(),
-        () =>
-            axiosClientNoToken({
-                url: '/fashion-api/l-rate/',
-                method: 'GET',
-                params: params,
-            }),
-        params
-    );
-
-// comment
-export const API_FashionComment_L = (params) =>
-    API_FakeReal(
-        default_product_cmt_arr(),
-        () =>
-            axiosClientNoToken({
-                url: '/fashion-api/l-comment/',
-                method: 'GET',
-                params: params,
-            }),
-        params
-    );
-
-export const API_FashionCommentVidPicMore_L = (params) =>
-    API_FakeReal(
-        product_cmt_vid_pic_arr(),
-        () =>
-            axiosClientNoToken({
-                url: '/fashion-api/comment-vid-pic-l/',
-                method: 'GET',
-                params: params,
-            }),
-        params
-    );
-
-export const API_FashionUserContentComment_R = (params) =>
-    API_FakeReal(
         default_content_more(),
         () =>
             axiosClientNoToken({
-                url: '/fashion-api/comment-r/',
+                url: '/fashion-api/l-rate/',
                 method: 'GET',
                 params: params,
             }),

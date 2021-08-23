@@ -1,0 +1,38 @@
+.FashionOR_row {
+    align-items: stretch;
+}
+
+//
+.FashionOR_col {
+    width: 33.33%;
+}
+
+.FashionOR_col-title {
+    margin-right: 0.5rem;
+}
+
+//
+//
+@media (max-width: 1000px) {
+    .FashionOR_col {
+        width: 50%;
+    }
+}
+
+@media (max-width: 800px) {
+    .FashionOR_col {
+        width: 33.33%;
+    }
+}
+
+@media (max-width: 650px) {
+    .FashionOR_col {
+        width: 50%;
+    }
+}
+
+@media (max-width: 450px) {
+    .FashionOR_col {
+        width: 100%;
+    }
+}

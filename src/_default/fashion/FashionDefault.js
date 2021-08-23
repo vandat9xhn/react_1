@@ -21,40 +21,17 @@ export const getProductVidPicArr = (min, max) =>
     getDefaultArr(product_vid_pic_obj, min, max);
 
 //
-export const owner_info = [
-    {
-        title: 'Rating',
-        value: 4.6,
-    },
-    {
-        title: 'Reply chat',
-        value: '100%',
-    },
-    {
-        title: 'Time joined',
-        value: '2021-04-13T21:25:13.739874Z',
-    },
-    {
-        title: 'Products',
-        value: 400,
-    },
-    {
-        title: 'Reply time',
-        value: new Date().toLocaleString(),
-    },
-    {
-        title: 'Follow',
-        value: 600000,
-    },
-];
+export const owner_info = () => ({
+    rating: 4.6,
+    reply_chat: '100%',
+    time_joined: '2021-04-13T21:25:13.739874Z',
+    products: 400,
+    reply_time: 60,
+    followed: 600000,
+});
 
 //
 export const product_name_arr = [
-    'Product name 1',
+    '[Auth-Date mới] Benzac AC 2.5%, 5% - Kem hỗ trợ giảm mụn',
     'Product name sd asd asd asd asd asd asd asd ada sd as da sd asd  as da sda sda sd ada',
-    'Product name 3',
-    'Product name 4',
-    'Product name 5',
-    'Product name 6',
-    'Product name 7',
 ];

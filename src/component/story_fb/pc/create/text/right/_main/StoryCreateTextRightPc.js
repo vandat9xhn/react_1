@@ -27,9 +27,9 @@ function StoryCreateTextRightPc({
                 >
                     <StoryTextContentC
                         vid_pic={bg}
-                        text={text || 'START TYPING'}
+                        text={text}
                         font_family={font_family}
-                        scale_text={story_width / 200}
+                        scale={story_width / 200}
                     />
                 </div>
             </div>

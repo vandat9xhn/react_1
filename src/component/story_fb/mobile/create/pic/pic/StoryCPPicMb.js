@@ -5,6 +5,7 @@ import { use2FingersResize } from '../../../../../../_hooks/use2FingersResize';
 import { useMouseMoveXY } from '../../../../../../_hooks/useMouseMoveXY';
 //
 import './StoryCPPicMb.scss';
+import StoryBgTouch from '../../../../_components/create/mobile/bg_touch/StoryBgTouch';
 
 //
 StoryCPPicMb.propTypes = {};
@@ -21,6 +22,7 @@ function StoryCPPicMb({
         vid_pic_obj;
 
     //
+    const ref_main_elm = useRef(null);
     const ref_fake_elm = useRef(null);
 
     //
@@ -38,6 +40,9 @@ function StoryCPPicMb({
 
     //
     function onTouchStart(e) {
+        ref_main_elm.current.style.zIndex = 100;
+        ref_fake_elm.current.style.display = 'block';
+
         if (
             mode.toUpperCase() == 'MOVE' ||
             (mode.toUpperCase() == 'AUTO' && e.touches.length == 1)
@@ -49,8 +54,6 @@ function StoryCPPicMb({
 
         if (['RESIZE', 'AUTO'].includes(mode.toUpperCase())) {
             handleTouchStart(e);
-
-            ref_fake_elm.current.style.display = 'block';
         }
     }
 
@@ -65,13 +68,15 @@ function StoryCPPicMb({
         handleTouchEnd();
 
         if (e.touches.length == 0) {
-            ref_fake_elm.current.style.display = '';
+            ref_main_elm.current.style.removeProperty('z-index');
+            ref_fake_elm.current.style.removeProperty('display');
         }
     }
 
     //
     return (
         <div
+            ref={ref_main_elm}
             className={`StoryCPPicMb pos-abs left-50per top-50per ${
                 mode.toUpperCase() == 'FIXED' ? '' : 'touch-action-none'
             }`}
@@ -81,7 +86,7 @@ function StoryCPPicMb({
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
-            onTouchEnd={handleTouchEnd}
+            // onTouchEnd={handleTouchEnd}
         >
             <img
                 className="StoryCPPicMb_img"
@@ -92,11 +97,7 @@ function StoryCPPicMb({
 
             <div className="pos-abs-100"></div>
 
-            <div
-                ref={ref_fake_elm}
-                className="pos-abs-center wh-200v display-none"
-                style={{ transform: `scale(${1 / scale})` }}
-            ></div>
+            <StoryBgTouch ref_fake_elm={ref_fake_elm} scale={scale} />
         </div>
     );
 }

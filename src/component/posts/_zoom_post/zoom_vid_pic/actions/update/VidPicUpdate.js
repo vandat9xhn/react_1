@@ -41,7 +41,7 @@ function VidPicUpdate({ content, handleUpdate, detectHasChange }) {
                     <button
                         className={`w-100per btn btn-hv btn-active padding-8px brs-5px label-field ${
                             content == new_content
-                                ? 'bg-ccc text-secondary-50per pointer-events-none'
+                                ? 'bg-ccc text-third pointer-events-none'
                                 : 'bg-blue text-white cursor-pointer'
                         }`}
                         onClick={onUpdate}

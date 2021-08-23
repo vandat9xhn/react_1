@@ -95,7 +95,7 @@ function FashionHomeSelling(props) {
                                         className="FashionHomeSelling_item flex-shrink-0 overflow-hidden"
                                     >
                                         <FashionSellingProduct
-                                            img={item.vid_pics[0].vid_pic}
+                                            img={item.img}
                                             price={item.new_price}
                                             discount={item.discount}
                                         />

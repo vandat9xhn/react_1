@@ -1,0 +1,15 @@
+.FsIRateFilters_item {
+    margin: 0 8px 8px 0;
+    min-width: 100px;
+    padding: 4px;
+
+    text-align: center;
+}
+.FsIRateFilters_item-inactive {
+    color: var(--md-color-secondary);
+    border: 1px solid var(--md-bg-blur);
+}
+.FsIRateFilters_item-active {
+    color: var(--fashion-head);
+    border: 1px solid currentColor;
+}

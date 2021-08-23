@@ -1,27 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { formatNum } from '../../../../../_some_function/FormatNum';
+import { makePriceToPrice } from '../../../../../_some_function/makePriceToPrice';
 //
 import StarsRate from '../../../../../component/stars_rate/_main/StarsRate';
 //
 import IconHeart from '../../../../../_icons_svg/icons_like/icon_heart/IconHeart';
 //
 import './FashionFaceItemFoot.scss';
+import FsShopDealLabel from '../../shop_deal_label/FsShopDealLabel';
+import FsShopDiscountLabel from '../../shop_discount_label/FsShopDiscountLabel';
 
 //
-FashionFaceItemFoot.propTypes = {};
+FashionFaceItemFoot.propTypes = {
+    name: PropTypes.string,
+    sold: PropTypes.number,
+    rate_avg: PropTypes.number,
+    shop_deals: PropTypes.array,
+
+    shop_discount: PropTypes.string,
+    address: PropTypes.string,
+
+    old_price: PropTypes.number,
+    old_price_max: PropTypes.number,
+    new_price: PropTypes.number,
+    new_price_max: PropTypes.number,
+
+    show_heart_rate: PropTypes.bool,
+    show_sold: PropTypes.bool,
+    show_address: PropTypes.bool,
+};
+
+FashionFaceItemFoot.defaultProps = {
+    show_heart_rate: true,
+    show_sold: true,
+    show_address: true,
+};
 
 //
 function FashionFaceItemFoot({
     name,
-    shop_discount,
-    tag_arr,
-    old_price,
-    new_price,
-    rate_avg,
     sold,
+    rate_avg,
+
+    shop_deals,
     address,
+    shop_discount,
+
+    old_price,
+    old_price_max,
+    new_price,
+    new_price_max,
+
+    show_heart_rate,
+    show_sold,
+    show_address,
 }) {
     //
     function onLike(e) {
@@ -39,48 +72,61 @@ function FashionFaceItemFoot({
 
             <div className="display-flex align-items-center flex-wrap font-10px">
                 {shop_discount ? (
-                    <div className="bg-border-fashion padding-1px">
-                        <span className="text-red">Giảm {shop_discount}</span>
-                    </div>
+                    <FsShopDiscountLabel discount={shop_discount} />
                 ) : null}
 
-                {tag_arr.map((item, ix) => (
+                {shop_deals.map((deal_label, ix) => (
                     <div
                         key={ix}
                         className="FashionFaceItemFoot_tag_item padding-1px"
                     >
-                        <span>{item}</span>
+                        <FsShopDealLabel label={deal_label} />
                     </div>
                 ))}
             </div>
 
             <div className="">
-                <div>
-                    <span>
-                        <del>{formatNum(old_price)}</del>
+                <div className="text-nowrap">
+                    {old_price == 0 || old_price ? (
+                        <span>
+                            <del>
+                                {makePriceToPrice(old_price, old_price_max)}
+                            </del>
+                        </span>
+                    ) : null}
+
+                    <span className="text-red">
+                        ₫ {makePriceToPrice(new_price, new_price_max)}
                     </span>
-
-                    <span className="text-red">₫ {formatNum(new_price)}</span>
                 </div>
 
-                <div className="flex-between-center">
-                    <div className="FashionFaceItemFoot_heart" onClick={onLike}>
-                        <IconHeart />
-                    </div>
+                {show_heart_rate ? (
+                    <div className="flex-between-center">
+                        <div
+                            className="FashionFaceItemFoot_heart"
+                            onClick={onLike}
+                        >
+                            <IconHeart />
+                        </div>
 
-                    <div>
-                        <StarsRate rate_avg={rate_avg} size_icon="11px" />
+                        <div>
+                            <StarsRate rate_avg={rate_avg} size_icon="11px" />
+                        </div>
                     </div>
-                </div>
+                ) : null}
 
+                {show_sold ? (
+                    <div className="text-align-end">
+                        <span>Đã bán {sold}</span>
+                    </div>
+                ) : null}
+            </div>
+
+            {show_address ? (
                 <div className="text-align-end">
-                    <span>Đã bán {sold}</span>
+                    <span className="text-secondary">{address}</span>
                 </div>
-            </div>
-
-            <div className="text-align-end">
-                <span className="text-secondary">{address}</span>
-            </div>
+            ) : null}
         </div>
     );
 }

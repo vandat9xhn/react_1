@@ -11,7 +11,7 @@ import FashionH from '../../../components/head/_main/FashionH';
 import FashionBody from '../body/FashionBody';
 import FashionHomeSelling from '../selling/FashionHomeSelling';
 import FashionApplication from '../../../components/application/_main/FashionApplication';
-import FashionCtg from '../../../components/categories/_main/FashionCtg';
+import FashionCtg from '../categories/_main/FashionCtg';
 import FashionHomeFlashSale from '../flash_sale/FashionHomeFlashSale';
 import FashionHomeTrend from '../trend/FashionHomeTrend';
 import FashionHomeTopSearch from '../top_search/FashionHomeTopSearch';
@@ -65,10 +65,8 @@ function Fashion(props) {
     }
 
     return (
-        <div className="Fashion">
-            <div className="Fashion_head">
-                <FashionH />
-            </div>
+        <div className="Fashion font-for-fashion">
+            <FashionH />
 
             <div className="Fashion_banner bg-primary margin-bottom-1rem">
                 <VirtualScroll>

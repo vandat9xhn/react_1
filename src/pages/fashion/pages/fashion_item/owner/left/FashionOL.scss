@@ -1,7 +1,37 @@
+// .
+.FashionOL_like{
+    display: inline-flex;
+    line-height: 15px;
+}
+
+.FashionOL_right{
+    margin-left: 20px;
+}
+
 //
-.FashionOL_col {
-    padding: 0.5rem;
-    &:nth-child(2) {
-        width: 10rem;
+.FashionOL_chat {
+    margin-right: 10px;
+    line-height: 14px;
+    border: 1px solid currentColor;
+
+    &:hover {
+        background-color: var(--white);
+    }
+
+    .IconsMenu_message-out{
+        fill: currentColor;
+    }
+}
+
+.FashionOL_see {
+    line-height: 14px;
+    border: 1px solid currentColor;
+
+    &:hover {
+        background-color: var(--shadow-1);
+    }
+
+    .IconsMenu_fashion{
+        stroke: currentColor;
     }
 }

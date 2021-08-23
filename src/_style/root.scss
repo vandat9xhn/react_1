@@ -14,8 +14,8 @@
     --gray: #808080;
     --face-yellow: #ffd12e;
     --face-angry: #c20707;
-    --fashion-head: #F7452E;
-    --fashion-mall: #D0011B;
+    --fashion-head: #f7452e;
+    --fashion-mall: #d0011b;
     --fashion-carousel-active: #ee4d2d;
     --heart: #fa4664;
     --heart-blur: #ffc2cc;
@@ -46,6 +46,8 @@
     --bg-cmt: #a3a3a3;
     --bg-loader-hover: #3a3434d9;
     --bg-active-fb: #e7f3ff;
+
+    --bg-fashion-heart: #fbebed;
 
     /* BREAK POiNT */
     --xs: 0px;
@@ -78,7 +80,7 @@
     /* Mode Light*/
     --md-color: #050505;
     --md-color-secondary: #65676b;
-    --md-color-secondary-50per: #65676b80;
+    --md-color-third: #757575;
     --md-color-smoke: #d3d1d1;
     --md-gold: var(--gold-through);
     --md-heart: var(--heart-through);
@@ -116,7 +118,7 @@
     &[data-theme='dark'] {
         --md-color: var(--color-light);
         --md-color-secondary: #b0b3b8;
-        --md-color-secondary-50per: #b0b3b880;
+        --md-color-third: #b0b3b880;
         --md-color-smoke: #3a3939;
         --md-gold: var(--gold);
         --md-heart: var(--heart);

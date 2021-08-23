@@ -84,6 +84,10 @@
     background-color: var(--fashion-carousel-active);
 }
 
+.bg-fashion-heart{
+    background-color: var(--bg-fashion-heart);
+}
+
 .bg-shadow-1 {
     background-color: var(--shadow-1);
 }
@@ -128,6 +132,10 @@
 /* ---------- BORDER ---------- */
 
 /* border-radius */
+.brs-2px {
+    border-radius: 2px;
+}
+
 .brs-5px {
     border-radius: 5px;
 }
@@ -173,6 +181,22 @@
 .bottom-blue {
     border-bottom: 2px solid var(--blue);
 }
+
+// style
+.border-solid{
+    border-style: solid;
+}
+
+//  px
+.border-1px{
+    border-width: 1px;
+}
+
+// color
+.border-cl-blur{
+    border-color: var(--md-bg-blur);
+}
+
 
 /* ---------- CURSOR ----------*/
 .cursor-pointer {
@@ -393,8 +417,8 @@
 .text-secondary {
     color: var(--md-color-secondary);
 }
-.text-secondary-50per {
-    color: var(--md-color-secondary-50per);
+.text-third {
+    color: var(--md-color-third);
 }
 
 .text-white {
@@ -429,7 +453,7 @@
 }
 
 .color-fashion {
-    color: var(--border-fashion);
+    color: var(--fashion-head);
 }
 
 .color-fashion-mall {
@@ -443,6 +467,10 @@
 
 .font-italic {
     font-style: italic;
+}
+
+.font-400 {
+    font-weight: 400;
 }
 
 .font-600 {
@@ -492,8 +520,13 @@
 .font-22px {
     font-size: 22px;
 }
+
 .font-24px {
     font-size: 24px;
+}
+
+.font-30px {
+    font-size: 30px;
 }
 
 // align

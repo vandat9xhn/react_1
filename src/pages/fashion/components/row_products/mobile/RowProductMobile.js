@@ -24,20 +24,25 @@ function RowProductMobile({
                         className="row-product-item snap-align-end"
                     >
                         <FashionFaceItem
-                            use_same={false}
                             id={item.id}
-                            img={item.vid_pics[0].vid_pic}
+                            img={item.img}
                             mall_like={item.mall_like ? '' : ''}
                             flash_img={item.flash_img}
                             discount={item.discount}
                             name={item.name}
-                            shop_discount={item.shop_discount}
-                            tag_arr={item.tag_arr}
-                            old_price={item.old_price}
-                            new_price={item.new_price}
                             rate_avg={item.rate_avg}
                             sold={item.sold}
+                            //
+                            shop_deals={item.shop_deals}
+                            shop_discount={item.shop_discount}
                             address={item.address}
+                            //
+                            old_price={item.old_price}
+                            new_price={item.new_price}
+                            old_price_max={item.old_price_max}
+                            new_price_max={item.new_price_max}
+                            //
+                            use_same={false}
                         />
                     </li>
                 ))}

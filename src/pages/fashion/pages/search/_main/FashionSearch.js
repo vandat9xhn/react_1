@@ -5,13 +5,14 @@ import PropTypes from 'prop-types';
 //
 import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
 //
+import { initial_fashion_search_products_obj } from '../../../../../_initial/fashion/FashionInitial';
+//
+import { handle_API_FsSearch_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
+// 
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import Pagination from '../../../../../component/pagination/_main/Pagination';
 import WaitingBall from '../../../../../component/waiting/waiting_ball/WaitingBall';
-//
-import { handle_API_FashionProduct_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
-import { initial_fashion_search_products_obj } from '../../../../../_initial/fashion/FashionInitial';
 //
 import './FashionSearch.scss';
 //
@@ -31,7 +32,7 @@ function FashionSearch(props) {
 
     //
     const [fashion_search_state, setFashionSearchState] = useState({
-        products_obj: initial_fashion_search_products_obj,
+        products_obj: initial_fashion_search_products_obj(),
 
         area_arr: [
             { title: 'Ha Noi', checked: false },
@@ -143,7 +144,7 @@ function FashionSearch(props) {
             }));
 
             const { data, pages: new_pages } =
-                await handle_API_FashionProduct_L(
+                await handle_API_FsSearch_L(
                     new_page,
                     new_value_search,
                     new_area_arr

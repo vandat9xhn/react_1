@@ -1,0 +1,14 @@
+.FsItemIfRName{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.FsItemIfRName_like{
+    display: inline-flex;
+    margin-right: 10px;
+}
+
+.FsItemIfRName_name{
+    line-height: 24px;
+}
