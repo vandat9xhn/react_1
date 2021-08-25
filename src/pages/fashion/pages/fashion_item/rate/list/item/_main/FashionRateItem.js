@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
+import { IS_MOBILE } from '../../../../../../../../_constant/Constant';
+// 
 import { formatLocalDateTimeString } from '../../../../../../../../_some_function/FormatDate';
 //
 import { handle_API_FashionContentRateMore_R } from '../../../../../../../../_handle_api/fashion/FashionItemRateHandleAPI';
 //
+import { useForceUpdate } from '../../../../../../../../_hooks/UseForceUpdate';
+// 
 import StarsRate from '../../../../../../../../component/stars_rate/_main/StarsRate';
 import ContentMore from '../../../../../../../../component/content_more/Content_more';
 //
@@ -14,7 +18,6 @@ import FsRateSellerReply from '../seller_reply/FsRateSellerReply';
 import FsRateIsGood from '../is_good/FsRateIsGood';
 //
 import './FashionRateItem.scss';
-import { useForceUpdate } from '../../../../../../../../_hooks/UseForceUpdate';
 
 //
 FashionRateItem.propTypes = {
@@ -41,8 +44,8 @@ function FashionRateItem({ ix, item }) {
         created_time,
     } = item;
 
-    // 
-    const forceUpdate = useForceUpdate()
+    //
+    const forceUpdate = useForceUpdate();
 
     //
     function on_API_FashionContentComment_R() {
@@ -59,7 +62,7 @@ function FashionRateItem({ ix, item }) {
             item.count_like += 1;
         }
 
-        forceUpdate()
+        forceUpdate();
     }
 
     //
@@ -92,7 +95,11 @@ function FashionRateItem({ ix, item }) {
                     </div>
 
                     {model_name ? (
-                        <div className="text-third">
+                        <div
+                            className={`text-third ${
+                                IS_MOBILE ? 'font-12px' : ''
+                            }`}
+                        >
                             Phân loại hàng: {model_name}
                         </div>
                     ) : null}
@@ -108,7 +115,11 @@ function FashionRateItem({ ix, item }) {
                         <FashionRateVidPic vid_pics={vid_pics} />
                     </div>
 
-                    <div className="margin-bottom-1rem text-third">
+                    <div
+                        className={`margin-bottom-1rem text-third ${
+                            IS_MOBILE ? 'font-12px' : ''
+                        }`}
+                    >
                         {formatLocalDateTimeString(new Date(created_time))}
                     </div>
 

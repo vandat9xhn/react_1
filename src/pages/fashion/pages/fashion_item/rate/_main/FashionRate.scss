@@ -1,14 +1,7 @@
-//
-.FashionRate_list {
-    margin-top: 1rem;
+.FashionRate_head-mb{
+    border-bottom: 1px solid var(--md-bg-blur);
 }
 
-//
-.FashionRate_row {
-    display: flex;
-    align-items: center;
-    margin: 0.5rem 0;
-}
 //
 .FashionRate_title {
     width: 3rem;
@@ -21,4 +14,10 @@
 
 .FashionRate_rate-user {
     margin-right: 0.25rem;
+}
+
+.FashionRate_foot_all{
+    .IconsArrow_next{
+        stroke: currentColor;
+    }
 }

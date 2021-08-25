@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { UnitNumber } from '../../../../../../../_some_function/UnitNumber';
+// 
 import IconDiv from '../../../../../../../component/some_div/icon_div/IconDiv';
 import IconHeart from '../../../../../../../_icons_svg/icons_like/icon_heart/IconHeart';
 //
 import './FsIIfLShareLike.scss';
-import { UnitNumber } from '../../../../../../../_some_function/UnitNumber';
 
 //
 FsIIfLShareLike.propTypes = {};
@@ -15,7 +16,7 @@ function FsIIfLShareLike({ count_like }) {
     //
     return (
         <div className="FsIIfLShareLike">
-            <div className="display-flex align-items-center">
+            <div className="FsIIfLShareLike_row display-flex align-items-center">
                 <div className="FsIIfLShareLike_left">
                     <div className="display-flex-center">
                         <div>Chia sẻ:</div>

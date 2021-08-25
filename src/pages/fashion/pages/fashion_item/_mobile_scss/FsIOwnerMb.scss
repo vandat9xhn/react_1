@@ -1,0 +1,40 @@
+.FashionItem_mobile{
+    // 
+    .FashionOL{
+        padding: 8px;
+
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .FashionOL_like {
+        line-height: 11px;
+    }
+    // 
+    .FashionOL_right{
+        font-size: 14px;
+    }
+    .FashionOL_chat {
+        display: none;
+    }
+    .FashionOL_see {
+        padding: 6px 12px;
+        color: var(--fashion-head);
+    }
+
+    .FashionOR_row {
+        justify-content: space-around;
+    }
+    .FashionOR_col {
+        width: auto;
+        padding: 0;
+    }
+    .FashionOR_col_row{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .FashionOR_col-value{
+        font-size: 18px;
+    }
+}

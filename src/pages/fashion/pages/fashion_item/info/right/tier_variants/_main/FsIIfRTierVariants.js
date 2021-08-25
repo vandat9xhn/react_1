@@ -26,7 +26,7 @@ function FsIIfRTierVariants({}) {
             {item_info.tier_variations.map(
                 (tier_variation, tier_variation_ix) => (
                     <div key={tier_variation_ix} className="margin-bottom-1rem">
-                        <div className="display-flex">
+                        <div className="fashion-item-row">
                             <div className="fashion-item-label">
                                 <span className="text-third">
                                     {tier_variation.name}

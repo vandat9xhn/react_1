@@ -9,7 +9,7 @@ function FsItemIfRTransport({ address = 'Ha Noi', trans_price = 10000 }) {
     //
     return (
         <div className="FsItemIfRTransport">
-            <div className="display-flex">
+            <div className="fashion-item-row">
                 <div className="fashion-item-label">
                     <span className="text-third">Vận Chuyển</span>
                 </div>

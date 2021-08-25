@@ -6,6 +6,7 @@ import { context_fashion_item } from '../../../../../../_context/fashion/item/co
 import FashionBreadCrumb from '../../../../components/breadcrumb/FashionBreadCrumb';
 //
 import './FashionItemDescription.scss';
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
 
 //
 FashionItemDescription.propTypes = {
@@ -25,14 +26,32 @@ function FashionItemDescription({}) {
 
     //
     return (
-        <div className="FashionItemDescription padding-16px bg-primary">
+        <div
+            className={`FashionItemDescription bg-primary ${
+                IS_MOBILE ? 'font-14px' : 'padding-16px'
+            }`}
+        >
             <div>
-                <h2 className="margin-bottom-1rem padding-8px bg-screen font-400 font-18px text-secondary">
-                    CHI TIẾT SẢN PHẨM
+                <h2
+                    className={`padding-8px font-400 ${
+                        IS_MOBILE
+                            ? 'font-14px'
+                            : 'margin-bottom-1rem bg-screen text-secondary font-18px text-upper'
+                    }`}
+                >
+                    Chi tiết sản phẩm
                 </h2>
 
-                <div className="padding-8px margin-bottom-1rem">
-                    <div className="display-flex">
+                <div
+                    className={`FashionItemDescription_content padding-8px ${
+                        IS_MOBILE ? '' : 'margin-bottom-1rem'
+                    }`}
+                >
+                    <div
+                        className={`${
+                            IS_MOBILE ? 'display-none' : 'display-flex'
+                        }`}
+                    >
                         <div className="FashionItemDescription_label fashion-item-label text-third">
                             Danh Mục
                         </div>
@@ -69,8 +88,14 @@ function FashionItemDescription({}) {
             </div>
 
             <div>
-                <h2 className="margin-bottom-1rem padding-8px bg-screen font-400 font-18px text-secondary">
-                    MÔ TẢ SẢN PHẨM
+                <h2
+                    className={`padding-8px font-400 ${
+                        IS_MOBILE
+                            ? 'font-14px'
+                            : 'margin-bottom-1rem bg-screen text-secondary font-18px text-upper'
+                    }`}
+                >
+                    Mô tả sản phẩm
                 </h2>
 
                 <div className="FashionItemDescription_content padding-8px text-secondary">

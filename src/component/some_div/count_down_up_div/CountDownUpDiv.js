@@ -62,16 +62,14 @@ function CountDownUpDiv({
                     -
                 </button>
 
-                <div className="CountDownUpDiv_input">
-                    <input
-                        className="input"
-                        type="number"
-                        value={count}
-                        onFocus={onBeforeCountNum}
-                        onChange={onCountNum}
-                        onBlur={onCountNumDone}
-                    />
-                </div>
+                <input
+                    className="CountDownUpDiv_input input"
+                    type="number"
+                    value={count}
+                    onFocus={onBeforeCountNum}
+                    onChange={onCountNum}
+                    onBlur={onCountNumDone}
+                />
 
                 <button
                     className={`CountDownUpDiv_btn btn btn-active cursor-pointer ${

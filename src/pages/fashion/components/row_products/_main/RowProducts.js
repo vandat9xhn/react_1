@@ -48,7 +48,7 @@ function RowProducts({
     link_to_more,
     title_more,
     class_color_more,
-    
+
     children,
 }) {
     //
@@ -59,17 +59,18 @@ function RowProducts({
             <div>
                 {list_products.map((products, list_ix) => (
                     <div key={`${list_ix}`} className="RowProducts_products">
-                        {IS_MOBILE ? (
-                            <RowProductMobile
-                                products={products}
-                                link_to_more={link_to_more}
-                                title_more={title_more}
-                                class_color_more={class_color_more}
-                            />
+                        {products.length ? (
+                            IS_MOBILE ? (
+                                <RowProductMobile
+                                    products={products}
+                                    link_to_more={link_to_more}
+                                    title_more={title_more}
+                                    class_color_more={class_color_more}
+                                />
+                            ) : (
+                                <RowProductPc products={products} />
+                            )
                         ) : (
-                            <RowProductPc products={products} />
-                        )}
-                        {products.length ? null : (
                             <div className="RowProducts_not_fetched"></div>
                         )}
                     </div>

@@ -8,7 +8,7 @@ import { ParseLocationSearch } from '../../../../../_some_function/ParseLocation
 import { initial_fashion_search_products_obj } from '../../../../../_initial/fashion/FashionInitial';
 //
 import { handle_API_FsSearch_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
-// 
+//
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import Pagination from '../../../../../component/pagination/_main/Pagination';
@@ -19,7 +19,7 @@ import './FashionSearch.scss';
 import FashionShead from '../head/FashionShead';
 import SearchProducts from '../products/SearchProducts';
 import SearchFilter from '../filter/_main/SearchFilter';
-// 
+//
 import './FashionSearchRes.scss';
 
 //
@@ -75,7 +75,7 @@ function FashionSearch(props) {
         is_location_changed.current && handleChangeLocationSearch();
     }, [location.search]);
 
-    // 
+    //
     function handleChangeLocationSearch() {
         const { p, q, area, sort, rate } = ParseLocationSearch();
         const new_area_arr = [...area_arr];
@@ -97,7 +97,7 @@ function FashionSearch(props) {
             return item;
         });
 
-        // 
+        //
         getData_API_Search_Refresh({
             params_api: {
                 new_value_search: q,
@@ -143,16 +143,15 @@ function FashionSearch(props) {
                 is_fetching: true,
             }));
 
-            const { data, pages: new_pages } =
-                await handle_API_FsSearch_L(
-                    new_page,
-                    new_value_search,
-                    new_area_arr
-                        .filter((item) => item.checked)
-                        .map((item) => item.title),
-                    new_rate_ix,
-                    new_sort_by
-                );
+            const { data, pages: new_pages } = await handle_API_FsSearch_L(
+                new_page,
+                new_value_search,
+                new_area_arr
+                    .filter((item) => item.checked)
+                    .map((item) => item.title),
+                new_rate_ix,
+                new_sort_by
+            );
 
             //
             setFashionSearchState((fashion_search_state) => ({
@@ -162,9 +161,9 @@ function FashionSearch(props) {
                 products_obj: fashion_search_state.has_fetched
                     ? {
                           ...fashion_search_state.products_obj,
-                          [new_page]: [...data, ...data],
+                          [new_page]: data,
                       }
-                    : { [new_page]: [...data, ...data] },
+                    : { [new_page]: data },
 
                 page: new_page,
                 pages: new_pages,

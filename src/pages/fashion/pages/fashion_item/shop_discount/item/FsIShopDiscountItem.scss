@@ -1,0 +1,27 @@
+.FsIShopDiscountItem {
+    min-height: 90px;
+    padding-left: 20px;
+
+    .FashionCardDiscount_title {
+        font-size: 12px;
+        color: var(--fashion-head);
+    }
+    .FashionCardDiscount_expiry {
+        font-size: 10px;
+        color: var(--md-color-secondary);
+    }
+}
+
+.FsIShopDiscountItem_side {
+    width: 10px;
+
+    background-image: radial-gradient(
+        circle,
+        var(--md-bg-primary),
+        var(--md-bg-primary) 50%,
+        transparent 50%,
+        transparent
+    );
+    background-size: 100% 10px;
+    background-repeat: repeat-y;
+}

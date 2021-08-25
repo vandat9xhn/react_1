@@ -65,7 +65,7 @@ function FashionFaceItemFoot({
 
     //
     return (
-        <div className="FashionFaceItemFoot padding-8px font-12px">
+        <div className="FashionFaceItemFoot padding-8px font-12px text-secondary">
             <div className="FashionFaceItemFoot_name overflow-hidden">
                 <span>{name}</span>
             </div>
@@ -117,14 +117,14 @@ function FashionFaceItemFoot({
 
                 {show_sold ? (
                     <div className="text-align-end">
-                        <span>Đã bán {sold}</span>
+                        <span className="text-third">Đã bán {sold}</span>
                     </div>
                 ) : null}
             </div>
 
             {show_address ? (
                 <div className="text-align-end">
-                    <span className="text-secondary">{address}</span>
+                    <span className="text-third">{address}</span>
                 </div>
             ) : null}
         </div>

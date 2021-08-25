@@ -31,16 +31,10 @@ function CartItem({
     cart_product,
     cart_product_ix,
     handleCheckItem,
-    handleCount,
+    handleSetCount,
 }) {
     //
     const { product, quantity, checked } = cart_product;
-
-    //
-    const { handleWaitingLastAction } = useWaitingLastAction({
-        time_waiting: 500,
-        callback: onCount,
-    });
 
     const {
         count,
@@ -50,15 +44,26 @@ function CartItem({
         countNum,
         countNumDone,
     } = useNewCount({
-        initial_count: quantity,
-        initial_min: 1,
-        initial_max: product.total,
-        callback: handleWaitingLastAction,
+        getCount,
+        getMax,
+        getMin,
+        handleSetCount: (new_count) =>
+            handleSetCount(cart_ix, cart_product_ix, new_count),
     });
 
     //
-    function onCount(value) {
-        handleCount(cart_ix, cart_product_ix, value);
+    function getCount() {
+        return quantity;
+    }
+
+    //
+    function getMax() {
+        return product.total;
+    }
+
+    //
+    function getMin() {
+        return getMax() > 0 ? 1 : 0;
     }
 
     //

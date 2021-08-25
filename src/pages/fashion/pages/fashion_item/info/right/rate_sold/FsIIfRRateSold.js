@@ -6,6 +6,7 @@ import { context_fashion_item } from '../../../../../../../_context/fashion/item
 import StarsRate from '../../../../../../../component/stars_rate/_main/StarsRate';
 //
 import './FsIIfRRateSold.scss';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 FsIIfRRateSold.propTypes = {
@@ -26,13 +27,19 @@ function FsIIfRRateSold({}) {
         <div className="FsIIfRRateSold">
             <div className="FsIIfRRateSold_row display-flex">
                 <div className="FsIIfRRateSold_avg display-flex-center color-fashion">
-                    <div>
-                        <span className="FsIIfRRateSold_avg_rate font-16px">
-                            {rate_avg}
-                        </span>
+                    <div
+                        className={`FsIIfRRateSold_avg_rate ${
+                            IS_MOBILE ? 'font-14px' : 'font-16px'
+                        }`}
+                    >
+                        <span>{rate_avg}</span>
                     </div>
 
-                    <div className="margin-left-5px">
+                    <div
+                        className={`${
+                            IS_MOBILE ? 'margin-right-5px' : 'margin-left-5px'
+                        }`}
+                    >
                         <StarsRate
                             rate_avg={rate_avg}
                             size_icon="16px"

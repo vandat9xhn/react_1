@@ -11,12 +11,15 @@ const base_product_obj = () => {
     const total = getRandomNumber(2, 200);
 
     const new_price = getRandomNumber(50, 600);
-    const new_price_max = getRandomNumber(new_price, new_price + 200);
-    const old_price = getRandomNumber(40, new_price);
-    const old_price_max = getRandomNumber(old_price, old_price + 200);
+    const old_price = getRandomNumber(new_price + 5, new_price + 50);
+    const new_price_max = getRandomNumber(new_price + 100, new_price + 300);
+    const old_price_max = getRandomNumber(
+        new_price_max + 5,
+        new_price_max + 50
+    );
 
     return {
-        id: getRandomId(),
+        id: getRandomNumber(),
         name: getRandomFromArr(product_name_arr),
         img: getRandomVidPic(),
         flash_img: null,
@@ -29,16 +32,14 @@ const base_product_obj = () => {
         shop_discount: '10%',
         address: 'Hà Nội',
 
-        new_price: new_price,
-        old_price: old_price,
-        new_price_max: new_price_max,
-        old_price_max: old_price_max,
+        new_price: new_price * 1000,
+        old_price: old_price * 1000,
+        new_price_max: new_price_max * 1000,
+        old_price_max: old_price_max * 1000,
 
         discount: getRandomBool()
-            ? getRandomBool()
-                ? getRandomNumber(1, 50) + '%'
-                : 'K'
-            : null,
+            ? getRandomNumber(1, 50) + (getRandomBool() ? '%' : 'K')
+            : '',
     };
 };
 

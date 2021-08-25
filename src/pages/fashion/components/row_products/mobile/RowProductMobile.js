@@ -21,7 +21,7 @@ function RowProductMobile({
                 {products.map((item, ix) => (
                     <li
                         key={`${item.id || `RowProductMobile_${ix}`}`}
-                        className="row-product-item snap-align-end"
+                        className="row-product-item snap-align-start"
                     >
                         <FashionFaceItem
                             id={item.id}

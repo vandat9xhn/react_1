@@ -1,15 +1,32 @@
-
-.FsHotDealItem_head{
-    width: 160px;
-    padding-top: 100%;
+.FsHotDealItem_foot {
+    margin-top: 10px;
 }
 
-.FsHotDealItem_foot{
-    padding-top: 10px;
-}
 // .
-.FsHotDealItem_foot_name{
+.FsHotDealItem_name {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+
+    line-height: 17px;
+    height: 40px;
+}
+
+// .
+.FsHotDealItem_model_name {
+    text-transform: uppercase;
+}
+
+// .
+.FsHotDealItem_foot_check {
+    margin: 10px 0;
+}
+
+// .
+.FsHotDealItem_model_arrow {
+    transform: rotate(180deg);
+
+    .IconsArrow_back-top {
+        fill: var(--md-color-third);
+    }
 }

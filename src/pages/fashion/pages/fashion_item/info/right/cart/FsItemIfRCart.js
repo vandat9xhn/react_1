@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_fashion_item } from '../../../../../../../_context/fashion/item/context_fashion_item';
 //
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+// 
 import IconsMenu from '../../../../../../../_icons_svg/icons_menu/IconsMenu';
 //
 import IconDiv from '../../../../../../../component/some_div/icon_div/IconDiv';
@@ -20,10 +22,9 @@ FsItemIfRCart.propTypes = {
 //
 function FsItemIfRCart({}) {
     //
-    const { wait_add_cart, addToCart, c_quantity, c_total_add_cart } =
+    const { wait_add_cart, max, addToCart, c_total_add_cart } =
         useContext(context_fashion_item);
 
-    const max = c_quantity - c_total_add_cart;
     const disabled = max == 0 || wait_add_cart;
 
     //
@@ -38,8 +39,14 @@ function FsItemIfRCart({}) {
                     disabled={disabled}
                     onClick={addToCart}
                 >
-                    <IconDiv Icon={IconsMenu} x={400}>
-                        <span className="label-field">Thêm Vào Giỏ Hàng</span>
+                    <IconDiv
+                        Icon={IconsMenu}
+                        x={400}
+                        size_icon={IS_MOBILE ? '1rem' : '1.5rem'}
+                    >
+                        <span className="label-field">
+                            Thêm Vào Giỏ {IS_MOBILE ? '' : 'Hàng'}
+                        </span>
                     </IconDiv>
                 </button>
 

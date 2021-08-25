@@ -13,7 +13,7 @@ const ContextFashionItem = ({ children, ...rest_props }) => {
                 ...rest_props,
             }}
         >
-            {rest_props.fetched_item ? (
+            {rest_props.fetched_item && rest_props.fetched_shop ? (
                 children
             ) : (
                 <div>

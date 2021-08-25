@@ -7,11 +7,9 @@ import { default_shop_obj } from '../../../_default/fashion/DefaultShop';
 import { default_hot_image_arr } from '../../../_default/fashion/FashionDefault';
 import { base_product_arr } from '../../../_default/fashion/DefaultProductList';
 import {
-    default_product_cmt_arr,
+    default_product_detail_arr,
     default_product_obj,
     default_rate_arr,
-    default_rate_content,
-    product_cmt_vid_pic_arr,
 } from '../../../_default/fashion/DefaultProductItem';
 import { default_content_more } from '../../../_default/post/DefaultPosts';
 
@@ -59,7 +57,19 @@ export const API_FashionProduct_L = (params = {}) =>
             }),
         params
     );
-//
+
+export const API_FsProductDetail_L = (params = {}) =>
+    API_FakeReal(
+        default_product_detail_arr(),
+        () =>
+            axiosClientNoToken({
+                url: 'api/shopee/product-detail-l/',
+                method: 'GET',
+                params: params,
+            }),
+        params
+    );
+
 export const API_FashionProduct_R = (id, params = {}) =>
     API_FakeReal(default_product_obj(), () =>
         API_IsLogin_URL(
@@ -67,8 +77,8 @@ export const API_FashionProduct_R = (id, params = {}) =>
                 method: 'GET',
                 params: params,
             },
-            '/fashion-api/r-product-token/' + id + '/',
-            '/fashion-api/r-product/' + id + '/'
+            'api/shopee/product-token-r/' + id + '/',
+            'api/shopee/product-r/' + id + '/'
         )
     );
 
@@ -78,7 +88,7 @@ export const API_FashionRate_L = (params) =>
         default_rate_arr(),
         () =>
             axiosClientNoToken({
-                url: '/fashion-api/l-rate/',
+                url: 'api/shopee/product-rate-l/',
                 method: 'GET',
                 params: params,
             }),
@@ -90,7 +100,7 @@ export const API_FashionUserContentRate_R = (params) =>
         default_content_more(),
         () =>
             axiosClientNoToken({
-                url: '/fashion-api/l-rate/',
+                url: 'api/shopee/rate-r/',
                 method: 'GET',
                 params: params,
             }),

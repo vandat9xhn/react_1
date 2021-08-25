@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
-//
 import ContextFashionItem from '../../../../../_context/fashion/item/ContextFashionItem';
+//
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
 import {
     initial_fashion_item_obj,
@@ -32,12 +33,27 @@ import VirtualScroll from '../../../../../component/virtual_scroll/VirtualScroll
 import FashionItemInfo from '../info/_main/FashionItemInfo';
 import FashionItemOwner from '../owner/_main/FashionItemOwner';
 import FashionBreadCrumb from '../../../components/breadcrumb/FashionBreadCrumb';
-//
-import './FashionItem.scss';
 import FashionItemDescription from '../description/_main/FashionItemDescription';
 import FsICombo from '../combo/_main/FsICombo';
 import FsIGift from '../gift/_main/FsIGift';
 import FsIHotDeal from '../hot_deal/_main/FsIHotDeal';
+import FsIShopDiscount from '../shop_discount/_main/FsIShopDiscount';
+import FsIShopSelling from '../shop_selling/FsIShopSelling';
+//
+import './FashionItem.scss';
+import './FashionItemRes.scss';
+
+import './FashionItemMobile.scss';
+import '../_mobile_scss/FsIBreadCrumbMb.scss';
+import '../_mobile_scss/FsIInfoLeftMb.scss';
+import '../_mobile_scss/FsIInfoRightMb.scss';
+import '../_mobile_scss/FsIComboMb.scss';
+import '../_mobile_scss/FsIGiftMb.scss';
+import '../_mobile_scss/FsIHotDealMb.scss';
+import '../_mobile_scss/FsIOwnerMb.scss';
+import '../_mobile_scss/FsIShopSellingMb.scss';
+import '../_mobile_scss/FsIDescriptionMb.scss';
+import '../_mobile_scss/FsIRateMb.scss';
 
 //
 FashionItem.propTypes = {};
@@ -63,17 +79,13 @@ function FashionItem(props) {
 
         tier_ix_arr: [-1],
         model_ix: -1,
+        count: 1,
 
         vid_pic_ix: 0,
         wait_add_cart: false,
     });
 
-    const {
-        item_info,
-        fetched_item,
-
-        model_ix,
-    } = state_obj;
+    const { item_info, model_ix, count } = state_obj;
 
     const { tier_variations, models } = item_info;
 
@@ -92,9 +104,10 @@ function FashionItem(props) {
     const mounted = useMounted();
 
     const count_obj = useNewCount({
-        initial_count: 0,
-        initial_min: 0,
-        initial_max: 0,
+        getCount,
+        getMax,
+        getMin,
+        handleSetCount,
     });
 
     //
@@ -114,15 +127,34 @@ function FashionItem(props) {
         });
     }, [id]);
 
-    useEffect(() => {
-        fetched_item && handleChangeCount(c_quantity - c_total_add_cart);
-    }, [fetched_item, model_ix, c_total_add_cart]);
+    /* ---- COUNT --- */
 
     //
-    function handleChangeCount(new_max) {
-        const new_min = new_max > 0 ? 1 : 0;
-        count_obj.handleInitialCount(new_max, new_min, new_min);
+    function getCount() {
+        return count;
     }
+
+    //
+    function getMax() {
+        return models.length && model_ix >= 0
+            ? models[model_ix].quantity - models[model_ix].total_add_cart
+            : item_info.quantity - item_info.total_add_cart;
+    }
+
+    //
+    function getMin() {
+        return getMax() > 0 ? 1 : 0;
+    }
+
+    //
+    function handleSetCount(new_count) {
+        setStateObj({
+            ...state_obj,
+            count: new_count,
+        });
+    }
+
+    /* --------- */
 
     //
     function onChangeVidPicIx(ix) {
@@ -140,8 +172,9 @@ function FashionItem(props) {
 
         addToCart({
             id: id,
-            more_add_cart: count_obj.count,
+            count: count,
             mounted: true,
+            new_count: count == getMax() ? 0 : 1,
 
             setStateObj: setStateObj,
             dispatch: dispatch,
@@ -171,14 +204,21 @@ function FashionItem(props) {
     // console.log(state_obj.shop_info.discount_arr);
     //
     return (
-        <div className="FashionItem font-for-fashion">
+        <div
+            className={`FashionItem font-for-fashion ${
+                IS_MOBILE ? 'FashionItem_mobile' : ''
+            }`}
+        >
             <FashionH />
 
             <div className="fashion-width">
                 <ContextFashionItem
                     {...state_obj}
-                    {...count_obj}
                     setStateObj={setStateObj}
+                    //
+                    {...count_obj}
+                    max={getMax()}
+                    min={getMin()}
                     //
                     c_new_price={c_new_price}
                     c_old_price={c_old_price}
@@ -192,7 +232,7 @@ function FashionItem(props) {
                     handleChooseOption={onChooseOption}
                     saveShopDiscount={onSaveShopDiscount}
                 >
-                    <div className="padding-16px">
+                    <div className="FashionItem_breadCrumb padding-16px">
                         <FashionBreadCrumb
                             arr={item_info.categories.map(
                                 (item) => item.display_name
@@ -206,58 +246,82 @@ function FashionItem(props) {
                         </VirtualScroll>
                     </div>
 
+                    <div>
+                        <div className="FashionItem_part">
+                            <VirtualScroll>
+                                <FsICombo />
+                            </VirtualScroll>
+                        </div>
+
+                        <div className="FashionItem_part">
+                            <VirtualScroll>
+                                <FsIGift />
+                            </VirtualScroll>
+                        </div>
+
+                        <div className="FashionItem_part">
+                            <VirtualScroll>
+                                <FsIHotDeal />
+                            </VirtualScroll>
+                        </div>
+                    </div>
+
                     <div className="FashionItem_part">
                         <VirtualScroll>
                             <FashionItemOwner />
                         </VirtualScroll>
                     </div>
 
-                    <div className="FashionItem_part">
-                        <VirtualScroll>
-                            <FsICombo />
-                        </VirtualScroll>
-                    </div>
+                    <div className="FashionItem_body display-flex">
+                        <div className="FashionItem_body_left flex-grow-1">
+                            <div className="FashionItem_part">
+                                <VirtualScroll>
+                                    <FashionItemDescription />
+                                </VirtualScroll>
+                            </div>
 
-                    <div className="FashionItem_part">
-                        <VirtualScroll>
-                            <FsIGift />
-                        </VirtualScroll>
-                    </div>
+                            <div className="FashionItem_part">
+                                <VirtualScroll>
+                                    <FashionRate id={item_info.id} />
+                                </VirtualScroll>
+                            </div>
 
-                    <div className="FashionItem_part">
-                        <VirtualScroll>
-                            <FsIHotDeal />
-                        </VirtualScroll>
-                    </div>
+                            <div className="FashionItem_part">
+                                <VirtualScroll>
+                                    <FashionOtherItem id={item_info.id} />
+                                </VirtualScroll>
+                            </div>
 
-                    <div className="FashionItem_part">
-                        <VirtualScroll>
-                            <FashionItemDescription />
-                        </VirtualScroll>
-                    </div>
+                            <div className="FashionItem_part">
+                                <VirtualScroll>
+                                    <FashionRlt id={item_info.id} />
+                                </VirtualScroll>
+                            </div>
 
-                    <div className="FashionItem_part">
-                        <VirtualScroll>
-                            <FashionRate id={item_info.id} />
-                        </VirtualScroll>
-                    </div>
+                            <div className="FashionItem_part">
+                                <VirtualScroll>
+                                    <FashionItemMayLike id={item_info.id} />
+                                </VirtualScroll>
+                            </div>
+                        </div>
 
-                    <div className="FashionItem_part">
-                        <VirtualScroll>
-                            <FashionOtherItem id={item_info.id} />
-                        </VirtualScroll>
-                    </div>
+                        <div
+                            className={`FashionItem_body_right flex-shrink-0 ${
+                                IS_MOBILE ? '' : 'FashionItem_body_right-pc'
+                            }`}
+                        >
+                            <div className="FashionItem_part">
+                                <VirtualScroll>
+                                    <FsIShopDiscount />
+                                </VirtualScroll>
+                            </div>
 
-                    <div className="FashionItem_part">
-                        <VirtualScroll>
-                            <FashionRlt id={item_info.id} />
-                        </VirtualScroll>
-                    </div>
-
-                    <div className="FashionItem_part">
-                        <VirtualScroll>
-                            <FashionItemMayLike id={item_info.id} />
-                        </VirtualScroll>
+                            <div className="FashionItem_part">
+                                <VirtualScroll>
+                                    <FsIShopSelling />
+                                </VirtualScroll>
+                            </div>
+                        </div>
                     </div>
                 </ContextFashionItem>
             </div>

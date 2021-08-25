@@ -1,0 +1,53 @@
+.FashionItem_mobile {
+    .FsIHotDeal {
+        padding: 8px;
+    }
+    .FsIHotDeal_row {
+        display: block;
+    }
+    .FsIHotDeal_list_row {
+        display: block;
+    }
+    .FsIHotDeal_item {
+        margin-bottom: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    .FsIHotDeal_item_plus{
+        display: none;
+    }
+
+    .FsHotDealItem {
+        display: flex;
+        flex-direction: column;
+    }
+    .FsHotDealItemHead{
+        display: flex;
+    }
+    .FsHotDealItem_foot {
+        order: -1;
+        margin-top: 0;
+    }
+    .FsHotDealItemHead_img {
+        width: 68px;
+        height: 68px;
+        flex-shrink: 0;
+        padding: 0;
+        margin-right: 10px;
+    }
+    .FsHotDealItem_foot_check {
+        margin: 0;
+    }
+    .FsHotDealItem_foot_check_right{
+        max-width: 12.5rem;
+    }
+    .FsHotDealItem_model_name {
+        height: auto;
+        -webkit-line-clamp: 1;
+    }
+
+    .FsIHotDealTiers{
+        max-height: 100vh;
+        border-radius: 0;
+    }
+}

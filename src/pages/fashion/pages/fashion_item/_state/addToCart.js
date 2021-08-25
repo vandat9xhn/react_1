@@ -11,7 +11,8 @@ import FashionCartSuccess from '../add_cart_success/FashionCartSuccess';
 //
 export async function addToCart({
     id = 0,
-    more_add_cart = 0,
+    count = 0,
+    new_count = 1,
     mounted = true,
 
     setStateObj = () => {},
@@ -27,7 +28,7 @@ export async function addToCart({
 
     await handle_API_FashionCart_C({
         product_model: id,
-        quantity: more_add_cart,
+        quantity: count,
     });
 
     if (!mounted) {
@@ -43,17 +44,18 @@ export async function addToCart({
         const new_models = [...item_info.models];
 
         if (model_ix >= 0) {
-            new_models[model_ix].total_add_cart += more_add_cart;
+            new_models[model_ix].total_add_cart += count;
         }
 
         return {
             ...state_obj,
             item_info: {
                 ...item_info,
-                total_add_cart: item_info.total_add_cart + more_add_cart,
+                total_add_cart: item_info.total_add_cart + count,
                 models: new_models,
             },
             wait_add_cart: false,
+            count: new_count,
         };
     });
 

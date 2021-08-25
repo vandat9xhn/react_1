@@ -1,24 +1,25 @@
+%tooltip {
+    content: '';
+
+    position: absolute;
+    left: 150px;
+    transform: translateX(-50%);
+
+    border: 0.5rem solid transparent;
+}
+
+/*---------*/
 .FsItemIfRSDDetail {
     &::before {
-        content: '';
-
-        position: absolute;
         bottom: 100%;
-        left: 140px;
-
-        border: 0.5rem solid transparent;
-        border-bottom-color: red;
+        border-bottom-color: var(--md-bg-blur);
+        @extend %tooltip;
     }
 
     &::after {
-        content: '';
-
-        position: absolute;
-        top: 0;
-        left: 140px;
-
-        border: 0.5rem solid transparent;
-        border-top-color: var(--md-bg-primary);
+        bottom: calc(100% - 1.5px);
+        border-bottom-color: var(--md-bg-primary);
+        @extend %tooltip;
     }
 }
 

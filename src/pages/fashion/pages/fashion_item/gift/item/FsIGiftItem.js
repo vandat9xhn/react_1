@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import FsShopDealLabel from '../../../../components/shop_deal_label/FsShopDealLabel';
+//
+import './FsIGiftItem.scss';
 
 //
 FsIGiftItem.propTypes = {
@@ -15,18 +17,22 @@ function FsIGiftItem({ img, name, is_gift }) {
     //
     return (
         <div className="FsIGiftItem">
-            <div>
-                <img src={img} alt="" width="160" height="160" />
+            <div className="pos-rel padding-top-100per">
+                <img
+                    className="pos-abs-100 wh-100 object-fit-cover"
+                    src={img}
+                    alt=""
+                />
             </div>
-            
-            <div>
+
+            <div className="FsIGiftItem_foot overflow-hidden">
                 {is_gift ? (
-                    <div className="inline-block">
+                    <div className="FsIGiftItem_gift inline-block">
                         <FsShopDealLabel label="Quà Tặng" />
                     </div>
                 ) : null}
 
-                <span>{name}</span>
+                <span className="text-secondary font-14px">{name}</span>
             </div>
         </div>
     );

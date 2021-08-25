@@ -18,7 +18,7 @@ function FsItemIfRPrivacy(props) {
 
                 <span className="FsItemIfRPrivacy_center">Shopee Đảm Bảo</span>
 
-                <span className="text-third">
+                <span className="FsItemIfRPrivacy_right text-third">
                     3 Ngày Trả Hàng / Hoàn Tiền
                 </span>
             </div>

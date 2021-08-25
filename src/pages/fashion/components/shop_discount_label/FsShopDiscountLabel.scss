@@ -1,0 +1,16 @@
+.FsShopDiscountLabel {
+    padding: 1px 4px;
+}
+
+.FsShopDiscountLabel_side {
+    width: 3px;
+    background-image: radial-gradient(
+        circle,
+        var(--md-bg-primary),
+        var(--md-bg-primary) 50%,
+        transparent,
+        transparent
+    );
+    background-repeat: repeat;
+    background-size: 100% 3px;
+}

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
 import { API_FashionProduct_L } from '../../../../../api/api_django_no_token/fashion/APIFashionNoToken';
 //
 import observeToDo from '../../../../../_some_function/observerToDo';
@@ -26,8 +28,6 @@ function FashionOtherItem({ id }) {
 
     //
     useEffect(() => {
-        // setProducts(Array(10).fill({ vid_pics: [{ vid_pic: '' }] }));
-
         setTimeout(() => {
             observeToDo({
                 elm: ref_product_rlt.current,
@@ -49,13 +49,20 @@ function FashionOtherItem({ id }) {
 
     //
     return (
-        <div ref={ref_product_rlt} className="FashionOtherItem">
+        <div
+            ref={ref_product_rlt}
+            className={`FashionOtherItem ${IS_MOBILE ? 'bg-primary' : ''}`}
+        >
             <RowProducts
                 list_products={[products]}
                 link_to_more={`/fashion/shop/${id}`}
                 title_more="Xem tất cả"
             >
-                <h2 className="padding-y-8px font-16px text-secondary label-field">
+                <h2
+                    className={`text-secondary label-field ${
+                        IS_MOBILE ? 'font-14px' : 'font-16px padding-y-8px'
+                    }`}
+                >
                     CÁC SẢN PHẨM KHÁC CỦA SHOP
                 </h2>
             </RowProducts>

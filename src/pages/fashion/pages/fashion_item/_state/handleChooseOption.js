@@ -14,13 +14,20 @@ export function handleChooseOption({
             new_tier_ix_arr[new_ix] = new_type_ix;
         }
 
+        const new_model_ix = item_info.models.findIndex(
+            (item) => item.tier_ix_arr.join(',') == new_tier_ix_arr.join(',')
+        );
+
+        const { total_add_cart, quantity } =
+            new_model_ix == -1 ? item_info : item_info.models[new_model_ix];
+
+        const new_count = quantity - total_add_cart > 0 ? 1 : 0;
+
         return {
             ...state_obj,
             tier_ix_arr: new_tier_ix_arr,
-            model_ix: item_info.models.findIndex(
-                (item) =>
-                    item.tier_ix_arr.join(',') == new_tier_ix_arr.join(',')
-            ),
+            model_ix: new_model_ix,
+            count: new_count,
         };
     });
 }

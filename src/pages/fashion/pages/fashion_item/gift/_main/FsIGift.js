@@ -7,10 +7,15 @@ import observeToDo from '../../../../../../_some_function/observerToDo';
 //
 import { initial_fs_item_gift_obj } from '../../../../../../_initial/fashion/FashionInitial';
 //
+import { handle_API_FsItemGift_R } from '../../../../../../_handle_api/fashion/item_gift';
+//
 import FashionSeeMoreOnTitle from '../../../../components/see_more/on_title/FashionSeeMoreOnTitle';
 import FsIGiftItem from '../item/FsIGiftItem';
 //
 import './FsIGift.scss';
+import { Link } from 'react-router-dom';
+import FsiGItemHasMore from '../item_has_more/FsiGItemHasMore';
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
 
 //
 FsIGift.propTypes = {};
@@ -59,24 +64,24 @@ function FsIGift(props) {
 
     //
     return (
-        <div ref={ref_main_elm} className="FsIGift">
-            <div className={`${has_fetched ? '' : 'display-none'}`}>
-                <div className="FsIGift_row">
-                    <div className="flex-between-center">
-                        <h2 className="font-18px text-secondary">
-                            Mua ₫{min_spend} để nhận {gift_count} quà tặng
-                        </h2>
+        <div ref={ref_main_elm} className="FsIGift bg-primary">
+            <div className={` ${has_fetched ? '' : 'display-none'}`}>
+                <div className="FsIGift_head flex-between-center">
+                    <h2 className="label-field fashion-head-font">
+                        Mua ₫{min_spend} để nhận {gift_count} quà tặng
+                    </h2>
 
-                        <div>
-                            <FashionSeeMoreOnTitle
-                                link_to={`/fashion/gift?id=${shop_gift_id}`}
-                                title="Xem Tất Cả"
-                            />
-                        </div>
+                    <div>
+                        <FashionSeeMoreOnTitle
+                            link_to={`/fashion/gift?id=${shop_gift_id}`}
+                            title="Xem Tất Cả"
+                        />
                     </div>
+                </div>
 
+                <Link to={`/fashion/gift?id=${shop_gift_id}`}>
                     <div className="FsIGift_foot">
-                        <div className="display-flex align-items-center">
+                        <div className="display-flex">
                             {mains
                                 .slice(0, main_count >= 3 ? 1 : 2)
                                 .map((item) => (
@@ -92,20 +97,17 @@ function FsIGift(props) {
                                 ))}
 
                             {main_count >= 3 ? (
-                                <div
-                                    className="FsIGift_foot_item"
-                                    data-count={main_count - 1}
-                                >
-                                    <img
-                                        src={mains[1].image}
-                                        alt=""
-                                        width="160"
-                                        height="160"
+                                <div className="FsIGift_foot_item pos-rel">
+                                    <FsiGItemHasMore
+                                        img={mains[1].image}
+                                        count={main_count - 1}
                                     />
                                 </div>
                             ) : null}
 
-                            <div>+</div>
+                            <div className="FsIGift_foot_plus display-flex-center font-20px text-secondary">
+                                +
+                            </div>
 
                             {gifts
                                 .slice(0, main_count >= 5 ? 3 : 4)
@@ -123,21 +125,16 @@ function FsIGift(props) {
                                 ))}
 
                             {gift_count >= 5 ? (
-                                <div
-                                    className="FsIGift_foot_item"
-                                    data-count={gift_count - 1}
-                                >
-                                    <img
-                                        src={gifts[1].image}
-                                        alt=""
-                                        width="160"
-                                        height="160"
+                                <div className="FsIGift_foot_item">
+                                    <FsiGItemHasMore
+                                        img={gifts[1].image}
+                                        count={gift_count - 1}
                                     />
                                 </div>
                             ) : null}
                         </div>
                     </div>
-                </div>
+                </Link>
             </div>
 
             {has_fetched ? null : <div className="FsIGift_not_fetched"></div>}

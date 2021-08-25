@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import './FashionCardDiscount.scss';
 
 //
@@ -14,17 +14,15 @@ FashionCardDiscount.propTypes = {
 function FashionCardDiscount({ title, expiry, handleSave }) {
     //
     return (
-        <div className="FashionCardDiscount">
+        <div className="FashionCardDiscount pos-rel">
             <div className="display-flex align-items-center">
-                <div>
-                    <div>
-                        <span className="font-14px">{title}</span>
+                <div className="FashionCardDiscount_left">
+                    <div className="FashionCardDiscount_title font-14px">
+                        <span>{title}</span>
                     </div>
 
-                    <div>
-                        <span className="font-12px text-third">
-                            HSD: {expiry}
-                        </span>
+                    <div className="FashionCardDiscount_expiry font-12px text-third">
+                        <span>HSD: {expiry}</span>
                     </div>
                 </div>
 

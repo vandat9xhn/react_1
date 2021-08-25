@@ -3,11 +3,19 @@ import PropTypes from 'prop-types';
 //
 import { context_fashion_item } from '../../../../../../_context/fashion/item/context_fashion_item';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+//
+import observeToDo from '../../../../../../_some_function/observerToDo';
+//
 import { initial_fs_item_hot_deal_arr } from '../../../../../../_initial/fashion/FashionInitial';
+//
+import { handle_API_FsProductDetail_L } from '../../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import FashionSeeMoreOnTitle from '../../../../components/see_more/on_title/FashionSeeMoreOnTitle';
 import FsHotDealItem from '../item/_main/FsHotDealItem';
-import observeToDo from '../../../../../../_some_function/observerToDo';
+import FsIHotDealCal from '../calculate/FsIHotDealCal';
+//
+import './FsIHotDeal.scss';
 
 //
 FsIHotDeal.propTypes = {};
@@ -15,20 +23,36 @@ FsIHotDeal.propTypes = {};
 //
 function FsIHotDeal(props) {
     //
-    const {
-        item_info,
-        model_ix,
-        setStateObj: setStateObjMain,
-    } = useContext(context_fashion_item);
+    const { item_info } = useContext(context_fashion_item);
 
     //
     const [state_obj, setStateObj] = useState({
         hot_deal_arr: initial_fs_item_hot_deal_arr(),
         has_fetched: false,
-        open_model_main: false,
+        open_model_ix: -1,
+
+        total_price: 0,
+        save_price: 0,
+
+        actions: [
+            {
+                model_ix: 0,
+                checked: true,
+                total_add: 1,
+            },
+        ],
     });
 
-    const { hot_deal_arr, has_fetched, open_model_main } = state_obj;
+    const {
+        hot_deal_arr,
+        actions,
+
+        total_price,
+        save_price,
+
+        open_model_ix,
+        has_fetched,
+    } = state_obj;
 
     //
     const ref_main_elm = useRef(null);
@@ -42,83 +66,129 @@ function FsIHotDeal(props) {
 
     //
     async function getData_API() {
-        const { data } = await handle_API_FsItemHotDeal_L({
-            product_id: item_info.id,
+        const { data } = await handle_API_FsProductDetail_L({
+            type_request: 'hot_deal',
+            params: { product_id: item_info.id },
         });
 
-        data.forEach((item) => {
-            item.checked = true;
-            item.model_ix = 0;
-            item.open_model = false;
-        });
+        const new_data = data.slice(0, IS_MOBILE ? 2 : 4);
+        const new_actions = [...actions];
+
+        for (let i = 0; i < new_data.length; i++) {
+            new_actions.push({
+                model_ix: 0,
+                checked: true,
+                total_add: 1,
+            });
+        }
+
+        const new_hot_deal_arr = [item_info, ...new_data];
+        const [new_total_price, new_save_price] = calculatePrice(
+            new_actions,
+            new_hot_deal_arr
+        );
 
         setStateObj({
-            hot_deal_arr: data,
+            ...state_obj,
+            hot_deal_arr: new_hot_deal_arr,
+            actions: new_actions,
+            total_price: new_total_price,
+            save_price: new_save_price,
             has_fetched: true,
         });
     }
 
     /* ----------- */
 
-    //
-    function handleChecked(ix) {
-        const new_hot_deal_arr = { ...state_obj.hot_deal_arr };
-        new_hot_deal_arr[ix].checked = !new_hot_deal_arr[ix].checked;
+    function calculatePrice(
+        new_actions = [...actions],
+        new_hot_deal_arr = [...hot_deal_arr]
+    ) {
+        const new_total_price = new_actions.reduce(
+            (a, b, ix) =>
+                a +
+                (b.checked
+                    ? b.total_add *
+                      (new_hot_deal_arr[ix].models.length
+                          ? new_hot_deal_arr[ix].models[b.model_ix].new_price
+                          : new_hot_deal_arr[ix].new_price)
+                    : 0),
+            0
+        );
 
-        setStateObj({
-            ...state_obj,
-            hot_deal_arr: new_hot_deal_arr,
-        });
+        const old_total_price = new_actions.reduce(
+            (a, b, ix) =>
+                a +
+                (b.checked
+                    ? b.total_add *
+                      (new_hot_deal_arr[ix].models.length
+                          ? new_hot_deal_arr[ix].models[b.model_ix].old_price
+                          : new_hot_deal_arr[ix].old_price)
+                    : 0),
+            0
+        );
+
+        return [new_total_price, old_total_price - new_total_price];
     }
 
+    /* ----------- */
+
     //
-    function toggleChangeModelMain() {
+    function handleChecked(ix) {
+        if (ix == 0) {
+            return;
+        }
+
+        const new_actions = [...state_obj.actions];
+        new_actions[ix].checked = !new_actions[ix].checked;
+
+        const [new_total_price, new_save_price] = calculatePrice(new_actions);
+
         setStateObj({
             ...state_obj,
-            open_model_main: !open_model_main,
+            actions: new_actions,
+            total_price: new_total_price,
+            save_price: new_save_price,
         });
     }
 
     //
     function toggleChangeModel(ix) {
-        const new_hot_deal_arr = { ...state_obj.hot_deal_arr };
-        new_hot_deal_arr[ix].open_model = !new_hot_deal_arr[ix].open_model;
-
         setStateObj({
             ...state_obj,
-            hot_deal_arr: new_hot_deal_arr,
+            open_model_ix: ix == open_model_ix ? -1 : ix,
         });
     }
 
     //
-    function handleChangeModelMain(new_model_ix) {
-        setStateObjMain((state_obj_main) => ({
-            ...state_obj_main,
-            model_ix: new_model_ix,
-        }));
-    }
+    function handleChangeModel(ix, new_model_ix, total_add = 1) {
+        const new_actions = [...state_obj.actions];
 
-    //
-    function handleChangeModel(ix, new_tier_v_ix_arr) {
-        const new_hot_deal_arr = { ...state_obj.hot_deal_arr };
+        new_actions[ix].total_add = total_add;
+        new_actions[ix].model_ix = new_model_ix;
 
-        new_hot_deal_arr[ix].open_model = false;
-        new_hot_deal_arr[ix].model_ix = new_hot_deal_arr[ix].models.findIndex(
-            (item) => item.tier_ix_arr.join(',') == new_tier_v_ix_arr.join(',')
-        );
+        const [new_total_price, new_save_price] = calculatePrice(new_actions);
 
         setStateObj({
             ...state_obj,
-            hot_deal_arr: new_hot_deal_arr,
+            actions: new_actions,
+            total_price: new_total_price,
+            save_price: new_save_price,
+            open_model_ix: -1,
         });
+    }
+
+    //
+    function handleAddCart() {
+        console.log(state_obj);
     }
 
     //
     return (
-        <div ref={ref_main_elm} className="FsIHotDeal">
+        <div ref={ref_main_elm} className="FsIHotDeal bg-primary">
             <div className={`${has_fetched ? '' : 'display-none'}`}>
                 <div className="FsIHotDeal_head flex-between-center">
-                    <h2 className="font-18px text-secondary label-field">
+                    <h2 className="fashion-head-font label-field">
                         Mua thêm deal sốc
                     </h2>
 
@@ -130,75 +200,72 @@ function FsIHotDeal(props) {
                     </div>
                 </div>
 
-                <div className="flex-between-center">
-                    <div className="display-flex align-items-center">
-                        <div>
-                            <FsHotDealItem
-                                img={item_info.vid_pics[0]}
-                                flash_img={item_info.flash_img}
-                                name={item_info.name}
-                                model_name={
-                                    item_info.models.length
-                                        ? item_info.models[
-                                              model_ix == -1 ? 0 : model_ix
-                                          ].name
-                                        : item_info.name
-                                }
-                                discount={item_info.discount}
-                                quantity={item_info.quantity}
-                                tier_variations={item_info.tier_variations}
-                                tier_ix_arr={
-                                    item_info.models.length
-                                        ? item_info.models[
-                                              model_ix == -1 ? 0 : model_ix
-                                          ].tier_ix_arr
-                                        : []
-                                }
-                                //
-                                checked={true}
-                                open_model={open_model_main}
-                                use_checked={false}
-                                //
-                                toggleChangeModel={toggleChangeModelMain}
-                                handleChangeModel={handleChangeModelMain}
-                            />
+                <div className={`${IS_MOBILE ? 'overflow-x-auto' : ''}`}>
+                    <div className="flex-between-center flex-wrap">
+                        <div className="display-flex flex-wrap">
+                            {hot_deal_arr.map((item, ix) => {
+                                const obj = item.models.length
+                                    ? item.models[actions[ix].model_ix]
+                                    : item;
+
+                                return (
+                                    <div
+                                        key={item.id}
+                                        className={`FsIHotDeal_item ${
+                                            ix == 0
+                                                ? 'FsIHotDeal_item-first'
+                                                : ''
+                                        }`}
+                                    >
+                                        <FsHotDealItem
+                                            ix={ix}
+                                            id={item.id}
+                                            img={item.vid_pics[0]}
+                                            flash_img={item.flash_img}
+                                            name={item.name}
+                                            models={item.models}
+                                            discount={item.discount}
+                                            quantity={item.quantity}
+                                            tier_variations={
+                                                item.tier_variations
+                                            }
+                                            //
+                                            old_price={obj.old_price}
+                                            new_price={obj.new_price}
+                                            // tier_ix_arr={obj.tier_ix_arr || []}
+                                            model_name={obj.name}
+                                            //
+                                            use_checked={ix != 0}
+                                            open_model={ix == open_model_ix}
+                                            model_ix={actions[ix].model_ix}
+                                            checked={actions[ix].checked}
+                                            total_add={actions[ix].total_add}
+                                            //
+                                            handleChecked={handleChecked}
+                                            toggleChangeModel={
+                                                toggleChangeModel
+                                            }
+                                            handleChangeModel={
+                                                handleChangeModel
+                                            }
+                                        />
+                                    </div>
+                                );
+                            })}
+
+                            <div className="FsIHotDeal_item_plus display-flex-center font-20px text-secondary">
+                                +
+                            </div>
                         </div>
 
-                        <div>+</div>
-
-                        {hot_deal_arr.map((item, ix) => (
-                            <div key={item.id}>
-                                <FsHotDealItem
-                                    ix={ix}
-                                    img={item.vid_pics[0]}
-                                    flash_img={item.flash_img}
-                                    name={item.name}
-                                    model_name={
-                                        item.models.length
-                                            ? item.models[item.model_ix].name
-                                            : item.name
-                                    }
-                                    discount={item.discount}
-                                    quantity={item.quantity}
-                                    tier_variations={item.tier_variations}
-                                    tier_ix_arr={
-                                        item.models.length
-                                            ? item.models[ix].tier_ix_arr
-                                            : []
-                                    }
-                                    //
-                                    checked={item.checked}
-                                    open_model={item.open_model}
-                                    //
-                                    handleChecked={handleChecked}
-                                    toggleChangeModel={toggleChangeModel}
-                                    handleChangeModel={handleChangeModel}
-                                />
-                            </div>
-                        ))}
+                        <div className="FsIHotDeal_item_cal">
+                            <FsIHotDealCal
+                                total_price={total_price}
+                                save_price={save_price}
+                                handleAddCart={handleAddCart}
+                            />
+                        </div>
                     </div>
-
-                    <div></div>
                 </div>
             </div>
 

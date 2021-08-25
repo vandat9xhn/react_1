@@ -1,5 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+//
+import { context_fashion_item } from '../../../../../../_context/fashion/item/context_fashion_item';
+//
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
 //
 import observeToDo from '../../../../../../_some_function/observerToDo';
 //
@@ -7,7 +12,10 @@ import { handle_API_FashionRate_L } from '../../../../../../_handle_api/fashion/
 //
 import { useMultiPages } from '../../../../../../_hooks/useMultiPages';
 //
+import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
+//
 import ComponentSkeleton from '../../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
+import StarsRate from '../../../../../../component/stars_rate/_main/StarsRate';
 import Pagination from '../../../../../../component/pagination/_main/Pagination';
 //
 import FashionRateSkeleton from '../skeleton/FashionRateSkeleton';
@@ -15,12 +23,16 @@ import FashionRateList from '../list/_main/FashionRateList';
 import FsIRateOverview from '../overview/_main/FsIRateOverview';
 //
 import './FashionRate.scss';
+import FsIRateOverviewMb from '../overview_mb/FsIRateOverviewMb';
 
 //
 FashionRate.propTypes = {};
 
 //
 function FashionRate({ id }) {
+    //
+    const { item_info } = useContext(context_fashion_item);
+
     //
     const ref_main_elm = useRef(null);
     const ref_filter_ix = useRef(0);
@@ -40,7 +52,8 @@ function FashionRate({ id }) {
                 }),
         });
 
-    const { page_obj, page, pages, is_fetching, has_fetched } = state_obj;
+    const { page_obj, page, pages, count, is_fetching, has_fetched } =
+        state_obj;
 
     //
     useEffect(() => {
@@ -68,16 +81,41 @@ function FashionRate({ id }) {
 
     //
     return (
-        <div className="FashionRate padding-16px bg-primary" ref={ref_main_elm}>
-            <h2 className="margin-bottom-1rem font-18px text-secondary label-field">
-                ĐÁNH GIÁ SẢN PHẨM
-            </h2>
+        <div className="FashionRate bg-primary" ref={ref_main_elm}>
+            <div
+                className={`${
+                    IS_MOBILE ? 'FashionRate_head-mb padding-8px' : ''
+                }`}
+            >
+                <h2
+                    className={`label-field ${
+                        IS_MOBILE
+                            ? 'font-14px'
+                            : 'margin-bottom-1rem padding-16px font-18px text-secondary'
+                    }`}
+                >
+                    ĐÁNH GIÁ SẢN PHẨM
+                </h2>
 
-            <div>
-                <FsIRateOverview
-                    filter_ix={ref_filter_ix.current}
-                    handleFilterRate={handleFilterRate}
-                />
+                <div
+                    className={`${
+                        IS_MOBILE
+                            ? 'FashionRate_overview-mb'
+                            : 'padding-x-16px margin-bottom-1rem'
+                    }`}
+                >
+                    {IS_MOBILE ? (
+                        <FsIRateOverviewMb
+                            rate_avg={item_info.rate_avg}
+                            rate_count={item_info.rate_count}
+                        />
+                    ) : (
+                        <FsIRateOverview
+                            filter_ix={ref_filter_ix.current}
+                            handleFilterRate={handleFilterRate}
+                        />
+                    )}
+                </div>
             </div>
 
             <ComponentSkeleton
@@ -95,17 +133,41 @@ function FashionRate({ id }) {
                         Chưa có đánh giá nào
                     </div>
                 ) : (
-                    <React.Fragment>
-                        <FashionRateList rate_page_arr={page_obj[page]} />
-
-                        <Pagination
-                            count={pages}
-                            num_side_center={2}
-                            current={page}
-                            is_fetching={is_fetching}
-                            handleChangePage={onChangePage}
+                    <div
+                        className={`${
+                            IS_MOBILE ? 'padding-x-8px' : 'padding-x-16px'
+                        }`}
+                    >
+                        <FashionRateList
+                            rate_page_arr={page_obj[page].slice(
+                                0,
+                                IS_MOBILE ? 4 : undefined
+                            )}
                         />
-                    </React.Fragment>
+
+                        {IS_MOBILE ? (
+                            <div className="FashionRate_foot_all padding-y-8px text-align-center">
+                                <Link
+                                    to={`/fashion/rate?product_id=${id}`}
+                                    className="color-fashion"
+                                >
+                                    <span className="margin-right-5px">
+                                        Xem Tất Cả ({count})
+                                    </span>
+
+                                    <IconsArrow x={200} size_icon="14px" />
+                                </Link>
+                            </div>
+                        ) : (
+                            <Pagination
+                                count={pages}
+                                num_side_center={2}
+                                current={page}
+                                is_fetching={is_fetching}
+                                handleChangePage={onChangePage}
+                            />
+                        )}
+                    </div>
                 )}
             </div>
         </div>

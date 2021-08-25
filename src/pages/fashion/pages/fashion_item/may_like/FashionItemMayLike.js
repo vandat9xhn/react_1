@@ -8,6 +8,7 @@ import { useObserverShowMore } from '../../../../../_hooks/useObserverShowMore';
 import FashionFaceItem from '../../../components/face_item/_main/FashionFaceItem';
 //
 import './FashionItemMayLike.scss';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 
 //
 FashionItemMayLike.propTypes = {};
@@ -39,12 +40,16 @@ function FashionItemMayLike({ id }) {
     //
     return (
         <div ref={ref_main_elm}>
-            <h2 className="font-16px label-field padding-y-8px text-secondary">
+            <h2
+                className={`label-field padding-8px text-secondary ${
+                    IS_MOBILE ? 'font-14px' : 'font-16px'
+                }`}
+            >
                 CÓ THỂ BẠN CŨNG THÍCH
             </h2>
 
             <div>
-                <ul className="display-flex justify-content-center flex-wrap margin-auto  list-none">
+                <ul className="display-flex justify-content-center flex-wrap margin-auto list-none">
                     {data_arr.map((item, ix) => (
                         <li
                             key={`${item.id}`}
@@ -59,14 +64,14 @@ function FashionItemMayLike({ id }) {
                                 name={item.name}
                                 rate_avg={item.rate_avg}
                                 sold={item.sold}
-                                // 
+                                //
                                 shop_deals={item.shop_deals}
                                 shop_discount={item.shop_discount}
                                 address={item.address}
-                                // 
-                                old_price={item.old_price}
+                                //
+                                // old_price={item.old_price}
                                 new_price={item.new_price}
-                                old_price_max={item.old_price_max}
+                                // old_price_max={item.old_price_max}
                                 new_price_max={item.new_price_max}
                             />
                         </li>

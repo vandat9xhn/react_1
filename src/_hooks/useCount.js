@@ -1,62 +1,33 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 //
 export const useNewCount = ({
-    initial_count,
-    initial_min,
-    initial_max,
-    callback = () => {},
+    getCount = () => 1,
+    getMax = () => 1,
+    getMin = () => 1,
+    handleSetCount = () => {},
 }) => {
-    // state
-    const [count, setCount] = useState(initial_count);
-
-    // ref
-    const min = useRef(initial_min);
-    const max = useRef(initial_max);
-    const value_before = useRef(count);
-
-    /* ---------------- COMMON FUNC ------------------ */
     //
-    function handleSetCount(value) {
-        setCount(value);
-        callback && callback(value);
-    }
+    const value_before = useRef(0);
 
-    //
-    function changeMax(new_max) {
-        max.current = new_max;
-        if (new_max < count) {
-            handleSetCount(new_max);
-        }
-    }
-
-    //
-    function changeMin(new_min) {
-        min.current = new_min;
-        if (new_min > count) {
-            handleSetCount(new_min);
-        }
-    }
-
-    //
-    function handleInitialCount(new_max, new_min, new_count) {
-        max.current = new_max;
-        min.current = new_min;
-        handleSetCount(new_count);
-    }
-
-    /* ---------------- COUNT ------------------ */
+    /* ------- COUNT -------- */
 
     //
     function countUp() {
-        if (count < max.current) {
+        const count = getCount();
+        const max = getMax();
+
+        if (count < max) {
             handleSetCount(+count + 1);
         }
     }
 
     //
     function countDown() {
-        if (count > min.current) {
+        const count = getCount();
+        const min = getMin();
+
+        if (count > min) {
             handleSetCount(count - 1);
         }
     }
@@ -68,40 +39,38 @@ export const useNewCount = ({
 
     //
     function countNum(value) {
-        if ((value >= min.current && value <= max.current) || value == '') {
-            setCount(value);
+        const max = getMax();
+        const min = getMin();
+
+        if ((value >= min && value <= max) || value == '') {
+            handleSetCount(value);
         }
     }
 
     //
     function countNumDone(value) {
+        const max = getMax();
+        const min = getMin();
+
         if (value_before.current == value) {
             return;
         }
 
-        if (value < min.current) {
-            handleSetCount(min.current);
-        }
-        //
-        else if (value > max.current) {
-            handleSetCount(max.current);
-        }
-        //
-        else {
+        if (value < min) {
+            handleSetCount(min);
+        } else if (value > max) {
+            handleSetCount(max);
+        } else {
             handleSetCount(+value);
         }
     }
 
     //
     return {
-        count,
         countUp,
         countDown,
         beforeCountNum,
         countNum,
         countNumDone,
-        changeMax,
-        changeMin,
-        handleInitialCount,
     };
 };

@@ -31,9 +31,9 @@ function FsItemIfRPrice({}) {
     //
     return (
         <div className="FsItemIfRPrice bg-fb">
-            <div className="display-flex align-items-center">
-                <div>
-                    <span className="text-del font-16px">
+            <div className="FsItemIfRPrice_row display-flex align-items-center">
+                <div className="FsItemIfRPrice_old font-16px">
+                    <span className="text-del">
                         <del>{makePriceToPrice(c_old_price, c_old_price_max)}</del>
                     </span>
                 </div>

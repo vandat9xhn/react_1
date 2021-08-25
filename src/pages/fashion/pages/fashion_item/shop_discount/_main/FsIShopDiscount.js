@@ -7,6 +7,9 @@ import { getFsShopDiscountTitle } from '../../../../../../_some_function/fashion
 import { formatLocalDateString } from '../../../../../../_some_function/FormatDate';
 //
 import FsIShopDiscountItem from '../item/FsIShopDiscountItem';
+//
+import './FsIShopDiscount.scss';
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
 
 //
 FsIShopDiscount.propTypes = {};
@@ -20,10 +23,16 @@ function FsIShopDiscount({}) {
 
     //
     return (
-        <div className="FsIShopDiscount">
-            <h2 className="font-14px text-third">Mã giảm giá của Shop</h2>
+        <div className="FsIShopDiscount bg-primary padding-8px">
+            <h2
+                className={`text-upper font-14px margin-bottom-1rem label-field text-third ${
+                    IS_MOBILE ? '' : 'padding-y-8px'
+                }`}
+            >
+                Mã giảm giá của Shop
+            </h2>
 
-            <div className="FsIShopDiscount_contain">
+            <div className="FsIShopDiscount_contain overflow-y-auto">
                 <ul className="list-none">
                     {discount_arr.map((discount_obj, ix) => (
                         <li key={ix} className="margin-bottom-1rem">

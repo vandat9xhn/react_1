@@ -16,7 +16,7 @@ function FashionBreadCrumb({ arr }) {
     //
     return (
         <div className="FashionBreadCrumb">
-            <div className="display-flex flex-wrap">
+            <div className="FashionBreadCrumb_row display-flex flex-wrap">
                 <Link to="/fashion">Shopee</Link>
 
                 {arr.map((text, ix) => (

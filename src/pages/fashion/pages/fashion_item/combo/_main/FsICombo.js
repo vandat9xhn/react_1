@@ -7,9 +7,12 @@ import { handle_API_Product_L } from '../../../../../../_handle_api/fashion/Fash
 //
 import { useDataShowMore } from '../../../../../../_hooks/useDataShowMore';
 //
-import FashionFaceItem from '../../../../components/face_item/_main/FashionFaceItem';
 import FsShopDealLabel from '../../../../components/shop_deal_label/FsShopDealLabel';
 import FashionSeeMoreOnTitle from '../../../../components/see_more/on_title/FashionSeeMoreOnTitle';
+import FsIComboItem from '../item/FsIComboItem';
+//
+import './FsICombo.scss';
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
 
 //
 FsICombo.propTypes = {};
@@ -37,16 +40,23 @@ function FsICombo(props) {
 
     //
     return (
-        <div className="FsICombo">
+        <div className="FsICombo bg-primary">
             <div className="flex-between-center">
                 <div className="display-flex align-items-center">
-                    <h2 className="font-18px text-secondary">
+                    <h2
+                        className={`font-18px text-secondary label-field margin-right-5px ${
+                            IS_MOBILE ? 'display-none' : ''
+                        }`}
+                    >
                         Combo khuyến mãi
                     </h2>
 
-                    <div className="margin-left-5px">
+                    <div>
                         <FsShopDealLabel
                             label={item_info.bundle_deal_info.label}
+                            class_main={`${
+                                IS_MOBILE ? 'FsICombo_deal_label-mb' : undefined
+                            }`}
                         />
                     </div>
                 </div>
@@ -59,33 +69,20 @@ function FsICombo(props) {
                 </div>
             </div>
 
-            <div className="FsICombo_contain">
-                <ul className="FsIShopSelling_row display-flex list-none">
+            <div className="FsICombo_contain overflow-x-auto">
+                <ul className="FsICombo_row flex-between-center list-none">
                     {data_arr.slice(0, 6).map((item) => (
-                        <li key={item.id} className="FsICombo_item">
-                            <FashionFaceItem
+                        <li
+                            key={item.id}
+                            className="FsICombo_item flex-shrink-0"
+                        >
+                            <FsIComboItem
                                 id={item.id}
                                 mall_like={item.mall_like ? '' : ''}
                                 img={item.img}
-                                flash_img={item.flash_img}
-                                discount={item.discount}
                                 name={item.name}
-                                // rate_avg={item.rate_avg}
-                                // sold={item.sold}
-                                //
-                                shop_deals={[]}
-                                // shop_discount={item.shop_discount}
-                                // address={item.address}
-                                //
                                 old_price={item.old_price}
                                 new_price={item.new_price}
-                                old_price_max={item.old_price_max}
-                                new_price_max={item.new_price_max}
-                                //
-                                use_same={false}
-                                show_address={false}
-                                show_heart_rate={false}
-                                show_sold={false}
                             />
                         </li>
                     ))}

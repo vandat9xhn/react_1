@@ -63,7 +63,7 @@ function FashionCart(props) {
         getAPI_ActionCart();
     }, []);
 
-    /* --------------------- GET API ----------------------- */
+    /* --------- GET API --------- */
 
     //
     async function getAPI_ActionCart() {
@@ -83,7 +83,7 @@ function FashionCart(props) {
         }
     }
 
-    /* --------------------- CHECK --------------------- */
+    /* -------- CHECK ------- */
 
     //
     async function handleCheckItem(cart_ix, cart_product_ix) {
@@ -127,10 +127,10 @@ function FashionCart(props) {
         await API_FashionCart_UD('PUT', formData);
     }
 
-    /* --------------------- COUNT --------------------- */
+    /* -------- COUNT --------- */
 
     // count
-    function handleCount(cart_ix, product_ix, value) {
+    function handleSetCount(cart_ix, product_ix, value) {
         const cart_product = carts[cart_ix].products[product_ix];
         cart_product.quantity = value;
         //
@@ -225,7 +225,7 @@ function FashionCart(props) {
                                 products={cart.products}
                                 shop={cart.shop}
                                 handleCheckItem={handleCheckItem}
-                                handleCount={handleCount}
+                                handleSetCount={handleSetCount}
                             />
                         </div>
                     ))}

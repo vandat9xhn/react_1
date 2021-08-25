@@ -53,7 +53,7 @@ export const initial_fashion_item_obj = () => ({
     old_price: 0,
     old_price_max: 0,
 
-    discount: 0,
+    discount: '',
     attributes: [] || [
         {
             id: -1,

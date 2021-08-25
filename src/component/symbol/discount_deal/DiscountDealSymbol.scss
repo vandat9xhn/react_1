@@ -1,4 +1,20 @@
-.DiscountDealSymbol{
-    height: 20px;
+$symbol-height: 20;
+
+/* -------- */
+.DiscountDealSymbol {
+    height: #{$symbol-height}px;
     line-height: 20px;
+
+    &::before {
+        content: '';
+
+        position: absolute;
+        right: 100%;
+        top: 0;
+
+        border-width: #{$symbol-height / 2}px #{$symbol-height / 2}px #{$symbol-height /
+            2}px 0;
+        border-style: solid;
+        border-color: transparent currentColor transparent transparent;
+    }
 }

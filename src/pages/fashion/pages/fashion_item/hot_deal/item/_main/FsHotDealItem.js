@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { formatNum } from '../../../../../../../_some_function/FormatNum';
+//
 import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import CheckBoxCustom from '../../../../../../../component/input/checkbox_custom/CheckBoxCustom';
-import DiscountDealSymbol from '../../../../../../../component/symbol/discount_deal/DiscountDealSymbol';
 //
-import FsShopDealLabel from '../../../../../components/shop_deal_label/FsShopDealLabel';
-import FsFaceVidPic from '../../../../../components/face_vid_pic/FsFaceVidPic';
 import FsIHotDealTiers from '../tiers/_main/FsIHotDealTiers';
+import FsIHDItemHead from '../head/FsIHDItemHead';
+//
+import './FsHotDealItem.scss';
+import FsHDItemFoot from '../foot/FsHDItemFoot';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 FsHotDealItem.propTypes = {};
@@ -16,17 +20,26 @@ FsHotDealItem.propTypes = {};
 //
 function FsHotDealItem({
     ix,
+
+    id,
+    name,
     img,
     flash_img,
-
-    name,
-    model_name,
-    discount,
     quantity,
+    discount,
+    models,
+    tier_variations,
+
+    model_name,
+    old_price,
+    new_price,
+
+    model_ix,
+    total_add,
     checked,
 
-    tier_variations,
-    tier_ix_arr,
+    open_model,
+    use_checked,
 
     handleChecked,
     toggleChangeModel,
@@ -45,61 +58,54 @@ function FsHotDealItem({
     //
     return (
         <div className="FsHotDealItem">
-            <div className="FsHotDealItem_head pos-rel">
-                <FsFaceVidPic img={img} flash_img={flash_img} />
-
-                <div>
-                    <DiscountDealSymbol discount={discount} />
-                </div>
-
-                <div className="pos-abs right-0 bottom-0">
-                    <div className="bg-loader">{quantity}</div>
-                </div>
-            </div>
+            <FsIHDItemHead
+                id={id}
+                name={name}
+                img={img}
+                flash_img={flash_img}
+                discount={discount}
+                total_add={total_add}
+                use_checked={use_checked}
+            />
 
             <div className="FsHotDealItem_foot pos-rel">
-                <div className="FsHotDealItem_foot_name overflow-hidden">
-                    <div className="inline-flex">
-                        <FsShopDealLabel label="Deal Sốc" />
+                <FsHDItemFoot
+                    model_name={model_name}
+                    old_price={old_price}
+                    new_price={new_price}
+                    use_checked={use_checked}
+                    checked={checked}
+                    handleChangeChecked={onChecked}
+                    handleToggleChangeModel={onToggleChangeModel}
+                />
 
-                        <div>{name}</div>
-                    </div>
-                </div>
-
-                <div className="display-flex align-items-center">
-                    <div>
-                        <CheckBoxCustom
-                            checked={checked}
-                            title=""
-                            handleChangeChecked={onChecked}
-                        />
-                    </div>
-
+                {open_model ? (
                     <div
-                        className="flex-between-center"
-                        onClick={onToggleChangeModel}
+                        className={`${
+                            IS_MOBILE
+                                ? 'pos-fixed-100per bg-film z-index-lv5'
+                                : 'pos-abs bottom-100per x-center z-index-lv1'
+                        }`}
+                        onClick={IS_MOBILE ? onToggleChangeModel : undefined}
                     >
-                        <div>
-                            <span>{model_name}</span>
-                        </div>
-
-                        <div>
-                            <IconsArrow y={200} size_icon="0.5rem" />
+                        <div
+                            className={`${
+                                IS_MOBILE ? 'pos-abs bottom-0 w-100per' : ''
+                            }`}
+                        >
+                            <FsIHotDealTiers
+                                item_ix={ix}
+                                tier_variations={tier_variations}
+                                quantity={quantity}
+                                total_add={total_add}
+                                models={models}
+                                old_model_ix={model_ix}
+                                handleClose={onToggleChangeModel}
+                                handleConfirm={handleChangeModel}
+                            />
                         </div>
                     </div>
-                </div>
-
-                <div className="pos-abs bottom-100per x-center">
-                    <div>
-                        <FsIHotDealTiers
-                            item_ix={ix}
-                            tier_variations={tier_variations}
-                            old_tier_v_ix_arr={tier_ix_arr}
-                            handleClose={onToggleChangeModel}
-                            handleConfirm={handleChangeModel}
-                        />
-                    </div>
-                </div>
+                ) : null}
             </div>
         </div>
     );

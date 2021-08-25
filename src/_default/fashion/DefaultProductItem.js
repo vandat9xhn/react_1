@@ -63,7 +63,7 @@ const default_models = ({
                 total_add_cart: getRandomNumber(0, quantity),
                 new_price: new_price * 1000,
                 old_price: has_discount
-                    ? getRandomNumber(new_price - 50, new_price) * 1000
+                    ? getRandomNumber(new_price + 5, new_price + 50) * 1000
                     : null,
             });
         }
@@ -118,9 +118,12 @@ export const default_product_obj = () => {
         : getRandomNumber(0, quantity);
 
     const new_price = getRandomNumber(50, 600);
-    const new_price_max = getRandomNumber(new_price, new_price + 200);
-    const old_price = getRandomNumber(40, new_price);
-    const old_price_max = getRandomNumber(old_price, old_price + 200);
+    const old_price = getRandomNumber(new_price + 5, new_price + 50);
+    const new_price_max = getRandomNumber(new_price + 100, new_price + 300);
+    const old_price_max = getRandomNumber(
+        new_price_max + 5,
+        new_price_max + 50
+    );
 
     const rate_arr = getDefaultArr(() => getRandomNumber(0, 50), 7, 7);
     const total_rate = rate_arr
@@ -146,7 +149,7 @@ export const default_product_obj = () => {
             type: deal_type,
         },
 
-        bundle_deal_info: {} || {
+        bundle_deal_info: {
             id: 3220638,
             label: 'Mua 2 & giảm 10%',
         },
@@ -168,7 +171,7 @@ export const default_product_obj = () => {
         old_price: old_price * 1000,
         old_price_max: old_price_max * 1000,
 
-        discount: discount ? discount + '%' : '1',
+        discount: discount ? discount + (getRandomBool() ? 'K' : '%') : '',
 
         attributes: [
             {
@@ -189,6 +192,9 @@ export const default_product_obj = () => {
     };
 };
 
+export const default_product_detail_arr = () =>
+    getDefaultArr(default_product_obj, 1, 10);
+
 //
 
 /* ------ GIFT ------- */
@@ -205,7 +211,7 @@ export const default_fs_item_gift = () => {
             {
                 id: getRandomId(),
                 image: getRandomVidPic(),
-                name: 'Quần bò baggy rách vuông',
+                name: '{ RẺ VÔ ĐỊCH } Áo thun Mỹ _ Loại 2 _ Mẫu ngẫu nhiên',
             },
         ],
         gifts: [
@@ -266,4 +272,4 @@ const default_product_rate_obj = () => {
 };
 
 export const default_rate_arr = () =>
-    getRandomBool() ? getDefaultArr(default_product_rate_obj, 0, 10) : [];
+    getRandomBool() ? getDefaultArr(default_product_rate_obj, 4, 10) : [];

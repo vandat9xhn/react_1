@@ -1,0 +1,11 @@
+.FashionItem_mobile {
+    .FashionItem_breadCrumb {
+        .FashionBreadCrumb {
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .FashionBreadCrumb_row {
+            flex-wrap: nowrap;
+        }
+    }
+}

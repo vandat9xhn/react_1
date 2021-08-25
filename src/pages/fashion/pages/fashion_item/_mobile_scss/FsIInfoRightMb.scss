@@ -1,0 +1,79 @@
+.FashionItem_mobile {
+    .FashionItemInfo_right {
+        padding: 0 10px;
+
+        .FsItemIfRName_name {
+            font-size: 16px;
+            color: var(--md-color);
+        }
+
+        .FsIIfRRateSold_avg {
+            border-right: 1px solid var(--md-bg-blur);
+        }
+        // ..
+        .FsIIfRRateSold_avg_rate {
+            order: 1;
+        }
+        // .
+        .FsIIfRRateSold_count {
+            display: none;
+        }
+
+        .FsItemIfRPrice {
+            padding: 0;
+            background: transparent;
+            line-height: normal;
+        }
+        .FsItemIfRPrice_row {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        // .
+        .FsItemIfRPrice_new {
+            order: -1;
+            padding: 0;
+            font-size: 18px;
+        }
+        // .
+        .FsItemIfRPrice_old{
+            font-size: 14px;
+        }
+        // .
+        .FsItemIfRPrice_discount {
+            display: none;
+        }
+
+        .FsItemIfRCount_row {
+            display: block;
+        }
+        // .
+        .FsItemIfRCount_count {
+            margin: 10px 0;
+        }
+        // .
+        .FsItemIfRCount_quantity {
+            margin: 0;
+        }
+        // ..
+        .FsItemIfRCount_quantity_total {
+            display: inline-block;
+            margin: 0 5px 0 0;
+        }
+        // ..
+        .FsItemIfRCount_quantity_cart {
+            display: inline-block;
+        }
+
+        .FsItemIfRCart_add {
+            margin-right: 5px;
+        }
+
+        .FsItemIfRPrivacy {
+            padding: 10px 0;
+        }
+        // .
+        .FsItemIfRPrivacy_right {
+            display: block;
+        }
+    }
+}

@@ -20,12 +20,16 @@ function FsItemIfRBundleDeal({}) {
     //
     return (
         <div className="FsItemIfRBundleDeal">
-            <div className="display-flex align-items-center">
+            <div className="fashion-item-row">
                 <div className="fashion-item-label">
                     <span className="text-third">Combo khuyến mãi</span>
                 </div>
 
-                <FsShopDealLabel label={label} />
+                <div>
+                    <div className="display-flex">
+                        <FsShopDealLabel label={label} />
+                    </div>
+                </div>
             </div>
         </div>
     );

@@ -1,34 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
-import ProductItem from '../../../../../component/products/product_item/ProductItem';
+//
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
+import FashionFaceItem from '../../../components/face_item/_main/FashionFaceItem';
+//
+import './SearchProducts.scss';
 
-// 
+//
 SearchProducts.propTypes = {
     products: PropTypes.array,
 };
 
-// 
-function SearchProducts(props) {
-    const {products} = props;
-
-    // 
+//
+function SearchProducts({ products }) {
+    //
     return (
-        <div>
-            <div className="display-flex justify-content-center flex-wrap">
-                {products.map((product, ix) =>(
-                    <div key={`SearchProduct_${ix}`}>
-                        <ProductItem
-                            link={`/fashion:${product.id}`}
-                            img={product.vid_pics[0].vid_pic}
-                            name={product.name}
-                            new_price={product.new_price}
-                            old_price={product.old_price}
-                            discount={product.discount}
+        <div className={`SearchProducts ${IS_MOBILE ? '' : 'padding-8px'}`}>
+            <ul className="display-flex justify-content-center flex-wrap list-none">
+                {products.map((item) => (
+                    <li
+                        key={`${item.id}`}
+                        className="SearchProducts_item padding-4px"
+                    >
+                        <FashionFaceItem
+                            id={item.id}
+                            img={item.img}
+                            mall_like={item.mall_like ? '' : ''}
+                            flash_img={item.flash_img}
+                            discount={item.discount}
+                            name={item.name}
+                            rate_avg={item.rate_avg}
+                            sold={item.sold}
+                            //
+                            shop_deals={item.shop_deals}
+                            shop_discount={item.shop_discount}
+                            address={item.address}
+                            //
+                            old_price={item.old_price}
+                            new_price={item.new_price}
+                            old_price_max={item.old_price_max}
+                            new_price_max={item.new_price_max}
                         />
-                    </div>
+                    </li>
                 ))}
-            </div>
+            </ul>
         </div>
     );
 }

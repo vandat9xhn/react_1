@@ -30,7 +30,7 @@ function FsItemIfRShopDiscount({}) {
     //
     return (
         <div className="FsItemIfRShopDiscount pos-rel">
-            <div className="display-flex">
+            <div className="fashion-item-row">
                 <div className="fashion-item-label">
                     <span className="text-third">Mã Giảm Giá Của Shop</span>
                 </div>
