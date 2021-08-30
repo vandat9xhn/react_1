@@ -1,264 +1,407 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
 import {
-    API_FashionCart_LC,
-    API_FashionCart_UD,
-} from '../../../../../api/api_django/fashion/APIFashionToken';
+    handle_API_FashionCart_C,
+    handle_API_FashionCart_D,
+    handle_API_FashionCart_L,
+} from '../../../../../_handle_api/fashion/FashionCartHandleAPI';
 //
-import { useMounted } from '../../../../../_hooks/useMounted';
-import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
-//
-import { params_cart } from '../../../../../_params/fashion/FashionParams';
-//
-import makeFormData from '../../../../../_some_function/makeFormData';
+import { useWaitingLastAction } from '../../../../../_hooks/useWaitingLastAction';
 //
 import { openScreenConfirm } from '../../../../../component/_screen/type/confirm/ScreenConfirm';
-// 
-import CircleLoading from '../../../../../component/waiting/circle_loading/CircleLoading';
-import NoItemHasFetched from '../../../../../component/some_div/no_item/NoItemHasFetched';
-// 
-import { actionFashionChangeCountCart } from '../../../../../redux/action/action_count_cart';
-
+import { openScreenNotice } from '../../../../../component/_screen_once/notice/ScreenNotice';
+//
+import { handleDataState } from '../_state/_handleDataState';
+import { handleSetStateItem } from '../_state/handleSetStateItem';
+import { handleStateDelItem } from '../_state/handleStateDelItem';
+import { handleCheckedItem } from '../_state/handleCheckedItem';
+import { handleCheckedShop } from '../_state/handleCheckedShop';
+import { handleCheckedAll } from '../_state/handleCheckedAll';
+import { toggleSearchSame } from '../_state/toggleSearchSame';
+import { toggleOpenType } from '../_state/toggleOpenType';
+import { handleDeleteItemChecked } from '../_state/handleDeleteItemChecked';
+import { getFsCartTotalOldPrice, getFsCartTotalPrice, getFsCartTotalVoucher } from '../../../../../_some_function/fashion/getFsCartTotalPrice';
+import { handleSaveApplyVoucher } from '../_state/handleSaveApplyVoucher';
+import { handleCancelVoucher } from '../_state/handleCancelVoucher';
+import { handleOpenVoucher } from '../_state/handleOpenVoucher';
+//
 import FashionH from '../../../components/head/_main/FashionH';
+import CartHead from '../cart_head/CartHead';
+import CartShop from '../shop/_main/CartShop';
+import FsCartSummary from '../summary/_main/FsCartSummary';
 //
 import './FashionCart.scss';
-//
-import CartHead from '../cart_head/CartHead';
-import CartShop from '../cart_shop/CartShop';
-// 
-import './FashionCartRes.scss';
 
 //
+FashionCart.propTypes = {};
+
 function FashionCart(props) {
     //
-    const { openScreenFloor } = useContext(context_api);
+    const use_history = useHistory();
 
     //
-    const { count_cart } = useSelector((state) => state.count_cart_obj);
-    const dispatch = useDispatch();
+    const { openScreenFloor, openScreenOnce, closeScreenOnce } =
+        useContext(context_api);
 
     //
-    const [cart_state, setCartState] = useState({
-        carts: [],
-        count_checked: 0,
+    const [state_obj, setStateObj] = useState({
+        cart_shop_arr: [],
+        fashion_voucher: { name: '' },
+
+        open_model_id: -1,
+        open_search_id: -1,
+        open_voucher_shop_id: -1,
+
+        coin: 0,
+        checked_coin: false,
+        item_count: 0,
+        item_checked_count: 0,
+        item_gift_count: 0,
+        // total_price: 0,
+
         has_fetched: false,
     });
 
-    const { carts, count_checked, has_fetched } = cart_state;
+    const {
+        cart_shop_arr,
+        fashion_voucher,
 
-    // 
-    ;
+        open_model_id,
+        open_search_id,
+        open_voucher_shop_id,
+
+        coin,
+        checked_coin,
+        item_count,
+        item_checked_count,
+        // total_price,
+
+        has_fetched,
+    } = state_obj;
 
     //
-    const mounted = useMounted();
-    const handleScreenFetching = useScreenFetching();
+    const { handleWaitingLastAction } = useWaitingLastAction({
+        time_waiting: 300,
+        callback: handle_API_Count,
+    });
 
     //
     useEffect(() => {
-        document.title = 'Cart';
-        getAPI_ActionCart();
+        getData_API();
     }, []);
 
-    /* --------- GET API --------- */
+    // --------- API
 
     //
-    async function getAPI_ActionCart() {
-        try {
-            const res = await API_FashionCart_LC('GET', params_cart);
+    async function getData_API() {
+        const res = await handle_API_FashionCart_L();
 
-            setCartState({
-                carts: res.data,
-                count_checked: res.data.reduce(
-                    (a, b) => a + b.count_checked_product,
-                    0
-                ),
-                has_fetched: true,
-            });
-        } catch (e) {
-            console.log(e);
+        handleDataState({
+            setStateObj: setStateObj,
+        });
+    }
+
+    //
+    async function handle_API_Count(data_count = {}) {
+        await handle_API_FashionCart_C({ ...data_count });
+        // console.log(data_count);
+    }
+
+    //
+    async function handle_API_Del(data_count = {}) {
+        await handle_API_FashionCart_D({ ...data_count });
+        console.log(data_count);
+    }
+
+    // -----------
+
+    //
+    function handleClickCart() {
+        if (open_model_id == -1 && open_voucher_shop_id == -1) {
+            return;
         }
+
+        setStateObj((state_obj) => ({
+            ...state_obj,
+            open_model_id: -1,
+            open_voucher_shop_id: -1,
+        }));
     }
 
-    /* -------- CHECK ------- */
+    // -----------
 
     //
-    async function handleCheckItem(cart_ix, cart_product_ix) {
-        const cart_product = carts[cart_ix].products[cart_product_ix];
-        const cur_checked = cart_product.checked;
-        cart_product.checked = !cur_checked;
-
-        setCartState({
-            ...cart_state,
-            count_checked: count_checked + (cur_checked ? -1 : 1),
+    function onSetStateItem(params = {}) {
+        handleSetStateItem({
+            ...params,
+            setStateObj: setStateObj,
+            handle_API: handleWaitingLastAction,
         });
-
-        const formData = makeFormData({
-            cart_product_model: cart_product.id,
-            checked: !cur_checked * 1,
-        });
-        await API_FashionCart_UD('PUT', formData);
     }
+
+    // ----------- COUNT + CHECKED
 
     //
-    async function onCheckAll() {
-        const all_checked = count_checked == count_cart;
-
-        carts.map((item) => {
-            item.products.map((product) => {
-                product.checked = all_checked ? false : true;
-                return product;
-            });
-            return item;
-        });
-
-        setCartState({
-            ...cart_state,
-            count_checked: all_checked ? 0 : count_cart,
-        });
-
-        const formData = makeFormData({
-            is_checked_all: 1,
-            checked: !all_checked * 1,
-        });
-        await API_FashionCart_UD('PUT', formData);
-    }
-
-    /* -------- COUNT --------- */
-
-    // count
-    function handleSetCount(cart_ix, product_ix, value) {
-        const cart_product = carts[cart_ix].products[product_ix];
-        cart_product.quantity = value;
-        //
-        doAPI_handleCount(cart_product.id, value);
+    function onSetCount(params = {}) {
+        onSetStateItem(params);
     }
 
     //
-    async function doAPI_handleCount(cart_product_id, quantity) {
-        const formData = makeFormData({
-            cart_product_model: cart_product_id,
-            quantity: quantity,
+    function onCheckedShop(shop_ix) {
+        handleCheckedShop({
+            shop_ix: shop_ix,
+            setStateObj: setStateObj,
         });
-        await API_FashionCart_UD('PUT', formData);
     }
 
-    /* --------------------- DEL --------------------- */
+    //
+    function onChecked(params = {}) {
+        handleCheckedItem({
+            ...params,
+            setStateObj: setStateObj,
+            // handleAfterChecked: handle_API_Count,
+        });
+    }
+
+    // ---------- TYPE PRODUCT
 
     //
-    function openConfirmDel() {
-        
+    function onToggleOpenType(params = {}) {
+        toggleOpenType({
+            ...params,
+            setStateObj: setStateObj,
+        });
+    }
 
+    //
+    function onChangeType(params = {}) {
+        onSetStateItem(params);
+    }
+
+    //
+    function onCloseChangeType() {
+        setStateObj({
+            ...state_obj,
+            open_model_id: -1,
+        });
+    }
+
+    // --------- SAME + DEL
+
+    //
+    function onToggleSearchSame(params = {}) {
+        toggleSearchSame({
+            ...params,
+            setStateObj: setStateObj,
+        });
+    }
+
+    //
+    function onDelete(params = {}) {
         openScreenConfirm({
             openScreenFloor: openScreenFloor,
-            title: 'Delete',
-            notification: 'Do you want to remove this product from cart?',
-            handleConfirm: handleDeleteCart,
-        })
-        
+            title: 'Xóa sản phẩm',
+            notification: 'Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?',
+            handleConfirm: () => {
+                handleStateDelItem({
+                    ...params,
+                    setStateObj: setStateObj,
+                    handle_API_Del: handle_API_Del,
+                });
+            },
+        });
+    }
+
+    // ---------- VOUCHER
+
+    //
+    function onOpenVoucher(shop_id) {
+        handleOpenVoucher({
+            shop_id: shop_id,
+            setStateObj: setStateObj,
+        });
     }
 
     //
-    async function handleDeleteCart() {
-        await handleScreenFetching(() => API_FashionCart_UD('DELETE'));
+    function onApplyVoucherCode() {
+        console.log('voucher code');
+    }
 
-        let count_del = 0;
-        //
-        for (const cart_action of carts) {
-            const { products } = cart_action;
+    //
+    function onSaveApplyVoucher(shop_ix, new_shop_discount_ix) {
+        handleSaveApplyVoucher({
+            shop_ix: shop_ix,
+            new_shop_discount_ix: new_shop_discount_ix,
+            setStateObj: setStateObj,
+        });
+    }
 
-            for (let i in products) {
-                if (products[i].checked) {
-                    products[i] = { is_del: true };
-                    cart_action.count_product -= 1;
-                    count_del++;
-                }
-            }
+    //
+    function onCancelVoucher(shop_ix) {
+        handleCancelVoucher({
+            shop_ix: shop_ix,
+            setStateObj: setStateObj,
+        });
+    }
+
+    // ----------- SUMMARY
+
+    //
+    function onChooseVoucher() {}
+
+    //
+    function onCheckedCoin() {
+        if (coin) {
+            setStateObj({
+                ...state_obj,
+                checked_coin: !checked_coin,
+            });
+        }
+    }
+
+    //
+    function onSaveLiked() {
+        console.log('save_liked');
+    }
+
+    //
+    function onDeleteItemChecked() {
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Xóa sản phẩm',
+            notification: (
+                <div>
+                    <div className="padding-8px text-red">
+                        Các sản phẩm này sẽ bị xóa khỏi giỏ hàng!
+                    </div>
+
+                    <div className="padding-y-8px label-field text-align-end">
+                        Bạn có muốn tiếp tục không?
+                    </div>
+                </div>
+            ),
+            handleConfirm: () => {
+                handleDeleteItemChecked({
+                    setStateObj: setStateObj,
+                });
+            },
+        });
+    }
+
+    //
+    function onCheckedAll() {
+        handleCheckedAll({
+            setStateObj: setStateObj,
+        });
+    }
+
+    //
+    function onGoingToBuy() {
+        if (item_checked_count > 0) {
+            use_history.push('/fashion/buy');
+            return;
         }
 
-        dispatch(actionFashionChangeCountCart(count_cart - count_del));
+        openScreenNotice({
+            openScreenOnce: openScreenOnce,
+            ComponentNotice: (
+                <div className="FashionCart_going_to_buy display-flex-center padding-16px bg-loader brs-8px text-white label-field">
+                    Bạn chưa chọn sản phẩm nào để mua
+                </div>
+            ),
+        });
 
-        mounted &&
-            setCartState({
-                ...cart_state,
-                count_checked: 0,
-            });
+        setTimeout(() => {
+            closeScreenOnce();
+        }, 1000);
     }
 
-    //
-    const is_empty_cart = carts.reduce((a, b) => a + b.count_product, 0) == 0;
-
+    // console.log(open_search_id);
     //
     return (
-        <div className="FashionCart">
-            <div>
+        <div className="FashionCart font-for-fashion" onClick={handleClickCart}>
+            <div
+                className={`FashionCart_head ${
+                    IS_MOBILE ? '' : 'FashionCart_head-pc'
+                }`}
+            >
                 <FashionH />
             </div>
 
-            <h2 className="text-secondary App_title">Cart</h2>
+            {has_fetched ? (
+                cart_shop_arr.length > 0 ? (
+                    <div className="fashion-width padding-y-20px">
+                        <div className="margin-bottom-16px">
+                            <CartHead />
+                        </div>
 
-            <div
-                className={`FashionCart_body ${
-                    is_empty_cart ? 'display-none' : ''
-                }`}
-            >
-                <CartHead
-                    count_checked={count_checked}
-                    count_cart={count_cart}
-                    openConfirmDel={openConfirmDel}
-                    onCheckAll={onCheckAll}
-                />
+                        <div>
+                            {cart_shop_arr.map((cart_shop_obj, ix) => (
+                                <div key={ix} className="margin-bottom-16px">
+                                    <CartShop
+                                        shop_ix={ix}
+                                        shop_info={cart_shop_obj.shop_info}
+                                        group_arr={cart_shop_obj.group_arr}
+                                        //
+                                        open_model_id={open_model_id}
+                                        open_search_id={open_search_id}
+                                        open_voucher_shop_id={
+                                            open_voucher_shop_id
+                                        }
+                                        //
+                                        handleSetCount={onSetCount}
+                                        handleCheckedShop={onCheckedShop}
+                                        handleChecked={onChecked}
+                                        //
+                                        toggleOpenType={onToggleOpenType}
+                                        handleChangeType={onChangeType}
+                                        closeChangeType={onCloseChangeType}
+                                        toggleSearchSame={onToggleSearchSame}
+                                        handleDelete={onDelete}
+                                        //
+                                        handleOpenVoucher={onOpenVoucher}
+                                        handleApplyVoucherCode={
+                                            onApplyVoucherCode
+                                        }
+                                        handleSaveApplyVoucher={
+                                            onSaveApplyVoucher
+                                        }
+                                        handleCancelVoucher={onCancelVoucher}
+                                    />
+                                </div>
+                            ))}
+                        </div>
 
-                <div>
-                    {carts.map((cart, cart_ix) => (
-                        <div
-                            key={`FashionCart_${cart_ix}`}
-                            className={`FashionCart_action ${
-                                cart.count_product ? '' : 'display-none'
-                            }`}
-                        >
-                            <CartShop
-                                cart_ix={cart_ix}
-                                products={cart.products}
-                                shop={cart.shop}
-                                handleCheckItem={handleCheckItem}
-                                handleSetCount={handleSetCount}
+                        <div className="pos-sticky bottom-0">
+                            <FsCartSummary
+                                item_count={item_count}
+                                item_checked_count={item_checked_count}
+                                voucher_name={fashion_voucher.name}
+                                coin={coin}
+                                checked_coin={checked_coin}
+                                cart_shop_arr={cart_shop_arr}
+                                //
+                                handleChooseVoucher={onChooseVoucher}
+                                handleCheckedCoin={onCheckedCoin}
+                                handleSaveLiked={onSaveLiked}
+                                handleDeleteItemChecked={onDeleteItemChecked}
+                                handleCheckedAll={onCheckedAll}
+                                handleGoingToBuy={onGoingToBuy}
                             />
                         </div>
-                    ))}
-                </div>
-
-                <div className="FashionCart_buy">
-                    <div
-                        className={`${
-                            count_checked ? '' : 'pointer-events-none opacity-05'
-                        }`}
-                    >
-                        <Link to="/fashion/buy">
-                            <button className="FashionCart_buy-now btn btn-hv btn-active brs-5px cursor-pointer">
-                                Buy now
-                            </button>
-                        </Link>
                     </div>
-                </div>
-            </div>
-
-            <NoItemHasFetched
-                has_fetched={has_fetched}
-                no_item={is_empty_cart}
-                title={
-                    <div className="FashionCart_item-title FashionCart_no-product brs-5px box-shadow-1">
-                        LET'S GO SHOPPING
+                ) : (
+                    <div className="margin-top-20px text-align-center font-20px text-secondary">
+                        Chưa Có Sản Phẩm nào
                     </div>
-                }
-            />
-
-            <div className="width-fit-content margin-auto">
-                <CircleLoading is_fetching={!has_fetched} />
-            </div>
+                )
+            ) : null}
         </div>
     );
 }

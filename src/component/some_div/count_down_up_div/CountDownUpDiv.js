@@ -28,6 +28,7 @@ function CountDownUpDiv({
     countNum,
     countNumDone,
 }) {
+    // console.log(max, min);
     //
     function onBeforeCountNum(e) {
         beforeCountNum(e.target.value);
@@ -51,7 +52,7 @@ function CountDownUpDiv({
         >
             <div className="display-flex align-items-center">
                 <button
-                    className={`CountDownUpDiv_btn btn btn-active cursor-pointer ${
+                    className={`CountDownUpDiv_btn btn btn-active text-secondary cursor-pointer ${
                         count <= min
                             ? 'CountDownUpDiv_btn_disabled opacity-05'
                             : 'btn-hv'
@@ -63,7 +64,7 @@ function CountDownUpDiv({
                 </button>
 
                 <input
-                    className="CountDownUpDiv_input input"
+                    className="CountDownUpDiv_input input text-secondary"
                     type="number"
                     value={count}
                     onFocus={onBeforeCountNum}
@@ -72,7 +73,7 @@ function CountDownUpDiv({
                 />
 
                 <button
-                    className={`CountDownUpDiv_btn btn btn-active cursor-pointer ${
+                    className={`CountDownUpDiv_btn btn btn-active text-secondary cursor-pointer ${
                         count >= max
                             ? 'CountDownUpDiv_btn_disabled opacity-05'
                             : 'btn-hv'

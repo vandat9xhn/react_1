@@ -1,0 +1,15 @@
+.FsCIDelSearch_del{
+    &:hover{
+        color: var(--fashion-head);
+    }
+}
+
+.FsCIDelSearch_same-open{
+    position: relative;
+    transform: translateY(1px);
+    z-index: var(--z-index-lv2);
+
+    border-top: 1px solid var(--fashion-head);
+    border-left: 1px solid var(--fashion-head);
+    border-right: 1px solid var(--fashion-head);
+}

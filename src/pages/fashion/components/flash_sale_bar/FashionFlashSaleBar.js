@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../_constant/Constant';
+//
 import fire from '../../../../../image/fire.png';
 import flash_sale_bar from '../../../../../image/flash_sale_bar.png';
 import './FashionFlashSaleBar.scss';
-import { IS_MOBILE } from '../../../../_constant/Constant';
 
 //
-FashionFlashSaleBar.propTypes = {};
+FashionFlashSaleBar.propTypes = {
+    sold: PropTypes.number,
+    total: PropTypes.number,
+};
 
 //
 function FashionFlashSaleBar({ sold, total }) {

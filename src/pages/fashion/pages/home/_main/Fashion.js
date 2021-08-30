@@ -19,6 +19,7 @@ import FashionHomeMall from '../mall/_main/FashionHomeMall';
 //
 import fashion_home_new from '../../../../../../image/fashion_home_new.jpg';
 import image_loading from '../../../../../../image/image_loading.svg';
+import mov_bbb from '../../../../../../_video/mov_bbb.mp4';
 import './Fashion.scss';
 
 //
@@ -57,7 +58,9 @@ function Fashion(props) {
                 ...fashion_state,
                 hot_images: [
                     hot_images[hot_images.length - 1],
-                    ...hot_images,
+                    ...hot_images.slice(0, hot_images.length - 2),
+                    mov_bbb,
+                    hot_images[hot_images.length - 1],
                     hot_images[0],
                 ],
                 has_fetched_hot: true,
@@ -68,7 +71,7 @@ function Fashion(props) {
         <div className="Fashion font-for-fashion">
             <FashionH />
 
-            <div className="Fashion_banner bg-primary margin-bottom-1rem">
+            <div className="Fashion_banner bg-primary margin-bottom-16px">
                 <VirtualScroll>
                     <div className="fashion-width">
                         <FashionBC
@@ -88,7 +91,7 @@ function Fashion(props) {
             </div>
 
             <div className="fashion-width">
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <VirtualScroll>
                         <img
                             className="w-100per"
@@ -98,43 +101,43 @@ function Fashion(props) {
                     </VirtualScroll>
                 </div>
 
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <VirtualScroll>
                         <FashionHomeSelling />
                     </VirtualScroll>
                 </div>
 
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <VirtualScroll>
                         <FashionCtg />
                     </VirtualScroll>
                 </div>
 
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <VirtualScroll>
                         <FashionHomeFlashSale />
                     </VirtualScroll>
                 </div>
 
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <VirtualScroll>
                         <FashionHomeMall />
                     </VirtualScroll>
                 </div>
 
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <VirtualScroll>
                         <FashionHomeTrend />
                     </VirtualScroll>
                 </div>
 
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <VirtualScroll>
                         <FashionHomeTopSearch />
                     </VirtualScroll>
                 </div>
 
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <VirtualScroll>
                         <FashionBody />
                     </VirtualScroll>

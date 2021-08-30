@@ -23,15 +23,14 @@ FashionSeeMoreOnTitle.defaultProps = {
 function FashionSeeMoreOnTitle({ link_to, title, class_color }) {
     //
     return (
-        <Link to={link_to} className={`FashionSeeMoreOnTitle ${class_color}`}>
+        <Link
+            to={link_to}
+            className={`FashionSeeMoreOnTitle ${class_color} ${
+                IS_MOBILE ? 'font-13px' : 'font-14px'
+            }`}
+        >
             <div className="FashionSeeMoreOnTitle_contain">
-                <span
-                    className={`FashionSeeMoreOnTitle_text ${
-                        IS_MOBILE ? 'font-13px' : 'font-14px'
-                    }`}
-                >
-                    {title}
-                </span>
+                <span className="FashionSeeMoreOnTitle_text">{title}</span>
 
                 <IconsArrow x={200} size_icon="0.75rem" />
             </div>

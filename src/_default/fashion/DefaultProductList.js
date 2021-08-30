@@ -1,10 +1,12 @@
 import { getRandomBool } from '../_common/default_bool';
-import { getRandomId, getRandomNumber } from '../_common/default_id';
+import { getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 //
 import { product_name_arr } from './FashionDefault';
+//
+import flash_img_large from '../../../image/flash_img_large.png';
 
 //
 const base_product_obj = () => {
@@ -22,13 +24,18 @@ const base_product_obj = () => {
         id: getRandomNumber(),
         name: getRandomFromArr(product_name_arr),
         img: getRandomVidPic(),
-        flash_img: null,
+        flash_img: getRandomBool() ? flash_img_large : null,
         total: total,
         sold: getRandomBool() ? getRandomNumber(0, total) : 0,
         rate_avg: getRandomNumber(0, 50) / 10,
-        mall_like: getRandomNumber(0, 2)[('', 'mall', 'like')],
+        is_like: getRandomBool(),
+        is_plus: getRandomBool(),
+        is_mall: getRandomBool(),
 
-        shop_deals: [],
+        shop_deals: ['ShopDacBiet', 'Mua 3 & giảm 3%'].slice(
+            0,
+            getRandomBool() ? 2 : 1
+        ),
         shop_discount: '10%',
         address: 'Hà Nội',
 

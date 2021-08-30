@@ -1,65 +1,9 @@
-
-//1
-.FashionCart_body{
-    margin: 0.5rem 2.5rem;
+.FashionCart_head-pc{
+    min-width: 1200px;
 }
 
-.FashionCart_action{
-    margin: 1rem 0;
-}
-
-//2
-.FashionCart_item-title{
-    padding: 0.5rem;
-}
-//3
-.FashionCart__check{
-    width: 5.5rem;
-    margin: 0 0.5rem;
-}
-.FashionCart__name{
-    width: 40%;
-}
-.FashionCart__calculate{
-    width: calc(60% - 6rem);
-    text-align: center;
-}
-//2
-.FashionCart_del{
-    margin: 0.5rem;
-    margin-left: auto;
-    width: 4rem;
-    padding: 0.25rem;
-    background-color: var(--danger);
-
-    text-align: center;
-    color: var(--white);
-    cursor: pointer;
-}
-
-//2
-.FashionCart_buy{
-    margin-top: 1rem;
-}
-//3
-.FashionCart_buy-now{
-    width: 15rem;
-    padding: 1rem 2rem;
-    background-color: var(--btn-buy);
-
-    text-align: center;
-    font-weight: 600;
-    color: var(--white);
-}
-
-//1
-.FashionCart_no-product{
-    margin: 2rem auto;
-    width: 50rem;
-    max-width: 96%;
-    padding: 2rem;
-
-    text-align: center;
-    font-weight: 800;
-    color: var(--md-color-secondary);
+.FashionCart_going_to_buy{
+    width: 300px;
+    max-width: 100vw;
+    height: 125px;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 //
-import { handle_API_FashionCart_C } from '../../../../../_handle_api/fashion/FashionCartHandleAPi';
+import { handle_API_FashionCart_C } from '../../../../../_handle_api/fashion/FashionCartHandleAPI';
 //
 import { actionFashionChangeCountCartNum } from '../../../../../redux/action/action_count_cart';
 //

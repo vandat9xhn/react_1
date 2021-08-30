@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+//
 import './RadioCustom.scss';
+
 //
 RadioCustom.propTypes = {
     is_active: PropTypes.bool,
@@ -11,17 +12,15 @@ RadioCustom.defaultProps = {
 };
 
 //
-function RadioCustom(props) {
-    const { is_active } = props;
-
-    // 
+function RadioCustom({ is_active }) {
+    //
     return (
         <div
             className={`RadioCustom brs-50 ${
                 is_active ? 'RadioCustom_active' : 'RadioCustom_inactive'
             }`}
         >
-            <div className="RadioCustom_center brs-50"></div>
+            <div className="RadioCustom_center pos-abs-center brs-50"></div>
         </div>
     );
 }

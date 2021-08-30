@@ -54,9 +54,9 @@ function FsICombo(props) {
                     <div>
                         <FsShopDealLabel
                             label={item_info.bundle_deal_info.label}
-                            class_main={`${
+                            class_main={
                                 IS_MOBILE ? 'FsICombo_deal_label-mb' : undefined
-                            }`}
+                            }
                         />
                     </div>
                 </div>
@@ -78,7 +78,7 @@ function FsICombo(props) {
                         >
                             <FsIComboItem
                                 id={item.id}
-                                mall_like={item.mall_like ? '' : ''}
+                                is_like={item.is_like}is_plus={item.is_plus}is_mall={item.is_mall}
                                 img={item.img}
                                 name={item.name}
                                 old_price={item.old_price}

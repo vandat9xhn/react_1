@@ -30,43 +30,43 @@ function FashionItemInfoRight({}) {
     return (
         <div className="FashionItemInfoRight">
             <div className={fetched_item ? '' : 'display-none'}>
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <FsItemIfRName />
                 </div>
 
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <FsIIfRRateSold />
                 </div>
 
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <FsItemIfRPrice />
                 </div>
 
-                <div className="margin-bottom-1rem font-14px">
+                <div className="margin-bottom-16px font-14px">
                     <FsItemIfRShopDiscount />
                 </div>
 
-                <div className="margin-bottom-1rem font-14px">
+                <div className="margin-bottom-16px font-14px">
                     <FsItemIfRDeal />
                 </div>
 
-                <div className="margin-bottom-1rem font-14px">
+                <div className="margin-bottom-16px font-14px">
                     <FsItemIfRBundleDeal />
                 </div>
 
-                <div className="margin-bottom-1rem font-14px">
+                <div className="margin-bottom-16px font-14px">
                     <FsItemIfRTransport />
                 </div>
 
-                <div className="margin-bottom-1rem font-14px">
+                <div className="margin-bottom-16px font-14px">
                     <FsIIfRTierVariants />
                 </div>
 
-                <div className="margin-bottom-1rem font-14px">
+                <div className="margin-bottom-16px font-14px">
                     <FsItemIfRCount />
                 </div>
 
-                <div className="margin-bottom-1rem font-14px">
+                <div className="margin-bottom-16px font-14px">
                     <FsItemIfRCart />
                 </div>
 

@@ -9,19 +9,18 @@ import { useMounted } from '../../../_hooks/useMounted';
 //
 import observeToDo from '../../../_some_function/observerToDo';
 //
+import ComponentSkeleton from '../../../component/skeleton/component_skeleton/ComponentSkeleton';
 import ProductItem from '../../../component/products/product_item/ProductItem';
+import FashionFaceItem from '../../fashion/components/face_item/_main/FashionFaceItem';
 //
 import './Home.scss';
 
 //
-const initial_arr = Array.from({ length: 10 }, (_, k) => k + 1);
-
-//
 function Home() {
     //
-    const [phones, setPhones] = useState(initial_arr);
-    const [clothes, setClothes] = useState(initial_arr);
-    const [cities, setCities] = useState(initial_arr);
+    const [phone_arr, setPhoneArr] = useState([]);
+    const [fashion_arr, setFashionArr] = useState([]);
+    const [city_arr, setCityArr] = useState([]);
 
     //
     const ref_phone = useRef(null);
@@ -35,12 +34,12 @@ function Home() {
     useEffect(() => {
         document.title = 'Home';
 
-        observeToDo({ elm: ref_phone.current, callback: getPhones });
-        observeToDo({ elm: ref_cloth.current, callback: getClothes });
-        observeToDo({ elm: ref_city.current, callback: getCities });
+        observeToDo({ elm: ref_phone.current, callback: getData_API_Phone });
+        observeToDo({ elm: ref_cloth.current, callback: getData_API_Fashion });
+        observeToDo({ elm: ref_city.current, callback: getData_API_City });
     }, []);
 
-    /* ----------------- COMMON ------------------ */
+    /* ---------- */
 
     //
     async function getAPI_Common(API_GetData, params, callback) {
@@ -52,10 +51,10 @@ function Home() {
         }
     }
 
-    /* ----------------------------------- */
+    /* ------------ */
 
     //
-    function getPhones() {
+    function getData_API_Phone() {
         getAPI_Common(
             API_PhoneLaptop_L,
             {
@@ -68,50 +67,48 @@ function Home() {
                 lte_price: 100000000,
                 in_stock: '',
             },
-            (data) => setPhones(data)
+            (data) => setPhoneArr(data)
         );
     }
 
     //
-    function getClothes() {
+    function getData_API_Fashion() {
         getAPI_Common(
             API_FashionProduct_L,
             { page: 1, size: 20, type_request: 'home' },
-            (data) => setClothes(data)
+            (data) => setFashionArr(data)
         );
     }
 
     //
-    function getCities() {
+    function getData_API_City() {
         getAPI_Common(API_City_L, { page: 1, size: 10 }, (data) =>
-            setCities(data)
+            setCityArr(data)
         );
     }
 
     //
     return (
-        <div className="Home">
-            <div ref={ref_phone} className="Home_products">
-                <div className="Home_products_contain box-shadow-1 brs-5px">
-                    <h3 className="Home_phone_title App_title margin-0">
-                        <Link
-                            to="/phone-laptop"
-                            className="Home__main_link"
-                            title="See more phones laptops"
-                        >
-                            Phone-Laptop
-                        </Link>
-                    </h3>
+        <div className="Home fashion-width padding-y-16px">
+            <div
+                ref={ref_phone}
+                className="Home_products margin-bottom-16px bg-primary box-shadow-1 brs-5px"
+            >
+                <h3 className="Home_title Home_title-phone margin-bottom-16px">
+                    <Link to="/phone-laptop" className="text-white">
+                        Phone
+                    </Link>
+                </h3>
 
-                    <div className="Home_products_row">
-                        {phones.map((item, index) => (
-                            <div
-                                key={`phone_${index}`}
+                <div className="Home_products_contain padding-8px">
+                    <ul className="Home_products_row list-none">
+                        {phone_arr.map((item) => (
+                            <li
+                                key={`${item.id}`}
                                 className="Home_products_item"
                             >
                                 <ProductItem
                                     link={'/phone-laptop:' + item.id}
-                                    index={index}
                                     img={item.url}
                                     name={item.name}
                                     in_stock={item.in_stock}
@@ -120,76 +117,99 @@ function Home() {
                                     discount={item.discount}
                                     installment={item.installment}
                                 />
-                            </div>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
+
+                    <ComponentSkeleton
+                        num={4}
+                        has_fetched={phone_arr.length > 0}
+                        component={<div className="Home_skeleton"></div>}
+                    />
                 </div>
             </div>
 
-            <div ref={ref_cloth} className="Home_products">
-                <div className="Home_products_contain box-shadow-1 brs-5px">
-                    <h3 className="Home_cloth_title App_title margin-0">
-                        <Link
-                            to="/fashion"
-                            className="Home__main_link"
-                            title="See more products in shopping"
-                        >
-                            Shopping
-                        </Link>
-                    </h3>
+            <div
+                ref={ref_cloth}
+                className="Home_products margin-bottom-16px bg-primary box-shadow-1 brs-5px"
+            >
+                <h3 className="Home_title Home_title-fashion margin-bottom-16px">
+                    <Link to="/fashion" className="text-white">
+                        Shopping
+                    </Link>
+                </h3>
 
-                    <div className="Home_products_row">
-                        {clothes.map((item, index) => (
-                            <div
-                                key={`clothes_${index}`}
-                                className="Home_products_item"
-                            >
-                                <ProductItem
-                                    link={'/fashion:' + item.id}
-                                    index={index}
-                                    img={
-                                        item.vid_pics
-                                            ? item.vid_pics[0].vid_pic
-                                            : undefined
-                                    }
-                                    name={item.name}
-                                    new_price={item.new_price}
-                                    old_price={item.old_price}
+                <div className="Home_products_contain padding-8px">
+                    <ul className="Home_products_row list-none">
+                        {fashion_arr.map((item) => (
+                            <li key={item.id} className="Home_fashion_item">
+                                <FashionFaceItem
+                                    id={item.id}
+                                    img={item.img}
+                                    is_like={item.is_like}
+                                    is_plus={item.is_plus}
+                                    is_mall={item.is_mall}
+                                    flash_img={item.flash_img}
                                     discount={item.discount}
+                                    name={item.name}
+                                    rate_avg={item.rate_avg}
+                                    sold={item.sold}
+                                    //
+                                    shop_deals={item.shop_deals}
+                                    shop_discount={item.shop_discount}
+                                    address={item.address}
+                                    //
+                                    old_price={item.old_price}
+                                    new_price={item.new_price}
+                                    old_price_max={item.old_price_max}
+                                    new_price_max={item.new_price_max}
+                                    //
+                                    use_same={false}
+                                    show_address={false}
                                 />
-                            </div>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
+
+                    <ComponentSkeleton
+                        num={4}
+                        has_fetched={fashion_arr.length > 0}
+                        component={<div className="Home_skeleton"></div>}
+                    />
                 </div>
             </div>
 
-            <div ref={ref_city} className="Home_products">
-                <div className="Home_products_contain box-shadow-1 brs-5px">
-                    <h3 className="Home_city_title App_title margin-0">
-                        <Link
-                            to="/city-street"
-                            className="Home__main_link"
-                            title="See more cities"
-                        >
-                            City
-                        </Link>
-                    </h3>
+            <div
+                ref={ref_city}
+                className="Home_products margin-bottom-16px bg-primary box-shadow-1 brs-5px"
+            >
+                <h3 className="Home_title Home_title-city margin-bottom-16px">
+                    <Link to="/city-street" className="text-white">
+                        City
+                    </Link>
+                </h3>
 
-                    <div className="Home_products_row">
-                        {cities.map((item, index) => (
+                <div className="Home_products_contain padding-8px">
+                    <ul className="Home_products_row list-none">
+                        {city_arr.map((item) => (
                             <div
-                                key={`city_${index}`}
+                                key={`${item.id}`}
                                 className="Home_products_item"
                             >
                                 <ProductItem
                                     link={'/city-street'}
                                     img={item.image}
                                     name={item.city}
-                                    index={index}
                                 />
                             </div>
                         ))}
-                    </div>
+                    </ul>
+
+                    <ComponentSkeleton
+                        num={4}
+                        has_fetched={city_arr.length > 0}
+                        component={<div className="Home_skeleton"></div>}
+                    />
                 </div>
             </div>
         </div>

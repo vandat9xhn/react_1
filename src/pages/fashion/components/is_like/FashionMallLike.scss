@@ -1,0 +1,31 @@
+// --------
+$side-width: 3px;
+
+
+// ---------
+.FashionMallLike_side {
+    width: $side-width;
+
+    &::before {
+        content: '';
+
+        position: absolute;
+        left: 0;
+        top: 100%;
+
+        border-width: $side-width 0 0 $side-width;
+        border-style: solid;
+
+        filter: brightness(60%);
+    }
+}
+.FashionMallLike_side-mall {
+    &::before {
+        border-color: var(--fashion-mall) transparent transparent transparent;
+    }
+}
+.FashionMallLike_side-like {
+    &::before {
+        border-color: var(--fashion-head) transparent transparent transparent;
+    }
+}

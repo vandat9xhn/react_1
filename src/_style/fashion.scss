@@ -4,7 +4,7 @@
 
 .fashion-width {
     width: 1200px;
-    max-width: 100%;
+    // max-width: 100%;
     margin: 0 auto;
 }
 
@@ -14,4 +14,9 @@
 
 .fashion-value-padding{
     padding: 1px 5px;
+}
+
+.fs-item-border-bottom{
+    margin: 0 25px;
+    border-bottom: 1px solid var(--md-bg-blur);
 }

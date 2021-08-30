@@ -1,37 +1,25 @@
-.Home {
-    .App_title {
-        margin-bottom: 1rem;
-    }
+.Home_skeleton{
+    height: 250px;
 }
 
-.Home_phone_title {
+// 
+.Home_title{
+    padding: 8px 0;
+    text-align: center;
+}
+
+.Home_title-phone {
     background-color: var(--gold);
 }
-.Home_cloth_title {
+
+.Home_title-fashion {
     background-color: var(--border-fashion);
 }
-.Home_city_title {
+
+.Home_title-city {
     background-color: var(--green);
 }
 
-.Home__main_link {
-    color: white;
-}
-
-.Home_products {
-    margin-bottom: 1rem;
-}
-// .
-.Home_products_contain {
-    margin: auto;
-    padding: 0;
-    padding-bottom: 0.5rem;
-
-    background-color: var(--md-bg-primary);
-    border: 1px solid var(--bg-blur);
-
-    overflow: hidden;
-}
 // ..
 .Home_products_row {
     display: flex;
@@ -42,6 +30,12 @@
     .Home_products_item {
         border: 0.2px solid var(--bg-blur);
     }
+}
+// ...
+.Home_fashion_item{
+    width: 200px;
+    padding: 4px;
+    max-width: 50%;
 }
 
 //

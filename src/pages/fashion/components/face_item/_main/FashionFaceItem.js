@@ -19,36 +19,44 @@ FashionFaceItem.propTypes = {
 };
 
 FashionFaceItem.defaultProps = {
-    use_same: true
-}
+    use_same: true,
+};
 
 //
 function FashionFaceItem({
     id,
 
     img,
-    mall_like,
     flash_img,
     discount,
-    
+
+    is_like,
+    is_mall,
+    is_plus,
+
     name,
     rate_avg,
     sold,
-    
+
     shop_deals,
     shop_discount,
     address,
-    
+
     old_price,
     old_price_max,
     new_price,
     new_price_max,
-    
+
     show_heart_rate,
     show_sold,
     show_address,
     use_same,
 }) {
+    //
+    function handleClickLink(e) {
+        e.stopPropagation();
+    }
+
     //
     return (
         <div
@@ -56,15 +64,21 @@ function FashionFaceItem({
                 IS_MOBILE ? '' : 'FashionFaceItem-pc'
             }`}
         >
-            <Link to={`/fashion:${id}`} className="normal-text">
+            <Link
+                to={`/fashion:${id}`}
+                className="normal-text"
+                onClick={handleClickLink}
+            >
                 <div className="FashionFaceItem_contain">
                     <div className="FashionFaceItem_head pos-rel">
                         <div className="pos-abs-100">
                             <FashionFaceItemBd
                                 img={img}
-                                mall_like={mall_like}
                                 flash_img={flash_img}
                                 discount={discount}
+                                is_like={is_like}
+                                is_mall={is_mall}
+                                is_plus={is_plus}
                             />
                         </div>
                     </div>
@@ -74,16 +88,16 @@ function FashionFaceItem({
                             name={name}
                             rate_avg={rate_avg}
                             sold={sold}
-                            // 
+                            //
                             address={address}
                             shop_deals={shop_deals}
                             shop_discount={shop_discount}
-                            // 
+                            //
                             old_price={old_price}
                             new_price={new_price}
                             old_price_max={old_price_max}
                             new_price_max={new_price_max}
-                            // 
+                            //
                             show_heart_rate={show_heart_rate}
                             show_sold={show_sold}
                             show_address={show_address}

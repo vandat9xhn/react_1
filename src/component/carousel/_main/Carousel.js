@@ -3,21 +3,23 @@ import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../_constant/Constant';
 //
+import { observerDisplay } from '../../../_some_function/observerDisplay';
+//
 import { useInterval } from '../../../_hooks/UseInterval';
 import { useMouseMoveX } from '../../../_hooks/useMouseMoveX';
 import { useForceUpdate } from '../../../_hooks/UseForceUpdate';
 //
 import NextPrevDiv from '../../some_div/next_prev_div/NextPrevDiv';
 //
-import CarouselItem from '../item/CarouselItem';
+import CarouselItem from '../item/_main/CarouselItem';
 import CarouselDot from '../dot/CarouselDot';
 //
 import './Carousel.scss';
-import { observerDisplay } from '../../../_some_function/observerDisplay';
 
 //
 Carousel.propTypes = {
     vid_pics: PropTypes.array,
+    link_to_arr: PropTypes.array,
     has_fetched: PropTypes.bool,
     time_interval: PropTypes.number,
     time_trans: PropTypes.number,
@@ -30,6 +32,7 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
+    link_to_arr: [],
     has_fetched: false,
     time_interval: 6000,
     time_trans: 300,
@@ -43,12 +46,14 @@ Carousel.defaultProps = {
 //
 function Carousel({
     vid_pics,
+    video_props,
+    link_to_arr,
     has_fetched,
-    time_interval = 6000,
-    time_trans = 300,
+    time_interval,
+    time_trans,
 
-    disabled_btn_when_trans = true,
-    time_disabled_btn = 100,
+    disabled_btn_when_trans,
+    time_disabled_btn,
     is_btn_circle,
 
     use_next_prev,
@@ -72,7 +77,6 @@ function Carousel({
         callback: handleAutoNext,
     });
 
-    //
     const { handleStart, handleMove, handleEnd } = useMouseMoveX({
         handleMouseDown: handleTouchStart,
         handleMouseMove: handleTouchMove,
@@ -111,7 +115,7 @@ function Carousel({
     /* --------------- COMMON ------------- */
 
     //
-    function disableBtnNextPrev(is_last = false) {
+    function handleWhenNextPrev(is_last = false) {
         btn_disable.current = true;
         transition_none.current = false;
 
@@ -127,7 +131,7 @@ function Carousel({
 
     //
     function changeImgIxNext() {
-        disableBtnNextPrev(true);
+        handleWhenNextPrev(true);
         ref_vid_pic_ix.current += 1;
         forceUpdate();
 
@@ -144,7 +148,7 @@ function Carousel({
 
     //
     function changeImgIxPrev() {
-        disableBtnNextPrev(true);
+        handleWhenNextPrev(true);
         ref_vid_pic_ix.current -= 1;
         forceUpdate();
 
@@ -246,8 +250,11 @@ function Carousel({
                 {vid_pics.map((vid_pic, ix) => (
                     <CarouselItem
                         key={`${ix}`}
+                        vid_pic_ix={ref_vid_pic_ix.current}
                         vid_pic={vid_pic}
                         width_vid_pic={`${100 / vid_pics.length}%`}
+                        link_to={(link_to_arr.length && link_to_arr[ix]) || ''}
+                        stopInterval={stopInterval}
                     />
                 ))}
             </div>
@@ -267,7 +274,7 @@ function Carousel({
                 />
             </div>
 
-            {!use_next_prev || IS_MOBILE ? null : (
+            {!use_next_prev || IS_MOBILE || !has_fetched ? null : (
                 <NextPrevDiv
                     is_btn_circle={is_btn_circle}
                     size_icon="0.8rem"

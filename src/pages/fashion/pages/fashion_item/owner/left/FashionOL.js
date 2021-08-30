@@ -11,7 +11,7 @@ import IconsMenu from '../../../../../../_icons_svg/icons_menu/IconsMenu';
 //
 import IconDiv from '../../../../../../component/some_div/icon_div/IconDiv';
 //
-import FashionIsLike from '../../../../components/is_like/FashionIsLike';
+import FashionMallLike from '../../../../components/is_like/FashionMallLike';
 //
 import './FashionOL.scss';
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
@@ -51,7 +51,7 @@ function FashionOL({}) {
                                 IS_MOBILE ? 'font-10px' : 'font-12px'
                             }`}
                         >
-                            <FashionIsLike
+                            <FashionMallLike
                                 is_like={count_like > 0}
                                 is_plus={count_like > 100}
                             />

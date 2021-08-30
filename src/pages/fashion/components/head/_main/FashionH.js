@@ -1,27 +1,22 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// 
+//
 import FashionHCommon from '../__main_common/FashionHCommon';
 
 //
-FashionH.propTypes = {
-};
+FashionH.propTypes = {};
 
 //
 function FashionH(props) {
-    // 
-    const [search, setSearch] = useState('');
-    
     //
-    function handleSearchFashion(new_search){
-        new_search.trim() && setSearch(new_search)
-    }
+    const use_history = useHistory();
 
     //
-    if (search) {
-        return <Redirect to={`/fashion/search?q=${search}`} push />;
+    function handleSearchFashion(new_search) {
+        use_history.push(`/fashion/search?q=${new_search}`);
     }
+
     //
     return (
         <div className="FashionH">

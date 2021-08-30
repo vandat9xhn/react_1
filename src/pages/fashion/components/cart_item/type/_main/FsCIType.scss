@@ -1,0 +1,7 @@
+.FsCIType_icon {
+    transition: transform 200ms ease-in;
+}
+
+.FsCIType_icon-open {
+    transform: rotate(180deg) translateY(-2.5px);
+}

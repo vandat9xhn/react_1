@@ -30,12 +30,7 @@ export function openScreenConfirm({
 ScreenConfirm.propTypes = {};
 
 //
-function ScreenConfirm({
-    closeScreen,
-    title,
-    notification,
-    handleConfirm,
-}) {
+function ScreenConfirm({ closeScreen, title, notification, handleConfirm }) {
     //
     function onConfirm() {
         closeScreen();
@@ -45,7 +40,11 @@ function ScreenConfirm({
 
     //
     return (
-        <ScreenBlur closeScreen={closeScreen} screen_center={true}>
+        <ScreenBlur
+            closeScreen={closeScreen}
+            screen_center={true}
+            use_body_hidden={false}
+        >
             <div className="ScreenConfirm_contain">
                 <div className="ScreenConfirm_head">
                     <ScreenBlurHead

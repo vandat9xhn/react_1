@@ -91,7 +91,7 @@ function FashionRate({ id }) {
                     className={`label-field ${
                         IS_MOBILE
                             ? 'font-14px'
-                            : 'margin-bottom-1rem padding-16px font-18px text-secondary'
+                            : 'margin-bottom-16px padding-16px font-18px text-secondary'
                     }`}
                 >
                     ĐÁNH GIÁ SẢN PHẨM
@@ -101,7 +101,7 @@ function FashionRate({ id }) {
                     className={`${
                         IS_MOBILE
                             ? 'FashionRate_overview-mb'
-                            : 'padding-x-16px margin-bottom-1rem'
+                            : 'padding-x-16px margin-bottom-16px'
                     }`}
                 >
                     {IS_MOBILE ? (

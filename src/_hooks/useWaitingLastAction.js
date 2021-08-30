@@ -1,13 +1,21 @@
 import { useRef } from 'react';
+// 
+import { useMounted } from './useMounted';
 
 //
-export function useWaitingLastAction({ time_waiting = 100, callback = () => {} }) {
+export function useWaitingLastAction({
+    time_waiting = 100,
+    callback = () => {},
+}) {
     //
     const is_acting = useRef(false);
     const interval = useRef(null);
 
     //
-    function handleWaitingLastAction() {
+    const mounted = useMounted();
+
+    //
+    function handleWaitingLastAction(data) {
         is_acting.current = true;
         clearTimeout(interval.current);
 
@@ -15,7 +23,7 @@ export function useWaitingLastAction({ time_waiting = 100, callback = () => {} }
             is_acting.current = false;
             clearTimeout(interval.current);
 
-            callback();
+            mounted && callback(data);
         }, time_waiting);
     }
 

@@ -6,9 +6,8 @@
     height: 36px;
 }
 
-// .
-.FashionFaceItemFoot_tag_item{
-    border: 1px solid var(--fashion-head);
+.FashionFaceItemFoot_tag{
+    height: 1rem;
 }
 
 // ..
@@ -24,5 +23,12 @@
     }
     .IconHeart_heart{
         fill: var(--md-bg-blur);
+    }
+}
+
+// 
+@media (max-width: 350px) {
+    .FashionFaceItemFoot{
+        padding: 4px;
     }
 }

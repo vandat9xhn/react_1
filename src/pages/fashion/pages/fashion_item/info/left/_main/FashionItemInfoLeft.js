@@ -51,7 +51,7 @@ function FashionItemInfoLeft({}) {
                 }}
             ></div>
 
-            <div className="FashionItemInfoLeft_foot pos-rel margin-bottom-1rem">
+            <div className="FashionItemInfoLeft_foot pos-rel margin-bottom-16px">
                 <div
                     ref={ref_scroll_elm}
                     className="FashionItemInfoLeft_foot_contain overflow-x-auto scroll-height-0"

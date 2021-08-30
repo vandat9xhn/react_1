@@ -88,7 +88,7 @@ function FashionBody(props) {
                             <FashionFaceItem
                                 id={item.id}
                                 img={item.img}
-                                mall_like={item.mall_like ? '' : ''}
+                                is_like={item.is_like}is_plus={item.is_plus}is_mall={item.is_mall}
                                 flash_img={item.flash_img}
                                 discount={item.discount}
                                 name={item.name}
@@ -103,6 +103,9 @@ function FashionBody(props) {
                                 new_price={item.new_price}
                                 old_price_max={item.old_price_max}
                                 new_price_max={item.new_price_max}
+                                // 
+                                show_address={false}
+                                show_sold={false}
                             />
                         </li>
                     ))}

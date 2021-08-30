@@ -46,7 +46,7 @@ function ProfilePreview(props) {
         <div ref={ref_main_elm} className="ProfilePreview h-100per">
             <div ref={ref_fake_elm}></div>
 
-            <div ref={ref_preview_elm} className="position-sticky">
+            <div ref={ref_preview_elm} className="pos-sticky">
                 <div className="ProfilePreview_item">
                     <ProfilePrIntro id={id} handleReady={handleReady} />
                 </div>

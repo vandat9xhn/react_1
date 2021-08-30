@@ -47,8 +47,28 @@ const default_models = ({
     tier_count_2 = 0,
     has_discount = true,
 
-    tier_arr,
+    tier_arr = [],
+    item_name = '',
 }) => {
+    if (tier_count_1 == 0 && tier_count_2 == 0) {
+        const quantity = getRandomNumber(0, 200);
+        const new_price = getRandomNumber(80, 200);
+
+        return [
+            {
+                id: getRandomId(),
+                name: item_name,
+                tier_ix_arr: [0],
+                quantity: quantity,
+                total_add_cart: getRandomNumber(0, quantity),
+                new_price: new_price * 1000,
+                old_price: has_discount
+                    ? getRandomNumber(new_price + 5, new_price + 50) * 1000
+                    : null,
+            },
+        ];
+    }
+
     const results = [];
 
     for (let i = 0; i < tier_count_1; i++) {
@@ -57,6 +77,7 @@ const default_models = ({
             const new_price = getRandomNumber(80, 200);
 
             results.push({
+                id: getRandomId(),
                 name: `${tier_arr[0].options[i]}-${tier_arr[1].options[k]}`,
                 tier_ix_arr: [i, k],
                 quantity: quantity,
@@ -97,6 +118,7 @@ const default_category_arr = () => {
 
 //
 export const default_product_obj = () => {
+    const item_name = getRandomFromArr(product_name_arr);
     const discount = getRandomNumber(0, 50);
 
     const tier_arr = default_tier_arr();
@@ -107,15 +129,11 @@ export const default_product_obj = () => {
               has_discount: discount > 0,
               tier_arr: tier_arr,
           })
-        : [];
+        : default_models({ item_name: item_name });
 
-    const quantity = models.length
-        ? models.reduce((a, b) => a + b.quantity, 0)
-        : getRandomNumber(0, 200);
+    const quantity = models.reduce((a, b) => a + b.quantity, 0);
 
-    const total_add_cart = models.length
-        ? models.reduce((a, b) => a + b.total_add_cart, 0)
-        : getRandomNumber(0, quantity);
+    const total_add_cart = models.reduce((a, b) => a + b.total_add_cart, 0);
 
     const new_price = getRandomNumber(50, 600);
     const old_price = getRandomNumber(new_price + 5, new_price + 50);
@@ -135,7 +153,7 @@ export const default_product_obj = () => {
 
     return {
         id: getRandomId(),
-        name: getRandomFromArr(product_name_arr),
+        name: item_name,
         brand: 'Product brand 5',
         type: 'Product type 5',
         stock: getRandomNumber(10, 30),

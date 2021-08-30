@@ -6,14 +6,21 @@ import './FsShopDiscountLabel.scss';
 //
 FsShopDiscountLabel.propTypes = {
     discount: PropTypes.string,
+    class_main: PropTypes.string,
+};
+
+FsShopDiscountLabel.defaultProps = {
+    class_main: '',
 };
 
 //
-function FsShopDiscountLabel({ discount }) {
+function FsShopDiscountLabel({ discount, class_main }) {
     //
     return (
-        <div className="FsShopDiscountLabel bg-discount-gold pos-rel">
-            <span className="text-white">Giảm {discount}</span>
+        <div
+            className={`FsShopDiscountLabel bg-discount-gold pos-rel text-white ${class_main}`}
+        >
+            <span>Giảm {discount}</span>
 
             <div className="FsShopDiscountLabel_side pos-abs left-0 trans-x--50per top-0 h-100per"></div>
 

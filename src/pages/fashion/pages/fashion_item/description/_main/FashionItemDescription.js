@@ -36,7 +36,7 @@ function FashionItemDescription({}) {
                     className={`padding-8px font-400 ${
                         IS_MOBILE
                             ? 'font-14px'
-                            : 'margin-bottom-1rem bg-screen text-secondary font-18px text-upper'
+                            : 'margin-bottom-16px bg-screen text-secondary font-18px text-upper'
                     }`}
                 >
                     Chi tiết sản phẩm
@@ -44,7 +44,7 @@ function FashionItemDescription({}) {
 
                 <div
                     className={`FashionItemDescription_content padding-8px ${
-                        IS_MOBILE ? '' : 'margin-bottom-1rem'
+                        IS_MOBILE ? '' : 'margin-bottom-16px'
                     }`}
                 >
                     <div
@@ -92,7 +92,7 @@ function FashionItemDescription({}) {
                     className={`padding-8px font-400 ${
                         IS_MOBILE
                             ? 'font-14px'
-                            : 'margin-bottom-1rem bg-screen text-secondary font-18px text-upper'
+                            : 'margin-bottom-16px bg-screen text-secondary font-18px text-upper'
                     }`}
                 >
                     Mô tả sản phẩm

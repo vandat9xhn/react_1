@@ -8,13 +8,11 @@ import './FsIShopDiscountItem.scss';
 //
 FsIShopDiscountItem.propTypes = {
     ix: PropTypes.number,
-    title: PropTypes.string,
-    expiry: PropTypes.string,
-    handleSave: PropTypes.func,
+    ...FashionCardDiscount.propTypes,
 };
 
 //
-function FsIShopDiscountItem({ ix, title, expiry, handleSave }) {
+function FsIShopDiscountItem({ ix, title, expiry, status_card, handleSave }) {
     //
     function onSave() {
         handleSave(ix);
@@ -26,6 +24,7 @@ function FsIShopDiscountItem({ ix, title, expiry, handleSave }) {
             <FashionCardDiscount
                 title={title}
                 expiry={expiry}
+                status_card={status_card}
                 handleSave={onSave}
             />
 

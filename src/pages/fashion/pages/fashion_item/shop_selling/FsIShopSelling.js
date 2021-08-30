@@ -71,7 +71,7 @@ function FsIShopSelling(props) {
                         >
                             <FashionFaceItem
                                 id={item.id}
-                                mall_like={item.mall_like ? '' : ''}
+                                is_like={item.is_like}is_plus={item.is_plus}is_mall={item.is_mall}
                                 img={item.img}
                                 flash_img={item.flash_img}
                                 discount={item.discount}

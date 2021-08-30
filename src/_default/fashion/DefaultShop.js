@@ -1,3 +1,4 @@
+import { getRandomBool } from '../_common/default_bool';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
@@ -27,10 +28,15 @@ const shop_vid_pic_arr = () => getDefaultArr(shop_vid_pic_obj, 4, 10);
 export const default_shop_obj = () => ({
     id: getRandomId(),
     count_like: getRandomNumber(10, 500) * 10,
+    is_mall: getRandomBool(),
+    is_like: getRandomBool(),
+    is_plus: getRandomBool(),
+
     list_name: shop_category_arr(),
     vid_pics: shop_vid_pic_arr(),
-    name: 'Shop 2',
+    name: 'Shop ' + getRandomId(),
     picture: getRandomVidPic(),
+
     discount_arr: [
         {
             promotionid: 80893684,
@@ -43,6 +49,7 @@ export const default_shop_obj = () => ({
             icon_text: 'mỹ phẩm ngân bình đặc trị',
             shop_id: 256060797,
             discount_value: 3000,
+            status_card: 'available',
         },
         {
             promotionid: 80893684,
@@ -55,8 +62,30 @@ export const default_shop_obj = () => ({
             icon_text: 'mỹ phẩm ngân bình đặc trị',
             shop_id: 256060797,
             discount_value: 7000,
+            status_card: 'available',
         },
     ],
+
+    ship_arr: [
+        {
+            min_spend: 50000,
+            cost: 15000,
+            transport_arr: ['Nhanh'],
+        },
+        {
+            min_spend: 250000,
+            cost: 25000,
+            transport_arr: ['Nhanh'],
+        },
+        {
+            min_spend: 300000,
+            cost: 70000,
+            transport_arr: ['Nhanh'],
+        },
+    ],
+    ship_text:
+        'Miễn Phí Vận Chuyển cho đơn hàng từ ₫50.000 (giảm tối đa ₫25.000); Miễn Phí Vận Chuyển cho đơn hàng từ ₫300.000 (giảm tối đa ₫70.000)',
+
     banner: getRandomVidPic(),
     place: 'Quận Gò Vấp, TP. Hồ Chí Minh',
     rating_star: 4.9,

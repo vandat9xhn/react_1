@@ -1,18 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { formatNum } from '../../../../../../../_some_function/FormatNum';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 //
-import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
-//
-import CheckBoxCustom from '../../../../../../../component/input/checkbox_custom/CheckBoxCustom';
-//
-import FsIHotDealTiers from '../tiers/_main/FsIHotDealTiers';
+import FsITiers from '../../../../../components/tiers/_main/FsITiers';
 import FsIHDItemHead from '../head/FsIHDItemHead';
+import FsHDItemFoot from '../foot/FsHDItemFoot';
 //
 import './FsHotDealItem.scss';
-import FsHDItemFoot from '../foot/FsHDItemFoot';
-import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 FsHotDealItem.propTypes = {};
@@ -24,8 +19,8 @@ function FsHotDealItem({
     id,
     name,
     img,
-    flash_img,
     quantity,
+    flash_img,
     discount,
     models,
     tier_variations,
@@ -53,6 +48,11 @@ function FsHotDealItem({
     //
     function onToggleChangeModel() {
         toggleChangeModel(ix);
+    }
+
+    //
+    function onChangeModel(...params) {
+        handleChangeModel(ix, ...params);
     }
 
     //
@@ -86,24 +86,16 @@ function FsHotDealItem({
                                 ? 'pos-fixed-100per bg-film z-index-lv5'
                                 : 'pos-abs bottom-100per x-center z-index-lv1'
                         }`}
-                        onClick={IS_MOBILE ? onToggleChangeModel : undefined}
                     >
-                        <div
-                            className={`${
-                                IS_MOBILE ? 'pos-abs bottom-0 w-100per' : ''
-                            }`}
-                        >
-                            <FsIHotDealTiers
-                                item_ix={ix}
-                                tier_variations={tier_variations}
-                                quantity={quantity}
-                                total_add={total_add}
-                                models={models}
-                                old_model_ix={model_ix}
-                                handleClose={onToggleChangeModel}
-                                handleConfirm={handleChangeModel}
-                            />
-                        </div>
+                        <FsITiers
+                            tier_variations={tier_variations}
+                            quantity={quantity}
+                            total_add={total_add}
+                            models={models}
+                            old_model_ix={model_ix}
+                            handleClose={onToggleChangeModel}
+                            handleConfirm={onChangeModel}
+                        />
                     </div>
                 ) : null}
             </div>

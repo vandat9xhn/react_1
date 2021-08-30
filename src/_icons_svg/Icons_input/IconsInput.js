@@ -48,8 +48,10 @@ function IconsInput({ size_icon, x, y }) {
             </g>
 
             {/* video x=200 y=0*/}
-            <path d="M275,50 L275,150 L350,100 Z" />
-            <circle cx="300" cy="100" r="90" strokeWidth="20" />
+            <g className="IconsInput_video">
+                <path d="M275,50 L275,150 L350,100 Z" strokeWidth="5" />
+                <circle cx="300" cy="100" r="90" strokeWidth="20" />
+            </g>
 
             {/* key for searching x=0 y=200*/}
             <g className="IconsInput_key">

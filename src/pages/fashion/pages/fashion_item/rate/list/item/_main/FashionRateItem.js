@@ -111,19 +111,19 @@ function FashionRateItem({ ix, item }) {
                         />
                     </div>
 
-                    <div className="margin-bottom-1rem">
+                    <div className="margin-bottom-16px">
                         <FashionRateVidPic vid_pics={vid_pics} />
                     </div>
 
                     <div
-                        className={`margin-bottom-1rem text-third ${
+                        className={`margin-bottom-16px text-third ${
                             IS_MOBILE ? 'font-12px' : ''
                         }`}
                     >
                         {formatLocalDateTimeString(new Date(created_time))}
                     </div>
 
-                    <div className="margin-bottom-1rem">
+                    <div className="margin-bottom-16px">
                         <FsRateSellerReply seller_reply={seller_reply} />
                     </div>
 

@@ -11,22 +11,22 @@ function InputSearch({
     default_search,
     handled,
     placeholder,
-    //
+
     handleChangeSearch,
     onSearch,
     refreshSearch,
 }) {
-    // ref
+    //
     const ref_input_search = useRef(null);
 
-    // when enter
+    //
     function onKeyupSearch(event) {
         if (event.keyCode == 13) {
             onClickSearch();
         }
     }
 
-    // when click icon key
+    //
     function onClickSearch() {
         if (ref_input_search.current.value.trim()) {
             onSearch(ref_input_search.current.value.replace(/\s+/, ' '));

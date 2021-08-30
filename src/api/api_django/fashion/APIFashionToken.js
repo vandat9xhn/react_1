@@ -117,7 +117,7 @@ export const API_FashionUserVoucher_LC = (method, params = {}, data = {}) =>
         default_voucher_arr(),
         () =>
             axiosDjangoClient({
-                url: '/transporter/lc-user-voucher/',
+                url: '/transporter/user-voucher-lc/',
                 method: method,
                 params: params,
                 data: data,
@@ -125,11 +125,11 @@ export const API_FashionUserVoucher_LC = (method, params = {}, data = {}) =>
         params
     );
 
-// create user voucher
+// create user payment
 export const API_FashionPayment_L = (params = {}) =>
     API_FakeReal(default_payment_arr(), () =>
         axiosDjangoClient({
-            url: '/transporter/l-payment/',
+            url: '/transporter/payment-l/',
             method: 'GET',
             params: params,
         })

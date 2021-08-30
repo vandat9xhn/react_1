@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 //
 import { context_fashion_item } from '../../../../../../_context/fashion/item/context_fashion_item';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+//
 import { getFsShopDiscountTitle } from '../../../../../../_some_function/fashion/getFsShopDiscountTitle';
 import { formatLocalDateString } from '../../../../../../_some_function/FormatDate';
 //
 import FsIShopDiscountItem from '../item/FsIShopDiscountItem';
 //
 import './FsIShopDiscount.scss';
-import { IS_MOBILE } from '../../../../../../_constant/Constant';
 
 //
 FsIShopDiscount.propTypes = {};
@@ -25,7 +26,7 @@ function FsIShopDiscount({}) {
     return (
         <div className="FsIShopDiscount bg-primary padding-8px">
             <h2
-                className={`text-upper font-14px margin-bottom-1rem label-field text-third ${
+                className={`text-upper font-14px margin-bottom-16px label-field text-third ${
                     IS_MOBILE ? '' : 'padding-y-8px'
                 }`}
             >
@@ -35,7 +36,7 @@ function FsIShopDiscount({}) {
             <div className="FsIShopDiscount_contain overflow-y-auto">
                 <ul className="list-none">
                     {discount_arr.map((discount_obj, ix) => (
-                        <li key={ix} className="margin-bottom-1rem">
+                        <li key={ix} className="margin-bottom-16px">
                             <FsIShopDiscountItem
                                 ix={ix}
                                 title={getFsShopDiscountTitle({
@@ -45,6 +46,7 @@ function FsIShopDiscount({}) {
                                 expiry={formatLocalDateString(
                                     discount_obj.end_time
                                 )}
+                                status_card={discount_obj.status_card}
                                 handleSave={saveShopDiscount}
                             />
                         </li>

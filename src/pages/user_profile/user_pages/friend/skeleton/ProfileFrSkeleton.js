@@ -9,7 +9,7 @@ ProfileFrSkeleton.propTypes = {
 
 function ProfileFrSkeleton(props) {
     return (
-        <div className="margin-auto height-100vh ProfileFriend_contain bg-primary">
+        <div className="margin-auto h-100vh ProfileFriend_contain bg-primary">
             
         </div>
     );

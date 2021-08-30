@@ -10,6 +10,9 @@
 /dist
 # /image
 
+# data
+/src/_default/fashion/item_shop.js
+
 # misc
 .DS_Store
 .env.local

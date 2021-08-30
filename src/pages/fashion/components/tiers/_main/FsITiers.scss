@@ -1,0 +1,28 @@
+.FsITiers {
+    width: 400px;
+    max-width: 100vw;
+    max-height: 400px;
+    padding: 20px;;
+}
+
+// .
+.FsITiers_title {
+    margin-bottom: 10px;
+}
+
+// ..
+.FsITiers_tier_item {
+    margin: 0px 8px 8px 0;
+}
+
+.FsITiers_count {
+    .CountDownUpDiv_btn {
+        border: 1px solid var(--md-bg-blur);
+    }
+    
+    .CountDownUpDiv_input {
+        width: 4rem;
+        border: 1px solid var(--md-bg-blur);
+        color: var(--md-color-secondary);
+    }
+}

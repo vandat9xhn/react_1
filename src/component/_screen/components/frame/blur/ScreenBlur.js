@@ -20,7 +20,7 @@ ScreenBlur.propTypes = {
 };
 
 ScreenBlur.defaultProps = {
-    use_body_hidden: true,
+    use_body_hidden: false,
     screen_center: false,
     waiting: false,
     use_scale: false,
@@ -38,7 +38,12 @@ function ScreenBlur({
     FetchingComponent,
 }) {
     //
-    useMakeBodyHidden({ hidden_app: use_body_hidden });
+    useMakeBodyHidden({
+        hidden_app: use_body_hidden,
+        blur_header: false,
+        use_z_index: true,
+        screen_z_index: 100,
+    });
 
     //
     return (

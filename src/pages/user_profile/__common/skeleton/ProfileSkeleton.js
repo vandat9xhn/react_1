@@ -9,7 +9,7 @@ ProfileSkeleton.propTypes = {};
 //
 function ProfileSkeleton(props) {
     return (
-        <div className="ProfileSkeleton margin-auto height-100vh bg-primary"></div>
+        <div className="ProfileSkeleton margin-auto h-100vh bg-primary"></div>
     );
 }
 

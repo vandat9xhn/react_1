@@ -3,3 +3,14 @@
     width: 10px;
     height: 10px;
 }
+
+// 
+@media (max-width: 350px) {
+    .CarouselDot_item{
+        padding: 3px;
+    }
+    .CarouselDot_item_contain{
+        width: 8px;
+        height: 8px;
+    }
+}

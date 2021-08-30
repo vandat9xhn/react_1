@@ -42,8 +42,13 @@ export const useNewCount = ({
         const max = getMax();
         const min = getMin();
 
-        if ((value >= min && value <= max) || value == '') {
+        if (value == '') {
             handleSetCount(value);
+        }
+
+        if (value >= min && value <= max) {
+            handleSetCount(+value);
+            beforeCountNum(+value);
         }
     }
 
@@ -56,9 +61,9 @@ export const useNewCount = ({
             return;
         }
 
-        if (value < min) {
+        if (+value < min) {
             handleSetCount(min);
-        } else if (value > max) {
+        } else if (+value > max) {
             handleSetCount(max);
         } else {
             handleSetCount(+value);

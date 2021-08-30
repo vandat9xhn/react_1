@@ -14,7 +14,7 @@ function DiscountSymbol({ discount }) {
             <div className="text-align-center">
                 <div className="text-red font-13px">{discount}</div>
 
-                <div className="text-white font-13px">GIẢM</div>
+                <div className="text-white font-11px">GIẢM</div>
             </div>
         </div>
     );

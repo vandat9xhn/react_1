@@ -2,12 +2,15 @@ import axiosClientNoToken from '../_axios/AxiosNoToken';
 //
 import { API_FakeReal } from '../../_ConstAPI';
 //
-import { default_phone_arr } from '../../../_default/phone/DefaultPhone';
+import {
+    default_phone_arr,
+    default_phone_obj,
+} from '../../../_default/phone/DefaultPhone';
 
 // list
 export const API_PhoneLaptop_L = (params) =>
     API_FakeReal(
-        Array(12).fill(default_phone_arr[0]),
+        default_phone_arr(),
         () =>
             axiosClientNoToken({
                 url: 'api/phone/phone-lap-l/',
@@ -19,7 +22,7 @@ export const API_PhoneLaptop_L = (params) =>
 // list filter
 export const API_FilterPhoneLaptop_L = (params) =>
     API_FakeReal(
-        Array(12).fill(default_phone_arr[0]),
+        default_phone_arr(),
         () =>
             axiosClientNoToken({
                 url: 'api/phone/phone-lap-l/',
@@ -30,7 +33,7 @@ export const API_FilterPhoneLaptop_L = (params) =>
 
 // retrieve
 export const API_PhoneLaptop_R = (id) =>
-    API_FakeReal(default_phone_arr[0], () =>
+    API_FakeReal(default_phone_obj(), () =>
         axiosClientNoToken({
             url: 'api/phone/phone-lap-r/' + id + '/',
         })

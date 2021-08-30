@@ -1,8 +1,8 @@
 //
 export function observerDisplay({
     elm,
-    callbackDisplay,
-    callbackNoDisplay,
+    callbackDisplay = () => {},
+    callbackNoDisplay = () => {},
     options = {},
 }) {
     const observer = new IntersectionObserver((entries) => {

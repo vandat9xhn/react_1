@@ -69,7 +69,7 @@ function ProfilePhotoAlbum(props) {
                     handle_API_Photo_L={handle_API_AlbumVidPic_L}
                     ProfilePhotoItem={ProfilePhotoAlbumItem}
                     ProfilePhotoMainSkeleton={
-                        <div className="height-100vh"></div>
+                        <div className="h-100vh"></div>
                     }
                 />
             </div>
@@ -91,7 +91,7 @@ function ProfilePhotoAlbum(props) {
                         <ProfilePhotoList
                             album_model={album_model}
                             ProfilePhotoMainSkeleton={
-                                <div className="width-fit-content margin-auto height-100vh">
+                                <div className="width-fit-content margin-auto h-100vh">
                                     <CircleLoading is_fetching={true} />
                                 </div>
                             }
@@ -100,7 +100,7 @@ function ProfilePhotoAlbum(props) {
                 </div>
             ) : (
                 <div
-                    className={`height-100vh ${
+                    className={`h-100vh ${
                         is_fetching ? '' : 'display-none'
                     }`}
                 ></div>

@@ -70,18 +70,20 @@ function FashionFaceItemFoot({
                 <span>{name}</span>
             </div>
 
-            <div className="display-flex align-items-center flex-wrap font-10px">
+            <div className="FashionFaceItemFoot_tag display-flex align-items-center font-10px overflow-hidden">
                 {shop_discount ? (
-                    <FsShopDiscountLabel discount={shop_discount} />
+                    <FsShopDiscountLabel
+                        discount={shop_discount}
+                        class_main="text-nowrap"
+                    />
                 ) : null}
 
                 {shop_deals.map((deal_label, ix) => (
-                    <div
+                    <FsShopDealLabel
                         key={ix}
-                        className="FashionFaceItemFoot_tag_item padding-1px"
-                    >
-                        <FsShopDealLabel label={deal_label} />
-                    </div>
+                        label={deal_label}
+                        class_main="margin-left-2px fashion-value-padding line-12px color-fashion font-10px text-nowrap"
+                    />
                 ))}
             </div>
 

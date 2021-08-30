@@ -1,0 +1,71 @@
+// ---------
+$side-width: 4px;
+
+// ---------
+
+.FsCSVoucherItem_card {
+    border-top: 1px solid var(--md-bg-blur);
+    border-right: 1px solid var(--md-bg-blur);
+    border-bottom: 1px solid var(--md-bg-blur);
+}
+.FsCSVoucherItem_card_side_height {
+    border-right: 1px solid var(--md-bg-ccc);
+}
+// .
+.FsCSVoucherItem_card_side {
+    width: 10px;
+
+    background-size: 10px 10px;
+    background-repeat: repeat-y;
+}
+.FsCSVoucherItem_card_side-ccc {
+    background-image: radial-gradient(
+        circle,
+        var(--md-bg-ccc),
+        var(--md-bg-ccc) 25%,
+        var(--md-bg-ccc) 25%,
+        transparent,
+        transparent
+    );
+}
+.FsCSVoucherItem_card_side-primary {
+    background-image: radial-gradient(
+        circle,
+        var(--md-bg-primary),
+        var(--md-bg-primary) 25%,
+        transparent,
+        transparent
+    );
+}
+// .
+.FsCSVoucherItem_card_right {
+    .FashionCardDiscount_row {
+        justify-content: space-between;
+    }
+}
+
+// .
+.FsCSVoucherItem_best_side {
+    width: $side-width;
+
+    &::before {
+        content: '';
+
+        position: absolute;
+        left: 0;
+        top: 100%;
+
+        border-width: $side-width 0 0 $side-width;
+        border-style: solid;
+        border-color: var(--green) transparent transparent transparent;
+
+        filter: brightness(60%);
+    }
+}
+
+// .
+.FsCSVoucherItem_cancel {
+    width: 1rem;
+    height: 1rem;
+    border-bottom-left-radius: 10px;
+}

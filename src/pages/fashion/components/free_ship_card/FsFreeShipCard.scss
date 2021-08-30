@@ -1,0 +1,35 @@
+// --------
+$vc-side-width: 10;
+
+// -------- LEFT
+
+// .
+.FsFreeShipCard_voucher_side {
+    width: #{$vc-side-width}px;
+    background-image: radial-gradient(
+        circle,
+        var(--md-bg-primary),
+        var(--md-bg-primary) 50%,
+        transparent,
+        transparent
+    );
+    background-repeat: repeat-y;
+    background-size: #{$vc-side-width}px #{$vc-side-width}px;
+}
+
+// -------- CENTER
+
+// .
+.FsFreeShipCard_payment {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    line-height: 1.25rem;
+    max-height: 2.65rem;
+}
+
+// .
+.FsFreeShipCard_transporter {
+    border: 1px solid currentColor;
+}

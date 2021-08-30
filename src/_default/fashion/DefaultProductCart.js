@@ -3,8 +3,16 @@ import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
+import { default_product_obj } from './DefaultProductItem';
+import { default_shop_obj } from './DefaultShop';
 //
 import { getProductVidPicArr, product_name_arr } from './FashionDefault';
+
+/*
+    cart_model: id, shop_id => id, cart_id, item_id, checked, model_id, type_deal, total_add_cart
+
+    type_deal in [combo, gift, hot_deal, null]
+*/
 
 //
 const default_product_cart_buy_obj = () => ({
@@ -37,24 +45,19 @@ const default_product_cart_buy_obj = () => ({
 });
 
 const default_product_cart_buy_arr = () =>
-    getDefaultArr(default_product_cart_buy_obj, 1, 6);
+    getDefaultArr(default_product_obj(), 10, 15);
 
-// 
+//
 export const default_fashion_cart_buy_obj = () => ({
     id: getRandomId(),
-    products: default_product_cart_buy_arr(),
+    shop_info: default_shop_obj(),
+    item_info_arr: default_product_cart_buy_arr(),
     count_product: 1,
     count_checked_product: 2,
-    shop: {
-        id: 1,
-        picture: getRandomVidPic(),
-        name: 'Shop 6',
-        address: 'Product address 5',
-        info: 'Product info 5',
-    },
     shop_model: 6,
     profile_model: 1,
 });
 
-export const default_fashion_cart_buy_arr = () =>
-    getDefaultArr(default_fashion_cart_buy_obj, 1, 4);
+// export const default_fashion_cart_buy_arr = () =>
+//     getDefaultArr(default_fashion_cart_buy_obj, 1, 4);
+export const default_fashion_cart_buy_arr = () => [];

@@ -24,7 +24,7 @@ function FsItemIfRSDDetail({
     return (
         <div className="FsItemIfRSDDetail pos-rel">
             <div className="FsItemIfRSDDetail_contain pos-rel bg-primary overflow-y-auto">
-                <div className="margin-bottom-1rem">
+                <div className="margin-bottom-16px">
                     <div>
                         <span>Mã giảm giá của Shop</span>
                     </div>
@@ -41,7 +41,7 @@ function FsItemIfRSDDetail({
                 <div>
                     <ul className="list-none">
                         {shop_discount_arr.map((shop_discount_obj, ix) => (
-                            <li key={ix} className="margin-bottom-1rem">
+                            <li key={ix} className="margin-bottom-16px">
                                 <FsItemIfRSDDetailItem
                                     ix={ix}
                                     shop_discount_obj={shop_discount_obj}
