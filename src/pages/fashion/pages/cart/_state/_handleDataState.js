@@ -72,7 +72,7 @@ export function handleDataState({ data, setStateObj = () => {} }) {
                         default_item_info_obj(),
                     ],
                     gift_items: [default_item_info_obj()],
-                    more_spend: 0,
+                    min_spend: 200000,
                     gift_count: 1,
                     gift_chosen_count: 1,
                 },
@@ -85,7 +85,7 @@ export function handleDataState({ data, setStateObj = () => {} }) {
                         default_item_info_obj(),
                     ],
                     min_count: 3,
-                    discount: '5K',
+                    discount: 5000,
                 },
                 {
                     type: '',

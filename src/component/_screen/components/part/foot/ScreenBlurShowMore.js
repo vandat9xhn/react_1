@@ -24,7 +24,7 @@ function ScreenBlurShowMore({
     title,
     is_show_more,
     is_fetching,
-    //
+    
     handleShowMore,
     FetchingComponent,
 }) {

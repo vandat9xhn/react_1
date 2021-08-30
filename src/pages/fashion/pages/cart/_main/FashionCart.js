@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 //
@@ -6,13 +6,13 @@ import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
+import { waitingToDoLast } from '../../../../../_some_function/waitingToDoLast';
+//
 import {
     handle_API_FashionCart_C,
     handle_API_FashionCart_D,
     handle_API_FashionCart_L,
 } from '../../../../../_handle_api/fashion/FashionCartHandleAPI';
-//
-import { useWaitingLastAction } from '../../../../../_hooks/useWaitingLastAction';
 //
 import { openScreenConfirm } from '../../../../../component/_screen/type/confirm/ScreenConfirm';
 import { openScreenNotice } from '../../../../../component/_screen_once/notice/ScreenNotice';
@@ -26,7 +26,6 @@ import { handleCheckedAll } from '../_state/handleCheckedAll';
 import { toggleSearchSame } from '../_state/toggleSearchSame';
 import { toggleOpenType } from '../_state/toggleOpenType';
 import { handleDeleteItemChecked } from '../_state/handleDeleteItemChecked';
-import { getFsCartTotalOldPrice, getFsCartTotalPrice, getFsCartTotalVoucher } from '../../../../../_some_function/fashion/getFsCartTotalPrice';
 import { handleSaveApplyVoucher } from '../_state/handleSaveApplyVoucher';
 import { handleCancelVoucher } from '../_state/handleCancelVoucher';
 import { handleOpenVoucher } from '../_state/handleOpenVoucher';
@@ -86,10 +85,7 @@ function FashionCart(props) {
     } = state_obj;
 
     //
-    const { handleWaitingLastAction } = useWaitingLastAction({
-        time_waiting: 300,
-        callback: handle_API_Count,
-    });
+    const ref_interval_set_item = useRef(null);
 
     //
     useEffect(() => {
@@ -109,8 +105,10 @@ function FashionCart(props) {
 
     //
     async function handle_API_Count(data_count = {}) {
-        await handle_API_FashionCart_C({ ...data_count });
-        // console.log(data_count);
+        if (data_count.total_add_cart) {
+            await handle_API_FashionCart_C({ ...data_count });
+            // console.log(data_count);
+        }
     }
 
     //
@@ -141,7 +139,14 @@ function FashionCart(props) {
         handleSetStateItem({
             ...params,
             setStateObj: setStateObj,
-            handle_API: handleWaitingLastAction,
+            handle_API: (data) => {
+                waitingToDoLast({
+                    data: data,
+                    ref_interval: ref_interval_set_item,
+                    time: 300,
+                    callback: handle_API_Count,
+                });
+            },
         });
     }
 
@@ -338,7 +343,10 @@ function FashionCart(props) {
                 cart_shop_arr.length > 0 ? (
                     <div className="fashion-width padding-y-20px">
                         <div className="margin-bottom-16px">
-                            <CartHead />
+                            <CartHead
+                                checked={item_count == item_checked_count}
+                                handleCheckedALl={onCheckedAll}
+                            />
                         </div>
 
                         <div>

@@ -19,7 +19,7 @@ function FsFreeShipCard({
     title_center_2,
     title_center_3,
 
-    out_date,
+    end_time,
     used_count,
     can_use,
     is_active,
@@ -29,17 +29,17 @@ function FsFreeShipCard({
     //
     return (
         <div className="FsFreeShipCard">
-            <div className="FsFreeShipCard_row display-flex">
-                <div className="display-flex-center bg-ccc pos-rel">
+            <div className="FsFreeShipCard_row display-flex align-items-center">
+                <div className="FsFreeShipCard_left display-flex-center pos-rel">
                     {left_elm}
 
-                    <div className="FsFreeShipCard_voucher_side pos-abs left-0 width-0 trans-x--50per"></div>
+                    <div className="FsFreeShipCard_voucher_side pos-abs left-0 top-0 trans-x--50per  h-100per"></div>
                 </div>
 
-                <div className="FsFreeShipCard_center display-flex flex-col">
+                <div className="FsFreeShipCard_center padding-x-8px flex-grow-1 display-flex flex-col">
                     <div className="FsFreeShipCard_payment overflow-hidden">
                         {title_center_1 ? (
-                            <div className="inline-flex fashion-value-padding bg-fashion-red text-white font-12px">
+                            <div className="inline-flex margin-right-5px fashion-value-padding bg-fashion-red text-white font-12px line-16px">
                                 {title_center_1}
                             </div>
                         ) : null}
@@ -50,26 +50,28 @@ function FsFreeShipCard({
                     </div>
 
                     {title_center_3 ? (
-                        <div className="FsFreeShipCard_transporter color-fashion font-12px">
-                            {title_center_3}
+                        <div className="display-flex margin-top-8px">
+                            <div className="FsFreeShipCard_transporter color-fashion font-12px line-16px">
+                                {title_center_3}
+                            </div>
                         </div>
                     ) : null}
 
-                    <div className="FsFreeShipCard_date font-12px">
+                    <div className="FsFreeShipCard_date margin-top-8px font-12px">
                         {used_count ? (
-                            <span className="color-fashion">
+                            <span className="margin-right-5px color-fashion">
                                 Đã sử dụng {used_count}
                             </span>
                         ) : null}
 
                         <span className="text-secondary">
-                            HSD: {formatLocalDateString(out_date)}
+                            HSD: {formatLocalDateString(end_time)}
                         </span>
                     </div>
                 </div>
 
-                <div className="display-flex flex-col justify-content-center">
-                    <div className="flex-grow_1 display-flex-center">
+                <div className="FsFreeShipCard_right display-flex flex-col justify-content-center padding-8px">
+                    <div className="flex-grow-1 display-flex-center">
                         {can_use ? (
                             <div
                                 className="cursor-pointer"

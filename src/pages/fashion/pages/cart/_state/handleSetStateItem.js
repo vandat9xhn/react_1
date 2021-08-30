@@ -29,16 +29,13 @@ export function handleSetStateItem({
         };
     });
 
-    const {
-        id: model_id,
-        total_add_cart,
-        checked,
-    } = new_item_info.models[new_item_info.model_ix];
+    const { id: model_id, total_add_cart } =
+        new_item_info.models[new_item_info.model_ix];
 
     handle_API({
         product_model: new_item_info.id,
         model_id: model_id,
         total_add_cart: total_add_cart,
-        checked: checked,
+        checked: new_item_info.checked,
     });
 }

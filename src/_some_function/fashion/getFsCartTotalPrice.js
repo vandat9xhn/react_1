@@ -1,18 +1,38 @@
 //
+export function getMoreCountCombo(group_obj) {
+    return (
+        group_obj.min_count -
+        group_obj.item_info_arr.reduce(
+            (a, item_info) => a + item_info.checked,
+            0
+        )
+    );
+}
+
+//
+export function getFsCartGroupTotalPrice(item_info_arr, is_new_price = true) {
+    return item_info_arr.reduce(
+        (a, item_info) =>
+            a +
+            item_info.checked *
+                item_info.models[item_info.model_ix][
+                    is_new_price ? 'new_price' : 'old_price'
+                ] *
+                item_info.models[item_info.model_ix].total_add_cart,
+        0
+    );
+}
+
 export function getFsCartShopTotalPrice(group_arr, is_new_price = true) {
     return group_arr.reduce(
         (a1, group_obj) =>
-            a1 +
-            group_obj.item_info_arr.reduce(
-                (a2, item_info) =>
-                    a2 +
-                    item_info.checked *
-                        item_info.models[item_info.model_ix][
-                            is_new_price ? 'new_price' : 'old_price'
-                        ] *
-                        item_info.models[item_info.model_ix].total_add_cart,
-                0
-            ),
+            a1 -
+            (is_new_price &&
+            group_obj.type == 'combo' &&
+            getMoreCountCombo(group_obj) <= 0
+                ? group_obj.discount
+                : 0) +
+            getFsCartGroupTotalPrice(group_obj.item_info_arr, is_new_price),
         0
     );
 }

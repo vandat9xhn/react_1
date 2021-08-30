@@ -14,12 +14,7 @@ FsCartGroupHead.propTypes = {
 };
 
 //
-function FsCartGroupHead({
-    label_deal,
-    title_main,
-    title_more,
-    link_to,
-}) {
+function FsCartGroupHead({ label_deal, title_main, title_more, link_to }) {
     //
     return (
         <div className="FsCartGroupHead padding-8px bg-fashion-heart">
@@ -31,7 +26,9 @@ function FsCartGroupHead({
                     />
                 </div>
 
-                <div className="margin-right-10px">{title_main}</div>
+                <div className="margin-right-10px text-secondary">
+                    {title_main}
+                </div>
 
                 <div>
                     <FashionSeeMoreOnTitle

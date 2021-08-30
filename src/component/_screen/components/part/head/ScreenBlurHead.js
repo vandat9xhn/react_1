@@ -22,7 +22,7 @@ function ScreenBlurHead({ title, closeScreenBlur }) {
     return (
         <div className="ScreenBlurHead padding-8px text-primary">
             <div className="ScreenBlurHead_row display-flex space-between">
-                <h2 className="ScreenBlurHead_title margin-0">
+                <h2 className="ScreenBlurHead_title label-field">
                     {title}
                 </h2>
 

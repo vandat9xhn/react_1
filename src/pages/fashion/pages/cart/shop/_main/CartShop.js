@@ -10,7 +10,10 @@ import FsCSGCombo from '../group/combo/_main/FsCSGCombo';
 import FsCSGroupItem from '../group/item/FsCSGroupItem';
 //
 import './CartShop.scss';
-import { getFsCartShopTotalPrice } from '../../../../../../_some_function/fashion/getFsCartTotalPrice';
+import {
+    getFsCartGroupTotalPrice,
+    getFsCartShopTotalPrice,
+} from '../../../../../../_some_function/fashion/getFsCartTotalPrice';
 
 //
 CartShop.propTypes = {};
@@ -125,7 +128,12 @@ function CartShop({
                             <FsCSGGift
                                 shop_ix={shop_ix}
                                 group_ix={group_ix}
-                                more_spend={group_obj.more_spend}
+                                more_spend={
+                                    group_obj.min_spend -
+                                    getFsCartGroupTotalPrice(
+                                        group_obj.item_info_arr
+                                    )
+                                }
                                 gift_count={group_obj.gift_count}
                                 gift_chosen_count={group_obj.gift_chosen_count}
                                 gift_id={group_obj.gift_id}
@@ -137,7 +145,13 @@ function CartShop({
                             <FsCSGCombo
                                 shop_ix={shop_ix}
                                 group_ix={group_ix}
-                                min_count={group_obj.min_count}
+                                more_count={
+                                    group_obj.min_count -
+                                    group_obj.item_info_arr.reduce(
+                                        (a, item_info) => a + item_info.checked,
+                                        0
+                                    )
+                                }
                                 discount={group_obj.discount}
                                 combo_id={group_obj.combo_id}
                                 item_info_arr={group_obj.item_info_arr}

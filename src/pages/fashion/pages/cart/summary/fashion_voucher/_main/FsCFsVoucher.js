@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+//
+import { context_api } from '../../../../../../../_context/ContextAPI';
+//
+import { openScreenFsFreeShip } from '../../../../../../../component/_screen/type/fs_free_ship/ScreenFsFreeShip';
 //
 import './FsCFsVoucher.scss';
 
@@ -9,7 +13,21 @@ FsCFsVoucher.propTypes = {};
 //
 function FsCFsVoucher({ voucher_name, handleChooseVoucher }) {
     //
-    function openFashionVoucher() {}
+    const { openScreenFloor } = useContext(context_api);
+
+    //
+    function openFashionVoucher() {
+        openScreenFsFreeShip({
+            openScreenFloor: openScreenFloor,
+            free_ship_id: -1,
+            handleChooseFreeShip: handleChooseFreeShip,
+        });
+    }
+
+    //
+    function handleChooseFreeShip(free_ship_obj) {
+        console.log(free_ship_obj);
+    }
 
     //
     return (

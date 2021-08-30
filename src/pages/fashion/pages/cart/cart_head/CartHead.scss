@@ -1,3 +1,28 @@
-.CartHead {
+.CartHead_truck {
     border: 1px solid rgba(224, 168, 0, 0.4);
+}
+
+// .
+.CartHead_checked {
+    min-width: 58px;
+}
+// .
+.CartHead_product {
+    width: 46.2%;
+}
+// .
+.CartHead_price {
+    width: 15.8%;
+}
+// .
+.CartHead_count {
+    width: 15.4%;
+}
+// .
+.CartHead_total {
+    width: 10.4%;
+}
+// .
+.CartHead_action {
+    width: 12.7%;
 }

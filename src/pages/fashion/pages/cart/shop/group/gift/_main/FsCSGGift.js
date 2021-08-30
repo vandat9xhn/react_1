@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import FsCartGroupHead from '../../../../../../components/cart_group_head/FsCartGroupHead';
 import FsCartItemGift from '../../../../../../components/cart_item_gift/FsCartItemGift';
 import FsCSGroupItem from '../../item/FsCSGroupItem';
+import { UnitNumber } from '../../../../../../../../_some_function/UnitNumber';
 
 //
 FsCSGGift.propTypes = {};
@@ -44,7 +45,9 @@ function FsCSGGift({
                             ? gift_chosen_count == 0
                                 ? `Vui lòng chọn ${gift_count} quà tặng`
                                 : `Bạn đã chọn ${gift_chosen_count} quà tặng`
-                            : `Mua nhiều hơn ₫${more_spend} và nhận được ${gift_count} quà tặng`
+                            : `Mua nhiều hơn ₫${UnitNumber(
+                                  more_spend
+                              )} và nhận được ${gift_count} quà tặng`
                     }
                     title_more={
                         more_spend <= 0 && gift_chosen_count == 0
@@ -89,22 +92,30 @@ function FsCSGGift({
                     ))}
                 </div>
 
-                <div className="FsCSGGift_gift">
-                    {gift_items.map((item_info, ix) => (
-                        <div key={item_info.id}>
-                            <FsCartItemGift
-                                item_info={item_info}
-                                open_search={item_info.id == open_search_id}
-                                handleDelete={handleDelete}
-                                toggleSearchSame={toggleSearchSame}
-                            />
+                {more_spend <= 0 ? (
+                    <div className="FsCSGGift_gift">
+                        {gift_items.map((item_info, ix) => (
+                            <div key={item_info.id}>
+                                <FsCartItemGift
+                                    cart_ix_obj={{
+                                        shop_ix: shop_ix,
+                                        group_ix: group_ix,
+                                        item_ix: ix,
+                                    }}
+                                    //
+                                    item_info={item_info}
+                                    open_search={item_info.id == open_search_id}
+                                    handleDelete={handleDelete}
+                                    toggleSearchSame={toggleSearchSame}
+                                />
 
-                            {ix != gift_items.length - 1 ? (
-                                <div className="fs-item-border-bottom"></div>
-                            ) : null}
-                        </div>
-                    ))}
-                </div>
+                                {ix != gift_items.length - 1 ? (
+                                    <div className="fs-item-border-bottom"></div>
+                                ) : null}
+                            </div>
+                        ))}
+                    </div>
+                ) : null}
             </div>
         </div>
     );

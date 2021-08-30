@@ -8,12 +8,25 @@
     margin: 0 auto;
 }
 
+.fashion-head{
+    min-width: 1200px;
+}
+
 .fashion-head-padding{
     padding: 16px;
 }
 
 .fashion-value-padding{
     padding: 1px 5px;
+}
+
+.fs-bg-voucher {
+    background: linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 0.1875rem,
+        #bbb 0
+    );
 }
 
 .fs-item-border-bottom{

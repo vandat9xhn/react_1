@@ -23,7 +23,7 @@ const price_obj = () => ({
 
 const price_arr = () => getDefaultArr(price_obj, 3, 6);
 
-// 
+//
 const default_transporter_obj = () => ({
     id: getRandomId(),
     info: 'a b c d e f as sd\nasd asd asd asd a',
@@ -47,13 +47,17 @@ const default_voucher_obj = () => ({
     id: getRandomId(),
     img: getRandomVidPic(),
     name: 'Free 10k',
-    cost: getRandomNumber(10000, 50000),
-    expires: '2 days',
-    min_amount: 50000,
-    total_num: 100,
-    count_user: 15,
     info: 'a b c dsa as a\nas da as asd asd saa sd',
+    cost: getRandomNumber(10000, 50000),
+
+    transporter_count: 8,
+    payments: 'Tất cả các hình thức thanh toán',
+
+    total_num: 100,
+    used_count: 15,
+    min_spend: 50000,
+    end_time: new Date().getTime(),
 });
 
 export const default_voucher_arr = () =>
-    getDefaultArr(default_voucher_obj, 5, 8);
+    getDefaultArr(default_voucher_obj, 2, 6);

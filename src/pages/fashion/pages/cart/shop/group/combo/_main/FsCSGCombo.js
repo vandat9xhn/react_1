@@ -12,7 +12,7 @@ function FsCSGCombo({
     shop_ix,
     group_ix,
 
-    min_count,
+    more_count,
     discount,
     combo_id,
     item_info_arr,
@@ -37,9 +37,9 @@ function FsCSGCombo({
                 <FsCartGroupHead
                     label_deal="Combo khuyến mãi"
                     title_main={
-                        min_count <= 0
-                            ? `chọn 3 sản phẩm (tiết kiệm được ₫${discount})`
-                            : `Mua thêm ${min_count} sản phẩm (sẽ được giảm ₫${discount})`
+                        more_count <= 0
+                            ? `chọn 3 sản phẩm (tiết kiệm được ${discount})`
+                            : `Mua thêm ${more_count} sản phẩm (sẽ được giảm ${discount})`
                     }
                     title_more="Thêm"
                     link_to={`/fashion/combo?id=${combo_id}`}

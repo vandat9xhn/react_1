@@ -1,7 +1,21 @@
 // --------
 $vc-side-width: 10;
+$card-height: 120px;
+
+// ----------
+
+.FsFreeShipCard{
+    border-top: 1px solid var(--md-bg-blur);
+    border-right: 1px solid var(--md-bg-blur);
+    border-bottom: 1px solid var(--md-bg-blur);
+}
 
 // -------- LEFT
+
+.FsFreeShipCard_left {
+    width: $card-height;
+    height: $card-height;
+}
 
 // .
 .FsFreeShipCard_voucher_side {
@@ -32,4 +46,10 @@ $vc-side-width: 10;
 // .
 .FsFreeShipCard_transporter {
     border: 1px solid currentColor;
+}
+
+// -------- RIGHT
+
+.FsFreeShipCard_right {
+    height: $card-height;
 }

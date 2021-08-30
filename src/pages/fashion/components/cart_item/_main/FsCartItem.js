@@ -11,6 +11,8 @@ import FsCIType from '../type/_main/FsCIType';
 import FsCIDelSearch from '../del_search/_main/FsCIDelSearch';
 //
 import './FsCartItem.scss';
+import { Link } from 'react-router-dom';
+import { formatNum } from '../../../../../_some_function/FormatNum';
 
 //
 FsCartItem.propTypes = {};
@@ -87,9 +89,9 @@ function FsCartItem({
                     ) : null}
                 </div>
 
-                <div className="FsCartItem_product">
+                <Link to={`/fashion:${id}`} className="FsCartItem_product">
                     <FsCIImgName img={vid_pics[0]} name={name} />
-                </div>
+                </Link>
 
                 <div
                     className="FsCartItem_type"
@@ -114,17 +116,21 @@ function FsCartItem({
                     ) : null}
                 </div>
 
-                <div className="FsCartItem_price">
+                <div className="FsCartItem_price font-14px">
                     {old_price ? (
-                        <del className="margin-right-5px">{old_price}</del>
+                        <del className="margin-right-5px text-del">
+                            ₫{formatNum(old_price)}
+                        </del>
                     ) : (
                         ''
                     )}
 
-                    <span>{new_price}</span>
+                    <span className="text-secondary">
+                        ₫{formatNum(new_price)}
+                    </span>
                 </div>
 
-                <div className="FsCartItem_count">
+                <div className="FsCartItem_count font-16px">
                     <CountDownUpDiv
                         // disabled={disabled}
                         count={total_add_cart}
@@ -138,8 +144,8 @@ function FsCartItem({
                     />
                 </div>
 
-                <div className="FsCartItem_total">
-                    {new_price * total_add_cart}
+                <div className="FsCartItem_total font-14px color-fashion">
+                    ₫{formatNum(new_price * total_add_cart)}
                 </div>
 
                 <div
