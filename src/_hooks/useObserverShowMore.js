@@ -57,6 +57,7 @@ export function useObserverShowMore({
                             observe.unobserve(entry.target);
                         } else if (!ref_fetching.current) {
                             getData_API();
+                            console.log('get_more');
                         }
                     }
                 });

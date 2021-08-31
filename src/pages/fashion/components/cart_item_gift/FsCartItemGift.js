@@ -15,7 +15,7 @@ function FsCartItemGift({
     item_info,
     open_search,
     toggleSearchSame,
-    handleDelete,
+    handleDeleteGift,
 }) {
     //
     const { id, name, vid_pics, models } = item_info;
@@ -26,8 +26,8 @@ function FsCartItemGift({
     }
 
     //
-    function onDelete() {
-        handleDelete({
+    function onDeleteGift() {
+        handleDeleteGift({
             cart_ix_obj: cart_ix_obj,
         });
     }
@@ -51,7 +51,7 @@ function FsCartItemGift({
                         product_id={id}
                         open_search={open_search}
                         toggleSearchSame={onSearchSame}
-                        handleDelete={onDelete}
+                        handleDelete={onDeleteGift}
                     />
                 </div>
             </div>

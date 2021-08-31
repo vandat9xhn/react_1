@@ -1,3 +1,8 @@
+.FsCartSummary_head-mb{
+    box-shadow: -1px 0 10px 2px var(--shadow-2);
+    transition: all 250ms ease-in-out;
+}
+
 .FsCartSummary_voucher,
 .FsCartSummary_coin {
     border-bottom: 1px dashed rgba(0, 0, 0, 0.09);

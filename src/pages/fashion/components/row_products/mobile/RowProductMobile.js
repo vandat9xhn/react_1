@@ -10,13 +10,17 @@ RowProductMobile.propTypes = {};
 //
 function RowProductMobile({
     products,
+    ref_scroll_elm,
+    ref_fake_elm_end,
+
+    use_more,
     link_to_more,
     title_more,
     class_color_more,
 }) {
     //
     return (
-        <div className="max-w-100per overflow-x-auto snap-x-mandatory">
+        <div ref={ref_scroll_elm} className="max-w-100per overflow-x-auto snap-x-mandatory">
             <ul className="RowProduct_row list-none display-flex">
                 {products.map((item, ix) => (
                     <li
@@ -26,7 +30,9 @@ function RowProductMobile({
                         <FashionFaceItem
                             id={item.id}
                             img={item.img}
-                            is_like={item.is_like}is_plus={item.is_plus}is_mall={item.is_mall}
+                            is_like={item.is_like}
+                            is_plus={item.is_plus}
+                            is_mall={item.is_mall}
                             flash_img={item.flash_img}
                             discount={item.discount}
                             name={item.name}
@@ -47,13 +53,17 @@ function RowProductMobile({
                     </li>
                 ))}
 
-                <li className="row-product-item snap-align-end">
-                    <FashionSeeMoreLastRow
-                        link_to={link_to_more}
-                        title={title_more}
-                        class_color={class_color_more}
-                    />
-                </li>
+                <li ref={ref_fake_elm_end} className="padding-1px"></li>
+
+                {use_more ? (
+                    <li className="row-product-item snap-align-end">
+                        <FashionSeeMoreLastRow
+                            link_to={link_to_more}
+                            title={title_more}
+                            class_color={class_color_more}
+                        />
+                    </li>
+                ) : null}
             </ul>
         </div>
     );

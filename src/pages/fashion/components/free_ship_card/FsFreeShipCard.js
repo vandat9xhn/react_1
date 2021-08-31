@@ -30,7 +30,7 @@ function FsFreeShipCard({
     return (
         <div className="FsFreeShipCard">
             <div className="FsFreeShipCard_row display-flex align-items-center">
-                <div className="FsFreeShipCard_left display-flex-center pos-rel">
+                <div className="FsFreeShipCard_left flex-shrink-0 pos-rel">
                     {left_elm}
 
                     <div className="FsFreeShipCard_voucher_side pos-abs left-0 top-0 trans-x--50per  h-100per"></div>
@@ -39,7 +39,7 @@ function FsFreeShipCard({
                 <div className="FsFreeShipCard_center padding-x-8px flex-grow-1 display-flex flex-col">
                     <div className="FsFreeShipCard_payment overflow-hidden">
                         {title_center_1 ? (
-                            <div className="inline-flex margin-right-5px fashion-value-padding bg-fashion-red text-white font-12px line-16px">
+                            <div className="inline-flex margin-right-5px fashion-value-padding bg-fashion-red text-white font-12px line-16px text-nowrap">
                                 {title_center_1}
                             </div>
                         ) : null}
@@ -51,7 +51,7 @@ function FsFreeShipCard({
 
                     {title_center_3 ? (
                         <div className="display-flex margin-top-8px">
-                            <div className="FsFreeShipCard_transporter color-fashion font-12px line-16px">
+                            <div className="FsFreeShipCard_transporter color-fashion font-12px line-16px text-nowrap">
                                 {title_center_3}
                             </div>
                         </div>

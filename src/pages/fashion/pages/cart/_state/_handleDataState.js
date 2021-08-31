@@ -54,7 +54,7 @@ export function handleDataState({ data, setStateObj = () => {} }) {
     //
     const cart_shop_arr = [
         {
-            shop_info: { ...default_shop_info_obj(), item_count: 9 },
+            shop_info: { ...default_shop_info_obj(), item_count: 12 },
             group_arr: [
                 {
                     type: 'hot_deal',
@@ -75,6 +75,22 @@ export function handleDataState({ data, setStateObj = () => {} }) {
                     min_spend: 200000,
                     gift_count: 1,
                     gift_chosen_count: 1,
+                },
+                {
+                    type: 'gift',
+                    id: getRandomId(),
+                    item_info_arr: [
+                        default_item_info_obj(),
+                        default_item_info_obj(),
+                        default_item_info_obj(),
+                    ],
+                    gift_items: [
+                        default_item_info_obj(),
+                        default_item_info_obj(),
+                    ],
+                    min_spend: 300000,
+                    gift_count: 3,
+                    gift_chosen_count: 2,
                 },
                 {
                     type: 'combo',
@@ -124,7 +140,7 @@ export function handleDataState({ data, setStateObj = () => {} }) {
 
             coin: 1000,
             checked_coin: false,
-            item_count: 11,
+            item_count: 14,
             item_checked_count: 0,
             item_gift_count: 0,
             // total_price: 0,

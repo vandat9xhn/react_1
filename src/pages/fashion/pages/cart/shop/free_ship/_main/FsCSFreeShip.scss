@@ -1,10 +1,11 @@
-.FsCSFreeShip{
+.FsCSFreeShip {
     padding: 15px 8px 0;
 }
 
-.FsCSFreeShip_right{
-    &:hover{
-        .FsCSFreeShip_list{
+.FsCSFreeShip_right,
+.FsCSFreeShip-mb {
+    &:hover {
+        .FsCSFreeShip_list {
             display: block;
         }
     }

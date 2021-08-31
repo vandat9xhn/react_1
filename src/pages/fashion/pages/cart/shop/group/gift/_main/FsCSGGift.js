@@ -33,6 +33,7 @@ function FsCSGGift({
 
     toggleSearchSame,
     handleDelete,
+    handleDeleteGift,
 }) {
     //
     return (
@@ -105,7 +106,7 @@ function FsCSGGift({
                                     //
                                     item_info={item_info}
                                     open_search={item_info.id == open_search_id}
-                                    handleDelete={handleDelete}
+                                    handleDeleteGift={handleDeleteGift}
                                     toggleSearchSame={toggleSearchSame}
                                 />
 

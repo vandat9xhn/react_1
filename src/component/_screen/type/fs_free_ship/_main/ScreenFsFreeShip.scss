@@ -1,0 +1,38 @@
+.ScreenFsFreeShip {
+    .ScreenBlurHead {
+        border-bottom: none;
+    }
+}
+
+.ScreenFsFreeShip_btn {
+    width: 125px;
+}
+
+//
+@media (max-width: 500px) {
+    .ScreenFsFreeShip {
+        padding: 0;
+    }
+}
+
+//
+@media (max-width: 400px) {
+    .ScreenFsFreeShip{
+        .FsFreeShipCard_left {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+        }
+        .FsFreeShipCard_date {
+            font-size: 10px;
+        }
+        .FsFreeShipCard_right {
+            display: none;
+        }
+    }
+
+    .ScreenFsFreeShip_input {
+        padding: 0;
+        background-color: transparent;
+    }
+}

@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMouseDragScrollToX } from '../../../../../_hooks/useMouseDragScrollToX';
 //
 import NextPrevDiv from '../../../../../component/some_div/next_prev_div/NextPrevDiv';
 import FashionFaceItem from '../../face_item/_main/FashionFaceItem';
+import FashionSeeMoreLastRow from '../../see_more/last_row/FashionSeeMoreLastRow';
 //
 import './RowProductPc.scss';
 
@@ -12,10 +13,17 @@ import './RowProductPc.scss';
 RowProductPc.propTypes = {};
 
 //
-function RowProductPc({ products }) {
-    //
-    const ref_row_product = useRef(null);
+function RowProductPc({
+    products,
+    has_fetched,
+    ref_scroll_elm,
+    ref_fake_elm_end,
 
+    use_more,
+    link_to_more,
+    title_more,
+    class_color_more,
+}) {
     //
     const {
         handleMouseDown,
@@ -30,7 +38,7 @@ function RowProductPc({ products }) {
         handleNext,
         handlePrev,
         hasNextPrev,
-    } = useMouseDragScrollToX(ref_row_product);
+    } = useMouseDragScrollToX(ref_scroll_elm);
 
     //
     useEffect(() => {
@@ -41,7 +49,7 @@ function RowProductPc({ products }) {
     return (
         <div className="pos-rel">
             <div
-                ref={ref_row_product}
+                ref={ref_scroll_elm}
                 className="RowProductPc scroll-height-0 scroll-width-0 overflow-x-auto max-w-100per"
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
@@ -63,7 +71,9 @@ function RowProductPc({ products }) {
                             <FashionFaceItem
                                 id={item.id}
                                 img={item.img}
-                                is_like={item.is_like}is_plus={item.is_plus}is_mall={item.is_mall}
+                                is_like={item.is_like}
+                                is_plus={item.is_plus}
+                                is_mall={item.is_mall}
                                 flash_img={item.flash_img}
                                 discount={item.discount}
                                 name={item.name}
@@ -83,16 +93,30 @@ function RowProductPc({ products }) {
                             />
                         </li>
                     ))}
+
+                    <li ref={ref_fake_elm_end} className="padding-1px"></li>
+
+                    {use_more ? (
+                        <li className="row-product-item snap-align-end">
+                            <FashionSeeMoreLastRow
+                                link_to={link_to_more}
+                                title={title_more}
+                                class_color={class_color_more}
+                            />
+                        </li>
+                    ) : null}
                 </ul>
             </div>
 
-            <NextPrevDiv
-                is_btn_circle={true}
-                is_has_next={is_has_next}
-                is_has_prev={is_has_prev}
-                handleNext={handleNext}
-                handlePrev={handlePrev}
-            />
+            {has_fetched ? (
+                <NextPrevDiv
+                    is_btn_circle={true}
+                    is_has_next={is_has_next}
+                    is_has_prev={is_has_prev}
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                />
+            ) : null}
         </div>
     );
 }

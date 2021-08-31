@@ -8,7 +8,7 @@ import './CheckBoxCustom.scss';
 //
 CheckBoxCustom.propTypes = {
     checked: PropTypes.bool,
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     handleChangeChecked: PropTypes.func,
 };
 

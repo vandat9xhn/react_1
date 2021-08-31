@@ -1,20 +1,18 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
-import { formatNum } from '../../../../_some_function/FormatNum';
+import { handle_API_FsVoucher_L } from '../../../../../_handle_api/fashion/fashion_voucher';
 //
-import { handle_API_FsVoucher_L } from '../../../../_handle_api/fashion/fashion_voucher';
+import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 //
-import { useDataShowMore } from '../../../../_hooks/useDataShowMore';
+import ScreenBlurHead from '../../../components/part/head/ScreenBlurHead';
+import ScreenBlur from '../../../components/frame/blur/ScreenBlur';
+import ScreenBlurShowMore from '../../../components/part/foot/ScreenBlurShowMore';
 //
-import ScreenBlurHead from '../../components/part/head/ScreenBlurHead';
-import ScreenBlur from '../../components/frame/blur/ScreenBlur';
-import ScreenBlurShowMore from '../../components/part/foot/ScreenBlurShowMore';
-//
-import FsFreeShipCard from '../../../../pages/fashion/components/free_ship_card/FsFreeShipCard';
+import FsInputVoucher from '../../../../../pages/fashion/components/input_voucher/FsInputVoucher';
+import ScreenFsFreeShipItem from '../item/ScreenFsFreeShipItem';
 //
 import './ScreenFsFreeShip.scss';
-import FsInputVoucher from '../../../../pages/fashion/components/input_voucher/FsInputVoucher';
 
 //
 export function openScreenFsFreeShip({
@@ -95,7 +93,7 @@ function ScreenFsFreeShip({ free_ship_id, closeScreen, handleChooseFreeShip }) {
                 </div>
 
                 <div className="ScreenBlur_body_contain padding-x-8px">
-                    <div className="margin-bottom-16px padding-x-8px padding-y-16px bg-screen">
+                    <div className="ScreenFsFreeShip_input screen-input-voucher margin-bottom-16px padding-x-8px padding-y-16px bg-screen">
                         <FsInputVoucher
                             placeholder="Mã React-Django Voucher"
                             handleApplyVoucherCode={handleApplyVoucherCode}
@@ -106,26 +104,21 @@ function ScreenFsFreeShip({ free_ship_id, closeScreen, handleChooseFreeShip }) {
                         <div
                             key={`${free_ship_obj.id}`}
                             className="ScreenFsFreeShip_item margin-bottom-16px"
+                            
                         >
-                            <FsFreeShipCard
-                                left_elm={
-                                    <div className="wh-100 fs-bg-voucher display-flex-center">
-                                        <div className="padding-4px text-align-center text-upper text-white font-16px">
-                                            Miễn phí vận chuyển
-                                        </div>
-                                    </div>
-                                }
-                                title_center_1={`Đơn hàng từ ${formatNum(
-                                    free_ship_obj.min_spend
-                                )}Đ`}
-                                title_center_2={`${free_ship_obj.payments}`}
-                                title_center_3={`${free_ship_obj.transporter_count} Đơn vị vận chuyển`}
+                            <ScreenFsFreeShipItem
+                                active_id={active_id}
                                 //
+                                id={free_ship_obj.id}
+                                payments={free_ship_obj.payments}
+                                transporter_count={
+                                    free_ship_obj.transporter_count
+                                }
+                                min_spend={free_ship_obj.min_spend}
                                 end_time={free_ship_obj.end_time}
                                 used_count={free_ship_obj.used_count}
-                                can_use={true}
-                                is_active={free_ship_obj.id == active_id}
-                                handleChoose={onChooseFreeShip}
+                                //
+                                handleChooseFreeShip={onChooseFreeShip}
                             />
                         </div>
                     ))}

@@ -53,7 +53,7 @@ function FsCSVoucherItem({
                                 : ''
                         }`}
                     >
-                        <div className="padding-18px">
+                        <div className="FsCSVoucherItem_card_left padding-18px">
                             <img
                                 className="brs-50"
                                 src={shop_picture}

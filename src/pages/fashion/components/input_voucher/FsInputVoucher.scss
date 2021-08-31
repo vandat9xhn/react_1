@@ -1,6 +1,7 @@
 // .
 .FsInputVoucher_input_item {
-    border: 1px solid var(--md-color-secondary);
+    background-color: var(--md-bg-fb);
+    border: 1px solid var(--md-bg-blur);
 }
 
 .FsInputVoucher_clear {
@@ -10,4 +11,20 @@
 .FsInputVoucher_clear_contain {
     width: 1rem;
     height: 1rem;
+}
+
+//
+@media (max-width: 400px) {
+    .screen-input-voucher {
+        .FsInputVoucher_left {
+            display: none;
+        }
+        .FsInputVoucher_btn {
+            padding: 8px 5px;
+            background: #bbb;
+            border-radius: 5px;
+
+            color: white;
+        }
+    }
 }

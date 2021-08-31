@@ -42,7 +42,9 @@ function FsInputVoucher({ placeholder, handleApplyVoucherCode }) {
     return (
         <div className="FsInputVoucher">
             <div className="FsInputVoucher_row display-flex align-items-center">
-                <div className="margin-right-10px">Mã Voucher</div>
+                <div className="FsInputVoucher_left margin-right-10px">
+                    Mã Voucher
+                </div>
 
                 <div className="FsInputVoucher_input pos-rel flex-grow-1">
                     <input
@@ -68,7 +70,7 @@ function FsInputVoucher({ placeholder, handleApplyVoucherCode }) {
                 </div>
 
                 <button
-                    className={`margin-left-10px padding-5px btn ${
+                    className={`FsInputVoucher_btn margin-left-10px padding-5px btn text-nowrap ${
                         value.trim()
                             ? 'btn-hv btn-active cursor-pointer'
                             : 'opacity-05'

@@ -4,7 +4,7 @@ $card-height: 120px;
 
 // ----------
 
-.FsFreeShipCard{
+.FsFreeShipCard {
     border-top: 1px solid var(--md-bg-blur);
     border-right: 1px solid var(--md-bg-blur);
     border-bottom: 1px solid var(--md-bg-blur);
@@ -51,5 +51,6 @@ $card-height: 120px;
 // -------- RIGHT
 
 .FsFreeShipCard_right {
+    min-width: 75px;
     height: $card-height;
 }

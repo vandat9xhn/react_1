@@ -1,6 +1,16 @@
 .FsCSVoucherList{
     padding: 30px;
+}
+.FsCSVoucherList-pc{
     width: 600px;
+}
+.FsCSVoucherList-mb{
+    padding: 10px;
+}
+
+.FsCSVoucherList_close_contain{
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .FsCSVoucherList_input{
@@ -13,4 +23,12 @@
 // .
 .FsCSVoucherList_item-first{
     order: -1;
+}
+
+// 
+@media (max-width: 400px) {
+    .FsCSVoucherList_input{
+        padding: 0;
+        background-color: transparent;
+    }
 }

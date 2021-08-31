@@ -6,6 +6,9 @@ import { getFsCShopDiscountStatus } from '../../../../../../../_some_function/fa
 import FsCSVoucherList from '../list/_main/FsCSVoucherList';
 //
 import './FsCShopVoucher.scss';
+import IconFsVoucher from '../../../../../../../_icons_svg/_icon_fs_voucher/IconFsVoucher';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
 
 //
 FsCShopVoucher.propTypes = {};
@@ -29,6 +32,7 @@ function FsCShopVoucher({
     handleApplyVoucherCode,
     handleSaveApplyVoucher,
     handleCancelVoucher,
+    handleCloseVoucher,
 }) {
     //
     const title_action_obj = getFsCShopDiscountStatus({
@@ -39,20 +43,20 @@ function FsCShopVoucher({
         shop_total_price: shop_total_price,
     });
 
-    // 
-    function handleClickShopVoucher(e) {
-        e.stopPropagation()
+    //
+    function handleStopPropagation(e) {
+        e.stopPropagation();
     }
 
     //
-    function onOpenShopVoucher(e) {
-        e.stopPropagation();
-
+    function onOpenShopVoucher() {
         handleOpenVoucher(shop_id);
     }
 
     //
-    function onSaveShopBestDiscount() {
+    function onSaveShopBestDiscount(e) {
+        e.stopPropagation();
+
         handleSaveApplyVoucher(shop_ix, best_discount_ix);
     }
 
@@ -68,21 +72,28 @@ function FsCShopVoucher({
 
     //
     return (
-        <div className="FsCShopVoucher">
-            <div className="display-flex">
-                <div></div>
-
+        <div className="FsCShopVoucher" onClick={handleStopPropagation}>
+            <div
+                className={`FsCShopVoucher_row display-flex ${
+                    IS_MOBILE ? 'space-between font-14px' : ''
+                }`}
+                onClick={IS_MOBILE ? onOpenShopVoucher : undefined}
+            >
                 <div
-                    className={`margin-right-10px ${
+                    className={`FsCShopVoucher_left ${
+                        IS_MOBILE ? '' : ' margin-right-10px'
+                    } ${
                         ['can', 'applied'].includes(title_action_obj.action)
                             ? 'color-fashion'
                             : ''
                     }`}
                 >
-                    {title_action_obj.title}
+                    {/* <IconFsVoucher /> */}
+
+                    <span>{title_action_obj.title}</span>
                 </div>
 
-                <div className="pos-rel" onClick={handleClickShopVoucher}>
+                <div className="FsCShopVoucher_right pos-rel">
                     {title_action_obj.action == 'save' ? (
                         <button
                             className="FsCShopVoucher_btn-save btn btn-hv btn-active color-fashion cursor-pointer"
@@ -94,33 +105,43 @@ function FsCShopVoucher({
                     ) : (
                         <div
                             className="cursor-pointer text-blue"
-                            onClick={onOpenShopVoucher}
+                            onClick={IS_MOBILE ? undefined : onOpenShopVoucher}
                         >
-                            {title_action_obj.action_title}
+                            {IS_MOBILE ? (
+                                <IconsArrow x={200} size_icon="0.75rem" />
+                            ) : (
+                                <span>{title_action_obj.action_title}</span>
+                            )}
                         </div>
                     )}
 
-                    <div
-                        className={`pos-abs top-100per left-0 z-index-lv1 ${
-                            open_voucher ? '' : 'display-none'
-                        }`}
-                    >
-                        <FsCSVoucherList
-                            shop_name={shop_name}
-                            shop_id={shop_id}
-                            shop_picture={shop_picture}
-                            shop_discount_arr={shop_discount_arr}
-                            //
-                            shop_total_price={shop_total_price}
-                            has_chosen_product={item_checked_count > 0}
-                            best_discount_ix={best_discount_ix}
-                            shop_discount_ix={shop_discount_ix}
-                            //
-                            handleApplyVoucherCode={handleApplyVoucherCode}
-                            handleSaveApplyVoucher={onSaveApplyVoucher}
-                            handleCancelVoucher={onCancelVoucher}
-                        />
-                    </div>
+                    {!open_voucher && IS_MOBILE ? null : (
+                        <div
+                            className={`${open_voucher ? '' : 'display-none'} ${
+                                IS_MOBILE
+                                    ? 'pos-fixed-100per bg-film z-index-lv5'
+                                    : 'pos-abs top-100per left-0 z-index-lv1'
+                            }`}
+                            onClick={handleStopPropagation}
+                        >
+                            <FsCSVoucherList
+                                shop_name={shop_name}
+                                shop_id={shop_id}
+                                shop_picture={shop_picture}
+                                shop_discount_arr={shop_discount_arr}
+                                //
+                                shop_total_price={shop_total_price}
+                                has_chosen_product={item_checked_count > 0}
+                                best_discount_ix={best_discount_ix}
+                                shop_discount_ix={shop_discount_ix}
+                                //
+                                handleApplyVoucherCode={handleApplyVoucherCode}
+                                handleSaveApplyVoucher={onSaveApplyVoucher}
+                                handleCancelVoucher={onCancelVoucher}
+                                handleClose={handleCloseVoucher}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

@@ -150,13 +150,18 @@
     transform: translate(50%, 50%);
 }
 
-// 
+// ----------
+
 .trans-x-50per{
     transform: translateX(50%);
 }
 
 .trans-x--50per{
     transform: translateX(-50%);
+}
+
+.trans-y-100per{
+    transform: translateY(100%);
 }
 
 /* ------- Z INDEX ------ */

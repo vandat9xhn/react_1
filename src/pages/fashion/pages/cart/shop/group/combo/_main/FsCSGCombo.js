@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 //
 import FsCartGroupHead from '../../../../../../components/cart_group_head/FsCartGroupHead';
 import FsCSGroupItem from '../../item/FsCSGroupItem';
+import { IS_MOBILE } from '../../../../../../../../_constant/Constant';
 
 //
 FsCSGCombo.propTypes = {};
@@ -35,7 +36,7 @@ function FsCSGCombo({
         <div className="FsCSGCombo">
             <div className="FsCSGCombo_head">
                 <FsCartGroupHead
-                    label_deal="Combo khuyến mãi"
+                    label_deal={`Combo${IS_MOBILE ? '' : ' khuyến mãi'}`}
                     title_main={
                         more_count <= 0
                             ? `chọn 3 sản phẩm (tiết kiệm được ${discount})`

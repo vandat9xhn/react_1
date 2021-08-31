@@ -17,6 +17,8 @@ import {
 import { openScreenConfirm } from '../../../../../component/_screen/type/confirm/ScreenConfirm';
 import { openScreenNotice } from '../../../../../component/_screen_once/notice/ScreenNotice';
 //
+import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
+//
 import { handleDataState } from '../_state/_handleDataState';
 import { handleSetStateItem } from '../_state/handleSetStateItem';
 import { handleStateDelItem } from '../_state/handleStateDelItem';
@@ -29,13 +31,18 @@ import { handleDeleteItemChecked } from '../_state/handleDeleteItemChecked';
 import { handleSaveApplyVoucher } from '../_state/handleSaveApplyVoucher';
 import { handleCancelVoucher } from '../_state/handleCancelVoucher';
 import { handleOpenVoucher } from '../_state/handleOpenVoucher';
+import { handleStateDelGift } from '../_state/handleStateDelGift';
 //
 import FashionH from '../../../components/head/_main/FashionH';
 import CartHead from '../cart_head/CartHead';
 import CartShop from '../shop/_main/CartShop';
 import FsCartSummary from '../summary/_main/FsCartSummary';
+import FsCartMayLike from '../may_like/FsCartMayLike';
 //
 import './FashionCart.scss';
+import '../_mobile_css/FashionCartMb.scss';
+import '../_mobile_css/FashionCartSummaryMb.scss';
+import '../_mobile_css/FashionCartShopMb.scss';
 
 //
 FashionCart.propTypes = {};
@@ -51,12 +58,13 @@ function FashionCart(props) {
     //
     const [state_obj, setStateObj] = useState({
         cart_shop_arr: [],
-        fashion_voucher: { name: '' },
+        free_ship_obj: { id: -1, name: '', cost: 0 },
 
         open_model_id: -1,
         open_search_id: -1,
         open_voucher_shop_id: -1,
 
+        is_done,
         coin: 0,
         checked_coin: false,
         item_count: 0,
@@ -69,12 +77,13 @@ function FashionCart(props) {
 
     const {
         cart_shop_arr,
-        fashion_voucher,
+        free_ship_obj,
 
         open_model_id,
         open_search_id,
         open_voucher_shop_id,
 
+        is_done,
         coin,
         checked_coin,
         item_count,
@@ -114,7 +123,7 @@ function FashionCart(props) {
     //
     async function handle_API_Del(data_count = {}) {
         await handle_API_FashionCart_D({ ...data_count });
-        console.log(data_count);
+        // console.log(data_count);
     }
 
     // -----------
@@ -223,6 +232,22 @@ function FashionCart(props) {
         });
     }
 
+    //
+    function onDeleteGift(params = {}) {
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Xóa quà tặng',
+            notification: 'Bạn sẽ không nhận được quà tặng này nữa!',
+            handleConfirm: () => {
+                handleStateDelGift({
+                    ...params,
+                    setStateObj: setStateObj,
+                    handle_API_Del: handle_API_Del,
+                });
+            },
+        });
+    }
+
     // ---------- VOUCHER
 
     //
@@ -248,6 +273,11 @@ function FashionCart(props) {
     }
 
     //
+    function handleCloseVoucher() {
+        handleClickCart();
+    }
+
+    //
     function onCancelVoucher(shop_ix) {
         handleCancelVoucher({
             shop_ix: shop_ix,
@@ -258,7 +288,20 @@ function FashionCart(props) {
     // ----------- SUMMARY
 
     //
-    function onChooseVoucher() {}
+    function toggleDoneMobile() {
+        setStateObj({
+            ...state_obj,
+            is_done: !is_done,
+        });
+    }
+
+    //
+    function onChooseFreeShip(new_free_ship_obj) {
+        setStateObj({
+            ...state_obj,
+            free_ship_obj: new_free_ship_obj,
+        });
+    }
 
     //
     function onCheckedCoin() {
@@ -330,7 +373,12 @@ function FashionCart(props) {
     // console.log(open_search_id);
     //
     return (
-        <div className="FashionCart font-for-fashion" onClick={handleClickCart}>
+        <div
+            className={`FashionCart font-for-fashion ${
+                IS_MOBILE ? 'FashionCart-mb' : ''
+            }`}
+            onClick={handleClickCart}
+        >
             <div
                 className={`FashionCart_head ${
                     IS_MOBILE ? '' : 'FashionCart_head-pc'
@@ -348,6 +396,21 @@ function FashionCart(props) {
                                 handleCheckedALl={onCheckedAll}
                             />
                         </div>
+
+                        {IS_MOBILE ? (
+                            <div className="pos-fixed left-0 y-center z-index-lv3">
+                                <div
+                                    className={`FashionCart_fix display-flex-center brs-50 ${
+                                        is_done
+                                            ? 'FashionCart_fix-done bg-blue'
+                                            : 'FashionCart_fix-not-done bg-ccc'
+                                    }`}
+                                    onClick={toggleDoneMobile}
+                                >
+                                    <IconsArrow y={400} size_icon="1rem" />
+                                </div>
+                            </div>
+                        ) : null}
 
                         <div>
                             {cart_shop_arr.map((cart_shop_obj, ix) => (
@@ -371,7 +434,9 @@ function FashionCart(props) {
                                         handleChangeType={onChangeType}
                                         closeChangeType={onCloseChangeType}
                                         toggleSearchSame={onToggleSearchSame}
+                                        //
                                         handleDelete={onDelete}
+                                        handleDeleteGift={onDeleteGift}
                                         //
                                         handleOpenVoucher={onOpenVoucher}
                                         handleApplyVoucherCode={
@@ -381,21 +446,30 @@ function FashionCart(props) {
                                             onSaveApplyVoucher
                                         }
                                         handleCancelVoucher={onCancelVoucher}
+                                        handleCloseVoucher={handleCloseVoucher}
                                     />
                                 </div>
                             ))}
                         </div>
 
-                        <div className="pos-sticky bottom-0">
+                        <div
+                            className={`bottom-0 ${
+                                IS_MOBILE
+                                    ? 'pos-fixed w-100per z-index-lv1'
+                                    : 'pos-sticky'
+                            }`}
+                        >
                             <FsCartSummary
                                 item_count={item_count}
                                 item_checked_count={item_checked_count}
-                                voucher_name={fashion_voucher.name}
+                                cart_shop_arr={cart_shop_arr}
+                                free_ship_obj={free_ship_obj}
                                 coin={coin}
                                 checked_coin={checked_coin}
-                                cart_shop_arr={cart_shop_arr}
+                                is_done={is_done}
                                 //
-                                handleChooseVoucher={onChooseVoucher}
+                                toggleDoneMobile={toggleDoneMobile}
+                                handleChooseFreeShip={onChooseFreeShip}
                                 handleCheckedCoin={onCheckedCoin}
                                 handleSaveLiked={onSaveLiked}
                                 handleDeleteItemChecked={onDeleteItemChecked}
@@ -406,9 +480,17 @@ function FashionCart(props) {
                     </div>
                 ) : (
                     <div className="margin-top-20px text-align-center font-20px text-secondary">
-                        Chưa Có Sản Phẩm nào
+                        Chưa Có Sản Phẩm Trong Giỏ Hàng
                     </div>
                 )
+            ) : null}
+
+            {has_fetched && false ? (
+                <div className="fashion-width">
+                    <div className="margin-top-16px">
+                        <FsCartMayLike />
+                    </div>
+                </div>
             ) : null}
         </div>
     );

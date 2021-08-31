@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+//
+import {
+    getFsCartGroupTotalPrice,
+    getFsCartShopTotalPrice,
+} from '../../../../../../_some_function/fashion/getFsCartTotalPrice';
+//
 import FsCShopHead from '../head/FsCShopHead';
 import FsCShopVoucher from '../voucher/_main/FsCShopVoucher';
 import FsCSFreeShip from '../free_ship/_main/FsCSFreeShip';
@@ -10,10 +17,6 @@ import FsCSGCombo from '../group/combo/_main/FsCSGCombo';
 import FsCSGroupItem from '../group/item/FsCSGroupItem';
 //
 import './CartShop.scss';
-import {
-    getFsCartGroupTotalPrice,
-    getFsCartShopTotalPrice,
-} from '../../../../../../_some_function/fashion/getFsCartTotalPrice';
 
 //
 CartShop.propTypes = {};
@@ -38,11 +41,13 @@ function CartShop({
 
     toggleSearchSame,
     handleDelete,
+    handleDeleteGift,
 
     handleOpenVoucher,
     handleApplyVoucherCode,
     handleSaveApplyVoucher,
     handleCancelVoucher,
+    handleCloseVoucher,
 }) {
     //
     const common_props = {
@@ -93,7 +98,11 @@ function CartShop({
 
     //
     return (
-        <div className="CartShop padding-16px bg-primary pos-rel">
+        <div
+            className={`CartShop bg-primary pos-rel ${
+                IS_MOBILE ? '' : 'padding-16px'
+            }`}
+        >
             <div>
                 <FsCShopHead
                     id={id}
@@ -139,6 +148,7 @@ function CartShop({
                                 gift_id={group_obj.gift_id}
                                 main_items={group_obj.item_info_arr}
                                 gift_items={group_obj.gift_items}
+                                handleDeleteGift={handleDeleteGift}
                                 {...common_props}
                             />
                         ) : group_obj.type == 'combo' ? (
@@ -198,6 +208,7 @@ function CartShop({
                     handleApplyVoucherCode={handleApplyVoucherCode}
                     handleSaveApplyVoucher={handleSaveApplyVoucher}
                     handleCancelVoucher={handleCancelVoucher}
+                    handleCloseVoucher={handleCloseVoucher}
                 />
             </div>
 

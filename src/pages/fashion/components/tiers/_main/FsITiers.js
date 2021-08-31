@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
@@ -6,8 +6,10 @@ import { IS_MOBILE } from '../../../../../_constant/Constant';
 import { makeRectIntoScreen } from '../../../../../_some_function/makeRectIntoScreen';
 //
 import { useNewCount } from '../../../../../_hooks/useCount';
+import { useModelAppear } from '../../../../../_hooks/useModelAppear';
 //
 import CountDownUpDiv from '../../../../../component/some_div/count_down_up_div/CountDownUpDiv';
+import ModelAppearMb from '../../../../../component/model_appear_mb/ModelAppearMb';
 //
 import FsITierItem from '../item/FsITierItem';
 import FsIHDTiersBtns from '../btns/FsITiersBtns';
@@ -53,10 +55,6 @@ function FsITiers({
     const { tier_ix_arr, model_ix, count } = state_obj;
 
     //
-    const ref_pos_elm = useRef(null);
-    const ref_main_elm = useRef(null);
-
-    //
     const { countUp, countDown, beforeCountNum, countNum, countNumDone } =
         useNewCount({
             getCount,
@@ -64,6 +62,8 @@ function FsITiers({
             getMin,
             handleSetCount,
         });
+
+    const { ref_pos_elm, ref_main_elm, onClose } = useModelAppear({});
 
     //
     useLayoutEffect(() => {
@@ -80,13 +80,6 @@ function FsITiers({
                     .style.removeProperty('overflow');
             }
         };
-    }, []);
-
-    useEffect(() => {
-        if (IS_MOBILE) {
-            ref_pos_elm.current.style.transform = 'translateY(-100%)';
-            ref_pos_elm.current.style.transition = 'transform 200ms ease-in';
-        }
     }, []);
 
     /* ---- COUNT --- */
@@ -143,106 +136,85 @@ function FsITiers({
     }
 
     //
-    function onConfirm() {
-        handleConfirm(model_ix, count);
+    function onHandleClose() {
+        onClose(handleClose);
     }
 
     //
-    function onClose() {
-        if (IS_MOBILE) {
-            ref_pos_elm.current.style.transform = 'translateY(0%)';
-            setTimeout(() => {
-                handleClose();
-            }, 200);
-        } else {
-            handleClose();
-        }
+    function onConfirm() {
+        onClose(() => handleConfirm(model_ix, count));
     }
 
     //
     return (
-        <React.Fragment>
-            {IS_MOBILE ? (
-                <div className="pos-fixed-100per" onClick={onClose}></div>
-            ) : null}
-
-            <div
-                ref={ref_pos_elm}
-                className={`${IS_MOBILE ? 'pos-abs top-100per w-100per' : ''}`}
-            >
-                <div
-                    ref={ref_main_elm}
-                    className="FsITiers pos-rel padding-8px brs-5px bg-primary box-shadow-fb overflow-y-auto"
-                >
-                    {models.length ? (
-                        <div className="margin-bottom-16px">
-                            {tier_variations.map((tier_v_obj, tier_v_ix) => (
-                                <div
-                                    key={tier_v_ix}
-                                    className="margin-bottom-16px"
-                                >
-                                    <div className="FsITiers_title text-third font-16px">
-                                        {tier_v_obj.name}
-                                    </div>
-
-                                    <div className="display-flex flex-wrap font-14px">
-                                        {tier_v_obj.options.map((text, ix) => (
-                                            <div
-                                                key={ix}
-                                                className="FsITiers_tier_item"
-                                            >
-                                                <FsITierItem
-                                                    tier_ix={ix}
-                                                    tier_v_ix={tier_v_ix}
-                                                    text={text}
-                                                    is_active={
-                                                        tier_ix_arr[
-                                                            tier_v_ix
-                                                        ] == ix
-                                                    }
-                                                    handleClick={
-                                                        handleChangeOption
-                                                    }
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
+        <ModelAppearMb
+            ref_pos_elm={ref_pos_elm}
+            ref_main_elm={ref_main_elm}
+            class_main={`FsITiers ${IS_MOBILE ? '' : 'FsITiers-pc brs-5px'}`}
+            handleClose={onHandleClose}
+        >
+            <React.Fragment>
+                {models.length ? (
+                    <div className="margin-bottom-16px">
+                        {tier_variations.map((tier_v_obj, tier_v_ix) => (
+                            <div key={tier_v_ix} className="margin-bottom-16px">
+                                <div className="FsITiers_title text-third font-16px">
+                                    {tier_v_obj.name}
                                 </div>
-                            ))}
-                        </div>
-                    ) : null}
 
-                    {use_count ? (
-                        <div
-                            className={`FsITiers_count margin-bottom-16px ${
-                                model_ix == -1
-                                    ? 'pointer-events-none opacity-05'
-                                    : ''
-                            }`}
-                        >
-                            <CountDownUpDiv
-                                disabled={model_ix == -1}
-                                count={count}
-                                max={getMax()}
-                                min={getMin()}
-                                //
-                                countDown={countDown}
-                                countUp={countUp}
-                                beforeCountNum={beforeCountNum}
-                                countNum={countNum}
-                                countNumDone={countNumDone}
-                            />
-                        </div>
-                    ) : null}
+                                <div className="display-flex flex-wrap font-14px">
+                                    {tier_v_obj.options.map((text, ix) => (
+                                        <div
+                                            key={ix}
+                                            className="FsITiers_tier_item"
+                                        >
+                                            <FsITierItem
+                                                tier_ix={ix}
+                                                tier_v_ix={tier_v_ix}
+                                                text={text}
+                                                is_active={
+                                                    tier_ix_arr[tier_v_ix] == ix
+                                                }
+                                                handleClick={handleChangeOption}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : null}
 
-                    <FsIHDTiersBtns
-                        can_confirm={tier_ix_arr.some((item) => item == -1)}
-                        handleConfirm={onConfirm}
-                        handleClose={onClose}
-                    />
-                </div>
-            </div>
-        </React.Fragment>
+                {use_count ? (
+                    <div
+                        className={`FsITiers_count margin-bottom-16px ${
+                            model_ix == -1
+                                ? 'pointer-events-none opacity-05'
+                                : ''
+                        }`}
+                    >
+                        <CountDownUpDiv
+                            disabled={model_ix == -1}
+                            count={count}
+                            max={getMax()}
+                            min={getMin()}
+                            //
+                            countDown={countDown}
+                            countUp={countUp}
+                            beforeCountNum={beforeCountNum}
+                            countNum={countNum}
+                            countNumDone={countNumDone}
+                        />
+                    </div>
+                ) : null}
+
+                <FsIHDTiersBtns
+                    can_confirm={tier_ix_arr.some((item) => item == -1)}
+                    handleConfirm={onConfirm}
+                    handleClose={onHandleClose}
+                />
+            </React.Fragment>
+        </ModelAppearMb>
     );
 }
 

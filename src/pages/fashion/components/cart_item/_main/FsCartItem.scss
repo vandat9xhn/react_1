@@ -1,28 +1,44 @@
 
+//  -------- CENTER
 
 .FsCartItem_check{
     min-width: 58px;
 }
 
-.FsCartItem_product{
-    width: 29%;
+//  -------- CENTER
+.FsCartItem_center{
+    width: 875px;
+}
+.FsCartItem_name{
+    width: 32%;
+}
+// .
+.FsCartItem_name_contain{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    // height: 50px;
+    padding: 5px 20px 0 10px;
 }
 
 .FsCartItem_type{
-    width: 17.2%;
+    width: 20%;
 }
 
 .FsCartItem_price{
-    width: 15.8%;
+    width: 18%;
 }
 
 .FsCartItem_count{
-    width: 15.4%;
+    width: 18%;
 }
 
 .FsCartItem_total{
-    width: 10.4%;
+    width: 12%;
 }
+
+//  -------- RIGHT
 
 .FsCartItem_del_search{
     width: 12.7%;
