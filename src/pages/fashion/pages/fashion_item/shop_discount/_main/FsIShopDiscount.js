@@ -34,7 +34,7 @@ function FsIShopDiscount({}) {
             </h2>
 
             <div className="FsIShopDiscount_contain overflow-y-auto">
-                <ul className="list-none">
+                <ul className="FsIShopDiscount_row list-none">
                     {discount_arr.map((discount_obj, ix) => (
                         <li key={ix} className="margin-bottom-16px">
                             <FsIShopDiscountItem

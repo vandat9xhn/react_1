@@ -260,7 +260,7 @@ function Carousel({
             </div>
 
             <div
-                className={`pos-abs bottom-0 x-center padding-8px ${
+                className={`pos-abs bottom-0 x-center padding-8px pointer-events-none ${
                     has_fetched ? '' : 'display-none'
                 }`}
             >

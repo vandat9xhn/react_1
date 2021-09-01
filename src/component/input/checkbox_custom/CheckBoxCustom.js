@@ -22,7 +22,7 @@ function CheckBoxCustom({ checked, title, handleChangeChecked }) {
         >
             <div className="CheckBoxCustom_row display-flex align-items-center">
                 <div
-                    className={`CheckBoxCustom_input brs-5px pos-rel ${
+                    className={`CheckBoxCustom_input flex-shrink-0 brs-5px pos-rel ${
                         checked
                             ? 'CheckBoxCustom_input-active'
                             : 'CheckBoxCustom_input-inactive'

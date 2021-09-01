@@ -1,18 +1,25 @@
 .FashionCart-mb{
     .fs-cart-summary-part{
-        padding: 14px 12px;
+        padding: 8px;
     }
     
     .FashionCart_fix{
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.75rem;
+        height: 1.75rem;
     
-        transition: all 250ms ease-in;
+        transition: all 200ms ease-in;
     }
     .FashionCart_fix-done{
         transform: rotate(0deg);
     }
     .FashionCart_fix-not-done{
         transform: rotate(-45deg);
+    }
+
+    // --------
+    .FashionCart_summary{
+        position: fixed;
+        width: 100%;
+        z-index: var(--z-index-lv1);
     }
 }

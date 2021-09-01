@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { IS_MOBILE } from '../../../../../../../_constant/Constant';
-//
+import { context_api } from '../../../../../../../_context/ContextAPI';
 import { context_fashion_item } from '../../../../../../../_context/fashion/item/context_fashion_item';
 //
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+//
 import { useScrollToX } from '../../../../../../../_hooks/useScrollToX';
+//
+import { openScreenVidPic } from '../../../../../../../component/_screen/type/vid_pics/_main/ZoomVidPics';
 //
 import NextPrevDiv from '../../../../../../../component/some_div/next_prev_div/NextPrevDiv';
 //
@@ -20,6 +23,7 @@ FashionItemInfoLeft.propTypes = {};
 //
 function FashionItemInfoLeft({}) {
     //
+    const { openScreenFloor } = useContext(context_api);
     const { item_info, shop_info, vid_pic_ix, tier_ix_arr } =
         useContext(context_fashion_item);
 
@@ -38,6 +42,20 @@ function FashionItemInfoLeft({}) {
     }, []);
 
     //
+    function handleZoom(ix = 0) {
+        openScreenVidPic({
+            openScreenFloor: openScreenFloor,
+            urls: item_info.vid_pics,
+            current: ix,
+        });
+    }
+
+    // 
+    function onZoom() {
+        handleZoom(vid_pic_ix)
+    }
+
+    //
     return (
         <div className="FashionItemInfoLeft">
             <div
@@ -49,6 +67,7 @@ function FashionItemInfoLeft({}) {
                             : vid_pics[vid_pic_ix]
                     })`,
                 }}
+                onClick={IS_MOBILE ? onZoom : undefined}
             ></div>
 
             <div className="FashionItemInfoLeft_foot pos-rel margin-bottom-16px">
@@ -56,7 +75,7 @@ function FashionItemInfoLeft({}) {
                     ref={ref_scroll_elm}
                     className="FashionItemInfoLeft_foot_contain overflow-x-auto scroll-height-0"
                 >
-                    <FashionIIfLFoot />
+                    <FashionIIfLFoot handleZoom={handleZoom} />
                 </div>
 
                 {IS_MOBILE ? null : (

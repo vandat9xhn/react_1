@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import FsCartItem from '../../../../../components/cart_item/_main/FsCartItem';
+import { IS_MOBILE } from '../../../../../../../../_constant/Constant';
+// 
+import FsCartItem from '../../../../../../components/cart_item/_main/FsCartItem';
+import FsCSGroupItemMb from '../mobile/FsCSGroupItemMb';
+import FsCSGroupItemPc from '../pc/FsCSGroupItemPc';
 
 //
 FsCSGroupItem.propTypes = {
@@ -21,6 +25,7 @@ function FsCSGroupItem({
     item_info,
 
     model_ix,
+    use_check,
     checked,
     open_model,
     open_search,
@@ -128,27 +133,51 @@ function FsCSGroupItem({
         });
     }
 
+    // console.log(model_ix);
     //
     return (
-        <div>
-            <FsCartItem
-                item_info={item_info}
-                //
-                model_ix={model_ix}
-                checked={checked}
-                open_model={open_model}
-                open_search={open_search}
-                //
-                handleSetCount={onSetCount}
-                handleChecked={onChecked}
-                //
-                toggleOpenType={onToggleOpenType}
-                handleChangeType={onChangeType}
-                closeChangeType={onCloseChangeType}
-                //
-                handleDelete={onDelete}
-                toggleSearchSame={onToggleSearchSame}
-            />
+        <div className="FsCSGroupItem">
+            {IS_MOBILE ? (
+                <FsCSGroupItemMb
+                    item_info={item_info}
+                    //
+                    model_ix={model_ix}
+                    use_check={use_check}
+                    checked={checked}
+                    open_model={open_model}
+                    open_search={open_search}
+                    //
+                    handleSetCount={onSetCount}
+                    handleChecked={onChecked}
+                    //
+                    toggleOpenType={onToggleOpenType}
+                    handleChangeType={onChangeType}
+                    closeChangeType={onCloseChangeType}
+                    //
+                    handleDelete={onDelete}
+                    toggleSearchSame={onToggleSearchSame}
+                />
+            ) : (
+                <FsCSGroupItemPc
+                    item_info={item_info}
+                    //
+                    model_ix={model_ix}
+                    use_check={use_check}
+                    checked={checked}
+                    open_model={open_model}
+                    open_search={open_search}
+                    //
+                    handleSetCount={onSetCount}
+                    handleChecked={onChecked}
+                    //
+                    toggleOpenType={onToggleOpenType}
+                    handleChangeType={onChangeType}
+                    closeChangeType={onCloseChangeType}
+                    //
+                    handleDelete={onDelete}
+                    toggleSearchSame={onToggleSearchSame}
+                />
+            )}
         </div>
     );
 }

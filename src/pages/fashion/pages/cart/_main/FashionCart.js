@@ -43,6 +43,10 @@ import './FashionCart.scss';
 import '../_mobile_css/FashionCartMb.scss';
 import '../_mobile_css/FashionCartSummaryMb.scss';
 import '../_mobile_css/FashionCartShopMb.scss';
+import FsCNoticeDelItemChecked from '../notices/del_item_checked/FsCNoticeDelItemChecked';
+import FsCNoticeGoingToBuy from '../notices/going_to_buy/FsCNoticeGoingToBuy';
+import FsCNoticeDelItem from '../notices/del_item/FsCNoticeDelItem';
+import FsCNoticeDelGift from '../notices/del_gift/FsCNoticeDelGift';
 
 //
 FashionCart.propTypes = {};
@@ -221,7 +225,7 @@ function FashionCart(props) {
         openScreenConfirm({
             openScreenFloor: openScreenFloor,
             title: 'Xóa sản phẩm',
-            notification: 'Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?',
+            notification: <FsCNoticeDelItem />,
             handleConfirm: () => {
                 handleStateDelItem({
                     ...params,
@@ -237,7 +241,7 @@ function FashionCart(props) {
         openScreenConfirm({
             openScreenFloor: openScreenFloor,
             title: 'Xóa quà tặng',
-            notification: 'Bạn sẽ không nhận được quà tặng này nữa!',
+            notification: <FsCNoticeDelGift />,
             handleConfirm: () => {
                 handleStateDelGift({
                     ...params,
@@ -323,17 +327,7 @@ function FashionCart(props) {
         openScreenConfirm({
             openScreenFloor: openScreenFloor,
             title: 'Xóa sản phẩm',
-            notification: (
-                <div>
-                    <div className="padding-8px text-red">
-                        Các sản phẩm này sẽ bị xóa khỏi giỏ hàng!
-                    </div>
-
-                    <div className="padding-y-8px label-field text-align-end">
-                        Bạn có muốn tiếp tục không?
-                    </div>
-                </div>
-            ),
+            notification: <FsCNoticeDelItemChecked />,
             handleConfirm: () => {
                 handleDeleteItemChecked({
                     setStateObj: setStateObj,
@@ -358,11 +352,7 @@ function FashionCart(props) {
 
         openScreenNotice({
             openScreenOnce: openScreenOnce,
-            ComponentNotice: (
-                <div className="FashionCart_going_to_buy display-flex-center padding-16px bg-loader brs-8px text-white label-field">
-                    Bạn chưa chọn sản phẩm nào để mua
-                </div>
-            ),
+            ComponentNotice: <FsCNoticeGoingToBuy />,
         });
 
         setTimeout(() => {
@@ -370,7 +360,6 @@ function FashionCart(props) {
         }, 1000);
     }
 
-    // console.log(open_search_id);
     //
     return (
         <div
@@ -379,11 +368,7 @@ function FashionCart(props) {
             }`}
             onClick={handleClickCart}
         >
-            <div
-                className={`FashionCart_head ${
-                    IS_MOBILE ? '' : 'FashionCart_head-pc'
-                }`}
-            >
+            <div className="FashionCart_head fashion-head">
                 <FashionH />
             </div>
 
@@ -402,7 +387,7 @@ function FashionCart(props) {
                                 <div
                                     className={`FashionCart_fix display-flex-center brs-50 ${
                                         is_done
-                                            ? 'FashionCart_fix-done bg-blue'
+                                            ? 'FashionCart_fix-done bg-fashion-red'
                                             : 'FashionCart_fix-not-done bg-ccc'
                                     }`}
                                     onClick={toggleDoneMobile}
@@ -412,53 +397,39 @@ function FashionCart(props) {
                             </div>
                         ) : null}
 
-                        <div>
-                            {cart_shop_arr.map((cart_shop_obj, ix) => (
-                                <div key={ix} className="margin-bottom-16px">
-                                    <CartShop
-                                        shop_ix={ix}
-                                        shop_info={cart_shop_obj.shop_info}
-                                        group_arr={cart_shop_obj.group_arr}
-                                        //
-                                        open_model_id={open_model_id}
-                                        open_search_id={open_search_id}
-                                        open_voucher_shop_id={
-                                            open_voucher_shop_id
-                                        }
-                                        //
-                                        handleSetCount={onSetCount}
-                                        handleCheckedShop={onCheckedShop}
-                                        handleChecked={onChecked}
-                                        //
-                                        toggleOpenType={onToggleOpenType}
-                                        handleChangeType={onChangeType}
-                                        closeChangeType={onCloseChangeType}
-                                        toggleSearchSame={onToggleSearchSame}
-                                        //
-                                        handleDelete={onDelete}
-                                        handleDeleteGift={onDeleteGift}
-                                        //
-                                        handleOpenVoucher={onOpenVoucher}
-                                        handleApplyVoucherCode={
-                                            onApplyVoucherCode
-                                        }
-                                        handleSaveApplyVoucher={
-                                            onSaveApplyVoucher
-                                        }
-                                        handleCancelVoucher={onCancelVoucher}
-                                        handleCloseVoucher={handleCloseVoucher}
-                                    />
-                                </div>
-                            ))}
-                        </div>
+                        {cart_shop_arr.map((cart_shop_obj, ix) => (
+                            <div key={ix} className="margin-bottom-16px">
+                                <CartShop
+                                    shop_ix={ix}
+                                    shop_info={cart_shop_obj.shop_info}
+                                    group_arr={cart_shop_obj.group_arr}
+                                    //
+                                    open_model_id={open_model_id}
+                                    open_search_id={open_search_id}
+                                    open_voucher_shop_id={open_voucher_shop_id}
+                                    //
+                                    handleSetCount={onSetCount}
+                                    handleCheckedShop={onCheckedShop}
+                                    handleChecked={onChecked}
+                                    //
+                                    toggleOpenType={onToggleOpenType}
+                                    handleChangeType={onChangeType}
+                                    closeChangeType={onCloseChangeType}
+                                    toggleSearchSame={onToggleSearchSame}
+                                    //
+                                    handleDelete={onDelete}
+                                    handleDeleteGift={onDeleteGift}
+                                    //
+                                    handleOpenVoucher={onOpenVoucher}
+                                    handleApplyVoucherCode={onApplyVoucherCode}
+                                    handleSaveApplyVoucher={onSaveApplyVoucher}
+                                    handleCancelVoucher={onCancelVoucher}
+                                    handleCloseVoucher={handleCloseVoucher}
+                                />
+                            </div>
+                        ))}
 
-                        <div
-                            className={`bottom-0 ${
-                                IS_MOBILE
-                                    ? 'pos-fixed w-100per z-index-lv1'
-                                    : 'pos-sticky'
-                            }`}
-                        >
+                        <div className="FashionCart_summary pos-sticky bottom-0">
                             <FsCartSummary
                                 item_count={item_count}
                                 item_checked_count={item_checked_count}

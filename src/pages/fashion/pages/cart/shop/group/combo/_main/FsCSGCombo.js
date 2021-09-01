@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import FsCartGroupHead from '../../../../../../components/cart_group_head/FsCartGroupHead';
-import FsCSGroupItem from '../../item/FsCSGroupItem';
+import FsCSGroupItem from '../../item/_main/FsCSGroupItem';
 import { IS_MOBILE } from '../../../../../../../../_constant/Constant';
 
 //

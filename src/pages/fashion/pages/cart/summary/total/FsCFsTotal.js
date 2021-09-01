@@ -44,18 +44,29 @@ function FsCFsTotal({
     //
     return (
         <div className="FsCFsTotal fs-cart-summary-part">
-            <div className="FsCFsTotal_row">
+            <div className="FsCFsTotal_row flex-between-center">
                 <div
                     className={`FsCFsTotal_left display-flex align-items-center font-16px ${
                         !is_done ? 'FsCFsTotal_left-not-done' : ''
                     }`}
                 >
-                    <div className="FsCFsTotal_left_check margin-right-10px">
+                    <div className="FsCFsTotal_left_check display-flex margin-right-10px text-nowrap">
                         <CheckBoxCustom
                             checked={item_checked_count == item_count}
-                            title={`Chọn tất cả (${item_count})`}
+                            title=""
                             handleChangeChecked={handleCheckedAll}
                         />
+
+                        <div
+                            className={`text-nowrap ${
+                                item_checked_count == item_count
+                                    ? 'label-field color-fashion'
+                                    : ''
+                            }`}
+                            onClick={handleCheckedAll}
+                        >
+                            Chọn tất cả ({item_count})
+                        </div>
                     </div>
 
                     <div

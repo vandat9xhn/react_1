@@ -28,3 +28,5 @@ export const STORY_WIDTH_HEIGHT_RATIO = 0.55
 // SHOPEE
 
 export const CLASS_PC_OR_MOBILE = IS_MOBILE ? '-mobile' : '-pc'
+
+export const FS_SEARCH_DEL_WIDTH = 160

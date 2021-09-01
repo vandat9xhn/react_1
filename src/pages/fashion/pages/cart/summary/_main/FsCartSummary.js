@@ -57,10 +57,6 @@ function FsCartSummary({
             <div className="FsCartSummary_row">
                 <div
                     className={`FsCartSummary_head bg-primary ${
-                        IS_MOBILE
-                            ? 'FsCartSummary_head-mb pos-abs bottom-100per left-0 w-100per'
-                            : ''
-                    } ${
                         IS_MOBILE && !is_done ? 'trans-y-100per opacity-0' : ''
                     }`}
                 >

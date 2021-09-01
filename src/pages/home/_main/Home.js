@@ -91,45 +91,6 @@ function Home() {
     return (
         <div className="Home fashion-width padding-y-16px">
             <div
-                ref={ref_phone}
-                className="Home_products margin-bottom-16px bg-primary box-shadow-1 brs-5px"
-            >
-                <h3 className="Home_title Home_title-phone margin-bottom-16px">
-                    <Link to="/phone-laptop" className="text-white">
-                        Phone
-                    </Link>
-                </h3>
-
-                <div className="Home_products_contain padding-8px">
-                    <ul className="Home_products_row list-none">
-                        {phone_arr.map((item) => (
-                            <li
-                                key={`${item.id}`}
-                                className="Home_products_item"
-                            >
-                                <ProductItem
-                                    link={'/phone-laptop:' + item.id}
-                                    img={item.url}
-                                    name={item.name}
-                                    in_stock={item.in_stock}
-                                    new_price={item.new_price}
-                                    old_price={item.old_price}
-                                    discount={item.discount}
-                                    installment={item.installment}
-                                />
-                            </li>
-                        ))}
-                    </ul>
-
-                    <ComponentSkeleton
-                        num={4}
-                        has_fetched={phone_arr.length > 0}
-                        component={<div className="Home_skeleton"></div>}
-                    />
-                </div>
-            </div>
-
-            <div
                 ref={ref_cloth}
                 className="Home_products margin-bottom-16px bg-primary box-shadow-1 brs-5px"
             >
@@ -174,6 +135,45 @@ function Home() {
                     <ComponentSkeleton
                         num={4}
                         has_fetched={fashion_arr.length > 0}
+                        component={<div className="Home_skeleton"></div>}
+                    />
+                </div>
+            </div>
+
+            <div
+                ref={ref_phone}
+                className="Home_products margin-bottom-16px bg-primary box-shadow-1 brs-5px"
+            >
+                <h3 className="Home_title Home_title-phone margin-bottom-16px">
+                    <Link to="/phone-laptop" className="text-white">
+                        Phone
+                    </Link>
+                </h3>
+
+                <div className="Home_products_contain padding-8px">
+                    <ul className="Home_products_row list-none">
+                        {phone_arr.map((item) => (
+                            <li
+                                key={`${item.id}`}
+                                className="Home_products_item"
+                            >
+                                <ProductItem
+                                    link={'/phone-laptop:' + item.id}
+                                    img={item.url}
+                                    name={item.name}
+                                    in_stock={item.in_stock}
+                                    new_price={item.new_price}
+                                    old_price={item.old_price}
+                                    discount={item.discount}
+                                    installment={item.installment}
+                                />
+                            </li>
+                        ))}
+                    </ul>
+
+                    <ComponentSkeleton
+                        num={4}
+                        has_fetched={phone_arr.length > 0}
                         component={<div className="Home_skeleton"></div>}
                     />
                 </div>

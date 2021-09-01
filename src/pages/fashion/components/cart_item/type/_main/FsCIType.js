@@ -8,6 +8,7 @@ import IconDown from '../../../../../../_icons_svg/_icon_down/IconDown';
 import FsITiers from '../../../../components/tiers/_main/FsITiers';
 //
 import './FsCIType.scss';
+import PortalAtBody from '../../../../../../component/portal/at_body/PortalAtBody';
 
 //
 FsCIType.propTypes = {
@@ -51,24 +52,35 @@ function FsCIType({
             </div>
 
             {open_model ? (
-                <div
-                    className={`${
-                        IS_MOBILE
-                            ? 'pos-fixed-100per bg-film z-index-lv5'
-                            : 'pos-abs top-100per x-center z-index-lv1'
-                    }`}
-                >
-                    <FsITiers
-                        tier_variations={tier_variations}
-                        quantity={quantity}
-                        total_add={total_add}
-                        models={models}
-                        old_model_ix={model_ix}
-                        use_count={false}
-                        handleClose={handleClose}
-                        handleConfirm={handleConfirm}
-                    />
-                </div>
+                IS_MOBILE ? (
+                    <PortalAtBody>
+                        <div className="pos-fixed-100per bg-film z-index-lv5">
+                            <FsITiers
+                                tier_variations={tier_variations}
+                                quantity={quantity}
+                                total_add={total_add}
+                                models={models}
+                                old_model_ix={model_ix}
+                                use_count={false}
+                                handleClose={handleClose}
+                                handleConfirm={handleConfirm}
+                            />
+                        </div>
+                    </PortalAtBody>
+                ) : (
+                    <div className="pos-abs top-100per x-center z-index-lv1">
+                        <FsITiers
+                            tier_variations={tier_variations}
+                            quantity={quantity}
+                            total_add={total_add}
+                            models={models}
+                            old_model_ix={model_ix}
+                            use_count={false}
+                            handleClose={handleClose}
+                            handleConfirm={handleConfirm}
+                        />
+                    </div>
+                )
             ) : null}
         </div>
     );

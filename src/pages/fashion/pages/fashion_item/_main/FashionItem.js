@@ -54,6 +54,7 @@ import '../_mobile_scss/FsIOwnerMb.scss';
 import '../_mobile_scss/FsIShopSellingMb.scss';
 import '../_mobile_scss/FsIDescriptionMb.scss';
 import '../_mobile_scss/FsIRateMb.scss';
+import '../_mobile_scss/FsIShopDiscountMb.scss';
 
 //
 FashionItem.propTypes = {};

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+//
 import { UnitNumber } from '../../../../../../../_some_function/UnitNumber';
 //
 import IconHeart from '../../../../../../../_icons_svg/icons_like/icon_heart/IconHeart';
@@ -33,8 +35,8 @@ function FsIIfLShareLike({ count_like }) {
                 </div>
 
                 <div className="FsIIfLShareLike_right display-flex-center">
-                    <div>
-                        <IconHeart size_icon="2rem" />
+                    <div className="FsIIfLShareLike_heart margin-right-5px margin-bottom-4px">
+                        <IconHeart size_icon="1.5rem" />
                     </div>
 
                     <div>

@@ -14,7 +14,7 @@ import FsCSFreeShip from '../free_ship/_main/FsCSFreeShip';
 import FsCSGDeal from '../group/hot_deal/_main/FsCSGDeal';
 import FsCSGGift from '../group/gift/_main/FsCSGGift';
 import FsCSGCombo from '../group/combo/_main/FsCSGCombo';
-import FsCSGroupItem from '../group/item/FsCSGroupItem';
+import FsCSGroupItem from '../group/item/_main/FsCSGroupItem';
 //
 import './CartShop.scss';
 

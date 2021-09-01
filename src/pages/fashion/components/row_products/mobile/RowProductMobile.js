@@ -13,6 +13,8 @@ function RowProductMobile({
     ref_scroll_elm,
     ref_fake_elm_end,
 
+    has_fetched,
+
     use_more,
     link_to_more,
     title_more,
@@ -20,7 +22,10 @@ function RowProductMobile({
 }) {
     //
     return (
-        <div ref={ref_scroll_elm} className="max-w-100per overflow-x-auto snap-x-mandatory">
+        <div
+            ref={ref_scroll_elm}
+            className="max-w-100per overflow-x-auto snap-x-mandatory"
+        >
             <ul className="RowProduct_row list-none display-flex">
                 {products.map((item, ix) => (
                     <li
@@ -55,7 +60,7 @@ function RowProductMobile({
 
                 <li ref={ref_fake_elm_end} className="padding-1px"></li>
 
-                {use_more ? (
+                {use_more && has_fetched ? (
                     <li className="row-product-item snap-align-end">
                         <FashionSeeMoreLastRow
                             link_to={link_to_more}

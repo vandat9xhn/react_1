@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import FsCartGroupHead from '../../../../../../components/cart_group_head/FsCartGroupHead';
-import FsCartItemGift from '../../../../../../components/cart_item_gift/FsCartItemGift';
-import FsCSGroupItem from '../../item/FsCSGroupItem';
+import FsCartItemGift from '../../../../../../components/cart_item_gift/_main/FsCartItemGift';
+import FsCSGroupItem from '../../item/_main/FsCSGroupItem';
 import { UnitNumber } from '../../../../../../../../_some_function/UnitNumber';
 
 //

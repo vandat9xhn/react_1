@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_fashion_item } from '../../../../../../_context/fashion/item/context_fashion_item';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+// 
 import { handle_API_Product_L } from '../../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import { useDataShowMore } from '../../../../../../_hooks/useDataShowMore';
@@ -12,7 +14,6 @@ import FashionSeeMoreOnTitle from '../../../../components/see_more/on_title/Fash
 import FsIComboItem from '../item/FsIComboItem';
 //
 import './FsICombo.scss';
-import { IS_MOBILE } from '../../../../../../_constant/Constant';
 
 //
 FsICombo.propTypes = {};

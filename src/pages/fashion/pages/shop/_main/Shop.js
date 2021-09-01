@@ -22,13 +22,13 @@ function Shop(props) {
                 <FashionH />
             </div>
 
-            <div>
+            {/* <div>
                 <ShopHead id={id} />
             </div>
 
             <div>
                 <ShopBody id={id} />
-            </div>
+            </div> */}
         </div>
     );
 }

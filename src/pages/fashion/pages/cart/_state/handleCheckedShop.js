@@ -1,5 +1,3 @@
-import { getFsCartTotalPrice } from '../../../../../_some_function/fashion/getFsCartTotalPrice';
-
 //
 export function handleCheckedShop({
     shop_ix = 0,

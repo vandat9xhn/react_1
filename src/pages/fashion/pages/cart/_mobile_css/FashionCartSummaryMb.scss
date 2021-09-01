@@ -1,20 +1,29 @@
-.FashionCart-mb{
+.FashionCart-mb {
+    .FsCartSummary_head {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: 100%;
+
+        box-shadow: -1px 0 10px 2px var(--shadow-2);
+        transition: all 250ms ease-in-out;
+    }
+
     // ------- TOTAL
-    .FsCFsTotal_row{
+    .FsCFsTotal_row {
         display: block;
     }
     // .
-    .FsCFsTotal_left-not-done{
+    .FsCFsTotal_left-not-done {
         justify-content: space-between;
         width: 100%;
     }
     // ..
-    .FsCFsTotal_left_check{
+    .FsCFsTotal_left_check {
         font-size: 12px;
     }
 
-
-    .FsCFsTotal_btn_buy{
+    .FsCFsTotal_btn_buy {
         width: 100%;
     }
 }

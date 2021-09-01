@@ -34,7 +34,7 @@ function ShopPersonal({
                 </div>
 
                 <div className="ShopPersonal_right">
-                    <ShopPersonalRight owner_info={owner_info} />
+                    {/* <ShopPersonalRight owner_info={owner_info} /> */}
                 </div>
             </div>
         </div>

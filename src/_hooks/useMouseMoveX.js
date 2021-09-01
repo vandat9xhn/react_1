@@ -54,6 +54,8 @@ export function useMouseMoveX({
 
     //
     return {
+        is_run,
+        
         handleStart,
         handleMove,
         handleEnd,
