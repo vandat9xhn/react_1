@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CheckBoxCustom from '../../../../../../component/input/checkbox_custom/CheckBoxCustom';
 //
 import FsBuyUserInfoCommon from '../info_common/FsBuyUserInfoCommon';
+import RadioCustom from '../../../../../../component/input/radio_custom/RadioCustom';
 
 //
 FsBuyUserInfoChoice.propTypes = {
@@ -19,26 +20,25 @@ function FsBuyUserInfoChoice({
     name,
     phone,
     address,
-    type,
+    is_default,
 
     checked,
     handleChecked,
 }) {
-    // 
-    function handleChecked() {
-        handleChecked(ix)
+    //
+    function onChecked() {
+        handleChecked(ix);
     }
 
     //
     return (
         <div className="FsBuyUserInfoChoice">
-            <div className="display-flex">
-                <div className="margin-right-10px">
-                    <CheckBoxCustom
-                        checked={checked}
-                        title=""
-                        handleChangeChecked={handleChecked}
-                    />
+            <div className="display-flex align-items-center">
+                <div
+                    className="margin-right-10px cursor-pointer"
+                    onClick={onChecked}
+                >
+                    <RadioCustom is_active={checked} />
                 </div>
 
                 <div>
@@ -46,7 +46,7 @@ function FsBuyUserInfoChoice({
                         name={name}
                         phone={phone}
                         address={address}
-                        type={type}
+                        is_default={is_default}
                     />
                 </div>
             </div>

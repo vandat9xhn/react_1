@@ -1,0 +1,17 @@
+.FsBuyUser_caro_row {
+    height: 3px;
+
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgb(111 166 214) 0px 33px,
+        transparent 33px 41px,
+        rgb(241 141 155) 41px 74px,
+        transparent 74px 82px,
+    );
+    background-size: 116px 100%;
+    background-position: -30px;
+}
+
+.FsBuyUser_contain {
+    padding: 28px 24px 24px;
+}

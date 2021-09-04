@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // 
 import FsBuyUserInfoCommon from '../info_common/FsBuyUserInfoCommon';
+// 
+import './FsBuyUserInfoCurrent.scss';
 
 //
 FsBuyUserInfoCurrent.propTypes = {
@@ -10,7 +12,7 @@ FsBuyUserInfoCurrent.propTypes = {
 };
 
 //
-function FsBuyUserInfoCurrent({ name, phone, address, type, handleOpenFixed }) {
+function FsBuyUserInfoCurrent({ name, phone, address, is_default, handleOpenFixed }) {
     //
     return (
         <div className="FsBuyUserInfoCurrent">
@@ -19,11 +21,11 @@ function FsBuyUserInfoCurrent({ name, phone, address, type, handleOpenFixed }) {
                     name={name}
                     phone={phone}
                     address={address}
-                    type={type}
+                    is_default={is_default}
                 />
 
                 <div
-                    className="text-blue text-upper cursor-pointer"
+                    className="FsBuyUserInfoCurrent_change font-14px font-500 text-blue text-upper cursor-pointer"
                     onClick={handleOpenFixed}
                 >
                     Thay đổi

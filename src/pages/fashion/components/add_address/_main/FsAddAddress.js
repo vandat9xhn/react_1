@@ -19,7 +19,7 @@ function getNumErrorName(user_name = '') {
 
 //
 function getIsPhoneOk(phone = '') {
-    return /(0\d{9}|\(\+84\) \d{9})/.test(phone);
+    return /^(0\d{9}|\(\+84\) \d{9})$/.test(phone);
 }
 
 //
@@ -185,7 +185,14 @@ function FsAddAddress({
             return;
         }
 
-        handleComplete({ user_name, phone, specific, type, checked_default });
+        handleComplete({
+            user_name,
+            phone,
+            specific,
+            type,
+            address_str_arr,
+            checked_default,
+        });
     }
 
     //

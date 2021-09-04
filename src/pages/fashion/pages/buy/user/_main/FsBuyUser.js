@@ -4,40 +4,35 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import { openScreenWithElm } from '../../../../../../component/_screen/type/with_elm/ScreenWithElm';
-// 
-import CircleLoading from '../../../../../../component/waiting/circle_loading/CircleLoading';
 //
-import FsAddAddress from '../../../../components/add_address/_main/FsAddAddress';
+import FsBuyUserAddNew from '../add_new/FsBuyUserAddNew';
 import FsBuyUserHead from '../head/FsBuyUserHead';
 import FsBuyUserInfoChoice from '../info_choice/FsBuyUserInfoChoice';
 import FsBuyUserInfoCurrent from '../current/FsBuyUserCurrent';
+//
+import './FsBuyUser.scss';
 
 //
 FsBuyUser.propTypes = {};
 
 //
-function FsBuyUser({ c_user_info }) {
+function FsBuyUser({
+    user_info_arr,
+    active_ix,
+
+    handleChangeUserInfo,
+    handleAddComplete,
+}) {
     //
     const { openScreenFloor, closeScreenFloor } = useContext(context_api);
 
     //
     const [state_obj, setStateObj] = useState({
-        user_info_arr: [c_user_info],
-        active_ix: 0,
         temp_active_ix: 0,
-
-        is_fetching: false,
         open_fixed: false,
     });
 
-    const {
-        user_info_arr,
-        active_ix,
-        temp_active_ix,
-
-        is_fetching,
-        open_fixed,
-    } = state_obj;
+    const { temp_active_ix, open_fixed } = state_obj;
 
     // ---------
 
@@ -46,15 +41,6 @@ function FsBuyUser({ c_user_info }) {
         setStateObj((state_obj) => ({
             ...state_obj,
             open_fixed: true,
-            is_fetching: true,
-        }));
-
-        const { data } = await handle_API_L;
-
-        setStateObj((state_obj) => ({
-            ...state_obj,
-            user_info_arr: [c_user_info, ...data],
-            is_fetching: false,
         }));
     }
 
@@ -70,9 +56,10 @@ function FsBuyUser({ c_user_info }) {
     function handleComplete() {
         setStateObj({
             ...state_obj,
-            active_ix: temp_active_ix,
             open_fixed: false,
         });
+        
+        handleChangeUserInfo(temp_active_ix);
     }
 
     //
@@ -87,16 +74,11 @@ function FsBuyUser({ c_user_info }) {
     // --------
 
     //
-    function handleAddComplete(new_user_info) {
-        console.log(new_user_info);
-    }
-
-    //
     function openAddAddress() {
         openScreenWithElm({
             openScreenFloor: openScreenFloor,
             elm: (
-                <FsAddAddress
+                <FsBuyUserAddNew
                     handleBack={closeScreenFloor}
                     handleComplete={handleAddComplete}
                 />
@@ -106,8 +88,10 @@ function FsBuyUser({ c_user_info }) {
 
     //
     return (
-        <div className="FsBuyUser">
-            <div>
+        <div className="FsBuyUser bg-primary">
+            <div className="FsBuyUser_caro_row"></div>
+
+            <div className="FsBuyUser_contain">
                 <div className="margin-bottom-16px">
                     <FsBuyUserHead
                         open_fixed={open_fixed}
@@ -127,28 +111,24 @@ function FsBuyUser({ c_user_info }) {
                                     name={user_info.name}
                                     phone={user_info.phone}
                                     address={user_info.address}
-                                    type={user_info.type}
+                                    is_default={user_info.is_default}
                                     checked={temp_active_ix == ix}
                                     handleChecked={handleChecked}
                                 />
                             </div>
                         ))}
 
-                        <div className="width-fit-content margin-auto">
-                            <CircleLoading is_fetching={is_fetching} />
-                        </div>
-
-                        <div className="padding-left-20px">
-                            <div className="display-flex">
+                        <div className="padding-y-15px padding-left-20px">
+                            <div className="display-flex font-14px">
                                 <button
-                                    className="btn btn-hv margin-right-16px brs-5px bg-fashion-red text-cap text-white cursor-pointer"
+                                    className="btn btn-hv margin-right-16px padding-x-20px padding-y-10px brs-3px bg-fashion-red text-cap text-white cursor-pointer"
                                     onClick={handleComplete}
                                 >
                                     Hoàn thành
                                 </button>
 
                                 <button
-                                    className="border-blur brs-5px text-cap cursor-pointer hv-bg-blur"
+                                    className="padding-x-20px padding-y-10px border-blur brs-3px text-cap cursor-pointer hv-bg-blur"
                                     onClick={handleBack}
                                 >
                                     Trở lại
@@ -161,7 +141,7 @@ function FsBuyUser({ c_user_info }) {
                         name={user_info_arr[active_ix].name}
                         phone={user_info_arr[active_ix].phone}
                         address={user_info_arr[active_ix].address}
-                        type={user_info_arr[active_ix].type}
+                        is_default={user_info_arr[active_ix].is_default}
                         handleOpenFixed={handleOpenFixed}
                     />
                 )}
