@@ -167,7 +167,7 @@ function Registration(props) {
                         onClick={closeMoreError}
                     >
                         <h2 className="App_title margin-0">Sign up</h2>{' '}
-                        <hr className="App_hr-bg" />
+                        <hr className="hr-bg" />
                         <div
                             className={`Registration_error text-red ${
                                 username_existed || email_existed

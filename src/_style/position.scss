@@ -123,6 +123,11 @@
     transform: translateY(-50%);
 }
 
+.top-center{
+    top: 0;
+    transform: translateY(-50%);
+}
+
 
 /* ------- TRANSFORM ------ */
 
@@ -158,6 +163,14 @@
 
 .trans-x--50per{
     transform: translateX(-50%);
+}
+
+.trans-y-50per{
+    transform: translateY(50%);
+}
+
+.trans-y--50per{
+    transform: translateY(-50%);
 }
 
 .trans-y-100per{

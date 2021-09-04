@@ -6,8 +6,9 @@ import { useMouseMoveXY } from '../../../../../../../_hooks/useMouseMoveXY';
 //
 import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import './StoryCPTagFriendItemMb.scss';
 import StoryBgTouch from '../../../../../_components/create/mobile/bg_touch/StoryBgTouch';
+//
+import './StoryCPTagFriendItemMb.scss';
 
 //
 StoryCPTagFriendItemMb.propTypes = {};
@@ -101,7 +102,6 @@ function StoryCPTagFriendItemMb({
             <div
                 className="padding-8px brs-8px text-nowrap"
                 style={{ backgroundColor: bg, color: color }}
-                onClick={onChangeBgColorIx}
             >
                 <span className="label-field font-18px">
                     @ {user.first_name} {user.last_name}
@@ -122,7 +122,7 @@ function StoryCPTagFriendItemMb({
                 </div>
             </div>
 
-            <div className="pos-abs-100"></div>
+            <div className="pos-abs-100" onClick={onChangeBgColorIx}></div>
 
             <StoryBgTouch ref_fake_elm={ref_fake_elm} scale={scale} />
         </div>

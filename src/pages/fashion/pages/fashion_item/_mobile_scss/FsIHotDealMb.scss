@@ -35,15 +35,14 @@
         padding: 0;
         margin-right: 10px;
     }
-    .FsHotDealItem_foot_check {
+    .FsHotDealItemHead_name{
+        max-height: 42px;
+    }
+    .FsHDItemFoot_check {
         margin: 0;
     }
-    .FsHotDealItem_foot_check_right{
+    .FsHDItemFoot_check_right{
         max-width: 12.5rem;
-    }
-    .FsHotDealItem_model_name {
-        height: auto;
-        -webkit-line-clamp: 1;
     }
 
     .FsIHotDealTiers{

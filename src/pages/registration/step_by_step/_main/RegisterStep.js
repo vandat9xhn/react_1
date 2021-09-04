@@ -200,7 +200,7 @@ function RegisterStep() {
                         >
                             <div>
                                 <h2 className="App_title margin-0">Sign up</h2>{' '}
-                                <hr className="App_hr-bg" />
+                                <hr className="hr-bg" />
                                 <div
                                     className={`RegistrationStep_error text-red ${
                                         username_existed || email_existed

@@ -1,0 +1,102 @@
+.bg-primary {
+    background-color: var(--md-bg-primary);
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
+.bg-skeleton {
+    background-color: var(--bg-skeleton);
+}
+
+.bg-vid-pic {
+    background-image: linear-gradient(
+        to right,
+        #121111,
+        #545454,
+        #545454,
+        #131212
+    );
+}
+
+.bg-loader {
+    background-color: var(--bg-loader);
+}
+
+.bg-film {
+    background-color: var(--bg-film);
+}
+
+.bg-fb {
+    background-color: var(--md-bg-fb);
+}
+
+.bg-active-fb {
+    background-color: var(--md-bg-active-fb);
+}
+
+.bg-ccc {
+    background-color: var(--md-bg-ccc);
+}
+
+.bg-through {
+    background-color: var(--md-bg-through);
+}
+
+.bg-screen {
+    background-color: var(--md-bg-screen);
+}
+
+.bg-blue {
+    background-color: var(--blue);
+}
+
+.bg-discount-gold {
+    background-color: #f69113;
+}
+
+.bg-green {
+    background-color: var(--green);
+}
+
+.bg-react {
+    background-color: var(--color-react);
+}
+
+.bg-fashion-red {
+    background-color: var(--fashion-head);
+}
+
+.bg-fashion-border{
+    background-color: var(--border-fashion);
+}
+
+.bg-img-fashion-head {
+    background-image: linear-gradient(to bottom, #f53d2d, #f63);
+}
+
+.bg-fashion-mall {
+    background-color: var(--fashion-mall);
+}
+
+.bg-fashion-carousel-active {
+    background-color: var(--fashion-carousel-active);
+}
+
+.bg-fashion-heart {
+    background-color: var(--bg-fashion-heart);
+}
+
+.bg-shadow-1 {
+    background-color: var(--shadow-1);
+}
+
+.bg-linear-45-success-tear {
+    background-image: linear-gradient(45deg, var(--success), var(--blue-tear));
+}
+
+//
+.bg-always-white {
+    background-color: var(--white);
+}

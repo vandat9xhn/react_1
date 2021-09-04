@@ -1,24 +1,41 @@
 import React, { Component, Suspense } from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import {
+    BrowserRouter,
+    // Redirect, Route, Switch
+} from 'react-router-dom';
 //
 import './_style/root.scss';
 import './_style/App.scss';
+
 import './_style/display.scss';
 import './_style/position.scss';
 import './_style/properties.scss';
-import './_style/classes.scss';
-import './_style/form.scss';
 
+import './_style/classes.scss';
+import './_style/bg.scss';
+import './_style/border.scss';
+import './_style/box_shadow.scss';
+import './_style/button.scss';
+import './_style/form.scss';
+import './_style/hover.scss';
+import './_style/input.scss';
+import './_style/rect.scss';
+import './_style/screen.scss';
+import './_style/scroll.scss';
+import './_style/text.scss';
+
+import './_style/story.scss';
 import './_style/post.scss';
 import './_style/vid_pics.scss';
 import './_style/fashion.scss';
+
 import './_style/device.scss';
 //
-import { Routes } from './__routes/__main';
+// import { Routes } from './__routes/__main';
 //
 import ContextAPI from './_context/ContextAPIProvider';
 //
-import Auth from './_auth/Auth';
+// import Auth from './_auth/Auth';
 //
 import WaitingBall from './component/waiting/waiting_ball/WaitingBall';
 //
@@ -41,7 +58,7 @@ import CustomSwitch from './__Switch/__switch';
 
 // App
 class App extends Component {
-    /* --------------- REF ---------------- */
+    // --------- REF
 
     //
     refChat = (elm) => {
@@ -99,6 +116,8 @@ class App extends Component {
             this.toggleSnowFlower = elm.toggleSnowFlower;
         }
     };
+
+    // ---------
 
     //
     handleRefresh = () => {

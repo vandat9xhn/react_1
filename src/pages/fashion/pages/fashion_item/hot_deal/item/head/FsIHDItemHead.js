@@ -16,7 +16,7 @@ function FsIHDItemHead({
     img,
     flash_img,
     discount,
-    
+
     total_add,
     use_checked,
 }) {
@@ -39,7 +39,7 @@ function FsIHDItemHead({
                 ) : null}
             </div>
 
-            <div className="FsHotDealItem_foot_name FsHotDealItem_name overflow-hidden">
+            <div className="FsHotDealItemHead_name wk-box-vertical line-clamp-2 text-secondary overflow-hidden">
                 {use_checked ? (
                     <div className="inline-block margin-right-5px">
                         <FsShopDealLabel
@@ -49,8 +49,10 @@ function FsIHDItemHead({
                     </div>
                 ) : null}
 
-                <span className="font-14px text-secondary">{name}</span>
+                <span className="font-14px">{name}</span>
             </div>
+
+            <div></div>
         </Link>
     );
 }

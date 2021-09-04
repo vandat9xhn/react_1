@@ -1,0 +1,120 @@
+// ------- COLOR
+
+.text-primary {
+    color: var(--md-color);
+}
+
+.text-secondary {
+    color: var(--md-color-secondary);
+}
+.text-third {
+    color: var(--md-color-third);
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.text-light {
+    color: var(--color-light);
+}
+
+.text-red {
+    color: var(--danger);
+}
+
+.text-blue {
+    color: var(--blue);
+}
+.text-green {
+    color: var(--green);
+}
+
+.text-del {
+    color: var(--del);
+}
+
+.color-react {
+    color: var(--color-react);
+}
+
+.color-django {
+    color: var(--color-django);
+}
+
+.color-fashion {
+    color: var(--fashion-head);
+}
+
+.color-fashion-mall {
+    color: var(--fashion-mall);
+}
+
+// -------- STYLE
+
+.font-italic {
+    font-style: italic;
+}
+
+// -------- WEIGHT
+
+@for $i from 4 through 10 {
+    .font-#{$i * 100} {
+        font-weight: #{$i * 100};
+    }
+}
+
+// -------- SIZE
+
+@for $i from 9 through 24 {
+    .font-#{$i}px {
+        font-size: #{$i}px;
+    }
+}
+
+.font-30px {
+    font-size: 30px;
+}
+
+//--------- ALIGN
+
+.text-align-left {
+    text-align: left;
+}
+
+.text-align-end {
+    text-align: end;
+}
+.text-align-center {
+    text-align: center;
+}
+
+// ---------- TRANSFORM
+.text-upper {
+    text-transform: uppercase;
+}
+
+.text-cap{
+    text-transform: capitalize;
+}
+
+// -------- LINE
+
+@for $i from 10 through 16 {
+    .line-#{$i}px {
+        line-height: #{$i}px;
+    }
+}
+
+// -------- COMPLEX
+
+.normal-text {
+    color: var(--md-color);
+    text-decoration: none;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

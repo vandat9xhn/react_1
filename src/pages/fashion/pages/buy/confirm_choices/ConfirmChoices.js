@@ -9,9 +9,8 @@ ConfirmChoices.propTypes = {
 };
 
 //
-function ConfirmChoices(props) {
-    const {closeConfirmChoices, handleConfirmChoices} = props;
-    
+function ConfirmChoices({ closeConfirmChoices, handleConfirmChoices }) {
+    //
     return (
         <div>
             <div className="ConfirmChoices_contain">

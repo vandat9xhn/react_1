@@ -14,12 +14,20 @@ InputNotValid.propTypes = {
     //
     value: PropTypes.string,
     handleChange: PropTypes.func,
+
+    handle_focus: PropTypes.bool,
+    focus_props: PropTypes.shape({
+        is_focus: PropTypes.bool,
+        handleFocus: PropTypes.func,
+        handleBlur: PropTypes.func,
+    }),
 };
 
 InputNotValid.defaultProps = {
     type: 'text',
     placeholder: 'Placeholder',
     max_length: 100,
+    handle_focus: false,
 };
 
 //
@@ -30,18 +38,21 @@ function InputNotValid({
     placeholder,
     max_length,
     handleChange,
+
+    handle_focus,
+    focus_props
 }) {
     //
-    const { is_focus, handleFocus, handleBlur } = useFocusBlur();
+    const { is_focus, handleFocus, handleBlur } = !handle_focus
+        ? useFocusBlur()
+        : focus_props;
 
     //
     return (
         <div
             className={`InputNotValid pos-rel ${
-                value !== '' || is_focus
-                    ? 'InputNotValid_text input-active'
-                    : ''
-            }`}
+                value !== '' || is_focus ? 'input-active' : ''
+            } ${is_focus ? 'InputNotValid-focus' : ''}`}
         >
             <input
                 className="InputNotValid_input brs-5px"
@@ -58,7 +69,9 @@ function InputNotValid({
 
             <div
                 className={`InputNotValid_placeholder input-placeholder ${
-                    is_focus ? 'input-placeholder-active' : ''
+                    is_focus
+                        ? 'InputNotValid_placeholder-focus input-placeholder-active'
+                        : ''
                 }`}
             >
                 {placeholder}

@@ -1,30 +1,4 @@
-/* ------------------------- COMMON ---------------------- */
-%stepper-line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-
-    height: 2px;
-    transform: translateY(-50%);
-    z-index: 0;
-}
-
-/* ------------------------- B ---------------------- */
-
-.btn {
-    outline: none;
-    border: none;
-}
-
-.btn-hv:hover {
-    opacity: 0.9;
-}
-
-.btn-active:active {
-    transform: scale(0.95);
-}
-
-/* -------- C ------- */
+// --------- C
 
 .crop-border {
     box-sizing: content-box;
@@ -37,68 +11,7 @@
     border-bottom: 100vh solid rgba(24, 25, 26, 0.5);
 }
 
-/* -------------- H -------------- */
-
-.height-0 {
-    height: 0;
-}
-
-.h-100per {
-    height: 100%;
-}
-
-.h-100vh {
-    height: 100vh;
-}
-
-.max-h-100per {
-    max-height: 100%;
-}
-
-.max-h-100vh {
-    max-height: 100vh;
-}
-
-/* ---------- I ----------- */
-.input {
-    // border: none;
-    &:focus {
-        outline: none;
-    }
-    &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-    }
-}
-
-.input-active {
-    .input-placeholder {
-        top: 0;
-
-        line-height: 12px;
-        padding: 0 0.25rem;
-        font-size: 14px;
-        font-weight: 500;
-    }
-
-    .input-placeholder-active {
-        color: var(--blue);
-    }
-}
-
-.input-placeholder {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    transition: top 200ms, font-size 200ms;
-
-    font-size: 16px;
-    color: var(--md-color-secondary);
-
-    pointer-events: none;
-}
-
-/* ------------------------- L ---------------------- */
+// ---------- L
 
 .list-none {
     list-style-type: none;
@@ -106,15 +19,17 @@
     padding: 0;
 }
 
-/* ------------------------- O ---------------------- */
+// -----
 
-.one-line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+%stepper-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    height: 2px;
+    transform: translateY(-50%);
+    z-index: 0;
 }
-
-/* ------------------------- S ---------------------- */
 
 .stepper-line {
     @extend %stepper-line;
@@ -125,118 +40,4 @@
 .stepper-line-active {
     @extend %stepper-line;
     background-color: var(--success);
-}
-
-.screen-blur {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 100vh;
-
-    background-color: var(--bg-through);
-    z-index: var(--z-index-lv4);
-}
-
-.ScreenFixed-icon-close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 2rem;
-    height: 2rem;
-    padding: 0.2rem;
-    background-color: var(--bg-loader);
-
-    opacity: 0.5;
-    cursor: pointer;
-}
-
-/* STORY */
-%story-bg-common {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    pointer-events: none;
-}
-
-.story-bg {
-    @extend %story-bg-common;
-    z-index: 1;
-
-    background-image: linear-gradient(
-        0deg,
-        var(--always-dark-overlay),
-        var(--shadow-1)
-    );
-}
-.story-bg-hv {
-    display: none;
-    @extend %story-bg-common;
-    z-index: 2;
-    background: var(--shadow-1);
-}
-.story-transition {
-    transition: transform 150ms ease-in;
-}
-.story-active {
-    border-radius: 15px;
-    box-shadow: var(--box-shadow-1);
-    overflow: hidden;
-    &:active {
-        transform: scale(0.95);
-    }
-}
-
-/* -------- T -------- */
-
-.text-nowrap {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-/* -------- W -------- */
-
-.width-0 {
-    width: 0;
-}
-
-.w-100vw {
-    width: 100vw;
-}
-
-.w-100per {
-    width: 100%;
-}
-
-.w-50per {
-    width: 50%;
-}
-
-.max-w-100per {
-    max-width: 100%;
-}
-
-.h-100vh {
-    height: 100vh;
-}
-
-.wh-100 {
-    width: 100%;
-    height: 100%;
-}
-
-.wh-100v {
-    width: 100vw;
-    height: 100vh;
-}
-
-.wh-200v {
-    width: 200vw;
-    height: 200vh;
 }

@@ -1,0 +1,76 @@
+import { getDefaultArr } from '../_common/getDefaultArr';
+import { getRandomFromArr } from '../_common/getRandomFromArr';
+
+//
+const province_arr = [
+    'Hòa Bình',
+    'Sơn La',
+    'Điện Biên',
+    'Lai Châu',
+    'Lào Cai',
+    'Yên Bái',
+    'Phú Thọ',
+    'Hà Giang',
+    'Tuyên Quang',
+    'Cao Bằng',
+    'Bắc Kạn',
+    'Thái Nguyên',
+    'Lạng Sơn',
+    'Bắc Giang',
+    'Quảng Ninh',
+    'Hà Nội',
+    'Bắc Ninh',
+    'Hà Nam',
+    'Hải Dương',
+    'Hải Phòng',
+    'Hưng Yên',
+    'Nam Định',
+    'Thái Bình',
+    'Vĩnh Phúc',
+    'Ninh Bình',
+    'Thánh Hóa',
+    'Nghệ An',
+    'Hà Tĩnh',
+    'Quảng Bình',
+    'Quảng Trị',
+    'Thừa Thiên – Huế',
+    'Đà Nẵng',
+    'Quảng Nam',
+    'Quảng Ngãi',
+    'Bình Định',
+    'Phú Yên',
+    'Khánh Hòa',
+    'Ninh Thuận',
+    'Bình Thuận',
+    'Kon Tum',
+    'Gia Lai',
+    'Đắk Lắk',
+    'Lâm Đồng',
+    'Tp Hồ Chí Minh',
+    'Bà Rịa Vũng Tàu',
+    'Bình Dương',
+    'Bình Phước',
+    'Đồng Nai',
+    'Tây Ninh',
+    'An Giang',
+    'Bạc Liêu',
+    'Bến Tre',
+    'Cà Mau',
+    'Cần Thơ',
+    'Đồng Tháp',
+    'Hậu Giang',
+    'Kiên Giang',
+    'Long An',
+    'Sóc Trăng',
+    'Tiền Giang',
+    'Trà Vinh',
+    'Vĩnh Long',
+];
+
+//
+const default_full_address_obj = () => {
+    return getRandomFromArr(province_arr);
+};
+
+export const default_full_address_arr = () =>
+    getDefaultArr(default_full_address_obj, 10, 20);

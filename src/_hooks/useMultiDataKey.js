@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react';
-// 
+import { useState } from 'react';
+//
 import { useMounted } from './useMounted';
 
 //
-export function useMultiDataKey({ initial_key, handle_API_L }) {
+export function useMultiDataKey({
+    initial_key = '',
+    handle_API_L,
+    other_state = {},
+}) {
     //
     const [state_obj, setStateObj] = useState({
         obj: {
@@ -15,12 +19,13 @@ export function useMultiDataKey({ initial_key, handle_API_L }) {
         },
         c_key: initial_key,
         is_fetching: false,
+        ...other_state,
     });
 
     const { obj, c_key } = state_obj;
 
-    // 
-    const mounted = useMounted()
+    //
+    const mounted = useMounted();
 
     //
     async function getData_API(new_key) {
@@ -53,7 +58,7 @@ export function useMultiDataKey({ initial_key, handle_API_L }) {
         );
 
         if (!mounted) {
-            return
+            return;
         }
 
         setStateObj((state_obj) => {

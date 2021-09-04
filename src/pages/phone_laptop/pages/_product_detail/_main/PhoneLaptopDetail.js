@@ -183,7 +183,7 @@ function PhoneLaptopDetail() {
                 />
             </div>
 
-            <hr className="App_hr-bg" />
+            <hr className="hr-bg" />
 
             <div>
                 <RelativeProducts product_id={product_id} />

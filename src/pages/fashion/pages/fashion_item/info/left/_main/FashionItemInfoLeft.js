@@ -50,9 +50,9 @@ function FashionItemInfoLeft({}) {
         });
     }
 
-    // 
+    //
     function onZoom() {
-        handleZoom(vid_pic_ix)
+        handleZoom(vid_pic_ix);
     }
 
     //
@@ -71,12 +71,10 @@ function FashionItemInfoLeft({}) {
             ></div>
 
             <div className="FashionItemInfoLeft_foot pos-rel margin-bottom-16px">
-                <div
-                    ref={ref_scroll_elm}
-                    className="FashionItemInfoLeft_foot_contain overflow-x-auto scroll-height-0"
-                >
-                    <FashionIIfLFoot handleZoom={handleZoom} />
-                </div>
+                <FashionIIfLFoot
+                    ref_scroll_elm={ref_scroll_elm}
+                    handleZoom={handleZoom}
+                />
 
                 {IS_MOBILE ? null : (
                     <NextPrevDiv

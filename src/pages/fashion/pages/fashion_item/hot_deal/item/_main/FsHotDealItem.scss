@@ -1,32 +1,5 @@
-.FsHotDealItem_foot {
-    margin-top: 10px;
-}
-
 // .
-.FsHotDealItem_name {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+// .FsHotDealItem_name {
+//     height: 40px;
+// }
 
-    line-height: 17px;
-    height: 40px;
-}
-
-// .
-.FsHotDealItem_model_name {
-    text-transform: uppercase;
-}
-
-// .
-.FsHotDealItem_foot_check {
-    margin: 10px 0;
-}
-
-// .
-.FsHotDealItem_model_arrow {
-    transform: rotate(180deg);
-
-    .IconsArrow_back-top {
-        fill: var(--md-color-third);
-    }
-}

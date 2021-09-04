@@ -26,100 +26,65 @@ import './LearnHTML.scss';
 // import LearnFashion from '../fashion/LearnFashion';
 // import LearnFsCartItem from '../fashion/LearnFsCartItem';
 import LearnFsCartSummary from '../fashion/LearnFsCartSummary';
+import LearnFsAddAddress from '../fs_add_address/LearnFsAddAddress';
 
 //
 LearnHTML.propTypes = {};
 
 //
 function LearnHTML() {
-    // 
+    //
     return (
         <div className="LearnHTML">
-            {/* <div>
-                <LearnWriteHtml />
-            </div>
-            <br />
-            <LearnAppearancePosition />
+            {/* <LearnWriteHtml /> */}
 
-            <br />
+            {/* <LearnAppearancePosition /> */}
 
-            <div>
-                <TestHook />
-            </div>
+            {/* <TestHook /> */}
 
-            <div>
-                <TestSearchAnimate />
-            </div>
+            {/* <TestSearchAnimate /> */}
 
-            <br />
-            <div>
-                <TestPagination />
-            </div>
+            {/* <TestPagination /> */}
 
-            <FbLogin />
+            {/* <FbLogin /> */}
 
-            <LearnSelectColorBg />
+            {/* <LearnSelectColorBg /> */}
 
-            <div>
-                <LearnScreen />
-            </div>
+            {/* <LearnScreen /> */}
 
-            <div>
-                <LearnWaitingToken />
-            </div>
+            {/* <LearnWaitingToken /> */}
 
-            <div>
-                <LearnDnD />
-            </div>
+            {/* <LearnDnD /> */}
 
-            <div>
-                <LearnObserverScroll />
-            </div> */}
+            {/* <LearnObserverScroll /> */}
 
-            <div>
-                {/* <LearnChild /> */}
-                {/* <LearnStoryItem /> */}
-            </div>
+            {/* <LearnChild /> */}
 
-            {/* <div>
-                <LearnPortalModel >
+            {/* <LearnStoryItem /> */}
+
+            {/* <LearnPortalModel >
                     asdas asd asd asd
-                </LearnPortalModel>
-            </div>
+                </LearnPortalModel> */}
 
-            <div>
-                <LearnPortalModel >
-                    123 123 123
-                </LearnPortalModel>
-            </div> */}
+            {/* <LearnPortalModel>123 123 123</LearnPortalModel> */}
 
-            <div>
-                {/* <LearnAPIHeroku /> */}
-            </div>
+            {/* <LearnAPIHeroku /> */}
 
-            <br />
-            <div>
-                {/* <LearnResizeRotate />  */}
-            </div>
+            {/* <LearnResizeRotate />  */}
 
-            <br />
-            {/* <div>
-                <LearnColorThief />
-            </div> */}
+            {/* <LearnColorThief /> */}
 
             {/* <LearnTouches /> */}
 
-            <br />
             {/* <LearnFashion /> */}
+
             {/* <LearnFsCartItem /> */}
-            <LearnFsCartSummary />
+
+            {/* <LearnFsCartSummary /> */}
+
             {/* <LearnSaveScroll /> */}
-            
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+
+            <LearnFsAddAddress />
 
             <div className="h-100vh"></div>
         </div>

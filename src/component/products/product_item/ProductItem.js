@@ -67,7 +67,8 @@ function ProductItem({
                                 <span className="ProductItem_old-price">
                                     {formatNum(old_price)}
                                 </span>
-                                <sup className="dv-vnd">đ</sup>
+
+                                <sup className="font-10px">đ</sup>
                             </div>
                         )}
                     </div>

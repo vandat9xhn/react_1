@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { IS_MOBILE } from '../../../../../../../_constant/Constant';
-//
 import { UnitNumber } from '../../../../../../../_some_function/UnitNumber';
 //
 import IconHeart from '../../../../../../../_icons_svg/icons_like/icon_heart/IconHeart';

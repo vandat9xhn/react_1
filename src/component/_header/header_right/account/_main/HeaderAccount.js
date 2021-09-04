@@ -7,21 +7,22 @@ import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 import ActionsAccount from '../actions/ActionsAccount';
 //
 import './HeaderAccount.scss';
+import IconDown from '../../../../../_icons_svg/_icon_down/IconDown';
 
 //
 HeaderAccount.propTypes = {};
 
 //
 function HeaderAccount(props) {
-    // 
+    //
     const [open_account, setOpenAccount] = useState(false);
 
-    // 
+    //
     async function toggleOpenAccount() {
         setOpenAccount(!open_account);
     }
 
-    // 
+    //
     function closeAccount() {
         open_account && setOpenAccount(false);
     }
@@ -31,7 +32,7 @@ function HeaderAccount(props) {
         <CloseDiv makeDivHidden={closeAccount}>
             <div
                 className={`header_menu ${
-                    open_account ? 'bottom-blue nav-active' : ''
+                    open_account ? 'text-blue bottom-blue nav-active' : ''
                 }`}
             >
                 <div
@@ -39,7 +40,7 @@ function HeaderAccount(props) {
                     title="account"
                     onClick={toggleOpenAccount}
                 >
-                    <IconsArrow y={200} />
+                    <IconDown color="currentColor" />
                 </div>
 
                 <div

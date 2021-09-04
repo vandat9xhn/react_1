@@ -1,0 +1,12 @@
+.btn {
+    outline: none;
+    border: none;
+}
+
+.btn-hv:hover {
+    opacity: 0.9;
+}
+
+.btn-active:active {
+    transform: scale(0.95);
+}

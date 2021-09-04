@@ -1,0 +1,49 @@
+.scroll-thin::-webkit-scrollbar {
+    width: 0.5rem;
+}
+.scroll-thin::-webkit-scrollbar-track {
+    border-radius: 5px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.scroll-thin:hover::-webkit-scrollbar-thumb {
+    background-color: var(--md-bg-ccc);
+}
+
+//
+.scroll-height-0::-webkit-scrollbar {
+    height: 0;
+}
+
+//
+.scroll-width-0::-webkit-scrollbar {
+    width: 0;
+}
+
+// -------- SNAP
+
+.snap-x-mandatory {
+    scroll-snap-type: x mandatory;
+}
+
+.snap-align-start {
+    scroll-snap-align: start;
+}
+
+.snap-align-end {
+    scroll-snap-align: end;
+}
+
+.snap-align-start-end {
+    scroll-snap-align: start end;
+}
+
+// 
+@media (max-width: 500px) {
+    .scroll-thin::-webkit-scrollbar {
+        width: 0;
+    }
+}

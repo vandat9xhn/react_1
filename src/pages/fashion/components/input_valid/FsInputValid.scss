@@ -1,0 +1,28 @@
+.FsInputValid {
+    .InputNotValid_input {
+        padding: 0.5rem;
+        &:not(:focus) {
+            border-color: var(--md-bg-blur);
+        }
+    }
+    .InputNotValid_placeholder {
+        font-size: 14px;
+        background-color: var(--md-bg-primary);
+    }
+    .input-active .input-placeholder {
+        font-size: 12px;
+        font-weight: 400;
+    }
+}
+
+.FsInputValid-wrong {
+    .InputNotValid_input {
+        &:not(:focus) {
+            border-color: var(--danger);
+        }
+    }
+
+    .InputNotValid_placeholder {
+        color: var(--danger);
+    }
+}

@@ -1,0 +1,42 @@
+.SelectFullAddressCurrent {
+    height: 40px;
+}
+.SelectFullAddressCurrent-wrong{
+    border: 1px solid var(--danger);
+    
+    .SelectFullAddressCurrent_placeholder{
+        color: var(--danger);
+    }
+}
+.SelectFullAddressCurrent-active{
+    border-color: var(--blue);
+
+    .SelectFullAddressCurrent_placeholder{
+        color: var(--blue);
+    }
+}
+
+//  --------- PLACEHOLDER
+
+.SelectFullAddressCurrent_icon {
+    transition: all 200ms ease-in;
+}
+.SelectFullAddressCurrent_icon-show {
+    transform: rotate(180deg);
+}
+
+.SelectFullAddressCurrent_placeholder {
+    transition: top 200ms, font-size 200ms;
+}
+.SelectFullAddressCurrent_placeholder-in {
+    left: 10px;
+    color: var(--md-bg-blur);
+}
+
+// ---------- CLEAR
+
+.SelectFullAddressCurrent_clear_icon{
+    .IconsArrow_close{
+        stroke: var(--md-color-secondary);
+    }
+}

@@ -23,9 +23,8 @@ IconsProfile.defaultProps = {
         3. icon phone: (0, 200)
         4. icon laptop: (0, 400)
 */
-function IconsProfile(props) {
-    const { size_icon, x, y } = props;
-
+function IconsProfile({ size_icon, x, y }) {
+    //
     return (
         <svg
             className="IconsProfile"
@@ -37,7 +36,6 @@ function IconsProfile(props) {
             stroke="var(--md-color)"
             strokeLinecap="round"
         >
-            
             {/* icon address x=0 y=0 */}
             <g className="IconsProfile_address" strokeWidth="5">
                 <path d="M45,100 A50,65 90 1 1 155,100 L100,170 Z" />
@@ -64,21 +62,14 @@ function IconsProfile(props) {
 
             {/* icon phone x=0 y=200*/}
             <g className="IconsProfile_phone">
-                <path
-                    d="M50,220 50,380 150,380 150,220 Z"
-                    strokeWidth="5"
-                />
-                <path
-                    d="M50,240 50,350 150,350 150,240 Z"
-                />
-                
-                <line x1="85" y1="230" x2="115" y2="230" strokeWidth="5"/>
+                <path d="M50,220 50,380 150,380 150,220 Z" strokeWidth="5" />
+                <path d="M50,240 50,350 150,350 150,240 Z" />
+
+                <line x1="85" y1="230" x2="115" y2="230" strokeWidth="5" />
                 <circle cx="100" cy="365" r="10" />
             </g>
-            
         </svg>
     );
 }
-
 
 export default IconsProfile;

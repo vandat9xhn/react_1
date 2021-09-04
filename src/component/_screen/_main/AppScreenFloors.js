@@ -36,7 +36,7 @@ function AppScreenFloors({
         };
     }, []);
 
-    // // 
+    // //
     // function handlePopState(e) {
     //     console.log(e, );
     // }
@@ -91,32 +91,30 @@ function AppScreenFloors({
 
     //
     return (
-        <div>
-            <div>
-                {floor_arr.map((floor_obj, ix) => (
-                    <div
-                        key={`${ix}`}
-                        className={`AppScreen_floor ${
-                            ix != floor_arr.length - 1
-                                ? 'AppScreen_inactive'
-                                : 'AppScreen_floor-active bg-screen pos-rel'
-                        } ${
-                            ix != floor_arr.length - 1 &&
-                            floor_arr[floor_arr.length - 1].hidden_before
-                                ? 'display-none'
-                                : ''
-                        }`}
-                    >
-                        <ScreenFloor
-                            closeScreen={closeScreenFloor}
-                            {...floor_obj.floor_props}
-                        />
-                    </div>
-                ))}
-            </div>
+        <React.Fragment>
+            {floor_arr.map((floor_obj, ix) => (
+                <div
+                    key={`${ix}`}
+                    className={`AppScreen_floor ${
+                        ix != floor_arr.length - 1
+                            ? 'AppScreen_inactive'
+                            : 'AppScreen_floor-active bg-screen pos-rel'
+                    } ${
+                        ix != floor_arr.length - 1 &&
+                        floor_arr[floor_arr.length - 1].hidden_before
+                            ? 'display-none'
+                            : ''
+                    }`}
+                >
+                    <ScreenFloor
+                        closeScreen={closeScreenFloor}
+                        {...floor_obj.floor_props}
+                    />
+                </div>
+            ))}
 
             <Prompt when message={showModalConfirm} />
-        </div>
+        </React.Fragment>
     );
 }
 

@@ -59,7 +59,7 @@ function ProductDetail({ product, openTypeBuy, has_fetched }) {
                 )}
             </div>
 
-            <hr className="App_hr-bg" />
+            <hr className="hr-bg" />
 
             <div className="ProductDetail_contain">
                 <div className="ProductDetail_row display-flex">
@@ -142,7 +142,7 @@ function ProductDetail({ product, openTypeBuy, has_fetched }) {
                 </div>
             </div>
 
-            <hr className="App_hr-bg" />
+            <hr className="hr-bg" />
 
             <div className="ProductDetail_specs">
                 <h3 className="ProductDetail_specs_title">

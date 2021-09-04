@@ -58,7 +58,7 @@ function FsIIfRRateSold({}) {
                     </span>
                 </div>
 
-                <div className="FsIIfRRateSold_sold">
+                <div className="FsIIfRRateSold_sold text-nowrap">
                     <span>{sold}</span>
 
                     <span className="text-third margin-left-5px font-14px">

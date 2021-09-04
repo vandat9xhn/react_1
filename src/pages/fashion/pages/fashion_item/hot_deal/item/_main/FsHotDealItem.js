@@ -68,7 +68,7 @@ function FsHotDealItem({
                 use_checked={use_checked}
             />
 
-            <div className="FsHotDealItem_foot pos-rel">
+            <div className="FsHotDealItem_foot pos-rel margin-top-10px">
                 <FsHDItemFoot
                     model_name={model_name}
                     old_price={old_price}

@@ -49,7 +49,7 @@ function AddFriend(props) {
                     />
                 </div>
 
-                <hr className="App_hr-bg" />
+                <hr className="hr-bg" />
 
                 <div className="AddFriend_body">
                     <div

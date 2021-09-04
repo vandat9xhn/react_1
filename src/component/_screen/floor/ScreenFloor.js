@@ -1,18 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// 
-ScreenFloor.propTypes = {
-    
-};
+//
+ScreenFloor.propTypes = {};
 
-// 
-function ScreenFloor({FloorComponent, ...props}) {
-    return (
-        <div>
-            {<FloorComponent {...props}/>}
-        </div>
-    );
+//
+function ScreenFloor({ FloorComponent, ...props }) {
+    //
+    return <FloorComponent {...props} />;
 }
 
 export default ScreenFloor;

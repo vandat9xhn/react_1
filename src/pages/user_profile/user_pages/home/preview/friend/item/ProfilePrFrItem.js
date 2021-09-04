@@ -20,7 +20,7 @@ function ProfilePrFrItem({ friend_obj }) {
                     <PicSquareDiv vid_pic={picture} />
                 </div>
 
-                <div className="one-line">{last_name}</div>
+                <div className="text-nowrap">{last_name}</div>
             </div>
         </Link>
     );

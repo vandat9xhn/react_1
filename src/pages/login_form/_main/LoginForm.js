@@ -121,7 +121,7 @@ function LoginForm() {
                             onSubmit={handleLogin}
                         >
                             <h2 className="App_title margin-0">Login</h2>
-                            <hr className="App_hr-bg" />
+                            <hr className="hr-bg" />
 
                             <div
                                 className={`LoginForm_error ${

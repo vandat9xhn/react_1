@@ -30,3 +30,5 @@ export const STORY_WIDTH_HEIGHT_RATIO = 0.55
 export const CLASS_PC_OR_MOBILE = IS_MOBILE ? '-mobile' : '-pc'
 
 export const FS_SEARCH_DEL_WIDTH = 160
+
+export const ADDRESS_HEAD_ARR = ['Tỉnh/Thành phố', 'Huyện/Quận', 'Xã/Phường'];
