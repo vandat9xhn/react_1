@@ -27,7 +27,7 @@ function SubWsHead({
     //
     return (
         <div className="CmtSub_head">
-            <div className="SubWsHead_user width-fit-content cursor-pointer hv-cl-blue label-field">
+            <div className="SubWsHead_user width-fit-content cursor-pointer hv-cl-blue font-500">
                 <PictureName user={user} />
             </div>
 

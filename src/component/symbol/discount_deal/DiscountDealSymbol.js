@@ -20,7 +20,7 @@ function DiscountDealSymbol({ discount, class_main }) {
         <div
             className={`DiscountDealSymbol fashion-value-padding text-align-center ${class_main}`}
         >
-            <span className="text-white label-field">{discount}</span>
+            <span className="text-white font-500">{discount}</span>
         </div>
     );
 }

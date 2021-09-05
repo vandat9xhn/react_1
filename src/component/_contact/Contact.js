@@ -74,7 +74,7 @@ function Contact(props) {
                         show_number ? '' : 'display-none'
                     }`}
                 >
-                    <div className="label-field">0987.654.321</div>
+                    <div className="font-500">0987.654.321</div>
                 </div>
             </div>
         </div>

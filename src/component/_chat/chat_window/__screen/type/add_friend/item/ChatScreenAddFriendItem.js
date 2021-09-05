@@ -44,7 +44,7 @@ function ChatScreenAddFriendItem({ user, ws }) {
                     <PicNameContent user={user} />
                 </div>
 
-                <div className="ChatScreenAddFriendItem_add label-field padding-8px">
+                <div className="ChatScreenAddFriendItem_add font-500 padding-8px">
                     {was_added ? 'Added' : '+'}
                 </div>
             </div>

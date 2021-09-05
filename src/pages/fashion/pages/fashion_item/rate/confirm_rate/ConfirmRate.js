@@ -46,7 +46,7 @@ function ConfirmRate({ rate_avg, handleChangeRate, content_rate }) {
                 />
             </div>
 
-            <div className="label-field">Do you want to rate now?</div>
+            <div className="font-500">Do you want to rate now?</div>
         </div>
     );
 }

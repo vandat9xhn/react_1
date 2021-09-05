@@ -53,7 +53,7 @@ function ProfilePhoto({ user_id, name }) {
                         >
                             <div className="padding-8px">
                                 <span
-                                    className={`label-field hv-cl-blue ${
+                                    className={`font-500 hv-cl-blue ${
                                         `?sk=photos_${item.search}` ==
                                         location.search
                                             ? 'text-blue'

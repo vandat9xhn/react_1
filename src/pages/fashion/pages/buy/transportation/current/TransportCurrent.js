@@ -38,7 +38,7 @@ function TransportCurrent({ name, title, price, has_choose, handleExtraBuy }) {
 
                 <div className="FashionChoiceCurrent_right">
                     <div className={`${has_choose ? '' : 'display-none'}`}>
-                        <div className="label-field">{title}</div>
+                        <div className="font-500">{title}</div>
 
                         <div className="text-blue">{formatNum(price)}</div>
                     </div>

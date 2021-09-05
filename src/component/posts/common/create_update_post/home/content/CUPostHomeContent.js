@@ -65,7 +65,7 @@ function CUPostHomeContent({
                             : 'display-none'
                     }
                 >
-                    <h2 className="text-align-center text-secondary label-field">
+                    <h2 className="text-align-center text-secondary font-500">
                         No picture, video
                     </h2>
                 </div>

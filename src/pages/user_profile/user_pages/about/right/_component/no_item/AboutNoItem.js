@@ -31,7 +31,7 @@ function AboutNoItem({ has_fetched, no_item, title, ComponentLeft, children }) {
     //
     return (
         <div>
-            <div className="text-secondary label-field">
+            <div className="text-secondary font-500">
                 <NoItemHasFetched
                     has_fetched={has_fetched && !is_user}
                     no_item={no_item}

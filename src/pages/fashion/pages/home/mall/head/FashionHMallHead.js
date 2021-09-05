@@ -16,7 +16,7 @@ function FashionHMallHead(props) {
         <div className="FashionHMallHead pos-rel">
             <div className="FashionHMallHead_contain flex-between-center fashion-head-padding">
                 <div className="FashionHMallHead_row display-flex align-items-center">
-                    <h2 className="font-16px label-field color-fashion-mall">
+                    <h2 className="font-16px font-500 color-fashion-mall">
                         SHOPEE MALL
                     </h2>
 

@@ -11,7 +11,7 @@ function StoryFaceName({ name }) {
     //
     return (
         <div className="StoryFaceName_contain">
-            <span className="StoryFaceName_item label-field text-white">
+            <span className="StoryFaceName_item font-500 text-white">
                 {name}
             </span>
         </div>

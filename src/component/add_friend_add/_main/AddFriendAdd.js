@@ -21,7 +21,7 @@ function AddFriendAdd({ id, pic, name, children }) {
                     <img src={pic} alt="" />
                 </div>
 
-                <div className="AddFriendAdd_name label-field">{name}</div>
+                <div className="AddFriendAdd_name font-500">{name}</div>
             </Link>
 
             <div className="AddFriendAdd_reply">{children}</div>

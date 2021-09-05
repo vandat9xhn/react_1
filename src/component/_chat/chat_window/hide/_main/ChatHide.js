@@ -89,7 +89,7 @@ function ChatHide({
                 <div className="ChatHide_info_user display-none">
                     <div className="ChatHide_info_user-padding chat-hide-padding">
                         <div className="chat-hide-contain padding-4px bg-primary brs-5px box-shadow-fb">
-                            <div className="w-100per text-nowrap label-field">
+                            <div className="w-100per text-nowrap font-500">
                                 {f_user.first_name + ' ' + f_user.last_name}
                             </div>
 

@@ -12,7 +12,7 @@ StoryCPActionsMb.propTypes = {};
 function StoryCPActionsMb({ mode, openAddText, changeModePic, openTagFriend }) {
     //
     return (
-        <div className="StoryCPActionsMb text-white label-field font-13px">
+        <div className="StoryCPActionsMb text-white font-500 font-13px">
             <div></div>
 
             <div className="StoryCPActionsMb_part" onClick={openAddText}>

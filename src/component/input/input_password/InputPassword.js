@@ -40,7 +40,7 @@ function InputPassword({ field, form, label, placeholder, max_length, help }) {
     return (
         <div>
             <div>
-                <label className="label-field">{label}</label>
+                <label className="font-500">{label}</label>
             </div>
 
             <div className="InputPassword_password pos-rel">

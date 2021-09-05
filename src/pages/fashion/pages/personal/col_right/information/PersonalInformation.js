@@ -73,31 +73,31 @@ function PersonalInformation(props) {
 
             <div className={!has_fetch ? 'display-none' : ''}>
                 <div className="padding-8px">
-                    <div className="label-field">Full name:</div>
+                    <div className="font-500">Full name:</div>
 
                     <div>{name}</div>
                 </div>
 
                 <div className="padding-8px">
-                    <div className="label-field">Address:</div>
+                    <div className="font-500">Address:</div>
 
                     <div>{address}</div>
                 </div>
 
                 <div className="padding-8px">
-                    <div className="label-field">Birth Day:</div>
+                    <div className="font-500">Birth Day:</div>
 
                     <div>{birth_day}</div>
                 </div>
 
                 <div className="padding-8px">
-                    <div className="label-field">Phone:</div>
+                    <div className="font-500">Phone:</div>
 
                     <div>{phone}</div>
                 </div>
 
                 <div className="padding-8px">
-                    <div className="label-field">Mail:</div>
+                    <div className="font-500">Mail:</div>
 
                     <div>{mail}</div>
                 </div>

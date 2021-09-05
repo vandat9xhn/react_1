@@ -71,7 +71,7 @@ function InfoBuying({
                         <h3 className="margin-0">Total</h3>
                     </td>
 
-                    <td className="label-field">
+                    <td className="font-500">
                         {formatNum(+amount + transport_price - voucher_price)} VND
                     </td>
                 </tr>

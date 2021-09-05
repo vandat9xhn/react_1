@@ -12,6 +12,10 @@ CheckBoxCustom.propTypes = {
     handleChangeChecked: PropTypes.func,
 };
 
+CheckBoxCustom.defaultProps = {
+    title: ''
+}
+
 //
 function CheckBoxCustom({ checked, title, handleChangeChecked }) {
     //
@@ -38,7 +42,7 @@ function CheckBoxCustom({ checked, title, handleChangeChecked }) {
 
                 <div
                     className={`CheckBoxCustom_title ${
-                        checked ? 'label-field' : ''
+                        checked ? 'font-500' : ''
                     }`}
                 >
                     {title}

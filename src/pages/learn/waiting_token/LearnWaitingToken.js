@@ -26,7 +26,7 @@ function LearnWaitingToken(props) {
     return (
         <div>
             <div
-                className="padding-8px label-field cursor-pointer"
+                className="padding-8px font-500 cursor-pointer"
                 onClick={waitingRefreshToken}
             >
                 Waiting refresh token

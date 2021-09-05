@@ -49,7 +49,7 @@ function AddNewCity() {
     //
     return (
         <div className="AddNewCity">
-            <h3 className="label-field text-align-center">
+            <h3 className="font-500 text-align-center">
                 Let's create a post about your city now!
             </h3>
             <br />

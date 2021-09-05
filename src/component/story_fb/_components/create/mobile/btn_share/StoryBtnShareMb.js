@@ -19,7 +19,7 @@ function StoryBtnShareMb({ can_share, handleCreateStory }) {
             <div className="display-flex align-items-center">
                 <div>
                     <span
-                        className={`label-field ${
+                        className={`font-500 ${
                             can_share ? 'text-white' : 'text-third'
                         }`}
                     >

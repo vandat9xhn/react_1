@@ -46,7 +46,7 @@ function HeaderMessFriend({
             </div>
 
             <div className="w-100per text-nowrap text-align-center">
-                <span className="label-field">
+                <span className="font-500">
                     {last_name}
                 </span>
             </div>

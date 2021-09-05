@@ -1,4 +1,4 @@
-import { getFsCartShopTotalPrice } from '../../../../../_some_function/fashion/getFsCartTotalPrice';
+import { getFsFsCartShopTotalPrice } from '../../../../../_some_function/fashion/getFsCartTotalPrice';
 
 //
 export function handleSaveApplyVoucher({
@@ -16,7 +16,7 @@ export function handleSaveApplyVoucher({
             new_shop_info.discount_arr[new_shop_discount_ix].status_card =
                 'saved';
         } else {
-            const shop_total_price = getFsCartShopTotalPrice(
+            const shop_total_price = getFsFsCartShopTotalPrice(
                 new_cart_shop_arr[shop_ix].group_arr
             );
 

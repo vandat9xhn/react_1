@@ -44,7 +44,7 @@ function ProductFCItem({
                     />
                 }
                 ComponentRight={
-                    <div className={`${is_checked ? 'label-field' : ''}`}>
+                    <div className={`${is_checked ? 'font-500' : ''}`}>
                         {item}
                     </div>
                 }

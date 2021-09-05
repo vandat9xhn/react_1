@@ -203,7 +203,7 @@ function Registration(props) {
 
                             <div>
                                 <div>
-                                    <div className="label-field">Birth day</div>
+                                    <div className="font-500">Birth day</div>
                                 </div>
 
                                 <div>

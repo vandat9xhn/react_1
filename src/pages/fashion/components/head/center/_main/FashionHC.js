@@ -44,7 +44,7 @@ function FashionHC({
                         <div key={`${ix}`} className="padding-x-8px">
                             <CustomLink
                                 to={`/fashion/search?q=${search}`}
-                                className="text-white font-12px label-field"
+                                className="text-white font-12px font-500"
                             >
                                 {search}
                             </CustomLink>

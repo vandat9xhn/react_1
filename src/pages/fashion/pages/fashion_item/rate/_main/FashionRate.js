@@ -88,7 +88,7 @@ function FashionRate({ id }) {
                 }`}
             >
                 <h2
-                    className={`label-field ${
+                    className={`font-500 ${
                         IS_MOBILE
                             ? 'font-14px'
                             : 'margin-bottom-16px padding-16px font-18px text-secondary'
@@ -129,7 +129,7 @@ function FashionRate({ id }) {
                 }`}
             >
                 {has_fetched && page_obj[page].length == 0 ? (
-                    <div className="text-align-center text-third label-field">
+                    <div className="text-align-center text-third font-500">
                         Chưa có đánh giá nào
                     </div>
                 ) : (

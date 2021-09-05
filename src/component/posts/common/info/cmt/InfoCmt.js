@@ -14,7 +14,7 @@ function InfoCmt({ count_comment, handleClickBtnCmt }) {
             }`}
             onClick={handleClickBtnCmt}
         >
-            <span className="font-14px label-field">
+            <span className="font-14px font-500">
                 {count_comment} comment{count_comment > 1 ? 's' : ''}
             </span>
         </div>

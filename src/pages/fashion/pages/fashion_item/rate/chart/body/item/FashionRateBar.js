@@ -16,7 +16,7 @@ function FashionRateBar({ ix, rate_count, rate_num_arr }) {
     return (
         <div className="FashionRateBar">
             <div className="FashionRateBar_row display-flex align-items-center">
-                <div className="FashionRate_title display-flex align-items-center label-field">
+                <div className="FashionRate_title display-flex align-items-center font-500">
                     <div>{ix + 1}</div>
 
                     <div>

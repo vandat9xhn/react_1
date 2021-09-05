@@ -60,7 +60,7 @@ function CUPostHome({
 
                 <div>
                     <button
-                        className={`CUPostHome_post w-100per padding-8px brs-5px text-secondary label-field text-align-center ${
+                        className={`CUPostHome_post w-100per padding-8px brs-5px text-secondary font-500 text-align-center ${
                             !has_change
                                 ? 'bg-ccc opacity-5 text-third'
                                 : 'bg-blue text-white cursor-pointer'

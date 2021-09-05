@@ -35,7 +35,7 @@ function PhoneLaptopConfirmBuy({ handleSubmit, closeConfirmBuy }) {
             <div className="PhoneLaptopConfirmBuy_contain scroll-thin brs-5px box-shadow-1">
                 <form onSubmit={onSubmit} autoComplete="off">
                     <div>
-                        <label className="label-field">Full name</label>
+                        <label className="font-500">Full name</label>
 
                         <div className="PhoneLaptopConfirmBuy__input">
                             <input
@@ -49,7 +49,7 @@ function PhoneLaptopConfirmBuy({ handleSubmit, closeConfirmBuy }) {
                     </div>
 
                     <div>
-                        <label className="label-field">Address</label>
+                        <label className="font-500">Address</label>
 
                         <div className="PhoneLaptopConfirmBuy__input">
                             <input
@@ -62,7 +62,7 @@ function PhoneLaptopConfirmBuy({ handleSubmit, closeConfirmBuy }) {
                     </div>
 
                     <div>
-                        <label className="label-field">Phone</label>
+                        <label className="font-500">Phone</label>
 
                         <div className="PhoneLaptopConfirmBuy__input">
                             <input

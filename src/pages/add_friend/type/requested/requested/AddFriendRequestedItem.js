@@ -83,7 +83,7 @@ function AddFriendRequestedItem({ id, picture, first_name, last_name }) {
                             />
                         </div>
                     ) : (
-                        <div className="text-align-center opacity-05 label-field">
+                        <div className="text-align-center opacity-05 font-500">
                             {response_requested}
                         </div>
                     )}

@@ -21,7 +21,7 @@ function CityHistories({ histories, ...rest_props }) {
                 {histories.map((item, ix) => (
                     <li key={`${ix}`} className="CityHistories_item">
                         <div className="inline-block">
-                            <div className="font-12px font-italic label-field">
+                            <div className="font-12px font-italic font-500">
                                 Update at{' '}
                                 {formatLocalDateTimeString(
                                     new Date(item.created_time)

@@ -36,7 +36,7 @@ function FashionMallLike({ is_like, is_mall, is_plus, class_text, use_side }) {
                 ) : null}
 
                 <div
-                    className={`pos-rel  padding-x-4px bg-fashion-mall text-nowrap text-white label-field ${class_text}`}
+                    className={`pos-rel  padding-x-4px bg-fashion-mall text-nowrap text-white font-500 ${class_text}`}
                 >
                     Mall
                 </div>
@@ -53,7 +53,7 @@ function FashionMallLike({ is_like, is_mall, is_plus, class_text, use_side }) {
                 ) : null}
 
                 <div
-                    className={`pos-rel padding-x-4px bg-fashion-red text-nowrap text-white label-field ${class_text}`}
+                    className={`pos-rel padding-x-4px bg-fashion-red text-nowrap text-white font-500 ${class_text}`}
                 >
                     Yêu thích {is_plus ? '+' : ''}
                 </div>

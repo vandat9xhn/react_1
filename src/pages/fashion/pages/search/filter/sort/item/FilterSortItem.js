@@ -36,7 +36,7 @@ function FilterSortItem({ is_active, title, sort_by, handleFilterSort }) {
                 <IconSent />
             </div>
 
-            <div className={is_active ? 'text-blue label-field' : ''}>
+            <div className={is_active ? 'text-blue font-500' : ''}>
                 {title}
             </div>
         </div>

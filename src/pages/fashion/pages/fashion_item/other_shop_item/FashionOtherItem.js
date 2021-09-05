@@ -35,7 +35,7 @@ function FashionOtherItem({ id }) {
             <RowProducts
                 title={
                     <h2
-                        className={`text-secondary label-field ${
+                        className={`text-secondary font-500 ${
                             IS_MOBILE ? 'font-14px' : 'font-16px padding-y-8px'
                         }`}
                     >

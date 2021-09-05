@@ -14,7 +14,7 @@ function StoryLeftPcCommonBtnC({ handleCreate, handleDiscard }) {
             <div className="StoryLeftPcCommonBtnC_row display-flex space-around">
                 <div className="StoryLeftPcCommonBtnC_col">
                     <button
-                        className="wh-100 padding-4px btn btn-hv btn-active bg-ccc brs-5px text-align-center label-field cursor-pointer"
+                        className="wh-100 padding-4px btn btn-hv btn-active bg-ccc brs-5px text-align-center font-500 cursor-pointer"
                         onClick={handleDiscard}
                     >
                         Discard
@@ -23,7 +23,7 @@ function StoryLeftPcCommonBtnC({ handleCreate, handleDiscard }) {
 
                 <div className="StoryLeftPcCommonBtnC_col">
                     <button
-                        className="wh-100 padding-4px btn btn-hv btn-active bg-blue brs-5px text-align-center label-field text-white cursor-pointer"
+                        className="wh-100 padding-4px btn btn-hv btn-active bg-blue brs-5px text-align-center font-500 text-white cursor-pointer"
                         onClick={handleCreate}
                     >
                         Create story

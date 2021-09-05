@@ -23,7 +23,7 @@ function PfAboutOverviewItem(props) {
             <Link
                 to={link_to}
                 replace
-                className="normal-text label-field text-secondary"
+                className="normal-text font-500 text-secondary"
             >
                 <FlexDiv
                     space_between={true}

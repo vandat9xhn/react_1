@@ -78,7 +78,7 @@ function ProductCartBuy({ product, quantity, children }) {
 
                         {children}
 
-                        <div className="ProductCartBuy_total label-field">
+                        <div className="ProductCartBuy_total font-500">
                             {formatNum(new_price * quantity)}
                         </div>
                     </div>

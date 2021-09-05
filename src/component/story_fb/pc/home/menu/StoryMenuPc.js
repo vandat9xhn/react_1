@@ -50,7 +50,7 @@ function StoryMenuPc({
                         : 'StoryMenuPc_hide'
                 }`}
             >
-                <h1 className="StoryMenuPc_head font-22px label-field">
+                <h1 className="StoryMenuPc_head font-22px font-500">
                     Stories
                 </h1>
 

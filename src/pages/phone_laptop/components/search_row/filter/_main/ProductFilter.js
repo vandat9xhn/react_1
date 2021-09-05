@@ -40,7 +40,7 @@ function ProductFilter(props) {
 
             <div className="ProductFilter_btn padding">
                 <button
-                    className={`label-field padding-8px brs-5px ${
+                    className={`font-500 padding-8px brs-5px ${
                         should_filter
                             ? 'cursor-pointer active-color'
                             : 'opacity-05'

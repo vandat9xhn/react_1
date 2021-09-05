@@ -1,0 +1,34 @@
+.FsShopVoucher{
+    padding: 30px;
+}
+.FsShopVoucher-pc{
+    width: 600px;
+}
+.FsShopVoucher-mb{
+    padding: 10px;
+}
+
+.FsShopVoucher_close_contain{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.FsShopVoucher_input{
+    padding: 15px 8px;
+}
+
+.FsShopVoucher_body{
+    margin: 0 -3px;
+}
+// .
+.FsShopVoucher_item-first{
+    order: -1;
+}
+
+// 
+@media (max-width: 400px) {
+    .FsShopVoucher_input{
+        padding: 0;
+        background-color: transparent;
+    }
+}

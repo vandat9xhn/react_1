@@ -30,7 +30,7 @@ function CommentWsHead({
             <div className="CommentWsHead_user width-fit-content">
                 <Link
                     to={`/profile/${user.id}`}
-                    className="normal-text hv-cl-blue label-field"
+                    className="normal-text hv-cl-blue font-500"
                 >
                     {user.first_name + ' ' + user.last_name}
                 </Link>

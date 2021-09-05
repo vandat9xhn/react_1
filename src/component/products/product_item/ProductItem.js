@@ -51,13 +51,13 @@ function ProductItem({
                 </div>
 
                 <div className="ProductItem_foot">
-                    <div className="ProductItem_name label-field">{name}</div>
+                    <div className="ProductItem_name font-500">{name}</div>
 
                     {in_stock && <div className="text-red">{in_stock}</div>}
 
                     <div className="ProductItem_price">
                         {new_price && (
-                            <div className="label-field font-italic">
+                            <div className="font-500 font-italic">
                                 {formatNum(new_price)}
                             </div>
                         )}

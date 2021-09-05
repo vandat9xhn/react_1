@@ -111,7 +111,7 @@ function ContentMore({ content_obj, seeMoreContent }) {
 
                 {has_more_content && !is_fetching && (
                     <span
-                        className="ContentMore_more hv-opacity label-field cursor-pointer text-secondary"
+                        className="ContentMore_more hv-opacity font-500 cursor-pointer text-secondary"
                         onClick={handleClickSeeMore}
                     >
                         ...See more

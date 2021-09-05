@@ -15,7 +15,7 @@ function FashionRateFoot({ user_rate, openRateNow }) {
         <div className="FashionRateFoot">
             <div className="flex-between-center">
                 <div className="display-flex align-items-center">
-                    <div className="FashionRate_rate-user label-field">
+                    <div className="FashionRate_rate-user font-500">
                         You:
                     </div>
 
@@ -23,7 +23,7 @@ function FashionRateFoot({ user_rate, openRateNow }) {
                 </div>
 
                 <div
-                    className="label-field cursor-pointer"
+                    className="font-500 cursor-pointer"
                     onClick={openRateNow}
                 >
                     {user_rate ? 'Change Rate' : 'Rate Now'}

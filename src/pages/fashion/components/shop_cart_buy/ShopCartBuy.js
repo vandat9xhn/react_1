@@ -26,7 +26,7 @@ function ShopCartBuy({ id, name, picture }) {
         <div className="ShopCartBuy">
             <div className="display-flex">
                 <Link
-                    className="ShopCartBuy_link normal-text label-field hv-cl-blue"
+                    className="ShopCartBuy_link normal-text font-500 hv-cl-blue"
                     to={`/fashion/shop/${id}`}
                 >
                     <div className="padding-8px">

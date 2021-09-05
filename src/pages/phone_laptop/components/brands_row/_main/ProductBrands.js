@@ -27,7 +27,7 @@ function ProductBrands({arr_brands,
             <div className="ProductBrands_row display-flex align-items-center">
                 <div className="ProductBrands__item">
                     <div
-                        className={`ProductBrands__all-brand ProductBrands__elm label-field brs-5px ${
+                        className={`ProductBrands__all-brand ProductBrands__elm font-500 brs-5px ${
                             current_brands.length == 0
                                 ? 'ProductBrands_active'
                                 : 'ProductBrands_item'

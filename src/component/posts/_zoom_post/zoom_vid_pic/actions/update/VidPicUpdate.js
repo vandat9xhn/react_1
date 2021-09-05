@@ -39,7 +39,7 @@ function VidPicUpdate({ content, handleUpdate, detectHasChange }) {
 
                 <div>
                     <button
-                        className={`w-100per btn btn-hv btn-active padding-8px brs-5px label-field ${
+                        className={`w-100per btn btn-hv btn-active padding-8px brs-5px font-500 ${
                             content == new_content
                                 ? 'bg-ccc text-third pointer-events-none'
                                 : 'bg-blue text-white cursor-pointer'

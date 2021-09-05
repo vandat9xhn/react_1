@@ -58,7 +58,7 @@ function InputText({
     return (
         <div className="InputText">
             <div>
-                <label className="label-field">{label}</label>
+                <label className="font-500">{label}</label>
             </div>
 
             <div>

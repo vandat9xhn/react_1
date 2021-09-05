@@ -15,7 +15,7 @@ function ProductCFType(props) {
     //
     return (
         <div className="ProductCFType">
-            <div className="label-field">
+            <div className="font-500">
                 {title}
             </div>
 

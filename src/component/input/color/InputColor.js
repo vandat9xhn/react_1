@@ -17,7 +17,7 @@ function InputColor({ label, color, handlePickColor }) {
     return (
         <div>
             <div>
-                <label className="label-field">{label}</label>
+                <label className="font-500">{label}</label>
             </div>
 
             <div>

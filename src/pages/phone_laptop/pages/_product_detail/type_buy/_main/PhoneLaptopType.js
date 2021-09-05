@@ -51,7 +51,7 @@ function PhoneLaptopType(props) {
             </div>
 
             <div className="PhoneLaptopType_body">
-                <label className="padding-8px label-field">
+                <label className="padding-8px font-500">
                     Choose type:
                 </label>
 
@@ -74,7 +74,7 @@ function PhoneLaptopType(props) {
             <div className="PhoneLaptopType_bottom padding-8px">
                 <div>
                     <div
-                        className="label-field width-fit-content cursor-pointer font-italic"
+                        className="font-500 width-fit-content cursor-pointer font-italic"
                         onClick={toggleDiscountType}
                     >
                         {open_discount ? 'Hide discount' : 'Show more discount'}

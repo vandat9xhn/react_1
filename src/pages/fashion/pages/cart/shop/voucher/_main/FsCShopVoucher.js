@@ -119,7 +119,7 @@ function FsCShopVoucher({
                         <div
                             className={`${open_voucher ? '' : 'display-none'} ${
                                 IS_MOBILE
-                                    ? 'pos-fixed-100per bg-film z-index-lv5'
+                                    ? ''
                                     : 'pos-abs top-100per left-0 z-index-lv1'
                             }`}
                             onClick={handleStopPropagation}

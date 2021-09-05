@@ -12,7 +12,7 @@ function FsCNoticeDelItemChecked(props) {
                 Các sản phẩm này sẽ bị xóa khỏi giỏ hàng!
             </div>
 
-            <div className="padding-y-8px label-field text-align-end">
+            <div className="padding-y-8px font-500 text-align-end">
                 Bạn có muốn tiếp tục không?
             </div>
         </div>

@@ -35,18 +35,18 @@ import { handleStateDelGift } from '../_state/handleStateDelGift';
 //
 import FashionH from '../../../components/head/_main/FashionH';
 import CartHead from '../cart_head/CartHead';
-import CartShop from '../shop/_main/CartShop';
+import FsCartShop from '../shop/_main/FsCartShop';
 import FsCartSummary from '../summary/_main/FsCartSummary';
 import FsCartMayLike from '../may_like/FsCartMayLike';
+import FsCNoticeDelItemChecked from '../notices/del_item_checked/FsCNoticeDelItemChecked';
+import FsCNoticeGoingToBuy from '../notices/going_to_buy/FsCNoticeGoingToBuy';
+import FsCNoticeDelItem from '../notices/del_item/FsCNoticeDelItem';
+import FsCNoticeDelGift from '../notices/del_gift/FsCNoticeDelGift';
 //
 import './FashionCart.scss';
 import '../_mobile_css/FashionCartMb.scss';
 import '../_mobile_css/FashionCartSummaryMb.scss';
 import '../_mobile_css/FashionCartShopMb.scss';
-import FsCNoticeDelItemChecked from '../notices/del_item_checked/FsCNoticeDelItemChecked';
-import FsCNoticeGoingToBuy from '../notices/going_to_buy/FsCNoticeGoingToBuy';
-import FsCNoticeDelItem from '../notices/del_item/FsCNoticeDelItem';
-import FsCNoticeDelGift from '../notices/del_gift/FsCNoticeDelGift';
 
 //
 FashionCart.propTypes = {};
@@ -399,7 +399,7 @@ function FashionCart(props) {
 
                         {cart_shop_arr.map((cart_shop_obj, ix) => (
                             <div key={ix} className="margin-bottom-16px">
-                                <CartShop
+                                <FsCartShop
                                     shop_ix={ix}
                                     shop_info={cart_shop_obj.shop_info}
                                     group_arr={cart_shop_obj.group_arr}

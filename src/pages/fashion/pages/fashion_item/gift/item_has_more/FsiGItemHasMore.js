@@ -23,7 +23,7 @@ function FsiGItemHasMore({ img, count }) {
             <div className="pos-abs-100 bg-film"></div>
 
             <div className="pos-abs-center w-100per">
-                <div className="padding-8px text-align-center text-white label-field font-18px">
+                <div className="padding-8px text-align-center text-white font-500 font-18px">
                     + {count - 1} {IS_MOBILE ? '' : 'sản phẩm'}
                 </div>
             </div>

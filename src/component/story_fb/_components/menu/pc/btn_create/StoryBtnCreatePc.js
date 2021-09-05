@@ -43,7 +43,7 @@ function StoryBtnCreatePc(props) {
 
                 <div className="StoryBtnCreatePc_right">
                     <div>
-                        <span className="label-field">
+                        <span className="font-500">
                             Create a story
                         </span>
                     </div>

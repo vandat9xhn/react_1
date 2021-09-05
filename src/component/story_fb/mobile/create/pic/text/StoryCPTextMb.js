@@ -74,7 +74,7 @@ function StoryCPTextMb({
             onTouchEnd={onTouchEnd}
             onClick={openChangeText}
         >
-            <span className="StoryCPTextMb_text text-white label-field font-18px">
+            <span className="StoryCPTextMb_text text-white font-500 font-18px">
                 {text}
             </span>
 

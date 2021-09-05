@@ -1,5 +1,5 @@
-.font-for-fashion{
-    font-family: Helvetica, Arial, sans-serif;
+.font-for-fashion {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .fashion-width {
@@ -8,15 +8,15 @@
     margin: 0 auto;
 }
 
-.fashion-head{
+.fashion-head {
     min-width: 1200px;
 }
 
-.fashion-head-padding{
+.fashion-head-padding {
     padding: 16px;
 }
 
-.fashion-value-padding{
+.fashion-value-padding {
     padding: 1px 5px;
 }
 
@@ -29,7 +29,7 @@
     );
 }
 
-.fs-item-border-bottom{
+.fs-item-border-bottom {
     margin: 0 25px;
     border-bottom: 1px solid var(--md-bg-blur);
 }

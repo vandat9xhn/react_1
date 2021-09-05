@@ -22,7 +22,7 @@ function ModelAppearMb({
     return (
         <React.Fragment>
             {IS_MOBILE ? (
-                <div className="pos-fixed-100per" onClick={handleClose}></div>
+                <div className="pos-fixed-100per bg-film" onClick={handleClose}></div>
             ) : null}
 
             <div

@@ -55,7 +55,7 @@ function ChatScreenTimeLine({ time_line_arr, room_chat }) {
                         className="ChatScreenTimeLine_item"
                     >
                         <div className="padding-8px">
-                            <span className="label-field">
+                            <span className="font-500">
                                 {item.user.first_name} {item.user.last_name}
                             </span>
 
@@ -63,7 +63,7 @@ function ChatScreenTimeLine({ time_line_arr, room_chat }) {
                                 {item.status}
                             </span>
 
-                            <span className="label-field">
+                            <span className="font-500">
                                 {item.friend.first_name} {item.friend.last_name}
                             </span>
                         </div>

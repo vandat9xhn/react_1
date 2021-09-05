@@ -14,7 +14,7 @@ function ProductBrandItem({ item, ix, is_active, handleChooseBrand }) {
     //
     return (
         <div
-            className={`ProductBrands__elm label-field brs-5px ${
+            className={`ProductBrands__elm font-500 brs-5px ${
                 is_active ? 'ProductBrands_active' : 'ProductBrands_item'
             }`}
             onClick={onChooseBrand}

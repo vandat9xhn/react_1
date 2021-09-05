@@ -125,7 +125,7 @@ function Info({
                             <MouseEnterLeaveInfo
                                 count={count_share}
                                 title={
-                                    <span className="font-14px label-field">
+                                    <span className="font-14px font-500">
                                         {title_share}
                                     </span>
                                 }

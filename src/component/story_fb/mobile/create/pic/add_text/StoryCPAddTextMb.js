@@ -16,7 +16,7 @@ function StoryCPAddTextMb({ text, handleChange }) {
             name="story_input"
             text={text}
             placeholder="START TYPING"
-            textarea_class="StoryCPAddTextMb pos-abs-center overflow-y-auto scroll-thin text-align-center text-white label-field font-18px"
+            textarea_class="StoryCPAddTextMb pos-abs-center overflow-y-auto scroll-thin text-align-center text-white font-500 font-18px"
             onChange={handleChange}
         />
     );

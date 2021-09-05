@@ -1,0 +1,22 @@
+// .
+.FsBuyShop_item {
+    margin: 0 30px;
+}
+.FsBuyShop_item-main {
+    padding-top: 15px;
+    border-top: 1px solid var(--md-bg-blur);
+}
+
+// .FsBuyShop_mess_trans {
+//     border-top: 1px dashed var(--md-bg-blur);
+// }
+// .
+.FsBuyShop_mess {
+    flex: 4;
+    align-self: stretch;
+    border: 1px dashed var(--md-bg-blur);
+}
+.FsBuyShop_trans {
+    flex: 6;
+    border: 1px dashed var(--md-bg-blur);
+}

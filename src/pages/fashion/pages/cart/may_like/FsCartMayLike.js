@@ -30,7 +30,7 @@ function FsCartMayLike(props) {
             <RowProducts
                 title={
                     <h2
-                        className={`text-secondary label-field text-upper ${
+                        className={`text-secondary font-500 text-upper ${
                             IS_MOBILE ? 'font-14px' : 'font-16px padding-y-8px'
                         }`}
                     >

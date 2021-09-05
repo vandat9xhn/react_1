@@ -188,7 +188,7 @@ function FsIHotDeal(props) {
         <div ref={ref_main_elm} className="FsIHotDeal bg-primary">
             <div className={`${has_fetched ? '' : 'display-none'}`}>
                 <div className="FsIHotDeal_head flex-between-center">
-                    <h2 className="fashion-head-font label-field">
+                    <h2 className="fashion-head-font font-500">
                         Mua thêm deal sốc
                     </h2>
 

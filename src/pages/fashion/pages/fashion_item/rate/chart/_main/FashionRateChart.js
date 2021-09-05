@@ -33,7 +33,7 @@ function FashionRateChart({
                         <StarsRate rate_avg={rate_avg} size_icon="2rem" />
                     </div>
 
-                    <div className="FashionRateChart_avg-num label-field">
+                    <div className="FashionRateChart_avg-num font-500">
                         {rate_avg ? rate_avg.toFixed(1) : 0.0}
                     </div>
                 </div>

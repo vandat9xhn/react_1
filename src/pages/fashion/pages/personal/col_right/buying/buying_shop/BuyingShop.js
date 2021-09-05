@@ -78,7 +78,7 @@ function BuyingShop({
             </div>
 
             <div className="BuyingShop_bot width-fit-content margin-auto padding-8px">
-                <div className="label-field">
+                <div className="font-500">
                     Total: {formatNum(amount)} VND
                 </div>
 

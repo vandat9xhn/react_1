@@ -37,7 +37,7 @@ function FashionTopSearchItem({ link_to, type, image, sold_month, use_sold }) {
                     {use_sold ? (
                         <div className="pos-abs bottom-0 left-0 w-100per">
                             <div className="FashionTopSearchItem_sold_contain padding-4px text-align-center">
-                                <span className="text-white label-field font-14px">
+                                <span className="text-white font-500 font-14px">
                                     Bán {sold_month}+ / tháng
                                 </span>
                             </div>
@@ -47,7 +47,7 @@ function FashionTopSearchItem({ link_to, type, image, sold_month, use_sold }) {
 
                 <div>
                     <div className="FashionTopSearchItem_foot_contain overflow-hidden">
-                        <span className="font-18px label-field text-secondary">
+                        <span className="font-18px font-500 text-secondary">
                             {type}
                         </span>
                     </div>

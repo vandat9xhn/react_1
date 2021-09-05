@@ -16,7 +16,7 @@ AddDiv.propTypes = {
 //
 function AddDiv({ children, onClick }) {
     return (
-        <div className="AddDiv cursor-pointer label-field" onClick={onClick}>
+        <div className="AddDiv cursor-pointer font-500" onClick={onClick}>
             <IconDiv Icon={IconsArrow} y={400} size_icon="1rem">
                 {children}
             </IconDiv>

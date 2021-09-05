@@ -50,7 +50,7 @@ function FsIShopSelling(props) {
             ref={ref_main_el}
             className="FsIShopSelling padding-y-8px bg-primary"
         >
-            <h2 className="text-upper font-14px label-field text-third padding-8px">
+            <h2 className="text-upper font-14px font-500 text-third padding-8px">
                 Top Sản Phẩm Bán Chạy
             </h2>
 

@@ -335,14 +335,14 @@ class CanvasDraw extends Component {
                             className="CanvasDraw_actions-item"
                             onClick={this.clearCanvas}
                         >
-                            <span className="label-field font-14px">Clear</span>
+                            <span className="font-500 font-14px">Clear</span>
                         </div>
 
                         <div
                             className="CanvasDraw_actions-item"
                             onClick={this.completeCanvas}
                         >
-                            <span className="label-field font-14px">Done</span>
+                            <span className="font-500 font-14px">Done</span>
                         </div>
                     </div>
                 </div>

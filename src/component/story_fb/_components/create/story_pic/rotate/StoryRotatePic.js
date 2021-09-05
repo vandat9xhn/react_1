@@ -17,7 +17,7 @@ function StoryRotatePic({ handleRotate }) {
             onClick={handleRotate}
         >
             <IconDiv Icon={IconUpdate}>
-                <span className="label-field">Rotate</span>
+                <span className="font-500">Rotate</span>
             </IconDiv>
         </button>
     );

@@ -20,7 +20,7 @@ function StoryBtnPrivacyMb({ openPrivacy }) {
                 </div>
 
                 <div>
-                    <span className="label-field text-white">Privacy</span>
+                    <span className="font-500 text-white">Privacy</span>
                 </div>
             </div>
         </div>

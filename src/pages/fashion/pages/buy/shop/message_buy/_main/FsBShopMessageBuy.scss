@@ -1,0 +1,13 @@
+.FsBShopMessageBuy{
+    padding: 16px 30px;
+}
+
+.FsBShopMessageBuy_input{
+    &::placeholder{
+        color: var(--del);
+        opacity: 0.5;
+    }
+    &:focus{
+        outline: none;
+    }
+}

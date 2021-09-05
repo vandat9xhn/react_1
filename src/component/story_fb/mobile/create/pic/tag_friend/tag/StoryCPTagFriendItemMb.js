@@ -103,7 +103,7 @@ function StoryCPTagFriendItemMb({
                 className="padding-8px brs-8px text-nowrap"
                 style={{ backgroundColor: bg, color: color }}
             >
-                <span className="label-field font-18px">
+                <span className="font-500 font-18px">
                     @ {user.first_name} {user.last_name}
                 </span>
             </div>

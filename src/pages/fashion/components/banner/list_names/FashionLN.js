@@ -29,7 +29,7 @@ function FashionLN(props) {
                 {list_names.map((item, ix) => (
                     <li key={`${ix}`} className="FashionLN_item">
                         <Link to={`/fashion/${item.link}`}>
-                            <div className="FashionLN_title brs-5px label-field">
+                            <div className="FashionLN_title brs-5px font-500">
                                 {item.name}
                             </div>
                         </Link>

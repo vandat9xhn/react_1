@@ -15,7 +15,7 @@ function ProductPrices(props) {
                         {/* title */}
                         <div className="ProductPrices__block">
                             <div
-                                className={`ProductPrices__item brs-5px label-field ${current_prices.length == 0 ? 'ProductPrices__item-active' : ''}`}
+                                className={`ProductPrices__item brs-5px font-500 ${current_prices.length == 0 ? 'ProductPrices__item-active' : ''}`}
                                 onClick={handleChooseAllPrice}
                                 title="All prices"
                             >

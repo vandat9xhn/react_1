@@ -29,7 +29,7 @@ function FsItemIfRName({}) {
                         />
                     </div>
 
-                    <span className="FsItemIfRName_name font-20px label-field text-secondary">
+                    <span className="FsItemIfRName_name font-20px font-500 text-secondary">
                         {item_info.name}
                     </span>
                 </div>

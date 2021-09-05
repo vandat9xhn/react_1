@@ -110,7 +110,7 @@ function FashionFaceItem({
                 <div className="FashionFaceItem_same pos-abs top-100per left-0 w-100per z-index-lv1 display-none">
                     <Link to={`/fashion/same-product?id=${id}`}>
                         <div className="FashionFaceItem_same_contain padding-8px bg-fashion-red text-align-center">
-                            <span className="text-white label-field">
+                            <span className="text-white font-500">
                                 Tìm sản phẩm tương tự
                             </span>
                         </div>

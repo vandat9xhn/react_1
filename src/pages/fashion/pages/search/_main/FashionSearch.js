@@ -372,7 +372,7 @@ function FashionSearch(props) {
             <div className="FashionSearch_row display-flex">
                 <div className="FashionSearch_open-filter">
                     <div
-                        className="FashionSearch_open-filter-btn label-field"
+                        className="FashionSearch_open-filter-btn font-500"
                         onClick={openFilter}
                     >
                         Filter

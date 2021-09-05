@@ -60,7 +60,7 @@ function LearnStoryItem(props) {
     return (
         <div className="padding-8px">
             <div
-                className="label-field cursor-pointer"
+                className="font-500 cursor-pointer"
                 onClick={handleOpenScreenStoryMenu}
             >
                 Open Screen Story Menu Mobile
@@ -68,7 +68,7 @@ function LearnStoryItem(props) {
             <br />
 
             <div
-                className="label-field cursor-pointer"
+                className="font-500 cursor-pointer"
                 onClick={handleOpenScreenStoryPc}
             >
                 Open Screen Story Pc

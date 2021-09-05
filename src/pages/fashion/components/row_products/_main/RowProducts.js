@@ -77,7 +77,7 @@ function RowProducts({
     //
     return (
         <div ref={ref_main_elm} className="RowProducts padding-8px">
-            <div className="RowProducts_title label-field">{title}</div>
+            <div className="RowProducts_title font-500">{title}</div>
 
             <div className="RowProducts_products">
                 {IS_MOBILE ? (

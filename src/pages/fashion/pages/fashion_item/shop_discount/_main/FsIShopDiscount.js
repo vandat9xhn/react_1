@@ -26,7 +26,7 @@ function FsIShopDiscount({}) {
     return (
         <div className="FsIShopDiscount bg-primary padding-8px">
             <h2
-                className={`text-upper font-14px margin-bottom-16px label-field text-third ${
+                className={`text-upper font-14px margin-bottom-16px font-500 text-third ${
                     IS_MOBILE ? '' : 'padding-y-8px'
                 }`}
             >

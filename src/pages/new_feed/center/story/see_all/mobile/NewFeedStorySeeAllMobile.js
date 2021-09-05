@@ -15,7 +15,7 @@ function NewFeedStorySeeAllMobile({ handleSeeMenuMobile }) {
             onClick={handleSeeMenuMobile}
         >
             <div className="display-flex-center">
-                <span className="text-blue label-field">See All Stories</span>
+                <span className="text-blue font-500">See All Stories</span>
             </div>
         </div>
     );

@@ -60,7 +60,7 @@ function FashionHomeTopSearch(props) {
         <div ref={ref_main_elm} className="FashionHomeTopSearch bg-primary">
             <div className="FashionHomeTopSearch_head fashion-head-padding flex-between-center">
                 <div>
-                    <h2 className="font-16px label-field color-fashion">
+                    <h2 className="font-16px font-500 color-fashion">
                         TÌM KIẾM HÀNG ĐẦU
                     </h2>
                 </div>

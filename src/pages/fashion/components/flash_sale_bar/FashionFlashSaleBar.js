@@ -43,7 +43,7 @@ function FashionFlashSaleBar({ sold, total }) {
                     }`}
                 >
                     <span
-                        className={`text-white label-field ${
+                        className={`text-white font-500 ${
                             IS_MOBILE ? 'font-11px' : 'font-12px'
                         }`}
                     >

@@ -19,7 +19,7 @@ function InputSelectedItem({ ix, item, handleRemoveSelectedItem }) {
     return (
         <div className="InputSelectedItem brs-8px bg-active-fb text-blue">
             <div className="InputSelectedItem_row">
-                <div className="inline-block label-field">{item}</div>
+                <div className="inline-block font-500">{item}</div>
 
                 <div className="inline-block">
                     <div

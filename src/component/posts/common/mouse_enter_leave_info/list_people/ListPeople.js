@@ -33,7 +33,7 @@ function ListPeople({ list_people, count_people, max_size, PeopleComponent }) {
 
             {count_people > max_size && (
                 <div className="text-white padding-4px">
-                    <span className="font-13px label-field">
+                    <span className="font-13px font-500">
                         {`And ${count_people - max_size} others...`}
                     </span>
                 </div>

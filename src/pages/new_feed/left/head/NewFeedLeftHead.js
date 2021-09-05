@@ -38,7 +38,7 @@ function NewFeedLeftHead(props) {
                                 ComponentLeft={item.Icon}
                                 ComponentRight={
                                     <div>
-                                        <div className="text-secondary label-field">
+                                        <div className="text-secondary font-500">
                                             {item.title}
                                         </div>
 

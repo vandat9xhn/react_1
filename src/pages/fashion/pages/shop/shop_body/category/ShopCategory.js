@@ -36,7 +36,7 @@ function ShopCategory({ list_name }) {
                             className="normal-text"
                         >
                             <div
-                                className={`ShopCategory_item label-field ${
+                                className={`ShopCategory_item font-500 ${
                                     item.name ==
                                     ParseLocationSearch()['category']
                                         ? 'ShopCategory_item-active pointer-events-none'

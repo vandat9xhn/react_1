@@ -31,7 +31,7 @@ function StoryTextContentPicC({
         >
             <div className="text-align-center pointer-events-none">
                 <span
-                    className="label-field"
+                    className="font-500"
                     style={{ fontFamily: font, color: color }}
                 >
                     {text}

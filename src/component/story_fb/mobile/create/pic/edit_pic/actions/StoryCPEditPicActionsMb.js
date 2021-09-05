@@ -25,7 +25,7 @@ function StoryCPEditPicActionsMb({
             <div className="display-flex">
                 <div>
                     <div className="padding-x-8px" onClick={openEffectPic}>
-                        <span className="label-field text-white">Effect</span>
+                        <span className="font-500 text-white">Effect</span>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@ function StoryCPEditPicActionsMb({
 
                 <div>
                     <div className="padding-x-8px" onClick={changeModePic}>
-                        <span className="label-field text-white">{mode}</span>
+                        <span className="font-500 text-white">{mode}</span>
                     </div>
                 </div>
             </div>

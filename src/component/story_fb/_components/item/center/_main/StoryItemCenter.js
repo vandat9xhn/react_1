@@ -92,7 +92,7 @@ function StoryItemCenter({
                     <div className="StoryItemCenter_bottom right-0">
                         <Link
                             to={story_link}
-                            className="StoryItemCenter_link label-field text-white"
+                            className="StoryItemCenter_link font-500 text-white"
                         >
                             <div className="padding-4px">
                                 <span>See more</span>

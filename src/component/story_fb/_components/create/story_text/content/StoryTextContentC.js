@@ -79,7 +79,7 @@ function StoryTextContentC({ vid_pic, text, font_family, scale }) {
                         onClick={handleToggleText}
                     >
                         <div className="display-flex align-items-center">
-                            <div className="font-14px label-field">
+                            <div className="font-14px font-500">
                                 {is_show_more ? 'See less' : 'See more'}
                             </div>
 

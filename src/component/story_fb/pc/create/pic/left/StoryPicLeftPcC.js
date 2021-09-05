@@ -27,7 +27,7 @@ function StoryPicLeftPcC({ openAddText, is_open }) {
 
                 <div className="StoryPicLeftPcC_right">
                     <div className="StoryPicLeftPcC_right_contain">
-                        <span className="font-17px label-field">Add Text</span>
+                        <span className="font-17px font-500">Add Text</span>
                     </div>
                 </div>
             </div>

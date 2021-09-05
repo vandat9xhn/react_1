@@ -35,7 +35,7 @@ function ButtonRipple({
     //
     return (
         <button
-            className={`ButtonRipple btn label-field ${
+            className={`ButtonRipple btn font-500 ${
                 disabled ? 'opacity-05 pointer-events-none' : 'cursor-pointer'
             }`}
             type={type}

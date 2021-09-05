@@ -37,7 +37,7 @@ function SelectColorBg({ active_ix, color_bg_arr, handleChangeColorBg }) {
             <div className="SelectColorBg pos-rel">
                 <div>
                     <div
-                        className={`SelectColorBg_btn-item padding-4px text-align-center label-field cursor-pointer ${color_bg_arr[active_ix].bg} ${color_bg_arr[active_ix].color}`}
+                        className={`SelectColorBg_btn-item padding-4px text-align-center font-500 cursor-pointer ${color_bg_arr[active_ix].bg} ${color_bg_arr[active_ix].color}`}
                         onClick={toggleSelectColorBg}
                         type="text"
                     >

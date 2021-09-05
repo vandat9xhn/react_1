@@ -73,7 +73,7 @@ function FashionHomeTrend(props) {
         <div ref={ref_main_elm} className="FashionHomeTrend bg-primary">
             <div className="FashionHomeTrend_head flex-between-center fashion-head-padding">
                 <div>
-                    <h2 className="font-16px label-field text-secondary">
+                    <h2 className="font-16px font-500 text-secondary">
                         XU HƯỚNG TÌM KIẾM
                     </h2>
                 </div>

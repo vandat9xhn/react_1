@@ -21,7 +21,7 @@ function FsBuyUser({
     active_ix,
 
     handleChangeUserInfo,
-    handleAddComplete,
+    handleAddUserAddress,
 }) {
     //
     const { openScreenFloor, closeScreenFloor } = useContext(context_api);
@@ -80,7 +80,7 @@ function FsBuyUser({
             elm: (
                 <FsBuyUserAddNew
                     handleBack={closeScreenFloor}
-                    handleComplete={handleAddComplete}
+                    handleComplete={handleAddUserAddress}
                 />
             ),
         });

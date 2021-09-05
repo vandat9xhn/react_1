@@ -39,7 +39,7 @@ function SubList({
                     {sub_list.map((sub_item, sub_ix) => (
                         <li key={`SubList_${sub_ix}`}>
                             <NavLink
-                                className="normal-text text-secondary label-field"
+                                className="normal-text text-secondary font-500"
                                 activeClassName="color-fashion"
                                 to={`/fashion/personal${sub_item.link}`}
                                 replace

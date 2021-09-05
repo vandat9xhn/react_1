@@ -55,7 +55,7 @@ function FashionBody(props) {
             <div className="FashionBody_title fashion-head-padding bg-primary">
                 <div className="display-flex">
                     <h2
-                        className={`padding-x-8px font-16px label-field cursor-pointer ${
+                        className={`padding-x-8px font-16px font-500 cursor-pointer ${
                             c_key == 'suggested'
                                 ? 'FashionBody_title_item-active'
                                 : ''
@@ -66,7 +66,7 @@ function FashionBody(props) {
                     </h2>
 
                     <h2
-                        className={`padding-x-8px font-16px label-field cursor-pointer ${
+                        className={`padding-x-8px font-16px font-500 cursor-pointer ${
                             c_key == 'coins_back'
                                 ? 'FashionBody_title_item-active'
                                 : ''

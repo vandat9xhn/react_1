@@ -10,7 +10,7 @@ FsCNoticeGoingToBuy.propTypes = {};
 function FsCNoticeGoingToBuy(props) {
     //
     return (
-        <div className="FsCNoticeGoingToBuy display-flex-center padding-16px bg-loader brs-8px text-white label-field">
+        <div className="FsCNoticeGoingToBuy display-flex-center padding-16px bg-loader brs-8px text-white font-500">
             Bạn chưa chọn sản phẩm nào để mua
         </div>
     );

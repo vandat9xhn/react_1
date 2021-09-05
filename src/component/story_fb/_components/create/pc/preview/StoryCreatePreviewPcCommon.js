@@ -11,7 +11,7 @@ function StoryCreatePreviewPcCommon({ children }) {
     //
     return (
         <div className="StoryCreatePreviewPcCommon h-100per padding-8px bg-primary brs-8px box-shadow-fb">
-            <h2 className="StoryCreatePreviewPcCommon_title font-16px label-field">
+            <h2 className="StoryCreatePreviewPcCommon_title font-16px font-500">
                 Preview
             </h2>
 

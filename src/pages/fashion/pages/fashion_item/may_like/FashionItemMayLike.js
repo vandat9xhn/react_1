@@ -41,7 +41,7 @@ function FashionItemMayLike({ id }) {
     return (
         <div ref={ref_main_elm}>
             <h2
-                className={`label-field padding-8px text-secondary ${
+                className={`font-500 padding-8px text-secondary ${
                     IS_MOBILE ? 'font-14px' : 'font-16px'
                 }`}
             >

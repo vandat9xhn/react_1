@@ -40,7 +40,7 @@ function ScreenPermissionItem({ is_active, ix, icon_obj, choosePermission }) {
                             {Icon}
                         </div>
 
-                        <div className="label-field">{title}</div>
+                        <div className="font-500">{title}</div>
                     </div>
                 </div>
             </div>

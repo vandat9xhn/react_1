@@ -46,7 +46,7 @@ function LearnScreen(props) {
     return (
         <div>
             <div
-                className="padding-8px label-field cursor-pointer"
+                className="padding-8px font-500 cursor-pointer"
                 onClick={openScreenFloorConfirm}
             >
                 Open Screen Floor, instead of using multiple screen

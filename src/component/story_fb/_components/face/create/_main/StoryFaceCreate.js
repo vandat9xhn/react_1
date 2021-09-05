@@ -37,7 +37,7 @@ function StoryFaceCreate(props) {
                     </div>
 
                     <div>
-                        <span className="font-13px label-field">Create story</span>
+                        <span className="font-13px font-500">Create story</span>
                     </div>
                 </div>
             </div>

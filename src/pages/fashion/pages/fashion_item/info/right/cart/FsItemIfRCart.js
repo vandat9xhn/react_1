@@ -44,7 +44,7 @@ function FsItemIfRCart({}) {
                         x={400}
                         size_icon={IS_MOBILE ? '1rem' : '1.5rem'}
                     >
-                        <span className="label-field">
+                        <span className="font-500">
                             Thêm Vào Giỏ {IS_MOBILE ? '' : 'Hàng'}
                         </span>
                     </IconDiv>
@@ -57,7 +57,7 @@ function FsItemIfRCart({}) {
                             : ''
                     }`}
                 >
-                    <span className="text-white label-field">Mua ngay</span>
+                    <span className="text-white font-500">Mua ngay</span>
                 </button>
             </div>
         </div>

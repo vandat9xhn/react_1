@@ -56,7 +56,7 @@ function InputImage({ form, field, type, label, handleImageChange }) {
     return (
         <div className="InputImage">
             <div>
-                <label className="label-field" htmlFor={name}>
+                <label className="font-500" htmlFor={name}>
                     {label}
                 </label>
             </div>

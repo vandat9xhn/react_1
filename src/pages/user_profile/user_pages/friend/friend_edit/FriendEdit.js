@@ -47,7 +47,7 @@ function FriendEdit({ user, handelDeleteFriend }) {
             <div className="FriendEdit_left">
                 <Link
                     to={`/profile/${user.id}`}
-                    className="normal-text hv-cl-blue label-field"
+                    className="normal-text hv-cl-blue font-500"
                 >
                     <div className="display-flex align-items-center">
                         <div>
@@ -71,7 +71,7 @@ function FriendEdit({ user, handelDeleteFriend }) {
                 <ActionsNormal symbol_post={false}>
                     <div className="FriendEdit_action brs-5px box-shadow-1">
                         <div
-                            className="FriendEdit_action_item label-field cursor-pointer"
+                            className="FriendEdit_action_item font-500 cursor-pointer"
                             onClick={onOpenMessage}
                         >
                             <IconDiv x={200} Icon={IconsAction}>
@@ -80,7 +80,7 @@ function FriendEdit({ user, handelDeleteFriend }) {
                         </div>
 
                         <div
-                            className="FriendEdit_action_item label-field cursor-pointer"
+                            className="FriendEdit_action_item font-500 cursor-pointer"
                             onClick={confirmDelete}
                         >
                             <IconDiv Icon={IconsAction}>

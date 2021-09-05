@@ -100,11 +100,11 @@ function ProfilePrAbout({ id, handleReady }) {
                             key={`${ix}`}
                             className={`${item.content ? '' : 'display-none'}`}
                         >
-                            <span className="label-field text-secondary">
+                            <span className="font-500 text-secondary">
                                 {item.title}:{' '}
                             </span>
 
-                            <span className="label-field">{item.content}</span>
+                            <span className="font-500">{item.content}</span>
                         </div>
                     ))}
                 </div>

@@ -37,7 +37,7 @@ function ProfileInfoActions({
     //
     return (
         <div className="ProfileInfoActions">
-            <div className="brs-5px label-field">
+            <div className="brs-5px font-500">
                 <div className="display-flex-center">
                     <div className="display-flex-center">
                         <div className="ProfileInfoActions_add-friend display-flex-center brs-5px">

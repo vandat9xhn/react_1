@@ -45,7 +45,7 @@ function FsICombo(props) {
             <div className="flex-between-center">
                 <div className="display-flex align-items-center">
                     <h2
-                        className={`font-18px text-secondary label-field margin-right-5px ${
+                        className={`font-18px text-secondary font-500 margin-right-5px ${
                             IS_MOBILE ? 'display-none' : ''
                         }`}
                     >

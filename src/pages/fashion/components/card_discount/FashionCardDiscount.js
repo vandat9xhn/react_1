@@ -58,7 +58,7 @@ function FashionCardDiscount({
                             onClick={handleSave}
                             disabled={disabled}
                         >
-                            <div className="label-field">
+                            <div className="font-500">
                                 <span>
                                     {status_card == 'available'
                                         ? 'Lưu'

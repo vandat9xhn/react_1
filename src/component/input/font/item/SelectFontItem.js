@@ -22,7 +22,7 @@ function SelectFontItem({ ix, font_family, handleChangeFont }) {
             className="SelectFontItem cursor-pointer hv-bg-blur"
             onClick={onChangeFont}
         >
-            <span className="label-field" style={{ fontFamily: font_family }}>
+            <span className="font-500" style={{ fontFamily: font_family }}>
                 {font_family}
             </span>
         </div>

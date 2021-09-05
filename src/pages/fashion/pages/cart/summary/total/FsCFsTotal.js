@@ -60,7 +60,7 @@ function FsCFsTotal({
                         <div
                             className={`text-nowrap ${
                                 item_checked_count == item_count
-                                    ? 'label-field color-fashion'
+                                    ? 'font-500 color-fashion'
                                     : ''
                             }`}
                             onClick={handleCheckedAll}

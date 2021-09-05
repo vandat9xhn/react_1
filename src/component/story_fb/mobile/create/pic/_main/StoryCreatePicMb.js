@@ -485,7 +485,7 @@ function StoryCreatePicMb({
 
                     <div className="pos-abs right-0 bottom-0">
                         <div className="padding-8px" onClick={closeAddText}>
-                            <span className="label-field text-white">Done</span>
+                            <span className="font-500 text-white">Done</span>
                         </div>
                     </div>
                 </div>
@@ -593,7 +593,7 @@ function StoryCreatePicMb({
                         onClick={closeTagFriend}
                     >
                         <div className="padding-8px">
-                            <span className="text-white label-field">Done</span>
+                            <span className="text-white font-500">Done</span>
                         </div>
                     </div>
                 </div>
@@ -618,7 +618,7 @@ function StoryCreatePicMb({
                         onClick={closeEffectPic}
                     >
                         <div className="padding-4px">
-                            <span className="text-white label-field">Done</span>
+                            <span className="text-white font-500">Done</span>
                         </div>
                     </div>
                 </div>

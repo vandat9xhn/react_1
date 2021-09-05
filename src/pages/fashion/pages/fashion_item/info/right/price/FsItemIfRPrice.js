@@ -39,13 +39,13 @@ function FsItemIfRPrice({}) {
                 </div>
 
                 <div className="FsItemIfRPrice_new">
-                    <span className="color-fashion label-field">
+                    <span className="color-fashion font-500">
                         ₫{makePriceToPrice(c_new_price, c_new_price_max)}
                     </span>
                 </div>
 
                 <div className="FsItemIfRPrice_discount bg-fashion-red">
-                    <span className="text-white label-field font-12px">
+                    <span className="text-white font-500 font-12px">
                         {discount} GIẢM
                     </span>
                 </div>

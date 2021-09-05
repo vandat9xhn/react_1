@@ -1,0 +1,15 @@
+.FsBShopHead{
+    padding: 10px 30px;
+}
+
+.FsBShopHead_name{
+    border-right: 1px solid var(--md-bg-blur);
+}
+
+.FsBShopHead_chat{
+    color: #00bfa5;
+
+    .IconsMenu_message-out{
+        fill: currentColor;
+    }
+}

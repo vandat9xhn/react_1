@@ -34,7 +34,7 @@ function StoryZoomPic({ value, handleMouseMove, handleMouseEnd }) {
                     }`}
                     onClick={handleZoomSub}
                 >
-                    <span className="StoryZoomPic_btn text-white label-field">
+                    <span className="StoryZoomPic_btn text-white font-500">
                         -
                     </span>
                 </div>
@@ -57,7 +57,7 @@ function StoryZoomPic({ value, handleMouseMove, handleMouseEnd }) {
                     }`}
                     onClick={handleZoomAdd}
                 >
-                    <span className="StoryZoomPic_btn text-white label-field">
+                    <span className="StoryZoomPic_btn text-white font-500">
                         +
                     </span>
                 </div>

@@ -34,7 +34,7 @@ function StoryBtnCreateMb(props) {
         >
             <div className="flex-between-center">
                 <div className="StoryBtnCreateMb_left">
-                    <span className="label-field font-18px text-white">
+                    <span className="font-500 font-18px text-white">
                         Create story
                     </span>
                 </div>

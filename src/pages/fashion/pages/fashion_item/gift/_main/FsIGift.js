@@ -67,7 +67,7 @@ function FsIGift(props) {
         <div ref={ref_main_elm} className="FsIGift bg-primary">
             <div className={` ${has_fetched ? '' : 'display-none'}`}>
                 <div className="FsIGift_head flex-between-center">
-                    <h2 className="label-field fashion-head-font">
+                    <h2 className="font-500 fashion-head-font">
                         Mua ₫{min_spend} để nhận {gift_count} quà tặng
                     </h2>
 
