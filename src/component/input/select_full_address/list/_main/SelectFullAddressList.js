@@ -27,7 +27,7 @@ function SelectFullAddressList({
             <div className="SelectFullAddressList_head brs-5px">
                 <div className="flex-between-center">
                     {head_arr.map((head_item, ix) => (
-                        <div key={ix}>
+                        <div key={ix} className="SelectFullAddressList_head_item">
                             <SelectFAHeadItem
                                 ix={ix}
                                 head_item={head_item}

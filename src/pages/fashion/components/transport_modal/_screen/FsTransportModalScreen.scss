@@ -1,0 +1,72 @@
+.FsTransportModalScreen-pc {
+    padding: 5rem 0;
+}
+
+.FsTransportModalScreen-mobile {
+    .FsTransportsModal {
+        width: 600px;
+        max-width: 100%;
+        min-height: 100vh;
+        padding: 0px 0px 40px 0px;
+
+        border-radius: 0;
+    }
+
+    .FsTransportsModal_title {
+        margin-bottom: 0;
+        padding: 10px 0;
+
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .FsTransportsModal_chanel {
+        background: var(--md-bg-fb);
+        padding: 10px;
+    }
+
+    // -----
+
+    .TransportModalItem {
+        padding: 10px 10px 10px 12px;
+    }
+    // .
+    .TransportModalItem_name {
+        font-size: 15px;
+    }
+
+    // ------
+
+    .TMDeliveryTime {
+        padding: 10px;
+    }
+
+    .TMDeliveryTimeItem {
+        padding: 0px 0px 10px 0px;
+    }
+    .TMDeliveryTime_title {
+        margin-bottom: 10px;
+    }
+    .TMDeliveryTimeItem_name {
+        font-size: 14px;
+    }
+
+    .FsTransportsModal_foot {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+
+        width: 100%;
+        padding: 10px;
+        background: var(--md-bg-primary);
+    }
+    // .
+    .FsTransportsModal_btn-back {
+        display: none;
+    }
+    // .
+    .FsTransportsModal_btn-confirm {
+        width: 100%;
+    }
+}

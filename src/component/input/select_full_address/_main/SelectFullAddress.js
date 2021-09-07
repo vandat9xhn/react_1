@@ -13,8 +13,11 @@ SelectFullAddress.propTypes = {};
 function SelectFullAddress({
     address_ix_arr,
     head_ix,
-    current_address,
     is_error,
+
+    province,
+    district,
+    commune,
 
     open_address,
     is_fetching,
@@ -33,7 +36,9 @@ function SelectFullAddress({
             <div>
                 <SelectFullAddressCurrent
                     is_error={is_error && has_changed}
-                    current_address={current_address}
+                    province={province}
+                    district={district}
+                    commune={commune}
                     open_address={open_address}
                     toggleOpenAddress={toggleOpenAddress}
                     handleResetAddress={handleResetAddress}

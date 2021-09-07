@@ -1,0 +1,44 @@
+.FsAddAddressScreen {
+    min-height: 100vh;
+}
+
+.FsAddAddressScreen-pc {
+    padding: 5rem 0;
+}
+
+.FsAddAddressScreen-mobile{
+    .FsAddAddress{
+        width: 600px;
+        min-height: 100vh;
+        border-radius: 0;
+    }
+}
+
+// 
+@media (max-width: 450px) {
+    .FsAddAddressScreen-mobile{
+        font-size: 14px;
+        
+        .FsAddAddress{
+            padding: 10px;
+        }
+    
+        .FsAddAddressForm_name{
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .FsAddAddressForm_phone{
+            width: 100%;
+        }
+
+        .SelectFullAddressList_head_item{
+            width: 30%;
+        }
+        .SelectFAHeadItem{
+            padding: 5px;
+
+            text-align: center;
+        }
+    }
+    
+}

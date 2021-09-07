@@ -78,7 +78,19 @@ export const initial_fashion_shop = () => ({
     info: '',
     time_online: '',
     vid_pics: [],
-    discount_arr: [],
+    discount_arr: [
+        {
+            voucher_code: '',
+            min_spend: 0,
+            percentage_used: 0,
+            start_time: 0,
+            end_time: 0,
+            discount_value: 0,
+            is_percent: false,
+            discount_str: '',
+            status_card: 'available',
+        },
+    ],
     rating_star: 0,
     profile_model: 0,
 

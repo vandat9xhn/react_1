@@ -13,6 +13,7 @@ import FsInputVoucher from '../../../../../pages/fashion/components/input_vouche
 import ScreenFsFreeShipItem from '../item/ScreenFsFreeShipItem';
 //
 import './ScreenFsFreeShip.scss';
+import FsBtnsConfirm from '../../../../button/fs_btns_confirm/FsBtnsConfirm';
 
 //
 export function openScreenFsFreeShip({
@@ -83,7 +84,7 @@ function ScreenFsFreeShip({ free_ship_id, closeScreen, handleChooseFreeShip }) {
 
     //
     return (
-        <ScreenBlur closeScreen={closeScreen} screen_center={true}>
+        <ScreenBlur closeScreen={closeScreen}>
             <div className="ScreenFsFreeShip padding-16px font-for-fashion">
                 <div className="margin-bottom-16px">
                     <ScreenBlurHead
@@ -104,7 +105,6 @@ function ScreenFsFreeShip({ free_ship_id, closeScreen, handleChooseFreeShip }) {
                         <div
                             key={`${free_ship_obj.id}`}
                             className="ScreenFsFreeShip_item margin-bottom-16px"
-                            
                         >
                             <ScreenFsFreeShipItem
                                 active_id={active_id}
@@ -139,21 +139,14 @@ function ScreenFsFreeShip({ free_ship_id, closeScreen, handleChooseFreeShip }) {
                     }`}
                 >
                     <div className="display-flex justify-content-end">
-                        <button
-                            type="button"
-                            className="ScreenFsFreeShip_btn margin-right-10px padding-6px brs-3px btn cursor-pointer hv-bg-blur text-upper text-secondary"
-                            onClick={closeScreen}
-                        >
-                            Trở lại
-                        </button>
-
-                        <button
-                            type="button"
-                            className="ScreenFsFreeShip_btn padding-6px brs-3px btn btn-hv cursor-pointer bg-fashion-red text-upper text-white"
-                            onClick={handleConfirm}
-                        >
-                            Ok
-                        </button>
+                        <FsBtnsConfirm
+                            back_title="Trở lại"
+                            confirm_title="Ok"
+                            back_class="ScreenFsFreeShip_btn"
+                            confirm_class="ScreenFsFreeShip_btn"
+                            handleBack={closeScreen}
+                            handleConfirm={handleConfirm}
+                        />
                     </div>
                 </div>
             </div>

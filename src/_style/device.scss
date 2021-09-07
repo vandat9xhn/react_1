@@ -7,16 +7,21 @@
     // .cursor-pointer, a{
     //     cursor: none;
     // }
-    
+
     // ------ FASHION
 
+    .font-for-fashion {
+        font-family: -apple-system, HelveticaNeue-Light, Helvetica Neue Light,
+            Helvetica Neue, Helvetica, Roboto, Droid Sans, Arial, sans-serif;
+    }
+
     .fashion-width {
-        width: 900px;
+        width: 600px;
         max-width: 100%;
         margin: 0 auto;
     }
 
-    .fashion-head{
+    .fashion-head {
         min-width: auto;
         width: 100%;
     }

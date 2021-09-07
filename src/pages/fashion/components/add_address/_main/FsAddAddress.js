@@ -78,7 +78,7 @@ function FsAddAddress({
         num_error_name: getNumErrorName(old_user_name),
         is_specific_ok: getIsSpecificOk(old_specific),
         is_phone_ok: getIsPhoneOk(old_phone),
-        checked_default: false,
+        checked_default: is_default,
 
         name_changed: false,
         phone_changed: false,
@@ -179,8 +179,7 @@ function FsAddAddress({
             !is_phone_ok ||
             0 ||
             num_error_name != 0 ||
-            !is_specific_ok ||
-            type == ''
+            !is_specific_ok
         ) {
             return;
         }

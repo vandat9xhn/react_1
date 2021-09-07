@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../_constant/Constant';
+//
 import IconDown from '../../../../_icons_svg/_icon_down/IconDown';
 import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
 //
@@ -10,18 +12,21 @@ import './SelectFullAddressCurrent.scss';
 SelectFullAddressCurrent.propTypes = {};
 
 function SelectFullAddressCurrent({
+    province,
+    district,
+    commune,
+    
     is_error,
-    current_address,
     open_address,
 
     toggleOpenAddress,
     handleResetAddress,
 }) {
-    // 
+    //
     function onResetAddress(e) {
-        e.stopPropagation()
+        e.stopPropagation();
 
-        handleResetAddress()
+        handleResetAddress();
     }
 
     //
@@ -34,7 +39,19 @@ function SelectFullAddressCurrent({
             } ${open_address ? 'SelectFullAddressCurrent-active' : ''}`}
             onClick={toggleOpenAddress}
         >
-            <div>{current_address}</div>
+            {IS_MOBILE ? (
+                <div>
+                    <div>{province}</div>
+
+                    <div>{district}</div>
+
+                    <div>{commune}</div>
+                </div>
+            ) : (
+                <div>
+                    {province}, {district}, {commune}
+                </div>
+            )}
 
             <div
                 className={`pos-abs y-center right-0 padding-right-5px ${
@@ -51,13 +68,17 @@ function SelectFullAddressCurrent({
 
             <div
                 className={`SelectFullAddressCurrent_placeholder pos-abs ${
-                    current_address
+                    province
                         ? 'SelectFullAddressCurrent_placeholder-on top-center line-12px font-12px text-secondary'
                         : 'SelectFullAddressCurrent_placeholder-in y-center font-14px'
                 }`}
             >
                 <div className="bg-primary padding-x-4px">
-                    <span>Tỉnh/Thành phố, Huyện/Quận, Xã/Phường</span>
+                    <span>
+                        {IS_MOBILE
+                            ? 'Địa chỉ'
+                            : 'Tỉnh/Thành phố, Huyện/Quận, Xã/Phường'}
+                    </span>
 
                     <div
                         className={`SelectFullAddressCurrent_icon inline-block margin-left-5px ${

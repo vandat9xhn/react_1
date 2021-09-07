@@ -10,7 +10,32 @@ import './FashionBuyTotal.scss';
 FashionBuyTotal.propTypes = {};
 
 //
-function FashionBuyTotal({ total_price, total_ship_price, total_voucher }) {
+function FashionBuyTotal({
+    total_price,
+    buy_shop_arr,
+    coin,
+    checked_coin,
+    free_ship_price,
+}) {
+    //
+    const total_ship_price = buy_shop_arr.reduce((a, buy_shop_obj) => {
+        return a + buy_shop_obj.transport_arr[buy_shop_obj.trans_ix].price;
+    }, 0);
+
+    const total_voucher =
+        coin * checked_coin +
+        free_ship_price +
+        buy_shop_arr.reduce((a, buy_shop_obj) => {
+            const { discount_arr, discount_ix } = buy_shop_obj.shop_info;
+
+            return (
+                a +
+                (discount_ix >= 0
+                    ? discount_arr[discount_ix].discount_value
+                    : 0)
+            );
+        }, 0);
+
     //
     const buy_total_arr = [
         {
@@ -51,7 +76,7 @@ function FashionBuyTotal({ total_price, total_ship_price, total_voucher }) {
                         Tổng thanh toán:
                     </div>
 
-                    <div className="FashionBuyTotal_cal_right color-fashion font-20px text-align-end">
+                    <div className="FashionBuyTotal_cal_right FashionBuyTotal_cal_right-total color-fashion font-20px text-align-end">
                         ₫
                         {formatNum(
                             total_price + total_ship_price - total_voucher
@@ -65,15 +90,13 @@ function FashionBuyTotal({ total_price, total_ship_price, total_voucher }) {
                     <span className="margin-right-5px text-third">
                         Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo
                     </span>
-                    
+
                     <Link to="/fashion/privacy">Điều khoản</Link>
                 </div>
 
-                <div>
-                    <button className="FashionBuyTotal_btn btn btn-hv bn-active padding-6px brs-3px bg-fashion-red text-cap text-white font-400 font-16px cursor-pointer">
-                        Đặt hàng
-                    </button>
-                </div>
+                <button className="FashionBuyTotal_btn btn btn-hv bn-active padding-6px brs-3px bg-fashion-red text-cap text-white font-400 font-16px cursor-pointer">
+                    Đặt hàng
+                </button>
             </div>
         </div>
     );

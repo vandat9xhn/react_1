@@ -7,15 +7,21 @@ import {
 } from '../../../../../_default/_common/default_id';
 
 //
-function getDeliveryDate(more_days = 1) {
+function getDeliveryDate(more_days = 1, by_time = false) {
     const date = new Date(
         new Date().getTime() + more_days * 24 * 60 * 60 * 1000
     );
 
-    const day = date.getDate();
-    const month = `0${date.getMonth() + 1}`.slice(-2);
+    if (!by_time) {
+        const day = date.getDate();
+        const month = `0${date.getMonth() + 1}`.slice(-2);
 
-    return `${day} th${month}`;
+        return `${day} th${month}`;
+    }
+
+    const time = more_days * 24 + 'giờ';
+
+    return time;
 }
 
 //
@@ -46,8 +52,23 @@ export function FsBuy_handleDataState({ data, setStateObj = () => {} }) {
     const default_transport_arr = () => {
         return [
             {
+                name: 'Hỏa tốc',
+                price: getRandomNumber(30, 50) * 1000,
+                options: [],
+
+                delay_obj: {
+                    delay_message:
+                        'Do ảnh hưởng của Covid-19,thời gian giao hàng có thể dài hơn dự kiến từ 1-5 giờ',
+                    min_day: 1 / 24,
+                    max_day: 2 / 24,
+                    by_time: true,
+                    str_date_from: getDeliveryDate(1 / 24, true),
+                    str_date_to: getDeliveryDate(2 / 24, true),
+                },
+            },
+            {
                 name: 'Nhanh',
-                price: getRandomNumber(20, 50) * 1000,
+                price: getRandomNumber(20, 30) * 1000,
                 options: [
                     {
                         option_id: 0,
@@ -69,6 +90,7 @@ export function FsBuy_handleDataState({ data, setStateObj = () => {} }) {
                         'Do ảnh hưởng của Covid-19,thời gian giao hàng có thể dài hơn dự kiến từ 1-5 ngày',
                     min_day: 1,
                     max_day: 2,
+                    by_time: false,
                     str_date_from: getDeliveryDate(1),
                     str_date_to: getDeliveryDate(2),
                 },
@@ -79,7 +101,7 @@ export function FsBuy_handleDataState({ data, setStateObj = () => {} }) {
     //
     const buy_shop_arr = [
         {
-            shop_info: { ...default_shop_info_obj()},
+            shop_info: { ...default_shop_info_obj() },
             item_info_arr: [
                 default_item_info_obj(),
                 default_item_info_obj(),
@@ -100,8 +122,11 @@ export function FsBuy_handleDataState({ data, setStateObj = () => {} }) {
                 { ...default_item_info_obj(), type: 'gift', is_main: false },
                 { ...default_item_info_obj(), type: 'gift', is_main: false },
             ],
-            transport: { ...default_transport_arr()[0], option_id: 0 },
             total_price: 950000,
+
+            transport_arr: default_transport_arr(),
+            trans_ix: 0,
+            delivery_time_ix: 0,
         },
         {
             shop_info: { ...default_shop_info_obj() },
@@ -110,9 +135,19 @@ export function FsBuy_handleDataState({ data, setStateObj = () => {} }) {
                 default_item_info_obj(),
                 default_item_info_obj(),
             ],
-            transport: { ...default_transport_arr()[0], option_id: 0 },
             total_price: 625000,
+
+            transport_arr: default_transport_arr(),
+            trans_ix: 0,
+            delivery_time_ix: 0,
         },
+    ];
+
+    //
+    const default_payment_arr = [
+        { id: getRandomId(), name: 'Ví Fashion' },
+        { id: getRandomId(), name: 'Thẻ Tín dụng/Ghi nợ' },
+        { id: getRandomId(), name: 'Thanh toán khi nhận hàng' },
     ];
 
     //
@@ -123,10 +158,9 @@ export function FsBuy_handleDataState({ data, setStateObj = () => {} }) {
             total_price: 8150000,
             fashion_voucher: { name: '' },
             coin: 1000,
-            payment_obj: {
-                name: 'Thanh toán khi nhận hàng',
-            },
-            
+            payment_arr: default_payment_arr,
+
+            payment_ix: 2,
             checked_coin: false,
             has_fetched_buy_shop: true,
         };

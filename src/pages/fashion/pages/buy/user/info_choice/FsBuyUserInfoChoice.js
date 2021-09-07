@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import CheckBoxCustom from '../../../../../../component/input/checkbox_custom/CheckBoxCustom';
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
 //
 import FsBuyUserInfoCommon from '../info_common/FsBuyUserInfoCommon';
 import RadioCustom from '../../../../../../component/input/radio_custom/RadioCustom';
@@ -24,18 +24,27 @@ function FsBuyUserInfoChoice({
 
     checked,
     handleChecked,
+    handleChooseInfo,
 }) {
     //
     function onChecked() {
         handleChecked(ix);
     }
 
+    // 
+    function onChooseInfo() {
+        handleChooseInfo(ix)
+    }
+
     //
     return (
-        <div className="FsBuyUserInfoChoice">
+        <div
+            className="FsBuyUserInfoChoice"
+            onClick={IS_MOBILE ? onChooseInfo : undefined}
+        >
             <div className="display-flex align-items-center">
                 <div
-                    className="margin-right-10px cursor-pointer"
+                    className="FsBuyUserInfoChoice_radio margin-right-10px cursor-pointer"
                     onClick={onChecked}
                 >
                     <RadioCustom is_active={checked} />

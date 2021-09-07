@@ -1,0 +1,118 @@
+.FashionBuy-mobile {
+    // ----- VOUCHER
+
+    .FsBuyVoucher {
+        padding: 10px;
+    }
+
+    .FsBuyVoucher_title {
+        font-size: 14px;
+    }
+
+    // -------- COIN
+
+    .FsBuyCoin {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .FsBuyCoin_title {
+        font-size: 14px;
+    }
+
+    // ------- PAYMENT
+
+    .FsBPaymentHead{
+        padding: 10px;
+    }
+
+    .FsBPaymentHead_row {
+        align-items: flex-start;
+    }
+
+    // .
+    .FsBPaymentHead_title{
+        padding-right: 10px;
+        white-space: nowrap;
+        font-size: 14px;
+    }
+    // .
+    .FsBPaymentHead_right{
+        font-size: 13px;
+    }
+
+    .FsBPaymentBody_head{
+        margin: 0 10px;
+        padding: 10px 0;
+    }
+
+    .FsBPmCOD {
+        padding: 10px;
+    }
+
+    .FsBOmBank_head {
+        padding: 10px;
+        justify-content: space-between;
+    }
+    // .
+    .FsBPmBank_left {
+        width: auto;
+        font-size: 16px;
+    }
+    // .
+    .FsBPmBank_right{
+        button{
+            padding: 5px;
+        }
+
+        .IconPlusSubtract{
+            width:0.75rem;
+            height: 0.75rem;
+        }
+    }
+
+    .FsBPmBank_cards{
+        margin: 0;
+        padding: 10px;
+    }
+    .FsBPmBank_cards_row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+    // .
+    .FsBPmBank_cards_item {
+        margin-top: 0;
+    }
+
+    // ------- TOTAL
+
+    .FashionBuyTotal_cal{
+        padding: 10px;
+    }
+
+    .FashionBuyTotal_cal_row {
+        justify-content: space-between;
+    }
+    // .
+    .FashionBuyTotal_cal_left{
+        width: auto;
+    }
+    // .
+    .FashionBuyTotal_cal_right-total{
+        font-size: 16px;
+    }
+
+    .FashionBuyTotal_buy {
+        flex-direction: column-reverse;
+        padding: 10px;
+    }
+    // .
+    .FashionBuyTotal_privacy {
+        margin-top: 10px;
+        padding: 0;
+    }
+    // .
+    .FashionBuyTotal_btn {
+        width: 100%;
+    }
+}

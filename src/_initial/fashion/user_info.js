@@ -6,6 +6,7 @@ export const initial_user_info_buy_obj = () => {
         name: '',
         phone: '',
         address: '',
+        type: '',
         is_default: false,
     }
 };

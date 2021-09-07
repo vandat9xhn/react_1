@@ -69,3 +69,10 @@ $side-width: 4px;
     height: 1rem;
     border-bottom-left-radius: 10px;
 }
+
+// 
+@media (max-width: 350px) {
+    .FsSVoucherItem_card_right{
+        padding: 0px 0px 0px 15px;
+    }
+}

@@ -1,0 +1,106 @@
+.FashionBuy-mobile {
+    // ------ HEAD
+
+    .FsBuyShop_head {
+        margin-bottom: 0;
+    }
+
+    .FsBuyShopHead {
+        padding: 10px;
+    }
+
+    // -------- iTEM
+
+    .FsBuyShop_list {
+        background-color: var(--md-bg-fb);
+    }
+
+    .FsBuyShop_item {
+        margin-bottom: 0;
+    }
+    .FsBuyShop_item-main {
+        padding-top: 0;
+        border-color: var(--md-bg-primary);
+    }
+
+    .FsBuyItem {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .FsBuyItem_row {
+        align-items: flex-start;
+    }
+    // .
+    .FsBuyItem_left {
+        img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+    // .
+    .FsBuyItem_right {
+        display: block;
+        overflow: hidden;
+    }
+    // ..
+    .FsBuyItem_price,
+    .FsBuyItem_quantity,
+    .FsBuyItem_total {
+        display: none;
+    }
+
+    // ------- VOUCHER
+
+    .FsBShopVoucher {
+        padding: 10px;
+    }
+
+    // .
+    .FsBShopVoucher_left {
+        text-align: start;
+    }
+
+    // ------- TRANS + MESS
+
+    .FsBuyShop_mess_trans_row {
+        display: block;
+    }
+
+    .FsBShopMessageBuy {
+        padding: 10px;
+    }
+
+    .FsBShopTransport {
+        padding: 10px;
+    }
+
+    .FsBShopTransport_row {
+        display: block;
+    }
+    // .
+    .FsBShopTransport_title {
+        text-align: start;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    // ..
+    .FsBShopTransport_change {
+        display: none;
+    }
+
+    // -------- TOTAL
+
+    .FsBShopTotal{
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .FsBShopTotal_row{
+        justify-content: space-between;
+    }
+    // .
+    .FsBShopTotal_price{
+        font-size: 16px;
+    }
+}

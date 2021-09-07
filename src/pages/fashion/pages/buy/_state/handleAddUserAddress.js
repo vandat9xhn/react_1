@@ -31,6 +31,7 @@ export async function handleAddUserAddress({
             address: `${new_user_info.specific}, ${new_user_info.address_str_arr
                 .reverse()
                 .join(', ')}`,
+            type: new_user_info.type,
             is_default: new_user_info.checked_default,
         });
 

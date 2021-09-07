@@ -62,7 +62,7 @@
 
 // -------- WEIGHT
 
-@for $i from 4 through 10 {
+@for $i from 3 through 10 {
     .font-#{$i * 100} {
         font-weight: #{$i * 100};
     }

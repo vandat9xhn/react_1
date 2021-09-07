@@ -107,13 +107,6 @@ function FsSVoucherItem({
                     Mua thêm ₫{more_spend} để sử dụng voucher này
                 </div>
             ) : null}
-
-            {/* <div>
-                    <FashionSeeMoreOnTitle
-                        title="Xem thêm"
-                        link_to={`/fashion/search?shop_id=${shop_id}&voucher_id=${voucher_id}`}
-                    />
-                </div> */}
         </div>
     );
 }

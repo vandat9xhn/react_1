@@ -49,6 +49,8 @@ export const default_shop_obj = () => ({
             icon_text: 'mỹ phẩm ngân bình đặc trị',
             shop_id: 256060797,
             discount_value: 3000,
+            is_percent: false,
+            discount_str: '3k',
             status_card: 'available',
         },
         {
@@ -62,6 +64,8 @@ export const default_shop_obj = () => ({
             icon_text: 'mỹ phẩm ngân bình đặc trị',
             shop_id: 256060797,
             discount_value: 7000,
+            is_percent: false,
+            discount_str: '7k',
             status_card: 'available',
         },
     ],

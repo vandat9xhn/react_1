@@ -45,7 +45,7 @@ function FsAddAddressForm({
     //
     return (
         <div className="FsAddAddressForm">
-            <div className="FsAddAddressForm_name_phone display-flex space-between margin-bottom-15px">
+            <div className="FsAddAddressForm_name_phone display-flex flex-wrap space-between margin-bottom-15px">
                 <div className="FsAddAddressForm_name">
                     <FsInputValid
                         value={user_name}

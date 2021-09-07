@@ -5,28 +5,11 @@
         color: var(--fashion-head);
         border: 1px solid currentColor;
 
-        .FsIIfRTierVariantItem_tick{
-            display: block;
-        }
+        // .FsIIfRTierVariantItem_tick{
+        //     display: block;
+        // }
     }
 }
 .FsIIfRTierVariantItem-active {
     border: 1px solid currentColor;
-}
-
-// .
-.FsIIfRTierVariantItem_tick{
-    width: 0;
-    height: 0;
-    
-    background-color: transparent;
-
-    border-width: 0.5rem;
-    border-style: solid;
-    border-color: transparent currentColor currentColor transparent;
-}
-// .
-.FsIIfRTierVariantItem_tick_item{
-    transform: translate(2px, 1px);
-    line-height: 0.75rem;
 }

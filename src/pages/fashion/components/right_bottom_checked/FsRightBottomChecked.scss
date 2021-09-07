@@ -1,0 +1,16 @@
+// .
+.FsRightBottomChecked_bg {
+    width: 0;
+    height: 0;
+
+    background-color: transparent;
+
+    border-width: 0.5rem;
+    border-style: solid;
+    border-color: transparent currentColor currentColor transparent;
+}
+// .
+.FsRightBottomChecked_icon {
+    transform: translate(2px, 1px);
+    line-height: 0.75rem;
+}

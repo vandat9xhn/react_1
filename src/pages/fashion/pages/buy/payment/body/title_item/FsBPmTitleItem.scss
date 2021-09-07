@@ -1,0 +1,9 @@
+.FsBPmTitleItem{
+    &:hover{
+        color: var(--fashion-head);
+        border-color: currentColor;
+    }
+}
+.FsBPmTitleItem-active{
+    border: 1px solid currentColor;
+}

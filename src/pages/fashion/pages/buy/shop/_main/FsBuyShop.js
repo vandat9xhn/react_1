@@ -27,8 +27,11 @@ function FsBuyShop({
     shop_ix,
     shop_info,
     item_info_arr,
-    transport,
     total_price,
+
+    transport_arr,
+    trans_ix,
+    delivery_time_ix,
 
     handleApplyVoucherCode,
     handleApplyVoucher,
@@ -36,13 +39,16 @@ function FsBuyShop({
     handleChangeTransport,
 }) {
     //
-    const {
-        id,
-        name,
-        picture,
-        discount_arr,
-        discount_ix,
-    } = shop_info;
+    const { id, name, picture, discount_arr, discount_ix } = shop_info;
+
+    const { is_percent, discount_value, discount_str } =
+        discount_ix >= 0
+            ? discount_arr[discount_ix]
+            : { is_percent: false, discount_value: 0, discount_str: '' };
+
+    const shop_discount_price = is_percent
+        ? discount_value * total_price
+        : discount_value;
 
     //
     function onApplyVoucherCode() {
@@ -50,18 +56,21 @@ function FsBuyShop({
     }
 
     //
-    function onApplyVoucher() {
-        handleApplyVoucher();
+    function onApplyVoucher(new_voucher_ix) {
+        handleApplyVoucher({
+            shop_ix,
+            new_voucher_ix,
+        });
     }
 
     //
     function onCancelVoucher() {
-        handleCancelVoucher();
+        handleCancelVoucher(shop_ix);
     }
 
     //
-    function onChangeTransport() {
-        handleChangeTransport();
+    function onChangeTransport({ new_trans_ix, new_time_ix }) {
+        handleChangeTransport({ shop_ix, new_trans_ix, new_time_ix });
     }
 
     //
@@ -79,21 +88,18 @@ function FsBuyShop({
                             item_info.is_main ? 'FsBuyShop_item-main' : ''
                         }`}
                     >
-                        <div key={ix} className="margin-bottom-15px">
-                            <FsBuyItem
-                                img={item_info.vid_pics[0]}
-                                name={item_info.name}
-                                label_deal={getShopItemLabelDeal(item_info, ix)}
-                                model_name={item_info.model_name}
-                                new_price={
-                                    item_info.type == 'gift' &&
-                                    !item_info.is_main
-                                        ? 0
-                                        : item_info.new_price
-                                }
-                                total_add_cart={item_info.total_add_cart}
-                            />
-                        </div>
+                        <FsBuyItem
+                            img={item_info.vid_pics[0]}
+                            name={item_info.name}
+                            label_deal={getShopItemLabelDeal(item_info, ix)}
+                            model_name={item_info.model_name}
+                            new_price={
+                                item_info.type == 'gift' && !item_info.is_main
+                                    ? 0
+                                    : item_info.new_price
+                            }
+                            total_add_cart={item_info.total_add_cart}
+                        />
                     </div>
                 ))}
             </div>
@@ -104,11 +110,7 @@ function FsBuyShop({
                     shop_name={name}
                     shop_picture={picture}
                     shop_discount_arr={discount_arr}
-                    shop_discount_value={
-                        discount_ix >= 0
-                            ? discount_arr[discount_ix].discount_value
-                            : 0
-                    }
+                    shop_discount_str={discount_str}
                     shop_total_price={total_price}
                     shop_discount_ix={discount_ix}
                     //
@@ -126,7 +128,9 @@ function FsBuyShop({
 
                     <div className="FsBuyShop_trans">
                         <FsBShopTransport
-                            transport={transport}
+                            transport_arr={transport_arr}
+                            trans_ix={trans_ix}
+                            delivery_time_ix={delivery_time_ix}
                             handleChangeTransport={onChangeTransport}
                         />
                     </div>
@@ -135,7 +139,11 @@ function FsBuyShop({
 
             <div>
                 <FsBShopTotal
-                    total_price={total_price}
+                    total_price={
+                        total_price +
+                        transport_arr[trans_ix].price -
+                        shop_discount_price
+                    }
                     item_count={item_info_arr.length}
                 />
             </div>

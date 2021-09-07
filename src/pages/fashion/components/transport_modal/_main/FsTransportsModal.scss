@@ -1,0 +1,22 @@
+.FsTransportsModal{
+    width: 720px;
+    padding: 30px;
+}
+
+.FsTransportsModal_close_icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--fashion-head);
+
+    .IconsArrow_close{
+        stroke: var(--md-color-secondary);
+    }
+}
+
+.FsTransportsModal_btn{
+    width: 140px;
+    height: 40px;
+}
+.FsTransportsModal_btn-back{
+    margin-right: 15px;
+}

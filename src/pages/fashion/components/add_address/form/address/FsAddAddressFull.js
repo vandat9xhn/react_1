@@ -34,9 +34,6 @@ function FsAddAddressFull({ address_str_arr, handleSelectFullAddress }) {
         has_changed,
     } = state_obj;
 
-    const current_address = address_str_arr
-        .filter((item) => item != '')
-        .join(', ');
     const is_error = address_ix_arr.includes(-1) && has_changed;
 
     //
@@ -44,8 +41,11 @@ function FsAddAddressFull({ address_str_arr, handleSelectFullAddress }) {
         <SelectFullAddress
             address_ix_arr={address_ix_arr}
             head_ix={head_ix}
-            current_address={current_address}
             is_error={is_error}
+            // 
+            province={address_str_arr[0]}
+            district={address_str_arr[1]}
+            commune={address_str_arr[2]}
             //
             open_address={open_address}
             is_fetching={is_fetching}

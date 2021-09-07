@@ -6,6 +6,7 @@ import { formatNum } from '../../../../../_some_function/FormatNum';
 import FsShopDealLabel from '../../shop_deal_label/FsShopDealLabel';
 //
 import './FsBuyItem.scss';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 
 //
 FsBuyItem.propTypes = {};
@@ -22,12 +23,12 @@ function FsBuyItem({
     //
     return (
         <div className="FsBuyItem text-222 font-14px">
-            <div className="display-flex align-items-center">
-                <div className="margin-right-10px">
+            <div className="FsBuyItem_row display-flex align-items-center">
+                <div className="FsBuyItem_left margin-right-10px">
                     <img src={img} alt="" width="40" height="40" />
                 </div>
 
-                <div className="flex-grow-1 display-flex align-items-center">
+                <div className="FsBuyItem_right flex-grow-1 display-flex align-items-center">
                     <div className="FsBuyItem_name margin-right-10px text-nowrap">
                         <div
                             className={`${
@@ -46,13 +47,29 @@ function FsBuyItem({
                     </div>
 
                     <div className="FsBuyItem_type text-del">
-                        <div
-                            className={`padding-x-10px text-nowrap ${
-                                model_name ? '' : 'display-none'
-                            }`}
-                        >
-                            Loại: {model_name}
+                        <div>
+                            <div
+                                className={`padding-x-10px text-nowrap ${
+                                    model_name ? '' : 'display-none'
+                                }`}
+                            >
+                                Loại: {model_name}
+                            </div>
                         </div>
+
+                        {IS_MOBILE ? (
+                            <div className="text-align-end">
+                                <div>x {total_add_cart}</div>
+
+                                <div
+                                    className={`font-14px ${
+                                        new_price ? '' : 'display-none'
+                                    }`}
+                                >
+                                    ₫{formatNum(new_price)}
+                                </div>
+                            </div>
+                        ) : null}
                     </div>
 
                     <div className="FsBuyItem_price text-align-center">

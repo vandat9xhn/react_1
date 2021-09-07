@@ -31,8 +31,10 @@ export function useModelAppear({ has_handle_appear = false }) {
     function onClose(callbackClose = () => {}) {
         if (IS_MOBILE) {
             ref_pos_elm.current.style.transform = 'translateY(0%)';
+
             setTimeout(() => {
                 callbackClose();
+                console.log(2);
             }, 200);
         } else {
             callbackClose();

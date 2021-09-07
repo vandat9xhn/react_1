@@ -22,12 +22,12 @@ function ModelAppearMb({
     return (
         <React.Fragment>
             {IS_MOBILE ? (
-                <div className="pos-fixed-100per bg-film" onClick={handleClose}></div>
+                <div className="pos-fixed-100per bg-film z-index-lv5" onClick={handleClose}></div>
             ) : null}
 
             <div
                 ref={ref_pos_elm}
-                className={`${IS_MOBILE ? 'pos-abs top-100per w-100per' : ''}`}
+                className={`${IS_MOBILE ? 'pos-fixed left-0 top-100per w-100per z-index-lv5' : ''}`}
             >
                 <div
                     ref={ref_main_elm}

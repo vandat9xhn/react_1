@@ -18,6 +18,7 @@ export async function handle_API_FsUserInfoBuy_L({ c_count = 0, params = {} }) {
             name: item.name,
             phone: item.phone,
             address: `${item.specific}, ${item.commune}, ${item.district}, ${item.province}`,
+            type: item.type,
             is_active: item.is_active,
             is_default: item.is_default,
         };
