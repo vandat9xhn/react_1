@@ -1,0 +1,13 @@
+.FsSDiscountItem_side {
+    width: 10px;
+
+    background-image: radial-gradient(
+        circle,
+        var(--md-bg-primary),
+        var(--md-bg-primary) 50%,
+        transparent 50%,
+        transparent
+    );
+    background-size: 100% 10px;
+    background-repeat: repeat-y;
+}

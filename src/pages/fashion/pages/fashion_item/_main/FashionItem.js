@@ -36,7 +36,7 @@ import FashionBreadCrumb from '../../../components/breadcrumb/FashionBreadCrumb'
 import FashionItemDescription from '../description/_main/FashionItemDescription';
 import FsICombo from '../combo/_main/FsICombo';
 import FsIGift from '../gift/_main/FsIGift';
-import FsIHotDeal from '../hot_deal/_main/FsIHotDeal';
+import FsHotDeal from '../../../components/hot_deal/_main/FsHotDeal';
 import FsIShopDiscount from '../shop_discount/_main/FsIShopDiscount';
 import FsIShopSelling from '../shop_selling/FsIShopSelling';
 //
@@ -262,7 +262,10 @@ function FashionItem(props) {
 
                         <div className="FashionItem_part">
                             <VirtualScroll>
-                                <FsIHotDeal />
+                                <FsHotDeal
+                                    product_id={item_info.id}
+                                    item_info={item_info}
+                                />
                             </VirtualScroll>
                         </div>
                     </div>

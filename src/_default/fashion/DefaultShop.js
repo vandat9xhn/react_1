@@ -8,9 +8,9 @@ import { owner_info } from './FashionDefault';
 
 //
 const shop_category_name_arr = [
-    { name: 'mom', title: 'Mom' },
-    { name: 'baby', title: 'Baby' },
-    { name: 'other', title: 'Other' },
+    { id: getRandomId(), name: 'mom', title: 'Mom' },
+    { id: getRandomId(), name: 'baby', title: 'Baby' },
+    { id: getRandomId(), name: 'other', title: 'Other' },
 ];
 
 const shop_category_arr = () => shop_category_name_arr;
@@ -32,7 +32,7 @@ export const default_shop_obj = () => ({
     is_like: getRandomBool(),
     is_plus: getRandomBool(),
 
-    list_name: shop_category_arr(),
+    category_arr: shop_category_arr(),
     vid_pics: shop_vid_pic_arr(),
     name: 'Shop ' + getRandomId(),
     picture: getRandomVidPic(),
@@ -92,10 +92,9 @@ export const default_shop_obj = () => ({
 
     banner: getRandomVidPic(),
     place: 'Quận Gò Vấp, TP. Hồ Chí Minh',
-    rating_star: 4.9,
-    shop_location: 'TP. Hồ Chí Minh',
-    info: 'Shop info 1\nSentence 2\nSentence 3\nSentence 4\nSentence 5',
+    location: 'TP. Hồ Chí Minh',
+    description:
+        '-Bác sĩ Thẩm Mỹ - Da liễu Dr Chiều\n- Tự hào với >20.000+ Khách hàng đã tin dùng.\n- Tất cả các Sp bên Shop của Bác sĩ đều là Dược Mỹ phẩm được các bác sĩ Da Liễu dùng, và tin dùng. Được bác sĩ chọn lọc ra sau nhiều năm điều trị, hỗ trợ, tư vấn cho bệnh nhân của minh.\n- Một số sản phẩm là thuốc điều trị ( treatment) nên cần được sự tư vấn của bác sĩ trước khi sử dụng các bạn nhé. hãy in cho shop để được tư vấn trước khi mua hàng ạ.\n- Sỉ add zalo:  0963749993',
     ...owner_info(),
-    created_time: '2021-04-13T21:25:13.739874Z',
     profile_model: 2,
 });

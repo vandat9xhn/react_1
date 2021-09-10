@@ -66,6 +66,11 @@ function FsBShopVoucher({
             });
     }
 
+    // 
+    function handleStopPropagation(e) {
+        e.stopPropagation()
+    }
+
     //
     return (
         <div
@@ -97,6 +102,7 @@ function FsBShopVoucher({
                                             ? ''
                                             : 'pos-abs x-center top-100per z-index-lv1'
                                     }`}
+                                    onClick={handleStopPropagation}
                                 >
                                     <FsBSVoucherList
                                         shop_name={shop_name}

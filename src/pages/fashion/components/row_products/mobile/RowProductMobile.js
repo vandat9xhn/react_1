@@ -14,6 +14,7 @@ function RowProductMobile({
     ref_fake_elm_end,
 
     has_fetched,
+    item_props = {},
 
     use_more,
     link_to_more,
@@ -29,7 +30,7 @@ function RowProductMobile({
             <ul className="RowProduct_row list-none display-flex">
                 {products.map((item, ix) => (
                     <li
-                        key={`${item.id || `RowProductMobile_${ix}`}`}
+                        key={`${item.id || ix}`}
                         className="row-product-item snap-align-start"
                     >
                         <FashionFaceItem
@@ -54,6 +55,7 @@ function RowProductMobile({
                             new_price_max={item.new_price_max}
                             //
                             use_same={false}
+                            {...item_props}
                         />
                     </li>
                 ))}

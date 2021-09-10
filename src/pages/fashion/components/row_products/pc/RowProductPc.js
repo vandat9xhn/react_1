@@ -15,10 +15,13 @@ RowProductPc.propTypes = {};
 //
 function RowProductPc({
     products,
-    has_fetched,
     ref_scroll_elm,
     ref_fake_elm_end,
 
+    has_fetched,
+    item_props = {},
+
+    use_next_prev,
     use_more,
     link_to_more,
     title_more,
@@ -61,9 +64,7 @@ function RowProductPc({
                 <ul className="RowProductPc_row list-none display-flex">
                     {products.map((item, ix) => (
                         <li
-                            key={`RowProductPc_item_${
-                                item.id || `RowProductPc_${ix}`
-                            }`}
+                            key={`${item.id || ix}`}
                             className={`row-product-item ${
                                 is_mouse_down ? 'pointer-events-none' : ''
                             }`}
@@ -90,6 +91,7 @@ function RowProductPc({
                                 new_price_max={item.new_price_max}
                                 //
                                 use_same={false}
+                                {...item_props}
                             />
                         </li>
                     ))}
@@ -108,7 +110,7 @@ function RowProductPc({
                 </ul>
             </div>
 
-            {has_fetched ? (
+            {has_fetched && use_next_prev? (
                 <NextPrevDiv
                     is_btn_circle={true}
                     is_has_next={is_has_next}

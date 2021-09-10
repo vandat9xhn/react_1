@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconDown from '../../../../../../_icons_svg/_icon_down/IconDown';
-//
+import IconCaret from '../../../../../../_icons_svg/_icon_caret/IconCaret';
+// 
 import FsCISearch from '../search/FsCISearch';
 //
 import './FsCIDelSearch.scss';
@@ -48,7 +48,7 @@ function FsCIDelSearch({
                     </div>
 
                     <div className="FsCIDelSearch_same_icon display-flex-center">
-                        <IconDown size_icon="0.5rem" color="currentColor"/>
+                        <IconCaret size_icon="0.5rem" fill="currentColor"/>
                     </div>
                 </div>
             </div>

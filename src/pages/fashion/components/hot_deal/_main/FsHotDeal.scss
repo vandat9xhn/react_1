@@ -1,0 +1,33 @@
+.FsHotDeal_not_fetched {
+    height: 280px;
+}
+
+.FsHotDeal {
+    padding: 24px 30px;
+}
+
+.FsHotDeal_head {
+    margin-bottom: 20px;
+}
+
+// .
+.FsHotDeal_item {
+    flex-shrink: 0;
+    margin-right: 10px;
+    width: 160px;
+    max-width: 40%;
+}
+.FsHotDeal_item-first {
+    order: -1;
+}
+// .
+.FsHotDeal_item_plus {
+    margin: 30px;
+    order: -1;
+}
+
+// .
+.FsHotDeal_item_cal{
+    width: 200px;
+    min-width: 160px;
+}

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import IconCaret from '../../../../../_icons_svg/_icon_caret/IconCaret';
+// 
 import CloseDiv from '../../../../some_div/close_div/CloseDiv';
-import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import ActionsAccount from '../actions/ActionsAccount';
 //
 import './HeaderAccount.scss';
-import IconDown from '../../../../../_icons_svg/_icon_down/IconDown';
 
 //
 HeaderAccount.propTypes = {};
@@ -40,7 +40,7 @@ function HeaderAccount(props) {
                     title="account"
                     onClick={toggleOpenAccount}
                 >
-                    <IconDown color="currentColor" />
+                    <IconCaret fill="currentColor" />
                 </div>
 
                 <div

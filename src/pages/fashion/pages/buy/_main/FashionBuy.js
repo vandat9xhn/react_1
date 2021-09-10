@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
-// 
+//
 import { initial_user_info_buy_obj } from '../../../../../_initial/fashion/user_info';
 import {
     initial_fashion_item_obj,
@@ -26,6 +27,7 @@ import { FsBuy_handleDataState } from '../_state/_FsBuy_handleDataState';
 import { FsBuy_handleChangeTransport } from '../_state/FsBuy_handleChangeTransport';
 import { FsBuy_handleCancelVoucher } from '../_state/FsBuy_handleCancelVoucher';
 import { FsBuy_handleApplyVoucher } from '../_state/FsBuy_handleApplyVoucher';
+import { FsBuy_handleUpdateUserAddress } from '../_state/FsBuy_handleUpdateUserAddress';
 //
 import FashionH from '../../../components/head/_main/FashionH';
 import FsBuyUser from '../user/_main/FsBuyUser';
@@ -34,17 +36,21 @@ import FsBuyVoucher from '../voucher/_main/FsBuyVoucher';
 import FsBuyCoin from '../coin/FsBuyCoin';
 import FashionBuyTotal from '../total/FashionBuyTotal';
 import FsBuyPayment from '../payment/_main/FsBuyPayment';
-import { FsBuy_handleUpdateUserAddress } from '../_state/FsBuy_handleUpdateUserAddress';
-// 
-import '../_mobile_css/FsBuyMB.scss'
-import '../_mobile_css/FsBuyUserMb.scss'
-import '../_mobile_css/FsBuyShopMb.scss'
+//
+import '../_mobile_css/FsBuyMB.scss';
+import '../_mobile_css/FsBuyUserMb.scss';
+import '../_mobile_css/FsBuyShopMb.scss';
+import { handle_API_FsBuy_C } from '../../../../../_handle_api/fashion/buy';
+import BuyFetching from '../fetching/BuyFetching';
 
 //
 FashionBuy.propTypes = {};
 
 //
 function FashionBuy(props) {
+    //
+    const use_history = useHistory();
+
     //
     const { closeScreenFloor } = useContext(context_api);
 
@@ -170,7 +176,7 @@ function FashionBuy(props) {
         });
     }
 
-    function onFixUserInfo({new_user_info, user_info_ix}) {
+    function onFixUserInfo({ new_user_info, user_info_ix }) {
         FsBuy_handleUpdateUserAddress({
             new_user_info: new_user_info,
             user_info_ix: user_info_ix,
@@ -251,6 +257,17 @@ function FashionBuy(props) {
     //
     function handleChooseCard(...params) {
         console.log(params);
+    }
+
+    // -------- ORDER
+
+    async function handleOrder() {
+        await handleScreenFetching(
+            () => handle_API_FsBuy_C(state_obj),
+            <BuyFetching is_fetching={true} />
+        );
+
+        use_history.push('/fashion/personal/bill/buying')
     }
 
     //
@@ -336,6 +353,7 @@ function FashionBuy(props) {
                                 coin={coin}
                                 checked_coin={checked_coin}
                                 free_ship_price={free_ship_obj.cost}
+                                handleOrder={handleOrder}
                             />
                         </div>
                     </React.Fragment>

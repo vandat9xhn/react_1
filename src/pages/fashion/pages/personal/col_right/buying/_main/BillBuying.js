@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../../_context/ContextAPI';
 
 import { API_FashionBuy_LC } from '../../../../../../../api/api_django/fashion/APIFashionToken';
-// 
+//
 import { ParseLocationSearch } from '../../../../../../../_some_function/ParseLocationSearch';
-// 
+//
 import { openScreenConfirm } from '../../../../../../../component/_screen/type/confirm/ScreenConfirm';
 //
 import CircleLoading from '../../../../../../../component/waiting/circle_loading/CircleLoading';
@@ -128,9 +128,12 @@ function BillBuying(props) {
             params.size = 5;
         }
 
-        const res = await API_FashionBuy_LC('GET', {
-            ...params,
-            ...params_buy,
+        const res = await API_FashionBuy_LC({
+            method: 'GET',
+            params: {
+                ...params,
+                ...params_buy,
+            },
         });
 
         console.log(res.data);
@@ -152,7 +155,7 @@ function BillBuying(props) {
     //
     async function getMore_API_Buying() {
         startFetchingData();
-        
+
         const stage = arr_stage[cur_stage];
         const params = {
             ...params_buy,
@@ -161,8 +164,8 @@ function BillBuying(props) {
             c_count: buy_arr.length,
             status: stage,
         };
-        
-        const res = await API_FashionBuy_LC('GET', params);
+
+        const res = await API_FashionBuy_LC({ method: 'GET', params: params });
 
         setBuyingState({
             ...buying_state,
@@ -208,7 +211,7 @@ function BillBuying(props) {
             title: 'Cancel Product',
             notification: 'Do you really want to cancel buying this product?',
             handleConfirm: conFirmCancelBuying,
-        })
+        });
     }
 
     //

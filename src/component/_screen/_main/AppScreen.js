@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
-import AppScreenFloors from './AppScreenFloors';
+import { context_api } from '../../../_context/ContextAPI';
 //
 import { window_screen_scroll_arr } from './window_screen_scroll_arr';
 //
+import AppScreenFloors from './AppScreenFloors';
 import ScreenNoFloor from './ScreenNoFloor';
 import ScreenHasFloor from './ScreenHasFloor';
 //
 import './AppScreen.scss';
-import { context_api } from '../../../_context/ContextAPI';
 
 //
 class AppScreen extends Component {

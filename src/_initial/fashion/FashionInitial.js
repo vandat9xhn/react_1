@@ -69,15 +69,53 @@ export const initial_fashion_item_obj = () => ({
 });
 
 //
+export const initial_fashion_item_base_obj = () => {
+    return {
+        id: -1,
+        name: '',
+        img: '',
+        flash_img: '',
+        total: total,
+        sold: 0,
+        rate_avg: 0,
+        is_like: false,
+        is_plus: false,
+        is_mall: false,
+
+        shop_deals: [],
+        discount: '',
+        address: '',
+
+        new_price: 0,
+        old_price: 0,
+        new_price_max: 0,
+        old_price_max: 0,
+    };
+};
+
+//
 export const initial_fashion_shop = () => ({
     id: 0,
     name: '',
     picture: '',
-    banner: '',
-    address: '',
-    info: '',
+    place: '',
+    location: '',
+    description: '',
+
     time_online: '',
-    vid_pics: [],
+    count_like: 0,
+    profile_model: 0,
+
+    banner: '',
+    vid_pics: [''],
+    category_arr: [
+        {
+            id: -1,
+            name: '',
+            title: '',
+        },
+    ],
+
     discount_arr: [
         {
             voucher_code: '',
@@ -91,17 +129,23 @@ export const initial_fashion_shop = () => ({
             status_card: 'available',
         },
     ],
-    rating_star: 0,
-    profile_model: 0,
-
-    count_like: 0,
+    ship_arr: [
+        {
+            min_spend: 0,
+            cost: 0,
+            transport_arr: [''],
+        },
+    ],
+    ship_text: '',
 
     rating: 0,
+    rate_count: 0,
     reply_chat: '',
-    time_joined: new Date().toString(),
-    products: 0,
     reply_time: 0,
+    products: 0,
     followed: 0,
+    following: 0,
+    time_joined: new Date().toString(),
 });
 
 export const initial_fs_item_gift_obj = () => ({
@@ -132,27 +176,6 @@ export const initial_fs_item_hot_deal_arr = () => [initial_fashion_item_obj()];
 //
 export const initial_fashion_search_products_obj = () => {
     return {
-        0: [
-            {
-                id: 0,
-                vid_pics: [
-                    {
-                        id: 0,
-                        vid_pic: '',
-                    },
-                ],
-                count_rate: 0,
-                total_rate: 0,
-                address: '',
-                brand: '',
-                type: '',
-                hashtag: '',
-                name: '',
-                new_price: 0,
-                old_price: 0,
-                discount: 0,
-                sold: 0,
-            },
-        ],
+        0: [initial_fashion_item_base_obj()],
     };
 };

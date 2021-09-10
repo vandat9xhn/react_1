@@ -70,7 +70,7 @@ function FashionFaceItemFoot({
                 <span>{name}</span>
             </div>
 
-            <div className="FashionFaceItemFoot_tag display-flex align-items-center font-10px overflow-hidden">
+            <div className="FashionFaceItemFoot_tag margin-top-2px margin-bottom-2px display-flex align-items-center font-10px overflow-hidden">
                 {shop_discount ? (
                     <FsShopDiscountLabel
                         discount={shop_discount}

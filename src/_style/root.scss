@@ -3,6 +3,7 @@
     /* color */
     --color-222: #222;
     --black-brown: #300d00;
+    --primary-08: rgba(0, 0, 0, 0.8);
     --btn-buy: #ff8d00;
     --color-light: #e4e6eb;
     --ccc: #ccc;
@@ -131,6 +132,7 @@
         --color-django: #1b7e58;
         --color-222: var(--color-light);
         --green: #0b481a;
+        --primary-08: var(--color-light);
         // bg
         --md-bg-primary: #3f3f3f;
         --md-bg-secondary: #1e1e1e;

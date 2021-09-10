@@ -1,0 +1,28 @@
+.FsSOverviewLeading_bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px);
+}
+
+// .
+.FsSOverviewLeading_picture{
+    border: 4px solid #848598;
+}
+// .
+.FsSOverviewLeading_like{
+    bottom: -4px;
+}
+
+// .
+.FsSOverviewLeading_actions_item{
+    width: 48.5%;
+    padding: 5px 0;
+    border: 1px solid var(--white);
+
+    .IconsMenu_message-out{
+        fill: none;
+        stroke: white;
+        stroke-width: 5;
+    }
+}

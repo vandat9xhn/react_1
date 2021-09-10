@@ -1,4 +1,4 @@
-import { getRandomId } from '../_common/default_id';
+import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 
@@ -23,11 +23,13 @@ export const getProductVidPicArr = (min, max) =>
 //
 export const owner_info = () => ({
     rating: 4.6,
+    rate_count: getRandomNumber(1, 20) * 1000,
     reply_chat: '100%',
     time_joined: '2021-04-13T21:25:13.739874Z',
     products: 400,
     reply_time: 60,
-    followed: 600000,
+    followed: getRandomNumber(50, 600) * 1000,
+    following: getRandomNumber(1, 20) * 1000,
 });
 
 //

@@ -42,7 +42,7 @@ export const API_FashionCart_UD = (method, data = {}) =>
     );
 
 // get create buy
-export const API_FashionBuy_LC = (method, params = {}, data = {}) =>
+export const API_FashionBuy_LC = ({ method, params = {}, data = {} }) =>
     API_FakeReal(
         default_fashion_buy_arr(),
         () =>

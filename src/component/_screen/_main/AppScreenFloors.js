@@ -28,22 +28,16 @@ function AppScreenFloors({
     //
     useEffect(() => {
         window.addEventListener('beforeunload', handleBeforeunload);
-        // window.addEventListener('popstate', handlePopState);
 
         return () => {
             window.removeEventListener('beforeunload', handleBeforeunload);
-            // window.removeEventListener('popstate', handlePopState);
         };
     }, []);
 
-    // //
-    // function handlePopState(e) {
-    //     console.log(e, );
-    // }
+    // -------
 
     //
     function showModalConfirm(last_location, action) {
-        // console.log(last_location, action);
         if (!has_change.current) {
             if (count_history) {
                 closeScreenHasHistory();

@@ -16,6 +16,8 @@ function FashionBuyTotal({
     coin,
     checked_coin,
     free_ship_price,
+
+    handleOrder,
 }) {
     //
     const total_ship_price = buy_shop_arr.reduce((a, buy_shop_obj) => {
@@ -94,7 +96,10 @@ function FashionBuyTotal({
                     <Link to="/fashion/privacy">Điều khoản</Link>
                 </div>
 
-                <button className="FashionBuyTotal_btn btn btn-hv bn-active padding-6px brs-3px bg-fashion-red text-cap text-white font-400 font-16px cursor-pointer">
+                <button
+                    className="FashionBuyTotal_btn btn btn-hv bn-active padding-6px brs-3px bg-fashion-red text-cap text-white font-400 font-16px cursor-pointer"
+                    onClick={handleOrder}
+                >
                     Đặt hàng
                 </button>
             </div>

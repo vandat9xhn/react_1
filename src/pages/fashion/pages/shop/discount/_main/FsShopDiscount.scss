@@ -1,0 +1,19 @@
+.FsShopDiscount {
+    padding: 20px 30px;
+}
+
+.FsShopDiscount_item {
+    .FsSDiscountItem {
+        width: 350px;
+        padding-left: 20px;
+        height: 105px;
+    }
+    // .
+    .FashionCardDiscount {
+        width: 100%;
+    }
+    // ..
+    .FashionCardDiscount_row {
+        justify-content: space-around;
+    }
+}

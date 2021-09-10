@@ -23,16 +23,19 @@ RowProducts.defaultProps = {
 
 //
 function RowProducts({
+    title,
+
     handle_API_L,
     use_limit_count,
     limit_count,
+
+    use_next_prev = true,
+    item_props,
 
     use_more,
     link_to_more,
     title_more,
     class_color_more,
-
-    title,
 }) {
     //
     const ref_main_elm = useRef(null);
@@ -47,6 +50,20 @@ function RowProducts({
         });
 
     const { data_arr, has_fetched } = data_state;
+
+    const common_props = {
+        products: data_arr.slice(0, use_limit_count ? limit_count : undefined),
+        ref_scroll_elm: ref_scroll_elm,
+        ref_fake_elm_end: ref_fake_elm_end,
+
+        has_fetched: has_fetched,
+        item_props: item_props,
+
+        use_more: use_more,
+        link_to_more: link_to_more,
+        title_more: title_more,
+        class_color_more: class_color_more,
+    };
 
     //
     useEffect(() => {
@@ -81,28 +98,11 @@ function RowProducts({
 
             <div className="RowProducts_products">
                 {IS_MOBILE ? (
-                    <RowProductMobile
-                        products={data_arr}
-                        has_fetched={has_fetched}
-                        ref_scroll_elm={ref_scroll_elm}
-                        ref_fake_elm_end={ref_fake_elm_end}
-                        //
-                        use_more={use_more}
-                        link_to_more={link_to_more}
-                        title_more={title_more}
-                        class_color_more={class_color_more}
-                    />
+                    <RowProductMobile {...common_props} />
                 ) : (
                     <RowProductPc
-                        products={data_arr}
-                        has_fetched={has_fetched}
-                        ref_scroll_elm={ref_scroll_elm}
-                        ref_fake_elm_end={ref_fake_elm_end}
-                        //
-                        use_more={use_more}
-                        link_to_more={link_to_more}
-                        title_more={title_more}
-                        class_color_more={class_color_more}
+                        {...common_props}
+                        use_next_prev={use_next_prev}
                     />
                 )}
 

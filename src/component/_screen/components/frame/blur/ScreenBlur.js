@@ -40,9 +40,9 @@ function ScreenBlur({
     //
     useMakeBodyHidden({
         hidden_app: use_body_hidden,
-        blur_header: false,
-        use_z_index: true,
-        screen_z_index: 100,
+        blur_header: true,
+        // use_z_index: true,
+        // screen_z_index: 100,
     });
 
     //

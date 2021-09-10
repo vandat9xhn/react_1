@@ -36,7 +36,6 @@ const base_product_obj = () => {
             0,
             getRandomBool() ? 2 : 1
         ),
-        shop_discount: '10%',
         address: 'Hà Nội',
 
         new_price: new_price * 1000,

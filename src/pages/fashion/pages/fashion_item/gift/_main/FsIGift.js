@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 //
 import { context_fashion_item } from '../../../../../../_context/fashion/item/context_fashion_item';
 //
@@ -10,12 +11,11 @@ import { initial_fs_item_gift_obj } from '../../../../../../_initial/fashion/Fas
 import { handle_API_FsItemGift_R } from '../../../../../../_handle_api/fashion/item_gift';
 //
 import FashionSeeMoreOnTitle from '../../../../components/see_more/on_title/FashionSeeMoreOnTitle';
-import FsIGiftItem from '../item/FsIGiftItem';
+import FsGiftItem from '../../../../components/gift_item/item/FsGiftItem';
+import FsGItemHasMore from '../../../../components/gift_item/item_has_more/FsGItemHasMore';
+
 //
 import './FsIGift.scss';
-import { Link } from 'react-router-dom';
-import FsiGItemHasMore from '../item_has_more/FsiGItemHasMore';
-import { IS_MOBILE } from '../../../../../../_constant/Constant';
 
 //
 FsIGift.propTypes = {};
@@ -89,7 +89,7 @@ function FsIGift(props) {
                                         key={item.id}
                                         className="FsIGift_foot_item"
                                     >
-                                        <FsIGiftItem
+                                        <FsGiftItem
                                             img={item.image}
                                             name={item.name}
                                         />
@@ -98,7 +98,7 @@ function FsIGift(props) {
 
                             {main_count >= 3 ? (
                                 <div className="FsIGift_foot_item pos-rel">
-                                    <FsiGItemHasMore
+                                    <FsGItemHasMore
                                         img={mains[1].image}
                                         count={main_count - 1}
                                     />
@@ -116,7 +116,7 @@ function FsIGift(props) {
                                         key={item.id}
                                         className="FsIGift_foot_item"
                                     >
-                                        <FsIGiftItem
+                                        <FsGiftItem
                                             img={item.image}
                                             name={item.name}
                                             is_gift={true}

@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
+// 
+import IconCaret from '../../../../../../_icons_svg/_icon_caret/IconCaret';
 //
-import IconDown from '../../../../../../_icons_svg/_icon_down/IconDown';
-//
+import PortalAtBody from '../../../../../../component/portal/at_body/PortalAtBody';
+// 
 import FsITiers from '../../../../components/tiers/_main/FsITiers';
 //
 import './FsCIType.scss';
-import PortalAtBody from '../../../../../../component/portal/at_body/PortalAtBody';
 
 //
 FsCIType.propTypes = {
@@ -44,7 +45,7 @@ function FsCIType({
                             open_model ? 'FsCIType_icon-open' : ''
                         }`}
                     >
-                        <IconDown size_icon="0.5rem" color="currentColor" />
+                        <IconCaret size_icon="0.5rem" fill="currentColor" />
                     </div>
                 </div>
 

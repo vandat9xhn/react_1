@@ -11,7 +11,7 @@ import { useDataShowMore } from '../../../../../../_hooks/useDataShowMore';
 //
 import FsShopDealLabel from '../../../../components/shop_deal_label/FsShopDealLabel';
 import FashionSeeMoreOnTitle from '../../../../components/see_more/on_title/FashionSeeMoreOnTitle';
-import FsIComboItem from '../item/FsIComboItem';
+import FsIComboItem from '../../../../components/combo_item/FsComboItem';
 //
 import './FsICombo.scss';
 

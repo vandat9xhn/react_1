@@ -46,7 +46,6 @@ Carousel.defaultProps = {
 //
 function Carousel({
     vid_pics,
-    video_props,
     link_to_arr,
     has_fetched,
     time_interval,

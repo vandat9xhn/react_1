@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../_constant/Constant';
 //
-import IconDown from '../../../../_icons_svg/_icon_down/IconDown';
+import IconCaret from '../../../../_icons_svg/_icon_caret/IconCaret';
 import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import './SelectFullAddressCurrent.scss';
@@ -87,7 +87,7 @@ function SelectFullAddressCurrent({
                                 : ''
                         }`}
                     >
-                        <IconDown size_icon="0.5rem" color="currentColor" />
+                        <IconCaret size_icon="0.5rem" fill="currentColor" />
                     </div>
                 </div>
             </div>

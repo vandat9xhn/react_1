@@ -87,8 +87,9 @@ export const useMakeBodyHidden = (
 
         if (use_z_index) {
             body.dataset.screenZIndex =
-                body.dataset.screenZIndex ||
-                '' + '_' + screen_z_index.toString();
+                (body.dataset.screenZIndex || '') +
+                '_' +
+                screen_z_index.toString();
             screen_bg.style.zIndex = screen_z_index;
         } else if (body.dataset.screenZIndex) {
             screen_bg.style.zIndex = body.dataset.screenZIndex.slice(

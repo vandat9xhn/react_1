@@ -20,11 +20,6 @@ class CloseDiv extends Component {
     }
 
     //
-    handleStopPropagation = (e) => {
-        e.stopPropagation();
-    };
-
-    //
     handleClick = (event) => {
         if (!this.myDiv.contains(event.target)) {
             this.props.makeDivHidden();
@@ -34,7 +29,7 @@ class CloseDiv extends Component {
     //
     render() {
         return (
-            <div ref={this.divRef} onClick={this.handleStopPropagation}>
+            <div ref={this.divRef}>
                 {this.props.children}
             </div>
         );

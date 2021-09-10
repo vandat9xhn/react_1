@@ -12,12 +12,14 @@ BuyFetching.propTypes = {
 function BuyFetching({ is_fetching }) {
     //
     return (
-        <div>
+        <div className="BuyFetching">
             <div className="width-fit-content margin-auto">
                 <CircleLoading is_fetching={is_fetching} />
             </div>
 
-            <div>Buying...</div>
+            <div className="padding-top-10px font-16px font-400 color-fashion">
+                Ordering...
+            </div>
         </div>
     );
 }

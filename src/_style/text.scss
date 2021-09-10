@@ -34,6 +34,10 @@
     color: var(--del);
 }
 
+.text-primary-08{
+    color: var(--primary-08);
+}
+
 .color-react {
     color: var(--color-react);
 }
@@ -104,7 +108,7 @@
 
 // -------- LINE
 
-@for $i from 10 through 16 {
+@for $i from 10 through 24 {
     .line-#{$i}px {
         line-height: #{$i}px;
     }
