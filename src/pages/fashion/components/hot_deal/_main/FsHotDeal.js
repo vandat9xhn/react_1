@@ -14,12 +14,16 @@ import FsHotDealItem from '../item/_main/FsHotDealItem';
 import FsHotDealCal from '../calculate/FsHotDealCal';
 //
 import './FsHotDeal.scss';
+import './FsHotDealMb.scss';
 
 //
-FsHotDeal.propTypes = {};
+FsHotDeal.propTypes = {
+    item_info: PropTypes.object,
+    params_api: PropTypes.object,
+};
 
 //
-function FsHotDeal({ product_id, item_info }) {
+function FsHotDeal({ item_info, params_api }) {
     //
     const [state_obj, setStateObj] = useState({
         hot_deal_arr: initial_fs_item_hot_deal_arr(),
@@ -63,7 +67,7 @@ function FsHotDeal({ product_id, item_info }) {
     async function getData_API() {
         const { data } = await handle_API_FsProductDetail_L({
             type_request: 'hot_deal',
-            params: { product_id: product_id },
+            params: params_api,
         });
 
         const new_data = (item_info ? [item_info, ...data] : data).slice(
@@ -186,7 +190,12 @@ function FsHotDeal({ product_id, item_info }) {
 
     //
     return (
-        <div ref={ref_main_elm} className="FsHotDeal bg-primary">
+        <div
+            ref={ref_main_elm}
+            className={`FsHotDeal bg-primary ${
+                IS_MOBILE ? 'FsHotDeal-mobile' : ''
+            }`}
+        >
             <div className={`${has_fetched ? '' : 'display-none'}`}>
                 <div className="FsHotDeal_head flex-between-center">
                     <h2 className="fashion-head-font font-500">
@@ -195,7 +204,9 @@ function FsHotDeal({ product_id, item_info }) {
 
                     <div>
                         <FashionSeeMoreOnTitle
-                            link_to={`/fashion/hot_deal?id=${product_id}`}
+                            link_to={`/fashion/hot_deal?id=${
+                                hot_deal_arr.length ? hot_deal_arr[0].id : -1
+                            }`}
                             title="Xem Thêm"
                         />
                     </div>

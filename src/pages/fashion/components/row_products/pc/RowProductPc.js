@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMouseDragScrollToX } from '../../../../../_hooks/useMouseDragScrollToX';
@@ -28,6 +28,9 @@ function RowProductPc({
     class_color_more,
 }) {
     //
+    const ref_has_more = useRef(false);
+
+    //
     const {
         handleMouseDown,
         handleMouseMove,
@@ -46,6 +49,7 @@ function RowProductPc({
     //
     useEffect(() => {
         hasNextPrev();
+        ref_has_more.current = is_has_next || is_has_prev;
     }, [products.length]);
 
     //
@@ -98,7 +102,7 @@ function RowProductPc({
 
                     <li ref={ref_fake_elm_end} className="padding-1px"></li>
 
-                    {use_more ? (
+                    {use_more && ref_has_more.current ? (
                         <li className="row-product-item snap-align-end">
                             <FashionSeeMoreLastRow
                                 link_to={link_to_more}
@@ -110,7 +114,7 @@ function RowProductPc({
                 </ul>
             </div>
 
-            {has_fetched && use_next_prev? (
+            {has_fetched && use_next_prev ? (
                 <NextPrevDiv
                     is_btn_circle={true}
                     is_has_next={is_has_next}

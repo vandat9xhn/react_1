@@ -25,15 +25,17 @@ function FsShopInfo({ shop_info }) {
             </h2>
 
             <div className="FsShopInfo_row display-flex">
-                <div className="FsShopInfo_left">
-                    <FsShopInfoLeft
-                        vid_pics={[
-                            vid_pics[vid_pics.length - 1],
-                            ...vid_pics,
-                            vid_pics[0],
-                        ]}
-                        has_fetched={true}
-                    />
+                <div className="FsShopInfo_left margin-right-10px pos-rel">
+                    <div className="FsShopInfo_left_pos pos-abs-100">
+                        <FsShopInfoLeft
+                            vid_pics={[
+                                vid_pics[vid_pics.length - 1],
+                                ...vid_pics,
+                                vid_pics[0],
+                            ]}
+                            has_fetched={true}
+                        />
+                    </div>
                 </div>
 
                 <div className="FsShopInfo_right">

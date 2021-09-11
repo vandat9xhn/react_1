@@ -1,0 +1,114 @@
+.FashionShop-mobile {
+    .FsShopOverview {
+        padding: 0;
+        height: auto;
+        position: relative;
+    }
+    .FsShopOverview_row {
+        display: block;
+    }
+
+    // .
+    .FsShopOverview_leading {
+        height: 200px;
+        width: 100%;
+    }
+
+    // ----- LEADING
+
+    .FsSOverviewLeading {
+        border-radius: 0;
+    }
+    .FsSOverviewLeading_contain {
+        padding: 30px 10px;
+    }
+    .FsSOverviewLeading_row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    // ------- LEADING INFO
+
+    // .
+    .FsSOverviewLeading_info {
+        margin-bottom: 0;
+    }
+
+    // ..
+    .FsSOverviewLeading_picture {
+        width: 60px;
+        height: 60px;
+    }
+
+    // ...
+    .FsSOverviewLeading_like_contain {
+        font-size: 10px;
+    }
+
+    // ..
+    .FsSOverviewLeading_name {
+        font-size: 16px;
+    }
+
+    // ----- LEADING ACTIONS
+
+    .FsSOverviewLeading_actions {
+        display: block;
+        text-transform: none;
+    }
+
+    // .
+    .FsSOverviewLeading_follow {
+        width: 100%;
+        margin-bottom: 5px;
+        padding: 8px;
+
+        .IconPlusSubtract {
+            width: 0.75rem;
+            height: 0.75rem;
+        }
+    }
+    // .
+    .FsSOverviewLeading_chat  {
+        width: 100%;
+        padding: 8px;
+
+        .IconsMenu {
+            width: 0.75rem;
+            height: 0.75rem;
+        }
+    }
+
+    // --------- INFO
+
+    .FsShopOverview_info {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .FsSOverviewInfo {
+        padding: 10px;
+        color: var(--white);
+    }
+    .FsSOverviewInfo_row {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
+
+    .FsSOverviewInfo_item_col{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    // .
+    .FsSOverviewInfo_title{
+        font-size: 12px;
+    }
+    // .
+    .FsSOverviewInfo_value{
+        margin: 0 0 5px 0;
+        color: white;
+    }
+}

@@ -1,6 +1,6 @@
 .font-for-fashion {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: var(--primary-08 );
+    color: var(--primary-08);
 }
 
 .fashion-width {
@@ -11,6 +11,11 @@
 
 .fashion-head {
     min-width: 1200px;
+}
+
+.fashion-head-font {
+    font-size: 18px;
+    color: var(--md-color-secondary);
 }
 
 .fashion-head-padding {

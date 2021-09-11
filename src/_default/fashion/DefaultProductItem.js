@@ -189,7 +189,7 @@ export const default_product_obj = () => {
         old_price: old_price * 1000,
         old_price_max: old_price_max * 1000,
 
-        discount: discount ? discount + (getRandomBool() ? 'K' : '%') : 0,
+        discount: discount ? discount + (getRandomBool() ? 'K' : '%') : '',
 
         attributes: [
             {

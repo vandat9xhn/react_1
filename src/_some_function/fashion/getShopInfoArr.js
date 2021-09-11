@@ -71,14 +71,14 @@ export const getShopInfoArrInShop = ({
 }) =>
     IS_MOBILE
         ? [
-              {
-                  title: 'Sản Phẩm',
-                  value: products,
-              },
-              {
-                  title: 'Đánh Giá',
-                  value: rating,
-              },
+            {
+                title: 'Đánh Giá',
+                value: `${rating}/5.0`,
+            },
+            {
+                title: 'Theo dõi',
+                value: UnitNumber(followed),
+            },
               {
                   title: 'Phản Hồi Chat',
                   value: reply_chat,
@@ -86,15 +86,15 @@ export const getShopInfoArrInShop = ({
           ]
         : [
               {
-                  title: 'Sản Phẩm',
+                  title: 'Sản Phẩm:',
                   value: products,
               },
               {
-                  title: 'Đang theo dõi',
+                  title: 'Đang theo dõi:',
                   value: UnitNumber(following),
               },
               {
-                  title: 'Tỉ Lệ Phản Hồi',
+                  title: 'Tỉ Lệ Phản Hồi:',
                   value: `${reply_chat} (trong ${UnitTime(
                       reply_time,
                       '1 Phút',
@@ -102,16 +102,16 @@ export const getShopInfoArrInShop = ({
                   )})`,
               },
               {
-                  title: 'Người Theo Dõi',
+                  title: 'Người Theo Dõi:',
                   value: UnitNumber(followed),
               },
               {
-                  title: 'Đánh Giá',
+                  title: 'Đánh Giá:',
                   value: `${rating} (${UnitNumber(rate_count)} Đánh giá)`,
               },
 
               {
-                  title: 'Tham Gia',
+                  title: 'Tham Gia:',
                   value: `${UnitTime(
                       new Date().getTime() - new Date(time_joined).getTime(),
                       undefined,

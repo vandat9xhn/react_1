@@ -49,7 +49,7 @@ function RowProducts({
             handle_API_L: handle_API_L,
         });
 
-    const { data_arr, has_fetched } = data_state;
+    const { data_arr, count, has_fetched } = data_state;
 
     const common_props = {
         products: data_arr.slice(0, use_limit_count ? limit_count : undefined),

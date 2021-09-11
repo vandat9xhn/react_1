@@ -1,0 +1,13 @@
+// .
+.FsSProductsListMb_item {
+    padding: 5px;
+    width: 33.3333%;
+}
+
+//
+@media (max-width: 400px) {
+    // .
+    .FsSProductsListMb_item {
+        width: 50%;
+    }
+}

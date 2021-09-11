@@ -1,3 +1,13 @@
+.FsSDiscountItem {
+    .FashionCardDiscount_title {
+        color: var(--fashion-head);
+    }
+    .FashionCardDiscount_expiry {
+        margin-top: 5px;
+        font-size: 10px;
+    }
+}
+
 .FsSDiscountItem_side {
     width: 10px;
 

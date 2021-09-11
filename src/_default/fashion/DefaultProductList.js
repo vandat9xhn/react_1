@@ -20,6 +20,7 @@ const base_product_obj = () => {
         new_price_max + 50
     );
 
+    // 
     return {
         id: getRandomNumber(),
         name: getRandomFromArr(product_name_arr),

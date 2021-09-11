@@ -37,15 +37,15 @@ function FsSOverviewInfo({ shop_info }) {
         <div className="FsSOverviewInfo h-100per font-14px text-cap">
             <div className="FsSOverviewInfo_row h-100per display-flex flex-col flex-wrap">
                 {shop_info_arr.map((shop_overview_obj, ix) => (
-                    <div key={ix} className="padding-y-10px">
+                    <div key={ix} className="FsSOverviewInfo_item padding-y-10px">
                         <div></div>
 
-                        <div className="inline-block">
-                            <div className="inline-block">
-                                {shop_overview_obj.title}:
+                        <div className="FsSOverviewInfo_item_col inline-block">
+                            <div className="FsSOverviewInfo_title inline-block">
+                                {shop_overview_obj.title}
                             </div>
 
-                            <div className="inline-block margin-left-5px color-fashion">
+                            <div className="FsSOverviewInfo_value inline-block margin-left-5px color-fashion">
                                 {shop_overview_obj.value}
                             </div>
                         </div>

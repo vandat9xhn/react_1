@@ -11,8 +11,11 @@ import FsShopInfo from '../info/_main/FsShopInfo';
 import FsShopRowProducts from '../row_products/FsShopRowProducts';
 import FsShopVidPicCarousel from '../vid_pic_carousel/FsShopVidPicCarousel';
 import FsShopVidPicSingle from '../vid_pic_single/FsShopVidPicSingle';
+import FsShopHotDeal from '../hot_deal/FsShopHotDeal';
+import FsShopCombo from '../combo/FsShopCombo';
 //
 import fire from '../../../../../../image/fire.png';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 
 //
 export const FS_SHOP_TYPE_COMPONENT_OBJ = {
@@ -26,9 +29,9 @@ export const FS_SHOP_TYPE_COMPONENT_OBJ = {
 
     products: FsShopRowProducts,
 
-    hot_deal: () => <div></div>,
+    hot_deal: FsShopHotDeal,
 
-    combo: () => <div></div>,
+    combo: FsShopCombo,
 };
 
 //
@@ -43,6 +46,8 @@ export const FsShop_initial_state_obj = () => {
             },
         ],
         has_fetched: false,
+
+        title_name: 'shop',
     };
 };
 
@@ -53,6 +58,15 @@ export function FsShop_handleDataState({ data = {}, setStateObj = () => {} }) {
     const new_vid_pics = shop_info.vid_pics.map((item) => item.vid_pic);
     shop_info.vid_pics = new_vid_pics;
 
+    // 
+    const info_obj = IS_MOBILE ? {} : {
+        id: getRandomId(),
+        type: 'info',
+        data: {
+            shop_info: shop_info,
+        },
+    }
+
     const data_type_arr = [
         {
             id: getRandomId(),
@@ -61,13 +75,7 @@ export function FsShop_handleDataState({ data = {}, setStateObj = () => {} }) {
                 vid_pic: getRandomVidPic(),
             },
         },
-        {
-            id: getRandomId(),
-            type: 'info',
-            data: {
-                shop_info: shop_info,
-            },
-        },
+        ...info_obj,
         {
             id: getRandomId(),
             type: 'vid_pic',
@@ -91,11 +99,11 @@ export function FsShop_handleDataState({ data = {}, setStateObj = () => {} }) {
                         <img src={fire} alt="" width="14" height="14" />
 
                         <span className="margin-left-5px color-fashion">
-                            DEAL HOT, MUA NGAY KẺO LỠ!
+                            DEAL HOT{IS_MOBILE ? '' : ', MUA NGAY KẺO LỠ!'}
                         </span>
                     </div>
                 ),
-                product_id: getRandomId(),
+                type_id: getRandomId(),
             },
         },
         {
@@ -103,20 +111,25 @@ export function FsShop_handleDataState({ data = {}, setStateObj = () => {} }) {
             type: 'products',
             data: {
                 title: 'Gợi ý cho bạn',
-                product_id: getRandomId(),
+                type_id: getRandomId(),
             },
         },
-        // {
-        //     id: getRandomId(),
-        //     type: 'hot_deal',
-        //     data: {},
-        // },
-        // {
-        //     id: getRandomId(),
-        //     type: 'combo',
-        //     data: {},
-        // },
-    ];
+        {
+            id: getRandomId(),
+            type: 'hot_deal',
+            data: {
+                type_id: getRandomId(),
+            },
+        },
+        {
+            id: getRandomId(),
+            type: 'combo',
+            data: {
+                title: 'Mua 3 & giảm ₫5.000',
+                type_id: getRandomId(),
+            },
+        },
+    ].sort((a, b) => a.id - b.id);
 
     setStateObj((state_obj = FsShop_initial_state_obj()) => {
         return {

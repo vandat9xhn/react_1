@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconCaret from '../../../../../../../_icons_svg/_icon_caret/IconCaret';
+import IconCaret from '../../../../../../../../_icons_svg/_icon_caret/IconCaret';
 
 //
 FsSCategoryItem.propTypes = {};

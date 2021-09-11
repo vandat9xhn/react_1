@@ -66,14 +66,14 @@ function FsSOverviewLeading({ shop_info }) {
                                         is_like={is_like}
                                         is_mall={is_mall}
                                         is_plus={is_plus}
-                                        class_text="padding-y-2px font-12px line-12px text-align-center"
+                                        class_text="FsSOverviewLeading_like_contain padding-y-2px font-12px line-12px text-align-center"
                                         use_side={false}
                                     />
                                 </div>
                             </div>
 
                             <div className="FsSOverviewLeading_info-right">
-                                <h1 className="margin-bottom-5px font-20px line-24px">
+                                <h1 className="FsSOverviewLeading_name margin-bottom-5px font-20px line-24px">
                                     {name}
                                 </h1>
 

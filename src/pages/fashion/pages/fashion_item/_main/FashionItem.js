@@ -49,7 +49,7 @@ import '../_mobile_scss/FsIInfoLeftMb.scss';
 import '../_mobile_scss/FsIInfoRightMb.scss';
 import '../_mobile_scss/FsIComboMb.scss';
 import '../_mobile_scss/FsIGiftMb.scss';
-import '../_mobile_scss/FsIHotDealMb.scss';
+// import '../_mobile_scss/FsIHotDealMb.scss';
 import '../_mobile_scss/FsIOwnerMb.scss';
 import '../_mobile_scss/FsIShopSellingMb.scss';
 import '../_mobile_scss/FsIDescriptionMb.scss';
@@ -265,6 +265,7 @@ function FashionItem(props) {
                                 <FsHotDeal
                                     product_id={item_info.id}
                                     item_info={item_info}
+                                    params_api={{ product_model: item_info.id }}
                                 />
                             </VirtualScroll>
                         </div>

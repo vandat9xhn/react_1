@@ -8,7 +8,7 @@ import FashionFaceItemBd from '../body/FashionFaceItemBd';
 import FashionFaceItemFoot from '../foot/FashionFaceItemFoot';
 //
 import './FashionFaceItem.scss';
-import './FashionFaceItemRes.scss';
+import './FashionFaceItemMb.scss';
 
 //
 FashionFaceItem.propTypes = {
@@ -61,7 +61,7 @@ function FashionFaceItem({
     return (
         <div
             className={`FashionFaceItem pos-rel bg-primary h-100per ${
-                IS_MOBILE ? '' : 'FashionFaceItem-pc'
+                IS_MOBILE ? 'FashionFaceItem-mobile' : 'FashionFaceItem-pc'
             }`}
         >
             <Link

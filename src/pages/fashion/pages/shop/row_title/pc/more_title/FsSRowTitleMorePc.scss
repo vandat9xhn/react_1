@@ -1,0 +1,22 @@
+.FsSRowTitleMorePc {
+    max-height: 350px;
+    border-top: 1px solid var(--md-bg-blur);
+
+    &::after {
+        content: '';
+
+        position: absolute;
+        bottom: 100%;
+        right: 15px;
+
+        border-width: 0 8px 8px 8px;
+        border-style: solid;
+        border-color: transparent transparent var(--md-bg-primary) transparent;
+    }
+}
+
+.FsSRowTitleMorePc_item {
+    &:hover {
+        color: var(--fashion-head);
+    }
+}

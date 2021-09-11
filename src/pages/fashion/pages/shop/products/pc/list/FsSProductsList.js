@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import FashionFaceItem from '../../../../components/face_item/_main/FashionFaceItem';
+import FashionFaceItem from '../../../../../components/face_item/_main/FashionFaceItem';
 //
 import './FsSProductsList.scss';
 

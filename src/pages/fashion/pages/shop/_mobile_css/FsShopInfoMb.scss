@@ -1,0 +1,41 @@
+.FashionShop-mobile {
+    .FsShopInfo {
+        padding: 0px;
+        background-color: transparent;
+    }
+
+    .FsShopInfo_title {
+        display: none;
+    }
+
+    .FsShopInfo_row {
+        // display: block;
+        flex-direction: column-reverse;
+    }
+    // .
+    .FsShopInfo_left {
+        width: 100%;
+        padding-top: 0;
+    }
+    // ..
+    .FsShopInfo_left_pos{
+        position: static;
+    }
+    // .
+    .FsShopInfo_right {
+        margin-bottom: 5px;
+        width: 100%;
+        height: auto;
+    }
+
+    // ..
+    .FsShopInfoRight_contain {
+        padding: 10px;
+        background-color: var(--md-bg-primary);
+        font-size: 14px;
+    }
+    // ...
+    .FsShopInfoRight_name {
+        display: none;
+    }
+}

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useBool } from '../../../../../../../_hooks/useBool';
+import { useBool } from '../../../../../../../../_hooks/useBool';
 //
-import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
+import IconsArrow from '../../../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import CloseDiv from '../../../../../../../component/some_div/close_div/CloseDiv';
+import CloseDiv from '../../../../../../../../component/some_div/close_div/CloseDiv';
 //
 import './FsSCSortPrice.scss';
 

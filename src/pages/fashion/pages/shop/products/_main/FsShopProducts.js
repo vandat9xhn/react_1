@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+//
 import { initial_fashion_item_base_obj } from '../../../../../../_initial/fashion/FashionInitial';
 //
 import { GetIdSlug } from '../../../../../../_some_function/GetIdSlug';
@@ -8,11 +10,8 @@ import observeToDo from '../../../../../../_some_function/observerToDo';
 //
 import { handle_API_Product_L } from '../../../../../../_handle_api/fashion/FashionHandleAPI';
 //
-import Pagination from '../../../../../../component/pagination/_main/Pagination';
-//
-import FsShopCategory from '../category/_main/FsShopCategory';
-import FsSCSort from '../sort/_main/FsSCSort';
-import FsSProductsList from '../list/FsSProductsList';
+import FsShopProductsPc from '../pc/_main/FsShopProductsPc';
+import FsShopProductsMb from '../_mobile/_main/FsShopProductsMb';
 //
 import './FsShopProducts.scss';
 
@@ -144,7 +143,6 @@ function FsShopProducts({ category_arr }) {
 
     //
     function handleSortPrice(new_sort_price_ix = 0) {
-        console.log(new_sort_price_ix);
         getData_API_Products({
             new_page: 1,
             start_obj_state: {
@@ -155,6 +153,11 @@ function FsShopProducts({ category_arr }) {
                 sort: SORT_PRICE_KEY_ARR[new_sort_price_ix],
             },
         });
+    }
+
+    //
+    function handleSortPriceMb() {
+        handleSortPrice(sort_price_ix == 0 ? 1 : 0);
     }
 
     // ------ NEXT PREV
@@ -172,49 +175,37 @@ function FsShopProducts({ category_arr }) {
     //
     return (
         <div ref={ref_main_elm} className="FsShopProducts user-select-none">
-            <div className="FsShopProducts_row display-flex">
-                <div className="margin-right-20px">
-                    <FsShopCategory
-                        category_arr={category_arr}
-                        category_id={category_id}
-                        handleChange={handleChangeCategory}
-                    />
-                </div>
-
-                <div>
-                    <div className="margin-bottom-15px">
-                        <FsSCSort
-                            sort_arr={SORT_ARR}
-                            sort_price_arr={SORT_PRICE_ARR}
-                            sort_ix={sort_ix}
-                            sort_price_ix={sort_price_ix}
-                            //
-                            page={page}
-                            pages={pages}
-                            is_fetching={is_fetching}
-                            //
-                            handleSort={handleSort}
-                            handleSortPrice={handleSortPrice}
-                            handleNext={handleNext}
-                            handlePrev={handlePrev}
-                        />
-                    </div>
-
-                    <div className="margin-bottom-15px">
-                        <FsSProductsList product_arr={product_arr} />
-                    </div>
-
-                    <div>
-                        <Pagination
-                            current={page}
-                            count={pages}
-                            num_side_center={2}
-                            is_fetching={is_fetching}
-                            handleChangePage={handleChangePage}
-                        />
-                    </div>
-                </div>
-            </div>
+            {IS_MOBILE ? (
+                <FsShopProductsMb
+                    product_arr={product_arr}
+                    sort_arr={SORT_ARR}
+                    sort_ix={sort_ix}
+                    sort_price_ix={sort_price_ix}
+                    handleSort={handleSort}
+                    handleSortPrice={handleSortPriceMb}
+                />
+            ) : (
+                <FsShopProductsPc
+                    category_arr={category_arr}
+                    category_id={category_id}
+                    sort_arr={SORT_ARR}
+                    sort_ix={sort_ix}
+                    sort_price_arr={SORT_PRICE_ARR}
+                    sort_price_ix={sort_price_ix}
+                    //
+                    product_arr={product_arr}
+                    is_fetching={is_fetching}
+                    page={page}
+                    pages={pages}
+                    //
+                    handleChangeCategory={handleChangeCategory}
+                    handleSort={handleSort}
+                    handleSortPrice={handleSortPrice}
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                    handleChangePage={handleChangePage}
+                />
+            )}
         </div>
     );
 }

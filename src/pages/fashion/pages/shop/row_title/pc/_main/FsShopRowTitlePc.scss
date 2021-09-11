@@ -1,0 +1,21 @@
+// .
+.FsShopRowTitlePc_item{
+    width: 16.6667%;
+}
+// ..
+.FsShopRowTitlePc_item_contain-active{
+    color: var(--fashion-head);
+    border-bottom: 4px solid currentColor;
+}
+
+.FsShopRowTitlePc_more{
+    &:hover{
+        .FsShopRowTitlePc_more_list{
+            display: block;
+        }
+    }
+}
+// .
+.FsShopRowTitlePc_more_list{
+    width: 250px;
+}

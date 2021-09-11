@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsMenu from '../../../../../../../_icons_svg/icons_menu/IconsMenu';
+import IconsMenu from '../../../../../../../../_icons_svg/icons_menu/IconsMenu';
 //
 import FsSCategoryItem from '../item/FsSCategoryItem';
 //

@@ -8,9 +8,55 @@ import { owner_info } from './FashionDefault';
 
 //
 const shop_category_name_arr = [
-    { id: getRandomId(), name: 'mom', title: 'Mom' },
-    { id: getRandomId(), name: 'baby', title: 'Baby' },
-    { id: getRandomId(), name: 'other', title: 'Other' },
+    {
+        id: getRandomId(),
+        name: 'new_recommended',
+        title: 'New recommended',
+        img: getRandomVidPic(),
+        quantity: getRandomNumber(5, 50),
+    },
+    {
+        id: getRandomId(),
+        name: 'best_seller',
+        title: 'Best seller',
+        img: getRandomVidPic(),
+        quantity: getRandomNumber(5, 50),
+    },
+    {
+        id: getRandomId(),
+        name: 'clothes_man',
+        title: 'Quần áo nam',
+        img: getRandomVidPic(),
+        quantity: getRandomNumber(5, 50),
+    },
+    {
+        id: getRandomId(),
+        name: 'clothes_woman',
+        title: 'Quần áo nữ',
+        img: getRandomVidPic(),
+        quantity: getRandomNumber(5, 50),
+    },
+    {
+        id: getRandomId(),
+        name: 'sneaker',
+        title: 'Giày sneaker',
+        img: getRandomVidPic(),
+        quantity: getRandomNumber(5, 50),
+    },
+    {
+        id: getRandomId(),
+        name: 'sandal',
+        title: 'Dép',
+        img: getRandomVidPic(),
+        quantity: getRandomNumber(5, 50),
+    },
+    {
+        id: getRandomId(),
+        name: 'shirt',
+        title: 'Áo thun',
+        img: getRandomVidPic(),
+        quantity: getRandomNumber(5, 50),
+    },
 ];
 
 const shop_category_arr = () => shop_category_name_arr;
@@ -50,7 +96,7 @@ export const default_shop_obj = () => ({
             shop_id: 256060797,
             discount_value: 3000,
             is_percent: false,
-            discount_str: '3k',
+            discount_str: '₫3k',
             status_card: 'available',
         },
         {
@@ -65,7 +111,7 @@ export const default_shop_obj = () => ({
             shop_id: 256060797,
             discount_value: 7000,
             is_percent: false,
-            discount_str: '7k',
+            discount_str: '₫7k',
             status_card: 'available',
         },
     ],
