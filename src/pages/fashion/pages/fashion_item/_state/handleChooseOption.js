@@ -28,6 +28,7 @@ export function handleChooseOption({
             tier_ix_arr: new_tier_ix_arr,
             model_ix: new_model_ix,
             count: new_count,
+            error_add_cart: '',
         };
     });
 }

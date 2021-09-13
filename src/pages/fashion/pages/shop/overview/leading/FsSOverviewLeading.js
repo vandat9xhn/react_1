@@ -48,7 +48,7 @@ function FsSOverviewLeading({ shop_info }) {
                 style={{ backgroundImage: `url(${banner})` }}
             ></div>
 
-            <div className="FsSOverviewLeading_contain h-100per pos-rel padding-x-15px padding-y-10px bg-film">
+            <div className="FsSOverviewLeading_contain h-100per pos-rel padding-x-15px padding-y-10px bg-shadow-5">
                 <div className="FsSOverviewLeading_row">
                     <div className="FsSOverviewLeading_info margin-bottom-12px">
                         <div className="FsSOverviewLeading_info_row display-flex align-items-center">

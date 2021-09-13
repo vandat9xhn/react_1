@@ -82,7 +82,7 @@ function StoryItemMobile({
 
     //
     return (
-        <div className="StoryItemMobile wh-100v bg-loader">
+        <div className="StoryItemMobile wh-100v bg-shadow-9">
             <StoryItem
                 story_arr={story_arr}
                 count_story={count}

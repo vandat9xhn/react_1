@@ -1,5 +1,13 @@
 .FashionItem_mobile {
     .FashionItem_breadCrumb {
+        padding: 10px 5px;
+        font-size: 14px;
+
+        .IconsArrow{
+            width: 10px;
+            height: 10px;
+        }
+
         .FashionBreadCrumb {
             white-space: nowrap;
             overflow-x: auto;

@@ -1,5 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+//
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 //
 import { context_fashion_item } from '../../../../../../../_context/fashion/item/context_fashion_item';
 //
@@ -17,6 +19,7 @@ import FsItemIfRShopDiscount from '../shop_discount/_main/FsItemIfRShopDiscount'
 import FsIIfRRateSold from '../rate_sold/FsIIfRRateSold';
 import FsItemIfRPrivacy from '../privacy/FsItemIfRPrivacy';
 import FsItemIfRBundleDeal from '../bundle_deal/FsIIfRBundleDeal';
+import FsItemIfRError from '../error/FsItemIfRError';
 
 //
 FashionItemInfoRight.propTypes = {};
@@ -24,7 +27,8 @@ FashionItemInfoRight.propTypes = {};
 //
 function FashionItemInfoRight({}) {
     //
-    const { fetched_item } = useContext(context_fashion_item);
+    const { item_info, count, model_ix, error_add_cart, fetched_item } =
+        useContext(context_fashion_item);
 
     //
     return (
@@ -33,6 +37,17 @@ function FashionItemInfoRight({}) {
                 <div className="margin-bottom-16px">
                     <FsItemIfRName />
                 </div>
+
+                {IS_MOBILE &&
+                item_info.total_add_cart == 0 &&
+                ((item_info.tier_variations.length &&
+                    model_ix >= 0 &&
+                    count <= 0) ||
+                    (item_info.tier_variations.length == 0 && count <= 0)) ? (
+                    <div className="margin-bottom-16px">
+                        <div className="text-red font-14px">Đã hết hàng</div>
+                    </div>
+                ) : null}
 
                 <div className="margin-bottom-16px">
                     <FsIIfRRateSold />
@@ -62,13 +77,25 @@ function FashionItemInfoRight({}) {
                     <FsIIfRTierVariants />
                 </div>
 
-                <div className="margin-bottom-16px font-14px">
-                    <FsItemIfRCount />
-                </div>
+                {IS_MOBILE ? null : (
+                    <React.Fragment>
+                        <div className="margin-bottom-16px font-14px">
+                            <FsItemIfRCount />
+                        </div>
 
-                <div className="margin-bottom-16px font-14px">
-                    <FsItemIfRCart />
-                </div>
+                        <div
+                            className={`margin-bottom-16px font-14px ${
+                                error_add_cart ? '' : 'display-none'
+                            }`}
+                        >
+                            <FsItemIfRError error_add_cart={error_add_cart} />
+                        </div>
+
+                        <div className="margin-bottom-16px font-14px">
+                            <FsItemIfRCart />
+                        </div>
+                    </React.Fragment>
+                )}
 
                 <div>
                     <FsItemIfRPrivacy />

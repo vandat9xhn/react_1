@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import FsSCSortItem from '../item/FsSCSortItem';
-import FsSCSortPrice from '../price/FsSCSortPrice';
-import FsSCSortPage from '../page/FsSCSortPage';
+import FsRowSortItem from '../item/FsRowSortItem';
+import FsRowSortPrice from '../price/FsRowSortPrice';
+import FsRowSortPage from '../page/FsRowSortPage';
 
 //
-FsSCSort.propTypes = {};
+FsRowSort.propTypes = {};
 
 //
-function FsSCSort({
+function FsRowSort({
     sort_arr,
     sort_price_arr,
     sort_ix,
@@ -26,14 +26,14 @@ function FsSCSort({
 }) {
     //
     return (
-        <div className="FsSCSort padding-y-10px padding-x-20px bg-blur">
-            <div className="FsSCSort_row display-flex align-items-center">
+        <div className="FsRowSort padding-y-10px padding-x-20px bg-blur">
+            <div className="FsRowSort_row display-flex align-items-center">
                 <div>Sắp xếp theo</div>
 
                 <div className="flex-grow-1 display-flex">
                     {sort_arr.map((name, ix) => (
                         <div key={ix} className="margin-left-10px">
-                            <FsSCSortItem
+                            <FsRowSortItem
                                 name={name}
                                 ix={ix}
                                 is_active={sort_ix == ix}
@@ -43,7 +43,7 @@ function FsSCSort({
                     ))}
 
                     <div className="margin-left-10px">
-                        <FsSCSortPrice
+                        <FsRowSortPrice
                             sort_price_arr={sort_price_arr}
                             sort_price_ix={sort_price_ix}
                             handleSortPrice={handleSortPrice}
@@ -52,7 +52,7 @@ function FsSCSort({
                 </div>
 
                 <div>
-                    <FsSCSortPage
+                    <FsRowSortPage
                         page={page}
                         pages={pages}
                         is_fetching={is_fetching}
@@ -65,4 +65,4 @@ function FsSCSort({
     );
 }
 
-export default FsSCSort;
+export default FsRowSort;

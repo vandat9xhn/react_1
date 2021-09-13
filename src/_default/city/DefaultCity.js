@@ -32,7 +32,7 @@ const street_name_arr = [
 // const bg_color_arr = [
 //     'bg-linear-45-success-tear.text-white',
 //     'bg-primary.text-primary',
-//     'bg-active-fb.text-secondary',
+//     'bg-fb-active.text-secondary',
 //     'bg-green.color-react',
 // ];
 

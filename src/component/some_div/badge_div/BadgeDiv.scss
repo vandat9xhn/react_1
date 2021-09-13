@@ -10,3 +10,13 @@
     user-select: none;
     overflow: hidden;
 }
+
+//
+@media (max-width: 500px) {
+    .BadgeDiv {
+        width: 14px;
+        height: 14px;
+        
+        font-size: 8px;
+    }
+}

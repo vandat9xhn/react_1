@@ -23,7 +23,7 @@ function VideoUtils({
     return (
         <React.Fragment>
             <div
-                className={`pos-abs-100 bg-film ${
+                className={`pos-abs-100 bg-shadow-5 ${
                     show_btn_play ? '' : 'display-none'
                 }`}
             ></div>

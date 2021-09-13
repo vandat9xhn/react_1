@@ -23,7 +23,7 @@ function StoryReply({
 }) {
     //
     return (
-        <div className="StoryReply bg-loader">
+        <div className="StoryReply bg-shadow-9">
             <div className="display-flex align-items-center">
                 <div className="flex-grow-1">
                     <Textarea

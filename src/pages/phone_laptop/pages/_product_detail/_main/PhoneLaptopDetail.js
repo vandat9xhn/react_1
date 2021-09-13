@@ -161,7 +161,7 @@ function PhoneLaptopDetail() {
         openScreenNotice({
             openScreenOnce: openScreenOnce,
             ComponentNotice: (
-                <div className="PhoneLaptopDetail_notice-success brs-5px bg-loader">
+                <div className="PhoneLaptopDetail_notice-success brs-5px bg-shadow-9">
                     Order successfully
                 </div>
             ),

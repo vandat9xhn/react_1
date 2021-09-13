@@ -10,7 +10,7 @@ FsCSNoticeChooseProduct.propTypes = {};
 function FsCSNoticeChooseProduct(props) {
     //
     return (
-        <div className="FsCSNoticeChooseProduct display-flex-center padding-16px bg-loader brs-8px">
+        <div className="FsCSNoticeChooseProduct display-flex-center padding-16px bg-shadow-9 brs-8px">
             <div className="text-align-center text-white font-16px">
                 Chọn sản phẩm của shop trước khi nhập mã voucher
             </div>

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import BtnNexPrev from '../../../../../../../../component/button/next_prev/BtnNexPrev';
+import BtnNexPrev from '../../../../../component/button/next_prev/BtnNexPrev';
 //
-import './FsSCSortPage.scss';
+import './FsRowSortPage.scss';
 
 //
-FsSCSortPage.propTypes = {};
+FsRowSortPage.propTypes = {};
 
 //
-function FsSCSortPage({
+function FsRowSortPage({
     page,
     pages,
 
@@ -20,8 +20,8 @@ function FsSCSortPage({
 }) {
     //
     return (
-        <div className="FsSCSortPage">
-            <div className="FsSCSortPage_row display-flex align-items-center">
+        <div className="FsRowSortPage">
+            <div className="FsRowSortPage_row display-flex align-items-center">
                 <div className="margin-right-20px">
                     <span className="color-fashion">{page}</span>
 
@@ -31,7 +31,7 @@ function FsSCSortPage({
                 <div className="display-flex">
                     <BtnNexPrev
                         is_next={false}
-                        btn_class={`FsSCSortPage_btn margin-right-1px padding-10px ${
+                        btn_class={`FsRowSortPage_btn margin-right-1px padding-10px ${
                             page == 1 || is_fetching ? 'opacity-05' : ''
                         }`}
                         size_icon="10px"
@@ -41,7 +41,7 @@ function FsSCSortPage({
 
                     <BtnNexPrev
                         is_next={true}
-                        btn_class={`FsSCSortPage_btn margin-right-1px padding-10px ${
+                        btn_class={`FsRowSortPage_btn margin-right-1px padding-10px ${
                             page == pages || is_fetching ? 'opacity-05' : ''
                         }`}
                         size_icon="10px"
@@ -54,4 +54,4 @@ function FsSCSortPage({
     );
 }
 
-export default FsSCSortPage;
+export default FsRowSortPage;

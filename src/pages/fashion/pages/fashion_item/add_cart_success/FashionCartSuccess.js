@@ -12,8 +12,9 @@ FashionCartSuccess.propTypes = {};
 
 //
 function FashionCartSuccess(props) {
+    // 
     return (
-        <div className="FashionCartSuccess bg-loader brs-5px">
+        <div className="FashionCartSuccess bg-shadow-9 brs-5px">
             <div className="display-flex-center wh-100">
                 <IconDiv
                     Icon={IconSeen}

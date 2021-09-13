@@ -38,7 +38,7 @@ function HeaderMessItem({
             <div
                 className={
                     count_new
-                        ? 'pointer-events-none pos-abs-100 bg-film'
+                        ? 'pointer-events-none pos-abs-100 bg-shadow-5'
                         : 'display-none'
                 }
             >

@@ -20,7 +20,7 @@ function StoryItemPc({
 }) {
     //
     return (
-        <div className="StoryItemPc h-100per bg-loader pos-rel">
+        <div className="StoryItemPc h-100per bg-shadow-9 pos-rel">
             <StoryItem
                 story_arr={story_arr}
                 count_story={count_story}

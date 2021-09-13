@@ -14,7 +14,7 @@ function StoryPicLeftPcC({ openAddText, is_open }) {
     return (
         <div
             className={`StoryPicLeftPcC padding-8px brs-8px ${
-                is_open ? 'bg-active-fb' : 'cursor-pointer hv-bg-hv'
+                is_open ? 'bg-fb-active' : 'cursor-pointer hv-bg-hv'
             }`}
             onClick={openAddText}
         >

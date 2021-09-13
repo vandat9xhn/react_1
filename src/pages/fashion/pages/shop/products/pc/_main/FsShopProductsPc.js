@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 //
 import Pagination from '../../../../../../../component/pagination/_main/Pagination';
 //
+import FsRowSort from '../../../../../components/row_sort/_main/FsRowSort';
 import FsShopCategory from '../category/_main/FsShopCategory';
-import FsSCSort from '../sort/_main/FsSCSort';
 import FsSProductsList from '../list/FsSProductsList';
 
 //
@@ -47,7 +47,7 @@ function FsShopProductsPc({
 
                 <div>
                     <div className="margin-bottom-15px">
-                        <FsSCSort
+                        <FsRowSort
                             sort_arr={sort_arr}
                             sort_price_arr={sort_price_arr}
                             sort_ix={sort_ix}

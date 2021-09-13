@@ -31,7 +31,7 @@ function StoryMenuPartPc({
                             <div
                                 className={`padding-4px ${
                                     is_active_type && active_ix == ix
-                                        ? 'bg-active-fb pointer-events-none'
+                                        ? 'bg-fb-active pointer-events-none'
                                         : 'hv-bg-blur cursor-pointer'
                                 }`}
                                 onClick={() => handleChangeStory(ix)}

@@ -20,7 +20,7 @@ function FsGItemHasMore({ img, count }) {
                 alt=""
             />
 
-            <div className="pos-abs-100 bg-film"></div>
+            <div className="pos-abs-100 bg-shadow-5"></div>
 
             <div className="pos-abs-center w-100per">
                 <div className="padding-8px text-align-center text-white font-500 font-18px">

@@ -32,7 +32,7 @@ function FsIHDItemHead({
 
                 {total_add > 1 ? (
                     <div className="pos-abs right-0 bottom-0">
-                        <div className="padding-x-4px bg-loader text-white font-14px">
+                        <div className="padding-x-4px bg-shadow-9 text-white font-14px">
                             {total_add}
                         </div>
                     </div>

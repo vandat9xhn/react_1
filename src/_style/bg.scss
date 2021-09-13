@@ -20,20 +20,12 @@
     );
 }
 
-.bg-loader {
-    background-color: var(--bg-loader);
-}
-
-.bg-film {
-    background-color: var(--bg-film);
-}
-
 .bg-fb {
     background-color: var(--md-bg-fb);
 }
 
-.bg-active-fb {
-    background-color: var(--md-bg-active-fb);
+.bg-fb-active {
+    background-color: var(--md-bg-fb-active);
 }
 
 .bg-ccc {
@@ -104,7 +96,16 @@
     background-image: linear-gradient(45deg, var(--success), var(--blue-tear));
 }
 
-//
+//------ ALWAYS
 .bg-always-white {
     background-color: var(--white);
+}
+
+// ---- SHADOW
+$shadows: 1, 2, 5, 8, 9;
+
+@each $shadow in $shadows {
+    .bg-shadow-#{$shadow} {
+        background-color: var(--shadow-#{$shadow});
+    }
 }

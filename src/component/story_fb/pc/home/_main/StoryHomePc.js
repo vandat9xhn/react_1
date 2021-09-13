@@ -217,7 +217,7 @@ function StoryHomePc({
                             // closeScreen={closeScreen}
                         />
                     ) : (
-                        <div className="wh-100 bg-loader"></div>
+                        <div className="wh-100 bg-shadow-9"></div>
                     )}
                 </div>
             </div>

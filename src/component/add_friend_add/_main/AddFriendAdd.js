@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 //
 import './AddFriendAdd.scss';
 
@@ -18,7 +18,7 @@ function AddFriendAdd({ id, pic, name, children }) {
         <div className="AddFriendAdd pos-rel">
             <Link to={`/profile/${id}`} className="normal-text">
                 <div className="AddFriendAdd_pic">
-                    <img src={pic} alt="" />
+                    <img className="object-fit-cover" src={pic} alt="" />
                 </div>
 
                 <div className="AddFriendAdd_name font-500">{name}</div>

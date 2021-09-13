@@ -61,7 +61,7 @@ function StoryPicRightPcC({
                     />
 
                     {add_text_obj.is_open ? (
-                        <div className="pos-abs-100 bg-film">
+                        <div className="pos-abs-100 bg-shadow-5">
                             <StoryAddTextPcC
                                 add_text_obj={add_text_obj}
                                 handleAddText={handleAddText}

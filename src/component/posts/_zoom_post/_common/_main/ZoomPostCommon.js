@@ -58,7 +58,7 @@ function ZoomPostCommon({
         >
             <div className="ZoomPostCommon_contain">
                 <div className="ZoomPostCommon_row display-flex h-100per">
-                    <div className="ZoomPostCommon_left bg-loader pos-rel">
+                    <div className="ZoomPostCommon_left bg-shadow-9 pos-rel">
                         <div className="ZoomPostCommon_title pos-fixed top-0 left-0">
                             <ScreenTitle
                                 show_screen_title={show_screen_title}

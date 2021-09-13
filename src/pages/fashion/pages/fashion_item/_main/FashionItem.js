@@ -1,20 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 import ContextFashionItem from '../../../../../_context/fashion/item/ContextFashionItem';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
-import {
-    initial_fashion_item_obj,
-    initial_fashion_shop,
-} from '../../../../../_initial/fashion/FashionInitial';
-//
 import { useMounted } from '../../../../../_hooks/useMounted';
 import { useNewCount } from '../../../../../_hooks/useCount';
 //
+import { FsI_initial_state_obj } from '../_state/_FsI_handleDataState';
 import { getItemInfo } from '../_state/getItemInfo';
 import { getShopInfo } from '../_state/getShopInfo';
 import { changeVidPicIx } from '../_state/changeVidPicIx';
@@ -39,17 +36,18 @@ import FsIGift from '../gift/_main/FsIGift';
 import FsHotDeal from '../../../components/hot_deal/_main/FsHotDeal';
 import FsIShopDiscount from '../shop_discount/_main/FsIShopDiscount';
 import FsIShopSelling from '../shop_selling/FsIShopSelling';
+import FsIBottomPanelMb from '../bottom_panel_mb/FsIBottomPanelMb';
 //
 import './FashionItem.scss';
 import './FashionItemRes.scss';
 
 import './FashionItemMobile.scss';
 import '../_mobile_scss/FsIBreadCrumbMb.scss';
+import '../_mobile_scss/FsIInfoMb.scss';
 import '../_mobile_scss/FsIInfoLeftMb.scss';
 import '../_mobile_scss/FsIInfoRightMb.scss';
 import '../_mobile_scss/FsIComboMb.scss';
 import '../_mobile_scss/FsIGiftMb.scss';
-// import '../_mobile_scss/FsIHotDealMb.scss';
 import '../_mobile_scss/FsIOwnerMb.scss';
 import '../_mobile_scss/FsIShopSellingMb.scss';
 import '../_mobile_scss/FsIDescriptionMb.scss';
@@ -65,28 +63,16 @@ function FashionItem(props) {
     const id = +props.match.params.id;
 
     //
+    const use_history = useHistory();
     const dispatch = useDispatch();
 
     //
     const { openScreenOnce, closeScreenOnce } = useContext(context_api);
 
     //
-    const [state_obj, setStateObj] = useState({
-        item_info: initial_fashion_item_obj(),
-        shop_info: initial_fashion_shop(),
+    const [state_obj, setStateObj] = useState(FsI_initial_state_obj());
 
-        fetched_item: false,
-        fetched_shop: false,
-
-        tier_ix_arr: [-1],
-        model_ix: -1,
-        count: 1,
-
-        vid_pic_ix: 0,
-        wait_add_cart: false,
-    });
-
-    const { item_info, model_ix, count } = state_obj;
+    const { item_info, model_ix, count, wait_add_cart } = state_obj;
 
     const { tier_variations, models } = item_info;
 
@@ -128,7 +114,7 @@ function FashionItem(props) {
         });
     }, [id]);
 
-    /* ---- COUNT --- */
+    // ------ COUNT
 
     //
     function getCount() {
@@ -155,33 +141,13 @@ function FashionItem(props) {
         });
     }
 
-    /* --------- */
+    // --------
 
     //
     function onChangeVidPicIx(ix) {
         changeVidPicIx({
             new_ix: ix,
             setStateObj: setStateObj,
-        });
-    }
-
-    //
-    function onAddToCart() {
-        if (tier_variations.length && model_ix == -1) {
-            return;
-        }
-
-        addToCart({
-            id: id,
-            count: count,
-            mounted: true,
-            new_count: count == getMax() ? 0 : 1,
-
-            setStateObj: setStateObj,
-            dispatch: dispatch,
-
-            openScreenOnce: openScreenOnce,
-            closeScreenOnce: closeScreenOnce,
         });
     }
 
@@ -200,6 +166,67 @@ function FashionItem(props) {
             ix: ix,
             setStateObj: setStateObj,
         });
+    }
+
+    // -----
+
+    //
+    function detectCanAddCart() {
+        if (count <= 0) {
+            return false;
+        }
+
+        if (tier_variations.length && model_ix == -1) {
+            setStateObj({
+                ...state_obj,
+                error_add_cart: 'Hãy chọn loại sản phẩm',
+            });
+
+            return false;
+        }
+
+        return true
+    }
+
+    //
+    function onAddToCart() {
+        if (!detectCanAddCart()) {
+            return;
+        }
+
+        addToCart({
+            id: id,
+            count: count,
+            mounted: true,
+            new_count: count == getMax() ? 0 : 1,
+
+            setStateObj: setStateObj,
+            dispatch: dispatch,
+
+            openScreenOnce: openScreenOnce,
+            closeScreenOnce: closeScreenOnce,
+        });
+    }
+
+    //
+    async function handleBuyNow() {
+        if (detectCanAddCart()) {
+            await addToCart({
+                id: id,
+                count: count,
+                new_count: count == getMax() ? 0 : 1,
+                mounted: true,
+                use_notice: false,
+    
+                setStateObj: setStateObj,
+                dispatch: dispatch,
+    
+                openScreenOnce: openScreenOnce,
+                closeScreenOnce: closeScreenOnce,
+            });
+
+            use_history.push('/fashion/buy');
+        }
     }
 
     // console.log(state_obj.shop_info.discount_arr);
@@ -229,9 +256,10 @@ function FashionItem(props) {
                     c_total_add_cart={c_total_add_cart}
                     //
                     changeVidPicIx={onChangeVidPicIx}
-                    addToCart={onAddToCart}
                     handleChooseOption={onChooseOption}
                     saveShopDiscount={onSaveShopDiscount}
+                    addToCart={onAddToCart}
+                    handleBuyNow={handleBuyNow}
                 >
                     <div className="FashionItem_breadCrumb padding-16px">
                         <FashionBreadCrumb
@@ -247,28 +275,26 @@ function FashionItem(props) {
                         </VirtualScroll>
                     </div>
 
-                    <div>
-                        <div className="FashionItem_part">
-                            <VirtualScroll>
-                                <FsICombo />
-                            </VirtualScroll>
-                        </div>
+                    <div className="FashionItem_part">
+                        <VirtualScroll>
+                            <FsICombo />
+                        </VirtualScroll>
+                    </div>
 
-                        <div className="FashionItem_part">
-                            <VirtualScroll>
-                                <FsIGift />
-                            </VirtualScroll>
-                        </div>
+                    <div className="FashionItem_part">
+                        <VirtualScroll>
+                            <FsIGift />
+                        </VirtualScroll>
+                    </div>
 
-                        <div className="FashionItem_part">
-                            <VirtualScroll>
-                                <FsHotDeal
-                                    product_id={item_info.id}
-                                    item_info={item_info}
-                                    params_api={{ product_model: item_info.id }}
-                                />
-                            </VirtualScroll>
-                        </div>
+                    <div className="FashionItem_part">
+                        <VirtualScroll>
+                            <FsHotDeal
+                                product_id={item_info.id}
+                                item_info={item_info}
+                                params_api={{ product_model: item_info.id }}
+                            />
+                        </VirtualScroll>
                     </div>
 
                     <div className="FashionItem_part">
@@ -328,6 +354,12 @@ function FashionItem(props) {
                             </div>
                         </div>
                     </div>
+
+                    {IS_MOBILE ? (
+                        <div className="pos-fixed bottom-0 left-0 w-100per">
+                            <FsIBottomPanelMb />
+                        </div>
+                    ) : null}
                 </ContextFashionItem>
             </div>
         </div>

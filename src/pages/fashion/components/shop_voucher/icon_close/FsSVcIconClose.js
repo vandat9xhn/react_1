@@ -12,7 +12,7 @@ function FsSVcIconClose({ handelClose }) {
     return (
         <div className="FsSVcIconClose_close pos-abs right-0 top-0 padding-8px">
             <div
-                className="FsSVcIconClose_close_contain display-flex-center brs-50 bg-film"
+                className="FsSVcIconClose_close_contain display-flex-center brs-50 bg-shadow-5"
                 onClick={handelClose}
             >
                 <IconsArrow y={400} size_icon="1rem" />

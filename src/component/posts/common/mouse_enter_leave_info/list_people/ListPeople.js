@@ -22,7 +22,7 @@ ListPeople.defaultProps = {
 function ListPeople({ list_people, count_people, max_size, PeopleComponent }) {
     //
     return (
-        <div className="ListPeople bg-loader brs-5px">
+        <div className="ListPeople bg-shadow-9 brs-5px">
             <ul className="list-none">
                 {list_people.map((item, index) => (
                     <li key={`${index}`} className="ListPeople_item">

@@ -53,7 +53,7 @@ function ChatPv({
             </div>
 
             <div
-                className={`ChatPv_contain pos-rel bg-loader ${
+                className={`ChatPv_contain pos-rel bg-shadow-9 ${
                     show_preview ? 'ChatPv_show' : 'ChatPv_hide'
                 } `}
             >
@@ -77,7 +77,7 @@ function ChatPv({
 
                         <div className="ChatPv__close">
                             <div
-                                className="ChatPv__close-elm hv-opacity brs-50 bg-loader"
+                                className="ChatPv__close-elm hv-opacity brs-50 bg-shadow-9"
                                 onClick={deleteCanvasDraw}
                                 title="Delete draw"
                             >

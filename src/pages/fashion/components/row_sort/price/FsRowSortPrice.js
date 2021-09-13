@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useBool } from '../../../../../../../../_hooks/useBool';
+import { useBool } from '../../../../../_hooks/useBool';
 //
-import IconsArrow from '../../../../../../../../_icons_svg/icons_arrow/IconsArrow';
+import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import CloseDiv from '../../../../../../../../component/some_div/close_div/CloseDiv';
+import CloseDiv from '../../../../../component/some_div/close_div/CloseDiv';
 //
-import './FsSCSortPrice.scss';
+import './FsRowSortPrice.scss';
 
 //
-FsSCSortPrice.propTypes = {
+FsRowSortPrice.propTypes = {
     sort_price_ix: PropTypes.number,
 };
 
 //
-function FsSCSortPrice({ sort_price_arr, sort_price_ix, handleSortPrice }) {
+function FsRowSortPrice({ sort_price_arr, sort_price_ix, handleSortPrice }) {
     //
     const { is_true, toggleBool } = useBool();
 
@@ -27,9 +27,9 @@ function FsSCSortPrice({ sort_price_arr, sort_price_ix, handleSortPrice }) {
     //
     return (
         <CloseDiv makeDivHidden={makeDivHidden}>
-            <div className="FsSCSortPrice pos-rel" onClick={toggleBool}>
+            <div className="FsRowSortPrice pos-rel" onClick={toggleBool}>
                 <div
-                    className={`FsSCSortPrice_title padding-x-10px padding-y-5px brs-4px bg-primary cursor-pointer ${
+                    className={`FsRowSortPrice_title padding-x-10px padding-y-5px brs-4px bg-primary cursor-pointer ${
                         sort_price_ix >= 0 ? 'color-fashion' : ''
                     }`}
                 >
@@ -72,4 +72,4 @@ function FsSCSortPrice({ sort_price_arr, sort_price_ix, handleSortPrice }) {
     );
 }
 
-export default FsSCSortPrice;
+export default FsRowSortPrice;

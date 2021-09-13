@@ -1,0 +1,41 @@
+// -----
+$green-panel: #00bfa5;
+
+// -----
+
+.FsIBottomPanelMb {
+    height: 3rem;
+    background-color: $green-panel;
+    border-top: 1px solid var(--white);
+}
+
+.FsIBottomPanelMb_chat {
+    width: 25%;
+
+    .IconsMenu_message-out{
+        stroke: var(--white);
+        fill: none;
+    }
+}
+
+// .
+.FsIBottomPanelMb_separate_contain {
+    width: 1px;
+    background-color: var(--shadow-1);
+}
+
+.FsIBottomPanelMb_cart{
+    width: 30%;
+    
+
+    .IconsMenu_fashion{
+        stroke: var(--white);
+    }
+}
+
+// ----
+.FsIBottomPanelMb_notice{
+    width: 250px;
+    height:150px;
+    max-width: 90vw;
+}

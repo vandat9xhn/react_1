@@ -14,6 +14,7 @@ export async function addToCart({
     count = 0,
     new_count = 1,
     mounted = true,
+    use_notice = true,
 
     setStateObj = () => {},
     dispatch = () => {},
@@ -59,12 +60,14 @@ export async function addToCart({
         };
     });
 
-    openScreenNotice({
-        openScreenOnce: openScreenOnce,
-        ComponentNotice: <FashionCartSuccess />,
-    });
+    if (use_notice) {
+        openScreenNotice({
+            openScreenOnce: openScreenOnce,
+            ComponentNotice: <FashionCartSuccess />,
+        });
 
-    setTimeout(() => {
-        closeScreenOnce();
-    }, 500);
+        setTimeout(() => {
+            closeScreenOnce();
+        }, 500);
+    }
 }

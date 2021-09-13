@@ -474,7 +474,7 @@ function StoryCreatePicMb({
             {open_add_text ? (
                 <div className="pos-abs-100 z-index-lv1">
                     <div
-                        className="pos-abs-100 bg-loader"
+                        className="pos-abs-100 bg-shadow-9"
                         onClick={closeAddText}
                     ></div>
 
@@ -570,7 +570,7 @@ function StoryCreatePicMb({
                         : 'StoryCreatePicMb_rotate-hide'
                 }`}
             >
-                <div className="display-flex-center padding-8px bg-loader">
+                <div className="display-flex-center padding-8px bg-shadow-9">
                     <StoryRotatePic handleRotate={handleRotatePic} />
                 </div>
             </div>
@@ -578,7 +578,7 @@ function StoryCreatePicMb({
             {open_add_friend ? (
                 <div className="pos-abs-100">
                     <div
-                        className="pos-abs-100 bg-loader"
+                        className="pos-abs-100 bg-shadow-9"
                         onClick={closeTagFriend}
                     ></div>
 
@@ -602,7 +602,7 @@ function StoryCreatePicMb({
             {open_effect_pic ? (
                 <div className="pos-abs-100">
                     <div
-                        className="pos-abs-100 bg-loader"
+                        className="pos-abs-100 bg-shadow-9"
                         onClick={closeEffectPic}
                     ></div>
 

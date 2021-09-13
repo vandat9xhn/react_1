@@ -167,7 +167,7 @@ function ActionsAccount({ closeAccount }) {
                                 Icon={IconsMode}
                                 icon_props={{ light_mode: !light_mode }}
                             >
-                                {light_mode ? 'Dark Mode' : 'Light Mode'}
+                                {light_mode ? 'Light Mode' : 'Dark Mode'}
                             </IconDiv>
                         </SwitchDiv>
                     </div>

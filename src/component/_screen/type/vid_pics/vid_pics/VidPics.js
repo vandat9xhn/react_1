@@ -36,7 +36,7 @@ function VidPics({ urls, current, changeCurrent }) {
                 ></div>
             </div>
 
-            <div className="VidPics_bg wh-100 pos-abs bg-loader"></div>
+            <div className="VidPics_bg wh-100 pos-abs bg-shadow-9"></div>
 
             <div className="VidPics_current">
                 <div className="VidPics_current_contain display-flex-center wh-100">

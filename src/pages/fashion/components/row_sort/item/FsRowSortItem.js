@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 //
-FsSCSortItem.propTypes = {};
+FsRowSortItem.propTypes = {};
 
 //
-function FsSCSortItem({ name, ix, is_active, handleSort }) {
+function FsRowSortItem({ name, ix, is_active, handleSort }) {
     //
     function onSort() {
         !is_active && handleSort(ix);
@@ -14,7 +14,7 @@ function FsSCSortItem({ name, ix, is_active, handleSort }) {
     //
     return (
         <div
-            className={`FsSCSortItem padding-x-15px padding-y-5px brs-3px cursor-pointer ${
+            className={`FsRowSortItem padding-x-15px padding-y-5px brs-3px cursor-pointer ${
                 is_active ? 'text-white bg-fashion-red' : 'bg-primary'
             }`}
             onClick={onSort}
@@ -24,4 +24,4 @@ function FsSCSortItem({ name, ix, is_active, handleSort }) {
     );
 }
 
-export default FsSCSortItem;
+export default FsRowSortItem;

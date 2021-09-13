@@ -19,7 +19,7 @@ function LearnSelectColorBg(props) {
         },
         {
             color: 'text-secondary',
-            bg: 'bg-active-fb',
+            bg: 'bg-fb-active',
         },
         {
             color: 'text-white',

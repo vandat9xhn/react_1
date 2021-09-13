@@ -21,6 +21,7 @@ import SearchProducts from '../products/SearchProducts';
 import SearchFilter from '../filter/_main/SearchFilter';
 //
 import './FashionSearchRes.scss';
+import FsSearchSort from '../sort/_main/FsSearchSort';
 
 //
 FashionSearch.propTypes = {};
@@ -366,13 +367,13 @@ function FashionSearch(props) {
 
     //
     return (
-        <div>
+        <div className="FashionSearch">
             <FashionShead handleSearchFashion={handleSearchFashion} />
 
             <div className="FashionSearch_row display-flex">
                 <div className="FashionSearch_open-filter">
                     <div
-                        className="FashionSearch_open-filter-btn font-500"
+                        className="FashionSearch_open-filter-btn margin-right-15px width-fit-content padding-8px font-500 cursor-pointer"
                         onClick={openFilter}
                     >
                         Filter
@@ -380,13 +381,13 @@ function FashionSearch(props) {
                 </div>
 
                 <div
-                    className={`FashionSearch_filter ${
+                    className={`FashionSearch_filter margin-5px ${
                         open_filter
-                            ? 'FashionSearch_filter-open'
+                            ? 'FashionSearch_filter-open display-none'
                             : 'FashionSearch_filter-close'
                     }`}
                 >
-                    <div className="FashionSearch_filter-icon-close">
+                    <div className="FashionSearch_filter-icon-close display-none">
                         <div
                             className="close-icon-small brs-50 cursor-pointer"
                             onClick={closeFilter}
@@ -412,7 +413,11 @@ function FashionSearch(props) {
                             is_fetching || !has_fetched ? 'display-none' : ''
                         }`}
                     >
-                        <div>
+                        <div className="margin-bottom-15px">
+                            <FsSearchSort />
+                        </div>
+
+                        <div className="margin-bottom-15px">
                             <SearchProducts
                                 products={has_fetched ? products_obj[page] : []}
                             />
@@ -428,10 +433,12 @@ function FashionSearch(props) {
                         </div>
                     </div>
 
-                    <div className="FashionSearch_fetching pos-abs width-fit-content margin-auto">
-                        <WaitingBall
-                            is_fetching={is_fetching || !has_fetched}
-                        />
+                    <div className="pos-fixed-100 bg-shadow-2">
+                        <div className="pos-abs-center">
+                            <WaitingBall
+                                is_fetching={is_fetching || !has_fetched}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

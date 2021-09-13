@@ -28,7 +28,7 @@ function ItemNotice({
     //
     return (
         <div className={`ItemNotice ${
-            is_new ? 'bg-film' : ''
+            is_new ? 'bg-shadow-5' : ''
         }`}>
             <Link to={'/posts/' + id} onClick={onClickItem}>
                 <div

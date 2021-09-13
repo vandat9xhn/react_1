@@ -9,7 +9,7 @@ export const city_bg_color_arr = [
         color: 'color-react',
     },
     {
-        bg: 'bg-active-fb',
+        bg: 'bg-fb-active',
         color: 'text-secondary',
     },
     {

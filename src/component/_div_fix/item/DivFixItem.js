@@ -85,13 +85,13 @@ function DivFixItem({
         <div
             className={`DivFixItem ${
                 is_width_lte_400
-                    ? 'DivFixItem_fixed pos-fixed-100v bg-loader'
+                    ? 'DivFixItem_fixed pos-fixed-100v bg-shadow-9'
                     : ''
             }`}
         >
             {is_width_lte_400 && (
                 <div
-                    className="pos-fixed-100v bg-loader"
+                    className="pos-fixed-100v bg-shadow-9"
                     onClick={closeDivFix}
                 ></div>
             )}

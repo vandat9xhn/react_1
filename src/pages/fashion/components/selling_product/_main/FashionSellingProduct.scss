@@ -1,6 +1,5 @@
 //
 .FashionSellingProduct_bd {
-    width: 10rem;
     height: 10rem;
 
     background-repeat: no-repeat;
@@ -10,20 +9,19 @@
 
 //
 @media (max-width: 500px) {
-    .FashionSellingProduct{
+    .FashionSellingProduct {
         padding: 8px;
     }
 
     .FashionSellingProduct_bd {
-        width: 8rem;
         height: 8rem;
     }
 
-    .FashionSellingProduct_foot{
+    .FashionSellingProduct_foot {
         padding: 4px 0 0;
     }
-    // 
-    .FashionSellingProduct_price{
+    //
+    .FashionSellingProduct_price {
         font-size: 16px;
     }
 }

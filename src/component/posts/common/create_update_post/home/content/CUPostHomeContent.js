@@ -50,7 +50,7 @@ function CUPostHomeContent({
                 <h3
                     className={`display-none margin-0 ${
                         urls_preview.length
-                            ? 'CUPostHomeContent__fixAll pos-abs-0 bg-loader brs-5px hv-opacity text-white cursor-pointer'
+                            ? 'CUPostHomeContent__fixAll pos-abs-0 bg-shadow-9 brs-5px hv-opacity text-white cursor-pointer'
                             : ''
                     }`}
                     onClick={showFixAll}

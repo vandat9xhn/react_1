@@ -25,7 +25,7 @@ function AboutLeftItem({ item }) {
             <div
                 className={`AboutLeftItem brs-8px padding-8px font-500 text-secondary ${
                     search == location.search
-                        ? 'bg-active-fb text-blue'
+                        ? 'bg-fb-active text-blue'
                         : 'hv-bg-blur'
                 }`}
             >

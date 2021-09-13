@@ -81,7 +81,7 @@ function FsSVoucherItem({
                         {is_applied ? (
                             <div className="pos-abs right-0 top-0">
                                 <div
-                                    className="FsSVoucherItem_cancel display-flex-center bg-film cursor-pointer"
+                                    className="FsSVoucherItem_cancel display-flex-center bg-shadow-5 cursor-pointer"
                                     onClick={handleCancelVoucher}
                                 >
                                     <IconsArrow y={400} size_icon="0.75rem" />

@@ -88,7 +88,7 @@ function ChatMess({ mess_item }) {
                         </div>
 
                         <div
-                            className={`ChatMess_vid-pic bg-loader ${
+                            className={`ChatMess_vid-pic bg-shadow-9 ${
                                 count_vid_pic ? '' : 'display-none'
                             }`}
                             title={new Date(created_time).toLocaleString()}

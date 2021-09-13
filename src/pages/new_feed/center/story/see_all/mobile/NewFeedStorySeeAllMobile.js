@@ -11,7 +11,7 @@ function NewFeedStorySeeAllMobile({ handleSeeMenuMobile }) {
     //
     return (
         <div
-            className="NewFeedStorySeeAllMobile bg-active-fb padding-4px brs-8px cursor-pointer"
+            className="NewFeedStorySeeAllMobile bg-fb-active padding-4px brs-8px cursor-pointer"
             onClick={handleSeeMenuMobile}
         >
             <div className="display-flex-center">

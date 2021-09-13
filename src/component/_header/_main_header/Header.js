@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+//
 import './HeaderCommon.scss';
 //
-import { IS_MOBILE } from '../../../_constant/Constant';
-// 
 import HeaderH from '../header_left/header_horizontal/_main/HeaderH';
 import HeaderV from '../header_left/header_vertical/_main/HeaderV';
 import RightHeader from '../header_right/_main/RightHeaderWs';
@@ -25,20 +25,21 @@ function Header() {
     //
     return (
         <div
-            className={`Header App_box_shadow h-100-per bg-primary ${
+            className={`Header App_box_shadow bg-primary ${
                 location.pathname.search('registration-form') > 0
                     ? 'display-none'
                     : ''
             }`}
         >
-            <div className="Header_contain h-100per">
-                <div className="Header_row flex-between-center h-100per">
-                    <div className="Header_col-left h-100per">
+            <div className="Header_contain">
+                <div className="Header_row flex-between-center">
+                    <div className="Header_col-left">
                         <HeaderV />
+                        
                         <HeaderH />
                     </div>
 
-                    <div className="Header_col-right h-100per">
+                    <div className="Header_col-right">
                         <RightHeader />
                     </div>
                 </div>

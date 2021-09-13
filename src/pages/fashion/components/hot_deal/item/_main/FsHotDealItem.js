@@ -83,7 +83,7 @@ function FsHotDealItem({
                     <div
                         className={`${
                             IS_MOBILE
-                                ? 'pos-fixed-100per bg-film z-index-lv5'
+                                ? 'pos-fixed-100per bg-shadow-5 z-index-lv5'
                                 : 'pos-abs bottom-100per x-center z-index-lv1'
                         }`}
                     >

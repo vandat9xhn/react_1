@@ -15,7 +15,7 @@ function LoaderDiv({ LoadingComponent, is_fetching }) {
     return (
         <div
             className={
-                is_fetching ? 'LoaderDiv bg-loader brs-5px' : 'display-none'
+                is_fetching ? 'LoaderDiv bg-shadow-9 brs-5px' : 'display-none'
             }
         >
             <div className="LoaderDiv_row display-flex-center">

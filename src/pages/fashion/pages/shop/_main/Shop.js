@@ -20,6 +20,8 @@ import FsShopDiscount from '../discount/_main/FsShopDiscount';
 import FsShopType from '../_type/FsShopType';
 import FsShopProducts from '../products/_main/FsShopProducts';
 import FsShopRowTitle from '../row_title/_main/FsShopRowTitle';
+import FsShopInfo from '../info/_main/FsShopInfo';
+import FsShopCategoryMb from '../category/_main/FsShopCategoryMb';
 //
 import '../_mobile_css/FsShopMb.scss';
 import '../_mobile_css/FsShopOverviewMb.scss';
@@ -27,8 +29,6 @@ import '../_mobile_css/FsShopDiscountMb.scss';
 import '../_mobile_css/FsShopRowProductsMb.scss';
 import '../_mobile_css/FsShopInfoMb.scss';
 import '../_mobile_css/FsShopVidPicSingleMb.scss';
-import FsShopInfo from '../info/_main/FsShopInfo';
-import FsShopCategoryMb from '../category/_main/FsShopCategoryMb';
 
 //
 Shop.propTypes = {};
