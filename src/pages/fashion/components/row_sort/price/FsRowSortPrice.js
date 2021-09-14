@@ -35,7 +35,7 @@ function FsRowSortPrice({ sort_price_arr, sort_price_ix, handleSortPrice }) {
                 >
                     <div className="flex-between-center">
                         <div>
-                            {sort_price_ix == -1
+                            {sort_price_ix <= -1
                                 ? 'Giá'
                                 : sort_price_arr[sort_price_ix]}
                         </div>

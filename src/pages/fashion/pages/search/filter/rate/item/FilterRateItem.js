@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import StarsRate from '../../../../../../../component/stars_rate/_main/StarsRate';
+// 
 import './FilterRateItem.scss';
 
 //
@@ -12,8 +13,7 @@ FilterRateItem.propTypes = {
 };
 
 //
-function FilterRateItem(props) {
-    const { is_active, ix, handleFilterRate } = props;
+function FilterRateItem({ is_active, ix, handleFilterRate }) {
     //
     function onFilterRate() {
         handleFilterRate(ix);
@@ -22,14 +22,14 @@ function FilterRateItem(props) {
     return (
         <div
             className={`FilterRateItem cursor-pointer ${
-                is_active ? '' : 'opacity-05'
+                is_active ? '' : 'opacity-04'
             }`}
             onClick={onFilterRate}
         >
-            <div className="display-flex">
-                <StarsRate rate_avg={ix} size_icon="1.25rem" />
+            <div className="inline-flex align-item-center">
+                <StarsRate rate_avg={ix} size_icon="14px" />
 
-                <div className="FilterRateItem_up">Up</div>
+                <span className="FilterRateItem_up margin-left-5px">Trở lên</span>
             </div>
         </div>
     );

@@ -1,0 +1,22 @@
+.FsScPriceMinMax{
+    border-bottom: 1px solid var(--md-bg-blur);
+}
+
+.FsScPriceMinMax_input_item{
+    &:focus{
+        outline: none;
+    }
+    &::placeholder{
+        opacity: 0.5;
+    }
+}
+
+.FsScPriceMinMax_separate_contain {
+    width: 12px;
+    height: 1px;
+    background-color: var(--ccc);
+}
+
+.FsScPriceMinMax_btn {
+    width: 100px;
+}

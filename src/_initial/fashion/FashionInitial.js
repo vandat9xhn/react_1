@@ -1,3 +1,5 @@
+import { getRandomNumber } from "../../_default/_common/default_id";
+
 //
 export const initial_fashion_item_obj = () => ({
     id: 0,
@@ -75,7 +77,7 @@ export const initial_fashion_item_base_obj = () => {
         name: '',
         img: '',
         flash_img: '',
-        total: total,
+        total: 0,
         sold: 0,
         rate_avg: 0,
         is_like: false,
@@ -174,8 +176,6 @@ export const initial_fs_item_gift_obj = () => ({
 export const initial_fs_item_hot_deal_arr = () => [initial_fashion_item_obj()];
 
 //
-export const initial_fashion_search_products_obj = () => {
-    return {
-        0: [initial_fashion_item_base_obj()],
-    };
+export const initial_fashion_search_product_arr = () => {
+    return [initial_fashion_item_base_obj()];
 };

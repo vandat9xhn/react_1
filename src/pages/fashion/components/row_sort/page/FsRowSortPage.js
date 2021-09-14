@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import BtnNexPrev from '../../../../../component/button/next_prev/BtnNexPrev';
-//
-import './FsRowSortPage.scss';
 
 //
 FsRowSortPage.propTypes = {};

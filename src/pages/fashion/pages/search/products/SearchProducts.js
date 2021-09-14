@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { IS_MOBILE } from '../../../../../_constant/Constant';
-//
 import FashionFaceItem from '../../../components/face_item/_main/FashionFaceItem';
 //
 import './SearchProducts.scss';
@@ -16,8 +14,8 @@ SearchProducts.propTypes = {
 function SearchProducts({ products }) {
     //
     return (
-        <div className={`SearchProducts ${IS_MOBILE ? '' : 'padding-8px'}`}>
-            <ul className="display-flex justify-content-center flex-wrap list-none">
+        <div className="SearchProducts">
+            <ul className="display-flex flex-wrap list-none">
                 {products.map((item) => (
                     <li
                         key={`${item.id}`}
@@ -26,7 +24,9 @@ function SearchProducts({ products }) {
                         <FashionFaceItem
                             id={item.id}
                             img={item.img}
-                            is_like={item.is_like}is_plus={item.is_plus}is_mall={item.is_mall}
+                            is_like={item.is_like}
+                            is_plus={item.is_plus}
+                            is_mall={item.is_mall}
                             flash_img={item.flash_img}
                             discount={item.discount}
                             name={item.name}
@@ -41,6 +41,8 @@ function SearchProducts({ products }) {
                             new_price={item.new_price}
                             old_price_max={item.old_price_max}
                             new_price_max={item.new_price_max}
+                            //
+                            use_same={false}
                         />
                     </li>
                 ))}

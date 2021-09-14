@@ -102,6 +102,8 @@ function FashionCart(props) {
 
     //
     useEffect(() => {
+        document.title = 'Cart'
+        
         getData_API();
     }, []);
 

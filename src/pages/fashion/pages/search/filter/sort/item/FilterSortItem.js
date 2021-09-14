@@ -7,17 +7,18 @@ import './FilterSortItem.scss';
 
 //
 FilterSortItem.propTypes = {
-    is_active: PropTypes.bool,
     title: PropTypes.string,
-    sort_by: PropTypes.string,
-    handleFilterSort: PropTypes.func,
+    sort_ix: PropTypes.number,
+    is_active: PropTypes.bool,
+
+    handleSort: PropTypes.func,
 };
 
 //
-function FilterSortItem({ is_active, title, sort_by, handleFilterSort }) {
+function FilterSortItem({ is_active, title, sort_ix, handleSort }) {
     //
     function onFilterSort() {
-        handleFilterSort(sort_by);
+        handleSort(sort_ix);
     }
 
     //

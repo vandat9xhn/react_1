@@ -19,6 +19,7 @@ import {
 //
 import { handle_API_FsUserInfoBuy_L } from '../../../../../_handle_api/fashion/user_info';
 import { handle_API_FsBankCard_L } from '../../../../../_handle_api/fashion/bank';
+import { handle_API_FsBuy_C } from '../../../../../_handle_api/fashion/buy';
 //
 import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 //
@@ -36,12 +37,11 @@ import FsBuyVoucher from '../voucher/_main/FsBuyVoucher';
 import FsBuyCoin from '../coin/FsBuyCoin';
 import FashionBuyTotal from '../total/FashionBuyTotal';
 import FsBuyPayment from '../payment/_main/FsBuyPayment';
+import BuyFetching from '../fetching/BuyFetching';
 //
 import '../_mobile_css/FsBuyMB.scss';
 import '../_mobile_css/FsBuyUserMb.scss';
 import '../_mobile_css/FsBuyShopMb.scss';
-import { handle_API_FsBuy_C } from '../../../../../_handle_api/fashion/buy';
-import BuyFetching from '../fetching/BuyFetching';
 
 //
 FashionBuy.propTypes = {};
@@ -106,6 +106,8 @@ function FashionBuy(props) {
 
     //
     useEffect(() => {
+        document.title = 'Buy'
+
         getData_API_User();
         getData_API_Buy();
     }, []);

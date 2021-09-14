@@ -1,27 +1,37 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { stringify } from 'query-string';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
 import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
 //
-import { initial_fashion_search_products_obj } from '../../../../../_initial/fashion/FashionInitial';
-//
-import { handle_API_FsSearch_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
+import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 //
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import Pagination from '../../../../../component/pagination/_main/Pagination';
 import WaitingBall from '../../../../../component/waiting/waiting_ball/WaitingBall';
 //
-import './FashionSearch.scss';
+import {
+    FsSearch_FULL_KEY_SORT_ARR,
+    FsSearch_FULL_SORT_ARR,
+    FsSearch_getData_API,
+    FsSearch_initial_state_obj,
+    FsSearch_SORT_ARR,
+    FsSearch_SORT_PRICE_ARR,
+    getSortBy,
+} from '../_state/_FsSearch_handleDataState';
 //
 import FashionShead from '../head/FashionShead';
+import FsRowSort from '../../../components/row_sort/_main/FsRowSort';
 import SearchProducts from '../products/SearchProducts';
 import SearchFilter from '../filter/_main/SearchFilter';
+import FsSearchTitleFor from '../title_for/FsSearchTitleFor';
 //
-import './FashionSearchRes.scss';
-import FsSearchSort from '../sort/_main/FsSearchSort';
+import './FashionSearch.scss';
+import './FashionSearchMb.scss';
+import { useMounted } from '../../../../../_hooks/useMounted';
 
 //
 FashionSearch.propTypes = {};
@@ -29,219 +39,71 @@ FashionSearch.propTypes = {};
 //
 function FashionSearch(props) {
     //
-    const use_history = useHistory();
-
-    //
-    const [fashion_search_state, setFashionSearchState] = useState({
-        products_obj: initial_fashion_search_products_obj(),
-
-        area_arr: [
-            { title: 'Ha Noi', checked: false },
-            { title: 'HCM', checked: false },
-            { title: 'Da Nang', checked: false },
-        ],
-
-        page: 1,
-        pages: 1,
-        value_search: '',
-        rate_ix: 0,
-        sort_by: '',
-
-        has_fetched: false,
-        is_fetching: false,
-        open_filter: false,
-    });
+    const [state_obj, setStateObj] = useState(FsSearch_initial_state_obj());
 
     const {
-        products_obj,
-        area_arr,
+        product_arr,
+
+        filter_arr,
+        value_search,
+        min_price,
+        max_price,
+        rate_ix,
+        sort_ix,
 
         page,
         pages,
-        value_search,
-        rate_ix,
-        sort_by,
 
         has_fetched,
         is_fetching,
         open_filter,
-    } = fashion_search_state;
+    } = state_obj;
 
     //
-    const is_location_changed = useRef(true);
+    const forceUpdate = useForceUpdate();
+    const mounted = useMounted();
 
     //
     useEffect(() => {
-        window.scrollTo(0, 0);
-        is_location_changed.current && handleChangeLocationSearch();
+        if (mounted) {
+            window.scrollTo(0, 0);
+            FsSearch_getData_API({ setStateObj: setStateObj });
+        }
     }, [location.search]);
 
-    //
-    function handleChangeLocationSearch() {
-        const { p, q, area, sort, rate } = ParseLocationSearch();
-        const new_area_arr = [...area_arr];
-
-        new_area_arr.map((item) => {
-            if (
-                (area
-                    ? typeof area == 'string'
-                        ? [area]
-                        : area
-                    : []
-                ).includes(item.title)
-            ) {
-                item.checked = true;
-            } else {
-                item.checked = false;
-            }
-
-            return item;
-        });
-
-        //
-        getData_API_Search_Refresh({
-            params_api: {
-                new_value_search: q,
-                new_page: parseInt(p) || 1,
-                new_area_arr: new_area_arr,
-                new_sort_by: sort || '',
-                new_rate_ix: rate || 0,
-            },
-        });
-    }
-
-    /* -------- GET API -------- */
-
-    //
-    async function getData_API_Search({
-        start_obj_state = {},
-        params_api = {
-            new_value_search: value_search,
-            new_page: page,
-            new_rate_ix: rate_ix,
-            new_sort_by: sort_by,
-            new_area_arr: area_arr,
-        },
-        end_obj_state = {},
-    }) {
-        const {
-            new_value_search = value_search,
-            new_page = page,
-            new_rate_ix = rate_ix,
-            new_sort_by = sort_by,
-            new_area_arr = area_arr,
-        } = params_api;
-
-        //
-        try {
-            is_location_changed.current = false;
-            setFashionSearchState((fashion_search_state) => ({
-                ...fashion_search_state,
-                ...start_obj_state,
-                rate_ix: new_rate_ix,
-                area_arr: new_area_arr,
-                sort_by: new_sort_by,
-                is_fetching: true,
-            }));
-
-            const { data, pages: new_pages } = await handle_API_FsSearch_L(
-                new_page,
-                new_value_search,
-                new_area_arr
-                    .filter((item) => item.checked)
-                    .map((item) => item.title),
-                new_rate_ix,
-                new_sort_by
-            );
-
-            //
-            setFashionSearchState((fashion_search_state) => ({
-                ...fashion_search_state,
-                ...end_obj_state,
-
-                products_obj: fashion_search_state.has_fetched
-                    ? {
-                          ...fashion_search_state.products_obj,
-                          [new_page]: data,
-                      }
-                    : { [new_page]: data },
-
-                page: new_page,
-                pages: new_pages,
-                value_search: new_value_search,
-
-                is_fetching: false,
-                has_fetched: true,
-            }));
-
-            //
-            setTimeout(() => {
-                is_location_changed.current = true;
-            }, 1);
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    /* -------- COMMON ---------*/
-
-    //
-    function getData_API_Search_Refresh({
-        start_obj_state = {},
-        params_api = {
-            new_value_search: value_search,
-            new_page: page,
-            new_rate_ix: rate_ix,
-            new_sort_by: sort_by,
-            new_area_arr: area_arr,
-        },
-        end_obj_state = {},
-    }) {
-        const new_start_obj_state = {
-            ...start_obj_state,
-            has_fetched: false,
-            page: has_fetched ? 1 : params_api.new_page,
-            pages: 1,
-        };
-
-        const new_params_api = {
-            ...params_api,
-            new_page: has_fetched ? 1 : params_api.new_page,
-        };
-
-        const new_end_obj_state = {
-            ...end_obj_state,
-        };
-
-        getData_API_Search({
-            start_obj_state: new_start_obj_state,
-            params_api: new_params_api,
-            end_obj_state: new_end_obj_state,
-        });
-    }
+    // ------- COMMON
 
     //
     function getStringParamsSearch({
         new_value_search = value_search,
-        new_area_arr = area_arr,
+        new_filter_arr = filter_arr,
         new_rate_ix = rate_ix,
-        new_sort_by = sort_by,
+        new_min_price = min_price,
+        new_max_price = max_price,
+        new_sort_ix = sort_ix,
+        new_page = page,
     }) {
         const params = {};
-        const new_area_title_arr = new_area_arr
-            .filter((item) => !!item.checked)
-            .map((item) => item.title);
+        const new_sort_by = getSortBy(new_sort_ix);
 
-        new_area_title_arr && (params['area'] = new_area_title_arr);
         new_rate_ix && (params['rate'] = new_rate_ix);
         new_sort_by && (params['sort'] = new_sort_by);
+        new_min_price && (params['min_price'] = new_min_price);
+        new_max_price && (params['max_price'] = new_max_price);
+
+        new_filter_arr.forEach((filter_obj) => {
+            params[filter_obj.name] = filter_obj.arr
+                .filter((item) => item.checked)
+                .map((item) => item.id);
+        });
 
         return (
             location.pathname +
             '?' +
             stringify({
-                q: new_value_search,
                 ...params,
+                q: new_value_search,
+                page: new_page,
             })
         );
     }
@@ -249,21 +111,31 @@ function FashionSearch(props) {
     //
     function historyPushSearch({
         new_value_search = value_search,
-        new_area_arr = area_arr,
+        new_filter_arr = filter_arr,
+        new_min_price = min_price,
+        new_max_price = max_price,
         new_rate_ix = rate_ix,
-        new_sort_by = sort_by,
+        new_sort_ix = sort_ix,
+        new_page = page,
     }) {
-        use_history.push(
+        history.pushState(
+            '',
+            new_value_search,
             getStringParamsSearch({
                 new_value_search,
-                new_area_arr,
+                new_filter_arr,
+                new_min_price,
+                new_max_price,
                 new_rate_ix,
-                new_sort_by,
+                new_sort_ix,
+                new_page,
             })
         );
+
+        forceUpdate();
     }
 
-    /* ----------- SEARCH -----------*/
+    // -------- SEARCH + PAGE
 
     //
     function handleSearchFashion(new_value_search) {
@@ -271,75 +143,64 @@ function FashionSearch(props) {
             return;
         }
 
-        use_history.push(location.pathname + '?q=' + new_value_search);
+        historyPushSearch({
+            new_value_search: new_value_search,
+            new_filter_arr: [],
+            new_rate_ix: 0,
+            new_page: 1,
+        });
     }
-
-    /* -------- PAGE ----------*/
 
     //
     function handleChangePage(new_page) {
-        history.pushState(
-            '',
-            value_search,
-            getStringParamsSearch({}) + '&p=' + new_page
-        );
-
-        //
-        if (products_obj[new_page]) {
-            is_location_changed.current = false;
-
-            setFashionSearchState({
-                ...fashion_search_state,
-                page: new_page,
-            });
-
-            setTimeout(() => {
-                is_location_changed.current = true;
-            }, 1);
+        if (new_page == page) {
+            return;
         }
-        //
-        else {
-            const start_obj_state = {
-                page: new_page,
-                products_obj: {
-                    ...products_obj,
-                    [new_page]: [],
-                },
-            };
 
-            const params_api = {
-                new_page: new_page,
-            };
-
-            getData_API_Search({ start_obj_state, params_api });
-        }
+        historyPushSearch({
+            new_page: new_page,
+        });
     }
 
-    /* --------- FILTER --------*/
+    //
+    function handleNext() {
+        page < pages && handleChangePage(page + 1);
+    }
+
+    //
+    function handlePrev() {
+        page >= 2 && handleChangePage(page - 1);
+    }
+
+    // ----- TOGGLE FILTER FOR MOBILE
 
     //
     function openFilter() {
-        setFashionSearchState({
-            ...fashion_search_state,
+        setStateObj({
+            ...state_obj,
             open_filter: true,
         });
     }
 
     //
     function closeFilter() {
-        setFashionSearchState({
-            ...fashion_search_state,
+        setStateObj({
+            ...state_obj,
             open_filter: false,
         });
     }
 
+    // ----- FILTER
+
     //
-    function handleAreaChecked(area_ix) {
-        const new_area_arr = [...area_arr];
-        new_area_arr[area_ix].checked = !new_area_arr[area_ix].checked;
+    function handleFilterChecked({ filter_ix, item_ix }) {
+        const new_filter_arr = [...filter_arr];
+        new_filter_arr[filter_ix].arr[item_ix].checked =
+            !new_filter_arr[filter_ix].arr[item_ix].checked;
 
         historyPushSearch({
-            new_area_arr: new_area_arr,
+            new_filter_arr: new_filter_arr,
+            new_page: 1,
         });
     }
 
@@ -351,95 +212,174 @@ function FashionSearch(props) {
 
         historyPushSearch({
             new_rate_ix: new_rate_ix,
+            new_page: 1,
         });
     }
 
     //
-    function handleFilterSort(new_sort_by) {
-        if (new_sort_by == sort_by) {
+    function handleApplyPriceMinMax({ new_min_price, new_max_price }) {
+        if (new_max_price == min_price && new_max_price == max_price) {
             return;
         }
 
         historyPushSearch({
-            new_sort_by: new_sort_by,
+            new_min_price: new_min_price,
+            new_max_price: new_max_price,
+            new_page: 1,
         });
     }
 
     //
+    function handleClearFilter() {
+        historyPushSearch({
+            new_filter_arr: [],
+            new_min_price: 0,
+            new_max_price: 0,
+            new_rate_ix: 0,
+            new_page: 1,
+        });
+    }
+
+    // ------- SORT
+
+    //
+    function handleSort(new_sort_ix) {
+        if (new_sort_ix == sort_ix) {
+            return;
+        }
+
+        historyPushSearch({
+            new_sort_ix: new_sort_ix,
+        });
+    }
+
+    //
+    function handleSortPrice(new_sort_price_ix) {
+        const new_sort_ix = new_sort_price_ix + FsSearch_SORT_ARR.length;
+        handleSort(new_sort_ix);
+    }
+
+    //
     return (
-        <div className="FashionSearch">
-            <FashionShead handleSearchFashion={handleSearchFashion} />
+        <div
+            className={`FashionSearch ${
+                IS_MOBILE ? 'FashionSearch-mobile' : ''
+            }`}
+        >
+            <div className="margin-bottom-20px">
+                <FashionShead handleSearchFashion={handleSearchFashion} />
+            </div>
 
-            <div className="FashionSearch_row display-flex">
-                <div className="FashionSearch_open-filter">
-                    <div
-                        className="FashionSearch_open-filter-btn margin-right-15px width-fit-content padding-8px font-500 cursor-pointer"
-                        onClick={openFilter}
-                    >
-                        Filter
-                    </div>
-                </div>
-
-                <div
-                    className={`FashionSearch_filter margin-5px ${
-                        open_filter
-                            ? 'FashionSearch_filter-open display-none'
-                            : 'FashionSearch_filter-close'
-                    }`}
-                >
-                    <div className="FashionSearch_filter-icon-close display-none">
+            <div
+                className={`fashion-width font-for-fashion ${
+                    !has_fetched ? 'display-none' : ''
+                }`}
+            >
+                {IS_MOBILE ? (
+                    <div className="FashionSearch_filter_btn">
                         <div
-                            className="close-icon-small brs-50 cursor-pointer"
-                            onClick={closeFilter}
+                            className="margin-right-15px margin-left-auto width-fit-content padding-8px font-500 cursor-pointer"
+                            onClick={openFilter}
                         >
-                            <IconsArrow y={400} size_icon="1rem" />
+                            Filter
                         </div>
                     </div>
+                ) : null}
 
-                    <SearchFilter
-                        area_arr={area_arr}
-                        rate_ix={rate_ix}
-                        sort_by={sort_by}
-                        //
-                        handleAreaChecked={handleAreaChecked}
-                        handleFilterRate={handleFilterRate}
-                        handleFilterSort={handleFilterSort}
-                    />
-                </div>
-
-                <div className="pos-rel flex-grow-1">
+                <div className="FashionSearch_row display-flex">
                     <div
-                        className={`FashionSearch_product ${
-                            is_fetching || !has_fetched ? 'display-none' : ''
+                        className={`FashionSearch_filter margin-right-20px ${
+                            open_filter
+                                ? 'FashionSearch_filter-open display-none'
+                                : 'FashionSearch_filter-close'
                         }`}
                     >
-                        <div className="margin-bottom-15px">
-                            <FsSearchSort />
+                        <div className="FashionSearch_filter-icon-close display-none">
+                            <div
+                                className="close-icon-small brs-50 cursor-pointer"
+                                onClick={closeFilter}
+                            >
+                                <IconsArrow y={400} size_icon="1rem" />
+                            </div>
                         </div>
 
-                        <div className="margin-bottom-15px">
-                            <SearchProducts
-                                products={has_fetched ? products_obj[page] : []}
-                            />
-                        </div>
-
-                        <div className="FashionSearch_pagination">
-                            <Pagination
-                                current={has_fetched ? page : 1}
-                                count={has_fetched ? pages : 1}
-                                num_side_center={2}
-                                handleChangePage={handleChangePage}
-                            />
-                        </div>
+                        <SearchFilter
+                            filter_arr={filter_arr}
+                            sort_arr={FsSearch_FULL_SORT_ARR}
+                            //
+                            min_price={min_price}
+                            max_price={max_price}
+                            rate_ix={rate_ix}
+                            sort_ix={sort_ix}
+                            //
+                            handleFilterChecked={handleFilterChecked}
+                            handleFilterRate={handleFilterRate}
+                            handleApplyPriceMinMax={handleApplyPriceMinMax}
+                            handleSort={handleSort}
+                            handleClearFilter={handleClearFilter}
+                        />
                     </div>
 
-                    <div className="pos-fixed-100 bg-shadow-2">
-                        <div className="pos-abs-center">
-                            <WaitingBall
-                                is_fetching={is_fetching || !has_fetched}
-                            />
+                    <div className="pos-rel flex-grow-1">
+                        <div className="margin-bottom-20px">
+                            <FsSearchTitleFor value_search={value_search} />
                         </div>
+
+                        {IS_MOBILE ? null : (
+                            <div className="margin-bottom-15px">
+                                <FsRowSort
+                                    sort_arr={FsSearch_SORT_ARR}
+                                    sort_price_arr={FsSearch_SORT_PRICE_ARR}
+                                    sort_ix={sort_ix}
+                                    sort_price_ix={
+                                        sort_ix - FsSearch_SORT_ARR.length
+                                    }
+                                    //
+                                    page={page}
+                                    pages={pages}
+                                    is_fetching={is_fetching}
+                                    //
+                                    handleSort={handleSort}
+                                    handleSortPrice={handleSortPrice}
+                                    handleNext={handleNext}
+                                    handlePrev={handlePrev}
+                                />
+                            </div>
+                        )}
+
+                        <div
+                            className={`FashionSearch_product ${
+                                is_fetching ? 'display-none' : ''
+                            }`}
+                        >
+                            <div className="margin-bottom-15px">
+                                <SearchProducts products={product_arr} />
+                            </div>
+
+                            <div>
+                                <Pagination
+                                    current={page}
+                                    count={pages}
+                                    num_side_center={2}
+                                    handleChangePage={handleChangePage}
+                                />
+                            </div>
+                        </div>
+
+                        <div
+                            className={`${is_fetching ? 'height-100vh' : ''}`}
+                        ></div>
                     </div>
+                </div>
+            </div>
+
+            <div
+                className={`pos-fixed-100per bg-shadow-2 z-index-lv5 ${
+                    is_fetching ? '' : 'display-none'
+                }`}
+            >
+                <div className="pos-abs-center">
+                    <WaitingBall is_fetching={is_fetching} />
                 </div>
             </div>
         </div>

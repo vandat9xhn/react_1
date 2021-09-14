@@ -13,14 +13,14 @@ function FilterRate({ rate_ix, handleFilterRate }) {
     //
     return (
         <div className="FilterRate">
-            <h3 className="SearchFilter_title margin-0">Rate</h3>
+            <div className="font-500 text-cap">Đánh giá</div>
 
             <div className="SearchFilter_list">
                 <div>
                     {[5, 4, 3, 2, 1].map((ix) => (
                         <div
                             key={`FilterRate_${ix}`}
-                            className="SearchFilter_item"
+                            className="FilterRate_item padding-y-8px"
                         >
                             <FilterRateItem
                                 is_active={rate_ix == ix}

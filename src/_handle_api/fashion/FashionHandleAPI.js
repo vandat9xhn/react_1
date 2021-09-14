@@ -25,20 +25,10 @@ export async function handle_API_Product_L(
 }
 
 //
-export async function handle_API_FsSearch_L(
-    new_page = 1,
-    value_search = '',
-    areas = [],
-    rate = 1,
-    sort_by = ''
-) {
+export async function handle_API_FsSearch_L({ params = {} }) {
     return handle_API_Product_L(0, 'search', {
         ...params_fashion_search_l,
-        page: new_page,
-        search: value_search,
-        areas: areas,
-        rate: rate,
-        sort_by: sort_by,
+        ...params,
     });
 }
 
