@@ -1,6 +1,7 @@
 .FashionSearch-mobile {
     .FashionSearch_row {
         display: block;
+        margin-top: 0px;
     }
 
     .FashionSearch_filter {
@@ -8,30 +9,42 @@
         top: 0;
         left: 0;
         z-index: var(--z-index-lv5);
-
+        
         margin: 0;
-        width: 100%;
+        width: 100vw;
         height: 100vh;
-        background-color: var(--shadow-9);
+        background-color: var(--shadow-5);
+
+        transition: all 250ms ease;
+    }
+    .FashionSearch_filter-open {
+        transform: translateX(0%);
+        opacity: 1;
     }
     .FashionSearch_filter-close {
-        display: none;
+        transform: translateX(100%);
+        opacity: 0;
     }
-    //
-    .FashionSearch_filter-icon-close {
-        display: block;
 
+    //
+    .FashionSearch_filter_icon_close {
         position: absolute;
-        top: 8px;
-        right: 8px;
+        top: 5px;
+        right: 5px;
         z-index: 1;
     }
 
-    .SearchFilter {
-        width: 20rem;
+    .FsSearchFilter {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        width: 300px;
         max-width: 100%;
         height: 100%;
-        overflow: auto;
-        border-radius: 0;
+        padding: 10px;
+        overflow-y: auto;
+
+        background-color: var(--md-bg-primary);
     }
 }

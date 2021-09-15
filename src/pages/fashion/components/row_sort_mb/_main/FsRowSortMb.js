@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsArrow from '../../../../../../../../_icons_svg/icons_arrow/IconsArrow';
+import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import FsSProductsSortItemMb from '../item/FsSProductsSortItemMb';
+import FsSProductsSortItemMb from '../item/FsRowSortItemMb';
 //
-import './FsSProductsSortMb.scss';
+import './FsRowSortMb.scss';
 
 //
-FsSProductsSortMb.propTypes = {};
+FsRowSortMb.propTypes = {};
 
 //
-function FsSProductsSortMb({
+function FsRowSortMb({
     sort_arr,
     sort_ix,
     sort_price_ix,
@@ -21,14 +21,14 @@ function FsSProductsSortMb({
 }) {
     //
     return (
-        <div className="FsSProductsSortMb bg-primary font-14px">
+        <div className="FsRowSortMb bg-primary font-14px">
             <div className="display-flex">
                 {sort_arr.map((name, ix) => (
                     <div
                         key={ix}
-                        className={`FsSProductsSortMb_item flex-grow-1 display-flex-center padding-y-10px ${
+                        className={`FsRowSortMb_item flex-grow-1 display-flex-center padding-y-12px ${
                             sort_ix == ix
-                                ? 'FsSProductsSortMb_item-active color-fashion'
+                                ? 'FsRowSortMb_item-active color-fashion'
                                 : ''
                         }`}
                     >
@@ -42,9 +42,9 @@ function FsSProductsSortMb({
                 ))}
 
                 <div
-                    className={`FsSProductsSortMb_item flex-grow-1 display-flex-center padding-y-10px line-14px ${
+                    className={`FsRowSortMb_item flex-grow-1 display-flex-center padding-y-10px line-14px ${
                         sort_price_ix >= 0
-                            ? 'FsSProductsSortMb_item-active color-fashion'
+                            ? 'FsRowSortMb_item-active color-fashion'
                             : ''
                     }`}
                     onClick={handleSortPrice}
@@ -68,4 +68,4 @@ function FsSProductsSortMb({
     );
 }
 
-export default FsSProductsSortMb;
+export default FsRowSortMb;

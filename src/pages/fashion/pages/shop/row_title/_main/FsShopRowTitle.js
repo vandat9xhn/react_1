@@ -11,6 +11,7 @@ FsShopRowTitle.propTypes = {};
 
 //
 function FsShopRowTitle({
+    shop_id,
     category_arr,
 
     more_title_arr,
@@ -27,7 +28,10 @@ function FsShopRowTitle({
                     handleChangeTitle={handleChangeTitle}
                 />
             ) : (
-                <FsShopRowTitlePc category_arr={category_arr} />
+                <FsShopRowTitlePc
+                    shop_id={shop_id}
+                    category_arr={category_arr}
+                />
             )}
         </div>
     );

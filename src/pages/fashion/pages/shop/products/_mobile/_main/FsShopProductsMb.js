@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import FsSProductsSortMb from '../sort/_main/FsSProductsSortMb';
 import FsSProductsListMb from '../list/FsSProductsListMb';
+import FsRowSortMb from '../../../../../components/row_sort_mb/_main/FsRowSortMb';
 
 //
 FsShopProductsMb.propTypes = {};
@@ -21,7 +21,7 @@ function FsShopProductsMb({
     return (
         <div className="FsShopProductsMb">
             <div className="margin-bottom-5px">
-                <FsSProductsSortMb
+                <FsRowSortMb
                     sort_arr={sort_arr}
                     sort_ix={sort_ix}
                     sort_price_ix={sort_price_ix}

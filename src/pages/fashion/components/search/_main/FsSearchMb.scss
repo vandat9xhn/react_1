@@ -1,0 +1,27 @@
+.FsSearch-mobile{
+    padding: 2px;
+    font-size: 14px;
+    
+    .FsSearch_input {
+        padding: 4px;
+    }
+    
+    .FsSearch_in {
+        padding: 0px 5px;
+    }
+    
+    .FsSearch_key{
+        width: fit-content;
+        height: 30px;
+        border-left: 1px solid var(--md-bg-blur);
+        background-color: transparent;
+    
+        .IconsInput{
+            width: 14px;
+            height: 14px;
+        }
+        .IconsInput_key{
+            stroke: var(--md-color-secondary);
+        }
+    }
+}

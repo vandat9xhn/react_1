@@ -7,34 +7,39 @@ import FilterRate from '../rate/_main/FilterRate';
 import FilterSort from '../sort/_main/FilterSort';
 import FsSearchFilterChecked from '../checked/_main/FsSearchFilterChecked';
 import FsScPriceMinMax from '../price_min_max/FsScPriceMinMax';
+import FsSearchFilterShop from '../shop/_main/FsSearchFilterShop';
 //
-import './SearchFilter.scss';
+import './FsSearchFilter.scss';
 
 //
-SearchFilter.propTypes = {
+FsSearchFilter.propTypes = {
     ...FilterRate.propTypes,
     ...FilterSort.propTypes,
 };
 
 //
-function SearchFilter({
+function FsSearchFilter({
+    shop_info,
     filter_arr,
-    sort_arr,
 
     min_price,
     max_price,
     rate_ix,
-    sort_ix,
 
     handleFilterChecked,
     handleFilterRate,
     handleApplyPriceMinMax,
-    handleSort,
     handleClearFilter,
 }) {
     //
     return (
-        <div className="SearchFilter primary-08 font-14px">
+        <div className="FsSearchFilter primary-08 font-14px">
+            {shop_info.id && shop_info.id > 0 ? (
+                <div className="margin-bottom-15px">
+                    <FsSearchFilterShop shop_info={shop_info} />
+                </div>
+            ) : null}
+
             <div className="margin-bottom-20px text-upper font-700 font-15px">
                 Bộ lọc tìm kiếm
             </div>
@@ -43,7 +48,7 @@ function SearchFilter({
                 {filter_arr.map((filter_obj, filter_ix) => (
                     <div
                         key={filter_ix}
-                        className="SearchFilter_part margin-bottom-15px"
+                        className="FsSearchFilter_part margin-bottom-15px"
                         style={{ order: filter_obj.order }}
                     >
                         <FsSearchFilterChecked
@@ -55,14 +60,7 @@ function SearchFilter({
                     </div>
                 ))}
 
-                <div className="SearchFilter_part margin-bottom-15px">
-                    <FilterRate
-                        rate_ix={rate_ix}
-                        handleFilterRate={handleFilterRate}
-                    />
-                </div>
-
-                <div className="SearchFilter_part margin-bottom-15px">
+                <div className="FsSearchFilter_part margin-bottom-15px">
                     <FsScPriceMinMax
                         default_min_price={min_price}
                         default_max_price={max_price}
@@ -70,15 +68,12 @@ function SearchFilter({
                     />
                 </div>
 
-                {IS_MOBILE ? (
-                    <div className="SearchFilter_part margin-bottom-15px">
-                        <FilterSort
-                            sort_arr={sort_arr}
-                            sort_ix={sort_ix}
-                            handleSort={handleSort}
-                        />
-                    </div>
-                ) : null}
+                <div className="FsSearchFilter_part margin-bottom-15px">
+                    <FilterRate
+                        rate_ix={rate_ix}
+                        handleFilterRate={handleFilterRate}
+                    />
+                </div>
             </div>
 
             <div className="padding-x-5px">
@@ -94,4 +89,4 @@ function SearchFilter({
     );
 }
 
-export default SearchFilter;
+export default FsSearchFilter;

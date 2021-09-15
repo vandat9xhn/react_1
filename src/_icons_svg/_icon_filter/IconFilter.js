@@ -1,28 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// 
+import { simple_icon_propTypes } from '../../_prop-types/icon';
 
 //
-IconCaret.propTypes = {
-    class_icon: PropTypes.string,
-    size_icon: PropTypes.string,
-
-    x: PropTypes.number,
-    y: PropTypes.number,
-    stroke_width: PropTypes.number,
-    stroke: PropTypes.string,
-    fill: PropTypes.string,
+IconFilter.propTypes = {
+    ...simple_icon_propTypes
 };
-IconCaret.defaultProps = {
+
+IconFilter.defaultProps = {
     class_icon: '',
     size_icon: '0.5rem',
 
     x: 0,
     y: 0,
-    stroke_width: 20,
-    fill: 'var(--md-fill-secondary)',
+    stroke_width: 15,
+    stroke: 'var(--fashion-head)',
+    fill: 'none',
 };
 
-function IconCaret({
+function IconFilter({
     class_icon,
     size_icon,
     
@@ -35,18 +32,19 @@ function IconCaret({
     //
     return (
         <svg
-            className={`IconCaret ${class_icon}`}
+            className={`IconFilter ${class_icon}`}
             viewBox={`${x} ${y} 200 200`}
             width={size_icon}
             height={size_icon}
-            stroke={stroke || fill}
+            stroke={stroke}
             strokeWidth={stroke_width}
             fill={fill}
             strokeLinejoin="round"
+            strokeLinecap="round"
         >
-            <path d="M40,60 160,60 100,140Z" />
+            <path d="M75,180 75,80 20,20 180,20 125,80 125,140" />
         </svg>
     );
 }
 
-export default IconCaret;
+export default IconFilter;

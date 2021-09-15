@@ -1,44 +1,75 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
-//
-import FashionHSearch from '../../../components/head/_main_search/FashionHSearch';
+import FashionHCommon from '../../../components/head/__main_common/FashionHCommon';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 
 //
 FashionShead.propTypes = {};
 
 //
-function FashionShead({ handleSearchFashion }) {
+function FashionShead({ shop_id, value_search, search_arr, placeholder }) {
     //
-    const [value_search, setValueSearch] = useState('');
+    const use_history = useHistory();
+
+    //
+    const [value, setValue] = useState(value_search);
+    const [where_search_ix, setWhereSearchIx] = useState(shop_id > 0 ? 1 : 0);
 
     //
     useEffect(() => {
-        const new_value_search = ParseLocationSearch()['q'];
-        document.title = new_value_search;
-        setValueSearch(new_value_search);
-    }, [location.search]);
-
-    /* --------------------------------- */
+        value_search != value && setValue(value_search);
+    }, [value_search]);
 
     //
-    function handleChangeValueSearch(e) {
-        setValueSearch(e.target.value);
+    useEffect(() => {
+        setWhereSearchIx(shop_id > 0 ? 1 : 0);
+    }, [shop_id]);
+
+    // ------
+
+    //
+    function handleChange(e) {
+        setValue(e.target.value);
     }
 
     //
-    function onSearchFashion(new_value_search) {
-        handleSearchFashion(new_value_search);
+    function changeWhereSearch(new_where_search_ix) {
+        setWhereSearchIx(new_where_search_ix);
+    }
+
+    //
+    function handleSearch() {
+        (value_search != value || (where_search_ix == 0 && shop_id > 0)) &&
+            use_history.push(
+                `/fashion/search?q=${value}${
+                    where_search_ix == 1 ? `&shop_id=${shop_id}` : ''
+                }`
+            );
     }
 
     //
     return (
         <div className="FashionShead">
-            <FashionHSearch
-                value_search={value_search}
-                handleChangeValueSearch={handleChangeValueSearch}
-                handleSearchFashion={onSearchFashion}
+            <FashionHCommon
+                value={value}
+                placeholder={
+                    where_search_ix == 0 ? placeholder : 'Tìm trong Shop này'
+                }
+                //
+                use_where_search={shop_id > 0}
+                where_search_arr={
+                    IS_MOBILE
+                        ? ['Web', 'Shop']
+                        : ['Trong web', 'Trong Shop này']
+                }
+                where_search_ix={where_search_ix}
+                search_arr={search_arr}
+                //
+                changeWhereSearch={changeWhereSearch}
+                handleChange={handleChange}
+                handleSearch={handleSearch}
             />
         </div>
     );

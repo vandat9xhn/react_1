@@ -20,11 +20,11 @@ FsShopRowTitlePc.propTypes = {
 };
 
 //
-function FsShopRowTitlePc({ category_arr }) {
+function FsShopRowTitlePc({ shop_id, category_arr }) {
     //
     const category_title_arr = category_arr.map((item) => {
         return {
-            link_to: '',
+            link_to: `search?shop_id=${shop_id}&category=${item.name}`,
             title: item.title,
         };
     });
@@ -35,7 +35,7 @@ function FsShopRowTitlePc({ category_arr }) {
             title: 'Dạo',
         },
         {
-            link_to: '',
+            link_to: `search?shop_id=${shop_id}&category=products`,
             title: 'TẤT CẢ SẢN PHẨM',
         },
         ...category_title_arr.slice(0, 4),

@@ -1,9 +1,5 @@
-// .InputSearch {
-//     border: 1px solid rgba(0, 0, 0, 0.2);
-// }
-
 //
-.InputSearch_input {
+.FsSearch_input {
     padding-left: 10px;
     background-color: transparent;
     border: none;
@@ -11,14 +7,18 @@
         outline: none;
     }
 }
+
+.FsSearch_in{
+    border-left: 1px solid var(--ccc);
+}
+
 //
-.InputSearch_key {
+.FsSearch_key {
     width: 60px;
     height: 34px;
-    background-color: #FB6445;
+    background-color: #fb6445;
 
-    .IconsInput_key{
+    .IconsInput_key {
         stroke: var(--white);
     }
 }
-

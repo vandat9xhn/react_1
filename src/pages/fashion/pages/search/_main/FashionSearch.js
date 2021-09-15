@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
-import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
-//
+import { useMounted } from '../../../../../_hooks/useMounted';
 import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 //
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
@@ -14,8 +13,6 @@ import Pagination from '../../../../../component/pagination/_main/Pagination';
 import WaitingBall from '../../../../../component/waiting/waiting_ball/WaitingBall';
 //
 import {
-    FsSearch_FULL_KEY_SORT_ARR,
-    FsSearch_FULL_SORT_ARR,
     FsSearch_getData_API,
     FsSearch_initial_state_obj,
     FsSearch_SORT_ARR,
@@ -25,13 +22,14 @@ import {
 //
 import FashionShead from '../head/FashionShead';
 import FsRowSort from '../../../components/row_sort/_main/FsRowSort';
-import SearchProducts from '../products/SearchProducts';
-import SearchFilter from '../filter/_main/SearchFilter';
+import FsSearchProducts from '../products/FsSearchProducts';
+import FsSearchFilter from '../filter/_main/FsSearchFilter';
 import FsSearchTitleFor from '../title_for/FsSearchTitleFor';
+import FsRowSortMb from '../../../components/row_sort_mb/_main/FsRowSortMb';
+import FsSearchIconFilter from '../icon_filter/FsSearchIconFilter';
 //
 import './FashionSearch.scss';
 import './FashionSearchMb.scss';
-import { useMounted } from '../../../../../_hooks/useMounted';
 
 //
 FashionSearch.propTypes = {};
@@ -42,6 +40,8 @@ function FashionSearch(props) {
     const [state_obj, setStateObj] = useState(FsSearch_initial_state_obj());
 
     const {
+        shop_id,
+        shop_info,
         product_arr,
 
         filter_arr,
@@ -81,6 +81,7 @@ function FashionSearch(props) {
         new_min_price = min_price,
         new_max_price = max_price,
         new_sort_ix = sort_ix,
+        new_shop_id = shop_id,
         new_page = page,
     }) {
         const params = {};
@@ -90,6 +91,7 @@ function FashionSearch(props) {
         new_sort_by && (params['sort'] = new_sort_by);
         new_min_price && (params['min_price'] = new_min_price);
         new_max_price && (params['max_price'] = new_max_price);
+        new_shop_id > 0 && (params['shop_id'] = new_shop_id);
 
         new_filter_arr.forEach((filter_obj) => {
             params[filter_obj.name] = filter_obj.arr
@@ -116,6 +118,7 @@ function FashionSearch(props) {
         new_max_price = max_price,
         new_rate_ix = rate_ix,
         new_sort_ix = sort_ix,
+        new_shop_id = shop_id,
         new_page = page,
     }) {
         history.pushState(
@@ -128,6 +131,7 @@ function FashionSearch(props) {
                 new_max_price,
                 new_rate_ix,
                 new_sort_ix,
+                new_shop_id,
                 new_page,
             })
         );
@@ -135,21 +139,7 @@ function FashionSearch(props) {
         forceUpdate();
     }
 
-    // -------- SEARCH + PAGE
-
-    //
-    function handleSearchFashion(new_value_search) {
-        if (new_value_search == value_search) {
-            return;
-        }
-
-        historyPushSearch({
-            new_value_search: new_value_search,
-            new_filter_arr: [],
-            new_rate_ix: 0,
-            new_page: 1,
-        });
-    }
+    // -------- PAGE
 
     //
     function handleChangePage(new_page) {
@@ -254,8 +244,17 @@ function FashionSearch(props) {
     }
 
     //
-    function handleSortPrice(new_sort_price_ix) {
-        const new_sort_ix = new_sort_price_ix + FsSearch_SORT_ARR.length;
+    function handleSortPrice(new_sort_price_ix = -1) {
+        const sort_count = FsSearch_SORT_ARR.length;
+
+        const _new_sort_price_ix =
+            new_sort_price_ix >= 0
+                ? new_sort_price_ix
+                : sort_ix <= sort_count
+                ? 1
+                : 0;
+
+        const new_sort_ix = _new_sort_price_ix + sort_count;
         handleSort(new_sort_ix);
     }
 
@@ -266,9 +265,7 @@ function FashionSearch(props) {
                 IS_MOBILE ? 'FashionSearch-mobile' : ''
             }`}
         >
-            <div className="margin-bottom-20px">
-                <FashionShead handleSearchFashion={handleSearchFashion} />
-            </div>
+            <FashionShead shop_id={shop_id} value_search={value_search} />
 
             <div
                 className={`fashion-width font-for-fashion ${
@@ -276,56 +273,61 @@ function FashionSearch(props) {
                 }`}
             >
                 {IS_MOBILE ? (
-                    <div className="FashionSearch_filter_btn">
-                        <div
-                            className="margin-right-15px margin-left-auto width-fit-content padding-8px font-500 cursor-pointer"
-                            onClick={openFilter}
-                        >
-                            Filter
-                        </div>
-                    </div>
+                    <FsSearchIconFilter openFilter={openFilter} />
                 ) : null}
 
-                <div className="FashionSearch_row display-flex">
+                <div className="FashionSearch_row display-flex margin-top-20px">
                     <div
                         className={`FashionSearch_filter margin-right-20px ${
                             open_filter
-                                ? 'FashionSearch_filter-open display-none'
+                                ? 'FashionSearch_filter-open'
                                 : 'FashionSearch_filter-close'
                         }`}
                     >
-                        <div className="FashionSearch_filter-icon-close display-none">
-                            <div
-                                className="close-icon-small brs-50 cursor-pointer"
-                                onClick={closeFilter}
-                            >
-                                <IconsArrow y={400} size_icon="1rem" />
+                        {IS_MOBILE ? (
+                            <div className="FashionSearch_filter_icon_close">
+                                <div
+                                    className="close-icon-small brs-50 cursor-pointer"
+                                    onClick={closeFilter}
+                                >
+                                    <IconsArrow y={400} size_icon="1rem" />
+                                </div>
                             </div>
-                        </div>
+                        ) : null}
 
-                        <SearchFilter
+                        <FsSearchFilter
+                            shop_info={shop_info}
                             filter_arr={filter_arr}
-                            sort_arr={FsSearch_FULL_SORT_ARR}
                             //
                             min_price={min_price}
                             max_price={max_price}
                             rate_ix={rate_ix}
-                            sort_ix={sort_ix}
                             //
                             handleFilterChecked={handleFilterChecked}
                             handleFilterRate={handleFilterRate}
                             handleApplyPriceMinMax={handleApplyPriceMinMax}
-                            handleSort={handleSort}
                             handleClearFilter={handleClearFilter}
                         />
                     </div>
 
                     <div className="pos-rel flex-grow-1">
-                        <div className="margin-bottom-20px">
-                            <FsSearchTitleFor value_search={value_search} />
-                        </div>
+                        {value_search && !IS_MOBILE ? (
+                            <div className="margin-bottom-20px">
+                                <FsSearchTitleFor value_search={value_search} />
+                            </div>
+                        ) : null}
 
-                        {IS_MOBILE ? null : (
+                        {IS_MOBILE ? (
+                            <FsRowSortMb
+                                sort_arr={FsSearch_SORT_ARR}
+                                sort_ix={sort_ix}
+                                sort_price_ix={
+                                    sort_ix - FsSearch_SORT_ARR.length
+                                }
+                                handleSort={handleSort}
+                                handleSortPrice={handleSortPrice}
+                            />
+                        ) : (
                             <div className="margin-bottom-15px">
                                 <FsRowSort
                                     sort_arr={FsSearch_SORT_ARR}
@@ -353,7 +355,7 @@ function FashionSearch(props) {
                             }`}
                         >
                             <div className="margin-bottom-15px">
-                                <SearchProducts products={product_arr} />
+                                <FsSearchProducts products={product_arr} />
                             </div>
 
                             <div>

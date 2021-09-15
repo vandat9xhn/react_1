@@ -94,6 +94,7 @@ function Shop(props) {
                         <FsShopOverview shop_info={shop_info} />
 
                         <FsShopRowTitle
+                            shop_id={shop_info.id}
                             category_arr={shop_info.category_arr}
                             more_title_arr={[]}
                             title_name={title_name}

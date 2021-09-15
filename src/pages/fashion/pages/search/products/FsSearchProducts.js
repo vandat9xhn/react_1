@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 //
 import FashionFaceItem from '../../../components/face_item/_main/FashionFaceItem';
 //
-import './SearchProducts.scss';
+import './FsSearchProducts.scss';
 
 //
-SearchProducts.propTypes = {
+FsSearchProducts.propTypes = {
     products: PropTypes.array,
 };
 
 //
-function SearchProducts({ products }) {
+function FsSearchProducts({ products }) {
     //
     return (
-        <div className="SearchProducts">
+        <div className="FsSearchProducts">
             <ul className="display-flex flex-wrap list-none">
                 {products.map((item) => (
                     <li
                         key={`${item.id}`}
-                        className="SearchProducts_item padding-4px"
+                        className="FsSearchProducts_item padding-4px"
                     >
                         <FashionFaceItem
                             id={item.id}
@@ -51,4 +51,4 @@ function SearchProducts({ products }) {
     );
 }
 
-export default SearchProducts;
+export default FsSearchProducts;
