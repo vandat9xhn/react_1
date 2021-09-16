@@ -1,0 +1,11 @@
+.FsPPurchaseHeadItem{
+    border-bottom: 2px solid transparent;
+
+    &:hover{
+        color: var(--fashion-head);
+    }
+}
+
+.FsPPurchaseHeadItem-active{
+    border-bottom: 2px solid currentColor;
+}

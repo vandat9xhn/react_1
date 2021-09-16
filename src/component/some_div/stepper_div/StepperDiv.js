@@ -1,56 +1,49 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import './StepperDiv.scss';
 
 //
 StepperDiv.propTypes = {
-    stage_arr: PropTypes.arrayOf(
+    step_arr: PropTypes.arrayOf(
         PropTypes.shape({
             component: PropTypes.func,
+            props: PropTypes.object,
         })
     ),
-    count_stage: PropTypes.number,
-    completed_stage_ix: PropTypes.number,
-};
-
-StepperDiv.defaultProps = {
-    stage_arr: [{ component: () => <div></div> }],
-    count_stage: 1,
-    completed_stage_ix: 0,
+    c_step: PropTypes.number,
 };
 
 //
-function StepperDiv({
-    stage_arr,
-    count_stage,
-    completed_stage_ix,
-    handleChooseStep,
-}) {
+function StepperDiv({ step_arr, c_step }) {
     //
     return (
-        <div className="StepperDiv">
-            <div className="StepperDiv_row">
-                {stage_arr.map((stage, stage_ix) => (
+        <div className="StepperDiv pos-rel">
+            <div className="StepperDiv_row display-flex space-between">
+                {step_arr.map((step_obj, ix) => (
                     <div
-                        key={`StepperDiv_${stage_ix}`}
-                        className="StepperDiv_stage cursor-pointer"
-                        onClick={() => handleChooseStep(stage_ix)}
+                        key={ix}
+                        className="StepperDiv_stage pos-rel z-index-lv1"
                     >
-                        <stage.component
-                            is_active={completed_stage_ix >= stage_ix + 1}
+                        <step_obj.component
+                            c_step={c_step}
+                            step={ix}
+                            {...step_obj.props}
                         />
                     </div>
                 ))}
             </div>
 
-            <div className="StepperDiv_line stepper-line"></div>
-            <div
-                className="StepperDiv_line-active stepper-line-active"
-                style={{
-                    width: `${(100 * completed_stage_ix) / count_stage}%`,
-                }}
-            ></div>
+            <div className="StepperDiv_line_width pos-abs left-0 w-100per y-center">
+                <div className="StepperDiv_line stepper-line"></div>
+
+                <div
+                    className="StepperDiv_line-active stepper-line-active"
+                    style={{
+                        width: `${(100 * c_step) / (step_arr.length - 1)}%`,
+                    }}
+                ></div>
+            </div>
         </div>
     );
 }

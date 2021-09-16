@@ -52,7 +52,7 @@ function IconDiv({
             class_left={class_left}
             class_right={class_right}
             ComponentLeft={
-                <div className="IconDiv_left">
+                <div className="IconDiv_left display-flex-center">
                     <Icon
                         x={x}
                         y={y}

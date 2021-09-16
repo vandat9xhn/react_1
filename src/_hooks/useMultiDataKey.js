@@ -28,7 +28,7 @@ export function useMultiDataKey({
     const mounted = useMounted();
 
     //
-    async function getData_API(new_key) {
+    async function getData_API(new_key = c_key) {
         setStateObj((state_obj) => {
             const has_existed = state_obj.obj[new_key];
             const data_item = has_existed

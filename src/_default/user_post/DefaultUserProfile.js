@@ -1,5 +1,3 @@
-import img from '../../../image/my_image.png';
-//
 import { formatLocalDateString } from '../../_some_function/FormatDate';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
@@ -41,7 +39,7 @@ export const default_user_about_r = () => {
     return {
         id: getRandomId(),
         first_name: getRandomName(),
-        last_name: 'Day',
+        last_name: getRandomName(),
         picture: getRandomVidPic(),
         cover: getRandomVidPic(),
 

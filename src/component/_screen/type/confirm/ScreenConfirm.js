@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import ScreenBlur from '../../components/frame/blur/ScreenBlur';
+import { useMakeBodyHidden } from '../../../../_hooks/useMakeBodyHidden';
+//
 import ScreenBlurHead from '../../components/part/head/ScreenBlurHead';
 import ScreenBlurFootYesNo from '../../components/part/foot_yes_no/ScreenBlurFootYesNo';
 //
@@ -32,29 +33,27 @@ ScreenConfirm.propTypes = {};
 //
 function ScreenConfirm({ closeScreen, title, notification, handleConfirm }) {
     //
+    useMakeBodyHidden({
+        hidden_app: false,
+        blur_header: true,
+    });
+
+    //
     function onConfirm() {
         closeScreen();
-
         handleConfirm();
     }
 
     //
     return (
-        <ScreenBlur
-            closeScreen={closeScreen}
-            screen_center={true}
-            use_body_hidden={false}
-        >
-            <div className="ScreenConfirm_contain">
-                <div className="ScreenConfirm_head">
-                    <ScreenBlurHead
-                        title={title}
-                        closeScreenBlur={closeScreen}
-                    />
+        <div className="ScreenConfirm w-100per h-100vh display-flex-center">
+            <div className="ScreenConfirm_contain bg-primary brs-5px box-shadow-fb">
+                <div className="ScreenConfirm_head margin-bottom-10px">
+                    <ScreenBlurHead title={title} closeScreenBlur={closeScreen} />
                 </div>
 
-                <div>
-                    <div className="ScreenConfirm_body">{notification}</div>
+                <div className="ScreenConfirm_body padding-x-15px margin-bottom-10px">
+                    {notification}
                 </div>
 
                 <div className="ScreenConfirm_foot">
@@ -64,7 +63,7 @@ function ScreenConfirm({ closeScreen, title, notification, handleConfirm }) {
                     />
                 </div>
             </div>
-        </ScreenBlur>
+        </div>
     );
 }
 

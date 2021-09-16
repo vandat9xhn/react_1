@@ -34,7 +34,7 @@
     color: var(--del);
 }
 
-.text-primary-08{
+.text-primary-08 {
     color: var(--primary-08);
 }
 
@@ -54,12 +54,24 @@
     color: var(--fashion-mall);
 }
 
-.text-222{
+.text-222 {
     color: var(--color-222);
 }
 
-.text-555{
+.text-555 {
     color: var(--color-555);
+}
+
+// ------- ALWAYS
+
+.text-always-green {
+    color: green;
+}
+
+// ------- OPACITY
+
+.text-del-05 {
+    color: var(--del-05);
 }
 
 // -------- STYLE
@@ -106,7 +118,7 @@
     text-transform: uppercase;
 }
 
-.text-cap{
+.text-cap {
     text-transform: capitalize;
 }
 

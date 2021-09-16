@@ -30,19 +30,18 @@ ScreenBlur.defaultProps = {
 function ScreenBlur({
     closeScreen,
     children,
-
-    use_body_hidden,
     screen_center,
+
     waiting,
+    use_body_hidden,
     use_scale,
+
     FetchingComponent,
 }) {
     //
     useMakeBodyHidden({
         hidden_app: use_body_hidden,
         blur_header: true,
-        // use_z_index: true,
-        // screen_z_index: 100,
     });
 
     //

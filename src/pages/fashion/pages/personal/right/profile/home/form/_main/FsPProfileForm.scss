@@ -1,0 +1,20 @@
+.FsPProfileForm_part {
+    margin-bottom: 30px;
+}
+
+.FsPProfileForm_btn {
+    padding-left: 22%;
+}
+
+.FsPProfileForm_date {
+    .InputDate_item:not(:last-child) {
+        margin-right: 10px;
+    }
+    .InputDate_item_contain select {
+        min-width: 150px;
+        padding: 10px 15px;
+        border-radius: 2px;
+        color: var(--color-555);
+        border-color: var(--md-bg-blur);
+    }
+}

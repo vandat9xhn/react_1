@@ -1,38 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { simple_icon_propTypes } from '../../_prop-types/icon';
+//
 import './IconBell.scss';
 
 //
 IconBell.propTypes = {
-    size_icon: PropTypes.string,
-    x: PropTypes.number,
-    y: PropTypes.number,
-    stroke_color: PropTypes.string,
+    ...simple_icon_propTypes,
 };
 IconBell.defaultProps = {
-    size_icon: '1.5rem',
+    class_icon: '',
     x: 0,
     y: 0,
-    stroke_color: 'var(--md-black-brown)',
+    size_icon: '1.5rem',
+    fill: 'none',
+    stroke: 'var(--md-black-brown)',
+    stroke_width: '5',
 };
 
-function IconBell(props) {
-    const { size_icon, x, y, stroke_color } = props;
-
+function IconBell({ class_icon, size_icon, x, y, stroke, stroke_width }) {
+    //
     return (
         <svg
-            className="IconBell"
+            className={`IconBell ${class_icon}`}
             width={size_icon}
             height={size_icon}
             viewBox={`${x} ${y} 200 200`}
-            stroke={stroke_color}
+            stroke={stroke}
             fill="none"
             strokeLinecap="round"
         >
             <path
                 className="IconBell_notice"
-                strokeWidth="5"
+                strokeWidth={stroke_width}
                 d="M56.8502 173.826C56.8502 173.826 56.8502 173.826 36.4526 181.212C16.055 188.599 17.6868 
                     159.792 17.6868 159.792C17.6868 159.792 24.0736 147.438 24.214 134.678C24.3544 121.919 3.05772 
                     109.036 3.00051 83.7123C2.94331 58.3883 7.6415 45.3491 32.3731 26.0986C30.5135 16.5274 32.6169 

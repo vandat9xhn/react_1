@@ -12,9 +12,9 @@ function Footer() {
     return (
         <div
             className={`Footer ${
-                location.pathname.search(
-                    /(\/profile|\/stor(ies|y)|\/new-feed|\/city-street)/
-                ) >= 0
+                /(\/profile|\/stor(ies|y)|\/new-feed|\/city-street)/.test(
+                    location.pathname
+                ) && !/fashion/.test(location.pathname)
                     ? 'display-none'
                     : ''
             }`}

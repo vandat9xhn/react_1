@@ -1,40 +1,23 @@
-/* ----------------- COMMON ---------------- */
-
-.FashionHR_item{
-    margin: 0 0.5rem;
-}
-
-
-/* --------------------------------- */
-
 // .
-.FashionHR_cart{
-    .IconsMenu{
+.FashionHR_cart {
+    .IconsMenu {
         stroke: var(--white);
     }
 }
 // ..
-.FashionHR_cart-count{
+.FashionHR_cart-count {
     position: absolute;
     top: -5px;
-    right: 0;
-
-
-    width: 1rem;
-    line-height: 1rem;
-    background-color: red;
-    
-    font-size: 12px;
-    color: var(--white);
+    right: 5px;
 }
 
 // ..
-.FashionHR_personal-icon{
-    .IconsAction_add-friend_friend{
+.FashionHR_personal-icon {
+    .IconsAction_add-friend_friend {
         stroke: white;
         stroke-width: 15;
     }
-    .IconsAction_add-friend_plus{
+    .IconsAction_add-friend_plus {
         stroke: none;
     }
 }

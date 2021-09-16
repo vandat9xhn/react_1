@@ -1,0 +1,15 @@
+.FsPPrPhoneSteps {
+    .StepperDiv_line_width {
+        width: calc(100% - 20px);
+    }
+}
+.FsPPrPhoneSteps-process {
+    .StepperDiv_line-active {
+        background-color: #6c0;
+    }
+}
+.FsPPrPhoneSteps-done {
+    .StepperDiv_line-active {
+        background-color: var(--fashion-head);
+    }
+}

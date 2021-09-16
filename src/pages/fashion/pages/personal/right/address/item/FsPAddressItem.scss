@@ -1,0 +1,26 @@
+.FsPAddressItem {
+    padding: 30px 5px 30px 20px;
+}
+.FsPAddressItem-nth{
+    border-bottom: 1px solid var(--md-bg-blur);
+}
+
+.FsPAddressItem_label {
+    margin-right: 25px;
+    width: 160px;
+
+    text-align: end;
+    color: var(--del);
+}
+
+.FsPAddressItem_address_item{
+    max-width: 250px;
+}
+
+.FsPAddressItem_default {
+    background-color: #00bfa5;
+}
+
+.FsPAddressItem_btn_fix_del {
+    text-decoration: 1px solid currentColor underline;
+}

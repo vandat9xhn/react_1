@@ -1,41 +1,4 @@
 //
-.FashionPersonal_ctg {
-    margin-top: 0.5rem;
-}
-
-//
 .FashionPersonal_left {
-    margin-right: 0.5rem;
-    transition: transform 0.3s;
-    z-index: 2;
-}
-
-.FashionPersonal_left-toggle {
-    display: none;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-
-    opacity: 1;
-    transition: all 0.3s;
-}
-.FashionPersonal_left-toggle-hidden {
-    right: -2rem;
-    opacity: 0.5;
-}
-
-.FashionPersonal_left-icon {
-    width: 2rem;
-    height: 2rem;
-    transition: transform 0.3s;
-}
-.FashionPersonal_left-icon-close {
-    transform: rotate(45deg);
-}
-
-//
-.FashionPersonal_right {
-    margin: 0 0.25rem;
-    flex-grow: 1;
-    border: 1px solid var(--md-bg-blur);
+    width: 200px;
 }

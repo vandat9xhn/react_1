@@ -67,7 +67,7 @@ export const fashion_route_arr = [
         auth: false,
     },
     {
-        path: '/fashion/personal',
+        path: '/fashion/user',
         component: FashionPersonal,
         exact: false,
         auth: true,

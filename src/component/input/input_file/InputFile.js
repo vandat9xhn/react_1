@@ -1,23 +1,24 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import './InputFile.scss';
 import { loadFile } from '../../../_some_function/loadFile';
+//
+import './InputFile.scss';
 
 //
 InputFile.propTypes = {
-    //
     name: PropTypes.string,
     type: PropTypes.string,
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
-    //
+    
     file_multiple: PropTypes.bool,
     accept: PropTypes.string,
     title: PropTypes.string,
-    // children
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+
     should_reset: PropTypes.bool,
+    face_circle: PropTypes.bool,
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
 };
 
 InputFile.defaultProps = {
@@ -25,6 +26,8 @@ InputFile.defaultProps = {
     file_multiple: false,
     title: 'Choose files',
     children: 'Choose File',
+
+    face_circle: true,
     should_reset: true,
 };
 
@@ -38,6 +41,7 @@ function InputFile({
 
     children,
 
+    face_circle,
     should_reset,
     vid_pic_key,
 
@@ -88,16 +92,20 @@ function InputFile({
                 />
             </div>
 
-            <div className="InputFile_face wh-100">
-                <div
-                    className="InputFile_face_contain wh-100 brs-50"
-                    onClick={onClick}
-                >
-                    <div className="wh-100 display-flex justify-content-center align-items-center">
-                        {children}
+            {face_circle ? (
+                <div className="InputFile_face pos-abs-100">
+                    <div
+                        className="InputFile_face_contain wh-100 brs-50"
+                        onClick={onClick}
+                    >
+                        <div className="wh-100 display-flex justify-content-center align-items-center">
+                            {children}
+                        </div>
                     </div>
                 </div>
-            </div>
+            ) : (
+                children
+            )}
         </div>
     );
 }

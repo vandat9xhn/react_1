@@ -35,7 +35,7 @@ function CustomSwitch() {
         <Switch location={displayLocation}>
             {Routes.map((route, index) => (
                 <Route
-                    key={`App_route_${index}`}
+                    key={`${index}`}
                     path={route.path}
                     render={(props) => <Auth route={route} {...props} />}
                     exact={route.exact}

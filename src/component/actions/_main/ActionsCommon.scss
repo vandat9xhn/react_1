@@ -1,13 +1,12 @@
-
-// 
-.action-item{
+//
+.action-item {
     width: 100%;
     padding: 0.75rem 0.5rem;
     border-bottom: 1px solid var(--md-bg-ccc);
 
-    font-weight: bold;
+    font-weight: 500;
     cursor: pointer;
-    &:hover{
+    &:hover {
         background-color: var(--md-bg-blur);
     }
 }

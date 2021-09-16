@@ -1,97 +1,95 @@
 import React from 'react';
-//
-const BillBuying = React.lazy(() =>
-    import('../col_right/buying/_main/BillBuying')
+
+// ------
+
+const PersonalProfile = React.lazy(() =>
+    import('../right/profile/_main/FsPersonalProfile')
 );
-const BillCancel = React.lazy(() =>
-    import('../col_right/cancel/_main/BillCancel')
-);
-const PersonalContact = React.lazy(() =>
-    import('../col_right/contact/PersonalContact')
-);
-const PromotionFreeShip = React.lazy(() =>
-    import('../col_right/free_ship/PromotionFreeShip')
-);
-const PersonalInformation = React.lazy(() =>
-    import('../col_right/information/PersonalInformation')
-);
-const Notifications = React.lazy(() =>
-    import('../col_right/notifications/Notifications')
-);
-const PromotionVoucher = React.lazy(() =>
-    import('../col_right/voucher/PromotionVoucher')
+
+const FsPersonalAddress = React.lazy(() =>
+    import('../right/address/_main/FsPersonalAddress')
 );
 
 //
-export const fashion_path_arr = [
-    '/user',
-    '/bill',
-    '/notifications',
-    '/promotion',
-];
+const FsPersonalPurchase = React.lazy(() =>
+    import('../right/purchase/_main/FsPersonalPurchase')
+);
+
+const PromotionFreeShip = React.lazy(() =>
+    import('../right/free_ship/PromotionFreeShip')
+);
+
+// -------
+
+const Notifications = React.lazy(() =>
+    import('../right/notifications/Notifications')
+);
+
+// -------
+
+const PromotionVoucher = React.lazy(() =>
+    import('../right/voucher/PromotionVoucher')
+);
 
 //
 export const FashionRoutes = [
     //
     {
-        pathname: '/fashion/personal/user/info',
-        component: PersonalInformation,
-        is_active: false,
-        is_loaded: false,
-        props: {},
+        pathname: '/fashion/user/account/profile',
+        component: PersonalProfile,
     },
     {
-        pathname: '/fashion/personal/user/contact',
-        component: PersonalContact,
-        is_active: false,
-        is_loaded: false,
-        props: {},
-    },
-
-    //
-    {
-        pathname: '/fashion/personal/bill/buying',
-        component: BillBuying,
-        is_active: false,
-        is_loaded: false,
-        props: {},
+        pathname: '/fashion/user/account/bank',
+        component: FsPersonalAddress,
     },
     {
-        pathname: '/fashion/personal/bill/cancel',
-        component: BillCancel,
-        is_active: false,
-        is_loaded: false,
-        props: {},
+        pathname: '/fashion/user/account/contact',
+        component: FsPersonalAddress,
+    },
+    {
+        pathname: '/fashion/user/account/password',
+        component: FsPersonalAddress,
     },
 
     //
     {
-        pathname: '/fashion/personal/notifications',
+        pathname: '/fashion/user/purchase',
+        component: FsPersonalPurchase,
+    },
+
+    //
+    {
+        pathname: '/fashion/user/notifications/order',
         component: Notifications,
-        is_active: false,
-        is_loaded: false,
-        props: {},
+    },
+    {
+        pathname: '/fashion/user/notifications/promotion',
+        component: Notifications,
+    },
+    {
+        pathname: '/fashion/user/notifications/wallet',
+        component: Notifications,
+    },
+    {
+        pathname: '/fashion/user/notifications/activity',
+        component: Notifications,
+    },
+    {
+        pathname: '/fashion/user/notifications/rating',
+        component: Notifications,
+    },
+    {
+        pathname: '/fashion/user/notifications/common',
+        component: Notifications,
     },
 
     //
     {
-        pathname: '/fashion/personal/promotion/voucher',
+        pathname: '/fashion/user/voucher',
         component: PromotionVoucher,
-        is_active: false,
-        is_loaded: false,
-        props: {},
     },
     {
-        pathname: '/fashion/personal/promotion/free-ship',
+        pathname: '/fashion/user/coin',
         component: PromotionFreeShip,
-        is_active: false,
-        is_loaded: false,
-        props: {},
     },
 ];
-
-//
-export const fashion_person_pathname_arr = FashionRoutes.reduce(
-    (a, b) => a + b.pathname,
-    ''
-);

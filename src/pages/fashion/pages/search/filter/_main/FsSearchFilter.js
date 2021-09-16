@@ -10,6 +10,7 @@ import FsScPriceMinMax from '../price_min_max/FsScPriceMinMax';
 import FsSearchFilterShop from '../shop/_main/FsSearchFilterShop';
 //
 import './FsSearchFilter.scss';
+import IconFilter from '../../../../../../_icons_svg/_icon_filter/IconFilter';
 
 //
 FsSearchFilter.propTypes = {
@@ -33,15 +34,17 @@ function FsSearchFilter({
 }) {
     //
     return (
-        <div className="FsSearchFilter primary-08 font-14px">
+        <div className="FsSearchFilter text-primary-08 font-14px">
             {shop_info.id && shop_info.id > 0 ? (
                 <div className="margin-bottom-15px">
                     <FsSearchFilterShop shop_info={shop_info} />
                 </div>
             ) : null}
 
-            <div className="margin-bottom-20px text-upper font-700 font-15px">
-                Bộ lọc tìm kiếm
+            <div className="display-flex align-items-center margin-bottom-20px text-upper font-700 font-15px">
+                <IconFilter stroke="currentColor" size_icon="15px" />
+
+                <span className="margin-left-5px">Bộ lọc tìm kiếm</span>
             </div>
 
             <div className="display-flex flex-col">
