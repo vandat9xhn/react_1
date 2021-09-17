@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import FsPPrUpdateInput from '../../_component/update_input/FsPPrUpdateInput';
-import FsPPrBtnConfirm from '../../_component/btn_confirm/FsPPrBtnConfirm';
+import FsPerUpdateInput from '../../../../_component/update_input/FsPerUpdateInput';
+import FsPerBtnConfirm from '../../../../_component/btn_confirm/FsPerBtnConfirm';
 
 //
 FsPPrEmailConfirmPass.propTypes = {};
@@ -19,7 +19,7 @@ function FsPPrEmailConfirmPass({
     return (
         <form className="FsPPrEmailConfirmPass">
             <div className="FsPPrEmailNew_pass margin-bottom-20px">
-                <FsPPrUpdateInput
+                <FsPerUpdateInput
                     label="Mật khẩu"
                     value={password}
                     type="password"
@@ -28,8 +28,8 @@ function FsPPrEmailConfirmPass({
                 />
             </div>
 
-            <div className="FsPPrEmailConfirmPass_btn fs-profile-update-confirms">
-                <FsPPrBtnConfirm handleConfirm={confirmPassword} />
+            <div className="FsPPrEmailConfirmPass_btn fs-personal-update-confirms">
+                <FsPerBtnConfirm handleConfirm={confirmPassword} />
             </div>
         </form>
     );

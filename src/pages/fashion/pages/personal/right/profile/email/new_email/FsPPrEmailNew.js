@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FsPPrUpdateInput from '../../_component/update_input/FsPPrUpdateInput';
+import FsPerUpdateInput from '../../../../_component/update_input/FsPerUpdateInput';
 
 //
 FsPPrEmailNew.propTypes = {};
@@ -18,7 +18,7 @@ function FsPPrEmailNew({
     return (
         <form className="FsPPrEmailNew">
             <div className="FsPPrEmailNew_pass margin-bottom-20px">
-                <FsPPrUpdateInput
+                <FsPerUpdateInput
                     label="Email"
                     value={new_email}
                     handleChange={changeNewEmail}
@@ -26,7 +26,7 @@ function FsPPrEmailNew({
                 />
             </div>
 
-            <div className="FsPPrEmailNew_btn fs-profile-update-confirms display-flex align-items-center">
+            <div className="FsPPrEmailNew_btn fs-personal-update-confirms display-flex align-items-center">
                 <button
                     className="btn btn-hv btn-active padding-y-8px padding-x-20px brs-2px bg-fashion-red text-white cursor-pointer"
                     type="button"

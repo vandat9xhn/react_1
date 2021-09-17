@@ -44,6 +44,13 @@
     border-color: var(--md-bg-blur);
 }
 
+// ------- SIDE
+
+.border-bottom-blur{
+    border-bottom: 1px solid var(--md-bg-blur);
+}
+
+
 // ------- BORDER RADIUS
 
 
@@ -69,6 +76,13 @@
     border-radius: 50%;
 }
 
+// --------- OUTLINE
+
+.outline-none{
+    outline: none;
+}
+
+// ------ MEDIA QUERIES
 
 // 
 @media (max-width: 400px) {
@@ -79,10 +93,4 @@
     .brs-8px-md {
         border-radius: 0;
     }
-}
-
-// --------- OUTLINE
-
-.outline-none{
-    outline: none;
 }

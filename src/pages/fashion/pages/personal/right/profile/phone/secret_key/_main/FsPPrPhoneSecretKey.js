@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import FsPPrUpdateInput from '../../../_component/update_input/FsPPrUpdateInput';
-import FsPPrBtnConfirm from '../../../_component/btn_confirm/FsPPrBtnConfirm';
+import FsPerUpdateInput from '../../../../../_component/update_input/FsPerUpdateInput';
+import FsPerBtnConfirm from '../../../../../_component/btn_confirm/FsPerBtnConfirm';
 import IconUpdate from '../../../../../../../../../_icons_svg/icon_update/IconUpdate';
 import FsPPrPSecretKeyTime from '../time/FsPPrPSecretKeyTime';
 
@@ -23,7 +23,7 @@ function FsPPrPhoneSecretKey({
     return (
         <form className="FsPPrPhoneSecretKey">
             <div className="margin-bottom-20px">
-                <FsPPrUpdateInput
+                <FsPerUpdateInput
                     label="Mã xác nhận"
                     value={secret_key}
                     type="text"
@@ -32,9 +32,9 @@ function FsPPrPhoneSecretKey({
                 />
             </div>
 
-            <div className="fs-profile-update-confirms">
+            <div className="fs-personal-update-confirms">
                 <div className="display-flex align-items-center">
-                    <FsPPrBtnConfirm handleConfirm={confirmKey} />
+                    <FsPerBtnConfirm handleConfirm={confirmKey} />
 
                     <div className="margin-left-15px">
                         <FsPPrPSecretKeyTime

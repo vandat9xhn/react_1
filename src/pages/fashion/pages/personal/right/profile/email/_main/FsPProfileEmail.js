@@ -75,7 +75,7 @@ function FsPProfileEmail({ email, confirmNewEmail, rejectNewEmail }) {
     return (
         <div className="FsPProfileEmail">
             <div className="FsPProfileEmail_title display-flex margin-bottom-20px">
-                <div className="fs-profile-input-label">Địa Chỉ Hộp Thư</div>
+                <div className="fs-personal-input-label">Địa Chỉ Hộp Thư</div>
 
                 <div>{email}</div>
             </div>

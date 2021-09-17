@@ -1,0 +1,39 @@
+.FsPPurchaseShop{
+    padding: 24px 24px 12px 24px;
+}
+
+
+// .
+.FsPPurchaseShop_head{
+    margin-bottom: 10px;
+}
+
+.FsPPurchaseShop_bot{
+    position: relative;
+    &:hover{
+        .FsPPurchaseShop_bot-info{
+            display: block;
+        }
+    }
+}
+//
+.FsPPurchaseShop_bot-info{
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: none;
+    width: 15rem;
+    max-width: 100vw;
+    padding: 0.5rem;
+    background-color: var(--md-bg-primary);
+}
+
+
+//
+@media (max-width: 17rem){
+    .FsPPurchaseShop_cost-detail{
+        right: -0.75rem;
+    }
+}

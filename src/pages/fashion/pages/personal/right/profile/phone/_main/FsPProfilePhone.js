@@ -10,7 +10,7 @@ import FsPPrPhoneSteps from '../steps/_main/FsPPrPhoneSteps';
 import FsPPrPhoneConfirmPass from '../confirm_password/FsPPrPhoneConfirmPass';
 import FsPPrPhoneSecretKey from '../secret_key/_main/FsPPrPhoneSecretKey';
 import FsPProfilePhoneNew from '../new_phone/_main/FsPProfilePhoneNew';
-import FsPPrBtnConfirm from '../../_component/btn_confirm/FsPPrBtnConfirm';
+import FsPerBtnConfirm from '../../../../_component/btn_confirm/FsPerBtnConfirm';
 //
 import './FsPProfilePhone.scss';
 
@@ -197,7 +197,7 @@ function FsPProfilePhone({ phone, handleDone }) {
 
             <div>
                 <div className="display-flex align-items-center margin-bottom-20px padding-y-15px">
-                    <div className="fs-profile-input-label">Số Điện Thoại</div>
+                    <div className="fs-personal-input-label">Số Điện Thoại</div>
 
                     <div>{c_step == 3 ? new_phone : phone}</div>
                 </div>
@@ -229,7 +229,7 @@ function FsPProfilePhone({ phone, handleDone }) {
                         />
                     ) : (
                         <div className="display-flex-center">
-                            <FsPPrBtnConfirm
+                            <FsPerBtnConfirm
                                 title="Hoàn thành"
                                 handleConfirm={onDone}
                             />

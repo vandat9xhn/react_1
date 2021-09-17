@@ -30,17 +30,17 @@ function FsPPurchaseRowSearch({ handleSearch }) {
 
     //
     return (
-        <div className="FsPPurchaseRowSearch padding-10px bg-blur">
-            <div className="display-flex">
+        <div className="FsPPurchaseRowSearch padding-10px bg-blur font-14px">
+            <div className="display-flex align-items-center">
                 <div
                     className="padding-x-5px cursor-pointer"
                     onClick={onSearch}
                 >
-                    <IconsInput y={200} size_icon="1.5rem" />
+                    <IconsInput y={200} size_icon="20px" />
                 </div>
 
                 <input
-                    className="flex-grow-1 border-none padding-5px"
+                    className="flex-grow-1 border-none outline-none padding-5px bg-transparent"
                     value={value}
                     type="text"
                     autoComplete="off"

@@ -1,0 +1,26 @@
+// ------
+$width-left: 160px;
+
+// ------
+.fs-personal-input-label {
+    width: $width-left;
+    padding-right: 20px;
+
+    text-align: end;
+    color: var(--md-color-third);
+    font-size: 14px;
+}
+
+.fs-personal-update-input {
+    width: 300px;
+    color: var(--primary-08);
+}
+
+.fs-personal-update-error {
+    margin-left: $width-left;
+}
+
+.fs-personal-update-confirms {
+    margin-left: $width-left;
+    margin-bottom: 50px;
+}

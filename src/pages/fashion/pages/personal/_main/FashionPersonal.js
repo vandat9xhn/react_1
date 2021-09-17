@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import './FashionPersonalCommon.scss';
+// 
 import FashionH from '../../../components/head/_main/FashionH';
 import PersonalLeft from '../left/_main/FsPersonalLeft';
 import FsPersonalRight from '../right/_main/FsPersonalRight';
 //
 import './FashionPersonal.scss';
-// import './FashionPersonalRes.scss';
 
 //
 FashionPersonal.propTypes = {};

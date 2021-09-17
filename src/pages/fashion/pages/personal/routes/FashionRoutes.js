@@ -6,8 +6,16 @@ const PersonalProfile = React.lazy(() =>
     import('../right/profile/_main/FsPersonalProfile')
 );
 
+const FsPersonalBank = React.lazy(() =>
+    import('../right/bank/_main/FsPersonalBank')
+);
+
 const FsPersonalAddress = React.lazy(() =>
     import('../right/address/_main/FsPersonalAddress')
+);
+
+const FsPersonalChangePass = React.lazy(() =>
+    import('../right/change_password/_main/FsPersonalChangePass')
 );
 
 //
@@ -40,7 +48,7 @@ export const FashionRoutes = [
     },
     {
         pathname: '/fashion/user/account/bank',
-        component: FsPersonalAddress,
+        component: FsPersonalBank,
     },
     {
         pathname: '/fashion/user/account/contact',
@@ -48,7 +56,7 @@ export const FashionRoutes = [
     },
     {
         pathname: '/fashion/user/account/password',
-        component: FsPersonalAddress,
+        component: FsPersonalChangePass,
     },
 
     //
