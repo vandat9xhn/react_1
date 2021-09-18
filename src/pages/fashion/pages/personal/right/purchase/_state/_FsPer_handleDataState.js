@@ -1,6 +1,9 @@
 import { default_product_obj } from '../../../../../../../_default/fashion/DefaultProductItem';
 import { default_shop_obj } from '../../../../../../../_default/fashion/DefaultShop';
-import { getRandomNumber } from '../../../../../../../_default/_common/default_id';
+import {
+    getRandomId,
+    getRandomNumber,
+} from '../../../../../../../_default/_common/default_id';
 
 //
 export const FsPer_ARR_STAGE = [
@@ -75,21 +78,65 @@ export function FsPer_handleDataState({ data }) {
                 id: 1,
                 shop_info: shop_info(),
                 group_arr: group_arr_1,
-                transport_obj: {
-                    transport_info: 'Giao hàng thành công',
-                    transport_status: 'Đã giao',
-                },
+
                 total_price: 2000000,
+                order_status: 'Đã giao',
+                order_process_arr: [
+                    {
+                        created_time: new Date().getTime(),
+                        info: 'Đang giao hàng',
+                    },
+                    {
+                        created_time: new Date().getTime(),
+                        info: 'Shipper báo đang lấy hàng',
+                    },
+                    {
+                        created_time: new Date().getTime(),
+                        info: 'Đang lấy hàng từ Shop',
+                    },
+                    {
+                        created_time: new Date().getTime(),
+                        info: 'Chờ Shop xác nhận thanh toán',
+                    },
+                ],
+
+                payment_obj: {
+                    name: 'Thanh toán khi nhận hàng',
+                },
+
+                transport_obj: {
+                    id: getRandomId(),
+                    name: 'Giao hàng nhanh',
+                    price: 30000,
+                    discount: 2000,
+                    status: 'Giao hàng thành công',
+                },
             },
             {
                 id: 2,
                 shop_info: shop_info(),
                 group_arr: group_arr_2,
-                transport_obj: {
-                    transport_info: 'Giao hàng thành công/Chưa đối soát',
-                    transport_status: 'Đã giao',
-                },
+
                 total_price: 1000000,
+                order_status: 'Đã giao',
+                order_process_arr: [
+                    {
+                        created_time: new Date().getTime(),
+                        info: 'Đang giao hàng',
+                    },
+                ],
+
+                payment_obj: {
+                    name: 'Thanh toán khi nhận hàng',
+                },
+
+                transport_obj: {
+                    id: getRandomId(),
+                    name: 'Ninja Van',
+                    price: 27000,
+                    discount: 18000,
+                    status: 'Giao hàng thành công',
+                },
             },
         ],
         count: 8,

@@ -26,6 +26,7 @@ import FsPPurchaseHead from '../head/_main/FsPPurchaseHead';
 import FsPPurchaseRowSearch from '../row_search/FsPPurchaseRowSearch';
 //
 import './FsPersonalPurchase.scss';
+import FsPPurchaseOrder from '../../purchase_order/_main/FsPPurchaseOrder';
 
 //
 function getNewKey() {
@@ -55,6 +56,11 @@ function FsPersonalPurchase(props) {
 
     //
     const [count_new_arr, setCountNewArr] = useState([0, 0, 0, 0, 0, 0]);
+    const [user_info, setUserInfo] = useState({
+        name: 'Nguyen A',
+        phone: '0123456789',
+        address: 'adsad, Mo Lao, Ha Dong, Ha Noi',
+    });
 
     //
     const ref_value_search = useRef('');
@@ -63,7 +69,6 @@ function FsPersonalPurchase(props) {
     //
     const {
         state_obj,
-        setStateObj,
 
         ref_c_key,
         ref_fetching,
@@ -77,7 +82,7 @@ function FsPersonalPurchase(props) {
     });
 
     const { obj, c_key, is_fetching } = state_obj;
-    const purchase_ix = FsPer_ARR_STAGE.indexOf(c_key);
+    const purchase_step = FsPer_ARR_STAGE.indexOf(c_key);
 
     //
     const { observerShowMore } = useObserverGetData({
@@ -94,8 +99,15 @@ function FsPersonalPurchase(props) {
     //
     useEffect(() => {
         getData_API();
-        handleObserver();
     }, []);
+
+    useEffect(() => {
+        if (location.pathname == '/fashion/user/purchase') {
+            handleObserver();
+        } else {
+            window.scrollTo(0, 0);
+        }
+    }, [location.pathname]);
 
     //
     useEffect(() => {
@@ -144,11 +156,6 @@ function FsPersonalPurchase(props) {
     // --------
 
     //
-    function getMore_API_Buying() {
-        getData_API(c_key);
-    }
-
-    //
     function handleChooseStep(new_key_ix) {
         const new_key = FsPer_ARR_STAGE[new_key_ix];
 
@@ -167,29 +174,40 @@ function FsPersonalPurchase(props) {
     }
 
     //
-    function openConFirmCancelBuying(buy_shop_ix, item_ix, item_id) {
+    function handleBuyAgain(purchase_ix) {
+        console.log(purchase_ix);
+    }
+
+    //
+    function goToOrder(order_id) {
+        history.pushState('', '', '/fashion/user/purchase/order/' + order_id);
+        forceUpdate();
+    }
+
+    //
+    function openConFirmCancelBuying(purchase_ix, group_ix, item_ix) {
         openScreenConfirm({
             openScreenFloor: openScreenFloor,
             title: 'Cancel Product',
             notification: 'Do you really want to cancel buying this product?',
             handleConfirm: () => {
-                conFirmCancelBuying(buy_shop_ix, item_ix, item_id);
+                conFirmCancelBuying(purchase_ix, group_ix, item_ix);
             },
         });
     }
 
     //
-    function conFirmCancelBuying(buy_shop_ix, item_ix, item_id) {
-        console.log(buy_shop_ix, item_ix, item_id);
+    function conFirmCancelBuying(purchase_ix, group_ix, item_ix) {
+        console.log(purchase_ix, group_ix, item_ix);
     }
 
     //
-    return (
+    return location.pathname == '/fashion/user/purchase' ? (
         <div className="FsPersonalPurchase">
             <div className="margin-bottom-15px">
                 <FsPPurchaseHead
                     arr_purchase={FsPer_ARR_PURCHASE}
-                    purchase_ix={purchase_ix}
+                    purchase_step={purchase_step}
                     count_new_arr={count_new_arr}
                     handleChoose={handleChooseStep}
                 />
@@ -209,11 +227,18 @@ function FsPersonalPurchase(props) {
                             className="FsPersonalPurchase_item margin-bottom-10px"
                         >
                             <FsPPurchaseShop
+                                purchase_ix={ix}
                                 order_id={purchase_obj.id}
                                 shop_info={purchase_obj.shop_info}
                                 group_arr={purchase_obj.group_arr}
-                                transport_obj={purchase_obj.transport_obj}
+                                transport_status={
+                                    purchase_obj.transport_obj.status
+                                }
+                                order_status={purchase_obj.order_status}
                                 total_price={purchase_obj.total_price}
+                                //
+                                handleBuyAgain={handleBuyAgain}
+                                goToOrder={goToOrder}
                             />
                         </div>
                     ))}
@@ -243,7 +268,15 @@ function FsPersonalPurchase(props) {
                 No BILL
             </div>
         </div>
-    );
+    ) : /fashion\/user\/purchase\/order\/\d+/.test(location.pathname) ? (
+        obj[c_key].has_fetched ? (
+            <FsPPurchaseOrder
+                user_info={user_info}
+                purchase_obj={obj[c_key].data_arr[0]}
+                c_step={4}
+            />
+        ) : null
+    ) : null;
 }
 
 export default FsPersonalPurchase;

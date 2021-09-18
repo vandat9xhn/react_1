@@ -65,6 +65,11 @@ export const FashionRoutes = [
         component: FsPersonalPurchase,
     },
 
+    {
+        pathname: '/fashion/user/purchase/order/:id',
+        component: FsPersonalPurchase,
+    },
+
     //
     {
         pathname: '/fashion/user/notifications/order',

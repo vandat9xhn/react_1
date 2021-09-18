@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { formatNum } from '../../../../../../../../_some_function/FormatNum';
+// 
 import shopee_insurance from '../../../../../../../../../image/shopee_insurance.png';
 //
 import './FsPPurShopTotal.scss';
-import { formatNum } from '../../../../../../../../_some_function/FormatNum';
 
 //
 FsPPurShopTotal.propTypes = {};

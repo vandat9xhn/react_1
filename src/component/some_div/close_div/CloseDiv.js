@@ -12,11 +12,15 @@ class CloseDiv extends Component {
 
     //
     componentDidMount() {
-        window.addEventListener('click', this.handleClick);
+        document
+            .getElementsByTagName('body')[0]
+            .addEventListener('click', this.handleClick);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('click', this.handleClick);
+        document
+            .getElementsByTagName('body')[0]
+            .removeEventListener('click', this.handleClick);
     }
 
     //
@@ -28,11 +32,7 @@ class CloseDiv extends Component {
 
     //
     render() {
-        return (
-            <div ref={this.divRef}>
-                {this.props.children}
-            </div>
-        );
+        return <div ref={this.divRef}>{this.props.children}</div>;
     }
 }
 

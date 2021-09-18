@@ -1,27 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { formatNum } from '../../../../../../../../../_some_function/FormatNum';
+//
+import HasLinkOrNot from '../../../../../../../../../component/link/has_link_or_not/HasLinkOrNot';
+//
 import FsPPurProductBase from '../../product/base/FsPPurProductBase';
 import FsShopDealLabel from '../../../../../../../components/shop_deal_label/FsShopDealLabel';
-import { formatNum } from '../../../../../../../../../_some_function/FormatNum';
 
 //
-FsPPurCombo.propTypes = {};
+FsPPurCombo.propTypes = {
+    item_info_arr: PropTypes.array,
+    min_count: PropTypes.number,
+    saved_price: PropTypes.number,
+    total_price: PropTypes.number,
+    has_link: PropTypes.bool,
+};
+
+FsPPurCombo.defaultProps = {
+    has_link: false,
+};
 
 //
-function FsPPurCombo({ item_info_arr, min_count, saved_price, total_price }) {
+function FsPPurCombo({
+    item_info_arr,
+    min_count,
+    saved_price,
+    total_price,
+    has_link,
+}) {
     //
     return (
         <div className="FsPPurCombo padding-y-12px">
             <div>
                 {item_info_arr.map((item_info, ix) => (
                     <div key={item_info.id} className="padding-bottom-12px">
-                        <FsPPurProductBase
-                            name={item_info.name}
-                            img={item_info.img}
-                            quantity={item_info.quantity}
-                            model_name={item_info.model_name}
-                        />
+                        <HasLinkOrNot
+                            has_link={has_link}
+                            link_to={`/fashion:${item_info.id}`}
+                        >
+                            <FsPPurProductBase
+                                name={item_info.name}
+                                img={item_info.img}
+                                quantity={item_info.quantity}
+                                model_name={item_info.model_name}
+                            />
+                        </HasLinkOrNot>
                     </div>
                 ))}
             </div>

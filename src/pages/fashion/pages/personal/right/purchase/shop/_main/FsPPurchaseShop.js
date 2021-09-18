@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+//
+import { context_api } from '../../../../../../../../_context/ContextAPI';
 //
 import FsPPurShopHead from '../head/_main/FsPPurShopHead';
 import FsPPurShopTotal from '../total/FsPPurShopTotal';
@@ -16,15 +18,39 @@ FsPPurchaseShop.propTypes = {};
 
 //
 function FsPPurchaseShop({
+    purchase_ix,
+
     order_id,
     shop_info,
     group_arr,
-    transport_obj,
+    order_status,
+    transport_status,
     total_price,
+
+    handleBuyAgain,
+    goToOrder,
 }) {
     //
+    const { openRoomChat } = useContext(context_api);
+
+    //
     const { id, name, is_like, is_mall, is_plus } = shop_info;
-    const { transport_info, transport_status } = transport_obj;
+
+    //
+    function openChat() {
+        openRoomChat(id);
+    }
+
+    //
+    function buyAgain() {
+        handleBuyAgain(purchase_ix);
+    }
+
+    //
+    function onGoToOrder(e) {
+        e.preventDefault()
+        goToOrder(order_id);
+    }
 
     //
     return (
@@ -36,7 +62,7 @@ function FsPPurchaseShop({
                     is_like={is_like}
                     is_mall={is_mall}
                     is_plus={is_plus}
-                    transport_info={transport_info}
+                    order_status={order_status}
                     transport_status={transport_status}
                 />
             </div>
@@ -45,6 +71,7 @@ function FsPPurchaseShop({
                 <Link
                     className="text-primary-08"
                     to={`/fashion/user/purchase/order/${order_id}`}
+                    onClick={onGoToOrder}
                 >
                     {group_arr.map((group_obj, group_ix) => (
                         <div
@@ -92,7 +119,11 @@ function FsPPurchaseShop({
             </div>
 
             <div className="FsPPurchaseShop_total">
-                <FsPPurShopTotal total_price={total_price} />
+                <FsPPurShopTotal
+                    total_price={total_price}
+                    contactWithSeller={openChat}
+                    buyAgain={buyAgain}
+                />
             </div>
         </div>
     );

@@ -1,0 +1,13 @@
+.FsPPOrderSteps{
+    padding: 40px 24px;
+    
+    .StepperDiv_line_width {
+        top: 30px;
+        left: 60px;
+        width: calc(100% - 120px);
+        height: 4px;
+    }
+    .StepperDiv_line-active{
+        background-color: #2dc258;
+    }
+}

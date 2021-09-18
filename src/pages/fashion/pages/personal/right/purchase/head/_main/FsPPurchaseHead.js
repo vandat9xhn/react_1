@@ -10,7 +10,7 @@ FsPPurchaseHead.propTypes = {};
 function FsPPurchaseHead({
     arr_purchase,
     count_new_arr,
-    purchase_ix,
+    purchase_step,
     handleChoose,
 }) {
     //
@@ -21,7 +21,7 @@ function FsPPurchaseHead({
                     <div key={ix} className="flex-grow-1">
                         <FsPPurchaseHeadItem
                             ix={ix}
-                            is_active={ix == purchase_ix}
+                            is_active={ix == purchase_step}
                             title={purchase_title}
                             count_new={count_new_arr[ix]}
                             handleChoose={handleChoose}
