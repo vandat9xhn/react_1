@@ -1,0 +1,38 @@
+// --------
+$vc-side-width: 10;
+$card-height: 120px;
+
+// ----------
+
+.FsFreeShipCard {
+    height: card-height;
+    border-top: 1px solid var(--md-bg-blur);
+    border-right: 1px solid var(--md-bg-blur);
+    border-bottom: 1px solid var(--md-bg-blur);
+}
+
+// .
+.FsFreeShipCard_side {
+    width: #{$vc-side-width}px;
+    background-image: radial-gradient(
+        circle,
+        var(--md-bg-primary),
+        var(--md-bg-primary) 50%,
+        transparent,
+        transparent
+    );
+    background-repeat: repeat-y;
+    background-size: #{$vc-side-width}px #{$vc-side-width}px;
+}
+
+// .
+.FsFreeShipCard_left {
+    width: $card-height;
+    height: 100%;
+}
+
+// .
+.FsFreeShipCard_right {
+    min-width: 75px;
+    height: 100%;
+}

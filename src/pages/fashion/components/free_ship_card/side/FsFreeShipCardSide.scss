@@ -1,0 +1,34 @@
+// --------
+$vc-side-width: 10;
+
+// ----------
+
+.FsFreeShipCardSide_contain {
+    top: 2%;
+
+    width: #{$vc-side-width}px;
+    height: 96%;
+
+    background-repeat: repeat-y;
+}
+.FsFreeShipCardSide_contain-white {
+    background-image: radial-gradient(
+        circle,
+        var(--md-bg-primary),
+        var(--md-bg-primary) 20%,
+        transparent,
+        transparent
+    );
+    background-size: #{$vc-side-width}px #{$vc-side-width}px;
+}
+.FsFreeShipCardSide_contain-ccc {
+    left: 1px;
+    background-image: radial-gradient(
+        circle,
+        var(--md-bg-ccc),
+        var(--md-bg-ccc) 25%,
+        transparent,
+        transparent
+    );
+    background-size: #{$vc-side-width}px #{$vc-side-width}px;
+}

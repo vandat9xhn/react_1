@@ -1,0 +1,17 @@
+.FsPVoucherInput{
+    padding: 28px 44px;
+}
+
+.FsPVoucherInput_input{
+    width: 400px;
+    height: 44px;
+
+    &::placeholder{
+        color: var(--del);
+    }
+}
+
+.FsPVoucherInput_btn{
+    width: 100px;
+    height: 44px;
+}

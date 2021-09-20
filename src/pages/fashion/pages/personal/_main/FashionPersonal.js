@@ -21,7 +21,7 @@ function FashionPersonal(props) {
 
             <div className="FashionPersonal_contain fashion-width padding-top-15px">
                 <div className="FashionPersonal_row display-flex">
-                    <div className="FashionPersonal_left margin-right-20px">
+                    <div className="FashionPersonal_left flex-shrink-0 margin-right-20px">
                         <PersonalLeft />
                     </div>
 

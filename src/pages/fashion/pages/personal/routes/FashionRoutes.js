@@ -3,19 +3,19 @@ import React from 'react';
 // ------
 
 const PersonalProfile = React.lazy(() =>
-    import('../right/profile/_main/FsPersonalProfile')
+    import('../right/account/profile/_main/FsPersonalProfile')
 );
 
 const FsPersonalBank = React.lazy(() =>
-    import('../right/bank/_main/FsPersonalBank')
+    import('../right/account/bank/_main/FsPersonalBank')
 );
 
 const FsPersonalAddress = React.lazy(() =>
-    import('../right/address/_main/FsPersonalAddress')
+    import('../right/account/address/_main/FsPersonalAddress')
 );
 
 const FsPersonalChangePass = React.lazy(() =>
-    import('../right/change_password/_main/FsPersonalChangePass')
+    import('../right/account/change_password/_main/FsPersonalChangePass')
 );
 
 //
@@ -23,20 +23,40 @@ const FsPersonalPurchase = React.lazy(() =>
     import('../right/purchase/_main/FsPersonalPurchase')
 );
 
-const PromotionFreeShip = React.lazy(() =>
-    import('../right/free_ship/PromotionFreeShip')
+const FsPersonalCoin = React.lazy(() =>
+    import('../right/coin/_main/FsPersonalCoin')
 );
 
 // -------
 
-const Notifications = React.lazy(() =>
-    import('../right/notifications/Notifications')
+const FsPNoticeActivity = React.lazy(() =>
+    import('../right/notifications/activity/_main/FsPNoticeActivity')
+);
+
+const FsPNoticeCommon = React.lazy(() =>
+    import('../right/notifications/common/_main/FsPNoticeCommon')
+);
+
+const FsPNoticeOrder = React.lazy(() =>
+    import('../right/notifications/order/_main/FsPNoticeOrder')
+);
+
+const FsPNoticePromotion = React.lazy(() =>
+    import('../right/notifications/promotion/_main/FsPNoticePromotion')
+);
+
+const FsPNoticeRating = React.lazy(() =>
+    import('../right/notifications/rating/_main/FsPNoticeRating')
+);
+
+const FsPNoticeWallet = React.lazy(() =>
+    import('../right/notifications/wallet/_main/FsPNoticeWallet')
 );
 
 // -------
 
-const PromotionVoucher = React.lazy(() =>
-    import('../right/voucher/PromotionVoucher')
+const FsPersonalVoucher = React.lazy(() =>
+    import('../right/voucher/_main/FsPersonalVoucher')
 );
 
 //
@@ -73,36 +93,36 @@ export const FashionRoutes = [
     //
     {
         pathname: '/fashion/user/notifications/order',
-        component: Notifications,
+        component: FsPNoticeOrder,
     },
     {
         pathname: '/fashion/user/notifications/promotion',
-        component: Notifications,
+        component: FsPNoticePromotion,
     },
     {
         pathname: '/fashion/user/notifications/wallet',
-        component: Notifications,
+        component: FsPNoticeWallet,
     },
     {
         pathname: '/fashion/user/notifications/activity',
-        component: Notifications,
+        component: FsPNoticeActivity,
     },
     {
         pathname: '/fashion/user/notifications/rating',
-        component: Notifications,
+        component: FsPNoticeRating,
     },
     {
         pathname: '/fashion/user/notifications/common',
-        component: Notifications,
+        component: FsPNoticeCommon,
     },
 
     //
     {
         pathname: '/fashion/user/voucher',
-        component: PromotionVoucher,
+        component: FsPersonalVoucher,
     },
     {
         pathname: '/fashion/user/coin',
-        component: PromotionFreeShip,
+        component: FsPersonalCoin,
     },
 ];

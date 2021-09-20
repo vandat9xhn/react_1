@@ -47,10 +47,18 @@ function IconsArrow({ size_icon, x, y }) {
 
             <g strokeWidth="25">
                 {/* next > x=200, y=0 */}
-                <path d="M275,20 325,100 275,180" className="IconsArrow_next" />
+                <path
+                    d="M275,20 325,100 275,180"
+                    className="IconsArrow_next"
+                    stroke="currentColor"
+                />
 
                 {/* prev < x=400, y=0 */}
-                <path d="M525,20 475,100 525,180" className="IconsArrow_prev" />
+                <path
+                    d="M525,20 475,100 525,180"
+                    className="IconsArrow_prev"
+                    stroke="currentColor"
+                />
             </g>
 
             {/* back to top x=0, y=200 */}

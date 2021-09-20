@@ -1,0 +1,25 @@
+.FsPVoucherItem_row{
+    .FsPVoucherItem_left {
+        filter: grayscale(1);
+    }
+}
+
+.FsPVoucherItem_left {
+    width: 120px;
+}
+
+.FsPVoucherItem_right {
+    width: 110px;
+}
+
+.FsPVoucherItem_bg_count {
+    height: 8px;
+    border-radius: 15px;
+}
+// .
+.FsPVoucherItem_bg_count_contain {
+    background-image: linear-gradient(to right, var(--fashion-head), orange);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0% 0%;
+}

@@ -5,6 +5,9 @@ import './FashionMallLike.scss';
 
 //
 FashionMallLike.propTypes = {
+    title_like: PropTypes.string,
+    title_mall: PropTypes.string,
+
     is_like: PropTypes.bool,
     is_mall: PropTypes.bool,
     is_plus: PropTypes.bool,
@@ -13,6 +16,9 @@ FashionMallLike.propTypes = {
 };
 
 FashionMallLike.defaultProps = {
+    title_like: 'Yêu thích',
+    title_mall: 'Mall',
+
     is_like: false,
     is_mall: false,
     is_plus: false,
@@ -21,7 +27,17 @@ FashionMallLike.defaultProps = {
 };
 
 //
-function FashionMallLike({ is_like, is_mall, is_plus, class_text, use_side }) {
+function FashionMallLike({
+    title_like,
+    title_mall,
+
+    is_like,
+    is_mall,
+    is_plus,
+    
+    class_text,
+    use_side,
+}) {
     //
     if (!is_like && !is_mall) {
         return null;
@@ -38,7 +54,7 @@ function FashionMallLike({ is_like, is_mall, is_plus, class_text, use_side }) {
                 <div
                     className={`pos-rel  padding-x-4px bg-fashion-mall text-nowrap text-white font-500 ${class_text}`}
                 >
-                    Mall
+                    {title_mall}
                 </div>
             </div>
         );
@@ -55,7 +71,7 @@ function FashionMallLike({ is_like, is_mall, is_plus, class_text, use_side }) {
                 <div
                     className={`pos-rel padding-x-4px bg-fashion-red text-nowrap text-white font-500 ${class_text}`}
                 >
-                    Yêu thích {is_plus ? '+' : ''}
+                    {title_like} {is_plus ? '+' : ''}
                 </div>
             </div>
         );

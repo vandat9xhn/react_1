@@ -5,7 +5,7 @@ import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
 import { formatNum } from '../../../../../_some_function/FormatNum';
 //
-import FsFreeShipCard from '../../../../../pages/fashion/components/free_ship_card/FsFreeShipCard';
+import FsFreeShipCard from '../../../../../pages/fashion/components/free_ship_card/_main/FsFreeShipCard';
 //
 import './ScreenFsFreeShipItem.scss';
 

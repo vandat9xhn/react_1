@@ -1,0 +1,15 @@
+.FsPVcSuggested{
+    padding: 25px 30px;
+}
+
+.FsPVcSuggested_item{
+    margin-bottom: 20px;
+    width: 50%;
+    height: 120px;
+    &:nth-child(2n + 1){
+        padding-right: 10px;
+    }
+    &:nth-child(2n){
+        padding-left: 10px;
+    }
+}

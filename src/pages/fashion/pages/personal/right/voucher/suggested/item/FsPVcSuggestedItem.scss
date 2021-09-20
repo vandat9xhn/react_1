@@ -1,0 +1,19 @@
+.FsPVcSuggestedItem {
+    border: 1px solid var(--md-bg-blur);
+    box-shadow: 1px 1px 4px 0.5px var(--md-bg-blur);
+}
+
+.FsPVcSuggestedItem_left {
+    width: 120px;
+    border-right: 1px dashed var(--md-bg-blur);
+}
+
+.FsPVcSuggestedItem_right {
+    width: 125px;
+    border-left: 1px dashed var(--md-bg-blur);
+}
+
+.FsPVcSuggestedItem_like{
+    top: 4px;
+    left: -1px;
+}
