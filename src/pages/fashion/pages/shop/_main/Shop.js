@@ -120,6 +120,7 @@ function Shop(props) {
                                 }`}
                             >
                                 <FsShopCategoryMb
+                                    shop_id={shop_info.id}
                                     category_arr={shop_info.category_arr}
                                 />
                             </div>

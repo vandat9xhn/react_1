@@ -1,6 +1,22 @@
 .font-for-fashion {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: var(--primary-08);
+
+    .FetchingDiv_item {
+        animation-name: fetching_div_fashion;
+    }
+
+    @keyframes fetching_div_fashion {
+        0% {
+            background-color: var(--fashion-head);
+        }
+        50% {
+            background-color: var(--md-bg-ccc);
+        }
+        100% {
+            background-color: transparent;
+        }
+    }
 }
 
 .fashion-width {

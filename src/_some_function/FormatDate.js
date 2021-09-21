@@ -16,7 +16,7 @@ export function formatLocalDateTimeString(date = new Date(), locale = 'vi-VN') {
 
         day: '2-digit',
         month: '2-digit',
-        year: '2-digit',
+        year: 'numeric',
     }).format(date);
 }
 

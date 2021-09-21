@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
-// 
+//
 import './FsShopCategoryMb.scss';
 
 //
 FsShopCategoryMb.propTypes = {};
 
 //
-function FsShopCategoryMb({ category_arr }) {
+function FsShopCategoryMb({ shop_id, category_arr }) {
     //
     return (
         <div className="FsShopCategoryMb bg-primary">
@@ -18,7 +18,7 @@ function FsShopCategoryMb({ category_arr }) {
                 {category_arr.map((item, ix) => (
                     <Link
                         key={item.id}
-                        to={`/fashion/search?`}
+                        to={`/fashion/search?shop_id=${shop_id}`}
                         className="FsShopCategoryMb_item flex-between-center padding-10px"
                     >
                         <div className="display-flex align-items-center">

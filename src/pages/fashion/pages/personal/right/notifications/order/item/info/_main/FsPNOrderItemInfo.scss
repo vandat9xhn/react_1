@@ -1,0 +1,10 @@
+.FsPNOrderItemInfo_toggle{
+    transition: transform 150ms ease-in;
+}
+
+.FsPNOrderItemInfo_detail_contain{
+    &:hover{
+        border: 1px solid currentColor;
+        color: var(--fashion-head);
+    }
+}

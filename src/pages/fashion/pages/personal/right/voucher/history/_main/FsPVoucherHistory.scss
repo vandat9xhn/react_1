@@ -1,8 +1,12 @@
-.FsPVoucherHistory{
+.FsPVoucherHistory {
     padding: 0px 30px;
+
+    .FsPVoucherItem_left {
+        filter: grayscale(1);
+    }
 }
 
-.FsPVoucherHistory_title{
+.FsPVoucherHistory_title {
     padding: 24px 0px;
 }
 

@@ -1,22 +1,3 @@
 .FsPersonalPurchase_not_fetched {
     height: 300px;
 }
-
-.FsPersonalPurchase_fetching {
-    .FetchingDiv_item {
-        animation-name: fetching_div;
-    }
-
-    //
-    @keyframes fetching_div {
-        0% {
-            background-color: var(--border-fashion);
-        }
-        50% {
-            background-color: var(--md-bg-ccc);
-        }
-        100% {
-            background-color: transparent;
-        }
-    }
-}

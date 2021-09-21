@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { formatLocalDateTimeString } from '../../../../../../../_some_function/FormatDate';
+import { formatNum } from '../../../../../../../_some_function/FormatNum';
 //
 import coin_img from '../../../../../../../../image/coin.png';
 //
 import './FsPCoinItem.scss';
-import { formatNum } from '../../../../../../../_some_function/FormatNum';
 
 //
 FsPCoinItem.propTypes = {};
