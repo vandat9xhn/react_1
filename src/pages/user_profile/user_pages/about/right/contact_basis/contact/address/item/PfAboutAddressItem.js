@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { IconsProfileAbout } from '../../../../../../../../../_groups_icon/about/GroupIconProfileAbout';
 //
-import { handle_API_Address_U } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
+import { handle_API_UserAddress_U } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import AboutRowItemEdit from '../../../../_component/row_item_edit/AboutRowItemEdit';
 import PfAboutAddressEdit from '../edit/PfAboutAddressEdit';
@@ -34,7 +34,7 @@ function PfAboutAddressItem(props) {
                 item_obj={address_obj}
                 Icon={IconsProfileAbout.address}
                 ComponentEdit={PfAboutAddressEdit}
-                handle_API_U={handle_API_Address_U}
+                handle_API_U={handle_API_UserAddress_U}
                 handleUpdateItemObj={handleUpdateItemObj}
             />
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { handle_API_Product_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
+import { handle_API_FsProduct_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import RowProducts from '../../../components/row_products/_main/RowProducts';
 import FashionSeeMoreOnTitle from '../../../components/see_more/on_title/FashionSeeMoreOnTitle';
@@ -25,7 +25,7 @@ FsShopRowProducts.defaultProps = {
 function FsShopRowProducts({ type_id, title, has_more, title_more }) {
     //
     async function handle_API_L() {
-        return handle_API_Product_L(0, 'shop_row', {
+        return handle_API_FsProduct_L(0, 'shop_row', {
             type_model: type_id,
         });
     }

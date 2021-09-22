@@ -17,8 +17,9 @@ ProductItem.propTypes = {
     img: PropTypes.string,
     name: PropTypes.string,
     in_stock: PropTypes.string,
-    new_price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    old_price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+    new_price: PropTypes.number,
+    old_price: PropTypes.number,
     discount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     installment: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
@@ -44,33 +45,38 @@ function ProductItem({
     return name ? (
         <div className="ProductItem padding-8px pos-rel" title={name}>
             <Link to={link} className="normal-text hv-cl-blue">
-                <div className="ProductItem_head">
-                    <div className="ProductItem_head-img pos-abs-100">
-                        <VidPicObserve vid_pic={img} />
-                    </div>
+                <div className="ProductItem_head pos-rel padding-top-100per">
+                    <VidPicObserve
+                        vid_pic={img}
+                        type="img"
+                        img_props={{
+                            className:
+                                'ProductItem_head-img pos-abs left-0 bottom-0 wh-100 brs-5px object-fit-cover',
+                        }}
+                    />
                 </div>
 
-                <div className="ProductItem_foot">
-                    <div className="ProductItem_name font-500">{name}</div>
+                <div className="ProductItem_foot font-14px">
+                    <div className="ProductItem_name wk-box-vertical line-clamp-2 overflow-hidden font-400">
+                        {name}
+                    </div>
 
-                    {in_stock && <div className="text-red">{in_stock}</div>}
+                    <div className="text-red">{in_stock}</div>
 
-                    <div className="ProductItem_price">
-                        {new_price && (
-                            <div className="font-500 font-italic">
-                                {formatNum(new_price)}
-                            </div>
-                        )}
+                    <div className="ProductItem_price text-nowrap">
+                        <span className="margin-right-5px font-400 font-italic color-fashion">
+                            {formatNum(new_price)}
 
-                        {old_price && (
-                            <div>
-                                <span className="ProductItem_old-price">
-                                    {formatNum(old_price)}
-                                </span>
+                            <sup className="font-10px">đ</sup>
+                        </span>
+
+                        {old_price ? (
+                            <del className="text-del font-11px">
+                                {formatNum(old_price)}
 
                                 <sup className="font-10px">đ</sup>
-                            </div>
-                        )}
+                            </del>
+                        ) : null}
                     </div>
                 </div>
             </Link>

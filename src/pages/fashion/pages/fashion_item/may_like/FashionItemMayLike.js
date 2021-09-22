@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { handle_API_Product_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
+import { handle_API_FsProduct_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import { useObserverShowMore } from '../../../../../_hooks/useObserverShowMore';
 //
@@ -21,7 +21,7 @@ function FashionItemMayLike({ id }) {
 
     //
     const { data_state, observerShowMore } = useObserverShowMore({
-        handle_API_L: (c_count) => handle_API_Product_L(c_count, 'may_like'),
+        handle_API_L: (c_count) => handle_API_FsProduct_L(c_count, 'may_like'),
     });
 
     //

@@ -9,10 +9,10 @@ import './ProductContent.scss';
 function ProductContent({ products }) {
     //
     return (
-        <div className="ProductContent padding-8px bg-primary">
-            <div className="ProductContent_row display-flex justify-content-center flex-wrap">
+        <div className="ProductContent bg-primary">
+            <div className="ProductContent_row display-flex flex-wrap">
                 {products.map((item, index) => (
-                    <div key={index} className="ProductContent_item">
+                    <div key={index} className="ProductContent_item padding-8px border-blur">
                         <ProductItem
                             link={'/phone-laptop:' + item.id}
                             img={item.url}

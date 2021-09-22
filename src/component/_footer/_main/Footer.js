@@ -12,7 +12,7 @@ function Footer() {
         <div className="Footer">
             <FooterWhich />
 
-            <div className="padding-y-10px bg-shadow-9 font-18px text-upper font-500">
+            <div className="Footer_foot padding-y-10px bg-shadow-9 font-18px text-upper font-500">
                 <div className="display-flex-center">
                     <span className="color-react">ReactJs</span>
                     <span className="Footer_join margin-x-15px"></span>

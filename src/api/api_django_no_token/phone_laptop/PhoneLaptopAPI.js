@@ -8,19 +8,7 @@ import {
 } from '../../../_default/phone/DefaultPhone';
 
 // list
-export const API_PhoneLaptop_L = (params) =>
-    API_FakeReal(
-        default_phone_arr(),
-        () =>
-            axiosClientNoToken({
-                url: 'api/phone/phone-lap-l/',
-                params: params,
-            }),
-        params
-    );
-
-// list filter
-export const API_FilterPhoneLaptop_L = (params) =>
+export const API_PhoneLaptop_L = (params = {}) =>
     API_FakeReal(
         default_phone_arr(),
         () =>
@@ -32,7 +20,7 @@ export const API_FilterPhoneLaptop_L = (params) =>
     );
 
 // retrieve
-export const API_PhoneLaptop_R = (id) =>
+export const API_PhoneLaptop_R = (id = 0) =>
     API_FakeReal(default_phone_obj(), () =>
         axiosClientNoToken({
             url: 'api/phone/phone-lap-r/' + id + '/',

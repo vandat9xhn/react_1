@@ -115,13 +115,15 @@ function RowProductPc({
             </div>
 
             {has_fetched && use_next_prev ? (
-                <NextPrevDiv
-                    is_btn_circle={true}
-                    is_has_next={is_has_next}
-                    is_has_prev={is_has_prev}
-                    handleNext={handleNext}
-                    handlePrev={handlePrev}
-                />
+                <div className="text-third">
+                    <NextPrevDiv
+                        is_btn_circle={true}
+                        is_has_next={is_has_next}
+                        is_has_prev={is_has_prev}
+                        handleNext={handleNext}
+                        handlePrev={handlePrev}
+                    />
+                </div>
             ) : null}
         </div>
     );

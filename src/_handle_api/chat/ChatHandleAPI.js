@@ -6,7 +6,6 @@ import {
     API_MessageLike_L,
     API_ChatTimeLine_LC,
 } from '../../api/api_django/chat/APIChat';
-import { API_Friend_LC } from '../../api/api_django/user/user_friend/UserFriend';
 //
 import makeFormData from '../../_some_function/makeFormData';
 //

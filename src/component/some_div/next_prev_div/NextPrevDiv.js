@@ -29,6 +29,7 @@ function NextPrevDiv({
     is_has_next,
     is_has_prev,
     size_icon,
+    
     handleNext,
     handlePrev,
 }) {

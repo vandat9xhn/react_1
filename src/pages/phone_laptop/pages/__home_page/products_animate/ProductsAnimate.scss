@@ -1,11 +1,3 @@
-/* --------------------------------- */
-.ProductsAnimate {
-    width: 100%;
-}
-
-.ProductsAnimate_margin {
-    margin-bottom: 2rem;
-}
 .ProductsAnimate_contain {
     position: relative;
     margin: auto;
@@ -18,13 +10,13 @@
 
 .ProductsAnimate_title {
     background-color: var(--danger);
-    color: white;
 }
 
-.ProductsAnimate_row {
-    display: flex;
-    flex-wrap: nowrap;
-    position: relative;
-
-    transition: transform 1s;
+.ProductsAnimate_row{
+    transition: transform 750ms;
+}
+// .
+.ProductsAnimate_item{
+    width: 175px;
+    max-width: 50%;
 }

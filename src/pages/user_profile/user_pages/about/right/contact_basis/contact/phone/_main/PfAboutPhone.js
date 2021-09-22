@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { useForceUpdate } from '../../../../../../../../../_hooks/UseForceUpdate';
 //
-import { handle_API_Phone_C } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
+import { handle_API_UserPhone_C } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import PfAboutAdd from '../../../../_component/add/PfAboutAdd';
 
@@ -45,7 +45,7 @@ function PfAboutPhone({ phone_arr }) {
                     }}
                     ComponentEdit={PfAboutPhoneEdit}
                     handleCreate={handleCreate}
-                    handle_API_C={handle_API_Phone_C}
+                    handle_API_C={handle_API_UserPhone_C}
                 />
             </div>
 

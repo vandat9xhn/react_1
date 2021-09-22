@@ -5,7 +5,7 @@ import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
 import observeToDo from '../../../../../_some_function/observerToDo';
 //
-import { handle_API_Product_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
+import { handle_API_FsProduct_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 //
@@ -26,7 +26,7 @@ function FashionHomeFlashSale(props) {
 
     //
     const { data_state, getData_API } = useDataShowMore({
-        handle_API_L: (c_count) => handle_API_Product_L(c_count, 'flash_sale'),
+        handle_API_L: (c_count) => handle_API_FsProduct_L(c_count, 'flash_sale'),
     });
 
     const { data_arr, count, has_fetched, is_fetching } = data_state;

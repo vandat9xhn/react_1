@@ -58,7 +58,7 @@ class ProductsAnimate extends Component {
 
         const [width_transform, max_width_transform] = getWidthTransform(
             'ProductsAnimate_row',
-            'ProductsAnimate__0',
+            'ProductsAnimate_item_0',
             this.props.products.length
         );
 
@@ -132,26 +132,26 @@ class ProductsAnimate extends Component {
         //
         return (
             <div className="ProductsAnimate">
-                <h3 className="ProductsAnimate_title App_title margin-0">
-                    HOT PRODUCTS
-                </h3>
+                <h2 className="ProductsAnimate_title padding-y-10px text-align-center text-white font-16px font-500 text-upper">
+                    Sản phẩm nổi bật
+                </h2>
 
-                <div>
+                <div className="padding-y-20px">
                     <div
                         ref={this.refProductAnimate}
                         className="ProductsAnimate_contain brs-5px box-shadow-1"
                         data-appearance="false"
                     >
                         <div
-                            className="ProductsAnimate_row"
+                            className="ProductsAnimate_row display-flex"
                             style={{
                                 transform: `translateX(${-translateX}px)`,
                             }}
                         >
                             {products.map((item, index) => (
                                 <div
-                                    className={`ProductsAnimate__${index}`}
-                                    key={`ProductsAnimate__${index}`}
+                                    key={index}
+                                    className={`ProductsAnimate_item flex-shrink-0 ProductsAnimate_item_${index}`}
                                 >
                                     <ProductItem
                                         link={'/phone-laptop:' + item.id}
@@ -168,10 +168,12 @@ class ProductsAnimate extends Component {
                             ))}
                         </div>
 
-                        <NextPrevDiv
-                            handleNext={this.nextPhones}
-                            handlePrev={this.prevPhones}
-                        />
+                        <div className="text-light">
+                            <NextPrevDiv
+                                handleNext={this.nextPhones}
+                                handlePrev={this.prevPhones}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

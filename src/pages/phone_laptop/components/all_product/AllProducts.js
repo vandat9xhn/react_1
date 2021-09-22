@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { API_FilterPhoneLaptop_L } from '../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
+import { API_PhoneLaptop_L } from '../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
 //
 import { initial_phone_arr } from '../../../../_initial/phone/InitialPhone';
 //
@@ -166,7 +166,7 @@ function AllProducts({
                 ...start_obj_state,
             }));
 
-            const res = await API_FilterPhoneLaptop_L(getParamsAPI(false));
+            const res = await API_PhoneLaptop_L(getParamsAPI(false));
 
             const { data, count: new_count } = res.data;
 
@@ -196,7 +196,7 @@ function AllProducts({
                 is_fetching: true,
             }));
 
-            const res = await API_FilterPhoneLaptop_L(getParamsAPI(true));
+            const res = await API_PhoneLaptop_L(getParamsAPI(true));
 
             const { data } = res.data;
             setProductObj((product_obj) => ({
@@ -349,15 +349,15 @@ function AllProducts({
                 />
             </div>
 
-            <div>
+            <div className="fashion-width">
                 <ProductContent
                     products={has_fetched ? products : Array(10).fill({})}
                 />
             </div>
 
-            <div>
+            <div className="padding-y-10px text-third">
                 <ScreenBlurShowMore
-                    title={`See more ${count - products.length} products`}
+                    title={`Xem thêm ${count - products.length} sản phẩm`}
                     is_fetching={is_fetching}
                     is_show_more={has_fetched && count > products.length}
                     handleShowMore={handleGetMore}

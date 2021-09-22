@@ -5,7 +5,7 @@ import { context_fashion_item } from '../../../../../../_context/fashion/item/co
 //
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
 // 
-import { handle_API_Product_L } from '../../../../../../_handle_api/fashion/FashionHandleAPI';
+import { handle_API_FsProduct_L } from '../../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import { useDataShowMore } from '../../../../../../_hooks/useDataShowMore';
 //
@@ -27,7 +27,7 @@ function FsICombo(props) {
     const { data_state, getData_API } = useDataShowMore({
         initial_arr: [],
         handle_API_L: (c_count) =>
-            handle_API_Product_L(c_count, 'shop_deal', {
+            handle_API_FsProduct_L(c_count, 'shop_deal', {
                 product_id: item_info.id,
             }),
     });

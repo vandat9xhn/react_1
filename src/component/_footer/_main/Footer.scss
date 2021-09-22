@@ -13,3 +13,14 @@
     );
     background-repeat: no-repeat;
 }
+
+//
+@media (max-width: 500px) {
+    .Footer_foot{
+        font-size: 16px;
+    }
+    // .
+    .Footer_join{
+        width: 12px;
+    }
+}

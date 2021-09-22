@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { useForceUpdate } from '../../../../../../../../../_hooks/UseForceUpdate';
 //
-import { handle_API_City_C } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
+import { handle_API_UserCity_C } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import PfAboutAdd from '../../../../_component/add/PfAboutAdd';
 
@@ -58,7 +58,7 @@ function PfAboutCity({ city_arr, has_fetched }) {
                                 }}
                                 ComponentEdit={PfAboutCityEdit}
                                 handleCreate={handleCreate}
-                                handle_API_C={handle_API_City_C}
+                                handle_API_C={handle_API_UserCity_C}
                             />
                         </div>
 

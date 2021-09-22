@@ -1,47 +1,31 @@
-.Home_skeleton{
-    height: 250px;
-}
+.Home_part {
+    padding: 20px;
+    background-color: var(--md-bg-primary);
 
-// 
-.Home_title{
-    padding: 8px 0;
-    text-align: center;
-}
-
-.Home_title-phone {
-    background-color: var(--gold);
-}
-
-.Home_title-fashion {
-    background-color: var(--border-fashion);
-}
-
-.Home_title-city {
-    background-color: var(--green);
-}
-
-// ..
-.Home_products_row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    list-style-type: none;
-    .Home_products_item {
-        border: 0.2px solid var(--bg-blur);
-    }
-}
-// ...
-.Home_fashion_item{
-    width: 200px;
-    padding: 4px;
-    max-width: 50%;
+    border-radius: 5px;
+    border-bottom: 1px solid var(--md-bg-blur);
 }
 
 //
 @media (max-width: 500px) {
-    .Home_products_contain {
-        width: 100%;
+    // ----
+
+    .home-title {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    // ----
+
+    .Home_part {
+        padding: 0;
         border-radius: 0;
+    }
+
+    .HomeFeed_body {
+        padding-top: 50%;
+    }
+    .HomeCity_body {
+        padding-top: 50%;
     }
 }

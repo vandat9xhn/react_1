@@ -1,0 +1,15 @@
+.HomePhone_item {
+    width: calc(1160px / 6);
+    max-width: 50%;
+    padding: 8px;
+}
+.HomePhone_item-mobile {
+    width: 33%;
+}
+
+//
+@media (max-width: 450px) {
+    .HomePhone_item {
+        width: 50%;
+    }
+}

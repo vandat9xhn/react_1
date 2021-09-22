@@ -105,7 +105,7 @@ export async function handle_API_UserOverview_r({ user_id }) {
 }
 
 // email
-export async function handle_API_Email_U({
+export async function handle_API_UserEmail_U({
     email = '',
     password = '',
     permission = 0,
@@ -123,7 +123,7 @@ export async function handle_API_Email_U({
 }
 
 // phone
-export async function handle_API_Phone_C({ phone = '', permission = 0 }) {
+export async function handle_API_UserPhone_C({ phone = '', permission = 0 }) {
     const res = await API_UserAbout_C(
         'phone',
         makeFormData({
@@ -135,7 +135,7 @@ export async function handle_API_Phone_C({ phone = '', permission = 0 }) {
     return res.data;
 }
 
-export async function handle_API_Phone_U({
+export async function handle_API_UserPhone_U({
     id = 0,
     phone = '',
     permission = 0,
@@ -153,7 +153,7 @@ export async function handle_API_Phone_U({
 }
 
 // address
-export async function handle_API_Address_C({ address = '', permission = 0 }) {
+export async function handle_API_UserAddress_C({ address = '', permission = 0 }) {
     const res = await API_UserAbout_C(
         'address',
         makeFormData({
@@ -165,7 +165,7 @@ export async function handle_API_Address_C({ address = '', permission = 0 }) {
     return res.data;
 }
 
-export async function handle_API_Address_U({ address = '', permission = 0 }) {
+export async function handle_API_UserAddress_U({ address = '', permission = 0 }) {
     const res = await API_UserAbout_U(
         'address',
         makeFormData({
@@ -347,7 +347,7 @@ export async function handle_API_Town_U({ id = 0, town = '', permission = 0 }) {
 }
 
 // city
-export async function handle_API_City_C({ city = '', permission = 0 }) {
+export async function handle_API_UserCity_C({ city = '', permission = 0 }) {
     const res = await API_UserAbout_C(
         'city',
         makeFormData({
@@ -359,7 +359,7 @@ export async function handle_API_City_C({ city = '', permission = 0 }) {
     return res.data;
 }
 
-export async function handle_API_City_U({ id = 0, city = '', permission = 0 }) {
+export async function handle_API_UserCity_U({ id = 0, city = '', permission = 0 }) {
     const res = await API_UserAboutMulti_U(
         'city',
         id,

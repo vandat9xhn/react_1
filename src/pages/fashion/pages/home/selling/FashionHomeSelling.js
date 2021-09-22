@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
-import { handle_API_Product_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
+import { handle_API_FsProduct_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 import { useScrollToX } from '../../../../../_hooks/useScrollToX';
@@ -31,7 +31,7 @@ function FashionHomeSelling(props) {
 
     //
     const { data_state, getData_API } = useDataShowMore({
-        handle_API_L: (c_count) => handle_API_Product_L(c_count, ''),
+        handle_API_L: (c_count) => handle_API_FsProduct_L(c_count, ''),
     });
 
     const { data_arr, count, has_fetched, is_fetching } = data_state;

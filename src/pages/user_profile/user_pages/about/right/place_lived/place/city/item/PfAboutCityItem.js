@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { IconsProfileAbout } from '../../../../../../../../../_groups_icon/about/GroupIconProfileAbout';
 //
-import { handle_API_City_U } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
+import { handle_API_UserCity_U } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import AboutRowItemEdit from '../../../../_component/row_item_edit/AboutRowItemEdit';
 import PfAboutCityEdit from '../edit/PfAboutCityEdit';
@@ -34,7 +34,7 @@ function PfAboutCityItem(props) {
                 item_obj={city_obj}
                 Icon={IconsProfileAbout.city}
                 ComponentEdit={PfAboutCityEdit}
-                handle_API_U={handle_API_City_U}
+                handle_API_U={handle_API_UserCity_U}
                 handleUpdateItemObj={handleUpdateItemObj}
             />
         </div>

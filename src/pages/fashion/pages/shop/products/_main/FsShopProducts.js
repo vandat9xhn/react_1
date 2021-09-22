@@ -8,7 +8,7 @@ import { initial_fashion_item_base_obj } from '../../../../../../_initial/fashio
 import { GetIdSlug } from '../../../../../../_some_function/GetIdSlug';
 import observeToDo from '../../../../../../_some_function/observerToDo';
 //
-import { handle_API_Product_L } from '../../../../../../_handle_api/fashion/FashionHandleAPI';
+import { handle_API_FsProduct_L } from '../../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import FsShopProductsPc from '../pc/_main/FsShopProductsPc';
 import FsShopProductsMb from '../_mobile/_main/FsShopProductsMb';
@@ -84,7 +84,7 @@ function FsShopProducts({ category_arr }) {
             ...start_obj_state,
         });
 
-        const { data, pages } = await handle_API_Product_L(0, 'shop_product', {
+        const { data, pages } = await handle_API_FsProduct_L(0, 'shop_product', {
             shop_product: GetIdSlug(),
             page: new_page,
             size: SIZE,

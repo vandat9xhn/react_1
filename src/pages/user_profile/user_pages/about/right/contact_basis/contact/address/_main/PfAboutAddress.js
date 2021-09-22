@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { useForceUpdate } from '../../../../../../../../../_hooks/UseForceUpdate';
 //
-import { handle_API_Address_C } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
+import { handle_API_UserAddress_C } from '../../../../../../../../../_handle_api/profile/ProfileHandleAPI';
 
 import PfAboutAdd from '../../../../_component/add/PfAboutAdd';
 
@@ -48,7 +48,7 @@ function PfAboutAddress(props) {
                     }}
                     ComponentEdit={PfAboutAddressEdit}
                     handleCreate={handleCreate}
-                    handle_API_C={handle_API_Address_C}
+                    handle_API_C={handle_API_UserAddress_C}
                 />
             </div>
 

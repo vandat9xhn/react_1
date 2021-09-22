@@ -8,7 +8,7 @@ import {
 } from '../../api/api_django_no_token/fashion/APIFashionNoToken';
 
 //
-export async function handle_API_Product_L(
+export async function handle_API_FsProduct_L(
     c_count = 0,
     type_request = '',
     params = {}
@@ -26,7 +26,7 @@ export async function handle_API_Product_L(
 
 //
 export async function handle_API_FsSearch_L({ params = {} }) {
-    return handle_API_Product_L(0, 'search', {
+    return handle_API_FsProduct_L(0, 'search', {
         ...params_fashion_search_l,
         ...params,
     });

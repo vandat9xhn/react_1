@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import observeToDo from '../../../../../../_some_function/observerToDo';
 //
-import { handle_API_Product_L } from '../../../../../../_handle_api/fashion/FashionHandleAPI';
+import { handle_API_FsProduct_L } from '../../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import { useMultiPages } from '../../../../../../_hooks/useMultiPages';
 //
@@ -26,7 +26,7 @@ function FsCISearch({ product_id }) {
     const { state_obj, getData_API, handleChangePage } = useMultiPages({
         initial_page: 1,
         handle_API_L: () =>
-            handle_API_Product_L(0, 'same_product', {
+            handle_API_FsProduct_L(0, 'same_product', {
                 product_id: product_id,
                 size: 6,
             }),

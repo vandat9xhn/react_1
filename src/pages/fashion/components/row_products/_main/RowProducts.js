@@ -18,7 +18,7 @@ RowProducts.propTypes = {
 };
 
 RowProducts.defaultProps = {
-    title: <div></div>,
+    title: '',
 };
 
 //
@@ -94,7 +94,13 @@ function RowProducts({
     //
     return (
         <div ref={ref_main_elm} className="RowProducts padding-8px">
-            <div className="RowProducts_title font-500">{title}</div>
+            <div
+                className={`RowProducts_title margin-bottom-10px font-500 ${
+                    title ? '' : 'display-none'
+                }`}
+            >
+                {title}
+            </div>
 
             <div className="RowProducts_products">
                 {IS_MOBILE ? (

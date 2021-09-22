@@ -86,7 +86,7 @@ function PhoneLaptop(props) {
         });
     }
 
-    /* ------------------- GET API --------------------*/
+    // -------- API
 
     async function getPhonesLaptops(params, setState) {
         try {
@@ -103,12 +103,18 @@ function PhoneLaptop(props) {
 
     //
     return (
-        <div className="PhoneLaptop">
-            <div ref={ref_hot} className="PhoneLaptop_banner">
+        <div className="PhoneLaptop fashion-width padding-top-20px">
+            <div
+                ref={ref_hot}
+                className="PhoneLaptop_banner margin-bottom-20px"
+            >
                 <ProductsAnimate products={hot_product_arr} />
             </div>
 
-            <div ref={ref_phone} className="PhoneLaptop_phone">
+            <div
+                ref={ref_phone}
+                className="PhoneLaptop_phone margin-bottom-20px"
+            >
                 <SpecProducts
                     products={phone_arr}
                     title="Phone"

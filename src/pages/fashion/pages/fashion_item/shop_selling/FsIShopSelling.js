@@ -5,7 +5,7 @@ import { context_fashion_item } from '../../../../../_context/fashion/item/conte
 //
 import observeToDo from '../../../../../_some_function/observerToDo';
 //
-import { handle_API_Product_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
+import { handle_API_FsProduct_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 //
@@ -26,7 +26,7 @@ function FsIShopSelling(props) {
     const { data_state, getData_API } = useDataShowMore({
         initial_arr: [],
         handle_API_L: (c_count) =>
-            handle_API_Product_L(c_count, 'shop_selling', {
+            handle_API_FsProduct_L(c_count, 'shop_selling', {
                 shop_id: shop_info.id,
             }),
     });

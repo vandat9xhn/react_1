@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
-import { handle_API_Product_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
+import { handle_API_FsProduct_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import observeToDo from '../../../../../_some_function/observerToDo';
 //
@@ -24,7 +24,7 @@ function FashionBody(props) {
     //
     const { state_obj, getData_API, handleChangeKey } = useMultiDataKey({
         handle_API_L: (new_key, c_count) =>
-            handle_API_Product_L(c_count, new_key),
+            handle_API_FsProduct_L(c_count, new_key),
         initial_key: 'suggested',
     });
 
