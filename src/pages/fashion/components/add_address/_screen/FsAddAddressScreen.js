@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+// 
 import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
 //
 import FsAddAddress from '../_main/FsAddAddress';
 //
 import './FsAddAddressScreen.scss';
-import { IS_MOBILE } from '../../../../../_constant/Constant';
 
 //
 FsAddAddressScreen.propTypes = {

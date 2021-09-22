@@ -1,3 +1,15 @@
 .Footer {
     margin-top: 1rem;
 }
+
+.Footer_join {
+    width: 15px;
+    height: 2px;
+
+    background-image: linear-gradient(
+        to right,
+        var(--color-django),
+        var(--color-react)
+    );
+    background-repeat: no-repeat;
+}

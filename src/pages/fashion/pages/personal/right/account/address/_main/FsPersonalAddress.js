@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { context_api } from '../../../../../../../../_context/ContextAPI';
+import { context_api } from '../../../../../../../../_context/ContextAPI';;
 //
 import { handle_API_FsUserInfoBuy_L } from '../../../../../../../../_handle_api/fashion/user_info';
 //
@@ -15,6 +15,7 @@ import FsPAddressHead from '../head/FsPAddressHead';
 import FsPAddressItem from '../item/FsPAddressItem';
 //
 import './FsPersonalAddress.scss';
+import '../_mobile_css/FsPersonalAddressMb.scss';
 
 //
 FsPersonalAddress.propTypes = {};
@@ -59,7 +60,7 @@ function FsPersonalAddress(props) {
             id: address_ix >= 0 ? address_arr[address_ix].id : -1,
             name: data.user_name,
             phone: data.phone,
-            address: [data.specific, data.address_str_arr].join(', '),
+            address: [data.specific, ...data.address_str_arr].join(', '),
             type: data.type,
             is_default: data.checked_default,
         };
@@ -163,7 +164,9 @@ function FsPersonalAddress(props) {
 
     //
     return (
-        <div className="FsPersonalAddress bg-primary">
+        <div
+            className="FsPersonalAddress bg-primary"
+        >
             <div>
                 <FsPAddressHead openAddNewAddress={openAddNewAddress} />
             </div>

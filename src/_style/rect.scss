@@ -4,11 +4,11 @@
     margin-right: auto;
 }
 
-.margin-left-auto{
+.margin-left-auto {
     margin-left: auto;
 }
 
-.margin-right-auto{
+.margin-right-auto {
     margin-right: auto;
 }
 
@@ -21,18 +21,24 @@
         margin: #{$i}px;
     }
 
-    .margin-top-#{$i}px {
-        margin-top: #{$i}px;
-    }
-
-    .margin-right-#{$i}px {
+    .margin-x-#{$i}px {
+        margin-left: #{$i}px;
         margin-right: #{$i}px;
     }
-
-    .margin-bottom-#{$i}px {
+    .margin-y-#{$i}px {
+        margin-top: #{$i}px;
         margin-bottom: #{$i}px;
     }
 
+    .margin-top-#{$i}px {
+        margin-top: #{$i}px;
+    }
+    .margin-right-#{$i}px {
+        margin-right: #{$i}px;
+    }
+    .margin-bottom-#{$i}px {
+        margin-bottom: #{$i}px;
+    }
     .margin-left-#{$i}px {
         margin-left: #{$i}px;
     }
@@ -106,7 +112,6 @@
     width: 200vw;
     height: 200vh;
 }
-
 
 // ---------- PADDING
 

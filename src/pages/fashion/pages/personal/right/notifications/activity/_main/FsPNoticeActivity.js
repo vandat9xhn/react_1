@@ -7,7 +7,7 @@ FsPNoticeActivity.propTypes = {
 
 function FsPNoticeActivity(props) {
     return (
-        <div>
+        <div className="bg-primary">
             
         </div>
     );

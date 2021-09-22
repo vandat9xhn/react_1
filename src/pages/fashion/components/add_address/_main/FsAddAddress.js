@@ -199,7 +199,7 @@ function FsAddAddress({
         <div className="FsAddAddress margin-auto bg-primary box-shadow-fb brs-8px font-for-fashion">
             <h2 className="margin-bottom-20px font-400 font-20px">{title}</h2>
 
-            <div className="margin-bottom-15px">
+            <div className="margin-bottom-20px">
                 <FsAddAddressForm
                     user_name={user_name}
                     phone={phone}
@@ -219,12 +219,12 @@ function FsAddAddress({
 
             <div>{/* map */}</div>
 
-            <div className="margin-bottom-15px">
+            <div className="margin-bottom-20px">
                 <FsAddAddressType chooseType={chooseType} type={type} />
             </div>
 
             {is_default ? null : (
-                <div className="margin-bottom-15px">
+                <div className="margin-bottom-20px">
                     <CheckBoxCustom
                         checked={checked_default}
                         title="Đặt làm địa chỉ mặc định"

@@ -44,11 +44,13 @@ function FsPAddressItem({
         >
             <div className="FsPAddressItem_row display-flex space-between">
                 <div className="FsPAddressItem_left flex-grow-1">
-                    <div className="display-flex align-items-center margin-bottom-10px">
+                    <div className="FsPAddressItem_left_row display-flex align-items-center margin-bottom-10px">
                         <div className="FsPAddressItem_label">Họ và tên</div>
 
                         <div className="display-flex">
-                            <div className="font-16px line-22px">{name}</div>
+                            <div className="FsPAddressItem_name font-16px line-22px">
+                                {name}
+                            </div>
 
                             {is_default ? (
                                 <div>
@@ -60,7 +62,7 @@ function FsPAddressItem({
                         </div>
                     </div>
 
-                    <div className="display-flex margin-bottom-10px">
+                    <div className="FsPAddressItem_left_row display-flex margin-bottom-10px">
                         <div className="FsPAddressItem_label">
                             Số điện thoại
                         </div>
@@ -68,7 +70,7 @@ function FsPAddressItem({
                         <div className="font-14px">{phone}</div>
                     </div>
 
-                    <div className="display-flex">
+                    <div className="FsPAddressItem_left_row display-flex">
                         <div className="FsPAddressItem_label">Địa chỉ</div>
 
                         <div className="FsPAddressItem_address_item font-14px">
@@ -78,7 +80,7 @@ function FsPAddressItem({
                 </div>
 
                 <div className="FsPAddressItem_right font-14px">
-                    <div className="padding-y-10px text-align-end">
+                    <div className="FsPAddressItem_right_head padding-y-10px text-align-end">
                         <button
                             className="FsPAddressItem_btn_fix_del border-none bg-transparent text-555 cursor-pointer"
                             type="button"
@@ -99,9 +101,9 @@ function FsPAddressItem({
                     </div>
 
                     {is_default ? null : (
-                        <div className="margin-top-15px">
+                        <div className="FsPAddressItem_right_foot margin-top-15px">
                             <button
-                                className="btn-hv btn-active padding-y-5px padding-x-10px border-blur text-cap text-third cursor-pointer"
+                                className="FsPAddressItem_set_default btn-hv btn-active padding-y-5px padding-x-10px border-blur text-cap text-third cursor-pointer"
                                 type="button"
                                 onClick={onSetDefault}
                             >

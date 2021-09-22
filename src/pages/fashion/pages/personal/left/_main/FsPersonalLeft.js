@@ -2,10 +2,13 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+//
 import { link_fs_personal_arr } from '../_link/link';
 
 import FsPLeftSubList from '../sub_list/FsPLeftSubList';
 import FsPLeftHead from '../head/FsPLeftHead';
+import FsPersonalIconClose from '../../icon_close/FsPersonalIconClose';
 //
 import './FsPersonalLeft.scss';
 
@@ -13,17 +16,26 @@ import './FsPersonalLeft.scss';
 FsPersonalLeft.propTypes = {};
 
 //
-function FsPersonalLeft({}) {
+function FsPersonalLeft({ is_true, toggleBool }) {
     //
     return (
         <div className="FsPersonalLeft font-14px text-cap">
             <div className="margin-bottom-20px">
-                <Link
-                    className="text-primary-08"
-                    to={`/fashion/user/account/profile`}
-                >
-                    <FsPLeftHead />
-                </Link>
+                <div className="flex-between-center border-bottom-blur">
+                    <Link
+                        className="text-primary-08"
+                        to={`/fashion/user/account/profile`}
+                    >
+                        <FsPLeftHead />
+                    </Link>
+
+                    {IS_MOBILE ? (
+                        <FsPersonalIconClose
+                            is_true={is_true}
+                            toggleBool={toggleBool}
+                        />
+                    ) : null}
+                </div>
             </div>
 
             <div>

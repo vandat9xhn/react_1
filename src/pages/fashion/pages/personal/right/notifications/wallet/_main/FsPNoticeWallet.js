@@ -7,7 +7,7 @@ FsPNoticeWallet.propTypes = {
 
 function FsPNoticeWallet(props) {
     return (
-        <div>
+        <div className="bg-primary">
             
         </div>
     );

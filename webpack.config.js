@@ -1,11 +1,11 @@
-// const
+// 
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
-// vendor
+// 
 const VENDOR_LIBS = [
     'react',
     'react-dom',
@@ -19,7 +19,7 @@ const VENDOR_LIBS = [
     'formik',
 ];
 
-//devServer
+//
 const devServer = {
     port: 8000,
     open: false,
@@ -37,28 +37,28 @@ const devServer = {
 const is_prod = process.env.ENVIRONMENT === 'production';
 // const is_prod = true;
 
-// Config
+// 
 const config = {
     // resolve: {
         // alias: {
         //     '': path.resolve(__dirname, './src'),
         // },
     // },
-    // entry
+    // 
     entry: {
         app: './src/index.js',
         vendor: VENDOR_LIBS,
         // async: 'babel-polyfill'
     },
-    //output
+    //
     output: {
         filename: 'static/js/[name].js',
         publicPath: '/',
         path: path.resolve(__dirname, 'dist'),
     },
-    //devtool
+    //
     devtool: 'source-map',
-    // module
+    // 
     module: {
         rules: [
             //
@@ -89,7 +89,7 @@ const config = {
         ],
     },
 
-    // plugins
+    // 
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'static/css/[contenthash].min.css',
@@ -107,19 +107,19 @@ const config = {
         }),
     ],
 
-    // performance
+    // 
     performance: {
         hints: false,
     },
-    // optimization
+    // 
     optimization: {
         splitChunks: {
             chunks: 'all',
         },
     },
-    // devServer
+    // 
     devServer,
-    // mode
+    // 
     mode: is_prod ? 'production' : 'development',
 };
 

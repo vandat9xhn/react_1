@@ -7,7 +7,7 @@ FsPNoticeRating.propTypes = {
 
 function FsPNoticeRating(props) {
     return (
-        <div>
+        <div className="bg-primary">
             
         </div>
     );
