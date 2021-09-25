@@ -26,7 +26,7 @@ function HomeCity(props) {
         <div className="HomeCity">
             <div className="home-title display-flex align-items-center">
                 <div>
-                    <Link to="/fashion">
+                    <Link to="/city-street">
                         <FavWithLetter letter="C" class_letter="text-green" />
                     </Link>
                 </div>

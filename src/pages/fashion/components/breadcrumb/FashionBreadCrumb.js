@@ -21,7 +21,7 @@ function FashionBreadCrumb({ arr }) {
 
                 {arr.map((text, ix) => (
                     <React.Fragment key={ix}>
-                        <span className="FashionBreadCrumb_icon">
+                        <span className="FashionBreadCrumb_icon margin-x-5px">
                             <IconsArrow x={200} size_icon="0.75rem" />
                         </span>
 

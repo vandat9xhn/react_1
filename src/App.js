@@ -27,7 +27,9 @@ import './_style/text.scss';
 import './_style/story.scss';
 import './_style/post.scss';
 import './_style/vid_pics.scss';
+
 import './_style/fashion.scss';
+import './_style/phone.scss';
 
 import './_style/device.scss';
 //

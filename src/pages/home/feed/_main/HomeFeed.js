@@ -51,7 +51,7 @@ function HomeFeed(props) {
             </div>
 
             {user.id > 0 ? null : (
-                <div className="display-flex-center margin-top-15px">
+                <div className="display-flex-center padding-y-15px">
                     <div className="margin-right-10px">
                         <Link className="text-white" to="/login-form">
                             <div className="padding-x-10px padding-y-5px brs-3px bg-blue">

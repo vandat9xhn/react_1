@@ -28,7 +28,12 @@ Carousel.propTypes = {
     time_disabled_btn: PropTypes.number,
     is_btn_circle: PropTypes.bool,
 
+    use_dot: PropTypes.bool,
     use_next_prev: PropTypes.bool,
+    use_auto_next: PropTypes.bool,
+
+    handleCarouselMove: PropTypes.func,
+    handleClick: PropTypes.func,
 };
 
 Carousel.defaultProps = {
@@ -40,7 +45,9 @@ Carousel.defaultProps = {
     disabled_btn_when_trans: true,
     time_disabled_btn: 100,
 
+    use_dot: true,
     use_next_prev: true,
+    use_auto_next: true,
 };
 
 //
@@ -55,7 +62,12 @@ function Carousel({
     time_disabled_btn,
     is_btn_circle,
 
+    use_dot,
     use_next_prev,
+    use_auto_next,
+
+    handleClick,
+    handleCarouselMove,
 }) {
     //
     const [extra_trans_x, setExtraTransX] = useState(0);
@@ -111,7 +123,11 @@ function Carousel({
         }
     }, [has_fetched]);
 
-    /* --------------- COMMON ------------- */
+    useEffect(() => {
+        handleCarouselMove && handleCarouselMove(ref_vid_pic_ix.current);
+    }, [ref_vid_pic_ix.current]);
+
+    // ------- COMMON
 
     //
     function handleWhenNextPrev(is_last = false) {
@@ -131,6 +147,7 @@ function Carousel({
     //
     function changeImgIxNext() {
         handleWhenNextPrev(true);
+
         ref_vid_pic_ix.current += 1;
         forceUpdate();
 
@@ -148,6 +165,7 @@ function Carousel({
     //
     function changeImgIxPrev() {
         handleWhenNextPrev(true);
+        
         ref_vid_pic_ix.current -= 1;
         forceUpdate();
 
@@ -162,7 +180,7 @@ function Carousel({
         }
     }
 
-    /* -------- NEXT PREV -------- */
+    // ---------
 
     //
     function handleNext() {
@@ -186,6 +204,10 @@ function Carousel({
 
     //
     function handleAutoNext() {
+        if (!use_auto_next) {
+            return
+        }
+
         if (btn_disable.current) {
             return;
         }
@@ -193,7 +215,7 @@ function Carousel({
         changeImgIxNext();
     }
 
-    /* --- TOUCH --- */
+    // -------- TOUCH
 
     //
     function handleTouchStart() {
@@ -214,9 +236,9 @@ function Carousel({
         const ratio_trans_x =
             -extra_trans_x / ref_carousel_elm.current.clientWidth;
 
-        if (ratio_trans_x >= 0.3) {
+        if (ratio_trans_x >= 0.25) {
             handleNext();
-        } else if (ratio_trans_x <= -0.3) {
+        } else if (ratio_trans_x <= -0.25) {
             handlePrev();
         }
 
@@ -242,9 +264,10 @@ function Carousel({
                         ? undefined
                         : `all ${time_trans}ms`,
                 }}
-                onTouchStart={IS_MOBILE ? handleStart : undefined}
-                onTouchMove={IS_MOBILE ? handleMove : undefined}
-                onTouchEnd={IS_MOBILE ? handleEnd : undefined}
+                onClick={handleClick}
+                onTouchStart={handleStart}
+                onTouchMove={handleMove}
+                onTouchEnd={handleEnd}
             >
                 {vid_pics.map((vid_pic, ix) => (
                     <CarouselItem
@@ -258,25 +281,27 @@ function Carousel({
                 ))}
             </div>
 
-            <div
-                className={`pos-abs bottom-0 x-center padding-8px pointer-events-none ${
-                    has_fetched ? '' : 'display-none'
-                }`}
-            >
-                <CarouselDot
-                    count={ref_count.current - 2}
-                    active_ix={
-                        ref_vid_pic_ix.current - 1 == ref_count.current - 1
-                            ? 0
-                            : ref_vid_pic_ix.current - 1
-                    }
-                />
-            </div>
+            {use_dot ? (
+                <div
+                    className={`pos-abs bottom-0 x-center padding-8px pointer-events-none ${
+                        has_fetched ? '' : 'display-none'
+                    }`}
+                >
+                    <CarouselDot
+                        count={ref_count.current - 2}
+                        active_ix={
+                            ref_vid_pic_ix.current - 1 == ref_count.current - 1
+                                ? 0
+                                : ref_vid_pic_ix.current - 1
+                        }
+                    />
+                </div>
+            ) : null}
 
             {!use_next_prev || IS_MOBILE || !has_fetched ? null : (
                 <NextPrevDiv
                     is_btn_circle={is_btn_circle}
-                    size_icon="0.8rem"
+                    size_icon="14px"
                     handleNext={handleNext}
                     handlePrev={handlePrev}
                 />

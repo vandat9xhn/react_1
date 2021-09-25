@@ -5,6 +5,9 @@ import ProductItem from '../../../../component/products/product_item/ProductItem
 //
 import './ProductContent.scss';
 
+ProductContent.propTypes = {
+    products: PropTypes.array,
+};
 //
 function ProductContent({ products }) {
     //
@@ -29,9 +32,5 @@ function ProductContent({ products }) {
         </div>
     );
 }
-
-ProductContent.propTypes = {
-    products: PropTypes.array,
-};
 
 export default ProductContent;

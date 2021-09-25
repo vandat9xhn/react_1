@@ -40,7 +40,7 @@ function HomePhone(props) {
         <div ref={ref_main_elm} className="HomePhone">
             <div className="home-title display-flex align-items-center">
                 <div>
-                    <Link to="/fashion">
+                    <Link to="/phone-laptop">
                         <FavWithLetter letter="P" class_letter="text-gold" />
                     </Link>
                 </div>

@@ -18,11 +18,11 @@ import {
 //
 import './AllProducts.scss';
 //
-import ProductBrands from '../brands_row/_main/ProductBrands';
+import ProductBrands from '../brands/_main/PLBrands';
 import ProductSearch from '../search_row/_main/ProductSearch';
 import ProductContent from '../content/ProductContent';
 import ProductCFilter from '../current_filter/_main/ProductCFilter';
-import ProductPrices from '../prices_row/ProductPrices';
+import ProductPrices from '../prices/_main/PLPrices';
 //
 import './AllProductsRes.scss';
 

@@ -1,0 +1,32 @@
+.PLDTwoPrice-1 {
+    .PLDTwoPrice_one {
+        border-top: 4px solid var(--blue);
+        border-left: 1px solid var(--blue);
+        border-right: 1px solid var(--blue);
+        background-color: var(--md-bg-primary);
+    }
+    // .
+    .PLDTwoPrice_one_new {
+        color: var(--fashion-mall);
+    }
+
+    .PLDTwoPrice_two {
+        border-bottom: 1px solid var(--blue);
+    }
+}
+.PLDTwoPrice-2 {
+    .PLDTwoPrice_one {
+        border-bottom: 1px solid var(--fashion-mall);
+    }
+
+    .PLDTwoPrice_two {
+        border-top: 4px solid var(--fashion-mall);
+        border-left: 1px solid var(--fashion-mall);
+        border-right: 1px solid var(--fashion-mall);
+        background-color: var(--md-bg-primary);
+    }
+    // .
+    .PLDTwoPrice_two_new {
+        color: var(--fashion-mall);
+    }
+}

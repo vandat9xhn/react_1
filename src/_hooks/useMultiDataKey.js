@@ -5,8 +5,11 @@ import { useMounted } from './useMounted';
 //
 export function useMultiDataKey({
     initial_key = '',
-    handle_API_L,
+    initial_data_arr = [],
+    initial_count = 0,
     other_state = {},
+
+    handle_API_L,
 }) {
     //
     const ref_fetching = useRef(false);
@@ -18,9 +21,9 @@ export function useMultiDataKey({
     const [state_obj, setStateObj] = useState({
         obj: {
             [initial_key]: {
-                data_arr: [],
-                count: 0,
-                has_fetched: false,
+                data_arr: initial_data_arr,
+                count: initial_count,
+                has_fetched: initial_data_arr.length > 0,
             },
         },
         c_key: initial_key,

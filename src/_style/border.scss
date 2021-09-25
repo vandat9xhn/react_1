@@ -39,9 +39,14 @@
     border-width: 1px;
 }
 
-// color
+// COLOR
+
 .border-cl-blur {
     border-color: var(--md-bg-blur);
+}
+
+.border-cl-current {
+    border-color: currentColor;
 }
 
 // ------- SIDE

@@ -1,0 +1,22 @@
+.PLDetailPost{
+    padding-bottom: 40px;
+}
+
+.PLDetailPost_contain {
+    height: 450px;
+}
+
+.PLDetailPost_more {
+    height: 105px;
+    
+    background-image: linear-gradient(
+        to bottom,
+        transparent,
+        var(--md-bg-primary),
+        var(--md-bg-primary)
+    );
+}
+// .
+.PLDetailPost_more_btn {
+    max-width: 340px;
+}
