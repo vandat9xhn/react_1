@@ -226,6 +226,13 @@ export const PL_detail_initial_state_obj = () => {
             ],
             province: '',
 
+            old_product_obj: {
+                link_to: '',
+                title: '',
+                price: 0,
+                saved_price: '',
+            },
+            
             promotion_obj: promotion_obj,
             promotion_2_obj: promotion_obj,
 
@@ -278,6 +285,13 @@ export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
                 has_two_price: has_two_price,
                 new_price_2: has_two_price ? new_price - 500000 : null,
                 title_price_2: has_two_price ? 'Giá rẻ online' : null,
+
+                old_product_obj: {
+                    link_to: '',
+                    title: 'Xem Điện thoại iPhone 12 64GB cũ giá dưới',
+                    price: 18320000,
+                    saved_price: '18%',
+                },
 
                 carousel_choice_arr: default_carousel_choice_arr,
                 specific_vid_pics: getDefaultArr(getRandomVidPic, 3, 15),

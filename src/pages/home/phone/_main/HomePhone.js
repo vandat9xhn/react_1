@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../_constant/Constant';
+//
 import observeToDo from '../../../../_some_function/observerToDo';
 //
 import { handle_API_PhoneLaptop_L } from '../../../../_handle_api/phone/list';
@@ -9,10 +11,9 @@ import { handle_API_PhoneLaptop_L } from '../../../../_handle_api/phone/list';
 import { useDataShowMore } from '../../../../_hooks/useDataShowMore';
 //
 import FavWithLetter from '../../../../component/fav_with_letter/FavWithLetter';
-import ProductItem from '../../../../component/products/product_item/ProductItem';
+import PLProduct from '../../../../component/pl_product/_main/PLProduct';
 //
 import './HomePhone.scss';
-import { IS_MOBILE } from '../../../../_constant/Constant';
 
 //
 HomePhone.propTypes = {};
@@ -52,23 +53,14 @@ function HomePhone(props) {
 
             <div className="pos-rel">
                 <ul className="display-flex flex-wrap list-none">
-                    {data_state.data_arr.slice(0, 6).map((item) => (
+                    {data_state.data_arr.slice(0, 6).map((product_obj) => (
                         <li
-                            key={`${item.id}`}
+                            key={product_obj.id}
                             className={`HomePhone_item ${
                                 IS_MOBILE ? 'HomePhone_item-mobile' : ''
                             }`}
                         >
-                            <ProductItem
-                                link={'/phone-laptop:' + item.id}
-                                img={item.url}
-                                name={item.name}
-                                in_stock={item.in_stock}
-                                new_price={item.new_price}
-                                old_price={item.old_price}
-                                discount={item.discount}
-                                installment={item.installment}
-                            />
+                            <PLProduct product_obj={product_obj} />
                         </li>
                     ))}
                 </ul>

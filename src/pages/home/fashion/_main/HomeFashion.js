@@ -26,7 +26,7 @@ function HomeFashion(props) {
                 </div>
 
                 <div className="flex-grow-1 padding-left-15px">
-                    Mua sắm siêu rẻ, vận chuyển siêu nhanh, gì cũng có
+                    Mua gì cũng có, giá siêu rẻ, vận chuyển nhanh
                 </div>
             </div>
 

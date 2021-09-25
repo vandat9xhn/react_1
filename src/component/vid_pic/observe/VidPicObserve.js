@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useObserveVidPic } from '../../../_hooks/useObserveVidPic';
@@ -28,6 +28,13 @@ function VidPicObserve({ vid_pic, type, video_props, img_props }) {
 
     //
     const class_vid_pic = useObserveVidPic(ref_vid_pic);
+
+    //
+    useEffect(() => {
+        if (ref_vid_pic.current.src) {
+            ref_vid_pic.current.src = vid_pic;
+        }
+    }, [vid_pic]);
 
     //
     return type_vid_pic == 'img' ? (

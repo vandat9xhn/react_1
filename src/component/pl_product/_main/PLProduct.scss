@@ -1,0 +1,11 @@
+.PLProduct {
+    &:hover {
+        .PLProductHead_img {
+            bottom: 3px;
+        }
+
+        .PLProductFoot_name{
+            color: var(--blue);
+        }
+    }
+}

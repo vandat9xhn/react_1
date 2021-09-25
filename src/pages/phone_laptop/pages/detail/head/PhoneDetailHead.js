@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconPlusSubtract from '../../../../../_icons_svg/_icon_plus_subtract/IconPlusSubtract';
 import IconLike from '../../../../../_icons_svg/icons_like/icon_like/IconLike';
 //
+import PLProductCompare from '../../../../../component/pl_product/compare/PLProductCompare';
 import StarsRate from '../../../../../component/stars_rate/_main/StarsRate';
 //
 import './PhoneDetailHead.scss';
@@ -48,7 +48,7 @@ function PhoneDetailHead({
                             </div>
 
                             <div
-                                className="margin-left-10px text-blue cursor-pointer"
+                                className="margin-left-5px text-blue cursor-pointer"
                                 onClick={goToRating}
                             >
                                 {rating_count} Đánh giá
@@ -56,19 +56,8 @@ function PhoneDetailHead({
                         </React.Fragment>
                     ) : null}
 
-                    <div
-                        className="margin-left-10px inline-flex align-items-center text-blue cursor-pointer"
-                        onClick={addToCompare}
-                    >
-                        <div className="PhoneDetailHead_compare_icon display-flex-center brs-50 border-blue">
-                            <IconPlusSubtract
-                                size_icon="13px"
-                                stroke="currentColor"
-                                stroke_width="10"
-                            />
-                        </div>
-
-                        <div className="margin-left-5px">So sánh</div>
+                    <div className="margin-left-10px inline-block">
+                        <PLProductCompare addToCompare={addToCompare} />
                     </div>
                 </div>
 

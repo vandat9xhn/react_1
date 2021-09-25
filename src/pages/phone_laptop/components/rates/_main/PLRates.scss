@@ -1,0 +1,5 @@
+.PLRates_item{
+    &:not(:first){
+        border-top: 1px solid var(--md-bg-blur);
+    }
+}

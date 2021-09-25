@@ -17,15 +17,17 @@ import { openScreenNotice } from '../../../../../component/_screen_once/notice/S
 //
 import BreadCrumb from '../../../../../component/bread_crumb/BreadCrumb';
 //
-import PLDetailProduct from '../product/_main/PLDetailProduct';
-import RelativeProducts from '../relative/RelativeProducts';
-//
-import './PLDetail.scss';
 import {
     PLDetail_handleState,
     PL_detail_initial_state_obj,
 } from '../_state/_PLDetail_handleState';
 import { PLDetail_handleChooseType } from '../_state/PLDetail_handleChooseType';
+// 
+import PLDetailProduct from '../product/_main/PLDetailProduct';
+import PLDetailRelative from '../relative/_main/PLDetailRelative';
+import PLDetailSeen from '../seen/_main/PLDetailSeen';
+//
+import './PLDetail.scss';
 
 //
 PLDetail.propTypes = {};
@@ -82,7 +84,7 @@ function PLDetail() {
         setStateObj({
             ...state_obj,
             price_ix: new_price_ix,
-        })
+        });
     }
 
     //
@@ -133,7 +135,7 @@ function PLDetail() {
                             <BreadCrumb link_arr={product_obj.link_arr} />
                         </div>
 
-                        <div>
+                        <div className="margin-bottom-20px">
                             <PLDetailProduct
                                 product_obj={product_obj}
                                 price_ix={price_ix}
@@ -156,14 +158,18 @@ function PLDetail() {
                                 openDetailConfig={openDetailConfig}
                             />
                         </div>
+
+                        <div className="PLDetail_relative">
+                            <PLDetailRelative product_id={product_id} />
+                        </div>
+
+                        <div>
+                            <PLDetailSeen product_id={product_id} />
+                        </div>
                     </React.Fragment>
                 ) : (
                     <div className="h-100vh"></div>
                 )}
-
-                {/* <div>
-                    <RelativeProducts product_id={product_id} />
-                </div> */}
             </div>
         </div>
     );

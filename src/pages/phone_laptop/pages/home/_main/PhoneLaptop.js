@@ -13,8 +13,8 @@ import SpecProducts from '../products_spec/SpecProducts';
 import './PhoneLaptop.scss';
 
 // const
-const skeleton_arr = [1, 2, 3, 4, 5, 6];
-const hot_products = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const skeleton_arr = Array(5).fill({});
+const hot_products = Array(12).fill({});
 const initial_params = {
     pk: -1,
     gte_price: 0,

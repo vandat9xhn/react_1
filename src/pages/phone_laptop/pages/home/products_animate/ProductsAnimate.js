@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+// 
 import getWidthTransform from '../../../../../_some_function/getWidthTransform';
 import observerAppearance from '../../../../../_some_function/observerAppearance';
 //
 import NextPrevDiv from '../../../../../component/some_div/next_prev_div/NextPrevDiv';
 //
+import ProductItem from '../../../../../component/pl_product/_main/PLProduct';
+//
 import './ProductsAnimate.scss';
-//
-import ProductItem from '../../../../../component/products/product_item/ProductItem';
-//
 import './ProductsAnimateRes.scss';
-import { IS_MOBILE } from '../../../../../_constant/Constant';
 
 //
 const TIME_TRANS = IS_MOBILE ? 500 : 750;
@@ -42,7 +42,7 @@ class ProductsAnimate extends Component {
         this.mounted = false;
     }
 
-    /* ---------------- COMMON ------------------ */
+    // --------- COMMON
 
     //
     makeBtnDisabled = () => {
@@ -71,7 +71,7 @@ class ProductsAnimate extends Component {
         this.makeBtnDisabled();
     };
 
-    /* ---------------- NEXT PREV ------------------ */
+    // --------- NEXT PREV
 
     //
     nextPhones = () => {
@@ -153,22 +153,12 @@ class ProductsAnimate extends Component {
                                 transition: `transform ${TIME_TRANS}ms`,
                             }}
                         >
-                            {products.map((item, index) => (
+                            {products.map((product_obj, index) => (
                                 <div
-                                    key={index}
+                                    key={product_obj.id || index}
                                     className={`ProductsAnimate_item flex-shrink-0 ProductsAnimate_item_${index}`}
                                 >
-                                    <ProductItem
-                                        link={'/phone-laptop:' + item.id}
-                                        img={item.url}
-                                        name={item.name}
-                                        in_stock={item.in_stock}
-                                        new_price={item.new_price}
-                                        old_price={item.old_price}
-                                        discount={item.discount}
-                                        installment={item.installment}
-                                        img_or_dataset={index < 6}
-                                    />
+                                    <ProductItem product_obj={product_obj} />
                                 </div>
                             ))}
                         </div>

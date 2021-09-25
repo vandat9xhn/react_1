@@ -19,6 +19,7 @@ import PLDetailBtnBuy from '../../_components/btn_buy/_main/PLDetailBtnBuy';
 import PLDetailInstallment from '../../_components/installment/_main/PLDetailInstallment';
 import PLDetailCallOrder from '../../_components/call_order/PLDetailCallOrder';
 import PhoneDetailHead from '../../head/PhoneDetailHead';
+import PLDetailOldProduct from '../../_components/old_product/_main/PLDetailOldProduct';
 
 //
 PLDetailProduct.propTypes = {};
@@ -78,6 +79,7 @@ function PLDetailProduct({
         installment_arr,
         province,
 
+        old_product_obj,
         promotion_obj,
         promotion_2_obj,
         offer_obj,
@@ -122,6 +124,10 @@ function PLDetailProduct({
 
                     <div className="margin-bottom-20px">
                         <PLDetailPolicy policy_arr={policy_arr} />
+                    </div>
+
+                    <div className="margin-bottom-20px">
+                        <PLDetailOldProduct old_product_obj={old_product_obj} />
                     </div>
 
                     <div className="margin-bottom-20px">
