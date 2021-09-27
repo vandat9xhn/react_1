@@ -21,7 +21,7 @@ export const API_PhoneLaptop_L = (params = {}) =>
 
 // retrieve
 export const API_PhoneLaptop_R = (id = 0) =>
-    API_FakeReal(default_phone_obj(), () =>
+    API_FakeReal(default_phone_obj(id), () =>
         axiosClientNoToken({
             url: 'api/phone/phone-lap-r/' + id + '/',
         })

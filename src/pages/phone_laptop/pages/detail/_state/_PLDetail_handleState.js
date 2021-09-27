@@ -14,9 +14,14 @@ import {
     getRandomId,
     getRandomNumber,
 } from '../../../../../_default/_common/default_id';
-import { getRandomVidPic } from '../../../../../_default/_common/default_image';
+import {
+    getRandomVidPic,
+    getRandomVidPicOrNull,
+} from '../../../../../_default/_common/default_image';
 import { getDefaultArr } from '../../../../../_default/_common/getDefaultArr';
 import { getRandomBool } from '../../../../../_default/_common/default_bool';
+import { getRandomName } from '../../../../../_default/_common/default_name';
+import { getRandomContent } from '../../../../../_default/_common/default_content';
 
 //
 const default_post = (
@@ -172,6 +177,44 @@ export const PL_detail_initial_state_obj = () => {
             discount: '',
             installment: '',
 
+            rating_arr: [0, 0, 0, 0, 0],
+            rating_avg: 0,
+            rating_count: 0,
+            rate_arr: [
+                {
+                    user_name: '',
+                    buying_where: '',
+                    num_rate: 0,
+                    will_share: false,
+
+                    content: '',
+                    img: '',
+                    service_replied_time: '',
+
+                    count_like: 0,
+                    user_liked: false,
+
+                    buying_time: '',
+                    rating_time: '',
+                    used_time_str: '',
+
+                    discuss_arr: [
+                        {
+                            user_name: '',
+                            is_admin: false,
+                            content: '',
+                            count_like: 0,
+                            user_liked: false,
+                        },
+                    ],
+                    count_discuss: 0,
+                },
+            ],
+            rate_img_arr: [''],
+
+            count_like: 0,
+            added_compare: false,
+
             is_coming: false,
             in_stock: true,
 
@@ -232,7 +275,7 @@ export const PL_detail_initial_state_obj = () => {
                 price: 0,
                 saved_price: '',
             },
-            
+
             promotion_obj: promotion_obj,
             promotion_2_obj: promotion_obj,
 
@@ -244,10 +287,76 @@ export const PL_detail_initial_state_obj = () => {
 
 //
 export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
-    const phone_id = getRandomId();
+    const phone_id = data.id;
     const name = 'Điện thoại Xiaomi Redmi 10';
     const old_price = data.old_price;
     const new_price = data.new_price;
+
+    const rating_arr = [0, 4, 15, 8, 5];
+    const rating_count = rating_arr.reduce((a, b) => a + b, 0);
+    const rate_avg =
+        Math.floor(
+            (10 * rating_arr.reduce((a, b, ix) => a + b * (ix + 1), 0)) /
+                rating_count
+        ) / 10;
+
+    const rate_img_count = getRandomNumber(0, 30);
+    const rate_img_arr = getDefaultArr(
+        getRandomVidPic,
+        rate_img_count > 10 ? 10 : rate_img_count,
+        rate_img_count > 10 ? 10 : rate_img_count
+    );
+
+    const rate_arr = [
+        {
+            id: getRandomId(),
+            user_name: getRandomName(),
+            buying_where: getRandomBool()
+                ? 'Đã mua tại TGDD'
+                : 'Đã mua tại DMX',
+            num_rate: getRandomNumber(1, 5),
+            will_share: getRandomBool(),
+
+            content: getRandomContent(),
+            img: getRandomVidPicOrNull(),
+            service_replied_time: new Date().getTime(),
+
+            count_like: getRandomBool() ? getRandomNumber(0, 2) : 0,
+            user_liked: false,
+
+            buying_time: new Date().getTime() - 40 * 24 * 60 * 60 * 1000,
+            rating_time: new Date().getTime(),
+            used_time_str: '1 tháng',
+
+            discuss_arr: [
+                {
+                    id: getRandomId(),
+                    user_name: getRandomName(),
+                    is_admin: getRandomBool(),
+                    content: getRandomContent(),
+                    count_like: getRandomBool() ? getRandomNumber(0, 2) : 0,
+                    user_liked: false,
+                },
+                {
+                    id: getRandomId(),
+                    user_name: getRandomName(),
+                    is_admin: getRandomBool(),
+                    content: getRandomContent(),
+                    count_like: getRandomBool() ? getRandomNumber(0, 2) : 0,
+                    user_liked: false,
+                },
+                {
+                    id: getRandomId(),
+                    user_name: getRandomName(),
+                    is_admin: getRandomBool(),
+                    content: getRandomContent(),
+                    count_like: getRandomBool() ? getRandomNumber(0, 2) : 0,
+                    user_liked: false,
+                },
+            ],
+            count_discuss: 20,
+        },
+    ];
 
     const has_two_price = getRandomBool();
 
@@ -278,9 +387,18 @@ export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
                 is_coming: false,
                 in_stock: true,
 
-                rating_avg: getRandomNumber(20, 50) / 10,
+                rating_arr: rating_arr,
+                rating_avg: rate_avg,
+                rating_count: rating_count,
+
+                rate_arr: rate_arr,
+                rate_img_arr: rate_img_arr,
+                rate_img_count: rate_img_count,
+
                 count_like: getRandomNumber(10, 200),
-                rating_count: getRandomNumber(40, 300),
+                added_compare: !localStorage.compare_ids
+                    ? false
+                    : localStorage.compare_ids.indexOf(`${phone_id},`) >= 0,
 
                 has_two_price: has_two_price,
                 new_price_2: has_two_price ? new_price - 500000 : null,

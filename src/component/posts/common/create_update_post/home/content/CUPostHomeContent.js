@@ -38,7 +38,7 @@ function CUPostHomeContent({
                 <div className="CUPostHomeContent_preview_contain brs-5px">
                     <ImgVidPreview
                         urls={urls_preview}
-                        vid_pic_count={true}
+                        use_vid_pic_grid={true}
                         // deleteAnItem={deleteAnItem}
                     />
                 </div>

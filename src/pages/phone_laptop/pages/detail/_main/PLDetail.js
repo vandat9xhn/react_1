@@ -22,10 +22,12 @@ import {
     PL_detail_initial_state_obj,
 } from '../_state/_PLDetail_handleState';
 import { PLDetail_handleChooseType } from '../_state/PLDetail_handleChooseType';
-// 
+import { PLDetail_handleAPICmt } from '../_state/PLDetail_handleAPICmt';
+//
 import PLDetailProduct from '../product/_main/PLDetailProduct';
 import PLDetailRelative from '../relative/_main/PLDetailRelative';
 import PLDetailSeen from '../seen/_main/PLDetailSeen';
+import PLComments from '../../../components/comments/_main/PLComments';
 //
 import './PLDetail.scss';
 
@@ -69,6 +71,11 @@ function PLDetail() {
         }
     }
 
+    //
+    function handle_API_Comment(params = {}) {
+        return PLDetail_handleAPICmt({ product_id: product_id, ...params });
+    }
+
     // --------
 
     //
@@ -91,22 +98,60 @@ function PLDetail() {
     function openDetailGift() {}
 
     //
-    function callToOrder() {}
+    function callToOrder() {
+        console.log('Call to order');
+    }
 
     //
     function handleBuyNow() {}
 
     //
-    function goToRating() {}
+    function handleLike() {
+        console.log('Like on fb');
+    }
 
     //
-    function handleLike() {}
+    function handleShare() {
+        console.log('Share on fb');
+    }
 
     //
-    function handleShare() {}
+    function addToCompare() {
+        setStateObj((state_obj) => {
+            const new_product_obj = state_obj.product_obj;
+            const new_added_compare = !product_obj.added_compare;
+
+            product_obj.added_compare = new_added_compare;
+
+            if (new_added_compare) {
+                localStorage.compare_ids =
+                    (localStorage.compare_ids || '') + new_product_obj.id + ',';
+            } else {
+                localStorage.compare_ids = localStorage.compare_ids.replace(
+                    `${new_product_obj.id},`,
+                    ''
+                );
+            }
+
+            return {
+                ...state_obj,
+                product_obj: new_product_obj,
+            };
+        });
+    }
+
+    // ----
 
     //
-    function addToCompare() {}
+    function openDetailRateImg() {}
+
+    //
+    function openDetailRate() {}
+
+    //
+    function handleSendDiscuss(content) {
+        console.log(content);
+    }
 
     // -----
 
@@ -127,8 +172,8 @@ function PLDetail() {
 
     //
     return (
-        <div className="font-for-phone bg-primary">
-            <div className="fashion-width">
+        <div className="PLDetail font-for-phone bg-primary font-14px">
+            <div className="PLDetail_contain fashion-width">
                 {has_fetched ? (
                     <React.Fragment>
                         <div className="padding-y-10px text-blue font-14px">
@@ -147,9 +192,12 @@ function PLDetail() {
                                 callToOrder={callToOrder}
                                 //
                                 addToCompare={addToCompare}
-                                goToRating={goToRating}
                                 handleLike={handleLike}
                                 handleShare={handleShare}
+                                //
+                                openDetailRateImg={openDetailRateImg}
+                                openDetailRate={openDetailRate}
+                                handleSendDiscuss={handleSendDiscuss}
                                 //
                                 openDetailCarousel={openDetailCarousel}
                                 openDetailPost={openDetailPost}
@@ -163,8 +211,12 @@ function PLDetail() {
                             <PLDetailRelative product_id={product_id} />
                         </div>
 
-                        <div>
+                        <div className="PLDetail_seen">
                             <PLDetailSeen product_id={product_id} />
+                        </div>
+
+                        <div className="PLDetail_comment">
+                            <PLComments handle_API_L={handle_API_Comment} />
                         </div>
                     </React.Fragment>
                 ) : (

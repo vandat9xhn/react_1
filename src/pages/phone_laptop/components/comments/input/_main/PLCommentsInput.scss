@@ -1,0 +1,39 @@
+.PLCommentsInput {
+    .InputFile {
+        width: auto;
+        height: auto;
+    }
+    .IconsInput{
+        fill: currentColor;
+        stroke: none;
+    }
+
+    .ImgVidPreview{
+        display: flex;
+
+        overflow-x: auto;
+    }
+    // .
+    .ImgVidPreviewItem{
+        flex-shrink: 0;
+
+        position: relative;
+
+        width: 170px;
+        height: 75px;
+        padding: 10px;
+    }
+    // ..
+    .ImgVidPreviewItem_delete{
+        left: auto;
+        right: 0;
+    }
+    // ..
+    .ImgVidPreviewItem__icon-arrow{
+        background-color: var(--shadow-8);
+    }
+}
+
+.PLCommentsInput_textarea {
+    resize: none;
+}

@@ -27,7 +27,7 @@ function PLUsedTime({ buying_time, rating_time, used_time_str }) {
                                 time: rating_time,
                             },
                         ].map((item, ix) => (
-                            <div>
+                            <div key={ix}>
                                 <div>{item.title}</div>
 
                                 <div>{formatLocalDateString(item.time)}</div>

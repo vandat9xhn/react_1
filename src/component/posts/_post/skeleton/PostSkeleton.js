@@ -21,7 +21,7 @@ function PostSkeleton(props) {
                 </div>
             </div>
 
-            <div className="VidPics_count"></div>
+            <div className="VidPics_grid"></div>
         </div>
     );
 }

@@ -1,0 +1,16 @@
+.PLDRatingHead_bars {
+    width: 40%;
+}
+
+.PLDRatingHead_pics {
+    width: 60%;
+    border-left: 1px solid var(--md-bg-blur);
+}
+// ..
+.PLDRatingHead_pics_item {
+    width: 20%;
+    padding-left: 5px;
+    padding-top: 5px;
+
+    cursor: pointer;
+}

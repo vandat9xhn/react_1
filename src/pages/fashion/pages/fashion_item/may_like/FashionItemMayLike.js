@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+// 
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
 import { handle_API_FsProduct_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
 //
@@ -8,7 +10,6 @@ import { useObserverShowMore } from '../../../../../_hooks/useObserverShowMore';
 import FashionFaceItem from '../../../components/face_item/_main/FashionFaceItem';
 //
 import './FashionItemMayLike.scss';
-import { IS_MOBILE } from '../../../../../_constant/Constant';
 
 //
 FashionItemMayLike.propTypes = {};
@@ -49,7 +50,7 @@ function FashionItemMayLike({ id }) {
             </h2>
 
             <div>
-                <ul className="display-flex justify-content-center flex-wrap margin-auto list-none">
+                <ul className="display-flex flex-wrap margin-auto list-none">
                     {data_arr.map((item, ix) => (
                         <li
                             key={`${item.id}`}

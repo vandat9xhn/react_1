@@ -15,7 +15,7 @@ function VideoUtils({
 
     is_play,
     show_btn_play,
-    
+
     toggleBtnPlay,
     togglePlayPause,
 }) {
@@ -23,7 +23,7 @@ function VideoUtils({
     return (
         <React.Fragment>
             <div
-                className={`pos-abs-100 bg-shadow-5 ${
+                className={`pos-abs-100 bg-shadow-2 ${
                     show_btn_play ? '' : 'display-none'
                 }`}
             ></div>

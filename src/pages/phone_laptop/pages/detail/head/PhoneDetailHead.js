@@ -17,7 +17,9 @@ function PhoneDetailHead({
     type,
     rating_avg,
     rating_count,
+
     count_like,
+    added_compare,
 
     addToCompare,
     goToRating,
@@ -57,7 +59,10 @@ function PhoneDetailHead({
                     ) : null}
 
                     <div className="margin-left-10px inline-block">
-                        <PLProductCompare addToCompare={addToCompare} />
+                        <PLProductCompare
+                            added_compare={added_compare}
+                            addToCompare={addToCompare}
+                        />
                     </div>
                 </div>
 

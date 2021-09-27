@@ -11,7 +11,7 @@ InputFile.propTypes = {
     type: PropTypes.string,
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
-    
+
     file_multiple: PropTypes.bool,
     accept: PropTypes.string,
     title: PropTypes.string,
@@ -104,7 +104,7 @@ function InputFile({
                     </div>
                 </div>
             ) : (
-                children
+                <div onClick={onClick}>{children}</div>
             )}
         </div>
     );

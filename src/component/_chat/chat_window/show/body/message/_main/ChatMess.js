@@ -93,7 +93,7 @@ function ChatMess({ mess_item }) {
                             }`}
                             title={new Date(created_time).toLocaleString()}
                         >
-                            <div className="VidPics_count">
+                            <div className="VidPics_grid">
                                 {vid_pics.map((item, index) => (
                                     <div
                                         key={`VidPics_count_${index}`}

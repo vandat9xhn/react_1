@@ -7,7 +7,7 @@ import IconPlusSubtract from '../../../_icons_svg/_icon_plus_subtract/IconPlusSu
 PLProductCompare.propTypes = {};
 
 //
-function PLProductCompare({ addToCompare }) {
+function PLProductCompare({ added_compare, addToCompare }) {
     //
     function onAddToCompare(e) {
         e.preventDefault();
@@ -30,7 +30,9 @@ function PLProductCompare({ addToCompare }) {
                     />
                 </div>
 
-                <div className="margin-left-5px">So sánh</div>
+                <div className="margin-left-5px">
+                    {added_compare ? 'Đã thêm so sánh' : 'So sánh'}
+                </div>
             </div>
         </div>
     );

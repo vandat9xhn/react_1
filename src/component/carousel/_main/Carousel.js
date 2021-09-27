@@ -12,7 +12,7 @@ import { useForceUpdate } from '../../../_hooks/UseForceUpdate';
 import NextPrevDiv from '../../some_div/next_prev_div/NextPrevDiv';
 //
 import CarouselItem from '../item/_main/CarouselItem';
-import CarouselDot from '../dot/CarouselDot';
+import CarouselPosition from '../position/_main/CarouselPosition';
 //
 import './Carousel.scss';
 
@@ -29,6 +29,7 @@ Carousel.propTypes = {
     is_btn_circle: PropTypes.bool,
 
     use_dot: PropTypes.bool,
+    use_underscore: PropTypes.bool,
     use_next_prev: PropTypes.bool,
     use_auto_next: PropTypes.bool,
 
@@ -45,7 +46,8 @@ Carousel.defaultProps = {
     disabled_btn_when_trans: true,
     time_disabled_btn: 100,
 
-    use_dot: true,
+    use_dot: !IS_MOBILE,
+    use_underscore: IS_MOBILE,
     use_next_prev: true,
     use_auto_next: true,
 };
@@ -63,6 +65,7 @@ function Carousel({
     is_btn_circle,
 
     use_dot,
+    use_underscore,
     use_next_prev,
     use_auto_next,
 
@@ -165,7 +168,7 @@ function Carousel({
     //
     function changeImgIxPrev() {
         handleWhenNextPrev(true);
-        
+
         ref_vid_pic_ix.current -= 1;
         forceUpdate();
 
@@ -205,7 +208,7 @@ function Carousel({
     //
     function handleAutoNext() {
         if (!use_auto_next) {
-            return
+            return;
         }
 
         if (btn_disable.current) {
@@ -281,30 +284,27 @@ function Carousel({
                 ))}
             </div>
 
-            {use_dot ? (
-                <div
-                    className={`pos-abs bottom-0 x-center padding-8px pointer-events-none ${
-                        has_fetched ? '' : 'display-none'
-                    }`}
-                >
-                    <CarouselDot
-                        count={ref_count.current - 2}
-                        active_ix={
-                            ref_vid_pic_ix.current - 1 == ref_count.current - 1
-                                ? 0
-                                : ref_vid_pic_ix.current - 1
-                        }
-                    />
-                </div>
-            ) : null}
+            <CarouselPosition
+                use_dot={use_dot}
+                use_underscore={use_underscore}
+                has_fetched={has_fetched}
+                count={ref_count.current - 2}
+                active_ix={
+                    ref_vid_pic_ix.current - 1 == ref_count.current - 1
+                        ? 0
+                        : ref_vid_pic_ix.current - 1
+                }
+            />
 
             {!use_next_prev || IS_MOBILE || !has_fetched ? null : (
-                <NextPrevDiv
-                    is_btn_circle={is_btn_circle}
-                    size_icon="14px"
-                    handleNext={handleNext}
-                    handlePrev={handlePrev}
-                />
+                <div className="text-white">
+                    <NextPrevDiv
+                        is_btn_circle={is_btn_circle}
+                        size_icon="14px"
+                        handleNext={handleNext}
+                        handlePrev={handlePrev}
+                    />
+                </div>
             )}
         </div>
     );

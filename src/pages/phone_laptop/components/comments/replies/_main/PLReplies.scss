@@ -1,0 +1,13 @@
+.PLReplies_contain {
+    &::before {
+        content: '';
+
+        position: absolute;
+        left: 15px;
+        bottom: 100%;
+
+        border-width: 0 8px 10px 8px;
+        border-style: solid;
+        border-color: transparent transparent var(--md-bg-fb) transparent;
+    }
+}

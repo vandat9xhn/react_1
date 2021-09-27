@@ -4,14 +4,14 @@ import { getRandomVidPic } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 
 //
-export const default_phone_obj = () => {
+export const default_phone_obj = (id = 0) => {
     const new_price = getRandomNumber(10, 300);
 
     const rating_count = getRandomBool() ? getRandomNumber(10, 200) : 0;
     const rating_avg = rating_count ? getRandomNumber(20, 50) / 10 : 0;
 
     return {
-        id: getRandomId(),
+        id: id || getRandomId(),
         name: 'Samsung Galaxy Z Fold3 5G 256GB',
 
         cpu: '500',

@@ -13,7 +13,7 @@ function VidPicsPost({ post_ix, vid_pics }) {
     return (
         <div className="VidPicsPost">
             {vid_pics ? (
-                <div className={vid_pics.length > 0 ? 'VidPics_count' : ''}>
+                <div className={vid_pics.length > 0 ? 'VidPics_grid' : ''}>
                     {vid_pics.map((item, index) => (
                         <VidPicPostItem
                             key={`VidPicsPost_${index}`}

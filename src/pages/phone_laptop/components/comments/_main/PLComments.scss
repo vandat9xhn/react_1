@@ -1,0 +1,14 @@
+.PLComments{
+    .Pagination{
+        margin-left: 0;
+    }
+    // .
+    .PaginationItem_contain {
+        background: var(--f1);
+    }
+    .PaginationItem_contain-active {
+        border: none;
+        color: inherit;
+        background: var(--ccc);
+    }
+}

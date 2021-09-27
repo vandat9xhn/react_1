@@ -31,7 +31,7 @@ function VidPicObserve({ vid_pic, type, video_props, img_props }) {
 
     //
     useEffect(() => {
-        if (ref_vid_pic.current.src) {
+        if (ref_vid_pic.current && ref_vid_pic.current.src) {
             ref_vid_pic.current.src = vid_pic;
         }
     }, [vid_pic]);

@@ -12,12 +12,12 @@ import './PLRatesItemHead.scss';
 PLRatesItemHead.propTypes = {};
 
 //
-function PLRatesItemHead({ user_name, buying_where, rating_avg, will_share }) {
+function PLRatesItemHead({ user_name, buying_where, num_rate, will_share }) {
     //
     return (
         <div className="PLRatesItemHead">
             <div className="display-flex align-items-center">
-                <div>{user_name}</div>
+                <div className="margin-right-10px font-700">{user_name}</div>
 
                 <div className="display-flex align-items-center text-green">
                     <div className="PLRatesItemHead_icon_tick display-flex-center brs-50">
@@ -28,16 +28,16 @@ function PLRatesItemHead({ user_name, buying_where, rating_avg, will_share }) {
                 </div>
             </div>
 
-            <div className="display-flex align-items-center margin-top-5px">
+            <div className="PLRatesItemHead_rate display-flex align-items-center margin-top-5px">
                 <StarsRate
-                    rate_avg={rating_avg}
+                    rate_avg={num_rate}
                     size_icon="14px"
                     color="var(--star)"
                 />
 
                 {will_share ? (
-                    <div className="margin-left-15px">
-                        <IconHeart size_icon="14px" />
+                    <div className="inline-flex align-items-center margin-left-15px font-13px">
+                        <IconHeart size_icon="15px" />
 
                         <span className="margin-left-5px">
                             Sẽ giới thiệu cho bạn bè, người thân

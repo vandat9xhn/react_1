@@ -9,7 +9,7 @@ import './ImgVidPreview.scss';
 function ImgVidPreview({
     urls,
     show_all,
-    vid_pic_count,
+    use_vid_pic_grid,
 
     video_controls,
     video_preload,
@@ -22,13 +22,13 @@ function ImgVidPreview({
     //
     return (
         <div
-            className={`ImgVidPreview ${vid_pic_count ? 'VidPics_count' : ''}`}
+            className={`ImgVidPreview ${use_vid_pic_grid ? 'VidPics_grid' : ''}`}
         >
             {(show_all ? urls : urls.slice(0, 4)).map((item, index) => (
                 <div
                     key={`image_preview_${index}`}
                     className={`ImgVidPreview__elm ${
-                        vid_pic_count
+                        use_vid_pic_grid
                             ? `VidPics_count_${count_url > 4 ? 5 : count_url}`
                             : ''
                     }`}
@@ -55,7 +55,7 @@ function ImgVidPreview({
 ImgVidPreview.propTypes = {
     urls: PropTypes.array,
     show_all: PropTypes.bool,
-    vid_pic_count: PropTypes.bool,
+    use_vid_pic_grid: PropTypes.bool,
 
     deleteAnItem: PropTypes.func,
 
@@ -67,7 +67,7 @@ ImgVidPreview.defaultProps = {
     show_all: false,
     delete_in_pic: false,
 
-    vid_pic_count: false,
+    use_vid_pic_grid: false,
 };
 
 export default ImgVidPreview;

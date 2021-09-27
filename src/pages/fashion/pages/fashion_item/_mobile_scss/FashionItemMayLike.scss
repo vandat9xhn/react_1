@@ -1,0 +1,12 @@
+.FashionItem_mobile {
+    .FashionItemMayLike_item {
+        width: 33.33%;
+    }
+
+    //
+    @media (max-width: 450px) {
+        .FashionItemMayLike_item {
+            width: 50%;
+        }
+    }
+}

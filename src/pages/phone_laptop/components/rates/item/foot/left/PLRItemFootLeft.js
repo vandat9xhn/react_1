@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconLike from '../../../../../../../_icons_svg/icons_like/icon_like/IconLike';
 import IconsPost from '../../../../../../../_icons_svg/icons_post/IconsPost';
 import PLUseful from '../../../../useful/PLUseful';
+// 
+import './PLRItemFootLeft.scss';
 
 //
 PLRItemFootLeft.propTypes = {};
@@ -28,7 +29,7 @@ function PLRItemFootLeft({
                 >
                     <IconsPost x={200} size_icon="15px" />
 
-                    <span>{count_discuss || ''} thảo luận</span>
+                    <span className="margin-left-5px">{count_discuss || ''} thảo luận</span>
                 </div>
             </div>
         </div>

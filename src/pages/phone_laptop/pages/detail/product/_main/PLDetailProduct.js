@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import PLDetailCarousel from '../../_components/carousel/_main/PLDetailCarousel';
 import PLDetailPolicy from '../../_components/policy/_main/PLDetailPolicy';
 import PLDetailPost from '../../_components/short_post/_main/PLDetailPost';
-import PLDetailRating from '../../_components/rating/_main/PLDetailRating';
 import PLDetailGroups from '../../_components/groups/_main/PLDetailGroups';
 import PLDetailArea from '../../_components/area/PLDetailArea';
 import PLDOnePrice from '../../_components/price/one_price/PLDOnePrice';
@@ -13,13 +12,15 @@ import PLDetailPromotion from '../../_components/promotion/_main/PLDetailPromoti
 import PLDetailMarket from '../../_components/market/_main/PLDetailMarket';
 import PLDetailOffer from '../../_components/offer/_main/PLDetailOffer';
 import PLDetailShortConfig from '../../_components/short_config/_main/PLDetailShortConfig';
-//
-import './PLDetailProduct.scss';
 import PLDetailBtnBuy from '../../_components/btn_buy/_main/PLDetailBtnBuy';
 import PLDetailInstallment from '../../_components/installment/_main/PLDetailInstallment';
 import PLDetailCallOrder from '../../_components/call_order/PLDetailCallOrder';
 import PhoneDetailHead from '../../head/PhoneDetailHead';
 import PLDetailOldProduct from '../../_components/old_product/_main/PLDetailOldProduct';
+import PLDetailRating from '../../_components/rating/_main/PLDetailRating';
+//
+import './PLDetailProduct.scss';
+import { handleScrollSmooth } from '../../../../../../_some_function/handleScrollSmooth';
 
 //
 PLDetailProduct.propTypes = {};
@@ -36,9 +37,12 @@ function PLDetailProduct({
     handleBuyNow,
 
     addToCompare,
-    goToRating,
     handleLike,
     handleShare,
+
+    openDetailRateImg,
+    openDetailRate,
+    handleSendDiscuss,
 
     openDetailCarousel,
     openDetailPost,
@@ -48,6 +52,7 @@ function PLDetailProduct({
 }) {
     //
     const {
+        id,
         name,
         img_main,
         new_price,
@@ -58,9 +63,16 @@ function PLDetailProduct({
         is_coming,
         in_stock,
 
+        rating_arr,
         rating_avg,
-        count_like,
         rating_count,
+
+        rate_img_arr,
+        rate_img_count,
+        rate_arr,
+
+        count_like,
+        added_compare,
 
         has_two_price,
         new_price_2,
@@ -92,8 +104,20 @@ function PLDetailProduct({
     const c_offer_obj = is_price_2 ? offer_2_obj : offer_obj;
 
     //
+    const ref_rating_elm = useRef(null);
+
+    // -------
+
+    //
+    function goToRating() {
+        handleScrollSmooth(() => {
+            ref_rating_elm.current.scrollIntoView();
+        });
+    }
+
+    //
     return (
-        <div className="PLDetailProduct font-14px">
+        <div className="PLDetailProduct">
             <div className="margin-bottom-15px">
                 <PhoneDetailHead
                     name={name}
@@ -101,6 +125,7 @@ function PLDetailProduct({
                     rating_avg={rating_avg}
                     rating_count={rating_count}
                     count_like={count_like}
+                    added_compare={added_compare}
                     //
                     addToCompare={addToCompare}
                     goToRating={goToRating}
@@ -146,8 +171,22 @@ function PLDetailProduct({
                         />
                     </div>
 
-                    <div className="margin-bottom-20px">
-                        <PLDetailRating />
+                    <div ref={ref_rating_elm} className="margin-bottom-20px">
+                        <PLDetailRating
+                            product_id={id}
+                            product_name={name}
+                            rating_arr={rating_arr}
+                            rating_avg={rating_avg}
+                            rating_count={rating_count}
+                            //
+                            rate_img_arr={rate_img_arr}
+                            rate_img_count={rate_img_count}
+                            rate_arr={rate_arr}
+                            //
+                            openDetailRateImg={openDetailRateImg}
+                            openDetailRate={openDetailRate}
+                            handleSendDiscuss={handleSendDiscuss}
+                        />
                     </div>
                 </div>
 

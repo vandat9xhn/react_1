@@ -10,12 +10,12 @@ import PLRIDiscuss from '../discuss/_main/PLRIDiscuss';
 PLRatesItem.propTypes = {};
 
 //
-function PLRatesItem({ rate_obj }) {
+function PLRatesItem({ rate_obj, handleSendDiscuss }) {
     //
     const {
         user_name,
         buying_where,
-        rating_avg,
+        num_rate,
         will_share,
 
         content,
@@ -51,17 +51,17 @@ function PLRatesItem({ rate_obj }) {
 
     //
     return (
-        <div className="PLRatesItem padding-y-15px">
-            <div>
+        <div className="PLRatesItem padding-y-10px">
+            <div className="margin-bottom-10px">
                 <PLRatesItemHead
                     user_name={user_name}
                     buying_where={buying_where}
-                    rating_avg={rating_avg}
+                    num_rate={num_rate}
                     will_share={will_share}
                 />
             </div>
 
-            <div>
+            <div className="margin-bottom-10px">
                 <PLRatesItemBody
                     content={content}
                     img={img}
@@ -83,8 +83,11 @@ function PLRatesItem({ rate_obj }) {
             </div>
 
             {show_discuss ? (
-                <div>
-                    <PLRIDiscuss discuss_arr={discuss_arr} />
+                <div className="margin-top-15px">
+                    <PLRIDiscuss
+                        discuss_arr={discuss_arr}
+                        handleSendDiscuss={handleSendDiscuss}
+                    />
                 </div>
             ) : null}
         </div>

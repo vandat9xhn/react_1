@@ -18,7 +18,7 @@ function PLRatesItemBody({ content, img, service_replied_time }) {
             {img ? (
                 <div className="margin-top-10px">
                     <img
-                        className="object-fit-cover"
+                        className="brs-5px object-fit-cover"
                         src={img}
                         alt=""
                         width="125"

@@ -48,7 +48,7 @@ function IconsPost({ size_icon, x, y }) {
             </g>
 
             {/* icon comment x=200 y=0*/}
-            <g strokeWidth="10">
+            <g className="IconsPost_cmt" strokeWidth="10">
                 <path
                     d="M230,190 L230,165 L230,165 Q210,165 210,130 L210,30 Q210,5 230,5
                     L370,5 Q390,5 390,30 L390,130 Q390,165 360,165 L270,165 Z"

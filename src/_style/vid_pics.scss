@@ -1,4 +1,4 @@
-.VidPics_count{
+.VidPics_grid{
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 12.5rem 12.5rem;
@@ -69,19 +69,19 @@
 
 //
 @media (max-width: 500px){
-    .VidPics_count{
+    .VidPics_grid{
         grid-template-rows: 8rem 8rem;
     }
 }
 
 @media (max-width: 350px){
-    .VidPics_count{
+    .VidPics_grid{
         grid-template-rows: 7rem 7rem;
     }
 }
 
 @media (max-width: 300px){
-    .VidPics_count{
+    .VidPics_grid{
         grid-template-rows: 6rem 6rem;
     }
 }
