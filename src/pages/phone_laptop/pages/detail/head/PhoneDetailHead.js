@@ -13,15 +13,16 @@ PhoneDetailHead.propTypes = {};
 
 //
 function PhoneDetailHead({
+    id,
     name,
+    img,
+    product_type,
     type,
+
     rating_avg,
     rating_count,
-
     count_like,
-    added_compare,
 
-    addToCompare,
     goToRating,
     handleLike,
     handleShare,
@@ -60,8 +61,10 @@ function PhoneDetailHead({
 
                     <div className="margin-left-10px inline-block">
                         <PLProductCompare
-                            added_compare={added_compare}
-                            addToCompare={addToCompare}
+                            id={id}
+                            name={name}
+                            img={img}
+                            product_type={product_type} 
                         />
                     </div>
                 </div>

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// 
+import './PLBrandItem.scss';
 
 //
 PLBrandItem.propTypes = {};
 
 //
-function PLBrandItem({ ix, name, is_active, handleChooseBrand }) {
+function PLBrandItem({ ix, title, checked, handleChooseBrand }) {
     //
     function onChooseBrand() {
         handleChooseBrand(ix);
@@ -14,12 +16,12 @@ function PLBrandItem({ ix, name, is_active, handleChooseBrand }) {
     //
     return (
         <div
-            className={`PLBrandItem padding-4px border-blur font-500 ${
-                is_active ? 'text-blue' : ''
+            className={`PLBrandItem padding-y-5px border-blur text-align-center font-500 cursor-pointer ${
+                checked ? 'border-blue text-blue' : ''
             }`}
             onClick={onChooseBrand}
         >
-            {name}
+            {title}
         </div>
     );
 }

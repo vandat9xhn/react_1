@@ -24,11 +24,12 @@ PLProduct.defaultProps = {
 };
 
 //
-function PLProduct({ num_row_info, product_obj, use_compare, addToCompare }) {
+function PLProduct({ num_row_info, product_obj, use_compare }) {
     //
     const {
         id,
         name,
+        product_type,
         type_arr,
 
         in_stock,
@@ -48,6 +49,8 @@ function PLProduct({ num_row_info, product_obj, use_compare, addToCompare }) {
     //
     const [type_ix, setTypeIx] = useState(0);
 
+    const img = type_arr ? type_arr[type_ix].img : '';
+
     //
     return (
         <div className="PLProduct h-100per pos-rel">
@@ -57,7 +60,7 @@ function PLProduct({ num_row_info, product_obj, use_compare, addToCompare }) {
             >
                 <div className="PLProduct_head margin-bottom-10px">
                     <PLProductHead
-                        img={type_arr ? type_arr[type_ix].img : ''}
+                        img={img}
                         installment={installment}
                         has_fetched={!!name}
                     />
@@ -92,7 +95,12 @@ function PLProduct({ num_row_info, product_obj, use_compare, addToCompare }) {
 
                         {use_compare ? (
                             <div>
-                                <PLProductCompare addToCompare={addToCompare} />
+                                <PLProductCompare
+                                    id={id}
+                                    name={name}
+                                    img={img}
+                                    product_type={product_type}
+                                />
                             </div>
                         ) : null}
                     </div>

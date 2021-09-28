@@ -37,6 +37,9 @@ PLDetail.propTypes = {};
 //
 function PLDetail() {
     //
+    const {} = useContext(context_api);
+
+    //
     const product_id = GetIdSlug();
 
     //
@@ -115,31 +118,6 @@ function PLDetail() {
         console.log('Share on fb');
     }
 
-    //
-    function addToCompare() {
-        setStateObj((state_obj) => {
-            const new_product_obj = state_obj.product_obj;
-            const new_added_compare = !product_obj.added_compare;
-
-            product_obj.added_compare = new_added_compare;
-
-            if (new_added_compare) {
-                localStorage.compare_ids =
-                    (localStorage.compare_ids || '') + new_product_obj.id + ',';
-            } else {
-                localStorage.compare_ids = localStorage.compare_ids.replace(
-                    `${new_product_obj.id},`,
-                    ''
-                );
-            }
-
-            return {
-                ...state_obj,
-                product_obj: new_product_obj,
-            };
-        });
-    }
-
     // ----
 
     //
@@ -191,7 +169,6 @@ function PLDetail() {
                                 handleBuyNow={handleBuyNow}
                                 callToOrder={callToOrder}
                                 //
-                                addToCompare={addToCompare}
                                 handleLike={handleLike}
                                 handleShare={handleShare}
                                 //

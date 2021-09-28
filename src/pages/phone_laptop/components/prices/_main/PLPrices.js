@@ -8,22 +8,21 @@ import './PLPrices.scss';
 //
 PLPrices.propTypes = {
     price_arr: PropTypes.array,
-    price_ix: PropTypes.array,
     handleChoosePrice: PropTypes.func,
 };
 
 //
-function PLPrices({ price_arr, price_ix, handleChoosePrice }) {
+function PLPrices({ price_arr, handleChoosePrice }) {
     //
     return (
-        <div className="PLPrices">
-            <div className="PLPrices_row">
-                {['All', ...price_arr].map((price_str, ix) => (
-                    <div key={ix} className="PLPrices_item">
+        <div className="PLPrices padding-5px">
+            <div className="PLPrices_row display-flex flex-wrap">
+                {price_arr.map((price_obj, ix) => (
+                    <div key={ix} className="PLPrices_item padding-5px">
                         <PLPriceItem
                             ix={ix}
-                            price_str={price_str}
-                            is_active={ix == price_ix}
+                            title={price_obj.title}
+                            checked={price_arr.checked}
                             handleChoosePrice={handleChoosePrice}
                         />
                     </div>

@@ -2,6 +2,7 @@ import { getRandomBool } from '../_common/default_bool';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
+import { getRandomFromArr } from '../_common/getRandomFromArr';
 
 //
 export const default_phone_obj = (id = 0) => {
@@ -20,7 +21,7 @@ export const default_phone_obj = (id = 0) => {
         internal_memory: '32G',
         camera: 'Full HD',
         memory_stick: '120G',
-        type_product: 'phone',
+        product_type: getRandomFromArr(['phone', 'laptop']),
 
         new_price: new_price * 100000,
         old_price: getRandomNumber(new_price, new_price + 20) * 100000,

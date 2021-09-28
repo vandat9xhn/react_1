@@ -13,20 +13,17 @@ PLBrands.propTypes = {
 };
 
 //
-function PLBrands({ brand_arr, brand_ix, handleChooseBrand }) {
+function PLBrands({ brand_arr, handleChooseBrand }) {
     //
     return (
         <div className="PLBrands">
             <div className="PLBrands_row display-flex align-items-center flex-wrap">
-                {['All', ...brand_arr].map((name, index) => (
-                    <div
-                        key={`${index}`}
-                        className="PLBrands_item margin-5px"
-                    >
+                {brand_arr.map((brand_obj, ix) => (
+                    <div key={ix} className="PLBrands_item margin-5px">
                         <ProductBrandItem
-                            ix={index}
-                            is_active={brand_ix.includes(index)}
-                            name={name}
+                            ix={ix}
+                            checked={brand_obj.checked}
+                            title={brand_obj.title}
                             handleChooseBrand={handleChooseBrand}
                         />
                     </div>

@@ -1,0 +1,22 @@
+.PLCompare {
+    z-index: var(--z-index-lv3);
+}
+
+.PLCompare_contain {
+    width: 1200px;
+
+    z-index: inherit;
+}
+
+.PLCompare_item {
+    position: relative;
+
+    width: 33.33%;
+    padding: 20px 0;
+
+    border-right: 1px solid var(--md-bg-blur);
+}
+
+.PLCompare_actions {
+    width: 25%;
+}

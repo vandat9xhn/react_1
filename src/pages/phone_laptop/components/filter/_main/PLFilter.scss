@@ -1,12 +1,14 @@
-.PLFilter_title {
-    border: 1px solid transparent;
-}
 .PLFilter_title-active {
-    border-color: var(--blue);
+    border-color: var(--border-fashion);
 }
 
 .PLFilter_arrow {
     border-width: 0px 5px 8px 5px;
     border-style: solid;
     border-color: transparent transparent var(--md-bg-primary);
+}
+
+.PLFilter_list {
+    min-width: 400px;
+    max-width: 600px;
 }

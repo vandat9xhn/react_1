@@ -1,41 +1,46 @@
-import {
-  combineReducers, createStore, compose, applyMiddleware,
-} from 'redux';
+import { combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import watcherSaga from '../saga/ReduxSaga';
-// 
+//
 import reducer_saga from './ReducerSaga';
 import reducer_count_cart from './reducer_count_cart';
+import PLCompareSlice from '../slice/PLCompareSlice';
 
-// Combine reducers
+//
 const rootReducer = combineReducers({
-  list2: reducer_saga,
-  count_cart_obj: reducer_count_cart,
+    list2: reducer_saga,
+    count_cart_obj: reducer_count_cart,
+    pl_compare_obj: PLCompareSlice,
 });
 
-// window dev
-const devtools_compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//
+// const devtools_compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// Custom middleware
+//
 const customMiddleware = (store) => (next) => (action) => {
-  if (Array.isArray(action.payload)) {
-    // console.log('Success');
-  }
+    if (Array.isArray(action.payload)) {
+        // console.log('Success');
+    }
 
-  return next(action);
+    return next(action);
 };
 
-// saga middleware
+//
 const sagaMiddleware = createSagaMiddleware();
 
-// Enhance
-const enhance = devtools_compose(
-  applyMiddleware(sagaMiddleware, thunk, customMiddleware),
-);
+//
+// const enhance = devtools_compose(
+//   applyMiddleware(sagaMiddleware, thunk, customMiddleware),
+// );
 
-// Store:
-const store = createStore(rootReducer, enhance);
+//
+// const store = createStore(rootReducer, enhance);
+const store = configureStore({
+    reducer: rootReducer,
+    middleware: [sagaMiddleware, thunk, customMiddleware],
+});
 
 sagaMiddleware.run(watcherSaga);
 

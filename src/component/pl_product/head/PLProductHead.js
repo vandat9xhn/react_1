@@ -32,7 +32,7 @@ function PLProductHead({ img, installment, has_fetched }) {
 
             {installment !== undefined && (
                 <div className="PLProductHead_installment pos-abs left-0 top-0">
-                    <div className="brs-2px bg-f1 font-11px">
+                    <div className="padding-x-4px brs-2px bg-f1 font-11px">
                         Trả góp {installment}%
                     </div>
                 </div>

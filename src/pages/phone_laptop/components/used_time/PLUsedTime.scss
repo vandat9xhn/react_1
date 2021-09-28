@@ -1,0 +1,11 @@
+.PLUsedTime {
+    &:hover {
+        .PLUsedTime_contain {
+            display: block;
+        }
+    }
+}
+
+.PLUsedTime_contain{
+    width: 300px;
+}

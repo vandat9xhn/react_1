@@ -44,6 +44,7 @@ import WaitingBall from './component/waiting/waiting_ball/WaitingBall';
 import Chat from './component/_chat/_main/Chat';
 import Contact from './component/_contact/Contact';
 import BackTop from './component/_back_to_top/BackTop';
+import PLCompare from './component/pl_compare/_main/PLCompare';
 
 import Header from './component/_header/_main_header/Header';
 import Footer from './component/_footer/_main/Footer';
@@ -193,6 +194,8 @@ class App extends Component {
                             <BackTop />
 
                             <Contact />
+
+                            <PLCompare />
 
                             <Chat ref={this.refChat} />
                         </div>

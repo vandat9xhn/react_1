@@ -1,8 +1,5 @@
 .PLPriceItem{
     &:hover{
-        border-color: currentColor;
+        border-color: var(--blue);
     }
-}
-.PLPriceItem-active{
-    border-color: currentColor;
 }

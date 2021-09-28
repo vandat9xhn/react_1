@@ -22,6 +22,7 @@ import { getDefaultArr } from '../../../../../_default/_common/getDefaultArr';
 import { getRandomBool } from '../../../../../_default/_common/default_bool';
 import { getRandomName } from '../../../../../_default/_common/default_name';
 import { getRandomContent } from '../../../../../_default/_common/default_content';
+import { getRandomFromArr } from '../../../../../_default/_common/getRandomFromArr';
 
 //
 const default_post = (
@@ -171,7 +172,10 @@ export const PL_detail_initial_state_obj = () => {
             ],
             id: 0,
             name: '',
+            product_type: '',
+            img: '',
             img_main: '',
+
             new_price: 0,
             old_price: 0,
             discount: '',
@@ -213,7 +217,6 @@ export const PL_detail_initial_state_obj = () => {
             rate_img_arr: [''],
 
             count_like: 0,
-            added_compare: false,
 
             is_coming: false,
             in_stock: true,
@@ -378,7 +381,10 @@ export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
 
                 id: phone_id,
                 name: name,
+                img: getRandomVidPic(),
+                product_type: getRandomFromArr(['phone', 'laptop']),
                 img_main: phone_img_main,
+
                 new_price: new_price,
                 old_price: old_price,
                 discount: null,
@@ -396,9 +402,6 @@ export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
                 rate_img_count: rate_img_count,
 
                 count_like: getRandomNumber(10, 200),
-                added_compare: !localStorage.compare_ids
-                    ? false
-                    : localStorage.compare_ids.indexOf(`${phone_id},`) >= 0,
 
                 has_two_price: has_two_price,
                 new_price_2: has_two_price ? new_price - 500000 : null,

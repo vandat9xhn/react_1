@@ -36,7 +36,6 @@ function PLDetailProduct({
     callToOrder,
     handleBuyNow,
 
-    addToCompare,
     handleLike,
     handleShare,
 
@@ -54,7 +53,10 @@ function PLDetailProduct({
     const {
         id,
         name,
+        product_type,
+        img,
         img_main,
+
         new_price,
         old_price,
         discount,
@@ -72,7 +74,6 @@ function PLDetailProduct({
         rate_arr,
 
         count_like,
-        added_compare,
 
         has_two_price,
         new_price_2,
@@ -120,14 +121,16 @@ function PLDetailProduct({
         <div className="PLDetailProduct">
             <div className="margin-bottom-15px">
                 <PhoneDetailHead
+                    id={id}
                     name={name}
+                    product_type={product_type}
+                    img={img}
                     type={type}
+                    // 
                     rating_avg={rating_avg}
                     rating_count={rating_count}
                     count_like={count_like}
-                    added_compare={added_compare}
                     //
-                    addToCompare={addToCompare}
                     goToRating={goToRating}
                     handleLike={handleLike}
                     handleShare={handleShare}

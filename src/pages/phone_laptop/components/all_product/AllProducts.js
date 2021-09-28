@@ -25,342 +25,231 @@ import ProductCFilter from '../current_filter/_main/ProductCFilter';
 import ProductPrices from '../prices/_main/PLPrices';
 //
 import './AllProductsRes.scss';
+import { useDataShowMore } from '../../../../_hooks/useDataShowMore';
+import { ParseLocationSearch } from '../../../../_some_function/ParseLocationSearch';
+import { useMounted } from '../../../../_hooks/useMounted';
+import PLFilter from '../filter/_main/PLFilter';
+import PLFilterCommonList from '../filter/common_list/PLFilterCommonList';
+import { useHistory } from 'react-router-dom';
+import { stringify } from 'query-string';
+
+//
+function changeNewSearchObj(new_search_obj = {}, arr = [], search_key = '') {
+    const search_str = arr
+        .filter((item) => item.checked)
+        .map((item) => item.filter_key)
+        .join(',');
+
+    if (search_str) {
+        new_search_obj[search_key] = search_str;
+    }
+}
 
 //
 AllProducts.propTypes = {
-    arr_brands: PropTypes.arrayOf(PropTypes.string),
-    arr_prices: PropTypes.arrayOf(PropTypes.string),
-    arr_memories: PropTypes.arrayOf(PropTypes.string),
-    arr_rams: PropTypes.arrayOf(PropTypes.string),
-    arr_oses: PropTypes.arrayOf(PropTypes.string),
-    arr_cpus: PropTypes.arrayOf(PropTypes.string),
-    arr_sorts: PropTypes.arrayOf(PropTypes.string),
-    //
-    type_product: PropTypes.string,
+    product_type: PropTypes.string,
 };
 
 AllProducts.defaultProps = {
-    type_product: 'phone',
+    product_type: '',
 };
 
 //
 function AllProducts({
-    type_product,
+    product_type,
 
-    arr_brands,
-    arr_prices,
-    arr_memories,
-    arr_rams,
-    arr_sorts,
-    arr_cpus,
-    arr_oses,
+    brand_arr,
+    price_arr,
+    filter_arr,
 }) {
     //
-    const [product_obj, setProductObj] = useState({
-        current_brands: [] || [-1],
-        current_prices: [] || [-1],
-        current_rams: [] || [-1],
-        current_memories: [] || [-1],
-        current_cpus: [] || [-1],
-        current_oses: [] || [-1],
-        current_sort: 0,
+    const use_history = useHistory();
 
-        choose_memories: [] || [-1],
-        choose_rams: [] || [-1],
-        choose_cpus: [] || [-1],
-        choose_oses: [] || [-1],
-
-        products: initial_phone_arr,
-        has_fetched: false,
-        is_fetching: false,
-        count: 0,
-
-        should_filter: false,
-    });
+    //
+    const { data_state, setDataState, getData_API, refreshData_API } =
+        useDataShowMore({
+            initial_arr: [],
+            handle_API_L: handle_API_PhoneLaptop_L,
+            other_state: {
+                filter_count: 0,
+                filter_result_count: 0,
+                filter_fetching: false,
+            },
+        });
 
     const {
-        current_brands,
-        current_prices,
-        current_rams,
-        current_memories,
-        current_cpus,
-        current_oses,
-        current_sort,
-
-        choose_memories,
-        choose_rams,
-        choose_cpus,
-        choose_oses,
-
-        products,
-        has_fetched,
-        is_fetching,
+        data_arr,
         count,
+        is_fetching,
+        has_fetched,
 
-        should_filter,
-    } = product_obj;
+        filter_count,
+        filter_result_count,
+        filter_fetching,
+    } = data_state;
+
+    //
+    const mounted = useMounted();
 
     //
     useEffect(() => {
-        getData_API_FilterSortProducts();
-    }, []);
+        if (mounted) {
+            refreshData_API();
+        }
+    }, [location.search]);
 
-    /* ---------------------- COMMON ----------------------------- */
+    // -----
 
-    // params
-    function getParamsAPI(is_get_more = false) {
-        const common_params = {
-            type_product: type_product,
-            in_stock: '',
-            current_brands: ListOrRegex(current_brands, arr_brands, false),
-            current_prices: ListOrEmpty(current_prices),
-            current_sort: data_phone_sort_arr[current_sort],
-
+    //
+    async function handle_API_PhoneLaptop_L(c_count) {
+        const res = await API_PhoneLaptop_L({
+            type: product_type,
+            ...ParseLocationSearch(),
             page: 1,
-            size: has_fetched ? 15 : 20,
-            c_count: products.length,
-        };
+            size: 30,
+            c_count: c_count,
+        });
 
-        if (is_get_more) {
+        return res.data;
+    }
+
+    //
+    function handleShowMore() {
+        getData_API();
+    }
+
+    //
+    async function getData_Filter(new_checked = true) {
+        setDataState((data_state) => {
             return {
-                current_i_memories: ListOrEmptyNumber(
-                    current_memories,
-                    arr_memories.length
-                ),
-                current_rams: ListOrEmptyNumber(current_rams, arr_rams.length),
-                current_oses: ListOrEmpty(current_oses, arr_oses),
-                current_cpus: ListOrRegex(current_cpus, arr_cpus, true),
-                ...common_params,
+                ...data_state,
+                filter_count: data_state.filter_count + new_checked * 1,
+                filter_fetching: true,
             };
-        }
+        });
 
-        return {
-            current_i_memories: ListOrEmptyNumber(
-                choose_memories,
-                arr_memories.length
-            ),
-            current_rams: ListOrEmptyNumber(choose_rams, arr_rams.length),
-            current_oses: ListOrEmpty(choose_oses, arr_oses),
-            current_cpus: ListOrRegex(choose_cpus, arr_cpus, true),
-            ...common_params,
-        };
-    }
+        const res = await API_PhoneLaptop_L({
+            page: 1,
+            size: 1,
+        });
 
-    //
-    function handleAddOrRemoveItem(choose_name = '', index = 0, new_obj = {}) {
-        setProductObj((product_obj) => ({
-            ...product_obj,
-            [choose_name]: addOrRemoveItem(product_obj[choose_name], index),
-            ...new_obj,
-        }));
-    }
-
-    /* --------------- GET API --------------- */
-
-    //
-    async function getData_API_FilterSortProducts(start_obj_state = {}) {
-        try {
-            setProductObj((product_obj) => ({
-                ...product_obj,
-                has_fetched: false,
-                ...start_obj_state,
-            }));
-
-            const res = await API_PhoneLaptop_L(getParamsAPI(false));
-
-            const { data, count: new_count } = res.data;
-
-            setProductObj((product_obj) => ({
-                ...product_obj,
-                products: data,
-                count: new_count,
-
-                current_memories: [...product_obj.choose_memories],
-                current_rams: [...product_obj.choose_rams],
-                current_cpus: [...product_obj.choose_cpus],
-                current_oses: [...product_obj.choose_oses],
-
-                should_filter: false,
-                has_fetched: true,
-            }));
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    //
-    async function handleGetMore() {
-        try {
-            setProductObj((product_obj) => ({
-                ...product_obj,
-                is_fetching: true,
-            }));
-
-            const res = await API_PhoneLaptop_L(getParamsAPI(true));
-
-            const { data } = res.data;
-            setProductObj((product_obj) => ({
-                ...product_obj,
-                products: [...products, ...data],
-                is_fetching: false,
-            }));
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    /* --------------------------- FILTER + SORT ------------------------------ */
-
-    //
-    function handleChooseFilter(choose_name, index) {
-        handleAddOrRemoveItem(choose_name, index, {
-            should_filter: true,
+        setDataState((data_state) => {
+            return {
+                ...data_state,
+                filter_result_count: res.data.count,
+                filter_fetching: false,
+            };
         });
     }
 
-    //
-    function handleStartFilter() {
-        getData_API_FilterSortProducts();
-    }
-
-    //
-    function handleChooseSort(index) {
-        getData_API_FilterSortProducts({
-            current_sort: index,
-        });
-    }
-
-    //
-    function closeCurrentItem(name = '', index = 0) {
-        const choose_name = 'choose_' + name;
-        const current_name = 'current_' + name;
-
-        getData_API_FilterSortProducts({
-            [choose_name]: addOrRemoveItem(
-                product_obj[choose_name],
-                product_obj[choose_name][index]
-            ),
-            [current_name]: addOrRemoveItem(
-                product_obj[current_name],
-                product_obj[current_name][index]
-            ),
-        });
-    }
-
-    /* --------------------------- PRICE BRAND ------------------------------ */
+    // -----
 
     //
     function handleChooseBrand(brand_ix) {
-        getData_API_FilterSortProducts({
-            current_brands: addOrRemoveItem(current_brands, brand_ix),
-        });
-    }
+        const new_checked = !brand_arr[brand_ix].checked;
 
-    //
-    function handleChooseAllBrand() {
-        getData_API_FilterSortProducts({
-            current_brands: [],
-        });
+        brand_arr[brand_ix].checked = new_checked;
+        handleFilter();
     }
 
     //
     function handleChoosePrice(price_ix) {
-        getData_API_FilterSortProducts({
-            current_prices: addOrRemoveItem(current_prices, price_ix),
-        });
+        const new_checked = !price_arr[price_ix].checked;
+
+        price_arr[price_ix].checked = new_checked;
+
+        console.log(price_arr);
+        handleFilter();
     }
 
     //
-    function handleChooseAllPrice() {
-        getData_API_FilterSortProducts({
-            current_prices: [],
+    function chooseFilterItem({ filter_ix, item_ix }) {
+        const new_checked = !filter_arr[filter_ix].item_arr[item_ix].checked;
+
+        filter_arr[filter_ix].item_arr[item_ix].checked = new_checked;
+        getData_Filter(new_checked);
+    }
+
+    //
+    function handleFilter() {
+        let new_search_obj = {};
+
+        changeNewSearchObj(new_search_obj, brand_arr, 'brand');
+        changeNewSearchObj(new_search_obj, price_arr, 'price');
+
+        filter_arr.forEach((filter_obj) => {
+            changeNewSearchObj(
+                new_search_obj,
+                filter_obj.item_arr,
+                filter_obj.name
+            );
         });
+
+        const new_search = stringify(new_search_obj);
+        use_history.push(`${location.pathname}?${new_search}`);
+    }
+
+    //
+    function clearFilter() {
+        use_history.push(location.pathname);
     }
 
     //
     return (
-        <div className="AllProducts">
-            <div className="AllProducts_banner">
-                <div>
+        <div className="AllProducts font-14px">
+            <div className="margin-bottom-15px padding-15px bg-primary">
+                <div className="margin-bottom-10px">
+                    <ul className="display-flex flex-wrap list-none">
+                        {filter_arr.map((filter_obj, filter_ix) => (
+                            <li key={filter_ix} className="padding-5px">
+                                <PLFilter
+                                    filter_title={filter_obj.title}
+                                    has_filter={filter_obj.item_arr.some(
+                                        (item) => item.checked
+                                    )}
+                                >
+                                    <PLFilterCommonList
+                                        filter_ix={filter_ix}
+                                        item_arr={filter_obj.item_arr}
+                                        count={filter_result_count}
+                                        is_fetching={filter_fetching}
+                                        chooseFilterItem={chooseFilterItem}
+                                        handleFilter={handleFilter}
+                                        clearFilter={clearFilter}
+                                    />
+                                </PLFilter>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div className="margin-bottom-10px">
                     <ProductBrands
-                        arr_brands={arr_brands}
-                        current_brands={current_brands}
-                        //
-                        handleChooseAllBrand={handleChooseAllBrand}
+                        brand_arr={brand_arr}
                         handleChooseBrand={handleChooseBrand}
                     />
                 </div>
 
                 <div>
                     <ProductPrices
-                        arr_prices={arr_prices}
-                        current_prices={current_prices}
-                        //
+                        price_arr={price_arr}
                         handleChoosePrice={handleChoosePrice}
-                        handleChooseAllPrice={handleChooseAllPrice}
                     />
                 </div>
             </div>
 
-            <div className="AllProducts_search">
-                <ProductSearch
-                    arr_memories={arr_memories}
-                    arr_rams={arr_rams}
-                    arr_sorts={arr_sorts}
-                    arr_oses={arr_oses}
-                    arr_cpus={arr_cpus}
-                    //
-                    choose_memories={choose_memories}
-                    choose_rams={choose_rams}
-                    choose_oses={choose_oses}
-                    choose_cpus={choose_cpus}
-                    //
-                    handleChooseFilter={handleChooseFilter}
-                    should_filter={should_filter}
-                    handleStartFilter={handleStartFilter}
-                    //
-                    handleChooseSort={handleChooseSort}
-                    current_sort={current_sort}
-                />
-            </div>
-
-            <div
-                className={
-                    current_memories.length +
-                    current_rams.length +
-                    current_oses.length +
-                    current_cpus.length
-                        ? ''
-                        : 'display-none'
-                }
-            >
-                <ProductCFilter
-                    arr_memories={arr_memories}
-                    arr_rams={arr_rams}
-                    arr_oses={arr_oses}
-                    arr_cpus={arr_cpus}
-                    //
-                    current_memories={current_memories}
-                    current_rams={current_rams}
-                    current_oses={current_oses}
-                    current_cpus={current_cpus}
-                    //
-                    closeCurrentItem={closeCurrentItem}
-                />
-            </div>
-
             <div className="fashion-width">
                 <ProductContent
-                    products={has_fetched ? products : Array(10).fill({})}
+                    products={has_fetched ? data_arr : Array(10).fill({})}
                 />
             </div>
 
             <div className="padding-y-10px text-third">
                 <ScreenBlurShowMore
-                    title={`Xem thêm ${count - products.length} sản phẩm`}
+                    title={`Xem thêm ${count - data_arr.length} sản phẩm`}
                     is_fetching={is_fetching}
-                    is_show_more={has_fetched && count > products.length}
-                    handleShowMore={handleGetMore}
+                    is_show_more={has_fetched && count > data_arr.length}
+                    handleShowMore={handleShowMore}
                 />
             </div>
         </div>

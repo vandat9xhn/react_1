@@ -7,7 +7,7 @@ import './PLPriceItem.scss';
 PLPriceItem.propTypes = {};
 
 //
-function PLPriceItem({ ix, price_str, is_active, handleChoosePrice }) {
+function PLPriceItem({ ix, title, checked, handleChoosePrice }) {
     //
     function onChoosePrice() {
         handleChoosePrice(ix);
@@ -16,12 +16,12 @@ function PLPriceItem({ ix, price_str, is_active, handleChoosePrice }) {
     //
     return (
         <div
-            className={`PLPriceItem padding-5px border-blur brs-5px ${
-                is_active ? 'PLPriceItem-active text-blue' : ''
+            className={`PLPriceItem padding-x-8px padding-y-5px brs-5px cursor-pointer ${
+                checked ? 'border-blue text-blue' : 'border-blur'
             }`}
             onClick={onChoosePrice}
         >
-            {price_str}
+            {title}
         </div>
     );
 }

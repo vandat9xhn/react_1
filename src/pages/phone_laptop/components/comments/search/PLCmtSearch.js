@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import IconsInput from '../../../../../_icons_svg/Icons_input/IconsInput';
+// 
+import './PLCmtSearch.scss';
 
 //
 PLCmtSearch.propTypes = {};

@@ -20,6 +20,10 @@
     border: 1px solid var(--danger);
 }
 
+.border-current{
+    border: 1px solid currentColor;
+}
+
 .border-none {
     border: none;
 }
@@ -63,7 +67,7 @@
 // ------- BORDER RADIUS
 
 
-@for $i from 0 through 8 {
+@for $i from 0 through 10 {
     .brs-#{$i}px {
         border-radius: #{$i}px;
     }
