@@ -24,7 +24,7 @@ function FsPPurShopHeadLeft({
 }) {
     return (
         <div className="FsPPurShopHeadLeft">
-            <div className="FsPPurShopHeadLeft_row flex-between-center">
+            <div className="FsPPurShopHeadLeft_row display-flex align-items-center">
                 <div
                     className={`font-12px ${
                         is_like || is_mall ? 'margin-right-5px' : ''

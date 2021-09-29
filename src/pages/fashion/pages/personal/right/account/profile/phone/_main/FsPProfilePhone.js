@@ -191,7 +191,7 @@ function FsPProfilePhone({ phone, handleDone }) {
     //
     return (
         <div className="FsPProfilePhone">
-            <div className="margin-bottom-20px">
+            <div className="FsPProfilePhone_steps margin-bottom-20px">
                 <FsPPrPhoneSteps c_step={c_step} step_error={step_error} />
             </div>
 

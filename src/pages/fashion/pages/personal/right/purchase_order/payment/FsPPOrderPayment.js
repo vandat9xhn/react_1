@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import shopee_insurance from '../../../../../../../../image/shopee_insurance.png';
 //
 import './FsPPOrderPayment.scss';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 FsPPOrderPayment.propTypes = {};
@@ -24,7 +25,7 @@ function FsPPOrderPayment({ payment_name }) {
                         />
 
                         <span className="margin-left-5px font-12px text-third">
-                            Phương thức Thanh toán
+                            {IS_MOBILE ? '' : 'Phương thức '}Thanh toán
                         </span>
                     </div>
                 </div>

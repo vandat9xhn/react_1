@@ -40,7 +40,7 @@ function FsPPOrderAddressProcess({
                     />
                 </div>
 
-                <div className="flex-grow-1 padding-left-20px">
+                <div className="FsPPOrderAddressProcess_process flex-grow-1 padding-left-20px">
                     <FsPPOrderProcess order_process_arr={order_process_arr} />
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { detectPasswordIsOk } from '../../../../../../../../../_some_function/de
 import { detectNewEmailIsOk } from '../../../../../../../../../_some_function/detectNewEmailIsOk';
 //
 import { useScreenFetching } from '../../../../../../../../../_hooks/UseScreenFetching';
-// 
+//
 import FsPPrEmailConfirmPass from '../confirm_password/FsPPrEmailConfirmPass';
 import FsPPrEmailNew from '../new_email/FsPPrEmailNew';
 //
@@ -74,7 +74,7 @@ function FsPProfileEmail({ email, confirmNewEmail, rejectNewEmail }) {
     //
     return (
         <div className="FsPProfileEmail">
-            <div className="FsPProfileEmail_title display-flex margin-bottom-20px">
+            <div className="FsPProfileEmail_title fs-personal-input-row display-flex margin-bottom-20px">
                 <div className="fs-personal-input-label">Địa Chỉ Hộp Thư</div>
 
                 <div>{email}</div>

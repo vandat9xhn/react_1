@@ -1,0 +1,31 @@
+.FashionPersonal-mobile {
+    .FsPersonalProfile {
+        padding: 0 10px 10px;
+    }
+
+    // ------ HEAD
+
+    .FsPersonalProfile_head {
+        margin-bottom: 0;
+    }
+
+    .FsPProfileHead {
+        padding: 10px 0;
+    }
+
+    // ------ HOME
+
+    .FsPProfileHome_row {
+        flex-direction: column-reverse;
+    }
+
+    .FsPProfileHome_pic {
+        width: 100%;
+    }
+
+    //
+    .FsPProfileHome_form {
+        padding-right: 0;
+        margin-top: 10px;
+    }
+}

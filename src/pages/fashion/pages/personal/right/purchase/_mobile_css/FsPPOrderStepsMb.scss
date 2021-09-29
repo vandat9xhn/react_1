@@ -1,0 +1,42 @@
+.FashionPersonal-mobile {
+    .FsPPOrderSteps {
+        padding: 10px;
+        overflow-x: auto;
+
+        .StepperDiv_line_width {
+            top: 20px;
+            
+            width: 560px;
+            height: 2px;
+        }
+    }
+
+    // .FsPPOrderStep {
+    //     width: 120px;
+    // }
+
+    // .
+    .FsPPOrderStep_icon {
+        width: 35px;
+        height: 35px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+    .FsPPOrderStep_icon-done {
+        border: 2px solid currentColor;
+    }
+
+    // .
+    .FsPPOrderStep_title {
+        margin-top: 10px;
+        font-size: 12px;
+    }
+
+    // .
+    .FsPPOrderStep_time {
+        font-size: 11px;
+    }
+}

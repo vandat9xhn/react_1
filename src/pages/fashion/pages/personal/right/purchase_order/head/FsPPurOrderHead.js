@@ -20,7 +20,7 @@ function FsPPurOrderHead({ order_id, order_status }) {
         <div className="FsPPurOrderHead border-bottom-blur">
             <div className="FsPPurOrderHead_row flex-between-center">
                 <div
-                    className="display-flex align-items-center cursor-pointer"
+                    className="FsPPurOrderHead_back display-flex align-items-center cursor-pointer"
                     onClick={handleBack}
                 >
                     <IconsArrow x={400} size_icon="16px" />
@@ -30,7 +30,7 @@ function FsPPurOrderHead({ order_id, order_status }) {
                     </span>
                 </div>
 
-                <div className="display-flex-center">
+                <div className="FsPPurOrderHead_order display-flex-center">
                     <div>ID ĐƠN HÀNG. {order_id}</div>
 
                     <div className="padding-x-15px">|</div>

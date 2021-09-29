@@ -30,7 +30,7 @@ function FsPerUpdateInput({
     //
     return (
         <div className="FsPerUpdateInput">
-            <div className="display-flex align-items-center">
+            <div className="fs-personal-input-row display-flex align-items-center">
                 <div className="fs-personal-input-label">{label}</div>
 
                 <input

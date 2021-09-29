@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import './PLBrandItem.scss';
 
 //
@@ -16,8 +16,8 @@ function PLBrandItem({ ix, title, checked, handleChooseBrand }) {
     //
     return (
         <div
-            className={`PLBrandItem padding-y-5px border-blur text-align-center font-500 cursor-pointer ${
-                checked ? 'border-blue text-blue' : ''
+            className={`PLBrandItem padding-y-5px text-align-center font-500 cursor-pointer ${
+                checked ? 'border-blue text-blue' : 'border-blur'
             }`}
             onClick={onChooseBrand}
         >

@@ -15,7 +15,7 @@ function FsPPurchaseHead({
 }) {
     //
     return (
-        <div className="FsPPurchaseHead bg-primary">
+        <div className="FsPPurchaseHead bg-primary overflow-x-auto scroll-height-0">
             <div className="FsPPurchaseHead_row flex-between-center">
                 {arr_purchase.map((purchase_title, ix) => (
                     <div key={ix} className="flex-grow-1">

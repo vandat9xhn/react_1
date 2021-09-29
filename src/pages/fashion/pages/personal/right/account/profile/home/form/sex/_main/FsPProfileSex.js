@@ -11,7 +11,7 @@ function FsPProfileSex({ sex_ix, handleChangeSex }) {
     //
     return (
         <div className="FsPProfileSex">
-            <div className="display-flex">
+            <div className="fs-personal-profile-row display-flex">
                 <div className="fs-personal-profile-label">Giới tính</div>
 
                 <div className="display-flex">

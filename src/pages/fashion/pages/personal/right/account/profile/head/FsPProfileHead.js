@@ -11,11 +11,13 @@ function FsPProfileHead({ title, info }) {
     //
     return (
         <div className="FsPProfileHead padding-y-18px">
-            <div className="FsPProfileHead_title text-cap font-18px font-500">
+            <div className="FsPProfileHead_title fs-personal-title text-cap font-18px font-500">
                 {title}
             </div>
 
-            <div className="font-14px font-400 text-third">{info}</div>
+            <div className="fs-personal-info font-14px font-400 text-third">
+                {info}
+            </div>
         </div>
     );
 }

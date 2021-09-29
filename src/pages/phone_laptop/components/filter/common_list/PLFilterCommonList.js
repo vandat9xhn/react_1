@@ -29,6 +29,7 @@ function PLFilterCommonList({
                             <PLFilterItem
                                 filter_ix={filter_ix}
                                 item_ix={item_ix}
+                                checked={item.checked}
                                 chooseFilterItem={chooseFilterItem}
                             >
                                 {item.title}

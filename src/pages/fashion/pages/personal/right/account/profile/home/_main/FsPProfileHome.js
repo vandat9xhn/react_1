@@ -29,7 +29,7 @@ function FsPProfileHome({
 }) {
     return (
         <div className="FsPProfileHome">
-            <div className="display-flex">
+            <div className="FsPProfileHome_row display-flex">
                 <div className="FsPProfileHome_form flex-grow-1">
                     <FsPProfileForm
                         personal_info={personal_info}

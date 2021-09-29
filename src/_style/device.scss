@@ -1,5 +1,17 @@
 //
 .device-mobile {
+    body {
+        font-size: 14px;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        font-size: 14px;
+    }
+
     .hv-opacity {
         opacity: 1;
     }

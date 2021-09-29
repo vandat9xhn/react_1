@@ -92,7 +92,7 @@ function FsPProfileForm({
             </div>
 
             <div className="FsPProfileForm_part FsPProfileForm_date">
-                <div className="display-flex align-items-center">
+                <div className="fs-personal-profile-row display-flex align-items-center">
                     <div className="fs-personal-profile-label">Ngày sinh</div>
 
                     <div>

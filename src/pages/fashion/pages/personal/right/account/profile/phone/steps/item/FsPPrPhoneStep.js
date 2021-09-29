@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import IconSent from '../../../../../../../../../../_icons_svg/icons_status_message/icon_sent/IconSent';
-// 
+//
 import './FsPPrPhoneStep.scss';
 
 //
@@ -32,7 +32,9 @@ function FsPPrPhoneStep({ c_step, step, title, step_count }) {
                 </div>
             </div>
 
-            <div className="margin-top-5px font-14px text-cap">{title}</div>
+            <div className="FsPPrPhoneStep_title margin-top-5px font-14px text-cap">
+                {title}
+            </div>
         </div>
     );
 }

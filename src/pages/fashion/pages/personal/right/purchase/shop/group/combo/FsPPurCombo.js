@@ -51,7 +51,7 @@ function FsPPurCombo({
             </div>
 
             <div className="flex-end align-items-center">
-                <div>
+                <div className="FsPPurCombo_deal_label">
                     <FsShopDealLabel label="Combo khuyến mãi" />
                 </div>
 

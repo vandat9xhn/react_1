@@ -1,0 +1,40 @@
+.FashionPersonal-mobile {
+
+    // ----
+    .FsPPurOrderHead {
+        padding: 10px;
+    }
+
+    .FsPPurOrderHead_row {
+        display: block;
+    }
+    // .
+    .FsPPurOrderHead_back{
+        margin-bottom: 10px;
+
+        .IconsArrow{
+            width: 14px;
+            height: 14px;
+        }
+    }
+    // .
+    .FsPPurOrderHead_order{
+        justify-content: flex-end;
+    }
+
+    // -------
+
+    .FsPPOrderActions_thank {
+        flex-direction: column;
+        padding: 10px;
+    }
+    // .
+    .FsPPOrderActions_btn {
+        margin-top: 10px;
+    }
+
+    .FsPPOrderActions_contact {
+        justify-content: center;
+        padding: 10px;
+    }
+}

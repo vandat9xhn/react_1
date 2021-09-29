@@ -1,0 +1,31 @@
+.FashionPersonal-mobile {
+    .FsPProfileForm_part {
+        margin-bottom: 15px;
+    }
+
+    // .
+    .FsPPrFormInput_input {
+        width: 100%;
+    }
+
+    // ..
+    .InputDate_item {
+        width: 33.33%;
+        max-width: 125px;
+    }
+    // ...
+    .FsPProfileForm_date .InputDate_item_contain select {
+        min-width: auto;
+        width: 100%;
+        padding: 5px;
+    }
+
+    // .
+    .FsPProfileForm_btn {
+        padding-left: 0;
+        
+        button {
+            width: 100%;
+        }
+    }
+}

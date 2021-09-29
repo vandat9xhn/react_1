@@ -24,9 +24,15 @@ import {
 import FsPPurchaseShop from '../shop/_main/FsPPurchaseShop';
 import FsPPurchaseHead from '../head/_main/FsPPurchaseHead';
 import FsPPurchaseRowSearch from '../row_search/FsPPurchaseRowSearch';
+import FsPPurchaseOrder from '../../purchase_order/_main/FsPPurchaseOrder';
 //
 import './FsPersonalPurchase.scss';
-import FsPPurchaseOrder from '../../purchase_order/_main/FsPPurchaseOrder';
+import '../_mobile_css/FsPersonalPurchaseMb.scss';
+import '../_mobile_css/FsPPurchaseShopMb.scss';
+// 
+import '../_mobile_css/FsPPurchaseOrderMb.scss';
+import '../_mobile_css/FsPPOrderAddressProcessMb.scss';
+import '../_mobile_css/FsPPOrderStepsMb.scss';
 
 //
 function getNewKey() {

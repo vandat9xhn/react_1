@@ -20,6 +20,12 @@ import FsPProfilePhone from '../phone/_main/FsPProfilePhone';
 import FsPPrChangeSuccess from '../notice/change_success/FsPPrChangeSuccess';
 //
 import './FsPersonalProfile.scss';
+import '../_mobile_css/FsPersonalProfileCommonMb.scss';
+import '../_mobile_css/FsPersonalProfileMb.scss';
+import '../_mobile_css/FsPProfileFormMb.scss';
+import '../_mobile_css/FsPProfilePicMb.scss';
+import '../_mobile_css/FsPProfileEmailMb.scss';
+import '../_mobile_css/FsPProfilePhoneMb.scss';
 
 //
 const HEAD_OBJ = {

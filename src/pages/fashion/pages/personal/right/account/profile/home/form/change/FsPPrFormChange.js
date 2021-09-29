@@ -11,7 +11,7 @@ function FsPPrFormChange({ label, value, handleChange }) {
     //
     return (
         <div className="FsPPrFormChange text-555">
-            <div className="FsPPrFormChange_row display-flex align-items-center">
+            <div className="FsPPrFormChange_row fs-personal-profile-row display-flex align-items-center">
                 <div className="FsPPrFormChange_label fs-personal-profile-label">
                     {label}
                 </div>

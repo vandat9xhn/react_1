@@ -68,7 +68,7 @@ export function useDataShowMore({
                     is_max.current = has_fetched
                         ? data_arr.length >= count
                         : false;
-                        
+
                     const other_data_state =
                         getOtherDataStateWhenSetState(data_state);
 
@@ -91,7 +91,7 @@ export function useDataShowMore({
     }
 
     //
-    function refreshData_API() {
+    function refreshData_API(start_obj_state = {}) {
         data_count.current = 0;
 
         getData_API({
@@ -99,6 +99,7 @@ export function useDataShowMore({
                 data_arr: [],
                 count: 0,
                 has_fetched: false,
+                ...start_obj_state,
             },
         });
     }

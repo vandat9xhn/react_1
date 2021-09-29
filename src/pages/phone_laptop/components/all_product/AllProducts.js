@@ -1,48 +1,85 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { stringify } from 'query-string';
+//
+import { ParseLocationSearch } from '../../../../_some_function/ParseLocationSearch';
 //
 import { API_PhoneLaptop_L } from '../../../../api/api_django_no_token/phone_laptop/PhoneLaptopAPI';
 //
-import { initial_phone_arr } from '../../../../_initial/phone/InitialPhone';
-//
-import { data_phone_sort_arr } from '../../../../_data/phone/sort';
+import { useMounted } from '../../../../_hooks/useMounted';
+import { useDataShowMore } from '../../../../_hooks/useDataShowMore';
+import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
 //
 import ScreenBlurShowMore from '../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
-import {
-    addOrRemoveItem,
-    ListOrEmpty,
-    ListOrEmptyNumber,
-    ListOrRegex,
-} from '../../__func/AllProductsFunc';
-//
 import './AllProducts.scss';
 //
+import PLFilter from '../filter/_main/PLFilter';
+import PLFilterCommonList from '../filter/common_list/PLFilterCommonList';
 import ProductBrands from '../brands/_main/PLBrands';
-import ProductSearch from '../search_row/_main/ProductSearch';
 import ProductContent from '../content/ProductContent';
-import ProductCFilter from '../current_filter/_main/ProductCFilter';
 import ProductPrices from '../prices/_main/PLPrices';
 //
 import './AllProductsRes.scss';
-import { useDataShowMore } from '../../../../_hooks/useDataShowMore';
-import { ParseLocationSearch } from '../../../../_some_function/ParseLocationSearch';
-import { useMounted } from '../../../../_hooks/useMounted';
-import PLFilter from '../filter/_main/PLFilter';
-import PLFilterCommonList from '../filter/common_list/PLFilterCommonList';
-import { useHistory } from 'react-router-dom';
-import { stringify } from 'query-string';
 
 //
 function changeNewSearchObj(new_search_obj = {}, arr = [], search_key = '') {
     const search_str = arr
         .filter((item) => item.checked)
-        .map((item) => item.filter_key)
-        .join(',');
+        .map((item) => item.filter_key);
 
     if (search_str) {
         new_search_obj[search_key] = search_str;
     }
+}
+
+//
+function handleFilterKey({ search_key = '', new_search_obj = {} }) {
+    const new_filter_key_arr = new_search_obj[search_key];
+
+    if (!new_filter_key_arr) {
+        return {
+            has_filter_key: false,
+            filter_key_arr: [],
+        };
+    }
+
+    if (typeof new_filter_key_arr == 'string') {
+        return {
+            has_filter_key: true,
+            filter_key_arr: [new_filter_key_arr],
+        };
+    }
+
+    return {
+        has_filter_key: true,
+        filter_key_arr: new_filter_key_arr,
+    };
+}
+
+//
+function changeFilterArr({
+    filter_item_arr = [],
+    has_filter_key = false,
+    filter_key_arr = [],
+}) {
+    // console.log(has_filter_key, filter_key_arr);
+
+    if (!has_filter_key) {
+        filter_item_arr.forEach((item) => {
+            item.checked = false;
+        });
+
+        return;
+    }
+
+    filter_item_arr.forEach((item) => {
+        if (filter_key_arr.includes(item.filter_key)) {
+            item.checked = true;
+        } else {
+            item.checked = false;
+        }
+    });
 }
 
 //
@@ -62,9 +99,6 @@ function AllProducts({
     price_arr,
     filter_arr,
 }) {
-    //
-    const use_history = useHistory();
-
     //
     const { data_state, setDataState, getData_API, refreshData_API } =
         useDataShowMore({
@@ -90,11 +124,12 @@ function AllProducts({
 
     //
     const mounted = useMounted();
+    const forceUpdate = useForceUpdate();
 
     //
     useEffect(() => {
         if (mounted) {
-            refreshData_API();
+            handleRefresh();
         }
     }, [location.search]);
 
@@ -119,11 +154,34 @@ function AllProducts({
     }
 
     //
-    async function getData_Filter(new_checked = true) {
+    function handleFilter() {
+        let new_search_obj = {};
+
+        [
+            { item_arr: brand_arr, name: 'brand' },
+            { item_arr: price_arr, name: 'price' },
+            ...filter_arr,
+        ].forEach((filter_obj) => {
+            changeNewSearchObj(
+                new_search_obj,
+                filter_obj.item_arr,
+                filter_obj.name
+            );
+        });
+
+        const new_search = stringify(new_search_obj);
+        history.pushState('', '', `${location.pathname}?${new_search}`);
+        forceUpdate();
+    }
+
+    //
+    async function getData_Filter({ new_checked = true, is_refresh = false }) {
         setDataState((data_state) => {
             return {
                 ...data_state,
-                filter_count: data_state.filter_count + new_checked * 1,
+                filter_count: is_refresh
+                    ? 0
+                    : data_state.filter_count + new_checked * 1,
                 filter_fetching: true,
             };
         });
@@ -142,6 +200,29 @@ function AllProducts({
         });
     }
 
+    //
+    function handleRefresh() {
+        const new_search_obj = ParseLocationSearch();
+
+        [
+            { item_arr: brand_arr, name: 'brand' },
+            { item_arr: price_arr, name: 'price' },
+            ...filter_arr,
+        ].forEach((filter_obj) => {
+            changeFilterArr({
+                filter_item_arr: filter_obj.item_arr,
+                ...handleFilterKey({
+                    search_key: filter_obj.name,
+                    new_search_obj: new_search_obj,
+                }),
+            });
+        });
+
+        // console.log(brand_arr);
+
+        refreshData_API();
+    }
+
     // -----
 
     //
@@ -157,8 +238,6 @@ function AllProducts({
         const new_checked = !price_arr[price_ix].checked;
 
         price_arr[price_ix].checked = new_checked;
-
-        console.log(price_arr);
         handleFilter();
     }
 
@@ -167,33 +246,36 @@ function AllProducts({
         const new_checked = !filter_arr[filter_ix].item_arr[item_ix].checked;
 
         filter_arr[filter_ix].item_arr[item_ix].checked = new_checked;
-        getData_Filter(new_checked);
-    }
-
-    //
-    function handleFilter() {
-        let new_search_obj = {};
-
-        changeNewSearchObj(new_search_obj, brand_arr, 'brand');
-        changeNewSearchObj(new_search_obj, price_arr, 'price');
-
-        filter_arr.forEach((filter_obj) => {
-            changeNewSearchObj(
-                new_search_obj,
-                filter_obj.item_arr,
-                filter_obj.name
-            );
-        });
-
-        const new_search = stringify(new_search_obj);
-        use_history.push(`${location.pathname}?${new_search}`);
+        getData_Filter({ new_checked: new_checked });
     }
 
     //
     function clearFilter() {
-        use_history.push(location.pathname);
+        if (location.search) {
+            history.pushState('', '', location.pathname);
+            forceUpdate();
+
+            return;
+        }
+
+        if (
+            !filter_arr.some((item) =>
+                item.item_arr.some((item) => item.checked)
+            )
+        ) {
+            return;
+        }
+
+        filter_arr.forEach((filter_obj) => {
+            filter_obj.item_arr.forEach((item) => {
+                item.checked = false;
+            });
+        });
+
+        getData_Filter({ is_refresh: true });
     }
 
+    // console.log(brand_arr);
     //
     return (
         <div className="AllProducts font-14px">

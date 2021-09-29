@@ -1,4 +1,37 @@
 .FashionPersonal-mobile {
+    // ------
+    .fs-personal-title{
+        font-size: 16px;
+    }
+
+    .fs-personal-info{
+        font-size: 13px;
+    }
+
+    .fs-personal-input-row {
+        display: block;
+    }
+
+    .fs-personal-input-label {
+        width: auto;
+        text-align: start;
+    }
+
+    .fs-personal-update-input {
+        width: 100%;
+    }
+
+    .fs-personal-update-error {
+        margin: 5px 0 0;
+        font-size: 12px;
+    }
+
+    .fs-personal-update-confirms {
+        margin: 20px 0;
+    }
+
+    // ---------
+
     .FashionPersonal_left {
         position: fixed;
         left: 0;
@@ -14,7 +47,12 @@
 
         transition: transform 250ms ease-in;
     }
-    .FashionPersonal_left-hide{
+    .FashionPersonal_left-hide {
         transform: translateX(-100%);
+    }
+
+    // .
+    .FashionPersonal_right{
+        width: 100%;
     }
 }

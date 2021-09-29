@@ -1,0 +1,41 @@
+.FashionPersonal-mobile {
+    .FsPProfilePhone{
+        width: 100%;
+    }
+
+    .FsPProfilePhone_steps{
+        width: 100%;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar{
+            height: 0;
+        }
+    }
+
+    .FsPPrPhoneSteps {
+        width: 500px;
+    }
+
+    // -------
+
+    .FsPPrPhoneStep {
+        width: 100px;
+    }
+    // .
+    .FsPPrPhoneStep_contain {
+        width: 30px;
+        height: 30px;
+
+        font-size: 13px;
+    }
+    // .
+    .FsPPrPhoneStep_title{
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .StepperDiv_line_width {
+        left: 50px;
+        width: calc(100% - 80px);
+    }
+}

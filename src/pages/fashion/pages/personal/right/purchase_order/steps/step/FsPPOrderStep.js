@@ -25,11 +25,11 @@ function FsPPOrderStep({ c_step, step, Icon, title, date_time }) {
                 {Icon}
             </div>
 
-            <div className="margin-top-20px margin-bottom-5px text-cap text-align-center">
+            <div className="FsPPOrderStep_title margin-top-20px margin-bottom-5px text-cap text-align-center">
                 {title}
             </div>
 
-            <div className="text-third font-12px">
+            <div className="FsPPOrderStep_time text-third font-12px">
                 {formatLocalDateTimeString(date_time)}
             </div>
         </div>

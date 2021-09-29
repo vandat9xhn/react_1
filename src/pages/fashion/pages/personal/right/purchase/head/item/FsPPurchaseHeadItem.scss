@@ -1,6 +1,8 @@
 .FsPPurchaseHeadItem{
     border-bottom: 2px solid transparent;
 
+    white-space: nowrap;
+
     &:hover{
         color: var(--fashion-head);
     }

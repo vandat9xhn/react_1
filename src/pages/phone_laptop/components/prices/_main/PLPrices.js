@@ -22,7 +22,7 @@ function PLPrices({ price_arr, handleChoosePrice }) {
                         <PLPriceItem
                             ix={ix}
                             title={price_obj.title}
-                            checked={price_arr.checked}
+                            checked={price_obj.checked}
                             handleChoosePrice={handleChoosePrice}
                         />
                     </div>

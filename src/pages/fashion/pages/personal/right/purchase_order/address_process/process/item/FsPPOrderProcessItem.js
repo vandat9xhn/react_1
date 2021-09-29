@@ -18,7 +18,7 @@ function FsPPOrderProcessItem({ is_active, process_time, process_info }) {
                     }`}
                 ></div>
 
-                <div className="margin-left-8px">
+                <div className="FsPPOrderProcessItem_time margin-left-8px">
                     {formatLocalDateTimeString(process_time)}
                 </div>
 

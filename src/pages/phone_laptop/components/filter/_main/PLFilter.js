@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useBool } from '../../../../../_hooks/useBool';
@@ -6,7 +6,7 @@ import { useBool } from '../../../../../_hooks/useBool';
 import IconCaret from '../../../../../_icons_svg/_icon_caret/IconCaret';
 //
 import CloseDiv from '../../../../../component/some_div/close_div/CloseDiv';
-// 
+//
 import './PLFilter.scss';
 
 //
@@ -15,7 +15,12 @@ PLFilter.propTypes = {};
 //
 function PLFilter({ filter_title, has_filter, children }) {
     //
-    const { is_true, toggleBool } = useBool();
+    const { is_true, setIsTrue, toggleBool } = useBool();
+
+    //
+    useEffect(() => {
+        setIsTrue(false);
+    }, [location.search]);
 
     // ----
 
@@ -42,11 +47,13 @@ function PLFilter({ filter_title, has_filter, children }) {
                 </div>
 
                 <div
-                    className={`PLFilter_list pos-abs z-index-lv1 ${
+                    className={`PLFilter_list pos-abs z-index-lv1 padding-top-10px ${
                         is_true ? '' : 'display-none'
                     }`}
                 >
-                    {children}
+                    <div className="PLFilter_list_contain pos-rel">
+                        {children}
+                    </div>
                 </div>
             </div>
         </CloseDiv>

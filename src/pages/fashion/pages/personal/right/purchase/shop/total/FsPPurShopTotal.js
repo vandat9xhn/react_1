@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { formatNum } from '../../../../../../../../_some_function/FormatNum';
-// 
+//
 import shopee_insurance from '../../../../../../../../../image/shopee_insurance.png';
 //
 import './FsPPurShopTotal.scss';
@@ -20,7 +20,7 @@ function FsPPurShopTotal({ total_price, buyAgain, contactWithSeller }) {
 
                 <div className="margin-left-5px">Tổng số tiền:</div>
 
-                <div className="margin-left-10px font-24px color-fashion">
+                <div className="FsPPurShopTotal_total_price margin-left-10px font-24px color-fashion">
                     ₫{formatNum(total_price)}
                 </div>
             </div>

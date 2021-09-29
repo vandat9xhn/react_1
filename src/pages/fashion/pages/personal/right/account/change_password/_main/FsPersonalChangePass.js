@@ -17,6 +17,7 @@ import FsPChangePassForm from '../form/FsPChangePassForm';
 import FsPChangePassSuccess from '../notice/success/FsPChangePassSuccess';
 //
 import './FsPersonalChangePass.scss';
+import '../_mobile_css/FsPersonalChangePassMb.scss';
 
 //
 const FsPer_initial_change_pass_state_obj = () => {

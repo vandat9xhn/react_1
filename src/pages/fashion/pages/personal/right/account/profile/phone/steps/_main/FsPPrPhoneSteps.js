@@ -7,6 +7,7 @@ import FsPPrPhoneStep from '../item/FsPPrPhoneStep';
 import FsPPrPhoneStepError from '../item_error/FsPPrPhoneStepError';
 //
 import './FsPPrPhoneSteps.scss';
+import { IS_MOBILE } from '../../../../../../../../../../_constant/Constant';
 
 //
 FsPPrPhoneSteps.propTypes = {};
@@ -17,7 +18,7 @@ function FsPPrPhoneSteps({ c_step, step_error }) {
     const step_arr = [
         'Xác minh',
         'Chứng thực',
-        'Cập nhật số điện thoại',
+        IS_MOBILE ? 'Cập nhật' : 'Cập nhật số điện thoại',
         'Hoàn thành',
     ].map((item, ix) => {
         return {

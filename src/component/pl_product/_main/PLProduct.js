@@ -10,6 +10,7 @@ import PLProductTypes from '../types/_main/PLProductTypes';
 import PLProductCompare from '../compare/PLProductCompare';
 //
 import './PLProduct.scss';
+import { IS_MOBILE } from '../../../_constant/Constant';
 
 //
 PLProduct.propTypes = {
@@ -56,7 +57,9 @@ function PLProduct({ num_row_info, product_obj, use_compare }) {
         <div className="PLProduct h-100per pos-rel">
             <Link
                 to={`/phone-laptop:${id}`}
-                className="display-block h-100per padding-8px color-inherit"
+                className={`display-block h-100per padding-8px color-inherit ${
+                    IS_MOBILE ? 'cursor-default' : ''
+                }`}
             >
                 <div className="PLProduct_head margin-bottom-10px">
                     <PLProductHead

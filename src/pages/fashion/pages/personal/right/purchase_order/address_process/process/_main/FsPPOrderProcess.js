@@ -23,9 +23,15 @@ function FsPPOrderProcess({ order_process_arr }) {
                         />
                     </div>
 
-                    {ix == 0 ? null : (
-                        <div className="FsPPOrderProcess_item_side pos-abs"></div>
-                    )}
+                    <div
+                        className={`FsPPOrderProcess_item_side pos-abs ${
+                            ix == 0
+                                ? 'top-50per h-50per'
+                                : ix == order_process_arr.length - 1
+                                ? 'bottom-50per h-50per'
+                                : 'top-0 h-100per'
+                        }`}
+                    ></div>
                 </div>
             ))}
         </div>

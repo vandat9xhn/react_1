@@ -1,0 +1,76 @@
+.FashionPersonal-mobile {
+    .FsPPOrderAddressProcess {
+        padding: 10px;
+    }
+
+    // -----
+
+    .FsPPOrderProcessHead {
+        padding: 0;
+    }
+
+    .FsPPOrderProcessHead_row {
+        align-items: flex-start;
+    }
+
+    // .
+    .FsPPOrderProcessHead_title {
+        font-size: 16px;
+    }
+
+    // -----
+
+    .FsPPOrderAddressProcess_contain {
+        flex-direction: column;
+    }
+
+    .FsPPOrderAddressProcess_address {
+        padding: 10px 0;
+        border-right: none;
+        border-bottom: 1px solid var(--md-bg-blur);
+    }
+
+    .FsPPOrderAddressProcess_process {
+        padding: 0;
+    }
+
+    // .
+    .FsPPOrderProcessItem_time {
+        flex-shrink: 0;
+        
+        width: 115px;
+        font-size: 12px;
+    }
+
+    // -----
+
+    .FsPPurOrderShop {
+        padding: 10px;
+    }
+
+    .FsPPOrderShopTotal_row {
+        justify-content: flex-start;
+        padding: 0;
+    }
+
+    // .
+    .FsPPOrderShopTotal_left {
+        width: 175px;
+        text-align: start;
+    }
+    // .
+    .FsPPOrderShopTotal_right {
+        width: auto;
+        flex-grow: 1;
+    }
+
+    // -----
+
+    .FsPPOrderPayment {
+        padding: 0;
+    }
+    // .
+    .FsPPOrderPayment_left {
+        white-space: nowrap;
+    }
+}

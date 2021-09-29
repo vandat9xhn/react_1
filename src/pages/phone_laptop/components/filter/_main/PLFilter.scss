@@ -1,14 +1,36 @@
-.PLFilter_title-active {
-    border-color: var(--border-fashion);
+// -------
+
+%arrow {
+    content: '';
+
+    position: absolute;
+    bottom: 100%;
+    left: 20px;
+
+    border-width: 0px 8px 10px 8px;
+    border-style: solid;
 }
 
-.PLFilter_arrow {
-    border-width: 0px 5px 8px 5px;
-    border-style: solid;
-    border-color: transparent transparent var(--md-bg-primary);
+// --------
+
+.PLFilter_title-active {
+    border: 1px solid var(--border-fashion);
 }
 
 .PLFilter_list {
     min-width: 400px;
     max-width: 600px;
+}
+// .
+.PLFilter_list_contain {
+    &::before {
+        @extend %arrow;
+        border-color: transparent transparent var(--md-bg-ccc);
+    }
+
+    &::after {
+        @extend %arrow;
+        transform: translateY(1px);
+        border-color: transparent transparent var(--md-bg-primary);
+    }
 }

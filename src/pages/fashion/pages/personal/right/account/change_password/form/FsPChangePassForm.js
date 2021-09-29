@@ -29,7 +29,7 @@ function FsPChangePassForm({
     //
     return (
         <div className="FsPChangePassForm">
-            <div className="margin-bottom-15px display-flex align-items-center">
+            <div className="FsPChangePassForm_row margin-bottom-15px display-flex align-items-center">
                 <div>
                     <FsPerUpdateInput
                         label="Mật khẩu hiện tại"
@@ -41,7 +41,7 @@ function FsPChangePassForm({
                 </div>
 
                 <button
-                    className="margin-left-15px border-none bg-transparent text-third cursor-pointer"
+                    className="FsPChangePassForm_forget margin-left-15px border-none bg-transparent text-third cursor-pointer"
                     type="button"
                     onClick={handleForgetPass}
                 >

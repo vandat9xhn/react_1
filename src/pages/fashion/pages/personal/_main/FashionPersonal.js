@@ -59,7 +59,7 @@ function FashionPersonal(props) {
                         />
                     </div>
 
-                    <div className="flex-grow-1">
+                    <div className="FashionPersonal_right flex-grow-1">
                         <FsPersonalRight />
                     </div>
                 </div>

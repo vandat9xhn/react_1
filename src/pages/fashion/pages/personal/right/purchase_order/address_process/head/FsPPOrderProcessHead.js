@@ -9,8 +9,8 @@ function FsPPOrderProcessHead({ trans_name, trans_id }) {
     //
     return (
         <div className="FsPPOrderProcessHead padding-bottom-12px">
-            <div className="flex-between-center">
-                <div className="text-cap font-20px text-555">
+            <div className="FsPPOrderProcessHead_row flex-between-center">
+                <div className="FsPPOrderProcessHead_title text-cap font-20px text-555">
                     Địa chỉ nhận hàng
                 </div>
 
