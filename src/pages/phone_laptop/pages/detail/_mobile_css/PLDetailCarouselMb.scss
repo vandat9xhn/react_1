@@ -1,0 +1,16 @@
+.PLDetail-mobile {
+    // ------
+
+    .PLDCarouselChoices {
+        padding: 0 10px 10px;
+    }
+
+    .PLDCarouselChoices_row {
+        width: 100%;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            height: 0;
+        }
+    }
+}

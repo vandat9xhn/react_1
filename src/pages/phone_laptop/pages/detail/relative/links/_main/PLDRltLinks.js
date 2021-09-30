@@ -12,7 +12,7 @@ function PLDRltLinks({ link_arr }) {
     //
     return (
         <div className="PLDRltLinks">
-            <ul className="display-flex flex-wrap list-none">
+            <ul className="PLDRltLinks_row display-flex flex-wrap list-none">
                 {link_arr.map((item, ix) => (
                     <li
                         key={ix}

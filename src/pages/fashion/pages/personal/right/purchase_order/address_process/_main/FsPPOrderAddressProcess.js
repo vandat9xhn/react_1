@@ -24,7 +24,7 @@ function FsPPOrderAddressProcess({
     //
     return (
         <div className="FsPPOrderAddressProcess">
-            <div className="margin-bottom-15px">
+            <div className="FsPPOrderAddressProcess_head margin-bottom-15px">
                 <FsPPOrderProcessHead
                     trans_name={trans_name}
                     trans_id={trans_id}

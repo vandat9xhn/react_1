@@ -1,16 +1,22 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+// 
+import { IS_MOBILE } from '../../../../../../../../_constant/Constant';
 //
 import { handle_API_FsNotice_L } from '../../../../../../../../_handle_api/fashion/notice';
 //
 import { useDataShowMore } from '../../../../../../../../_hooks/useDataShowMore';
 //
 import ScreenBlurShowMore from '../../../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
+import HasLinkOrNot from '../../../../../../../../component/link/has_link_or_not/HasLinkOrNot';
+//
+import { FsPNotice_markAllAsRead } from '../../_state/FsPNotice_markAllAsRead';
 //
 import FsPNCommonItem from '../item/FsPNCommonItem';
 import FetchingDiv from '../../../../../../../../component/some_div/fetching/FetchingDiv';
 import FsPNoticeMarkAll from '../../_components/mark_all/FsPNoticeMarkAll';
-import { FsPNotice_markAllAsRead } from '../../_state/FsPNotice_markAllAsRead';
+//
+import './FsPNoticeCommonMb.scss';
 
 //
 FsPNoticeCommon.propTypes = {
@@ -73,14 +79,20 @@ function FsPNoticeCommon({ notice_type }) {
                                 item.has_read ? '' : 'bg-fashion-heart'
                             }`}
                         >
-                            <FsPNCommonItem
-                                logo={item.logo}
-                                name={item.name}
-                                info={item.info}
-                                img={item.img}
-                                created_time={item.created_time}
-                                link_to={item.link_to}
-                            />
+                            <HasLinkOrNot
+                                has_link={IS_MOBILE}
+                                class_link="color-inherit"
+                                link_to={`/fashion`}
+                            >
+                                <FsPNCommonItem
+                                    logo={item.logo}
+                                    name={item.name}
+                                    info={item.info}
+                                    img={item.img}
+                                    created_time={item.created_time}
+                                    link_to={item.link_to}
+                                />
+                            </HasLinkOrNot>
                         </div>
                     ))}
 

@@ -11,8 +11,8 @@ export function FsPNOrder_handleDataState({ data }) {
             {
                 id: getRandomId(),
                 order_id: getRandomId(),
-                img: getRandomVidPic(),
-                title: 'asdsd asd asd asd',
+                logo: getRandomVidPic(),
+                name: 'asdsd asd asd asd',
                 info: 'sda dad asd asd asd asd asd asd asd asd asd asda sd',
                 process_arr: [
                     {

@@ -1,0 +1,47 @@
+.PLDetail-mobile {
+    .PLDetailRating {
+        padding: 10px;
+        border-radius: 0;
+    }
+
+    // ------
+
+    .PLDRatingHead_title{
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    .PLDRatingHead_row{
+        display: block;
+    }
+
+    // .
+    .PLDRatingHead_bars{
+        margin-bottom: 10px;
+        width: 100%;
+        max-width: 250px;
+        padding: 0;
+    }
+
+    // .
+    .PLDRatingHead_pics {
+        width: 100%;
+        padding: 0;
+        border: none;
+    }
+
+    // ------
+
+    .PLRatesItemFoot{
+        font-size: 13px;
+    }
+
+    .PLRatesItemFoot_row{
+        display: block;
+    }
+    
+    // .
+    .PLRatesItemFoot_left{
+        margin-bottom: 5px;
+    }
+}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import './FsPPurOrderHead.scss';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 FsPPurOrderHead.propTypes = {};
@@ -31,12 +32,16 @@ function FsPPurOrderHead({ order_id, order_status }) {
                 </div>
 
                 <div className="FsPPurOrderHead_order display-flex-center">
-                    <div>ID ĐƠN HÀNG. {order_id}</div>
+                    <div className="FsPPurOrderHead_order_id">
+                        ID ĐƠN HÀNG. {order_id}
+                    </div>
 
-                    <div className="padding-x-15px">|</div>
+                    <div className="FsPPurOrderHead_order_separate padding-x-15px">
+                        |
+                    </div>
 
                     <div className="color-fashion text-upper">
-                        Đơn hàng {order_status}
+                        {IS_MOBILE ? '' : 'Đơn hàng'} {order_status}
                     </div>
                 </div>
             </div>

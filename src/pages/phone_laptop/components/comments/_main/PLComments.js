@@ -311,7 +311,7 @@ function PLComments({ handle_API_L }) {
             </div>
 
             <div className="margin-bottom-15px">
-                <div className="display-flex space-between margin-bottom-15px padding-y-10px">
+                <div className="PLComments_total_search display-flex space-between margin-bottom-15px padding-y-10px">
                     <div>
                         <PLCmtTotal
                             count={count}
@@ -365,7 +365,7 @@ function PLComments({ handle_API_L }) {
                             </div>
 
                             {cmt_obj.reply_arr.length ? (
-                                <div className="margin-top-15px">
+                                <div>
                                     <PLReplies
                                         cmt_ix={cmt_ix}
                                         reply_arr={cmt_obj.reply_arr}

@@ -2,32 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import { formatLocalDateString } from '../../../../../../../_some_function/FormatDate';
+import { formatLocalDateString } from '../../../../../../../../_some_function/FormatDate';
 //
-import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
+import IconsArrow from '../../../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import coin_img from '../../../../../../../../image/coin.png';
+import coin_img from '../../../../../../../../../image/coin.png';
 //
-import './FsPCoinHead.scss';
+import './FsPCoinHeadPc.scss';
 
 //
-FsPCoinHead.propTypes = {};
+FsPCoinHeadPc.propTypes = {};
 
 //
-function FsPCoinHead({ coin, end_time }) {
+function FsPCoinHeadPc({ coin, end_time }) {
     //
     return (
-        <div className="FsPCoinHead padding-y-16px padding-x-20px">
-            <div className="FsPCoinHead_row flex-between-center">
+        <div className="FsPCoinHeadPc padding-y-16px padding-x-20px">
+            <div className="FsPCoinHeadPc_row flex-between-center">
                 <div className="display-flex align-items-center">
                     <img src={coin_img} alt="" width="48" height="48" />
 
-                    <div className="FsPCoinHead_coin text-gold padding-left-15px padding-right-10px">
+                    <div className="FsPCoinHeadPc_coin text-gold padding-left-15px padding-right-10px">
                         {coin}
                     </div>
 
                     <div>
-                        <div className="line-16px text-gold font-16px">Xu đang có</div>
+                        <div className="line-16px text-gold font-16px">
+                            Xu đang có
+                        </div>
 
                         <div>
                             <Link
@@ -60,4 +62,4 @@ function FsPCoinHead({ coin, end_time }) {
     );
 }
 
-export default FsPCoinHead;
+export default FsPCoinHeadPc;

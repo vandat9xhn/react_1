@@ -29,10 +29,6 @@ import FsPPurchaseOrder from '../../purchase_order/_main/FsPPurchaseOrder';
 import './FsPersonalPurchase.scss';
 import '../_mobile_css/FsPersonalPurchaseMb.scss';
 import '../_mobile_css/FsPPurchaseShopMb.scss';
-// 
-import '../_mobile_css/FsPPurchaseOrderMb.scss';
-import '../_mobile_css/FsPPOrderAddressProcessMb.scss';
-import '../_mobile_css/FsPPOrderStepsMb.scss';
 
 //
 function getNewKey() {

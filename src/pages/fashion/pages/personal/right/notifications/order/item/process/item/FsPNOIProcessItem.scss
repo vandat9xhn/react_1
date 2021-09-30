@@ -12,20 +12,13 @@
 
         background-color: var(--md-bg-blur);
     }
-}
 
-.FsPNOIProcessItem_left {
-    position: relative;
-
-    width: 80px;
-    height: 80px;
-
-    &::after {
+    &::before {
         content: '';
 
         position: absolute;
-        left: 50%;
-        top: 5px;
+        left: 60px;
+        top: 25px;
         transform: translateX(-50%);
 
         width: 8px;
@@ -34,4 +27,8 @@
         border-radius: 50%;
         background-color: var(--md-bg-blur);
     }
+}
+
+.FsPNOIProcessItem_left {
+    width: 80px;
 }

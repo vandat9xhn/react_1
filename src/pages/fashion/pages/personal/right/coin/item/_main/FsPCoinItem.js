@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { formatLocalDateTimeString } from '../../../../../../../_some_function/FormatDate';
-import { formatNum } from '../../../../../../../_some_function/FormatNum';
+import { formatLocalDateTimeString } from '../../../../../../../../_some_function/FormatDate';
+import { formatNum } from '../../../../../../../../_some_function/FormatNum';
 //
-import coin_img from '../../../../../../../../image/coin.png';
+import coin_img from '../../../../../../../../../image/coin.png';
 //
 import './FsPCoinItem.scss';
 
@@ -19,8 +19,8 @@ function FsPCoinItem({ name, reason, img, coin_change, end_time }) {
             <div className="FsPCoinItem_row flex-between-center">
                 <div className="display-flex align-items-center">
                     <img
-                        className={`brs-50 ${
-                            coin_change > 0 || img ? '' : 'FsPCoinItem_img-gray'
+                        className={`FsPCoinItem_img brs-50 ${
+                            coin_change > 0 || img ? '' : 'grayscale-1'
                         }`}
                         src={img || coin_img}
                         alt=""
@@ -29,18 +29,20 @@ function FsPCoinItem({ name, reason, img, coin_change, end_time }) {
                     />
 
                     <div className="padding-left-10px">
-                        <div className="font-16px">{name}</div>
+                        <div className="FsPCoinItem_name font-16px">{name}</div>
 
-                        <div className="font-14px line-16px">{reason}</div>
+                        <div className="FsPCoinItem_reason font-14px line-16px">
+                            {reason}
+                        </div>
 
-                        <div className="text-del font-14px line-16px">
+                        <div className="FsPCoinItem_time text-del font-14px line-16px">
                             {formatLocalDateTimeString(end_time)}
                         </div>
                     </div>
                 </div>
 
                 <div
-                    className={`font-20px ${
+                    className={`FsPCoinItem_coin font-20px ${
                         coin_change > 0 ? 'text-gold' : ''
                     }`}
                 >

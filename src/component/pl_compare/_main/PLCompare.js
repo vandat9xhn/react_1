@@ -2,6 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+//
+import { stringifyCompareDevices } from '../../../_some_function/phone/compareDevices';
+//
 import {
     addDeviceToCompare,
     removeDeviceFromCompare,
@@ -17,7 +21,7 @@ import PLCompareBtnShow from '../btn_show/PLCompareBtnShow';
 import PLCompareBtnHide from '../btn_hide/PLCompareBtnHide';
 //
 import './PLCompare.scss';
-import { stringifyCompareDevices } from '../../../_some_function/phone/compareDevices';
+import './PLCompareMb.scss';
 
 //
 PLCompare.propTypes = {};
@@ -87,15 +91,17 @@ function PLCompare(props) {
 
     //
     return (
-        <div className="PLCompare">
+        <div className={`PLCompare ${IS_MOBILE ? 'PLCompare-mobile' : ''}`}>
             <div
                 className={`PLCompare_contain pos-fixed bottom-0 x-center border-blur bg-primary box-shadow-fb ${
                     is_true ? '' : 'display-none'
                 }`}
             >
-                <PLCompareBtnHide hideCompare={toggleBool} />
+                {IS_MOBILE ? null : (
+                    <PLCompareBtnHide hideCompare={toggleBool} />
+                )}
 
-                <div className="display-flex">
+                <div className="PLCompare_row display-flex">
                     <ul className="display-flex list-none flex-grow-1">
                         {device_arr.map((item, ix) => (
                             <li key={item.id} className="PLCompare_item">
@@ -125,6 +131,7 @@ function PLCompare(props) {
                     <div className="PLCompare_actions">
                         <PLCompareActions
                             device_count={device_arr.length}
+                            hideCompare={toggleBool}
                             removeCompare={onRemoveCompare}
                         />
                     </div>

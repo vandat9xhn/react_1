@@ -74,11 +74,11 @@ function PLDetailRelative({ product_id }) {
             has_fetched: true,
         });
     }
-    
+
     //
     return (
         <div ref={ref_relative} className="PLDetailRelative">
-            <h2 className="margin-bottom-15px font-700 font-20px">
+            <h2 className="PLDetailRelative_title margin-bottom-15px font-700 font-20px">
                 Xem thêm điện thoại khác
             </h2>
 

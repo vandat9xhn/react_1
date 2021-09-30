@@ -1,0 +1,80 @@
+.FashionPersonal-mobile {
+
+    // ----
+    .FsPNOrderItemInfo{
+        padding: 10px;
+    }
+
+    .FsPNOrderItemInfo_logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .FsPNOrderItemInfo_logo {
+        margin-right: 10px;
+    }
+
+    .FsPNOrderItemInfo_name{
+        font-size: 14px;
+    }
+
+    .FsPNOrderItemInfo_info{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+
+        margin-bottom: 5px;
+        line-height: 16px;
+        font-size: 13px;
+    }
+
+    .FsPNOrderItemInfo_time{
+        font-size: 12px;
+    }
+
+    .FsPNOrderItemInfo_toggle{
+        .IconsArrow{
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    // -----
+
+    .FsPNOIProcessItem {
+        padding: 10px;
+
+        &::after {
+            left: 35px;
+        }
+    
+        &::before {
+            top: 15px;
+            left: 35px;
+    
+            width: 8px;
+            height: 8px;
+        }
+    }
+
+    .FsPNOIProcessItem_left{
+        margin-right: 10px;
+        width: 50px;
+    }
+
+    .FsPNOIProcessItem_title{
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    
+    .FsPNOIProcessItem_info{
+        margin-bottom: 5px;
+        font-size: 13px;
+    }
+
+    .FsPNOIProcessItem_time{
+        text-align: end;
+        font-size: 12px;
+    }
+}

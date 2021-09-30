@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { formatLocalDateTimeString } from '../../../../../../../../../../_some_function/FormatDate';
-// 
+//
 import './FsPNOIProcessItem.scss';
 
 //
@@ -17,13 +17,15 @@ function FsPNOIProcessItem({ title, info, created_time }) {
                 <div className="FsPNOIProcessItem_left margin-right-20px"></div>
 
                 <div className="flex-grow-1">
-                    <div className="margin-bottom-10px text-cap font-16px font-400">
+                    <div className="FsPNOIProcessItem_title margin-bottom-10px text-cap font-16px font-400">
                         {title}
                     </div>
 
-                    <div>{info}</div>
+                    <div className="FsPNOIProcessItem_info">{info}</div>
 
-                    <div>{formatLocalDateTimeString(created_time)}</div>
+                    <div className="FsPNOIProcessItem_time">
+                        {formatLocalDateTimeString(created_time)}
+                    </div>
                 </div>
             </div>
         </div>

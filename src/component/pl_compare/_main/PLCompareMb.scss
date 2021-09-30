@@ -1,0 +1,57 @@
+.PLCompare-mobile {
+    .PLCompare_contain {
+        width: 100%;
+    }
+
+    .PLCompare_row {
+        display: block;
+    }
+
+    .PLCompare_actions {
+        width: 100%;
+    }
+
+    // .
+    .PLCompare_item {
+        padding: 0;
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    // -----
+
+    // ..
+    .PLCompareItem_name {
+        padding: 5px;
+        font-size: 13px;
+    }
+
+    // ----
+
+    .PLCompareActions {
+        display: flex;
+        flex-direction: row-reverse;
+
+        padding-top: 0;
+        border-top: 1px solid var(--md-bg-blur);
+    }
+
+    .PLCompareActions_col {
+        margin: 0;
+        width: 50%;
+        padding: 10px 0;
+
+        line-height: unset;
+        font-size: 14px;
+    }
+
+    // --------
+
+    .PLCompareBtnShow {
+        left: 10px;
+        bottom: 15px;
+    }
+}

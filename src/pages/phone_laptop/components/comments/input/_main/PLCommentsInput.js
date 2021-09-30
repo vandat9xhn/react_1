@@ -8,6 +8,7 @@ import InputFile from '../../../../../../component/input/input_file/InputFile';
 import ImgVidPreview from '../../../../../../component/input_img_vid_preview/img_vid_preview/ImgVidPreview';
 //
 import './PLCommentsInput.scss';
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
 
 //
 PLCommentsInput.propTypes = {};
@@ -61,11 +62,15 @@ function PLCommentsInput({
                         </div>
                     </InputFile>
 
-                    <div className="margin-x-10px text-third">|</div>
+                    {IS_MOBILE ? null : (
+                        <React.Fragment>
+                            <div className="margin-x-10px text-third">|</div>
 
-                    <Link to="/phone-laptop/comment-guide">
-                        Quy định đăng bình luận
-                    </Link>
+                            <Link to="/phone-laptop/comment-guide">
+                                Quy định đăng bình luận
+                            </Link>
+                        </React.Fragment>
+                    )}
                 </div>
 
                 <button

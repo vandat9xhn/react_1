@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 //
 import PLUsedTime from '../../../../used_time/PLUsedTime';
 import PLRItemFootLeft from '../left/PLRItemFootLeft';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 PLRatesItemFoot.propTypes = {};
@@ -23,7 +24,7 @@ function PLRatesItemFoot({
     return (
         <div className="PLRatesItemFoot">
             <div className="PLRatesItemFoot_row display-flex align-items-center">
-                <div>
+                <div className="PLRatesItemFoot_left">
                     <PLRItemFootLeft
                         count_like={count_like}
                         count_discuss={count_discuss}
@@ -32,7 +33,9 @@ function PLRatesItemFoot({
                     />
                 </div>
 
-                <div className="margin-x-20px text-third">|</div>
+                {IS_MOBILE ? null : (
+                    <div className="margin-x-20px text-third">|</div>
+                )}
 
                 <div>
                     <PLUsedTime

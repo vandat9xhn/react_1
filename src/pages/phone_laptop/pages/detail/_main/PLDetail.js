@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 import makeFormData from '../../../../../_some_function/makeFormData';
 //
@@ -30,6 +32,18 @@ import PLDetailSeen from '../seen/_main/PLDetailSeen';
 import PLComments from '../../../components/comments/_main/PLComments';
 //
 import './PLDetail.scss';
+// 
+import '../_mobile_css/PhoneDetailHeadMb.scss';
+import '../_mobile_css/PLDetailCarouselMb.scss';
+import '../_mobile_css/PLCommentsMb.scss';
+import '../_mobile_css/PLDetailPolicyMb.scss';
+import '../_mobile_css/PLDetailPostMb.scss';
+import '../_mobile_css/PLDetailProductMb.scss';
+import '../_mobile_css/PLDetailPromotionMb.scss';
+import '../_mobile_css/PLDetailRatingMb.scss';
+import '../_mobile_css/PLDetailRelativeMb.scss';
+import '../_mobile_css/PLDetailShortConfigMb.scss';
+import '../_mobile_css/PLDetailSeenMb.scss';
 
 //
 PLDetail.propTypes = {};
@@ -150,11 +164,15 @@ function PLDetail() {
 
     //
     return (
-        <div className="PLDetail font-for-phone bg-primary font-14px">
+        <div
+            className={`PLDetail font-for-phone bg-primary font-14px ${
+                IS_MOBILE ? 'PLDetail-mobile' : ''
+            }`}
+        >
             <div className="PLDetail_contain fashion-width">
                 {has_fetched ? (
                     <React.Fragment>
-                        <div className="padding-y-10px text-blue font-14px">
+                        <div className="PLDetail_breadcrumb padding-y-10px text-blue font-14px">
                             <BreadCrumb link_arr={product_obj.link_arr} />
                         </div>
 

@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+//
 import { handle_API_FsCoinHistory_L } from '../../../../../../../_handle_api/fashion/coin';
 //
 import { useMultiDataKey } from '../../../../../../../_hooks/useMultiDataKey';
 //
 import ScreenBlurShowMore from '../../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
-import FsPCoinItem from '../item/FsPCoinItem';
-import FsPCoinHead from '../head/FsPCoinHead';
+import FsPCoinItem from '../item/_main/FsPCoinItem';
+import FsPCoinHead from '../head/_main/FsPCoinHead';
 import FsPCoinMenu from '../menu/_main/FsPCoinMenu';
+//
+import '../_mobile_css/FsPersonalCoinMb.scss';
 
-const COIN_MENU_ARR = ['Tất cả lịch sử', 'Đã nhận', 'Đã dùng'];
+const COIN_MENU_ARR = [
+    IS_MOBILE ? 'Tất cả' : 'Tất cả lịch sử',
+    'Đã nhận',
+    'Đã dùng',
+];
 const COIN_MENU_KEY_ARR = ['all', 'received', 'used'];
 
 //

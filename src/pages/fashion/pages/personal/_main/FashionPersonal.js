@@ -38,7 +38,7 @@ function FashionPersonal(props) {
             <FashionH />
 
             {IS_MOBILE ? (
-                <div className="flex-end margin-top-15px padding-x-10px">
+                <div className="flex-end margin-top-10px padding-x-10px">
                     <FsPersonalIconClose
                         is_true={is_true}
                         toggleBool={toggleBool}

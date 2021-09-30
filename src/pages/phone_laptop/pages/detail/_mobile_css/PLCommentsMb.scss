@@ -1,0 +1,22 @@
+.PLDetail-mobile {
+    .PLCmtTotal_row {
+        display: block;
+    }
+
+    .PLComments_total_search{
+        display: block;
+        padding: 0;
+    }
+
+    // --------
+
+    .PLCmtTotal_count {
+        margin: 0 0 15px 0;
+    }
+    
+    .PLCmtSearch {
+        width: 100%;
+        max-width: 400px;
+        margin-top: 15px;
+    }
+}

@@ -54,7 +54,7 @@ function PLDetailSeen({ product_id }) {
     //
     return (
         <div ref={ref_relative} className="PLDetailSeen">
-            <h2 className="margin-bottom-15px font-700 font-20px">
+            <h2 className="PLDetailSeen_title margin-bottom-15px font-700 font-20px">
                 Điện thoại bạn đã xem
             </h2>
 

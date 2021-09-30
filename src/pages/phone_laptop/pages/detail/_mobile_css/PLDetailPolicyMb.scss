@@ -1,0 +1,25 @@
+.PLDetail-mobile {
+    .PLDetailPolicy{
+        border-top: 5px solid var(--md-bg-blur);
+        border-bottom: 5px solid var(--md-bg-blur);
+    }
+
+    .PLDetailPolicy_item {
+        width: 100%;
+    }
+
+    // ------
+
+    .PLDetailPolicyItem {
+        padding: 10px 10px 10px 30px;
+    }
+
+    .PLDetailPolicyItem_icon {
+        left: 5px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

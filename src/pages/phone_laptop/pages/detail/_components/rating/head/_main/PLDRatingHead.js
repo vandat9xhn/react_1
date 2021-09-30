@@ -29,11 +29,11 @@ function PLDRatingHead({
     //
     return (
         <div className="PLDRatingHead">
-            <h2 className="margin-bottom-15px font-20px font-700">
+            <h2 className="PLDRatingHead_title margin-bottom-15px font-20px font-700">
                 Đánh giá {product_name}
             </h2>
 
-            <div className="display-flex">
+            <div className="PLDRatingHead_row display-flex">
                 <div className="PLDRatingHead_bars padding-x-10px">
                     <PLBarsRate
                         product_id={product_id}

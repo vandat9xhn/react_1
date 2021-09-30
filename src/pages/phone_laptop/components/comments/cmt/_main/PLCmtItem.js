@@ -80,7 +80,7 @@ function PLCmtItem({
                 </div>
             ) : null}
 
-            <div className="display-flex align-items-center margin-top-10px text-blue font-13px">
+            <div className="display-flex align-items-center flex-wrap margin-top-10px text-blue font-13px">
                 <div className="cursor-pointer" onClick={onGoToReply}>
                     Trả lời
                 </div>

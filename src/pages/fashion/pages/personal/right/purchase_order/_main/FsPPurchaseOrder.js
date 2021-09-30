@@ -8,6 +8,10 @@ import FsPPOrderAddressProcess from '../address_process/_main/FsPPOrderAddressPr
 import FsPPurOrderShop from '../shop/_main/FsPPurOrderShop';
 import FsPPOrderPayment from '../payment/FsPPOrderPayment';
 import FsPPOrderShopTotal from '../total/FsPPOrderShopTotal';
+//  
+import '../_mobile_css/FsPPurchaseOrderMb.scss';
+import '../_mobile_css/FsPPOrderAddressProcessMb.scss';
+import '../_mobile_css/FsPPOrderStepsMb.scss';
 
 //
 FsPPurchaseOrder.propTypes = {};

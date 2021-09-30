@@ -13,6 +13,9 @@ import { FsPNOrder_handleDataState } from '../_state/_FsPNOrder_handleDataState'
 // 
 import FsPNOrderItem from '../item/_main/FsPNOrderItem';
 import FsPNoticeMarkAll from '../../_components/mark_all/FsPNoticeMarkAll';
+// 
+import './FsPNoticeOrder.scss';
+import './FsPNoticeOrderMb.scss';
 
 //
 FsPNoticeOrder.propTypes = {};
@@ -79,8 +82,8 @@ function FsPNoticeOrder(props) {
                         >
                             <FsPNOrderItem
                                 order_id={item.order_id}
-                                img={item.img}
-                                title={item.title}
+                                logo={item.logo}
+                                name={item.name}
                                 info={item.info}
                                 created_time={item.created_time}
                                 process_arr={item.process_arr}

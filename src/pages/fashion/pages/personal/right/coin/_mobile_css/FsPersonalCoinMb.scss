@@ -1,0 +1,54 @@
+.FashionPersonal-mobile {
+    // ---- MENU
+
+    .FsPCoinMenu {
+        white-space: nowrap;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+            height: 0;
+        }
+    }
+
+    .FsPCoinMenu_item {
+        flex-grow: unset;
+        width: 33.33%;
+    }
+
+    .FsPCoinMenuItem {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+
+    // --------
+
+    .FsPCoinItem {
+        padding: 10px;
+    }
+
+    .FsPCoinItem_img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .FsPCoinItem_name {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+
+        margin-bottom: 10px;
+        line-height: 18px;
+        font-size: 14px;
+    }
+
+    .FsPCoinItem_reason,
+    .FsPCoinItem_time {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .FsPCoinItem_coin {
+        font-size: 16px;
+    }
+}

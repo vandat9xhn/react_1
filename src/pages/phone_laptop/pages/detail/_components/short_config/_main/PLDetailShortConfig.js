@@ -21,7 +21,7 @@ function PLDetailShortConfig({
     //
     return (
         <div className="PLDetailShortConfig font-14px">
-            <h2 className="margin-bottom-15px font-20px font-700">
+            <h2 className="PLDetailShortConfig_title margin-bottom-15px font-20px font-700">
                 <span>{name}</span>
 
                 {type ? (

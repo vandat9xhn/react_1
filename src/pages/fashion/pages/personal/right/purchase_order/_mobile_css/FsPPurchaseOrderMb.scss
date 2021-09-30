@@ -1,25 +1,34 @@
 .FashionPersonal-mobile {
-
     // ----
     .FsPPurOrderHead {
         padding: 10px;
+        font-size: 12px;
     }
 
-    .FsPPurOrderHead_row {
-        display: block;
+    .FsPPurOrderHead_row{
+        align-items: flex-start;
     }
+
     // .
-    .FsPPurOrderHead_back{
-        margin-bottom: 10px;
-
-        .IconsArrow{
-            width: 14px;
-            height: 14px;
+    .FsPPurOrderHead_back {
+        .IconsArrow {
+            width: 12px;
+            height: 12px;
         }
     }
+
     // .
     .FsPPurOrderHead_order{
-        justify-content: flex-end;
+        display: block;
+        text-align: center;
+    }
+    // ..
+    .FsPPurOrderHead_order_id{
+        margin-bottom: 5px;
+    }
+    // ..
+    .FsPPurOrderHead_order_separate{
+        display: none;
     }
 
     // -------

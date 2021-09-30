@@ -31,8 +31,8 @@ function PhoneDetailHead({
     return (
         <div className="PhoneDetailHead padding-y-10px border-bottom-blur font-13px">
             <div className="PhoneDetailHead_row flex-between-center">
-                <div className="display-flex align-items-center">
-                    <h1 className="font-700 font-18px">
+                <div className="PhoneDetailHead_left display-flex align-items-center">
+                    <h1 className="PhoneDetailHead_name margin-right-10px font-700 font-18px">
                         <span>{name}</span>
 
                         {type ? (
@@ -40,65 +40,61 @@ function PhoneDetailHead({
                         ) : null}
                     </h1>
 
-                    {rating_avg ? (
-                        <React.Fragment>
-                            <div className="margin-left-10px">
-                                <StarsRate
-                                    rate_avg={rating_avg}
-                                    size_icon="13px"
-                                    color="var(--border-fashion)"
-                                />
-                            </div>
+                    <div className="PhoneDetailHead_rate_compare display-flex align-items-center">
+                        {rating_avg ? (
+                            <React.Fragment>
+                                <div>
+                                    <StarsRate
+                                        rate_avg={rating_avg}
+                                        size_icon="13px"
+                                        color="var(--border-fashion)"
+                                    />
+                                </div>
 
-                            <div
-                                className="margin-left-5px text-blue cursor-pointer"
-                                onClick={goToRating}
-                            >
-                                {rating_count} Đánh giá
-                            </div>
-                        </React.Fragment>
-                    ) : null}
+                                <div
+                                    className="margin-left-5px text-blue cursor-pointer"
+                                    onClick={goToRating}
+                                >
+                                    {rating_count} Đánh giá
+                                </div>
+                            </React.Fragment>
+                        ) : null}
 
-                    <div className="margin-left-10px inline-block">
-                        <PLProductCompare
-                            id={id}
-                            name={name}
-                            img={img}
-                            product_type={product_type} 
-                        />
+                        <div className="PhoneDetailHead_compare margin-left-10px inline-block">
+                            <PLProductCompare
+                                id={id}
+                                name={name}
+                                img={img}
+                                product_type={product_type}
+                            />
+                        </div>
                     </div>
                 </div>
 
                 <div className="display-flex align-items-center">
-                    {[
-                        {
-                            title: `Like ${count_like}`,
-                            Icon: (
-                                <IconLike
-                                    size_icon="11px"
-                                    stroke="none"
-                                    fill="var(--white)"
-                                />
-                            ),
-                            onClick: handleLike,
-                        },
-                        {
-                            title: 'Share',
-                            Icon: null,
-                            onClick: handleShare,
-                        },
-                    ].map((item, ix) => (
-                        <button
-                            key={ix}
-                            className="inline-flex align-items-center btn btn-active margin-left-10px padding-x-5px padding-y-2px brs-3px bg-blue text-white font-11px cursor-pointer"
-                            type="button"
-                            onClick={item.onClick}
-                        >
-                            {item.Icon}
+                    <button
+                        className="PhoneDetailHead_like_share inline-flex align-items-center btn btn-active margin-right-10px padding-x-5px padding-y-2px brs-3px bg-blue text-white font-11px cursor-pointer"
+                        type="button"
+                        onClick={handleLike}
+                    >
+                        <IconLike
+                            size_icon="14px"
+                            stroke="none"
+                            fill="var(--white)"
+                        />
 
-                            <span>{item.title}</span>
-                        </button>
-                    ))}
+                        <span className="margin-left-3px">
+                            Like {count_like}
+                        </span>
+                    </button>
+
+                    <button
+                        className="PhoneDetailHead_like_share inline-flex align-items-center btn btn-active padding-x-5px padding-y-2px brs-3px bg-blue text-white font-11px cursor-pointer"
+                        type="button"
+                        onClick={handleShare}
+                    >
+                        <span>Share</span>
+                    </button>
                 </div>
             </div>
         </div>

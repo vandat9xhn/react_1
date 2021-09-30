@@ -26,7 +26,7 @@ function PLDetailPromotion({ promotion_obj, openDetailGift }) {
                 </div>
             ) : null}
 
-            <div className="brs-4px border-blur">
+            <div className="PLDetailPromotion_contain brs-4px border-blur">
                 <div>
                     <PLDPromotionHead cost={cost} end_time={end_time} />
                 </div>

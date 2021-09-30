@@ -16,7 +16,7 @@ function PLCompareBtnShow({ count, is_show, showCompare }) {
             }`}
         >
             <div
-                className="padding-x-15px padding-y-5px brs-8px bg-primary box-shadow-fb text-blue cursor-pointer"
+                className="PLCompareBtnShow_contain padding-x-15px padding-y-5px bg-primary box-shadow-fb text-blue cursor-pointer"
                 onClick={showCompare}
             >
                 So sánh ({count})

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import IconsArrow from '../../../_icons_svg/icons_arrow/IconsArrow';
-// 
+//
 import './PLCompareItem.scss';
 
 //
@@ -27,7 +27,9 @@ function PLCompareItem({ ix, name, img, removeCompareItem }) {
                     height="60"
                 />
 
-                <h3 className="font-13px font-400">{name}</h3>
+                <h3 className="PLCompareItem_name wk-box-vertical line-clamp-2 font-13px font-400 overflow-hidden">
+                    {name}
+                </h3>
             </div>
 
             <div className="pos-abs right-0 top-0">
