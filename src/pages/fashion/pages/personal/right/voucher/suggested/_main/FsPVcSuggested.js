@@ -13,7 +13,7 @@ function FsPVcSuggested({ suggested_arr, handleSave }) {
     //
     return (
         <div className="FsPVcSuggested">
-            <div className="padding-bottom-20px font-18px font-500">
+            <div className="FsPVcSuggested_title padding-bottom-20px font-18px font-500">
                 Voucher gợi ý
             </div>
 

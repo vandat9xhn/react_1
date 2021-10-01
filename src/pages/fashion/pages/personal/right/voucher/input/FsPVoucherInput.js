@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+// 
 import './FsPVoucherInput.scss';
 
 //
@@ -27,7 +29,7 @@ function FsPVoucherInput({ saveVoucherCode }) {
     return (
         <div className="FsPVoucherInput bg-screen font-14px">
             <div className="FsPVoucherInput_row display-flex-center">
-                <div className="font-16px">Mã voucher</div>
+                {IS_MOBILE ? null : <div className="font-16px">Mã voucher</div>}
 
                 <input
                     className="FsPVoucherInput_input margin-left-10px margin-right-10px padding-13px border-blur brs-3px outline-none"

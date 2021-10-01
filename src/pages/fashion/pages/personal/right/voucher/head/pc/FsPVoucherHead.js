@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 //
-FsPVoucherHead.propTypes = {};
+FsPVoucherHeadPc.propTypes = {};
 
 //
-function FsPVoucherHead(props) {
+function FsPVoucherHeadPc(props) {
     //
     return (
-        <div className="FsPVoucherHead">
-            <div className="FsPVoucherHead_row flex-between-center">
+        <div className="FsPVoucherHeadPc">
+            <div className="flex-between-center">
                 <div className="font-20px">Ví Voucher</div>
 
                 <div className="display-flex align-items-center font-14px">
@@ -36,4 +36,4 @@ function FsPVoucherHead(props) {
     );
 }
 
-export default FsPVoucherHead;
+export default FsPVoucherHeadPc;

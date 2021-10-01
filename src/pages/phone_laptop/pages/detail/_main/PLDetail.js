@@ -34,16 +34,22 @@ import PLComments from '../../../components/comments/_main/PLComments';
 import './PLDetail.scss';
 // 
 import '../_mobile_css/PhoneDetailHeadMb.scss';
-import '../_mobile_css/PLDetailCarouselMb.scss';
 import '../_mobile_css/PLCommentsMb.scss';
+import '../_mobile_css/PLDetailAreaMb.scss';
+import '../_mobile_css/PLDetailCarouselMb.scss';
+import '../_mobile_css/PLDetailGroupsMb.scss';
+import '../_mobile_css/PLDetailMarket Mb.scss';
+
 import '../_mobile_css/PLDetailPolicyMb.scss';
 import '../_mobile_css/PLDetailPostMb.scss';
 import '../_mobile_css/PLDetailProductMb.scss';
 import '../_mobile_css/PLDetailPromotionMb.scss';
 import '../_mobile_css/PLDetailRatingMb.scss';
+
 import '../_mobile_css/PLDetailRelativeMb.scss';
 import '../_mobile_css/PLDetailShortConfigMb.scss';
 import '../_mobile_css/PLDetailSeenMb.scss';
+import '../_mobile_css/PLDOnePriceMb.scss';
 
 //
 PLDetail.propTypes = {};

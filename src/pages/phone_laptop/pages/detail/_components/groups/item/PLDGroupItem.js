@@ -18,7 +18,7 @@ function PLDGroupItem({ group_ix, item_ix, title, is_active, handleClick }) {
     //
     return (
         <button
-            className={`padding-x-20px padding-y-10px brs-3px btn-active border-blur cursor-pointer ${
+            className={`PLDGroupItem padding-x-20px padding-y-10px brs-3px btn-active border-blur cursor-pointer ${
                 is_active ? 'text-blue border-cl-current' : ''
             }`}
             type="button"

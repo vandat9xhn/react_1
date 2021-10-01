@@ -10,7 +10,7 @@ PLDetailArea.propTypes = {};
 function PLDetailArea({ province, openDetailAddress }) {
     //
     return (
-        <div>
+        <div className="PLDetailArea">
             <span>Giá tại</span>
 
             <button

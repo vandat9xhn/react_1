@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { ParseLocationSearch } from '../../../../../../../_some_function/ParseLocationSearch';
+import observeToDo from '../../../../../../../_some_function/observerToDo';
+// 
 import { handle_API_FsCoinHistory_L } from '../../../../../../../_handle_api/fashion/coin';
 //
 import { useMultiDataKey } from '../../../../../../../_hooks/useMultiDataKey';
@@ -8,17 +11,18 @@ import { useMultiDataKey } from '../../../../../../../_hooks/useMultiDataKey';
 import { FsPVc_handleDataSuggested } from '../_state/FsPVc_handleDataSuggested';
 import { FsPVc_handleDataState } from '../_state/_FsPVc_handleDataState';
 //
-import FsPVoucherHead from '../head/FsPVoucherHead';
+import FsPVoucherHead from '../head/_main/FsPVoucherHead';
 import FsPVoucherInput from '../input/FsPVoucherInput';
 import FsPVoucherMenu from '../menu/_main/FsPVoucherMenu';
 import FsPVoucherFilter from '../filter/_main/FsPVoucherFilter';
 import FsPVoucherList from '../list/_main/FsPVoucherList';
 import FsPVcSuggested from '../suggested/_main/FsPVcSuggested';
+import FsPVoucherHistory from '../history/_main/FsPVoucherHistory';
 //
 import './FsPersonalVoucher.scss';
-import { ParseLocationSearch } from '../../../../../../../_some_function/ParseLocationSearch';
-import FsPVoucherHistory from '../history/_main/FsPVoucherHistory';
-import observeToDo from '../../../../../../../_some_function/observerToDo';
+// 
+import '../_mobile_css/FsPersonalVoucherMb.scss';
+import '../_mobile_css/FsPVcSuggestedMb.scss';
 
 //
 const MENU_ARR = [
@@ -102,7 +106,7 @@ function FsPersonalVoucher(props) {
     // -------
 
     async function handle_FsVoucher(params) {
-        console.log(params, ref_filter_ix_obj.current);
+        // console.log(params, ref_filter_ix_obj.current);
         const res = await handle_API_FsCoinHistory_L({});
 
         return FsPVc_handleDataState({ data: res.data });
@@ -157,7 +161,7 @@ function FsPersonalVoucher(props) {
                 }`}
             >
                 <div className="FsPersonalVoucher_main margin-bottom-20px bg-primary">
-                    <div className="margin-bottom-15px">
+                    <div className="FsPersonalVoucher_head margin-bottom-15px">
                         <FsPVoucherHead />
                     </div>
 
