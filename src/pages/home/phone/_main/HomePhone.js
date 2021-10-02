@@ -60,7 +60,11 @@ function HomePhone(props) {
                                 IS_MOBILE ? 'HomePhone_item-mobile' : ''
                             }`}
                         >
-                            <PLProduct product_obj={product_obj} />
+                            <PLProduct
+                                product_obj={product_obj}
+                                use_compare={false}
+                                use_type={false}
+                            />
                         </li>
                     ))}
                 </ul>

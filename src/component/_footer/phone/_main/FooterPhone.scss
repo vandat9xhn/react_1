@@ -1,0 +1,17 @@
+.FooterPhone_col {
+    width: 25%;
+
+    min-width: 250px;
+    max-width: 100%;
+    padding: 10px;
+
+    .FooterLinkArr_item_link{
+        &:hover{
+            color: var(--blue);
+        }
+    }
+}
+
+.FooterPhone_phone_label{
+    width: 80px;
+}

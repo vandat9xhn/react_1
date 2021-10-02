@@ -53,8 +53,8 @@ function PLProductFoot({
             {gift_str ? <div>Quà {gift_str}</div> : null}
 
             {rating_count ? (
-                <div>
-                    <div className="inline-block">
+                <div className="display-flex align-items-center font-12px">
+                    <div>
                         <StarsRate
                             rate_avg={rating_avg}
                             size_icon="14px"
@@ -62,7 +62,7 @@ function PLProductFoot({
                         />
                     </div>
 
-                    <div className="inline-block">{rating_count}</div>
+                    <div className="margin-left-5px">{rating_count}</div>
                 </div>
             ) : null}
         </div>

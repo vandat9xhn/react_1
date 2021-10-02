@@ -1,30 +1,31 @@
-import image_loading from '../../../image/image_loading.svg';
-
 //
-export const initial_phone_arr = [
+export const initial_phone_arr = () => [
     {
-        id: 1,
-        url: image_loading,
-        in_stock: '',
-        discount: 0,
-        installment: 0,
-        gift: '',
-        product_sets: '',
+        id: 0,
+        name: '',
+
         cpu: '',
         os: '',
         ram: '',
         internal_memory: '',
         camera: '',
         memory_stick: '',
-        type_product: '',
-        name: '',
+        product_type: '',
+
         new_price: 0,
         old_price: 0,
-        types: [
-            { url: image_loading, title: '' },
-            { url: image_loading, title: '' },
-            { url: image_loading, title: '' },
-        ],
-        promotion: '',
+        discount: '',
+        installment: '',
+
+        is_coming: false,
+        in_stock: false,
+
+        type_arr: [{ img: '', title: '' }],
+
+        rating_avg: 0,
+        rating_count: 0,
+
+        gift_str: '',
+        cheap_price: 0,
     },
 ];

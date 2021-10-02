@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
 import { useScrollToX } from '../../../../../_hooks/useScrollToX';
@@ -14,7 +14,7 @@ import './PLRowProducts.scss';
 PLRowProducts.propTypes = {};
 
 //
-function PLRowProducts({ product_arr }) {
+function PLRowProducts({ product_arr, use_compare, use_type }) {
     //
     const ref_scroll_elm = useRef(null);
 
@@ -40,7 +40,11 @@ function PLRowProducts({ product_arr }) {
                             key={product_obj.id}
                             className="PLRowProducts_item flex-shrink-0 border-blur"
                         >
-                            <PLProduct product_obj={product_obj} />
+                            <PLProduct
+                                product_obj={product_obj}
+                                use_compare={use_compare}
+                                use_type={use_type}
+                            />
                         </div>
                     ))}
                 </div>

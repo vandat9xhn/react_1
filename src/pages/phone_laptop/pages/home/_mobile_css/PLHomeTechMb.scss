@@ -1,0 +1,20 @@
+.PLHome-mobile {
+    .PLHomeTech_title {
+        margin-bottom: 0;
+    }
+
+    .PLHomeTech_right {
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .PLHomeTech_right_item{
+        flex-shrink: 0;
+        width: 200px;
+
+        img{
+            width: 80px;
+        }
+    }
+}

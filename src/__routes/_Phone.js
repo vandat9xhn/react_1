@@ -1,8 +1,8 @@
 import React from 'react';
 
 //
-const PhoneLaptop = React.lazy(() =>
-    import('../pages/phone_laptop/pages/home/_main/PhoneLaptop')
+const PLHome = React.lazy(() =>
+    import('../pages/phone_laptop/pages/home/_main/PLHome')
 );
 const PhoneLaptopDetail = React.lazy(() =>
     import(
@@ -20,13 +20,13 @@ const Phones = React.lazy(() =>
 export const phone_route_arr = [
     {
         path: '/phone-laptop',
-        component: PhoneLaptop,
+        component: PLHome,
         exact: true,
         auth: false,
         reset_position: true,
     },
     {
-        path: '/phone-laptop::id',
+        path: '/phone-laptop/:id',
         component: PhoneLaptopDetail,
         exact: true,
         auth: false,

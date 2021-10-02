@@ -1,0 +1,10 @@
+.PLHomeNav{
+    white-space: pre-wrap;
+}
+
+.PLHomeNav_item{
+    width: calc(20% - 4px);
+    min-height: 40px;
+
+    box-shadow: 0px 2px 5px var(--shadow-1);
+}

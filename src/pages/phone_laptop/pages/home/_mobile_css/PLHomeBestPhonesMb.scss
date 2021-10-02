@@ -1,0 +1,17 @@
+.PLHome-mobile {
+    .PLHomeBestPhones_head {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .PLHomeBestPhones_item {
+        width: 33.33%;
+    }
+
+    //
+    @media (max-width: 450px) {
+        .PLHomeBestPhones_item {
+            width: 50%;
+        }
+    }
+}
