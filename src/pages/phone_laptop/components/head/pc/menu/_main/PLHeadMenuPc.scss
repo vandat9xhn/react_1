@@ -1,0 +1,29 @@
+.PLHeadMenuPc_item{
+    height: 43px;
+    
+    &:hover{
+        background-color: var(--md-bg-primary);
+    }
+    
+    &:hover{
+        .PLHeadMenuPc_sub{
+            display: block;
+        }
+    }
+}
+
+.PLHeadMenuPc_label_contain{
+    background-color: #f51212;
+
+    &::after{
+        content: '';
+
+        position: absolute;
+        left: 5px;
+        top: 100%;
+
+        border-width: 4px 3px 0px 3px;
+        border-style: solid;
+        border-color: #f51212 transparent transparent transparent;
+    }
+}

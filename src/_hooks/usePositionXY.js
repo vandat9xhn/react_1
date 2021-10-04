@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 //
 import { useWaitingLastAction } from './useWaitingLastAction';
 //
@@ -39,6 +39,27 @@ export function usePositionXY({
             window.removeEventListener('resize', handleWaitingLastAction);
         };
     }, []);
+
+    useLayoutEffect(() => {
+        if (
+            ref_child_elm.current &&
+            ref_child_elm.current.getBoundingClientRect().width
+        ) {
+            const data_define_state = definePositionXY({
+                child_width:
+                    ref_child_elm.current.getBoundingClientRect().width,
+                ref_btn_elm: ref_btn_elm,
+            });
+
+            setPositionState((position_state) => ({
+                ...position_state,
+                ...data_define_state,
+            }));
+        }
+    }, [
+        ref_child_elm.current &&
+            ref_child_elm.current.getBoundingClientRect().width,
+    ]);
 
     /* --------------------- */
 

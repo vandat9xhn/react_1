@@ -18,10 +18,13 @@
     border-bottom: 2px solid var(--bg-blur);
     .PictureName {
         display: block;
-        padding-left: 0.5rem;
     }
     .PictureName__name {
         max-width: calc(100vw - 3.6rem);
+    }
+
+    .PictureNameCommon{
+        padding: 8px;
     }
 }
 

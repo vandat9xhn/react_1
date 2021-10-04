@@ -36,6 +36,8 @@ import './_style/device.scss';
 // import { Routes } from './__routes/__main';
 //
 import ContextAPI from './_context/ContextAPIProvider';
+// 
+import { IS_MOBILE } from './_constant/Constant';
 //
 // import Auth from './_auth/Auth';
 //
@@ -46,7 +48,7 @@ import Contact from './component/_contact/Contact';
 import BackTop from './component/_back_to_top/BackTop';
 import PLCompare from './component/pl_compare/_main/PLCompare';
 
-import Header from './component/_header/_main_header/Header';
+import Header from './component/_header/_main/Header';
 import Footer from './component/_footer/_main/Footer';
 
 import NatureDropMain from './component/_snow_drop/_main/NatureDropMain';
@@ -61,6 +63,15 @@ import CustomSwitch from './__Switch/__switch';
 
 // App
 class App extends Component {
+    // ------ 
+    componentDidMount() {
+        IS_MOBILE &&
+            document
+                .getElementsByTagName('body')[0]
+                .classList.add('device-mobile');
+    }
+    
+
     // --------- REF
 
     //

@@ -65,6 +65,16 @@ body {
             display: none;
         }
     }
+
+    &[data-header-not-fixed-count] {
+        .AppHeader {
+            position: unset;
+        }
+        
+        .AppContent{
+            margin-top: 0;
+        }
+    }
 }
 
 h1,

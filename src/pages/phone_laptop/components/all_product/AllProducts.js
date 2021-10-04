@@ -12,14 +12,13 @@ import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
 //
 import ScreenBlurShowMore from '../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
-import './AllProducts.scss';
-//
 import PLFilter from '../filter/_main/PLFilter';
 import PLFilterCommonList from '../filter/common_list/PLFilterCommonList';
 import ProductBrands from '../brands/_main/PLBrands';
 import ProductContent from '../content/ProductContent';
 import ProductPrices from '../prices/_main/PLPrices';
 //
+import './AllProducts.scss';
 import './AllProductsRes.scss';
 
 //
@@ -133,7 +132,7 @@ function AllProducts({
         }
     }, [location.search]);
 
-    // -----
+    // ----- API
 
     //
     async function handle_API_PhoneLaptop_L(c_count) {
@@ -218,12 +217,10 @@ function AllProducts({
             });
         });
 
-        // console.log(brand_arr);
-
         refreshData_API();
     }
 
-    // -----
+    // ----- CHOOSE
 
     //
     function handleChooseBrand(brand_ix) {
@@ -248,6 +245,8 @@ function AllProducts({
         filter_arr[filter_ix].item_arr[item_ix].checked = new_checked;
         getData_Filter({ new_checked: new_checked });
     }
+
+    // ----- 
 
     //
     function clearFilter() {
@@ -275,7 +274,6 @@ function AllProducts({
         getData_Filter({ is_refresh: true });
     }
 
-    // console.log(brand_arr);
     //
     return (
         <div className="AllProducts font-14px">

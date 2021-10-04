@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import FashionHCommon from '../../../components/head/__main_common/FashionHCommon';
 import { IS_MOBILE } from '../../../../../_constant/Constant';
+// 
+import FashionHCommon from '../../../components/head/__main_common/FashionHCommon';
 
 //
 FashionShead.propTypes = {};

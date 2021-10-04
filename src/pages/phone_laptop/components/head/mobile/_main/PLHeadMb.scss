@@ -1,0 +1,30 @@
+.PLHeadMb_row {
+    height: 45px;
+    white-space: nowrap;
+
+    .IconsMenu,
+    .IconsProfile {
+        stroke: currentColor;
+    }
+    
+    .IconsMenu_menu{
+        stroke-width: 15;
+    }
+
+
+    .PLHeadSearch_input {
+        font-size: 12px;
+    }
+}
+
+// ..
+.PLHeadMb_separate {
+    width: 1px;
+    height: 100%;
+    background-color: var(--md-color-secondary);
+}
+
+// .
+.PLHeadMb_menu {
+    transition: transform 250ms ease;
+}

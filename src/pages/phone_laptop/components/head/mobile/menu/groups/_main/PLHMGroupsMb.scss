@@ -1,0 +1,17 @@
+.PLHMGroupsMb{
+    .PLHeadList_title{
+        margin-bottom: 5px;
+        border-bottom: none;
+
+        font-weight: 700;
+    }
+
+    .PLHeadList_item{
+        padding: 5px 0;
+        font-size: 12px;
+        
+        &:not(:first-child){
+            border-top: 1px solid var(--md-bg-blur);
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.PLHeadTopLeftPc_separate {
+    width: 1px;
+    height: 100%;
+    background-color: var(--md-color-secondary);
+}
+
+.PLHeadTopLeftPc_cart_row {
+    border: 1px solid currentColor;
+
+    .IconsMenu_fashion {
+        stroke: currentColor;
+    }
+}

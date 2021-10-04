@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
@@ -30,6 +30,11 @@ PLHome.propTypes = {};
 
 //
 function PLHome(props) {
+    //
+    useEffect(() => {
+        document.title = 'Phone Laptop';
+    }, []);
+
     //
     return (
         <div

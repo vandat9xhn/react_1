@@ -109,6 +109,10 @@
 
 // -------- SIZE
 
+.font-size-inherit{
+    font-size: inherit;
+}
+
 @for $i from 9 through 24 {
     .font-#{$i}px {
         font-size: #{$i}px;

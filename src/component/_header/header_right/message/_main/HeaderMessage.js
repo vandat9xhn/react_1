@@ -13,7 +13,7 @@ import {
 //
 import CloseDiv from '../../../../some_div/close_div/CloseDiv';
 //
-import ListMessages from '../contain/_main/HeaderMessContain';
+import HeaderMessContain from '../contain/_main/HeaderMessContain';
 import HeaderMessageIcon from '../icon/HeaderMessageIcon';
 //
 import './HeaderMessage.scss';
@@ -72,19 +72,7 @@ function HeaderMessage() {
         getData_API_CountNewZoom();
     }, []);
 
-    /* ------------------- COMMON ------------------ */
-
-    //
-    function handleCallbackOpen(callback_open_state = {}) {
-        getData_API_Zoom(callback_open_state);
-    }
-
-    //
-    function closeZoom() {
-        handleClose();
-    }
-
-    /* ------------------- GET API ------------------ */
+    // ------- API
 
     //
     async function getData_API_CountNewZoom() {
@@ -122,6 +110,18 @@ function HeaderMessage() {
             is_fetching: false,
             has_fetched: true,
         }));
+    }
+
+    // --------- COMMON
+
+    //
+    function handleCallbackOpen(callback_open_state = {}) {
+        getData_API_Zoom(callback_open_state);
+    }
+
+    //
+    function closeZoom() {
+        handleClose();
     }
 
     /* ----------------------------- */
@@ -195,9 +195,10 @@ function HeaderMessage() {
                 </div>
 
                 <div
-                    className={`header_hidden ${position_x} ${
-                        is_open ? 'visibility-visible' : 'visibility-hidden'
-                    } ${has_fetched ? '' : 'pointer-events-none'}`}
+                    ref={ref_child_elm}
+                    className={`HeaderMessage_list header_hidden ${position_x} ${
+                        has_fetched ? '' : 'pointer-events-none'
+                    }`}
                     style={{
                         transform: `translateX(${transform_x}) translateX(${
                             innerWidth > 400 ? '-10px' : 0
@@ -205,10 +206,8 @@ function HeaderMessage() {
                     }}
                     onClick={hasReceiveListZooms}
                 >
-                    <div ref={ref_child_elm}></div>
-
                     <div className={`${is_open ? '' : 'display-none'}`}>
-                        <ListMessages
+                        <HeaderMessContain
                             zooms={zooms}
                             count={count}
                             is_fetching={is_fetching}

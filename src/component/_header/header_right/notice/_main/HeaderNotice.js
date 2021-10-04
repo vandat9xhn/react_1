@@ -207,9 +207,10 @@ function HeaderNotice({}) {
                 </div>
 
                 <div
+                    ref={ref_child_elm}
                     className={`header_hidden ${position_x} ${
-                        is_open ? 'visibility-visible' : 'visibility-hidden'
-                    } ${has_fetched ? '' : 'pointer-events-none'}`}
+                        has_fetched ? '' : 'pointer-events-none'
+                    }`}
                     style={{
                         transform: `translateX(${transform_x}) translateX(${
                             innerWidth > 400 ? '-10px' : 0
@@ -217,8 +218,6 @@ function HeaderNotice({}) {
                     }}
                     onClick={hasReceivedNotices}
                 >
-                    <div ref={ref_child_elm}></div>
-
                     <div className={`${is_open ? '' : 'display-none'}`}>
                         <ListNotices
                             notices={notices}
