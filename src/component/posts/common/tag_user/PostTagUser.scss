@@ -1,0 +1,19 @@
+.PostTagUser {
+    min-width: 100px;
+
+    &::before {
+        content: '';
+
+        position: absolute;
+        bottom: calc(100% - 1px);
+        left: 50%;
+
+        border-width: 0px 5px 5px 5px;
+        border-style: solid;
+        border-color: transparent transparent var(--md-bg-primary) transparent;
+    }
+
+    .IconsArrow_close {
+        stroke: currentColor;
+    }
+}

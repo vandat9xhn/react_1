@@ -23,9 +23,8 @@ IconsEdit.defaultProps = {
 /**
  * icons edit: pen_edit + dot edit
  */
-function IconsEdit(props) {
-    const { size_icon, x, y, color, is_editing } = props;
-
+function IconsEdit({ size_icon, x, y, color, is_editing }) {
+    //
     return (
         <svg
             className="IconsEdit size-icon"

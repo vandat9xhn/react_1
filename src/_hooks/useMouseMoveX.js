@@ -1,7 +1,8 @@
 import { useRef } from 'react';
+//
 import { IS_MOBILE } from '../_constant/Constant';
 //
-import { getClientX } from '../_some_function/getClientXY';
+import { getClientXY } from '../_some_function/getClientXY';
 
 //
 export function useMouseMoveX({
@@ -11,14 +12,21 @@ export function useMouseMoveX({
 }) {
     //
     const is_run = useRef(false);
+    const first_orientation = useRef('');
+
     const client_x = useRef(0);
+    const client_y = useRef(0);
 
     //
     function handleStart(e) {
         e.stopPropagation();
 
         is_run.current = true;
-        client_x.current = getClientX(e);
+        const { client_x: new_client_x, client_y: new_client_y } =
+            getClientXY(e);
+        client_x.current = new_client_x;
+        client_y.current = new_client_y;
+
         handleMouseDown();
 
         if (IS_MOBILE) {
@@ -36,26 +44,40 @@ export function useMouseMoveX({
             return;
         }
 
-        const new_client_x = getClientX(e);
+        const { client_x: new_client_x, client_y: new_client_y } =
+            getClientXY(e);
+        const client_change_x = new_client_x - client_x.current;
+        const client_change_y = new_client_y - client_y.current;
 
-        handleMouseMove(new_client_x - client_x.current);
+        handleMouseMove(client_change_x);
+        
         client_x.current = new_client_x;
+        client_y.current = new_client_y;
+
+        if (first_orientation.current == '') {
+            first_orientation.current =
+                Math.abs(client_change_x) >= Math.abs(client_change_y)
+                    ? 'x'
+                    : 'y';
+        }
     }
 
     //
     function handleEnd() {
         is_run.current = false;
-        
+
         window.onmousemove = null;
         window.onmouseup = null;
-        
+
         handleMouseEnd();
+        first_orientation.current = '';
     }
 
     //
     return {
         is_run,
-        
+        first_orientation,
+
         handleStart,
         handleMove,
         handleEnd,

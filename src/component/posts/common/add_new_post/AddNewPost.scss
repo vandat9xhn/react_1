@@ -1,29 +1,19 @@
 .AddNewPost {
-    border: 1px solid var(--md-bg-ccc);
-    cursor: default;
+    box-shadow: 0 1px 4px var(--shadow-1);
 }
 
-.AddNewPost_head {
-    padding-bottom: 0.5rem;
-}
 // .
-.AddNewPost_head-right {
-    margin-left: 0.25rem;
-    max-width: calc(100% - 3rem);
-    padding: 0.5rem;
-
+.AddNewPost_head_title {
     border-radius: 15px;
-    border: 1px solid var(--md-bg-ccc);
 }
 
 // .
-.AddNewPost_foot-item {
-    padding: 0.5rem;
-    background-color: var(--bg-fetching);
-    border-radius: 5px;
-    .IconsInput {
-        fill: var(--md-bg-ccc);
-    }
+.AddNewPost_foot_part {
+    width: 33%;
+}
+// ..
+.AddNewPost_foot_part_right {
+    margin-left: 10px;
 }
 
 //

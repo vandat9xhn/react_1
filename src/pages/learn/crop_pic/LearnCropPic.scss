@@ -1,0 +1,23 @@
+.LearnCropPic_crop{
+    box-sizing: content-box;
+}
+
+.LearnCropPic_border{
+    border: 1px solid var(--white);
+}
+
+.LearnCropPic_point {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.LearnCropPic_point_contain {
+    width: 12px;
+    height: 12px;
+
+    background-color: var(--blue);
+    border-radius: 50%;
+    border: 1px solid var(--md-bg-primary);
+
+    cursor: pointer;
+}

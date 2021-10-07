@@ -29,7 +29,7 @@ function LearnFsAAScreen({
     //
     useMakeBodyHidden({
         hidden_header: false,
-        blur_header: true,
+        // blur_header: true,
     });
 
     //

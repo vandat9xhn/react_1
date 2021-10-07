@@ -14,9 +14,9 @@ RadioListCustom.propTypes = {
 function RadioListCustom({ list, active_ix, handleChoose }) {
     //
     return (
-        <div>
+        <div className="RadioListCustom">
             {list.map((item, ix) => (
-                <div key={`RadioListCustom_${ix}`}>
+                <div key={`${ix}`}>
                     <RadioItemCustom
                         title={item.title}
                         ix={ix}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { type_video_or_img } from '../../../../../../_some_function/VideoOrImage';
+import { getTypeVidOrPic } from '../../../../../../_some_function/VideoOrImage';
 //
 import InputFile from '../../../../../input/input_file/InputFile';
 import IconsInput from '../../../../../../_icons_svg/Icons_input/IconsInput';
@@ -28,7 +28,7 @@ function CmtSubUpdate({ text, vid_pic, handleUpdate, detectHasChange }) {
         new_text: text,
         file: '',
         url: vid_pic,
-        type: type_video_or_img(vid_pic),
+        type: getTypeVidOrPic(vid_pic),
     });
 
     const { new_text, file, url, type } = update_state;

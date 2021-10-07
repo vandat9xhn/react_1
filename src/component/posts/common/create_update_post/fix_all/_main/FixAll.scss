@@ -1,29 +1,23 @@
-/* --------- FIX ----------- */
-// .FixAll_content{
-    // max-height: calc(100vh - 0rem);
-    // overflow-y: auto;
-// }
-
-// close
-.FixAll_close{
-    display: flex;
-
-    border-bottom: 1px solid var(--bg-blur);
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-
-}
-// .
-.FixAll_arrowLeft{
-    padding: 0.3rem 0.8rem;
-    background-color: var(--danger);
-    cursor: pointer;
+.FixAll {
+    width: 500px;
+    
+    .FixAll_item {
+        width: 100%;
+    }
 }
 
+.FixAll-md {
+    width: 900px;
 
-// 
-@media (max-width: 300px) {
-    .FixAll_arrowLeft {
-        padding: 0.15rem 0.5rem;
+    .FixAll_item {
+        width: 50%;
+    }
+}
+
+.FixAll-lg {
+    width: 1200px;
+
+    .FixAll_item {
+        width: 33.33%;
     }
 }

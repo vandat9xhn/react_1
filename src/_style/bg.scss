@@ -6,6 +6,10 @@
     background-color: transparent;
 }
 
+.bg-current {
+    background-color: currentColor;
+}
+
 .bg-skeleton {
     background-color: var(--bg-skeleton);
 }
@@ -68,7 +72,7 @@
     background-color: #f69113;
 }
 
-.bg-star{
+.bg-star {
     background-color: var(--star);
 }
 

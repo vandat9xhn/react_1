@@ -5,7 +5,7 @@ import { useLayoutEffect } from 'react';
  */
 export const useMakeBodyHidden = (
     hidden_obj = {
-        blur_header: true,
+        // blur_header: true,
         hidden_app: false,
         hidden_header: false,
         hidden_scroll: false,
@@ -16,7 +16,7 @@ export const useMakeBodyHidden = (
 ) => {
     //
     const {
-        blur_header = true,
+        // blur_header = true,
         hidden_scroll = false,
         hidden_app = false,
         hidden_header = false,
@@ -34,8 +34,8 @@ export const useMakeBodyHidden = (
         body.dataset.countHidden =
             (body.dataset ? +body.dataset.countHidden || 0 : 0) + 1;
 
-        blur_header &&
-            (body.dataset.blurHeader = (+body.dataset.blurHeader || 0) + 1);
+        // blur_header &&
+        //     (body.dataset.blurHeader = (+body.dataset.blurHeader || 0) + 1);
 
         hidden_app &&
             (body.dataset.hiddenApp = (+body.dataset.hiddenApp || 0) + 1);
@@ -53,11 +53,11 @@ export const useMakeBodyHidden = (
                 body.removeAttribute('data-count-hidden');
             }
 
-            if (blur_header) {
-                body.dataset.blurHeader -= 1;
-                body.dataset.blurHeader == 0 &&
-                    body.removeAttribute('data-blur-header');
-            }
+            // if (blur_header) {
+            //     body.dataset.blurHeader -= 1;
+            //     body.dataset.blurHeader == 0 &&
+            //         body.removeAttribute('data-blur-header');
+            // }
 
             if (hidden_app) {
                 body.dataset.hiddenApp -= 1;

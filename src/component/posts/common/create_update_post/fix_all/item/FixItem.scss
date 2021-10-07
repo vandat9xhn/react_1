@@ -1,0 +1,60 @@
+.FixItem {
+    &:hover {
+        .FixItem_edit_del {
+            display: block;
+        }
+    }
+}
+
+.FixItem_bg-img {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    filter: blur(10px);
+}
+
+.FixItem_pic {
+    height: 15rem;
+
+    img,
+    video {
+        min-width: 50%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+.FixItem_edit {
+    top: 12px;
+    left: 12px;
+}
+
+.FixItem_tag {
+    bottom: 12px;
+    left: 12px;
+
+    height: 24px;
+    border-radius: 12px;
+
+    &:hover {
+        .FixItem_tag_text {
+            display: block;
+        }
+    }
+}
+
+.FixItem_delete {
+    height: 27px;
+    width: 27px;
+
+    right: 12px;
+    top: 12px;
+
+    .IconsArrow_close {
+        stroke: var(--md-color-secondary);
+    }
+}
+
+// .
+.FixItem_content-textarea {
+    height: 48px;
+}

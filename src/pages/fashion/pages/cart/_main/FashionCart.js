@@ -102,8 +102,8 @@ function FashionCart(props) {
 
     //
     useEffect(() => {
-        document.title = 'Cart'
-        
+        document.title = 'Cart';
+
         getData_API();
     }, []);
 
@@ -156,10 +156,9 @@ function FashionCart(props) {
             setStateObj: setStateObj,
             handle_API: (data) => {
                 waitingToDoLast({
-                    data: data,
                     ref_interval: ref_interval_set_item,
                     time: 300,
-                    callback: handle_API_Count,
+                    callback: () => handle_API_Count(data),
                 });
             },
         });

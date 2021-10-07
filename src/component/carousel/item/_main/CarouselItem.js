@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { type_video_or_img } from '../../../../_some_function/VideoOrImage';
+import { getTypeVidOrPic } from '../../../../_some_function/VideoOrImage';
 //
 import CarouselImg from '../img/CarouselImg';
 import CarouselVideo from '../video/CarouselVideo';
@@ -28,7 +28,7 @@ function CarouselItem({
     //
     return (
         <div className="CarouselItem h-100per" style={{ width: width_vid_pic }}>
-            {type_video_or_img(vid_pic) == 'img' ? (
+            {getTypeVidOrPic(vid_pic) == 'img' ? (
                 <CarouselImg vid_pic={vid_pic} link_to={link_to} />
             ) : (
                 <CarouselVideo

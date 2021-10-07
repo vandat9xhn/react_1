@@ -1,0 +1,23 @@
+.CUPFPRightTag-active {
+    .CUPFPRightTag_bg {
+        cursor: pointer;
+    }
+
+    .CUPFPRightTag_item {
+        opacity: 1;
+    }
+}
+
+.CUPFPRightTag_item {
+    white-space: nowrap;
+    opacity: 0;
+
+    &:hover {
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+.CUPFPRightTag_add {
+    width: 250px;
+}

@@ -1,0 +1,34 @@
+.CropPic_crop{
+    box-sizing: content-box;
+}
+
+.CropPic_border{
+    border: 1px solid var(--white);
+}
+
+.CropPic_point {
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    &:nth-child(1){
+        cursor: nw-resize;
+    }
+    &:nth-child(2){
+        cursor: ne-resize;
+    }
+    &:nth-child(3){
+        cursor: se-resize;
+    }
+    &:nth-child(4){
+        cursor: sw-resize;
+    }
+}
+// .
+.CropPic_point_contain {
+    width: 12px;
+    height: 12px;
+
+    background-color: var(--blue);
+    border-radius: 50%;
+    border: 1px solid var(--md-bg-primary);
+}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { useObserveVidPic } from '../../../_hooks/useObserveVidPic';
 //
-import { type_video_or_img } from '../../../_some_function/VideoOrImage';
+import { getTypeVidOrPic } from '../../../_some_function/VideoOrImage';
 
 //
 VidPicObserve.propTypes = {
@@ -21,7 +21,7 @@ VidPicObserve.defaultProps = {
 //
 function VidPicObserve({ vid_pic, type, video_props, img_props }) {
     //
-    const type_vid_pic = type_video_or_img(vid_pic, type);
+    const type_vid_pic = getTypeVidOrPic(vid_pic, type);
 
     //
     const ref_vid_pic = useRef(null);

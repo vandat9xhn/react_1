@@ -27,13 +27,13 @@ body {
     &[data-count-hidden] {
         // overflow-y: scroll;
 
-        .App_contain {
+        .App {
             position: fixed;
             width: 100%;
             z-index: -2;
 
             height: 100%;
-            overflow: auto;
+            overflow-y: auto;
 
             &::-webkit-scrollbar {
                 display: none;
@@ -41,11 +41,11 @@ body {
         }
     }
 
-    &[data-blur-header] {
-        .AppHeader {
-            z-index: -1;
-        }
-    }
+    // &[data-blur-header] {
+    //     .AppHeader {
+    //         z-index: -1;
+    //     }
+    // }
 
     &[data-hidden-scroll] {
         // overflow-y: hidden;
@@ -122,9 +122,9 @@ a {
     text-decoration: none;
     background-color: transparent;
 }
-img {
-    vertical-align: middle;
-}
+// img {
+//     vertical-align: middle;
+// }
 
 /* ------------ APP -------------- */
 .App {

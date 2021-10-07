@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import FixItem from '../fix_item/FixItem';
-import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
+import InputFile from '../../../../../input/input_file/InputFile';
+// 
+import FixItem from '../item/FixItem';
+import CUPostFixHead from '../../_components/fix_head/CUPostFixHead';
 //
 import './FixAll.scss';
 
@@ -13,39 +15,67 @@ FixAll.propTypes = {};
 function FixAll({
     vid_pics,
 
+    openFixDetail,
+    handleChangeContentVidPic,
+    handleChooseFiles,
+
     closeFixAll,
     deleteAnItem,
-    handleChangeContentVidPic,
 }) {
     //
     return (
-        <div>
-            <div className="FixAll_close">
-                <div
-                    className="FixAll_arrowLeft hv-opacity brs-5px"
-                    title="Back"
-                    onClick={closeFixAll}
-                >
-                    <IconsArrow x={200} y={200} />
-                </div>
+        <div
+            className={`FixAll margin-auto bg-primary brs-8px box-shadow-fb ${
+                vid_pics.length >= 5
+                    ? 'FixAll-lg'
+                    : vid_pics.length >= 3
+                    ? 'FixAll-md'
+                    : ''
+            }`}
+        >
+            <div>
+                <CUPostFixHead title="Photos/Videos" handleBack={closeFixAll} />
             </div>
 
-            <div className="FixAll_content scroll-thin">
-                {vid_pics.map(
-                    (item, index) =>
-                        item.vid_pic && (
+            <div className="FixAll_contain bg-fb">
+                <div className="display-flex flex-wrap">
+                    {vid_pics.map((item, index) => (
+                        <div key={index} className="FixAll_item padding-5px">
                             <FixItem
-                                key={`UpdateCreatePostCmt_fix_${index}`}
                                 ix={index}
                                 vid_pic={item.vid_pic}
                                 content={item.content}
-                                deleteAnItem={deleteAnItem}
+                                type={item.type}
+                                openFixDetail={openFixDetail}
                                 handleChangeContentVidPic={
                                     handleChangeContentVidPic
                                 }
+                                deleteAnItem={deleteAnItem}
                             />
-                        )
-                )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="flex-end padding-x-20px padding-y-15px">
+                <InputFile
+                    handleChange={handleChooseFiles}
+                    accept="image/*, video/*"
+                    file_multiple={true}
+                    face_circle={false}
+                >
+                    <div className="padding-y-7px padding-x-10px brs-4px font-600 text-blue cursor-pointer hv-bg-blur">
+                        Add Photos/Video
+                    </div>
+                </InputFile>
+
+                <button
+                    className="btn btn-hv margin-left-15px padding-x-20px padding-y-7px brs-4px bg-blue font-600 text-white cursor-pointer"
+                    type="button"
+                    onClick={closeFixAll}
+                >
+                    Done
+                </button>
             </div>
         </div>
     );

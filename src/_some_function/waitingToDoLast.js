@@ -1,6 +1,5 @@
 //
 export function waitingToDoLast({
-    data,
     ref_interval = { current: null },
     time = 200,
     callback = () => {},
@@ -10,6 +9,6 @@ export function waitingToDoLast({
     ref_interval.current = setTimeout(() => {
         clearTimeout(ref_interval.current);
 
-        callback(data);
+        callback();
     }, time);
 }

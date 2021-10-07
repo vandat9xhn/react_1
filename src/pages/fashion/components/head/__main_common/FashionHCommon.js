@@ -37,7 +37,7 @@ function FashionHCommon({
     //
     return (
         <div
-            className={`FashionHCommon fashion-head padding-8px bg-img-fashion-head ${
+            className={`FashionHCommon pos-rel fashion-head padding-8px bg-img-fashion-head ${
                 IS_MOBILE ? 'FashionHCommon-mobile' : ''
             }`}
         >

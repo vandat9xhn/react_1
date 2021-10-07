@@ -77,7 +77,11 @@ function InputFile({
     //
 
     return (
-        <div className="InputFile pos-rel">
+        <div
+            className={`InputFile pos-rel ${
+                face_circle ? 'InputFile-circle' : 'InputFile-auto'
+            }`}
+        >
             <div className="InputFile_input display-none">
                 <input
                     ref={refInput}

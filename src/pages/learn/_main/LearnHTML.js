@@ -27,6 +27,8 @@ import './LearnHTML.scss';
 // import LearnFsCartItem from '../fashion/LearnFsCartItem';
 import LearnFsCartSummary from '../fashion/LearnFsCartSummary';
 import LearnFsAddAddress from '../fs_add_address/LearnFsAddAddress';
+import LearnNewPost from '../new_post/LearnNewPost';
+import LearnCropPic from '../crop_pic/LearnCropPic';
 
 //
 LearnHTML.propTypes = {};
@@ -84,7 +86,13 @@ function LearnHTML() {
 
             {/* <LearnSaveScroll /> */}
 
-            <LearnFsAddAddress />
+            {/* <LearnFsAddAddress /> */}
+
+            <LearnNewPost />
+
+            <br />
+
+            <LearnCropPic />
 
             <div className="h-100vh"></div>
         </div>

@@ -1,32 +1,26 @@
-/* -------------- CONTENT ------------------ */
 .CUPostHomeContent {
-    height: 18rem;
-    overflow: auto;
+    min-height: 150px;
 }
 
-/* -------------- TEXTAREA ------------------ */
-.CUPostHomeContent_input {
-    margin-bottom: 0.5rem;
-    border: 1px solid var(--bg-blur);
-}
+// ----
+
 // .
-.CUPostHomeContent_input_contain {
-    padding: 0.5rem;
-    textarea {
-        width: 100%;
-        border: none;
-        resize: none;
-        &:focus {
-            outline: none;
-        }
-    }
+.CUPostHomeContent_textarea {
+    resize: none;
+    overflow: hidden;
 }
 
-/* -------------- PREVIEW ------------------ */
+// ----
+
 .CUPostHomeContent_preview {
-    position: relative;
-    &:hover > .CUPostHomeContent__fixAll {
-        display: block;
+    &:hover {
+        .CUPostHomeContent_preview_bg{
+            display: block;
+        }
+
+        .CUPostHomeContent_fix {
+            display: block;
+        }
     }
 }
 // .
@@ -42,22 +36,26 @@
     }
 }
 
-/* -------------- FIX ------------------ */
-.CUPostHomeContent__fixAll {
-    padding: 0.25rem 1rem;
+.CUPostHomeContent_edit {
+    left: 12px;
+    top: 12px;
 }
 
-// 
-.CUPostHomeContent_loading {
-    position: absolute;
-    top: 2%;
-    left: 50%;
-    transform: translateX(-50%);
+.CUPostHomeContent_del{
+    top: 12px;
+    right: 12px;
+    
+    width: 27px;
+    height: 27px;
+
+    .IconsArrow_close{
+        stroke: var(--md-color-secondary);
+    }
 }
 
 //
 @media (max-width: 600px) {
-    .CUPostHomeContent__fixAll {
+    .CUPostHomeContent_fix {
         display: block;
     }
 
@@ -65,11 +63,6 @@
         .ImgVidPreview {
             min-height: 15rem;
         }
-    }
-
-    // when no vid pic
-    .CUPostHomeContent__no-pic {
-        font-size: 1rem;
     }
 }
 

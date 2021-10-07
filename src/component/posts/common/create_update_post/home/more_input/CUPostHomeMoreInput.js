@@ -11,28 +11,41 @@ import './CUPostHomeMoreInput.scss';
 CUPostHomeMoreInput.propTypes = {};
 
 //
-function CUPostHomeMoreInput({ handleStartLoadFile, handleChooseFiles }) {
+function CUPostHomeMoreInput({
+    ref_input_file,
+
+    handleStartLoadFile,
+    handleChooseFiles,
+}) {
+    //
+
     //
     return (
-        <div className="CUPostHomeMoreInput bg-primary brs-5px-md">
-            <div className="CUPostHomeMoreInput_row display-flex align-items-center">
-                <div className="CUPostHomeContent__files">
-                    <InputFile
-                        handleStartLoadFile={handleStartLoadFile}
-                        handleChange={handleChooseFiles}
-                        accept="image/*, video/*"
-                        file_multiple={true}
-                        title="Choose images/videos"
-                    >
-                        <IconsInput size_icon="1.5rem" />
-                    </InputFile>
-                </div>
+        <div className="CUPostHomeMoreInput padding-x-15px padding-y-4px bg-primary border-blur brs-5px">
+            <div className="CUPostHomeMoreInput_row flex-between-center">
+                <div className="font-500 cursor-pointer">Add to your post</div>
 
-                <div
-                    className="CUPostHomeContent__tag"
-                    title="Tag your friends"
-                >
-                    <IconsPost />
+                <div className="display-flex align-items-center">
+                    <div className="CUPostHomeContent_files margin-right-10px">
+                        <InputFile
+                            handleStartLoadFile={handleStartLoadFile}
+                            handleChange={handleChooseFiles}
+                            accept="image/*, video/*"
+                            file_multiple={true}
+                            title="Choose images/videos"
+                        >
+                            <div ref={ref_input_file}>
+                                <IconsInput size_icon="1.5rem" />
+                            </div>
+                        </InputFile>
+                    </div>
+
+                    <div
+                        className="CUPostHomeContent_tag display-flex-center brs-50 cursor-pointer hv-bg-s-through"
+                        title="Tag your friends"
+                    >
+                        <IconsPost />
+                    </div>
                 </div>
             </div>
         </div>

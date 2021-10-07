@@ -35,7 +35,7 @@ function ScreenConfirm({ closeScreen, title, notification, handleConfirm }) {
     //
     useMakeBodyHidden({
         hidden_app: false,
-        blur_header: true,
+        // blur_header: true,
     });
 
     //

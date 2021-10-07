@@ -91,11 +91,12 @@ function Carousel({
         callback: handleAutoNext,
     });
 
-    const { handleStart, handleMove, handleEnd } = useMouseMoveX({
-        handleMouseDown: handleTouchStart,
-        handleMouseMove: handleTouchMove,
-        handleMouseEnd: handleTouchEnd,
-    });
+    const { first_orientation, handleStart, handleMove, handleEnd } =
+        useMouseMoveX({
+            handleMouseDown: handleTouchStart,
+            handleMouseMove: handleTouchMove,
+            handleMouseEnd: handleTouchEnd,
+        });
 
     const forceUpdate = useForceUpdate();
 
@@ -229,9 +230,11 @@ function Carousel({
 
     //
     function handleTouchMove(client_change) {
-        setExtraTransX((extra_trans_x) => {
-            return extra_trans_x + client_change;
-        });
+        if (first_orientation.current == 'x') {
+            setExtraTransX((extra_trans_x) => {
+                return extra_trans_x + client_change;
+            });
+        }
     }
 
     //

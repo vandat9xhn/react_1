@@ -1,0 +1,14 @@
+.BtnPermission {
+    .PermissionDiv {
+        padding: 0;
+
+        &:hover {
+            background-color: transparent;
+        }
+        
+        svg {
+            width: 14px;
+            height: 14px;
+        }
+    }
+}

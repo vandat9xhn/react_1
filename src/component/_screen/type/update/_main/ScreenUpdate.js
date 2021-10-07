@@ -5,9 +5,9 @@ import { context_api } from '../../../../../_context/ContextAPI';
 //
 import ScreenBlur from '../../../components/frame/blur/ScreenBlur';
 import ScreenBlurHead from '../../../components/part/head/ScreenBlurHead';
+import ScreenBlurFetching from '../../../../_screen_once/fetching/ScreenBlurFetching';
 //
 import { openScreenConfirm } from '../../confirm/ScreenConfirm';
-import ScreenBlurFetching from '../../../../_screen_once/fetching/ScreenBlurFetching';
 
 //
 export function openScreenUpdate({

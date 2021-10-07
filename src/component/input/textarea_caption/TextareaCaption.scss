@@ -1,0 +1,38 @@
+.TextareaCaption {
+    padding: 22px 0 5px;
+
+    &:hover {
+        .TextareaCaption_border {
+            border: 1px solid currentColor;
+        }
+    }
+}
+
+.TextareaCaption_textarea {
+    resize: none;
+    
+    &:focus,
+    &:not(:empty) {
+        & + .TextareaCaption_caption {
+            top: 5px;
+            font-size: 12px;
+        }
+    }
+
+    &:focus {
+        & + .TextareaCaption_caption {
+            color: var(--blue);
+        }
+
+        & ~ .TextareaCaption_border {
+            border: 1px solid var(--blue);
+        }
+    }
+}
+
+.TextareaCaption_caption {
+    left: 16px;
+    top: 20px;
+
+    transition: all 200ms ease;
+}

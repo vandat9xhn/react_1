@@ -27,7 +27,7 @@ function ScreenStoryCreate({ closeScreen }) {
     useMakeBodyHidden({
         hidden_app: true,
         hidden_header: true,
-        blur_header: true,
+        // blur_header: true,
     });
 
     //

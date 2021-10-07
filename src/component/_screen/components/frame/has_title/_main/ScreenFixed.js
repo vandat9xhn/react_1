@@ -13,7 +13,7 @@ ScreenFixed.propTypes = {
     url: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     show_screen_title: PropTypes.bool,
     body_hidden_params: PropTypes.shape({
-        blur_header: PropTypes.bool,
+        // blur_header: PropTypes.bool,
         hidden_app: PropTypes.bool,
         hidden_header: PropTypes.bool,
         hidden_scroll: PropTypes.bool,

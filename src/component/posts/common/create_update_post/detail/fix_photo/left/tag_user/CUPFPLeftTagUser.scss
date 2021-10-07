@@ -1,0 +1,16 @@
+.CUPFPLeftTagUser {
+    &:hover {
+        border-color: currentColor;
+    }
+}
+
+.CUPFPLeftTagUser_item {
+    .IconsArrow_close {
+        stroke: currentColor;
+    }
+}
+
+.CUPFPLeftTagUser_icon {
+    width: 20px;
+    height: 20px;
+}

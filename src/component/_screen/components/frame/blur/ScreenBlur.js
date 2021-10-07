@@ -41,7 +41,7 @@ function ScreenBlur({
     //
     useMakeBodyHidden({
         hidden_app: use_body_hidden,
-        blur_header: true,
+        // blur_header: true,
     });
 
     //

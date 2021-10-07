@@ -37,7 +37,7 @@ function ScreenHasFloor({ count_floor }) {
             const { x, y } = window_screen_scroll_arr[c_floor_ix];
 
             if (count_floor == 1) {
-                const App = document.getElementsByClassName('App_contain')[0];
+                const App = document.getElementsByClassName('App')[0];
 
                 if (USE_APP_SCROLL) {
                     App.scrollTo(x, y)

@@ -46,7 +46,7 @@ ScreenStoryHomePc.propTypes = {};
 function ScreenStoryHomePc(props) {
     //
     useMakeBodyHidden({
-        blur_header: true,
+        // blur_header: true,
         hidden_scroll: true,
         hidden_app: true,
         hidden_header: true,
