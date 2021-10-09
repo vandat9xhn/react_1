@@ -33,11 +33,15 @@ function IconsEdit({ size_icon, x, y, color, is_editing }) {
             viewBox={`${x} ${y} 200 200`}
         >
             {/* Pen Edit x=0 y=0 */}
-            <path d="M0,200 L15,160 L175,0 L200,25 L40,185 Z" fill={color} />
-            <g stroke="whiteSmoke" strokeWidth="15">
+            <path
+                className="IconsEdit_pen"
+                d="M0,200 L15,160 L175,0 L200,25 L40,185 Z"
+                fill={color}
+            />
+            {/* <g stroke="white" strokeWidth="15">
                 <line x1="150" y1="25" x2="175" y2="50" />
                 <line x1="20" y1="155" x2="45" y2="180" />
-            </g>
+            </g> */}
 
             {/* dot waiting */}
             <g

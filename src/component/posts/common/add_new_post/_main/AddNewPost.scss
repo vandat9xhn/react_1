@@ -1,0 +1,54 @@
+.AddNewPost {
+    box-shadow: 0 1px 4px var(--shadow-1);
+}
+
+// .
+.AddNewPost_title {
+    border-radius: 15px;
+}
+
+// .
+.AddNewPost_foot_part {
+    width: 33%;
+}
+
+//
+.device-mobile {
+    .AddNewPost {
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .AddNewPost_head {
+        padding: 0 0 0 10px;
+
+        img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+    // .
+    .AddNewPost_title {
+        margin-left: 0;
+        background-color: transparent;
+        border-radius: 0;
+
+        font-size: 15px;
+    }
+
+    .AddNewPost_foot {
+        margin-top: 0;
+        padding: 5px 0;
+    }
+    // .
+    .AddNewPost_foot_part {
+        padding: 3px 0;
+        &:not(:first-child) {
+            border-left: 1px solid var(--md-bg-blur);
+        }
+    }
+}
+
+.AddNewPost_photo {
+    border-left: 1px solid var(--md-bg-blur);
+}

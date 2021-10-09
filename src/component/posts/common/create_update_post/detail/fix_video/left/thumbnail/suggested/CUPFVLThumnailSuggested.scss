@@ -1,0 +1,26 @@
+.CUPFVLThumnailSuggested_thumbnail {
+    height: 160px;
+}
+
+.CUPFVLThumnailSuggested_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 6px;
+}
+.CUPFVLThumnailSuggested_btn-active {
+    background-color: var(--md-bg-ccc);
+    color: var(--md-color-secondary);
+    cursor: pointer;
+    &:hover {
+        background-color: var(--md-bg-blur);
+    }
+}
+.CUPFVLThumnailSuggested_btn-disable {
+    background-color: var(--md-bg-fb);
+    color: var(--md-color-smoke);
+    cursor: not-allowed;
+}

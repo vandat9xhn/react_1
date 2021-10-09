@@ -13,24 +13,24 @@ ScreenBlurHead.propTypes = {
 
 //
 function ScreenBlurHead({ title, closeScreenBlur }) {
-    // 
+    //
     function onCloseScreenBlur() {
-        closeScreenBlur()
+        closeScreenBlur();
     }
 
     //
     return (
-        <div className="ScreenBlurHead padding-8px text-primary">
-            <div className="ScreenBlurHead_row display-flex space-between">
-                <h2 className="ScreenBlurHead_title font-500">
+        <div className="ScreenBlurHead text-primary border-bottom-blur">
+            <div className="ScreenBlurHead_row flex-between-center padding-left-16px padding-right-12px">
+                <h2 className="ScreenBlurHead_title font-700 font-20px">
                     {title}
                 </h2>
 
                 <div
-                    className="close-icon-small brs-50 hv-opacity cursor-pointer"
+                    className="ScreenBlurHead_close display-flex-center brs-50 bg-ccc cursor-pointer hv-bg-hv"
                     onClick={onCloseScreenBlur}
                 >
-                    <IconsArrow y={400} />
+                    <IconsArrow y={400} size_icon="24px" />
                 </div>
             </div>
         </div>

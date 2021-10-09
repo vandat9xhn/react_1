@@ -14,7 +14,10 @@ function CUPFixVideoLeft({
     caption,
     vid_pic_count,
     thumbnail_ix,
+
     thumbnail_upload,
+    thumbnail_suggeted_arr,
+    thumbnail_suggeted_ix,
 
     handleChangeCaption,
     handleChangeSrt,
@@ -22,6 +25,8 @@ function CUPFixVideoLeft({
     chooseThumbnail,
     changeThumbnailUpload,
     deleteThumbnailUpload,
+    nextThumbnailSuggested,
+    prevThumbnailSuggested,
 }) {
     //
     return (
@@ -29,6 +34,7 @@ function CUPFixVideoLeft({
             {vid_pic_count > 1 ? (
                 <div className="CUPFixVideoLeft_part margin-bottom-15px">
                     <TextareaCaption
+                        textarea_class="padding-x-16px padding-y-3px scroll-thin"
                         caption="Caption"
                         value={caption}
                         onChange={handleChangeCaption}
@@ -40,10 +46,14 @@ function CUPFixVideoLeft({
                 <CUPFVideoLeftThumbnail
                     thumbnail_ix={thumbnail_ix}
                     thumbnail_upload={thumbnail_upload}
+                    thumbnail_suggeted_arr={thumbnail_suggeted_arr}
+                    thumbnail_suggeted_ix={thumbnail_suggeted_ix}
                     //
                     chooseThumbnail={chooseThumbnail}
                     changeThumbnailUpload={changeThumbnailUpload}
                     deleteThumbnailUpload={deleteThumbnailUpload}
+                    nextThumbnailSuggested={nextThumbnailSuggested}
+                    prevThumbnailSuggested={prevThumbnailSuggested}
                 />
             </div>
 

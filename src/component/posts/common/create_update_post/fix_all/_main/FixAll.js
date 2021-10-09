@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import InputFile from '../../../../../input/input_file/InputFile';
-// 
+//
 import FixItem from '../item/FixItem';
 import CUPostFixHead from '../../_components/fix_head/CUPostFixHead';
 //
@@ -46,6 +46,7 @@ function FixAll({
                                 vid_pic={item.vid_pic}
                                 content={item.content}
                                 type={item.type}
+                                thumbnail={item.thumbnail}
                                 openFixDetail={openFixDetail}
                                 handleChangeContentVidPic={
                                     handleChangeContentVidPic

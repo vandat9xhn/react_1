@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { makeAutoHeight } from '../../../_some_function/makeAutoHeight';
-// 
+//
 import './TextareaNotSend.scss';
 
 //
@@ -16,11 +16,14 @@ TextareaNotSend.propTypes = {
     onKeyDown: PropTypes.func,
     handleFocus: PropTypes.func,
     handleBlur: PropTypes.func,
+
+    textarea_props: PropTypes.object,
 };
 
 TextareaNotSend.defaultProps = {
     name: '',
-}
+    textarea_props: {},
+};
 
 //
 function TextareaNotSend({
@@ -33,11 +36,13 @@ function TextareaNotSend({
     handleFocus,
     onKeyDown,
     onChange,
+
+    textarea_props,
 }) {
     //
     const handleChange = (e) => {
         onChange(e.target.value);
-        makeAutoHeight(e)
+        makeAutoHeight(e);
     };
 
     //
@@ -48,11 +53,12 @@ function TextareaNotSend({
             name={name}
             value={text}
             placeholder={placeholder}
-            // 
+            //
             onKeyDown={onKeyDown}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
+            {...textarea_props}
         />
     );
 }

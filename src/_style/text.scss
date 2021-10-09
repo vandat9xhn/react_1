@@ -71,14 +71,18 @@
     color: var(--color-555);
 }
 
-.text-star{
+.text-star {
     color: var(--star);
 }
 
-// ------- 
+.text-smoke {
+    color: var(--md-color-smoke);
+}
 
-.color-inherit{
-    color:  inherit;
+// -------
+
+.color-inherit {
+    color: inherit;
 }
 
 // ------- ALWAYS
@@ -109,7 +113,7 @@
 
 // -------- SIZE
 
-.font-size-inherit{
+.font-size-inherit {
     font-size: inherit;
 }
 

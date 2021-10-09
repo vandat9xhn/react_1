@@ -26,11 +26,18 @@ function IconsAction({ size_icon, x, y }) {
             strokeLinecap="round"
         >
             {/* icon delete x=0 y=0 */}
-            <line x1="90" y1="40" x2="110" y2="40" strokeWidth="20" />
-            <line x1="40" y1="50" x2="160" y2="50" strokeWidth="15" />
-            <path d="M40,65 L50,180 Q5,180 60,200 L140,200 Q148,190 150,180 L160,65 Z" />
+            <g className="IconsAction_del_cap">
+                <line x1="90" y1="40" x2="110" y2="40" strokeWidth="20" />
+                <line x1="40" y1="50" x2="160" y2="50" strokeWidth="15" />
+            </g>
 
-            <g stroke="white" strokeWidth="10">
+            <g
+                className="IconsAction_del_bucket"
+                stroke="white"
+                strokeWidth="10"
+            >
+                <path d="M40,65 L50,180 Q5,180 60,200 L140,200 Q148,190 150,180 L160,65 Z" />
+
                 <line x1="100" y1="80" x2="100" y2="170" />
                 <line x1="65" y1="80" x2="75" y2="170" />
                 <line x1="135" y1="80" x2="125" y2="170" />
@@ -38,9 +45,9 @@ function IconsAction({ size_icon, x, y }) {
 
             {/* message origin x=200 y=0 */}
             <g stroke="white" strokeWidth="5">
-                <path d="M200,30 L300,120 390,30 L200,30 200,170 390,170 390,30 Z" />
-                <line x1="200" y1="170" x2="275" y2="100" />
-                <line x1="400" y1="170" x2="325" y2="100" />
+                <path d="M210,30 L300,120 390,30 L210,30 210,170 390,170 390,30 Z" />
+                <line x1="210" y1="170" x2="275" y2="100" />
+                <line x1="410" y1="170" x2="325" y2="100" />
             </g>
 
             {/* add friend x=0 y=200*/}

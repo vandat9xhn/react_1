@@ -1,11 +1,15 @@
 
-.ScreenBlurHead{
-    border-bottom: 1px solid  var(--md-bg-ccc);
+.ScreenBlurHead_row{
+    height: 60px;
 }
 
-// .
-.ScreenBlurHead_title{
-    font-size: 1.25rem;
+.ScreenBlurHead_close{
+    width: 36px;
+    height: 36px;
+
+    .IconsArrow_close{
+        stroke: var(--md-color-secondary);
+    }
 }
 
 //

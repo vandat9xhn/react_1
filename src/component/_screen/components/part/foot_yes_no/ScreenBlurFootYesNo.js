@@ -30,22 +30,24 @@ function ScreenBlurFootYesNo({
 }) {
     //
     return (
-        <div className="ScreenBlurFootYesNo padding-10px">
+        <div className="ScreenBlurFootYesNo padding-15px">
             <div className="flex-end">
                 <button
-                    className={`ScreenBlurFootYesNo_btn ScreenBlurFootYesNo_btn-yes btn btn-hv btn-active ${
-                        disabled ? 'pointer-events-none opacity-05' : ''
+                    className="ScreenBlurFootYesNo_btn margin-right-10px btn text-blue hv-bg-hv"
+                    onClick={closeScreenBlur}
+                >
+                    {title_no}
+                </button>
+
+                <button
+                    className={`ScreenBlurFootYesNo_btn btn ${
+                        disabled
+                            ? 'bg-ccc text-third pointer-events-none'
+                            : 'btn-hv bg-blue text-white'
                     }`}
                     onClick={handleConfirm}
                 >
                     {title_yes}
-                </button>
-
-                <button
-                    className="ScreenBlurFootYesNo_btn ScreenBlurFootYesNo_btn-no btn btn-hv btn-active"
-                    onClick={closeScreenBlur}
-                >
-                    {title_no}
                 </button>
             </div>
         </div>

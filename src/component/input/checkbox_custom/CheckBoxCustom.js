@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconSent from '../../../_icons_svg/icons_status_message/icon_sent/IconSent';
+import CheckBox from '../checkbox/CheckBox';
 //
 import './CheckBoxCustom.scss';
 
@@ -13,40 +13,27 @@ CheckBoxCustom.propTypes = {
 };
 
 CheckBoxCustom.defaultProps = {
-    title: ''
-}
+    title: '',
+};
 
 //
 function CheckBoxCustom({ checked, title, handleChangeChecked }) {
     //
     return (
         <div
-            className="CheckBoxCustom cursor-pointer"
+            className={`CheckBoxCustom cursor-pointer ${
+                checked
+                    ? 'CheckBoxCustom-checked font-500'
+                    : 'CheckBoxCustom-unchecked'
+            }`}
             onClick={handleChangeChecked}
         >
             <div className="CheckBoxCustom_row display-flex align-items-center">
-                <div
-                    className={`CheckBoxCustom_input flex-shrink-0 brs-5px pos-rel ${
-                        checked
-                            ? 'CheckBoxCustom_input-active'
-                            : 'CheckBoxCustom_input-inactive'
-                    }`}
-                >
-                    <div className="CheckBoxCustom_input-icon pos-abs-100 display-flex align-items-center justify-content-center">
-                        <IconSent
-                            stroke="var(--md-bg-primary)"
-                            size_icon="1rem"
-                        />
-                    </div>
+                <div className="CheckBoxCustom_box">
+                    <CheckBox />
                 </div>
 
-                <div
-                    className={`CheckBoxCustom_title ${
-                        checked ? 'font-500' : ''
-                    }`}
-                >
-                    {title}
-                </div>
+                {title ? <div className="margin-left-10px">{title}</div> : null}
             </div>
         </div>
     );

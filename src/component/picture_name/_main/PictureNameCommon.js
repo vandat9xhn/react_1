@@ -55,7 +55,7 @@ function PictureNameCommon({
                 <div className="PictureNameCommon_right flex-grow-1">
                     {name ? (
                         <div className="PictureNameCommon__name-content">
-                            <span className="PictureNameCommon__name font-500">
+                            <span className="PictureNameCommon__name font-600">
                                 {name}
                             </span>
 

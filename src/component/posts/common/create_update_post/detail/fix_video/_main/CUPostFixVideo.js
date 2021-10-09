@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { getThumbnailVideo } from '../../../../../../../_some_function/getThumbnailVideo';
 //
 import CUPostFixHead from '../../../_components/fix_head/CUPostFixHead';
 import CUPFixVideoLeft from '../left/_main/CUPFixVideoLeft';
@@ -22,31 +23,76 @@ function CUPostFixVideo({
     vid_pic_ix,
 
     handleNextPrev,
-    handleConfirm,
+    confirmDetailVideo,
     handleBack,
 }) {
     //
     const [state_obj, setStateObj] = useState({
         caption: old_caption,
         srt_file: null,
-        thumbnail: old_thumbnail,
-        thumbnail_ix: 0,
+
+        thumbnail_ix: -1,
+
         thumbnail_upload: '',
+        thumbnail_suggeted_arr: [''],
+        thumbnail_suggeted_ix: 0,
     });
 
-    const { caption, thumbnail, thumbnail_ix, thumbnail_upload } = state_obj;
+    const {
+        caption,
+        srt_file,
+        thumbnail_ix,
+
+        thumbnail_upload,
+        thumbnail_suggeted_arr,
+        thumbnail_suggeted_ix,
+    } = state_obj;
+
+    const thumbnail =
+        (thumbnail_ix == -1
+            ? ''
+            : [
+                  thumbnail_suggeted_arr[thumbnail_suggeted_ix],
+                  thumbnail_upload,
+                  '',
+              ][thumbnail_ix]) || old_thumbnail;
 
     const has_change = (() => {
         if (caption != old_caption) {
             return true;
         }
 
-        if (thumbnail_ix == 1 && old_thumbnail != thumbnail) {
+        if (old_thumbnail != thumbnail) {
+            return true;
+        }
+
+        if (srt_file) {
             return true;
         }
 
         return false;
     })();
+
+    //
+    useEffect(() => {
+        getThumbnailSuggestedArr();
+    }, []);
+
+    // ----
+
+    //
+    async function getThumbnailSuggestedArr() {
+        getThumbnailVideo({
+            video_src: video,
+            c_time_arr: [0, 1, 2, 3, 4],
+            callback: (thumbnail_arr) => {
+                setStateObj({
+                    ...state_obj,
+                    thumbnail_suggeted_arr: thumbnail_arr,
+                });
+            },
+        });
+    }
 
     // ---- LEFT
 
@@ -62,6 +108,8 @@ function CUPostFixVideo({
     function handleChangeSrt(params) {
         console.log(params);
     }
+
+    // ----- THUMBNAIL
 
     //
     function chooseThumbnail(new_thumbnail_ix) {
@@ -87,6 +135,30 @@ function CUPostFixVideo({
         });
     }
 
+    //
+    function nextThumbnailSuggested() {
+        const new_thumbnail_suggeted_ix = thumbnail_suggeted_ix + 1;
+
+        if (new_thumbnail_suggeted_ix <= thumbnail_suggeted_arr.length - 1) {
+            setStateObj({
+                ...state_obj,
+                thumbnail_suggeted_ix: new_thumbnail_suggeted_ix,
+            });
+        }
+    }
+
+    //
+    function prevThumbnailSuggested() {
+        const new_thumbnail_suggeted_ix = thumbnail_suggeted_ix - 1;
+
+        if (new_thumbnail_suggeted_ix >= 0) {
+            setStateObj({
+                ...state_obj,
+                thumbnail_suggeted_ix: new_thumbnail_suggeted_ix,
+            });
+        }
+    }
+
     // --- NEXT PREV
 
     //
@@ -102,7 +174,12 @@ function CUPostFixVideo({
 
     //
     function onConfirm() {
-        handleConfirm(state_obj);
+        confirmDetailVideo({
+            vid_pic_ix: vid_pic_ix,
+            caption: caption,
+            srt_file: srt_file,
+            thumbnail: thumbnail,
+        });
     }
 
     //
@@ -122,8 +199,11 @@ function CUPostFixVideo({
                         <CUPFixVideoLeft
                             caption={caption}
                             vid_pic_count={vid_pic_count}
+                            //
                             thumbnail_ix={thumbnail_ix}
                             thumbnail_upload={thumbnail_upload}
+                            thumbnail_suggeted_arr={thumbnail_suggeted_arr}
+                            thumbnail_suggeted_ix={thumbnail_suggeted_ix}
                             //
                             handleChangeCaption={handleChangeCaption}
                             handleChangeSrt={handleChangeSrt}
@@ -131,6 +211,8 @@ function CUPostFixVideo({
                             chooseThumbnail={chooseThumbnail}
                             changeThumbnailUpload={changeThumbnailUpload}
                             deleteThumbnailUpload={deleteThumbnailUpload}
+                            nextThumbnailSuggested={nextThumbnailSuggested}
+                            prevThumbnailSuggested={prevThumbnailSuggested}
                         />
                     </div>
 

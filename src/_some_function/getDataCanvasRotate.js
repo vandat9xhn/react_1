@@ -29,5 +29,11 @@ export function getDataCanvasRotate({ img, width = 0, height = 0 }) {
 
     ctx_2.putImageData(new_img, 0, 0);
 
-    return canvas_2.toDataURL('image/png');
+    const new_img_2 = canvas_2.toDataURL(
+        img.src.slice(5, img.src.indexOf(';')), 0.75
+    );
+    canvas.remove();
+    canvas_2.remove();
+
+    return new_img_2;
 }

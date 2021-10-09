@@ -1,15 +1,12 @@
 //
 .ScreenBlurFootYesNo_btn {
-    margin: 0 0.5rem;
-    padding: 0.15rem 0.5rem;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
 
-    color: var(--white);
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 6px;
+
+    font-weight: 600;
     cursor: pointer;
-}
-.ScreenBlurFootYesNo_btn-yes {
-    background-color: var(--danger);
-}
-.ScreenBlurFootYesNo_btn-no {
-    background-color: var(--shadow-9);
 }

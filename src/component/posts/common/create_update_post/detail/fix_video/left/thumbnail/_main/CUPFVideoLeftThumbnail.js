@@ -15,10 +15,14 @@ CUPFVideoLeftThumbnail.propTypes = {};
 function CUPFVideoLeftThumbnail({
     thumbnail_ix,
     thumbnail_upload,
-    
+    thumbnail_suggeted_arr,
+    thumbnail_suggeted_ix,
+
     chooseThumbnail,
     changeThumbnailUpload,
     deleteThumbnailUpload,
+    nextThumbnailSuggested,
+    prevThumbnailSuggested,
 }) {
     //
     const { is_true, toggleBool } = useBool();
@@ -42,7 +46,12 @@ function CUPFVideoLeftThumbnail({
                     <div>
                         <CUPFVLThumnailSuggested
                             thumbnail_ix={thumbnail_ix}
+                            thumbnail_suggeted_arr={thumbnail_suggeted_arr}
+                            thumbnail_suggeted_ix={thumbnail_suggeted_ix}
+                            //
                             chooseThumbnail={chooseThumbnail}
+                            nextThumbnailSuggested={nextThumbnailSuggested}
+                            prevThumbnailSuggested={prevThumbnailSuggested}
                         />
                     </div>
 
@@ -50,7 +59,7 @@ function CUPFVideoLeftThumbnail({
                         <CUPFVLThumnailUpload
                             thumbnail_ix={thumbnail_ix}
                             thumbnail_upload={thumbnail_upload}
-                            // 
+                            //
                             chooseThumbnail={chooseThumbnail}
                             changeThumbnailUpload={changeThumbnailUpload}
                             deleteThumbnailUpload={deleteThumbnailUpload}

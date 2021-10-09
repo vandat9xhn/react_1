@@ -18,15 +18,14 @@ CUPostFixPhoto.propTypes = {};
 function CUPostFixPhoto({
     old_img,
     old_caption,
+    old_user_tag_arr,
+    old_alt,
+
     vid_pic_ix,
     vid_pic_count,
 
-    old_alt,
-    old_alt_ix,
-    old_rotate,
-
     handleNextPrev,
-    handleConfirm,
+    confirmDetailImg,
     handleBack,
 }) {
     //
@@ -36,19 +35,20 @@ function CUPostFixPhoto({
         choice_ix: -1,
 
         alt: old_alt,
-        alt_ix: old_alt_ix,
-        rotate_ix: [0, 90, 180, 270].indexOf(old_rotate),
+        alt_ix: old_alt ? 1 : 0,
+        rotate_ix: 0,
 
-        user_tag_arr: [] || [
-            {
-                id: 0,
-                profile_model: 0,
-                first_name: '',
-                last_name: '',
-                top: '50%',
-                left: '50%',
-            },
-        ],
+        user_tag_arr: old_user_tag_arr ||
+            [] || [
+                {
+                    id: 0,
+                    profile_model: 0,
+                    first_name: '',
+                    last_name: '',
+                    top: '50%',
+                    left: '50%',
+                },
+            ],
         show_tag_add: false,
         tag_add_x: 0,
         tag_add_y: 0,
@@ -69,30 +69,44 @@ function CUPostFixPhoto({
         tag_add_y,
     } = state_obj;
 
+    //
+    const ref_img = useRef(null);
+    const ref_has_fix = useRef(false);
+
+    const ref_point_top_left_obj = useRef({ x: 0, y: 0 });
+    const ref_point_top_right_obj = useRef({ x: 0, y: 0 });
+    const ref_point_bottom_right_obj = useRef({ x: 0, y: 0 });
+    const ref_point_bottom_left_obj = useRef({ x: 0, y: 0 });
+
+    //
     const has_change = (() => {
+        if (ref_has_fix.current) {
+            return true;
+        }
+
         if (caption != old_caption) {
             return true;
         }
 
-        if (old_alt_ix != alt_ix) {
+        if (rotate_ix != 0) {
             return true;
         }
 
-        if (alt_ix == 1 && old_alt != alt) {
+        if (old_alt != alt) {
             return true;
         }
 
         return false;
     })();
 
-    //
-    const ref_img = useRef(null);
-    const ref_point_top_left_obj = useRef({ x: 0, y: 0 });
-    const ref_point_top_right_obj = useRef({ x: 0, y: 0 });
-    const ref_point_bottom_right_obj = useRef({ x: 0, y: 0 });
-    const ref_point_bottom_left_obj = useRef({ x: 0, y: 0 });
-
     // -----
+
+    //
+    function detectHasFix() {
+        if (!ref_has_fix.current) {
+            ref_has_fix.current = true;
+        }
+    }
 
     //
     function getCropImg() {
@@ -193,6 +207,8 @@ function CUPostFixPhoto({
         point_bottom_right_obj,
         point_bottom_left_obj,
     }) {
+        detectHasFix();
+
         ref_point_top_left_obj.current = point_top_left_obj;
         ref_point_top_right_obj.current = point_top_right_obj;
         ref_point_bottom_right_obj.current = point_bottom_right_obj;
@@ -222,6 +238,8 @@ function CUPostFixPhoto({
             return;
         }
 
+        detectHasFix();
+
         setStateObj((state_obj) => {
             const new_user_tag_arr = [...state_obj.user_tag_arr];
             const { width, height } = ref_img.current.getBoundingClientRect();
@@ -245,6 +263,8 @@ function CUPostFixPhoto({
 
     //
     function handleDelTag(ix) {
+        detectHasFix();
+
         setStateObj((state_obj) => {
             const new_user_tag_arr = [...state_obj.user_tag_arr];
             new_user_tag_arr.splice(ix, 1);
@@ -271,7 +291,13 @@ function CUPostFixPhoto({
 
     //
     function onConfirm() {
-        handleConfirm(state_obj);
+        confirmDetailImg({
+            vid_pic_ix: vid_pic_ix,
+            img: img,
+            caption: caption,
+            alt: alt,
+            user_tag_arr: user_tag_arr,
+        });
     }
 
     //
@@ -293,7 +319,7 @@ function CUPostFixPhoto({
                             vid_pic_count={vid_pic_count}
                             caption={caption}
                             choice_ix={choice_ix}
-                            // 
+                            //
                             user_tag_arr={user_tag_arr}
                             alt={alt}
                             alt_ix={alt_ix}
@@ -319,7 +345,6 @@ function CUPostFixPhoto({
                     <CUPostFixPhotoRight
                         img={img}
                         choice_ix={choice_ix}
-                        rotate_ix={rotate_ix}
                         //
                         ref_img={ref_img}
                         point_top_left_obj={ref_point_top_left_obj.current}

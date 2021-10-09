@@ -82,19 +82,18 @@ function InputFile({
                 face_circle ? 'InputFile-circle' : 'InputFile-auto'
             }`}
         >
-            <div className="InputFile_input display-none">
-                <input
-                    ref={refInput}
-                    name={name}
-                    type={type}
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    multiple={file_multiple}
-                    accept={accept}
-                    title={title}
-                    hidden
-                />
-            </div>
+            <input
+                ref={refInput}
+                className="display-none"
+                name={name}
+                type={type}
+                onChange={onChange}
+                onBlur={onBlur}
+                multiple={file_multiple}
+                accept={accept}
+                title={title}
+                hidden
+            />
 
             {face_circle ? (
                 <div className="InputFile_face pos-abs-100">

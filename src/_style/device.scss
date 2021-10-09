@@ -1,17 +1,10 @@
 body.device-mobile {
+    font-family: Roboto, 'Droid Sans', Helvetica, sans-serif;
     font-size: 14px;
 }
 
 //
 .device-mobile {
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-        font-size: 14px;
-    }
-
     .hv-opacity {
         opacity: 1;
     }

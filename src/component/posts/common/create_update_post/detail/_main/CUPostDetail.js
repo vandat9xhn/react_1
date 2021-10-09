@@ -13,10 +13,30 @@ import CUPostFixVideo from '../fix_video/_main/CUPostFixVideo';
 import './CUPostDetail.scss';
 
 //
+function openConfirmUnsaved({ openScreenFloor, handleConfirm }) {
+    openScreenConfirm({
+        openScreenFloor: openScreenFloor,
+        title: 'Unsaved changes',
+        notification: "If you discard now, you'll lose any changes.",
+        handleConfirm: handleConfirm,
+        title_yes: 'Discard',
+        title_no: 'Continue Edditing',
+        reversed_btn: true,
+    });
+}
+
+//
 CUPostDetail.propTypes = {};
 
 //
-function CUPostDetail({ vid_pics, detail_ix, handleDetailBack }) {
+function CUPostDetail({
+    vid_pics,
+    detail_ix,
+
+    confirmDetailImg,
+    confirmDetailVideo,
+    handleDetailBack,
+}) {
     //
     const { openScreenFloor } = useContext(context_api);
 
@@ -27,7 +47,7 @@ function CUPostDetail({ vid_pics, detail_ix, handleDetailBack }) {
 
     const { vid_pic_ix } = state_obj;
 
-    const { vid_pic, content, alt, thumbnail, rotate } =
+    const { vid_pic, content, alt, thumbnail, user_tag_arr } =
         vid_pics[vid_pic_ix];
 
     // ----
@@ -51,10 +71,8 @@ function CUPostDetail({ vid_pics, detail_ix, handleDetailBack }) {
         if (!has_change) {
             handleNextPrev(is_next);
         } else {
-            openScreenConfirm({
+            openConfirmUnsaved({
                 openScreenFloor: openScreenFloor,
-                title: '',
-                notification: '',
                 handleConfirm: () => {
                     handleNextPrev(is_next);
                 },
@@ -63,14 +81,15 @@ function CUPostDetail({ vid_pics, detail_ix, handleDetailBack }) {
     }
 
     //
-    function onConfirm(params) {
-        console.log(params);
-    }
-
-    //
-    function onBack(params) {
-        console.log(params);
-        handleDetailBack();
+    function onBack({ has_change }) {
+        if (!has_change) {
+            handleDetailBack();
+        } else {
+            openConfirmUnsaved({
+                openScreenFloor: openScreenFloor,
+                handleConfirm: handleDetailBack,
+            });
+        }
     }
 
     //
@@ -83,14 +102,14 @@ function CUPostDetail({ vid_pics, detail_ix, handleDetailBack }) {
                 <CUPostFixPhoto
                     old_img={vid_pic}
                     old_caption={content}
+                    old_user_tag_arr={user_tag_arr}
                     old_alt={alt}
+                    //
                     vid_pic_count={vid_pics.length}
                     vid_pic_ix={vid_pic_ix}
-                    old_alt_ix={alt ? 1 : 0}
-                    old_rotate={rotate}
                     //
                     handleNextPrev={onNextPrev}
-                    handleConfirm={onConfirm}
+                    confirmDetailImg={confirmDetailImg}
                     handleBack={onBack}
                 />
             ) : (
@@ -100,8 +119,9 @@ function CUPostDetail({ vid_pics, detail_ix, handleDetailBack }) {
                     vid_pic_ix={vid_pic_ix}
                     vid_pic_count={vid_pics.length}
                     old_thumbnail={thumbnail}
-                    handleNextPrev={handleNextPrev}
-                    handleConfirm={onConfirm}
+                    //
+                    handleNextPrev={onNextPrev}
+                    confirmDetailVideo={confirmDetailVideo}
                     handleBack={onBack}
                 />
             )}

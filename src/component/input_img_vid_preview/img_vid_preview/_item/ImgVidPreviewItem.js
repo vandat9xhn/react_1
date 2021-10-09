@@ -81,12 +81,13 @@ function ImgVidPreviewItem({
         <div className="ImgVidPreviewItem">
             {type.startsWith('video') ? (
                 <video
+                    ref={ref_video}
                     className="wh-100 brs-5px"
                     src={url}
-                    ref={ref_video}
                     alt=""
                     preload={video_preload}
                     controls={video_controls}
+                    poster={urls[item_ix].thumbnail}
                     onClick={zoomOutVideo}
                 />
             ) : (

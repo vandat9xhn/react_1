@@ -3,6 +3,20 @@ import PropTypes from 'prop-types';
 //
 // import './IconSent.scss';
 
+IconSent.propTypes = {
+    size_icon: PropTypes.string,
+    stroke: PropTypes.string,
+    x: PropTypes.number,
+    y: PropTypes.number,
+};
+
+IconSent.defaultProps = {
+    size_icon: '1rem',
+    stroke: 'var(--blue)',
+    x: 0,
+    y: 0,
+};
+
 //
 function IconSent({ size_icon, x, y, stroke }) {
     //
@@ -23,19 +37,5 @@ function IconSent({ size_icon, x, y, stroke }) {
         </svg>
     );
 }
-
-IconSent.propTypes = {
-    size_icon: PropTypes.string,
-    stroke: PropTypes.string,
-    x: PropTypes.number,
-    y: PropTypes.number,
-};
-
-IconSent.defaultProps = {
-    size_icon: '1rem',
-    stroke: 'var(--blue)',
-    x: 0,
-    y: 0,
-};
 
 export default IconSent;

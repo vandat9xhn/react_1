@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // 
-import AddNewPost from '../../../../component/posts/common/add_new_post/AddNewPost';
+import AddNewPost from '../../../../component/posts/common/add_new_post/_main/AddNewPost';
 
 //
 NewFeedNewPost.propTypes = {};

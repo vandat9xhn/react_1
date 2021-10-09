@@ -1,4 +1,11 @@
-.LearnNewPost{
+.LearnNewPost {
     margin: auto;
     width: 500px;
+}
+
+//
+.device-mobile {
+    .LearnNewPost {
+        width: 100%;
+    }
 }

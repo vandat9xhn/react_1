@@ -23,6 +23,7 @@ FixItem.propTypes = {
     ix: PropTypes.number,
     vid_pic: PropTypes.string,
     content: PropTypes.string,
+    thumbnail: PropTypes.string,
 
     handleChangeContentVidPic: PropTypes.func,
     deleteAnItem: PropTypes.func,
@@ -34,6 +35,7 @@ function FixItem({
     content,
     vid_pic,
     type,
+    thumbnail,
 
     handleChangeContentVidPic,
     openFixDetail,
@@ -87,7 +89,11 @@ function FixItem({
                 ></div>
 
                 <div className="FixItem_pic pos-rel display-flex-center">
-                    {VideoOrImage(vid_pic, type)}
+                    {VideoOrImage(
+                        vid_pic,
+                        type,
+                        <video src={vid_pic} alt="" poster={thumbnail} />
+                    )}
                 </div>
 
                 <div className="FixItem_edit_del display-none">
