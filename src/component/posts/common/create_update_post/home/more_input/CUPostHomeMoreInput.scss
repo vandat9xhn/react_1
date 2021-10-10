@@ -1,4 +1,38 @@
-.CUPostHomeContent_tag{
-    width: 40px;
-    height: 40px;
+.CUPostHomeMoreInput {
+    .IconsInput_pic {
+        fill: var(--green);
+        stroke: none;
+    }
+}
+
+.CUPostHomeMoreInput_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: currentColor;
+    }
+}
+
+.CUPostHomeMoreInput_file {
+    color: rgba(41, 168, 71, 0.1);
+}
+
+.CUPostHomeMoreInput_tag {
+    color: rgba(0, 123, 255, 0.1);
+}
+
+.CUPostHomeMoreInput_emoji {
+    color: rgba(255, 217, 0, 0.1);
+}
+
+.CUPostHomeMoreInput_more {
+    color: var(--shadow-1);
 }

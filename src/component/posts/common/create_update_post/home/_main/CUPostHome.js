@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import { openScreenPermission } from '../../../../../_screen/type/permission/_main/ScreenPermission';
-// 
+//
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
-// 
-import PicNameContent from '../../../../../picture_name/pic_name_content/PicNameContent';
-import BtnPermission from '../../../../../button/permission/BtnPermission';
 //
 import CUPostHomeContent from '../content/CUPostHomeContent';
 import CUPostHomeMoreInput from '../more_input/CUPostHomeMoreInput';
+import CUPostHomeUser from '../user/CUPostHomeUser';
 //
 import './CUPostHome.scss';
 
@@ -20,11 +18,14 @@ CUPostHome.propTypes = {};
 
 //
 function CUPostHome({
-    main_content,
-    vid_pics,
     title,
     title_action,
+
+    main_content,
+    vid_pics,
     permission,
+    user_tag_arr,
+    emoji_obj,
 
     ref_input_file,
     has_change,
@@ -37,6 +38,10 @@ function CUPostHome({
 
     handleStartLoadFile,
     handleChooseFiles,
+    openTagUsers,
+    openEmoji,
+    openMoreInput,
+    
     handleCUPost,
     handleClose,
 }) {
@@ -56,7 +61,7 @@ function CUPostHome({
 
     //
     return (
-        <div className="CUPostHome pos-rel bg-primary brs-8px box-shadow-fb">
+        <div className="CUPostHome pos-rel cu-post-part">
             <h2 className="CUPostHome_title cu-post-title">{title}</h2>
 
             <div
@@ -68,15 +73,15 @@ function CUPostHome({
 
             <div className="CUPostHome_contain padding-15px">
                 <div className="CUPostHome_user margin-bottom-10px width-fit-content">
-                    <PicNameContent
+                    <CUPostHomeUser
                         user={user}
-                        content={
-                            <BtnPermission
-                                permission={permission}
-                                show_title={true}
-                                openPermission={openPermission}
-                            />
-                        }
+                        emoji_obj={emoji_obj}
+                        user_tag_arr={user_tag_arr}
+                        permission={permission}
+                        // 
+                        openPermission={openPermission}
+                        openTagUsers={openTagUsers}
+                        openEmoji={openEmoji}
                     />
                 </div>
 
@@ -98,6 +103,9 @@ function CUPostHome({
                         ref_input_file={ref_input_file}
                         handleStartLoadFile={handleStartLoadFile}
                         handleChooseFiles={handleChooseFiles}
+                        openTagUsers={openTagUsers}
+                        openEmoji={openEmoji}
+                        openMoreInput={openMoreInput}
                     />
                 </div>
 

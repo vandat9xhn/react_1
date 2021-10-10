@@ -36,7 +36,7 @@ function IconsInput({ size_icon, x, y }) {
             strokeLinecap="round"
         >
             {/* image x=0 y=0*/}
-            <g strokeWidth="5">
+            <g className="IconsInput_pic" strokeWidth="5">
                 <path
                     d="M10,170 
                     L70,70 Q78,63 86,70 

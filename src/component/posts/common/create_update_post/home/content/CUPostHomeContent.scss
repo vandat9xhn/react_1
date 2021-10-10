@@ -52,30 +52,3 @@
         stroke: var(--md-color-secondary);
     }
 }
-
-//
-@media (max-width: 600px) {
-    .CUPostHomeContent_fix {
-        display: block;
-    }
-
-    .CUPostHomeContent_preview_contain {
-        .ImgVidPreview {
-            min-height: 15rem;
-        }
-    }
-}
-
-//
-@media (max-width: 400px) {
-    .CUPostHomeContent {
-        height: auto;
-    }
-
-    .CUPostHome_files-tag {
-        svg {
-            width: 1rem;
-            height: 1rem;
-        }
-    }
-}

@@ -1,27 +1,33 @@
-
-.ScreenBlurHead_row{
+.ScreenBlurHead_row {
     height: 60px;
 }
 
-.ScreenBlurHead_close{
+.ScreenBlurHead_close {
     width: 36px;
     height: 36px;
 
-    .IconsArrow_close{
+    .IconsArrow_close {
         stroke: var(--md-color-secondary);
     }
 }
 
 //
-@media (max-width: 400px) {
-    .ScreenBlurHead{
+.device-mobile {
+    .ScreenBlurHead_close {
+        width: 27px;
+        height: 27px;
+
         .IconsArrow{
-            width: 1rem;
-            height: 1rem;
+            width: 18px;
+            height: 18px;
         }
     }
 
+    .ScreenBlurHead_row {
+        height: 48px;
+    }
+
     .ScreenBlurHead_title {
-        font-size: 18px;
+        font-size: 16px;
     }
 }

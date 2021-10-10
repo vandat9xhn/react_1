@@ -29,7 +29,7 @@ function CUPTagUserItemMb({ ix, name, picture, checked, handleCheckedUser }) {
                     <div className="margin-left-10px">{name}</div>
                 </div>
 
-                <div className={`${checked ? 'text-blue' : ''}`}>
+                <div className={`${checked ? 'text-blue' : 'text-white'}`}>
                     <CheckBox />
                 </div>
             </div>

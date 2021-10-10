@@ -3,9 +3,11 @@
     max-width: 90%;
 }
 
-//
-@media (max-width: 400px) {
-    .ScreenConfirm {
-        font-size: 14px;
+// 
+.device-mobile {
+    .ScreenConfirm{
+        .ScreenBlurHead{
+            border-bottom: none;
+        }
     }
 }

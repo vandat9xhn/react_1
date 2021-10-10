@@ -1,0 +1,22 @@
+.CUPostPhotoMb_text{
+    max-height: 80%;
+    overflow-y: auto;
+    
+    white-space: pre-wrap;
+}
+
+.CUPostPhotoMb_actions_item {
+    display: flex;
+    align-items: center;
+
+    padding: 10px;
+    .IconsInput {
+        stroke: white;
+    }
+}
+// .
+.CUPostPhotoMb_actions_item_title {
+    flex-grow: 1;
+    margin-right: 10px;
+    text-align: end;
+}

@@ -11,16 +11,24 @@ function CUPTagSeletedMb({ selected_arr, handleCheckedUser }) {
     //
     return (
         <div className="CUPTagSeletedMb">
-            {selected_arr.map((item, ix) => (
-                <div className="CUPTagSeletedMb_item border-bottom-blur">
-                    <CUPTagUserItem
-                        ix={ix}
-                        name={item.first_name + ' ' + item.last_name}
-                        checked={item.checked}
-                        handleCheckedUser={handleCheckedUser}
-                    />
-                </div>
-            ))}
+            <div className="padding-12px font-600 font-16px">Selected</div>
+
+            <div>
+                {selected_arr.map((item, ix) => (
+                    <div
+                        key={item.id}
+                        className="CUPTagSeletedMb_item border-bottom-blur"
+                    >
+                        <CUPTagUserItem
+                            ix={ix}
+                            name={item.first_name + ' ' + item.last_name}
+                            picture={item.picture}
+                            checked={item.checked}
+                            handleCheckedUser={handleCheckedUser}
+                        />
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

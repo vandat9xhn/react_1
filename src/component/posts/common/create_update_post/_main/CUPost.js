@@ -13,8 +13,11 @@ import './CUPostCommon.scss';
 import CUPostHome from '../home/_main/CUPostHome';
 import FixAll from '../fix_all/_main/FixAll';
 import CUPostDetail from '../detail/_main/CUPostDetail';
+import CUPostTagUsers from '../tag_uses/_main/CUPostTagUsers';
+import CUPostEmoji from '../emoji/_main/CUPostEmoji';
 //
 import './CUPost.scss';
+import CUPostMoreInput from '../more_input/_main/CUPostMoreInput';
 
 //
 CUPost.propTypes = {
@@ -31,6 +34,7 @@ function CUPost({
     vid_pics: old_vid_pics,
     permission: old_permission,
     user_tag_arr: old_user_tag_arr,
+    emoji_obj: old_emoji_obj,
 
     title,
     title_action,
@@ -46,18 +50,27 @@ function CUPost({
         ref_input_file,
         has_change,
 
+        openCUPostPart,
+        openHome,
+        openFixAll,
+        openDetail,
+        openTag,
+        openEmoji,
+        openMoreInput,
+
         handleChoosePermission,
         handleChangeMainContent,
+        handleChangeTag,
+        changeEmoji,
+
         handleStartLoadFile,
         handleChooseFiles,
         deleteAnItem,
         openDelAllVidPic,
 
         handleChangeContentVidPic,
-        showFixAll,
-        closeFixAll,
+        handleChooseBg,
 
-        openFixDetail,
         confirmDetailImg,
         confirmDetailVideo,
         handleDetailBack,
@@ -69,6 +82,7 @@ function CUPost({
         old_main_content: old_main_content,
         old_vid_pics: old_vid_pics,
         user_tag_arr: old_user_tag_arr,
+        old_emoji_obj: old_emoji_obj,
         chosen_vid_pic: chosen_vid_pic,
         handleCUPost: handleCUPost,
     });
@@ -78,32 +92,50 @@ function CUPost({
         c_vid_pics,
         permission,
         user_tag_arr,
+        emoji_obj,
 
         created_arr,
         deleted_arr,
         updated_arr,
 
         is_loading,
-        open_fix_ix,
+        cu_post_part,
         detail_ix,
         changed_detail,
     } = state_obj;
+
+    // -------
+
+    //
+    function handleMoreInputVidPic() {
+        setStateObj((state_obj) => {
+            return {
+                ...state_obj,
+                cu_post_part: 'home',
+            };
+        });
+
+        ref_input_file.current.click();
+    }
 
     //
     return (
         <div className="CUPost scroll-width-0">
             <div className="CUPost_row">
                 <div
-                    className={`CUPost_home ${
-                        open_fix_ix == 0 ? '' : 'display-none'
+                    className={`${
+                        cu_post_part == 'home' ? '' : 'display-none'
                     }`}
                 >
                     <CUPostHome
-                        main_content={main_content}
-                        vid_pics={c_vid_pics}
                         title={title}
                         title_action={title_action}
+                        //
+                        main_content={main_content}
+                        vid_pics={c_vid_pics}
                         permission={permission}
+                        user_tag_arr={user_tag_arr}
+                        emoji_obj={emoji_obj}
                         //
                         ref_input_file={ref_input_file}
                         has_change={has_change}
@@ -111,35 +143,35 @@ function CUPost({
                         //
                         handleChangeMainContent={handleChangeMainContent}
                         handleChoosePermission={handleChoosePermission}
-                        showFixAll={showFixAll}
+                        showFixAll={openFixAll}
                         delAllVidPic={openDelAllVidPic}
                         //
                         handleStartLoadFile={handleStartLoadFile}
                         handleChooseFiles={handleChooseFiles}
+                        openTagUsers={openTag}
+                        openEmoji={openEmoji}
+                        openMoreInput={openMoreInput}
+                        //
                         handleCUPost={onCUPost}
                         handleClose={handleClose}
                     />
                 </div>
 
-                {open_fix_ix == 1 ? (
-                    <div>
+                <div>
+                    {cu_post_part == 'fix_all' ? (
                         <FixAll
-                            open_fix_ix={open_fix_ix}
+                            cu_post_part={cu_post_part}
                             vid_pics={c_vid_pics}
                             //
-                            openFixDetail={openFixDetail}
+                            handleBackHome={openHome}
+                            openDetail={openDetail}
                             handleChangeContentVidPic={
                                 handleChangeContentVidPic
                             }
                             handleChooseFiles={handleChooseFiles}
-                            closeFixAll={closeFixAll}
                             deleteAnItem={deleteAnItem}
                         />
-                    </div>
-                ) : null}
-
-                {open_fix_ix == 2 ? (
-                    <div>
+                    ) : cu_post_part == 'detail' ? (
                         <CUPostDetail
                             vid_pics={c_vid_pics}
                             detail_ix={detail_ix}
@@ -147,8 +179,28 @@ function CUPost({
                             confirmDetailVideo={confirmDetailVideo}
                             handleDetailBack={handleDetailBack}
                         />
-                    </div>
-                ) : null}
+                    ) : cu_post_part == 'tag' ? (
+                        <CUPostTagUsers
+                            user_tag_arr={user_tag_arr}
+                            handleChangeTag={handleChangeTag}
+                            handleBackHome={openHome}
+                        />
+                    ) : cu_post_part == 'emoji' ? (
+                        <CUPostEmoji
+                            emoji_obj={emoji_obj}
+                            changeEmoji={changeEmoji}
+                            handleBackHome={openHome}
+                        />
+                    ) : cu_post_part == 'more_input' ? (
+                        <CUPostMoreInput
+                            vid_pic_checked={c_vid_pics.length > 0}
+                            tag_checked={user_tag_arr.length > 0}
+                            emoji_checked={emoji_obj.id && emoji_obj.id > 0}
+                            openCUPostPart={openCUPostPart}
+                            handleMoreInputVidPic={handleMoreInputVidPic}
+                        />
+                    ) : null}
+                </div>
             </div>
         </div>
     );

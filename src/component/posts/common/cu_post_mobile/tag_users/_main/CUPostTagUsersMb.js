@@ -3,82 +3,92 @@ import PropTypes from 'prop-types';
 //
 import { waitingToDoLast } from '../../../../../../_some_function/waitingToDoLast';
 //
+import { initial_user } from '../../../../../../_initial/user/initialUser';
+//
 import { handle_API_Friend_L } from '../../../../../../_handle_api/profile/ProfileHandleAPI';
 //
-import { useDataShowMore } from '../../../../../../_hooks/useDataShowMore';
+import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import CUPTagSearchMb from '../search/CUPTagSearchMb';
 import CUPTagSeletedMb from '../selected/CUPTagSeletedMb';
 import CUPTagFriendsMb from '../friends/CUPTagFriendsMb';
+//
+import './CUPostTagUsersMb.scss';
 
 //
 CUPostTagUsersMb.propTypes = {};
 
 //
-function CUPostTagUsersMb({ tag_user_arr }) {
+function CUPostTagUsersMb({ user_tag_arr, handleChangeTag, handleBackHome }) {
     //
     const [value, setValue] = useState('');
     const [selected_arr, setSelectedArr] = useState(
-        tag_user_arr.map((item) => {
+        user_tag_arr.map((item) => {
             return {
                 ...item,
                 checked: true,
             };
         })
     );
+    const [friend_arr, setFriendArr] = useState(
+        [] || [{ ...initial_user(), checked: false }]
+    );
 
     //
     const ref_interval = useRef(null);
 
     //
-    const { data_state, setDataState, getData_API, refreshData_API } =
-        useDataShowMore({
-            initial_arr: [],
-            handle_API_L: handle_API_L,
-        });
-
-    const { data_arr, count, is_fetching } = data_state;
-
-    //
     useEffect(() => {
-        getData_API();
+        getData_Friends();
     }, []);
 
     // ----- API
 
     //
-    async function handle_API_L(c_count) {
-        const res = await handle_API_Friend_L({
-            c_count: c_count,
+    async function getData_Friends(search_name = '') {
+        const { data } = await handle_API_Friend_L({
             params: {
                 tag_user: 1,
-                user_name: value,
+                user_name: search_name,
+                page: 1,
+                size: 20,
             },
         });
 
-        const new_data = res.data.map((item) => {
+        const new_friend_arr = data.map((item) => {
             return {
                 ...item,
                 checked: false,
             };
         });
 
-        return { ...res, data: new_data };
+        setFriendArr(new_friend_arr);
     }
 
     // -----
 
     //
     function handleChange(e) {
-        setValue(e.target.value);
+        const new_value = e.target.value;
+
+        setValue(new_value);
 
         waitingToDoLast({
             ref_interval: ref_interval,
             time: 500,
             callback: () => {
-                refreshData_API();
+                handleSaveSelected();
+                getData_Friends(new_value);
             },
         });
+    }
+
+    //
+    function handleSaveSelected() {
+        setSelectedArr([
+            ...selected_arr,
+            ...friend_arr.filter((item) => item.checked),
+        ]);
     }
 
     //
@@ -93,44 +103,72 @@ function CUPostTagUsersMb({ tag_user_arr }) {
 
     //
     function handleCheckedFriend(ix) {
-        setDataState((data_state) => {
-            const new_data_arr = [...data_state.data_arr];
-            new_data_arr[ix].checked = !new_data_arr[ix].checked;
+        setFriendArr((friend_arr) => {
+            const new_friend_arr = [...friend_arr];
+            new_friend_arr[ix].checked = !new_friend_arr[ix].checked;
 
-            return {
-                ...data_state,
-                data_arr: new_data_arr,
-            };
+            return new_friend_arr;
+        });
+    }
+
+    // ----
+
+    //
+    function onConfirmTag() {
+        handleChangeTag({
+            user_tag_arr: [...selected_arr, ...friend_arr].filter(
+                (item) => item.checked
+            ),
         });
     }
 
     //
-    function handleShowMore() {
-        getData_API();
-    }
-
-    //
     return (
-        <div className="CUPostTagUsersMb">
-            <div>
+        <div className="CUPostTagUsersMb pos-rel">
+            <div className="CUPostTagUsersMb_head display-flex align-items-center padding-y-10px padding-x-15px border-bottom-blur font-600 font-16px">
+                <div className="padding-right-10px" onClick={handleBackHome}>
+                    <IconsArrow x={200} y={200} />
+                </div>
+
+                <div>Tag User</div>
+            </div>
+
+            <div className="border-bottom-blur">
                 <CUPTagSearchMb value={value} handleChange={handleChange} />
             </div>
 
-            <div>
-                <CUPTagSeletedMb
-                    selected_arr={selected_arr}
-                    handleCheckedUser={handleCheckedSelected}
-                />
-            </div>
+            {selected_arr.length ? (
+                <div>
+                    <CUPTagSeletedMb
+                        selected_arr={selected_arr}
+                        handleCheckedUser={handleCheckedSelected}
+                    />
+                </div>
+            ) : null}
 
             <div>
                 <CUPTagFriendsMb
-                    friend_arr={data_arr}
-                    has_more={count > data_arr.length}
-                    is_fetching={is_fetching}
-                    handleShowMore={handleShowMore}
+                    friend_arr={friend_arr}
                     handleCheckedUser={handleCheckedFriend}
                 />
+            </div>
+
+            <div
+                className={`bg-fb font-13px padding-10px text-third ${
+                    friend_arr.length == 0 ? 'display-none' : ''
+                }`}
+            >
+                Search for other friends
+            </div>
+
+            <div className="pos-fixed bottom-0 left-0 w-100per padding-10px bg-primary">
+                <button
+                    className="btn w-100per padding-y-5px brs-4px bg-blue text-white font-600"
+                    type="button"
+                    onClick={onConfirmTag}
+                >
+                    Next
+                </button>
             </div>
         </div>
     );

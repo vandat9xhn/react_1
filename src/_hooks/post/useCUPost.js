@@ -10,14 +10,45 @@ import { useMakeBodyHidden } from '../useMakeBodyHidden';
 
 //
 export function useCUPost({
-    old_permission,
-    old_main_content,
-    old_vid_pics,
-    old_user_tag_arr,
-    chosen_vid_pic,
+    old_permission = 0,
+    old_main_content = '',
+    old_vid_pics = [] || [
+        {
+            id: 0,
+            vid_pic: '',
+            content: '',
+            type: '',
+            alt: '',
+            user_tag_arr: [
+                {
+                    id: 0,
+                    profile_model: 0,
+                    first_name: '',
+                    last_name: '',
+                },
+            ],
+        },
+    ],
+    old_user_tag_arr = [] || [
+        {
+            id: 0,
+            profile_model: 0,
+            first_name: '',
+            last_name: '',
+            picture: '',
+        },
+    ],
+    old_emoji_obj = {} || {
+        id: 0,
+        type: '',
+        name: '',
+        icon: '',
+    },
 
-    handleCUPost,
-    oher_state = {},
+    chosen_vid_pic = false,
+
+    handleCUPost = () => {},
+    other_state = {},
 }) {
     //
     const { openScreenFloor, closeScreenFloor, detectScreenHasChange } =
@@ -29,6 +60,7 @@ export function useCUPost({
         main_content: old_main_content || '',
         c_vid_pics: JSON.parse(JSON.stringify(old_vid_pics)),
         user_tag_arr: old_user_tag_arr,
+        emoji_obj: old_emoji_obj,
 
         created_arr: Array(old_vid_pics.length).fill(''),
         deleted_arr: [] || [-1],
@@ -39,14 +71,14 @@ export function useCUPost({
             },
         ],
 
-        open_fix_ix: 0,
+        cu_post_part: 'home' || 'fix_all' || 'detail' || 'tag' || 'emoji',
         detail_ix: -1,
         bg_ix: 0,
 
         is_loading: false,
         changed_detail: false,
 
-        ...oher_state,
+        ...other_state,
     });
 
     const {
@@ -60,7 +92,7 @@ export function useCUPost({
         updated_arr,
 
         is_loading,
-        open_fix_ix,
+        cu_post_part,
         detail_ix,
         changed_detail,
     } = state_obj;
@@ -122,6 +154,74 @@ export function useCUPost({
         return new_updated_arr;
     }
 
+    // ---- CU POST PART
+
+    //
+    function openCUPostPart({ part = 'home', params_state = {} }) {
+        setStateObj((state_obj) => ({
+            ...state_obj,
+            cu_post_part: part,
+            ...params_state,
+        }));
+    }
+
+    //
+    function openHome() {
+        openCUPostPart({
+            part: 'home',
+            params_state: {
+                detail_ix: -1,
+            },
+        });
+    }
+
+    //
+    function openFixAll() {
+        if (c_vid_pics.length > 1) {
+            openCUPostPart({
+                part: 'fix_all',
+            });
+        } else if (c_vid_pics.length == 1) {
+            openCUPostPart({
+                part: 'detail',
+                params_state: {
+                    detail_ix: 0,
+                },
+            });
+        }
+    }
+
+    //
+    function openDetail(new_vid_pic_ix) {
+        openCUPostPart({
+            part: 'detail',
+            params_state: {
+                detail_ix: new_vid_pic_ix,
+            },
+        });
+    }
+
+    //
+    function openTag() {
+        openCUPostPart({
+            part: 'tag',
+        });
+    }
+
+    //
+    function openEmoji() {
+        openCUPostPart({
+            part: 'emoji',
+        });
+    }
+
+    //
+    function openMoreInput() {
+        openCUPostPart({
+            part: 'more_input',
+        });
+    }
+
     // ------ CHANGE
 
     //
@@ -137,6 +237,33 @@ export function useCUPost({
         setStateObj((state_obj) => ({
             ...state_obj,
             main_content: value,
+        }));
+    }
+
+    //
+    function handleChangeTag({
+        user_tag_arr: new_user_tag_arr,
+        back_home = true,
+    }) {
+        setStateObj((state_obj) => ({
+            ...state_obj,
+            user_tag_arr: new_user_tag_arr.map((item) => {
+                return {
+                    ...item,
+                    profile_model: item.id,
+                };
+            }),
+            cu_post_part: back_home ? 'home' : cu_post_part,
+        }));
+    }
+
+    //
+    function changeEmoji(new_emoji_obj) {
+        setStateObj((state_obj) => ({
+            ...state_obj,
+            emoji_obj:
+                new_emoji_obj.id == state_obj.emoji_obj.id ? {} : new_emoji_obj,
+            cu_post_part: 'home',
         }));
     }
 
@@ -197,7 +324,7 @@ export function useCUPost({
             ...state_obj,
             c_vid_pics: new_c_vid_pics,
             created_arr: created_arr.filter((_, ix) => ix != index),
-            open_fix_ix: new_c_vid_pics.length > 0 ? open_fix_ix : 0,
+            cu_post_part: new_c_vid_pics.length > 0 ? cu_post_part : 'home',
         }));
     }
 
@@ -214,7 +341,7 @@ export function useCUPost({
             updated_arr: [],
 
             is_loading: false,
-            open_fix_ix: 0,
+            cu_post_part: 'home',
             detail_ix: -1,
         }));
     }
@@ -250,40 +377,7 @@ export function useCUPost({
         });
     }
 
-    //
-    function showFixAll() {
-        if (c_vid_pics.length > 1) {
-            setStateObj((state_obj) => ({
-                ...state_obj,
-                open_fix_ix: 1,
-            }));
-        } else if (c_vid_pics.length == 1) {
-            setStateObj((state_obj) => ({
-                ...state_obj,
-                open_fix_ix: 2,
-                detail_ix: 0,
-            }));
-        }
-    }
-
-    //
-    function closeFixAll() {
-        setStateObj((state_obj) => ({
-            ...state_obj,
-            open_fix_ix: 0,
-        }));
-    }
-
     // ----- DETAIL
-
-    //
-    function openFixDetail(new_vid_pic_ix) {
-        setStateObj({
-            ...state_obj,
-            open_fix_ix: 2,
-            detail_ix: new_vid_pic_ix,
-        });
-    }
 
     //
     function confirmDetailImg({ vid_pic_ix, img, caption, alt, user_tag_arr }) {
@@ -300,7 +394,7 @@ export function useCUPost({
             return {
                 ...state_obj,
                 c_vid_pics: new_c_vid_pics,
-                open_fix_ix: c_vid_pics.length == 1 ? 0 : 1,
+                cu_post_part: c_vid_pics.length == 1 ? 'home' : 'fix_all',
                 detail_ix: -1,
                 changed_detail: true,
             };
@@ -321,7 +415,7 @@ export function useCUPost({
             return {
                 ...state_obj,
                 c_vid_pics: new_c_vid_pics,
-                open_fix_ix: c_vid_pics.length == 1 ? 0 : 1,
+                cu_post_part: c_vid_pics.length == 1 ? 'home' : 'fix_all',
                 detail_ix: -1,
                 changed_detail: true,
             };
@@ -332,10 +426,12 @@ export function useCUPost({
     function handleDetailBack() {
         setStateObj({
             ...state_obj,
-            open_fix_ix: c_vid_pics.length == 1 ? 0 : 1,
+            cu_post_part: c_vid_pics.length == 1 ? 'home' : 'fix_all',
             detail_ix: -1,
         });
     }
+
+    // -----
 
     //
     const has_change = checkHasChange();
@@ -369,9 +465,18 @@ export function useCUPost({
         ref_input_file,
         has_change,
 
+        openCUPostPart,
+        openHome,
+        openFixAll,
+        openDetail,
+        openTag,
+        openEmoji,
+        openMoreInput,
+
         handleChoosePermission,
         handleChangeMainContent,
-        handleChooseBg,
+        handleChangeTag,
+        changeEmoji,
 
         handleStartLoadFile,
         handleChooseFiles,
@@ -379,10 +484,8 @@ export function useCUPost({
         openDelAllVidPic,
 
         handleChangeContentVidPic,
-        showFixAll,
-        closeFixAll,
+        handleChooseBg,
 
-        openFixDetail,
         confirmDetailImg,
         confirmDetailVideo,
         handleDetailBack,

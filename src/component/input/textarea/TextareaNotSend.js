@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { makeAutoHeight } from '../../../_some_function/makeAutoHeight';
+import {
+    makeAutoHeight,
+    makeElmAutoHeight,
+} from '../../../_some_function/makeAutoHeight';
 //
 import './TextareaNotSend.scss';
 
@@ -40,6 +43,14 @@ function TextareaNotSend({
     textarea_props,
 }) {
     //
+    const ref_textarea = useRef(null);
+
+    //
+    useEffect(() => {
+        ref_textarea.current.value & makeElmAutoHeight(ref_textarea.current);
+    }, []);
+
+    //
     const handleChange = (e) => {
         onChange(e.target.value);
         makeAutoHeight(e);
@@ -48,6 +59,7 @@ function TextareaNotSend({
     //
     return (
         <textarea
+            ref={ref_textarea}
             className={`${textarea_class} TextareaNotSend`}
             rows={1}
             name={name}

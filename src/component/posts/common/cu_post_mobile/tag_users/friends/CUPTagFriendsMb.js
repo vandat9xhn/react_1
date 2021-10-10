@@ -1,44 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import ScreenBlurShowMore from '../../../../../_screen/components/part/foot/ScreenBlurShowMore';
-//
 import CUPTagUserItem from '../item/CUPTagUserItemMb';
+//
+import './CUPTagFriendsMb.scss';
 
 //
 CUPTagFriendsMb.propTypes = {};
 
 //
-function CUPTagFriendsMb({
-    friend_arr,
-    has_more,
-    is_fetching,
-
-    handleShowMore,
-    handleCheckedUser,
-}) {
+function CUPTagFriendsMb({ friend_arr, handleCheckedUser }) {
     //
     return (
         <div className="CUPTagFriendsMb">
+            <div className="padding-12px font-600 font-16px">Friends</div>
+
             <div>
                 {friend_arr.map((item, ix) => (
-                    <div className="CUPTagFriendsMb_item border-bottom-blur">
+                    <div
+                        key={item.id}
+                        className="CUPTagFriendsMb_item border-bottom-blur"
+                    >
                         <CUPTagUserItem
                             ix={ix}
                             name={item.first_name + ' ' + item.last_name}
+                            picture={item.picture}
                             checked={item.checked}
                             handleCheckedUser={handleCheckedUser}
                         />
                     </div>
                 ))}
-            </div>
-
-            <div>
-                <ScreenBlurShowMore
-                    is_show_more={has_more}
-                    is_fetching={is_fetching}
-                    handleShowMore={handleShowMore}
-                />
             </div>
         </div>
     );

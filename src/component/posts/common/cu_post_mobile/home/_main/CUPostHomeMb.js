@@ -28,7 +28,7 @@ function CUPostHomeMb({
 
     has_change,
 
-    openChooseTagUsers,
+    openTagUsers,
     openEditPhoto,
 
     handleChoosePermission,
@@ -86,7 +86,7 @@ function CUPostHomeMb({
             </div>
 
             {bg_ix >= 1 ? null : (
-                <div>
+                <div className="padding-top-10px">
                     <CUPostHomeVidPicMb
                         vid_pics={vid_pics}
                         chooseVidPic={chooseVidPic}
@@ -99,7 +99,7 @@ function CUPostHomeMb({
             <div>
                 <CUPostHomeTagMb
                     user_tag_arr={user_tag_arr}
-                    openChooseTagUsers={openChooseTagUsers}
+                    openTagUsers={openTagUsers}
                 />
             </div>
 

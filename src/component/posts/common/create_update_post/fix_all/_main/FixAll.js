@@ -15,17 +15,17 @@ FixAll.propTypes = {};
 function FixAll({
     vid_pics,
 
-    openFixDetail,
+    handleBackHome,
+    openDetail,
+
     handleChangeContentVidPic,
     handleChooseFiles,
-
-    closeFixAll,
     deleteAnItem,
 }) {
     //
     return (
         <div
-            className={`FixAll margin-auto bg-primary brs-8px box-shadow-fb ${
+            className={`FixAll cu-post-part ${
                 vid_pics.length >= 5
                     ? 'FixAll-lg'
                     : vid_pics.length >= 3
@@ -34,7 +34,10 @@ function FixAll({
             }`}
         >
             <div>
-                <CUPostFixHead title="Photos/Videos" handleBack={closeFixAll} />
+                <CUPostFixHead
+                    title="Photos/Videos"
+                    handleBack={handleBackHome}
+                />
             </div>
 
             <div className="FixAll_contain bg-fb">
@@ -47,7 +50,7 @@ function FixAll({
                                 content={item.content}
                                 type={item.type}
                                 thumbnail={item.thumbnail}
-                                openFixDetail={openFixDetail}
+                                openDetail={openDetail}
                                 handleChangeContentVidPic={
                                     handleChangeContentVidPic
                                 }
@@ -73,7 +76,7 @@ function FixAll({
                 <button
                     className="btn btn-hv margin-left-15px padding-x-20px padding-y-7px brs-4px bg-blue font-600 text-white cursor-pointer"
                     type="button"
-                    onClick={closeFixAll}
+                    onClick={handleBackHome}
                 >
                     Done
                 </button>

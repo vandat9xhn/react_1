@@ -38,7 +38,7 @@ function FixItem({
     thumbnail,
 
     handleChangeContentVidPic,
-    openFixDetail,
+    openDetail,
     deleteAnItem,
 }) {
     //
@@ -71,8 +71,8 @@ function FixItem({
     }
 
     //
-    function onOpenFixDetail() {
-        openFixDetail(ix);
+    function onOpenDetail() {
+        openDetail(ix);
     }
 
     //
@@ -99,7 +99,7 @@ function FixItem({
                 <div className="FixItem_edit_del display-none">
                     <div
                         className="FixItem_edit pos-abs display-flex-center padding-x-8px padding-y-5px bg-primary brs-4px font-600 cursor-pointer hv-bg-blur"
-                        onClick={onOpenFixDetail}
+                        onClick={onOpenDetail}
                     >
                         <IconsEdit size_icon="14px" color="currentColor" />
 

@@ -9,7 +9,7 @@ import CUPostChoiceLabelMb from '../../../_components/choice_label/CUPostChoiceL
 CUPostHomeTagMb.propTypes = {};
 
 //
-function CUPostHomeTagMb({ user_tag_arr, openChooseTagUsers }) {
+function CUPostHomeTagMb({ user_tag_arr, openTagUsers }) {
     //
     return (
         <div className="CUPostHomeTagMb">
@@ -22,7 +22,7 @@ function CUPostHomeTagMb({ user_tag_arr, openChooseTagUsers }) {
                               .map((item) => item.last_name)
                               .join(', ')}`
                 }
-                handleClick={openChooseTagUsers}
+                handleClick={openTagUsers}
             />
         </div>
     );

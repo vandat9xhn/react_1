@@ -13,6 +13,8 @@ import { useCUPost } from '../../../../../_hooks/post/useCUPost';
 import InputFile from '../../../../input/input_file/InputFile';
 //
 import CUPostHomeMb from '../home/_main/CUPostHomeMb';
+import CUPostPhotoMb from '../photo/_main/CUPostPhotoMb';
+import CUPostTagUsersMb from '../tag_users/_main/CUPostTagUsersMb';
 //
 import './CUPostMb.scss';
 
@@ -33,7 +35,7 @@ const BG_ARR = [
         bg: 'var(--heart)',
         color: 'var(--white)',
     },
-    ...data_story_bg_arr.map((bg_img) => {
+    ...data_story_bg_arr.slice(0, 10).map((bg_img) => {
         return {
             is_bg_img: true,
             bg: bg_img,
@@ -72,8 +74,15 @@ function CUPostMb({
         ref_input_file,
         has_change,
 
+        openHome,
+        openFixAll,
+        openDetail,
+        openTag,
+        openEmoji,
+
         handleChoosePermission,
         handleChangeMainContent,
+        handleChangeTag,
 
         handleStartLoadFile,
         handleChooseFiles,
@@ -83,10 +92,6 @@ function CUPostMb({
         handleChangeContentVidPic,
         handleChooseBg,
 
-        showFixAll,
-        closeFixAll,
-
-        openFixDetail,
         confirmDetailImg,
         confirmDetailVideo,
         handleDetailBack,
@@ -113,7 +118,7 @@ function CUPostMb({
         deleted_arr,
         updated_arr,
 
-        open_fix_ix,
+        cu_post_part,
         detail_ix,
         bg_ix,
 
@@ -131,26 +136,20 @@ function CUPostMb({
     // ----
 
     //
-    function openEditPhoto(new_detail_ix) {
-        setStateObj({
-            ...state_obj,
-            open_fix_ix: 1,
-            detail_ix: new_detail_ix,
-        });
-    }
-
-    //
-    function openChooseTagUsers() {
-        setStateObj({
-            ...state_obj,
-            open_fix_ix: 2,
+    function confirmChangeVidPicMb({ caption }) {
+        confirmDetailImg({
+            vid_pic_ix: detail_ix,
+            img: c_vid_pics[detail_ix].vid_pic,
+            caption: caption,
+            alt: c_vid_pics[detail_ix].alt,
+            user_tag_arr: c_vid_pics[detail_ix].user_tag_arr,
         });
     }
 
     //
     return (
         <div className="CUPostMb bg-primary">
-            <div className={`${open_fix_ix == 0 ? '' : 'display-none'}`}>
+            <div className={`${cu_post_part == 'home' ? '' : 'display-none'}`}>
                 <CUPostHomeMb
                     title={title}
                     title_action={title_action}
@@ -164,8 +163,8 @@ function CUPostMb({
                     //
                     has_change={has_change}
                     //
-                    openEditPhoto={openEditPhoto}
-                    openChooseTagUsers={openChooseTagUsers}
+                    openEditPhoto={openDetail}
+                    openTagUsers={openTag}
                     //
                     handleChoosePermission={handleChoosePermission}
                     changeMainContent={handleChangeMainContent}
@@ -177,6 +176,23 @@ function CUPostMb({
                     handleClose={handleClose}
                 />
             </div>
+
+            {cu_post_part == 'detail' ? (
+                <div>
+                    <CUPostPhotoMb
+                        img={c_vid_pics[detail_ix].vid_pic}
+                        text={c_vid_pics[detail_ix].content}
+                        handleConfirm={confirmChangeVidPicMb}
+                        handleBackHome={openHome}
+                    />
+                </div>
+            ) : cu_post_part == 'tag' ? (
+                <CUPostTagUsersMb
+                    user_tag_arr={user_tag_arr}
+                    handleChangeTag={handleChangeTag}
+                    handleBackHome={openHome}
+                />
+            ) : null}
 
             <div className="display-none">
                 <InputFile

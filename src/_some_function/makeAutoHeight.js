@@ -1,5 +1,10 @@
 //
+export function makeElmAutoHeight(elm) {
+    elm.style.height = 'auto';
+    elm.style.height = elm.scrollHeight + 'px';
+}
+
+//
 export function makeAutoHeight(e) {
-    e.target.style.height = 'auto';
-    e.target.style.height = e.target.scrollHeight + 'px';
+    makeElmAutoHeight(e.target);
 }

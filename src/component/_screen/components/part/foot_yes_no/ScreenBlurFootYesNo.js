@@ -42,7 +42,7 @@ function ScreenBlurFootYesNo({
                 <button
                     className={`ScreenBlurFootYesNo_btn btn ${
                         disabled
-                            ? 'bg-ccc text-third pointer-events-none'
+                            ? 'bg-ccc text-smoke pointer-events-none'
                             : 'btn-hv bg-blue text-white'
                     }`}
                     onClick={handleConfirm}

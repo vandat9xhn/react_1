@@ -96,7 +96,7 @@ function CUPostDetail({
     return (
         <div
             key={vid_pic_ix}
-            className="CUPostDetail margin-auto brs-8px bg-primary box-shadow-fb user-select-none"
+            className="CUPostDetail cu-post-part user-select-none"
         >
             {getTypeVidOrPic(vid_pic) == 'img' ? (
                 <CUPostFixPhoto
