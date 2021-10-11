@@ -2,39 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { waitingToDoLast } from '../../../../../../../_some_function/waitingToDoLast';
-//
 import observeToDo from '../../../../../../../_some_function/observerToDo';
+//
+import { handle_API_FbEmoji_L } from '../../../../../../../_handle_api/post/cu_emoji';
 //
 import PostInputSearch from '../../../../input_search/PostInputSearch';
 import CUPostEmojiItem from '../../item/CUPostEmojiItem';
-
-//
-const FEELING_ARR = [
-    {
-        id: 1,
-        type: 'feeling',
-        name: 'happy',
-        icon: null,
-    },
-    {
-        id: 2,
-        type: 'feeling',
-        name: 'love',
-        icon: null,
-    },
-    {
-        id: 3,
-        type: 'feeling',
-        name: 'sad',
-        icon: null,
-    },
-    {
-        id: 4,
-        type: 'feeling',
-        name: 'crazy',
-        icon: null,
-    },
-];
 
 //
 CUPostFeeling.propTypes = {};
@@ -66,12 +39,21 @@ function CUPostFeeling({ emoji_id, type_ix, changeFeeling }) {
         });
     }, []);
 
-    // ----
+    // ---- API
 
     //
-    function getData_Feeling(search = '') {
-        setFeelingArr(FEELING_ARR);
+    async function getData_Feeling(search = '') {
+        const { data } = await handle_API_FbEmoji_L({
+            params: {
+                type: 'feeling',
+                search: search,
+            },
+        });
+
+        setFeelingArr(data);
     }
+
+    // -----
 
     //
     function changeSearch(e) {
@@ -91,6 +73,7 @@ function CUPostFeeling({ emoji_id, type_ix, changeFeeling }) {
             <div className="padding-x-20px padding-y-12px">
                 <PostInputSearch
                     value={value_search}
+                    placeholder="Search for feelings"
                     changeSearch={changeSearch}
                 />
             </div>

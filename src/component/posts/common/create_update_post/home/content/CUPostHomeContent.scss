@@ -1,8 +1,22 @@
-.CUPostHomeContent {
+.CUPostHomeContent_input{
     min-height: 150px;
+    cursor: text;
 }
+.CUPostHomeContent_input-bg{
+    height: 400px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 
-// ----
+    .CUPostHomeContent_textarea{
+        max-width: 75%;
+        max-height: 80%;
+
+        text-align: center;
+    }
+}
+.CUPostHomeContent_input-img{
+    min-height: auto;
+}
 
 // .
 .CUPostHomeContent_textarea {
@@ -14,7 +28,7 @@
 
 .CUPostHomeContent_preview {
     &:hover {
-        .CUPostHomeContent_preview_bg{
+        .CUPostHomeContent_preview_bg {
             display: block;
         }
 
@@ -41,14 +55,14 @@
     top: 12px;
 }
 
-.CUPostHomeContent_del{
+.CUPostHomeContent_del {
     top: 12px;
     right: 12px;
-    
+
     width: 27px;
     height: 27px;
 
-    .IconsArrow_close{
+    .IconsArrow_close {
         stroke: var(--md-color-secondary);
     }
 }

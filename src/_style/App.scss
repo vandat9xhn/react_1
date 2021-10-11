@@ -2,6 +2,10 @@
 html {
     background-color: var(--md-bg-fb);
     overflow-y: scroll;
+
+    &[data-scroll-none-once] {
+        overflow-y: hidden;
+    }
 }
 
 *,
@@ -25,8 +29,6 @@ body {
     color: var(--md-color);
 
     &[data-count-hidden] {
-        // overflow-y: scroll;
-
         .App {
             position: fixed;
             width: 100%;
@@ -41,14 +43,7 @@ body {
         }
     }
 
-    // &[data-blur-header] {
-    //     .AppHeader {
-    //         z-index: -1;
-    //     }
-    // }
-
     &[data-hidden-scroll] {
-        // overflow-y: hidden;
         &::-webkit-scrollbar {
             display: none;
         }
@@ -70,8 +65,8 @@ body {
         .AppHeader {
             position: unset;
         }
-        
-        .AppContent{
+
+        .AppContent {
             margin-top: 0;
         }
     }
@@ -102,7 +97,7 @@ textarea {
     background-color: var(--md-bg-primary);
 }
 
-button{
+button {
     padding: 0;
 }
 
@@ -126,9 +121,9 @@ a {
     text-decoration: none;
     background-color: transparent;
 }
-// img {
-//     vertical-align: middle;
-// }
+img {
+    vertical-align: middle;
+}
 
 /* ------------ APP -------------- */
 .App {

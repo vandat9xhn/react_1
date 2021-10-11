@@ -37,9 +37,9 @@ function HeaderVItemHasSub({ item: { Icon, x, y, title, sub_list } }) {
                             Icon={Icon}
                             x={x}
                             y={y}
-                            color={
-                                open_list ? 'var(--base-seafoam)' : undefined
-                            }
+                            // color={
+                            //     open_list ? 'var(--base-seafoam)' : undefined
+                            // }
                         >
                             {title}
                         </IconDiv>

@@ -14,7 +14,7 @@ function CUPostHomeTagMb({ user_tag_arr, openTagUsers }) {
     return (
         <div className="CUPostHomeTagMb">
             <CUPostChoiceLabelMb
-                Icon={<IconsAction y={200} size_icon="14px" />}
+                Icon={<IconsAction y={200} size_icon="18px" />}
                 title={
                     user_tag_arr.length == 0
                         ? 'Tag Friends'

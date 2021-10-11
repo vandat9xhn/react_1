@@ -13,8 +13,8 @@ CUPFVLThumnailSuggested.propTypes = {};
 //
 function CUPFVLThumnailSuggested({
     thumbnail_ix,
-    thumbnail_suggeted_arr,
-    thumbnail_suggeted_ix,
+    thumbnail_suggested_arr,
+    thumbnail_suggested_ix,
 
     chooseThumbnail,
     nextThumbnailSuggested,
@@ -22,7 +22,7 @@ function CUPFVLThumnailSuggested({
 }) {
     //
     return (
-        <div className="CUPFVLThumnailSuggested padding-bottom-15px">
+        <div className="CUPFVLThumnailSuggested">
             <div>
                 <CUPostVideoRadio
                     ix={0}
@@ -34,7 +34,7 @@ function CUPFVLThumnailSuggested({
             </div>
 
             {thumbnail_ix == 0 ? (
-                <div>
+                <div className="padding-top-15px">
                     <div className="cu-post-detail-info margin-y-15px">
                         Choose one of these suggested images to show before your
                         video starts playing.
@@ -43,7 +43,7 @@ function CUPFVLThumnailSuggested({
                     <div className="CUPFVLThumnailSuggested_thumbnail pos-rel margin-top-10px brs-6px border-blur">
                         <img
                             className="wh-100 object-fit-cover brs-6px"
-                            src={thumbnail_suggeted_arr[thumbnail_suggeted_ix]}
+                            src={thumbnail_suggested_arr[thumbnail_suggested_ix]}
                             alt=""
                         />
 
@@ -51,27 +51,27 @@ function CUPFVLThumnailSuggested({
                             <BtnNexPrev
                                 is_next={false}
                                 btn_class={`CUPFVLThumnailSuggested_btn ${
-                                    thumbnail_suggeted_ix <= 0
+                                    thumbnail_suggested_ix <= 0
                                         ? 'CUPFVLThumnailSuggested_btn-disable'
                                         : 'CUPFVLThumnailSuggested_btn-active'
                                 }`}
                                 size_icon="16px"
-                                disabled={thumbnail_suggeted_ix == 0}
+                                disabled={thumbnail_suggested_ix == 0}
                                 handleClick={prevThumbnailSuggested}
                             />
 
                             <BtnNexPrev
                                 is_next={true}
                                 btn_class={`CUPFVLThumnailSuggested_btn margin-left-10px ${
-                                    thumbnail_suggeted_ix >=
-                                    thumbnail_suggeted_arr.length - 1
+                                    thumbnail_suggested_ix >=
+                                    thumbnail_suggested_arr.length - 1
                                         ? 'CUPFVLThumnailSuggested_btn-disable'
                                         : 'CUPFVLThumnailSuggested_btn-active'
                                 }`}
                                 size_icon="16px"
                                 disabled={
-                                    thumbnail_suggeted_ix >=
-                                    thumbnail_suggeted_arr - 1
+                                    thumbnail_suggested_ix >=
+                                    thumbnail_suggested_arr - 1
                                 }
                                 handleClick={nextThumbnailSuggested}
                             />

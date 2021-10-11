@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import './MainAndUnder.scss';
 
 //
 MainAndUnder.propTypes = {
     main_elm: PropTypes.element,
     under_elm: PropTypes.element,
+
+    class_name: PropTypes.string,
     class_main: PropTypes.string,
     class_under: PropTypes.string,
 
@@ -23,6 +25,8 @@ MainAndUnder.propTypes = {
 function MainAndUnder({
     main_elm,
     under_elm,
+
+    class_name,
     class_main,
     class_under,
 
@@ -30,28 +34,30 @@ function MainAndUnder({
     use_mouse,
 
     trans_x,
-    no_transition,
+    is_run,
 
     handleStart,
 }) {
     //
     return (
         <div
-            className="MainAndUnder pos-rel"
+            className={`MainAndUnder pos-rel ${class_name}`}
             onTouchStart={use_touch ? handleStart : undefined}
-            onMouseMove={use_mouse ? handleStart : undefined}
+            onMouseDown={use_mouse ? handleStart : undefined}
         >
             <div className="MainAndUnder_row">
                 <div
                     className={`MainAndUnder_main ${class_main} pos-rel z-index-lv1 ${
-                        no_transition ? '' : 'MainAndUnder_main-trans'
+                        is_run ? '' : 'MainAndUnder_main-trans'
                     }`}
                     style={{ transform: `translateX(${trans_x}px)` }}
                 >
                     {main_elm}
                 </div>
 
-                <div className={`MainAndUnder_under pos-abs h-100per ${class_under}`}>
+                <div
+                    className={`MainAndUnder_under pos-abs h-100per ${class_under}`}
+                >
                     {under_elm}
                 </div>
             </div>

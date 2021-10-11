@@ -17,6 +17,7 @@ function CUPTagSearch({ value, changeSearch, handleConfirmTag }) {
                 <div className="CUPTagSearch_search flex-grow-1">
                     <PostInputSearch
                         value={value}
+                        placeholder="Search for friends"
                         changeSearch={changeSearch}
                     />
                 </div>

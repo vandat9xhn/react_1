@@ -34,8 +34,8 @@ function CUPostFixVideo({
         thumbnail_ix: -1,
 
         thumbnail_upload: '',
-        thumbnail_suggeted_arr: [''],
-        thumbnail_suggeted_ix: 0,
+        thumbnail_suggested_arr: [''],
+        thumbnail_suggested_ix: 0,
     });
 
     const {
@@ -44,15 +44,15 @@ function CUPostFixVideo({
         thumbnail_ix,
 
         thumbnail_upload,
-        thumbnail_suggeted_arr,
-        thumbnail_suggeted_ix,
+        thumbnail_suggested_arr,
+        thumbnail_suggested_ix,
     } = state_obj;
 
     const thumbnail =
         (thumbnail_ix == -1
             ? ''
             : [
-                  thumbnail_suggeted_arr[thumbnail_suggeted_ix],
+                  thumbnail_suggested_arr[thumbnail_suggested_ix],
                   thumbnail_upload,
                   '',
               ][thumbnail_ix]) || old_thumbnail;
@@ -88,7 +88,7 @@ function CUPostFixVideo({
             callback: (thumbnail_arr) => {
                 setStateObj({
                     ...state_obj,
-                    thumbnail_suggeted_arr: thumbnail_arr,
+                    thumbnail_suggested_arr: thumbnail_arr,
                 });
             },
         });
@@ -137,24 +137,24 @@ function CUPostFixVideo({
 
     //
     function nextThumbnailSuggested() {
-        const new_thumbnail_suggeted_ix = thumbnail_suggeted_ix + 1;
+        const new_thumbnail_suggeted_ix = thumbnail_suggested_ix + 1;
 
-        if (new_thumbnail_suggeted_ix <= thumbnail_suggeted_arr.length - 1) {
+        if (new_thumbnail_suggeted_ix <= thumbnail_suggested_arr.length - 1) {
             setStateObj({
                 ...state_obj,
-                thumbnail_suggeted_ix: new_thumbnail_suggeted_ix,
+                thumbnail_suggested_ix: new_thumbnail_suggeted_ix,
             });
         }
     }
 
     //
     function prevThumbnailSuggested() {
-        const new_thumbnail_suggeted_ix = thumbnail_suggeted_ix - 1;
+        const new_thumbnail_suggeted_ix = thumbnail_suggested_ix - 1;
 
         if (new_thumbnail_suggeted_ix >= 0) {
             setStateObj({
                 ...state_obj,
-                thumbnail_suggeted_ix: new_thumbnail_suggeted_ix,
+                thumbnail_suggested_ix: new_thumbnail_suggeted_ix,
             });
         }
     }
@@ -202,8 +202,8 @@ function CUPostFixVideo({
                             //
                             thumbnail_ix={thumbnail_ix}
                             thumbnail_upload={thumbnail_upload}
-                            thumbnail_suggeted_arr={thumbnail_suggeted_arr}
-                            thumbnail_suggeted_ix={thumbnail_suggeted_ix}
+                            thumbnail_suggested_arr={thumbnail_suggested_arr}
+                            thumbnail_suggested_ix={thumbnail_suggested_ix}
                             //
                             handleChangeCaption={handleChangeCaption}
                             handleChangeSrt={handleChangeSrt}

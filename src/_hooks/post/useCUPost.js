@@ -1,34 +1,72 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 //
 import { context_api } from '../../_context/ContextAPI';
 //
+import { IS_MOBILE } from '../../_constant/Constant';
+//
 import { UnitNumber } from '../../_some_function/UnitNumber';
+//
+import { data_story_bg_arr } from '../../_data/story/text';
 //
 import { openScreenConfirm } from '../../component/_screen/type/confirm/ScreenConfirm';
 //
 import { useMakeBodyHidden } from '../useMakeBodyHidden';
 
 //
+const BG_ARR = [
+    {
+        is_bg_img: false,
+        bg: 'var(--md-bg-primary)',
+        color: 'var(--color-333)',
+    },
+    {
+        is_bg_img: false,
+        bg: 'var(--green)',
+        color: 'var(--white)',
+    },
+    {
+        is_bg_img: false,
+        bg: 'var(--heart)',
+        color: 'var(--white)',
+    },
+    ...data_story_bg_arr.slice(0, 10).map((bg_img) => {
+        return {
+            is_bg_img: true,
+            bg: bg_img,
+            color: 'var(--white)',
+        };
+    }),
+].slice(0, IS_MOBILE ? undefined : 9);
+
+//
 export function useCUPost({
     old_permission = 0,
     old_main_content = '',
     old_vid_pics = [] || [
-        {
-            id: 0,
-            vid_pic: '',
-            content: '',
-            type: '',
-            alt: '',
-            user_tag_arr: [
-                {
-                    id: 0,
-                    profile_model: 0,
-                    first_name: '',
-                    last_name: '',
-                },
-            ],
-        },
-    ],
+            {
+                id: 0,
+                vid_pic: '',
+                content: '',
+                type: '',
+                alt: '',
+                user_tag_arr: [
+                    {
+                        id: 0,
+                        profile_model: 0,
+                        first_name: '',
+                        last_name: '',
+                    },
+                ],
+            },
+        ] || [
+            {
+                vid_pic: '',
+                content: '',
+                thumbnail: '',
+                srt_file: null,
+                type: '',
+            },
+        ],
     old_user_tag_arr = [] || [
         {
             id: 0,
@@ -40,6 +78,7 @@ export function useCUPost({
     ],
     old_emoji_obj = {} || {
         id: 0,
+        title: '',
         type: '',
         name: '',
         icon: '',
@@ -73,6 +112,7 @@ export function useCUPost({
 
         cu_post_part: 'home' || 'fix_all' || 'detail' || 'tag' || 'emoji',
         detail_ix: -1,
+        bg_arr: BG_ARR,
         bg_ix: 0,
 
         is_loading: false,
@@ -172,6 +212,13 @@ export function useCUPost({
             params_state: {
                 detail_ix: -1,
             },
+        });
+    }
+
+    //
+    function openBg() {
+        openCUPostPart({
+            part: 'bg',
         });
     }
 
@@ -434,6 +481,9 @@ export function useCUPost({
     // -----
 
     //
+    const has_vid_pic = c_vid_pics.length > 0;
+
+    //
     const has_change = checkHasChange();
     detectScreenHasChange(has_change);
 
@@ -464,9 +514,11 @@ export function useCUPost({
 
         ref_input_file,
         has_change,
+        has_vid_pic,
 
         openCUPostPart,
         openHome,
+        openBg,
         openFixAll,
         openDetail,
         openTag,

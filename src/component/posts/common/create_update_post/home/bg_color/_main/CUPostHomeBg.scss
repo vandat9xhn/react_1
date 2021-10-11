@@ -1,0 +1,12 @@
+.CUPostHomeBg_item_size{
+    flex-shrink: 0;
+    
+    width: 32px;
+    height: 32px;
+
+    cursor: pointer;
+
+    .PostBgChoice-active{
+        border: 1px solid var(--white);
+    }
+}

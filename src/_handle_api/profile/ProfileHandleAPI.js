@@ -26,7 +26,7 @@ export async function handle_API_ProfilePost_L(c_count = 0, user_id = -1) {
         c_count: c_count,
         user_id: user_id,
     });
-    console.log(c_count, user_id, res.data);
+    // console.log(c_count, user_id, res.data);
 
     return res.data;
 }

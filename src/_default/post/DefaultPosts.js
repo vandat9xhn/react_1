@@ -79,6 +79,8 @@ export const default_post_history_arr = () =>
 const post_vid_pic_obj = () => ({
     id: getRandomId(),
     vid_pic: getRandomVidPic(),
+    content: getRandomContent(),
+    user_tag_arr: [],
 });
 
 const post_vid_pic_arr = () =>

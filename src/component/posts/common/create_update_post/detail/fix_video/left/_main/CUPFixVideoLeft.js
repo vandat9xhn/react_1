@@ -16,8 +16,8 @@ function CUPFixVideoLeft({
     thumbnail_ix,
 
     thumbnail_upload,
-    thumbnail_suggeted_arr,
-    thumbnail_suggeted_ix,
+    thumbnail_suggested_arr,
+    thumbnail_suggested_ix,
 
     handleChangeCaption,
     handleChangeSrt,
@@ -46,8 +46,8 @@ function CUPFixVideoLeft({
                 <CUPFVideoLeftThumbnail
                     thumbnail_ix={thumbnail_ix}
                     thumbnail_upload={thumbnail_upload}
-                    thumbnail_suggeted_arr={thumbnail_suggeted_arr}
-                    thumbnail_suggeted_ix={thumbnail_suggeted_ix}
+                    thumbnail_suggested_arr={thumbnail_suggested_arr}
+                    thumbnail_suggested_ix={thumbnail_suggested_ix}
                     //
                     chooseThumbnail={chooseThumbnail}
                     changeThumbnailUpload={changeThumbnailUpload}

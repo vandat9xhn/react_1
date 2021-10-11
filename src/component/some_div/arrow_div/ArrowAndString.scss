@@ -1,16 +1,15 @@
-
 //
-.ArrowAndString_arrow{
-    .ArrowAndString_icon{
+.ArrowAndString_arrow {
+    .ArrowAndString_icon {
         transition: all 0.3s ease;
     }
 }
 //
-.ArrowAndString_arrow-down{
-    .ArrowAndString_icon{
+.ArrowAndString_arrow-down {
+    .ArrowAndString_icon {
         transform: rotate(90deg);
     }
-    .IconsArrow_dropdown{
-        fill: var(--base-seafoam);
-    }
+    // .IconsArrow_dropdown{
+    //     fill: var(--base-seafoam);
+    // }
 }

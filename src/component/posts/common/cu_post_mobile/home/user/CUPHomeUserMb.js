@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import PicNameContent from '../../../../../picture_name/pic_name_content/PicNameContent';
 import BtnPermission from '../../../../../button/permission/BtnPermission';
+// 
+import './CUPHomeUserMb.scss';
 
 //
 CUPHomeUserMb.propTypes = {};

@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+
 //
 import FooterWhich from '../which_footer/FooterWhich';
 
@@ -9,7 +11,11 @@ import './Footer.scss';
 function Footer() {
     //
     return (
-        <div className="Footer">
+        <div
+            className={`Footer ${
+                /^\/profile\/\d+$/.test(location.pathname) ? 'display-none' : ''
+            }`}
+        >
             <FooterWhich />
 
             <div className="Footer_foot padding-y-10px bg-shadow-9 font-18px text-upper font-500">
@@ -23,4 +29,4 @@ function Footer() {
     );
 }
 
-export default Footer;
+export default withRouter(Footer);

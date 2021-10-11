@@ -7,7 +7,7 @@ import { initial_posts } from '../../../_initial/post/InitialPosts';
 //
 import { useMounted } from '../../../_hooks/useMounted';
 //
-import Posts from '../../../component/posts/_posts/_main/PostsWs';
+import Posts from '../../../component/posts/_posts/_main/Posts';
 //
 import './UserPost.scss';
 

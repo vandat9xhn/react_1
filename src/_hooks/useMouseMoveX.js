@@ -49,17 +49,17 @@ export function useMouseMoveX({
         const client_change_x = new_client_x - client_x.current;
         const client_change_y = new_client_y - client_y.current;
 
-        handleMouseMove(client_change_x);
-        
-        client_x.current = new_client_x;
-        client_y.current = new_client_y;
-
         if (first_orientation.current == '') {
             first_orientation.current =
                 Math.abs(client_change_x) >= Math.abs(client_change_y)
                     ? 'x'
                     : 'y';
         }
+
+        handleMouseMove(client_change_x);
+        
+        client_x.current = new_client_x;
+        client_y.current = new_client_y;
     }
 
     //

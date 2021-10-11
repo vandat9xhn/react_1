@@ -9,11 +9,11 @@ import './CUPTagFriendsMb.scss';
 CUPTagFriendsMb.propTypes = {};
 
 //
-function CUPTagFriendsMb({ friend_arr, handleCheckedUser }) {
+function CUPTagFriendsMb({ friend_arr, handleCheckedUser, clearTagUser }) {
     //
     return (
         <div className="CUPTagFriendsMb">
-            <div className="padding-12px font-600 font-16px">Friends</div>
+            <div className="padding-12px font-600 font-16px">Suggested</div>
 
             <div>
                 {friend_arr.map((item, ix) => (

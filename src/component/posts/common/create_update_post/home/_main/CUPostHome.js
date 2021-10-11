@@ -29,19 +29,25 @@ function CUPostHome({
 
     ref_input_file,
     has_change,
+    has_vid_pic,
+    
     is_loading,
+    bg_arr,
+    bg_ix,
 
     handleChangeMainContent,
     handleChoosePermission,
-    showFixAll,
-    delAllVidPic,
-
+    handleChooseBg,
     handleStartLoadFile,
     handleChooseFiles,
+    delAllVidPic,
+
+    openBg,
+    openFixAll,
     openTagUsers,
     openEmoji,
     openMoreInput,
-    
+
     handleCUPost,
     handleClose,
 }) {
@@ -78,7 +84,7 @@ function CUPostHome({
                         emoji_obj={emoji_obj}
                         user_tag_arr={user_tag_arr}
                         permission={permission}
-                        // 
+                        //
                         openPermission={openPermission}
                         openTagUsers={openTagUsers}
                         openEmoji={openEmoji}
@@ -89,11 +95,17 @@ function CUPostHome({
                     <CUPostHomeContent
                         last_name={user.last_name}
                         main_content={main_content}
-                        urls_preview={vid_pics}
+                        vid_pics={vid_pics}
+                        has_vid_pic={has_vid_pic}
+                        //
+                        bg_arr={bg_arr}
+                        bg_ix={bg_ix}
                         is_loading={is_loading}
                         //
                         handleChangeMainContent={handleChangeMainContent}
-                        showFixAll={showFixAll}
+                        handleChooseBg={handleChooseBg}
+                        openFixAll={openFixAll}
+                        openBg={openBg}
                         delAllVidPic={delAllVidPic}
                     />
                 </div>
@@ -101,6 +113,8 @@ function CUPostHome({
                 <div className="CUPostHome_files_tag padding-y-20px">
                     <CUPostHomeMoreInput
                         ref_input_file={ref_input_file}
+                        bg_ix={bg_ix}
+                        //
                         handleStartLoadFile={handleStartLoadFile}
                         handleChooseFiles={handleChooseFiles}
                         openTagUsers={openTagUsers}
@@ -112,7 +126,7 @@ function CUPostHome({
                 <button
                     className={`w-100per padding-8px brs-5px btn text-secondary font-500 text-align-center ${
                         !has_change
-                            ? 'bg-ccc opacity-5 text-third'
+                            ? 'bg-ccc opacity-5 text-smoke'
                             : 'btn-active btn-hv bg-blue text-white cursor-pointer'
                     }`}
                     disabled={!has_change}

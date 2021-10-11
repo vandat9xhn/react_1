@@ -10,7 +10,7 @@ import { handle_API_Friend_L } from '../../../../../../_handle_api/profile/Profi
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import CUPTagSearchMb from '../search/CUPTagSearchMb';
-import CUPTagSeletedMb from '../selected/CUPTagSeletedMb';
+import CUPTagSelectedMb from '../selected/CUPTagSelectedMb';
 import CUPTagFriendsMb from '../friends/CUPTagFriendsMb';
 //
 import './CUPostTagUsersMb.scss';
@@ -111,6 +111,10 @@ function CUPostTagUsersMb({ user_tag_arr, handleChangeTag, handleBackHome }) {
         });
     }
 
+    function clearTagUser() {
+        setSelectedArr([]);
+    }
+
     // ----
 
     //
@@ -139,9 +143,10 @@ function CUPostTagUsersMb({ user_tag_arr, handleChangeTag, handleBackHome }) {
 
             {selected_arr.length ? (
                 <div>
-                    <CUPTagSeletedMb
+                    <CUPTagSelectedMb
                         selected_arr={selected_arr}
                         handleCheckedUser={handleCheckedSelected}
+                        clearTagUser={clearTagUser}
                     />
                 </div>
             ) : null}

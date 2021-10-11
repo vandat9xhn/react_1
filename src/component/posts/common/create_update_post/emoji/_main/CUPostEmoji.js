@@ -62,12 +62,7 @@ function CUPostEmoji({ emoji_obj, changeEmoji, handleBackHome }) {
 
             <div className={`${type_ix == 1 ? '' : 'display-none'}`}>
                 <CUPostActivity
-                    emoji_id={emoji_obj.id}
-                    emoji_type={
-                        !emoji_obj.type || emoji_obj.type == 'feeling'
-                            ? ''
-                            : emoji_obj.type
-                    }
+                    emoji_obj={emoji_obj}
                     changeActivity={changeEmoji}
                 />
             </div>

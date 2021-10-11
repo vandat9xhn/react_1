@@ -5,14 +5,19 @@
 }
 
 .CUPHomeContentMb_input-bg {
-    min-height: 200px;
+    height: 250px;
 
     background-size: 100% 100%;
     background-repeat: no-repeat;
 
     .CUPHomeContentMb_textarea {
         max-width: 80%;
-        max-height: 300px;
+        max-height: 80%;
         text-align: center;
     }
+}
+
+.CUPHomeContentMb_bg_item{
+    width: 32px;
+    height: 32px;
 }

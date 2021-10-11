@@ -15,9 +15,9 @@ import FixAll from '../fix_all/_main/FixAll';
 import CUPostDetail from '../detail/_main/CUPostDetail';
 import CUPostTagUsers from '../tag_uses/_main/CUPostTagUsers';
 import CUPostEmoji from '../emoji/_main/CUPostEmoji';
+import CUPostMoreInput from '../more_input/_main/CUPostMoreInput';
 //
 import './CUPost.scss';
-import CUPostMoreInput from '../more_input/_main/CUPostMoreInput';
 
 //
 CUPost.propTypes = {
@@ -49,9 +49,11 @@ function CUPost({
 
         ref_input_file,
         has_change,
+        has_vid_pic,
 
         openCUPostPart,
         openHome,
+        openBg,
         openFixAll,
         openDetail,
         openTag,
@@ -98,9 +100,12 @@ function CUPost({
         deleted_arr,
         updated_arr,
 
-        is_loading,
         cu_post_part,
         detail_ix,
+        bg_arr,
+        bg_ix,
+
+        is_loading,
         changed_detail,
     } = state_obj;
 
@@ -139,18 +144,24 @@ function CUPost({
                         //
                         ref_input_file={ref_input_file}
                         has_change={has_change}
+                        has_vid_pic={has_vid_pic}
+                        // 
                         is_loading={is_loading}
+                        bg_arr={bg_arr}
+                        bg_ix={bg_ix}
                         //
-                        handleChangeMainContent={handleChangeMainContent}
-                        handleChoosePermission={handleChoosePermission}
-                        showFixAll={openFixAll}
-                        delAllVidPic={openDelAllVidPic}
-                        //
-                        handleStartLoadFile={handleStartLoadFile}
-                        handleChooseFiles={handleChooseFiles}
+                        openBg={openBg}
+                        openFixAll={openFixAll}
                         openTagUsers={openTag}
                         openEmoji={openEmoji}
                         openMoreInput={openMoreInput}
+                        //
+                        handleChangeMainContent={handleChangeMainContent}
+                        handleChoosePermission={handleChoosePermission}
+                        handleChooseBg={handleChooseBg}
+                        delAllVidPic={openDelAllVidPic}
+                        handleStartLoadFile={handleStartLoadFile}
+                        handleChooseFiles={handleChooseFiles}
                         //
                         handleCUPost={onCUPost}
                         handleClose={handleClose}
@@ -194,6 +205,7 @@ function CUPost({
                     ) : cu_post_part == 'more_input' ? (
                         <CUPostMoreInput
                             vid_pic_checked={c_vid_pics.length > 0}
+                            vid_pic_banned={bg_ix >= 1}
                             tag_checked={user_tag_arr.length > 0}
                             emoji_checked={emoji_obj.id && emoji_obj.id > 0}
                             openCUPostPart={openCUPostPart}

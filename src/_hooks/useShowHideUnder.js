@@ -18,7 +18,6 @@ export function useShowHideUnder({ under_width = 0, other_state = {} }) {
 
     //
     function handleMouseMove(client_x_change) {
-        console.log(first_orientation.current);
         if (first_orientation.current == 'x') {
             setStateObj((state_obj) => {
                 const { trans_x } = state_obj;
@@ -34,6 +33,8 @@ export function useShowHideUnder({ under_width = 0, other_state = {} }) {
                     trans_x: trans_x + client_x_change,
                 };
             });
+        } else {
+            is_run.current = false
         }
     }
 
@@ -51,7 +52,9 @@ export function useShowHideUnder({ under_width = 0, other_state = {} }) {
     return {
         state_obj,
 
+        first_orientation,
         is_run,
+        
         handleStart,
     };
 }

@@ -2,15 +2,11 @@ import React, { useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
+import ContextPost from '../../../../_context/post/ContextPost';
 //
 import { is_api_fake } from '../../../../api/_ConstAPI';
 //
 import { openScreenPostVidPic } from '../../../_screen/type/vid_pics_post/ZoomVidPicPost';
-//
-import ContextPost from '../../../../_context/post/ContextPost';
-//
-import ComponentSkeleton from '../../../skeleton/component_skeleton/ComponentSkeleton';
-import FetchingDiv from '../../../some_div/fetching/FetchingDiv';
 //
 import {
     handle_API_Like_L,
@@ -37,8 +33,12 @@ import {
     handle_API_Sub_U,
 } from '../../../../_handle_api/post/HandleAPISub';
 //
-import Post from '../../_post/_main_post/PostWs';
+import ComponentSkeleton from '../../../skeleton/component_skeleton/ComponentSkeleton';
+import FetchingDiv from '../../../some_div/fetching/FetchingDiv';
+//
+import Post from '../../_post/_main_post/Post';
 import PostSkeleton from '../../_post/skeleton/PostSkeleton';
+// 
 import './Posts.scss';
 
 //
@@ -47,6 +47,7 @@ Posts.propTypes = {
     has_fetched: PropTypes.bool,
     is_fetching: PropTypes.bool,
 };
+
 Posts.defaultProps = {
     has_fetched: false,
     is_fetching: false,

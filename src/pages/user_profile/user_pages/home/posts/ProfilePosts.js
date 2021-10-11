@@ -17,7 +17,7 @@ import { handle_API_ProfilePost_L } from '../../../../../_handle_api/profile/Pro
 //
 import { handleCreateNewPost } from '../../../../../_default/post/PostHandleCreate';
 //
-import Posts from '../../../../../component/posts/_posts/_main/PostsWs';
+import Posts from '../../../../../component/posts/_posts/_main/Posts';
 import AddNewPost from '../../../../../component/posts/common/add_new_post/_main/AddNewPost';
 //
 import './ProfilePosts.scss';

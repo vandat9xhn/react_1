@@ -91,7 +91,7 @@ function Carousel({
         callback: handleAutoNext,
     });
 
-    const { first_orientation, handleStart, handleMove, handleEnd } =
+    const { is_run, first_orientation, handleStart, handleMove, handleEnd } =
         useMouseMoveX({
             handleMouseDown: handleTouchStart,
             handleMouseMove: handleTouchMove,
@@ -231,26 +231,38 @@ function Carousel({
     //
     function handleTouchMove(client_change) {
         if (first_orientation.current == 'x') {
+            if (ref_carousel_elm.current.style.touchAction != 'none') {
+                ref_carousel_elm.current.style.touchAction = 'none';
+            }
+
             setExtraTransX((extra_trans_x) => {
                 return extra_trans_x + client_change;
             });
+        } else {
+            is_run.current = false;
         }
     }
 
     //
     function handleTouchEnd() {
-        const ratio_trans_x =
-            -extra_trans_x / ref_carousel_elm.current.clientWidth;
+        if (first_orientation.current == 'x') {
+            const ratio_trans_x =
+                -extra_trans_x / ref_carousel_elm.current.clientWidth;
 
-        if (ratio_trans_x >= 0.25) {
-            handleNext();
-        } else if (ratio_trans_x <= -0.25) {
-            handlePrev();
+            if (ratio_trans_x >= 0.25) {
+                handleNext();
+            } else if (ratio_trans_x <= -0.25) {
+                handlePrev();
+            }
+
+            transition_none.current = false;
+            setExtraTransX(0);
+            stopInterval(false);
+        } else {
+            if (ref_carousel_elm.current.style.touchAction == 'none') {
+                ref_carousel_elm.current.style.removeProperty('touch-action');
+            }
         }
-
-        transition_none.current = false;
-        setExtraTransX(0);
-        stopInterval(false);
     }
 
     //

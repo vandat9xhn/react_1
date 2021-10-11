@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
@@ -15,7 +15,7 @@ import PLHeadSearch from '../../_components/search/PLHeadSearch';
 import PLHeadMenuMb from '../menu/_main/PLHeadMenuMb';
 //
 import img from '../../../../../../../image/pl_random_pic_head_mb_2.png';
-// 
+//
 import './PLHeadMb.scss';
 
 //
@@ -26,6 +26,17 @@ function PLHeadMb({ province, handleChangeAddress }) {
     //
     const { is_focus, setIsFocus } = useFocusBlur();
     const { is_true, setIsTrue, toggleBool } = useBool();
+
+    //
+    useEffect(() => {
+        const html = document.getElementsByTagName('html')[0];
+
+        if (is_true) {
+            html.dataset.scrollNoneOnce = 1;
+        } else {
+            html.removeAttribute('data-scroll-none-once');
+        }
+    }, [is_true]);
 
     // ----
 

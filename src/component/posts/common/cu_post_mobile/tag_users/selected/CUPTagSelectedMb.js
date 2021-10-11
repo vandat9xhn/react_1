@@ -4,14 +4,23 @@ import PropTypes from 'prop-types';
 import CUPTagUserItem from '../item/CUPTagUserItemMb';
 
 //
-CUPTagSeletedMb.propTypes = {};
+CUPTagSelectedMb.propTypes = {};
 
 //
-function CUPTagSeletedMb({ selected_arr, handleCheckedUser }) {
+function CUPTagSelectedMb({ selected_arr, handleCheckedUser, clearTagUser }) {
     //
     return (
-        <div className="CUPTagSeletedMb">
-            <div className="padding-12px font-600 font-16px">Selected</div>
+        <div className="CUPTagSelectedMb">
+            <div className="flex-between-center padding-12px">
+                <div className="font-600 font-16px">Selected</div>
+
+                <div
+                    className="text-blue font-13px font-500"
+                    onClick={clearTagUser}
+                >
+                    Clear
+                </div>
+            </div>
 
             <div>
                 {selected_arr.map((item, ix) => (
@@ -33,4 +42,4 @@ function CUPTagSeletedMb({ selected_arr, handleCheckedUser }) {
     );
 }
 
-export default CUPTagSeletedMb;
+export default CUPTagSelectedMb;

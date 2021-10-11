@@ -10,6 +10,7 @@ import CUPHomeContentMb from '../content/_main/CUPHomeContentMb';
 import CUPHomeUserMb from '../user/CUPHomeUserMb';
 import CUPostHomeVidPicMb from '../vid_pic/_main/CUPostHomeVidPicMb';
 import CUPostHomeTagMb from '../tag/_main/CUPostHomeTagMb';
+import CUPostHomeEmojiMb from '../emoji/_main/CUPostHomeEmojiMb';
 
 //
 CUPostHomeMb.propTypes = {};
@@ -25,11 +26,13 @@ function CUPostHomeMb({
     bg_ix,
     vid_pics,
     user_tag_arr,
+    emoji_obj,
 
     has_change,
 
-    openTagUsers,
     openEditPhoto,
+    openTagUsers,
+    openEmoji,
 
     handleChoosePermission,
     changeMainContent,
@@ -74,7 +77,7 @@ function CUPostHomeMb({
                 />
             </div>
 
-            <div>
+            <div className="margin-bottom-15px">
                 <CUPHomeContentMb
                     main_content={main_content}
                     vid_pic_count={vid_pics.length}
@@ -86,7 +89,7 @@ function CUPostHomeMb({
             </div>
 
             {bg_ix >= 1 ? null : (
-                <div className="padding-top-10px">
+                <div>
                     <CUPostHomeVidPicMb
                         vid_pics={vid_pics}
                         chooseVidPic={chooseVidPic}
@@ -100,6 +103,13 @@ function CUPostHomeMb({
                 <CUPostHomeTagMb
                     user_tag_arr={user_tag_arr}
                     openTagUsers={openTagUsers}
+                />
+            </div>
+
+            <div>
+                <CUPostHomeEmojiMb
+                    emoji_obj={emoji_obj}
+                    openEmoji={openEmoji}
                 />
             </div>
 

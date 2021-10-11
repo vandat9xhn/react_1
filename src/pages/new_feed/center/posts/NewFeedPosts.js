@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import Posts from '../../../../component/posts/_posts/_main/PostsWs';
+import Posts from '../../../../component/posts/_posts/_main/Posts';
 
 //
 NewFeedPosts.propTypes = {};

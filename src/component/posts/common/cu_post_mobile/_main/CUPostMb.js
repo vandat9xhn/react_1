@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { data_story_bg_arr } from '../../../../../_data/story/text';
-//
 import {
     CUPost_propTypes,
     CUPost_defaultProps,
@@ -17,32 +15,7 @@ import CUPostPhotoMb from '../photo/_main/CUPostPhotoMb';
 import CUPostTagUsersMb from '../tag_users/_main/CUPostTagUsersMb';
 //
 import './CUPostMb.scss';
-
-//
-const BG_ARR = [
-    {
-        is_bg_img: false,
-        bg: 'var(--md-bg-primary)',
-        color: 'var(--color-333)',
-    },
-    {
-        is_bg_img: false,
-        bg: 'var(--green)',
-        color: 'var(--white)',
-    },
-    {
-        is_bg_img: false,
-        bg: 'var(--heart)',
-        color: 'var(--white)',
-    },
-    ...data_story_bg_arr.slice(0, 10).map((bg_img) => {
-        return {
-            is_bg_img: true,
-            bg: bg_img,
-            color: 'var(--white)',
-        };
-    }),
-];
+import CUPostEmojiMb from '../emoji/_main/CUPostEmojiMb';
 
 //
 CUPostMb.propTypes = {
@@ -83,6 +56,7 @@ function CUPostMb({
         handleChoosePermission,
         handleChangeMainContent,
         handleChangeTag,
+        changeEmoji,
 
         handleStartLoadFile,
         handleChooseFiles,
@@ -113,6 +87,7 @@ function CUPostMb({
         main_content,
         c_vid_pics,
         user_tag_arr,
+        emoji_obj,
 
         created_arr,
         deleted_arr,
@@ -120,6 +95,7 @@ function CUPostMb({
 
         cu_post_part,
         detail_ix,
+        bg_arr,
         bg_ix,
 
         is_loading,
@@ -156,15 +132,17 @@ function CUPostMb({
                     permission={permission}
                     //
                     main_content={main_content}
-                    bg_arr={BG_ARR}
+                    bg_arr={bg_arr}
                     bg_ix={bg_ix}
                     vid_pics={c_vid_pics}
                     user_tag_arr={user_tag_arr}
+                    emoji_obj={emoji_obj}
                     //
                     has_change={has_change}
                     //
                     openEditPhoto={openDetail}
                     openTagUsers={openTag}
+                    openEmoji={openEmoji}
                     //
                     handleChoosePermission={handleChoosePermission}
                     changeMainContent={handleChangeMainContent}
@@ -191,6 +169,11 @@ function CUPostMb({
                     user_tag_arr={user_tag_arr}
                     handleChangeTag={handleChangeTag}
                     handleBackHome={openHome}
+                />
+            ) : cu_post_part == 'emoji' ? (
+                <CUPostEmojiMb
+                    emoji_obj={emoji_obj}
+                    changeEmoji={changeEmoji}
                 />
             ) : null}
 

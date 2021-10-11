@@ -15,8 +15,8 @@ CUPFVideoLeftThumbnail.propTypes = {};
 function CUPFVideoLeftThumbnail({
     thumbnail_ix,
     thumbnail_upload,
-    thumbnail_suggeted_arr,
-    thumbnail_suggeted_ix,
+    thumbnail_suggested_arr,
+    thumbnail_suggested_ix,
 
     chooseThumbnail,
     changeThumbnailUpload,
@@ -46,8 +46,8 @@ function CUPFVideoLeftThumbnail({
                     <div>
                         <CUPFVLThumnailSuggested
                             thumbnail_ix={thumbnail_ix}
-                            thumbnail_suggeted_arr={thumbnail_suggeted_arr}
-                            thumbnail_suggeted_ix={thumbnail_suggeted_ix}
+                            thumbnail_suggested_arr={thumbnail_suggested_arr}
+                            thumbnail_suggested_ix={thumbnail_suggested_ix}
                             //
                             chooseThumbnail={chooseThumbnail}
                             nextThumbnailSuggested={nextThumbnailSuggested}

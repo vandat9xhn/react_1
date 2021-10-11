@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//
-import CUPostFixHead from '../../_components/fix_head/CUPostFixHead';
-import CUPostMoreInputItem from '../item/CUPostMoreInputItem';
 // 
-import './CUPostMoreInput.scss';
 import IconsInput from '../../../../../../_icons_svg/Icons_input/IconsInput';
 import IconFaceGray from '../../../../../../_icons_svg/icons_like/_Icon_face_gray/IconFaceGray';
 import IconsPost from '../../../../../../_icons_svg/icons_post/IconsPost';
+//
+import CUPostFixHead from '../../_components/fix_head/CUPostFixHead';
+import CUPostMoreInputItem from '../item/CUPostMoreInputItem';
+//
+import './CUPostMoreInput.scss';
 
 //
 CUPostMoreInput.propTypes = {};
@@ -15,6 +16,7 @@ CUPostMoreInput.propTypes = {};
 //
 function CUPostMoreInput({
     vid_pic_checked,
+    vid_pic_banned,
     tag_checked,
     emoji_checked,
 
@@ -35,6 +37,7 @@ function CUPostMoreInput({
             title: 'Photo/Video',
             icon: <IconsInput size_icon="24px" />,
             checked: vid_pic_checked,
+            banned: vid_pic_banned,
             handleMoreInput: handleMoreInputVidPic,
         },
         {
@@ -42,6 +45,7 @@ function CUPostMoreInput({
             title: 'Tag people',
             icon: <IconsPost />,
             checked: tag_checked,
+            banned: false,
             handleMoreInput: () => openCUPostPart({ part: 'tag' }),
         },
         {
@@ -49,6 +53,7 @@ function CUPostMoreInput({
             title: 'Feeling/Activity',
             icon: <IconFaceGray stroke="var(--gold)" />,
             checked: emoji_checked,
+            banned: false,
             handleMoreInput: () => openCUPostPart({ part: 'emoji' }),
         },
         {
@@ -56,6 +61,7 @@ function CUPostMoreInput({
             title: 'Check in',
             icon: null,
             checked: false,
+            banned: false,
             handleMoreInput: handleBack,
         },
 
@@ -64,6 +70,7 @@ function CUPostMoreInput({
             title: 'Host a Q&A',
             icon: null,
             checked: false,
+            banned: false,
             handleMoreInput: handleBack,
         },
         {
@@ -71,6 +78,7 @@ function CUPostMoreInput({
             title: 'Life event',
             icon: null,
             checked: false,
+            banned: false,
             handleMoreInput: handleBack,
         },
         {
@@ -78,6 +86,7 @@ function CUPostMoreInput({
             title: 'GIF',
             icon: null,
             checked: false,
+            banned: false,
             handleMoreInput: handleBack,
         },
         {
@@ -85,6 +94,7 @@ function CUPostMoreInput({
             title: 'Live video',
             icon: null,
             checked: false,
+            banned: false,
             handleMoreInput: handleBack,
         },
     ];
@@ -101,16 +111,18 @@ function CUPostMoreInput({
 
             <div className="padding-5px font-17px font-600">
                 <div className="display-flex flex-wrap">
-                    {more_input.map((item, ix) => (
-                        <div key={ix} className="w-50per padding-5px">
-                            <CUPostMoreInputItem
-                                title={item.title}
-                                icon={item.icon}
-                                checked={item.checked}
-                                handleMoreInput={item.handleMoreInput}
-                            />
-                        </div>
-                    ))}
+                    {more_input.map((item, ix) =>
+                        item.banned ? null : (
+                            <div key={ix} className="w-50per padding-5px">
+                                <CUPostMoreInputItem
+                                    title={item.title}
+                                    icon={item.icon}
+                                    checked={item.checked}
+                                    handleMoreInput={item.handleMoreInput}
+                                />
+                            </div>
+                        )
+                    )}
                 </div>
             </div>
         </div>

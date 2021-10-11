@@ -4,9 +4,13 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../_context/ContextAPI';
 import { context_post } from '../../../../_context/post/ContextPost';
 //
+import { IS_MOBILE } from '../../../../_constant/Constant';
+// 
+import { getTypeVidOrPic } from '../../../../_some_function/VideoOrImage';
+//
 import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
-//
+// 
 import VirtualScroll from '../../../virtual_scroll/VirtualScroll';
 //
 import PictureName from '../../../picture_name/pic_name/PictureName';
@@ -15,7 +19,7 @@ import ContentMore from '../../../content_more/Content_more';
 import { openScreenConfirm } from '../../../_screen/type/confirm/ScreenConfirm';
 import { openScreenHistory } from '../../../_screen/type/history/ScreenHistory';
 import { openScreenPermission } from '../../../_screen/type/permission/_main/ScreenPermission';
-import { openScreenUpdate } from '../../../_screen/type/update/_main/ScreenUpdate';
+import { openScreenWithElm } from '../../../_screen/type/with_elm/ScreenWithElm';
 //
 import {
     handle_API_ContentMoreHistory_R,
@@ -35,6 +39,7 @@ import ActionsPost from '../actions_post/ActionsPost';
 import CommentsWs from '../../common/ws_comments/_main/CommentsWs';
 import LikeShareCmt from '../../common/like_share_cmt/_main/LikeShareCmtWs';
 import PostHistory from '../history/_main/PostHistory';
+import CUPostMb from '../../common/cu_post_mobile/_main/CUPostMb';
 //
 import './Post.scss';
 
@@ -117,22 +122,44 @@ function Post({
             handle_API_PostUpdate_R(id)
         );
 
-        const vid_pics_update = data.vid_pics.map((item) => ({
-            id: item.id,
-            content: item.content,
-            vid_pic: item.vid_pic,
-            type: item.vid_pic.endsWith('./mp4') ? 'video' : 'image',
-        }));
+        const vid_pic_update_arr = data.vid_pics.map((item) => {
+            const type =
+                getTypeVidOrPic(item.vid_pic) == 'img'
+                    ? 'image'
+                    : getTypeVidOrPic(item.vid_pic);
 
-        openScreenUpdate({
+            return item.type == 'image'
+                ? {
+                      id: item.id,
+                      content: item.content,
+                      vid_pic: item.vid_pic,
+                      type: type,
+                      user_tag_arr: item.user_tag_arr,
+                  }
+                : {
+                      id: item.id,
+                      content: item.content,
+                      vid_pic: item.vid_pic,
+                      thumbnail: item.thumbnail,
+                      srt_file: item.srt_file,
+                      type: type,
+                  };
+        });
+
+        const ComponentCUPost = IS_MOBILE ? CUPostMb : CUPost;
+
+        openScreenWithElm({
             openScreenFloor: openScreenFloor,
-
-            title: 'Update',
-            UpdateComponent: CUPost,
-
-            main_content: data.content,
-            vid_pics: vid_pics_update,
-            handleCUPost: handleUpdate,
+            elm: (
+                <ComponentCUPost
+                    title="Update post"
+                    main_content={data.content}
+                    vid_pics={vid_pic_update_arr}
+                    title_action="Update"
+                    user_tag_arr={[]}
+                    handleCUPost={handleUpdate}
+                />
+            ),
         });
     }
 

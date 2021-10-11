@@ -93,6 +93,7 @@ const config = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'static/css/[contenthash].min.css',
+            ignoreOrder: true,
         }),
 
         new HtmlWebpackPlugin({

@@ -16,6 +16,7 @@ CUPostHomeMoreInput.propTypes = {};
 //
 function CUPostHomeMoreInput({
     ref_input_file,
+    bg_ix,
 
     handleStartLoadFile,
     handleChooseFiles,
@@ -28,26 +29,33 @@ function CUPostHomeMoreInput({
     return (
         <div className="CUPostHomeMoreInput padding-x-15px padding-y-4px bg-primary border-blur brs-5px">
             <div className="CUPostHomeMoreInput_row flex-between-center">
-                <div className="font-500 cursor-pointer">Add to your post</div>
+                <div
+                    className="font-500 cursor-pointer"
+                    onClick={openMoreInput}
+                >
+                    Add to your post
+                </div>
 
                 <div className="display-flex align-items-center">
-                    <div className="CUPostHomeMoreInput_files margin-right-10px">
-                        <InputFile
-                            accept="image/*, video/*"
-                            file_multiple={true}
-                            face_circle={false}
-                            title="Choose images/videos"
-                            handleStartLoadFile={handleStartLoadFile}
-                            handleChange={handleChooseFiles}
-                        >
-                            <div
-                                ref={ref_input_file}
-                                className="CUPostHomeMoreInput_icon CUPostHomeMoreInput_file"
+                    {bg_ix >= 1 ? null : (
+                        <div className="CUPostHomeMoreInput_files margin-right-10px">
+                            <InputFile
+                                accept="image/*, video/*"
+                                file_multiple={true}
+                                face_circle={false}
+                                title="Choose images/videos"
+                                handleStartLoadFile={handleStartLoadFile}
+                                handleChange={handleChooseFiles}
                             >
-                                <IconsInput size_icon="1.5rem" />
-                            </div>
-                        </InputFile>
-                    </div>
+                                <div
+                                    ref={ref_input_file}
+                                    className="CUPostHomeMoreInput_icon CUPostHomeMoreInput_file"
+                                >
+                                    <IconsInput size_icon="1.5rem" />
+                                </div>
+                            </InputFile>
+                        </div>
+                    )}
 
                     <div
                         className="CUPostHomeMoreInput_icon CUPostHomeMoreInput_tag"

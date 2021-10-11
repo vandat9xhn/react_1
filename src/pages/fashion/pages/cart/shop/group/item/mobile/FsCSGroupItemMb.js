@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { FS_SEARCH_DEL_WIDTH } from '../../../../../../../../_constant/Constant';
-// 
+//
 import { useShowHideUnder } from '../../../../../../../../_hooks/useShowHideUnder';
 //
 import MainAndUnder from '../../../../../../../../component/main_and_under/MainAndUnder';
@@ -37,10 +37,23 @@ function FsCSGroupItemMb({
     toggleSearchSame,
     handleDelete,
 }) {
+    // 
+    const [touch_action, setTouchAction] = useState(true)
+
     //
-    const { is_run, state_obj, handleStart } = useShowHideUnder({
-        under_width: FS_SEARCH_DEL_WIDTH,
-    });
+    const { is_run, first_orientation, state_obj, handleStart } =
+        useShowHideUnder({
+            under_width: FS_SEARCH_DEL_WIDTH,
+        });
+
+    //
+    useEffect(() => {
+        if (first_orientation.current == 'x') {
+            setTouchAction(false)
+        } else {
+            setTouchAction(true)
+        }
+    }, [first_orientation]);
 
     //
     return (
@@ -73,12 +86,15 @@ function FsCSGroupItemMb({
                     handleDelete={handleDelete}
                 />
             }
+            class_name={`${
+                !touch_action ? 'touch-action-none' : ''
+            }`}
             class_main="bg-primary"
             class_under="right-0 top-0"
             //
             use_touch={true}
+            is_run={is_run.current}
             trans_x={state_obj.trans_x}
-            no_transition={is_run.current}
             handleStart={handleStart}
         />
     );
