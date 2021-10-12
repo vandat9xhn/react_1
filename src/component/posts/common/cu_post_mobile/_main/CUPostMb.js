@@ -174,6 +174,7 @@ function CUPostMb({
                 <CUPostEmojiMb
                     emoji_obj={emoji_obj}
                     changeEmoji={changeEmoji}
+                    handleBackHome={openHome}
                 />
             ) : null}
 

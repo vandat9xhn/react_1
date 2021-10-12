@@ -168,7 +168,7 @@ function CUPostTagUsersMb({ user_tag_arr, handleChangeTag, handleBackHome }) {
 
             <div className="pos-fixed bottom-0 left-0 w-100per padding-10px bg-primary">
                 <button
-                    className="btn w-100per padding-y-5px brs-4px bg-blue text-white font-600"
+                    className="btn w-100per padding-y-8px brs-4px bg-blue text-white font-600"
                     type="button"
                     onClick={onConfirmTag}
                 >

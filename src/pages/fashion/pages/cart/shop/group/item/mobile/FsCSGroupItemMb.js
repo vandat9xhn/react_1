@@ -11,6 +11,7 @@ import FsCartItem from '../../../../../../components/cart_item/_main/FsCartItem'
 import FsCIDelSearchMb from '../../../../../../components/cart_item/del_search_mobile/FsCIDelSearchMb';
 //
 import './FsCSGroupItemMb.scss';
+import { toggleAppTouchNone } from '../../../../../../../../_some_function/AppTouchNoneTemp';
 
 //
 FsCSGroupItemMb.propTypes = {
@@ -37,23 +38,10 @@ function FsCSGroupItemMb({
     toggleSearchSame,
     handleDelete,
 }) {
-    // 
-    const [touch_action, setTouchAction] = useState(true)
-
     //
-    const { is_run, first_orientation, state_obj, handleStart } =
-        useShowHideUnder({
-            under_width: FS_SEARCH_DEL_WIDTH,
-        });
-
-    //
-    useEffect(() => {
-        if (first_orientation.current == 'x') {
-            setTouchAction(false)
-        } else {
-            setTouchAction(true)
-        }
-    }, [first_orientation]);
+    const { is_run, state_obj, handleStart } = useShowHideUnder({
+        under_width: FS_SEARCH_DEL_WIDTH,
+    });
 
     //
     return (
@@ -86,9 +74,6 @@ function FsCSGroupItemMb({
                     handleDelete={handleDelete}
                 />
             }
-            class_name={`${
-                !touch_action ? 'touch-action-none' : ''
-            }`}
             class_main="bg-primary"
             class_under="right-0 top-0"
             //

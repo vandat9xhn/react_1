@@ -22,6 +22,7 @@ function CUPostHomeTagMb({ user_tag_arr, openTagUsers }) {
                               .map((item) => item.last_name)
                               .join(', ')}`
                 }
+                has_chosen={user_tag_arr.length > 0}
                 handleClick={openTagUsers}
             />
         </div>

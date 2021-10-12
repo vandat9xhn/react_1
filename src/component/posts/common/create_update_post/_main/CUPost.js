@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import {
@@ -7,6 +7,7 @@ import {
 } from '../../../../../_prop-types/post/CUPost';
 //
 import { useCUPost } from '../../../../../_hooks/post/useCUPost';
+import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 //
 import './CUPostCommon.scss';
 //
@@ -39,6 +40,7 @@ function CUPost({
     title,
     title_action,
     chosen_vid_pic,
+    chosen_emoji,
 
     handleCUPost,
 }) {
@@ -85,7 +87,10 @@ function CUPost({
         old_vid_pics: old_vid_pics,
         user_tag_arr: old_user_tag_arr,
         old_emoji_obj: old_emoji_obj,
+        //
         chosen_vid_pic: chosen_vid_pic,
+        chosen_emoji: chosen_emoji,
+        //
         handleCUPost: handleCUPost,
     });
 
@@ -123,13 +128,52 @@ function CUPost({
         ref_input_file.current.click();
     }
 
+    // ------ SWITCH PART HOME TO OTHERS
+
+    //
+    const ref_main = useRef(null);
+    const ref_home_part = useRef(null);
+    const ref_other_part = useRef(null);
+    const ref_is_home = useRef(cu_post_part == 'home');
+
+    //
+    const forceUpdate = useForceUpdate();
+
+    //
+    useEffect(() => {
+        updatePart();
+    }, [cu_post_part, c_vid_pics.length, main_content, bg_ix]);
+
+    // ----
+
+    //
+    function updatePart() {
+        ref_is_home.current = cu_post_part == 'home';
+
+        const part_contain = ref_is_home.current
+            ? ref_home_part.current
+            : ref_other_part.current;
+        const { width, height } = part_contain.getBoundingClientRect();
+        const { main_width, main_height } = ref_main.current.getBoundingClientRect();
+
+        if (width != main_width || height != main_height) {
+            ref_main.current.style.width = `${width}px`;
+            ref_main.current.style.height = `${height}px`;
+
+            forceUpdate();
+        }
+    }
+
     //
     return (
         <div className="CUPost scroll-width-0">
-            <div className="CUPost_row">
+            <div ref={ref_main} className="CUPost_row">
                 <div
-                    className={`${
-                        cu_post_part == 'home' ? '' : 'display-none'
+                    ref={ref_home_part}
+                    className={`CUPost_part ${
+                        ref_is_home.current
+                            ? ''
+                            : 'trans-x--100per opacity-0 visibility-hidden'
                     }`}
                 >
                     <CUPostHome
@@ -145,7 +189,7 @@ function CUPost({
                         ref_input_file={ref_input_file}
                         has_change={has_change}
                         has_vid_pic={has_vid_pic}
-                        // 
+                        //
                         is_loading={is_loading}
                         bg_arr={bg_arr}
                         bg_ix={bg_ix}
@@ -168,7 +212,14 @@ function CUPost({
                     />
                 </div>
 
-                <div>
+                <div
+                    ref={ref_other_part}
+                    className={`CUPost_part ${
+                        ref_is_home.current
+                            ? 'trans-x-100per visibility-hidden'
+                            : ''
+                    }`}
+                >
                     {cu_post_part == 'fix_all' ? (
                         <FixAll
                             cu_post_part={cu_post_part}
@@ -211,7 +262,9 @@ function CUPost({
                             openCUPostPart={openCUPostPart}
                             handleMoreInputVidPic={handleMoreInputVidPic}
                         />
-                    ) : null}
+                    ) : (
+                        <div className="CUPost_part_hidden cu-post-part"></div>
+                    )}
                 </div>
             </div>
         </div>

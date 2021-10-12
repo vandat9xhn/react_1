@@ -62,10 +62,13 @@ function PostTagUserAdd({ handleTagUser }) {
     }
 
     //
-    return (
-        <div className="PostTagUserAdd">
-            <div className="PostTagUserAdd_border brs-4px"></div>
+    function handlePrevent(e) {
+        e.stopPropagation();
+    }
 
+    //
+    return (
+        <div className="PostTagUserAdd" onClick={handlePrevent}>
             <div className="padding-5px brs-5px bg-primary box-shadow-fb">
                 <div className="display-flex align-items-center margin-bottom-5px padding-x-8px padding-y-5px border-blur brs-4px">
                     <IconsInput y={200} size_icon="15px" />

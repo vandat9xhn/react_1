@@ -12,15 +12,11 @@ class CloseDiv extends Component {
 
     //
     componentDidMount() {
-        document
-            .getElementsByTagName('body')[0]
-            .addEventListener('click', this.handleClick);
+        window.addEventListener('click', this.handleClick);
     }
 
     componentWillUnmount() {
-        document
-            .getElementsByTagName('body')[0]
-            .removeEventListener('click', this.handleClick);
+        window.removeEventListener('click', this.handleClick);
     }
 
     //

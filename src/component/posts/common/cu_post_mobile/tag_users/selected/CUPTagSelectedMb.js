@@ -12,7 +12,7 @@ function CUPTagSelectedMb({ selected_arr, handleCheckedUser, clearTagUser }) {
     return (
         <div className="CUPTagSelectedMb">
             <div className="flex-between-center padding-12px">
-                <div className="font-600 font-16px">Selected</div>
+                <div className="font-600">Selected</div>
 
                 <div
                     className="text-blue font-13px font-500"

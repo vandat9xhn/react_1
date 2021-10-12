@@ -49,7 +49,7 @@ const FOOT_ARR = IS_MOBILE
           {
               Icon: <IconsInput size_icon="18px" />,
               title: 'Feeling/Activities',
-              component_props: {},
+              component_props: { chosen_emoji: true },
           },
       ];
 
@@ -112,7 +112,7 @@ function AddNewPost({ title, handleCreatePost }) {
                 </div>
 
                 {IS_MOBILE ? (
-                    <div className="padding-y-8px font-12px">
+                    <div className="padding-y-8px font-12px text-third font-600">
                         <div
                             className="AddNewPost_photo display-flex-center flex-col padding-x-10px"
                             onClick={openWithChoosePhoto}

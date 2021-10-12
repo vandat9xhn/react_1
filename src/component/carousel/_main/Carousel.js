@@ -15,6 +15,7 @@ import CarouselItem from '../item/_main/CarouselItem';
 import CarouselPosition from '../position/_main/CarouselPosition';
 //
 import './Carousel.scss';
+import { toggleAppTouchNone } from '../../../_some_function/AppTouchNoneTemp';
 
 //
 Carousel.propTypes = {
@@ -231,9 +232,7 @@ function Carousel({
     //
     function handleTouchMove(client_change) {
         if (first_orientation.current == 'x') {
-            if (ref_carousel_elm.current.style.touchAction != 'none') {
-                ref_carousel_elm.current.style.touchAction = 'none';
-            }
+            toggleAppTouchNone({touch_none: true})
 
             setExtraTransX((extra_trans_x) => {
                 return extra_trans_x + client_change;
@@ -245,6 +244,8 @@ function Carousel({
 
     //
     function handleTouchEnd() {
+         toggleAppTouchNone({touch_none: false})
+
         if (first_orientation.current == 'x') {
             const ratio_trans_x =
                 -extra_trans_x / ref_carousel_elm.current.clientWidth;
@@ -258,10 +259,6 @@ function Carousel({
             transition_none.current = false;
             setExtraTransX(0);
             stopInterval(false);
-        } else {
-            if (ref_carousel_elm.current.style.touchAction == 'none') {
-                ref_carousel_elm.current.style.removeProperty('touch-action');
-            }
         }
     }
 

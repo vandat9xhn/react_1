@@ -6,6 +6,10 @@ html {
     &[data-scroll-none-once] {
         overflow-y: hidden;
     }
+
+    &[data-touch-none] {
+        overflow-y: hidden;
+    }
 }
 
 *,

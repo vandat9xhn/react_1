@@ -85,6 +85,7 @@ export function useCUPost({
     },
 
     chosen_vid_pic = false,
+    chosen_emoji = false,
 
     handleCUPost = () => {},
     other_state = {},
@@ -147,6 +148,8 @@ export function useCUPost({
     useEffect(() => {
         if (chosen_vid_pic) {
             ref_input_file.current.click();
+        } else if (chosen_emoji) {
+            openEmoji();
         }
     }, []);
 

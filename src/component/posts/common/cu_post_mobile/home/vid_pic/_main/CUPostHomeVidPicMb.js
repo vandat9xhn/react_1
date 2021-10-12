@@ -23,6 +23,7 @@ function CUPostHomeVidPicMb({
                 <CUPostChoiceLabelMb
                     Icon={<IconsInput size_icon="18px" />}
                     title="Photos / Videos"
+                    has_chosen={vid_pics.length > 0}
                     handleClick={chooseVidPic}
                 />
             </div>

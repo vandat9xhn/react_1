@@ -16,10 +16,19 @@ function CUPostHomeEmojiMb({ emoji_obj, openEmoji }) {
             <CUPostChoiceLabelMb
                 Icon={<IconFaceGray size_icon="18px" stroke="var(--gold)" />}
                 title={
-                    emoji_obj.id
-                        ? `${emoji_obj.type} ${emoji_obj.name}`
-                        : 'Feelings/Activities'
+                    emoji_obj.id ? (
+                        <span>
+                            <span className="text-cap">{emoji_obj.type}</span>
+
+                            <span className="margin-left-4px">
+                                {emoji_obj.name}
+                            </span>
+                        </span>
+                    ) : (
+                        'Feelings/Activities'
+                    )
                 }
+                has_chosen={!!emoji_obj.id}
                 handleClick={openEmoji}
             />
         </div>

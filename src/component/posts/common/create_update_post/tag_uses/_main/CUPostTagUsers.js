@@ -111,20 +111,22 @@ function CUPostTagUsers({ user_tag_arr, handleChangeTag, handleBackHome }) {
                 />
             </div>
 
-            {user_tag_arr.length ? (
+            <div className="CUPostTagUsers_contain overflow-y-auto scroll-thin">
+                {user_tag_arr.length ? (
+                    <div>
+                        <CUPTagged
+                            user_tag_arr={user_tag_arr}
+                            handleDelTag={handleDelTag}
+                        />
+                    </div>
+                ) : null}
+
                 <div>
-                    <CUPTagged
-                        user_tag_arr={user_tag_arr}
-                        handleDelTag={handleDelTag}
+                    <CUPTagSugested
+                        friend_arr={friend_arr}
+                        chooseTagFriend={chooseTagFriend}
                     />
                 </div>
-            ) : null}
-
-            <div>
-                <CUPTagSugested
-                    friend_arr={friend_arr}
-                    chooseTagFriend={chooseTagFriend}
-                />
             </div>
         </div>
     );

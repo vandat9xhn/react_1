@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 // import TestHook from '../test_hook/TestHook';
@@ -25,10 +25,11 @@ import './LearnHTML.scss';
 // import LearnSaveScroll from '../save_scroll/LearnSaveScroll';
 // import LearnFashion from '../fashion/LearnFashion';
 // import LearnFsCartItem from '../fashion/LearnFsCartItem';
-import LearnFsCartSummary from '../fashion/LearnFsCartSummary';
-import LearnFsAddAddress from '../fs_add_address/LearnFsAddAddress';
+// import LearnFsCartSummary from '../fashion/LearnFsCartSummary';
+// import LearnFsAddAddress from '../fs_add_address/LearnFsAddAddress';
 import LearnNewPost from '../new_post/LearnNewPost';
-import LearnCropPic from '../crop_pic/LearnCropPic';
+// import LearnCropPic from '../crop_pic/LearnCropPic';
+// import LearnSwitch2Rect from '../switch_2_rect/LearnSwitch2Rect';
 
 //
 LearnHTML.propTypes = {};
@@ -38,6 +39,9 @@ function LearnHTML() {
     //
     return (
         <div className="LearnHTML">
+            <br />
+            <br />
+            <br />
             {/* <LearnWriteHtml /> */}
 
             {/* <LearnAppearancePosition /> */}
@@ -88,11 +92,11 @@ function LearnHTML() {
 
             {/* <LearnFsAddAddress /> */}
 
-            <LearnNewPost />
+            {/* <LearnNewPost /> */}
 
-            <br />
+            {/* <LearnCropPic /> */}
 
-            <LearnCropPic />
+            {/* <LearnSwitch2Rect /> */}
 
             <div className="h-100vh"></div>
         </div>

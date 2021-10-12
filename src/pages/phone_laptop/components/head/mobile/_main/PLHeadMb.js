@@ -17,6 +17,7 @@ import PLHeadMenuMb from '../menu/_main/PLHeadMenuMb';
 import img from '../../../../../../../image/pl_random_pic_head_mb_2.png';
 //
 import './PLHeadMb.scss';
+import { toggleAppHiddenTemp } from '../../../../../../_some_function/AppHiddenTemp';
 
 //
 PLHeadMb.propTypes = {};
@@ -29,13 +30,7 @@ function PLHeadMb({ province, handleChangeAddress }) {
 
     //
     useEffect(() => {
-        const html = document.getElementsByTagName('html')[0];
-
-        if (is_true) {
-            html.dataset.scrollNoneOnce = 1;
-        } else {
-            html.removeAttribute('data-scroll-none-once');
-        }
+        toggleAppHiddenTemp({ is_hidden: is_true });
     }, [is_true]);
 
     // ----

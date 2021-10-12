@@ -165,7 +165,15 @@
     transform: translateX(-50%);
 }
 
-.trans-y-50per{
+.trans-x-100per{
+    transform: translateX(100%);
+}
+
+.trans-x--100per{
+    transform: translateX(-100%);
+}
+
+.trans-y-100per{
     transform: translateY(50%);
 }
 

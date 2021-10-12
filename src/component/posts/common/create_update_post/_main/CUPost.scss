@@ -5,10 +5,32 @@
     overflow-x: hidden;
 }
 
-.CUPost_home{
-    width: 500px;
+.CUPost_row{
+    position: relative;
+    
+    margin-right: auto;
+    margin-left: auto;
+
+    border-radius: 8px;
+    background-color: var(--md-bg-primary);
+    box-shadow: var(--box-shadow-fb);
+
+    overflow: hidden;
+
+    transition: all 150ms ease-in;
 }
 
-.CUPost_row-fix{
-    transform: translateX(-50%);
+.CUPost_part{
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    transition: all 150ms ease-in;
+}
+// .
+.CUPost_part_hidden{
+    height: 350px;
 }

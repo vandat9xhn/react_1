@@ -10,7 +10,7 @@ import CUPostEmojiListMb from '../list/_main/CUPEmojiListMb';
 CUPostEmojiMb.propTypes = {};
 
 //
-function CUPostEmojiMb({ emoji_obj, changeEmoji }) {
+function CUPostEmojiMb({ emoji_obj, changeEmoji, handleBackHome }) {
     //
     const [state_obj, setStateObj] = useState({
         type: emoji_obj.type || '',
@@ -30,7 +30,11 @@ function CUPostEmojiMb({ emoji_obj, changeEmoji }) {
 
     //
     function changeChooseType() {
-        changeType('');
+        if (type) {
+            changeType('');
+        } else {
+            handleBackHome();
+        }
     }
 
     //

@@ -18,6 +18,12 @@
     }
 }
 
-.CUPFPRightTag_add {
+.CUPFPRightTag_add_border {
+    width: 75px;
+    height: 75px;
+    border: 1px solid var(--white);
+}
+
+.CUPFPRightTag_add_contain{
     width: 250px;
 }
