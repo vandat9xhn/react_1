@@ -120,7 +120,7 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
                         </div>
                     </div>
 
-                    <div className="CommentInput_files">
+                    <div className="CommentInput_files padding-right-4px">
                         <div className="CommentInput_files-row display-flex-center">
                             <div className="CommentInput_files-col">
                                 <InputFile

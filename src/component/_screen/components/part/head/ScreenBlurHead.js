@@ -8,11 +8,16 @@ import './ScreenBlurHead.scss';
 //
 ScreenBlurHead.propTypes = {
     title: PropTypes.string,
+    is_center: PropTypes.bool,
     closeScreenBlur: PropTypes.func,
 };
 
+ScreenBlurHead.defaultProps = {
+    is_center: false,
+};
+
 //
-function ScreenBlurHead({ title, closeScreenBlur }) {
+function ScreenBlurHead({ title, is_center, closeScreenBlur }) {
     //
     function onCloseScreenBlur() {
         closeScreenBlur();
@@ -20,17 +25,27 @@ function ScreenBlurHead({ title, closeScreenBlur }) {
 
     //
     return (
-        <div className="ScreenBlurHead text-primary border-bottom-blur">
-            <div className="ScreenBlurHead_row flex-between-center padding-left-16px padding-right-12px">
+        <div className="ScreenBlurHead pos-rel border-bottom-blur text-primary">
+            <div
+                className={`ScreenBlurHead_row padding-left-16px padding-right-12px ${
+                    is_center ? 'display-flex-center' : 'flex-between-center'
+                }`}
+            >
                 <h2 className="ScreenBlurHead_title font-700 font-20px">
                     {title}
                 </h2>
 
                 <div
-                    className="ScreenBlurHead_close display-flex-center brs-50 bg-ccc cursor-pointer hv-bg-hv"
-                    onClick={onCloseScreenBlur}
+                    className={`${
+                        is_center ? 'pos-abs right-0 padding-right-16px' : ''
+                    }`}
                 >
-                    <IconsArrow y={400} size_icon="24px" />
+                    <div
+                        className="ScreenBlurHead_close display-flex-center brs-50 bg-ccc cursor-pointer hv-bg-hv"
+                        onClick={onCloseScreenBlur}
+                    >
+                        <IconsArrow y={400} size_icon="24px" />
+                    </div>
                 </div>
             </div>
         </div>

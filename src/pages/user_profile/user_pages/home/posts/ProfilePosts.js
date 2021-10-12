@@ -86,10 +86,7 @@ function ProfilePosts({ name }) {
         //     user: user.id,
         // });
 
-        const new_data = handleCreateNewPost(
-            data.main_content,
-            data.c_vid_pics
-        );
+        const new_data = handleCreateNewPost({ data: data, user: user });
 
         setDataState((data_state) => ({
             ...data_state,

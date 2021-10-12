@@ -126,7 +126,7 @@ function CommentWs({ comment, is_poster }) {
 
         openScreenUpdate({
             openScreenFloor: openScreenFloor,
-        
+
             title: 'Update',
             UpdateComponent: CmtSubUpdate,
 
@@ -203,7 +203,7 @@ function CommentWs({ comment, is_poster }) {
                     <div className="CommentWs_user-pic">
                         <Link to={`/profile/${user.id}`}>
                             <img
-                                className="brs-50"
+                                className=" brs-50 object-fit-cover"
                                 src={user.picture}
                                 alt=""
                                 width="45"
@@ -212,7 +212,7 @@ function CommentWs({ comment, is_poster }) {
                         </Link>
                     </div>
 
-                    <div className="Comment_contain">
+                    <div className="Comment_contain flex-grow-1 padding-left-5px">
                         <div className="Comment_head">
                             <CommentWsHead
                                 user={user}

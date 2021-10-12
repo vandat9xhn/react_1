@@ -8,6 +8,7 @@ html {
     }
 
     &[data-touch-none] {
+        // touch-action: none;
         overflow-y: hidden;
     }
 }

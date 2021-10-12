@@ -1,39 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
-// 
+//
 import UserAdd from '../../../../user_add/UserAdd';
 //
 import ScreenBlur from '../../../components/frame/blur/ScreenBlur';
 import ScreenBlurHead from '../../../components/part/head/ScreenBlurHead';
 import ScreenBlurShowMore from '../../../components/part/foot/ScreenBlurShowMore';
 //
-import './ScreenShare.scss';
+import './ScreenUserAdd.scss';
 
 //
-export function openScreenShare({
+export function openScreenUserAdd({
     openScreenFloor,
 
     title,
-    handle_API_Share_L,
+    is_center = true,
+    handle_API_UserAdd_L,
 }) {
     openScreenFloor({
-        FloorComponent: ScreenShare,
+        FloorComponent: ScreenUserAdd,
         title: title,
-        handle_API_Share_L: handle_API_Share_L,
+        is_center: is_center,
+        handle_API_UserAdd_L: handle_API_UserAdd_L,
     });
 }
 
 //
-ScreenShare.propTypes = {};
+ScreenUserAdd.propTypes = {};
 
 //
-function ScreenShare({ closeScreen, title, handle_API_Share_L }) {
+function ScreenUserAdd({
+    title,
+    is_center,
+
+    handle_API_UserAdd_L,
+    closeScreen,
+}) {
     //
     const { data_state, getData_API } = useDataShowMore({
         initial_arr: [],
-        handle_API_L: handle_API_Share_L,
+        handle_API_L: handle_API_UserAdd_L,
     });
 
     const { data_arr, count, is_fetching, has_fetched } = data_state;
@@ -44,7 +52,7 @@ function ScreenShare({ closeScreen, title, handle_API_Share_L }) {
     }, []);
 
     //
-    function showMoreShare() {
+    function showMoreUserAdd() {
         getData_API();
     }
 
@@ -56,8 +64,12 @@ function ScreenShare({ closeScreen, title, handle_API_Share_L }) {
     //
     return (
         <ScreenBlur closeScreen={closeScreen}>
-            <div className="ScreenShare_contain">
-                <ScreenBlurHead title={title} closeScreenBlur={closeScreen} />
+            <div className="ScreenUserAdd_contain">
+                <ScreenBlurHead
+                    is_center={is_center}
+                    title={title}
+                    closeScreenBlur={closeScreen}
+                />
 
                 <div
                     className={`ScreenBlur_body ${
@@ -65,10 +77,10 @@ function ScreenShare({ closeScreen, title, handle_API_Share_L }) {
                     }`}
                 >
                     <div className="ScreenBlur_body_contain scroll-thin">
-                        {data_arr.map((share, ix) => (
+                        {data_arr.map((item, ix) => (
                             <UserAdd
                                 key={`ScreenLike_${ix}`}
-                                user={share.user}
+                                user={item.user}
                                 handleSendAddFriend={handleSendAddFriend}
                             />
                         ))}
@@ -78,11 +90,11 @@ function ScreenShare({ closeScreen, title, handle_API_Share_L }) {
                 <ScreenBlurShowMore
                     is_show_more={count > data_arr.length}
                     is_fetching={is_fetching}
-                    handleShowMore={showMoreShare}
+                    handleShowMore={showMoreUserAdd}
                 />
             </div>
         </ScreenBlur>
     );
 }
 
-export default ScreenShare;
+export default ScreenUserAdd;

@@ -9,6 +9,11 @@ export const initial_posts = [
             last_name: '',
             is_online: false,
         },
+
+        user_tag_arr: [],
+        user_tag_count: 0,
+        emoji_obj: {},
+
         content_obj: {
             content_more: '',
             has_more_content: false,

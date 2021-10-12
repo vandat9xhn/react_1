@@ -45,43 +45,47 @@ function CUPostHomeUser({
                 />
 
                 <div className="padding-left-10px font-500">
-                    <div className="margin-bottom-5px wk-box-vertical line-clamp-2 overflow-hidden">
+                    <div className="margin-bottom-5px">
                         <span>
                             {user.first_name} {user.last_name}
                         </span>
 
                         {emoji_obj.id || user_tag_str ? (
-                            <span className="margin-x-4px">is</span>
+                            <span className="font-400 text-secondary">
+                                {' is '}
+                            </span>
                         ) : (
                             ''
                         )}
 
                         {emoji_obj.id ? (
-                            <span>
-                                <span>
-                                    {emoji_obj.icon} {emoji_obj.type}
+                            <React.Fragment>
+                                <span className="font-400 text-secondary">
+                                    {emoji_obj.icon} {emoji_obj.type}{' '}
                                 </span>
 
                                 <span
-                                    className="margin-left-4px hv-underline cursor-pointer"
+                                    className="hv-underline cursor-pointer"
                                     onClick={openEmoji}
                                 >
                                     {emoji_obj.name}
                                 </span>
-                            </span>
+                            </React.Fragment>
                         ) : null}
 
                         {user_tag_str ? (
-                            <span className="margin-left-4px">
-                                <span>with</span>
+                            <React.Fragment>
+                                <span className="font-400 text-secondary">
+                                    {' with '}
+                                </span>
 
                                 <span
-                                    className="margin-left-4px hv-underline cursor-pointer"
+                                    className="hv-underline cursor-pointer"
                                     onClick={openTagUsers}
                                 >
                                     {user_tag_str}
                                 </span>
-                            </span>
+                            </React.Fragment>
                         ) : null}
                     </div>
 

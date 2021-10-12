@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { is_api_fake } from '../../../../api/_ConstAPI';
+import { is_api_fake } from '../../../../../api/_ConstAPI';
 //
-import ActionsNormal from '../../../actions/_main/ActionsNormal';
-import ActionHistory from '../../../actions/common_actions/history/ActionHistory';
-import ActionUpdate from '../../../actions/common_actions/update/ActionUpdate';
-import ActionDelete from '../../../actions/common_actions/delete/ActionDelete';
-import ActionReport from '../../../actions/common_actions/report/ActionReport';
-import ActionPermission from '../../../actions/common_actions/permission/ActionPermission';
+import ActionsNormal from '../../../../actions/_main/ActionsNormal';
+import ActionHistory from '../../../../actions/common_actions/history/ActionHistory';
+import ActionUpdate from '../../../../actions/common_actions/update/ActionUpdate';
+import ActionDelete from '../../../../actions/common_actions/delete/ActionDelete';
+import ActionReport from '../../../../actions/common_actions/report/ActionReport';
+import ActionPermission from '../../../../actions/common_actions/permission/ActionPermission';
 //
-import './ActionsPost.scss';
+import './PostHeadAction.scss';
 
 //
-ActionsPost.propTypes = {};
+PostHeadAction.propTypes = {};
 
 //
-function ActionsPost({
+function PostHeadAction({
     is_poster,
 
     openHistoryPost,
@@ -28,9 +28,9 @@ function ActionsPost({
     
     //
     return (
-        <div className="ActionsPost">
+        <div className="PostHeadAction">
             <ActionsNormal>
-                <ul className="ActionsPost__list">
+                <ul className="PostHeadAction_list list-none">
                     <li>
                         <ActionHistory handleOpenHistory={openHistoryPost} />
                     </li>
@@ -74,4 +74,4 @@ function ActionsPost({
     );
 }
 
-export default ActionsPost;
+export default PostHeadAction;

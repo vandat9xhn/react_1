@@ -7,7 +7,7 @@ import { context_post } from '../../../../../_context/post/ContextPost';
 import { UnitNumber } from '../../../../../_some_function/UnitNumber';
 //
 import { openScreenLike } from '../../../../_screen/type/like/_main/ScreenLike';
-import { openScreenShare } from '../../../../_screen/type/share/_main/ScreenShare';
+import { openScreenUserAdd } from '../../../../_screen/type/user_add/_main/ScreenUserAdd';
 //
 import MouseEnterLeaveInfo from '../../mouse_enter_leave_info/_main/MouseEnterLeaveInfo';
 import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
@@ -52,10 +52,10 @@ function Info({
 
     //
     function onOpenDetailShare() {
-        openScreenShare({
+        openScreenUserAdd({
             openScreenFloor: openScreenFloor,
-            title: 'Share',
-            handle_API_Share_L: on_API_Share_L,
+            title: 'People who shared this',
+            handle_API_UserAdd_L: on_API_Share_L,
         });
     }
 

@@ -32,6 +32,7 @@ function CUPostMb({
     vid_pics: old_vid_pics,
     permission: old_permission,
     user_tag_arr: old_user_tag_arr,
+    emoji_obj: old_emoji_obj,
 
     title,
     title_action,
@@ -77,6 +78,7 @@ function CUPostMb({
         old_vid_pics: old_vid_pics,
         old_permission: old_permission,
         old_user_tag_arr: old_user_tag_arr,
+        old_emoji_obj: old_emoji_obj,
 
         chosen_vid_pic: chosen_vid_pic,
         handleCUPost: handleCUPost,

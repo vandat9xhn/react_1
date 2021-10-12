@@ -21,7 +21,9 @@ ActionsNormal.propTypes = {
 
 ActionsNormal.defaultProps = {
     symbol_post: true,
-    title_action: <IconThreeDot size_icon="1.25rem" />,
+    title_action: (
+        <IconThreeDot size_icon="1.25rem" color="var(--md-color-third)" />
+    ),
 };
 
 //
@@ -69,10 +71,7 @@ function ActionsNormal({ title_action, symbol_post, children }) {
     //
     return (
         <CloseDiv makeDivHidden={closeActions}>
-            <div
-                className="Actions_contain pos-rel"
-                onClick={toggleActions}
-            >
+            <div className="Actions_contain pos-rel" onClick={toggleActions}>
                 <div
                     ref={ref_btn_elm}
                     className={`Actions_symbol ${

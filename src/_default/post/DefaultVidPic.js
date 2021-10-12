@@ -37,6 +37,7 @@ export const default_post_vid_pic_history_arr = () =>
 //
 export const default_post_vid_pic = () => ({
     id: getRandomId(),
+    user_tag: [],
     ...getRandomContentObj(),
     likes: [],
     arr_unique_like: getDefaultUniqueLikeArr(),

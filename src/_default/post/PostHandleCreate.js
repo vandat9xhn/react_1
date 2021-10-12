@@ -1,16 +1,26 @@
-import { default_login } from '../login/DefaultLogin';
-
 //
-export function handleCreateNewPost(content_post, vid_pics) {
-    const { picture, first_name, last_name } = default_login;
+export function handleCreateNewPost({ data, user }) {
+    const {
+        main_content,
+        c_vid_pics,
+        bg_arr,
+        bg_ix,
+        permission,
 
-    const new_vid_pics = vid_pics.map((item) => ({
+        user_tag_arr,
+        emoji_obj,
+    } = data;
+
+    const { picture, first_name, last_name } = user;
+
+    const new_vid_pics = c_vid_pics.map((item) => ({
         id: 6,
         content_obj: {
             content_more: '',
             has_more_content: false,
             content: item.content,
         },
+
         likes: [],
         arr_unique_like: [],
         count_like: 0,
@@ -33,12 +43,19 @@ export function handleCreateNewPost(content_post, vid_pics) {
             last_name: last_name,
             is_online: true,
         },
+
+        user_tag_arr: user_tag_arr.slice(0, 2),
+        user_tag_count: user_tag_arr.length,
+        emoji_obj: emoji_obj,
+
         content_obj: {
             content_more: '',
             has_more_content: false,
-            content: content_post,
+            content: main_content,
         },
         vid_pics: new_vid_pics,
+        bg_obj: bg_ix >= 0 ? bg_arr[bg_ix] : null,
+
         count_vid_pic: 1,
         likes: [],
         count_like: 0,
@@ -52,7 +69,7 @@ export function handleCreateNewPost(content_post, vid_pics) {
         histories: [],
         count_history: 0,
         created_time: new Date().toString(),
-        permission_post: 0,
+        permission_post: permission,
         updated_time: new Date().toString(),
         profile_model: 1,
     };

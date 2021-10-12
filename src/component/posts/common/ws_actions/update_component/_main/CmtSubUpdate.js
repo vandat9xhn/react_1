@@ -101,44 +101,40 @@ function CmtSubUpdate({ text, vid_pic, handleUpdate, detectHasChange }) {
                     />
                 </div>
 
-                <div className="CmtSubUpdate_pic">
-                    <div className="CmtSubUpdate_pic_contain">
-                        <div className="display-flex justify-content-center">
-                            <div
-                                className={
-                                    url
-                                        ? 'CmtSubUpdate_pic-item brs-5px'
-                                        : 'display-none'
-                                }
-                            >
-                                <ImgVidPreviewItem
-                                    item_ix={0}
-                                    urls={[{ url: url, type: type || 'image' }]}
-                                    url={url}
-                                    type={type || 'image'}
-                                    deleteAnItem={handleDeleteFile}
-                                />
-                            </div>
+                <div className="CmtSubUpdate_pic pos-rel margin-y-10px">
+                    <div className="display-flex justify-content-center">
+                        <div
+                            className={
+                                url
+                                    ? 'CmtSubUpdate_pic-item brs-5px'
+                                    : 'display-none'
+                            }
+                        >
+                            <ImgVidPreviewItem
+                                item_ix={0}
+                                urls={[{ url: url, type: type || 'image' }]}
+                                url={url}
+                                type={type || 'image'}
+                                deleteAnItem={handleDeleteFile}
+                            />
                         </div>
                     </div>
                 </div>
             </div>
 
             <div className="CmtSubUpdate_footer">
-                <div className="CmtSubUpdate_file">
-                    <div className="CmtSubUpdate_file-row">
-                        <div className="CmtSubUpdate_file-item">
-                            <InputFile
-                                accept="image/*, video/*"
-                                onChange={handleChangeFile}
-                            >
-                                <IconsInput size_icon="1rem" />
-                            </InputFile>
-                        </div>
+                <div className="CmtSubUpdate_file flex-end">
+                    <div className="CmtSubUpdate_file-item margin-4px">
+                        <InputFile
+                            accept="image/*, video/*"
+                            onChange={handleChangeFile}
+                        >
+                            <IconsInput size_icon="1rem" />
+                        </InputFile>
                     </div>
                 </div>
 
-                <div>
+                <div className="padding-10px">
                     <ButtonRipple disabled={!has_change} onClick={onUpdate}>
                         Update
                     </ButtonRipple>

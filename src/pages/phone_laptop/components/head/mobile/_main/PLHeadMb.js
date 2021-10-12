@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
+import { toggleAppHiddenTemp } from '../../../../../../_some_function/AppHiddenTemp';
+//
 import { useFocusBlur } from '../../../../../../_hooks/useFocusBlur';
 import { useBool } from '../../../../../../_hooks/useBool';
 //
@@ -17,7 +19,6 @@ import PLHeadMenuMb from '../menu/_main/PLHeadMenuMb';
 import img from '../../../../../../../image/pl_random_pic_head_mb_2.png';
 //
 import './PLHeadMb.scss';
-import { toggleAppHiddenTemp } from '../../../../../../_some_function/AppHiddenTemp';
 
 //
 PLHeadMb.propTypes = {};
@@ -32,6 +33,11 @@ function PLHeadMb({ province, handleChangeAddress }) {
     useEffect(() => {
         toggleAppHiddenTemp({ is_hidden: is_true });
     }, [is_true]);
+
+    //
+    useEffect(() => {
+        setIsTrue(false);
+    }, [location.pathname]);
 
     // ----
 

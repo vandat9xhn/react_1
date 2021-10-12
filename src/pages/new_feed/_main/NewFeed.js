@@ -80,6 +80,7 @@ function NewFeed() {
     /* ----------- CREATE ----------- */
 
     async function handleCreatePost(data) {
+        console.log(data);
         await handleScreenFetching(() => handle_API_Post_C(data));
 
         // const new_data = await handle_API_Post_C({
@@ -89,14 +90,11 @@ function NewFeed() {
         //     user: user.id,
         // });
 
-        const new_data = handleCreateNewPost(
-            data.main_content,
-            data.c_vid_pics
-        );
+        const new_data = handleCreateNewPost({ data: data, user: user });
 
         setDataState((data_state) => ({
             ...data_state,
-            data_arr: [new_data, ...data_state.data_arr],
+            data_arr: [new_data, , ...data_state.data_arr],
         }));
         closeScreenFloor();
     }

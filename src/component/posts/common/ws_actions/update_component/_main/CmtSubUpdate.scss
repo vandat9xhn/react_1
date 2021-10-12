@@ -15,13 +15,6 @@
     max-height: 8rem;
 }
 
-.CmtSubUpdate_pic {
-    margin: 0.5rem 0;
-}
-// .
-.CmtSubUpdate_pic_contain {
-    position: relative;
-}
 // ..
 .CmtSubUpdate_pic-item {
     padding: 0.25rem;
@@ -46,27 +39,4 @@
         height: auto;
         max-height: 100%;
     }
-}
-// ..
-.CmtSubUpdate_pic-none {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    width: 100%;
-    transform: translate(-50%, -50%);
-
-    text-align: center;
-    color: var(--md-bg-ccc);
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.CmtSubUpdate_file {
-    margin: 0.25rem;
-}
-// .
-.CmtSubUpdate_file-row {
-    display: flex;
-    justify-content: flex-end;
 }

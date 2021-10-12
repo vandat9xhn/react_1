@@ -27,10 +27,10 @@ function CommentWsHead({
     //
     return (
         <div className="CmtSub_head">
-            <div className="CommentWsHead_user width-fit-content">
+            <div className="CommentWsHead_user margin-bottom-5px width-fit-content">
                 <Link
                     to={`/profile/${user.id}`}
-                    className="normal-text hv-cl-blue font-500"
+                    className="normal-text hv-cl-blue font-600"
                 >
                     {user.first_name + ' ' + user.last_name}
                 </Link>
@@ -47,7 +47,6 @@ function CommentWsHead({
                 <CmtActionsWs
                     is_user={is_user}
                     is_poster={is_poster}
-
                     openHistoryCmt={openHistoryCmt}
                     openUpdateCmt={openUpdateCmt}
                     openDeleteCmt={openDeleteCmt}

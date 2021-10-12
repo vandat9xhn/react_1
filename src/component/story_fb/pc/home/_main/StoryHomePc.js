@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { initial_story_menu_obj } from '../../../../../_initial/story/InitialStory';
@@ -11,6 +11,7 @@ import StoryMenuPc from '../menu/StoryMenuPc';
 import StoryItemPc from '../item/StoryItemPc';
 //
 import './StoryHomePc.scss';
+import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
 
 //
 StoryHomePc.propTypes = {
@@ -79,46 +80,79 @@ function StoryHomePc({
     const { story_arr, count_story, has_fetched } = state_obj[story_type];
 
     //
+    const ref_is_fetching = useRef(false);
+
+    //
     useEffect(() => {
-        !has_fetched_followed && getData_Story('followed');
-        !has_fetched_yours && getData_Story('yours');
+        !has_fetched_followed && getData_Story({ new_story_type: 'followed' });
+        !has_fetched_yours && getData_Story({ new_story_type: 'yours' });
     }, []);
 
     useEffect(() => {
-        document.title = 'Story'
-    }, [])
+        document.title = 'Story';
+    }, []);
 
     /* ----------- */
 
     //
-    async function getData_Story(story_type) {
-        const { data, count: new_count } = await handle_API_FeedStory_L(
-            0,
-            story_type
-        );
+    async function getData_Story({
+        new_story_type = story_type,
+        c_count = 0,
+        new_active_ix = active_ix,
+    }) {
+        if (ref_is_fetching.current) {
+            return;
+        }
+
+        ref_is_fetching.current = true;
 
         setStateObj((state_obj) => {
-            const { story_arr } = state_obj[story_type];
+            return {
+                ...state_obj,
+                active_ix: new_active_ix,
+            };
+        });
+
+        const { data, count: new_count } = await handle_API_FeedStory_L(
+            c_count,
+            new_story_type
+        );
+
+        ref_is_fetching.current = false;
+
+        setStateObj((state_obj) => {
+            const { story_arr, count_story, has_fetched } =
+                state_obj[new_story_type];
 
             return {
                 ...state_obj,
-                [story_type]: {
+
+                [new_story_type]: {
                     story_arr: [...story_arr, ...data],
-                    count_story: new_count,
+                    count_story: has_fetched ? count_story : new_count,
                     has_fetched: true,
                 },
             };
         });
     }
 
-    /* ----------- */
+    // ----- NEXT PREV
 
     //
     function handleNextStoryUser() {
-        setStateObj({
-            ...state_obj,
-            active_ix: active_ix + 1,
-        });
+        const new_active_ix = active_ix + 1;
+
+        if (new_active_ix >= story_arr.length) {
+            getData_Story({
+                new_active_ix: new_active_ix,
+                c_count: new_active_ix,
+            });
+        } else {
+            setStateObj({
+                ...state_obj,
+                active_ix: active_ix + 1,
+            });
+        }
     }
 
     //
@@ -158,11 +192,7 @@ function StoryHomePc({
 
     //
     function handleClose() {
-        // if (has_close) {
-        //     closeScreen()
-        // } else {
-            history.back();
-        // }
+        history.back();
     }
 
     //
@@ -173,7 +203,6 @@ function StoryHomePc({
         }));
     }
 
-    // console.log(story_arr, count_story);
     //
     return (
         <div
@@ -206,7 +235,9 @@ function StoryHomePc({
                 </div>
 
                 <div className="flex-grow-1 pos-rel">
-                    {has_fetched && story_arr.length > 0 ? (
+                    {!ref_is_fetching.current &&
+                    has_fetched &&
+                    story_arr.length > 0 ? (
                         <StoryItemPc
                             count_story={count_story}
                             story_arr={story_arr}
@@ -214,10 +245,13 @@ function StoryHomePc({
                             story_type={story_type}
                             handleNextStoryUser={handleNextStoryUser}
                             handlePrevStoryUser={handlePrevStoryUser}
-                            // closeScreen={closeScreen}
                         />
                     ) : (
-                        <div className="wh-100 bg-shadow-9"></div>
+                        <div className="wh-100 display-flex-center bg-shadow-9">
+                            <CircleLoading
+                                is_fetching={ref_is_fetching.current}
+                            />
+                        </div>
                     )}
                 </div>
             </div>

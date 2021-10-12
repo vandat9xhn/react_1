@@ -14,9 +14,9 @@ function StoryItemPc({
     count_story,
     active_ix,
     story_type,
+
     handleNextStoryUser,
     handlePrevStoryUser,
-    // closeScreen,
 }) {
     //
     return (
@@ -26,9 +26,9 @@ function StoryItemPc({
                 count_story={count_story}
                 active_ix={active_ix}
                 story_type={story_type}
+                // 
                 handleNextStoryUser={handleNextStoryUser}
                 handlePrevStoryUser={handlePrevStoryUser}
-                closeScreen={undefined}
             />
         </div>
     );

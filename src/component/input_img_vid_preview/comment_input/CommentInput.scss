@@ -9,9 +9,13 @@
 }
 
 // ..
+.CommentInput_textarea{
+    min-height: 32px;
+}
+
+// ..
 .CommentInput_files {
     align-self: flex-end;
-    padding-right: 0.25rem;
 }
 
 // preview

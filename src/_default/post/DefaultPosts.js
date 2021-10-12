@@ -1,13 +1,17 @@
+import { data_story_bg_arr } from '../../_data/story/text';
 import { getRandomBool } from '../_common/default_bool';
 import {
     getRandomContent,
     getRandomContentMore,
     getRandomContentObj,
 } from '../_common/default_content';
-import { getRandomId } from '../_common/default_id';
+import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
+import { getRandomFromArr } from '../_common/getRandomFromArr';
+import { default_post_emoji_arr } from './cu_emoji';
+import { default_post_user_tag_arr } from './cu_user_tag';
 
 //
 export const default_content_more = () => ({
@@ -41,7 +45,7 @@ export const default_post_share_arr = () =>
     getDefaultArr(default_share_post_obj, 1, 10);
 
 //
-const default_vid_pic_cd = () => ({
+const default_vid_pic_CD = () => ({
     id: getRandomId(),
     vid_pic: getRandomVidPic(),
     content: getRandomContent(),
@@ -56,12 +60,12 @@ const default_post_history_obj = () => {
         id: getRandomId(),
 
         vid_pics_create: has_created
-            ? getDefaultArr(default_vid_pic_cd, 1, 4)
+            ? getDefaultArr(default_vid_pic_CD, 1, 4)
             : [],
         count_vid_pic_create: has_created ? 1 : 0,
 
         vid_pics_del: has_deleted
-            ? getDefaultArr(default_vid_pic_cd, 1, 4)
+            ? getDefaultArr(default_vid_pic_CD, 1, 4)
             : [],
         count_vid_pic_del: has_deleted ? 1 : 0,
 
@@ -80,33 +84,59 @@ const post_vid_pic_obj = () => ({
     id: getRandomId(),
     vid_pic: getRandomVidPic(),
     content: getRandomContent(),
-    user_tag_arr: [],
 });
 
 const post_vid_pic_arr = () =>
     getDefaultArr(post_vid_pic_obj, 0, getRandomBool() ? 6 : 0);
 
-export const default_post_obj = () => ({
-    id: getRandomId(),
-    ...getRandomUser(),
-    ...getRandomContentObj(),
-    vid_pics: post_vid_pic_arr(),
-    count_vid_pic: 1,
-    likes: [],
-    count_like: 2,
-    user_type_like: -2,
-    shares: [],
-    count_share: 3,
-    count_unique_share: 3,
-    count_user_shared: 2,
-    comments: [],
-    count_comment: 11,
-    histories: [],
-    count_history: 10,
-    created_time: '2021-04-01T07:48:48.176630Z',
-    permission_post: 0,
-    updated_time: '2021-04-01T15:18:30.339347Z',
-    profile_model: 1,
-});
+export const default_post_obj = () => {
+    // --- TAG
+    const max_user_tag = 2;
+    const user_tag_arr = default_post_user_tag_arr(max_user_tag);
+    const user_tag_count =
+        max_user_tag > user_tag_arr
+            ? user_tag_arr.length
+            : getRandomNumber(user_tag_arr.length, 12);
+
+    const vid_pics = post_vid_pic_arr();
+
+    return {
+        id: getRandomId(),
+        ...getRandomUser(),
+        emoji_obj:
+            getRandomBool() && getRandomBool()
+                ? getRandomFromArr(default_post_emoji_arr())
+                : {},
+        user_tag_arr: user_tag_arr,
+        user_tag_count: user_tag_count,
+        ...getRandomContentObj(),
+        vid_pics: vid_pics,
+        bg_obj: vid_pics.length
+            ? null
+            : getRandomBool()
+            ? {
+                  is_bg_img: true,
+                  bg: getRandomFromArr(data_story_bg_arr),
+                  color: 'white',
+              }
+            : null,
+        count_vid_pic: 1,
+        likes: [],
+        count_like: 2,
+        user_type_like: -2,
+        shares: [],
+        count_share: 3,
+        count_unique_share: 3,
+        count_user_shared: 2,
+        comments: [],
+        count_comment: 11,
+        histories: [],
+        count_history: 10,
+        created_time: '2021-04-01T07:48:48.176630Z',
+        permission_post: 0,
+        updated_time: '2021-04-01T15:18:30.339347Z',
+        profile_model: 1,
+    };
+};
 
 export const default_post_arr = () => getDefaultArr(default_post_obj, 6, 10);

@@ -10,6 +10,7 @@ import { openScreenWithElm } from '../../../../_screen/type/with_elm/ScreenWithE
 //
 import IconsProfile from '../../../../../_icons_svg/icons_profile/IconsProfile';
 import IconsInput from '../../../../../_icons_svg/Icons_input/IconsInput';
+import IconFaceGray from '../../../../../_icons_svg/icons_like/_Icon_face_gray/IconFaceGray';
 //
 import CUPost from '../../create_update_post/_main/CUPost';
 import CUPostMb from '../../cu_post_mobile/_main/CUPostMb';
@@ -37,18 +38,18 @@ const FOOT_ARR = IS_MOBILE
       ]
     : [
           {
-              Icon: <IconsInput size_icon="18px" />,
+              Icon: <IconsInput size_icon="24px" />,
               title: 'Live video',
               component_props: {},
           },
           {
-              Icon: <IconsInput size_icon="18px" />,
+              Icon: <IconsInput size_icon="24px" />,
               title: 'Photo/Video',
               component_props: { chosen_vid_pic: true },
           },
           {
-              Icon: <IconsInput size_icon="18px" />,
-              title: 'Feeling/Activities',
+              Icon: <IconFaceGray size_icon="24px" stroke="var(--gold)" />,
+              title: 'Feeling/Activity',
               component_props: { chosen_emoji: true },
           },
       ];
@@ -134,7 +135,7 @@ function AddNewPost({ title, handleCreatePost }) {
                         className="AddNewPost_foot_part display-flex-center padding-y-8px brs-5px cursor-pointer hv-bg-hv"
                         onClick={() => onOpenScreenUpdate(item.component_props)}
                     >
-                        <IconsInput size_icon="18px" />
+                        {item.Icon}
 
                         <div className="margin-left-10px">{item.title}</div>
                     </div>

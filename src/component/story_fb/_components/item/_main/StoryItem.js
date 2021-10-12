@@ -25,14 +25,12 @@ StoryItem.propTypes = {};
 function StoryItem({
     story_arr,
     count_story,
-    active_ix,
     story_type,
-
+    active_ix,
     is_fetching_story,
 
     handleNextStoryUser,
     handlePrevStoryUser,
-
     closeScreen,
 }) {
     //
@@ -65,7 +63,7 @@ function StoryItem({
         handleCloseFriendViewer();
     }, [id]);
 
-    /* ------ GET API ----- */
+    // -------- API
 
     //
     async function getData_StoryItem(is_next = true) {
@@ -162,7 +160,7 @@ function StoryItem({
             return;
         }
 
-        if (active_step == 0) {
+        if (active_step ) {
             handlePrevStoryUser();
         } else {
             handlePrevStoryItem();
@@ -199,7 +197,7 @@ function StoryItem({
         getData_StoryViewer();
     }
 
-    /* ---------- */
+    // ------
 
     function handleShare() {
         console.log(id);
@@ -213,7 +211,7 @@ function StoryItem({
         console.log(type_like);
     }
 
-    /* ---------- */
+    //
     function handleCloseStoryItem() {
         IS_MOBILE ? closeScreen() : history.back();
     }
@@ -238,9 +236,7 @@ function StoryItem({
 
                     <div
                         className={`${
-                            IS_MOBILE
-                                ? 'w-100per'
-                                : 'StoryItem_head_center'
+                            IS_MOBILE ? 'w-100per' : 'StoryItem_head_center'
                         }`}
                     >
                         <StoryItemCenter
