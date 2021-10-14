@@ -1,4 +1,16 @@
 .FsSearchProducts_item{
-    width: 196px;
-    max-width: 50%;
+    width: 20%;
+}
+
+.device-mobile{
+    .FsSearchProducts_item{
+        width: 33.33%;
+    }
+
+    @media (max-width:450px) {
+        .FsSearchProducts_item{
+            width: 50%;
+        }
+    }
+    
 }

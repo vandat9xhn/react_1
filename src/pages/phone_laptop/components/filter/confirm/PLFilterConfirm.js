@@ -14,11 +14,16 @@ PLFilterConfirm.propTypes = {
 };
 
 //
-function PLFilterConfirm({ count, is_fetching, handleFilter, clearFilter }) {
+function PLFilterConfirm({
+    filter_result_count,
+    is_fetching,
+    handleFilter,
+    clearFilter,
+}) {
     //
     return (
         <div className="PLFilterConfirm">
-            <div className="PLFilterConfirm_row flex-end align-items-center">
+            <div className="PLFilterConfirm_row display-flex-center">
                 <button
                     className="PLFilterConfirm_btn margin-right-10px padding-y-7px brs-3px border-current btn-active text-red cursor-pointer"
                     type="button"
@@ -41,7 +46,7 @@ function PLFilterConfirm({ count, is_fetching, handleFilter, clearFilter }) {
                             />
                         </div>
                     ) : (
-                        <div>Xem {count} kết quả</div>
+                        <div>Xem {filter_result_count} kết quả</div>
                     )}
                 </button>
             </div>

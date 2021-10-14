@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
-// 
+//
 import IconsInput from '../../../../../_icons_svg/Icons_input/IconsInput';
 //
 import FsSearchIn from '../search_in/_main/FsSearchIn';
@@ -43,9 +43,14 @@ function FsSearch({
     handleSearch,
 }) {
     //
+    function onSearch() {
+        value.trim() && handleSearch();
+    }
+
+    //
     function onKeyupInput(event) {
         if (event.keyCode == 13) {
-            handleSearch();
+            onSearch();
         }
     }
 
@@ -80,7 +85,8 @@ function FsSearch({
 
                 <button
                     className="FsSearch_key btn btn-hv btn-active display-flex-center brs-3px cursor-pointer"
-                    onClick={handleSearch}
+                    onClick={onSearch}
+                    type="button"
                     title="Search"
                 >
                     <IconsInput y={200} size_icon="1rem" />

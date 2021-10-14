@@ -1,0 +1,46 @@
+.PLFilterPriceCustom_contain {
+    transition: all 200ms ease-in;
+    padding: 0 10%;
+}
+.PLFilterPriceCustom_contain-active {
+    height: auto;
+    padding: 20px 10%;
+}
+.PLFilterPriceCustom_contain-none {
+    height: 0;
+    opacity: 0;
+}
+
+// .
+.PLFilterPriceCustom_connect {
+    height: 1px;
+}
+
+.PLFilterPriceCustom_input_range {
+    height: 5px;
+}
+// .
+.PLFilterPriceCustom_range {
+    border-radius: 20px;
+}
+// .
+.PLFilterPriceCustom_slider {
+    width: 20px;
+    height: 20px;
+    background-color: var(--md-bg-primary);
+    border-radius: 50%;
+    border: 1px solid var(--blue);
+
+    cursor: pointer;
+}
+// .
+.InputRangeTwoSliders-1-run {
+    .PLFilterPriceCustom_slider-1 {
+        box-shadow: 0 0 0 10px var(--shadow-2);
+    }
+}
+.InputRangeTwoSliders-2-run {
+    .PLFilterPriceCustom_slider-2 {
+        box-shadow: 0 0 0 10px var(--shadow-2);
+    }
+}

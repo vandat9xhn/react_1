@@ -42,6 +42,7 @@ import CUPostMb from '../../common/cu_post_mobile/_main/CUPostMb';
 import PostHead from '../head/_main/PostHead';
 //
 import './Post.scss';
+import PostText from '../text/_main/PostText';
 
 //
 Post.propTypes = {
@@ -314,7 +315,7 @@ function Post({
     return (
         <VirtualScroll rootMargin_y={1000}>
             <div className="Post padding-8px bg-primary box-shadow-1 brs-8px-md">
-                <div className="Post_head pos-rel">
+                <div className="Post_head margin-bottom-10px">
                     <PostHead
                         post_id={id}
                         user={user}
@@ -339,36 +340,16 @@ function Post({
                     />
                 </div>
 
-                <div className="Post_content">
-                    <div
-                        className={`Post__text ${
-                            bg_obj
-                                ? 'Post__text-bg display-flex-center text-align-center font-16px font-700'
-                                : ''
-                        }`}
-                        style={{
-                            ...(bg_obj
-                                ? {
-                                      ...getBgColorOrImg({
-                                          is_bg_img: bg_obj.is_bg_img,
-                                          bg: bg_obj.bg,
-                                      }),
-                                      color: bg_obj.color,
-                                  }
-                                : {}),
-                        }}
-                    >
-                        <div className="max-h-100per overflow-y-auto scroll-thin">
-                            <ContentMore
-                                content_obj={content_obj}
-                                seeMoreContent={on_API_MoreContent_R}
-                            />
-                        </div>
-                    </div>
+                <div>
+                    <PostText
+                        bg_obj={bg_obj}
+                        content_obj={content_obj}
+                        seeMoreContent={on_API_MoreContent_R}
+                    />
+                </div>
 
-                    <div className="Post__pic">
-                        <VidPicsPost post_ix={post_ix} vid_pics={vid_pics} />
-                    </div>
+                <div className="Post_pic">
+                    <VidPicsPost post_ix={post_ix} vid_pics={vid_pics} />
                 </div>
 
                 <div className="Post_Info">
@@ -406,7 +387,10 @@ function Post({
                     />
                 </div>
 
-                <div ref={ref_comments} className="Post_comment">
+                <div
+                    ref={ref_comments}
+                    className="Post_comment margin-top-10px"
+                >
                     <CommentsWs
                         is_poster={is_poster}
                         parent_id={id}

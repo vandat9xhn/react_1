@@ -1,0 +1,10 @@
+.PLFilterPrices_confirm {
+    height: auto;
+    border-top: 5px solid var(--md-bg-fb);
+
+    transition: all 200ms ease-in;
+}
+.PLFilterPrices_confirm-none {
+    height: 0;
+    opacity: 0;
+}

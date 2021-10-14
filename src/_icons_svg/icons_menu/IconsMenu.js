@@ -43,7 +43,7 @@ function IconsMenu({ size_icon, x, y }) {
                 d="M20,20 180,20
                 M20,100 180,100
                 M20,180 180,180"
-                strokeWidth="30"
+                strokeWidth="25"
             />
 
             {/* home x=200, y=0*/}

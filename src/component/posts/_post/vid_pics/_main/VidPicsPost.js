@@ -7,6 +7,14 @@ import VidPicPostItem from '../item/VidPicPostItem';
 //
 // import './VidPicsPost.scss';
 
+VidPicsPost.propTypes = {
+    vid_pics: PropTypes.array,
+};
+
+VidPicsPost.defaultProps = {
+    // vid_pics: [1],
+};
+
 //
 function VidPicsPost({ post_ix, vid_pics }) {
     //
@@ -16,7 +24,7 @@ function VidPicsPost({ post_ix, vid_pics }) {
                 <div className={vid_pics.length > 0 ? 'VidPics_grid' : ''}>
                     {vid_pics.map((item, index) => (
                         <VidPicPostItem
-                            key={`VidPicsPost_${index}`}
+                            key={index}
                             index={index}
                             post_ix={post_ix}
                             count_vid_pic={vid_pics.length}
@@ -31,13 +39,5 @@ function VidPicsPost({ post_ix, vid_pics }) {
         </div>
     );
 }
-
-VidPicsPost.propTypes = {
-    vid_pics: PropTypes.array,
-};
-
-VidPicsPost.defaultProps = {
-    vid_pics: [1],
-};
 
 export default VidPicsPost;

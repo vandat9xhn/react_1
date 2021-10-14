@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 //
 import PLFilterItem from '../item/PLFilterItem';
 import PLFilterConfirm from '../confirm/PLFilterConfirm';
+//
+import './PLFilterCommonList.scss';
 
 //
 PLFilterCommonList.propTypes = {};
 
 //
 function PLFilterCommonList({
-    count,
+    filter_count,
+    filter_result_count,
     is_fetching,
 
     filter_ix,
@@ -20,9 +23,14 @@ function PLFilterCommonList({
     clearFilter,
 }) {
     //
+    function onClearFilter() {
+        clearFilter(filter_ix);
+    }
+
+    //
     return (
-        <div className="PLFilterCommonList padding-20px brs-5px bg-primary box-shadow-fb">
-            <div className="margin-bottom-20px">
+        <div className="PLFilterCommonList padding-10px brs-5px bg-primary box-shadow-filter-phone">
+            <div>
                 <ul className="display-flex flex-wrap list-none">
                     {item_arr.map((item, item_ix) => (
                         <li key={item_ix} className="padding-5px">
@@ -39,12 +47,18 @@ function PLFilterCommonList({
                 </ul>
             </div>
 
-            <div>
+            <div
+                className={`PLFilterCommonList_confirm overflow-hidden ${
+                    filter_count || location.search
+                        ? 'margin-top-20px'
+                        : 'PLFilterCommonList_confirm-none'
+                }`}
+            >
                 <PLFilterConfirm
-                    count={count}
+                    filter_result_count={filter_result_count}
                     is_fetching={is_fetching}
                     handleFilter={handleFilter}
-                    clearFilter={clearFilter}
+                    clearFilter={onClearFilter}
                 />
             </div>
         </div>

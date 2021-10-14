@@ -1,25 +1,26 @@
-.FashionCart-mb{
-    .fs-cart-summary-part{
+.FashionCart-mb {
+    .fs-cart-summary-part {
         padding: 8px;
     }
-    
-    .FashionCart_fix{
+
+    .FashionCart_fix {
         width: 1.75rem;
         height: 1.75rem;
-    
+
         transition: all 200ms ease-in;
     }
-    .FashionCart_fix-done{
+    .FashionCart_fix-done {
         transform: rotate(0deg);
     }
-    .FashionCart_fix-not-done{
+    .FashionCart_fix-not-done {
         transform: rotate(-45deg);
     }
 
     // --------
-    .FashionCart_summary{
+    .FashionCart_summary {
         position: fixed;
-        width: 100%;
+        width: 600px;
+        max-width: 100%;
         z-index: var(--z-index-lv1);
     }
 }

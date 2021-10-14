@@ -14,24 +14,24 @@ const LearnHTML = React.lazy(() => import('../pages/learn/_main/LearnHTML'));
 
 //
 export const Routes = [
-    {
-        path: '/home',
-        component: Home,
-        export: true,
-        reset_position: true,
-    },
+    // {
+    //     path: '/home',
+    //     component: Home,
+    //     export: true,
+    //     reset_position: true,
+    // },
 
-    ...account_route_arr,
-    ...profile_route_arr,
+    // ...account_route_arr,
+    // ...profile_route_arr,
     ...phone_route_arr,
-    ...city_route_arr,
-    ...fashion_route_arr,
-    ...story_route_arr,
+    // ...city_route_arr,
+    // ...fashion_route_arr,
+    // ...story_route_arr,
 
-    {
-        path: '/learn-html',
-        component: LearnHTML,
-        export: true,
-        reset_position: true,
-    },
+    // {
+    //     path: '/learn-html',
+    //     component: LearnHTML,
+    //     export: true,
+    //     reset_position: true,
+    // },
 ];

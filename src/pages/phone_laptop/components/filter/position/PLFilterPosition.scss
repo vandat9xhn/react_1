@@ -1,0 +1,50 @@
+// -------
+
+%arrow {
+    content: '';
+
+    position: absolute;
+    bottom: 100%;
+
+    border-width: 0px 8px 10px 8px;
+    border-style: solid;
+}
+
+// --------
+
+.PLFilterPosition {
+    width: max-content;
+    min-width: 400px;
+    max-width: 600px;
+}
+// .
+.PLFilterPosition_contain {
+    &::before {
+        @extend %arrow;
+        border-color: transparent transparent var(--md-bg-ccc);
+    }
+
+    &::after {
+        @extend %arrow;
+        transform: translateY(1px);
+        border-color: transparent transparent var(--md-bg-primary);
+    }
+}
+.PLFilterPosition_contain-left {
+    &::before {
+        left: 20px;
+    }
+
+    &::after {
+        left: 20px;
+    }
+}
+.PLFilterPosition_contain-right {
+    &::before {
+        right: 20px;
+    }
+
+    &::after {
+        right: 20px;
+    }
+}

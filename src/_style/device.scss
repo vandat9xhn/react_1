@@ -24,8 +24,11 @@ body.device-mobile {
     }
 
     .fashion-head {
+        margin-left: auto;
+        margin-right: auto;
         min-width: auto;
-        width: 100%;
+        max-width: 100%;
+        width: 600px;
     }
 
     .fashion-head-font {

@@ -1,0 +1,18 @@
+// ..
+.PLAllProductList_item {
+    width: 200px;
+}
+
+// 
+@media (max-width: 600px) {
+    .PLAllProductList_item{
+        width: 33.33%;
+    }
+}
+
+// 
+@media (max-width: 450px) {
+    .PLAllProductList_item{
+        width: 50%;
+    }
+}

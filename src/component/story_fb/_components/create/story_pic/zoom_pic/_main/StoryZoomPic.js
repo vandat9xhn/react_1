@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import InputRange from '../../../../../../input/range/_main/InputRange';
+import InputRangeOneSlider from '../../../../../../input/range/one_slider/InputRangeOneSlider';
 //
 import StoryZoomRange from '../range/StoryZoomRange';
 import StoryZoomActive from '../active_range/StoryZoomActive';
@@ -40,7 +40,7 @@ function StoryZoomPic({ value, handleMouseMove, handleMouseEnd }) {
                 </div>
 
                 <div className="StoryZoomPic_center flex-grow-1">
-                    <InputRange
+                    <InputRangeOneSlider
                         range={<StoryZoomRange />}
                         active_range={<StoryZoomActive />}
                         slider={<StoryZoomSlider />}

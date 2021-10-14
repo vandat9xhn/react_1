@@ -1,0 +1,15 @@
+.PostText-bg {
+    height: 350px;
+    max-height: 75vw;
+    padding: 10% 15%;
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+//
+@media (max-width: 500px) {
+    .PostText-bg {
+        font-size: 15px;
+    }
+}
