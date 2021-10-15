@@ -1,0 +1,22 @@
+.device-mobile{
+    .PLFilterSummary_close {
+        position: sticky;
+        top: 0;
+        background: white;
+        border-bottom: 1px solid var(--md-bg-blur);
+
+        button{
+            margin-left: auto;
+        }
+    }
+
+    .PLFilterSummary_contain{
+        padding: 10px 10px 50px;
+    }
+
+    // .
+    .PLFilterSummary_part{
+        margin-top: 15px;
+        width: 100%;
+    }
+}

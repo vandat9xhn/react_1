@@ -4,6 +4,7 @@ import {
     INITIAL_PL_PHONES_STATE,
     PL_PHONES_MAX_PRICE,
     PL_PHONES_MIN_PRICE,
+    PL_PHONES_SORT_ARR,
 } from '../../../../../_initial/phone/pl_phones';
 import { formatNum } from '../../../../../_some_function/FormatNum';
 
@@ -37,15 +38,17 @@ export function PLPhones_getFilterKeyArrFromUrl({
 }
 
 //
-export function PLPhones_changeFilterData(
-    filter_arr = INITIAL_PL_PHONES_STATE.filter_arr
-) {
+export function PLPhones_changeFilterData({
+    filter_arr = INITIAL_PL_PHONES_STATE.filter_arr,
+    filter_check_arr = INITIAL_PL_PHONES_STATE.filter_check_arr,
+}) {
     const search_obj = ParseLocationSearch();
     const result = {
         filter_count: 0,
         is_price_custom: false,
         price_custom_1: PL_PHONES_MIN_PRICE,
         price_custom_2: PL_PHONES_MAX_PRICE,
+        sort_ix: 0,
     };
 
     // --- FILTER ARR
@@ -100,5 +103,20 @@ export function PLPhones_changeFilterData(
         )}đ - ${formatNum(result.price_custom_2 * 1000)}đ`;
     }
 
+    // ---- FILTER CHECK + SORT
+
+    filter_check_arr.forEach((item) => {
+        if (item.filter_key in search_obj) {
+            item.checked = true;
+        }
+    });
+
+    if ('sort' in search_obj) {
+        result.sort_ix = PL_PHONES_SORT_ARR.findIndex(
+            (item) => item.sort_key == search_obj['sort']
+        );
+
+    }
+    
     return result;
 }

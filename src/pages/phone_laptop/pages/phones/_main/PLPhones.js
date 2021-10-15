@@ -5,19 +5,13 @@ import {
     initial_pl_phones_state,
     PL_PHONES_MAX_PRICE,
     PL_PHONES_MIN_PRICE,
+    PL_PHONES_SORT_ARR,
 } from '../../../../../_initial/phone/pl_phones';
 //
 import { useMounted } from '../../../../../_hooks/useMounted';
 import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 //
 import ScreenBlurShowMore from '../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
-//
-import PLFilter from '../../../components/filter/_main/PLFilter';
-import PLFilterCommonList from '../../../components/filter/common_list/PLFilterCommonList';
-import PLBtnFilterSummary from '../../../components/btn_filter_summary/PLBtnFilterSummary';
-import ProductBrands from '../../../components/brands/_main/PLBrands';
-import PLAllProductList from '../../../components/list/PLAllProductList';
-import PLFilterPrices from '../../../components/filter_price/_main/PLFilterPrices';
 //
 import {
     getDataMore_PLFilter,
@@ -26,15 +20,30 @@ import {
 //
 import { PLPhones_ChooseFilterItem } from '../_state/PLPhones_ChooseFilterItem';
 import { PLPhones_toggleFilterPrice } from '../_state/PLPhones_toggleFilterPrice';
+import { PLPhones_getData_Filter } from '../_state/PLPhones_Filter';
 import {
     PLPhones_clearAllFilter,
     PLPhones_clearFilter,
     PLPhones_clearFilterPriceCustom,
 } from '../_state/PLPhone_clearFilter';
 //
+import PLFilter from '../../../components/filter/_main/PLFilter';
+import PLFilterCommonList from '../../../components/filter/common_list/PLFilterCommonList';
+import ProductBrands from '../../../components/brands/_main/PLBrands';
+import PLPhonesSort from '../sort/PLPhonesSort';
+import PLAllProductList from '../../../components/list/PLAllProductList';
+import PLFilterPrices from '../../../components/filter_price/_main/PLFilterPrices';
+import PLPhonesFilterSummary from '../filter_summary/_main/PLPhonesFilterSummary';
+//
 import './PLPhones.scss';
 import './PLPhonesRes.scss';
-import { PLPhones_getData_Filter } from '../_state/PLPhones_Filter';
+
+import '../_mobile_css/_PLPhonesMb.scss';
+import '../_mobile_css/PLFilterSumCommonListMb.scss';
+import '../_mobile_css/PLFilterSummaryMb.scss';
+import '../_mobile_css/PLPhonesFilterSummaryMb.scss';
+import { PLPhones_selectSort } from '../_state/PLPhones_selectSort';
+import { PLPhones_checkFilter } from '../_state/PLPhones_checkFilter';
 
 //
 PLPhones.propTypes = {};
@@ -48,15 +57,17 @@ function PLPhones(props) {
 
     const {
         filter_arr,
+        filter_count,
+        filter_result_count,
+        filter_fetching,
+
+        filter_check_arr,
+        sort_ix,
 
         product_arr,
         count,
         is_fetching,
         has_fetched,
-
-        filter_count,
-        filter_result_count,
-        filter_fetching,
 
         is_price_custom,
         price_custom_1,
@@ -182,13 +193,31 @@ function PLPhones(props) {
         clearFilter(-1);
     }
 
-    // -----
-
     //
-    function openFilterSummary() {
-        // console.log('filter summary');
+    function clearAllFilter() {
         PLPhones_clearAllFilter({ forceUpdate: forceUpdate });
     }
+
+    // ----- SORT
+
+    //
+    function selectSort(new_sort_ix = 0) {
+        PLPhones_selectSort({
+            new_sort_ix: new_sort_ix,
+            forceUpdate: forceUpdate,
+        });
+    }
+
+    //
+    function checkFilter(filter_check_ix = 0) {
+        PLPhones_checkFilter({
+            filter_check_arr: filter_check_arr,
+            filter_check_ix: filter_check_ix,
+            forceUpdate: forceUpdate,
+        });
+    }
+
+    // -----
 
     //
     function handleShowMore() {
@@ -204,13 +233,29 @@ function PLPhones(props) {
         <div className="PLPhones bg-primary font-14px font-for-phone">
             <div
                 ref={ref_filter_elm}
-                className="PLPhones_filter pos-sticky top-0 left-0 padding-y-5px bg-primary user-select-none"
+                className="PLPhones_filter pos-sticky top-0 left-0 margin-bottom-15px w-100per padding-y-5px bg-primary user-select-none"
             >
-                <ul className="display-flex flex-wrap fashion-width list-none">
-                    <li className="padding-5px">
-                        <PLBtnFilterSummary
+                <ul className="PLPhones_filter_row display-flex flex-wrap fashion-width list-none">
+                    <li className="PLPhones_filter_summary padding-5px">
+                        <PLPhonesFilterSummary
+                            filter_arr={filter_arr}
                             filter_count={filter_count}
-                            handleClick={openFilterSummary}
+                            filter_result_count={filter_result_count}
+                            filter_fetching={filter_fetching}
+                            //
+                            is_price_custom={is_price_custom}
+                            price_custom_1={price_custom_1}
+                            price_custom_2={price_custom_2}
+                            price_custom_min={PL_PHONES_MIN_PRICE}
+                            price_custom_max={PL_PHONES_MAX_PRICE}
+                            //
+                            toggleFilterPrice={toggleFilterPrice}
+                            changePrice1={changePrice1}
+                            changePrice2={changePrice2}
+                            //
+                            chooseFilterItem={chooseFilterItem}
+                            handleFilter={handleFilter}
+                            clearAllFilter={clearAllFilter}
                         />
                     </li>
 
@@ -298,13 +343,25 @@ function PLPhones(props) {
             </div>
 
             {!location.search ? (
-                <div className="margin-bottom-15px fashion-width">
+                <div className="fashion-width padding-bottom-15px">
                     <ProductBrands
                         brand_arr={filter_arr[0].item_arr}
                         handleChooseBrand={handleChooseBrand}
                     />
                 </div>
             ) : null}
+
+            <div className="fashion-width padding-bottom-15px">
+                <PLPhonesSort
+                    count={count}
+                    filter_check_arr={filter_check_arr}
+                    sort_arr={PL_PHONES_SORT_ARR}
+                    sort_ix={sort_ix}
+                    //
+                    checkFilter={checkFilter}
+                    selectSort={selectSort}
+                />
+            </div>
 
             <div className="fashion-width">
                 <PLAllProductList

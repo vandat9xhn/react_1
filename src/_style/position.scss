@@ -207,6 +207,10 @@
 
 /* ------- Z INDEX ------ */
 
+.z-index-1{
+    z-index: 1;
+}
+
 .z-index-lv1{
     z-index: var(--z-index-lv1);
 }

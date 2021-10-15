@@ -9,7 +9,7 @@ import { PLPhones_changeFilterData } from '../_func/PLPhones_UrlToFilter';
 import { handle_API_PhoneLaptop_L } from '../../../../../_handle_api/phone/list';
 
 //
-export async function PLPhones_handle_API(c_count = 0) {
+async function PLPhones_handle_API(c_count = 0) {
     const res = await handle_API_PhoneLaptop_L({
         c_count: c_count,
         params: {
@@ -23,15 +23,27 @@ export async function PLPhones_handle_API(c_count = 0) {
     return res;
 }
 
-//
+// This function will be called every time that (location.search changed and component re-render)
 export async function PLPhones_getData_API({
     setStateObj = () => {},
     mounted = true,
 }) {
     const initial_state = initial_pl_phones_state();
     const new_filter_arr = initial_state.filter_arr;
-    const { filter_count, is_price_custom, price_custom_1, price_custom_2 } =
-        PLPhones_changeFilterData(new_filter_arr);
+    const new_filter_check_arr = initial_state.filter_check_arr;
+
+    const {
+        filter_count,
+
+        is_price_custom,
+        price_custom_1,
+        price_custom_2,
+
+        sort_ix,
+    } = PLPhones_changeFilterData({
+        filter_arr: new_filter_arr,
+        filter_check_arr: new_filter_check_arr,
+    });
 
     setStateObj({
         ...initial_state,
@@ -39,6 +51,9 @@ export async function PLPhones_getData_API({
 
         filter_arr: new_filter_arr,
         filter_count: filter_count,
+
+        filter_check_arr: new_filter_check_arr,
+        sort_ix: sort_ix,
 
         is_price_custom: is_price_custom,
         price_custom_1: price_custom_1,

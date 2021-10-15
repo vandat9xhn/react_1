@@ -50,6 +50,14 @@
     width: fit-content;
 }
 
+.width-max-content{
+    width: max-content;
+}
+
+.width-auto{
+    width: auto;
+}
+
 .width-0 {
     width: 0;
 }
@@ -71,6 +79,10 @@
 }
 
 // ---------- HEIGHT
+
+.height-auto{
+    height: auto;
+}
 
 .h-100vh {
     height: 100vh;

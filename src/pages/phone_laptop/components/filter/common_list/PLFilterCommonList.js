@@ -30,22 +30,20 @@ function PLFilterCommonList({
     //
     return (
         <div className="PLFilterCommonList padding-10px brs-5px bg-primary box-shadow-filter-phone">
-            <div>
-                <ul className="display-flex flex-wrap list-none">
-                    {item_arr.map((item, item_ix) => (
-                        <li key={item_ix} className="padding-5px">
-                            <PLFilterItem
-                                filter_ix={filter_ix}
-                                item_ix={item_ix}
-                                checked={item.checked}
-                                chooseFilterItem={chooseFilterItem}
-                            >
-                                {item.title}
-                            </PLFilterItem>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <ul className="display-flex flex-wrap list-none">
+                {item_arr.map((item, item_ix) => (
+                    <li key={item_ix} className="padding-5px">
+                        <PLFilterItem
+                            filter_ix={filter_ix}
+                            item_ix={item_ix}
+                            checked={item.checked}
+                            chooseFilterItem={chooseFilterItem}
+                        >
+                            {item.title}
+                        </PLFilterItem>
+                    </li>
+                ))}
+            </ul>
 
             <div
                 className={`PLFilterCommonList_confirm overflow-hidden ${

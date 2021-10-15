@@ -36,13 +36,13 @@ function PLFilterPriceCustom({
     //
     useEffect(() => {
         ref_value_1.current = getPercent(price_custom_1);
-        forceUpdate()
+        forceUpdate();
     }, [price_custom_1]);
 
     //
     useEffect(() => {
         ref_value_2.current = getPercent(price_custom_2);
-        forceUpdate()
+        forceUpdate();
     }, [price_custom_2]);
 
     // ---
@@ -127,7 +127,11 @@ function PLFilterPriceCustom({
                     Hoặc chọn mức giá phù hợp với bạn
                 </div>
 
-                <IconCaret size_icon="15px" fill="currentColor" />
+                <IconCaret
+                    class_icon={`${is_price_custom ? 'rotate-180' : ''}`}
+                    size_icon="15px"
+                    fill="currentColor"
+                />
             </div>
 
             <div

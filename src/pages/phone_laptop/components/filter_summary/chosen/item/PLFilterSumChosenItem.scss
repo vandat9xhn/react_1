@@ -1,0 +1,10 @@
+.PLFilterSumChosenItem{
+    &:hover{
+        border: 1px solid currentColor;
+        color: var(--blue);
+    }
+
+    .IconsArrow_close{
+        stroke: var(--md-bg-blur);
+    }
+}

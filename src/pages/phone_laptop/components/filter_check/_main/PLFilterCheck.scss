@@ -1,0 +1,5 @@
+.PLFilterCheck_item{
+    &:not(:first-child){
+        margin-left: 20px;
+    }
+}

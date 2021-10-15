@@ -1,4 +1,16 @@
 //
+export const PL_PHONES_MIN_PRICE = 100;
+export const PL_PHONES_MAX_PRICE = 50000;
+
+//
+export const PL_PHONES_SORT_ARR = [
+    { title: 'Nổi bật', sort_key: 'specific' },
+    { title: '% Giảm', sort_key: 'discount' },
+    { title: 'Giá cao đến thấp', sort_key: 'price' },
+    { title: 'Giá thấp đến cao', sort_key: '-price' },
+];
+
+//
 const phone_brand_filter_obj = () => ({
     title: 'Hãng',
     c_title: '',
@@ -231,29 +243,51 @@ const phone_filter_arr = () => [
 ];
 
 //
-export const PL_PHONES_MIN_PRICE = 100;
-export const PL_PHONES_MAX_PRICE = 50000;
+const phone_filter_check_arr = () => {
+    return [
+        {
+            title: 'Giảm giá',
+            checked: false,
+            filter_key: 'discount',
+        },
+        {
+            title: 'Góp 0%',
+            checked: false,
+            filter_key: 'installment_0',
+        },
+        {
+            title: 'Độc quyền',
+            checked: false,
+            filter_key: 'monopoly',
+        },
+        {
+            title: 'Mới',
+            checked: false,
+            filter_key: 'new',
+        },
+    ];
+};
 
 //
 export const initial_pl_phones_state = () => {
     //
     return {
-        // brand_filter_obj: phone_brand_filter_obj,
-        // price_filter_obj: phone_price_filter_obj,
         filter_arr: [
             phone_brand_filter_obj(),
             phone_price_filter_obj(),
             ...phone_filter_arr(),
         ],
+        filter_count: 0,
+        filter_result_count: 0,
+        filter_fetching: false,
+
+        filter_check_arr: phone_filter_check_arr(),
+        sort_ix: 0,
 
         product_arr: [],
         count: 0,
         is_fetching: false,
         has_fetched: false,
-
-        filter_count: 0,
-        filter_result_count: 0,
-        filter_fetching: false,
 
         is_price_custom: false,
         price_custom_1: PL_PHONES_MIN_PRICE,

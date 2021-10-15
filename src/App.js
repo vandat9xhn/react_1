@@ -9,6 +9,7 @@ import './_style/App.scss';
 
 import './_style/display.scss';
 import './_style/position.scss';
+import './_style/transition.scss';
 import './_style/properties.scss';
 
 import './_style/classes.scss';

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../_constant/Constant';
+// 
 import IconFilter from '../../../../_icons_svg/_icon_filter/IconFilter';
 //
 import BadgeDiv from '../../../../component/some_div/badge_div/BadgeDiv';
@@ -13,7 +15,7 @@ function PLBtnFilterSummary({ filter_count, handleClick }) {
     //
     return (
         <div
-            className="PLBtnFilterSummary pos-rel h-100per padding-x-8px padding-y-5px brs-4px border-blur cursor-pointer"
+            className="PLBtnFilterSummary pos-rel h-100per padding-x-8px padding-y-5px bg-primary brs-4px border-blur cursor-pointer"
             onClick={handleClick}
         >
             <div className="display-flex-center h-100per">
@@ -24,7 +26,9 @@ function PLBtnFilterSummary({ filter_count, handleClick }) {
                     }
                 />
 
-                <div className="margin-left-5px">Bộ lọc</div>
+                <div className="margin-left-5px">
+                    {IS_MOBILE ? 'Lọc' : 'Bộ lọc'}
+                </div>
             </div>
 
             <div className="pos-abs right-0 top-0 trans-y--50per padding-right-5px">

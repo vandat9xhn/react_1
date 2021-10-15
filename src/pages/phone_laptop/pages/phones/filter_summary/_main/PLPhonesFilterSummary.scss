@@ -1,0 +1,20 @@
+.PLPhonesFilterSummary_filter_contain {
+    width: 900px;
+    max-height: calc(100vh - 75px);
+}
+
+.PLPhonesFilterSummary_filter_caret {
+    position: relative;
+    
+    &::before {
+        content: '';
+
+        position: absolute;
+        bottom: 100%;
+        left: 25px;
+
+        border-width: 0 8px 10px 8px;
+        border-style: solid;
+        border-color: transparent transparent var(--md-bg-primary) transparent;
+    }
+}

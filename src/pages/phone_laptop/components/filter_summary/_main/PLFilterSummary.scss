@@ -1,0 +1,30 @@
+.PLFilterSummary_chosen{
+    padding: 10px 90px 10px 15px;
+}
+
+.PLFilterSummary_close{
+    .IconsArrow_close{
+        stroke: var(--md-color-secondary);
+    }
+}
+
+.PLFilterSummary_part{
+    width: 33.33%;
+}
+
+.PLFilterSummary_separate{
+    margin: 15px 0;
+    width: 100%;
+    border-top: 1px solid var(--md-bg-blur);
+}
+
+.PLFilterSummary_confirm_contain{
+    max-height: 70px;
+    box-shadow: 0 -2px 5px var(--shadow-1);
+}
+
+.PLFilterSummary_confirm_contain-none{
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+}
