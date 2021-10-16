@@ -1,22 +1,32 @@
-.device-mobile{
+.device-mobile {
     .PLPhones_filter {
         margin: auto;
         max-width: 600px;
-        padding-left: 75px;
+        padding: 0 0 0 75px;
     }
 
-    .PLPhones_filter_row{
+    .PLPhones_filter_row {
         flex-wrap: nowrap;
 
         margin: unset;
         max-width: unset;
         width: 100%;
         white-space: nowrap;
-        
+
         overflow-x: auto;
+        overflow-y: hidden;
+
+        &::-webkit-scrollbar {
+            height: 0;
+        }
+
+        & > li {
+            padding: 10px 5px;
+            border-bottom: 1px solid var(--md-bg-blur);
+        }
     }
 
-    .PLPhones_filter_summary{
+    .PLPhones_filter_summary {
         position: absolute;
         left: 0;
     }

@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import PLFilterSumChosenItem from '../item/PLFilterSumChosenItem';
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
+// 
+import { formatNum } from '../../../../../../_some_function/FormatNum';
+// 
+import PLFilterSumChosenItem from '../item/PLFilterSumChosenItem';
 
 //
 PLFilterSumChosen.propTypes = {};
@@ -12,6 +15,11 @@ function PLFilterSumChosen({
     filter_arr,
     filter_count,
 
+    is_price_custom,
+    price_custom_1,
+    price_custom_2,
+
+    toggleFilterPrice,
     clearFilterItem,
     clearAllFilter,
 }) {
@@ -58,6 +66,17 @@ function PLFilterSumChosen({
                             )
                     )
                 )}
+
+                {is_price_custom ? (
+                    <PLFilterSumChosenItem
+                        filter_ix={-1}
+                        item_ix={-1}
+                        title={`Từ ${formatNum(price_custom_1)}đ - ${formatNum(
+                            price_custom_2
+                        )}đ`}
+                        clearFilterItem={toggleFilterPrice}
+                    />
+                ) : null}
 
                 {filter_count >= 2 && !IS_MOBILE ? (
                     <div

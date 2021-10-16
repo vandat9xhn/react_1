@@ -218,7 +218,7 @@ function HeaderNotice({}) {
                     }}
                     onClick={hasReceivedNotices}
                 >
-                    <div className={`${is_open ? '' : 'display-none'}`}>
+                    <div className={`border-top-blur ${is_open ? '' : 'display-none'}`}>
                         <ListNotices
                             notices={notices}
                             count={count}

@@ -44,13 +44,19 @@ function PLFilter({ filter_title, has_filter, children }) {
                         has_filter
                             ? 'PLFilter_title-active border-blue'
                             : 'border-blur'
-                    }`}
+                    } ${is_true ? 'PLFilter_title-caret' : ''}`}
                     onClick={toggleBool}
                 >
                     <div>{filter_title}</div>
 
                     <div className="margin-left-5px">
-                        <IconCaret size_icon="14px" />
+                        <IconCaret
+                            class_icon={`transition-all-250ms ${
+                                is_true ? 'rotate-180 text-blue' : ''
+                            }`}
+                            size_icon="14px"
+                            fill="currentColor"
+                        />
                     </div>
                 </div>
 

@@ -40,7 +40,7 @@ function PLFilterSummary({
     //
     return (
         <div className="PLFilterSummary pos-rel">
-            <div className="PLFilterSummary_close pos-abs right-0 top-0 padding-10px">
+            <div className="PLFilterSummary_close pos-abs right-0 top-0 z-index-2 padding-10px">
                 <button
                     className="display-flex-center btn-hv btn-active padding-5px brs-4px border-blur cursor-pointer"
                     type="button"
@@ -57,6 +57,12 @@ function PLFilterSummary({
                     <PLFilterSumChosen
                         filter_arr={filter_arr}
                         filter_count={filter_count}
+                        // 
+                        is_price_custom={is_price_custom}
+                        price_custom_1={price_custom_1}
+                        price_custom_2={price_custom_2}
+                        // 
+                        toggleFilterPrice={toggleFilterPrice}
                         clearFilterItem={chooseFilterItem}
                         clearAllFilter={clearAllFilter}
                     />
@@ -114,7 +120,7 @@ function PLFilterSummary({
                 ))}
             </div>
 
-            <div className="PLFilterSummary_confirm pos-sticky bottom-0 left-0">
+            <div className="PLFilterSummary_confirm pos-sticky bottom-0 left-0 z-index-2">
                 <div
                     className={`PLFilterSummary_confirm_contain padding-y-10px bg-primary overflow-hidden transition-all-250ms ${
                         filter_count

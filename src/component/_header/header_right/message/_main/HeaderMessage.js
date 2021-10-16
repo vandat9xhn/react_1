@@ -206,7 +206,11 @@ function HeaderMessage() {
                     }}
                     onClick={hasReceiveListZooms}
                 >
-                    <div className={`${is_open ? '' : 'display-none'}`}>
+                    <div
+                        className={`border-top-blur ${
+                            is_open ? '' : 'display-none'
+                        }`}
+                    >
                         <HeaderMessContain
                             zooms={zooms}
                             count={count}

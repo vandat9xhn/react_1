@@ -11,7 +11,7 @@
     position: fixed;
 }
 
-.pos-sticky{
+.pos-sticky {
     position: sticky;
 }
 
@@ -56,9 +56,9 @@
     height: 100%;
 }
 
-// 
+//
 
-.pos-sticky-from-header{
+.pos-sticky-from-header {
     position: sticky;
     top: 56px;
 }
@@ -68,11 +68,11 @@
     bottom: 100%;
 }
 
-.bottom-0{
+.bottom-0 {
     bottom: 0;
 }
 
-.bottom-50per{
+.bottom-50per {
     bottom: 50%;
 }
 
@@ -99,15 +99,15 @@
     right: 0;
 }
 
-.right-100per{
+.right-100per {
     right: 100%;
 }
 /* ------------- */
-.top-0{
+.top-0 {
     top: 0;
 }
 
-.top-50per{
+.top-50per {
     top: 50%;
 }
 
@@ -118,38 +118,37 @@
     transform: translateX(-50%);
 }
 
-.y-center{
+.y-center {
     top: 50%;
     transform: translateY(-50%);
 }
 
-.top-center{
+.top-center {
     top: 0;
     transform: translateY(-50%);
 }
 
-
 /* ------- TRANSFORM ------ */
 
-.top-left-center{
+.top-left-center {
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
 }
 
-.top-right-center{
+.top-right-center {
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
 }
 
-.bottom-left-center{
+.bottom-left-center {
     bottom: 0;
     left: 0;
     transform: translate(-50%, 50%);
 }
 
-.bottom-right-center{
+.bottom-right-center {
     bottom: 0;
     right: 0;
     transform: translate(50%, 50%);
@@ -157,68 +156,70 @@
 
 // ----------
 
-.trans-x-50per{
+.trans-x-50per {
     transform: translateX(50%);
 }
 
-.trans-x--50per{
+.trans-x--50per {
     transform: translateX(-50%);
 }
 
-.trans-x-100per{
+.trans-x-100per {
     transform: translateX(100%);
 }
 
-.trans-x--100per{
+.trans-x--100per {
     transform: translateX(-100%);
 }
 
 // -----------
 
-.trans-y-100per{
+.trans-y-100per {
     transform: translateY(50%);
 }
 
-.trans-y--50per{
+.trans-y--50per {
     transform: translateY(-50%);
 }
 
-.trans-y-100per{
+.trans-y-100per {
     transform: translateY(100%);
 }
 
 // -------- ROTATE
 
-.rotate-45{
+.rotate-45 {
     transform: rotate(45deg);
 }
 
-.rotate-90{
+.rotate-90 {
     transform: rotate(90deg);
 }
 
-.rotate-180{
+.rotate-180 {
     transform: rotate(180deg);
 }
 
-.rotate--90{
+.rotate--90 {
     transform: rotate(-90deg);
 }
 
 /* ------- Z INDEX ------ */
 
-.z-index-1{
-    z-index: 1;
+@for $i from -1 through 10 {
+    .z-index-#{$i} {
+        z-index: $i;
+    }
 }
 
-.z-index-lv1{
+.z-index-lv1 {
     z-index: var(--z-index-lv1);
 }
 
-.z-index-lv3{
+.z-index-lv3 {
     z-index: var(--z-index-lv3);
 }
 
-.z-index-lv5{
+.z-index-lv5 {
     z-index: var(--z-index-lv5);
 }

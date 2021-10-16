@@ -1,0 +1,60 @@
+.device-mobile {
+    // -----
+    %caret {
+        content: '';
+
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+        border-width: 0 8px 11px 8px;
+        border-style: solid;
+    }
+
+    // -----
+
+    .PLFilter {
+        position: static;
+    }
+
+    .PLFilter_title-caret {
+        position: relative;
+
+        &::before {
+            @extend %caret;
+            top: 100%;
+            border-color: transparent transparent var(--md-bg-blur) transparent;
+        }
+        &::after {
+            @extend %caret;
+            top: calc(100% + 2px);
+            border-color: transparent transparent var(--md-bg-primary)
+                transparent;
+        }
+    }
+
+    // ----
+
+    .PLFilterPosition {
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .PLFilterPosition_contain {
+        // border-top: 1px solid var(--md-bg-blur);
+
+        &::before,
+        &::after {
+            display: none;
+        }
+
+        .PLFilterCommonList,
+        .PLFilterPrices {
+            max-height: calc(50vh);
+            overflow-y: auto;
+
+            border-radius: 0;
+            box-shadow: 0 2px 2px var(--shadow-2);
+        }
+    }
+}

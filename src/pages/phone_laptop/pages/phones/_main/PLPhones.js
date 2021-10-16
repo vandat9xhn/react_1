@@ -26,6 +26,8 @@ import {
     PLPhones_clearFilter,
     PLPhones_clearFilterPriceCustom,
 } from '../_state/PLPhone_clearFilter';
+import { PLPhones_selectSort } from '../_state/PLPhones_selectSort';
+import { PLPhones_checkFilter } from '../_state/PLPhones_checkFilter';
 //
 import PLFilter from '../../../components/filter/_main/PLFilter';
 import PLFilterCommonList from '../../../components/filter/common_list/PLFilterCommonList';
@@ -39,11 +41,11 @@ import './PLPhones.scss';
 import './PLPhonesRes.scss';
 
 import '../_mobile_css/_PLPhonesMb.scss';
+import '../_mobile_css/PLFilterMb.scss';
 import '../_mobile_css/PLFilterSumCommonListMb.scss';
 import '../_mobile_css/PLFilterSummaryMb.scss';
 import '../_mobile_css/PLPhonesFilterSummaryMb.scss';
-import { PLPhones_selectSort } from '../_state/PLPhones_selectSort';
-import { PLPhones_checkFilter } from '../_state/PLPhones_checkFilter';
+import '../_mobile_css/PLPhonesSortMb.scss';
 
 //
 PLPhones.propTypes = {};

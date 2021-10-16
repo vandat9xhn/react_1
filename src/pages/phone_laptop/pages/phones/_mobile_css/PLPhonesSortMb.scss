@@ -1,0 +1,21 @@
+.device-mobile{
+    .PLPhonesSort_row{
+        display: block;
+    }
+
+    .PLPhonesSort_select {
+        padding: 0 10px;
+    }
+
+    // ----
+
+    .PLFilterCheck{
+        flex-wrap: wrap;
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+
+    .PLFilterCheck_item{
+        padding: 0 10px 10px 0;
+    }
+}

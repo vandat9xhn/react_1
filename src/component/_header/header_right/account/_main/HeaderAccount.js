@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import IconCaret from '../../../../../_icons_svg/_icon_caret/IconCaret';
-// 
+//
 import CloseDiv from '../../../../some_div/close_div/CloseDiv';
 //
 import ActionsAccount from '../actions/ActionsAccount';
@@ -45,7 +45,7 @@ function HeaderAccount(props) {
 
                 <div
                     className={`header_hidden right-0 ${
-                        open_account ? '' : 'display-none'
+                        open_account ? 'border-top-blur' : 'display-none'
                     }`}
                 >
                     <div className="header_hidden_contain">
