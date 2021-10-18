@@ -10,7 +10,7 @@ import img from '../../../../../../../image/pl_random_pic_head.png';
 PLHeadPc.propTypes = {};
 
 //
-function PLHeadPc({ province, handleChangeAddress }) {
+function PLHeadPc({ address, handleChangeAddress }) {
     //
     return (
         <div className="PLHeadPc">
@@ -20,7 +20,7 @@ function PLHeadPc({ province, handleChangeAddress }) {
 
             <div>
                 <PLHeadTopPc
-                    province={province}
+                    address={address}
                     handleChangeAddress={handleChangeAddress}
                 />
             </div>

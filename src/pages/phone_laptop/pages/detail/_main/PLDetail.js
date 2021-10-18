@@ -32,7 +32,7 @@ import PLDetailSeen from '../seen/_main/PLDetailSeen';
 import PLComments from '../../../components/comments/_main/PLComments';
 //
 import './PLDetail.scss';
-// 
+//
 import '../_mobile_css/PhoneDetailHeadMb.scss';
 import '../_mobile_css/PLCommentsMb.scss';
 import '../_mobile_css/PLDetailAreaMb.scss';
@@ -50,6 +50,8 @@ import '../_mobile_css/PLDetailRelativeMb.scss';
 import '../_mobile_css/PLDetailShortConfigMb.scss';
 import '../_mobile_css/PLDetailSeenMb.scss';
 import '../_mobile_css/PLDOnePriceMb.scss';
+import { openScreenWithElm } from '../../../../../component/_screen/type/with_elm/ScreenWithElm';
+import PLChooseAddressScreen from '../../../components/choose_address/_screen/PLChooseAddressScreen';
 
 //
 PLDetail.propTypes = {};
@@ -57,7 +59,7 @@ PLDetail.propTypes = {};
 //
 function PLDetail() {
     //
-    const {} = useContext(context_api);
+    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
 
     //
     const product_id = GetIdSlug();
@@ -118,9 +120,6 @@ function PLDetail() {
     }
 
     //
-    function openDetailGift() {}
-
-    //
     function callToOrder() {
         console.log('Call to order');
     }
@@ -141,17 +140,20 @@ function PLDetail() {
     // ----
 
     //
-    function openDetailRateImg() {}
-
-    //
-    function openDetailRate() {}
-
-    //
     function handleSendDiscuss(content) {
         console.log(content);
     }
 
-    // -----
+    // ----- OPEN
+
+    //
+    function openDetailGift() {}
+
+    //
+    function openDetailRateImg() {}
+
+    //
+    function openDetailRate() {}
 
     //
     function openDetailCarousel() {}
@@ -160,7 +162,12 @@ function PLDetail() {
     function openDetailPost() {}
 
     //
-    function openDetailAddress() {}
+    function openDetailAddress() {
+        openScreenWithElm({
+            openScreenFloor: openScreenFloor,
+            elm: <PLChooseAddressScreen closeScreen={closeScreenFloor} />,
+        });
+    }
 
     //
     function openDetailMarket() {}

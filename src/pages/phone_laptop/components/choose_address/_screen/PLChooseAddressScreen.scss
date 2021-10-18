@@ -1,0 +1,30 @@
+.PLChooseAddressScreen {
+    margin: auto;
+    width: 500px;
+    min-height: 100vh;
+    padding: 5rem 0;
+}
+
+.device-mobile {
+    .PLChooseAddressScreen {
+        width: 600px;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .PLChooseAddress {
+        border-radius: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .PLChooseAddressHead {
+        justify-content: flex-start;
+        height: 48px;
+        padding-left: 10px;
+    }
+
+    .PLChooseAddress_contain {
+        padding: 10px;
+    }
+}

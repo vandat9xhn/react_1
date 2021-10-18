@@ -270,7 +270,6 @@ export const PL_detail_initial_state_obj = () => {
                     info: '',
                 },
             ],
-            province: '',
 
             old_product_obj: {
                 link_to: '',
@@ -527,7 +526,6 @@ export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
                         info: 'Visa, Mastercard, JCB',
                     },
                 ],
-                province: 'Hà Nội',
 
                 promotion_obj: {
                     cost: 200000,

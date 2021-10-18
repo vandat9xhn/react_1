@@ -95,7 +95,6 @@ function PLDetailProductPc({
         group_arr,
         short_config_arr,
         installment_arr,
-        province,
 
         old_product_obj,
         promotion_obj,
@@ -190,10 +189,7 @@ function PLDetailProductPc({
                     </div>
 
                     <div>
-                        <PLDetailArea
-                            province={province}
-                            openDetailAddress={openDetailAddress}
-                        />
+                        <PLDetailArea openDetailAddress={openDetailAddress} />
                     </div>
 
                     {has_two_price ? (

@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 
 //
 export function useDisplayBlockToNone({
-    trans_time,
+    trans_time = 250,
     initial_display_none = true,
 }) {
     //

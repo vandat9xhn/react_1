@@ -14,7 +14,7 @@ import './PLHeadTopLeftPc.scss';
 PLHeadTopLeftPc.propTypes = {};
 
 //
-function PLHeadTopLeftPc({ province, handleChangeAddress }) {
+function PLHeadTopLeftPc({ address, handleChangeAddress }) {
     //
     return (
         <div className="PLHeadTopLeftPc h-100per">
@@ -39,7 +39,9 @@ function PLHeadTopLeftPc({ province, handleChangeAddress }) {
                     <div>Xem giá, khuyến mãi tại</div>
 
                     <div className="display-flex align-items-center text-gold">
-                        <span className="margin-right-5px">{province}</span>
+                        <span className="PLHeadTopLeftPc_address_name margin-right-5px text-nowrap">
+                            {address}
+                        </span>
 
                         <IconCaret size_icon="11px" fill="currentColor" />
                     </div>

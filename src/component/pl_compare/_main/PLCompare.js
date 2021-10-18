@@ -7,7 +7,6 @@ import { IS_MOBILE } from '../../../_constant/Constant';
 import { stringifyCompareDevices } from '../../../_some_function/phone/compareDevices';
 //
 import {
-    addDeviceToCompare,
     removeDeviceFromCompare,
     removeCompare,
 } from '../../../redux/slice/PLCompareSlice';

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { getBgColorOrImg } from '../../../../../_some_function/getBgColorOrImg';
-// 
+//
 import ContentMore from '../../../../content_more/Content_more';
-// 
+//
 import './PostText.scss';
 
 //
@@ -16,7 +16,7 @@ function PostText({ bg_obj, content_obj, seeMoreContent }) {
     return (
         <div
             className={`PostText padding-10px ${
-                bg_obj
+                bg_obj && bg_obj.bg
                     ? 'PostText-bg display-flex-center text-align-center font-16px font-700'
                     : ''
             }`}

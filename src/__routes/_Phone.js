@@ -18,19 +18,19 @@ const PLPhones = React.lazy(() =>
 
 //
 export const phone_route_arr = [
-    // {
-    //     path: '/phone-laptop',
-    //     component: PLHome,
-    //     exact: true,
-    //     auth: false,
-    //     reset_position: true,
-    // },
-    // {
-    //     path: '/phone-laptop/:id',
-    //     component: PhoneLaptopDetail,
-    //     exact: true,
-    //     auth: false,
-    // },
+    {
+        path: '/phone-laptop',
+        component: PLHome,
+        exact: true,
+        auth: false,
+        reset_position: true,
+    },
+    {
+        path: '/phone-laptop/:id',
+        component: PhoneLaptopDetail,
+        exact: true,
+        auth: false,
+    },
     {
         path: '/phone-laptop-phones',
         component: PLPhones,
@@ -38,11 +38,11 @@ export const phone_route_arr = [
         auth: false,
         reset_position: true,
     },
-    // {
-    //     path: '/phone-laptop-laptops',
-    //     component: Laptops,
-    //     exact: true,
-    //     auth: false,
-    //     reset_position: true,
-    // },
+    {
+        path: '/phone-laptop-laptops',
+        component: Laptops,
+        exact: true,
+        auth: false,
+        reset_position: true,
+    },
 ];

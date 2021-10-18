@@ -1,8 +1,20 @@
 .device-mobile {
+    // ----
     .PLPhones_filter {
         margin: auto;
         max-width: 600px;
-        padding: 0 0 0 75px;
+        padding: 0 0 0 70px;
+
+        font-size: 13px;
+
+        .IconFilter  {
+            width: 16px;
+            height: 16px;
+        }
+        .IconCaret {
+            width: 12px;
+            height: 12px;
+        }
     }
 
     .PLPhones_filter_row {
@@ -29,5 +41,11 @@
     .PLPhones_filter_summary {
         position: absolute;
         left: 0;
+    }
+
+    // -----
+
+    .PLPhones_brand {
+        padding: 10px 0;
     }
 }

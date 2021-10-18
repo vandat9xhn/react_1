@@ -17,6 +17,9 @@
         position: static;
     }
 
+    .PLFilter_title {
+        padding: 3px 5px;
+    }
     .PLFilter_title-caret {
         position: relative;
 
@@ -37,6 +40,8 @@
 
     .PLFilterPosition {
         width: 100%;
+        min-width: auto;
+        max-width: initial;
         padding-top: 0;
     }
 
@@ -56,5 +61,11 @@
             border-radius: 0;
             box-shadow: 0 2px 2px var(--shadow-2);
         }
+    }
+
+    // -----
+
+    .PLFilterConfirm_btn {
+        padding: 5px 0;
     }
 }

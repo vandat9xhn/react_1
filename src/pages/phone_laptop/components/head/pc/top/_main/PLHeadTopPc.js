@@ -12,14 +12,14 @@ PLHeadTopPc.propTypes = {
 };
 
 //
-function PLHeadTopPc({ province, handleChangeAddress }) {
+function PLHeadTopPc({ address, handleChangeAddress }) {
     //
     return (
         <div className="PLHeadTopPc bg-black text-align-center line-14px font-12px text-white font-500">
             <div className="PLHeadTopPc_row flex-between-center fashion-width">
                 <div className="PLHeadTopPc_left h-100per">
                     <PLHeadTopLeftPc
-                        province={province}
+                        address={address}
                         handleChangeAddress={handleChangeAddress}
                     />
                 </div>

@@ -1,0 +1,12 @@
+.PLChooseAddress_contain {
+    padding: 15px 45px;
+}
+
+.PLChooseAddress_btn {
+    background-color: var(--border-fashion);
+    background-image: linear-gradient(
+        top bottom,
+        var(--gold),
+        var(--border-fashion)
+    );
+}

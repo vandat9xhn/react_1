@@ -7,18 +7,20 @@ import IconCaret from '../../../../../../_icons_svg/_icon_caret/IconCaret';
 PLDetailArea.propTypes = {};
 
 //
-function PLDetailArea({ province, openDetailAddress }) {
+function PLDetailArea({ openDetailAddress }) {
     //
     return (
         <div className="PLDetailArea">
-            <span>Giá tại</span>
+            <span>Giá tại:</span>
 
             <button
-                className="btn bg-transparent text-blue cursor-pointer"
+                className="display-flex-ceenter btn bg-transparent text-blue cursor-pointer"
                 type="button"
                 onClick={openDetailAddress}
             >
-                <span>{province}</span>
+                <span className="margin-x-5px">
+                    {localStorage.pl_province || 'Hà Nội'}
+                </span>
 
                 <IconCaret size_icon="14px" fill="currentColor" />
             </button>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+// 
 import { getCarouselList } from '../../../../../../../_some_function/getCarouselList';
 //
 import Carousel from '../../../../../../../component/carousel/_main/Carousel';
@@ -8,7 +10,6 @@ import Carousel from '../../../../../../../component/carousel/_main/Carousel';
 import PLHomeCarouselTitle from '../carousel_title/PLHomeCarouselTitle';
 //
 import './PLHomeBanner.scss';
-import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 PLHomeBanner.propTypes = {};

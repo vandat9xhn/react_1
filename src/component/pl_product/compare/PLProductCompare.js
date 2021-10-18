@@ -8,9 +8,11 @@ import {
     addDeviceToCompare,
     removeDeviceFromCompare,
 } from '../../../redux/slice/PLCompareSlice';
+// 
+import { openScreenNotice } from '../../_screen_once/notice/ScreenNotice';
 //
 import IconPlusSubtract from '../../../_icons_svg/_icon_plus_subtract/IconPlusSubtract';
-import { openScreenNotice } from '../../_screen_once/notice/ScreenNotice';
+// 
 import PLCompareNoticeMax from '../../pl_compare/notice/max_device/PLCompareNoticeMax';
 
 //

@@ -27,7 +27,8 @@ import './LearnHTML.scss';
 // import LearnFsCartItem from '../fashion/LearnFsCartItem';
 // import LearnFsCartSummary from '../fashion/LearnFsCartSummary';
 // import LearnFsAddAddress from '../fs_add_address/LearnFsAddAddress';
-import LearnNewPost from '../new_post/LearnNewPost';
+// import LearnNewPost from '../new_post/LearnNewPost';
+import LearnPLChooseAddress from '../pl_choose_address/LearnPLChooseAddress';
 // import LearnCropPic from '../crop_pic/LearnCropPic';
 // import LearnSwitch2Rect from '../switch_2_rect/LearnSwitch2Rect';
 
@@ -97,6 +98,8 @@ function LearnHTML() {
             {/* <LearnCropPic /> */}
 
             {/* <LearnSwitch2Rect /> */}
+
+            <LearnPLChooseAddress />
 
             <div className="h-100vh"></div>
         </div>

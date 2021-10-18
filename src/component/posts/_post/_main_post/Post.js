@@ -30,9 +30,9 @@ import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
 import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
 //
 import VirtualScroll from '../../../virtual_scroll/VirtualScroll';
-import ContentMore from '../../../content_more/Content_more';
 //
 import CUPost from '../../common/create_update_post/_main/CUPost';
+import PostText from '../text/_main/PostText';
 import VidPicsPost from '../vid_pics/_main/VidPicsPost';
 import Info from '../../common/info/_main/InfoWs';
 import CommentsWs from '../../common/ws_comments/_main/CommentsWs';
@@ -42,7 +42,6 @@ import CUPostMb from '../../common/cu_post_mobile/_main/CUPostMb';
 import PostHead from '../head/_main/PostHead';
 //
 import './Post.scss';
-import PostText from '../text/_main/PostText';
 
 //
 Post.propTypes = {

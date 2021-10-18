@@ -1,0 +1,11 @@
+.device-mobile{
+    .PLBrands_row {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar{
+            height: 0;
+        }
+    }
+}

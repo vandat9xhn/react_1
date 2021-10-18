@@ -24,7 +24,7 @@ import './PLHeadMb.scss';
 PLHeadMb.propTypes = {};
 
 //
-function PLHeadMb({ province, handleChangeAddress }) {
+function PLHeadMb({ address, handleChangeAddress }) {
     //
     const { is_focus, setIsFocus } = useFocusBlur();
     const { is_true, setIsTrue, toggleBool } = useBool();
@@ -93,7 +93,11 @@ function PLHeadMb({ province, handleChangeAddress }) {
                     >
                         <IconsProfile size_icon="12px" />
 
-                        <span className="margin-left-3px">{province}</span>
+                        <div>
+                            <div className="PLHeadMb_address_name margin-left-3px wk-box-vertical line-clamp-2 overflow-hidden">
+                                {address}
+                            </div>
+                        </div>
                     </div>
 
                     <div className="PLHeadMb_separate"></div>

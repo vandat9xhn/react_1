@@ -20,6 +20,7 @@ function PLDetailMarket({
     in_stock,
     is_coming,
     use_see_market,
+    
     openDetailMarket,
 }) {
     //

@@ -29,6 +29,7 @@ import {
 import { PLPhones_selectSort } from '../_state/PLPhones_selectSort';
 import { PLPhones_checkFilter } from '../_state/PLPhones_checkFilter';
 //
+import PLPhonesTopBanner from '../top_banner/_main/PLPhonesTopBanner';
 import PLFilter from '../../../components/filter/_main/PLFilter';
 import PLFilterCommonList from '../../../components/filter/common_list/PLFilterCommonList';
 import ProductBrands from '../../../components/brands/_main/PLBrands';
@@ -41,11 +42,15 @@ import './PLPhones.scss';
 import './PLPhonesRes.scss';
 
 import '../_mobile_css/_PLPhonesMb.scss';
+import '../_mobile_css/PLBrandsMb.scss';
+
 import '../_mobile_css/PLFilterMb.scss';
 import '../_mobile_css/PLFilterSumCommonListMb.scss';
 import '../_mobile_css/PLFilterSummaryMb.scss';
 import '../_mobile_css/PLPhonesFilterSummaryMb.scss';
 import '../_mobile_css/PLPhonesSortMb.scss';
+
+import '../_mobile_css/PLPhonesTopBannerMb.scss';
 
 //
 PLPhones.propTypes = {};
@@ -228,11 +233,15 @@ function PLPhones(props) {
             c_count: product_arr.length,
         });
     }
-
+    
     // console.log(is_price_custom);
     //
     return (
         <div className="PLPhones bg-primary font-14px font-for-phone">
+            <div className="fashion-width padding-y-10px">
+                <PLPhonesTopBanner />
+            </div>
+
             <div
                 ref={ref_filter_elm}
                 className="PLPhones_filter pos-sticky top-0 left-0 margin-bottom-15px w-100per padding-y-5px bg-primary user-select-none"
@@ -345,7 +354,7 @@ function PLPhones(props) {
             </div>
 
             {!location.search ? (
-                <div className="fashion-width padding-bottom-15px">
+                <div className="PLPhones_brand fashion-width padding-bottom-15px">
                     <ProductBrands
                         brand_arr={filter_arr[0].item_arr}
                         handleChooseBrand={handleChooseBrand}
