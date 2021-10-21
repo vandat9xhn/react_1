@@ -38,6 +38,12 @@
     }
 }
 
+.hv-bg-fb {
+    &:hover {
+        background-color: var(--md-bg-fb);
+    }
+}
+
 .hv-bg-s-through {
     &:hover {
         background-color: var(--bg-s-through);

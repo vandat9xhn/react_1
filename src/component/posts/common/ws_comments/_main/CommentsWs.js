@@ -5,12 +5,13 @@ import { context_post } from '../../../../../_context/post/ContextPost';
 //
 import ScreenBlurShowMore from '../../../../_screen/components/part/foot/ScreenBlurShowMore';
 import CommentPost from '../../../../input_img_vid_preview/comment_post/CommentPost';
+import FetchingDiv from '../../../../some_div/fetching/FetchingDiv';
 //
 import CommentWs from '../ws_comment/_main/CommentWs';
 //
-import './CommentsWsCommon.scss';
 import './CommentsWs.scss';
-import './CommentsWsRes.scss';
+import IconCaret from '../../../../../_icons_svg/_icon_caret/IconCaret';
+import { getCmtTitleMore } from '../../../../../_some_function/post/cmt_title_more';
 
 //
 CommentsWs.propTypes = {
@@ -31,6 +32,9 @@ function CommentsWs({
     open_input,
     fetching_first_cmt,
 }) {
+    //
+    const count_comment_left = count_comment - comments.length;
+
     //
     const [fetching_cmt, setFetchingCmt] = useState(false);
 
@@ -76,32 +80,44 @@ function CommentsWs({
     //
     return (
         <div className="Comments">
-            <ScreenBlurShowMore
-                title="More comments..."
-                is_show_more={
-                    count_comment > comments.length && !!comments.length
-                }
-                is_fetching={fetching_cmt || fetching_first_cmt}
-                handleShowMore={onGetCommentsWs}
-            />
+            <div className="flex-between-center padding-y-10px">
+                <div>
+                    <ScreenBlurShowMore
+                        title={getCmtTitleMore({
+                            count_left: count_comment_left,
+                        })}
+                        is_show_more={count_comment_left >= 1}
+                        is_fetching={fetching_cmt || fetching_first_cmt}
+                        FetchingComponent={FetchingDiv}
+                        handleShowMore={onGetCommentsWs}
+                    />
+                </div>
 
-            <div className="Comments_list">
+                <div className="display-flex align-items-center cursor-pointer font-600 text-secondary">
+                    <span className="margin-right-5px">All comments</span>
+
+                    <IconCaret size_icon="15px" fill="currentColor" />
+                </div>
+            </div>
+
+            <div className="Comments_list display-flex col-reverse">
                 {comments.map((comment) => (
                     <CommentWs
-                        key={`Comment_${comment.id}`}
+                        key={comment.id}
                         is_poster={is_poster}
                         comment={comment}
                     />
                 ))}
             </div>
 
-            <div
-                className={`Comments_input ${open_input ? '' : 'display-none'}`}
-            >
-                <div className="Comments_input_contain">
-                    <CommentPost handleSend={onSendCmt} />
+            {open_input ? (
+                <div className="Comments_input padding-top-5px padding-x-16px">
+                    <CommentPost
+                        placeholder={'Write a public comment...'}
+                        handleSend={onSendCmt}
+                    />
                 </div>
-            </div>
+            ) : null}
         </div>
     );
 }

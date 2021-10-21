@@ -12,6 +12,7 @@ function ItemUniqueLike({
     ix,
     title,
     count_like,
+    div_fix_width,
 
     onOpenDetailLike,
     handle_API_L,
@@ -32,6 +33,7 @@ function ItemUniqueLike({
             title={title}
             count={count_like}
             PeopleComponent={PeopleComponent}
+            div_fix_width={div_fix_width}
             //
             handle_API_L={on_API_Like_L}
             handleOpenScreen={openDetailLike}

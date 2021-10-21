@@ -1,0 +1,14 @@
+.CmtRight_user_text {
+    max-width: calc(100% - 40px);
+    border-radius: 18px;
+    vertical-align: middle;
+}
+
+.CmtRight_action {
+    vertical-align: middle;
+
+    .IconThreeDot {
+        width: 16px;
+        height: 16px;
+    }
+}

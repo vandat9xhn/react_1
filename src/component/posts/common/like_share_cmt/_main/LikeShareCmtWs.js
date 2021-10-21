@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_post } from '../../../../../_context/post/ContextPost';
 //
-import BtnPostLike from '../like/BtnPostLike';
+import Like from '../../../../like/_main/Like';
+//
 import BtnPostCmt from '../cmt/BtnPostCmt';
 import BtnPostShare from '../share/BtnPostShare';
 //
@@ -11,7 +12,7 @@ import './LikeShareCmt.scss';
 
 //
 LikeShareCmt.propTypes = {
-    user_type_like: PropTypes.number,
+    user_reacted_ix: PropTypes.number,
     enabled_like: PropTypes.bool,
     //
     enabled_cmt: PropTypes.bool,
@@ -31,7 +32,7 @@ LikeShareCmt.defaultProps = {
 function LikeShareCmt({
     parent_id,
     //
-    user_type_like,
+    user_reacted_ix,
     enabled_like,
     //
     enabled_cmt,
@@ -64,14 +65,14 @@ function LikeShareCmt({
         }
     }
 
-    /* ----------------------------------------------------------------- */
+    //
     return (
-        <div className="LikeShareCmt">
+        <div className="LikeShareCmt padding-y-5px border-top-blur border-bottom-blur text-secondary font-500 user-select-none">
             <div className="LikeShareCmt_row display-flex-center">
                 {enabled_like && (
                     <div className="LikeShareCmt_item">
-                        <BtnPostLike
-                            user_type_like={user_type_like}
+                        <Like
+                            type_like={user_reacted_ix}
                             changeTypeLike={changeTypeLike}
                         />
                     </div>

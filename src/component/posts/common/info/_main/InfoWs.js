@@ -32,12 +32,11 @@ function Info({
     parent_id,
     count_comment,
 
-    likes,
-    count_like,
-    user_type_like,
+    reacted_count,
+    reacted_ix_arr,
+    user_reacted_ix,
 
     enabled_share,
-    shares,
     count_share,
     count_unique_share,
     //
@@ -48,7 +47,22 @@ function Info({
 
     const { handle_API_Like_L, handle_API_Share_L } = useContext(context_post);
 
-    /* ------------- OPEN SCREEN ------------ */
+    //-----
+
+    const title_reacted =
+        reacted_count > 1
+            ? user_reacted_ix >= 0
+                ? `You and ${UnitNumber(reacted_count - 1)} others`
+                : `${UnitNumber(reacted_count)}`
+            : user_reacted_ix >= 0
+            ? `You`
+            : `${UnitNumber(reacted_count)}`;
+
+    const title_share = `${UnitNumber(count_share)} share${
+        count_share > 1 ? 's' : ' '
+    }`;
+
+    // --------
 
     //
     function onOpenDetailShare() {
@@ -79,30 +93,16 @@ function Info({
     }
 
     //
-    const title_like =
-        count_like > 1
-            ? user_type_like >= 0
-                ? `You and ${UnitNumber(count_like - 1)} others`
-                : `${UnitNumber(count_like)}`
-            : user_type_like >= 0
-            ? `You`
-            : `${UnitNumber(count_like)}`;
-
-    const title_share =
-        UnitNumber(count_share) + (count_share > 1 ? ' shares' : ' share');
-
-    //
-    const arr_unique_like = [0, 1, 3];
-
-    //
     return (
-        <div className="Info">
+        <div className="Info text-secondary">
             <div className="Info_row flex-between-center">
                 <div className="Info_like pos-rel">
                     <ListUniqueLike
-                        title={title_like}
-                        count_like={count_like}
-                        arr_unique_like={arr_unique_like}
+                        title={title_reacted}
+                        count_like={reacted_count}
+                        arr_unique_like={reacted_ix_arr}
+                        div_fix_width={175}
+                        //
                         on_API_Like_L={on_API_Like_L}
                         onOpenDetailLike={onOpenDetailLike}
                     />
@@ -125,13 +125,14 @@ function Info({
                             <MouseEnterLeaveInfo
                                 count={count_share}
                                 title={
-                                    <span className="font-14px font-500">
+                                    <span>
                                         {title_share}
                                     </span>
                                 }
                                 total_people={count_unique_share}
-                                PeopleComponent={PeopleShare}
+                                div_fix_width={150}
                                 //
+                                PeopleComponent={PeopleShare}
                                 handle_API_L={on_API_Share_L}
                                 handleOpenScreen={onOpenDetailShare}
                                 LoadingComponent={CircleLoading}

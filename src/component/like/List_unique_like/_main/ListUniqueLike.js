@@ -26,6 +26,7 @@ function ListUniqueLike({
     title,
     count_like,
     arr_unique_like,
+    div_fix_width,
 
     on_API_Like_L,
     onOpenDetailLike,
@@ -41,20 +42,23 @@ function ListUniqueLike({
     }
 
     //
+    if (!count_like) {
+        return null;
+    }
+
+    //
     return (
-        <div className={count_like ? 'ListUniqueLike' : 'display-none'}>
+        <div className="ListUniqueLike">
             <div className="display-flex align-items-center">
                 {arr_unique_like.map((ix) => (
-                    <div
-                        key={`Info_like_${ix}`}
-                        className="ListUniqueLike_item"
-                    >
+                    <div key={ix} className="ListUniqueLike_item">
                         <ItemUniqueLike
                             ix={ix}
                             count={count_like}
                             title={type_likes[ix].component}
-                            PeopleComponent={PeopleUniqueLike}
+                            div_fix_width={div_fix_width}
                             //
+                            PeopleComponent={PeopleUniqueLike}
                             onOpenDetailLike={onOpenDetailLike}
                             handle_API_L={on_API_Like_L}
                             handleOpenScreen={onOpenDetailLike}
@@ -64,7 +68,8 @@ function ListUniqueLike({
 
                 <div className="ListUniqueLike_item ListUniqueLike_count">
                     <MouseEnterLeaveInfo
-                        // title={title}
+                        title={title}
+                        div_fix_width={div_fix_width}
                         count={count_like}
                         PeopleComponent={PeopleUniqueLike}
                         //

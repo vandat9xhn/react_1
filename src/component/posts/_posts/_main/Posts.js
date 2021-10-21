@@ -32,13 +32,23 @@ import {
     handle_API_Sub_L,
     handle_API_Sub_U,
 } from '../../../../_handle_api/post/HandleAPISub';
+
+import {
+    handle_API_HistorySub2_L,
+    handle_API_LikeSub2_L,
+    handle_API_MoreContentHisSub2_R,
+    handle_API_MoreContentSub2_R,
+    handle_API_Sub2_C,
+    handle_API_Sub2_L,
+    handle_API_Sub2_U,
+} from '../../../../_handle_api/post/HandleAPISub2';
 //
 import ComponentSkeleton from '../../../skeleton/component_skeleton/ComponentSkeleton';
 import FetchingDiv from '../../../some_div/fetching/FetchingDiv';
 //
 import Post from '../../_post/_main_post/Post';
 import PostSkeleton from '../../_post/skeleton/PostSkeleton';
-// 
+//
 import './Posts.scss';
 
 //
@@ -135,6 +145,16 @@ function Posts({ posts, has_fetched, is_fetching }) {
                 handle_API_LikeSub_L={handle_API_LikeSub_L}
                 handle_API_HistorySub_L={handle_API_HistorySub_L}
                 handle_API_MoreContentHisSub_R={handle_API_MoreContentHisSub_R}
+                //
+                handle_API_MoreContentSub2_R={handle_API_MoreContentSub2_R}
+                handle_API_Sub2_L={handle_API_Sub2_L}
+                handle_API_Sub2_C={handle_API_Sub2_C}
+                handle_API_Sub2_U={handle_API_Sub2_U}
+                handle_API_LikeSub2_L={handle_API_LikeSub2_L}
+                handle_API_HistorySub2_L={handle_API_HistorySub2_L}
+                handle_API_MoreContentHisSub2_R={
+                    handle_API_MoreContentHisSub2_R
+                }
             >
                 <ComponentSkeleton
                     has_fetched={has_fetched}
@@ -142,11 +162,12 @@ function Posts({ posts, has_fetched, is_fetching }) {
                     num={1}
                 />
 
-                {posts.map((post, index) => (
-                    <div key={`Posts_${post.id}`} className="Posts_item">
-                        <Post post={post} post_ix={index} />
-                    </div>
-                ))}
+                {has_fetched &&
+                    posts.map((post, index) => (
+                        <div key={`Posts_${post.id}`} className="Posts_item">
+                            <Post post={post} post_ix={index} />
+                        </div>
+                    ))}
 
                 <div className="width-fit-content margin-auto">
                     <FetchingDiv is_fetching={is_fetching && has_fetched} />

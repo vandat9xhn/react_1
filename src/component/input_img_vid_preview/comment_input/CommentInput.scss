@@ -1,21 +1,27 @@
 //
 .CommentInput_contain {
-    border-radius: 15px;
-}
-// ..
-.CommentInput_input {
-    flex-basis: 1rem;
-    padding-left: 0.75rem;
+    border-radius: 18px;
 }
 
+// .
+.CommentInput_input {
+    flex-basis: 16px;
+    padding-left: 12px;
+}
 // ..
-.CommentInput_textarea{
-    min-height: 32px;
+.CommentInput_textarea {
+    min-height: 24px;
+    padding: 6px 0;
 }
 
 // ..
 .CommentInput_files {
     align-self: flex-end;
+
+    .InputFile-circle {
+        width: 36px;
+        height: 36px;
+    }
 }
 
 // preview
@@ -26,13 +32,5 @@
             position: relative;
             margin: 0.25rem;
         }
-    }
-}
-
-//
-@media (max-width: 600px) {
-    // ....
-    .CommentInput__send {
-        display: block;
     }
 }

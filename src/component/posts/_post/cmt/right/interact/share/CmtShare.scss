@@ -1,0 +1,16 @@
+.CmtShare{
+    width: 360px;
+    color: #1c1e21;
+}
+
+.CmtShare_item {
+    padding: 6px;
+    border-radius: 6px;
+
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--md-bg-fb);
+    }
+}

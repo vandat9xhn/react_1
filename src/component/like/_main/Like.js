@@ -118,12 +118,12 @@ function Like({ changeTypeLike, icon_small, type_like }) {
     return (
         <div
             ref={ref_like_elm}
-            className="Like"
+            className="Like wh-100 cursor-pointer"
             onMouseLeave={IS_MOBILE ? undefined : onMouseLeave}
             onMouseEnter={IS_MOBILE ? undefined : onMouseEnter}
         >
             <div
-                className={`Like_type display-flex-center padding-8px cursor-pointer ${
+                className={`Like_type display-flex-center padding-8px ${
                     icon_small ? 'Like_icon-small' : ''
                 } ${type_like == 0 ? 'nav-active active-color' : ''}`}
                 onClick={handleLike}

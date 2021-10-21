@@ -3,7 +3,6 @@ import {
     API_PostSub_UD,
     API_PostSubLike_L,
     API_PostSubHistory_L,
-    API_PostSub_R,
     API_PostHisSub_R,
     API_PostSubContentMore_R,
 } from '../../api/api_django/user/user_post/UserPost';

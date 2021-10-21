@@ -1,0 +1,23 @@
+.CmtInteract_item {
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.CmtInteract_like {
+    .Like_type {
+        padding: 0;
+    }
+
+    .IconsTypeLike {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+.CmtInteract_separate {
+    margin: 0 5px;
+    padding-bottom: 5px;
+}

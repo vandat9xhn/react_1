@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+//
+import PortalAtElm from '../at_elm/PortalAtElm';
 
 //
 PortalAtBody.propTypes = {
@@ -8,10 +9,15 @@ PortalAtBody.propTypes = {
 };
 
 //
-function PortalAtBody(props) {
-    return ReactDOM.createPortal(
-        <div className="portal_at_body">{props.children}</div>,
-        document.getElementsByTagName('body')[0]
+function PortalAtBody({ children }) {
+    //
+    return (
+        <PortalAtElm
+            elm={document.getElementsByTagName('body')[0]}
+            className="portal_at_body"
+        >
+            {children}
+        </PortalAtElm>
     );
 }
 

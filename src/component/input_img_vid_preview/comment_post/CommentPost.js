@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
 import { context_api } from '../../../_context/ContextAPI';
+//
 import CommentInput from '../comment_input/CommentInput';
 //
 import white_person from '../../../../image/white_person.svg';
@@ -18,34 +19,40 @@ CommentPost.defaultProps = {
 };
 
 //
-function CommentPost({ is_sub, handleSend }) {
+function CommentPost({ is_sub, placeholder, handleSend }) {
     //
     const { user } = useContext(context_api);
 
     //
-    return user.id ? (
-        <div className={`CommentPost ${is_sub ? 'CommentPost_sub' : ''}`}>
-            <div className="CommentPost_user">
-                <Link to={`/profile/${user.id}`}>
-                    <img
-                        className="brs-50"
-                        src={user.picture || white_person}
-                        alt=""
-                        width="30"
-                        height="30"
-                    />
-                </Link>
-            </div>
+    if (!user.id) {
+        return null;
+    }
+
+    //
+    return (
+        <div
+            className={`CommentPost pos-rel ${
+                is_sub ? 'CommentPost-sub' : 'CommentPost-cmt'
+            }`}
+        >
+            <Link
+                className="CommentPost_pic pos-abs left-0"
+                to={`/profile/${user.id}`}
+            >
+                <img
+                    className="brs-50 object-fit-cover"
+                    src={user.picture || white_person}
+                    alt=""
+                />
+            </Link>
 
             <div>
                 <CommentInput
-                    placeholder={is_sub ? 'Type...' : undefined}
+                    placeholder={placeholder}
                     handleSend={handleSend}
                 />
             </div>
         </div>
-    ) : (
-        <div></div>
     );
 }
 

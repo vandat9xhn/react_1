@@ -1,0 +1,83 @@
+$top-parent-1: 43px;
+$top-parent-2: 40px;
+
+$left-parent-1: 30px;
+$left-parent-2: 71px;
+
+// -----
+.cmt-contain{
+    position: relative;
+    padding: 5px 5px 5px 16px;
+}
+
+.sub-contain{
+    position: relative;
+    padding: 5px 5px 5px 60px;
+}
+
+.sub-2-contain{
+    position: relative;
+    padding: 5px 5px 5px 98px;
+}
+
+.sub-input{
+    padding-right: 11px;
+}
+
+// ----
+
+// straight
+.cmt-connect-straight {
+    position: absolute;
+    width: 2px;
+    background-color: var(--md-bg-fb);
+}
+// straight 1 at first
+.cmt-connect-straight-1 {
+    top: $top-parent-1;
+    left: $left-parent-1;
+    height: calc(100% - #{$top-parent-1});
+}
+// straight 1 at nth > 1
+.cmt-connect-straight-1-child {
+    top: 0;
+    left: $left-parent-1;
+    height: 100%;
+}
+// straight 2 at first
+.cmt-connect-straight-2 {
+    top: $top-parent-2;
+    left: $left-parent-2;
+    height: calc(100% - #{$top-parent-2});
+}
+// straight 2 at nth > 1
+.cmt-connect-straight-2-child {
+    top: 0;
+    left: $left-parent-2;
+    height: 100%;
+}
+
+// curved
+.cmt-connect-curved {
+    position: absolute;
+    top: 0;
+
+    border-left: 2px solid var(--md-bg-fb);
+    border-bottom: 2px solid var(--md-bg-fb);
+
+    border-bottom-left-radius: 10px;
+}
+// curved 1
+.cmt-connect-curved-1 {
+    left: $left-parent-1;
+
+    width: 24px;
+    height: 20px;
+}
+// curved 2
+.cmt-connect-curved-2 {
+    left: $left-parent-2;
+
+    width: 22px;
+    height: 20px;
+}

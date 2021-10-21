@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 // import TestPagination from '../test_pagination/TestPagination';
 //
 import './LearnHTML.scss';
+import LearnCmt from '../cmt/LearnCmt';
 // import TestSearchAnimate from '../test_search_animate/TestSearchAnimate';
 // import FbLogin from '../fb/test_login/FbLogin';
 // import LearnSelectColorBg from '../color_bg/LearnSelectColorBg';
@@ -28,7 +29,7 @@ import './LearnHTML.scss';
 // import LearnFsCartSummary from '../fashion/LearnFsCartSummary';
 // import LearnFsAddAddress from '../fs_add_address/LearnFsAddAddress';
 // import LearnNewPost from '../new_post/LearnNewPost';
-import LearnPLChooseAddress from '../pl_choose_address/LearnPLChooseAddress';
+// import LearnPLChooseAddress from '../pl_choose_address/LearnPLChooseAddress';
 // import LearnCropPic from '../crop_pic/LearnCropPic';
 // import LearnSwitch2Rect from '../switch_2_rect/LearnSwitch2Rect';
 
@@ -99,7 +100,9 @@ function LearnHTML() {
 
             {/* <LearnSwitch2Rect /> */}
 
-            <LearnPLChooseAddress />
+            {/* <LearnPLChooseAddress /> */}
+
+            <LearnCmt />
 
             <div className="h-100vh"></div>
         </div>

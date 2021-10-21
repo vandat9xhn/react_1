@@ -15,7 +15,7 @@ function PLDetailPost({ post, openDetailPost }) {
         <div className="PLDetailPost pos-rel">
             <div className="PLDetailPost_contain margin-bottom-15px overflow-hidden font-16px">
                 <h3 className="font-20px font-700">Bài viết đánh giá</h3>
-        
+
                 {post}
             </div>
 

@@ -1,5 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+//
+import { IS_MOBILE } from '../../../_constant/Constant';
 //
 import { usePositionXY } from '../../../_hooks/usePositionXY';
 //
@@ -16,7 +18,10 @@ import './Actions.scss';
 ActionsNormal.propTypes = {
     title_action: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     symbol_post: PropTypes.bool,
+    use_back: PropTypes.bool,
     children: PropTypes.element,
+
+    callbackOpen: PropTypes.func,
 };
 
 ActionsNormal.defaultProps = {
@@ -24,10 +29,19 @@ ActionsNormal.defaultProps = {
     title_action: (
         <IconThreeDot size_icon="1.25rem" color="var(--md-color-third)" />
     ),
+    use_back: true,
+    callbackOpen: () => {},
 };
 
 //
-function ActionsNormal({ title_action, symbol_post, children }) {
+function ActionsNormal({
+    title_action,
+    symbol_post,
+    use_back,
+    children,
+
+    callbackOpen,
+}) {
     //
     const ref_child_elm = useRef(null);
     const ref_btn_elm = useRef(null);
@@ -52,10 +66,15 @@ function ActionsNormal({ title_action, symbol_post, children }) {
         max_height,
     } = position_state;
 
-    /* ---------------------------------- */
+    //
+    useEffect(() => {
+        callbackOpen(is_open);
+    }, [is_open]);
+
+    // ------
 
     //
-    function toggleActions() {
+    function toggleActions(e) {
         if (!is_open) {
             handleOpen({});
         } else {
@@ -70,53 +89,62 @@ function ActionsNormal({ title_action, symbol_post, children }) {
 
     //
     return (
-        <CloseDiv makeDivHidden={closeActions}>
-            <div className="Actions_contain pos-rel" onClick={toggleActions}>
-                <div
-                    ref={ref_btn_elm}
-                    className={`Actions_symbol ${
-                        symbol_post ? 'Actions_symbol-post' : ''
-                    }`}
-                >
-                    <div className="Actions_symbol_contain display-flex-center brs-50 hv-opacity hv-bg-s-through">
-                        {title_action}
-                    </div>
+        <div
+            className={`Actions pos-rel ${
+                is_open ? 'Actions-show' : 'Actions-hidden'
+            }`}
+        >
+            <div
+                ref={ref_btn_elm}
+                className={`Actions_symbol ${
+                    symbol_post ? 'Actions_symbol-post' : ''
+                }`}
+                onClick={toggleActions}
+            >
+                <div className="Actions_symbol_contain display-flex-center brs-50 hv-opacity hv-bg-s-through">
+                    {title_action}
                 </div>
+            </div>
 
-                <div
-                    className={`Actions_choices ${
-                        is_open ? 'visibility-visible' : 'visibility-hidden'
-                    } ${
-                        position_y == 'top'
-                            ? 'Actions_choices-top'
-                            : 'Actions_choices-bottom'
-                    }`}
-                    // style={{
-                    //     transform: `translateX(${transform_x}px)`,
-                    // }}
-                >
-                    <div ref={ref_child_elm}></div>
+            <div
+                className={`Actions_choices ${
+                    is_open ? 'visibility-visible' : 'visibility-hidden'
+                } ${
+                    position_y == 'top'
+                        ? 'Actions_choices-top'
+                        : 'Actions_choices-bottom'
+                }`}
+                // style={{
+                //     transform: `translateX(${transform_x}px)`,
+                // }}
+            >
+                <div ref={ref_child_elm}></div>
 
-                    {is_open && (
+                {is_open && (
+                    <CloseDiv
+                        makeDivHidden={closeActions}
+                        refs_target={[ref_btn_elm]}
+                    >
                         <div
-                            className="Actions_choices_actions scroll-thin bg-primary box-shadow-fb brs-5px-md text-primary"
+                            className="Actions_choices_actions scroll-thin padding-y-8px bg-primary box-shadow-fb brs-8px text-primary"
                             style={{
-                                maxHeight:
-                                    window.innerWidth <= 400
-                                        ? undefined
-                                        : `${max_height}px`,
+                                maxHeight: IS_MOBILE
+                                    ? undefined
+                                    : `${max_height}px`,
                             }}
                         >
-                            <div className="ActionsChoices_back display-none">
-                                <ActionBack />
-                            </div>
+                            {use_back ? (
+                                <div className="ActionsChoices_back display-none">
+                                    <ActionBack />
+                                </div>
+                            ) : null}
 
                             {children}
                         </div>
-                    )}
-                </div>
+                    </CloseDiv>
+                )}
             </div>
-        </CloseDiv>
+        </div>
     );
 }
 

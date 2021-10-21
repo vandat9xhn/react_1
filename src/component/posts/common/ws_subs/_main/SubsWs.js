@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_post } from '../../../../../_context/post/ContextPost';
 //
+import { getReplyTitleAllOrMore } from '../../../../../_some_function/post/cmt_title_more';
+//
 import CommentPost from '../../../../input_img_vid_preview/comment_post/CommentPost';
 import ScreenBlurShowMore from '../../../../_screen/components/part/foot/ScreenBlurShowMore';
 //
@@ -16,13 +18,16 @@ SubsWs.propTypes = {};
 //
 function SubsWs({
     cmt_id,
-    is_commenter,
+    is_poster,
     subs,
     count_sub,
     //
     open_input_sub,
     focusInputSub,
 }) {
+    //
+    const count_sub_left = count_sub - subs.length;
+
     //
     const [fetching_sub, setFetchingSub] = useState(false);
     //
@@ -58,31 +63,55 @@ function SubsWs({
 
     //
     return (
-        <div>
-            <ScreenBlurShowMore
-                title={`See ${count_sub - subs.length} subs`}
-                is_show_more={count_sub > subs.length}
-                is_fetching={fetching_sub}
-                handleShowMore={onGetSubsWs}
-            />
+        <div className="SubsWs">
+            {count_sub_left >= 1 ? (
+                <div className="sub-contain">
+                    {subs.length || open_input_sub ? (
+                        <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
+                    ) : null}
 
-            <div className="SubsWs_list">
-                {subs.map((sub) => (
-                    <div className="SubsWs_item" key={`SubsWs_${sub.id}`}>
+                    <div className="cmt-connect-curved cmt-connect-curved-1"></div>
+
+                    <div className="display-flex">
+                        <ScreenBlurShowMore
+                            title={getReplyTitleAllOrMore({
+                                count_left: count_sub_left,
+                                is_all: subs.length == 0,
+                            })}
+                            is_show_more={count_sub_left > 0}
+                            is_fetching={fetching_sub}
+                            handleShowMore={onGetSubsWs}
+                        />
+                    </div>
+                </div>
+            ) : null}
+
+            <div className="SubsWs_list display-flex col-reverse">
+                {subs.map((sub, sub_ix) => (
+                    <div className="SubsWs_item" key={sub.id}>
                         <SubWs
-                            is_commenter={is_commenter}
+                            is_poster={is_poster}
                             sub={sub}
-                            focusInputSub={focusInputSub}
+                            // Flex col-reverse => the first does not have straight-1
+                            has_straight_1={open_input_sub || sub_ix > 0}
                         />
                     </div>
                 ))}
             </div>
 
-            <div className="Subs_input">
-                <div className={open_input_sub ? '' : 'display-none'}>
-                    <CommentPost is_sub={true} handleSend={onSendSub} />
+            {open_input_sub ? (
+                <div className="SubsWs_input sub-contain">
+                    <div className="cmt-connect-curved cmt-connect-curved-1"></div>
+
+                    <div className="sub-input">
+                        <CommentPost
+                            is_sub={true}
+                            placeholder={'Write a public comment...'}
+                            handleSend={onSendSub}
+                        />
+                    </div>
                 </div>
-            </div>
+            ) : null}
         </div>
     );
 }

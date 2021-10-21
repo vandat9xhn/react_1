@@ -1,23 +1,23 @@
 import React, { useContext, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_post } from '../../../../../../_context/post/ContextPost';
 //
+import { handleFbPostCmtAction } from '../../../../../../_some_function/post/handleFbPostCmtAction';
+//
+import { handle_API_FbPostCmtAction_L } from '../../../../../../_handle_api/post/cmt_action';
+//
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
-import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
+import { useCmtEdit } from '../../../../../../_hooks/post/useCmtEditing';
 //
 import { openScreenConfirm } from '../../../../../_screen/type/confirm/ScreenConfirm';
 import { openScreenHistory } from '../../../../../_screen/type/history/ScreenHistory';
-import { openScreenUpdate } from '../../../../../_screen/type/update/_main/ScreenUpdate';
+import { openScreenLike } from '../../../../../_screen/type/like/_main/ScreenLike';
 //
-import CommentWsFoot from '../foot/CommentWsFoot';
-import CommentWsHead from '../head/CommentWsHead';
-import CommentWsBody from '../body/CommentWsBody';
-import CmtSubUpdate from '../../../ws_actions/update_component/_main/CmtSubUpdate';
 import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
 import SubsWs from '../../../ws_subs/_main/SubsWs';
+import PostCmt from '../../../../_post/cmt/_main/PostCmt';
 //
 import './CommentWs.scss';
 
@@ -27,22 +27,17 @@ CommentWs.propTypes = {};
 //
 function CommentWs({ comment, is_poster }) {
     //
-    const {
-        user: c_user,
-
-        openScreenFloor,
-        closeScreenFloor,
-
-        hasChangeScreenUpdate,
-    } = useContext(context_api);
+    const { user: c_user, openScreenFloor } = useContext(context_api);
 
     const {
         ws_send,
         ws_type_cmt,
 
         handle_API_MoreContentCmt_R,
-        handle_API_HistoryCmt_L,
+        handle_API_LikeCmt_L,
         handle_API_Cmt_U,
+
+        handle_API_HistoryCmt_L,
         handle_API_MoreContentHisCmt_R,
     } = useContext(context_post);
 
@@ -54,46 +49,90 @@ function CommentWs({ comment, is_poster }) {
         updated_time,
         content_obj,
 
-        likes,
-        count_like,
-        user_type_like,
+        reacted_ix_arr,
+        reacted_count,
+        user_reacted_ix,
 
         subs,
         count_sub,
     } = comment;
 
     //
-    const [open_input_sub, setOpenInputSub] = useState(false);
+    const [state_obj, setStateObj] = useState({
+        is_editing: false,
+        is_fetching_edit: false,
+
+        open_input_sub: false,
+    });
+
+    const { is_fetching_edit, is_editing, open_input_sub } = state_obj;
 
     //
     const ref_subs_ws = useRef(null);
 
     //
     const forceUpdate = useForceUpdate();
-    const handleScreenFetching = useScreenFetching();
-
-    /* ------------------------- */
 
     //
-    function onSeeMoreContentCmt() {
+    const { openEditing, handleEdit, cancelEdit } = useCmtEdit({
+        cmt_obj: comment,
+        setStateObj: setStateObj,
+
+        handle_API_MoreContentCmt_R: handle_API_MoreContentCmt_R,
+        handle_API_Cmt_U: handle_API_Cmt_U,
+    });
+
+    // ------
+
+    //
+    function seeMoreContent() {
         return handle_API_MoreContentCmt_R(id);
     }
 
-    /* ------------- SUB ------------- */
+    //
+    function handleClickVidPic() {}
+
+    //
+    function startReply() {
+        focusInputSub();
+    }
+
+    //
+    function sendAward() {}
 
     //
     function focusInputSub() {
         if (c_user.id) {
-            !open_input_sub && setOpenInputSub(true);
+            !open_input_sub &&
+                setStateObj((state_obj) => ({
+                    ...state_obj,
+                    open_input_sub: true,
+                }));
             setTimeout(() => {
                 ref_subs_ws.current
-                    .querySelector('.Subs_input textarea.CommentInput_textarea')
+                    .querySelector(
+                        '.SubsWs_input textarea.CommentInput_textarea'
+                    )
                     .focus();
             }, 1);
         }
     }
 
-    /* ---------- WS ----------- */
+    // ------ LIKE
+
+    //
+    function onOpenScreenLike() {
+        openScreenLike({
+            openScreenFloor: openScreenFloor,
+            handle_API_Like_L: on_API_LikeCmt_L,
+            type_like: -1,
+        });
+    }
+
+    //
+    function on_API_LikeCmt_L() {
+        return handle_API_LikeCmt_L(id, 0, -1);
+    }
 
     //
     function changeTypeLike(new_type_like) {
@@ -104,36 +143,37 @@ function CommentWs({ comment, is_poster }) {
         });
     }
 
-    /* ------------- OPEN ACTIONS ------------- */
+    // ----- ACTIONS
+
+    //
+    function handle_API_Action_L() {
+        return handle_API_FbPostCmtAction_L({
+            is_commenter: user.id == c_user.id,
+            is_poster: is_poster,
+        });
+    }
+
+    //
+    function handleAction(action_name = '') {
+        handleFbPostCmtAction({
+            action_name: action_name,
+            openEdit: openEditing,
+            openDelete: openDeleteCmt,
+            openReport: openReportCmt,
+        });
+    }
+
+    // ------ OPEN ACTIONS
 
     //
     function openHistoryCmt() {
         openScreenHistory({
             openScreenFloor: openScreenFloor,
-
-            title: 'History',
-            handle_API_History_L: on_API_HistoryCmt_L,
+            title: 'Edit history',
+            handle_API_History_L: (c_count) =>
+                handle_API_HistoryCmt_L(id, c_count),
             HisComponent: CmtSubHistory,
             handle_API_MoreContent: handle_API_MoreContentHisCmt_R,
-        });
-    }
-
-    //
-    async function openUpdateCmt() {
-        const content = content_obj.has_more_content
-            ? await handleScreenFetching(() => handle_API_MoreContentCmt_R(id))
-            : content_obj.content;
-
-        openScreenUpdate({
-            openScreenFloor: openScreenFloor,
-
-            title: 'Update',
-            UpdateComponent: CmtSubUpdate,
-
-            text: content,
-            vid_pic: vid_pic,
-            handleUpdate: handleUpdate,
-            handleHasChange: hasChangeScreenUpdate,
         });
     }
 
@@ -142,7 +182,7 @@ function CommentWs({ comment, is_poster }) {
         openScreenConfirm({
             openScreenFloor: openScreenFloor,
             title: 'Delete',
-            notification: 'Do you really want to delete this post?',
+            notification: 'Do you really want to delete this comment?',
             handleConfirm: handleDelete,
         });
     }
@@ -157,33 +197,8 @@ function CommentWs({ comment, is_poster }) {
         });
     }
 
-    /* --------------- ON HANDLE ACTIONS ---------------- */
+    // -------  HANDLE ACTIONS
 
-    //
-    function on_API_HistoryCmt_L(c_count) {
-        return handle_API_HistoryCmt_L(id, c_count);
-    }
-
-    //
-    async function handleUpdate(data) {
-        await handleScreenFetching(() => handle_API_Cmt_U(id, data_update));
-
-        const { new_text, file, url, type } = data;
-
-        const data_update = {
-            text: new_text,
-        };
-
-        if ((!file && !url) || file) {
-            data_update['file'] = file;
-        }
-
-        content_obj.content = new_text;
-        comment.vid_pic = url;
-
-        forceUpdate();
-        closeScreenFloor();
-    }
     //
     function handleDelete() {
         comment.is_del = true;
@@ -195,70 +210,69 @@ function CommentWs({ comment, is_poster }) {
         console.log('Report: ' + id);
     }
 
+    // -----
+
+    //
+    if (comment.is_del) {
+        return null;
+    }
+
     //
     return (
-        !comment.is_del && (
-            <div className="CommentWs">
-                <div className="display-flex">
-                    <div className="CommentWs_user-pic">
-                        <Link to={`/profile/${user.id}`}>
-                            <img
-                                className=" brs-50 object-fit-cover"
-                                src={user.picture}
-                                alt=""
-                                width="45"
-                                height="45"
-                            />
-                        </Link>
-                    </div>
+        <div className="CommentWs">
+            <div className="cmt-contain">
+                {count_sub || open_input_sub ? (
+                    <div className="cmt-connect-straight cmt-connect-straight-1"></div>
+                ) : null}
 
-                    <div className="Comment_contain flex-grow-1 padding-left-5px">
-                        <div className="Comment_head">
-                            <CommentWsHead
-                                user={user}
-                                is_user={c_user.id == user.id}
-                                is_poster={is_poster}
-                                content_obj={content_obj}
-                                onSeeMoreContentCmt={onSeeMoreContentCmt}
-                                //
-                                openHistoryCmt={openHistoryCmt}
-                                openUpdateCmt={openUpdateCmt}
-                                openDeleteCmt={openDeleteCmt}
-                                openReportCmt={openReportCmt}
-                            />
-                        </div>
-
-                        <div className="Comment_body">
-                            <CommentWsBody vid_pic={vid_pic} />
-                        </div>
-
-                        <div className="Comment_foot">
-                            <CommentWsFoot
-                                id={id}
-                                likes={likes}
-                                count_like={count_like}
-                                user_type_like={user_type_like}
-                                updated_time={updated_time}
-                                //
-                                focusInputSub={focusInputSub}
-                                changeTypeLike={changeTypeLike}
-                            />
-                        </div>
-
-                        <div className="Comment_subs" ref={ref_subs_ws}>
-                            <SubsWs
-                                cmt_id={id}
-                                is_commenter={c_user.id == user.id}
-                                subs={subs}
-                                count_sub={count_sub}
-                                open_input_sub={open_input_sub}
-                                focusInputSub={focusInputSub}
-                            />
-                        </div>
-                    </div>
-                </div>
+                <PostCmt
+                    user_id={user.id}
+                    user_name={`${user.first_name} ${user.last_name}`}
+                    user_pic={user.picture}
+                    user_pic_size={32}
+                    //
+                    content_obj={content_obj}
+                    vid_pic={vid_pic}
+                    updated_time={updated_time}
+                    class_scroll_elm={''}
+                    //
+                    reacted_ix_arr={reacted_ix_arr}
+                    reacted_count={reacted_count}
+                    user_reacted_ix={user_reacted_ix}
+                    //
+                    is_editing={is_editing}
+                    is_fetching_edit={is_fetching_edit}
+                    //
+                    seeMoreContent={seeMoreContent}
+                    handleClickVidPic={handleClickVidPic}
+                    startReply={startReply}
+                    sendAward={sendAward}
+                    openHistory={openHistoryCmt}
+                    //
+                    changeTypeLike={changeTypeLike}
+                    on_API_LikeAll_L={on_API_LikeCmt_L}
+                    onOpenDetailLikeAll={onOpenScreenLike}
+                    //
+                    handle_API_Action_L={handle_API_Action_L}
+                    handleAction={handleAction}
+                    handleEdit={handleEdit}
+                    cancelEdit={cancelEdit}
+                />
             </div>
-        )
+
+            <div ref={ref_subs_ws} className="Comment_subs">
+                {count_sub ? (
+                    <SubsWs
+                        cmt_id={id}
+                        is_poster={is_poster}
+                        subs={subs}
+                        count_sub={count_sub}
+                        open_input_sub={open_input_sub}
+                        focusInputSub={focusInputSub}
+                    />
+                ) : null}
+            </div>
+        </div>
     );
 }
 

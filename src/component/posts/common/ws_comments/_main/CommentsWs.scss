@@ -1,35 +1,14 @@
-
-.Comments_list{
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-//
-.Comment__input {
-    position: relative;
-    margin-bottom: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-    width: calc(100% - 1rem);
+.Comments {
+    .ScreenBlurShowMore-more{
+        justify-content: flex-start;
+    }
     
-    .CommentInput {
-        .InputFile {
-            width: 1.5rem;
-            height: 1.5rem;
-            .IconsInput {
-                width: 1rem;
-                height: 1rem;
-            }
+    .ScreenBlurShowMore_title {
+        font-weight: 600;
+        color: var(--md-color-secondary);
+
+        &:hover {
+            text-decoration: underline;
         }
     }
-
-    .CommentInput_preview {
-        position: absolute;
-        bottom: 100%;
-    }
-}
-// .
-.Comments_input_contain{
-    padding-top: 0.25rem;
-    border-top: 1px solid var(--md-bg-ccc);
 }

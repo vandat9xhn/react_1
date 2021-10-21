@@ -24,33 +24,32 @@ function ScreenBlurShowMore({
     title,
     is_show_more,
     is_fetching,
-    
+
     handleShowMore,
     FetchingComponent,
 }) {
     //
+    if (!is_show_more) {
+        return null;
+    }
+
+    //
     return (
         <div
-            className={
-                !is_fetching && !is_show_more ? '' : 'ScreenBlurShowMore padding-8px'
-            }
+            className={`ScreenBlurShowMore display-flex-center ${
+                !is_fetching ? 'ScreenBlurShowMore-more' : 'padding-8px'
+            }`}
         >
-            <div className="display-flex justify-content-center">
-                <div
-                    className={
-                        is_show_more && !is_fetching
-                            ? 'font-italic cursor-pointer'
-                            : 'display-none'
-                    }
-                    onClick={handleShowMore}
-                >
-                    {title}
-                </div>
-
-                <div>
-                    <FetchingComponent is_fetching={is_fetching} />
-                </div>
+            <div
+                className={`ScreenBlurShowMore_title ${
+                    !is_fetching ? 'cursor-pointer' : 'display-none'
+                }`}
+                onClick={handleShowMore}
+            >
+                {title}
             </div>
+
+            <FetchingComponent is_fetching={is_fetching} />
         </div>
     );
 }

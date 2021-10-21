@@ -1,0 +1,24 @@
+.cmt-interact-portal{
+    padding-top: 15px;
+}
+
+.cmt-interact-portal-contain {
+    position: relative;
+    padding: 12px 8px;
+    border-radius: 8px;
+
+    background-color: var(--md-bg-primary);
+    box-shadow: var(--box-shadow-fb);
+
+    &::before {
+        content: '';
+
+        position: absolute;
+        left: 10px;
+        bottom: 100%;
+
+        border-width: 0 8px 10px 8px;
+        border-style: solid;
+        border-color: transparent transparent var(--md-bg-primary) transparent;
+    }
+}

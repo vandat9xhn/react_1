@@ -12,6 +12,7 @@ import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 import { default_post_emoji_arr } from './cu_emoji';
 import { default_post_user_tag_arr } from './cu_user_tag';
+import { default_post_reacted_info_obj } from './reacted';
 
 //
 export const default_content_more = () => ({
@@ -100,6 +101,7 @@ export const default_post_obj = () => {
 
     const vid_pics = post_vid_pic_arr();
 
+    // 
     return {
         id: getRandomId(),
         ...getRandomUser(),
@@ -121,21 +123,23 @@ export const default_post_obj = () => {
               }
             : null,
         count_vid_pic: 1,
-        likes: [],
-        count_like: 2,
-        user_type_like: -2,
-        shares: [],
+        // 
+        ...default_post_reacted_info_obj(),
+        // 
+        share_arr: [],
         count_share: 3,
         count_unique_share: 3,
         count_user_shared: 2,
+        
         comments: [],
         count_comment: 11,
         histories: [],
         count_history: 10,
-        created_time: '2021-04-01T07:48:48.176630Z',
-        permission_post: 0,
-        updated_time: '2021-04-01T15:18:30.339347Z',
+        
         profile_model: 1,
+        permission_post: 0,
+        created_time: '2021-04-01T07:48:48.176630Z',
+        updated_time: '2021-04-01T15:18:30.339347Z',
     };
 };
 

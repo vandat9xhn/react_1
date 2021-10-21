@@ -81,11 +81,10 @@ function Post({
         user_tag_count,
         updated_time,
 
-        likes,
-        count_like,
-        user_type_like,
+        reacted_ix_arr,
+        reacted_count,
+        user_reacted_ix,
 
-        shares,
         count_share,
         count_unique_share,
         count_user_shared,
@@ -298,7 +297,7 @@ function Post({
             setTimeout(() => {
                 ref_comments.current
                     .querySelector(
-                        '.Comments_input_contain textarea.CommentInput_textarea'
+                        '.Comments_input textarea.CommentInput_textarea'
                     )
                     .focus();
             }, 1);
@@ -355,13 +354,12 @@ function Post({
                     <Info
                         parent_id={id}
                         count_comment={count_comment}
-                        //
-                        likes={likes}
-                        count_like={count_like}
-                        user_type_like={user_type_like}
+                        // 
+                        reacted_ix_arr={reacted_ix_arr}
+                        reacted_count={reacted_count}
+                        user_reacted_ix={user_reacted_ix}
                         //
                         enabled_share={enabled_share}
-                        shares={shares}
                         count_share={count_share}
                         count_unique_share={count_unique_share}
                         handleClickBtnCmt={handleClickBtnCmt}
@@ -373,7 +371,7 @@ function Post({
                         parent_id={id}
                         //
                         enabled_like={true}
-                        user_type_like={user_type_like}
+                        user_reacted_ix={user_reacted_ix}
                         //
                         enabled_cmt={true}
                         count_comment={count_comment}
@@ -388,7 +386,7 @@ function Post({
 
                 <div
                     ref={ref_comments}
-                    className="Post_comment margin-top-10px"
+                    className="Post_comment"
                 >
                     <CommentsWs
                         is_poster={is_poster}

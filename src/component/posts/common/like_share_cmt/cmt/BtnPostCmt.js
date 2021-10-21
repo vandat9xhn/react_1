@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { UnitNumber } from '../../../../../_some_function/UnitNumber';
 //
 import IconsPost from '../../../../../_icons_svg/icons_post/IconsPost';
-import IconDiv from '../../../../some_div/icon_div/IconDiv';
 //
 import './BtnPostCmt.scss';
 
@@ -12,26 +11,27 @@ import './BtnPostCmt.scss';
 BtnPostCmt.propTypes = {};
 
 //
-function BtnPostCmt({handleClickBtnCmt, count_comment}) {
-
+function BtnPostCmt({ handleClickBtnCmt, count_comment }) {
     //
     return (
-        <div onClick={handleClickBtnCmt} title="comment">
-            <IconDiv x={200} Icon={IconsPost}>
-                <div>
-                    <div className="BtnPostCmtShare_title">Comment</div>
+        <div
+            className="BtnPostCmt display-flex-center h-100per cursor-pointer"
+            onClick={handleClickBtnCmt}
+            title="comment"
+        >
+            <IconsPost x={200} />
 
-                    <div
-                        className={
-                            count_comment
-                                ? 'BtnPostCmtShare_total'
-                                : 'display-none'
-                        }
-                    >
-                        {UnitNumber(count_comment)}
-                    </div>
-                </div>
-            </IconDiv>
+            <div className="margin-left-5px">
+                <span className="BtnPostCmtShare_title">Comment</span>
+
+                <span
+                    className={
+                        count_comment ? 'BtnPostCmtShare_total' : 'display-none'
+                    }
+                >
+                    {UnitNumber(count_comment)}
+                </span>
+            </div>
         </div>
     );
 }

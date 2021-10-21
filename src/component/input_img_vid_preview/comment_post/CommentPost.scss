@@ -1,20 +1,24 @@
-// input
-.CommentPost {
-    position: relative;
-    padding-left: 2.5rem;
-    width: 100%;
-}
-//
-.CommentPost_user {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
+.CommentPost-cmt {
+    padding-left: 40px;
 
-//
-@media (max-width: 500px) {
-    .CommentPost {
-        position: relative;
-        padding-left: 2rem;
+    .CommentPost_pic {
+        top: 2px;
+
+        img {
+            width: 32px;
+            height: 32px;
+        }
+    }
+}
+.CommentPost-sub {
+    padding-left: 32px;
+
+    .CommentPost_pic {
+        top: 6px;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
     }
 }

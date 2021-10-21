@@ -21,9 +21,19 @@ class CloseDiv extends Component {
 
     //
     handleClick = (event) => {
-        if (!this.myDiv.contains(event.target)) {
-            this.props.makeDivHidden();
+        if (this.myDiv.contains(event.target)) {
+            return;
         }
+
+        if (this.props.refs_target) {
+            for (const ref_target of this.props.refs_target) {
+                if (ref_target.current.contains(event.target)) {
+                    return;
+                }
+            }
+        }
+
+        this.props.makeDivHidden();
     };
 
     //
@@ -34,6 +44,11 @@ class CloseDiv extends Component {
 
 CloseDiv.propTypes = {
     children: PropTypes.element.isRequired,
+    refs_target: PropTypes.arrayOf(
+        PropTypes.shape({
+            current: PropTypes.object,
+        })
+    ),
     makeDivHidden: PropTypes.func.isRequired,
 };
 

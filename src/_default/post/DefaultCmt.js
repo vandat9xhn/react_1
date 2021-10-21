@@ -3,26 +3,27 @@ import { getRandomId } from '../_common/default_id';
 import { getRandomVidPicOrNull } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
-// 
+//
 import { default_post_sub_arr } from './DefaultSub';
+import { default_post_reacted_info_obj } from './reacted';
 
 //
 export const default_post_cmt_obj = () => ({
     id: getRandomId(),
     ...getRandomUser(),
     ...getRandomContentObj(),
-    likes: [],
-    count_like: 1,
-    user_type_like: -2,
+    ...default_post_reacted_info_obj(),
+    
     subs: default_post_sub_arr(0, 1),
     count_sub: 1,
     histories: [],
     count_history: 0,
+    vid_pic: getRandomVidPicOrNull(),
+
+    profile_model: 2,
+    post_model: 11,
     created_time: '2021-04-02T06:42:36.443763Z',
     updated_time: '2021-04-02T06:42:36.443763Z',
-    vid_pic: getRandomVidPicOrNull(),
-    post_model: 11,
-    profile_model: 2,
 });
 
 export const default_post_cmt_arr = () =>

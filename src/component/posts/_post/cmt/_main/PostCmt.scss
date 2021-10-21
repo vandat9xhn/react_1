@@ -1,0 +1,11 @@
+.PostCmt {
+    .Actions-hidden {
+        display: none;
+    }
+
+    &:hover {
+        .Actions-hidden {
+            display: block;
+        }
+    }
+}

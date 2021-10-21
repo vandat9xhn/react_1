@@ -67,12 +67,8 @@
 // ------- BORDER RADIUS
 
 
-@for $i from 0 through 10 {
+@for $i from 0 through 20 {
     .brs-#{$i}px {
-        border-radius: #{$i}px;
-    }
-
-    .brs-md-#{$i}px {
         border-radius: #{$i}px;
     }
 }

@@ -1,9 +1,9 @@
 .LikeShareCmt {
-    padding: 0.25rem 0;
-    border-top: 1px solid var(--md-border-blur);
-    border-bottom: 1px solid var(--md-border-blur);
-
-    user-select: none;
+    .IconLike,
+    .IconsPost_cmt,
+    .IconsPost_share {
+        stroke: currentColor;
+    }
 }
 
 .LikeShareCmt_item {
@@ -13,16 +13,10 @@
     height: 2.25rem;
     border-radius: 5px;
     &:hover {
-        background-color: var(--md-bg-hover);
+        background-color: var(--md-bg-fb);
     }
     .Like_type {
         padding: 0.25rem;
-    }
-    .FlexDiv {
-        display: flex;
-        justify-content: center;
-        padding: 0.25rem;
-        cursor: pointer;
     }
 }
 

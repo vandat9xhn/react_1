@@ -100,7 +100,6 @@ function Profile(props) {
         console.log(id);
     }
 
-    // console.log(route_arr);
     //
     return (
         <div key={id} className="Profile">

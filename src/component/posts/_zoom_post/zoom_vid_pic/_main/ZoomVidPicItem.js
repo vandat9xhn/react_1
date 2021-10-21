@@ -36,7 +36,7 @@ import {
     handle_API_VidPicLikeCmt_L,
     handle_API_VidPicHistoryCmt_L,
     handle_API_MoreContentHisVidPicCmt_R,
-    // 
+    //
     handle_API_VidPicMoreContentSub_R,
     handle_API_VidPicSub_L,
     handle_API_VidPicSub_C,
@@ -44,6 +44,14 @@ import {
     handle_API_VidPicLikeSub_L,
     handle_API_VidPicHistorySub_L,
     handle_API_VidPicMoreContentHisSub_R,
+    //
+    handle_API_VidPicMoreContentSub2_R,
+    handle_API_VidPicSub2_L,
+    handle_API_VidPicSub2_C,
+    handle_API_VidPicSub2_U,
+    handle_API_VidPicLikeSub2_L,
+    handle_API_VidPicHistorySub2_L,
+    handle_API_VidPicMoreContentHisSub2_R,
 } from '../../../../../_handle_api/post/PostHandleVidPicCmtSub';
 //
 import ZoomPostCommon from '../../_common/_main/ZoomPostCommon';
@@ -98,15 +106,13 @@ function ZoomVidPicItem({
 
     const c_index = vid_pic_id_arr.indexOf(c_id);
 
-    // const is_has_next =
-    //     has_fetched && c_index != -1
-    //         ? c_index < vid_pic_id_arr.length - 1
-    //         : false;
+    const is_has_next =
+        has_fetched && c_index != -1 && c_index < vid_pic_id_arr.length - 1;
 
-    // const is_has_prev = has_fetched ? c_index > 0 : false;
+    const is_has_prev = has_fetched && c_index > 0;
 
-    const is_has_next = true;
-    const is_has_prev = true;
+    // const is_has_next = true;
+    // const is_has_prev = true;
 
     const {
         is_del,
@@ -172,12 +178,12 @@ function ZoomVidPicItem({
         };
     }, [vid_pic_obj[c_id].post_model]);
 
+    // --------
+
     //
     function handle_fake_ws_send(data) {
         console.log(data);
     }
-
-    /* ------------- COMMON -------------- */
 
     //
     function getNewVidPicId(is_next = true) {
@@ -197,13 +203,11 @@ function ZoomVidPicItem({
         history.replaceState('', '', '/post/photos/' + new_vid_pic_id);
 
         if (vid_pic_obj[new_vid_pic_id]) {
-            // setTimeout(() => {
             setVidPicState((vid_pic_state) => ({
                 ...vid_pic_state,
                 c_id: new_vid_pic_id,
                 is_fetching: false,
             }));
-            // }, 1);
 
             return;
         }
@@ -217,7 +221,7 @@ function ZoomVidPicItem({
         handleChangeId(new_vid_pic_id);
     }
 
-    /* ------------- GET API -------------- */
+    // ---------- API
 
     //
     async function getData_API_VidPic(vid_pic_id = 0) {
@@ -226,18 +230,23 @@ function ZoomVidPicItem({
         );
 
         mounted &&
-            setVidPicState((vid_pic_state) => ({
-                ...vid_pic_state,
-                vid_pic_obj: vid_pic_state.has_fetched
+            setVidPicState((vid_pic_state) => {
+                const { has_fetched, vid_pic_obj } = vid_pic_state;
+                const new_vid_pic_obj = has_fetched
                     ? {
-                          ...vid_pic_state.vid_pic_obj,
+                          ...vid_pic_obj,
                           [vid_pic_id]: data,
                       }
-                    : { [vid_pic_id]: data },
-                c_id: vid_pic_id,
-                has_fetched: true,
-                is_fetching: false,
-            }));
+                    : { [vid_pic_id]: data };
+
+                return {
+                    ...vid_pic_state,
+                    vid_pic_obj: new_vid_pic_obj,
+                    c_id: vid_pic_id,
+                    has_fetched: true,
+                    is_fetching: false,
+                };
+            });
     }
 
     //
@@ -253,7 +262,7 @@ function ZoomVidPicItem({
             }));
     }
 
-    /* ------------------------- */
+    // -------
 
     //
     function seeMoreContent() {
@@ -275,7 +284,7 @@ function ZoomVidPicItem({
         handleNextPrevVidPic(false);
     }
 
-    /* ------------- ACTIONS -------------- */
+    // ------ ACTIONS
 
     //
     function openHistoryVidPic() {
@@ -298,10 +307,8 @@ function ZoomVidPicItem({
 
         openScreenUpdate({
             openScreenFloor: openScreenFloor,
-
             title: 'Update',
             UpdateComponent: VidPicUpdate,
-
             content: content_obj.content + content_more,
             handleUpdate: handleUpdate,
         });
@@ -327,7 +334,7 @@ function ZoomVidPicItem({
         });
     }
 
-    /*------------- HANDLE ACTIONS -------------*/
+    // --------- HANDLE ACTIONS
 
     //
     async function handleUpdate(new_content) {
@@ -340,7 +347,6 @@ function ZoomVidPicItem({
         content_obj.has_more_content = false;
 
         forceUpdate();
-
         closeScreenFloor();
     }
 
@@ -375,7 +381,7 @@ function ZoomVidPicItem({
 
     //
     if (!has_fetched || is_del) {
-        return <div></div>;
+        return null;
     }
 
     //
@@ -405,6 +411,18 @@ function ZoomVidPicItem({
                 handle_API_HistorySub_L={handle_API_VidPicHistorySub_L}
                 handle_API_MoreContentHisSub_R={
                     handle_API_VidPicMoreContentHisSub_R
+                }
+                //
+                handle_API_MoreContentSub2_R={
+                    handle_API_VidPicMoreContentSub2_R
+                }
+                handle_API_Sub2_L={handle_API_VidPicSub2_L}
+                handle_API_Sub2_C={handle_API_VidPicSub2_C}
+                handle_API_Sub2_U={handle_API_VidPicSub2_U}
+                handle_API_LikeSub2_L={handle_API_VidPicLikeSub2_L}
+                handle_API_HistorySub2_L={handle_API_VidPicHistorySub2_L}
+                handle_API_MoreContentHisSub2_R={
+                    handle_API_VidPicMoreContentHisSub2_R
                 }
             >
                 <ZoomPostCommon

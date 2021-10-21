@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../_constant/Constant';
-// 
+//
 import { useMounted } from '../../_hooks/useMounted';
 import { useForceUpdate } from '../../_hooks/UseForceUpdate';
 //
@@ -39,6 +39,8 @@ function ContentMore({ content_obj, seeMoreContent }) {
     });
 
     const { is_fetching } = content_state;
+
+    // -----
 
     //
     const mounted = useMounted();
@@ -106,7 +108,7 @@ function ContentMore({ content_obj, seeMoreContent }) {
             >
                 <span className="ContentMore_first">
                     {content}
-                    {!has_more_content ? ' ' + content_more : ''}
+                    {!has_more_content ? ` ${content_more}` : ''}
                 </span>
 
                 {has_more_content && !is_fetching && (

@@ -1,5 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+//
+import { IS_MOBILE } from '../../../_constant/Constant';
 //
 import IconsInput from '../../../_icons_svg/Icons_input/IconsInput';
 import IconsAction from '../../../_icons_svg/icons_action/IconsAction';
@@ -13,45 +15,61 @@ import './CommentInput.scss';
 
 //
 CommentInput.propTypes = {
+    old_text: PropTypes.string,
+    old_urls: PropTypes.arrayOf(
+        PropTypes.shape({
+            vid_pic: PropTypes.string,
+            type: PropTypes.string,
+        })
+    ),
     file_multiple: PropTypes.bool,
     placeholder: PropTypes.string,
     handleSend: PropTypes.func,
 };
 
 CommentInput.defaultProps = {
+    old_text: '',
+    old_urls: [],
     file_multiple: false,
     placeholder: 'Comment...',
 };
 
 //
-function CommentInput({ file_multiple, placeholder, handleSend }) {
+function CommentInput({
+    old_text = '',
+    old_urls = [] || [{ vid_pic: '', type: '' }],
+    file_multiple,
+    placeholder,
+
+    handleSend,
+}) {
     //
-    const [cmt_obj, setCmtObj] = useState({
-        text: '',
-        urls: [],
+    const [state_obj, setStateObj] = useState({
+        text: old_text,
+        urls: old_urls,
         files: [],
         file_reading: false,
     });
 
-    const { text, urls, files, file_reading } = cmt_obj;
+    const { text, urls, files, file_reading } = state_obj;
 
     //
     const ref_comment_input = useRef(null);
 
-    /* ------------- INPUT ------------ */
+    // -------
 
     //
     function onChangeCmt(value) {
-        setCmtObj((cmt_obj) => ({
-            ...cmt_obj,
+        setStateObj((state_obj) => ({
+            ...state_obj,
             text: value,
         }));
     }
 
     //
     function handleStartLoadFile() {
-        setCmtObj((cmt_obj) => ({
-            ...cmt_obj,
+        setStateObj((state_obj) => ({
+            ...state_obj,
             file_reading: true,
         }));
     }
@@ -60,8 +78,8 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
     function onChooseFile(data_files) {
         const { files: load_files, vid_pics } = data_files;
 
-        setCmtObj((cmt_obj) => ({
-            ...cmt_obj,
+        setStateObj((state_obj) => ({
+            ...state_obj,
             urls: file_multiple ? [...urls, ...vid_pics] : vid_pics,
             files: file_multiple ? [...files, ...load_files] : load_files,
             file_reading: false,
@@ -76,8 +94,8 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
         new_files.splice(index, 1);
         new_urls.splice(index, 1);
 
-        setCmtObj((cmt_obj) => ({
-            ...cmt_obj,
+        setStateObj((state_obj) => ({
+            ...state_obj,
             files: new_files,
             urls: new_urls,
         }));
@@ -88,7 +106,7 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
         if (text.trim() || files.length) {
             handleSend(text, files, urls);
 
-            setCmtObj({
+            setStateObj({
                 text: '',
                 files: [],
                 urls: [],
@@ -103,7 +121,7 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
     //
     return (
         <div className="CommentInput pos-rel">
-            <div className="CommentInput_contain pos-rel bg-fb">
+            <div className="CommentInput_contain pos-rel padding-right-5px bg-fb">
                 <div className="display-flex align-items-center">
                     <div
                         ref={ref_comment_input}
@@ -120,8 +138,8 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
                         </div>
                     </div>
 
-                    <div className="CommentInput_files padding-right-4px">
-                        <div className="CommentInput_files-row display-flex-center">
+                    <div className="CommentInput_files">
+                        <div className="CommentInput_files-row display-center align-items-center">
                             <div className="CommentInput_files-col">
                                 <InputFile
                                     handleChange={onChooseFile}
@@ -134,18 +152,20 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
                                 </InputFile>
                             </div>
 
-                            <div className="CommentInput_files-col CommentInput__send display-none">
-                                <div
-                                    className={`display-flex ${
-                                        text.trim() || urls.length
-                                            ? 'nav-active'
-                                            : ''
-                                    }`}
-                                    onClick={onSendCmt}
-                                >
-                                    <IconsAction x={200} y={200} />
+                            {IS_MOBILE ? (
+                                <div className="CommentInput_files-col">
+                                    <div
+                                        className={`display-flex ${
+                                            text.trim() || urls.length
+                                                ? 'nav-active'
+                                                : ''
+                                        }`}
+                                        onClick={onSendCmt}
+                                    >
+                                        <IconsAction x={200} y={200} />
+                                    </div>
                                 </div>
-                            </div>
+                            ) : null}
                         </div>
                     </div>
                 </div>
@@ -154,7 +174,7 @@ function CommentInput({ file_multiple, placeholder, handleSend }) {
             <div className="CommentInput_preview max-w-100per overflow-x-auto">
                 <div className="display-flex">
                     <ImgVidPreview
-                        urls={urls || []}
+                        urls={urls}
                         show_all={true}
                         deleteAnItem={deleteAnItemPreview}
                         delete_in_pic={true}

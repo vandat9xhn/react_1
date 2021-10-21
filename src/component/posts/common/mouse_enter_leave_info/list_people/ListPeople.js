@@ -5,27 +5,40 @@ import './ListPeople.scss';
 
 //
 ListPeople.propTypes = {
+    title: PropTypes.string,
     list_people: PropTypes.array,
     count_people: PropTypes.number,
     max_size: PropTypes.number,
+
     PeopleComponent: PropTypes.func,
 };
 
 ListPeople.defaultProps = {
+    title: '',
     list_people: [],
     count_people: 0,
     max_size: 1,
+
     PeopleComponent: () => <div></div>,
 };
 
 //
-function ListPeople({ list_people, count_people, max_size, PeopleComponent }) {
+function ListPeople({
+    title,
+    list_people,
+    count_people,
+    max_size,
+
+    PeopleComponent,
+}) {
     //
     return (
         <div className="ListPeople bg-shadow-9 brs-5px">
+            {title ? <div className="font-600">{title}</div> : null}
+
             <ul className="list-none">
-                {list_people.map((item, index) => (
-                    <li key={`${index}`} className="ListPeople_item">
+                {list_people.map((item, ix) => (
+                    <li key={ix} className="ListPeople_item">
                         <PeopleComponent item={item} />
                     </li>
                 ))}

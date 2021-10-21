@@ -1,0 +1,19 @@
+.CmtVidPic {
+    img,
+    video {
+        margin: 0 auto;
+        max-width: 100%;
+        max-height: 200px;
+    }
+}
+
+.CmtVidPic_contain {
+    width: fit-content;
+    min-width: 150px;
+    max-width: calc(100% - 30px);
+    border-radius: 18px;
+}
+
+.CmtVidPic_pic {
+    border-radius: 18px;
+}

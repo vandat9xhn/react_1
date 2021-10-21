@@ -32,7 +32,7 @@ function PLChooseAddressScreen({ closeScreen }) {
         localStorage.pl_commune = commune;
         localStorage.pl_num_home = num_home;
         localStorage.pl_address = address;
-        location.reload();
+        // location.reload();
     }
 
     //

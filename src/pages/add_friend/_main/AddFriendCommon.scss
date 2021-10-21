@@ -1,13 +1,13 @@
-.add-friend-row{
+.add-friend-row {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .add-friend-item {
-    margin: 0.5rem;
-    width: 22rem;
-    max-width: 100%;
+    padding: 0.5rem;
+    width: 400px;
+    // max-width: 100%;
 }
 
 .add-friend-item-contain {
@@ -18,13 +18,18 @@
     border-radius: 8px;
 }
 
-//
-@media (max-width: 22rem) {
-    .add-friend-item {
-        margin: 0.5rem 0;
+.device-mobile {
+    //
+    @media (max-width: 850px) {
+        .add-friend-item {
+            width: 50%;
+        }
     }
 
-    .add-friend-item-contain{
-        border-radius: 0;
+    //
+    @media (max-width: 500px) {
+        .add-friend-item {
+            width: 100%;
+        }
     }
 }
