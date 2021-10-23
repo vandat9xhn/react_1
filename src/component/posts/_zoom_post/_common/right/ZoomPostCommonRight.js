@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { openScreenLike } from '../../../../_screen/type/like/_main/ScreenLike';
-// 
+//
 import ContentMore from '../../../../content_more/Content_more';
 import PictureName from '../../../../picture_name/pic_name/PictureName';
 import ListUniqueLike from '../../../../like/List_unique_like/_main/ListUniqueLike';
@@ -22,8 +22,8 @@ function ZoomPostCommonRight({
     content_obj,
     seeMoreContent,
 
-    count_like,
-    arr_unique_like,
+    reacted_count,
+    reacted_ix_arr,
     on_API_Like_L,
 
     action_component,
@@ -39,7 +39,7 @@ function ZoomPostCommonRight({
             openScreenFloor: openScreenFloor,
             handle_API_Like_L: on_API_Like_L,
             type_like: type_like,
-        })
+        });
     }
 
     //
@@ -67,8 +67,8 @@ function ZoomPostCommonRight({
 
                     <div>
                         <ListUniqueLike
-                            count_like={count_like}
-                            arr_unique_like={arr_unique_like}
+                            count_like={reacted_count}
+                            arr_unique_like={reacted_ix_arr}
                             on_API_Like_L={on_API_Like_L}
                             onOpenDetailLike={onOpenDetailLike}
                             //

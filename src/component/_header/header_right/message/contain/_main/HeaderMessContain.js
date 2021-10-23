@@ -48,7 +48,7 @@ function HeaderMessContain({
                 ))}
             </div>
 
-            <div className="RightHeader_hidden_show-more">
+            <div className="RightHeader_hidden_show-more padding-y-10px">
                 <ScreenBlurShowMore
                     title="Show more..."
                     is_show_more={count > zooms.length}

@@ -1,1 +1,5 @@
-
+.ListPeople_item{
+    &:not(:first-child){
+        padding-top: 2px;
+    }
+}

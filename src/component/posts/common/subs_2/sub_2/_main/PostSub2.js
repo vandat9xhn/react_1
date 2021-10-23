@@ -15,6 +15,7 @@ import PostCmt from '../../../../_post/cmt/_main/PostCmt';
 import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
 //
 import './PostSub2.scss';
+import { handle_API_FbPostCmtAction_L } from '../../../../../../_handle_api/post/cmt_action';
 
 //
 PostSub2.propTypes = {};
@@ -34,13 +35,14 @@ function PostSub2({
     const {
         ws_send,
         ws_type_sub,
+        is_main_vid_pic,
 
-        handle_API_MoreContentSub2_R,
-        handle_API_Sub2_U,
-        handle_API_LikeSub2_L,
+        handle_API_MoreContentSub_R,
+        handle_API_Sub_U,
+        handle_API_LikeSub_L,
 
-        handle_API_HistorySub2_L,
-        handle_API_MoreContentHisSub2_R,
+        handle_API_HistorySub_L,
+        handle_API_MoreContentHisSub_R,
     } = useContext(context_post);
 
     const { user: c_user, openScreenFloor } = useContext(context_api);
@@ -74,15 +76,15 @@ function PostSub2({
         cmt_obj: sub_2,
         setStateObj: setStateObj,
 
-        handle_API_MoreContentCmt_R: handle_API_MoreContentSub2_R,
-        handle_API_Cmt_U: handle_API_Sub2_U,
+        handle_API_MoreContentCmt_R: handle_API_MoreContentSub_R,
+        handle_API_Cmt_U: handle_API_Sub_U,
     });
 
     // ------
 
     //
     function seeMoreContentSub2() {
-        return handle_API_MoreContentSub2_R(id);
+        return handle_API_MoreContentSub_R(id);
     }
 
     //
@@ -100,7 +102,19 @@ function PostSub2({
 
     //
     function on_API_LikeSub2_L() {
-        return handle_API_LikeSub2_L(id, 0, -1);
+        if (reacted_ix_arr.length) {
+            return handle_API_LikeSub_L({
+                sub_2_id: 0,
+                c_count: 0,
+                type_like: -1,
+                is_vid_pic: is_main_vid_pic,
+            });
+        }
+
+        return handle_API_Sub2ReactedInfo_L({
+            sub_2_id: 0,
+            is_vid_pic: is_main_vid_pic,
+        });
     }
 
     //
@@ -128,6 +142,10 @@ function PostSub2({
         return handle_API_FbPostCmtAction_L({
             is_commenter: user.id == c_user.id,
             is_poster: is_poster,
+            params: {
+                type: 'sub2',
+                is_vid_pic: is_main_vid_pic,
+            },
         });
     }
 
@@ -149,9 +167,9 @@ function PostSub2({
             openScreenFloor: openScreenFloor,
             title: 'Edit history',
             handle_API_History_L: (c_count) =>
-                handle_API_HistorySub2_L(id, c_count),
+                handle_API_HistorySub_L(id, c_count),
             HisComponent: CmtSubHistory,
-            handle_API_MoreContent: handle_API_MoreContentHisSub2_R,
+            handle_API_MoreContent: handle_API_MoreContentHisSub_R,
         });
     }
 

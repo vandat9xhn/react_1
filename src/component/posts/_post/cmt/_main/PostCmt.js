@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { getTypeVidOrPic } from '../../../../../_some_function/VideoOrImage';
-// 
+//
+import { useHold } from '../../../../../_hooks/useHold';
+//
 import CmtLeft from '../left/_main/CmtLeft';
 import CmtRight from '../right/_main/CmtRight';
 import PostCmtEdit from '../edit/_main/PostCmtEdit';
@@ -48,6 +50,31 @@ function PostCmt({
     cancelEdit,
 }) {
     //
+    const [show_action_mb, setShowActionMb] = useState(false);
+
+    //
+    const { StartHold, StopHold } = useHold();
+
+    // ----
+
+    //
+    function closeActionMb() {
+        setShowActionMb(false);
+    }
+
+    //
+    function handleTouchStart() {
+        StartHold(() => {
+            setShowActionMb(true);
+        });
+    }
+
+    //
+    function handleTouchEnd() {
+        StopHold();
+    }
+
+    //
     return (
         <div className="PostCmt">
             <div className="PostCmt_row display-flex">
@@ -59,21 +86,30 @@ function PostCmt({
                     />
                 </div>
 
-                <div>
-                    {is_editing ? (
+                {is_editing ? (
+                    <div className="flex-grow-1">
                         <PostCmtEdit
                             text={`${content_obj.content} ${content_obj.content_more}`}
-                            vid_pics={[
-                                {
-                                    vid_pic: vid_pic,
-                                    type: getTypeVidOrPic(vid_pic),
-                                },
-                            ]}
+                            vid_pics={
+                                vid_pic
+                                    ? [
+                                          {
+                                              vid_pic: vid_pic,
+                                              type: getTypeVidOrPic(vid_pic),
+                                          },
+                                      ]
+                                    : []
+                            }
                             is_fetching={is_fetching_edit}
                             handleEdit={handleEdit}
                             cancelEdit={cancelEdit}
                         />
-                    ) : (
+                    </div>
+                ) : (
+                    <div
+                        onTouchStart={handleTouchStart}
+                        onTouchEnd={handleTouchEnd}
+                    >
                         <CmtRight
                             user_name={user_name}
                             content_obj={content_obj}
@@ -97,9 +133,12 @@ function PostCmt({
                             //
                             handle_API_Action_L={handle_API_Action_L}
                             handleAction={handleAction}
+                            //
+                            show_action_mb={show_action_mb}
+                            closeActionMb={closeActionMb}
                         />
-                    )}
-                </div>
+                    </div>
+                )}
             </div>
         </div>
     );

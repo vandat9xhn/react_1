@@ -1,8 +1,8 @@
 .Comments {
-    .ScreenBlurShowMore-more{
+    .ScreenBlurShowMore-more {
         justify-content: flex-start;
     }
-    
+
     .ScreenBlurShowMore_title {
         font-weight: 600;
         color: var(--md-color-secondary);
@@ -10,5 +10,33 @@
         &:hover {
             text-decoration: underline;
         }
+    }
+
+    .ScreenBlurShowMore_fetching {
+        .IconsLoader {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+}
+
+.device-mobile {
+    .Comments {
+        .ScreenBlurShowMore_title {
+            color: inherit;
+        }
+    }
+
+    .Comments_title {
+        align-items: flex-start;
+        flex-direction: column-reverse;
+    }
+    // .
+    .Comments_filter {
+        font-weight: 400;
+    }
+
+    .Comments_input {
+        padding: 5px;
     }
 }

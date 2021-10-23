@@ -41,7 +41,7 @@ export const initial_posts = [
         count_vid_pic: 0,
         likes: [],
         count_like: 0,
-        user_type_like: -1,
+        user_reacted_ix: -1,
         shares: [],
         count_share: 0,
         count_unique_share: 0,

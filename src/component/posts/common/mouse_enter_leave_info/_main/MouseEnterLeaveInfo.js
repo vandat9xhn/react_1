@@ -1,152 +1,146 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
-import { context_api } from '../../../../../_context/ContextAPI';
+import { useMouseEnterLeave } from '../../../../../_hooks/useMouseEnterLeave';
+import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
+import { useBool } from '../../../../../_hooks/useBool';
 //
-import { useMouseEnterLeave } from '../../../../../_hooks/UseMouseEnterLeave';
-//
-import { definePositionXY } from '../../../../../_some_function/definePositionXY';
-//
-import { content_pic_name_props } from '../../../../../_prop-types/_CommonPropTypes';
-//
+import PortalAtBody from '../../../../portal/at_body/PortalAtBody';
 import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
-import LoaderDiv from '../../../../some_div/loader_div/LoaderDiv';
-import ListPeople from '../list_people/ListPeople';
+//
+import MouseEnterLeaveInfoContain from '../contain/MouseEnterLeaveInfoContain';
 //
 import './MouseEnterLeaveInfo.scss';
 
 //
 MouseEnterLeaveInfo.propTypes = {
     count: PropTypes.number,
-    title: content_pic_name_props,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     total_people: PropTypes.number,
+    title_people: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 
-    title_people: PropTypes.string,
-    div_fix_width: PropTypes.number,
     has_list_people_component: PropTypes.bool,
+    list_people_props: PropTypes.object,
+    ListPeopleComponent: PropTypes.func,
 
     handle_API_L: PropTypes.func,
     handleOpenScreen: PropTypes.func,
 
     LoadingComponent: PropTypes.func,
-    ListPeopleComponent: PropTypes.func,
     PeopleComponent: PropTypes.func,
 };
 
 MouseEnterLeaveInfo.defaultProps = {
-    use_transform_x: true,
-    div_fix_width: 200,
+    has_list_people_component: false,
+    list_people_props: {},
 
     LoadingComponent: CircleLoading,
 };
 
 //
 function MouseEnterLeaveInfo({
-    count,
     title,
+    count,
     total_people,
-
     title_people,
+
+    // scroll_elm,
+    // getChildWidth,
     div_fix_width,
+    time_closing = 200,
+
     has_list_people_component,
+    list_people_props,
     ListPeopleComponent,
 
     handle_API_L,
     handleOpenScreen,
-
     LoadingComponent,
     PeopleComponent,
 }) {
     //
-    const { openDivFixPeople, closeDivFixPeople } = useContext(context_api);
+    const { is_true, setIsTrue } = useBool();
 
     //
     const ref_btn_elm = useRef(null);
 
     //
-    const { mouse_state, handleMouseenter, handleMouseleave } =
-        useMouseEnterLeave({
-            handle_API_L: handle_API_L,
+    const {
+        ref_arr,
+        ref_count,
+        ref_fetching,
+        ref_closing,
 
-            handleOpenDivFixLoading: handleOpenDivFixLoading,
-            handleOpenDivFixPeople: handleOpenDivFixPeople,
-            handleCloseDivFixPeople: handleCloseDivFixPeople,
-        });
+        handleMouseenter,
+        handleMouseleave,
+    } = useMouseEnterLeave({
+        time_closing: time_closing,
+        handle_API_L: handle_API_L,
+
+        handleLoading: handleLoadingInfo,
+        handleOpen: handleOpenInfo,
+        handleClose: handleCloseInfo,
+    });
 
     //
-    function handleOpenDivFix(FixElement) {
-        const { left, right, top, bottom } =
-            ref_btn_elm.current.getBoundingClientRect();
+    const forceUpdate = useForceUpdate();
 
-        const { position_x, position_y, transform_x, max_height } =
-            definePositionXY({
-                child_width: div_fix_width,
-                ref_btn_elm: ref_btn_elm,
-                header_head: 0,
-            });
+    // -----
 
-        const left_obj = {
-            'left-0': { left: `${left}px` },
-            'right-0': { right: `${right}px` },
-            'left-50per': { left: `${(left + right) / 2}px` },
-        };
-
-        openDivFixPeople({
-            scroll_elm: ref_btn_elm.current.closest('[class~=div_fix_scroll]'),
-            width: div_fix_width,
-            max_height: max_height,
-            ...left_obj[position_x],
-            top: window.scrollY + (position_y == 'top' ? top : bottom),
-            transform_x: transform_x,
-            transform_y: position_y == 'top' ? '-100%' : '0',
-
-            FixElement: FixElement,
-        });
+    //
+    function handleLoadingInfo() {
+        setIsTrue(true);
     }
 
     //
-    function handleOpenDivFixLoading() {
-        handleOpenDivFix(
-            <LoaderDiv LoadingComponent={LoadingComponent} is_fetching={true} />
-        );
+    function handleOpenInfo() {
+        !is_true && setIsTrue(true);
+        forceUpdate();
     }
 
     //
-    function handleOpenDivFixPeople() {
-        handleOpenDivFix(
-            has_list_people_component ? (
-                <ListPeopleComponent
-                    list_people={mouse_state.list}
-                    count_people={total_people}
-                />
-            ) : (
-                <ListPeople
-                    title={title_people}
-                    list_people={mouse_state.list}
-                    count_people={total_people || mouse_state.count}
-                    PeopleComponent={PeopleComponent}
-                />
-            )
-        );
-    }
-
-    //
-    function handleCloseDivFixPeople() {
-        closeDivFixPeople();
+    function handleCloseInfo() {
+        setIsTrue(false);
     }
 
     //
     return (
-        <div
-            ref={ref_btn_elm}
-            className="MouseEnterLeaveInfo pos-rel display-flex-center cursor-pointer hv-underline"
-            onClick={handleOpenScreen}
-            onMouseEnter={IS_MOBILE ? undefined : handleMouseenter}
-            onMouseLeave={IS_MOBILE ? undefined : handleMouseleave}
-        >
-            {title || count}
+        <div className="MouseEnterLeaveInfo cursor-pointer">
+            <div
+                ref={ref_btn_elm}
+                className="display-flex-center hv-underline"
+                onClick={handleOpenScreen}
+                onMouseEnter={IS_MOBILE ? undefined : handleMouseenter}
+                onMouseLeave={IS_MOBILE ? undefined : handleMouseleave}
+            >
+                {title || count}
+            </div>
+
+            {is_true ? (
+                <PortalAtBody>
+                    <MouseEnterLeaveInfoContain
+                        // scroll_elm={scroll_elm}
+                        ref_btn_elm={ref_btn_elm}
+                        // getChildWidth={getChildWidth}
+                        div_fix_width={div_fix_width}
+                        // 
+                        title_people={title_people}
+                        has_list_people_component={has_list_people_component}
+                        list_people_props={list_people_props}
+                        //
+                        data_arr={ref_arr.current}
+                        count={total_people || ref_count.current}
+                        ref_fetching={ref_fetching}
+                        is_closing={ref_closing.current}
+                        //
+                        ListPeopleComponent={ListPeopleComponent}
+                        LoadingComponent={LoadingComponent}
+                        PeopleComponent={PeopleComponent}
+                    />
+                </PortalAtBody>
+            ) : null}
         </div>
     );
 }

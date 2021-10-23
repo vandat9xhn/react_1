@@ -17,31 +17,27 @@ import {
     handle_API_Cmt_C,
     handle_API_Cmt_L,
     handle_API_Cmt_U,
-    handle_API_HistoryCmt_L,
-    handle_API_LikeCmt_L,
     handle_API_MoreContentCmt_R,
+    //
+    handle_API_LikeCmt_L,
+    handle_API_CmtReactedInfo_L,
+    //
+    handle_API_HistoryCmt_L,
     handle_API_MoreContentHisCmt_R,
 } from '../../../../_handle_api/post/HandleAPICmt';
 
 import {
-    handle_API_HistorySub_L,
-    handle_API_LikeSub_L,
-    handle_API_MoreContentHisSub_R,
     handle_API_MoreContentSub_R,
     handle_API_Sub_C,
     handle_API_Sub_L,
     handle_API_Sub_U,
+    //
+    handle_API_LikeSub_L,
+    handle_API_SubReactedInfo_L,
+    //
+    handle_API_HistorySub_L,
+    handle_API_MoreContentHisSub_R,
 } from '../../../../_handle_api/post/HandleAPISub';
-
-import {
-    handle_API_HistorySub2_L,
-    handle_API_LikeSub2_L,
-    handle_API_MoreContentHisSub2_R,
-    handle_API_MoreContentSub2_R,
-    handle_API_Sub2_C,
-    handle_API_Sub2_L,
-    handle_API_Sub2_U,
-} from '../../../../_handle_api/post/HandleAPISub2';
 //
 import ComponentSkeleton from '../../../skeleton/component_skeleton/ComponentSkeleton';
 import FetchingDiv from '../../../some_div/fetching/FetchingDiv';
@@ -135,6 +131,7 @@ function Posts({ posts, has_fetched, is_fetching }) {
                 handle_API_Cmt_C={handle_API_Cmt_C}
                 handle_API_Cmt_U={handle_API_Cmt_U}
                 handle_API_LikeCmt_L={handle_API_LikeCmt_L}
+                handle_API_CmtReactedInfo_L={handle_API_CmtReactedInfo_L}
                 handle_API_HistoryCmt_L={handle_API_HistoryCmt_L}
                 handle_API_MoreContentHisCmt_R={handle_API_MoreContentHisCmt_R}
                 //
@@ -143,18 +140,9 @@ function Posts({ posts, has_fetched, is_fetching }) {
                 handle_API_Sub_C={handle_API_Sub_C}
                 handle_API_Sub_U={handle_API_Sub_U}
                 handle_API_LikeSub_L={handle_API_LikeSub_L}
+                handle_API_SubReactedInfo_L={handle_API_SubReactedInfo_L}
                 handle_API_HistorySub_L={handle_API_HistorySub_L}
                 handle_API_MoreContentHisSub_R={handle_API_MoreContentHisSub_R}
-                //
-                handle_API_MoreContentSub2_R={handle_API_MoreContentSub2_R}
-                handle_API_Sub2_L={handle_API_Sub2_L}
-                handle_API_Sub2_C={handle_API_Sub2_C}
-                handle_API_Sub2_U={handle_API_Sub2_U}
-                handle_API_LikeSub2_L={handle_API_LikeSub2_L}
-                handle_API_HistorySub2_L={handle_API_HistorySub2_L}
-                handle_API_MoreContentHisSub2_R={
-                    handle_API_MoreContentHisSub2_R
-                }
             >
                 <ComponentSkeleton
                     has_fetched={has_fetched}

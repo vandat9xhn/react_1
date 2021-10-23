@@ -6,12 +6,14 @@ import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { user_propTypes } from '../../../../../_prop-types/_CommonPropTypes';
 //
+import { useBool } from '../../../../../_hooks/useBool';
+//
 import { openScreenConfirm } from '../../../../../component/_screen/type/confirm/ScreenConfirm';
 //
 import IconsAction from '../../../../../_icons_svg/icons_action/IconsAction';
 //
 import IconDiv from '../../../../../component/some_div/icon_div/IconDiv';
-import ActionsNormal from '../../../../../component/actions/_main/ActionsNormal';
+import Actions from '../../../../../component/actions/_main/Actions';
 //
 import './FriendEdit.scss';
 
@@ -25,6 +27,11 @@ FriendEdit.propTypes = {
 function FriendEdit({ user, handelDeleteFriend }) {
     //
     const { openRoomChat, openScreenFloor } = useContext(context_api);
+
+    //
+    const { is_true, toggleBool } = useBool();
+
+    // ------
 
     //
     const onOpenMessage = () => {
@@ -68,8 +75,8 @@ function FriendEdit({ user, handelDeleteFriend }) {
             </div>
 
             <div className="FriendEdit_right">
-                <ActionsNormal symbol_post={false}>
-                    <div className="FriendEdit_action brs-5px box-shadow-1">
+                <Actions is_show={is_true} toggleShow={toggleBool}>
+                    <div className="FriendEdit_action" onClick={toggleBool}>
                         <div
                             className="FriendEdit_action_item font-500 cursor-pointer"
                             onClick={onOpenMessage}
@@ -88,7 +95,7 @@ function FriendEdit({ user, handelDeleteFriend }) {
                             </IconDiv>
                         </div>
                     </div>
-                </ActionsNormal>
+                </Actions>
             </div>
         </div>
     );

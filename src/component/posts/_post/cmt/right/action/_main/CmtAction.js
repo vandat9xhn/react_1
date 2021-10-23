@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import CircleLoading from '../../../../../../waiting/circle_loading/CircleLoading';
-import ActionsNormal from '../../../../../../actions/_main/ActionsNormal';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 //
-import CmtActionItem from '../item/CmtActionItem';
+import CmtActionsMb from '../mobile/_main/CmtActionMb';
+import CmtActionPc from '../pc/_main/CmtActionPc';
+//
+import './CmtAction.scss';
 
 //
 CmtAction.propTypes = {};
 
 //
-function CmtAction({ handle_API_Action_L, handleAction }) {
+function CmtAction({
+    // for mobile
+    show_action_mb,
+    closeActionMb,
+
+    handle_API_Action_L,
+    handleAction,
+}) {
     //
     const [state_obj, setStateObj] = useState({
         action_arr: [] || [
@@ -32,7 +41,7 @@ function CmtAction({ handle_API_Action_L, handleAction }) {
     async function getData_Action() {
         setStateObj((state_obj) => ({
             ...state_obj,
-            is_fetching: false,
+            is_fetching: true,
         }));
 
         const data = await handle_API_Action_L();
@@ -45,36 +54,31 @@ function CmtAction({ handle_API_Action_L, handleAction }) {
         }));
     }
 
-    // -----
-
-    //
-    function callbackOpen(is_open = false) {
-        is_open && !has_fetched && getData_Action();
-    }
-
     //
     return (
-        <ActionsNormal use_back={false} callbackOpen={callbackOpen}>
-            <div className="CmtAction_contain font-500">
-                <ul className="CmtAction_list list-none">
-                    {action_arr.map((item, ix) => (
-                        <li key={ix}>
-                            <CmtActionItem
-                                name={item.name}
-                                title={item.title}
-                                handleClick={handleAction}
-                            />
-                        </li>
-                    ))}
-                </ul>
-
-                {is_fetching ? (
-                    <div className="display-flex-center padding-y-5px">
-                        <CircleLoading is_fetching={is_fetching} />
-                    </div>
-                ) : null}
-            </div>
-        </ActionsNormal>
+        <div className="CmtAction">
+            {IS_MOBILE ? (
+                <CmtActionsMb
+                    action_arr={action_arr}
+                    is_show={show_action_mb}
+                    is_fetching={is_fetching}
+                    has_fetched={has_fetched}
+                    //
+                    getData_Action={getData_Action}
+                    handleAction={handleAction}
+                    handleClose={closeActionMb}
+                />
+            ) : (
+                <CmtActionPc
+                    action_arr={action_arr}
+                    is_fetching={is_fetching}
+                    has_fetched={has_fetched}
+                    //
+                    getData_Action={getData_Action}
+                    handleAction={handleAction}
+                />
+            )}
+        </div>
     );
 }
 

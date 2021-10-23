@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { usePositionXY } from '../../../../../_hooks/usePositionXY';
+import { usePosFollowBodyOrElm } from '../../../../../_hooks/usePosFollowBodyOrElm';
 //
 import {
     API_NoticeCountNew_R,
@@ -24,34 +24,16 @@ HeaderNotice.propTypes = {};
 //
 function HeaderNotice({}) {
     //
-    const ref_child_elm = useRef(null);
-    const ref_btn_elm = useRef(null);
+    const [notice_state, setNoticeState] = useState({
+        notices: [],
+        count: 0,
+        count_new: 0,
 
-    //
-    const {
-        handleOpen,
-        handleClose,
-
-        position_state: notice_state,
-        setPositionState: setNoticeState,
-    } = usePositionXY({
-        ref_child_elm: ref_child_elm,
-        ref_btn_elm: ref_btn_elm,
-        other_state: {
-            notices: [],
-            count: 0,
-            count_new: 0,
-
-            is_fetching: false,
-            has_fetched: false,
-        },
+        is_fetching: false,
+        has_fetched: false,
     });
 
     const {
-        is_open,
-        position_x,
-        transform_x,
-
         notices,
         count,
         count_new,
@@ -61,23 +43,34 @@ function HeaderNotice({}) {
     } = notice_state;
 
     //
+    const ref_child_elm = useRef(null);
+    const ref_btn_elm = useRef(null);
+
+    //
+    const {
+        ref_is_open,
+        ref_pos,
+
+        handleOpen,
+        handleClose,
+    } = usePosFollowBodyOrElm({
+        // scroll_elm = html_elm,
+        ref_base_elm: ref_btn_elm,
+        getChildWidth: getChildWidth,
+
+        is_at_body: false,
+        use_scroll: false,
+        use_resize: true,
+    });
+
+    const { left_or_right, position_x, transform_x } = ref_pos.current;
+
+    //
     useEffect(() => {
         getData_API_CountNewNotice();
     }, []);
 
-    /* ------------------- COMMON ------------------ */
-
-    //
-    function handleCallbackOpen(callback_open_state = {}) {
-        getData_API_Notice(callback_open_state);
-    }
-
-    //
-    function closeNotice() {
-        handleClose();
-    }
-
-    /* ----------- GET API ---------- */
+    // --------- API
 
     //
     async function getData_API_CountNewNotice() {
@@ -114,11 +107,21 @@ function HeaderNotice({}) {
         }));
     }
 
-    /* ----------------------------- */
+    // ------
+
+    //
+    function getChildWidth() {
+        return ref_child_elm.current.getBoundingClientRect().width;
+    }
+
+    //
+    function closeNotice() {
+        ref_is_open.current && handleClose({});
+    }
 
     //
     function toggleOpenNotice() {
-        if (is_open) {
+        if (ref_is_open.current) {
             closeNotice();
 
             return;
@@ -126,22 +129,16 @@ function HeaderNotice({}) {
 
         if (!has_fetched) {
             handleOpen({
-                self_handle: false,
-                handleCallbackOpen: handleCallbackOpen,
+                callbackOpen: getData_API_Notice,
             });
 
             return;
         }
 
-        handleOpen({ self_handle: true });
+        handleOpen({});
     }
 
-    //
-    function makeDivHidden() {
-        closeNotice();
-    }
-
-    /* ----------------------------- */
+    // ----------
 
     //
     async function MarkAllAsRead() {
@@ -187,11 +184,11 @@ function HeaderNotice({}) {
 
     //
     return (
-        <CloseDiv makeDivHidden={makeDivHidden}>
+        <CloseDiv makeDivHidden={closeNotice}>
             <div
                 ref={ref_btn_elm}
                 className={`header_menu Header_notice ${
-                    is_open ? 'nav-active bottom-blue' : ''
+                    ref_is_open.current ? 'nav-active bottom-blue' : ''
                 }`}
             >
                 <div
@@ -208,17 +205,22 @@ function HeaderNotice({}) {
 
                 <div
                     ref={ref_child_elm}
-                    className={`header_hidden ${position_x} ${
+                    className={`header_hidden ${
                         has_fetched ? '' : 'pointer-events-none'
                     }`}
                     style={{
+                        [left_or_right]: position_x,
                         transform: `translateX(${transform_x}) translateX(${
-                            innerWidth > 400 ? '-10px' : 0
+                            innerWidth >= 500 ? '-10px' : 0
                         })`,
                     }}
                     onClick={hasReceivedNotices}
                 >
-                    <div className={`border-top-blur ${is_open ? '' : 'display-none'}`}>
+                    <div
+                        className={`border-top-blur ${
+                            ref_is_open.current ? '' : 'display-none'
+                        }`}
+                    >
                         <ListNotices
                             notices={notices}
                             count={count}

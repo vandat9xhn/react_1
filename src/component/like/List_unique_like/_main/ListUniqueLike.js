@@ -54,11 +54,13 @@ function ListUniqueLike({
                     <div key={ix} className="ListUniqueLike_item">
                         <ItemUniqueLike
                             ix={ix}
-                            count={count_like}
                             title={type_likes[ix].component}
-                            div_fix_width={div_fix_width}
+                            count={count_like}
+                            title_people={type_likes[ix].title}
                             //
+                            div_fix_width={div_fix_width}
                             PeopleComponent={PeopleUniqueLike}
+                            //
                             onOpenDetailLike={onOpenDetailLike}
                             handle_API_L={on_API_Like_L}
                             handleOpenScreen={onOpenDetailLike}
@@ -69,8 +71,8 @@ function ListUniqueLike({
                 <div className="ListUniqueLike_item ListUniqueLike_count">
                     <MouseEnterLeaveInfo
                         title={title}
-                        div_fix_width={div_fix_width}
                         count={count_like}
+                        div_fix_width={div_fix_width}
                         PeopleComponent={PeopleUniqueLike}
                         //
                         handle_API_L={on_API_LikeAll_L}

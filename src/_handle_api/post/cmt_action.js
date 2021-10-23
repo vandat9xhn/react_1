@@ -26,6 +26,7 @@ const cmt_action_obj = {
 export function handle_API_FbPostCmtAction_L({
     is_commenter = false,
     is_poster = false,
+    params = {},
 }) {
     return new Promise((res) => {
         if (is_commenter) {

@@ -1,9 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import UnitTime from '../../../../../../../_some_function/UnitTime';
-//
-import { useBool } from '../../../../../../../_hooks/useBool';
 //
 import Like from '../../../../../../like/_main/Like';
 //
@@ -13,6 +11,7 @@ import CmtShare from '../share/CmtShare';
 import CmtAward from '../award/CmtAward';
 //
 import './CmtInteract.scss';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 CmtInteract.propTypes = {};
@@ -28,27 +27,6 @@ function CmtInteract({
     sendAward,
     openHistory,
 }) {
-    //
-    const ref_share = useRef(null);
-    const ref_award = useRef(null);
-
-    //
-    const { is_true: show_share, toggleBool: toggleShare } = useBool();
-
-    const { is_true: show_award, toggleBool: toggleAward } = useBool();
-
-    // ---
-
-    //
-    function closeShare() {
-        show_share && toggleShare();
-    }
-
-    //
-    function closeAward() {
-        show_award && toggleAward();
-    }
-
     //
     return (
         <div className="CmtInteract padding-left-12px padding-top-3px line-12px font-12px text-secondary">
@@ -72,25 +50,20 @@ function CmtInteract({
 
                 <div className="CmtInteract_separate">.</div>
 
-                <div
-                    ref={ref_award}
-                    className="CmtInteract_award CmtInteract_item"
-                    onClick={toggleAward}
-                >
-                    Award
-                </div>
+                {IS_MOBILE ? null : (
+                    <React.Fragment>
+                        <CmtAward
+                            class_scroll_elm={class_scroll_elm}
+                            sendAward={sendAward}
+                        />
 
-                <div className="CmtInteract_separate">.</div>
+                        <div className="CmtInteract_separate">.</div>
 
-                <div
-                    ref={ref_share}
-                    className="CmtInteract_share CmtInteract_item"
-                    onClick={toggleShare}
-                >
-                    Share
-                </div>
+                        <CmtShare class_scroll_elm={class_scroll_elm} />
 
-                <div className="CmtInteract_separate">.</div>
+                        <div className="CmtInteract_separate">.</div>
+                    </React.Fragment>
+                )}
 
                 <div
                     className="CmtInteract_time"
@@ -110,23 +83,6 @@ function CmtInteract({
                     Edited
                 </div>
             </div>
-
-            {show_share ? (
-                <CmtShare
-                    class_scroll_elm={class_scroll_elm}
-                    ref_share={ref_share}
-                    closeShare={closeShare}
-                />
-            ) : null}
-
-            {show_award ? (
-                <CmtAward
-                    class_scroll_elm={class_scroll_elm}
-                    ref_award={ref_award}
-                    closeAward={closeAward}
-                    sendAward={sendAward}
-                />
-            ) : null}
         </div>
     );
 }

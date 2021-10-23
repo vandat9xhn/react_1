@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 //
-import { usePositionXY } from '../../../../../_hooks/usePositionXY';
+import { usePosFollowBodyOrElm } from '../../../../../_hooks/usePosFollowBodyOrElm';
 //
 import { API_ZoomCountNew_R } from '../../../../../api/api_django/header/APIHeaderToken';
 import {
@@ -20,45 +20,23 @@ import './HeaderMessage.scss';
 //
 
 //
-const other_state = {
-    zooms: [],
-    count: 0,
-    count_new: 0,
-
-    is_fetching: false,
-    has_fetched: false,
-};
-
-//
 HeaderMessage.propTypes = {};
 
 //
 function HeaderMessage() {
     //
     const { openRoomChat } = useContext(context_api);
-
     //
-    const ref_child_elm = useRef(null);
-    const ref_btn_elm = useRef(null);
+    const [zoom_state, setZoomState] = useState({
+        zooms: [],
+        count: 0,
+        count_new: 0,
 
-    //
-    const {
-        handleOpen,
-        handleClose,
-
-        position_state: zoom_state,
-        setPositionState: setZoomState,
-    } = usePositionXY({
-        ref_child_elm: ref_child_elm,
-        ref_btn_elm: ref_btn_elm,
-        other_state: other_state,
+        is_fetching: false,
+        has_fetched: false,
     });
 
     const {
-        is_open,
-        position_x,
-        transform_x,
-
         zooms,
         count,
         count_new,
@@ -66,6 +44,29 @@ function HeaderMessage() {
         is_fetching,
         has_fetched,
     } = zoom_state;
+
+    //
+    const ref_child_elm = useRef(null);
+    const ref_btn_elm = useRef(null);
+
+    //
+    const {
+        ref_is_open,
+        ref_pos,
+
+        handleOpen,
+        handleClose,
+    } = usePosFollowBodyOrElm({
+        // scroll_elm = html_elm,
+        ref_base_elm: ref_btn_elm,
+        getChildWidth: getChildWidth,
+
+        is_at_body: false,
+        use_scroll: false,
+        use_resize: true,
+    });
+
+    const { left_or_right, position_x, transform_x } = ref_pos.current;
 
     //
     useEffect(() => {
@@ -112,23 +113,21 @@ function HeaderMessage() {
         }));
     }
 
-    // --------- COMMON
+    // ---------
 
     //
-    function handleCallbackOpen(callback_open_state = {}) {
-        getData_API_Zoom(callback_open_state);
+    function getChildWidth() {
+        return ref_child_elm.current.getBoundingClientRect().width;
     }
 
     //
     function closeZoom() {
-        handleClose();
+        ref_is_open.current && handleClose({});
     }
-
-    /* ----------------------------- */
 
     //
     function toggleOpenZoom() {
-        if (is_open) {
+        if (ref_is_open.current) {
             closeZoom();
 
             return;
@@ -136,22 +135,16 @@ function HeaderMessage() {
 
         if (!has_fetched) {
             handleOpen({
-                self_handle: false,
-                handleCallbackOpen: handleCallbackOpen,
+                callbackOpen: getData_API_Zoom,
             });
 
             return;
         }
 
-        handleOpen({ self_handle: true });
+        handleOpen({});
     }
 
-    //
-    function makeDivHidden() {
-        is_open && closeZoom();
-    }
-
-    /* ----------------------------- */
+    // ------
 
     //
     function hasReceiveListZooms() {
@@ -166,25 +159,23 @@ function HeaderMessage() {
         const new_zooms = [...zooms];
         new_zooms[ix].count_new_mess = 0;
 
+        closeZoom();
         setZoomState((zoom_state) => ({
             ...zoom_state,
             zooms: new_zooms,
-            is_open: false,
         }));
-
         openRoomChat(zooms[ix].room_chat, false);
 
         await API_Zoom_U(id);
     }
 
-    // console.log(zoom_state);
     //
     return (
-        <CloseDiv makeDivHidden={makeDivHidden}>
+        <CloseDiv makeDivHidden={closeZoom}>
             <div
                 ref={ref_btn_elm}
                 className={`HeaderMessage header_menu ${
-                    is_open ? 'bottom-blue nav-active' : ''
+                    ref_is_open.current ? 'bottom-blue nav-active' : ''
                 }`}
             >
                 <div>
@@ -196,19 +187,20 @@ function HeaderMessage() {
 
                 <div
                     ref={ref_child_elm}
-                    className={`HeaderMessage_list header_hidden ${position_x} ${
+                    className={`HeaderMessage_list header_hidden ${
                         has_fetched ? '' : 'pointer-events-none'
                     }`}
                     style={{
+                        [left_or_right]: position_x,
                         transform: `translateX(${transform_x}) translateX(${
-                            innerWidth > 400 ? '-10px' : 0
+                            innerWidth >= 500 ? '-10px' : 0
                         })`,
                     }}
                     onClick={hasReceiveListZooms}
                 >
                     <div
                         className={`border-top-blur ${
-                            is_open ? '' : 'display-none'
+                            ref_is_open.current ? '' : 'display-none'
                         }`}
                     >
                         <HeaderMessContain

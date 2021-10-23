@@ -5,7 +5,7 @@ import './ListPeople.scss';
 
 //
 ListPeople.propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     list_people: PropTypes.array,
     count_people: PropTypes.number,
     max_size: PropTypes.number,
@@ -33,8 +33,12 @@ function ListPeople({
 }) {
     //
     return (
-        <div className="ListPeople bg-shadow-9 brs-5px">
-            {title ? <div className="font-600">{title}</div> : null}
+        <div className="ListPeople padding-10px bg-shadow-8 brs-8px">
+            {title ? (
+                <div className="padding-bottom-5px font-400 text-white text-cap">
+                    {title}
+                </div>
+            ) : null}
 
             <ul className="list-none">
                 {list_people.map((item, ix) => (
@@ -45,10 +49,8 @@ function ListPeople({
             </ul>
 
             {count_people > max_size && (
-                <div className="text-white padding-4px">
-                    <span className="font-13px font-500">
-                        {`And ${count_people - max_size} others...`}
-                    </span>
+                <div className="padding-top-5px font-13px font-500 text-white">
+                    {`And ${count_people - max_size} others...`}
                 </div>
             )}
         </div>

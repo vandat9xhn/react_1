@@ -5,22 +5,22 @@ $left-parent-1: 30px;
 $left-parent-2: 71px;
 
 // -----
-.cmt-contain{
+.cmt-contain {
     position: relative;
     padding: 5px 5px 5px 16px;
 }
 
-.sub-contain{
+.sub-contain {
     position: relative;
     padding: 5px 5px 5px 60px;
 }
 
-.sub-2-contain{
+.sub-2-contain {
     position: relative;
     padding: 5px 5px 5px 98px;
 }
 
-.sub-input{
+.sub-input {
     padding-right: 11px;
 }
 
@@ -80,4 +80,28 @@ $left-parent-2: 71px;
 
     width: 22px;
     height: 20px;
+}
+
+// ------
+
+//
+.device-mobile {
+    .cmt-contain{
+        padding-left: 5px;
+    }
+
+    .sub-contain{
+        padding-left: 35px;
+    }
+
+    .sub-input{
+        padding-right: 0;
+    }
+
+    .cmt-connect-straight,
+    .cmt-connect-curved {
+        display: none;
+    }
+
+    
 }

@@ -1,3 +1,5 @@
+import { useScreenFetching } from '../UseScreenFetching';
+
 //
 export function useCmtEdit({
     cmt_obj,
@@ -7,9 +9,13 @@ export function useCmtEdit({
     handle_API_Cmt_U,
 }) {
     //
-    async function openEditing() {
-        const content_obj = cmt_obj.content_obj
+    const handleScreenFetching = useScreenFetching();
 
+    //
+    const { id, content_obj } = cmt_obj;
+
+    //
+    async function openEditing() {
         if (!content_obj.has_more_content) {
             setStateObj((state_obj) => ({
                 ...state_obj,
@@ -38,9 +44,7 @@ export function useCmtEdit({
     }
 
     //
-    async function handleEdit(data) {
-        const { text, files, urls } = data;
-
+    async function handleEdit(text, files, urls) {
         setStateObj((state_obj) => ({
             ...state_obj,
             is_fetching_edit: true,
@@ -52,7 +56,9 @@ export function useCmtEdit({
         });
 
         content_obj.content = text;
-        cmt_obj.vid_pic = urls[0].vid_pic;
+        content_obj.has_more_content = false;
+        content_obj.content_more = '';
+        cmt_obj.vid_pic = urls.length ? urls[0].vid_pic : '';
 
         setStateObj((state_obj) => ({
             ...state_obj,

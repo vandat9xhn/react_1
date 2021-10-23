@@ -94,7 +94,7 @@ function Info({
 
     //
     return (
-        <div className="Info text-secondary">
+        <div className="Info padding-y-5px text-secondary">
             <div className="Info_row flex-between-center">
                 <div className="Info_like pos-rel">
                     <ListUniqueLike
@@ -124,11 +124,7 @@ function Info({
                         >
                             <MouseEnterLeaveInfo
                                 count={count_share}
-                                title={
-                                    <span>
-                                        {title_share}
-                                    </span>
-                                }
+                                title={title_share}
                                 total_people={count_unique_share}
                                 div_fix_width={150}
                                 //

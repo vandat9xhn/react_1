@@ -12,11 +12,13 @@ function ItemUniqueLike({
     ix,
     title,
     count_like,
+
+    title_people,
     div_fix_width,
+    PeopleComponent,
 
     onOpenDetailLike,
     handle_API_L,
-    PeopleComponent,
 }) {
     //
     function on_API_Like_L() {
@@ -32,6 +34,7 @@ function ItemUniqueLike({
         <MouseEnterLeaveInfo
             title={title}
             count={count_like}
+            title_people={title_people}
             PeopleComponent={PeopleComponent}
             div_fix_width={div_fix_width}
             //

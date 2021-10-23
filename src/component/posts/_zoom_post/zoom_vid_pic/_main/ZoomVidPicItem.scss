@@ -1,31 +1,19 @@
 //
 .ZoomVidPicItem {
+    .Comments_title{
+        padding: 10px;
+    }
+    
     .Comments_input {
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
+        z-index: 1;
+
         width: 100%;
+        background-color: var(--md-bg-primary);
 
-        .Comments_input_contain{
-            width: 100%;
-            padding: 0.25rem;
-            background-color: var(--md-bg-primary);
-    
-            box-shadow: 0 0 1px 1px var(--md-bg-ccc);
-            border-radius: 5px;
-        }
-        // .
-        .CommentPost_user{
-            img{
-                width: 35px;
-                height: 35px;
-            }
-        }
-    }
-
-    // 
-    .Comments_input {
         .CommentInput_preview {
             position: absolute;
             bottom: 100%;
@@ -33,35 +21,20 @@
     }
 }
 
-// 
-@media (max-width: 1000px){
+//
+@media (max-width: 1000px) {
     .ZoomVidPicItem {
         .Comments_input {
             transform: translateX(-51.5%);
-            width: auto;
-            .Comments_input_contain{
-                width: 500px;
-            }
-            // .
-        .CommentPost_user{
-            img{
-                width: 30px;
-                height: 30px;
-            }
-        }
+            max-width: 500px;
         }
     }
-    
 }
 
-@media (max-width: 500px){
+@media (max-width: 500px) {
     .ZoomVidPicItem {
         .Comments_input {
             transform: translateX(-50%);
-            .Comments_input_contain{
-                width: 100vw;
-            }
         }
     }
-    
 }

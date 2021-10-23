@@ -30,15 +30,13 @@ function ZoomPostCommon({
     content_obj,
     seeMoreContent,
 
-    count_like,
-    arr_unique_like,
+    reacted_count,
+    reacted_ix_arr,
     on_API_Like_L,
 
     action_component,
     like_share_cmt_component,
     comment_component,
-
-    is_fetching,
 }) {
     //
     useMakeBodyHidden({
@@ -51,9 +49,7 @@ function ZoomPostCommon({
     return (
         <div
             className={`ZoomPostCommon ${
-                show_screen_title
-                    ? ''
-                    : 'pos-fixed left-0 top-0 z-index-lv1'
+                show_screen_title ? '' : 'pos-fixed left-0 top-0 z-index-lv1'
             }`}
         >
             <div className="ZoomPostCommon_contain">
@@ -67,39 +63,29 @@ function ZoomPostCommon({
                             />
                         </div>
 
-                        {!is_fetching ? (
-                            <ZoomPostCommonLeft
-                                vid_pic={vid_pic}
-                                is_has_next={is_has_next}
-                                is_has_prev={is_has_prev}
-                                handleNextVidPic={handleNextVidPic}
-                                handlePrevVidPic={handlePrevVidPic}
-                            />
-                        ) : (
-                            <div></div>
-                        )}
+                        <ZoomPostCommonLeft
+                            vid_pic={vid_pic}
+                            is_has_next={is_has_next}
+                            is_has_prev={is_has_prev}
+                            handleNextVidPic={handleNextVidPic}
+                            handlePrevVidPic={handlePrevVidPic}
+                        />
                     </div>
 
-                    {!is_fetching ? (
-                        <div className="ZoomPostCommon_right">
-                            <ZoomPostCommonRight
-                                user={user}
-                                updated_time={updated_time}
-                                content_obj={content_obj}
-                                seeMoreContent={seeMoreContent}
-                                count_like={count_like}
-                                arr_unique_like={arr_unique_like}
-                                on_API_Like_L={on_API_Like_L}
-                                action_component={action_component}
-                                like_share_cmt_component={
-                                    like_share_cmt_component
-                                }
-                                comment_component={comment_component}
-                            />
-                        </div>
-                    ) : (
-                        <div></div>
-                    )}
+                    <div className="ZoomPostCommon_right">
+                        <ZoomPostCommonRight
+                            user={user}
+                            updated_time={updated_time}
+                            content_obj={content_obj}
+                            seeMoreContent={seeMoreContent}
+                            reacted_count={reacted_count}
+                            reacted_ix_arr={reacted_ix_arr}
+                            on_API_Like_L={on_API_Like_L}
+                            action_component={action_component}
+                            like_share_cmt_component={like_share_cmt_component}
+                            comment_component={comment_component}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

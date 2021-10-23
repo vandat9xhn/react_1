@@ -1,90 +1,90 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { context_api } from '../../../_context/ContextAPI';
+import IconThreeDot from '../../../_icons_svg/icon_three_dot/IconThreeDot';
 //
-import { definePositionFromParent } from '../../../_some_function/definePositionFromParent';
-//
-import ActionBack from '../common_actions/back/ActionBack';
+import PortalAtBody from '../../portal/at_body/PortalAtBody';
 //
 import './ActionsCommon.scss';
+//
+import ActionsContain from '../contain/ActionsContain';
+//
 import './Actions.scss';
 //
 
 //
 Actions.propTypes = {
-    title_action: PropTypes.string,
+    title_action: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     symbol_post: PropTypes.bool,
     children: PropTypes.element,
+
+    callbackOpen: PropTypes.func,
 };
 
 Actions.defaultProps = {
     symbol_post: true,
-    title_action: '...',
+    title_action: (
+        <div className="Actions_symbol_contain display-flex-center brs-50 hv-opacity hv-bg-s-through font-700 user-select-none cursor-pointer">
+            <IconThreeDot size_icon="1.25rem" color="var(--md-color-third)" />
+        </div>
+    ),
 };
 
 //
-function Actions({ title_action, symbol_post, children }) {
+function Actions({
+    title_action,
+    is_show,
+    children,
+    
+    scroll_elm,
+    is_at_body = true,
+    header_head,
+    
+    toggleShow,
+    callbackOpen,
+    callbackClose,
+}) {
     //
-    const { openDivFixAction, closeDivFixAction } = useContext(context_api);
+    const ref_btn_elm = useRef(null);
 
     //
-    const ref_action_elm = useRef(null);
-
-    /* ---------------------------------- */
-
-    //
-    function toggleActions(e) {
-        e.preventDefault();
-        openActions();
+    function onCallbackClose() {
+        is_show && toggleShow();
+        callbackClose && callbackClose();
     }
 
-    //
-    function openActions() {
-        const { x_0, y_0 } = definePositionFromParent({
-            btn_elm: ref_action_elm.current,
-        });
+    // ------
 
-        openDivFixAction({
-            ...(window.innerWidth > 400
-                ? {
-                      left: x_0,
-                      top: y_0,
-                      transform_x: `calc(-100% + 10px)`,
-                      transform_y: position_y == 'top' ? '-100%' : `25px`,
-                  }
-                : {
-                      bottom: 0,
-                      left: 0,
-                      transform_x: 0,
-                      transform_y: 0,
-                  }),
-            ref_action_elm: ref_action_elm,
-            FixComponent: (
-                <div onClick={closeDivFixAction}>
-                    <div className="ActionsChoices_back display-none">
-                        <ActionBack />
-                    </div>
-
-                    {children}
-                </div>
-            ),
-        });
-    }
+    const Contain = (
+        <ActionsContain
+            ref_btn_elm={ref_btn_elm}
+            children={children}
+            scroll_elm={scroll_elm}
+            is_at_body={is_at_body}
+            header_head={header_head}
+            //
+            callbackOpen={callbackOpen}
+            callbackClose={onCallbackClose}
+        />
+    );
 
     //
     return (
-        <div className="Actions_contain pos-rel">
+        <div
+            className={`Actions ${is_at_body ? 'pos-rel' : ''} ${
+                is_show ? 'Actions-show' : 'Actions-hidden'
+            }`}
+        >
             <div
-                ref={ref_action_elm}
-                className={`Actions_symbol display-flex-center brs-50 hv-opacity ${
-                    symbol_post ? 'Actions_symbol-post' : ''
-                }`}
-                title="More actions"
-                onClick={toggleActions}
+                ref={ref_btn_elm}
+                className="Actions_symbol"
+                onClick={toggleShow}
             >
                 {title_action}
             </div>
+
+            {is_show &&
+                (is_at_body ? <PortalAtBody>{Contain}</PortalAtBody> : Contain)}
         </div>
     );
 }

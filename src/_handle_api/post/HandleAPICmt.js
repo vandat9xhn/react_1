@@ -1,13 +1,13 @@
 import {
     API_PostCmt_LC,
     API_PostCmt_UD,
-    API_PostCmt_R,
     API_PostCmtLike_L,
     API_PostCmtHistory_L,
     API_PostHisCmt_R,
     API_PostCmtContentMore_R,
-} from '../../api/api_django/user/user_post/UserPost';
-// 
+    API_CmtReactedInfo_L,
+} from '../../api/api_django/user/user_post/cmt';
+//
 import makeFormData from '../../_some_function/makeFormData';
 //
 import {
@@ -17,7 +17,7 @@ import {
     params_history_cmt_post_l,
 } from '../../_params/post/PostParams';
 
-// 
+//
 export async function handle_API_Cmt_L(
     post_id = 0,
     c_count = 0,
@@ -68,7 +68,7 @@ export async function handle_API_Cmt_U(
     );
     // return res.data;
 
-    return data
+    return data;
 }
 
 // export async function handle_API_Cmt_D(cmt_id=0) {
@@ -92,12 +92,12 @@ export async function handle_API_MoreContentCmt_R(
     return content_more;
 }
 
-export async function handle_API_LikeCmt_L(
+export async function handle_API_LikeCmt_L({
     cmt_id = 0,
     c_count = 0,
     type_like = -1,
-    is_vid_pic = false
-) {
+    is_vid_pic = false,
+}) {
     const res = await API_PostCmtLike_L(
         {
             ...params_like_cmt_post_l,
@@ -107,6 +107,23 @@ export async function handle_API_LikeCmt_L(
         },
         is_vid_pic
     );
+
+    return res.data;
+}
+
+export async function handle_API_CmtReactedInfo_L({
+    cmt_id = 0,
+    is_vid_pic = false,
+}) {
+    const res = await API_CmtReactedInfo_L(
+        {
+            page: 1,
+            size: 6,
+            comment_model: cmt_id,
+        },
+        is_vid_pic
+    );
+
     return res.data;
 }
 

@@ -5,7 +5,8 @@ import {
     API_PostSubHistory_L,
     API_PostHisSub_R,
     API_PostSubContentMore_R,
-} from '../../api/api_django/user/user_post/UserPost';
+    API_SubReactedInfo_L,
+} from '../../api/api_django/user/user_post/sub';
 //
 import makeFormData from '../../_some_function/makeFormData';
 //
@@ -17,34 +18,43 @@ import {
 } from '../../_params/post/PostParams';
 
 //
-export async function handle_API_Sub_L(
-    cmt_id = 0,
+export async function handle_API_Sub_L({
+    cmt_id = -1,
     c_count = 0,
-    is_vid_pic = false
-) {
+    is_vid_pic = false,
+    is_sub_2 = 0,
+    sub_id = -1,
+}) {
     const res = await API_PostSub_LC(
         'GET',
         {
             ...params_sub_post_l,
             comment_model: cmt_id,
             c_count: c_count,
+            is_sub_2: is_sub_2,
+            sub_id: sub_id,
         },
         is_vid_pic
     );
     return res.data;
 }
 
-export async function handle_API_Sub_C(
-    cmt_id = 0,
+//
+export async function handle_API_Sub_C({
+    cmt_id = -1,
     data = {},
-    is_vid_pic = false
-) {
+    is_vid_pic = false,
+    is_sub_2 = 0,
+    sub_id = -1,
+}) {
     const res = await API_PostSub_LC(
         'POST',
         {},
         makeFormData({
             comment_model: cmt_id,
             ...data,
+            is_sub_2: is_sub_2,
+            sub_id: sub_id,
         }),
         is_vid_pic
     );
@@ -52,6 +62,7 @@ export async function handle_API_Sub_C(
     return data;
 }
 
+//
 export async function handle_API_Sub_U(
     sub_id = 0,
     data = {},
@@ -65,7 +76,7 @@ export async function handle_API_Sub_U(
         }),
         is_vid_pic
     );
-    return res.data;;
+    return res.data;
 }
 
 // export async function handle_API_Sub_D(sub_id=0) {
@@ -89,12 +100,13 @@ export async function handle_API_MoreContentSub_R(
     return content_more;
 }
 
-export async function handle_API_LikeSub_L(
+// LIKE
+export async function handle_API_LikeSub_L({
     sub_id = 0,
     c_count = 0,
     type_like = -1,
-    is_vid_pic = false
-) {
+    is_vid_pic = false,
+}) {
     const res = await API_PostSubLike_L(
         {
             ...params_like_sub_post_l,
@@ -107,10 +119,28 @@ export async function handle_API_LikeSub_L(
     return res.data;
 }
 
+//
+export async function handle_API_SubReactedInfo_L({
+    sub_id = 0,
+    is_vid_pic = false,
+}) {
+    const res = await API_SubReactedInfo_L(
+        {
+            page: 1,
+            size: 6,
+            sub_model: sub_id,
+        },
+        is_vid_pic
+    );
+    return res.data;
+}
+
 // export async function handle_API_LikeSub_C(sub_id=0) {
 //     const res = await API_();
 //     return;
 // }
+
+// --- HISTORY
 
 export async function handle_API_HistorySub_L(
     sub_id = 0,

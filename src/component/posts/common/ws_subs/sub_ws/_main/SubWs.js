@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_post } from '../../../../../../_context/post/ContextPost';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+//
 import { handleFbPostCmtAction } from '../../../../../../_some_function/post/handleFbPostCmtAction';
+//
+import { handle_API_FbPostCmtAction_L } from '../../../../../../_handle_api/post/cmt_action';
 //
 import { useCmtEdit } from '../../../../../../_hooks/post/useCmtEditing';
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
@@ -23,15 +27,18 @@ import './SubWs.scss';
 SubWs.propTypes = {};
 
 //
-function SubWs({ is_poster, sub, has_straight_1 }) {
+function SubWs({ is_poster, sub, has_straight_1, focusInputSub }) {
     //
     const {
         ws_send,
         ws_type_sub,
+        is_main_vid_pic,
 
         handle_API_MoreContentSub_R,
         handle_API_Sub_U,
+
         handle_API_LikeSub_L,
+        handle_API_SubReactedInfo_L,
 
         handle_API_HistorySub_L,
         handle_API_MoreContentHisSub_R,
@@ -92,7 +99,7 @@ function SubWs({ is_poster, sub, has_straight_1 }) {
 
     //
     function startReply() {
-        focusInputSub2();
+        IS_MOBILE ? focusInputSub() : focusInputSub2();
     }
 
     //
@@ -116,7 +123,7 @@ function SubWs({ is_poster, sub, has_straight_1 }) {
                     '.PostSubs2_input textarea.CommentInput_textarea'
                 )
                 .focus();
-        }, 1);
+        }, 100);
     }
 
     // -----
@@ -132,7 +139,19 @@ function SubWs({ is_poster, sub, has_straight_1 }) {
 
     //
     function on_API_LikeSub_L() {
-        return handle_API_LikeSub_L(id, 0, -1);
+        if (reacted_ix_arr.length <= 1) {
+            return handle_API_LikeSub_L({
+                sub_id: id,
+                c_count: 0,
+                type_like: -1,
+                is_vid_pic: is_main_vid_pic,
+            });
+        }
+
+        return handle_API_SubReactedInfo_L({
+            sub_id: id,
+            is_vid_pic: is_main_vid_pic,
+        });
     }
 
     //
@@ -151,6 +170,10 @@ function SubWs({ is_poster, sub, has_straight_1 }) {
         return handle_API_FbPostCmtAction_L({
             is_commenter: user.id == c_user.id,
             is_poster: is_poster,
+            params: {
+                type: 'sub',
+                is_vid_pic: is_main_vid_pic,
+            },
         });
     }
 
@@ -265,7 +288,7 @@ function SubWs({ is_poster, sub, has_straight_1 }) {
             </div>
 
             <div ref={ref_subs2_ws} className="Comment_subs2">
-                {count_sub_2 ? (
+                {!IS_MOBILE ? (
                     <PostSubs2
                         is_poster={is_poster}
                         sub_id={id}

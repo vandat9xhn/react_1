@@ -1,12 +1,10 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
-import { context_post } from '../../../../_context/post/ContextPost';
 //
 import { IS_MOBILE } from '../../../../_constant/Constant';
 //
-import { getBgColorOrImg } from '../../../../_some_function/getBgColorOrImg';
 import { getTypeVidOrPic } from '../../../../_some_function/VideoOrImage';
 //
 import {
@@ -64,8 +62,6 @@ function Post({
         closeScreenFloor,
     } = useContext(context_api);
 
-    const { handle_API_Cmt_L } = useContext(context_post);
-
     //
     const {
         is_del,
@@ -94,10 +90,6 @@ function Post({
     } = post;
 
     const is_poster = c_user.id == user.id;
-
-    //
-    const [open_input, setOpenInput] = useState(false);
-    const [fetching_cmt, setFetchingCmt] = useState(false);
 
     //
     const ref_comments = useRef(null);
@@ -210,7 +202,7 @@ function Post({
         });
     }
 
-    /* --------------- ON HANDLE ACTIONS ---------------- */
+    // -------
 
     //
     function on_API_History_L(c_count) {
@@ -270,7 +262,7 @@ function Post({
         forceUpdate();
     }
 
-    /* ------------------------------ */
+    // -----
 
     //
     function on_API_MoreContent_R() {
@@ -279,28 +271,12 @@ function Post({
 
     //
     async function handleClickBtnCmt() {
-        if (!comments.length && count_comment) {
-            setFetchingCmt(true);
-            const { data: new_comments } = await handle_API_Cmt_L(id);
-            comments.push(...new_comments);
-            setFetchingCmt(false);
-            focusInput();
-        } else {
-            focusInput();
-        }
-    }
+        if (comments.length == 0) {
+            const btn_more_cmt = ref_comments.current.querySelector(
+                '.Comments_more .ScreenBlurShowMore_title'
+            );
 
-    //
-    function focusInput() {
-        if (c_user.id) {
-            !open_input && setOpenInput(true);
-            setTimeout(() => {
-                ref_comments.current
-                    .querySelector(
-                        '.Comments_input textarea.CommentInput_textarea'
-                    )
-                    .focus();
-            }, 1);
+            btn_more_cmt && btn_more_cmt.click();
         }
     }
 
@@ -354,7 +330,7 @@ function Post({
                     <Info
                         parent_id={id}
                         count_comment={count_comment}
-                        // 
+                        //
                         reacted_ix_arr={reacted_ix_arr}
                         reacted_count={reacted_count}
                         user_reacted_ix={user_reacted_ix}
@@ -384,17 +360,12 @@ function Post({
                     />
                 </div>
 
-                <div
-                    ref={ref_comments}
-                    className="Post_comment"
-                >
+                <div ref={ref_comments} className="Post_comment">
                     <CommentsWs
                         is_poster={is_poster}
                         parent_id={id}
                         comments={comments}
                         count_comment={count_comment}
-                        open_input={open_input}
-                        fetching_first_cmt={fetching_cmt}
                     />
                 </div>
             </div>

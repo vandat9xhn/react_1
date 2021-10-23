@@ -5,19 +5,20 @@ import PropTypes from 'prop-types';
 CmtActionItem.propTypes = {};
 
 //
-function CmtActionItem({ name, title, handleClick }) {
+function CmtActionItem({ name, title, handleClose, handleClick }) {
     //
     function onClick() {
         handleClick(name);
+        handleClose()
     }
 
     //
     return (
         <div
-            className="CmtActionItem padding-5px brs-6px cursor-pointer hv-bg-fb"
+            className="CmtActionItem padding-8px brs-6px cursor-pointer hv-bg-fb"
             onClick={onClick}
         >
-            {title}
+            <div className="width-max-content">{title}</div>
         </div>
     );
 }

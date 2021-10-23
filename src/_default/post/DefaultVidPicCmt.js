@@ -5,24 +5,24 @@ import { getRandomUser } from "../_common/default_user";
 import { getDefaultArr } from "../_common/getDefaultArr";
 // 
 import { default_post_vid_pic_sub_arr } from "./DefaultVidPicSub";
+import { default_post_reacted_info_obj } from "./reacted";
 
 //
 const default_post_vid_pic_cmt_obj = () => ({
     id: getRandomId(),
     ...getRandomUser(),
     ...getRandomContentObj(),
-    likes: [],
-    count_like: 1,
-    user_type_like: getRandomId(6) - 1,
+    ...default_post_reacted_info_obj(),
+
     subs: default_post_vid_pic_sub_arr(0),
     count_sub: 1,
     histories: [],
     count_history: 0,
-    created_time: '2021-04-02T06:42:36.443763Z',
-    updated_time: '2021-04-02T06:42:36.443763Z',
     vid_pic: getRandomVidPicOrNull(),
     vid_pic_model: 6,
     profile_model: 2,
+    created_time: '2021-04-02T06:42:36.443763Z',
+    updated_time: '2021-04-02T06:42:36.443763Z',
 });
 
 //

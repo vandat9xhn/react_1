@@ -59,7 +59,7 @@ export function handleCreateNewPost({ data, user }) {
         count_vid_pic: 1,
         likes: [],
         count_like: 0,
-        user_type_like: -1,
+        user_reacted_ix: -1,
         shares: [],
         count_share: 0,
         count_unique_share: 0,

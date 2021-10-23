@@ -17,9 +17,13 @@ import {
 } from '../../_params/post/PostParams';
 
 //
-export async function handle_API_PostVidPicID_L(post_id = 0) {
+export async function handle_API_PostVidPicID_L({
+    post_id = 0,
+    vid_pic_id = -1,
+}) {
     const res = await API_PostVidPicID_L({
         post_model: post_id,
+        vid_pic_id: vid_pic_id,
         ...params_id_vid_pic_post_l,
     });
 

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
@@ -9,9 +8,6 @@ import { is_api_fake } from '../../../../../api/_ConstAPI';
 import { useMounted } from '../../../../../_hooks/useMounted';
 import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
 import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
-//
-import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
-import { getIndexNextPrevArr } from '../../../../../_some_function/getIndexNextPrevArr';
 //
 import { openScreenConfirm } from '../../../../_screen/type/confirm/ScreenConfirm';
 import { openScreenHistory } from '../../../../_screen/type/history/ScreenHistory';
@@ -29,30 +25,31 @@ import {
 } from '../../../../../_handle_api/post/HandleAPIVidPic';
 
 import {
-    handle_API_VidPicMoreContentCmt_R,
-    handle_API_VidPicCmt_L,
-    handle_API_VidPicCmt_C,
-    handle_API_VidPicCmt_U,
-    handle_API_VidPicLikeCmt_L,
-    handle_API_VidPicHistoryCmt_L,
-    handle_API_MoreContentHisVidPicCmt_R,
+    handle_API_Cmt_C,
+    handle_API_Cmt_L,
+    handle_API_Cmt_U,
+    handle_API_MoreContentCmt_R,
     //
-    handle_API_VidPicMoreContentSub_R,
-    handle_API_VidPicSub_L,
-    handle_API_VidPicSub_C,
-    handle_API_VidPicSub_U,
-    handle_API_VidPicLikeSub_L,
-    handle_API_VidPicHistorySub_L,
-    handle_API_VidPicMoreContentHisSub_R,
+    handle_API_LikeCmt_L,
+    handle_API_CmtReactedInfo_L,
     //
-    handle_API_VidPicMoreContentSub2_R,
-    handle_API_VidPicSub2_L,
-    handle_API_VidPicSub2_C,
-    handle_API_VidPicSub2_U,
-    handle_API_VidPicLikeSub2_L,
-    handle_API_VidPicHistorySub2_L,
-    handle_API_VidPicMoreContentHisSub2_R,
-} from '../../../../../_handle_api/post/PostHandleVidPicCmtSub';
+    handle_API_HistoryCmt_L,
+    handle_API_MoreContentHisCmt_R,
+} from '../../../../../_handle_api/post/HandleAPICmt';
+
+import {
+    handle_API_MoreContentSub_R,
+    handle_API_Sub_C,
+    handle_API_Sub_L,
+    handle_API_Sub_U,
+    //
+    handle_API_LikeSub_L,
+    handle_API_SubReactedInfo_L,
+    //
+    handle_API_HistorySub_L,
+    handle_API_MoreContentHisSub_R,
+} from '../../../../../_handle_api/post/HandleAPISub';
+
 //
 import ZoomPostCommon from '../../_common/_main/ZoomPostCommon';
 import LikeShareCmt from '../../../common/like_share_cmt/_main/LikeShareCmtWs';
@@ -63,6 +60,7 @@ import ActionsVidPic from '../actions/_main/ActionsVidPic';
 import VidPicUpdate from '../actions/update/VidPicUpdate';
 //
 import './ZoomVidPicItem.scss';
+import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 
 //
 ZoomVidPicItem.propTypes = {
@@ -90,50 +88,49 @@ function ZoomVidPicItem({
     } = useContext(context_api);
 
     //
-    const use_history = useHistory();
-
-    //
-    const [vid_pic_state, setVidPicState] = useState({
-        vid_pic_obj: { 0: {} },
-        c_id: 0,
+    const [state_obj, setStateObj] = useState({
+        vid_pic_obj: {},
         vid_pic_id_arr: [],
+        vid_pic_ix: -1,
         has_fetched: false,
         is_fetching: false,
     });
 
-    const { vid_pic_obj, c_id, vid_pic_id_arr, has_fetched, is_fetching } =
-        vid_pic_state;
+    const {
+        vid_pic_obj,
+        vid_pic_id_arr,
+        vid_pic_ix,
 
-    const c_index = vid_pic_id_arr.indexOf(c_id);
-
-    const is_has_next =
-        has_fetched && c_index != -1 && c_index < vid_pic_id_arr.length - 1;
-
-    const is_has_prev = has_fetched && c_index > 0;
-
-    // const is_has_next = true;
-    // const is_has_prev = true;
+        has_fetched,
+        is_fetching,
+    } = state_obj;
 
     const {
         is_del,
 
+        id,
         vid_pic,
         user,
         updated_time,
         content_obj,
 
-        count_like,
-        user_type_like,
-        arr_unique_like,
+        reacted_count,
+        user_reacted_ix,
+        reacted_ix_arr,
 
         comments,
         count_comment,
-
         count_his,
-    } = vid_pic_obj[c_id];
+
+        post_model,
+    } = vid_pic_obj;
+
+    const is_has_next = vid_pic_ix <= vid_pic_id_arr.length - 2;
+    const is_has_prev = vid_pic_ix >= 1;
 
     //
     const ws = useRef(null);
+    const ref_has_fetched = useRef(null);
 
     //
     const mounted = useMounted();
@@ -142,22 +139,15 @@ function ZoomVidPicItem({
 
     //
     useEffect(() => {
-        getData_API_VidPic(GetIdSlug());
+        getData_API_First();
     }, []);
 
     //
     useEffect(() => {
-        if (vid_pic_obj[c_id].post_model) {
-            getData_API_VidPicId(vid_pic_obj[c_id].post_model);
-        }
-    }, [vid_pic_obj[c_id].post_model]);
-
-    //
-    useEffect(() => {
         !is_api_fake &&
-            vid_pic_obj.post_model &&
+            post_model &&
             (ws.current = new WebSocket(
-                'ws://127.0.0.1/ws/post_' + vid_pic_obj.post_model
+                'ws://127.0.0.1/ws/post_' + post_model
             ));
 
         if (ws.current != null) {
@@ -176,7 +166,67 @@ function ZoomVidPicItem({
                     console.log('close');
                 });
         };
-    }, [vid_pic_obj[c_id].post_model]);
+    }, [post_model]);
+
+    // ---------- API
+
+    //
+    async function getData_API_VidPic({
+        vid_pic_id = 0,
+        new_vid_pic_ix = vid_pic_ix,
+    }) {
+        setStateObj((state_obj) => ({
+            ...state_obj,
+            is_fetching: true,
+        }));
+
+        const data = await handleScreenFetching(() =>
+            handle_API_PostVidPic_R(vid_pic_id)
+        );
+
+        mounted &&
+            setStateObj((state_obj) => {
+                return {
+                    ...state_obj,
+                    vid_pic_obj: data,
+                    is_fetching: false,
+                    vid_pic_ix: new_vid_pic_ix,
+                };
+            });
+
+        return data.post_model;
+    }
+
+    //
+    async function getData_API_First() {
+        const first_id = GetIdSlug();
+        const post_model = await getData_API_VidPic({ vid_pic_id: first_id });
+        const data_id = await handle_API_PostVidPicID_L({
+            post_model: post_model,
+            vid_pic_id: first_id,
+        });
+
+        if (!mounted) {
+            return;
+        }
+
+        let new_vid_pic_ix = -1;
+        const new_vid_pic_id_arr = data_id.map((item, ix) => {
+            if (item.id == first_id) {
+                new_vid_pic_ix = ix;
+            }
+            return item.id;
+        });
+
+        setStateObj((state_obj) => ({
+            ...state_obj,
+            vid_pic_id_arr: new_vid_pic_id_arr,
+            has_fetched: true,
+            vid_pic_ix: new_vid_pic_ix,
+        }));
+
+        ref_has_fetched.current = true;
+    }
 
     // --------
 
@@ -186,92 +236,35 @@ function ZoomVidPicItem({
     }
 
     //
-    function getNewVidPicId(is_next = true) {
-        const count = vid_pic_id_arr.length;
-        const new_index = getIndexNextPrevArr(c_index, count, is_next);
+    function handleNextPrevVidPic(is_next = true) {
+        const new_vid_pic_ix = vid_pic_ix + (is_next ? 1 : -1);
 
-        return vid_pic_id_arr[new_index];
-    }
-
-    //
-    function handleChangeId(new_vid_pic_id) {
-        setVidPicState((vid_pic_state) => ({
-            ...vid_pic_state,
-            is_fetching: true,
-        }));
-
-        history.replaceState('', '', '/post/photos/' + new_vid_pic_id);
-
-        if (vid_pic_obj[new_vid_pic_id]) {
-            setVidPicState((vid_pic_state) => ({
-                ...vid_pic_state,
-                c_id: new_vid_pic_id,
-                is_fetching: false,
-            }));
-
+        if (new_vid_pic_ix < 0 || vid_pic_ix >= vid_pic_id_arr.length) {
             return;
         }
 
-        getData_API_VidPic(new_vid_pic_id);
-    }
-
-    //
-    function handleNextPrevVidPic(is_next = true) {
-        const new_vid_pic_id = getNewVidPicId(is_next);
-        handleChangeId(new_vid_pic_id);
-    }
-
-    // ---------- API
-
-    //
-    async function getData_API_VidPic(vid_pic_id = 0) {
-        const data = await handleScreenFetching(() =>
-            handle_API_PostVidPic_R(vid_pic_id)
+        history.replaceState(
+            '',
+            '',
+            '/post/photos/' + vid_pic_id_arr[new_vid_pic_ix]
         );
 
-        mounted &&
-            setVidPicState((vid_pic_state) => {
-                const { has_fetched, vid_pic_obj } = vid_pic_state;
-                const new_vid_pic_obj = has_fetched
-                    ? {
-                          ...vid_pic_obj,
-                          [vid_pic_id]: data,
-                      }
-                    : { [vid_pic_id]: data };
-
-                return {
-                    ...vid_pic_state,
-                    vid_pic_obj: new_vid_pic_obj,
-                    c_id: vid_pic_id,
-                    has_fetched: true,
-                    is_fetching: false,
-                };
-            });
-    }
-
-    //
-    async function getData_API_VidPicId(post_id) {
-        const data = await handle_API_PostVidPicID_L(post_id);
-
-        const new_vid_pic_id_arr = data.map((item) => item.id);
-
-        mounted &&
-            setVidPicState((vid_pic_state) => ({
-                ...vid_pic_state,
-                vid_pic_id_arr: new_vid_pic_id_arr,
-            }));
+        getData_API_VidPic({
+            vid_pic_id: vid_pic_id_arr[new_vid_pic_ix],
+            new_vid_pic_ix: new_vid_pic_ix,
+        });
     }
 
     // -------
 
     //
     function seeMoreContent() {
-        return handle_API_PostVidPicContent_R(c_id);
+        return handle_API_PostVidPicContent_R(id);
     }
 
     //
     function handleClickBtnCmt() {
-        console.log('cmt');
+        // console.log('cmt');
     }
 
     //
@@ -290,7 +283,6 @@ function ZoomVidPicItem({
     function openHistoryVidPic() {
         openScreenHistory({
             openScreenFloor: openScreenFloor,
-
             title: 'History',
             handle_API_History_L: handle_API_PostVidPicHistory_L,
             HisComponent: VidPicHistory,
@@ -301,7 +293,7 @@ function ZoomVidPicItem({
     async function openUpdateVidPic() {
         const content_more = content_obj.has_more_content
             ? await handleScreenFetching(() =>
-                  handle_API_PostVidPicContent_R(c_id)
+                  handle_API_PostVidPicContent_R(id)
               )
             : '';
 
@@ -339,7 +331,7 @@ function ZoomVidPicItem({
     //
     async function handleUpdate(new_content) {
         await handleScreenFetching(() =>
-            handle_API_PostVidPic_U(c_id, new_content)
+            handle_API_PostVidPic_U(id, new_content)
         );
 
         content_obj.content = new_content;
@@ -366,17 +358,14 @@ function ZoomVidPicItem({
                 return;
             }
 
-            use_history.push('/new-feed');
+            history.back();
 
             return;
         }
 
-        // vid_pic_obj[c_id].is_del = true;
-        const new_vid_pic_id = getNewVidPicId();
-
-        vid_pic_id_arr.splice(c_index, 1);
-        handleDeleteVidPicPost(c_index);
-        handleChangeId(new_vid_pic_id);
+        handleNextPrevVidPic(vid_pic_ix <= count_vid_pic - 2);
+        vid_pic_id_arr.splice(vid_pic_ix, 1);
+        handleDeleteVidPicPost(vid_pic_ix);
     }
 
     //
@@ -392,38 +381,25 @@ function ZoomVidPicItem({
                 ws_type_post="vid_pic"
                 ws_type_cmt="vid_pic_cmt"
                 ws_type_sub="vid_pic_sub"
+                is_main_vid_pic={true}
                 //
-                handle_API_MoreContentCmt_R={handle_API_VidPicMoreContentCmt_R}
-                handle_API_Cmt_L={handle_API_VidPicCmt_L}
-                handle_API_Cmt_C={handle_API_VidPicCmt_C}
-                handle_API_Cmt_U={handle_API_VidPicCmt_U}
-                handle_API_LikeCmt_L={handle_API_VidPicLikeCmt_L}
-                handle_API_HistoryCmt_L={handle_API_VidPicHistoryCmt_L}
-                handle_API_MoreContentHisCmt_R={
-                    handle_API_MoreContentHisVidPicCmt_R
-                }
+                handle_API_MoreContentCmt_R={handle_API_MoreContentCmt_R}
+                handle_API_Cmt_L={handle_API_Cmt_L}
+                handle_API_Cmt_C={handle_API_Cmt_C}
+                handle_API_Cmt_U={handle_API_Cmt_U}
+                handle_API_LikeCmt_L={handle_API_LikeCmt_L}
+                handle_API_CmtReactedInfo_L={handle_API_CmtReactedInfo_L}
+                handle_API_HistoryCmt_L={handle_API_HistoryCmt_L}
+                handle_API_MoreContentHisCmt_R={handle_API_MoreContentHisCmt_R}
                 //
-                handle_API_MoreContentSub_R={handle_API_VidPicMoreContentSub_R}
-                handle_API_Sub_L={handle_API_VidPicSub_L}
-                handle_API_Sub_C={handle_API_VidPicSub_C}
-                handle_API_Sub_U={handle_API_VidPicSub_U}
-                handle_API_LikeSub_L={handle_API_VidPicLikeSub_L}
-                handle_API_HistorySub_L={handle_API_VidPicHistorySub_L}
-                handle_API_MoreContentHisSub_R={
-                    handle_API_VidPicMoreContentHisSub_R
-                }
-                //
-                handle_API_MoreContentSub2_R={
-                    handle_API_VidPicMoreContentSub2_R
-                }
-                handle_API_Sub2_L={handle_API_VidPicSub2_L}
-                handle_API_Sub2_C={handle_API_VidPicSub2_C}
-                handle_API_Sub2_U={handle_API_VidPicSub2_U}
-                handle_API_LikeSub2_L={handle_API_VidPicLikeSub2_L}
-                handle_API_HistorySub2_L={handle_API_VidPicHistorySub2_L}
-                handle_API_MoreContentHisSub2_R={
-                    handle_API_VidPicMoreContentHisSub2_R
-                }
+                handle_API_MoreContentSub_R={handle_API_MoreContentSub_R}
+                handle_API_Sub_L={handle_API_Sub_L}
+                handle_API_Sub_C={handle_API_Sub_C}
+                handle_API_Sub_U={handle_API_Sub_U}
+                handle_API_LikeSub_L={handle_API_LikeSub_L}
+                handle_API_SubReactedInfo_L={handle_API_SubReactedInfo_L}
+                handle_API_HistorySub_L={handle_API_HistorySub_L}
+                handle_API_MoreContentHisSub_R={handle_API_MoreContentHisSub_R}
             >
                 <ZoomPostCommon
                     show_screen_title={show_screen_title}
@@ -441,11 +417,9 @@ function ZoomVidPicItem({
                     content_obj={content_obj}
                     seeMoreContent={seeMoreContent}
                     //
-                    count_like={count_like}
-                    arr_unique_like={arr_unique_like}
+                    reacted_count={reacted_count}
+                    reacted_ix_arr={reacted_ix_arr}
                     on_API_Like_L={handle_API_PostVidPicLike_L}
-                    //
-                    is_fetching={is_fetching}
                     //
                     action_component={
                         <ActionsVidPic
@@ -459,23 +433,27 @@ function ZoomVidPicItem({
                     }
                     like_share_cmt_component={
                         <LikeShareCmt
-                            parent_id={c_id}
-                            user_type_like={user_type_like}
+                            parent_id={id}
+                            user_reacted_ix={user_reacted_ix}
                             enabled_like={true}
+                            //
                             enabled_cmt={true}
                             count_comment={count_comment}
+                            //
                             enabled_share={false}
                             count_share={0}
                             count_user_shared={0}
+                            //
                             handleClickBtnCmt={handleClickBtnCmt}
                         />
                     }
                     comment_component={
                         <CommentsWs
-                            parent_id={c_id}
+                            is_poster={user.id == c_user.id}
+                            parent_id={id}
                             comments={comments}
                             count_comment={count_comment}
-                            open_input={true}
+                            initial_open_input={true}
                         />
                     }
                 />

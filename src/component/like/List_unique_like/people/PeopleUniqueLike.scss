@@ -1,8 +1,8 @@
-.PeopleUniqueLike{
-    padding: 0 5px;
-}
- 
-.PeopleUniqueLike_right{
+.PeopleUniqueLike_right {
     flex-shrink: 0;
     width: 1rem;
+
+    .IconLike {
+        stroke: var(--blue);
+    }
 }

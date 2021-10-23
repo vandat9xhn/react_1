@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { is_api_fake } from '../../../../../api/_ConstAPI';
-// 
-import ActionsNormal from '../../../../../component/actions/_main/ActionsNormal';
+//
+import { useBool } from '../../../../../_hooks/useBool';
+//
+import Actions from '../../../../../component/actions/_main/Actions';
 import ActionHistory from '../../../../../component/actions/common_actions/history/ActionHistory';
 import ActionUpdate from '../../../../../component/actions/common_actions/update/ActionUpdate';
 import ActionDelete from '../../../../../component/actions/common_actions/delete/ActionDelete';
@@ -29,12 +31,18 @@ function Choices({
     openDelete,
     openReport,
 }) {
-    
+    //
+    const { is_true, toggleBool } = useBool();
+
     //
     return (
-        <ActionsNormal>
-            <ul className="Choices_list list-none">
-                <li className={`${count_his || is_api_fake ? '' : 'display-none'}`}>
+        <Actions is_show={is_true} toggleShow={toggleBool}>
+            <ul className="Choices_list list-none" onClick={toggleBool}>
+                <li
+                    className={`${
+                        count_his || is_api_fake ? '' : 'display-none'
+                    }`}
+                >
                     <ActionHistory handleOpenHistory={openHistory} />
                 </li>
 
@@ -62,7 +70,7 @@ function Choices({
                     <ActionDelete handleDelete={openDelete} />
                 </li>
             </ul>
-        </ActionsNormal>
+        </Actions>
     );
 }
 

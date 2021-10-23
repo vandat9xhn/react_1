@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
 //
-export function useHold(time) {
+export function useHold(time = 500) {
     //
     const timeout = useRef(null);
 

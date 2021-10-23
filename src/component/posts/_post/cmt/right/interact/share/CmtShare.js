@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import PortalAbsCloseDiv from '../../../../../../portal/absolute_close_div/PortalAbsCloseDiv';
+import { useBool } from '../../../../../../../_hooks/useBool';
+//
+import Actions from '../../../../../../actions/_main/Actions';
 //
 import './CmtShare.scss';
 
@@ -9,21 +11,21 @@ import './CmtShare.scss';
 CmtShare.propTypes = {};
 
 //
-function CmtShare({ class_scroll_elm, ref_share, closeShare }) {
+function CmtShare({}) {
     //
-    const { bottom, left } = ref_share.current.getBoundingClientRect();
+    const { is_true, toggleBool } = useBool();
 
     //
     return (
-        <PortalAbsCloseDiv
-            class_scroll_elm={class_scroll_elm}
-            pos_left={left + window.scrollX}
-            pos_top={bottom + window.scrollY}
-            refs_target={[ref_share]}
-            makeDivHidden={closeShare}
+        <Actions
+            title_action={
+                <div className="CmtInteract_share CmtInteract_item">Share</div>
+            }
+            is_show={is_true}
+            toggleShow={toggleBool}
         >
             <div className="CmtShare cmt-interact-portal">
-                <div className="CmtShare_contain cmt-interact-portal-contain">
+                <div className="CmtShare_contain">
                     <div className="CmtShare_item">Send in Messenger</div>
 
                     <div className="CmtShare_item">Send in WhatsApp</div>
@@ -33,7 +35,7 @@ function CmtShare({ class_scroll_elm, ref_share, closeShare }) {
                     <div className="CmtShare_item">Copy link</div>
                 </div>
             </div>
-        </PortalAbsCloseDiv>
+        </Actions>
     );
 }
 

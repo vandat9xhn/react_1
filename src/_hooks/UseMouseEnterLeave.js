@@ -1,43 +1,52 @@
-import { useRef, useState } from 'react';
-import { usePositionXY } from './usePositionXY';
+import { useRef } from 'react';
+// 
+import { useForceUpdate } from './UseForceUpdate';
 
 //
 export function useMouseEnterLeave({
-    handle_API_L,
+    use_closing = true,
+    time_closing = 200,
 
-    handleOpenDivFixLoading,
-    handleOpenDivFixPeople,
-    handleCloseDivFixPeople,
+    handle_API_L,
+    handleLoading,
+    handleOpen,
+    handleClose,
 }) {
     //
-    const [mouse_state, setMouseState] = useState({
-        list: [],
-        count: 0,
-    });
-
-    // const { list, count } = mouse_state;
-
-    //
     const is_mouse_enter = useRef(false);
+
+    const ref_arr = useRef([]);
+    const ref_count = useRef(0);
+    const ref_fetched = useRef(false);
+    const ref_fetching = useRef(false);
+    const ref_closing = useRef(false);
+
+    // 
+    const forceUpdate = useForceUpdate()
+
+    // -----
 
     //
     async function handleMouseenter() {
         is_mouse_enter.current = true;
 
-        if (mouse_state.list.length) {
-            handleOpenDivFixPeople();
+        if (ref_fetched.current) {
+            handleOpen();
 
             return;
         }
 
-        handleOpenDivFixLoading();
+        ref_fetching.current = true;
+        handleLoading();
 
         const { data, count: new_count } = await handle_API_L();
 
         if (is_mouse_enter.current) {
-            mouse_state.list = data;
-            mouse_state.count = new_count;
-            handleOpenDivFixPeople();
+            ref_arr.current = data;
+            ref_count.current = new_count;
+            ref_fetched.current = true;
+            ref_fetching.current = false;
+            handleOpen();
 
             return;
         }
@@ -45,102 +54,30 @@ export function useMouseEnterLeave({
 
     //
     function handleMouseleave() {
+        ref_closing.current = true;
         is_mouse_enter.current = false;
-        handleCloseDivFixPeople();
-    }
+        ref_fetching.current = false;
 
-    //
-    return { mouse_state, handleMouseenter, handleMouseleave };
-}
+        if (use_closing) {
+            forceUpdate();
 
-//
-export function useMouseEnterLeaveNormal(
-    handle_API_L,
-    ref_child_elm,
-    ref_btn_elm
-) {
-    //
-    const is_mouse_enter = useRef(false);
-
-    //
-    const {
-        handleOpen,
-        handleClose,
-
-        position_state: mouse_state,
-        setPositionState: setMouseState,
-    } = usePositionXY({
-        ref_child_elm: ref_child_elm,
-        ref_btn_elm: ref_btn_elm,
-        other_state: {
-            list: [],
-            count: 0,
-            is_fetching: false,
-        },
-        extra_transform_x: 0,
-    });
-
-    //
-    async function onMouseenter(callback_state = {}) {
-        is_mouse_enter.current = true;
-
-        if (mouse_state.list.length) {
-            setMouseState((mouse_state) => ({
-                ...mouse_state,
-                ...callback_state,
-            }));
-
-            return;
+            setTimeout(() => {
+                ref_closing.current = false;
+                handleClose();
+            }, time_closing);
+        } else {
+            handleClose();
         }
-
-        setMouseState((mouse_state) => ({
-            ...mouse_state,
-            ...callback_state,
-            is_fetching: true,
-        }));
-
-        const {data, count: new_count} = await handle_API_L();
-
-        if (is_mouse_enter.current) {
-            setMouseState((mouse_state) => ({
-                ...mouse_state,
-                list: data,
-                count: new_count,
-                is_fetching: false,
-                // is_open: true,
-            }));
-
-            return;
-        }
-
-        handleMouseleave();
     }
 
     //
-    function onMouseleave() {
-        is_mouse_enter.current = false;
+    return {
+        ref_arr,
+        ref_count,
+        ref_fetching,
+        ref_closing,
 
-        setMouseState((mouse_state) => ({
-            ...mouse_state,
-            is_fetching: false,
-            is_open: false,
-        }));
-    }
-
-    //
-    function handleMouseenter() {
-        handleOpen({
-            self_handle: false,
-            handleCallbackOpen: (callback_state) =>
-                onMouseenter(callback_state),
-        });
-    }
-
-    //
-    function handleMouseleave() {
-        handleClose(false, onMouseleave);
-    }
-
-    //
-    return { mouse_state, handleMouseenter, handleMouseleave };
+        handleMouseenter,
+        handleMouseleave,
+    };
 }

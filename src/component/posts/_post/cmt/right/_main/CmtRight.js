@@ -37,6 +37,10 @@ function CmtRight({
 
     handle_API_Action_L,
     handleAction,
+
+    //
+    show_action_mb,
+    closeActionMb,
 }) {
     //
     return (
@@ -68,6 +72,9 @@ function CmtRight({
 
                 <div className="CmtRight_action inline-block padding-left-5px">
                     <CmtAction
+                        show_action_mb={show_action_mb}
+                        closeActionMb={closeActionMb}
+                        //
                         handle_API_Action_L={handle_API_Action_L}
                         handleAction={handleAction}
                     />

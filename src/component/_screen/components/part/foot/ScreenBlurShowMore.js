@@ -35,21 +35,19 @@ function ScreenBlurShowMore({
 
     //
     return (
-        <div
-            className={`ScreenBlurShowMore display-flex-center ${
-                !is_fetching ? 'ScreenBlurShowMore-more' : 'padding-8px'
-            }`}
-        >
+        <div className="ScreenBlurShowMore ScreenBlurShowMore-more display-flex-center">
             <div
-                className={`ScreenBlurShowMore_title ${
-                    !is_fetching ? 'cursor-pointer' : 'display-none'
+                className={`ScreenBlurShowMore_title cursor-pointer ${
+                    is_fetching ? 'display-none' : ''
                 }`}
                 onClick={handleShowMore}
             >
                 {title}
             </div>
 
-            <FetchingComponent is_fetching={is_fetching} />
+            <div className="ScreenBlurShowMore_fetching display-flex-center">
+                <FetchingComponent is_fetching={is_fetching} />
+            </div>
         </div>
     );
 }

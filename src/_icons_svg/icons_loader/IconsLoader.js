@@ -20,9 +20,8 @@ IconsLoader.defaultProps = {
  *icons loader: (x, y)
  *   @1. spinner: (0, 0)
  */
-function IconsLoader(props) {
-    const { size_icon, x, y } = props;
-
+function IconsLoader({ size_icon, x, y }) {
+    //
     return (
         <svg
             className="IconsLoader"

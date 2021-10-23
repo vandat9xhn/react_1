@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { is_api_fake } from '../../../../../api/_ConstAPI';
+// 
+import { useBool } from '../../../../../_hooks/useBool';
 //
-import ActionsNormal from '../../../../actions/_main/ActionsNormal';
+import Actions from '../../../../actions/_main/Actions';
 import ActionHistory from '../../../../actions/common_actions/history/ActionHistory';
 import ActionUpdate from '../../../../actions/common_actions/update/ActionUpdate';
 import ActionDelete from '../../../../actions/common_actions/delete/ActionDelete';
@@ -25,14 +27,48 @@ function PostHeadAction({
     openReportPost,
     openPermissionPost,
 }) {
-    
+    //
+    const { is_true, setIsTrue, toggleBool } = useBool();
+
+    // ----
+
+    //
+    function onOpenHistoryPost(params) {
+        openHistoryPost(params);
+        setIsTrue(false);
+    }
+
+    //
+    function onOpenUpdatePost(params) {
+        openUpdatePost(params);
+        setIsTrue(false);
+    }
+
+    //
+    function onOpenDeletePost(params) {
+        openDeletePost(params);
+        setIsTrue(false);
+    }
+
+    //
+    function onOpenReportPost(params) {
+        openReportPost(params);
+        setIsTrue(false);
+    }
+
+    //
+    function onOpenPermissionPost(params) {
+        openPermissionPost(params);
+        setIsTrue(false);
+    }
+
     //
     return (
         <div className="PostHeadAction">
-            <ActionsNormal>
+            <Actions is_show={is_true} toggleShow={toggleBool}>
                 <ul className="PostHeadAction_list list-none">
                     <li>
-                        <ActionHistory handleOpenHistory={openHistoryPost} />
+                        <ActionHistory handleOpenHistory={onOpenHistoryPost} />
                     </li>
 
                     <li
@@ -40,7 +76,7 @@ function PostHeadAction({
                             is_poster || is_api_fake ? '' : 'display-none'
                         }`}
                     >
-                        <ActionUpdate handleUpdate={openUpdatePost} />
+                        <ActionUpdate handleUpdate={onOpenUpdatePost} />
                     </li>
 
                     <li
@@ -49,7 +85,7 @@ function PostHeadAction({
                         }`}
                     >
                         <ActionPermission
-                            handleOpenPermission={openPermissionPost}
+                            handleOpenPermission={onOpenPermissionPost}
                         />
                     </li>
 
@@ -58,7 +94,7 @@ function PostHeadAction({
                             !is_poster || is_api_fake ? '' : 'display-none'
                         }`}
                     >
-                        <ActionReport handleOpenReport={openReportPost} />
+                        <ActionReport handleOpenReport={onOpenReportPost} />
                     </li>
 
                     <li
@@ -66,10 +102,10 @@ function PostHeadAction({
                             is_poster || is_api_fake ? '' : 'display-none'
                         }`}
                     >
-                        <ActionDelete handleDelete={openDeletePost} />
+                        <ActionDelete handleDelete={onOpenDeletePost} />
                     </li>
                 </ul>
-            </ActionsNormal>
+            </Actions>
         </div>
     );
 }

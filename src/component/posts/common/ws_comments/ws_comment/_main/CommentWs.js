@@ -32,10 +32,13 @@ function CommentWs({ comment, is_poster }) {
     const {
         ws_send,
         ws_type_cmt,
+        is_main_vid_pic,
 
         handle_API_MoreContentCmt_R,
-        handle_API_LikeCmt_L,
         handle_API_Cmt_U,
+
+        handle_API_LikeCmt_L,
+        handle_API_CmtReactedInfo_L,
 
         handle_API_HistoryCmt_L,
         handle_API_MoreContentHisCmt_R,
@@ -108,6 +111,7 @@ function CommentWs({ comment, is_poster }) {
                     ...state_obj,
                     open_input_sub: true,
                 }));
+            
             setTimeout(() => {
                 ref_subs_ws.current
                     .querySelector(
@@ -131,7 +135,21 @@ function CommentWs({ comment, is_poster }) {
 
     //
     function on_API_LikeCmt_L() {
-        return handle_API_LikeCmt_L(id, 0, -1);
+        const reacted_type_count = reacted_ix_arr.length;
+
+        if (reacted_type_count == 1) {
+            return handle_API_LikeCmt_L({
+                cmt_id: id,
+                c_count: 0,
+                type_like: -1,
+                is_vid_pic: is_main_vid_pic,
+            });
+        }
+
+        return handle_API_CmtReactedInfo_L({
+            cmt_id: id,
+            is_vid_pic: is_main_vid_pic,
+        });
     }
 
     //
@@ -148,8 +166,13 @@ function CommentWs({ comment, is_poster }) {
     //
     function handle_API_Action_L() {
         return handle_API_FbPostCmtAction_L({
-            is_commenter: user.id == c_user.id,
+            // is_commenter: user.id == c_user.id,
+            is_commenter: true,
             is_poster: is_poster,
+            params: {
+                type: 'comment',
+                is_vid_pic: is_main_vid_pic,
+            },
         });
     }
 

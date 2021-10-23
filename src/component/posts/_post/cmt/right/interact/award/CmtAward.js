@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import PortalAbsCloseDiv from '../../../../../../portal/absolute_close_div/PortalAbsCloseDiv';
+import Actions from '../../../../../../actions/_main/Actions';
 //
 import './CmtAward.scss';
+import { useBool } from '../../../../../../../_hooks/useBool';
 
 //
 CmtAward.propTypes = {};
 
 //
-function CmtAward({
-    class_scroll_elm,
-    ref_award,
-
-    closeAward,
-    sendAward,
-}) {
-    //
-    const { bottom, left } = ref_award.current.getBoundingClientRect();
-
+function CmtAward({ sendAward }) {
     //
     const [award_ix, setAwardIx] = useState(-1);
     const [award_arr, setAwardArr] = useState([
@@ -42,25 +34,28 @@ function CmtAward({
         },
     ]);
 
+    //
+    const { is_true, setIsTrue, toggleBool } = useBool();
+
     // ----
 
     //
     function onSendAward() {
-        closeAward();
+        setIsTrue(false);
         sendAward(award_arr[award_ix]);
     }
 
     //
     return (
-        <PortalAbsCloseDiv
-            class_scroll_elm={class_scroll_elm}
-            pos_left={left + window.scrollX}
-            pos_top={bottom + window.scrollY}
-            refs_target={[ref_award]}
-            makeDivHidden={closeAward}
+        <Actions
+            title_action={
+                <div className="CmtInteract_award CmtInteract_item">Award</div>
+            }
+            is_show={is_true}
+            toggleShow={toggleBool}
         >
             <div className="CmtAward cmt-interact-portal">
-                <div className="CmtAward_contain cmt-interact-portal-contain">
+                <div className="CmtAward_contain">
                     <div className="padding-10px font-20px font-700">
                         Awards
                     </div>
@@ -98,7 +93,7 @@ function CmtAward({
                     </div>
                 </div>
             </div>
-        </PortalAbsCloseDiv>
+        </Actions>
     );
 }
 

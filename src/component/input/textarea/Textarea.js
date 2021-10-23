@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../_constant/Constant';
-// 
+//
 import TextareaNotSend from './TextareaNotSend';
 
 //
@@ -22,6 +22,7 @@ function Textarea({
     text,
     placeholder,
     textarea_class,
+    textarea_props,
 
     onChange,
     handleBlur,
@@ -30,8 +31,8 @@ function Textarea({
 }) {
     //
     const onKeyDown = (e) => {
-        if (!e.shiftKey && e.keyCode == 13) {
-            if (!IS_MOBILE) {
+        if (!IS_MOBILE) {
+            if (!e.shiftKey && e.keyCode == 13) {
                 e.preventDefault();
                 handleSend();
                 e.target.style.height = 'auto';
@@ -45,6 +46,8 @@ function Textarea({
             text={text}
             textarea_class={textarea_class}
             placeholder={placeholder}
+            textarea_props={textarea_props}
+            //
             onKeyDown={onKeyDown}
             onChange={onChange}
             handleFocus={handleFocus}

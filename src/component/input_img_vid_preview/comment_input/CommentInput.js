@@ -40,6 +40,7 @@ function CommentInput({
     old_urls = [] || [{ vid_pic: '', type: '' }],
     file_multiple,
     placeholder,
+    textarea_props,
 
     handleSend,
 }) {
@@ -132,6 +133,7 @@ function CommentInput({
                                 text={text}
                                 placeholder={placeholder}
                                 textarea_class="CommentInput_textarea scroll-thin padding-0"
+                                textarea_props={textarea_props}
                                 onChange={onChangeCmt}
                                 handleSend={onSendCmt}
                             />
@@ -139,7 +141,7 @@ function CommentInput({
                     </div>
 
                     <div className="CommentInput_files">
-                        <div className="CommentInput_files-row display-center align-items-center">
+                        <div className="CommentInput_files-row display-flex align-items-center">
                             <div className="CommentInput_files-col">
                                 <InputFile
                                     handleChange={onChooseFile}
