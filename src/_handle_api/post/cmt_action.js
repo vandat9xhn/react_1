@@ -29,12 +29,14 @@ export function handle_API_FbPostCmtAction_L({
     params = {},
 }) {
     return new Promise((res) => {
-        if (is_commenter) {
-            res([cmt_action_obj.edit, cmt_action_obj.delete]);
-        } else if (is_poster) {
-            res([cmt_action_obj.delete, cmt_action_obj.hide]);
-        } else {
-            res([cmt_action_obj.hide, cmt_action_obj.report]);
-        }
+        setTimeout(() => {
+            if (is_commenter) {
+                res([cmt_action_obj.edit, cmt_action_obj.delete]);
+            } else if (is_poster) {
+                res([cmt_action_obj.delete, cmt_action_obj.hide]);
+            } else {
+                res([cmt_action_obj.hide, cmt_action_obj.report]);
+            }
+        }, 250);
     });
 }

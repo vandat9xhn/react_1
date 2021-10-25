@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_post } from '../../../../../../_context/post/ContextPost';
 //
+import { handle_API_FbPostCmtAction_L } from '../../../../../../_handle_api/post/cmt_action';
+//
 import { useCmtEdit } from '../../../../../../_hooks/post/useCmtEditing';
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
+import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 //
 import { openScreenConfirm } from '../../../../../_screen/type/confirm/ScreenConfirm';
 import { openScreenHistory } from '../../../../../_screen/type/history/ScreenHistory';
@@ -15,7 +18,6 @@ import PostCmt from '../../../../_post/cmt/_main/PostCmt';
 import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
 //
 import './PostSub2.scss';
-import { handle_API_FbPostCmtAction_L } from '../../../../../../_handle_api/post/cmt_action';
 
 //
 PostSub2.propTypes = {};
@@ -39,7 +41,9 @@ function PostSub2({
 
         handle_API_MoreContentSub_R,
         handle_API_Sub_U,
+
         handle_API_LikeSub_L,
+        handle_API_SubReactedInfo_L,
 
         handle_API_HistorySub_L,
         handle_API_MoreContentHisSub_R,
@@ -70,6 +74,7 @@ function PostSub2({
 
     //
     const forceUpdate = useForceUpdate();
+    const handleScreenFetching = useScreenFetching()
 
     //
     const { openEditing, handleEdit, cancelEdit } = useCmtEdit({
@@ -102,27 +107,41 @@ function PostSub2({
 
     //
     function on_API_LikeSub2_L() {
-        if (reacted_ix_arr.length) {
+        if (reacted_ix_arr.length <= 1) {
             return handle_API_LikeSub_L({
-                sub_2_id: 0,
-                c_count: 0,
+                sub_id: id,
                 type_like: -1,
                 is_vid_pic: is_main_vid_pic,
+                c_count: 0,
             });
         }
 
-        return handle_API_Sub2ReactedInfo_L({
-            sub_2_id: 0,
+        return handle_API_SubReactedInfo_L({
+            sub_id: 0,
             is_vid_pic: is_main_vid_pic,
         });
     }
 
     //
-    function onOpenScreenLike() {
+    async function onOpenScreenLike() {
+        const { data } = await handleScreenFetching(() =>
+            handle_API_SubReactedInfo_L({
+                sub_id: id,
+                is_vid_pic: is_main_vid_pic,
+            })
+        );
+
         openScreenLike({
             openScreenFloor: openScreenFloor,
-            handle_API_Like_L: on_API_LikeSub2_L,
+            handle_API_Like_L: (c_type_like, c_count) =>
+                handle_API_LikeSub_L({
+                    sub_id: id,
+                    type_like: c_type_like,
+                    is_vid_pic: is_main_vid_pic,
+                    c_count: c_count,
+                }),
             type_like: -1,
+            reacted_count_arr: data,
         });
     }
 

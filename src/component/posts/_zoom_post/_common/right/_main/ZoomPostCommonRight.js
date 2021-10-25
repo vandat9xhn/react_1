@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
-import { context_api } from '../../../../../_context/ContextAPI';
+import { context_api } from '../../../../../../_context/ContextAPI';
 //
-import { openScreenLike } from '../../../../_screen/type/like/_main/ScreenLike';
+import { openScreenLike } from '../../../../../_screen/type/like/_main/ScreenLike';
 //
-import ContentMore from '../../../../content_more/Content_more';
-import PictureName from '../../../../picture_name/pic_name/PictureName';
-import ListUniqueLike from '../../../../like/List_unique_like/_main/ListUniqueLike';
+import ContentMore from '../../../../../content_more/Content_more';
+import PictureName from '../../../../../picture_name/pic_name/PictureName';
+import ListUniqueLike from '../../../../../like/List_unique_like/_main/ListUniqueLike';
+import UnitTime from '../../../../../../_some_function/UnitTime';
+import Textarea from '../../../../../input/textarea/Textarea';
+import ZoomPostCommonEdit from '../edit/ZoomPostCommonEdit';
 //
 // import './ZoomPostCommonRight.scss';
 
@@ -25,6 +28,10 @@ function ZoomPostCommonRight({
     reacted_count,
     reacted_ix_arr,
     on_API_Like_L,
+
+    is_editing,
+    handleEdit,
+    cancelEdit,
 
     action_component,
     like_share_cmt_component,
@@ -50,7 +57,9 @@ function ZoomPostCommonRight({
                     <div>
                         <PictureName
                             user={user}
-                            content={new Date(updated_time).toLocaleString()}
+                            content={UnitTime(
+                                new Date() - new Date(updated_time)
+                            )}
                         />
                     </div>
 
@@ -59,10 +68,18 @@ function ZoomPostCommonRight({
                     </div>
 
                     <div>
-                        <ContentMore
-                            content_obj={content_obj}
-                            seeMoreContent={seeMoreContent}
-                        />
+                        {is_editing ? (
+                            <ZoomPostCommonEdit
+                                old_text={`${content_obj.content} ${content_obj.content_more}`}
+                                handleEdit={handleEdit}
+                                cancelEdit={cancelEdit}
+                            />
+                        ) : (
+                            <ContentMore
+                                content_obj={content_obj}
+                                seeMoreContent={seeMoreContent}
+                            />
+                        )}
                     </div>
 
                     <div>

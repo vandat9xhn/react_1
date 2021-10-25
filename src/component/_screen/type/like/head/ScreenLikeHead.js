@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
-// 
+//
 import { type_likes } from '../../../../like/list_type_like/type_likes/TypeLikes';
-// 
+//
 import ScreenLikeType from '../type_like/ScreenLikeType';
+//
+import './ScreenLikeHead.scss';
 
 //
 ScreenLikeHead.propTypes = {};
@@ -13,50 +15,55 @@ ScreenLikeHead.propTypes = {};
 //
 function ScreenLikeHead({
     type_like,
+    reacted_count_arr,
+
     changeListTypeLike,
     closeScreen,
 }) {
-    // 
+    //
     function changeListTypeLikeAll() {
-        changeListTypeLike(-1)
+        changeListTypeLike(-1);
     }
 
     //
     return (
-        <div className="ScreenLike_head pos-rel">
-            <div className="ScreenLike_head-row display-flex align-items-center margin-auto width-fit-content">
+        <div className="ScreenLikeHead pos-rel padding-left-16px text-secondary">
+            <div className="ScreenLikeHead_row display-flex align-items-center overflow-x-auto scroll-height-0">
                 <div
-                    className={`padding-8px cursor-pointer ${
-                        type_like == -1 ? 'bottom-blue' : ''
+                    className={`ScreenLikeHead_item padding-x-16px ${
+                        type_like == -1 ? 'ScreenLikeHead_item-active' : ''
                     }`}
                     onClick={changeListTypeLikeAll}
                 >
                     All
                 </div>
 
-                {type_likes.map((item, ix) => (
-                    <div
-                        key={`ScreenLike_type_like_${ix}`}
-                        className={`padding-8px cursor-pointer ${
-                            type_like == ix ? 'bottom-blue' : ''
-                        }`}
-                    >
-                        <ScreenLikeType
-                            ix={ix}
-                            changeListTypeLike={changeListTypeLike}
-                            component={item.component}
-                        />
-                    </div>
-                ))}
+                {type_likes.map((item, ix) =>
+                    reacted_count_arr[ix + 1] ? (
+                        <div
+                            key={ix}
+                            className={`ScreenLikeHead_item ${
+                                type_like == ix
+                                    ? 'ScreenLikeHead_item-active nav-active'
+                                    : ''
+                            }`}
+                        >
+                            <ScreenLikeType
+                                ix={ix}
+                                count={reacted_count_arr[ix].count}
+                                changeListTypeLike={changeListTypeLike}
+                                component={item.component}
+                            />
+                        </div>
+                    ) : null
+                )}
             </div>
 
-            <div className="ScreenLike_icon-close">
-                <div
-                    className="ScreenLike_icon-close_contain close-icon-small brs-50"
-                    onClick={closeScreen}
-                >
-                    <IconsArrow y={400} size_icon="1rem" />
-                </div>
+            <div
+                className="ScreenLikeHead_close pos-abs display-flex-center brs-50 bg-ccc cursor-pointer"
+                onClick={closeScreen}
+            >
+                <IconsArrow y={400} size_icon="24px" />
             </div>
         </div>
     );

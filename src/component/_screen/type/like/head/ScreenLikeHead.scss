@@ -1,0 +1,68 @@
+.ScreenLikeHead {
+    padding-right: 60px;
+}
+
+.ScreenLikeHead_row {
+    height: 60px;
+}
+
+// .
+.ScreenLikeHead_item {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--md-bg-hover);
+    }
+
+    .IconsTypeLike {
+        width: 20px;
+        height: 20px;
+    }
+}
+.ScreenLikeHead_item-active {
+    color: var(--blue);
+    border-bottom: 2px solid currentColor;
+}
+
+.ScreenLikeHead_close {
+    right: 16px;
+    top: 12px;
+
+    width: 36px;
+    height: 36px;
+
+    .IconsArrow_close {
+        stroke: var(--md-color-secondary);
+    }
+}
+
+// ----
+
+.device-mobile {
+    .ScreenLikeHead {
+        padding-left: 0;
+        padding-right: 48px;
+    }
+
+    .ScreenLikeHead_row {
+        height: 48px;
+    }
+
+    .ScreenLikeHead_close {
+        top: 10px;
+        right: 10px;
+
+        width: 28px;
+        height: 28px;
+
+        .IconsArrow {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

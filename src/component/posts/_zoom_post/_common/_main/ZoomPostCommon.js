@@ -6,7 +6,7 @@ import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
 import ScreenTitle from '../../../../_screen/components/frame/has_title/title/ScreenTitle';
 //
 import ZoomPostCommonLeft from '../common_left/ZoomPostCommonLeft';
-import ZoomPostCommonRight from '../right/ZoomPostCommonRight';
+import ZoomPostCommonRight from '../right/_main/ZoomPostCommonRight';
 //
 import './ZoomPostCommon.scss';
 
@@ -33,6 +33,10 @@ function ZoomPostCommon({
     reacted_count,
     reacted_ix_arr,
     on_API_Like_L,
+
+    is_editing,
+    handleEdit,
+    cancelEdit,
 
     action_component,
     like_share_cmt_component,
@@ -76,11 +80,18 @@ function ZoomPostCommon({
                         <ZoomPostCommonRight
                             user={user}
                             updated_time={updated_time}
+                            //
                             content_obj={content_obj}
                             seeMoreContent={seeMoreContent}
+                            //
                             reacted_count={reacted_count}
                             reacted_ix_arr={reacted_ix_arr}
                             on_API_Like_L={on_API_Like_L}
+                            //
+                            is_editing={is_editing}
+                            handleEdit={handleEdit}
+                            cancelEdit={cancelEdit}
+                            //
                             action_component={action_component}
                             like_share_cmt_component={like_share_cmt_component}
                             comment_component={comment_component}

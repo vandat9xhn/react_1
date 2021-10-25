@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+//
+import { useHold } from '../../../../../../_hooks/useHold';
 //
 import CmtAction from '../action/_main/CmtAction';
 import CmtUser from '../user/CmtUser';
@@ -38,20 +40,25 @@ function CmtRight({
     handle_API_Action_L,
     handleAction,
 
-    //
     show_action_mb,
+    handleTouchStart,
+    handleTouchEnd,
     closeActionMb,
 }) {
     //
     return (
         <div className="CmtRight">
-            <div className="CmtRight_content">
+            <div
+                className="CmtRight_content"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+            >
                 <div className="CmtRight_user_text inline-block pos-rel padding-x-12px padding-y-8px bg-fb">
                     <div>
                         <CmtUser user_name={user_name} />
                     </div>
 
-                    <div>
+                    <div className="CmtRight_text">
                         <CmtText
                             content_obj={content_obj}
                             seeMoreContent={seeMoreContent}

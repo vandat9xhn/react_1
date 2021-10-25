@@ -1,11 +1,12 @@
 import { getRandomVidPic } from '../_common/default_image';
 import { getRandomContentObj } from '../_common/default_content';
 import { getDefaultArr } from '../_common/getDefaultArr';
-import { getRandomId } from '../_common/default_id';
+import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomUser } from '../_common/default_user';
 //
 import { default_post_vid_pic_cmt_arr } from './DefaultVidPicCmt';
 import { default_post_reacted_info_obj } from './reacted';
+import { getRandomBool } from '../_common/default_bool';
 
 //
 const default_post_vid_pic_id_obj = () => ({ id: getRandomId() });
@@ -39,26 +40,31 @@ export const default_post_vid_pic_history_arr = () =>
     getDefaultArr(default_post_vid_pic_history_obj, 1, 6);
 
 //
-export const default_post_vid_pic = () => ({
-    id: getRandomId(),
-    ...getRandomUser(),
-    ...getRandomContentObj(),
-    ...default_post_reacted_info_obj(),
+export const default_post_vid_pic = () => {
+    const count_comment = getRandomBool() ? getRandomNumber(0, 8) : 0;
 
-    vid_pic: getRandomVidPic(),
-    folder_picture: 'my folder picture',
-    content: '',
-    user_tag: [],
-    comments: default_post_vid_pic_cmt_arr(0),
-    count_comment: 1,
+    //
+    return {
+        id: getRandomId(),
+        ...getRandomUser(),
+        ...getRandomContentObj(),
+        ...default_post_reacted_info_obj(),
 
-    histories: [],
-    count_history: 2,
+        vid_pic: getRandomVidPic(),
+        folder_picture: 'my folder picture',
+        content: '',
+        user_tag: [],
+        comments: count_comment ? default_post_vid_pic_cmt_arr(1) : [],
+        count_comment: count_comment,
 
-    post_model: 11,
-    created_time: '2021-04-01T07:48:48.176630Z',
-    updated_time: '2021-04-01T15:18:30.339347Z',
-});
+        histories: [],
+        count_history: 2,
+
+        post_model: 11,
+        created_time: '2021-04-01T07:48:48.176630Z',
+        updated_time: '2021-04-01T15:18:30.339347Z',
+    };
+};
 
 export const default_post_vid_pic_arr = () =>
     getDefaultArr(default_post_vid_pic, 1, 10);

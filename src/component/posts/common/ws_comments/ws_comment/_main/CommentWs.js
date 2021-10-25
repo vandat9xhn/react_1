@@ -20,6 +20,7 @@ import SubsWs from '../../../ws_subs/_main/SubsWs';
 import PostCmt from '../../../../_post/cmt/_main/PostCmt';
 //
 import './CommentWs.scss';
+import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 
 //
 CommentWs.propTypes = {};
@@ -75,6 +76,7 @@ function CommentWs({ comment, is_poster }) {
 
     //
     const forceUpdate = useForceUpdate();
+    const handleScreenFetching = useScreenFetching();
 
     //
     const { openEditing, handleEdit, cancelEdit } = useCmtEdit({
@@ -111,7 +113,7 @@ function CommentWs({ comment, is_poster }) {
                     ...state_obj,
                     open_input_sub: true,
                 }));
-            
+
             setTimeout(() => {
                 ref_subs_ws.current
                     .querySelector(
@@ -125,11 +127,25 @@ function CommentWs({ comment, is_poster }) {
     // ------ LIKE
 
     //
-    function onOpenScreenLike() {
+    async function onOpenScreenLike() {
+        const { data } = await handleScreenFetching(() =>
+            handle_API_CmtReactedInfo_L({
+                cmt_id: id,
+                is_vid_pic: is_main_vid_pic,
+            })
+        );
+
         openScreenLike({
             openScreenFloor: openScreenFloor,
-            handle_API_Like_L: on_API_LikeCmt_L,
+            handle_API_Like_L: (c_type_like, c_count) =>
+                handle_API_LikeCmt_L({
+                    cmt_id: id,
+                    type_like: c_type_like,
+                    is_vid_pic: is_main_vid_pic,
+                    c_count: c_count,
+                }),
             type_like: -1,
+            reacted_count_arr: data,
         });
     }
 

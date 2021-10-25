@@ -52,15 +52,17 @@ Posts.propTypes = {
     posts: PropTypes.array,
     has_fetched: PropTypes.bool,
     is_fetching: PropTypes.bool,
+    open_input_id_arr: PropTypes.arrayOf(PropTypes.number),
 };
 
 Posts.defaultProps = {
     has_fetched: false,
     is_fetching: false,
+    open_input_id_arr: [],
 };
 
 //
-function Posts({ posts, has_fetched, is_fetching }) {
+function Posts({ posts, has_fetched, is_fetching, open_input_id_arr }) {
     //
     const { openScreenFloor, closeScreenFloor } = useContext(context_api);
 
@@ -152,8 +154,14 @@ function Posts({ posts, has_fetched, is_fetching }) {
 
                 {has_fetched &&
                     posts.map((post, index) => (
-                        <div key={`Posts_${post.id}`} className="Posts_item">
-                            <Post post={post} post_ix={index} />
+                        <div key={post.id} className="Posts_item">
+                            <Post
+                                post={post}
+                                post_ix={index}
+                                is_open_input={open_input_id_arr.includes(
+                                    post.id
+                                )}
+                            />
                         </div>
                     ))}
 

@@ -17,6 +17,8 @@ import InfoCmt from '../cmt/InfoCmt';
 import PeopleShare from '../share/PeopleShare';
 //
 import './Info.scss';
+import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
+import { handle_API_PostReactedInfo_L } from '../../../../../_handle_api/post/HandleAPIPost';
 
 //
 Info.propTypes = {
@@ -45,7 +47,11 @@ function Info({
     //
     const { openScreenFloor } = useContext(context_api);
 
-    const { handle_API_Like_L, handle_API_Share_L } = useContext(context_post);
+    const { is_main_vid_pic, handle_API_Like_L, handle_API_Share_L } =
+        useContext(context_post);
+
+    //
+    const handleScreenFetching = useScreenFetching();
 
     //-----
 
@@ -74,11 +80,18 @@ function Info({
     }
 
     //
-    function onOpenDetailLike(type_like) {
+    async function onOpenDetailLike(type_like) {
+        const { data } = await handleScreenFetching(() =>
+            handle_API_PostReactedInfo_L({
+                post_id: parent_id,
+                is_vid_pic: is_main_vid_pic,
+            })
+        );
         openScreenLike({
             openScreenFloor: openScreenFloor,
             handle_API_Like_L: on_API_Like_L,
             type_like: type_like,
+            reacted_count_arr: data,
         });
     }
 

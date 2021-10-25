@@ -22,6 +22,7 @@ import PostCmt from '../../../../_post/cmt/_main/PostCmt';
 import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
 //
 import './SubWs.scss';
+import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 
 //
 SubWs.propTypes = {};
@@ -77,6 +78,7 @@ function SubWs({ is_poster, sub, has_straight_1, focusInputSub }) {
 
     //
     const forceUpdate = useForceUpdate();
+    const handleScreenFetching = useScreenFetching();
 
     //
     const { openEditing, handleEdit, cancelEdit } = useCmtEdit({
@@ -129,11 +131,25 @@ function SubWs({ is_poster, sub, has_straight_1, focusInputSub }) {
     // -----
 
     //
-    function onOpenScreenLike() {
+    async function onOpenScreenLike() {
+        const { data } = await handleScreenFetching(() =>
+            handle_API_SubReactedInfo_L({
+                sub_id: id,
+                is_vid_pic: is_main_vid_pic,
+            })
+        );
+
         openScreenLike({
             openScreenFloor: openScreenFloor,
-            handle_API_Like_L: on_API_LikeSub_L,
+            handle_API_Like_L: (c_type_like, c_count) =>
+                handle_API_LikeSub_L({
+                    sub_id: id,
+                    type_like: c_type_like,
+                    is_vid_pic: is_main_vid_pic,
+                    c_count: c_count,
+                }),
             type_like: -1,
+            reacted_count_arr: data,
         });
     }
 

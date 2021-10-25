@@ -17,6 +17,7 @@ import {
     default_post_vid_pic_like_arr,
     default_post_vid_pic_history_arr,
 } from '../../../../_default/post/DefaultVidPic';
+import { default_post_reacted_info_total_arr } from '../../../../_default/post/reacted';
 
 // ------
 
@@ -159,6 +160,18 @@ export const API_PostPicHistory_L = (params = {}) =>
 export const API_PostLike_L = (params) =>
     API_FakeReal(
         default_post_like_arr(),
+        () =>
+            axiosDjangoClient({
+                url: '/user/post-reacted-info-total/',
+                method: 'GET',
+                params: params,
+            }),
+        params
+    );
+
+export const API_PostReactedInfo_L = (params) =>
+    API_FakeReal(
+        default_post_reacted_info_total_arr(),
         () =>
             axiosDjangoClient({
                 url: '/user/lc-like-post/',

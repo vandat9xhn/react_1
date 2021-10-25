@@ -7,14 +7,14 @@ export const default_post_reacted_info_obj = () => {
     const reacted_ix_arr =
         getRandomBool() || true
             ? getRandomFromArr([
-                //   [getRandomNumber(0, 2), getRandomNumber(3, 5)],
+                    [getRandomNumber(0, 2), getRandomNumber(3, 5)],
                   [getRandomNumber(0, 5)],
-                //   [
-                //       getRandomNumber(0, 1),
-                //       getRandomNumber(2, 3),
-                //       getRandomNumber(4, 5),
-                //   ],
-                //   [],
+                    [
+                        getRandomNumber(0, 1),
+                        getRandomNumber(2, 3),
+                        getRandomNumber(4, 5),
+                    ],
+                    [],
               ])
             : [];
 
@@ -32,9 +32,18 @@ export const default_post_reacted_info_obj = () => {
 
 //
 export const default_post_reacted_info_total_arr = () => {
-    return [
-        { reacted_ix: 0, count: getRandomNumber(1, 10) },
-        { reacted_ix: 2, count: getRandomNumber(1, 10) },
-        { reacted_ix: 5, count: getRandomNumber(1, 10) },
-    ];
+    return getRandomBool()
+        ? [
+              { reacted_ix: 0, count: getRandomNumber(1, 10) },
+              { reacted_ix: 2, count: getRandomNumber(1, 10) },
+              { reacted_ix: 5, count: getRandomNumber(1, 10) },
+          ]
+        : [
+              { reacted_ix: 0, count: getRandomNumber(1, 10) },
+              { reacted_ix: 1, count: getRandomNumber(1, 10) },
+              { reacted_ix: 2, count: getRandomNumber(1, 10) },
+              { reacted_ix: 3, count: getRandomNumber(1, 10) },
+              { reacted_ix: 4, count: getRandomNumber(1, 10) },
+              { reacted_ix: 5, count: getRandomNumber(1, 10) },
+          ];
 };

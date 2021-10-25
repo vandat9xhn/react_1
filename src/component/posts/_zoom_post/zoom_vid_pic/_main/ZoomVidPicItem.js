@@ -2,8 +2,11 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
+import ContextPost from '../../../../../_context/post/ContextPost';
 //
 import { is_api_fake } from '../../../../../api/_ConstAPI';
+//
+import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 //
 import { useMounted } from '../../../../../_hooks/useMounted';
 import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
@@ -12,8 +15,6 @@ import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 import { openScreenConfirm } from '../../../../_screen/type/confirm/ScreenConfirm';
 import { openScreenHistory } from '../../../../_screen/type/history/ScreenHistory';
 import { openScreenUpdate } from '../../../../_screen/type/update/_main/ScreenUpdate';
-//
-import ContextPost from '../../../../../_context/post/ContextPost';
 //
 import {
     handle_API_PostVidPicContent_R,
@@ -56,11 +57,10 @@ import LikeShareCmt from '../../../common/like_share_cmt/_main/LikeShareCmtWs';
 import CommentsWs from '../../../common/ws_comments/_main/CommentsWs';
 
 import VidPicHistory from '../history/_main/VidPicHistory';
-import ActionsVidPic from '../actions/_main/ActionsVidPic';
-import VidPicUpdate from '../actions/update/VidPicUpdate';
+import ZoomVidPicAction from '../action/_main/ZoomVidPicAction';
+import VidPicUpdate from '../update/VidPicUpdate';
 //
 import './ZoomVidPicItem.scss';
-import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
 
 //
 ZoomVidPicItem.propTypes = {
@@ -94,6 +94,8 @@ function ZoomVidPicItem({
         vid_pic_ix: -1,
         has_fetched: false,
         is_fetching: false,
+
+        is_editing: false,
     });
 
     const {
@@ -103,6 +105,7 @@ function ZoomVidPicItem({
 
         has_fetched,
         is_fetching,
+        is_editing,
     } = state_obj;
 
     const {
@@ -178,6 +181,7 @@ function ZoomVidPicItem({
         setStateObj((state_obj) => ({
             ...state_obj,
             is_fetching: true,
+            is_editing: false,
         }));
 
         const data = await handleScreenFetching(() =>
@@ -297,12 +301,11 @@ function ZoomVidPicItem({
               )
             : '';
 
-        openScreenUpdate({
-            openScreenFloor: openScreenFloor,
-            title: 'Update',
-            UpdateComponent: VidPicUpdate,
-            content: content_obj.content + content_more,
-            handleUpdate: handleUpdate,
+        content_obj.content_more = content_more;
+
+        setStateObj({
+            ...state_obj,
+            is_editing: true,
         });
     }
 
@@ -329,7 +332,7 @@ function ZoomVidPicItem({
     // --------- HANDLE ACTIONS
 
     //
-    async function handleUpdate(new_content) {
+    async function handleEdit(new_content) {
         await handleScreenFetching(() =>
             handle_API_PostVidPic_U(id, new_content)
         );
@@ -338,8 +341,19 @@ function ZoomVidPicItem({
         content_obj.content_more = '';
         content_obj.has_more_content = false;
 
-        forceUpdate();
+        setStateObj({
+            ...state_obj,
+            is_editing: false,
+        });
         closeScreenFloor();
+    }
+
+    //
+    function cancelEdit() {
+        setStateObj({
+            ...state_obj,
+            is_editing: false,
+        });
     }
 
     //
@@ -402,6 +416,7 @@ function ZoomVidPicItem({
                 handle_API_MoreContentHisSub_R={handle_API_MoreContentHisSub_R}
             >
                 <ZoomPostCommon
+                    // key={id}
                     show_screen_title={show_screen_title}
                     closeScreenTitle={closeScreenTitle}
                     //
@@ -421,10 +436,13 @@ function ZoomVidPicItem({
                     reacted_ix_arr={reacted_ix_arr}
                     on_API_Like_L={handle_API_PostVidPicLike_L}
                     //
+                    is_editing={is_editing}
+                    handleEdit={handleEdit}
+                    cancelEdit={cancelEdit}
+                    //
                     action_component={
-                        <ActionsVidPic
-                            is_user={user.id == c_user.id}
-                            count_his={count_his}
+                        <ZoomVidPicAction
+                            is_poster={user.id == c_user.id}
                             openHistoryVidPic={openHistoryVidPic}
                             openUpdateVidPic={openUpdateVidPic}
                             openDeleteVidPic={openDeleteVidPic}

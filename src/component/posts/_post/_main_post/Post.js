@@ -50,6 +50,7 @@ Post.propTypes = {
 function Post({
     post,
     post_ix,
+    is_open_input,
     //
     enabled_share,
     // enabled_like,
@@ -366,6 +367,7 @@ function Post({
                         parent_id={id}
                         comments={comments}
                         count_comment={count_comment}
+                        initial_open_input={is_open_input}
                     />
                 </div>
             </div>

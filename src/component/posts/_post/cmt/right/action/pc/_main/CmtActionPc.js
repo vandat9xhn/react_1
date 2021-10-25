@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { useBool } from '../../../../../../../../_hooks/useBool';
+import { useForceUpdate } from '../../../../../../../../_hooks/UseForceUpdate';
+//
 import CircleLoading from '../../../../../../../waiting/circle_loading/CircleLoading';
-import Actions from '../../../../../../../actions/_main/Actions';
+import ActionsPc from '../../../../../../../actions/pc/ActionsPc';
 //
 import CmtActionItem from '../../item/CmtActionItem';
 //
 import './CmtActionPc.scss';
-import { useBool } from '../../../../../../../../_hooks/useBool';
-import { useForceUpdate } from '../../../../../../../../_hooks/UseForceUpdate';
+import CmtActionContain from '../../contain/CmtActionContain';
 
 //
 CmtActionPc.propTypes = {};
@@ -43,34 +45,22 @@ function CmtActionPc({
     //
     return (
         <div className="CmtActionPc">
-            <Actions
+            <ActionsPc
                 is_show={is_true}
                 toggleShow={toggleBool}
                 callbackOpen={callbackOpen}
             >
                 <div className="CmtActionPc_contain padding-10px font-500">
-                    <ul className="CmtActionPc_list list-none">
-                        {action_arr.map((item, ix) => (
-                            <li key={ix}>
-                                <CmtActionItem
-                                    name={item.name}
-                                    title={item.title}
-                                    handleClose={handleClose}
-                                    handleClick={handleAction}
-                                />
-                            </li>
-                        ))}
-                    </ul>
-
-                    {is_fetching ? (
-                        <div className="display-flex-center padding-y-5px">
-                            <CircleLoading is_fetching={is_fetching} />
-                        </div>
-                    ) : null}
+                    <CmtActionContain
+                        action_arr={action_arr}
+                        is_fetching={is_fetching}
+                        handleClose={handleClose}
+                        handleAction={handleAction}
+                    />
                 </div>
-            </Actions>
+            </ActionsPc>
         </div>
     );
 }
-
+CmtActionContain;
 export default CmtActionPc;

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_post } from '../../../../../_context/post/ContextPost';
@@ -51,6 +51,16 @@ function CommentsWs({
     } = useContext(context_post);
 
     //
+    useEffect(() => {
+        initial_open_input &&
+            comments.length == 0 &&
+            count_comment > 0 &&
+            onGetCommentsWs();
+    }, []);
+
+    // ------
+
+    //
     async function onGetCommentsWs() {
         setFetchingCmt(true);
         !open_input && setOpenInput(true);
@@ -83,7 +93,11 @@ function CommentsWs({
 
     //
     return (
-        <div className="Comments">
+        <div
+            className={`Comments ${
+                comments.length || open_input ? '' : 'display-none'
+            }`}
+        >
             <div className="Comments_title flex-between-center padding-y-10px">
                 <div className="Comments_more">
                     <ScreenBlurShowMore

@@ -1,57 +1,40 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { is_api_fake } from '../../../../../../api/_ConstAPI';
 //
-import { context_api } from '../../../../../../_context/ContextAPI';
-//
-import { useBool } from '../../../../../../_hooks/useBool';
-//
-import Actions from '../../../../../actions/_main/Actions';
 import ActionHistory from '../../../../../actions/common_actions/history/ActionHistory';
 import ActionUpdate from '../../../../../actions/common_actions/update/ActionUpdate';
 import ActionDelete from '../../../../../actions/common_actions/delete/ActionDelete';
 import ActionReport from '../../../../../actions/common_actions/report/ActionReport';
+import ActionPermission from '../../../../../actions/common_actions/permission/ActionPermission';
 //
-import './ActionsVidPic.scss';
+import './ZoomVidPicActionContain.scss';
 
 //
-ActionsVidPic.propTypes = {};
+ZoomVidPicActionContain.propTypes = {};
 
 //
-function ActionsVidPic({
-    is_user,
-    count_his,
+function ZoomVidPicActionContain({
+    is_poster,
 
     openHistoryVidPic,
     openUpdateVidPic,
     openDeleteVidPic,
     openReportVidPic,
+    openPermissionVidPic,
 }) {
     //
-    const { user } = useContext(context_api);
-
-    //
-    const { is_true, toggleBool } = useBool();
-
-    //
     return (
-        <Actions is_show={is_true} toggleShow={toggleBool}>
-            <ul
-                className="ActionsVidPic_list list-none box-shadow-1 brs-5px"
-                onClick={toggleBool}
-            >
-                <li
-                    className={`${
-                        count_his || is_api_fake ? '' : 'display-none'
-                    }`}
-                >
+        <div className="ZoomVidPicActionContain">
+            <ul className="ZoomVidPicActionContain_list list-none">
+                <li>
                     <ActionHistory handleOpenHistory={openHistoryVidPic} />
                 </li>
 
                 <li
                     className={`${
-                        is_user || is_api_fake ? '' : 'display-none'
+                        is_poster || is_api_fake ? '' : 'display-none'
                     }`}
                 >
                     <ActionUpdate handleUpdate={openUpdateVidPic} />
@@ -59,7 +42,17 @@ function ActionsVidPic({
 
                 <li
                     className={`${
-                        user.id || is_api_fake ? '' : 'display-none'
+                        is_poster || is_api_fake ? '' : 'display-none'
+                    }`}
+                >
+                    <ActionPermission
+                        handleOpenPermission={openPermissionVidPic}
+                    />
+                </li>
+
+                <li
+                    className={`${
+                        !is_poster || is_api_fake ? '' : 'display-none'
                     }`}
                 >
                     <ActionReport handleOpenReport={openReportVidPic} />
@@ -67,14 +60,14 @@ function ActionsVidPic({
 
                 <li
                     className={`${
-                        is_user || is_api_fake ? '' : 'display-none'
+                        is_poster || is_api_fake ? '' : 'display-none'
                     }`}
                 >
                     <ActionDelete handleDelete={openDeleteVidPic} />
                 </li>
             </ul>
-        </Actions>
+        </div>
     );
 }
 
-export default ActionsVidPic;
+export default ZoomVidPicActionContain;

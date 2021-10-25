@@ -23,9 +23,10 @@ function UserPost(props) {
     const [post_state, setPostState] = useState({
         post_arr: initial_posts,
         has_fetched: false,
+        open_input_id_arr: [],
     });
 
-    const { post_arr, has_fetched } = post_state;
+    const { post_arr, has_fetched, open_input_id_arr } = post_state;
 
     //
     const mounted = useMounted();
@@ -35,9 +36,12 @@ function UserPost(props) {
         getData_API_Post();
     }, [id]);
 
+    // --------
+
     //
     async function getData_API_Post() {
         setPostState({
+            ...post_state,
             post_arr: [],
             has_fetched: false,
         });
@@ -48,6 +52,7 @@ function UserPost(props) {
             setPostState({
                 post_arr: [res.data],
                 has_fetched: true,
+                open_input_id_arr: [res.data.id],
             });
     }
 
@@ -58,9 +63,9 @@ function UserPost(props) {
                 <div className="UserPost_posts">
                     <Posts
                         posts={post_arr}
-                        has_add_new={false}
                         has_fetched={has_fetched}
                         is_fetching={false}
+                        open_input_id_arr={open_input_id_arr}
                     />
                 </div>
             </div>

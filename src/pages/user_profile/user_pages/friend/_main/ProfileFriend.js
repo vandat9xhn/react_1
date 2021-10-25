@@ -14,7 +14,7 @@ import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 import ScreenBlurShowMore from '../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
 import ProfileFrSkeleton from '../skeleton/ProfileFrSkeleton';
-import FriendEdit from '../friend_edit/FriendEdit';
+import FriendEdit from '../friend_edit/_main/FriendEdit';
 //
 import './ProfileFriend.scss';
 
@@ -86,12 +86,14 @@ function ProfileFriend() {
                     ))}
                 </div>
 
-                <ScreenBlurShowMore
-                    title="See more friends"
-                    is_show_more={count > data_arr.length}
-                    is_fetching={is_fetching && has_fetched}
-                    handleShowMore={handleShowMoreFriends}
-                />
+                <div className="padding-y-10px">
+                    <ScreenBlurShowMore
+                        title="See more friends"
+                        is_show_more={count > data_arr.length}
+                        is_fetching={is_fetching && has_fetched}
+                        handleShowMore={handleShowMoreFriends}
+                    />
+                </div>
             </div>
 
             <div className={has_fetched ? 'display-none' : ''}>

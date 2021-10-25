@@ -6,27 +6,24 @@ import { getDefaultArr } from '../_common/getDefaultArr';
 import { default_post_reacted_info_obj } from './reacted';
 
 //
-const default_post_sub_common_obj = ({ is_sub2 = false, sub_id = -1 }) => {
-    //
-    return {
-        id: getRandomId(),
-        ...getRandomUser(),
-        ...getRandomContentObj(),
-        ...default_post_reacted_info_obj(),
+const default_post_sub_common_obj = ({ is_sub2 = false, sub_id = -1 }) => ({
+    id: getRandomId(),
+    ...getRandomUser(),
+    ...getRandomContentObj(),
+    ...default_post_reacted_info_obj(),
 
-        is_sub2: is_sub2,
-        sub_id: sub_id,
+    is_sub2: is_sub2,
+    sub_id: sub_id,
 
-        histories: [],
-        count_history: 0,
-        vid_pic: getRandomVidPicOrNull(),
+    histories: [],
+    count_history: 0,
+    vid_pic: getRandomVidPicOrNull(),
 
-        comment_model: 1,
-        profile_model: 3,
-        created_time: '2021-04-02T06:44:46.495730Z',
-        updated_time: '2021-04-02T06:44:46.495730Z',
-    };
-};
+    comment_model: 1,
+    profile_model: 3,
+    created_time: '2021-04-02T06:44:46.495730Z',
+    updated_time: '2021-04-02T06:44:46.495730Z',
+});
 
 //
 const default_post_sub_obj = () => {

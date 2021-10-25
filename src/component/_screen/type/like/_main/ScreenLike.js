@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMultiDataKey } from '../../../../../_hooks/useMultiDataKey';
@@ -18,11 +18,13 @@ export function openScreenLike({
     openScreenFloor,
     handle_API_Like_L,
     type_like,
+    reacted_count_arr = [] || [{ reacted_ix: 0, count: 0 }],
 }) {
     openScreenFloor({
         FloorComponent: ScreenLike,
         handle_API_Like_L: handle_API_Like_L,
         type_like: type_like,
+        reacted_count_arr: reacted_count_arr,
     });
 }
 
@@ -31,9 +33,11 @@ ScreenLike.propTypes = {};
 
 //
 function ScreenLike({
-    closeScreen,
-    handle_API_Like_L,
     type_like: initial_type_like,
+    reacted_count_arr,
+
+    handle_API_Like_L,
+    closeScreen,
 }) {
     //
     const { state_obj, getData_API, handleChangeKey } = useMultiDataKey({
@@ -63,9 +67,10 @@ function ScreenLike({
     return (
         <ScreenBlur closeScreen={closeScreen}>
             <div className="ScreenLike">
-                <div>
+                <div className="border-bottom-blur">
                     <ScreenLikeHead
                         type_like={c_key}
+                        reacted_count_arr={reacted_count_arr}
                         changeListTypeLike={handleChangeKey}
                         closeScreen={closeScreen}
                     />

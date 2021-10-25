@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { content_pic_name_props } from '../../_prop-types/_CommonPropTypes';
 //
 import IconsAction from '../../_icons_svg/icons_action/IconsAction';
-// 
+//
 import IconDiv from '../some_div/icon_div/IconDiv';
 import PictureName from '../picture_name/pic_name/PictureName';
 //
@@ -24,7 +24,7 @@ UserAdd.defaultProps = {
 
 //
 function UserAdd({ user, content, num_action_friend, handleSendAddFriend }) {
-    // 
+    //
     // const [state_obj, setStateObj] = useState({
     //     added: false,
     // })
@@ -38,7 +38,7 @@ function UserAdd({ user, content, num_action_friend, handleSendAddFriend }) {
     return (
         <div className="UserAdd padding-8px">
             <div className="UserAdd_row flex-between-center">
-                <div>
+                <div className="flex-grow-1 overflow-hidden">
                     <PictureName user={user} content={content} />
                 </div>
 

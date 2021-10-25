@@ -7,6 +7,7 @@ import {
     API_PostHistory_L,
     API_PostHistory_R,
     API_PostMoreContent_R,
+    API_PostReactedInfo_L,
 } from '../../api/api_django/user/user_post/UserPost';
 //
 import makeFormData from '../../_some_function/makeFormData';
@@ -67,6 +68,22 @@ export async function handle_API_Like_L(post_id = 0, c_count = 0, type_like) {
         type_like: type_like,
     });
 
+    return res.data;
+}
+
+//
+export async function handle_API_PostReactedInfo_L({
+    post_id = 0,
+    is_vid_pic = false,
+}) {
+    const res = await API_PostReactedInfo_L(
+        {
+            page: 1,
+            size: 6,
+            post_model: post_id,
+        },
+        is_vid_pic
+    );
     return res.data;
 }
 

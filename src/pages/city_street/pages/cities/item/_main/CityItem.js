@@ -19,10 +19,9 @@ import { openScreenUpdate } from '../../../../../../component/_screen/type/updat
 import PictureName from '../../../../../../component/picture_name/pic_name/PictureName';
 import VirtualScroll from '../../../../../../component/virtual_scroll/VirtualScroll';
 //
-//
 import { city_bg_color_arr } from '../../../../_data/bg_color';
-// 
-import Choices from '../../choices/Choices';
+//
+import CityActionChoices from '../../actions/action/_main/CityActionChoices';
 import CityUpdate from '../../actions/action_update/CityUpdate';
 import CityHistories from '../../actions/history/_main/CityHistories';
 //
@@ -54,7 +53,7 @@ function CityItem({ city_obj }) {
         is_del,
     } = city_obj;
 
-    const {bg, color} = city_bg_color_arr[bg_color]
+    const { bg, color } = city_bg_color_arr[bg_color];
 
     //
     const forceUpdate = useForceUpdate();
@@ -180,9 +179,8 @@ function CityItem({ city_obj }) {
                     </div>
 
                     <div className="CityItem_choices">
-                        <Choices
-                            is_user={is_user}
-                            count_his={count_his}
+                        <CityActionChoices
+                            is_poster={is_user}
                             //
                             openHistory={openHistory}
                             openUpdate={openUpdate}

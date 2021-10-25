@@ -1,14 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 //
-import { useObserverShowMore } from '../../../../../_hooks/useObserverShowMore';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
 import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
 //
-import FetchingDiv from '../../../../../component/some_div/fetching/FetchingDiv';
-import ComponentSkeleton from '../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
+import { useObserverShowMore } from '../../../../../_hooks/useObserverShowMore';
 //
 import { handle_API_City_L } from '../../../../../_handle_api/city/CityHandleAPI';
+//
+import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
+//
+import FetchingDiv from '../../../../../component/some_div/fetching/FetchingDiv';
+import ComponentSkeleton from '../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 //
 import CitySearch from '../search/CitySearch';
 import CityItem from '../item/_main/CityItem';
@@ -16,8 +20,6 @@ import CityItemSkeleton from '../item/skeleton/CityItemSkeleton';
 //
 import './Cities.scss';
 import './CitiesRes.scss';
-import { IS_MOBILE } from '../../../../../_constant/Constant';
-import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 
 //
 function Cities() {
@@ -60,7 +62,7 @@ function Cities() {
 
     //
     return (
-        <div>
+        <div className="Cities">
             <div className={`Cities ${has_fetched ? '' : 'display-none'}`}>
                 <div className="Cities_search">
                     <CitySearch handleSearch={handleSearch} />
@@ -84,7 +86,9 @@ function Cities() {
                 {localStorage.is_login == 1 && (
                     <div
                         className={`Cities_add pos-fixed left-0 ${
-                            IS_MOBILE ? 'bottom-0' : 'Cities_add-pc trans-x--50per bottom-50per'
+                            IS_MOBILE
+                                ? 'bottom-0'
+                                : 'Cities_add-pc trans-x--50per bottom-50per'
                         }`}
                     >
                         <Link to="/new-city">

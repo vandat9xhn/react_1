@@ -33,9 +33,9 @@ function Like({ changeTypeLike, icon_small, type_like }) {
     const ref_like_elm = useRef(null);
 
     const { StartHold, StopHold } = useHold(IS_MOBILE ? 400 : 600);
-    const { StartHold: StartOut, StopHold: StopOut } = useHold(
-        IS_MOBILE ? 100 : 600
-    );
+    const { StartHold: StartOut, StopHold: StopOut } = useHold({
+        time: IS_MOBILE ? 100 : 600,
+    });
 
     //
     function openFixLike() {

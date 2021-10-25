@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import PostHeadUser from '../user/_main/PostHeadUser';
-import PostHeadAction from '../action/PostHeadAction';
+import PostHeadAction from '../action/_main/PostHeadAction';
 
 //
 PostHead.propTypes = {};
