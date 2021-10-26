@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_post } from '../../../../../../_context/post/ContextPost';
 //
+import { getTypeVidOrPic } from '../../../../../../_some_function/VideoOrImage';
+// 
 import { handle_API_FbPostCmtAction_L } from '../../../../../../_handle_api/post/cmt_action';
 //
 import { useCmtEdit } from '../../../../../../_hooks/post/useCmtEditing';
@@ -13,6 +15,7 @@ import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 import { openScreenConfirm } from '../../../../../_screen/type/confirm/ScreenConfirm';
 import { openScreenHistory } from '../../../../../_screen/type/history/ScreenHistory';
 import { openScreenLike } from '../../../../../_screen/type/like/_main/ScreenLike';
+import { openScreenVidPic } from '../../../../../_screen/type/vid_pics/_main/ZoomVidPics';
 //
 import PostCmt from '../../../../_post/cmt/_main/PostCmt';
 import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
@@ -74,7 +77,7 @@ function PostSub2({
 
     //
     const forceUpdate = useForceUpdate();
-    const handleScreenFetching = useScreenFetching()
+    const handleScreenFetching = useScreenFetching();
 
     //
     const { openEditing, handleEdit, cancelEdit } = useCmtEdit({
@@ -93,7 +96,13 @@ function PostSub2({
     }
 
     //
-    function handleClickVidPic() {}
+    function handleClickVidPic() {
+        openScreenVidPic({
+            openScreenFloor: openScreenFloor,
+            urls: [{ url: vid_pic, type: getTypeVidOrPic(vid_pic) }],
+            current: 0,
+        });
+    }
 
     //
     function startReply() {
@@ -101,7 +110,9 @@ function PostSub2({
     }
 
     //
-    function sendAward() {}
+    function sendAward(params) {
+        console.log(params);
+    }
 
     // -----
 

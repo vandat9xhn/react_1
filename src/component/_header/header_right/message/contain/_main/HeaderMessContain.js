@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import ScreenBlurShowMore from '../../../../../_screen/components/part/foot/ScreenBlurShowMore';
 //
 import MessageFriendHead from '../head/_main/HeaderMessHead';
-import HeaderMessItem from '../body/item/HeaderMessItem';
+import HeaderMessItem from '../body/item/_main/HeaderMessItem';
 //
 import './HeaderMessContain.scss';
 
@@ -22,27 +22,33 @@ function HeaderMessContain({
     getMoreZoom,
 }) {
     //
+    const ref_scroll_elm = useRef(null);
+
+    //
     return (
-        <div className="RightHeader_hidden_contain header_hidden_contain">
+        <div
+            ref={ref_scroll_elm}
+            className="RightHeader_hidden_contain header_hidden_contain"
+        >
             <h2 className="padding-8px margin-0">Messages</h2>
 
             <div className="HeaderMessContain_friend">
-                <MessageFriendHead
-                    closeZoom={closeZoom}
-                />
+                <MessageFriendHead closeZoom={closeZoom} />
             </div>
 
             <div>
                 {zooms.map((zoom_item, ix) => (
                     <HeaderMessItem
-                        key={`HeaderMessContain_item_${ix}`}
-                        id={zoom_item.room_chat}
+                        key={ix}
+                        ref_scroll_elm={ref_scroll_elm}
                         ix={ix}
+                        //
+                        id={zoom_item.room_chat}
                         user={zoom_item.messages[0].user}
                         message={zoom_item.messages[0].message}
+                        count_new={zoom_item.count_new_mess}
                         updated_time={zoom_item.updated_time}
                         //
-                        count_new={zoom_item.count_new_mess}
                         handleClickItem={handleClickZoomItem}
                     />
                 ))}

@@ -54,7 +54,7 @@ function HeaderNotice({}) {
         handleOpen,
         handleClose,
     } = usePosFollowBodyOrElm({
-        // scroll_elm = html_elm,
+        // getScrollElms: getScrollElms,
         ref_base_elm: ref_btn_elm,
         getChildWidth: getChildWidth,
 
@@ -183,6 +183,11 @@ function HeaderNotice({}) {
     }
 
     //
+    function handleAction(action_name) {
+        console.log(action_name);
+    }
+
+    //
     return (
         <CloseDiv makeDivHidden={closeNotice}>
             <div
@@ -228,6 +233,7 @@ function HeaderNotice({}) {
                             //
                             MarkAllAsRead={MarkAllAsRead}
                             handleClickItem={handleClickItem}
+                            handleAction={handleAction}
                             getMoreNotice={getData_API_Notice}
                         />
                     </div>

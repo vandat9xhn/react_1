@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 import { useBool } from '../../../../../../../../_hooks/useBool';
 import { useForceUpdate } from '../../../../../../../../_hooks/UseForceUpdate';
 //
-import CircleLoading from '../../../../../../../waiting/circle_loading/CircleLoading';
 import ActionsPc from '../../../../../../../actions/pc/ActionsPc';
 //
-import CmtActionItem from '../../item/CmtActionItem';
+import CmtActionContain from '../../contain/CmtActionContain';
 //
 import './CmtActionPc.scss';
-import CmtActionContain from '../../contain/CmtActionContain';
 
 //
 CmtActionPc.propTypes = {};
@@ -47,6 +45,7 @@ function CmtActionPc({
         <div className="CmtActionPc">
             <ActionsPc
                 is_show={is_true}
+                // scroll_elm={scroll_elm}
                 toggleShow={toggleBool}
                 callbackOpen={callbackOpen}
             >

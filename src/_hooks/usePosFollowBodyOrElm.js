@@ -11,7 +11,7 @@ import { useForceUpdate } from './UseForceUpdate';
 
 //
 export function usePosFollowBodyOrElm({
-    getScrollElm = () => html_elm,
+    getScrollElms = () => [] || [window, html_elm, initial_div_elm],
     ref_base_elm = { current: initial_div_elm },
     getChildWidth = () => 0,
     header_head = HEADER_HEAD,
@@ -50,14 +50,24 @@ export function usePosFollowBodyOrElm({
     use_scroll &&
         useEffect(() => {
             if (ref_is_open.current) {
-                const scroll_elm = getScrollElm();
+                const scroll_elms = getScrollElms();
 
-                if (!ref_has_add_scroll.current && scroll_elm) {
+                if (!ref_has_add_scroll.current && scroll_elms.length) {
                     ref_has_add_scroll.current = true;
-                    scroll_elm.addEventListener('scroll', calculatePos);
+
+                    for (const scroll_elm of scroll_elms) {
+                        scroll_elm &&
+                            scroll_elm.addEventListener('scroll', calculatePos);
+                    }
 
                     return () => {
-                        scroll_elm.removeEventListener('scroll', calculatePos);
+                        for (const scroll_elm of scroll_elms) {
+                            scroll_elm &&
+                                scroll_elm.removeEventListener(
+                                    'scroll',
+                                    calculatePos
+                                );
+                        }
                     };
                 }
             }
@@ -68,9 +78,9 @@ export function usePosFollowBodyOrElm({
     //
     function changePos() {
         if (!ref_base_elm.current) {
-            return
+            return;
         }
-        
+
         const getPost = is_at_body ? getPosAtBody : getPosAtElm;
 
         ref_pos.current = getPost({

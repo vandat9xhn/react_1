@@ -1,0 +1,26 @@
+.ItemNotice {
+    .ActionsPc-hidden {
+        display: none;
+    }
+
+    &:hover {
+        .ActionsPc-hidden {
+            display: block;
+        }
+    }
+}
+
+.HeaderNoticeItemAction_btn {
+    width: 36px;
+    height: 36px;
+
+    box-shadow: 0 0 0 1px var(--shadow-1);
+}
+
+.HeaderNoticeItemAction_contain {
+    width: 345px;
+}
+
+.HeaderNoticeItemAction_action_contain {
+    z-index: var(--z-index-lv5);
+}

@@ -27,7 +27,7 @@ function ActionsContainMb({
     //
     return (
         <div
-            className={`ActionsMb pos-fixed-100per z-index-lv5 ${class_actions}`}
+            className={`ActionsMb pos-fixed-100per z-index-lv5 user-select-none ${class_actions}`}
         >
             <div
                 className="pos-abs-100 bg-shadow-5"

@@ -46,7 +46,7 @@ function MouseEnterLeaveInfoContain({
         handleClose,
         calculatePos,
     } = usePosFollowBodyOrElm({
-        getScrollElm: getScrollElm,
+        getScrollElms: getScrollElms,
         ref_base_elm: ref_btn_elm,
         getChildWidth: getChildWidth,
 
@@ -82,8 +82,8 @@ function MouseEnterLeaveInfoContain({
     // ----
 
     //
-    function getScrollElm() {
-        return ref_btn_elm.current.closest('[class~=div_fix_scroll]');
+    function getScrollElms() {
+        return [window, ref_btn_elm.current.closest('[class~=div_fix_scroll]')];
     }
 
     //

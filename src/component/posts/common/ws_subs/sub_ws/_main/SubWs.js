@@ -6,23 +6,26 @@ import { context_post } from '../../../../../../_context/post/ContextPost';
 //
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
 //
+import { getTypeVidOrPic } from '../../../../../../_some_function/VideoOrImage';
+// 
 import { handleFbPostCmtAction } from '../../../../../../_some_function/post/handleFbPostCmtAction';
 //
 import { handle_API_FbPostCmtAction_L } from '../../../../../../_handle_api/post/cmt_action';
 //
 import { useCmtEdit } from '../../../../../../_hooks/post/useCmtEditing';
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
+import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 //
 import { openScreenConfirm } from '../../../../../_screen/type/confirm/ScreenConfirm';
 import { openScreenHistory } from '../../../../../_screen/type/history/ScreenHistory';
 import { openScreenLike } from '../../../../../_screen/type/like/_main/ScreenLike';
+import { openScreenVidPic } from '../../../../../_screen/type/vid_pics/_main/ZoomVidPics';
 //
 import PostSubs2 from '../../../subs_2/_main/PostSubs2';
 import PostCmt from '../../../../_post/cmt/_main/PostCmt';
 import CmtSubHistory from '../../../ws_actions/history_component/_main/CmtSubHistory';
 //
 import './SubWs.scss';
-import { useScreenFetching } from '../../../../../../_hooks/UseScreenFetching';
 
 //
 SubWs.propTypes = {};
@@ -97,7 +100,13 @@ function SubWs({ is_poster, sub, has_straight_1, focusInputSub }) {
     }
 
     //
-    function handleClickVidPic() {}
+    function handleClickVidPic() {
+        openScreenVidPic({
+            openScreenFloor: openScreenFloor,
+            urls: [{ url: vid_pic, type: getTypeVidOrPic(vid_pic) }],
+            current: 0,
+        });
+    }
 
     //
     function startReply() {

@@ -81,11 +81,7 @@ function ZoomVidPicItem({
     handleDeleteVidPicPost,
 }) {
     //
-    const {
-        user: c_user,
-        openScreenFloor,
-        closeScreenFloor,
-    } = useContext(context_api);
+    const { user: c_user, openScreenFloor } = useContext(context_api);
 
     //
     const [state_obj, setStateObj] = useState({
@@ -137,7 +133,6 @@ function ZoomVidPicItem({
 
     //
     const mounted = useMounted();
-    const forceUpdate = useForceUpdate();
     const handleScreenFetching = useScreenFetching();
 
     //
@@ -345,7 +340,6 @@ function ZoomVidPicItem({
             ...state_obj,
             is_editing: false,
         });
-        closeScreenFloor();
     }
 
     //

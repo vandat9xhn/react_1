@@ -41,7 +41,7 @@ function ScreenBlurShowMore({
                 <div
                     className={
                         is_show_more && !is_fetching
-                            ? 'cursor-pointer'
+                            ? 'ScreenBlurShowMore_title cursor-pointer'
                             : 'display-none'
                     }
                     onClick={handleShowMore}

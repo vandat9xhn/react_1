@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
+//
+import { initial_div_elm } from '../_initial/htm_elm/html_elm';
 
 //
 export function useScrollChange({
-    scroll_elm = document.getElementsByTagName('div')[0],
+    scroll_elm = initial_div_elm || window,
     handleScrollChange = ({ scroll_left = 0, scroll_top = 0 }) => {},
 }) {
     //
@@ -19,8 +21,8 @@ export function useScrollChange({
     //
     function handleScroll() {
         handleScrollChange({
-            scroll_top: scroll_elm.scrollTop,
-            scroll_left: scroll_elm.scrollLeft,
+            scroll_top: scroll_elm != window ? scroll_elm.scrollTop : scrollY,
+            scroll_left: scroll_elm != window ? scroll_elm.scrollLeft : scrollX,
         });
     }
 }

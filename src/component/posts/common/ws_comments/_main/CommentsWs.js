@@ -98,7 +98,7 @@ function CommentsWs({
                 comments.length || open_input ? '' : 'display-none'
             }`}
         >
-            <div className="Comments_title flex-between-center padding-y-10px">
+            <div className="Comments_title flex-between-center padding-10px">
                 <div className="Comments_more">
                     <ScreenBlurShowMore
                         title={
@@ -141,7 +141,7 @@ function CommentsWs({
             </div>
 
             {open_input ? (
-                <div className="Comments_input padding-top-5px padding-x-16px">
+                <div className="Comments_input padding-y-5px padding-x-16px">
                     <CommentPost
                         placeholder={'Write a public comment...'}
                         handleSend={onSendCmt}

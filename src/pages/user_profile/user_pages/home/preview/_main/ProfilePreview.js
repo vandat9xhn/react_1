@@ -10,6 +10,7 @@ import ProfilePrFriend from '../friend/_main/ProfilePrFriend';
 import ProfilePrIntro from '../about/_main/ProfilePrAbout';
 //
 import './ProfilePreview.scss';
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
 
 //
 ProfilePreview.propTypes = {};
@@ -23,17 +24,19 @@ function ProfilePreview(props) {
     const count_ready = useRef(0);
 
     //
-    const {
-        calculateAgain,
-        ref_main_elm,
-        ref_preview_elm,
-        ref_fake_elm,
-    } = useStickyAuto({
-        sticky_location: /\/profile\/\d+$/,
-    });
+    const { calculateAgain, ref_main_elm, ref_preview_elm, ref_fake_elm } =
+        !IS_MOBILE
+            ? useStickyAuto({
+                  sticky_location: /\/profile\/\d+$/,
+              })
+            : {};
 
     //
     function handleReady() {
+        if (IS_MOBILE) {
+            return;
+        }
+
         count_ready.current += 1;
 
         if (count_ready.current == 3) {

@@ -25,6 +25,8 @@ Actions.defaultProps = {};
 //
 function Actions({
     class_actions,
+    class_action_contain,
+    
     title_action,
     use_title,
     is_show,
@@ -61,10 +63,12 @@ function Actions({
         <ActionsPc
             title_action={title_action}
             is_show={is_show}
+            class_action_contain={class_action_contain}
             children={children}
             scroll_elm={scroll_elm}
             is_at_body={is_at_body}
             header_head={header_head}
+            // 
             toggleShow={toggleShow}
             callbackOpen={callbackOpen}
             callbackClose={callbackClose}

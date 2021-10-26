@@ -25,7 +25,7 @@ function ActionsMb({
 }) {
     //
     return (
-        <div>
+        <div className="ActionsMb user-select-none">
             {use_title ? (
                 <ActionsBtnToggle
                     title_action={title_action}

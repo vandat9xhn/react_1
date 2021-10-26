@@ -17,7 +17,9 @@ CmtRight.propTypes = {};
 
 //
 function CmtRight({
+    user_id,
     user_name,
+
     content_obj,
     vid_pic,
     updated_time,
@@ -55,7 +57,7 @@ function CmtRight({
             >
                 <div className="CmtRight_user_text inline-block pos-rel padding-x-12px padding-y-8px bg-fb">
                     <div>
-                        <CmtUser user_name={user_name} />
+                        <CmtUser user_name={user_name} user_id={user_id} />
                     </div>
 
                     <div className="CmtRight_text">

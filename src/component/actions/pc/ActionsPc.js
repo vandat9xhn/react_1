@@ -22,6 +22,7 @@ ActionsPc.defaultProps = {};
 function ActionsPc({
     title_action,
     is_show,
+    class_action_contain,
     children,
 
     scroll_elm,
@@ -46,6 +47,7 @@ function ActionsPc({
     const Contain = (
         <ActionsContain
             ref_btn_elm={ref_btn_elm}
+            class_action_contain={class_action_contain}
             children={children}
             scroll_elm={scroll_elm}
             is_at_body={is_at_body}
@@ -59,11 +61,12 @@ function ActionsPc({
     //
     return (
         <div
+            ref={ref_btn_elm}
             className={`ActionsPc ${is_at_body ? 'pos-rel' : ''} ${
                 is_show ? 'ActionsPc-show' : 'ActionsPc-hidden'
             }`}
         >
-            <div ref={ref_btn_elm}>
+            <div>
                 <ActionsBtnToggle
                     title_action={title_action}
                     toggleShow={toggleShow}

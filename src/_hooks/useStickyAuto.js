@@ -111,7 +111,7 @@ export function useStickyAuto({ sticky_location = /./ }) {
         }
 
         ref_scroll_y.current =
-            pageYOffset -
+            scrollY -
             296 -
             ref_preview_elm.current.getBoundingClientRect().height;
     }
@@ -121,13 +121,17 @@ export function useStickyAuto({ sticky_location = /./ }) {
         handleRemoveScroll();
         handleRefWhenInnerWidthNotOk();
         ref_scroll_y.current =
-            pageYOffset +
+            scrollY +
             16 +
             ref_preview_elm.current.getBoundingClientRect().height;
     }
 
     //
     function calculateAgain() {
+        if (!ref_preview_elm.current) {
+            return;
+        }
+
         ref_is_href_ok.current = isHrefOk(sticky_location);
         ref_is_innerWidth_ok.current = isInnerWidthOk();
         ref_more_height.current = getNewMoreHeight();
@@ -163,7 +167,7 @@ export function useStickyAuto({ sticky_location = /./ }) {
         const hide_height_main =
             -ref_main_elm.current.getBoundingClientRect().top;
 
-        const is_scroll_down = pageYOffset - ref_scroll_y.current > 0;
+        const is_scroll_down = scrollY - ref_scroll_y.current > 0;
         const at_bottom = bottom <= innerHeight;
         const at_last_top = hide_height_main <= header_head;
         const at_temp_top = top >= 0;

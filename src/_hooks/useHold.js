@@ -19,7 +19,7 @@ export function useHold({ time = 500, use_holding = false }) {
 
     function StopHold() {
         use_holding && setHolding(false);
-        clearTimeout(timeout.current);
+        timeout.current && clearTimeout(timeout.current);
     }
 
     return { holding, StartHold, StopHold };

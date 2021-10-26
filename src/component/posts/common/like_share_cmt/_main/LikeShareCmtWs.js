@@ -67,7 +67,7 @@ function LikeShareCmt({
 
     //
     return (
-        <div className="LikeShareCmt padding-y-5px border-top-blur border-bottom-blur text-secondary font-500 user-select-none">
+        <div className="LikeShareCmt padding-y-5px padding-x-10px border-top-blur border-bottom-blur text-secondary font-500 user-select-none">
             <div className="LikeShareCmt_row display-flex-center">
                 {enabled_like && (
                     <div className="LikeShareCmt_item">
