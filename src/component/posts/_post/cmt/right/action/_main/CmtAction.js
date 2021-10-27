@@ -22,7 +22,7 @@ function CmtAction({
 }) {
     //
     const [state_obj, setStateObj] = useState({
-        action_arr: [] || [
+        list_action_arr: [] || [
             {
                 id: 0,
                 name: '',
@@ -33,7 +33,7 @@ function CmtAction({
         is_fetching: false,
     });
 
-    const { action_arr, has_fetched, is_fetching } = state_obj;
+    const { list_action_arr, has_fetched, is_fetching } = state_obj;
 
     // ---- API
 
@@ -48,7 +48,7 @@ function CmtAction({
 
         setStateObj((state_obj) => ({
             ...state_obj,
-            action_arr: data,
+            list_action_arr: data,
             has_fetched: true,
             is_fetching: false,
         }));
@@ -59,7 +59,7 @@ function CmtAction({
         <div className="CmtAction">
             {IS_MOBILE ? (
                 <CmtActionsMb
-                    action_arr={action_arr}
+                    list_action_arr={list_action_arr}
                     is_show={show_action_mb}
                     is_fetching={is_fetching}
                     has_fetched={has_fetched}
@@ -70,7 +70,7 @@ function CmtAction({
                 />
             ) : (
                 <CmtActionPc
-                    action_arr={action_arr}
+                    list_action_arr={list_action_arr}
                     is_fetching={is_fetching}
                     has_fetched={has_fetched}
                     //

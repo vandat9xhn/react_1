@@ -48,10 +48,10 @@ function ItemNotice({
                         is_new ? 'bg-fb-active' : ''
                     }`}
                 >
-                    <div className="ItemNotice_row display-flex align-items-center">
+                    <div className="ItemNotice_row display-flex">
                         <div>
                             <img
-                                className="brs-50 object-fit-cover"
+                                className="ItemNotice_pic brs-50 object-fit-cover"
                                 src={user.picture}
                                 alt=""
                                 width="56"
@@ -65,8 +65,10 @@ function ItemNotice({
                             </div>
 
                             <div className="ItemNotice_time font-13px">
-                                {UnitTime(new Date() - new Date(updated_time))}{' '}
-                                ago
+                                {UnitTime(new Date() - new Date(updated_time))}
+                                {new Date() - new Date(updated_time) >= 60000
+                                    ? ' ago'
+                                    : ''}
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+//
+import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
 //
@@ -12,6 +14,9 @@ PLChooseAddressScreen.propTypes = {};
 
 //
 function PLChooseAddressScreen({ closeScreen }) {
+    //
+    const { forceUpdateApp, closeScreenFloor } = useContext(context_api);
+
     //
     useMakeBodyHidden();
 
@@ -32,7 +37,9 @@ function PLChooseAddressScreen({ closeScreen }) {
         localStorage.pl_commune = commune;
         localStorage.pl_num_home = num_home;
         localStorage.pl_address = address;
-        // location.reload();
+
+        forceUpdateApp();
+        closeScreenFloor();
     }
 
     //

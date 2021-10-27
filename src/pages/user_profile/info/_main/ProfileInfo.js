@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
 //
-import SkeletonDiv from '../../../../component/skeleton/skeleton_div/SkeletonDiv';
-//
-import './ProfileInfo.scss';
+import VirtualScroll from '../../../../component/virtual_scroll/VirtualScroll';
 //
 import ProfileInfoActions from '../actions/_main/ProfileInfoActions';
-import ProfileInfoStory from '../story/_main/ProfileInfoStory';
+import ProfileInfoBio from '../bio/_main/ProfileInfoBio';
 import ProfileInfoPicture from '../picture/_main/ProfileInfoPicture';
-import VirtualScroll from '../../../../component/virtual_scroll/VirtualScroll';
+//
+import './ProfileInfo.scss';
+import ProfileInfoCover from '../cover/_main/ProfileInfoCover';
+import ProfileInfoName from '../name/ProfileInfoName';
+import ProfileInfoFriends from '../friends/_main/ProfileInfoFriends';
+import { IS_MOBILE } from '../../../../_constant/Constant';
 
 //
 ProfileInfo.propTypes = {
@@ -20,56 +23,40 @@ ProfileInfo.propTypes = {
 };
 
 //
-function ProfileInfo({ profile, is_fetching, openCoverPicture, openPicture }) {
+function ProfileInfo({
+    profile,
+
+    openCoverPicture,
+    openPicture,
+    handleAction,
+}) {
     //
     const { user } = useContext(context_api);
 
     //
     const {
         id,
-        picture,
-        cover,
         first_name,
         last_name,
+        picture,
+        cover,
 
-        user_related,
-        permission_add_friend,
-        is_block_message,
+        has_new_story,
+        nick_name,
+        bio,
+
+        friend_count,
+        mutual_friend_count,
+        friend_arr,
+        has_more_friend,
+
+        action_case_arr,
     } = profile;
 
-    const story = profile.you_obj.you;
-
-    const nick_name = profile.other_name_arr.length
-        ? profile.other_name_arr[0].other_name
-        : '';
+    const is_user = user.id == id;
 
     //
-    function handleChangeStory() {
-        console.log(id);
-    }
-
-    //
-    function handleAddStoryNewFeed() {
-        console.log(id);
-    }
-
-    //
-    function handleAcceptRequest() {
-        console.log(id);
-    }
-
-    //
-    function handleCancelRequest() {
-        console.log(id);
-    }
-
-    //
-    function handleAddFriend() {
-        console.log(id);
-    }
-
-    //
-    function handleFollowFriend() {
+    function handleChangeBio() {
         console.log(id);
     }
 
@@ -77,48 +64,65 @@ function ProfileInfo({ profile, is_fetching, openCoverPicture, openPicture }) {
     return (
         <VirtualScroll>
             <div className="ProfileInfo bg-primary">
-                <ProfileInfoPicture
-                    cover={cover}
-                    picture={picture}
-                    is_fetching={is_fetching}
-                    openCoverPicture={openCoverPicture}
-                    openPicture={openPicture}
-                />
-
-                {!is_fetching ? (
-                    <ProfileInfoStory
-                        name={first_name + ' ' + last_name}
-                        nick_name={nick_name}
-                        story={story}
-                        is_user={user.id == id}
-                        handleChangeStory={handleChangeStory}
+                <div className="ProfileInfo_cover">
+                    <ProfileInfoCover
+                        cover={cover}
+                        openCoverPicture={openCoverPicture}
                     />
-                ) : (
-                    <div>
-                        <br />
-                        <SkeletonDiv num={2} />
-                    </div>
-                )}
+                </div>
 
-                {!is_fetching ? (
-                    <ProfileInfoActions
-                        id={id}
-                        is_user={user.id == id}
-                        user_related={user_related}
-                        permission_add_friend={permission_add_friend}
-                        is_block_message={is_block_message}
-                        //
-                        handleAddStory={handleAddStoryNewFeed}
-                        handleAcceptRequest={handleAcceptRequest}
-                        handleCancelRequest={handleCancelRequest}
-                        handleAddFriend={handleAddFriend}
-                        handleFollowFriend={handleFollowFriend}
-                    />
-                ) : (
-                    <div className="ProfileInfo_actions">
-                        <br /> <SkeletonDiv />
+                <div className="ProfileInfo_user_action display-flex space-between fb-profile-width-contain">
+                    <div className="ProfileInfo_user display-flex">
+                        <div className="flex-shrink-0">
+                            <ProfileInfoPicture
+                                picture={picture}
+                                has_new_story={has_new_story}
+                                openPicture={openPicture}
+                            />
+                        </div>
+
+                        <div className="ProfileInfo_name_friend margin-left-16px">
+                            <div>
+                                <ProfileInfoName
+                                    name={`${first_name} ${last_name}`}
+                                    nick_name={nick_name}
+                                />
+                            </div>
+
+                            {IS_MOBILE ? null : (
+                                <div>
+                                    <ProfileInfoFriends
+                                        is_user={is_user}
+                                        friend_count={friend_count}
+                                        mutual_friend_count={
+                                            mutual_friend_count
+                                        }
+                                        friend_arr={friend_arr}
+                                        has_more_friend={has_more_friend}
+                                    />
+                                </div>
+                            )}
+                        </div>
                     </div>
-                )}
+
+                    <div className="ProfileInfo_actions align-self-end">
+                        <ProfileInfoActions
+                            user_id={id}
+                            action_case_arr={action_case_arr}
+                            handleAction={handleAction}
+                        />
+                    </div>
+                </div>
+
+                {bio ? (
+                    <div className="ProfileInfo_bio fb-profile-width-contain padding-top-20px">
+                        <ProfileInfoBio
+                            is_user={is_user}
+                            bio={bio}
+                            handleChangeBio={handleChangeBio}
+                        />
+                    </div>
+                ) : null}
             </div>
         </VirtualScroll>
     );

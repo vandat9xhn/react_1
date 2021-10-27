@@ -15,7 +15,7 @@ CmtActionPc.propTypes = {};
 
 //
 function CmtActionPc({
-    action_arr,
+    list_action_arr,
     has_fetched,
     is_fetching,
 
@@ -51,7 +51,7 @@ function CmtActionPc({
             >
                 <div className="CmtActionPc_contain padding-10px font-500">
                     <CmtActionContain
-                        action_arr={action_arr}
+                        list_action_arr={list_action_arr}
                         is_fetching={is_fetching}
                         handleClose={handleClose}
                         handleAction={handleAction}

@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 //
 import CmtActionItem from '../item/CmtActionItem';
 import CircleLoading from '../../../../../../waiting/circle_loading/CircleLoading';
+import ActionsMultiListContain from '../../../../../../actions_multi_list/contain/ActionsMultiListContain';
 
 //
 CmtActionContain.propTypes = {};
 
 //
 function CmtActionContain({
-    action_arr,
+    list_action_arr,
     is_fetching,
 
     handleClose,
@@ -18,24 +19,13 @@ function CmtActionContain({
     //
     return (
         <div className="CmtActionContain">
-            <ul className="CmtActionContain_list list-none">
-                {action_arr.map((item, ix) => (
-                    <li key={ix}>
-                        <CmtActionItem
-                            name={item.name}
-                            title={item.title}
-                            handleClose={handleClose}
-                            handleClick={handleAction}
-                        />
-                    </li>
-                ))}
-            </ul>
-
-            {is_fetching ? (
-                <div className="display-flex-center padding-y-15px">
-                    <CircleLoading is_fetching={true} />
-                </div>
-            ) : null}
+            <ActionsMultiListContain
+                list_action_arr={list_action_arr}
+                is_fetching={is_fetching}
+                //
+                handleAction={handleAction}
+                handleClose={handleClose}
+            />
         </div>
     );
 }

@@ -1,13 +1,17 @@
-.HeaderMessFriend{
-    display: flex;
-    flex-direction: column;
+.HeaderMessFriend {
     width: 80px;
 }
 
-.HeaderMessFriend_pic{
-    margin-bottom: 0.5rem;
-}
-// .
-.HeaderMessFriend_img{
-    border: 1px solid var(--md-bg-ccc);
+// ----
+
+.device-mobile {
+    .HeaderMessFriend {
+        width: 60px;
+        font-size: 12px;
+    }
+
+    .HeaderMessFriend_img {
+        width: 40px;
+        height: 40px;
+    }
 }

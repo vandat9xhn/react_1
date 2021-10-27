@@ -50,7 +50,7 @@ function AddFriendMayKnow() {
         <div ref={ref_main_elm}>
             <div className="add-friend-row">
                 {data_arr.map((item, ix) => (
-                    <div key={`${item.friend.id}`} className="add-friend-item">
+                    <div key={item.friend.id} className="add-friend-item">
                         <AddFriendMayKnowItem
                             ix={ix}
                             {...item.friend}

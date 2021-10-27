@@ -30,6 +30,7 @@ import './_style/post.scss';
 import './_style/vid_pics.scss';
 
 import './_style/fashion.scss';
+import './_style/fb.scss';
 import './_style/phone.scss';
 
 import './_style/device.scss';
@@ -37,7 +38,7 @@ import './_style/device.scss';
 // import { Routes } from './__routes/__main';
 //
 import ContextAPI from './_context/ContextAPIProvider';
-// 
+//
 import { IS_MOBILE } from './_constant/Constant';
 //
 // import Auth from './_auth/Auth';
@@ -57,6 +58,7 @@ import NatureDropMain from './component/_snow_drop/_main/NatureDropMain';
 import DivFixLike from './component/_div_fix/like/DivFixLike';
 import DivFixPeople from './component/_div_fix/people/DivFixPeople';
 import DivFixAction from './component/_div_fix/action/DivFixAction';
+import SomeLinks from './component/some_links/SomeLinks';
 
 import AppScreen from './component/_screen/_main/AppScreen';
 import ScreenOnce from './component/_screen_once/_main/ScreenOnce';
@@ -64,27 +66,42 @@ import CustomSwitch from './__Switch/__switch';
 
 // App
 class App extends Component {
-    // ------ 
+    // ------
     componentDidMount() {
-        IS_MOBILE &&
+        if (IS_MOBILE) {
             document
                 .getElementsByTagName('body')[0]
                 .classList.add('device-mobile');
+        }
     }
-    
 
     // --------- REF
 
     //
-    refChat = (elm) => {
-        if (elm !== null) {
-            this.openRoomChat = elm.openRoomChat;
-            this.hideRoomChat = elm.hideRoomChat;
-            this.hideAllRoomChat = elm.hideAllRoomChat;
-            this.closeRoomChat = elm.closeRoomChat;
-            this.closeAllRoomChat = elm.closeAllRoomChat;
-        }
-    };
+    refChat = IS_MOBILE
+        ? () => {}
+        : (elm) => {
+              if (elm !== null) {
+                  this.openRoomChat = elm.openRoomChat;
+                  this.hideRoomChat = elm.hideRoomChat;
+                  this.hideAllRoomChat = elm.hideAllRoomChat;
+                  this.closeRoomChat = elm.closeRoomChat;
+                  this.closeAllRoomChat = elm.closeAllRoomChat;
+              }
+          };
+
+    //
+    refLinks = IS_MOBILE
+        ? (elm) => {
+              if (elm !== null) {
+                  this.openRoomChat = elm.openRoomChat;
+                  this.hideRoomChat = () => {};
+                  this.hideAllRoomChat = () => {};
+                  this.closeRoomChat = () => {};
+                  this.closeAllRoomChat = () => {};
+              }
+          }
+        : () => {};
 
     //
     refFixLike = (elm) => {
@@ -209,7 +226,11 @@ class App extends Component {
 
                             <PLCompare />
 
-                            <Chat ref={this.refChat} />
+                            {IS_MOBILE ? (
+                                <SomeLinks ref={this.refLinks} />
+                            ) : (
+                                <Chat ref={this.refChat} />
+                            )}
                         </div>
 
                         <div>

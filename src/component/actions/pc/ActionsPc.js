@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 //
 import PortalAtBody from '../../portal/at_body/PortalAtBody';
 //
-import ActionsBtnToggle from '../btn_toggle/ActionsBtnToggle';
-import ActionsContain from '../contain/ActionsContain';
+import ActionsBtnToggle from '../_components/btn_toggle/ActionsBtnToggle';
+import ActionsContain from '../_components/contain/ActionsContain';
 //
 import './ActionsPc.scss';
 //
@@ -62,7 +62,7 @@ function ActionsPc({
     return (
         <div
             ref={ref_btn_elm}
-            className={`ActionsPc ${is_at_body ? 'pos-rel' : ''} ${
+            className={`ActionsPc ${is_at_body ? '' : 'pos-rel'} ${
                 is_show ? 'ActionsPc-show' : 'ActionsPc-hidden'
             }`}
         >

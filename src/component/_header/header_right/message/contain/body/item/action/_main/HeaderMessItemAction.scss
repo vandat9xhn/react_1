@@ -10,11 +10,7 @@
     }
 }
 
-.HeaderMessItemAction_separate{
-    width: 100%;
-    height: 1px;
-    background-color: var(--md-bg-blur);
-}
+// -----
 
 .HeaderMessItemAction_btn {
     width: 36px;
@@ -23,10 +19,13 @@
     box-shadow: 0 0 0 1px var(--shadow-1);
 }
 
-.HeaderMessItemAction_contain {
-    width: 345px;
+.HeaderMessItemAction_contain-pc {
+    width: 350px;
+    z-index: var(--z-index-lv5);
 }
 
-.HeaderMessItemAction_action_contain {
-    z-index: var(--z-index-lv5);
+// ------
+
+.HeaderMessItemAction_contain-mb {
+    max-height: calc(100% - 60px);
 }

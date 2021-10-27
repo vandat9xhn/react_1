@@ -31,11 +31,11 @@ export function handle_API_FbPostCmtAction_L({
     return new Promise((res) => {
         setTimeout(() => {
             if (is_commenter) {
-                res([cmt_action_obj.edit, cmt_action_obj.delete]);
+                res([[cmt_action_obj.edit, cmt_action_obj.delete]]);
             } else if (is_poster) {
-                res([cmt_action_obj.delete, cmt_action_obj.hide]);
+                res([[cmt_action_obj.delete, cmt_action_obj.hide]]);
             } else {
-                res([cmt_action_obj.hide, cmt_action_obj.report]);
+                res([[cmt_action_obj.hide, cmt_action_obj.report]]);
             }
         }, 250);
     });

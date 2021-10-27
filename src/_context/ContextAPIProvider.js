@@ -9,18 +9,20 @@ import { DefineUser } from '../api/api_django_no_token/define_user/DefineUser';
 //
 const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
     //
-
     const [context_state, setContextState] = useState({
         user: initial_user(),
         has_fetched: false,
     });
+
+    const [update_app, setUpdateApp] = useState(false);
 
     const { user, has_fetched } = context_state;
 
     //
     const root_floor_url_arr = useRef([]);
 
-    /* ---------------------- USER ------------------- */
+    // ----------
+
     //
     useLayoutEffect(() => {
         getDataUser();
@@ -54,6 +56,8 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
         }
     }
 
+    // ----------
+
     //
     function setDataUser(new_user) {
         // log in or reload + has logged in
@@ -72,14 +76,21 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
     }
 
     //
+    function forceUpdateApp() {
+        setUpdateApp((update_app) => !update_app);
+    }
+
+    //
     return (
         <context_api.Provider
             value={{
                 ...rest_props,
                 auth_class: user.id ? '' : 'display-none',
                 user: user,
-                setDataUser: setDataUser,
                 root_floor_url_arr: root_floor_url_arr,
+
+                setDataUser: setDataUser,
+                forceUpdateApp: forceUpdateApp,
             }}
         >
             {has_fetched ? children : null}

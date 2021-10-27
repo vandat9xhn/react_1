@@ -315,17 +315,21 @@ function Post({
                     />
                 </div>
 
-                <div>
-                    <PostText
-                        bg_obj={bg_obj}
-                        content_obj={content_obj}
-                        seeMoreContent={on_API_MoreContent_R}
-                    />
-                </div>
+                {content_obj.content ? (
+                    <div>
+                        <PostText
+                            bg_obj={bg_obj}
+                            content_obj={content_obj}
+                            seeMoreContent={on_API_MoreContent_R}
+                        />
+                    </div>
+                ) : null}
 
-                <div className="Post_pic">
-                    <VidPicsPost post_ix={post_ix} vid_pics={vid_pics} />
-                </div>
+                {vid_pics.length ? (
+                    <div className="Post_pic">
+                        <VidPicsPost post_ix={post_ix} vid_pics={vid_pics} />
+                    </div>
+                ) : null}
 
                 <div className="Post_Info">
                     <Info

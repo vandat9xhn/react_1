@@ -4,6 +4,7 @@ import { getRandomName } from '../_common/default_name';
 import { getRandomContent } from '../_common/default_content';
 import { getRandomUser } from '../_common/default_user';
 import { getRandomBool } from '../_common/default_bool';
+import { default_define_user } from '../login/DefaultLogin';
 
 //
 const default_message_obj = () => ({
@@ -16,17 +17,27 @@ export const default_message_arr = () =>
     getDefaultArr(default_message_obj, 10, 10);
 
 //
-const default_room_obj = () => ({
-    room_chat: getRandomName() + getRandomId(),
-    messages: [
-        {
-            ...getRandomUser(),
-            message: 'abc def asd a dsa asd  asd a',
-        },
-    ],
-    count_new_mess: getRandomBool() ? getRandomNumber(0, 10) : 0,
-    updated_time: new Date(),
-});
+const default_room_obj = () => {
+    const is_user = getRandomBool();
+
+    //
+    return {
+        room_chat: getRandomName() + getRandomId(),
+        messages: [
+            {
+                ...getRandomUser(),
+                user: {
+                    ...getRandomUser().user,
+                    id: is_user ? getRandomId() : default_define_user.id,
+                },
+                message:
+                    (is_user ? 'You: ' : '') + 'abc def asd a dsa asd  asd a',
+            },
+        ],
+        count_new_mess: !is_user ? getRandomNumber(0, 10) : 0,
+        updated_time: new Date(),
+    };
+};
 
 export const default_room_arr = () => getDefaultArr(default_room_obj, 5, 8);
 

@@ -1,88 +1,35 @@
 //
-export const initial_profile = {
-    id: 0,
-    picture: '',
-    cover: '',
-    first_name: '',
-    last_name: '',
-
-    permission_add_friend: 0,
-    user_related: 'c_user',
-    is_block_message: 0,
-
-    gender_obj: {
+export const initial_profile = () => {
+    return {
         id: 0,
-        gender: '',
-        permission: 0,
-        profile_model: 0,
-    },
+        picture: '',
+        cover: '',
+        first_name: '',
+        last_name: '',
 
-    birth_obj: {
-        id: 0,
-        birth: '',
-        permission: 0,
-        profile_model: 0,
-    },
+        sent_request: false,
+        has_new_story: false,
 
-    lang_obj: {
-        id: 0,
-        lang: '',
-        permission: 0,
-        profile_model: 0,
-    },
+        friend_count: 0,
+        mutual_friend_count: 0,
+        friend_arr: [],
 
-    life_arr: [],
+        sent_request: false,
+        has_new_story: false,
 
-    mail_obj: {
-        id: 0,
-        mail: '',
-        permission: 0,
-        profile_model: 0,
-    },
+        nick_name: '',
+        bio: '',
 
-    phone_arr: [],
-    address_arr: [],
-    town_arr: [],
-    city_arr: [],
+        friend_count: 0,
+        mutual_friend_count: 0,
+        friend_arr: [],
+        has_more_friend: false,
 
-    family_arr: [
-        {
-            id: 0,
-            permission: 0,
-            profile_model: 0,
-            member: 0,
-        },
-    ],
+        action_case_arr: [],
 
-    relation_obj: {
-        id: 0,
-        relation: '',
-        permission: 0,
-        profile_model: 0,
-    },
-
-    work_arr: [],
-    school_arr: [],
-    university_arr: [],
-
-    hobby_obj: {
-        id: 0,
-        hobby: '',
-        permission: 0,
-        profile_model: 0,
-    },
-
-    you_obj: {
-        id: 0,
-        you: '',
-        permission: 0,
-        profile_model: 0,
-    },
-
-    other_name_arr: [],
-
-    is_online: true,
-    created_time: '',
+        is_online: true,
+        created_time: '',
+    };
 };
 
 //

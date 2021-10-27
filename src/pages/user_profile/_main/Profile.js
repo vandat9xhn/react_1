@@ -3,19 +3,22 @@ import { useHistory } from 'react-router-dom';
 import update from 'immutability-helper';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+// 
+import { handle_API_ProfileInfo_R } from '../../../_handle_api/profile/info';
+// 
+import { initial_profile } from '../../../_initial/profile/InitialProfile';
+// 
 import { useRouteLoaded } from '../../../_hooks/useRouteLoaded';
 //
 import RouteLoaded from '../../../component/_route/route_loaded/RouteLoaded';
 //
 import { ProfileRoutes, profile_search_arr } from '../__common/routes/routes';
 //
-import { initial_profile } from '../../../_initial/profile/InitialProfile';
-//
-import { handle_API_ProfileUser_R } from '../../../_handle_api/profile/ProfileHandleAPI';
-//
 import ProfileSkeleton from '../__common/skeleton/ProfileSkeleton';
 import ProfileInfo from '../info/_main/ProfileInfo';
 import ProfileMore from '../more/_main/ProfileMore';
+import ProfileSentFriendRequest from '../sent_friend_request/ProfileSentFriendRequest';
 //
 import './Profile.scss';
 
@@ -29,7 +32,7 @@ function Profile(props) {
 
     //
     const [profile_state, setProfileState] = useState({
-        profile: initial_profile,
+        profile: initial_profile(),
         is_fetching: false,
     });
 
@@ -39,7 +42,9 @@ function Profile(props) {
     useEffect(() => {
         handleChangeId();
     }, [id]);
-    
+
+    // ----------
+
     //
     function handleChangeId() {
         window.scroll(0, 0);
@@ -66,7 +71,7 @@ function Profile(props) {
             is_fetching: true,
         });
 
-        const data = await handle_API_ProfileUser_R({ user_id: id });
+        const data = await handle_API_ProfileInfo_R({ user_id: id });
         const user_name = data.first_name + ' ' + data.last_name;
 
         route_arr.map((item) => {
@@ -85,6 +90,8 @@ function Profile(props) {
         document.title = user_name;
     }
 
+    // --------
+
     //
     function handleNotFoundRoute() {
         use_history.replace('/profile/' + id);
@@ -101,19 +108,45 @@ function Profile(props) {
     }
 
     //
+    function handleAction(action_name = '') {
+        console.log(action_name);
+    }
+
+    // ----------
+
+    //
+    if (is_fetching) {
+        return null;
+    }
+
+    //
     return (
         <div key={id} className="Profile">
-            <div className="Profile_info">
-                <ProfileInfo
-                    profile={profile}
-                    is_fetching={is_fetching}
-                    openCoverPicture={openCoverPicture}
-                    openPicture={openPicture}
-                />
-            </div>
+            <div className="Profile_head margin-bottom-15px bg-primary">
+                <div className="Profile_info">
+                    <ProfileInfo
+                        profile={profile}
+                        //
+                        openCoverPicture={openCoverPicture}
+                        openPicture={openPicture}
+                        handleAction={handleAction}
+                    />
+                </div>
 
-            <div className="Profile_more">
-                <ProfileMore />
+                {profile.sent_request ? (
+                    <div className="Profile_sent_request margin-top-20px">
+                        <ProfileSentFriendRequest
+                            user_name={`${profile.first_name} ${profile.last_name}`}
+                            handleAction={handleAction}
+                        />
+                    </div>
+                ) : null}
+
+                {IS_MOBILE ? null : (
+                    <div className="Profile_more margin-top-20px">
+                        <ProfileMore user_id={id} handleAction={handleAction} />
+                    </div>
+                )}
             </div>
 
             <RouteLoaded

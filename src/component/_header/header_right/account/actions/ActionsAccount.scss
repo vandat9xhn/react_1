@@ -16,24 +16,33 @@
 .ActionsAccount_profile {
     padding: 0;
     border-bottom: 2px solid var(--bg-blur);
-    .PictureName {
-        display: block;
-    }
-    .PictureName__name {
-        max-width: calc(100vw - 3.6rem);
+
+    .PictureName{
+        a{
+            &:hover{
+                color: inherit;
+            }
+        }
     }
 
-    .PictureNameCommon{
+    .PictureNameCommon {
         padding: 8px;
     }
-}
 
-//
-.ActionsAccount_mode {
-    font-weight: 500;
-}
+    .PictureNameCommon__pic {
+        width: 60px;
+        height: 60px;
+    }
 
-//
-.ActionsAccount_nature-right {
-    transform: rotate(180deg);
+    .PictureNameCommon__name-content {
+        padding-left: 12px;
+    }
+    // .
+    .PictureNameCommon__name {
+        font-size: 17px;
+    }
+    // .
+    .PictureNameCommon__content {
+        color: var(--md-color-secondary);
+    }
 }

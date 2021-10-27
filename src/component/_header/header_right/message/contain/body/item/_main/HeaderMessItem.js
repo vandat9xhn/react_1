@@ -36,7 +36,7 @@ function HeaderMessItem({
 
     //
     return (
-        <div ref={ref_mess_item} className="HeaderMessItem pos-rel text-555">
+        <div ref={ref_mess_item} className="HeaderMessItem pos-rel">
             <div
                 className={`HeaderMessItem_contain padding-8px line-20px font-400 cursor-pointer hv-bg-s-through ${
                     count_new > 0 ? 'bg-fb-active' : ''
@@ -46,7 +46,7 @@ function HeaderMessItem({
                 <div className="HeaderMessItem_row display-flex align-items-center">
                     <div>
                         <img
-                            className="brs-50 object-fit-cover"
+                            className="HeaderMessItem_pic brs-50 object-fit-cover"
                             src={user.picture}
                             alt=""
                             width="56"
@@ -54,17 +54,30 @@ function HeaderMessItem({
                         />
                     </div>
 
-                    <div className="flex-grow-1 padding-left-12px">
-                        <div>
+                    <div className="flex-grow-1 padding-left-12px overflow-hidden">
+                        <div className="text-primary">
                             {user.first_name} {user.last_name}
                         </div>
 
-                        <div className="font-13px">
+                        <div className="display-flex font-13px text-555">
                             <div className="inline-block text-nowrap">
-                                {message}
+                                {count_new ? (
+                                    <strong className="HeaderMessItem_new vertical-align-middle inline-flex align-items-center justify-content-center brs-50 bg-fashion-red text-white font-10px font-500">
+                                        {count_new}
+                                    </strong>
+                                ) : null}{' '}
+                                <span
+                                    className={`vertical-align-middle ${
+                                        count_new ? 'text-blue' : ''
+                                    }`}
+                                >
+                                    {message}
+                                </span>
                             </div>
 
-                            <div className="inline-block margin-x-3px">.</div>
+                            <div className="inline-block margin-x-8px line-10px">
+                                .
+                            </div>
 
                             <div className="HeaderMessItem_time inline-block">
                                 {UnitTime(new Date() - new Date(updated_time))}
@@ -73,12 +86,6 @@ function HeaderMessItem({
                     </div>
                 </div>
             </div>
-
-            {count_new ? (
-                <div className="pos-abs y-center right-0 padding-right-16px text-red font-12px font-500 pointer-events-none">
-                    +{count_new}
-                </div>
-            ) : null}
 
             <div className="HeaderMessItem_action pos-abs y-center">
                 <HeaderMessItemAction

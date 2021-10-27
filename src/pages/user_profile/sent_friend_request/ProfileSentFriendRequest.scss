@@ -1,0 +1,24 @@
+// -------
+.device-mobile {
+    .ProfileSentFriendRequest {
+        padding: 10px;
+    }
+
+    .ProfileSentFriendRequest_row {
+        display: block;
+    }
+
+    // .
+    .ProfileSentFriendRequest_title {
+        font-size: inherit;
+    }
+
+    // ..
+    .ProfileSentFriendRequest_btn {
+        flex-grow: 1;
+
+        button{
+            width: 100%;
+        }
+    }
+}

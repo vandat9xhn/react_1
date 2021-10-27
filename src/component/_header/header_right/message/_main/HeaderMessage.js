@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
+import { toggleAppHiddenTemp } from '../../../../../_some_function/AppHiddenTemp';
+//
 import { usePosFollowBodyOrElm } from '../../../../../_hooks/usePosFollowBodyOrElm';
 //
 import { API_RoomCountNew_R } from '../../../../../api/api_django/header/APIHeaderToken';
@@ -72,6 +76,11 @@ function HeaderMessage() {
     useEffect(() => {
         getData_API_CountNewZoom();
     }, []);
+
+    //
+    useEffect(() => {
+        IS_MOBILE && toggleAppHiddenTemp({ is_hidden: ref_is_open.current });
+    }, [ref_is_open.current]);
 
     // ------- API
 
@@ -193,7 +202,7 @@ function HeaderMessage() {
                     style={{
                         [left_or_right]: position_x,
                         transform: `translateX(${transform_x}) translateX(${
-                            innerWidth >= 500 ? '-10px' : 0
+                            IS_MOBILE ? 0 : '-10px'
                         })`,
                     }}
                     onClick={hasReceiveListZooms}

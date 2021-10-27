@@ -1,3 +1,46 @@
+.HeaderMessItem_new{
+    width: 14px;
+    height: 14px;
+}
+
 .HeaderMessItem_action{
     right: 16px;
+}
+
+.HeaderMessItem_time{
+    white-space: nowrap;
+}
+
+// --------
+
+.device-mobile {
+    .HeaderMessItem_contain {
+        padding-right: 25px;
+    }
+
+    .HeaderMessItem_pic{
+        width: 40px;
+        height: 40px;
+    }
+
+    .HeaderMessItem_action {
+        transform: rotate(90deg);
+        top: 0;
+        right: 0;
+    }
+
+    .HeaderMessItemAction_btn {
+        width: auto;
+        height: auto;
+        padding: 8px;
+        border: none;
+        
+        background: transparent;
+        box-shadow: none;
+
+        .IconThreeDot{
+            width: 15px;
+            height: 15px;
+        }
+    }
 }

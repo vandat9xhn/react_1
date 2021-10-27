@@ -40,29 +40,25 @@ function AddFriendBtn({
     return (
         <div className="AddFriendBtn">
             <div className="AddFriendBtn_row">
-                <div className="AddFriendBtn_col">
-                    <button
-                        className={`AddFriendBtn_btn wh-100 bg-blue btn btn-hv btn-active cursor-pointer ${btn_class_requesting}`}
-                        disabled={requesting || removing}
-                        onClick={handleRequesting}
-                    >
-                        <div className="AddFriendBtn_btn_contain">
-                            {requesting ? '...' : title_request}
-                        </div>
-                    </button>
-                </div>
+                <button
+                    className={`AddFriendBtn_btn margin-bottom-8px bg-fb-active text-blue btn btn-hv btn-active ${btn_class_requesting}`}
+                    disabled={requesting || removing}
+                    onClick={handleRequesting}
+                >
+                    <div className="AddFriendBtn_btn_contain">
+                        {requesting ? '...' : title_request}
+                    </div>
+                </button>
 
-                <div className="AddFriendBtn_col">
-                    <button
-                        className={`AddFriendBtn_btn wh-100 btn btn-hv btn-active cursor-pointer ${btn_class_removing}`}
-                        disabled={removing || requesting}
-                        onClick={handleRemoving}
-                    >
-                        <div className="AddFriendBtn_btn_contain">
-                            {removing ? '...' : title_remove}
-                        </div>
-                    </button>
-                </div>
+                <button
+                    className={`AddFriendBtn_btn bg-blur btn btn-hv btn-active ${btn_class_removing}`}
+                    disabled={removing || requesting}
+                    onClick={handleRemoving}
+                >
+                    <div className="AddFriendBtn_btn_contain">
+                        {removing ? '...' : title_remove}
+                    </div>
+                </button>
             </div>
         </div>
     );

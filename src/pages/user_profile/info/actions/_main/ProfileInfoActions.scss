@@ -1,15 +1,11 @@
+// --------
 
-.ProfileInfoActions{
-    &_add-friend {
-        padding: 0.35rem;
-        min-width: 8rem;
-        background-color: var(--blue);
-        cursor: pointer;
-    }
-    
-    &_message {
-        margin-left: 0.5rem;
-        padding: 0.2rem;
-        cursor: pointer;
+.device-mobile {
+    .ProfileInfoActions_item {
+        flex-grow: 1;
+
+        button {
+            width: 100%;
+        }
     }
 }

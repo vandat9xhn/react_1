@@ -1,3 +1,37 @@
-.ItemNotice_action{
+.ItemNotice_action {
     right: 16px;
+}
+
+// ----
+
+.device-mobile {
+    .ItemNotice_contain {
+        padding-right: 25px;
+    }
+
+    .ItemNotice_pic{
+        width: 40px;
+        height: 40px;
+    }
+
+    .ItemNotice_action {
+        transform: rotate(90deg);
+        top: 0;
+        right: 0;
+    }
+
+    .HeaderNoticeItemAction_btn {
+        width: auto;
+        height: auto;
+        padding: 8px;
+        border: none;
+        
+        background: transparent;
+        box-shadow: none;
+
+        .IconThreeDot{
+            width: 15px;
+            height: 15px;
+        }
+    }
 }

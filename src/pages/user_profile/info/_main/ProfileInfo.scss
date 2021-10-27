@@ -1,19 +1,32 @@
-/*---------------------------------*/
+.ProfileInfo_name_friend {
+    margin: 32px 0 16px 16px;
+}
 
-.ProfileInfo {
-    padding-bottom: 1rem;
-    .SkeletonDiv {
-        margin: auto;
-        width: 10rem;
+.ProfileInfo_actions {
+    margin: 32px 0 16px 32px;
+}
+
+// ----
+
+.device-mobile {
+    .ProfileInfo_user_action {
+        display: block;
+    }
+    // .
+    .ProfileInfo_user {
+        display: block;
+    }
+    // ..
+    .ProfileInfo_name_friend {
+        margin: 10px 0;
+    }
+    // .
+    .ProfileInfo_actions {
+        margin: 0;
+        padding: 10px 5px;
     }
 
-    &_name-story {
-        margin-bottom: 0.5rem;
-    }
-
-    &_actions{
-        .SkeletonDiv_div{
-            height: 2rem;
-        }
+    .ProfileInfo_bio {
+        padding: 10px;
     }
 }

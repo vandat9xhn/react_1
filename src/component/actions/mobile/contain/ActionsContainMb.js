@@ -9,8 +9,9 @@ ActionsContainMb.propTypes = {};
 //
 function ActionsContainMb({
     class_actions,
+    class_action_contain_mb,
     children,
-    
+
     handleClose,
     callbackOpen,
 }) {
@@ -24,17 +25,24 @@ function ActionsContainMb({
         };
     }, []);
 
+    // ----
+
+    //
+    function onClose(e) {
+        e.stopPropagation();
+        handleClose();
+    }
+
     //
     return (
         <div
             className={`ActionsMb pos-fixed-100per z-index-lv5 user-select-none ${class_actions}`}
         >
-            <div
-                className="pos-abs-100 bg-shadow-5"
-                onClick={handleClose}
-            ></div>
+            <div className="pos-abs-100 bg-shadow-5" onClick={onClose}></div>
 
-            <div className="ActionsMb_contain">{children}</div>
+            <div className={`ActionsMb_contain ${class_action_contain_mb}`}>
+                {children}
+            </div>
         </div>
     );
 }

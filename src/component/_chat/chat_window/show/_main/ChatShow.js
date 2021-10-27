@@ -164,13 +164,13 @@ function ChatShow({
             closeChatScreen={closeChatScreen}
         >
             <div
-                className={`ChatShow brs-5px-md box-shadow-fb ${
+                className={`ChatShow brs-5px box-shadow-fb ${
                     chat_ix == 0 ? '' : 'ChatShow_second'
                 } ${is_two_chat ? '' : 'ChatShow_single'}`}
                 onFocus={onFocusChatShow}
                 onBlur={onBlurChatShow}
             >
-                <div className="ChatShow_contain">
+                <div className="ChatShow_contain display-flex flex-col">
                     <div className="ChatShow_head">
                         <ChatH
                             room_users={room_users}
@@ -185,7 +185,7 @@ function ChatShow({
                         )}
                     </div>
 
-                    <div className="ChatShow_body">
+                    <div className="ChatShow_body flex-grow-1">
                         <ChatBd
                             chat_ix={chat_ix}
                             message_obj={message_obj}

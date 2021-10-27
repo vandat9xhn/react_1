@@ -1,0 +1,14 @@
+.ActionsMultiListItem{
+    svg{
+        margin-right: 6px;
+    }
+}
+
+// -------
+
+.device-mobile{
+    .ActionsMultiListItem{
+        padding: 10px;
+        border-radius: 0;
+    }
+}

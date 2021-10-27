@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
-import { CHAT_INACTIVE_NUM } from '../../../_constant/Constant';
+import { CHAT_INACTIVE_NUM, IS_MOBILE } from '../../../_constant/Constant';
 //
-import { is_api_fake } from '../../../api/_ConstAPI';
+import { getRoomChatWebsocket } from '../_func/getRoomChatWs';
 //
 import { handle_API_ChatZoom_R } from '../../../_handle_api/chat/ChatHandleAPI';
 //
@@ -15,6 +15,9 @@ import ChatShow from '../chat_window/show/_main/ChatShow';
 import ChatWdHide from '../chat_window/_main/ChatWdHide';
 //
 import './Chat.scss';
+
+//
+const MAX_WINDOW_CHAT = IS_MOBILE ? 1 : 2;
 
 //
 class Chat extends Component {
@@ -54,19 +57,6 @@ class Chat extends Component {
     }
 
     /* ----------- */
-
-    //
-    getZoomChatWebsocket = (new_room_chat) => {
-        const ws = !is_api_fake
-            ? new WebSocket('ws://127.0.0.1:8000/ws/message/' + new_room_chat)
-            : {
-                  send: (data) => {
-                      console.log(data);
-                  },
-              };
-
-        return ws;
-    };
 
     //
     saveRoomChatToSession = () => {
@@ -114,16 +104,24 @@ class Chat extends Component {
             return;
         }
 
-        const chat_active_two_obj = chat_active_arr.splice(1, 1)[0];
-        if (chat_active_two_obj) {
-            chat_active_two_obj.scroll_y = this.getChatBodyScrollY(1);
+        // ----
+        const chat_active_two_obj = chat_active_arr.splice(
+            MAX_WINDOW_CHAT - 1,
+            1
+        )[0];
 
+        if (chat_active_two_obj) {
+            chat_active_two_obj.scroll_y = this.getChatBodyScrollY(
+                MAX_WINDOW_CHAT - 1
+            );
             chat_inactive_arr.push(chat_active_two_obj);
         }
 
+        // ---
         const chat_inactive_ix = chat_inactive_arr.findIndex(
             (item) => item.room_chat == new_room_chat
         );
+
         if (chat_inactive_ix >= 0) {
             const chat_inactive_obj = chat_inactive_arr.splice(
                 chat_inactive_ix,
@@ -138,7 +136,7 @@ class Chat extends Component {
                 index: chat_active_arr.length + chat_inactive_arr.length,
                 scroll_y: 0,
                 chat_item: makeNewChat(data),
-                ws: this.getZoomChatWebsocket(new_room_chat),
+                ws: getRoomChatWebsocket(new_room_chat),
             });
         }
 
@@ -197,40 +195,33 @@ class Chat extends Component {
 
         //
         return (
-            <div>
-                <div>
-                    <div>
-                        {chat_active_arr.map((item, ix) => (
-                            <div
-                                key={`${item.room_chat}`}
-                                className="Chat_active-item"
-                            >
-                                <ChatShow
-                                    chat_ix={ix}
-                                    is_two_chat={chat_active_arr.length == 2}
-                                    //
-                                    index={item.index}
-                                    ws={item.ws}
-                                    scroll_y={item.scroll_y}
-                                    room_chat={item.room_chat}
-                                    chat_item={item.chat_item}
-                                />
-                            </div>
-                        ))}
+            <div className="Chat">
+                {chat_active_arr.map((item, ix) => (
+                    <div key={item.room_chat} className="Chat_active-item">
+                        <ChatShow
+                            chat_ix={ix}
+                            is_two_chat={chat_active_arr.length == 2}
+                            //
+                            index={item.index}
+                            ws={item.ws}
+                            scroll_y={item.scroll_y}
+                            room_chat={item.room_chat}
+                            chat_item={item.chat_item}
+                        />
                     </div>
+                ))}
 
-                    {chat_inactive_arr.length ? (
-                        <div className="Chat_hidden">
-                            <ChatWdHide
-                                chat_inactive_arr={chat_inactive_arr}
-                                is_two_long_chat_inactive={
-                                    chat_inactive_arr.length >=
-                                    CHAT_INACTIVE_NUM + 2
-                                }
-                            />
-                        </div>
-                    ) : null}
-                </div>
+                {chat_inactive_arr.length ? (
+                    <div className="Chat_hidden">
+                        <ChatWdHide
+                            chat_inactive_arr={chat_inactive_arr}
+                            is_two_long_chat_inactive={
+                                chat_inactive_arr.length >=
+                                CHAT_INACTIVE_NUM + 2
+                            }
+                        />
+                    </div>
+                ) : null}
             </div>
         );
     }

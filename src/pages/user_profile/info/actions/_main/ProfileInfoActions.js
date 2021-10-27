@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { context_api } from '../../../../../_context/ContextAPI';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
-import IconsMenu from '../../../../../_icons_svg/icons_menu/IconsMenu';
-//
-import { handleInfoActions } from '../case/_main/InfoActionsCase';
+import PrIActionsCase from '../case/_main/PrIActionsCase';
+import ProfileActionsOther from '../other/ProfileActionsOther';
 //
 import './ProfileInfoActions.scss';
 
@@ -13,56 +12,56 @@ import './ProfileInfoActions.scss';
 ProfileInfoActions.propTypes = {};
 
 //
-function ProfileInfoActions({
-    id,
-    is_user,
-    user_related,
-    permission_add_friend,
-    is_block_message,
-
-    handleAddStory,
-    handleAcceptRequest,
-    handleCancelRequest,
-    handleAddFriend,
-    handleFollowFriend,
-}) {
-    //
-    const { openRoomChat } = useContext(context_api);
-
-    //
-    function onOpenMessage() {
-        openRoomChat(id);
-    }
-
+function ProfileInfoActions({ action_case_arr, user_id, handleAction }) {
     //
     return (
         <div className="ProfileInfoActions">
-            <div className="brs-5px font-500">
-                <div className="display-flex-center">
-                    <div className="display-flex-center">
-                        <div className="ProfileInfoActions_add-friend display-flex-center brs-5px">
-                            {handleInfoActions(
-                                user_related,
-                                permission_add_friend,
-                                handleAddStory,
-                                handleAcceptRequest,
-                                handleCancelRequest,
-                                handleAddFriend,
-                                handleFollowFriend
-                            )}
+            <div className="flex-end align-items-center flex-wrap">
+                {action_case_arr.slice(0, IS_MOBILE ? 1 : 2).map((item, ix) => (
+                    <div
+                        key={ix}
+                        className="ProfileInfoActions_item margin-x-4px margin-top-8px"
+                    >
+                        <PrIActionsCase
+                            action_case={item.name}
+                            user_id={user_id}
+                            handleAction={handleAction}
+                        />
+                    </div>
+                ))}
+
+                {IS_MOBILE ? (
+                    <div
+                        className={`margin-x-4px margin-top-8px ${
+                            action_case_arr.length == 2
+                                ? 'flex-grow-1 display-flex align-items-center'
+                                : ''
+                        }`}
+                    >
+                        {action_case_arr.length == 2 ? (
+                            <div className="ProfileInfoActions_item">
+                                <PrIActionsCase
+                                    action_case={action_case_arr[1].name}
+                                    user_id={user_id}
+                                    handleAction={handleAction}
+                                />
+                            </div>
+                        ) : null}
+
+                        <div
+                            className={`${
+                                action_case_arr.length == 2
+                                    ? 'margin-left-8px'
+                                    : ''
+                            }`}
+                        >
+                            <ProfileActionsOther
+                                user_id={user_id}
+                                handleAction={handleAction}
+                            />
                         </div>
                     </div>
-
-                    {!is_block_message && !is_user && (
-                        <div
-                            className="ProfileInfoActions_message"
-                            title="message"
-                            onClick={onOpenMessage}
-                        >
-                            <IconsMenu x={200} y={200} size_icon="2rem" />
-                        </div>
-                    )}
-                </div>
+                ) : null}
             </div>
         </div>
     );

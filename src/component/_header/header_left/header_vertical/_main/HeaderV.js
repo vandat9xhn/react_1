@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+// 
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
+import { toggleAppHiddenTemp } from '../../../../../_some_function/AppHiddenTemp';
+// 
 import IconsMenu from '../../../../../_icons_svg/icons_menu/IconsMenu';
 //
 import CloseDiv from '../../../../some_div/close_div/CloseDiv';
@@ -15,6 +19,11 @@ import './HeaderV.scss';
 function HeaderV() {
     //
     const [open_menu, setOpenMenu] = useState(false);
+
+    //
+    useEffect(() => {
+        IS_MOBILE && toggleAppHiddenTemp({ is_hidden: open_menu });
+    }, [open_menu]);
 
     //
     function ToggleMenu() {

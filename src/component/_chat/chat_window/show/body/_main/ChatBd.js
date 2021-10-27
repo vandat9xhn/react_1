@@ -61,7 +61,7 @@ function ChatBd({
     return (
         <div
             ref={ref_bd_elm}
-            className="ChatWd_body_contain display-flex col-reverse scroll-thin"
+            className="ChatWd_body_contain display-flex col-reverse scroll-thin h-100per"
             onScroll={IS_MOBILE ? undefined : handleScroll}
         >
             <div>

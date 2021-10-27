@@ -76,3 +76,17 @@
         background-color: var(--md-bg-fb-active);
     }
 }
+
+// ---------
+
+.device-mobile {
+    .header_hidden{
+        width: 100vw;
+    }
+
+    .header_hidden_contain {
+        border-radius: 0;
+        height: calc(100vh - var(--height-header));
+        max-height: unset;
+    }
+}

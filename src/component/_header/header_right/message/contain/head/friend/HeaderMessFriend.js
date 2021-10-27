@@ -34,10 +34,10 @@ function HeaderMessFriend({
 
     //
     return (
-        <div className="HeaderMessFriend padding-4px" onClick={onOpenMessage}>
-            <div className="HeaderMessFriend_pic display-flex-center">
+        <div className="HeaderMessFriend display-flex flex-col padding-4px" onClick={onOpenMessage}>
+            <div className="HeaderMessFriend_pic display-flex-center margin-bottom-8px">
                 <img
-                    className="HeaderMessFriend_img brs-50"
+                    className="HeaderMessFriend_img brs-50 border-blur object-fit-cover"
                     src={picture}
                     alt=""
                     width="60"

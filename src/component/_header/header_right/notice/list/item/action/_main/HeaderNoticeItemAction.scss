@@ -10,17 +10,22 @@
     }
 }
 
+// ------
+
 .HeaderNoticeItemAction_btn {
     width: 36px;
     height: 36px;
-
+    
     box-shadow: 0 0 0 1px var(--shadow-1);
 }
 
-.HeaderNoticeItemAction_contain {
-    width: 345px;
+.HeaderNoticeItemAction_contain-pc {
+    width: 350px;
+    z-index: var(--z-index-lv5);
 }
 
-.HeaderNoticeItemAction_action_contain {
-    z-index: var(--z-index-lv5);
+// ------
+
+.HeaderNoticeItemAction-mb {
+    max-height: calc(100% - 60px);
 }

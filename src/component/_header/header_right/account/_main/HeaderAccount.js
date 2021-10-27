@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+// 
+import { toggleAppHiddenTemp } from '../../../../../_some_function/AppHiddenTemp';
+// 
 import IconCaret from '../../../../../_icons_svg/_icon_caret/IconCaret';
 //
 import CloseDiv from '../../../../some_div/close_div/CloseDiv';
@@ -16,6 +20,13 @@ HeaderAccount.propTypes = {};
 function HeaderAccount(props) {
     //
     const [open_account, setOpenAccount] = useState(false);
+
+    //
+    useEffect(() => {
+        IS_MOBILE && toggleAppHiddenTemp({ is_hidden: open_account });
+    }, [open_account]);
+
+    // ------
 
     //
     async function toggleOpenAccount() {

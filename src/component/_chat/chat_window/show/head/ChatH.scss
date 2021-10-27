@@ -5,19 +5,12 @@
 // .
 .ChatH_user {
     max-width: 70%;
-    padding: 0.1rem;
+    padding: 5px;
+
     .PictureNameCommon__pic {
-        width: auto;
-        height: auto;
-        img {
-            width: 30px;
-            height: 30px;
-        }
+        width: 30px;
+        height: 30px;
     }
-}
-// ..
-.ChatH_user-pic {
-    margin: 0 0.2rem;
 }
 
 // .

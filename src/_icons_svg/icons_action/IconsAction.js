@@ -36,7 +36,7 @@ function IconsAction({ size_icon, x, y }) {
                 stroke="white"
                 strokeWidth="10"
             >
-                <path d="M40,65 L50,180 Q5,180 60,200 L140,200 Q148,190 150,180 L160,65 Z" />
+                <path d="M40,65 L50,180 Q5,180 60,190 L140,190 Q148,190 150,180 L160,65 Z" />
 
                 <line x1="100" y1="80" x2="100" y2="170" />
                 <line x1="65" y1="80" x2="75" y2="170" />
@@ -51,18 +51,20 @@ function IconsAction({ size_icon, x, y }) {
             </g>
 
             {/* add friend x=0 y=200*/}
-            <g
-                className="IconsAction_add-friend_friend"
-                strokeWidth="5"
-                fill="none"
-            >
-                <circle cx="100" cy="250" r="35" />
-                <path d="M15,385 Q15,300 100,300 Q185,300 185,385 Z" />
-            </g>
+            <g className="IconsAction_add_friend">
+                <g
+                    className="IconsAction_add-friend_friend"
+                    strokeWidth="5"
+                    fill="none"
+                >
+                    <circle cx="100" cy="250" r="35" />
+                    <path d="M15,385 Q15,300 100,300 Q185,300 185,385 Z" />
+                </g>
 
-            <g className="IconsAction_add-friend_plus" strokeWidth="5">
-                <line x1="160" y1="220" x2="160" y2="280" />
-                <line x1="120" y1="250" x2="180" y2="250" />
+                <g className="IconsAction_add-friend_plus" strokeWidth="5">
+                    <line x1="160" y1="220" x2="160" y2="280" />
+                    <line x1="120" y1="250" x2="180" y2="250" />
+                </g>
             </g>
 
             {/* send message x=200 y=200*/}

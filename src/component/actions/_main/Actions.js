@@ -26,6 +26,7 @@ Actions.defaultProps = {};
 function Actions({
     class_actions,
     class_action_contain,
+    class_action_contain_mb,
     
     title_action,
     use_title,
@@ -46,6 +47,7 @@ function Actions({
         return (
             <ActionsMb
                 class_actions={class_actions}
+                class_action_contain_mb={class_action_contain_mb}
                 title_action={title_action}
                 use_title={use_title}
                 is_show={is_show}

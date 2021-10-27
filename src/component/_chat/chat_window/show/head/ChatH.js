@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
 import { context_chat } from '../../../../../_context/chat/ContextChat';
-// 
+//
 import { openChatUser } from '../../__screen/type/room_user/_main/ChatScreenUsers';
 //
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
@@ -12,8 +12,9 @@ import IconSubtract from '../../../../../_icons_svg/subtract/IconSubtract';
 import PictureName from '../../../../picture_name/pic_name/PictureName';
 //
 import './ChatH.scss';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 
-// 
+//
 ChatH.propTypes = {};
 
 ChatH.defaultProps = {};
@@ -62,8 +63,8 @@ function ChatH({ room_users, room_owner, count_user }) {
                     >
                         {some_user_pics.map((pic, pic_ix) => (
                             <div
-                                className="ChatH_user-pic"
-                                key={`ChatH_user_pic_${pic_ix}`}
+                                key={pic_ix}
+                                className="ChatH_user-pic margin-x-3px"
                             >
                                 <img
                                     className="brs-50"
@@ -90,23 +91,28 @@ function ChatH({ room_users, room_owner, count_user }) {
                     </div>
                 )}
 
-                <div className="ChatH_actions">
-                    <div className="ChatH_actions-row display-flex flex-end">
-                        <div
-                            className="ChatH_actions_btn display-flex-center cursor-pointer brs-5px hv-opacity"
-                            onClick={handleHideZoomChat}
-                        >
-                            <IconSubtract size_icon="0.75rem" color="var(--white)" />
-                        </div>
+                {IS_MOBILE ? null : (
+                    <div className="ChatH_actions">
+                        <div className="ChatH_actions-row display-flex flex-end">
+                            <div
+                                className="ChatH_actions_btn display-flex-center cursor-pointer brs-5px hv-opacity"
+                                onClick={handleHideZoomChat}
+                            >
+                                <IconSubtract
+                                    size_icon="0.75rem"
+                                    color="var(--white)"
+                                />
+                            </div>
 
-                        <div
-                            className="ChatH_actions_btn brs-5px display-flex-center cursor-pointer hv-opacity"
-                            onClick={handleCloseZoomChat}
-                        >
-                            <IconsArrow y={400} size_icon="0.75rem" />
+                            <div
+                                className="ChatH_actions_btn brs-5px display-flex-center cursor-pointer hv-opacity"
+                                onClick={handleCloseZoomChat}
+                            >
+                                <IconsArrow y={400} size_icon="0.75rem" />
+                            </div>
                         </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     );

@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
+import { toggleAppHiddenTemp } from '../../../../../_some_function/AppHiddenTemp';
+//
 import { usePosFollowBodyOrElm } from '../../../../../_hooks/usePosFollowBodyOrElm';
 //
 import {
@@ -69,6 +73,11 @@ function HeaderNotice({}) {
     useEffect(() => {
         getData_API_CountNewNotice();
     }, []);
+
+    //
+    useEffect(() => {
+        IS_MOBILE && toggleAppHiddenTemp({ is_hidden: ref_is_open.current });
+    }, [ref_is_open.current]);
 
     // --------- API
 
@@ -216,7 +225,7 @@ function HeaderNotice({}) {
                     style={{
                         [left_or_right]: position_x,
                         transform: `translateX(${transform_x}) translateX(${
-                            innerWidth >= 500 ? '-10px' : 0
+                            IS_MOBILE ? 0 : '-10px'
                         })`,
                     }}
                     onClick={hasReceivedNotices}

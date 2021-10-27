@@ -18,12 +18,12 @@ function ProfileMoreItem({ sk, title }) {
                 (location.search.startsWith(`?sk=${sk.split('_')[0]}`) &&
                     sk != '') ||
                 (location.search == '' && sk == '')
-                    ? 'nav-active'
+                    ? 'ProfileMoreItem-active nav-active'
                     : 'normal-text'
             }
             replace
         >
-            <div className="ProfileMoreItem padding-8px hv-bg-blur cursor-pointer font-500 text-secondary nav-text nav-bottom">
+            <div className="ProfileMoreItem_contain display-flex-center padding-x-15px cursor-pointer font-600 text-secondary nav-text">
                 {title}
             </div>
         </NavLink>

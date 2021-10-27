@@ -1,5 +1,11 @@
+.Profile_head {
+    box-shadow: 0 1px 2px var(--shadow-1);
+}
 
+// -----
 
-.Profile_more{
-    margin: 2px 0 1.5rem;
+.device-mobile {
+    .Profile_sent_request {
+        padding-bottom: 10px;
+    }
 }
