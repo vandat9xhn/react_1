@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 // import TestPagination from '../test_pagination/TestPagination';
 //
 import './LearnHTML.scss';
-import LearnCmt from '../cmt/LearnCmt';
+import LearnPreviewProfile from '../preview_profile/LearnPreviewProfile';
+// import LearnCmt from '../cmt/LearnCmt';
 // import TestSearchAnimate from '../test_search_animate/TestSearchAnimate';
 // import FbLogin from '../fb/test_login/FbLogin';
 // import LearnSelectColorBg from '../color_bg/LearnSelectColorBg';
@@ -102,7 +103,9 @@ function LearnHTML() {
 
             {/* <LearnPLChooseAddress /> */}
 
-            <LearnCmt />
+            {/* <LearnCmt /> */}
+
+            <LearnPreviewProfile />
 
             <div className="h-100vh"></div>
         </div>

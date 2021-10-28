@@ -39,12 +39,13 @@ function CmtRight({
     on_API_LikeAll_L,
     onOpenDetailLikeAll,
 
-    handle_API_Action_L,
-    handleAction,
-
     show_action_mb,
     handleTouchStart,
+    handleTouchMove,
     handleTouchEnd,
+
+    handle_API_Action_L,
+    handleAction,
     closeActionMb,
 }) {
     //
@@ -53,6 +54,7 @@ function CmtRight({
             <div
                 className="CmtRight_content"
                 onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
             >
                 <div className="CmtRight_user_text inline-block pos-rel padding-x-12px padding-y-8px bg-fb">

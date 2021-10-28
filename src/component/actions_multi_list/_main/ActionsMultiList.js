@@ -24,6 +24,7 @@ ActionsMultiList.defaultProps = {};
 //
 function ActionsMultiList({
     title_action,
+    class_action_contain,
     use_title,
     is_at_body,
 
@@ -53,9 +54,7 @@ function ActionsMultiList({
         <div className="ActionsMultiList">
             <Actions
                 title_action={title_action}
-                class_action_contain={
-                    'ActionsMultiList_contain-pc padding-10px'
-                }
+                class_action_contain={`ActionsMultiList_contain-pc padding-10px ${class_action_contain}`}
                 class_action_contain_mb={
                     'ActionsMultiList_contain-mb pos-abs bottom-0 left-0 w-100per bg-primary overflow-y-auto scroll-width-0'
                 }

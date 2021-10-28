@@ -10,7 +10,13 @@ import ActionsMultiList from '../../../actions_multi_list/_main/ActionsMultiList
 BtnProfileOther.propTypes = {};
 
 //
-function BtnProfileOther({ handle_API_L, handleAction }) {
+function BtnProfileOther({
+    class_action_contain,
+    is_at_body = false,
+    
+    handle_API_L,
+    handleAction,
+}) {
     //
     return (
         <div className="BtnProfileOther">
@@ -18,12 +24,15 @@ function BtnProfileOther({ handle_API_L, handleAction }) {
                 title_action={
                     <BtnProfileActions
                         className={'BtnProfileOther_btn bg-ccc'}
-                        Icon={<IconThreeDot color="var(--md-color-secondary)" />}
+                        Icon={
+                            <IconThreeDot color="var(--md-color-secondary)" />
+                        }
                         title=""
                     />
                 }
+                class_action_contain={class_action_contain}
                 use_title={true}
-                is_at_body={false}
+                is_at_body={is_at_body}
                 class_separate=""
                 // ComponentItem
                 handle_API_L={handle_API_L}

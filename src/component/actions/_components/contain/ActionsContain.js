@@ -15,6 +15,7 @@ function ActionsContain({
     children,
 
     scroll_elm,
+    changeStyleAction,
     is_at_body = true,
     header_head,
 
@@ -77,6 +78,15 @@ function ActionsContain({
     }
 
     //
+    function onChangeStyleAction() {
+        if (changeStyleAction) {
+            changeStyleAction(ref_pos.current);
+        } else {
+            return {};
+        }
+    }
+
+    //
     function makeDivHidden() {
         handleClose({ callbackClose: callbackClose });
     }
@@ -87,14 +97,15 @@ function ActionsContain({
             <CloseDiv makeDivHidden={makeDivHidden} refs_target={[ref_btn_elm]}>
                 <div
                     ref={ref_child}
-                    className={`Actions_choices pos-abs z-index-1 scroll-thin overflow-y-auto brs-8px bg-primary box-shadow-fb ${
+                    className={`pos-abs z-index-1 scroll-thin overflow-y-auto brs-8px bg-primary box-shadow-fb ${class_action_contain} ${
                         ref_starting.current ? 'opacity-0' : ''
-                    } ${class_action_contain}`}
+                    }`}
                     style={{
                         [left_or_right]: position_x,
                         [top_or_bottom]: position_y,
                         transform: `translate(${transform_x}, ${transform_y})`,
                         maxHeight: `${max_height}px`,
+                        ...onChangeStyleAction(),
                     }}
                 >
                     {children}

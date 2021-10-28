@@ -56,8 +56,6 @@ import Footer from './component/_footer/_main/Footer';
 import NatureDropMain from './component/_snow_drop/_main/NatureDropMain';
 
 import DivFixLike from './component/_div_fix/like/DivFixLike';
-import DivFixPeople from './component/_div_fix/people/DivFixPeople';
-import DivFixAction from './component/_div_fix/action/DivFixAction';
 import SomeLinks from './component/some_links/SomeLinks';
 
 import AppScreen from './component/_screen/_main/AppScreen';
@@ -111,20 +109,6 @@ class App extends Component {
         }
     };
 
-    refFixPeople = (elm) => {
-        if (elm !== null) {
-            this.openDivFixPeople = elm.openDivFixPeople;
-            this.closeDivFixPeople = elm.closeDivFixPeople;
-        }
-    };
-
-    refFixAction = (elm) => {
-        if (elm !== null) {
-            this.openDivFixAction = elm.openDivFixAction;
-            this.closeDivFixAction = elm.closeDivFixAction;
-        }
-    };
-
     //
     refAppScreen = (elm) => {
         if (elm != null) {
@@ -172,10 +156,6 @@ class App extends Component {
                         //
                         openDivFixLike={this.openDivFixLike}
                         closeDivFixLike={this.closeDivFixLike}
-                        openDivFixPeople={this.openDivFixPeople}
-                        closeDivFixPeople={this.closeDivFixPeople}
-                        openDivFixAction={this.openDivFixAction}
-                        closeDivFixAction={this.closeDivFixAction}
                         //
                         toggleSnowFlower={this.toggleSnowFlower}
                         //
@@ -233,19 +213,11 @@ class App extends Component {
                             )}
                         </div>
 
-                        <div>
-                            <DivFixLike ref={this.refFixLike} />
+                        <DivFixLike ref={this.refFixLike} />
 
-                            <DivFixPeople ref={this.refFixPeople} />
+                        <AppScreen ref={this.refAppScreen} />
 
-                            <DivFixAction ref={this.refFixAction} />
-                        </div>
-
-                        <div>
-                            <AppScreen ref={this.refAppScreen} />
-
-                            <ScreenOnce ref={this.refScreenOnce} />
-                        </div>
+                        <ScreenOnce ref={this.refScreenOnce} />
 
                         <div className="AppNatureDrop">
                             <NatureDropMain ref={this.refNatureDropMain} />

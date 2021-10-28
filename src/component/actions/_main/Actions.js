@@ -27,13 +27,15 @@ function Actions({
     class_actions,
     class_action_contain,
     class_action_contain_mb,
-    
+
     title_action,
     use_title,
+    use_own_title,
     is_show,
     children,
 
     scroll_elm,
+    changeStyleAction,
     is_at_body = true,
     header_head,
 
@@ -64,13 +66,16 @@ function Actions({
     return (
         <ActionsPc
             title_action={title_action}
+            use_own_title={use_own_title}
             is_show={is_show}
             class_action_contain={class_action_contain}
             children={children}
+            // 
             scroll_elm={scroll_elm}
+            changeStyleAction={changeStyleAction}
             is_at_body={is_at_body}
             header_head={header_head}
-            // 
+            //
             toggleShow={toggleShow}
             callbackOpen={callbackOpen}
             callbackClose={callbackClose}

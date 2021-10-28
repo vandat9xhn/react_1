@@ -4,14 +4,13 @@ import PropTypes from 'prop-types';
 import { getTypeVidOrPic } from '../../../../../_some_function/VideoOrImage';
 //
 import { useHold } from '../../../../../_hooks/useHold';
-// 
+//
 import CmtLeft from '../left/_main/CmtLeft';
 import CmtRight from '../right/_main/CmtRight';
 import PostCmtEdit from '../edit/_main/PostCmtEdit';
 //
 import './PostCmt.scss';
 import './PostCmtConnect.scss';
-
 
 //
 PostCmt.propTypes = {};
@@ -65,21 +64,18 @@ function PostCmt({
 
     //
     function handleTouchStart() {
-        window.addEventListener('scroll', handleScrollChange);
-        
         StartHold(() => {
             setShowActionMb(true);
         });
     }
 
     //
-    function handleTouchEnd() {
-        window.removeEventListener('scroll', handleScrollChange);
+    function handleTouchMove() {
         StopHold();
     }
 
     //
-    function handleScrollChange() {
+    function handleTouchEnd() {
         StopHold();
     }
 
@@ -141,11 +137,12 @@ function PostCmt({
                             //
                             handle_API_Action_L={handle_API_Action_L}
                             handleAction={handleAction}
+                            closeActionMb={closeActionMb}
                             //
                             show_action_mb={show_action_mb}
                             handleTouchStart={handleTouchStart}
+                            handleTouchMove={handleTouchMove}
                             handleTouchEnd={handleTouchEnd}
-                            closeActionMb={closeActionMb}
                         />
                     </div>
                 )}

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
-import PrIActionsCase from '../case/_main/PrIActionsCase';
-import ProfileActionsOther from '../other/ProfileActionsOther';
+import ActionsProfileCase from '../../../../../component/actions_profile/case/_main/ActionsProfileCase';
+import ActionsProfileOther from '../../../../../component/actions_profile/other/ActionsProfileOther';
 //
 import './ProfileInfoActions.scss';
 
@@ -22,7 +22,7 @@ function ProfileInfoActions({ action_case_arr, user_id, handleAction }) {
                         key={ix}
                         className="ProfileInfoActions_item margin-x-4px margin-top-8px"
                     >
-                        <PrIActionsCase
+                        <ActionsProfileCase
                             action_case={item.name}
                             user_id={user_id}
                             handleAction={handleAction}
@@ -40,7 +40,7 @@ function ProfileInfoActions({ action_case_arr, user_id, handleAction }) {
                     >
                         {action_case_arr.length == 2 ? (
                             <div className="ProfileInfoActions_item">
-                                <PrIActionsCase
+                                <ActionsProfileCase
                                     action_case={action_case_arr[1].name}
                                     user_id={user_id}
                                     handleAction={handleAction}
@@ -55,7 +55,7 @@ function ProfileInfoActions({ action_case_arr, user_id, handleAction }) {
                                     : ''
                             }`}
                         >
-                            <ProfileActionsOther
+                            <ActionsProfileOther
                                 user_id={user_id}
                                 handleAction={handleAction}
                             />

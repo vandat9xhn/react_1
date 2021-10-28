@@ -10,10 +10,13 @@ import BtnProfileActions from '../_common/BtnProfileActions';
 BtnProfileEdit.propTypes = {};
 
 //
-function BtnProfileEdit({}) {
+function BtnProfileEdit({ user_id }) {
     //
     return (
-        <Link className="color-inherit" to={`?sk=about_overview`}>
+        <Link
+            className="color-inherit"
+            to={`${user_id ? `/profile/${user_id}` : ''}?sk=about_overview`}
+        >
             <BtnProfileActions
                 className={'BtnProfileEdit bg-ccc'}
                 Icon={<IconsEdit color={'currentColor'} size_icon="16px" />}

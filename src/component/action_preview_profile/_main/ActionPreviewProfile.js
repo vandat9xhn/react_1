@@ -1,52 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import { IS_MOBILE } from '../../../_constant/Constant';
-// 
-import ActionsPc from '../../actions/pc/ActionsPc';
+//
+import ActionPreviewProfilePc from '../pc/ActionPreviewProfilePc';
 
 //
 ActionPreviewProfile.propTypes = {};
 
 //
-function ActionPreviewProfile(props) { 
+function ActionPreviewProfile({ user_id, title_action }) {
     //
-    if (!IS_MOBILE) {
-        return null;
+    if (IS_MOBILE) {
+        return title_action;
     }
 
-
-
-    //
-    return <div>
-        <ActionsPc
-            title_action={title_action}
-            is_show={is_show}
-            scroll_elm={scroll_elm}
-            // 
-            toggleShow={toggleShow}
-            callbackOpen={callbackOpen}
-            callbackClose={callbackClose}
-        >
-            <div>
-                <div>
-                    <div></div>
-
-                    <div></div>
-                </div>
-
-                <div className="display-flex-center">
-                    <button className="" type="button" onClick={}>
-                        
-                    </button>
-
-                    <button className="" type="button" onClick={}></button>
-
-                    <button className="" type="button" onClick={}></button>
-                </div>
-            </div>
-        </ActionsPc>
-    </div>;
+    return (
+        <ActionPreviewProfilePc user_id={user_id} title_action={title_action} />
+    );
 }
 
 export default ActionPreviewProfile;

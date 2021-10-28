@@ -27,6 +27,11 @@ export const initial_profile = () => {
 
         action_case_arr: [],
 
+        //
+        time_to_birth: -1,
+        town: '',
+        university: '',
+
         is_online: true,
         created_time: '',
     };

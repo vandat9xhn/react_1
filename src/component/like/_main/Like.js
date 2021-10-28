@@ -48,7 +48,7 @@ function Like({ changeTypeLike, icon_small, type_like }) {
                           '[class~=div_fix_scroll]'
                       ),
                       left: x,
-                      top: y + pageYOffset,
+                      top: y + scrollY,
                       transform_x: 0,
                       transform_y: '-100%',
                   }

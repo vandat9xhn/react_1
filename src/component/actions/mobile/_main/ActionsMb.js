@@ -15,6 +15,7 @@ ActionsMb.propTypes = {};
 function ActionsMb({
     class_actions = '',
     class_action_contain_mb,
+    
     title_action,
     use_title = true,
     is_show,

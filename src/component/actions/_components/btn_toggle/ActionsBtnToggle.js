@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import IconThreeDot from '../../../../_icons_svg/icon_three_dot/IconThreeDot';
-// 
+//
 import './ActionsBtnToggle.scss';
 
 //
@@ -23,7 +23,7 @@ ActionsBtnToggle.defaultProps = {
 function ActionsBtnToggle({ title_action, toggleShow }) {
     //
     return (
-        <div className="ActionsBtnToggle" onClick={toggleShow}>
+        <div className="ActionsBtnToggle display-inherit" onClick={toggleShow}>
             {title_action}
         </div>
     );

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { handle_API_ProfileActions_L } from '../../../../../../_handle_api/profile/action';
+import { handle_API_ProfileActions_L } from '../../../../_handle_api/profile/action';
 //
-import BtnProfileReplyRequest from '../../../../../../component/button/profile_actions/reply_request/BtnProfileReplyRequest';
+import BtnProfileReplyRequest from '../../../button/profile_actions/reply_request/BtnProfileReplyRequest';
 
 // 
-PrIActionsReplyRequest.propTypes = {};
+ActionsProfileReplyRequest.propTypes = {};
 
 // 
-function PrIActionsReplyRequest({user_id, handleAction }) {
+function ActionsProfileReplyRequest({user_id, handleAction }) {
     //
     async function getData_ActionReplyRequest() {
         const data = await handle_API_ProfileActions_L({
@@ -28,4 +28,4 @@ function PrIActionsReplyRequest({user_id, handleAction }) {
     );
 }
 
-export default PrIActionsReplyRequest;
+export default ActionsProfileReplyRequest;

@@ -7,6 +7,7 @@ import UnitTime from '../../../../../../_some_function/UnitTime';
 import { IconsPermission } from '../../../../../../_groups_icon/permission/GroupIconPermission';
 //
 import './PostHeadUser.scss';
+import ActionPreviewProfile from '../../../../../action_preview_profile/_main/ActionPreviewProfile';
 
 //
 PostHeadUser.propTypes = {};
@@ -27,25 +28,38 @@ function PostHeadUser({
     return (
         <div className="PostHeadUser">
             <div className="PostHeadUser_row display-flex align-items-center">
-                <Link className="flex-shrink-0" to={`/profile/${user.id}`}>
-                    <img
-                        className="brs-50 object-fit-cover"
-                        src={user.picture}
-                        alt=""
-                        width="40"
-                        height="40"
-                    />
-                </Link>
+                <ActionPreviewProfile
+                    user_id={user.id}
+                    title_action={
+                        <Link
+                            className="flex-shrink-0"
+                            to={`/profile/${user.id}`}
+                        >
+                            <img
+                                className="brs-50 object-fit-cover"
+                                src={user.picture}
+                                alt=""
+                                width="40"
+                                height="40"
+                            />
+                        </Link>
+                    }
+                />
 
                 <div className="flex-grow-1 padding-x-10px line-20px">
                     <div>
                         <span className="font-600">
-                            <Link
-                                className="color-inherit hv-cl-blue"
-                                to={`/profile/${user.id}`}
-                            >
-                                {user.first_name + ' ' + user.last_name}
-                            </Link>
+                            <ActionPreviewProfile
+                                user_id={user.id}
+                                title_action={
+                                    <Link
+                                        className="color-inherit hv-cl-blue"
+                                        to={`/profile/${user.id}`}
+                                    >
+                                        {user.first_name + ' ' + user.last_name}
+                                    </Link>
+                                }
+                            />
                         </span>
 
                         {emoji_obj.id || user_tag_arr.length ? (

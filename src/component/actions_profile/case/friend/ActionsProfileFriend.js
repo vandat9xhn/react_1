@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import BtnProfileFriend from '../../../../../../component/button/profile_actions/friend/BtnProfileFriend';
+import BtnProfileFriend from '../../../button/profile_actions/friend/BtnProfileFriend';
 //
-import { handle_API_ProfileActions_L } from '../../../../../../_handle_api/profile/action';
+import { handle_API_ProfileActions_L } from '../../../../_handle_api/profile/action';
 
 //
-PrIActionsFriend.propTypes = {};
+ActionsProfileFriend.propTypes = {};
 
 //
-function PrIActionsFriend({ user_id, handleAction }) {
+function ActionsProfileFriend({ user_id, handleAction }) {
     //
     async function getData_ActionFriend() {
         const data = await handle_API_ProfileActions_L({
@@ -29,4 +29,4 @@ function PrIActionsFriend({ user_id, handleAction }) {
     );
 }
 
-export default PrIActionsFriend;
+export default ActionsProfileFriend;

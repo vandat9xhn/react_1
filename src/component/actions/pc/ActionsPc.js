@@ -20,12 +20,14 @@ ActionsPc.defaultProps = {};
 
 //
 function ActionsPc({
+    use_own_title = false,
     title_action,
     is_show,
     class_action_contain,
     children,
 
     scroll_elm,
+    changeStyleAction,
     is_at_body = true,
     header_head,
 
@@ -38,7 +40,7 @@ function ActionsPc({
 
     //
     function onCallbackClose() {
-        is_show && toggleShow();
+        is_show && toggleShow && toggleShow();
         callbackClose && callbackClose();
     }
 
@@ -49,7 +51,9 @@ function ActionsPc({
             ref_btn_elm={ref_btn_elm}
             class_action_contain={class_action_contain}
             children={children}
+            // 
             scroll_elm={scroll_elm}
+            changeStyleAction={changeStyleAction}
             is_at_body={is_at_body}
             header_head={header_head}
             //
@@ -62,16 +66,18 @@ function ActionsPc({
     return (
         <div
             ref={ref_btn_elm}
-            className={`ActionsPc ${is_at_body ? '' : 'pos-rel'} ${
+            className={`ActionsPc display-inherit ${is_at_body ? '' : 'pos-rel'} ${
                 is_show ? 'ActionsPc-show' : 'ActionsPc-hidden'
             }`}
         >
-            <div>
+            {use_own_title ? (
+                title_action
+            ) : (
                 <ActionsBtnToggle
                     title_action={title_action}
                     toggleShow={toggleShow}
                 />
-            </div>
+            )}
 
             {is_show &&
                 (is_at_body ? <PortalAtBody>{Contain}</PortalAtBody> : Contain)}

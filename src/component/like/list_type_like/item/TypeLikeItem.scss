@@ -6,7 +6,8 @@
     overflow: hidden;
 
     user-select: none;
-    transition: bottom 0.2s;
+    transition: bottom 0.2s ease-in;
+
     &:hover {
         bottom: 4px;
         .IconsTypeLike {

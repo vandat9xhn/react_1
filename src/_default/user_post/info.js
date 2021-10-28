@@ -47,7 +47,8 @@ const default_action_case_arr = [
 
 //
 export const default_fb_profile_info_r = (user_id) => {
-    const mutual_friend_count = getRandomBool() ? getRandomNumber(0, 50) : 0;
+    const mutual_friend_count =
+        getRandomBool() || true ? getRandomNumber(0, 50) : 0;
     const friend_count = getRandomBool()
         ? getRandomNumber(mutual_friend_count, mutual_friend_count + 200)
         : 0;
@@ -90,6 +91,11 @@ export const default_fb_profile_info_r = (user_id) => {
             (mutual_friend_count == 0 && friend_count > 8),
 
         action_case_arr: action_case_arr,
+
+        //
+        time_to_birth: getRandomNumber(-10, 10),
+        town: 'Ha Noi',
+        university: 'Dai Hoc Buon Long Ga',
 
         is_online: true,
         created_time: '2021-06-10T01:15:38.302083Z',

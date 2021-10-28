@@ -84,6 +84,7 @@ function Profile(props) {
         });
 
         setProfileState({
+            ...profile_state,
             profile: data,
             is_fetching: false,
         });

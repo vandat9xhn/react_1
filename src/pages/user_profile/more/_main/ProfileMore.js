@@ -2,7 +2,8 @@ import React from 'react';
 //
 import { data_sk_link_arr } from '../../../../_data/profile/main_link';
 //
-import ProfileActionsOther from '../../info/actions/other/ProfileActionsOther';
+import ActionsProfileOther from '../../../../component/actions_profile/other/ActionsProfileOther';
+// 
 import ProfileMoreItem from '../item/ProfileMoreItem';
 //
 import './ProfileMore.scss';
@@ -21,7 +22,7 @@ function ProfileMore({ user_id, handleAction }) {
             </ul>
 
             <div className="pos-abs right-0 y-center z-index-1">
-                <ProfileActionsOther
+                <ActionsProfileOther
                     user_id={user_id}
                     handleAction={handleAction}
                 />
