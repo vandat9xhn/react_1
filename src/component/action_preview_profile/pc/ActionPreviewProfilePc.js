@@ -7,11 +7,12 @@ import { initial_profile } from '../../../_initial/profile/InitialProfile';
 import { handle_API_ProfileInfo_R } from '../../../_handle_api/profile/info';
 //
 import { useForceUpdate } from '../../../_hooks/UseForceUpdate';
+import { useHold } from '../../../_hooks/useHold';
 //
 import IconsProfile from '../../../_icons_svg/icons_profile/IconsProfile';
 import CircleLoading from '../../waiting/circle_loading/CircleLoading';
 //
-import ActionsPc from '../../actions/pc/ActionsPc';
+import ActionsPc from '../../actions/pc/_main/ActionsPc';
 import ActionsProfileCase from '../../actions_profile/case/_main/ActionsProfileCase';
 import ActionsProfileOther from '../../actions_profile/other/ActionsProfileOther';
 import ActionsPreviewFriend from '../friend/ActionsPreviewFriend';
@@ -52,6 +53,10 @@ function ActionPreviewProfilePc({ user_id, title_action }) {
     } = profile;
 
     //
+    const { StartHold, StopHold } = useHold({
+        time: 100,
+        time_holding_start: 400,
+    });
     const forceUpdate = useForceUpdate();
 
     //
@@ -89,11 +94,18 @@ function ActionPreviewProfilePc({ user_id, title_action }) {
 
     //
     function handleMouseEnter() {
-        handleChangeShowCount(true);
+        if (show_count == 0) {
+            StartHold(() => {
+                handleChangeShowCount(true);
+            });
+        } else {
+            handleChangeShowCount(true);
+        }
     }
 
     //
     function handleMouseLeave() {
+        StopHold();
         handleChangeShowCount(false);
     }
 
@@ -225,6 +237,7 @@ function ActionPreviewProfilePc({ user_id, title_action }) {
                                     <ActionsProfileCase
                                         action_case={item.name}
                                         user_id={user_id}
+                                        is_at_body={true}
                                         handleAction={handleAction}
                                     />
                                 </div>

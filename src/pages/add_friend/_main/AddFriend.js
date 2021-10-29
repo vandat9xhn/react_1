@@ -7,7 +7,7 @@ import './AddFriendCommon.scss';
 //
 import AddFriendRequested from '../type/requested/_main/AddFriendRequested';
 import AddFriendSent from '../type/sent/_main/AddFriendSent';
-import AddFriendMayKnow from '../type/may_know/_main/AddFriendMayKnow';
+import AddFriendSuggest from '../type/may_know/_main/AddFriendSuggest';
 // 
 import './AddFriend.scss';
 import './AddFriendRes.scss';
@@ -73,7 +73,7 @@ function AddFriend(props) {
                             type_friend == 'may_know' ? '' : 'display-none'
                         }`}
                     >
-                        <AddFriendMayKnow />
+                        <AddFriendSuggest />
                     </div>
                 </div>
             </div>

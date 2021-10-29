@@ -15,8 +15,9 @@ ActionsMb.propTypes = {};
 function ActionsMb({
     class_actions = '',
     class_action_contain_mb,
-    
+
     title_action,
+    use_own_title,
     use_title = true,
     is_show,
     children,
@@ -28,7 +29,9 @@ function ActionsMb({
     //
     return (
         <div className="ActionsMb user-select-none">
-            {use_title ? (
+            {use_own_title ? (
+                title_action
+            ) : use_title ? (
                 <ActionsBtnToggle
                     title_action={title_action}
                     toggleShow={toggleShow}

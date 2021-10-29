@@ -39,13 +39,8 @@ export function useObserverGetData({
                         return;
                     }
 
-                    const is_max = getIsMax();
-
-                    if (is_max) {
-                        if (unobserve_when_max) {
-                            observe.unobserve(entry.target);
-                        }
-
+                    if (getIsMax()) {
+                        unobserve_when_max && observe.unobserve(entry.target);
                         return;
                     }
 

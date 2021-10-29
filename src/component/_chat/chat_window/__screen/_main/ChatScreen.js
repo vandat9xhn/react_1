@@ -39,33 +39,28 @@ class ChatScreen extends Component {
 
         //
         return (
-            <div>
-                <div>
-                    {screen_floor.map((item, ix) => (
-                        <div
-                            key={`${ix}`}
-                            className="pos-fixed-100per z-index-lv5"
-                        >
-                            <div className="ChatScreen_blur pos-abs-100 bg-fb-active"></div>
+            <div className="ChatScreen">
+                {screen_floor.map((item, ix) => (
+                    <div key={`${ix}`} className="pos-fixed-100per z-index-lv5">
+                        <div className="ChatScreen_blur pos-abs-100 bg-fb-active"></div>
 
-                            <div className="pos-rel wh-100 bg-through">
-                                <ChatScreenFloor
-                                    closeChatScreen={this.closeChatScreen}
-                                    {...item}
-                                />
+                        <div className="pos-rel wh-100 bg-through">
+                            <ChatScreenFloor
+                                closeChatScreen={this.closeChatScreen}
+                                {...item}
+                            />
 
-                                <div className="ChatScreen_close pos-abs right-0 top-0">
-                                    <div
-                                        className="bg-shadow-9 brs-50 cursor-pointer hv-opacity"
-                                        onClick={this.closeChatScreen}
-                                    >
-                                        <IconsArrow y={400} />
-                                    </div>
+                            <div className="ChatScreen_close pos-abs">
+                                <div
+                                    className="bg-shadow-9 brs-50 cursor-pointer hv-opacity"
+                                    onClick={this.closeChatScreen}
+                                >
+                                    <IconsArrow y={400} />
                                 </div>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         );
     }

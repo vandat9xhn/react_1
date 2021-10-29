@@ -1,12 +1,11 @@
-
-.ProfileAbout{
+.ProfileAbout {
     margin: 0 auto 1.5rem;
     max-width: 100%;
 }
 
-// 
+//
 .ProfileAbout_left {
-    width: 400px;
+    width: 300px;
     max-width: 100%;
     border-right: 2px solid var(--md-bg-ccc);
 }
@@ -14,7 +13,7 @@
 .ProfileAbout_right {
     width: 600px;
     max-width: 100%;
-    .InputNotValid_placeholder{
+    .InputNotValid_placeholder {
         background-color: var(--md-bg-primary);
     }
 }
@@ -25,13 +24,13 @@
         display: block;
     }
 
-    .ProfileAbout_left{
+    .ProfileAbout_left {
         margin: auto;
         width: 600px;
         border-left: none;
         border-bottom: 2px solid var(--md-bg-ccc);
     }
-    
+
     .ProfileAbout_right {
         margin: auto;
         min-height: 15rem;

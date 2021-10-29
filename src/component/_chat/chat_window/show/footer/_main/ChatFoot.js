@@ -174,12 +174,12 @@ function ChatF({ canvas_obj, input_obj }) {
         console.log('data_send: ', data_send, ', data: ', data);
 
         const { id, message, vid_pics } = data;
-        const new_vid_pics = vid_pics.map((item) => item.vid_pic);
+        // const new_vid_pics = vid_pics && vid_pics.map((item) => item.vid_pic);
 
         WsSend(ws, {
             type: 'message',
             id: id,
-            vid_pics: new_vid_pics,
+            vid_pics: vid_pics,
             message: message,
             current_canvas: current_canvas,
         });

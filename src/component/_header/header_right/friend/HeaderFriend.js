@@ -17,7 +17,7 @@ function HeaderFriend({}) {
 
     //
     useEffect(() => {
-        location.pathname != '/add-friend-add' && getData_API_FriendCountNew();
+        !location.pathname.search('/friends') && getData_API_FriendCountNew();
     }, []);
 
     //
@@ -36,7 +36,7 @@ function HeaderFriend({}) {
     return (
         <div className="header_menu">
             <NavLink
-                to="/add-friend-add"
+                to="/friends"
                 activeClassName="nav-active"
                 onClick={handleClick}
             >

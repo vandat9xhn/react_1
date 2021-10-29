@@ -1,0 +1,17 @@
+.AddFriendListMutual_item{
+    position: relative;
+
+    width: 16px;
+    height: 16px;
+}
+
+.AddFriendListMutual_item_img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--white);
+}

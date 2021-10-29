@@ -1,23 +1,20 @@
 //
 .ListTypeLike {
-    animation: move-down 0.25s ease-out;
+    animation: move-up 0.25s ease-out;
 
     .open-type-like {
         transition: transform 0.2s;
-
-        &:hover {
-            transform: scale(1.025);
-        }
     }
 }
 
 //
 .ListTypeLike_contain {
-    z-index: var(--z-index-lv4);
+    border-radius: 40px;
+    box-shadow: 0 1px 3px var(--shadow-5);
 }
 
 //
-@keyframes move-down {
+@keyframes move-up {
     from {
         opacity: 0;
         top: 60px;
@@ -25,5 +22,19 @@
     to {
         opacity: 1;
         top: 0px;
+    }
+}
+
+// -----
+
+.device-mobile {
+    .ListTypeLike_row {
+        flex-wrap: wrap;
+        width: 330px;
+        max-width: 80vw;
+    }
+
+    .ListTypeLike_item {
+        margin: 8px;
     }
 }

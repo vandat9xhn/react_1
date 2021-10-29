@@ -1,27 +1,8 @@
-
-.AddFriendAdd_pic {
-    margin-right: auto;
-    margin-left: auto;
-    width: 4rem;
-    height: 4rem;
-
-    img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-    }
+.AddFriendAdd_mutual{
+    height:28px;
 }
 
-.AddFriendAdd_name {
-    margin: 0.5rem 0;
-    text-align: center;
-}
-
-
-// 
-@media (max-width: 300px) {
-    .AddFriendAdd_pic {
-        width: 3rem;
-        height: 3rem;
-    }
+.AddFriendAdd_btn {
+    margin: 6px 10px;
+    height: 36px;
 }

@@ -11,40 +11,41 @@ const ZoomVidPicItem = React.lazy(() =>
     import('../component/posts/_zoom_post/zoom_vid_pic/_main/ZoomVidPicItem')
 );
 
-const AddFriend = React.lazy(() =>
-    import('../pages/add_friend/_main/AddFriend')
+const FriendsHome = React.lazy(() =>
+    import('../pages/add_friend/home/_main/FriendsHome')
 );
 
 //
 export const profile_route_arr = [
+    // {
+    //     path: '/profile/:id',
+    //     component: Profile,
+    //     exact: true,
+    //     auth: true,
+    // },
+    // {
+    //     path: '/posts/:id',
+    //     component: UserPost,
+    //     exact: true,
+    //     auth: true,
+    // },
+    // {
+    //     path: '/new-feed',
+    //     component: NewFeed,
+    //     exact: true,
+    //     auth: true,
+    //     reset_position: true,
+    // },
+    // {
+    //     path: '/post/photos/:id',
+    //     component: ZoomVidPicItem,
+    //     exact: true,
+    //     auth: true,
+    // },
+
     {
-        path: '/profile/:id',
-        component: Profile,
-        exact: true,
-        auth: true,
-    },
-    {
-        path: '/posts/:id',
-        component: UserPost,
-        exact: true,
-        auth: true,
-    },
-    {
-        path: '/new-feed',
-        component: NewFeed,
-        exact: true,
-        auth: true,
-        reset_position: true,
-    },
-    {
-        path: '/post/photos/:id',
-        component: ZoomVidPicItem,
-        exact: true,
-        auth: true,
-    },
-    {
-        path: '/add-friend-add',
-        component: AddFriend,
+        path: '/friends',
+        component: FriendsHome,
         exact: true,
         auth: true,
         reset_position: true,

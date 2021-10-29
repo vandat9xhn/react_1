@@ -289,7 +289,7 @@ function Post({
     //
     return (
         <VirtualScroll rootMargin_y={1000}>
-            <div className="Post bg-primary box-shadow-1 brs-8px-md">
+            <div className="Post bg-primary box-shadow-1 brs-8px">
                 <div className="Post_head padding-10px">
                     <PostHead
                         post_id={id}

@@ -45,9 +45,10 @@ function ProfileInfo({
         nick_name,
         bio,
 
-        friend_count,
-        mutual_friend_count,
         friend_arr,
+        friend_count,
+        mutual_friend_arr,
+        mutual_friend_count,
         has_more_friend,
 
         action_case_arr,
@@ -97,7 +98,11 @@ function ProfileInfo({
                                         mutual_friend_count={
                                             mutual_friend_count
                                         }
-                                        friend_arr={friend_arr}
+                                        friend_arr={
+                                            mutual_friend_count > 0
+                                                ? mutual_friend_arr
+                                                : friend_arr
+                                        }
                                         has_more_friend={has_more_friend}
                                     />
                                 </div>

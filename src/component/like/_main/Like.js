@@ -1,15 +1,16 @@
-import React, { useContext, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { IS_MOBILE } from '../../../_constant/Constant';
-//
-import { context_api } from '../../../_context/ContextAPI';
-//
-import { useHold } from '../../../_hooks/useHold';
+import { useBool } from '../../../_hooks/useBool';
 //
 import { type_likes } from '../list_type_like/type_likes/TypeLikes';
 //
+import ActionsHoldPc from '../../actions_hold/pc/ActionsHoldPc';
+import ListTypeLike from '../list_type_like/_main/ListTypeLike';
+//
 import './Like.scss';
+import { IS_MOBILE } from '../../../_constant/Constant';
+import ActionsHoldMb from '../../actions_hold/mobile/ActionsHoldMb';
 
 //
 Like.propTypes = {
@@ -27,79 +28,11 @@ Like.defaultProps = {
 //
 function Like({ changeTypeLike, icon_small, type_like }) {
     //
-    const { openDivFixLike, closeDivFixLike } = useContext(context_api);
-
-    //
-    const ref_like_elm = useRef(null);
-
-    const { StartHold, StopHold } = useHold(IS_MOBILE ? 400 : 600);
-    const { StartHold: StartOut, StopHold: StopOut } = useHold({
-        time: IS_MOBILE ? 100 : 600,
-    });
-
-    //
-    function openFixLike() {
-        const { x, y } = ref_like_elm.current.getBoundingClientRect();
-
-        openDivFixLike({
-            ...(!IS_MOBILE
-                ? {
-                      scroll_elm: ref_like_elm.current.closest(
-                          '[class~=div_fix_scroll]'
-                      ),
-                      left: x,
-                      top: y + scrollY,
-                      transform_x: 0,
-                      transform_y: '-100%',
-                  }
-                : {
-                      left: '50%',
-                      top: '50%',
-                      transform_x: '-50%',
-                      transform_y: '-50%',
-                  }),
-
-            icon_small: icon_small,
-            onMouseEnter: onMouseEnter,
-            onMouseLeave: onMouseLeave,
-            chooseListTypeLike: ChooseListTypeLike,
-        });
-    }
-
-    /* ------------- MAIN LIKE ------------ */
-
-    //
-    function onMouseEnter() {
-        StopOut();
-    }
-    //
-    function onMouseLeave() {
-        StartOut(closeListTypeLike);
-    }
-
-    /* ------------- TYPE LIKE --------------- */
-
-    //
-    function onMouseEnterLike() {
-        StartHold(openFixLike);
-    }
-
-    //
-    function onMouseLeaveLike() {
-        StopHold();
-    }
-
-    /* ------- CHOOSE TYPE --------------- */
-
-    //
-    function closeListTypeLike() {
-        closeDivFixLike();
-    }
+    const { is_true, toggleBool } = useBool();
 
     //
     function handleLike() {
-        StopHold();
-        closeListTypeLike();
+        toggleBool();
 
         if (type_like >= 0) {
             changeTypeLike(-1);
@@ -110,32 +43,58 @@ function Like({ changeTypeLike, icon_small, type_like }) {
 
     //
     function ChooseListTypeLike(index) {
-        closeListTypeLike();
+        toggleBool();
         changeTypeLike(index);
     }
 
     //
-    return (
+    const title_action = (
         <div
-            ref={ref_like_elm}
-            className="Like wh-100 cursor-pointer"
-            onMouseLeave={IS_MOBILE ? undefined : onMouseLeave}
-            onMouseEnter={IS_MOBILE ? undefined : onMouseEnter}
+            className={`Like_current_like display-flex-center h-100per ${
+                icon_small ? 'Like_current_like-small' : ''
+            }`}
+            onClick={handleLike}
         >
-            <div
-                className={`Like_type display-flex-center padding-8px ${
-                    icon_small ? 'Like_icon-small' : ''
-                } ${type_like == 0 ? 'nav-active active-color' : ''}`}
-                onClick={handleLike}
-                onTouchStart={onMouseEnterLike}
-                onTouchEnd={onMouseLeaveLike}
-                onMouseEnter={IS_MOBILE ? undefined : onMouseEnterLike}
-                onMouseLeave={IS_MOBILE ? undefined : onMouseLeaveLike}
+            {type_likes[0].component}
+        </div>
+    );
+
+    //
+    if (IS_MOBILE) {
+        return (
+            <ActionsHoldMb
+                title_action={title_action}
+                class_action_contain_mb={'pos-abs-center'}
+                force_close={is_true}
             >
-                {type_like < 0
-                    ? type_likes[0].component
-                    : type_likes[type_like].component}
-            </div>
+                <div className="Like_like">
+                    <ListTypeLike
+                        open_type_like={true}
+                        chooseListTypeLike={ChooseListTypeLike}
+                    />
+                </div>
+            </ActionsHoldMb>
+        );
+    }
+
+    //
+    return (
+        <div className="Like h-100per">
+            <ActionsHoldPc
+                title_action={title_action}
+                class_action_contain={`Like_like ${
+                    icon_small ? 'Like_like-small' : ''
+                }`}
+                x_always={'left'}
+                y_always={'bottom'}
+                //
+                force_close={is_true}
+            >
+                <ListTypeLike
+                    open_type_like={true}
+                    chooseListTypeLike={ChooseListTypeLike}
+                />
+            </ActionsHoldPc>
         </div>
     );
 }

@@ -85,6 +85,8 @@ function PostHeadAction({
             <Actions
                 is_show={is_true}
                 use_title={true}
+                x_always="right"
+                // 
                 toggleShow={toggleBool}
                 handleClose={handleClose}
             >

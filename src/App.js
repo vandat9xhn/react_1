@@ -42,25 +42,22 @@ import ContextAPI from './_context/ContextAPIProvider';
 import { IS_MOBILE } from './_constant/Constant';
 //
 // import Auth from './_auth/Auth';
+import CustomSwitch from './__Switch/__switch';
 //
 import WaitingBall from './component/waiting/waiting_ball/WaitingBall';
+//
+import Header from './component/_header/_main/Header';
+import Footer from './component/_footer/_main/Footer';
+//
+import AppScreen from './component/_screen/_main/AppScreen';
+import ScreenOnce from './component/_screen_once/_main/ScreenOnce';
+import NatureDropMain from './component/_snow_drop/_main/NatureDropMain';
 //
 import Chat from './component/_chat/_main/Chat';
 import Contact from './component/_contact/Contact';
 import BackTop from './component/_back_to_top/BackTop';
 import PLCompare from './component/pl_compare/_main/PLCompare';
-
-import Header from './component/_header/_main/Header';
-import Footer from './component/_footer/_main/Footer';
-
-import NatureDropMain from './component/_snow_drop/_main/NatureDropMain';
-
-import DivFixLike from './component/_div_fix/like/DivFixLike';
 import SomeLinks from './component/some_links/SomeLinks';
-
-import AppScreen from './component/_screen/_main/AppScreen';
-import ScreenOnce from './component/_screen_once/_main/ScreenOnce';
-import CustomSwitch from './__Switch/__switch';
 
 // App
 class App extends Component {
@@ -100,14 +97,6 @@ class App extends Component {
               }
           }
         : () => {};
-
-    //
-    refFixLike = (elm) => {
-        if (elm !== null) {
-            this.openDivFixLike = elm.openDivFixLike;
-            this.closeDivFixLike = elm.closeDivFixLike;
-        }
-    };
 
     //
     refAppScreen = (elm) => {
@@ -154,9 +143,6 @@ class App extends Component {
                         closeRoomChat={this.closeRoomChat}
                         closeAllRoomChat={this.closeAllRoomChat}
                         //
-                        openDivFixLike={this.openDivFixLike}
-                        closeDivFixLike={this.closeDivFixLike}
-                        //
                         toggleSnowFlower={this.toggleSnowFlower}
                         //
                         openScreenOnce={this.openScreenOnce}
@@ -173,23 +159,6 @@ class App extends Component {
 
                             <div className="App_contain">
                                 <main className="AppContent">
-                                    {/* <Switch location={location}>
-                                        {Routes.map((route, index) => (
-                                            <Route
-                                                key={`App_route_${index}`}
-                                                path={route.path}
-                                                render={(props) => (
-                                                    <Auth
-                                                        route={route}
-                                                        {...props}
-                                                    />
-                                                )}
-                                                exact={route.exact}
-                                            />
-                                        ))}
-
-                                        <Redirect from="" to="/home" />
-                                    </Switch> */}
                                     <CustomSwitch />
                                 </main>
 
@@ -212,8 +181,6 @@ class App extends Component {
                                 <Chat ref={this.refChat} />
                             )}
                         </div>
-
-                        <DivFixLike ref={this.refFixLike} />
 
                         <AppScreen ref={this.refAppScreen} />
 

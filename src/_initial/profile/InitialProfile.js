@@ -20,9 +20,10 @@ export const initial_profile = () => {
         nick_name: '',
         bio: '',
 
-        friend_count: 0,
-        mutual_friend_count: 0,
         friend_arr: [],
+        friend_count: 0,
+        mutual_friend_arr: [],
+        mutual_friend_count: 0,
         has_more_friend: false,
 
         action_case_arr: [],

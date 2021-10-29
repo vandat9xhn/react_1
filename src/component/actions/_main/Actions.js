@@ -1,13 +1,11 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../_constant/Constant';
 //
-import IconThreeDot from '../../../_icons_svg/icon_three_dot/IconThreeDot';
-//
 import './ActionsCommon.scss';
 //
-import ActionsPc from '../pc/ActionsPc';
+import ActionsPc from '../pc/_main/ActionsPc';
 import ActionsMb from '../mobile/_main/ActionsMb';
 //
 import './Actions.scss';
@@ -39,6 +37,11 @@ function Actions({
     is_at_body = true,
     header_head,
 
+    x_always,
+    transform_x_more,
+    y_always,
+    transform_y_more,
+
     toggleShow,
     handleClose,
     callbackOpen,
@@ -51,6 +54,7 @@ function Actions({
                 class_actions={class_actions}
                 class_action_contain_mb={class_action_contain_mb}
                 title_action={title_action}
+                use_own_title={use_own_title}
                 use_title={use_title}
                 is_show={is_show}
                 children={children}
@@ -70,11 +74,16 @@ function Actions({
             is_show={is_show}
             class_action_contain={class_action_contain}
             children={children}
-            // 
+            //
             scroll_elm={scroll_elm}
             changeStyleAction={changeStyleAction}
             is_at_body={is_at_body}
             header_head={header_head}
+            //
+            x_always={x_always}
+            transform_x_more={transform_x_more}
+            y_always={y_always}
+            transform_y_more={transform_y_more}
             //
             toggleShow={toggleShow}
             callbackOpen={callbackOpen}

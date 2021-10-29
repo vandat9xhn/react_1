@@ -10,6 +10,10 @@ IconFriend.propTypes = {
     stroke: PropTypes.string,
     stroke_width: PropTypes.number,
     fill: PropTypes.string,
+
+    is_plus: PropTypes.bool,
+    is_request: PropTypes.bool,
+    is_menu: PropTypes.bool,
 };
 
 IconFriend.defaultProps = {
@@ -20,13 +24,28 @@ IconFriend.defaultProps = {
     stroke: 'currentColor',
     stroke_width: 5,
     fill: 'none',
+
+    is_plus: false,
+    is_request: false,
+    is_menu: false,
 };
 
 /**
  * icons: (x, y) start of view box
  *   @add friend: (0, 200),
  */
-function IconFriend({ size_icon, x, y, stroke, stroke_width, fill }) {
+function IconFriend({
+    size_icon,
+    x,
+    y,
+    stroke,
+    stroke_width,
+    fill,
+
+    is_plus,
+    is_request,
+    is_menu,
+}) {
     //
     return (
         <svg
@@ -41,6 +60,25 @@ function IconFriend({ size_icon, x, y, stroke, stroke_width, fill }) {
         >
             <circle cx="100" cy="50" r="35" />
             <path d="M15,185 Q15,100 100,100 Q185,100 185,185 Z" />
+
+            {is_plus ? (
+                <g className="IconFriend_plus" stroke="currentColor">
+                    <line x1="160" y1="20" x2="160" y2="80" />
+                    <line x1="120" y1="50" x2="180" y2="50" />
+                </g>
+            ) : is_request ? (
+                <g className="IconFriend_request" stroke="currentColor">
+                    <line x1="120" y1="35" x2="175" y2="35" />
+                    <line x1="175" y1="35" x2="160" y2="20" />
+                    <line x1="175" y1="35" x2="160" y2="50" />
+                </g>
+            ) : is_menu ? (
+                <g className="IconFriend_all" stroke="currentColor">
+                    <line x1="120" y1="20" x2="180" y2="20" />
+                    <line x1="120" y1="35" x2="180" y2="35" />
+                    <line x1="120" y1="50" x2="180" y2="50" />
+                </g>
+            ) : null}
         </svg>
     );
 }

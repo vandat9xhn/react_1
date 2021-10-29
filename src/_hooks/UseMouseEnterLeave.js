@@ -1,6 +1,7 @@
 import { useRef } from 'react';
-// 
+//
 import { useForceUpdate } from './UseForceUpdate';
+import { useHold } from './useHold';
 
 //
 export function useMouseEnterLeave({
@@ -21,13 +22,24 @@ export function useMouseEnterLeave({
     const ref_fetching = useRef(false);
     const ref_closing = useRef(false);
 
-    // 
-    const forceUpdate = useForceUpdate()
+    //
+    const { StartHold, StopHold } = useHold({
+        time: 100,
+        time_holding_start: 200,
+    });
+    const forceUpdate = useForceUpdate();
 
     // -----
 
     //
     async function handleMouseenter() {
+        StartHold(() => {
+            startMouseenter();
+        });
+    }
+
+    //
+    async function startMouseenter() {
         is_mouse_enter.current = true;
 
         if (ref_fetched.current) {
@@ -54,6 +66,12 @@ export function useMouseEnterLeave({
 
     //
     function handleMouseleave() {
+        StopHold();
+
+        if (!ref_fetched) {
+            return;
+        }
+
         ref_closing.current = true;
         is_mouse_enter.current = false;
         ref_fetching.current = false;

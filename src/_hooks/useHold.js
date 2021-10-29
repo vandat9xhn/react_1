@@ -15,13 +15,17 @@ export function useHold({
 
     //
     function StartHold(callback = function () {}) {
-        use_holding &&
-            (timeout_holding.current = setTimeout(() => {
-                setHolding(true);
-            }, time_holding_start));
+        timeout_holding.current = setTimeout(() => {
+            use_holding && setHolding(true);
+            handleHolding(callback);
+        }, time_holding_start);
+    }
 
+    //
+    function handleHolding(callback = function () {}) {
         timeout.current = setTimeout(() => {
             use_holding && setHolding(false);
+            timeout_holding.current && clearTimeout(timeout_holding.current);
             callback();
         }, time);
     }

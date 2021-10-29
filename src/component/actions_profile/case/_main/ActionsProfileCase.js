@@ -15,7 +15,13 @@ import ActionsProfileReplyRequest from '../reply_request/ActionsProfileReplyRequ
 ActionsProfileCase.propTypes = {};
 
 //
-function ActionsProfileCase({ action_case, user_id, handleAction }) {
+function ActionsProfileCase({
+    action_case,
+    user_id,
+    is_at_body = false,
+
+    handleAction,
+}) {
     //
     if (action_case == 'chat') {
         return <BtnProfileChat user_id={user_id} />;
@@ -26,6 +32,7 @@ function ActionsProfileCase({ action_case, user_id, handleAction }) {
         return (
             <ActionsProfileFriend
                 user_id={user_id}
+                is_at_body={is_at_body}
                 handleAction={handleAction}
             />
         );
@@ -56,6 +63,7 @@ function ActionsProfileCase({ action_case, user_id, handleAction }) {
         return (
             <ActionsProfileReplyRequest
                 user_id={user_id}
+                is_at_body={is_at_body}
                 handleAction={handleAction}
             />
         );

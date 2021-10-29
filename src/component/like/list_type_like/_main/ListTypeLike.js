@@ -17,14 +17,14 @@ ListTypeLike.propTypes = {
 function ListTypeLike({ chooseListTypeLike, open_type_like }) {
     //
     return (
-        <div className="ListTypeLike pos-rel">
+        <div className="ListTypeLike pos-rel user-select-none">
             <div className={open_type_like ? 'open-type-like' : 'display-none'}>
-                <div className="ListTypeLike_contain bg-primary box-shadow-1 brs-8px">
+                <div className="ListTypeLike_contain padding-5px bg-primary">
                     <div className="ListTypeLike_row display-flex">
                         {type_likes.map((item, index) => (
                             <div
-                                key={`ListTypeLike_${index}`}
-                                className="ListTypeLike_item cursor-pointer"
+                                key={index}
+                                className="ListTypeLike_item margin-x-5px flex-shrink-0"
                             >
                                 <TypeLikeItem
                                     index={index}

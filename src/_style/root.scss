@@ -85,7 +85,7 @@ $shadows: 1, 2, 5, 6, 8, 9;
     --md-box-shadow: #2c2b2b69;
     --box-shadow-fb: 0 12px 28px 0 var(--shadow-2), 0 2px 4px 0 var(--shadow-1),
         inset 0 0 0 1px var(--shadow-inset);
-    --box-shadow-1: 0 0.3px 3.2px var(--md-box-shadow);
+    --box-shadow-1: 0 1px 4px var(--shadow-1);
     --box-shadow-action: 0 0 2.5px 1px var(--md-box-shadow);
     // border
     --md-border-blur: #00000041;

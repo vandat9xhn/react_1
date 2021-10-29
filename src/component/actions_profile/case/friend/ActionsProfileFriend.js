@@ -9,7 +9,7 @@ import { handle_API_ProfileActions_L } from '../../../../_handle_api/profile/act
 ActionsProfileFriend.propTypes = {};
 
 //
-function ActionsProfileFriend({ user_id, handleAction }) {
+function ActionsProfileFriend({ user_id, is_at_body, handleAction }) {
     //
     async function getData_ActionFriend() {
         const data = await handle_API_ProfileActions_L({
@@ -23,6 +23,7 @@ function ActionsProfileFriend({ user_id, handleAction }) {
     //
     return (
         <BtnProfileFriend
+            is_at_body={is_at_body}
             handle_API_L={getData_ActionFriend}
             handleAction={handleAction}
         />

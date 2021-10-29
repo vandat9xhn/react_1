@@ -12,13 +12,16 @@
     width: 33%;
 }
 
-//
-.device-mobile {
+// -----
+@media (max-width: 500px) {
     .AddNewPost {
         padding: 0;
         border-radius: 0;
     }
+}
 
+//
+.device-mobile {
     .AddNewPost_head {
         padding: 0 0 0 10px;
 

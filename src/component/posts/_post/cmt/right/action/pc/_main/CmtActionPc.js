@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useBool } from '../../../../../../../../_hooks/useBool';
 import { useForceUpdate } from '../../../../../../../../_hooks/UseForceUpdate';
 //
-import ActionsPc from '../../../../../../../actions/pc/ActionsPc';
+import ActionsPc from '../../../../../../../actions/pc/_main/ActionsPc';
 //
 import CmtActionContain from '../../contain/CmtActionContain';
 //

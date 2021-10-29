@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import './TypeLikeItem.scss';
 
 //
@@ -21,7 +21,7 @@ function TypeLikeItem({ index, title, component, chooseListTypeLike }) {
     //
     return (
         <div
-            className="ListTypeLikeItem"
+            className="ListTypeLikeItem pos-rel cursor-pointer"
             onClick={onChooseListTypeLike}
             title={title}
         >

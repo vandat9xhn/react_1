@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useForceUpdate } from '../../../_hooks/UseForceUpdate';
 import { useHold } from '../../../_hooks/useHold';
 //
-import ActionsPc from '../../actions/pc/ActionsPc';
+import ActionsPc from '../../actions/pc/_main/ActionsPc';
 
 //
 ActionsHoldPc.propTypes = {};
@@ -18,8 +17,14 @@ function ActionsHoldPc({
     scroll_elm,
     changeStyleAction,
 
+    x_always,
+    transform_x_more,
+    y_always,
+    transform_y_more,
+
     time_hold = 500,
     time_leave = 800,
+    force_close,
 
     callbackOpen,
     callbackClose,
@@ -35,7 +40,11 @@ function ActionsHoldPc({
         time: time_leave,
     });
 
-    // const forceUpdate = useForceUpdate();
+    //
+    useEffect(() => {
+        StopHoldEnter();
+        setShowCount(0);
+    }, [force_close]);
 
     // -----
 
@@ -83,9 +92,14 @@ function ActionsHoldPc({
             class_action_contain={`ActionsHoldPc ${class_action_contain}`}
             use_own_title={true}
             is_show={show_count > 0}
-            // 
+            //
             scroll_elm={scroll_elm}
             changeStyleAction={changeStyleAction}
+            //
+            x_always={x_always}
+            transform_x_more={transform_x_more}
+            y_always={y_always}
+            transform_y_more={transform_y_more}
             //
             // toggleShow={toggleShow}
             callbackOpen={callbackOpen}

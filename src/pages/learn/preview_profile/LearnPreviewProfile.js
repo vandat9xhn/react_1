@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { getRandomBool } from '../../../_default/_common/default_bool';
 import { getRandomId } from '../../../_default/_common/default_id';
 //
+import { useBool } from '../../../_hooks/useBool';
+//
 import { type_likes } from '../../../component/like/list_type_like/type_likes/TypeLikes';
 //
 import ActionPreviewProfile from '../../../component/action_preview_profile/_main/ActionPreviewProfile';
@@ -18,32 +20,18 @@ LearnPreviewProfile.propTypes = {};
 //
 function LearnPreviewProfile(props) {
     //
+    const { is_true, toggleBool } = useBool();
+
+    //
     function chooseListTypeLike(new_like) {
         console.log(new_like);
+        toggleBool();
     }
 
     //
-    function changeStyleAction({
-        top_or_bottom,
-        position_y,
-        transform_y,
-        max_height,
-
-        left_or_right,
-        position_x,
-        transform_x,
-    }) {
-        console.log(
-            top_or_bottom,
-            position_y,
-            transform_y,
-            max_height,
-
-            left_or_right,
-            position_x,
-            transform_x
-        );
-        return {};
+    function chooseLike() {
+        console.log('toggle like');
+        toggleBool();
     }
 
     //
@@ -60,9 +48,19 @@ function LearnPreviewProfile(props) {
 
             <div className="display-flex-center">
                 <ActionsHoldPc
-                    title_action={type_likes[0].component}
+                    title_action={
+                        <div
+                            className="LearnPreviewProfile_current_like padding-y-8px padding-x-20px brs-18px border-blur bg-primary"
+                            onClick={chooseLike}
+                        >
+                            {type_likes[0].component}
+                        </div>
+                    }
                     class_action_contain="LearnPreviewProfile_like"
-                    changeStyleAction={changeStyleAction}
+                    x_always={'left'}
+                    y_always={'bottom'}
+                    //
+                    force_close={is_true}
                 >
                     <div className="LearnPreviewProfile_like_contain">
                         <ListTypeLike

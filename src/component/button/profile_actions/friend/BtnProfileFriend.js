@@ -12,7 +12,7 @@ import './BtnProfileFriend.scss';
 BtnProfileFriend.propTypes = {};
 
 //
-function BtnProfileFriend({ handle_API_L, handleAction }) {
+function BtnProfileFriend({is_at_body, handle_API_L, handleAction }) {
     //
     return (
         <div className="BtnProfileFriend">
@@ -25,7 +25,7 @@ function BtnProfileFriend({ handle_API_L, handleAction }) {
                     />
                 }
                 use_title={true}
-                is_at_body={false}
+                is_at_body={is_at_body}
                 class_separate=""
                 // ComponentItem
                 handle_API_L={handle_API_L}

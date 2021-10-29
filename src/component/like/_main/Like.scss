@@ -1,14 +1,39 @@
-// 
-.Like_type {
-    .IconsTypeLike {
-        width: 1.5rem;
-        height: 1.5rem;
+.Like {
+    .ActionsPc {
+        height: 100%;
+    }
+
+    .ActionsHoldPc_title {
+        height: 100%;
     }
 }
 
-.Like_icon-small {
+.Like_current_like {
     .IconsTypeLike {
-        width: 1.3rem;
-        height: 1.3rem;
+        width: 24px;
+        height: 24px;
+    }
+}
+.Like_current_like-small {
+    .IconsTypeLike {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.Like_like {
+    overflow: visible;
+    background-color: transparent;
+    box-shadow: none;
+
+    .IconsTypeLike {
+        width: 39px;
+        height: 39px;
+    }
+}
+.Like_like-small {
+    .IconsTypeLike {
+        width: 36px;
+        height: 36px;
     }
 }

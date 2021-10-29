@@ -1,0 +1,24 @@
+.FriendsHomeLeft_item {
+    height: 52px;
+}
+.FriendsHomeLeft_item-active {
+    .FriendsHomeLeft_item_icon {
+        background-color: var(--blue);
+        color: white;
+    }
+}
+
+.FriendsHomeLeft_item_icon {
+    width: 36px;
+    height: 36px;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .IconFriend,
+    .IconFriends {
+            fill: currentColor;
+        }
+}

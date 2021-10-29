@@ -1,17 +1,10 @@
 //
 .ListTypeLikeItem {
-    position: relative;
     bottom: 0;
-    padding: 0.25rem;
-    overflow: hidden;
-
-    user-select: none;
-    transition: bottom 0.2s ease-in;
+    transition: all 150ms ease-in;
 
     &:hover {
-        bottom: 4px;
-        .IconsTypeLike {
-            transform: scale(1.1);
-        }
+        transform: scale(1.25);
+        bottom: 2px;
     }
 }

@@ -16,8 +16,13 @@ export function usePosFollowBodyOrElm({
     getChildWidth = () => 0,
     header_head = HEADER_HEAD,
 
-    use_time_trans = false,
-    time_trans = 200,
+    x_always = '',
+    transform_x_more = 0,
+    y_always = '',
+    transform_y_more = 0,
+
+    use_closing = false,
+    time_closing = 200,
 
     is_at_body = true,
     use_scroll = true,
@@ -87,6 +92,11 @@ export function usePosFollowBodyOrElm({
             child_width: getChildWidth(),
             base_elm: ref_base_elm.current,
             header_head: header_head,
+
+            x_always: x_always,
+            transform_x_more: transform_x_more,
+            y_always: y_always,
+            transform_y_more: transform_y_more,
         });
     }
 
@@ -109,13 +119,13 @@ export function usePosFollowBodyOrElm({
         ref_is_open.current = false;
         ref_starting.current = false;
 
-        if (use_time_trans) {
+        if (use_closing) {
             forceUpdate();
 
             setTimeout(() => {
                 ref_closing.current = false;
                 callbackClose();
-            }, time_trans);
+            }, time_closing);
         } else {
             callbackClose();
         }

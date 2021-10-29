@@ -46,19 +46,28 @@ const default_action_case_arr = [
 ];
 
 //
-export const default_fb_profile_info_r = (user_id) => {
-    const mutual_friend_count =
-        getRandomBool() || true ? getRandomNumber(0, 50) : 0;
+export const default_fb_profile_info_r = (user_id, max_friend_arr = 8) => {
+    const mutual_friend_count = getRandomBool() ? getRandomNumber(0, 50) : 0;
     const friend_count = getRandomBool()
         ? getRandomNumber(mutual_friend_count, mutual_friend_count + 200)
         : 0;
-    const friend_show_count = mutual_friend_count || friend_count;
 
-    const friend_arr = friend_show_count
+    const mutual_friend_arr = mutual_friend_count
         ? getDefaultArr(
               () => getRandomUser().user,
-              friend_show_count >= 8 ? 8 : friend_show_count,
-              friend_show_count >= 8 ? 8 : friend_show_count
+              mutual_friend_count >= max_friend_arr
+                  ? max_friend_arr
+                  : mutual_friend_count,
+              mutual_friend_count >= max_friend_arr
+                  ? max_friend_arr
+                  : mutual_friend_count
+          )
+        : [];
+    const friend_arr = !mutual_friend_count
+        ? getDefaultArr(
+              () => getRandomUser().user,
+              friend_count >= max_friend_arr ? max_friend_arr : friend_count,
+              friend_count >= max_friend_arr ? max_friend_arr : friend_count
           )
         : [];
 
@@ -83,9 +92,10 @@ export const default_fb_profile_info_r = (user_id) => {
         nick_name: getRandomBool() ? '' : getRandomName(),
         bio: getRandomBool() ? '' : getRandomContent().slice(0, 100),
 
-        friend_count: friend_count,
-        mutual_friend_count: mutual_friend_count,
         friend_arr: friend_arr,
+        friend_count: friend_count,
+        mutual_friend_arr: mutual_friend_arr,
+        mutual_friend_count: mutual_friend_count,
         has_more_friend:
             mutual_friend_count > 8 ||
             (mutual_friend_count == 0 && friend_count > 8),
@@ -100,4 +110,16 @@ export const default_fb_profile_info_r = (user_id) => {
         is_online: true,
         created_time: '2021-06-10T01:15:38.302083Z',
     };
+};
+
+export const default_fb_profile_info_arr = ({ type }) => {
+    const is_suggest = type == 'suggest';
+
+    return getRandomBool() && !is_suggest
+        ? []
+        : getDefaultArr(
+              () => default_fb_profile_info_r(-1, 2),
+              is_suggest ? 10 : 0,
+              10
+          );
 };
