@@ -113,7 +113,7 @@ export const default_fb_profile_info_r = (user_id, max_friend_arr = 8) => {
 };
 
 export const default_fb_profile_info_arr = ({ type }) => {
-    const is_suggest = type == 'suggest';
+    const is_suggest = ['suggest', 'friend'].includes(type);
 
     return getRandomBool() && !is_suggest
         ? []

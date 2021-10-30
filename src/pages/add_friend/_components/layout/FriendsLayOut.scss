@@ -1,4 +1,8 @@
 .FriendsLayOut_left{
+    position: sticky;
+    top: calc(var(--height-header));
+
     width: 360px;
+    height: calc(100vh - var(--height-header));
     box-shadow: 1px 0px 4px var(--shadow-1);
 }

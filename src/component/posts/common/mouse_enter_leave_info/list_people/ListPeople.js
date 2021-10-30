@@ -19,7 +19,13 @@ ListPeople.defaultProps = {
     count_people: 0,
     max_size: 1,
 
-    PeopleComponent: () => <div></div>,
+    PeopleComponent: ({ item }) => {
+        return (
+            <div className="text-white font-12px">
+                {item.first_name} {item.last_name}
+            </div>
+        );
+    },
 };
 
 //

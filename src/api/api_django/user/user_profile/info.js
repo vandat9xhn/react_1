@@ -28,5 +28,5 @@ export const API_ProfileInfo_L = (params) =>
                 params: params,
             }),
         params,
-        params['type'] == 'request'
+        ['request'].includes(params['type'])
     );

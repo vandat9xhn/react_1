@@ -8,6 +8,7 @@ import { handle_API_ProfileInfo_L } from '../../../../../_handle_api/profile/inf
 import AddFriendRequest from '../../../../../component/add_friend_add/request/AddFriendRequest';
 //
 import FriendHomeFriendList from '../list/_main/FriendHomeFriendList';
+import { useFriendsRequest } from '../../../../../_hooks/friends/useFriendsRequest';
 
 //
 FriendsHomeRequest.propTypes = {};
@@ -15,63 +16,24 @@ FriendsHomeRequest.propTypes = {};
 //
 function FriendsHomeRequest(props) {
     //
-    const [request_arr, setRequestArr] = useState([
-        { ...initial_profile(), accepted: false },
-    ]);
+    const {
+        data_state,
+
+        confirmFriendRequest,
+        deleteFriendRequest,
+    } = useFriendsRequest({ rootMargin: '0px 0px 500px', margin: 500 });
+
+    const { data_arr } = data_state;
 
     //
-    useEffect(() => {
-        getData_FriendRequests();
-    }, []);
-
-    // ------- API
-
-    //
-    async function getData_FriendRequests() {
-        const { data } = await handle_API_ProfileInfo_L({ type: 'request' });
-
-        setRequestArr(
-            data.map((item) => {
-                return {
-                    ...item,
-                    accepted: false,
-                };
-            })
-        );
-    }
-
-    // -----
-
-    //
-    function confirmFriendRequest(request_ix = -1) {
-        setRequestArr((request_arr) => {
-            const new_request_arr = [...request_arr];
-            new_request_arr[request_ix].accepted = true;
-
-            return new_request_arr;
-        });
-    }
-
-    //
-    function deleteFriendRequest(request_ix = -1) {
-        setRequestArr((request_arr) => {
-            const new_request_arr = [...request_arr];
-            new_request_arr.splice(request_ix, 1);
-
-            return new_request_arr;
-        });
-    }
-
-    //
-    return request_arr.length ? (
+    return data_arr.length ? (
         <div className="FriendsHomeRequest">
             <FriendHomeFriendList
                 title="Friend requests"
                 link_to_all="/friends/requests"
-                profile_arr={request_arr}
             >
                 <div className="display-flex flex-wrap">
-                    {request_arr.map((profile, ix) => (
+                    {data_arr.map((profile, ix) => (
                         <div
                             key={profile.id}
                             className="friend-home-right-item"

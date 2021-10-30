@@ -30,12 +30,11 @@
     cursor: text;
 }
 
-// ------ 
+// ------
 
-.grayscale-1{
+.grayscale-1 {
     filter: grayscale(1);
 }
-
 
 // ------ LINK
 
@@ -125,4 +124,14 @@
     width: 1.5rem;
     height: 1.5rem;
     background-color: var(--danger);
+}
+
+.btn-icon-36px {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
 }

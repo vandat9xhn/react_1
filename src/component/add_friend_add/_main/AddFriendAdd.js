@@ -44,7 +44,7 @@ function AddFriendAdd({
     } = profile;
     //
     return (
-        <div className="AddFriendAdd pos-rel padding-bottom-10px brs-8px bg-primary overflow-hidden">
+        <div className="AddFriendAdd pos-rel padding-bottom-10px brs-8px bg-primary box-shadow-1 overflow-hidden">
             <div className="pos-rel padding-top-100per">
                 <Link className="" to={`/profile/${id}`}>
                     <img
@@ -72,7 +72,7 @@ function AddFriendAdd({
             <div className="AddFriendAdd_mutual padding-y-6px padding-x-10px text-secondary ">
                 {mutual_friend_count ? (
                     <AddFriendListMutual
-                        friend_arr={mutual_friend_arr}
+                        mutual_friend_arr={mutual_friend_arr}
                         mutual_friend_count={mutual_friend_count}
                     />
                 ) : null}

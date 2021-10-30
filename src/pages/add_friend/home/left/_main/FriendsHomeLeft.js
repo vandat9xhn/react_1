@@ -6,7 +6,6 @@ import IconsProfile from '../../../../../_icons_svg/icons_profile/IconsProfile';
 import IconFriends from '../../../../../_icons_svg/icon_friends/IconFriends';
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 import IconFriend from '../../../../../_icons_svg/icon_friend/IconFriend';
-import IconSetting from '../../../../../_icons_svg/icon_setting/IconSetting';
 //
 import './FriendsHomeLeft.scss';
 
@@ -58,14 +57,6 @@ function FriendsHomeLeft(props) {
     //
     return (
         <div className="FriendsHomeLeft">
-            <div className="flex-between-center padding-x-16px padding-y-12px line-25px">
-                <h1 className="font-24px">Friends</h1>
-
-                <div>
-                    <IconSetting size_icon="20px" />
-                </div>
-            </div>
-
             <div className="padding-left-8px">
                 {FRIEND_TITLE_ARR.map((item, ix) => (
                     <NavLink
@@ -73,6 +64,7 @@ function FriendsHomeLeft(props) {
                         className="FriendsHomeLeft_item flex-between-center padding-x-8px padding-y-10px brs-6px color-inherit font-17px font-500 hv-bg-fb"
                         activeClassName="FriendsHomeLeft_item-active bg-fb-active"
                         to={`/friends/${item.link_to}`}
+                        exact
                     >
                         <div className="display-flex align-items-center">
                             <div className="FriendsHomeLeft_item_icon display-flex-center brs-50 bg-ccc">
