@@ -16,6 +16,8 @@ import ActionsAccountLog from '../log/ActionsAccountLog';
 import ActionsAccountNature from '../nature/ActionsAccountNature';
 //
 import './ActionsAccount.scss';
+import LinkToProfilePage from '../../../../link/to_profile_page/LinkToProfilePage';
+import HeaderAccountProfile from '../profile/HeaderAccountProfile';
 
 //
 ActionsAccount.propTypes = {
@@ -70,13 +72,10 @@ function ActionsAccount({ closeAccount }) {
         <div className="ActionsAccount">
             <div className={open_nature ? 'display-none' : ''}>
                 {user.id > 0 ? (
-                    <div
-                        className="ActionsAccount_profile hv-bg-blur"
-                        title="Profile"
-                        onClick={closeAccount}
-                    >
-                        <PictureName user={user} content="View your profile" />
-                    </div>
+                    <HeaderAccountProfile
+                        user={user}
+                        closeAccount={closeAccount}
+                    />
                 ) : null}
 
                 <div className="font-500">

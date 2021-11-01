@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 //
 import MouseEnterLeaveInfo from '../../../posts/common/mouse_enter_leave_info/_main/MouseEnterLeaveInfo';
 //
@@ -36,11 +37,13 @@ function AddFriendListMutual({ mutual_friend_arr, mutual_friend_count }) {
                             <ActionPreviewProfilePc
                                 user_id={item.id}
                                 title_action={
-                                    <img
-                                        className="AddFriendListMutual_item_img brs-50 object-fit-cover cursor-pointer"
-                                        src={item.picture}
-                                        alt=""
-                                    />
+                                    <Link to={`/profile/${item.id}`}>
+                                        <img
+                                            className="AddFriendListMutual_item_img brs-50 object-fit-cover cursor-pointer"
+                                            src={item.picture}
+                                            alt=""
+                                        />
+                                    </Link>
                                 }
                             />
                         </div>

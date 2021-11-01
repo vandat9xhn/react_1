@@ -3,6 +3,8 @@ import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../_context/ContextAPI';
+// 
+import { IS_MOBILE } from '../_constant/Constant';
 //
 import { Routes } from '../__routes/__main';
 import Auth from '../_auth/Auth';
@@ -14,7 +16,8 @@ CustomSwitch.propTypes = {};
 function CustomSwitch() {
     //
     const use_location = useLocation();
-    const { root_floor_url_arr } = useContext(context_api);
+    const { root_floor_url_arr, profile_friends_pathname } =
+        useContext(context_api);
 
     // //
     const [displayLocation, setDisplayLocation] = useState(use_location);
@@ -23,12 +26,41 @@ function CustomSwitch() {
     useEffect(() => {
         setDisplayLocation({
             ...use_location,
-            ...(root_floor_url_arr.current.length
-                ? { pathname: root_floor_url_arr.current[0] }
-                : {}),
+            pathname: getNewPathname(),
         });
-        // console.log(root_floor_url_arr.current, use_location);
     }, [use_location]);
+
+    // ----
+
+    //
+    function getNewPathname() {
+        // ---- SCREEN FLOOR HAS URL
+
+        if (root_floor_url_arr.current.length > 0) {
+            return root_floor_url_arr.current[0];
+        }
+
+        // -----
+
+        let new_pathname = use_location.pathname;
+
+        if (IS_MOBILE) {
+            return new_pathname;
+        }
+
+        // ----- PROFILE IN FRIENDS PAGES
+
+        if (
+            profile_friends_pathname.current &&
+            /^\/profile\/\d+/.test(new_pathname)
+        ) {
+            new_pathname = profile_friends_pathname.current;
+        } else {
+            profile_friends_pathname.current = '';
+        }
+
+        return new_pathname;
+    }
 
     //
     return (

@@ -1,0 +1,20 @@
+.DivWidthLoading_contain{
+    transition: width 100ms ease-in;
+}
+.DivWidthLoading_contain-loading {
+    animation: div-loading 750ms ease-in;
+}
+.DivWidthLoading_contain-done {
+    width: 0%;
+}
+
+//
+@keyframes div-loading {
+    0% {
+        width: 100%;
+    }
+
+    80% {
+        width: 0%;
+    }
+}

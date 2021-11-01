@@ -1,6 +1,4 @@
 import { useEffect, useRef } from 'react';
-//
-import { html_elm } from '../_initial/htm_elm/html_elm';
 
 //
 export function useObserverGetData({
@@ -31,7 +29,7 @@ export function useObserverGetData({
     //
     function intersectShowMore({
         fake_elm_end,
-        root = html_elm || document,
+        root = document,
         rootMargin = '0px 0px',
     }) {
         const observe = new IntersectionObserver(

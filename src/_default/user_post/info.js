@@ -47,6 +47,9 @@ const default_action_case_arr = [
 
 //
 export const default_fb_profile_info_r = (user_id, max_friend_arr = 8) => {
+    //
+    const is_user = user_id == default_define_user.id;
+
     const mutual_friend_count = getRandomBool() ? getRandomNumber(0, 50) : 0;
     const friend_count = getRandomBool()
         ? getRandomNumber(mutual_friend_count, mutual_friend_count + 200)
@@ -71,16 +74,15 @@ export const default_fb_profile_info_r = (user_id, max_friend_arr = 8) => {
           )
         : [];
 
-    const action_case_arr =
-        user_id == default_define_user.id
-            ? default_action_case_arr[0]
-            : getRandomFromArr(default_action_case_arr.slice(1));
+    const action_case_arr = is_user
+        ? default_action_case_arr[0]
+        : getRandomFromArr(default_action_case_arr.slice(1));
 
     const sent_request =
         action_case_arr[0].name == default_action_case_obj.reply_request;
 
     return {
-        id: getRandomId(),
+        id: user_id && user_id > 0 ? user_id : getRandomId(),
         first_name: getRandomName(),
         last_name: getRandomName(),
         picture: getRandomVidPic(),

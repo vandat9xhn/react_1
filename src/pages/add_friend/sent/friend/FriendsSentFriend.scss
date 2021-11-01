@@ -1,0 +1,24 @@
+.FriendsSentFriend_btn {
+    width: 150px;
+}
+
+// ----
+
+.device-mobile {
+    .FriendsSentFriend {
+        .AddFriendMiniLayout {
+            padding: 8px;
+        }
+    }
+
+    .FriendsSentFriend_contain {
+        padding: 0;
+    }
+
+    .FriendsSentFriend_btn {
+        width: auto;
+        .AddFriendBtn {
+            padding: 0 5px;
+        }
+    }
+}

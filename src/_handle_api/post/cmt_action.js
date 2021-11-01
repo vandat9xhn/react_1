@@ -1,3 +1,5 @@
+import { getRandomBool } from '../../_default/_common/default_bool';
+
 //
 const cmt_action_obj = {
     edit: {
@@ -30,9 +32,9 @@ export function handle_API_FbPostCmtAction_L({
 }) {
     return new Promise((res) => {
         setTimeout(() => {
-            if (is_commenter) {
+            if (is_commenter || getRandomBool()) {
                 res([[cmt_action_obj.edit, cmt_action_obj.delete]]);
-            } else if (is_poster) {
+            } else if (is_poster || getRandomBool()) {
                 res([[cmt_action_obj.delete, cmt_action_obj.hide]]);
             } else {
                 res([[cmt_action_obj.hide, cmt_action_obj.report]]);

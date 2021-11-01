@@ -1,5 +1,7 @@
 import { useRef, useEffect } from 'react';
 //
+import { IS_MOBILE } from '../../_constant/Constant';
+// 
 import { initial_profile } from '../../_initial/profile/InitialProfile';
 //
 import { handle_API_ProfileInfo_L } from '../../_handle_api/profile/info';
@@ -47,7 +49,7 @@ export function useFriendsList({
         ref_fake_elm.current &&
             observerShowMore({
                 fake_elm_end: ref_fake_elm.current,
-                root: ref_root.current,
+                root: IS_MOBILE ? null : ref_root.current,
                 rootMargin: rootMargin,
                 way_scroll: 'to_bottom',
                 margin: margin,

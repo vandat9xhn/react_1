@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
@@ -10,7 +9,7 @@ import { useMakeBodyHidden } from '../../../../_hooks/useMakeBodyHidden';
 import ScreenBlurHead from '../../../../component/_screen/components/part/head/ScreenBlurHead';
 import ScreenBlurShowMore from '../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
 //
-import AddFriendMiniSuggest from '../../../../component/add_friend_mini/suggest/_main/AddFriendMiniSuggest';
+import FriendsSentFriend from '../friend/FriendsSentFriend';
 //
 import './FriendsSent.scss';
 
@@ -18,10 +17,7 @@ import './FriendsSent.scss';
 FriendsSent.propTypes = {};
 
 //
-function FriendsSent(props) {
-    //
-    const use_history = useHistory();
-
+function FriendsSent({ showProfile }) {
     //
     const { closeScreenFloor } = useContext(context_api);
 
@@ -29,28 +25,17 @@ function FriendsSent(props) {
     useMakeBodyHidden();
 
     //
-    const {
-        // ref_root,
-        // ref_fake_elm,
-        data_state,
-        getData_API,
+    const { data_state, getData_API, removeFriendRequest } = useFriendsSuggest({
+        value_request: true,
+    });
 
-        addFriendRequest,
-        removeFriendRequest,
-    } = useFriendsSuggest({ value_request: true });
-
-    const { data_arr, count, is_fetching, has_fetched } = data_state;
+    const { data_arr, count, is_fetching } = data_state;
 
     // ----
 
     //
     function handleShowMore() {
         getData_API();
-    }
-
-    //
-    function showProfile(profile_ix) {
-        use_history.push(`/profile/${data_arr[profile_ix].id}`);
     }
 
     //
@@ -65,20 +50,19 @@ function FriendsSent(props) {
                     />
                 </div>
 
-                <div className="padding-x-8px">
-                    <div className="margin-y-5px font-600">
+                <div className="FriendsSent_body padding-x-8px">
+                    <div className="FriendsSent_count padding-5px font-600">
                         {count} sent request{count >= 2 ? 's' : ''}
                     </div>
 
                     <div>
                         {data_arr.map((profile, ix) => (
                             <div key={profile.id}>
-                                <AddFriendMiniSuggest
+                                <FriendsSentFriend
                                     profile={profile}
-                                    sent={profile.sent}
-                                    addFriend={() => addFriendRequest(ix)}
-                                    removeFriend={() => removeFriendRequest(ix)}
-                                    showProfile={() => showProfile(ix)}
+                                    has_cancelled={!profile.sent}
+                                    handleCancel={() => removeFriendRequest(ix)}
+                                    showProfile={showProfile}
                                 />
                             </div>
                         ))}

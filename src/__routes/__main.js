@@ -3,11 +3,13 @@ import { IS_MOBILE } from '../_constant/Constant';
 
 //
 import { account_route_arr } from './_Account';
-import { city_route_arr } from './_City';
+import { profile_route_arr } from './_ProfilePost';
+import { friend_route_arr } from './_Friends';
+import { story_route_arr } from './_story';
+
 import { fashion_route_arr } from './_Fashion';
 import { phone_route_arr } from './_Phone';
-import { profile_route_arr } from './_ProfilePost';
-import { story_route_arr } from './_story';
+import { city_route_arr } from './_City';
 
 //
 const Home = React.lazy(() => import('../pages/home/_main/Home'));
@@ -20,19 +22,21 @@ const ChatMobile = React.lazy(() =>
 
 //
 export const Routes = [
-    // {
-    //     path: '/home',
-    //     component: Home,
-    //     exact: true,
-    //     reset_position: true,
-    // },
+    {
+        path: '/home',
+        component: Home,
+        exact: true,
+        reset_position: true,
+    },
 
-    // ...account_route_arr,
+    ...account_route_arr,
     ...profile_route_arr,
-    // ...phone_route_arr,
-    // ...city_route_arr,
-    // ...fashion_route_arr,
-    // ...story_route_arr,
+    ...friend_route_arr,
+    ...story_route_arr,
+
+    ...phone_route_arr,
+    ...city_route_arr,
+    ...fashion_route_arr,
 
     {
         path: '/learn-html',
@@ -40,14 +44,14 @@ export const Routes = [
         exact: true,
         reset_position: true,
     },
-    // ...(IS_MOBILE
-    //     ? [
-    //           {
-    //               path: '/chat/:id',
-    //               component: ChatMobile,
-    //               exact: true,
-    //               reset_position: true,
-    //           },
-    //       ]
-    //     : []),
+    ...(IS_MOBILE
+        ? [
+              {
+                  path: '/chat/:id',
+                  component: ChatMobile,
+                  exact: true,
+                  reset_position: true,
+              },
+          ]
+        : []),
 ];

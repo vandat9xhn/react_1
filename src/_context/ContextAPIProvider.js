@@ -20,6 +20,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
 
     //
     const root_floor_url_arr = useRef([]);
+    const profile_friends_pathname = useRef('');
 
     // ----------
 
@@ -87,7 +88,9 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
                 ...rest_props,
                 auth_class: user.id ? '' : 'display-none',
                 user: user,
+
                 root_floor_url_arr: root_floor_url_arr,
+                profile_friends_pathname: profile_friends_pathname,
 
                 setDataUser: setDataUser,
                 forceUpdateApp: forceUpdateApp,

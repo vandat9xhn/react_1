@@ -43,7 +43,7 @@ function FriendsSuggestLeft({ showProfile }) {
                                 sent={profile.sent}
                                 addFriend={() => addFriendRequest(ix)}
                                 removeFriend={() => removeFriendRequest(ix)}
-                                showProfile={() => showProfile(ix)}
+                                showProfile={() => showProfile(profile.id)}
                             />
                         </div>
                     ))}

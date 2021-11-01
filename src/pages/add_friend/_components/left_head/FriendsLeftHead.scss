@@ -7,3 +7,25 @@
 .FriendsLeftHead_title {
     line-height: 26px;
 }
+
+// -----
+
+.device-mobile{
+    .FriendsLeftHead {
+        padding: 8px;
+        border-bottom: 1px solid var(--md-bg-blur);
+    }
+
+    .FriendsLeftHead_right{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+
+        width: 100%;
+    }
+    // .
+    .FriendsLeftHead_title {
+        font-size: 16px;
+        line-height: unset;
+    }
+}

@@ -65,7 +65,7 @@ function AddFriendMini({
                         </div>
 
                         {has_requested || mutual_friend_count ? (
-                            <div className="AddFriendMini_mutual margin-y-5px text-third font-12px">
+                            <div className="AddFriendMini_mutual margin-y-5px text-third font-13px">
                                 {has_requested ? (
                                     title_request
                                 ) : (

@@ -39,6 +39,10 @@ function FriendsHomeSuggest(props) {
                                 <AddFriendSuggest
                                     profile={profile}
                                     sent={profile.sent}
+                                    link_to={{
+                                        pathname: `/friends/suggestions`,
+                                        state: { profile_id: profile.id },
+                                    }}
                                     addFriend={() => addFriendRequest(ix)}
                                     removeFriend={() => removeFriendRequest(ix)}
                                 />

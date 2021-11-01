@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // 
 import { useBool } from '../../../../_hooks/useBool';
+// 
+import './AddFriendMiniLayout.scss';
 
 //
 AddFriendMiniLayout.propTypes = {};
@@ -39,7 +41,7 @@ function AddFriendMiniLayout({ picture, children, showProfile }) {
 
             <div className="display-flex">
                 <img
-                    className="flex-shrink-0 margin-right-12px margin-y-8px brs-50 object-fit-cover"
+                    className="AddFriendMiniLayout_pic flex-shrink-0 margin-right-12px margin-y-8px brs-50 object-fit-cover"
                     src={picture}
                     alt=""
                     width="60"

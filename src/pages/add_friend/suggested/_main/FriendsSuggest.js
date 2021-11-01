@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
-import FriendsLayOut from '../../_components/layout/FriendsLayOut';
+import { useFriendsShowProfile } from '../../../../_hooks/friends/useFriendsShowProfile';
+//
+import FriendsLayOut from '../../_components/layout/_main/FriendsLayOut';
 import FriendsLeftHead from '../../_components/left_head/FriendsLeftHead';
 import FriendsSuggestLeft from '../left/_main/FriendsSuggestLeft';
+import FriendsShowProfile from '../../_components/profile/_main/FriendsShowProfile';
 
 //
 FriendsSuggest.propTypes = {};
@@ -11,9 +14,14 @@ FriendsSuggest.propTypes = {};
 //
 function FriendsSuggest(props) {
     //
-    function showProfile(profile_id) {
-        console.log(profile_id);
-    }
+    const { showProfile } = useFriendsShowProfile({
+        friends_pathname: '/friends/suggestions',
+    });
+
+    //
+    useEffect(() => {
+        document.title = 'Suggestions';
+    }, []);
 
     //
     return (
@@ -22,7 +30,7 @@ function FriendsSuggest(props) {
             ComponentLeftContain={
                 <FriendsSuggestLeft showProfile={showProfile} />
             }
-            ComponentRight={<div></div>}
+            ComponentRight={<FriendsShowProfile />}
         />
     );
 }

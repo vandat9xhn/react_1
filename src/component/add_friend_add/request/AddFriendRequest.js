@@ -7,7 +7,14 @@ import AddFriendAdd from '../_main/AddFriendAdd';
 AddFriendRequest.propTypes = {};
 
 //
-function AddFriendRequest({ profile, accepted, confirmFriend, deleteFriend }) {
+function AddFriendRequest({
+    profile,
+    accepted,
+    link_to,
+    
+    confirmFriend,
+    deleteFriend,
+}) {
     //
     function handleSecondBtn() {
         !accepted && deleteFriend();
@@ -17,6 +24,7 @@ function AddFriendRequest({ profile, accepted, confirmFriend, deleteFriend }) {
     return (
         <AddFriendAdd
             profile={profile}
+            link_to={link_to}
             //
             has_first_btn={!accepted}
             first_btn_title={'Confirm'}

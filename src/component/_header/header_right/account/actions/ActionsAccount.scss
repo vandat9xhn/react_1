@@ -12,37 +12,16 @@
         stroke: var(--md-color);
     }
 }
-//
+
 .ActionsAccount_profile {
-    padding: 0;
     border-bottom: 2px solid var(--bg-blur);
+}
 
-    .PictureName{
-        a{
-            &:hover{
-                color: inherit;
-            }
-        }
-    }
+// ------
 
-    .PictureNameCommon {
-        padding: 8px;
-    }
-
-    .PictureNameCommon__pic {
-        width: 60px;
-        height: 60px;
-    }
-
-    .PictureNameCommon__name-content {
-        padding-left: 12px;
-    }
-    // .
-    .PictureNameCommon__name {
-        font-size: 17px;
-    }
-    // .
-    .PictureNameCommon__content {
-        color: var(--md-color-secondary);
+.device-mobile {
+    .ActionsAccount_profile_pic {
+        width: 40px;
+        height: 40px;
     }
 }

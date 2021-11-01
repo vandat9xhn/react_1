@@ -19,6 +19,7 @@ AddFriendAdd.propTypes = {
 //
 function AddFriendAdd({
     profile,
+    link_to,
 
     has_first_btn,
     first_btn_title,
@@ -46,7 +47,7 @@ function AddFriendAdd({
     return (
         <div className="AddFriendAdd pos-rel padding-bottom-10px brs-8px bg-primary box-shadow-1 overflow-hidden">
             <div className="pos-rel padding-top-100per">
-                <Link className="" to={`/profile/${id}`}>
+                <Link to={link_to}>
                     <img
                         className="pos-abs-0 wh-100 object-fit-cover"
                         src={picture}
@@ -59,10 +60,7 @@ function AddFriendAdd({
                 <ActionPreviewProfilePc
                     user_id={id}
                     title_action={
-                        <Link
-                            to={`/profile/${id}`}
-                            className="color-inherit font-500"
-                        >
+                        <Link to={link_to} className="color-inherit font-500">
                             {first_name} {last_name}
                         </Link>
                     }

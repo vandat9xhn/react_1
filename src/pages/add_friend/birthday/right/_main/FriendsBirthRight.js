@@ -59,7 +59,7 @@ FriendsBirthRight.propTypes = {};
 function FriendsBirthRight(props) {
     //
     return (
-        <div className="FriendsBirthRight">
+        <div className="FriendsBirthRight padding-20px">
             {birth_arr.map((item, ix) => (
                 <div
                     key={item.month_name}

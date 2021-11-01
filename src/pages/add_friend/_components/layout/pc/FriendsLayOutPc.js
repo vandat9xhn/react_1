@@ -1,22 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import './FriendsLayOut.scss';
+import './FriendsLayOutPc.scss';
 
 //
-FriendsLayOut.propTypes = {};
+FriendsLayOutPc.propTypes = {};
 
 //
-function FriendsLayOut({
+function FriendsLayOutPc({
     ComponentLeftHead,
     ComponentLeftContain,
     ComponentRight,
 }) {
     //
     return (
-        <div className="FriendsLayOut">
-            <div className="FriendsLayOut_row display-flex">
-                <div className="FriendsLayOut_left flex-shrink-0 h-100per bg-primary">
+        <div className="FriendsLayOutPc">
+            <div className="FriendsLayOutPc_row display-flex">
+                <div className="FriendsLayOutPc_left flex-shrink-0 h-100per bg-primary">
                     <div className="display-flex flex-col wh-100">
                         <div>{ComponentLeftHead}</div>
 
@@ -26,7 +26,7 @@ function FriendsLayOut({
                     </div>
                 </div>
 
-                <div className="FriendsLayOut_right flex-grow-1 padding-20px">
+                <div className="FriendsLayOutPc_right flex-grow-1">
                     {ComponentRight}
                 </div>
             </div>
@@ -34,4 +34,4 @@ function FriendsLayOut({
     );
 }
 
-export default FriendsLayOut;
+export default FriendsLayOutPc;

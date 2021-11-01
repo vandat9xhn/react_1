@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
 //
+import { IS_MOBILE } from '../../../../_constant/Constant';
+// 
 import VirtualScroll from '../../../../component/virtual_scroll/VirtualScroll';
 //
 import ProfileInfoActions from '../actions/_main/ProfileInfoActions';
 import ProfileInfoBio from '../bio/_main/ProfileInfoBio';
 import ProfileInfoPicture from '../picture/_main/ProfileInfoPicture';
-//
-import './ProfileInfo.scss';
 import ProfileInfoCover from '../cover/_main/ProfileInfoCover';
 import ProfileInfoName from '../name/ProfileInfoName';
 import ProfileInfoFriends from '../friends/_main/ProfileInfoFriends';
-import { IS_MOBILE } from '../../../../_constant/Constant';
+//
+import './ProfileInfo.scss';
 
 //
 ProfileInfo.propTypes = {

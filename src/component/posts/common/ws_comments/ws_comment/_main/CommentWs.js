@@ -190,8 +190,8 @@ function CommentWs({ comment, is_poster }) {
     //
     function handle_API_Action_L() {
         return handle_API_FbPostCmtAction_L({
-            // is_commenter: user.id == c_user.id,
-            is_commenter: true,
+            is_commenter: user.id == c_user.id,
+            // is_commenter: true,
             is_poster: is_poster,
             params: {
                 type: 'comment',

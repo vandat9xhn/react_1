@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+// 
+import './FriendsBirthMonth.scss';
 
 //
 FriendsBirthMonth.propTypes = {};
@@ -11,7 +13,7 @@ function FriendsBirthMonth({ month_name, friend_arr, friend_count }) {
     return (
         <div className="FriendsBirthMonth padding-16px brs-8px bg-primary box-shadow-1">
             <div className="">
-                <div className="margin-y-5px line-16px font-17px font-600">
+                <div className="FriendsBirthMonth_title margin-y-5px line-16px font-17px font-600">
                     {month_name}
                 </div>
 
@@ -39,7 +41,7 @@ function FriendsBirthMonth({ month_name, friend_arr, friend_count }) {
                 </div>
             </div>
 
-            <div className="display-flex flex-wrap margin-top-15px">
+            <div className="FriendsBirthMonth_foot display-flex flex-wrap margin-top-15px">
                 {friend_arr.map((item, ix) => (
                     <Link
                         key={item.id}
@@ -47,7 +49,7 @@ function FriendsBirthMonth({ month_name, friend_arr, friend_count }) {
                         to={`/profile/${item.id}`}
                     >
                         <img
-                            className="brs-50 object-fit-cover"
+                            className="FriendsBirthMonth_pic brs-50 object-fit-cover"
                             src={item.picture}
                             alt=""
                             width="60"

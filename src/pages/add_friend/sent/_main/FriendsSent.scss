@@ -1,4 +1,28 @@
 .FriendsSent{
-    width: 600px;
+    width: 550px;
+    max-width: 100%;
     padding: 5rem 0;
+}
+
+// ----
+
+.device-mobile{
+    .FriendsSent{
+        width: 100%;
+        padding: 0;
+    }
+    
+    .FriendsSent_contain{
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .FriendsSent_body{
+        padding: 0;
+    }
+    // .
+    .FriendsSent_count{
+        padding: 10px;
+    }
 }

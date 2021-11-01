@@ -1,13 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
 //
-import FriendsLayOut from '../../_components/layout/FriendsLayOut';
+import { openScreenWithElm } from '../../../../component/_screen/type/with_elm/ScreenWithElm';
+//
+import { useFriendsShowProfile } from '../../../../_hooks/friends/useFriendsShowProfile';
+//
+import FriendsLayOut from '../../_components/layout/_main/FriendsLayOut';
 import FriendsLeftHead from '../../_components/left_head/FriendsLeftHead';
 import FriendsRequestLeft from '../left/_main/FriendsRequestLeft';
-import { openScreenWithElm } from '../../../../component/_screen/type/with_elm/ScreenWithElm';
 import FriendsSent from '../../sent/_main/FriendsSent';
+import FriendsShowProfile from '../../_components/profile/_main/FriendsShowProfile';
 
 //
 FriendsRequest.propTypes = {};
@@ -18,15 +22,22 @@ function FriendsRequest(props) {
     const { openScreenFloor } = useContext(context_api);
 
     //
-    function showProfile(profile_id) {
-        console.log(profile_id);
-    }
+    const { showProfile } = useFriendsShowProfile({
+        friends_pathname: '/friends/requests',
+    });
+
+    //
+    useEffect(() => {
+        document.title = 'Requests';
+    }, []);
+
+    // ------
 
     //
     function openSentRequest() {
         openScreenWithElm({
             openScreenFloor: openScreenFloor,
-            elm: <FriendsSent />,
+            elm: <FriendsSent showProfile={showProfile} />,
         });
     }
 
@@ -41,7 +52,7 @@ function FriendsRequest(props) {
                         openSentRequest={openSentRequest}
                     />
                 }
-                ComponentRight={<div></div>}
+                ComponentRight={<FriendsShowProfile />}
             />
         </div>
     );

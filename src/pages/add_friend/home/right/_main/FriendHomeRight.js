@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import FriendsHomeSuggest from '../list_suggest/FriendsHomeSuggest';
 import FriendsHomeRequest from '../list_request/FriendsHomeRequest';
+//
+import './FriendHomeRight.scss';
 
 //
 FriendHomeRight.propTypes = {};
@@ -11,7 +13,7 @@ FriendHomeRight.propTypes = {};
 function FriendHomeRight(props) {
     //
     return (
-        <div className="FriendHomeRight padding-x-16px">
+        <div className="FriendHomeRight">
             <div>
                 <FriendsHomeRequest />
             </div>

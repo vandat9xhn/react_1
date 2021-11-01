@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import update from 'immutability-helper';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../_constant/Constant';
-// 
+//
 import { handle_API_ProfileInfo_R } from '../../../_handle_api/profile/info';
-// 
+//
 import { initial_profile } from '../../../_initial/profile/InitialProfile';
-// 
+//
 import { useRouteLoaded } from '../../../_hooks/useRouteLoaded';
 //
 import RouteLoaded from '../../../component/_route/route_loaded/RouteLoaded';
@@ -26,9 +26,10 @@ import './Profile.scss';
 function Profile(props) {
     //
     const use_history = useHistory();
+    const { id } = useParams();
 
     //
-    const { id } = props.match.params;
+    // const { id } = props.match.params;
 
     //
     const [profile_state, setProfileState] = useState({

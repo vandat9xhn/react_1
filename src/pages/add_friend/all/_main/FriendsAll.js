@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
-import FriendsLayOut from '../../_components/layout/FriendsLayOut';
+import { useFriendsShowProfile } from '../../../../_hooks/friends/useFriendsShowProfile';
+//
+import FriendsLayOut from '../../_components/layout/_main/FriendsLayOut';
 import FriendsLeftHead from '../../_components/left_head/FriendsLeftHead';
 import FriendsAllLeft from '../left/_main/FriendsAllLeft';
+import FriendsShowProfile from '../../_components/profile/_main/FriendsShowProfile';
 
 //
 FriendsAll.propTypes = {};
@@ -11,16 +14,21 @@ FriendsAll.propTypes = {};
 //
 function FriendsAll(props) {
     //
-    function showProfile(profile_ix) {
-        console.log(profile_ix);
-    }
+    const { showProfile } = useFriendsShowProfile({
+        friends_pathname: '/friends/all',
+    });
+
+    //
+    useEffect(() => {
+        document.title = 'All friends';
+    }, []);
 
     //
     return (
         <FriendsLayOut
             ComponentLeftHead={<FriendsLeftHead title="All Friends" />}
             ComponentLeftContain={<FriendsAllLeft showProfile={showProfile} />}
-            ComponentRight={<div></div>}
+            ComponentRight={<FriendsShowProfile />}
         />
     );
 }

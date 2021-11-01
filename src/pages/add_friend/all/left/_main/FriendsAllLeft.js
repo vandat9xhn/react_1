@@ -65,14 +65,12 @@ function FriendsAllLeft({ showProfile }) {
                 ref={ref_root}
                 className="max-h-100per overflow-y-auto scroll-thin"
             >
-                <div className="padding-right-8px">
-                    <div className="padding-top-5px padding-bottom-16px padding-x-8px border-bottom-blur">
-                        <PostInputSearch
-                            value={value}
-                            placeholder={'Search Friends'}
-                            changeSearch={changeSearch}
-                        />
-                    </div>
+                <div className="FriendsAllLeft_search margin-right-8px padding-top-5px padding-bottom-16px padding-x-8px border-bottom-blur">
+                    <PostInputSearch
+                        value={value}
+                        placeholder={'Search Friends'}
+                        changeSearch={changeSearch}
+                    />
                 </div>
 
                 <div className="padding-x-8px padding-top-9px padding-bottom-5px font-17px font-600">
@@ -90,7 +88,7 @@ function FriendsAllLeft({ showProfile }) {
                                 // unFollowFriend={() => unFollowFriend(ix)}
                                 // blockFriend={() => blockFriend(ix)}
                                 // deleteFriend={() => deleteFriend(ix)}
-                                showProfile={() => showProfile(ix)}
+                                showProfile={() => showProfile(profile.id)}
                             />
                         </div>
                     ))}

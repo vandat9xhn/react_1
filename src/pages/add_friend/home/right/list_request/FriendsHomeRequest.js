@@ -41,6 +41,10 @@ function FriendsHomeRequest(props) {
                             <AddFriendRequest
                                 profile={profile}
                                 accepted={profile.accepted}
+                                link_to={{
+                                    pathname: `/friends/requests`,
+                                    state: { profile_id: profile.id },
+                                }}
                                 confirmFriend={() => confirmFriendRequest(ix)}
                                 deleteFriend={() => deleteFriendRequest(ix)}
                             />

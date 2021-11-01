@@ -26,44 +26,40 @@ function FriendsRequestLeft({ showProfile, openSentRequest }) {
 
     //
     return (
-        <div className="FriendsRequestLeft">
-            <div className="padding-left-8px">
-                <div ref={ref_root} className="overflow-y-auto">
-                    <div className="padding-x-8px padding-y-5px font-17px font-600">
-                        Friend requests
-                    </div>
-
-                    <div
-                        className="padding-x-8px padding-bottom-5px text-blue font-13px font-400 cursor-pointer"
-                        onClick={openSentRequest}
-                    >
-                        View sent request
-                    </div>
-
-                    <div>
-                        {data_arr.map((profile, ix) => (
-                            <div key={profile.id}>
-                                <AddFriendMiniRequest
-                                    profile={profile}
-                                    accepted={profile.accepted}
-                                    confirmFriend={() =>
-                                        confirmFriendRequest(ix)
-                                    }
-                                    deleteFriend={() => deleteFriendRequest(ix)}
-                                    showProfile={() => showProfile(ix)}
-                                />
-                            </div>
-                        ))}
-                    </div>
-
-                    <div ref={ref_fake_elm} className="padding-1px"></div>
-
-                    {has_fetched && data_arr.length == 0 ? (
-                        <div className="padding-x-8px padding-y-5px font-13px text-third">
-                            No fiend requests
-                        </div>
-                    ) : null}
+        <div className="FriendsRequestLeft padding-left-8px">
+            <div ref={ref_root} className="overflow-y-auto">
+                <div className="padding-x-8px padding-y-5px font-17px font-600">
+                    Friend requests
                 </div>
+
+                <div
+                    className="padding-x-8px padding-bottom-5px text-blue font-13px font-400 cursor-pointer"
+                    onClick={openSentRequest}
+                >
+                    View sent request
+                </div>
+
+                <div>
+                    {data_arr.map((profile, ix) => (
+                        <div key={profile.id}>
+                            <AddFriendMiniRequest
+                                profile={profile}
+                                accepted={profile.accepted}
+                                confirmFriend={() => confirmFriendRequest(ix)}
+                                deleteFriend={() => deleteFriendRequest(ix)}
+                                showProfile={() => showProfile(profile.id)}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                <div ref={ref_fake_elm} className="padding-1px"></div>
+
+                {has_fetched && data_arr.length == 0 ? (
+                    <div className="padding-x-8px padding-y-5px font-13px text-third">
+                        No fiend requests
+                    </div>
+                ) : null}
             </div>
         </div>
     );

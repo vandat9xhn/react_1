@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
 import IconsProfile from '../../../../../_icons_svg/icons_profile/IconsProfile';
 import IconFriends from '../../../../../_icons_svg/icon_friends/IconFriends';
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
@@ -11,12 +13,16 @@ import './FriendsHomeLeft.scss';
 
 //
 const FRIEND_TITLE_ARR = [
-    {
-        Icon: <IconFriends />,
-        title: 'Home',
-        link_to: '',
-        has_arrow: false,
-    },
+    ...(IS_MOBILE
+        ? []
+        : [
+              {
+                  Icon: <IconFriends />,
+                  title: 'Home',
+                  link_to: '',
+                  has_arrow: false,
+              },
+          ]),
     {
         Icon: <IconFriend is_request={true} />,
         title: 'Friend requests',
@@ -56,32 +62,30 @@ FriendsHomeLeft.propTypes = {};
 function FriendsHomeLeft(props) {
     //
     return (
-        <div className="FriendsHomeLeft">
-            <div className="padding-left-8px">
-                {FRIEND_TITLE_ARR.map((item, ix) => (
-                    <NavLink
-                        key={ix}
-                        className="FriendsHomeLeft_item flex-between-center padding-x-8px padding-y-10px brs-6px color-inherit font-17px font-500 hv-bg-fb"
-                        activeClassName="FriendsHomeLeft_item-active bg-fb-active"
-                        to={`/friends/${item.link_to}`}
-                        exact
-                    >
-                        <div className="display-flex align-items-center">
-                            <div className="FriendsHomeLeft_item_icon display-flex-center brs-50 bg-ccc">
-                                {item.Icon}
-                            </div>
-
-                            <div className="margin-left-12px">{item.title}</div>
+        <div className="FriendsHomeLeft padding-left-8px">
+            {FRIEND_TITLE_ARR.map((item, ix) => (
+                <NavLink
+                    key={ix}
+                    className="FriendsHomeLeft_item flex-between-center padding-x-8px padding-y-10px brs-6px color-inherit font-17px font-500 hv-bg-fb"
+                    activeClassName="FriendsHomeLeft_item-active bg-fb-active"
+                    to={`/friends/${item.link_to}`}
+                    exact
+                >
+                    <div className="display-flex align-items-center">
+                        <div className="FriendsHomeLeft_item_icon btn-icon-36px bg-ccc">
+                            {item.Icon}
                         </div>
 
-                        <div className="text-third">
-                            {item.has_arrow ? (
-                                <IconsArrow x={200} size_icon="18px" />
-                            ) : null}
-                        </div>
-                    </NavLink>
-                ))}
-            </div>
+                        <div className="margin-left-12px">{item.title}</div>
+                    </div>
+
+                    <div className="text-third">
+                        {item.has_arrow ? (
+                            <IconsArrow x={200} size_icon="18px" />
+                        ) : null}
+                    </div>
+                </NavLink>
+            ))}
         </div>
     );
 }
