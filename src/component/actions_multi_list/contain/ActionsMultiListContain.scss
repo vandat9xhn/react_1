@@ -1,3 +1,7 @@
-.ActionsMultiListContain_separate{
+.ActionsMultiListContain_separate {
     height: 1px;
+}
+
+.ActionsMultiListContain_div_loading {
+    z-index: calc(var(--z-index-lv5) + 100);
 }

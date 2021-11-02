@@ -269,7 +269,7 @@ function FashionBuy(props) {
             <BuyFetching is_fetching={true} />
         );
 
-        use_history.push('/fashion/personal/bill/buying')
+        use_history.push('/fashion/user/purchase')
     }
 
     //

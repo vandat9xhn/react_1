@@ -179,6 +179,11 @@ function HeaderMessage() {
     }
 
     //
+    function handleAction(action_name = '') {
+        console.log(action_name);
+    }
+
+    //
     return (
         <CloseDiv makeDivHidden={closeZoom}>
             <div
@@ -218,8 +223,9 @@ function HeaderMessage() {
                             is_fetching={is_fetching}
                             //
                             closeZoom={closeZoom}
-                            handleClickZoomItem={handleClickZoomItem}
                             getMoreZoom={getData_API_Zoom}
+                            handleClickZoomItem={handleClickZoomItem}
+                            handleAction={handleAction}
                         />
                     </div>
                 </div>

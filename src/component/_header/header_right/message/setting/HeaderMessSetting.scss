@@ -1,0 +1,22 @@
+.HeaderMessSetting {
+    width: 345px;
+    max-width: 100%;
+}
+
+.HeaderMessSetting_separate {
+    margin: 5px 8px;
+    height: 1px;
+    background-color: var(--md-bg-blur);
+}
+
+.HeaderMessSetting_item {
+    padding: 8px;
+    margin: 0 8px;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--md-bg-hover);
+    }
+}

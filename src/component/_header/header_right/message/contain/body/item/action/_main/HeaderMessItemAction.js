@@ -6,9 +6,9 @@ import { observerOverflow } from '../../../../../../../../../_some_function/obse
 import { handle_API_FbHeaderMessAction_L } from '../../../../../../../../../_handle_api/message/header_action';
 //
 import { useActionsMultiList } from '../../../../../../../../../_hooks/useActionsMultiList';
-// 
+//
 import IconThreeDot from '../../../../../../../../../_icons_svg/icon_three_dot/IconThreeDot';
-// 
+//
 import Actions from '../../../../../../../../actions/_main/Actions';
 import ActionsMultiListContain from '../../../../../../../../actions_multi_list/contain/ActionsMultiListContain';
 //
@@ -35,8 +35,6 @@ function HeaderMessItemAction({
         handleClose,
         callbackOpen,
         callbackClose,
-
-        onAction,
     } = useActionsMultiList({
         handle_API_L: () =>
             handle_API_FbHeaderMessAction_L({ room_id: room_id }),
@@ -93,7 +91,8 @@ function HeaderMessItemAction({
                 is_fetching={is_fetching}
                 // class_separate={class_separate}
                 //
-                handleAction={onAction}
+                handleClose={handleClose}
+                handleAction={handleAction}
             />
         </Actions>
     );

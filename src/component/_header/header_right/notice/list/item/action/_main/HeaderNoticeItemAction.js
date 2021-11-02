@@ -35,8 +35,6 @@ function HeaderNoticeItemAction({
         handleClose,
         callbackOpen,
         callbackClose,
-
-        onAction,
     } = useActionsMultiList({
         handle_API_L: () =>
             handle_API_FbNoticeAction_L({ notice_id: notice_id }),
@@ -93,7 +91,8 @@ function HeaderNoticeItemAction({
                 is_fetching={is_fetching}
                 // class_separate={class_separate}
                 //
-                handleAction={onAction}
+                handleClose={handleClose}
+                handleAction={handleAction}
             />
         </Actions>
     );

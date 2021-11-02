@@ -5,6 +5,7 @@ import ScreenBlurShowMore from '../../../../../_screen/components/part/foot/Scre
 //
 import MessageFriendHead from '../head/_main/HeaderMessHead';
 import HeaderMessItem from '../body/item/_main/HeaderMessItem';
+import HeaderMessTitle from '../title/HeaderMessTitle';
 //
 import './HeaderMessContain.scss';
 
@@ -16,21 +17,24 @@ function HeaderMessContain({
     zooms,
     count,
     is_fetching,
-    //
-    handleClickZoomItem,
+
     closeZoom,
     getMoreZoom,
+    handleClickZoomItem,
+    handleAction,
 }) {
     //
     const ref_scroll_elm = useRef(null);
-
+    
     //
     return (
         <div
             ref={ref_scroll_elm}
             className="RightHeader_hidden_contain header_hidden_contain"
         >
-            <h2 className="padding-8px margin-0">Messages</h2>
+            <div>
+                <HeaderMessTitle />
+            </div>
 
             <div className="HeaderMessContain_friend">
                 <MessageFriendHead closeZoom={closeZoom} />
@@ -50,6 +54,7 @@ function HeaderMessContain({
                         updated_time={zoom_item.updated_time}
                         //
                         handleClickItem={handleClickZoomItem}
+                        handleAction={handleAction}
                     />
                 ))}
             </div>

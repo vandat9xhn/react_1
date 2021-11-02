@@ -35,7 +35,7 @@ export function useFriendsRequest({ rootMargin, margin }) {
     function deleteFriendRequest(request_ix = -1) {
         setDataState((data_state) => {
             const new_data_arr = [...data_state.data_arr];
-            new_request_arr.splice(request_ix, 1);
+            new_data_arr.splice(request_ix, 1);
 
             return {
                 ...data_state,

@@ -17,7 +17,9 @@ function ActionsMultiListItem({
     handleClose,
 }) {
     //
-    function onClick() {
+    function onClick(e) {
+        e.stopPropagation()
+        
         handleClose();
         handleAction(name);
     }

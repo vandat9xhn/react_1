@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import { IS_MOBILE } from '../../../_constant/Constant';
 //
 import CircleLoading from '../../waiting/circle_loading/CircleLoading';
+import DivWidthLoading from '../../waiting/div_width_loading/DivWidthLoading';
 //
 import ActionsMultiListItem from '../item/ActionsMultiListItem';
 //
 import './ActionsMultiListContain.scss';
-import DivWidthLoading from '../../waiting/div_width_loading/DivWidthLoading';
+import PortalAtBody from '../../portal/at_body/PortalAtBody';
 
 //
 ActionsMultiListContain.propTypes = {
@@ -58,9 +59,11 @@ function ActionsMultiListContain({
 
             {is_fetching ? (
                 IS_MOBILE ? (
-                    <div className="pos-fixed top-0 left-0 w-100per z-index-1">
-                        <DivWidthLoading is_fetching={is_fetching} />
-                    </div>
+                    <PortalAtBody>
+                        <div className="ActionsMultiListContain_div_loading pos-fixed top-0 left-0 w-100per">
+                            <DivWidthLoading is_fetching={is_fetching} />
+                        </div>
+                    </PortalAtBody>
                 ) : (
                     <div className="display-flex-center padding-y-10px">
                         <CircleLoading is_fetching={true} />

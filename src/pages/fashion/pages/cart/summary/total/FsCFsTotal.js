@@ -58,7 +58,7 @@ function FsCFsTotal({
                         />
 
                         <div
-                            className={`margin-left-5px text-nowrap ${
+                            className={`margin-left-5px text-nowrap cursor-pointer ${
                                 item_checked_count == item_count
                                     ? 'font-500 color-fashion'
                                     : ''
