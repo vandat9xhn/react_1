@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useContext, useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
-// 
+//
 import { context_chat } from '../../../../../../_context/chat/ContextChat';
 //
 import { useChatScrollUp } from '../../../../../../_hooks/chat/useChatScrollUp';
@@ -11,13 +11,11 @@ import ScreenBlurShowMore from '../../../../../_screen/components/part/foot/Scre
 import WaitingBall from '../../../../../waiting/waiting_ball/WaitingBall';
 import FetchingDiv from '../../../../../some_div/fetching/FetchingDiv';
 //
-import './ChatBd.scss';
-//
-import ChatBdLastGroup from '../chat_body_last/group/ChatBdlastGroup';
+import ChatBdLastGroup from '../chat_body_last/group/ChatBdLastGroup';
 import ChatBdLastSingle from '../chat_body_last/single/ChatBdLastSingle';
 import ChatMess from '../message/_main/ChatMess';
-
-
+//
+import './ChatBd.scss';
 
 //
 ChatBd.propTypes = {};
@@ -52,6 +50,8 @@ function ChatBd({
         ref_bd_elm.current.scrollTop = scroll_y;
     }, []);
 
+    // ------
+
     //
     function handleShowMore() {
         getData_API();
@@ -61,48 +61,47 @@ function ChatBd({
     return (
         <div
             ref={ref_bd_elm}
-            className="ChatWd_body_contain display-flex col-reverse scroll-thin h-100per"
-            onScroll={IS_MOBILE ? undefined : handleScroll}
+            className="ChatBd_contain display-flex col-reverse scroll-thin h-100per"
+            onScroll={handleScroll}
         >
             <div>
-                <div
-                    className={`ChatWd_body-last ${
-                        messages.length >= count_message ? '' : 'display-none'
-                    }`}
-                >
-                    {is_group ? (
-                        <ChatBdLastGroup
-                            room_users={room_users}
-                            room_creator={room_creator}
-                        />
-                    ) : (
-                        <ChatBdLastSingle
-                            friend_user={room_users[0].user}
-                            is_friend={room_users[0].is_friend}
-                        />
-                    )}
-                </div>
+                {messages.length >= count_message ? (
+                    <div className="margin-top-15px">
+                        {is_group ? (
+                            <ChatBdLastGroup
+                                room_users={room_users}
+                                room_creator={room_creator}
+                            />
+                        ) : (
+                            <ChatBdLastSingle
+                                friend_user={room_users[0].user}
+                                is_friend={room_users[0].is_friend}
+                            />
+                        )}
+                    </div>
+                ) : null}
 
-                <div className="margin-auto width-fit-content">
-                    <ScreenBlurShowMore
-                        title="See old messages"
-                        is_show_more={
-                            IS_MOBILE && count_message > messages.length
-                        }
-                        is_fetching={is_fetching}
-                        //
-                        handleShowMore={handleShowMore}
-                        FetchingComponent={FetchingDiv}
-                    />
-                </div>
+                {IS_MOBILE ? (
+                    <div className="margin-auto width-fit-content">
+                        <ScreenBlurShowMore
+                            title="See old messages"
+                            is_show_more={count_message > messages.length}
+                            is_fetching={is_fetching}
+                            //
+                            handleShowMore={handleShowMore}
+                            FetchingComponent={FetchingDiv}
+                        />
+                    </div>
+                ) : null}
 
                 <div className="display-flex col-reverse">
                     {messages.map((mess_item, mess_ix) => (
                         <div
-                            className={`ChatWd_body-mess ChatWd_body-mess-${chat_ix}`}
-                            key={`ChatWd_body_${mess_ix}`}
+                            key={mess_ix}
+                            className={`ChatBd_mess ChatBd_mess-${chat_ix}`}
                         >
                             <ChatMess
+                                ref_bd_elm={ref_bd_elm}
                                 chat_ix={chat_ix}
                                 mess_ix={mess_ix}
                                 mess_item={mess_item}
@@ -111,13 +110,17 @@ function ChatBd({
                     ))}
                 </div>
 
-                <div className="ChatWd_body-mess">
+                <div className="ChatBd_mess">
                     <div
-                        className={`ChatWd_friend-texting ${
-                            is_on_input ? '' : 'ChatWd_friend-texting_close'
+                        className={`ChatBd_texting w-50per brs-10px border-blur ${
+                            is_on_input
+                                ? 'ChatBd_texting-show'
+                                : 'ChatBd_texting-hide'
                         }`}
                     >
-                        <WaitingBall is_fetching={is_on_input} />
+                        {is_on_input ? (
+                            <WaitingBall is_fetching={is_on_input} />
+                        ) : null}
                     </div>
                 </div>
             </div>

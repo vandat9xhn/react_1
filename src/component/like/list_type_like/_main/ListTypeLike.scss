@@ -30,8 +30,8 @@
 .device-mobile {
     .ListTypeLike_row {
         flex-wrap: wrap;
-        width: 330px;
-        max-width: 80vw;
+        width: max-content;
+        max-width: calc(100vw - 40px);
     }
 
     .ListTypeLike_item {

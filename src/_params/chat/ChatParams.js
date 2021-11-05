@@ -22,7 +22,7 @@ const message_fields = [
     'zoom_model',
     'created_time',
     'vid_pics',
-    'count_vid_pic',
+    'vid_pic_count',
     'count_user_like',
     'arr_distinct_user_like',
 ];

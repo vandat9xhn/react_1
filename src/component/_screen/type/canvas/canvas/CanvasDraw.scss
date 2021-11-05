@@ -1,8 +1,8 @@
-.CanvasDraw_contain{
+.CanvasDraw_contain {
     height: 250px;
 }
 // .
-.CanvasDraw_canvas{
+.CanvasDraw_canvas {
     touch-action: none;
 }
 // .
@@ -24,13 +24,13 @@
         background-color: var(--md-bg-blur);
     }
 }
-.CanvasDraw_actions-select{
+.CanvasDraw_actions-select {
     outline: none;
     border: none;
 }
 
 //
-@media (max-width: 360px) {
+@media (max-width: 500px) {
     .CanvasDraw_actions {
         width: 100%;
         overflow: auto;

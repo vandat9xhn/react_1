@@ -1,0 +1,20 @@
+.ChatHeadRight_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 4px;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+
+    cursor: pointer;
+    &:hover {
+        background-color: var(--md-bg-fb);
+    }
+
+    .IconsArrow_close {
+        stroke-width: 25;
+        stroke: currentColor;
+    }
+}

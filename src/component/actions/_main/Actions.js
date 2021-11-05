@@ -33,9 +33,12 @@ function Actions({
     children,
 
     scroll_elm,
-    changeStyleAction,
+    pos_orientation,
     is_at_body = true,
     header_head,
+
+    getActionsScrollElms,
+    changeStyleAction,
 
     x_always,
     transform_x_more,
@@ -76,9 +79,12 @@ function Actions({
             children={children}
             //
             scroll_elm={scroll_elm}
-            changeStyleAction={changeStyleAction}
+            pos_orientation={pos_orientation}
             is_at_body={is_at_body}
             header_head={header_head}
+            // 
+            getActionsScrollElms={getActionsScrollElms}
+            changeStyleAction={changeStyleAction}
             //
             x_always={x_always}
             transform_x_more={transform_x_more}

@@ -122,7 +122,7 @@ export const default_post_obj = () => {
                   color: 'white',
               }
             : null,
-        count_vid_pic: 1,
+        vid_pic_count: 1,
         // 
         ...default_post_reacted_info_obj(),
         // 

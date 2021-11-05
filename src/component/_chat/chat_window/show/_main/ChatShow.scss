@@ -1,10 +1,7 @@
-// width of chat
-%chat-width {
-    width: 20rem;
-    max-width: 100vw;
-}
+$chat-width: 328px;
 
-//
+// -----
+
 .ChatShow {
     position: fixed;
     bottom: 0;
@@ -21,8 +18,10 @@
 // .
 .ChatShow_contain {
     position: relative;
-    @extend %chat-width;
-    height: calc(100vh - var(--height-header) - 10px);
+
+    width: $chat-width;
+    height: 455px;
+    max-height: calc(100vh - var(--height-header) - 10px);
     overflow: hidden;
     background-color: var(--md-bg-primary);
 }
@@ -44,7 +43,6 @@
 .ChatShow_footer {
     position: relative;
     z-index: var(--z-index-lv1);
-    @extend %chat-width;
 }
 
 // ..
@@ -57,7 +55,7 @@
     //
     .ChatShow {
         right: auto;
-        left: calc((100vw - 20rem) / 2);
+        left: calc((100vw - $chat-width) / 2);
     }
 
     .ChatShow_second {
@@ -87,5 +85,6 @@
     .ChatShow_contain {
         width: 100%;
         height: 100vh;
+        max-height: unset;
     }
 }

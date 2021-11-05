@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 //
 import ContextChat from '../../../../../_context/chat/ContextChat';
 //
-import './ChatShow.scss';
-//
 import ChatScreen from '../../__screen/_main/ChatScreen';
-import ChatH from '../head/ChatH';
+import ChatHead from '../head/_main/ChatHead';
 import ChatBd from '../body/_main/ChatBd';
 import ChatF from '../footer/_main/ChatFoot';
-import ChatGroup from '../group/_main/ChatGroup';
+//
+import './ChatShow.scss';
 
 //
 ChatShow.propTypes = {};
@@ -172,17 +171,11 @@ function ChatShow({
             >
                 <div className="ChatShow_contain display-flex flex-col">
                     <div className="ChatShow_head">
-                        <ChatH
+                        <ChatHead
                             room_users={room_users}
                             count_user={count_user}
                             room_owner={room_owner}
                         />
-
-                        {is_group && (
-                            <div className="ChatShow_group pos-abs">
-                                <ChatGroup room_users={room_users} />
-                            </div>
-                        )}
                     </div>
 
                     <div className="ChatShow_body flex-grow-1">

@@ -15,9 +15,12 @@ function ActionsContainPc({
     children,
 
     scroll_elm,
-    changeStyleAction,
-    is_at_body = true,
     header_head,
+    pos_orientation,
+    is_at_body = true,
+
+    getActionsScrollElms,
+    changeStyleAction,
 
     x_always,
     transform_x_more,
@@ -40,16 +43,21 @@ function ActionsContainPc({
         handleClose,
         // calculatePos,
     } = usePosFollowBodyOrElm({
-        getScrollElms: getScrollElms,
         ref_base_elm: ref_btn_elm,
+        getScrollElms: getScrollElms,
+        getChildWidth: getChildWidth,
+        getChildHeight: getChildHeight,
+
+        header_head: header_head,
+        pos_orientation: pos_orientation,
         is_at_body: is_at_body,
 
-        getChildWidth: getChildWidth,
-        header_head: header_head,
         x_always: x_always,
-        transform_x_more: transform_x_more,
         y_always: y_always,
+        transform_x_more: transform_x_more,
         transform_y_more: transform_y_more,
+
+        callbackClose: callbackClose,
     });
 
     const {
@@ -72,6 +80,10 @@ function ActionsContainPc({
 
     //
     function getScrollElms() {
+        if (getActionsScrollElms) {
+            return getActionsScrollElms();
+        }
+
         return [
             window,
             scroll_elm ||
@@ -84,6 +96,11 @@ function ActionsContainPc({
         return ref_child.current
             ? ref_child.current.getBoundingClientRect().width
             : 0;
+    }
+
+    //
+    function getChildHeight() {
+        return ref_child.current ? ref_child.current.scrollHeight : 0;
     }
 
     //
@@ -106,7 +123,9 @@ function ActionsContainPc({
             <CloseDiv makeDivHidden={makeDivHidden} refs_target={[ref_btn_elm]}>
                 <div
                     ref={ref_child}
-                    className={`pos-abs z-index-lv1 scroll-thin overflow-y-auto brs-8px bg-primary box-shadow-fb ${class_action_contain} ${
+                    className={`${
+                        is_at_body ? 'pos-fixed' : 'pos-abs'
+                    } z-index-lv5 scroll-thin overflow-y-auto brs-8px bg-primary box-shadow-fb ${class_action_contain} ${
                         ref_starting.current ? 'opacity-0' : ''
                     }`}
                     style={{

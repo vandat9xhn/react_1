@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useActionsMultiList } from '../../../_hooks/useActionsMultiList';
@@ -26,13 +26,23 @@ function ActionsMultiList({
     title_action,
     class_action_contain,
     use_title,
+
+    scroll_elm,
+    pos_orientation,
     is_at_body,
+    getActionsScrollElms,
+
+    x_always,
+    y_always,
+    transform_x_more,
+    transform_y_more,
 
     class_separate,
 
     ComponentItem,
     handle_API_L,
     handleAction,
+    whenIsShowChange,
 }) {
     //
     const {
@@ -50,6 +60,11 @@ function ActionsMultiList({
     });
 
     //
+    useEffect(() => {
+        whenIsShowChange && whenIsShowChange(is_true);
+    }, [is_true]);
+
+    //
     return (
         <div className="ActionsMultiList">
             <Actions
@@ -61,7 +76,16 @@ function ActionsMultiList({
                 use_title={use_title}
                 is_show={is_true}
                 //
+                scroll_elm={scroll_elm}
+                pos_orientation={pos_orientation}
                 is_at_body={is_at_body}
+                getActionsScrollElms={getActionsScrollElms}
+                //
+                x_always={x_always}
+                y_always={y_always}
+                transform_x_more={transform_x_more}
+                transform_y_more={transform_y_more}
+                //
                 toggleShow={toggleBool}
                 handleClose={handleClose}
                 callbackOpen={callbackOpen}

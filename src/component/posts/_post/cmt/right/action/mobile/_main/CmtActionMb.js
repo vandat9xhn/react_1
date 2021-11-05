@@ -27,22 +27,29 @@ function CmtActionsMb({
     }
 
     //
+    function handleTouchStart(e) {
+        e.stopPropagation();
+    }
+
+    //
     return (
-        <ActionsMb
-            use_title={false}
-            is_show={is_show}
-            handleClose={handleClose}
-            callbackOpen={callbackOpen}
-        >
-            <div className="CmtActionsMb pos-abs-center w-100per bg-primary overflow-y-auto scroll-width-0">
-                <CmtActionContain
-                    list_action_arr={list_action_arr}
-                    is_fetching={is_fetching}
-                    handleClose={handleClose}
-                    handleAction={handleAction}
-                />
-            </div>
-        </ActionsMb>
+        <div onTouchStart={handleTouchStart}>
+            <ActionsMb
+                use_title={false}
+                is_show={is_show}
+                handleClose={handleClose}
+                callbackOpen={callbackOpen}
+            >
+                <div className="CmtActionsMb pos-abs-center w-100per bg-primary overflow-y-auto scroll-width-0">
+                    <CmtActionContain
+                        list_action_arr={list_action_arr}
+                        is_fetching={is_fetching}
+                        handleClose={handleClose}
+                        handleAction={handleAction}
+                    />
+                </div>
+            </ActionsMb>
+        </div>
     );
 }
 

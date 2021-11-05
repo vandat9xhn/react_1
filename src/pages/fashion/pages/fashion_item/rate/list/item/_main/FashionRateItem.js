@@ -40,7 +40,7 @@ function FashionRateItem({ ix, item }) {
         count_like,
         user_liked,
         seller_reply,
-        // count_vid_pic,
+        // vid_pic_count,
         created_time,
     } = item;
 

@@ -1,13 +1,3 @@
-//
-.ChatF_preview {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    width: 20rem;
-    max-width: 100%;
-}
-
-//
 .ChatF_MT {
     transition: height 0.4s;
     overflow: hidden;
@@ -19,15 +9,6 @@
     height: 0;
 }
 
-//
-.ChatF_row {
-    display: flex;
-    align-items: flex-end;
-
-    padding: 0.25rem;
-    border-top: 1px solid var(--bg-blur);
-}
-//
 .ChatF_MB {
     transition: width 0.4s;
 }
@@ -37,21 +18,15 @@
 .ChatF_MB-close {
     width: 2rem;
 }
-//
-.ChatF_Ip {
-    margin: 0 0.5rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 15px;
-    background-color: var(--md-bg-ccc);
 
-    flex-grow: 1;
+.ChatF_Ip {
     transition: all 0.4s;
 }
-//
+// .
 .ChatF_textarea {
     max-height: 6.5rem;
 }
-//
+
 .ChatF_Sd {
     margin-left: 0.5rem;
 }

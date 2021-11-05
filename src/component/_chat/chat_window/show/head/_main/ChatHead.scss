@@ -1,0 +1,19 @@
+.ChatHead {
+    height: 48px;
+}
+
+.ChatHead_name {
+    &:hover {
+        & + .ChatHead_name_bg {
+            display: block;
+        }
+    }
+}
+// .
+.ChatHead_name_btn {
+    height: 32px;
+}
+// ..
+.ChatHead_name_text {
+    max-width: 120px;
+}

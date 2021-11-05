@@ -11,14 +11,16 @@ import { useForceUpdate } from './UseForceUpdate';
 
 //
 export function usePosFollowBodyOrElm({
-    getScrollElms = () => [] || [window, html_elm, initial_div_elm],
     ref_base_elm = { current: initial_div_elm },
+    getScrollElms = () => [] || [window, html_elm, initial_div_elm],
     getChildWidth = () => 0,
+    getChildHeight = () => 0,
     header_head = HEADER_HEAD,
+    pos_orientation = 'y',
 
     x_always = '',
-    transform_x_more = 0,
     y_always = '',
+    transform_x_more = 0,
     transform_y_more = 0,
 
     use_closing = false,
@@ -27,6 +29,8 @@ export function usePosFollowBodyOrElm({
     is_at_body = true,
     use_scroll = true,
     use_resize = true,
+
+    callbackClose,
 }) {
     //
     const ref_is_open = useRef(false);
@@ -35,12 +39,14 @@ export function usePosFollowBodyOrElm({
     const ref_pos = useRef({
         left_or_right: 'left',
         position_x: '0px',
-        transform_y: '0px',
         transform_x: '0px',
 
         top_or_bottom: 'top',
         position_y: '0px',
+        transform_y: '0px',
+
         max_height: 0,
+        max_width: 0,
     });
 
     const ref_has_add_scroll = useRef(false);
@@ -86,16 +92,28 @@ export function usePosFollowBodyOrElm({
             return;
         }
 
+        // 
+        const { top, bottom } = ref_base_elm.current.getBoundingClientRect();
+
+        if (top < 0 || bottom > innerHeight) {
+            handleClose({ callbackClose: callbackClose });
+
+            return;
+        }
+
+        // 
         const getPost = is_at_body ? getPosAtBody : getPosAtElm;
 
         ref_pos.current = getPost({
-            child_width: getChildWidth(),
             base_elm: ref_base_elm.current,
+            child_width: getChildWidth(),
+            child_height: getChildHeight(),
             header_head: header_head,
+            pos_orientation: pos_orientation,
 
             x_always: x_always,
-            transform_x_more: transform_x_more,
             y_always: y_always,
+            transform_x_more: transform_x_more,
             transform_y_more: transform_y_more,
         });
     }
@@ -104,18 +122,18 @@ export function usePosFollowBodyOrElm({
     async function handleOpen({ callbackOpen = forceUpdate }) {
         ref_starting.current = true;
         ref_is_open.current = true;
-        forceUpdate();
+        callbackOpen();
 
         setTimeout(() => {
             ref_starting.current = false;
             changePos();
-            callbackOpen();
+            forceUpdate();
         }, 0);
     }
 
     //
     function handleClose({ callbackClose = forceUpdate }) {
-        ref_closing.current = true;
+        use_closing && (ref_closing.current = true);
         ref_is_open.current = false;
         ref_starting.current = false;
 

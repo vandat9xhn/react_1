@@ -275,7 +275,7 @@ const default_product_rate_obj = () => {
         id: getRandomId(),
         ...getRandomUser(),
         vid_pics: vid_pics.slice(0, 3),
-        count_vid_pic: vid_pics.length,
+        vid_pic_count: vid_pics.length,
         ...getRandomContentObj(),
         created_time: '2021-04-18T07:21:04.632269Z',
         product_model: 4,

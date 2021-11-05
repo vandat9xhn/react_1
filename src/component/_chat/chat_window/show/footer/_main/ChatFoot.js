@@ -146,6 +146,7 @@ function ChatF({ canvas_obj, input_obj }) {
     //
     function deleteCanvasDraw() {
         resetCanvas();
+        forceUpdate()
     }
 
     /* ------------- */
@@ -187,7 +188,7 @@ function ChatF({ canvas_obj, input_obj }) {
 
     //
     return (
-        <div className="ChatF pos-rel">
+        <div className="ChatF pos-rel bg-primary">
             <div className="ChatF_contain">
                 <div
                     className={`ChatF_MT ${
@@ -200,7 +201,7 @@ function ChatF({ canvas_obj, input_obj }) {
                     />
                 </div>
 
-                <div className="ChatF_row">
+                <div className="ChatF_row display-flex align-items-end padding-4px border-top-blur">
                     <div
                         className={`ChatF_MB ${
                             more_input || text.trim()
@@ -218,7 +219,10 @@ function ChatF({ canvas_obj, input_obj }) {
                         />
                     </div>
 
-                    <div className="ChatF_Ip" ref={ref_ip_text_elm}>
+                    <div
+                        className="ChatF_Ip flex-grow-1 display-flex margin-x-8px padding-y-4px padding-x-8px brs-15px bg-ccc"
+                        ref={ref_ip_text_elm}
+                    >
                         <Textarea
                             text={text}
                             placeholder="Chat..."
@@ -241,7 +245,7 @@ function ChatF({ canvas_obj, input_obj }) {
                 </div>
             </div>
 
-            <div className="ChatF_preview">
+            <div className="ChatF_preview pos-abs left-0 bottom-100per w-100per">
                 {current_canvas || urls.length ? (
                     <ChatPv
                         current_canvas={current_canvas}

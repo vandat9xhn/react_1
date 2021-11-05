@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-//
-import { observerOverflow } from '../../../../../../../../_some_function/observerOverflow';
 //
 import { handle_API_FbNoticeAction_L } from '../../../../../../../../_handle_api/fb_notice/action';
 //
@@ -40,21 +38,6 @@ function HeaderNoticeItemAction({
             handle_API_FbNoticeAction_L({ notice_id: notice_id }),
         handleAction: handleAction,
     });
-
-    //
-    useEffect(() => {
-        is_true &&
-            observerOverflow({
-                elm: ref_notice_item.current,
-                detectOverflow: ({ entry }) => {
-                    return entry.intersectionRatio < 0.5;
-                },
-                callbackOverflow: ({ entry, observer }) => {
-                    handleClose();
-                    observer.unobserve(entry.target);
-                },
-            });
-    }, [is_true]);
 
     // --------
 

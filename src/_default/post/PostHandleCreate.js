@@ -56,7 +56,7 @@ export function handleCreateNewPost({ data, user }) {
         vid_pics: new_vid_pics,
         bg_obj: bg_ix >= 1 ? bg_arr[bg_ix] : null,
 
-        count_vid_pic: 1,
+        vid_pic_count: 1,
         likes: [],
         count_like: 0,
         user_reacted_ix: -1,

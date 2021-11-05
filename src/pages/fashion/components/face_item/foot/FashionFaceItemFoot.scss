@@ -1,34 +1,25 @@
-.FashionFaceItemFoot_name{
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-
-    height: 36px;
-}
-
-.FashionFaceItemFoot_tag{
-    height: 1rem;
+.FashionFaceItemFoot_tag {
+    line-height: 1rem;
 }
 
 // ..
-.FashionFaceItemFoot_heart{
-    .IconHeart{
+.FashionFaceItemFoot_heart {
+    .IconHeart {
         width: 1rem;
         height: 1rem;
-
     }
-    
-    .IconHeart_face{
+
+    .IconHeart_face {
         fill: none;
     }
-    .IconHeart_heart{
+    .IconHeart_heart {
         fill: var(--md-bg-blur);
     }
 }
 
-// 
+//
 @media (max-width: 350px) {
-    .FashionFaceItemFoot{
+    .FashionFaceItemFoot {
         padding: 4px;
     }
 }

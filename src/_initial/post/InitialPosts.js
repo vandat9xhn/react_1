@@ -38,7 +38,7 @@ export const initial_posts = [
                 updated_time: '2021-04-01T15:18:30.339347Z',
             },
         ],
-        count_vid_pic: 0,
+        vid_pic_count: 0,
         likes: [],
         count_like: 0,
         user_reacted_ix: -1,

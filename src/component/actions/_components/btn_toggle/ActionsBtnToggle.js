@@ -23,7 +23,10 @@ ActionsBtnToggle.defaultProps = {
 function ActionsBtnToggle({ title_action, toggleShow }) {
     //
     return (
-        <div className="ActionsBtnToggle display-inherit" onClick={toggleShow}>
+        <div
+            className="ActionsBtnToggle display-inherit cursor-pointer"
+            onClick={toggleShow}
+        >
             {title_action}
         </div>
     );

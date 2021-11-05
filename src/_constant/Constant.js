@@ -4,7 +4,7 @@ export const USE_APP_SCROLL = true;
 
 //
 
-export const HEADER_HEAD = 48;
+export const HEADER_HEAD = IS_MOBILE ? 48 : 56;
 
 //
 

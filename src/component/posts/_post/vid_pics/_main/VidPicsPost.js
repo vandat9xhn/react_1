@@ -27,7 +27,7 @@ function VidPicsPost({ post_ix, vid_pics }) {
                             key={index}
                             index={index}
                             post_ix={post_ix}
-                            count_vid_pic={vid_pics.length}
+                            vid_pic_count={vid_pics.length}
                             id={item.id}
                             vid_pic={item.vid_pic}
                         />

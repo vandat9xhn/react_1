@@ -1,7 +1,7 @@
 import { html_elm, initial_div_elm } from '../_initial/htm_elm/html_elm';
 
 //
-export function getPosAtBodyX({
+export function getPosXAtBody({
     child_width = 0,
     base_elm = initial_div_elm,
     x_always = '',
@@ -95,7 +95,7 @@ export function getPosAtBodyX({
 }
 
 //
-export function getPosAtBodyY({
+export function getPosYAtBody({
     base_elm = initial_div_elm,
     header_head = 55,
     y_always = '',
@@ -111,7 +111,7 @@ export function getPosAtBodyY({
     if ((h_top > h_bottom && y_always == '') || y_always == 'bottom') {
         return {
             top_or_bottom: 'top',
-            position_y: `${new_top + scrollY}px`,
+            position_y: `${new_top + 0}px`,
             transform_y: '-100%',
             max_height: h_top,
         };
@@ -119,38 +119,187 @@ export function getPosAtBodyY({
 
     return {
         top_or_bottom: 'top',
-        position_y: `${new_bottom + scrollY}px`,
+        position_y: `${new_bottom + 0}px`,
         transform_y: '0%',
         max_height: h_bottom,
     };
 }
 
-//
-export function getPosAtBody({
-    child_width = 0,
-    base_elm = initial_div_elm,
-    header_head = 55,
+// ------
 
+//
+export function getPosXAtBodyOrientationX({
+    base_elm = initial_div_elm,
     x_always = '',
     transform_x_more = 0,
+}) {
+    const { left, right } = base_elm.getBoundingClientRect();
+    const new_left = left + transform_x_more;
+    const new_right = right + transform_x_more;
 
+    const w_left = new_left;
+    const w_right = innerWidth - new_right;
+
+    if ((w_left > w_right && x_always == '') || x_always == 'right') {
+        return {
+            left_or_right: 'left',
+            position_x: `${new_left + scrollX}px`,
+            transform_x: `-100%`,
+            max_width: w_left,
+        };
+    }
+
+    return {
+        left_or_right: 'left',
+        position_x: `${new_right + scrollX}px`,
+        transform_x: '0px',
+        max_width: w_right,
+    };
+}
+
+//
+export function getPosYAtBodyOrientationX({
+    child_height = 0,
+    base_elm = initial_div_elm,
     y_always = '',
     transform_y_more = 0,
 }) {
-    return {
-        ...getPosAtBodyX({
-            child_width: child_width,
-            base_elm: base_elm,
+    const { top, bottom } = base_elm.getBoundingClientRect();
+    const window_height = innerHeight;
+    // const { height: window_height } = html_elm.getBoundingClientRect();
 
+    // ---- ALWAYS TOP
+    if (y_always == 'top') {
+        const new_top = top + transform_y_more;
+
+        if (new_top <= 0) {
+            return {
+                top_or_bottom: 'top',
+                position_y: `0px`,
+                transform_y: `${0}px`,
+            };
+        }
+
+        if (new_top + child_height >= window_height) {
+            return {
+                top_or_bottom: 'bottom',
+                position_y: `0px`,
+                transform_y: `${0}px`,
+            };
+        }
+
+        return {
+            top_or_bottom: 'top',
+            position_y: `${new_top}px`,
+            transform_y: `0px`,
+        };
+    }
+
+    // ---- ALWAYS BOTTOM
+    if (y_always == 'bottom') {
+        const new_bottom = bottom + transform_y_more;
+
+        if (new_bottom >= window_height) {
+            return {
+                top_or_bottom: 'bottom',
+                position_y: `0px`,
+                transform_y: `0px`,
+            };
+        }
+
+        if (new_bottom - child_height <= 0) {
+            return {
+                top_or_bottom: 'top',
+                position_y: `0px`,
+                transform_y: `0px`,
+            };
+        }
+
+        return {
+            top_or_bottom: 'bottom',
+            position_y: `${window_height - new_bottom}px`,
+            transform_y: `0px`,
+        };
+    }
+
+    // -------- AUTO
+    const center = (top + bottom) / 2;
+    const child_haft_height = child_height / 2;
+    const new_center = center + transform_y_more;
+
+    if (new_center >= child_haft_height) {
+        // new_center
+        if (window_height - new_center >= child_haft_height) {
+            return {
+                top_or_bottom: 'top',
+                position_y: `${new_center}px`,
+                transform_y: `-50%`,
+            };
+        }
+
+        // bottom
+        return {
+            top_or_bottom: 'bottom',
+            position_y: `0px`,
+            transform_y: `0px`,
+        };
+    }
+
+    return {
+        top_or_bottom: 'top',
+        position_y: `0px`,
+        transform_y: `0px`,
+    };
+}
+
+// ------
+
+//
+export function getPosAtBody({
+    base_elm = initial_div_elm,
+    child_width = 0,
+    child_height = 0,
+    header_head = 56,
+
+    x_always = '',
+    y_always = '',
+    transform_x_more = 0,
+    transform_y_more = 0,
+
+    pos_orientation = 'y',
+}) {
+    if (pos_orientation == 'y') {
+        return {
+            ...getPosXAtBody({
+                child_width: child_width,
+                base_elm: base_elm,
+
+                x_always: x_always,
+                transform_x_more: transform_x_more,
+            }),
+            ...getPosYAtBody({
+                base_elm: base_elm,
+                header_head: header_head,
+
+                y_always: y_always,
+                transform_y_more: transform_y_more,
+            }),
+        };
+    }
+
+    return {
+        ...getPosXAtBodyOrientationX({
+            base_elm: base_elm,
             x_always: x_always,
             transform_x_more: transform_x_more,
         }),
-        ...getPosAtBodyY({
+        ...getPosYAtBodyOrientationX({
             base_elm: base_elm,
-            header_head: header_head,
+            child_height: child_height,
 
             y_always: y_always,
             transform_y_more: transform_y_more,
         }),
+        max_height: innerHeight - header_head,
     };
 }

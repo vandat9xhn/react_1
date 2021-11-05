@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 //
 import { type_likes } from '../type_likes/TypeLikes';
 //
-import './ListTypeLike.scss';
-//
 import TypeLikeItem from '../item/TypeLikeItem';
+//
+import './ListTypeLike.scss';
 
 //
 ListTypeLike.propTypes = {

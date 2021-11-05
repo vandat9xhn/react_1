@@ -5,15 +5,17 @@ import PropTypes from 'prop-types';
 IconSubtract.propTypes = {
     size_icon: PropTypes.string,
     color: PropTypes.string,
+    stroke_width: PropTypes.number,
 };
 
 IconSubtract.defaultProps = {
     size_icon: '1rem',
     color: 'var(--md-color)',
+    stroke_width: 25,
 };
 
 //
-function IconSubtract({ size_icon, color }) {
+function IconSubtract({ size_icon, color, stroke_width }) {
     //
     return (
         <svg
@@ -27,7 +29,7 @@ function IconSubtract({ size_icon, color }) {
                 y1="100"
                 x2="180"
                 y2="100"
-                strokeWidth="20"
+                strokeWidth={stroke_width}
                 stroke={color}
                 strokeLinecap="round"
             />

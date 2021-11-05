@@ -43,51 +43,54 @@ function ChatPv({
     return (
         <div className="ChatPv pos-rel">
             <div
-                className={`ChatPv_toggle hv-opacity ${
-                    show_preview ? 'ÇhatPv_toggle-show' : 'ChatPv_toggle-hide'
+                className={`ChatPv_toggle pos-abs x-center font-500 cursor-pointer hv-opacity ${
+                    show_preview ? 'ChatPv_toggle-show' : 'ChatPv_toggle-hide'
                 }`}
+                onClick={togglePreview}
             >
-                <div className="ChatPv_toggle-elm" onClick={togglePreview}>
-                    {show_preview ? 'Hide' : 'Show'}
-                </div>
+                {show_preview ? 'Hide' : 'Show'}
             </div>
 
             <div
-                className={`ChatPv_contain pos-rel bg-shadow-9 ${
+                className={`ChatPv_contain pos-rel bg-shadow-8 ${
                     show_preview ? 'ChatPv_show' : 'ChatPv_hide'
                 } `}
             >
                 <div
-                    className={current_canvas ? 'ChatPv_draw' : 'display-none'}
+                    className={`ChatPv_draw pos-rel margin-5px ${
+                        current_canvas ? '' : 'display-none'
+                    }`}
                 >
-                    <div className="ChatPv__item">
-                        <div className="ChatPv__draw-img">
-                            <img src={current_canvas} alt="" />
-                        </div>
+                    <img
+                        className="brs-8px object-fit-cover"
+                        src={current_canvas}
+                        alt=""
+                        width="60"
+                        height="60"
+                    />
 
-                        <div className="ChatPv__face">
-                            <div
-                                className="ChatPv__face-elm brs-5px"
-                                onClick={letDrawCanvas}
-                                title="Edit draw"
-                            >
-                                <IconDraw size_icon="4rem" />
-                            </div>
+                    <div className="ChatPv_face pos-abs-100">
+                        <div
+                            className="ChatPv_face_contain wh-100 brs-8px cursor-pointer"
+                            onClick={letDrawCanvas}
+                            title="Edit draw"
+                        >
+                            <IconDraw size_icon="60px" />
                         </div>
+                    </div>
 
-                        <div className="ChatPv__close">
-                            <div
-                                className="ChatPv__close-elm hv-opacity brs-50 bg-shadow-9"
-                                onClick={deleteCanvasDraw}
-                                title="Delete draw"
-                            >
-                                <IconsArrow y={400} size_icon="1rem" />
-                            </div>
+                    <div className="ChatPv_close pos-abs-0">
+                        <div
+                            className="ChatPv_close_contain display-flex-center brs-50 bg-shadow-8 cursor-pointer hv-opacity"
+                            onClick={deleteCanvasDraw}
+                            title="Delete draw"
+                        >
+                            <IconsArrow y={400} size_icon="1rem" />
                         </div>
                     </div>
                 </div>
 
-                <div className="ChatPv_files">
+                <div className="ChatPv_files margin-5px">
                     <ImgVidPreview
                         urls={urls}
                         show_all={true}

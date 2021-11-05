@@ -14,7 +14,7 @@ import './VidPicPostItem.scss';
 VidPicPostItem.propTypes = {};
 
 //
-function VidPicPostItem({ count_vid_pic, index, post_ix, id, vid_pic }) {
+function VidPicPostItem({ vid_pic_count, index, post_ix, id, vid_pic }) {
     //
     const { zoomVidPicPost } = useContext(context_post);
 
@@ -33,10 +33,10 @@ function VidPicPostItem({ count_vid_pic, index, post_ix, id, vid_pic }) {
     return (
         <div
             className={`VidPicPostItem VidPics_count_${
-                count_vid_pic > 4 ? 5 : count_vid_pic
+                vid_pic_count > 4 ? 5 : vid_pic_count
             }`}
             data-length={
-                index == 3 && count_vid_pic > 4 ? count_vid_pic - 4 : undefined
+                index == 3 && vid_pic_count > 4 ? vid_pic_count - 4 : undefined
             }
         >
             <Link
@@ -56,10 +56,10 @@ function VidPicPostItem({ count_vid_pic, index, post_ix, id, vid_pic }) {
                             className="wh-100 object-fit-cover"
                             src={vid_pic}
                             preload="metadata"
-                            controls={count_vid_pic == 1}
+                            controls={vid_pic_count == 1}
                         />
 
-                        {count_vid_pic >= 2 ? (
+                        {vid_pic_count >= 2 ? (
                             <div className="pos-abs-100 display-flex-center bg-shadow-2">
                                 <IconsPlayPause size_icon="40px" />
                             </div>

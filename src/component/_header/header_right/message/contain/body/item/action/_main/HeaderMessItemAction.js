@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-//
-import { observerOverflow } from '../../../../../../../../../_some_function/observerOverflow';
 //
 import { handle_API_FbHeaderMessAction_L } from '../../../../../../../../../_handle_api/message/header_action';
 //
@@ -40,21 +38,6 @@ function HeaderMessItemAction({
             handle_API_FbHeaderMessAction_L({ room_id: room_id }),
         handleAction: handleAction,
     });
-
-    //
-    useEffect(() => {
-        is_true &&
-            observerOverflow({
-                elm: ref_mess_item.current,
-                detectOverflow: ({ entry }) => {
-                    return entry.intersectionRatio < 0.5;
-                },
-                callbackOverflow: ({ entry, observer }) => {
-                    handleClose();
-                    observer.unobserve(entry.target);
-                },
-            });
-    }, [is_true]);
 
     // -------
 

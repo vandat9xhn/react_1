@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 //
 import { makePriceToPrice } from '../../../../../_some_function/makePriceToPrice';
 //
-import StarsRate from '../../../../../component/stars_rate/_main/StarsRate';
-//
 import IconHeart from '../../../../../_icons_svg/icons_like/icon_heart/IconHeart';
 //
-import './FashionFaceItemFoot.scss';
+import StarsRate from '../../../../../component/stars_rate/_main/StarsRate';
+//
 import FsShopDealLabel from '../../shop_deal_label/FsShopDealLabel';
 import FsShopDiscountLabel from '../../shop_discount_label/FsShopDiscountLabel';
+//
+import './FashionFaceItemFoot.scss';
 
 //
 FashionFaceItemFoot.propTypes = {
@@ -66,7 +67,7 @@ function FashionFaceItemFoot({
     //
     return (
         <div className="FashionFaceItemFoot padding-8px font-12px text-secondary">
-            <div className="FashionFaceItemFoot_name overflow-hidden">
+            <div className="FashionFaceItemFoot_name wk-box-vertical line-clamp-2 overflow-hidden">
                 <span>{name}</span>
             </div>
 
@@ -90,11 +91,7 @@ function FashionFaceItemFoot({
             <div className="">
                 <div className="text-nowrap">
                     {old_price == 0 || old_price ? (
-                        <span>
-                            <del>
-                                {makePriceToPrice(old_price, old_price_max)}
-                            </del>
-                        </span>
+                        <del>{makePriceToPrice(old_price, old_price_max)}</del>
                     ) : null}
 
                     <span className="text-red">

@@ -357,9 +357,9 @@ function ZoomVidPicItem({
 
     //
     function handleDelete() {
-        const count_vid_pic = vid_pic_id_arr.length;
+        const vid_pic_count = vid_pic_id_arr.length;
 
-        if (count_vid_pic == 1) {
+        if (vid_pic_count == 1) {
             if (show_screen_title) {
                 closeScreenTitle();
 
@@ -371,7 +371,7 @@ function ZoomVidPicItem({
             return;
         }
 
-        handleNextPrevVidPic(vid_pic_ix <= count_vid_pic - 2);
+        handleNextPrevVidPic(vid_pic_ix <= vid_pic_count - 2);
         vid_pic_id_arr.splice(vid_pic_ix, 1);
         handleDeleteVidPicPost(vid_pic_ix);
     }

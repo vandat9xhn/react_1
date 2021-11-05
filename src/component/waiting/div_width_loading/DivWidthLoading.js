@@ -11,7 +11,7 @@ function DivWidthLoading({ is_fetching }) {
     //
     return (
         <div
-            className={`pos-rel padding-y-2px w-100per ${
+            className={`pos-rel padding-y-2px w-100per bg-shadow-1 ${
                 is_fetching ? 'DivWidthLoading' : ''
             }`}
         >

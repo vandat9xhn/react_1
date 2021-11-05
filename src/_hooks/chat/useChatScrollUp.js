@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react';
+// 
+import { IS_MOBILE } from '../../_constant/Constant';
 //
 import { handle_API_ChatMessage_L } from '../../_handle_api/chat/ChatHandleAPI';
 //
@@ -54,6 +56,11 @@ export const useChatScrollUp = ({ ref_elm, room_chat, message_obj }) => {
 
     //
     function handleScroll(e) {
+        //
+        if (IS_MOBILE) {
+            return;
+        }
+
         if (
             data_count.current == 0 ||
             just_fetching.current ||

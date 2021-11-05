@@ -1,4 +1,5 @@
 import { default_define_user } from '../login/DefaultLogin';
+import { default_post_reacted_info_obj } from '../post/reacted';
 //
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomContent } from '../_common/default_content';
@@ -53,25 +54,27 @@ export const default_message_user_like_arr = () =>
 const default_message_obj = () => {
     const _vid_pic_arr = default_message_vid_pic_arr(
         0,
-        getRandomBool() ? 6 : 0
+        getRandomBool() ? getRandomNumber(0, 4) : 0
+    );
+
+    const vid_pic_count = getRandomNumber(
+        _vid_pic_arr.length,
+        _vid_pic_arr.length <= 4 ? _vid_pic_arr.length : _vid_pic_arr.length + 4
     );
 
     //
     return {
         id: getRandomId(),
         ...getRandomUser(),
-        vid_pics: _vid_pic_arr.slice(0, 4),
-        count_vid_pic: _vid_pic_arr.length,
-        // user_likes: default_message_user_like_arr(),
-        user_like: getRandomNumber(-1, 5),
-        count_like: 1,
-        str_type_likes: '1,2,3',
-        arr_distinct_user_like: [1, 2, 3],
-        // "user_statuses": [],
+        ...default_post_reacted_info_obj(),
+
+        vid_pics: _vid_pic_arr,
+        vid_pic_count: vid_pic_count,
         message: getRandomContent(),
-        created_time: '2021-03-28T03:15:17.869450Z',
+
         room_model: '1-2',
-        profile_model: 1,
+        profile_model: getRandomBool() ? 1 : getRandomId(),
+        created_time: '2021-03-28T03:15:17.869450Z',
     };
 };
 

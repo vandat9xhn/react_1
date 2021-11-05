@@ -1,0 +1,50 @@
+.ChatMess {
+    &:hover {
+        .ChatMessActions {
+            display: block;
+        }
+    }
+}
+
+.ChatMess_user {
+    .ChatMessActions_row {
+        flex-direction: row;
+    }
+}
+
+// -----
+
+.ChatMessActions_action {
+    .ActionsBtnToggle_icon {
+        width: 27px;
+        height: 27px;
+    }
+
+    .IconThreeDot {
+        width: 16px;
+        height: 16px;
+        transform: rotate(90deg);
+    }
+}
+
+.ChatMessActions_reacted_contain,
+.ChatMessActions_reacted_contain_mb {
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+}
+// .
+.ChatMessActions_reacted_list {
+    .IconsTypeLike {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+// ----
+
+.device-mobile {
+    .ChatMessActions {
+        display: block;
+    }
+}
