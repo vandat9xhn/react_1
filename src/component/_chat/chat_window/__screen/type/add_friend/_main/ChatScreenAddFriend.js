@@ -1,32 +1,35 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { waitingToDoLast } from '../../../../../../../_some_function/waitingToDoLast';
+// 
 import { handle_API_Friend_L } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
 //
 import { useDataShowMore } from '../../../../../../../_hooks/useDataShowMore';
 //
+import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
+// 
 import ScreenBlurShowMore from '../../../../../../_screen/components/part/foot/ScreenBlurShowMore';
 import NoItem from '../../../../../../some_div/no_item/NoItem';
-//
 import ActionsFriendUser from '../item/ChatScreenAddFriendItem';
-import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
 import PostInputSearch from '../../../../../../posts/common/input_search/PostInputSearch';
-import { waitingToDoLast } from '../../../../../../../_some_function/waitingToDoLast';
+// 
+import './ChatScreenAddFriend.scss';
 
 //
 export function openChatAddFriend({ openChatScreen, ws, room_user_id_arr }) {
     openChatScreen({
-        ChatFloorComponent: ChatAddFriend,
+        ChatFloorComponent: ChatScreenAddFriend,
         ws: ws,
         room_user_id_arr: room_user_id_arr,
     });
 }
 
 //
-ChatAddFriend.propTypes = {};
+ChatScreenAddFriend.propTypes = {};
 
 //
-function ChatAddFriend({ ws, room_user_id_arr, closeChatScreen }) {
+function ChatScreenAddFriend({ ws, room_user_id_arr, closeChatScreen }) {
     //
     const [value, setValue] = useState('');
 
@@ -77,24 +80,26 @@ function ChatAddFriend({ ws, room_user_id_arr, closeChatScreen }) {
 
     //
     return (
-        <div className="chat-screen-list">
-            <div className="flex-between-center padding-10px border-bottom-blur">
-                <div className="font-500">Add people</div>
+        <div className="ChatScreenAddFriend chat-screen-list bg-primary overflow-y-auto">
+            <div className="pos-sticky top-0 z-index-1 bg-primary box-shadow-1">
+                <div className="flex-between-center padding-x-10px padding-y-5px border-bottom-blur">
+                    <h2 className="font-600 font-16px">Add people</h2>
 
-                <div
-                    className="btn-icon-36px cursor-pointer hv-bg-hv"
-                    onClick={closeChatScreen}
-                >
-                    <IconsArrow y={400} size_icon="20px" />
+                    <div
+                        className="ChatScreenAddFriend_close btn-icon-36px cursor-pointer hv-bg-hv"
+                        onClick={closeChatScreen}
+                    >
+                        <IconsArrow y={400} size_icon="20px" />
+                    </div>
                 </div>
-            </div>
 
-            <div className="padding-10px border-bottom-blur">
-                <PostInputSearch
-                    value={value}
-                    placeholder="Search friends"
-                    changeSearch={changeSearch}
-                />
+                <div className="padding-10px border-bottom-blur">
+                    <PostInputSearch
+                        value={value}
+                        placeholder="Search friends"
+                        changeSearch={changeSearch}
+                    />
+                </div>
             </div>
 
             <div>
@@ -124,4 +129,4 @@ function ChatAddFriend({ ws, room_user_id_arr, closeChatScreen }) {
     );
 }
 
-export default ChatAddFriend;
+export default ChatScreenAddFriend;

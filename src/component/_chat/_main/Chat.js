@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 //
-import { CHAT_INACTIVE_NUM, IS_MOBILE } from '../../../_constant/Constant';
+import { CHAT_INACTIVE_NUM } from '../../../_constant/Constant';
 //
 import { getRoomChatWebsocket } from '../_func/getRoomChatWs';
 //
@@ -17,7 +17,7 @@ import ChatWdHide from '../chat_window/_main/ChatWdHide';
 import './Chat.scss';
 
 //
-const MAX_WINDOW_CHAT = IS_MOBILE ? 1 : 2;
+const MAX_WINDOW_CHAT = 2;
 
 //
 class Chat extends Component {
@@ -76,8 +76,7 @@ class Chat extends Component {
     getChatBodyScrollY = (active_ix) => {
         return document
             .getElementsByClassName('Chat_active-item')
-            [active_ix].getElementsByClassName('ChatBd_contain')[0]
-            .scrollTop;
+            [active_ix].getElementsByClassName('ChatBd_contain')[0].scrollTop;
     };
 
     //

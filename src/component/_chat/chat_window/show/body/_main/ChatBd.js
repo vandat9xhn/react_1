@@ -8,12 +8,12 @@ import { context_chat } from '../../../../../../_context/chat/ContextChat';
 import { useChatScrollUp } from '../../../../../../_hooks/chat/useChatScrollUp';
 //
 import ScreenBlurShowMore from '../../../../../_screen/components/part/foot/ScreenBlurShowMore';
-import WaitingBall from '../../../../../waiting/waiting_ball/WaitingBall';
 import FetchingDiv from '../../../../../some_div/fetching/FetchingDiv';
 //
 import ChatBdLastGroup from '../chat_body_last/group/ChatBdLastGroup';
 import ChatBdLastSingle from '../chat_body_last/single/ChatBdLastSingle';
 import ChatMess from '../message/_main/ChatMess';
+import ChatBdTexting from '../texting/ChatBdTexting';
 //
 import './ChatBd.scss';
 
@@ -111,17 +111,7 @@ function ChatBd({
                 </div>
 
                 <div className="ChatBd_mess">
-                    <div
-                        className={`ChatBd_texting w-50per brs-10px border-blur ${
-                            is_on_input
-                                ? 'ChatBd_texting-show'
-                                : 'ChatBd_texting-hide'
-                        }`}
-                    >
-                        {is_on_input ? (
-                            <WaitingBall is_fetching={is_on_input} />
-                        ) : null}
-                    </div>
+                    <ChatBdTexting is_on_input={is_on_input} />
                 </div>
             </div>
         </div>

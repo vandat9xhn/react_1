@@ -3,27 +3,60 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../../_context/ContextAPI';
 //
-import { openScreenLike } from '../../../../../../_screen/type/like/_main/ScreenLike';
+import {
+    handle_API_ChatLike_L,
+    handle_API_MessageReactedInfo_L,
+} from '../../../../../../../_handle_api/chat/ChatHandleAPI';
+//
+import { openScreenWithElm } from '../../../../../../_screen/type/with_elm/ScreenWithElm';
+//
+import { useScreenFetching } from '../../../../../../../_hooks/UseScreenFetching';
 //
 import { type_likes } from '../../../../../../like/list_type_like/type_likes/TypeLikes';
+//
+import ChatMessReactedScreen from '../../../../_components/reacted_screen/_main/ChatMessReactedScreen';
 
 //
 ChatMessReacted.propTypes = {};
 
 //
-function ChatMessReacted({ reacted_count, reacted_ix_arr }) {
+function ChatMessReacted({
+    mess_id,
+    reacted_count,
+    reacted_ix_arr,
+    
+    chooseListTypeLike,
+}) {
     //
     const { openScreenFloor } = useContext(context_api);
+
+    //
+    const handleScreenFetching = useScreenFetching();
 
     // -------
 
     //
-    function openMessReacted() {
-        openScreenLike({
+    async function openMessReacted() {
+        const { data } = await handleScreenFetching(() =>
+            handle_API_MessageReactedInfo_L({
+                mess_id: mess_id,
+            })
+        );
+
+        openScreenWithElm({
             openScreenFloor: openScreenFloor,
-            type_like: -1,
-            reacted_count_arr: [],
-            handle_API_Like_L,
+            elm: (
+                <ChatMessReactedScreen
+                    reacted_count_arr={data}
+                    handle_API_Like_L={(c_count) =>
+                        handle_API_ChatLike_L({
+                            mess_id: mess_id,
+                            c_count: c_count,
+                        })
+                    }
+                    chooseListTypeLike={chooseListTypeLike}
+                />
+            ),
         });
     }
 

@@ -21,8 +21,6 @@
 }
 
 .ChatHide_close {
-    position: absolute;
-    right: 0;
     top: -5px;
 }
 // .
@@ -31,12 +29,11 @@
     height: 1.25rem;
 }
 
-.ChatHide_info_user {
-    position: absolute;
-    right: 100%;
-    top: 50%;
-    transform: translateY(-50%);
+.ChatHide_pic{
+    width: 45px;
+    height: 45px;
 }
+
 // .
 .ChatHide_info_user-padding{
     &::after{

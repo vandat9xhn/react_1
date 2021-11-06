@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_chat } from '../../../../../../_context/chat/ContextChat';
 //
-import { IS_MOBILE } from '../../../../../../_constant/Constant';
-//
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
 import ChatHeadGroupPic from '../group_pic/ChatHeadGroupPic';
@@ -27,11 +25,13 @@ function ChatHead({
     count_user,
 
     handleAction,
+    openRoomUsers,
 }) {
     //
     const { hideRoomChat, closeRoomChat } = useContext(context_api);
 
-    const { openChatScreen, ws, chat_ix, is_group } = useContext(context_chat);
+    const { openChatScreen, ws, chat_ix, is_group, room_obj } =
+        useContext(context_chat);
 
     const head_name = is_group
         ? `${room_users
@@ -69,7 +69,10 @@ function ChatHead({
                 <div className="display-flex align-items-center pos-rel padding-4px">
                     <div className="pos-rel z-index-1 padding-right-8px">
                         {is_group ? (
-                            <ChatHeadGroupPic room_users={room_users} />
+                            <ChatHeadGroupPic
+                                room_users={room_users}
+                                openRoomUsers={openRoomUsers}
+                            />
                         ) : (
                             <ChatHeadUserPic
                                 id={room_users[1].user.id}
@@ -99,14 +102,16 @@ function ChatHead({
                     <div className="ChatHead_name_bg pos-abs-100 display-none brs-6px bg-ccc pointer-events-none"></div>
                 </div>
 
-                {IS_MOBILE ? null : (
-                    <div className="ChatHead_right padding-4px text-third">
-                        <ChatHeadRight
-                            handleHideRoomChat={handleHideRoomChat}
-                            handleCloseRoomChat={handleCloseRoomChat}
-                        />
-                    </div>
-                )}
+                <div
+                    className={`ChatHead_right padding-4px ${
+                        room_obj.room_active ? 'text-blue' : 'text-third'
+                    }`}
+                >
+                    <ChatHeadRight
+                        handleHideRoomChat={handleHideRoomChat}
+                        handleCloseRoomChat={handleCloseRoomChat}
+                    />
+                </div>
             </div>
         </div>
     );

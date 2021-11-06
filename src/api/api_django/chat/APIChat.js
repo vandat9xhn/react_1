@@ -3,6 +3,7 @@ import { API_FakeReal } from '../../_ConstAPI';
 //
 import { default_group_notice_arr, default_message_arr, default_message_user_like_arr, default_message_vid_pic_arr, default_room_chat_obj } from '../../../_default/chat/DefaultChat';
 import { default_room_arr } from '../../../_default/header/RightHeaderDefault';
+import { default_post_reacted_info_total_arr } from '../../../_default/post/reacted';
 
 //
 export const API_Zoom_L = (params = {}) =>
@@ -88,6 +89,19 @@ export const API_MessageLike_L = (params = {}) =>
         () =>
             axiosDjangoClient({
                 url: 'api/chat/message-like-l/',
+                method: 'GET',
+                params: params,
+            }),
+        params
+    );
+
+//
+export const API_MessageReactedInfo_L = (params = {}) =>
+    API_FakeReal(
+        default_post_reacted_info_total_arr(),
+        () =>
+            axiosDjangoClient({
+                url: 'api/chat/message-reacted-info-l/',
                 method: 'GET',
                 params: params,
             }),

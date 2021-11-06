@@ -1,7 +1,10 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 //
 import ContextChat from '../../../../../_context/chat/ContextChat';
+//
+import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 //
 import ChatScreen from '../../__screen/_main/ChatScreen';
 import ChatHead from '../head/_main/ChatHead';
@@ -9,6 +12,7 @@ import ChatBd from '../body/_main/ChatBd';
 import ChatF from '../footer/_main/ChatFoot';
 //
 import './ChatShow.scss';
+import { openChatAddFriend } from '../../__screen/type/add_friend/_main/ChatScreenAddFriend';
 
 //
 ChatShow.propTypes = {};
@@ -22,6 +26,9 @@ function ChatShow({
     chat_ix,
     is_two_chat,
 }) {
+    //
+    const use_history = useHistory();
+
     //
     const {
         is_group,
@@ -40,8 +47,11 @@ function ChatShow({
 
     const is_on_input = user_input ? num_input >= 2 : num_input >= 1;
 
-    // ref
+    //
     const ref_chat_screen = useRef(null);
+
+    //
+    const forceUpdate = useForceUpdate();
 
     //
     // useEffect(() => {
@@ -130,11 +140,13 @@ function ChatShow({
     function onFocusChatShow() {
         room_obj.room_active = true;
         // shouldSendStatus();
+        forceUpdate();
     }
 
     //
     function onBlurChatShow() {
         room_obj.room_active = false;
+        forceUpdate();
     }
 
     /* -------------- */
@@ -149,36 +161,62 @@ function ChatShow({
         ref_chat_screen.current.closeChatScreen(new_floor);
     }
 
+    // ------
+
+    //
+    function handleAction(action_name = '') {
+        if (action_name == 'view_profile') {
+            use_history.push(`/profile/${room_users[1].user.id}`);
+        }
+
+        if (action_name == 'add_member') {
+            openChatAddFriend({
+                openChatScreen: openChatScreen,
+                ws: ws,
+                room_user_id_arr: room_users.map((item) => item.user.id),
+            });
+        }
+    }
+
+    // 
+    function openRoomUsers() {
+        
+    }
+
     // console.log(chat_item);
     //
     return (
         <ContextChat
             chat_ix={chat_ix}
-            room_chat={room_chat}
-            is_group={is_group}
             scroll_y={scroll_y}
             ws={ws}
+            //
+            is_group={is_group}
+            room_chat={room_chat}
+            room_obj={room_obj}
             //
             openChatScreen={openChatScreen}
             closeChatScreen={closeChatScreen}
         >
             <div
-                className={`ChatShow brs-5px box-shadow-fb ${
+                className={`ChatShow pos-fixed bottom-0 brs-5px box-shadow-fb overflow-hidden ${
                     chat_ix == 0 ? '' : 'ChatShow_second'
                 } ${is_two_chat ? '' : 'ChatShow_single'}`}
                 onFocus={onFocusChatShow}
                 onBlur={onBlurChatShow}
             >
-                <div className="ChatShow_contain display-flex flex-col">
+                <div className="ChatShow_contain display-flex flex-col pos-rel bg-primary overflow-hidden">
                     <div className="ChatShow_head">
                         <ChatHead
                             room_users={room_users}
                             count_user={count_user}
                             room_owner={room_owner}
+                            handleAction={handleAction}
+                            openRoomUsers={openRoomUsers}
                         />
                     </div>
 
-                    <div className="ChatShow_body flex-grow-1">
+                    <div className="ChatShow_body flex-grow-1 pos-rel overflow-hidden">
                         <ChatBd
                             chat_ix={chat_ix}
                             message_obj={message_obj}

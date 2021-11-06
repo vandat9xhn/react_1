@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { IS_MOBILE } from '../../../../../_constant/Constant';
-//
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
+//
+import ChatGroupPic from '../../../../chat_group_pic/ChatGroupPic';
 //
 import './ChatHideCommon.scss';
 import './ChatHide.scss';
@@ -14,14 +14,7 @@ import './ChatHide.scss';
 ChatHide.propTypes = {};
 
 //
-function ChatHide({
-    chat_ix,
-    //
-    ws,
-    index,
-    room_chat,
-    chat_item,
-}) {
+function ChatHide({ chat_ix, ws, index, room_chat, chat_item }) {
     //
     const { openRoomChat, closeRoomChat } = useContext(context_api);
 
@@ -64,10 +57,28 @@ function ChatHide({
                 }`}
             >
                 <div
-                    className={`ChatHide_close ${
-                        IS_MOBILE ? '' : 'display-none'
-                    }`}
+                    className="ChatHide_pic cursor-pointer"
+                    onClick={reOpenZoomChat}
                 >
+                    {chat_item.is_group ? (
+                        <ChatGroupPic
+                            pic_1={
+                                chat_item.room_obj.room_users[0].user.picture
+                            }
+                            pic_2={
+                                chat_item.room_obj.room_users[1].user.picture
+                            }
+                        />
+                    ) : (
+                        <img
+                            className="wh-100 brs-50 object-fit-cover"
+                            src={f_user.picture}
+                            alt=""
+                        />
+                    )}
+                </div>
+
+                <div className="ChatHide_close display-none pos-abs right-0">
                     <div
                         className="ChatHide_close-icon close-icon-small brs-50 cursor-pointer"
                         onClick={onCloseZoomChat}
@@ -76,17 +87,7 @@ function ChatHide({
                     </div>
                 </div>
 
-                <div className="cursor-pointer" onClick={reOpenZoomChat}>
-                    <img
-                        className="brs-50"
-                        src={f_user.picture}
-                        alt=""
-                        width="45"
-                        height="45"
-                    />
-                </div>
-
-                <div className="ChatHide_info_user display-none">
+                <div className="ChatHide_info_user display-none pos-abs right-100per y-center">
                     <div className="ChatHide_info_user-padding chat-hide-padding">
                         <div className="chat-hide-contain padding-4px bg-primary brs-5px box-shadow-fb">
                             <div className="w-100per text-nowrap font-500">

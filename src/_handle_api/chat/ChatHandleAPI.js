@@ -5,6 +5,7 @@ import {
     API_MessageVidPic_L,
     API_MessageLike_L,
     API_ChatTimeLine_LC,
+    API_MessageReactedInfo_L,
 } from '../../api/api_django/chat/APIChat';
 //
 import makeFormData from '../../_some_function/makeFormData';
@@ -72,11 +73,22 @@ export async function handle_API_ChatVidPic_L(mess_id, c_count = 0) {
 }
 
 //
-export async function handle_API_ChatLike_L(mess_id, c_count = 0) {
+export async function handle_API_ChatLike_L({ mess_id, c_count = 0 }) {
     const res = await API_MessageLike_L({
         mess_model: mess_id,
         c_count: c_count,
         ...page_size,
+    });
+
+    return res.data;
+}
+
+//
+export async function handle_API_MessageReactedInfo_L({ mess_id }) {
+    const res = await API_MessageReactedInfo_L({
+        mess_model: mess_id,
+        page: 1,
+        size: 6,
     });
 
     return res.data;

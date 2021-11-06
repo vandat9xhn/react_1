@@ -38,12 +38,26 @@ function ChatMess({ ref_bd_elm, mess_item }) {
     //
     const is_user = profile_model == user.id;
 
+    // -------
+
+    //
+    function chooseListTypeLike(reacted_ix) {
+        console.log(reacted_ix);
+    }
+
+    //
+    function handleAction(action_name = '') {
+        console.log(action_name);
+    }
+
     //
     return (
-        // <VirtualScroll rootMargin_y={400}>
+        <VirtualScroll rootMargin_y={400}>
             <div
-                className={`ChatMess pos-rel display-flex ${
-                    is_user ? 'ChatMess_user flex-end' : 'ChatMess_friend'
+                className={`ChatMess pos-rel ${
+                    is_user
+                        ? 'ChatMess_user flex-end'
+                        : 'ChatMess_friend display-flex'
                 }`}
             >
                 <div className="ChatMess_mess">
@@ -64,20 +78,26 @@ function ChatMess({ ref_bd_elm, mess_item }) {
                     ) : null}
 
                     <div className="ChatMess_actions pos-abs y-center">
-                        <ChatMessActions ref_bd_elm={ref_bd_elm} />
+                        <ChatMessActions
+                            ref_bd_elm={ref_bd_elm}
+                            chooseListTypeLike={chooseListTypeLike}
+                            handleAction={handleAction}
+                        />
                     </div>
 
                     {reacted_count ? (
                         <div className="ChatMess_felt">
                             <ChatMessReacted
+                                mess_id={id}
                                 reacted_count={reacted_count}
                                 reacted_ix_arr={reacted_ix_arr}
+                                chooseListTypeLike={chooseListTypeLike}
                             />
                         </div>
                     ) : null}
                 </div>
             </div>
-        // </VirtualScroll>
+        </VirtualScroll>
     );
 }
 

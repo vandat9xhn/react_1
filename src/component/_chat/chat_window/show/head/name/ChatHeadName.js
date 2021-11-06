@@ -12,27 +12,27 @@ function ChatHeadName({ is_group, title_action, handleAction }) {
     function handle_API_L() {
         if (is_group) {
             return [
-                [{ name: '', title: 'Open in Messenger' }],
+                [{ name: 'messenger', title: 'Open in Messenger' }],
                 [
-                    { name: '', title: 'Color' },
-                    { name: '', title: 'Emoji' },
-                    { name: '', title: 'Nicknames' },
+                    { name: 'color', title: 'Color' },
+                    { name: 'emoji', title: 'Emoji' },
+                    { name: 'nicknames', title: 'Nicknames' },
                     { name: '', title: 'Conversation name' },
                 ],
                 [
-                    { name: '', title: 'Member' },
-                    { name: '', title: 'Add members' },
-                    { name: '', title: 'Leave group' },
+                    { name: 'member', title: 'Member' },
+                    { name: 'add_member', title: 'Add members' },
+                    { name: 'leave', title: 'Leave group' },
                 ],
                 [
-                    { name: '', title: 'Mute conversation' },
-                    { name: '', title: 'Ignore messages' },
-                    { name: '', title: 'Block a member' },
+                    { name: 'mute', title: 'Mute conversation' },
+                    { name: 'ignore', title: 'Ignore messages' },
+                    { name: 'block', title: 'Block a member' },
                 ],
                 [
-                    { name: '', title: 'Delete chat' },
+                    { name: 'delete', title: 'Delete chat' },
                     {
-                        name: '',
+                        name: 'report',
                         title: "Something's wrong",
                         info: 'Give feedback and report the conversation',
                     },
@@ -43,7 +43,7 @@ function ChatHeadName({ is_group, title_action, handleAction }) {
         return [
             [
                 { name: '', title: 'Open in Messenger' },
-                { name: '', title: 'View profile' },
+                { name: 'view_profile', title: 'View profile' },
             ],
             [
                 { name: '', title: 'Color' },

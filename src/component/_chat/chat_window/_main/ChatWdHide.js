@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { CHAT_INACTIVE_NUM, IS_MOBILE } from '../../../../_constant/Constant';
+import { CHAT_INACTIVE_NUM } from '../../../../_constant/Constant';
 //
 import { context_api } from '../../../../_context/ContextAPI';
 //
@@ -31,6 +31,8 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
     });
 
     const { is_show_chat_hide, open_options } = state_obj;
+
+    // --------
 
     //
     function toggleChatInactive() {
@@ -75,9 +77,7 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
         <div className="ChatWdHidden pos-rel">
             <div
                 className={`ChatWdHidden_options ${
-                    IS_MOBILE || !is_show_chat_hide || open_options
-                        ? ''
-                        : 'display-none'
+                    !is_show_chat_hide || open_options ? '' : 'display-none'
                 } 
                
                 `}
@@ -118,7 +118,7 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
                             )
                             .map((item, ix) => (
                                 <div
-                                    key={`${item.room_chat}`}
+                                    key={item.room_chat}
                                     className="ChatWdHidden_item display-flex col-reverse"
                                     style={{
                                         transform: `translateY(-${

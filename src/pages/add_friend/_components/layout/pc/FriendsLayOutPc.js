@@ -20,7 +20,7 @@ function FriendsLayOutPc({
                     <div className="display-flex flex-col wh-100">
                         <div>{ComponentLeftHead}</div>
 
-                        <div className="flex-shrink-1 overflow-y-auto scroll-thin">
+                        <div className="flex-grow-1 flex-basis-1rem overflow-y-auto scroll-thin">
                             {ComponentLeftContain}
                         </div>
                     </div>

@@ -16,6 +16,7 @@ ScreenLikeHead.propTypes = {};
 function ScreenLikeHead({
     type_like,
     reacted_count_arr,
+    use_close,
 
     changeListTypeLike,
     closeScreen,
@@ -59,12 +60,12 @@ function ScreenLikeHead({
                 )}
             </div>
 
-            <div
+            {use_close ? <div
                 className="ScreenLikeHead_close pos-abs display-flex-center brs-50 bg-ccc cursor-pointer"
                 onClick={closeScreen}
             >
                 <IconsArrow y={400} size_icon="24px" />
-            </div>
+            </div> : null}
         </div>
     );
 }

@@ -1,30 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMultiDataKey } from '../../../../../_hooks/useMultiDataKey';
-//
-import { type_likes } from '../../../../like/list_type_like/type_likes/TypeLikes';
-import UserAdd from '../../../../user_add/UserAdd';
-//
+// 
 import ScreenBlur from '../../../components/frame/blur/ScreenBlur';
-import ScreenBlurShowMore from '../../../components/part/foot/ScreenBlurShowMore';
-//
-import ScreenLikeHead from '../head/ScreenLikeHead';
-//
-import './ScreenLike.scss';
+import ScreenLikeContain from '../contain/ScreenLikeContain';
 
 //
 export function openScreenLike({
     openScreenFloor,
-    handle_API_Like_L,
     type_like,
     reacted_count_arr = [] || [{ reacted_ix: 0, count: 0 }],
+    ItemComponent,
+    item_props = {},
+    handle_API_Like_L,
 }) {
     openScreenFloor({
         FloorComponent: ScreenLike,
-        handle_API_Like_L: handle_API_Like_L,
         type_like: type_like,
         reacted_count_arr: reacted_count_arr,
+        ItemComponent: ItemComponent,
+        item_props: item_props,
+        handle_API_Like_L: handle_API_Like_L,
     });
 }
 
@@ -33,15 +30,18 @@ ScreenLike.propTypes = {};
 
 //
 function ScreenLike({
-    type_like: initial_type_like,
+    type_like,
     reacted_count_arr,
+
+    ItemComponent,
+    item_props,
 
     handle_API_Like_L,
     closeScreen,
 }) {
     //
     const { state_obj, getData_API, handleChangeKey } = useMultiDataKey({
-        initial_key: initial_type_like,
+        initial_key: type_like,
         handle_API_L: handle_API_Like_L,
     });
 
@@ -50,8 +50,10 @@ function ScreenLike({
 
     //
     useEffect(() => {
-        getData_API(initial_type_like);
+        getData_API(type_like);
     }, []);
+
+    // ------
 
     //
     function showMoreLike() {
@@ -59,54 +61,25 @@ function ScreenLike({
     }
 
     //
-    function handleSendAddFriend(friend_id) {
-        console.log(friend_id);
-    }
-
-    //
     return (
         <ScreenBlur closeScreen={closeScreen}>
-            <div className="ScreenLike">
-                <div className="border-bottom-blur">
-                    <ScreenLikeHead
-                        type_like={c_key}
-                        reacted_count_arr={reacted_count_arr}
-                        changeListTypeLike={handleChangeKey}
-                        closeScreen={closeScreen}
-                    />
-                </div>
-
-                <div
-                    className={`ScreenBlur_body ${
-                        has_fetched ? '' : 'display-none'
-                    }`}
-                >
-                    <div className="ScreenBlur_body_contain scroll-thin">
-                        {data_arr.map((item, ix) => (
-                            <div
-                                key={`ScreenLike_add_friend_${ix}`}
-                                className="ScreenLike_add-friend"
-                            >
-                                <UserAdd
-                                    user={item.user}
-                                    handleSendAddFriend={handleSendAddFriend}
-                                    content={
-                                        type_likes[item.type_like].component
-                                    }
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                <div>
-                    <ScreenBlurShowMore
-                        is_show_more={count > data_arr.length}
-                        is_fetching={is_fetching}
-                        handleShowMore={showMoreLike}
-                    />
-                </div>
-            </div>
+            <ScreenLikeContain
+                reacted_count_arr={reacted_count_arr}
+                // use_close={use_close}
+                
+                c_key={c_key}
+                data_arr={data_arr}
+                count={count}
+                has_fetched={has_fetched}
+                is_fetching={is_fetching}
+            
+                ItemComponent={ItemComponent}
+                item_props={item_props}
+            
+                handleChangeKey={handleChangeKey}
+                handleShowMore={showMoreLike}
+                closeScreen={closeScreen}
+            />
         </ScreenBlur>
     );
 }

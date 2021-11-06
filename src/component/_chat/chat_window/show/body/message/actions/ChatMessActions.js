@@ -25,7 +25,7 @@ function ChatMessActions({ ref_bd_elm, chooseListTypeLike, handleAction }) {
     // -----
 
     //
-    function handle_API_L() {
+    function handle_API_Action_L() {
         return [
             [
                 { name: 'remove', title: 'Remove' },
@@ -50,6 +50,12 @@ function ChatMessActions({ ref_bd_elm, chooseListTypeLike, handleAction }) {
     }
 
     //
+    function onChooseListTypeLike(...params) {
+        chooseListTypeLike(...params);
+        handleClose();
+    }
+
+    //
     return (
         <div
             className={`ChatMessActions ${
@@ -60,7 +66,7 @@ function ChatMessActions({ ref_bd_elm, chooseListTypeLike, handleAction }) {
                 <div className="ChatMessActions_action hv-opacity cursor-pointer">
                     <ActionsMultiList
                         getActionsScrollElms={getActionsScrollElms}
-                        handle_API_L={handle_API_L}
+                        handle_API_L={handle_API_Action_L}
                         handleAction={handleAction}
                         whenIsShowChange={whenIsShowChange}
                     />
@@ -79,7 +85,7 @@ function ChatMessActions({ ref_bd_elm, chooseListTypeLike, handleAction }) {
                     >
                         <div className="ChatMessActions_reacted_list">
                             <ListTypeLike
-                                chooseListTypeLike={chooseListTypeLike}
+                                chooseListTypeLike={onChooseListTypeLike}
                                 open_type_like={true}
                             />
                         </div>

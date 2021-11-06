@@ -41,10 +41,10 @@ class ChatScreen extends Component {
         return (
             <div className="ChatScreen">
                 {screen_floor.map((item, ix) => (
-                    <div key={ix} className="pos-fixed-100per z-index-lv5">
-                        <div className="ChatScreen_blur pos-abs-100 bg-fb-active"></div>
+                    <div key={ix} className="pos-abs-100per">
+                        <div className="ChatScreen_blur pos-abs-100 bg-fb-active z-index-lv5"></div>
 
-                        <div className="wh-100 bg-through">
+                        <div className="pos-abs-100 bg-through z-index-lv5">
                             <ChatScreenFloor
                                 closeChatScreen={this.closeChatScreen}
                                 {...item}
