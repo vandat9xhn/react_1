@@ -30,7 +30,7 @@ function ChatHead({
     //
     const { hideRoomChat, closeRoomChat } = useContext(context_api);
 
-    const { openChatScreen, ws, chat_ix, is_group, room_obj } =
+    const { openChatScreen, ws, chat_ix, is_group, room_obj, colour_arr } =
         useContext(context_chat);
 
     const head_name = is_group
@@ -103,9 +103,12 @@ function ChatHead({
                 </div>
 
                 <div
-                    className={`ChatHead_right padding-4px ${
-                        room_obj.room_active ? 'text-blue' : 'text-third'
-                    }`}
+                    className="ChatHead_right padding-4px"
+                    style={{
+                        color: room_obj.room_active
+                            ? colour_arr[0]
+                            : 'var(--md-color-third)',
+                    }}
                 >
                     <ChatHeadRight
                         handleHideRoomChat={handleHideRoomChat}

@@ -8,6 +8,7 @@ import VirtualScroll from '../../../../../../virtual_scroll/VirtualScroll';
 import ChatMessReacted from '../reacted/ChatMessReacted';
 import ChatMessActions from '../actions/ChatMessActions';
 import ChatMessVidPic from '../vid_pic/_main/ChatMessVidPic';
+import ChatMessContent from '../content/ChatMessContent';
 //
 import './ChatMess.scss';
 
@@ -61,11 +62,7 @@ function ChatMess({ ref_bd_elm, mess_item }) {
                 }`}
             >
                 <div className="ChatMess_mess">
-                    {message ? (
-                        <div className="ChatMess_content margin-left-auto width-fit-content padding-8px brs-10px bg-ccc">
-                            {message}
-                        </div>
-                    ) : null}
+                    {message ? <ChatMessContent message={message} /> : null}
 
                     {vid_pic_count ? (
                         <div className="ChatMess_vid_pic">

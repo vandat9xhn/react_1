@@ -203,7 +203,7 @@ function ChatF({ canvas_obj, input_obj }) {
 
                 <div className="ChatF_row display-flex align-items-end padding-4px border-top-blur">
                     <div
-                        className={`ChatF_MB ${
+                        className={`ChatF_MB padding-bottom-5px ${
                             more_input || text.trim()
                                 ? 'ChatF_MB-close'
                                 : 'ChatF_MB-open'
@@ -232,7 +232,7 @@ function ChatF({ canvas_obj, input_obj }) {
                         />
                     </div>
 
-                    <div className="ChatF_Sd">
+                    <div className="ChatF_Sd padding-bottom-5px">
                         <ChatSd
                             should_send={
                                 !!current_canvas ||

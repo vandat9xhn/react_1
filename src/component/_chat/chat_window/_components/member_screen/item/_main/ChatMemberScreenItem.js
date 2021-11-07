@@ -10,7 +10,7 @@ import {
 import { useYouOrName } from '../../../../../../../_hooks/useYouOrName';
 //
 import ActionsMultiList from '../../../../../../actions_multi_list/_main/ActionsMultiList';
-// 
+//
 import './ChatMemberScreenItem.scss';
 
 //
@@ -53,6 +53,13 @@ function ChatMemberScreenItem({
         is_admin: is_member_admin,
     });
 
+    // ------
+
+    //
+    function onAction(action_name = '') {
+        handleAction({ action_name: action_name, user_id: id });
+    }
+
     //
     return (
         <div className="ChatMemberScreenItem padding-8px">
@@ -80,7 +87,7 @@ function ChatMemberScreenItem({
                         <ActionsMultiList
                             x_always="right"
                             handle_API_L={handle_API_L}
-                            handleAction={handleAction}
+                            handleAction={onAction}
                         />
                     </div>
                 </div>

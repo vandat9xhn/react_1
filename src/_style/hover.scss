@@ -44,6 +44,12 @@
     }
 }
 
+.hv-bg-fb-active {
+    &:hover {
+        background-color: var(--md-bg-fb-active);
+    }
+}
+
 .hv-bg-s-through {
     &:hover {
         background-color: var(--bg-s-through);

@@ -14,7 +14,7 @@ import './ChatMemberScreen.scss';
 ChatMemberScreen.propTypes = {};
 
 //
-function ChatMemberScreen({ room_users, handleClose }) {
+function ChatMemberScreen({ room_users, handleAction, handleClose }) {
     //
     const { user } = useContext(context_api);
 
@@ -43,14 +43,9 @@ function ChatMemberScreen({ room_users, handleClose }) {
     }
 
     //
-    function handleAction(action_name = '') {
-        console.log(action_name);
-    }
-
-    //
     return (
         <div className="ChatMemberScreen screen">
-            <div className="ChatMemberScreen_contain screen_contain_500px">
+            <div className="ChatMemberScreen_contain screen-contain w-500px">
                 <div>
                     <ChatMemberScreenHead
                         member_type_ix={member_type_ix}

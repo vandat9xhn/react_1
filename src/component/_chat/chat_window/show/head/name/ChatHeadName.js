@@ -14,7 +14,7 @@ function ChatHeadName({ is_group, title_action, handleAction }) {
             return [
                 [{ name: 'messenger', title: 'Open in Messenger' }],
                 [
-                    { name: 'color', title: 'Color' },
+                    { name: 'colour', title: 'Colour' },
                     { name: 'emoji', title: 'Emoji' },
                     { name: 'nicknames', title: 'Nicknames' },
                     { name: '', title: 'Conversation name' },
@@ -46,9 +46,9 @@ function ChatHeadName({ is_group, title_action, handleAction }) {
                 { name: 'view_profile', title: 'View profile' },
             ],
             [
-                { name: '', title: 'Color' },
-                { name: '', title: 'Emoji' },
-                { name: '', title: 'Nicknames' },
+                { name: 'colour', title: 'Colour' },
+                { name: 'emoji', title: 'Emoji' },
+                { name: 'nicknames', title: 'Nicknames' },
             ],
             [{ name: '', title: 'Create group' }],
             [

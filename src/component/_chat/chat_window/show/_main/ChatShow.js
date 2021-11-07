@@ -10,6 +10,8 @@ import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 import { openChatAddFriend } from '../../__screen/type/add_friend/_main/ChatScreenAddFriend';
 import { openScreenWithElm } from '../../../../_screen/type/with_elm/ScreenWithElm';
 //
+import { CHAT_ACTION_MEMBER_OBJ_1 } from '../../../../../_some_function/chat/action_member';
+//
 import ChatScreen from '../../__screen/_main/ChatScreen';
 import ChatMemberScreen from '../../_components/member_screen/_main/ChatMemberScreen';
 import ChatHead from '../head/_main/ChatHead';
@@ -17,6 +19,7 @@ import ChatBd from '../body/_main/ChatBd';
 import ChatF from '../footer/_main/ChatFoot';
 //
 import './ChatShow.scss';
+import ChatColorScreen from '../../_components/color/_main/ChatColorScreen';
 
 //
 ChatShow.propTypes = {};
@@ -34,11 +37,13 @@ function ChatShow({
     const use_history = useHistory();
 
     //
-    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
+    const { openScreenFloor, closeScreenFloor, openRoomChat } =
+        useContext(context_api);
 
     //
     const {
         is_group,
+        colour_arr,
         room_chat,
 
         texting_obj,
@@ -170,24 +175,14 @@ function ChatShow({
 
     // ------
 
-    //
-    function handleAction(action_name = '') {
-        if (action_name == 'view_profile') {
-            use_history.push(`/profile/${room_users[1].user.id}`);
-        }
-
-        if (action_name == 'add_member') {
-            openChatAddFriend({
-                openChatScreen: openChatScreen,
-                ws: ws,
-                room_user_id_arr: room_users.map((item) => item.user.id),
-            });
-        }
-
-        if (action_name == 'member') {
-            openRoomUsers();
-        }
+    // 
+    function changeColor(new_color_arr = []) {
+        chat_item.colour_arr = new_color_arr
+        forceUpdate()
+        closeScreenFloor()
     }
+
+    // ------ OPEN
 
     //
     function openRoomUsers() {
@@ -196,10 +191,75 @@ function ChatShow({
             elm: (
                 <ChatMemberScreen
                     room_users={room_users}
+                    handleAction={handleActionGroup}
                     handleClose={closeScreenFloor}
                 />
             ),
         });
+    }
+    
+    //
+    function openRoomColour() {
+        openScreenWithElm({
+            openScreenFloor: openScreenFloor,
+            elm: (
+                <ChatColorScreen
+                    handleClose={closeScreenFloor}
+                    changeColor={changeColor}
+                />
+            ),
+        });
+    }
+
+    // ------ ACTIONS
+
+    //
+    function handleAction(action_name = '') {
+        if (action_name == 'view_profile') {
+            use_history.push(`/profile/${room_users[1].user.id}`);
+
+            return;
+        }
+
+        if (action_name == 'add_member') {
+            openChatAddFriend({
+                openChatScreen: openChatScreen,
+                ws: ws,
+                room_user_id_arr: room_users.map((item) => item.user.id),
+            });
+
+            return;
+        }
+
+        if (action_name == 'member') {
+            openRoomUsers();
+
+            return;
+        }
+
+        if (action_name == 'colour') {
+            openRoomColour();
+
+            return;
+        }
+    }
+
+    //
+    function handleActionGroup({ action_name = '', user_id = 0 }) {
+        if (action_name == CHAT_ACTION_MEMBER_OBJ_1.profile.name) {
+            use_history.push(`/profile/${user_id}`);
+
+            return;
+        }
+
+        if (action_name == CHAT_ACTION_MEMBER_OBJ_1.chat.name) {
+            openRoomChat(user_id);
+            closeScreenFloor()
+
+            return;
+        }
+
+        console.log(action_name, user_id);
     }
 
     // console.log(chat_item);
@@ -211,6 +271,8 @@ function ChatShow({
             ws={ws}
             //
             is_group={is_group}
+            colour_arr={colour_arr}
+            // 
             room_chat={room_chat}
             room_obj={room_obj}
             //

@@ -2,9 +2,9 @@ import React from 'react';
 //
 import { handle_API_FashionCart_C } from '../../../../../_handle_api/fashion/FashionCartHandleAPI';
 //
-import { actionFashionChangeCountCartNum } from '../../../../../redux/action/action_count_cart';
-//
 import { openScreenNotice } from '../../../../../component/_screen_once/notice/ScreenNotice';
+// 
+import { FsCountUpCartReducer } from '../../../../../redux/slice/FsCountCartSlice';
 //
 import FashionCartSuccess from '../add_cart_success/FashionCartSuccess';
 
@@ -22,10 +22,16 @@ export async function addToCart({
     openScreenOnce = () => {},
     closeScreenOnce = () => {},
 }) {
-    setStateObj((state_obj) => ({
-        ...state_obj,
-        wait_add_cart: true,
-    }));
+    let total_add_cart = 0;
+
+    setStateObj((state_obj) => {
+        total_add_cart = state_obj.item_info.total_add_cart;
+
+        return {
+            ...state_obj,
+            wait_add_cart: true,
+        };
+    });
 
     await handle_API_FashionCart_C({
         product_model: id,
@@ -36,12 +42,12 @@ export async function addToCart({
         return;
     }
 
+    if (total_add_cart == 0) {
+        dispatch(FsCountUpCartReducer(1));
+    }
+
     setStateObj((state_obj) => {
         const { item_info, model_ix } = state_obj;
-
-        item_info.total_add_cart == 0 &&
-            dispatch(actionFashionChangeCountCartNum(1));
-
         const new_models = [...item_info.models];
 
         if (model_ix >= 0) {

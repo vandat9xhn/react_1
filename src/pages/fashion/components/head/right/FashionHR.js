@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 //
-import { requestFashionGetCountCart } from '../../../../../redux/action/action_count_cart';
-//
+import { FsCountCartThunk } from '../../../../../redux/slice/FsCountCartSlice';
+// 
 import IconsMenu from '../../../../../_icons_svg/icons_menu/IconsMenu';
 import IconsAction from '../../../../../_icons_svg/icons_action/IconsAction';
 //
-import './FashionHR.scss';
 import BadgeDiv from '../../../../../component/some_div/badge_div/BadgeDiv';
+//
+import './FashionHR.scss';
 
 //
 FashionHR.propTypes = {};
@@ -18,14 +19,14 @@ FashionHR.propTypes = {};
 function FashionHR(props) {
     //
     const { count_cart, has_fetched } = useSelector(
-        (state) => state.count_cart_obj
+        (state) => state.count_cart_slice_obj
     );
     const dispatch = useDispatch();
 
     //
     useEffect(() => {
         if (!has_fetched) {
-            dispatch(requestFashionGetCountCart());
+            dispatch(FsCountCartThunk());
         }
     }, []);
 

@@ -6,10 +6,13 @@ export function makeNewChat(data) {
         room_chat,
         room_users,
         count_user,
+
         messages,
         count_message,
         user_begin_mess,
+
         is_group,
+        colour_arr,
         owner,
         creator,
         count_group_notice,
@@ -19,6 +22,7 @@ export function makeNewChat(data) {
     return {
         ...initial_chat_item(),
         is_group: is_group,
+        colour_arr: colour_arr,
         room_chat: room_chat,
 
         room_obj: {

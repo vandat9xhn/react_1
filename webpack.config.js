@@ -13,10 +13,10 @@ const VENDOR_LIBS = [
     'axios',
     'redux',
     'react-redux',
-    'redux-thunk',
-    'redux-saga',
-    'yup',
-    'formik',
+    // 'redux-thunk',
+    // 'redux-saga',
+    // 'yup',
+    // 'formik',
 ];
 
 //

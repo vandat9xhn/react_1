@@ -36,7 +36,7 @@ function ScreenBlurHead({ title, is_center, use_own_title, closeScreenBlur }) {
                 {use_own_title ? (
                     title
                 ) : (
-                    <h2 className="ScreenBlurHead_title h-100per font-700 font-20px">
+                    <h2 className="ScreenBlurHead_title font-700 font-20px">
                         {title}
                     </h2>
                 )}

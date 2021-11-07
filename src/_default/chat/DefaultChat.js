@@ -105,16 +105,20 @@ export const default_room_chat_obj = (room_chat) => {
         room_chat: room_chat,
         room_users: default_room_user_arr(2, is_group ? 6 : 2),
         count_user: 2,
-        messages: default_message_arr(),
-        count_message: 100,
-        is_group: is_group,
-        updated_time: '2021-03-28T10:11:52Z',
         owner: { ...default_define_user, is_online: true },
         creator: { ...default_define_user, is_online: true },
+
+        is_group: is_group,
+        colour_arr: ['#007bff', '#007bff'],
+
+        messages: default_message_arr(),
+        count_message: 100,
+
         group_notices: default_group_notice_arr(),
         count_group_notice: 3,
         count_new_mess: 0,
         is_active: false,
         user_begin_mess: 0,
+        updated_time: '2021-03-28T10:11:52Z',
     };
 };

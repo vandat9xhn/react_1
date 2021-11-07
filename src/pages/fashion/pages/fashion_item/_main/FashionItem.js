@@ -40,14 +40,15 @@ import FsIBottomPanelMb from '../bottom_panel_mb/FsIBottomPanelMb';
 //
 import './FashionItem.scss';
 import './FashionItemRes.scss';
-
 import './FashionItemMobile.scss';
+
 import '../_mobile_scss/FsIBreadCrumbMb.scss';
 import '../_mobile_scss/FsIInfoMb.scss';
 import '../_mobile_scss/FsIInfoLeftMb.scss';
 import '../_mobile_scss/FsIInfoRightMb.scss';
 import '../_mobile_scss/FsIComboMb.scss';
 import '../_mobile_scss/FsIGiftMb.scss';
+
 import '../_mobile_scss/FsIOwnerMb.scss';
 import '../_mobile_scss/FsIShopSellingMb.scss';
 import '../_mobile_scss/FsIDescriptionMb.scss';
@@ -74,7 +75,7 @@ function FashionItem(props) {
     const [state_obj, setStateObj] = useState(FsI_initial_state_obj());
 
     const { item_info, model_ix, count, wait_add_cart } = state_obj;
-
+    
     const { tier_variations, models } = item_info;
 
     const {

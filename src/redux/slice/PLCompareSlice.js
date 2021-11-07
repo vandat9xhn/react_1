@@ -11,7 +11,7 @@ const initialState = {
 //
 export const PLCompareSlice = createSlice({
     name: 'pl_compare',
-    initialState,
+    initialState: initialState,
     reducers: {
         addDeviceToCompare: (state_obj, action) => {
             const { new_device, new_type } = action.payload;

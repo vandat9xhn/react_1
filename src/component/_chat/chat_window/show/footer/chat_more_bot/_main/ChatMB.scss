@@ -4,17 +4,15 @@ $dur: 0.4s;
 .ChatMB_toggle{
     width: 1.5rem;
     height: 1.5rem;
-
-    background-color: var(--blue);
     transition: transform $dur;
 }
 //
 .ChatMB_open{
-    transform: rotate(0deg);
+    transform: rotate(-45deg);
 }
 //
 .ChatMB_close{
-    transform: rotate(-45deg);
+    transform: rotate(0deg);
 }
 
 // actions + open + close

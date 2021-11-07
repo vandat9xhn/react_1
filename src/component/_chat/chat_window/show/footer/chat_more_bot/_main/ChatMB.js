@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsArrow from '../../../../../../../_icons_svg/icons_arrow/IconsArrow';
+import { context_chat } from '../../../../../../../_context/chat/ContextChat';
+//
+import IconPlusSubtract from '../../../../../../../_icons_svg/_icon_plus_subtract/IconPlusSubtract';
 import IconDraw from '../../../../../../../_icons_svg/icon_draw/IconDraw';
-import InputFile from '../../../../../../input/input_file/InputFile';
 import IconsInput from '../../../../../../../_icons_svg/Icons_input/IconsInput';
 import IconFaceGray from '../../../../../../../_icons_svg/icons_like/_Icon_face_gray/IconFaceGray';
+//
+import InputFile from '../../../../../../input/input_file/InputFile';
 //
 import './ChatMB.scss';
 
@@ -20,6 +23,9 @@ function ChatMB({
     handleChooseFiles,
 }) {
     //
+    const { room_obj, colour_arr } = useContext(context_chat);
+
+    //
     return (
         <div className="ChatMB">
             <div className="ChatMB_row display-flex align-items-center">
@@ -28,9 +34,14 @@ function ChatMB({
                         className={`ChatMB_toggle display-flex-center brs-50 cursor-pointer ${
                             more_input ? 'ChatMB_open' : 'ChatMB_close'
                         }`}
+                        style={{
+                            backgroundColor: room_obj.room_active
+                                ? colour_arr.slice(-1)[0]
+                                : 'var(--md-bg-ccc)',
+                        }}
                         onClick={moreActionsIp}
                     >
-                        <IconsArrow y={400} size_icon="1rem" />
+                        <IconPlusSubtract size_icon="1rem" stroke="white" />
                     </div>
                 </div>
 

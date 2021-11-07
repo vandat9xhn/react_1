@@ -1,11 +1,11 @@
 //
-export const action_obj_1 = {
+export const CHAT_ACTION_MEMBER_OBJ_1 = {
     chat: { name: 'message', title: 'Message' },
     profile: { name: 'profile', title: 'View profile' },
     block: { name: 'block', title: 'Block' },
 };
 
-export const action_obj_2 = {
+export const CHAT_ACTION_MEMBER_OBJ_2 = {
     make_admin: { name: 'make_admin', title: 'Make admin' },
     remove_member: { name: 'remove_member', title: 'Remove member' },
     remove_admin: { name: 'remove_admin', title: 'Remove as admin' },
@@ -24,11 +24,11 @@ export function getChatActionMemberArr({
     // ----
     if (is_user) {
         if (is_user_admin) {
-            arr_2.push(action_obj_2.remove_admin);
+            arr_2.push(CHAT_ACTION_MEMBER_OBJ_2.remove_admin);
         }
 
-        arr_1.push(action_obj_1.profile);
-        arr_2.push(action_obj_2.leave_group);
+        arr_1.push(CHAT_ACTION_MEMBER_OBJ_1.profile);
+        arr_2.push(CHAT_ACTION_MEMBER_OBJ_2.leave_group);
 
         return [arr_1, arr_2];
     }
@@ -36,15 +36,15 @@ export function getChatActionMemberArr({
     // ----
     if (is_user_admin) {
         if (is_member_admin) {
-            arr_2.push(action_obj_2.remove_admin);
+            arr_2.push(CHAT_ACTION_MEMBER_OBJ_2.remove_admin);
         } else {
-            arr_2.push(action_obj_2.make_admin);
+            arr_2.push(CHAT_ACTION_MEMBER_OBJ_2.make_admin);
         }
 
-        arr_2.push(action_obj_2.remove_member);
+        arr_2.push(CHAT_ACTION_MEMBER_OBJ_2.remove_member);
     }
 
-    arr_1.push(action_obj_1.chat, action_obj_1.profile, action_obj_1.block);
+    arr_1.push(CHAT_ACTION_MEMBER_OBJ_1.chat, CHAT_ACTION_MEMBER_OBJ_1.profile, CHAT_ACTION_MEMBER_OBJ_1.block);
 
     return arr_2.length ? [arr_1, arr_2] : [arr_1];
 }
