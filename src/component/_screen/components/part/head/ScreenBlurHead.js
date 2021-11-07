@@ -7,17 +7,19 @@ import './ScreenBlurHead.scss';
 
 //
 ScreenBlurHead.propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     is_center: PropTypes.bool,
+    use_own_title: PropTypes.bool,
     closeScreenBlur: PropTypes.func,
 };
 
 ScreenBlurHead.defaultProps = {
     is_center: false,
+    use_own_title: false,
 };
 
 //
-function ScreenBlurHead({ title, is_center, closeScreenBlur }) {
+function ScreenBlurHead({ title, is_center, use_own_title, closeScreenBlur }) {
     //
     function onCloseScreenBlur() {
         closeScreenBlur();
@@ -31,9 +33,13 @@ function ScreenBlurHead({ title, is_center, closeScreenBlur }) {
                     is_center ? 'display-flex-center' : 'flex-between-center'
                 }`}
             >
-                <h2 className="ScreenBlurHead_title font-700 font-20px">
-                    {title}
-                </h2>
+                {use_own_title ? (
+                    title
+                ) : (
+                    <h2 className="ScreenBlurHead_title h-100per font-700 font-20px">
+                        {title}
+                    </h2>
+                )}
 
                 <div
                     className={`${

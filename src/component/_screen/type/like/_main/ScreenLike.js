@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMultiDataKey } from '../../../../../_hooks/useMultiDataKey';
-// 
+//
 import ScreenBlur from '../../../components/frame/blur/ScreenBlur';
 import ScreenLikeContain from '../contain/ScreenLikeContain';
 
@@ -66,16 +66,16 @@ function ScreenLike({
             <ScreenLikeContain
                 reacted_count_arr={reacted_count_arr}
                 // use_close={use_close}
-                
                 c_key={c_key}
+                // 
                 data_arr={data_arr}
                 count={count}
                 has_fetched={has_fetched}
                 is_fetching={is_fetching}
-            
+                // 
                 ItemComponent={ItemComponent}
                 item_props={item_props}
-            
+                // 
                 handleChangeKey={handleChangeKey}
                 handleShowMore={showMoreLike}
                 closeScreen={closeScreen}

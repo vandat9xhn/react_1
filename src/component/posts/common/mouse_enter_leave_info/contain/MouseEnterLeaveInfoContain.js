@@ -98,8 +98,8 @@ function MouseEnterLeaveInfoContain({
         ref_is_open.current && (
             <div
                 ref={ref_contain}
-                className={`MouseEnterLeaveInfo_contain pos-abs z-index-1 ${
-                    ref_starting.current ? 'opacity-0' : ''
+                className={`MouseEnterLeaveInfo_contain pos-fixed z-index-lv5 ${
+                    ref_starting.current ? 'visibility-hidden opacity-0' : ''
                 } ${
                     is_closing
                         ? 'MouseEnterLeaveInfo_contain-closing opacity-0'

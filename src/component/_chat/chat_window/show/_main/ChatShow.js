@@ -1,18 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 //
+import { context_api } from '../../../../../_context/ContextAPI';
 import ContextChat from '../../../../../_context/chat/ContextChat';
 //
 import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 //
+import { openChatAddFriend } from '../../__screen/type/add_friend/_main/ChatScreenAddFriend';
+import { openScreenWithElm } from '../../../../_screen/type/with_elm/ScreenWithElm';
+//
 import ChatScreen from '../../__screen/_main/ChatScreen';
+import ChatMemberScreen from '../../_components/member_screen/_main/ChatMemberScreen';
 import ChatHead from '../head/_main/ChatHead';
 import ChatBd from '../body/_main/ChatBd';
 import ChatF from '../footer/_main/ChatFoot';
 //
 import './ChatShow.scss';
-import { openChatAddFriend } from '../../__screen/type/add_friend/_main/ChatScreenAddFriend';
 
 //
 ChatShow.propTypes = {};
@@ -28,6 +32,9 @@ function ChatShow({
 }) {
     //
     const use_history = useHistory();
+
+    //
+    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
 
     //
     const {
@@ -138,15 +145,15 @@ function ChatShow({
 
     //
     function onFocusChatShow() {
-        room_obj.room_active = true;
+        // room_obj.room_active = true;
         // shouldSendStatus();
-        forceUpdate();
+        // forceUpdate();
     }
 
     //
     function onBlurChatShow() {
-        room_obj.room_active = false;
-        forceUpdate();
+        // room_obj.room_active = false;
+        // forceUpdate();
     }
 
     /* -------------- */
@@ -176,11 +183,23 @@ function ChatShow({
                 room_user_id_arr: room_users.map((item) => item.user.id),
             });
         }
+
+        if (action_name == 'member') {
+            openRoomUsers();
+        }
     }
 
-    // 
+    //
     function openRoomUsers() {
-        
+        openScreenWithElm({
+            openScreenFloor: openScreenFloor,
+            elm: (
+                <ChatMemberScreen
+                    room_users={room_users}
+                    handleClose={closeScreenFloor}
+                />
+            ),
+        });
     }
 
     // console.log(chat_item);

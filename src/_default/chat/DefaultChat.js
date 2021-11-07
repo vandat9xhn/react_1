@@ -13,7 +13,9 @@ import { getDefaultArr } from '../_common/getDefaultArr';
 const default_room_user_obj = (is_owner = false) => ({
     id: getRandomId(),
     ...(is_owner ? { user: default_define_user } : getRandomUser()),
-    is_owner: false,
+    is_owner: is_owner,
+    is_admin: (getRandomBool() && getRandomBool()) || is_owner,
+    //
     is_notice: true,
     on_chat: false,
     on_input: false,
