@@ -1,78 +1,75 @@
 $dur: 0.4s;
 
 // toggle actions
-.ChatMB_toggle{
+.ChatMB_toggle {
     width: 1.5rem;
     height: 1.5rem;
     transition: transform $dur;
 }
 //
-.ChatMB_open{
+.ChatMB_open {
     transform: rotate(-45deg);
 }
 //
-.ChatMB_close{
+.ChatMB_close {
     transform: rotate(0deg);
 }
 
 // actions + open + close
-.ChatMB_actions{
+.ChatMB_actions {
     overflow: hidden;
     transition: width $dur;
 }
-.ChatMB_actions-open{
+.ChatMB_actions-open {
     width: 10rem;
-    .ChatMB__item{
+
+    .ChatMB__item {
         transform: scale(1);
     }
-    //
-    .ChatMB__files{
+
+    .ChatMB__files {
         transition-delay: 0.1s;
     }
-    .ChatMB__face-gray{
+
+    .ChatMB__face-gray {
         transition-delay: 0.2s;
     }
 }
-.ChatMB_actions-close{
+.ChatMB_actions-close {
     width: 0;
-    .ChatMB__item{
+
+    .ChatMB__item {
         transform: scale(0);
     }
-    //
-    .ChatMB__files{
+
+    .ChatMB__files {
         transition-delay: 0.06s;
     }
-    .ChatMB__draw{
+
+    .ChatMB__draw {
         transition-delay: 0.1s;
     }
 }
 
-.ChatMB__item{
+.ChatMB__item {
     margin-left: 0.5rem;
     border-radius: 50%;
-
     cursor: pointer;
     transition: transform $dur;
 
-    &:hover{
+    &:hover {
         opacity: 0.8;
     }
     //
-    .InputFile{
+    .InputFile {
         width: 1.5rem;
         height: 1.5rem;
-        .InputFile_face{
+        .InputFile_face {
             background-color: transparent;
-            .IconsInput{
-                fill: var(--blue);
+            .IconsInput {
+                fill: currentColor;
+                stroke: currentColor;
             }
-        }
-    }
-    //
-    .IconFaceGray{
-        stroke: var(--gold);
-        .IconFaceGray_eyes{
-            fill: var(--gold);
         }
     }
 }

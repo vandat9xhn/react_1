@@ -59,7 +59,7 @@ function ChatMessActions({ ref_bd_elm, chooseListTypeLike, handleAction }) {
     return (
         <div
             className={`ChatMessActions ${
-                is_true || show_action ? '' : 'display-none'
+                is_true || show_action ? '' : 'visibility-hidden'
             }`}
         >
             <div className="ChatMessActions_row display-flex align-items-center row-reverse">

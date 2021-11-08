@@ -8,6 +8,8 @@ import { getRandomVidPic } from '../_common/default_image';
 import { getRandomName } from '../_common/default_name';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
+import { getRandomFromArr } from '../_common/getRandomFromArr';
+import { default_chat_list_colour_arr } from './colour';
 
 //
 const default_room_user_obj = (is_owner = false) => ({
@@ -109,7 +111,7 @@ export const default_room_chat_obj = (room_chat) => {
         creator: { ...default_define_user, is_online: true },
 
         is_group: is_group,
-        colour_arr: ['#007bff', '#007bff'],
+        colour_arr: getRandomFromArr(default_chat_list_colour_arr()).colour_arr,
 
         messages: default_message_arr(),
         count_message: 100,

@@ -53,48 +53,63 @@ function ChatMess({ ref_bd_elm, mess_item }) {
 
     //
     return (
-        <VirtualScroll rootMargin_y={400}>
-            <div
-                className={`ChatMess pos-rel ${
-                    is_user
-                        ? 'ChatMess_user flex-end'
-                        : 'ChatMess_friend display-flex'
-                }`}
-            >
-                <div className="ChatMess_mess">
-                    {message ? <ChatMessContent message={message} /> : null}
+        <div className={`${is_user ? '' : 'bg-primary'}`}>
+            <VirtualScroll ref_root={ref_bd_elm} rootMargin_y={400}>
+                <div className="display-flex">
+                    <div className="padding-7px bg-primary"></div>
 
-                    {vid_pic_count ? (
-                        <div className="ChatMess_vid_pic">
-                            <ChatMessVidPic
-                                mess_id={id}
-                                vid_pics={vid_pics}
-                                vid_pic_count={vid_pic_count}
+                    <div
+                        className={`ChatMess pos-rel flex-grow-1 display-flex ${
+                            is_user
+                                ? 'ChatMess_user'
+                                : 'ChatMess_friend row-reverse'
+                        }`}
+                    >
+                        <div className="flex-1 bg-primary"></div>
+
+                        <div className="ChatMess_actions display-flex-center padding-x-5px bg-primary">
+                            <ChatMessActions
+                                ref_bd_elm={ref_bd_elm}
+                                chooseListTypeLike={chooseListTypeLike}
+                                handleAction={handleAction}
                             />
                         </div>
-                    ) : null}
 
-                    <div className="ChatMess_actions pos-abs y-center">
-                        <ChatMessActions
-                            ref_bd_elm={ref_bd_elm}
-                            chooseListTypeLike={chooseListTypeLike}
-                            handleAction={handleAction}
-                        />
+                        <div className="ChatMess_mess">
+                            {message ? (
+                                <ChatMessContent
+                                    ref_bd_elm={ref_bd_elm}
+                                    message={message}
+                                />
+                            ) : null}
+
+                            {vid_pic_count ? (
+                                <div className="ChatMess_vid_pic">
+                                    <ChatMessVidPic
+                                        mess_id={id}
+                                        vid_pics={vid_pics}
+                                        vid_pic_count={vid_pic_count}
+                                    />
+                                </div>
+                            ) : null}
+
+                            {reacted_count ? (
+                                <div className="ChatMess_felt">
+                                    <ChatMessReacted
+                                        mess_id={id}
+                                        reacted_count={reacted_count}
+                                        reacted_ix_arr={reacted_ix_arr}
+                                        chooseListTypeLike={chooseListTypeLike}
+                                    />
+                                </div>
+                            ) : null}
+                        </div>
                     </div>
 
-                    {reacted_count ? (
-                        <div className="ChatMess_felt">
-                            <ChatMessReacted
-                                mess_id={id}
-                                reacted_count={reacted_count}
-                                reacted_ix_arr={reacted_ix_arr}
-                                chooseListTypeLike={chooseListTypeLike}
-                            />
-                        </div>
-                    ) : null}
+                    <div className="padding-10px bg-primary"></div>
                 </div>
-            </div>
-        </VirtualScroll>
+            </VirtualScroll>
+        </div>
     );
 }
 

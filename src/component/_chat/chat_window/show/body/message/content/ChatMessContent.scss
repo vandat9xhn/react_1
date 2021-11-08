@@ -1,0 +1,31 @@
+.ChatMess_friend {
+    .ChatMessContent_contain {
+        background-color: var(--md-bg-ccc);
+    }
+}
+
+// -----
+
+.ChatMessContent_bg {
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+
+    border: 3px solid var(--md-bg-primary);
+    border-radius: 10px;
+    pointer-events: none;
+
+    &::after {
+        content: '';
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform: translate(-50%, -50%);
+
+        border: 20px solid var(--md-bg-primary);
+        box-sizing: content-box;
+        // border-radius: 10px;
+    }
+}

@@ -26,19 +26,24 @@ function ChatMB({
     const { room_obj, colour_arr } = useContext(context_chat);
 
     //
+    const colour = room_obj.room_active
+        ? colour_arr.slice(-1)[0]
+        : 'var(--md-bg-ccc)';
+
+    //
     return (
-        <div className="ChatMB">
+        <div
+            className="ChatMB"
+            style={{
+                color: colour,
+            }}
+        >
             <div className="ChatMB_row display-flex align-items-center">
                 <div>
                     <div
-                        className={`ChatMB_toggle display-flex-center brs-50 cursor-pointer ${
+                        className={`ChatMB_toggle display-flex-center brs-50 bg-current cursor-pointer ${
                             more_input ? 'ChatMB_open' : 'ChatMB_close'
                         }`}
-                        style={{
-                            backgroundColor: room_obj.room_active
-                                ? colour_arr.slice(-1)[0]
-                                : 'var(--md-bg-ccc)',
-                        }}
                         onClick={moreActionsIp}
                     >
                         <IconPlusSubtract size_icon="1rem" stroke="white" />
@@ -59,7 +64,10 @@ function ChatMB({
                                 onClick={letDrawCanvas}
                                 title="Draw something now!"
                             >
-                                <IconDraw size_icon="1.5rem" />
+                                <IconDraw
+                                    size_icon="1.5rem"
+                                    bg="currentColor"
+                                />
                             </div>
                         </div>
 
@@ -85,7 +93,10 @@ function ChatMB({
                                 className="ChatMB__face-gray ChatMB__item"
                                 title="Emoji"
                             >
-                                <IconFaceGray size_icon="1.5rem" />
+                                <IconFaceGray
+                                    size_icon="1.5rem"
+                                    stroke="currentColor"
+                                />
                             </div>
                         </div>
                     </div>

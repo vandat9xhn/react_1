@@ -34,11 +34,11 @@ function IconFaceGray({ size_icon, x, y, stroke, fill }) {
             {/* face gray add like */}
             <circle cx="100" cy="100" r="85" />
 
-            <g className="IconFaceGray_eyes">
+            <g className="IconFaceGray_eyes" fill={stroke}>
                 <circle cx="65" cy="85" r="15" />
                 <circle cx="135" cy="85" r="15" />
             </g>
-            
+
             <path d="M75,135 Q100,160 125,135" />
         </svg>
     );

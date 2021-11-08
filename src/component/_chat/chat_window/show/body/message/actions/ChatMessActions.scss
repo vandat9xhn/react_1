@@ -1,7 +1,7 @@
 .ChatMess {
     &:hover {
         .ChatMessActions {
-            display: block;
+            visibility: visible;
         }
     }
 }
@@ -45,6 +45,6 @@
 
 .device-mobile {
     .ChatMessActions {
-        display: block;
+        visibility: visible;
     }
 }

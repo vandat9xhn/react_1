@@ -66,7 +66,7 @@ function ChatBd({
         >
             <div>
                 {messages.length >= count_message ? (
-                    <div className="margin-top-15px">
+                    <div className="margin-top-15px bg-primary">
                         {is_group ? (
                             <ChatBdLastGroup
                                 room_users={room_users}
@@ -82,7 +82,7 @@ function ChatBd({
                 ) : null}
 
                 {IS_MOBILE ? (
-                    <div className="margin-auto width-fit-content">
+                    <div className="bg-primary">
                         <ScreenBlurShowMore
                             title="See old messages"
                             is_show_more={count_message > messages.length}
@@ -100,17 +100,21 @@ function ChatBd({
                             key={mess_ix}
                             className={`ChatBd_mess ChatBd_mess-${chat_ix}`}
                         >
+                            <div className="padding-5px bg-primary"></div>
+
                             <ChatMess
                                 ref_bd_elm={ref_bd_elm}
                                 chat_ix={chat_ix}
                                 mess_ix={mess_ix}
                                 mess_item={mess_item}
                             />
+
+                            <div className="padding-5px bg-primary"></div>
                         </div>
                     ))}
                 </div>
 
-                <div className="ChatBd_mess">
+                <div className="ChatBd_mess bg-primary">
                     <ChatBdTexting is_on_input={is_on_input} />
                 </div>
             </div>

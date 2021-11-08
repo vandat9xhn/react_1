@@ -175,11 +175,11 @@ function ChatShow({
 
     // ------
 
-    // 
+    //
     function changeColor(new_color_arr = []) {
-        chat_item.colour_arr = new_color_arr
-        forceUpdate()
-        closeScreenFloor()
+        chat_item.colour_arr = new_color_arr;
+        forceUpdate();
+        closeScreenFloor();
     }
 
     // ------ OPEN
@@ -197,7 +197,7 @@ function ChatShow({
             ),
         });
     }
-    
+
     //
     function openRoomColour() {
         openScreenWithElm({
@@ -254,7 +254,7 @@ function ChatShow({
 
         if (action_name == CHAT_ACTION_MEMBER_OBJ_1.chat.name) {
             openRoomChat(user_id);
-            closeScreenFloor()
+            closeScreenFloor();
 
             return;
         }
@@ -272,7 +272,7 @@ function ChatShow({
             //
             is_group={is_group}
             colour_arr={colour_arr}
-            // 
+            //
             room_chat={room_chat}
             room_obj={room_obj}
             //
@@ -297,7 +297,16 @@ function ChatShow({
                         />
                     </div>
 
-                    <div className="ChatShow_body flex-grow-1 pos-rel overflow-hidden">
+                    <div
+                        className="ChatShow_body flex-grow-1 pos-rel overflow-hidden"
+                        style={{
+                            backgroundImage: room_obj.room_active
+                                ? `linear-gradient(to bottom, ${colour_arr.join(
+                                      ', '
+                                  )})`
+                                : 'none',
+                        }}
+                    >
                         <ChatBd
                             chat_ix={chat_ix}
                             message_obj={message_obj}

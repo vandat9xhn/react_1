@@ -1,23 +1,14 @@
 //
 .ChatMess_user {
-    // .ChatMess_content {
-    //     background-color: var(--blue);
-    // }
-
     .ChatMess_felt {
         right: auto;
         left: 5px;
-    }
-
-    .ChatMess_actions {
-        left: auto;
-        right: 105%;
     }
 }
 
 .ChatMess_mess {
     position: relative;
-    max-width: calc(100% - 60px)
+    // max-width: calc(100% - 60px);
 }
 
 .ChatMess_content {
@@ -49,10 +40,4 @@
         width: 13px;
         height: 13px;
     }
-}
-
-//
-.ChatMess_actions {
-    left: 105%;
-    z-index: 2;
 }

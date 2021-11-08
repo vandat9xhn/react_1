@@ -15,7 +15,7 @@ VirtualScroll.defaultProps = {
 };
 
 //
-function VirtualScroll({ children, rootMargin_y, extra_height }) {
+function VirtualScroll({ children, ref_root, rootMargin_y, extra_height }) {
     //
     const [state_obj, setStateObj] = useState({
         display: 'block',
@@ -32,6 +32,7 @@ function VirtualScroll({ children, rootMargin_y, extra_height }) {
     useObserverVirtualScroll({
         ref_observer_elm: ref_virtual_elm,
         ref_contain_elm: ref_contain_elm,
+        ref_root: ref_root,
         rootMargin_y: rootMargin_y,
         has_callback: true,
         callback: handleVirtualScroll,

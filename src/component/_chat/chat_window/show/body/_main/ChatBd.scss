@@ -1,12 +1,15 @@
 .ChatBd_contain {
-    padding: 0.5rem 0.7rem 0.5rem 0.3rem;
     border-bottom: 1px solid var(--bg-blur);
     overflow-x: hidden;
     overflow-y: auto;
+
+    &::-webkit-scrollbar-track{
+        border-radius: 0;
+        background-color: var(--md-bg-fb);
+    }
 }
 
 .ChatBd_mess {
-    margin: 10px 5px;
     word-wrap: break-word;
     word-break: break-word;
 }

@@ -2,7 +2,8 @@
 export function observeVirtualScroll(
     elm,
     handleIntersecting,
-    rootMargin_y = 500
+    rootMargin_y = 500,
+    root
 ) {
     const observer_scroll = new IntersectionObserver(
         (entries, observer) => {
@@ -20,6 +21,7 @@ export function observeVirtualScroll(
         },
         {
             rootMargin: `${rootMargin_y}px 0px`,
+            root: root,
         }
     );
 

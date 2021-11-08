@@ -1,20 +1,20 @@
-$chat-width: 328px;
+$chat-width: 328;
 
 // -----
 
 .ChatShow {
-    right: 25rem;
+    right: #{$chat-width + 100}px;
 }
 .ChatShow_second {
-    transform: translateX(105%);
+    right: 50px;
 }
 .ChatShow_single {
-    transform: translateX(105%);
+    right: 50px;
 }
 
 // .
 .ChatShow_contain {
-    width: $chat-width;
+    width: #{$chat-width}px;
     height: 455px;
     max-height: calc(100vh - var(--height-header) - 10px);
 }
@@ -33,29 +33,6 @@ $chat-width: 328px;
 // ..
 .ChatShow_actions {
     z-index: var(--z-index-lv2);
-}
-
-//
-@media (max-width: 700px) {
-    //
-    .ChatShow {
-        right: auto;
-        left: calc((100vw - $chat-width) / 2);
-    }
-
-    .ChatShow_second {
-        display: none;
-    }
-    .ChatShow_single {
-        transform: translateX(0);
-    }
-
-    //
-    .ChatShow_body {
-        .ChatShow_body-mess {
-            margin: 1rem 1.25rem 1rem 0.5rem;
-        }
-    }
 }
 
 // ------

@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 //
 import { observeVirtualScroll } from '../_some_function/observeVirtualScroll';
 
@@ -6,17 +6,19 @@ import { observeVirtualScroll } from '../_some_function/observeVirtualScroll';
 export function useObserverVirtualScroll({
     ref_observer_elm = { current: null },
     ref_contain_elm = { current: null },
+    ref_root = { current: null },
     rootMargin_y,
 
     has_callback = false,
     callback = () => {},
 }) {
     //
-    useLayoutEffect(() => {
+    useEffect(() => {
         observeVirtualScroll(
             ref_observer_elm.current,
             handleIntersecting,
-            rootMargin_y
+            rootMargin_y,
+            ref_root.current
         );
     }, []);
 
