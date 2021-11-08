@@ -1,8 +1,10 @@
 //
 export const initial_chat_item = () => ({
     room_chat: '',
+
     is_group: false,
     colour_arr: [''],
+    emoji: { name: '' },
 
     texting_obj: {
         user_input: false,

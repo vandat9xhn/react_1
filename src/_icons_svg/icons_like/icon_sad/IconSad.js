@@ -3,31 +3,31 @@ import PropTypes from 'prop-types';
 
 import './IconSad.scss';
 
+IconSad.propTypes = {
+    size_icon: PropTypes.string,
+};
+
+IconSad.defaultProps = {
+    size_icon: '1.5rem',
+};
+
 /*
     icon type like: (x, y):
-        1. like: (0, 0)
-        2. laugh: (200, 0)
-        3. wow: (400, 0)
-        4. heart: (600, 0)
         5. sad: (800, 0)
-        6. angry: (1000, 0)
 */
 //
-function IconSad() {
+function IconSad({ size_icon }) {
     return (
         <svg
             className="IconsTypeLike IconSad"
             viewBox="800 0 200 200"
+            width={size_icon}
+            height={size_icon}
             strokeLinecap="round"
             stroke="none"
         >
             {/* sad x=800 */}
-            <circle
-                cx="900"
-                cy="100"
-                r="100"
-                fill="var(--face-yellow)"
-            />
+            <circle cx="900" cy="100" r="100" fill="var(--face-yellow)" />
 
             {/* group in face */}
             <g className="IconSad_g">
@@ -43,7 +43,6 @@ function IconSad() {
                     <circle cx="855" cy="100" r="15" />
                     <circle cx="945" cy="100" r="15" />
                 </g>
-
             </g>
 
             {/* tear */}
@@ -56,9 +55,5 @@ function IconSad() {
         </svg>
     );
 }
-
-IconSad.propTypes = {};
-
-IconSad.defaultProps = {};
 
 export default IconSad;

@@ -13,6 +13,8 @@ export function makeNewChat(data) {
 
         is_group,
         colour_arr,
+        emoji,
+        
         owner,
         creator,
         count_group_notice,
@@ -21,9 +23,11 @@ export function makeNewChat(data) {
     //
     return {
         ...initial_chat_item(),
+        room_chat: room_chat,
+
         is_group: is_group,
         colour_arr: colour_arr,
-        room_chat: room_chat,
+        emoji: emoji,
 
         room_obj: {
             room_active: true,

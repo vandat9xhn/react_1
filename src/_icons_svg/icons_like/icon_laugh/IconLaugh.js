@@ -3,16 +3,27 @@ import PropTypes from 'prop-types';
 
 import './IconLaugh.scss';
 
+
+IconLaugh.propTypes = {
+    size_icon: PropTypes.string,
+};
+
+IconLaugh.defaultProps = {
+    size_icon: '1.5rem'
+};
+
 /*
     icon type like: (x, y):
         2. laugh: (200, 0))
 */
 //
-function IconLaugh() {
+function IconLaugh({size_icon}) {
     return (
         <svg
             className="IconsTypeLike IconLaugh"
             viewBox="200 0 200 200"
+            width={size_icon}
+            height={size_icon}
             strokeLinecap="round"
             fill="none"
             stroke="none"
@@ -61,8 +72,5 @@ function IconLaugh() {
     );
 }
 
-IconLaugh.propTypes = {};
-
-IconLaugh.defaultProps = {};
 
 export default IconLaugh;

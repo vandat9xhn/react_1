@@ -14,12 +14,14 @@ import { CHAT_ACTION_MEMBER_OBJ_1 } from '../../../../../_some_function/chat/act
 //
 import ChatScreen from '../../__screen/_main/ChatScreen';
 import ChatMemberScreen from '../../_components/member_screen/_main/ChatMemberScreen';
+import ChatColorScreen from '../../_components/color/_main/ChatColorScreen';
+import ChatEmojiScreen from '../../_components/emoji/_main/ChatEmojiScreen';
+//
 import ChatHead from '../head/_main/ChatHead';
 import ChatBd from '../body/_main/ChatBd';
 import ChatF from '../footer/_main/ChatFoot';
 //
 import './ChatShow.scss';
-import ChatColorScreen from '../../_components/color/_main/ChatColorScreen';
 
 //
 ChatShow.propTypes = {};
@@ -42,9 +44,11 @@ function ChatShow({
 
     //
     const {
+        room_chat,
+
         is_group,
         colour_arr,
-        room_chat,
+        emoji,
 
         texting_obj,
         message_obj,
@@ -173,21 +177,47 @@ function ChatShow({
         ref_chat_screen.current.closeChatScreen(new_floor);
     }
 
+    // ------ ACTIONS COMMON
+
+    //
+    function openRoomWithElm({ elm }) {
+        openScreenWithElm({
+            openScreenFloor: openScreenFloor,
+            elm: elm,
+        });
+    }
+
+    //
+    function updateScreenAction() {
+        forceUpdate();
+        closeScreenFloor();
+    }
+
     // ------
 
     //
     function changeColor(new_color_arr = []) {
         chat_item.colour_arr = new_color_arr;
-        forceUpdate();
-        closeScreenFloor();
+        updateScreenAction();
+    }
+
+    //
+    function removeEmoji() {
+        chat_item.emoji.name = 'like';
+        updateScreenAction();
+    }
+
+    //
+    function changeEmoji(new_emoji = { name: '' }) {
+        chat_item.emoji = new_emoji;
+        updateScreenAction();
     }
 
     // ------ OPEN
 
     //
     function openRoomUsers() {
-        openScreenWithElm({
-            openScreenFloor: openScreenFloor,
+        openRoomWithElm({
             elm: (
                 <ChatMemberScreen
                     room_users={room_users}
@@ -200,12 +230,25 @@ function ChatShow({
 
     //
     function openRoomColour() {
-        openScreenWithElm({
-            openScreenFloor: openScreenFloor,
+        openRoomWithElm({
             elm: (
                 <ChatColorScreen
                     handleClose={closeScreenFloor}
                     changeColor={changeColor}
+                />
+            ),
+        });
+    }
+
+    //
+    function openRoomEmoji() {
+        openRoomWithElm({
+            elm: (
+                <ChatEmojiScreen
+                    emoji={emoji}
+                    removeEmoji={removeEmoji}
+                    changeEmoji={changeEmoji}
+                    handleClose={closeScreenFloor}
                 />
             ),
         });
@@ -242,6 +285,12 @@ function ChatShow({
 
             return;
         }
+
+        if (action_name == 'emoji') {
+            openRoomEmoji();
+
+            return;
+        }
     }
 
     //
@@ -272,6 +321,7 @@ function ChatShow({
             //
             is_group={is_group}
             colour_arr={colour_arr}
+            emoji={emoji}
             //
             room_chat={room_chat}
             room_obj={room_obj}

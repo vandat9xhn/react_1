@@ -6,6 +6,8 @@ import { context_chat } from '../../../../../../_context/chat/ContextChat';
 import IconsAction from '../../../../../../_icons_svg/icons_action/IconsAction';
 import IconLike from '../../../../../../_icons_svg/icons_like/icon_like/IconLike';
 //
+import { Group_emoji_obj } from '../../../../../../_groups_icon/emoji/_main';
+//
 import './ChatSd.scss';
 
 //
@@ -17,7 +19,10 @@ ChatSd.propTypes = {
 //
 function ChatSd({ should_send, handleSend, handleSendEmoji }) {
     //
-    const { colour_arr, room_obj } = useContext(context_chat);
+    const { colour_arr, emoji, room_obj } = useContext(context_chat);
+
+    //
+    const Emoji = Group_emoji_obj[emoji.name];
 
     //
     return (
@@ -34,14 +39,16 @@ function ChatSd({ should_send, handleSend, handleSendEmoji }) {
                     <IconsAction x={200} y={200} size_icon="1.5rem" />
                 </div>
             ) : (
-                <div title="Like" onClick={handleSendEmoji}>
-                    <IconLike
-                        x={200}
-                        y={200}
-                        size_icon="1.5rem"
-                        fill="currentColor"
-                        stroke="currentColor"
-                    />
+                <div title={emoji.name} onClick={handleSendEmoji}>
+                    {emoji.name == 'like' ? (
+                        <IconLike
+                            size_icon="1.5rem"
+                            fill="currentColor"
+                            stroke="currentColor"
+                        />
+                    ) : (
+                        <Emoji size_icon="1.5rem" />
+                    )}
                 </div>
             )}
         </div>

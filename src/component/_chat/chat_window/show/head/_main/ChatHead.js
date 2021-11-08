@@ -64,7 +64,7 @@ function ChatHead({
 
     //
     return (
-        <div className="ChatHead pos-rel padding-4px box-shadow-1 user-select-none">
+        <div className="ChatHead pos-rel padding-4px border-bottom-blur box-shadow-1 user-select-none">
             <div className="ChatHead_row flex-between-center h-100per">
                 <div className="display-flex align-items-center pos-rel padding-4px">
                     <div className="pos-rel z-index-1 padding-right-8px">

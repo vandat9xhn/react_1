@@ -10,6 +10,7 @@ import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 import { default_chat_list_colour_arr } from './colour';
+import { default_chat_emoji_arr } from './emoji';
 
 //
 const default_room_user_obj = (is_owner = false) => ({
@@ -112,6 +113,7 @@ export const default_room_chat_obj = (room_chat) => {
 
         is_group: is_group,
         colour_arr: getRandomFromArr(default_chat_list_colour_arr()).colour_arr,
+        emoji: getRandomFromArr(default_chat_emoji_arr()),
 
         messages: default_message_arr(),
         count_message: 100,
