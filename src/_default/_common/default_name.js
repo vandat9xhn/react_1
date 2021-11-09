@@ -21,3 +21,22 @@ const default_arr_name = [
 
 //
 export const getRandomName = () => getRandomFromArr(default_arr_name);
+
+//
+const default_nick_name_arr = [
+    'Bo',
+    'Bin',
+    'stupid',
+    'sweet',
+    'my girl',
+    'brother',
+    'best friend',
+    'seller',
+    'my developer',
+    'my bank',
+    'baka',
+    // 'Tran Nguyen',
+];
+
+//
+export const getRandomNickName = () => getRandomFromArr(default_nick_name_arr);

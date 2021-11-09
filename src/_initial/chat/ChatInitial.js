@@ -1,6 +1,7 @@
 //
 export const initial_chat_item = () => ({
     room_chat: '',
+    type: 'mess',
 
     is_group: false,
     colour_arr: [''],

@@ -61,7 +61,7 @@ function ChatMess({ ref_bd_elm, mess_item }) {
                     <div
                         className={`ChatMess pos-rel flex-grow-1 display-flex ${
                             is_user
-                                ? 'ChatMess_user'
+                                ? 'ChatMess_user text-white'
                                 : 'ChatMess_friend row-reverse'
                         }`}
                     >

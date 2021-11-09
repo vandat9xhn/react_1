@@ -13,12 +13,12 @@ export function useYouOrName() {
     }
 
     //
-    function getYouOrName({ user_id = -1, user_name = '' }) {
-        if (detectIsUser({ user_id: user_id })) {
+    function getYouOrName({ user = { id: 0, first_name: '', last_name: '' } }) {
+        if (detectIsUser({ user_id: user.id })) {
             return 'You';
         }
 
-        return user_name;
+        return `${user.first_name} ${user.last_name}`;
     }
 
     //

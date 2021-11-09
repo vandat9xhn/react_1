@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-// 
+import { useEffect, useRef, useState } from 'react';
+//
 import { IS_MOBILE } from '../../_constant/Constant';
 //
 import { handle_API_ChatMessage_L } from '../../_handle_api/chat/ChatHandleAPI';
@@ -15,13 +15,19 @@ export const useChatScrollUp = ({ ref_elm, room_chat, message_obj }) => {
     const pos = useRef(0);
     const is_max = useRef(false);
     const just_fetching = useRef(false);
-    const data_count = useRef(messages.length);
+    const data_count = useRef(0);
 
     //
     const [is_fetching, setIsFetching] = useState(false);
 
     //
     const mounted = useMounted();
+
+    //
+    useEffect(() => {
+        data_count.current = messages.length;
+        is_max.current = count_message <= data_count.current;
+    }, [messages.length]);
 
     /*--------- GET API ---------*/
 
@@ -44,8 +50,6 @@ export const useChatScrollUp = ({ ref_elm, room_chat, message_obj }) => {
             setIsFetching(false);
 
             ref_elm.current.scrollTop = c_scroll_top;
-            data_count.current += data.length;
-            is_max.current = count_message <= data_count.current;
             just_fetching.current = false;
         } catch (e) {
             console.log(e);

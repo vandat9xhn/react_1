@@ -44,7 +44,7 @@ function ChatBdLastGroup({ room_users, room_creator }) {
                 ))}
             </div>
 
-            <div className="width-fit-content margin-auto">
+            <div className="padding-y-5px text-align-center font-14px font-400 text-secondary">
                 {name} created this group
             </div>
         </div>

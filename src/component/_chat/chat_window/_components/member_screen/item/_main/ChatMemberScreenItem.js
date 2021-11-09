@@ -44,12 +44,7 @@ function ChatMemberScreenItem({
 
     //
     const info = getInfoActionMember({
-        user_name_add: !user_add
-            ? ''
-            : getYouOrName({
-                  user_id: user_add.id,
-                  user_name: `${user_add.first_name} ${user_add.last_name}`,
-              }),
+        user_name_add: !user_add ? '' : getYouOrName({ user: user_add }),
         is_admin: is_member_admin,
     });
 
