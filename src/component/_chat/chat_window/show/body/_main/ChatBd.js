@@ -65,9 +65,13 @@ function ChatBd({
             className="ChatBd_contain display-flex col-reverse scroll-thin h-100per"
             onScroll={handleScroll}
         >
-            <div className="ChatBd_mess bg-primary">
-                <ChatBdTexting is_on_input={is_on_input} />
-            </div>
+            <div className="ChatBd_contain_end bg-primary flex-grow-1 flex-basis-0 padding-2px"></div>
+
+            {is_on_input ? (
+                <div className="ChatBd_mess bg-primary">
+                    <ChatBdTexting is_on_input={is_on_input} />
+                </div>
+            ) : null}
 
             <div className="display-flex col-reverse">
                 {messages.map((mess_item, mess_ix) => (
@@ -82,6 +86,14 @@ function ChatBd({
                                 chat_ix={chat_ix}
                                 mess_ix={mess_ix}
                                 mess_item={mess_item}
+                                //
+                                ist_last_sent={
+                                    mess_ix + 1 < messages.length &&
+                                    (mess_item.type !=
+                                        messages[mess_ix + 1].type ||
+                                        mess_item.user.id !=
+                                            messages[mess_ix + 1].user.id)
+                                }
                             />
                         ) : (
                             <ChatBdChanges mess_item={mess_item} />
@@ -113,8 +125,10 @@ function ChatBd({
                 )}
             </div>
 
+            <div className="bg-primary flex-grow-1 flex-basis-0"></div>
+
             {messages.length >= count_message ? (
-                <div className="flex-grow-1 flex-basic-1rem bg-primary padding-y-20px padding-x-10px">
+                <div className="bg-primary padding-y-20px padding-x-10px">
                     {is_group ? (
                         <ChatBdLastGroup
                             room_users={room_users}

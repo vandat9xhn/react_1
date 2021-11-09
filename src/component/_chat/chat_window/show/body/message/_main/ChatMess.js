@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { context_api } from '../../../../../../../_context/ContextAPI';
+import { context_chat } from '../../../../../../../_context/chat/ContextChat';
 //
 import VirtualScroll from '../../../../../../virtual_scroll/VirtualScroll';
 //
@@ -11,6 +12,7 @@ import ChatMessVidPic from '../vid_pic/_main/ChatMessVidPic';
 import ChatMessContent from '../content/ChatMessContent';
 //
 import './ChatMess.scss';
+import IconSent from '../../../../../../../_icons_svg/icons_status_message/icon_sent/IconSent';
 
 //
 ChatMess.propTypes = {};
@@ -18,14 +20,19 @@ ChatMess.propTypes = {};
 ChatMess.defaultProps = {};
 
 //
-function ChatMess({ ref_bd_elm, mess_item }) {
+function ChatMess({ ref_bd_elm, mess_item, ist_last_sent }) {
     //
-    const { user } = useContext(context_api);
+    const { user: c_user } = useContext(context_api);
+
+    const { is_group } = useContext(context_chat);
 
     //
     const {
         id,
-        profile_model,
+        user,
+        user_seen_arr,
+        user_receive_arr,
+
         message,
         vid_pics,
         vid_pic_count,
@@ -37,7 +44,7 @@ function ChatMess({ ref_bd_elm, mess_item }) {
     } = mess_item;
 
     //
-    const is_user = profile_model == user.id;
+    const is_user = user.id == c_user.id;
 
     // -------
 
@@ -56,7 +63,19 @@ function ChatMess({ ref_bd_elm, mess_item }) {
         <div className={`${is_user ? '' : 'bg-primary'}`}>
             <VirtualScroll ref_root={ref_bd_elm} rootMargin_y={400}>
                 <div className="display-flex">
-                    <div className="padding-7px bg-primary"></div>
+                    <div className="padding-left-5px padding-right-4px bg-primary">
+                        {!is_user && ist_last_sent ? (
+                            <div className="h-100per flex-col flex-end">
+                                <img
+                                    className="border-blur brs-50 object-fit-cover"
+                                    src={user.picture}
+                                    alt=""
+                                    width="24"
+                                    height="24"
+                                />
+                            </div>
+                        ) : null}
+                    </div>
 
                     <div
                         className={`ChatMess pos-rel flex-grow-1 display-flex ${
@@ -76,6 +95,12 @@ function ChatMess({ ref_bd_elm, mess_item }) {
                         </div>
 
                         <div className="ChatMess_mess">
+                            {is_group && !is_user ? (
+                                <div className="bg-primary text-align-center line-16px font-12px text-secondary">
+                                    {user.last_name}
+                                </div>
+                            ) : null}
+
                             {message ? (
                                 <ChatMessContent
                                     ref_bd_elm={ref_bd_elm}
@@ -106,7 +131,32 @@ function ChatMess({ ref_bd_elm, mess_item }) {
                         </div>
                     </div>
 
-                    <div className="padding-10px bg-primary"></div>
+                    <div className="padding-x-5px bg-primary">
+                        <div className="h-100per flex-col flex-end">
+                            {user_seen_arr.length ? (
+                                <div className="pos-rel brs-50 overflow-hidden">
+                                    <img
+                                        className="border-blur brs-50 object-fit-cover"
+                                        src={user_seen_arr[0].picture}
+                                        alt=""
+                                        width="14"
+                                        height="14"
+                                    />
+
+                                    {/* {user_count > 1 ? <div className="pos-abs-100">
+
+                                    </div> : null} */}
+                                </div>
+                            ) : user_receive_arr.length ? (
+                                <div className="ChatMess_sent display-flex-center brs-50 bg-ccc">
+                                    <IconSent
+                                        size_icon="14px"
+                                        stroke="var(--white)"
+                                    />
+                                </div>
+                            ) : null}
+                        </div>
+                    </div>
                 </div>
             </VirtualScroll>
         </div>

@@ -24,7 +24,10 @@ const default_room_user_obj = (is_owner = false) => ({
     is_notice: true,
     on_chat: false,
     on_input: false,
+
     begin_mess: 0,
+    last_seen_mess: -1,
+    last_receive_mess: 0,
 
     room_model: '1-2',
     profile_model: 2,
@@ -69,7 +72,7 @@ const default_message_obj = (is_group = false) => {
     const mess_common_obj = {
         id: getRandomId(),
         type: type,
-        user: { ...getRandomUser().user, id: user_id },
+        user: user_id == 1 ? default_define_user : getRandomUser().user,
 
         profile_model: user_id,
         room_model: '1-2',
@@ -138,6 +141,9 @@ const default_message_obj = (is_group = false) => {
         vid_pics: _vid_pic_arr,
         vid_pic_count: vid_pic_count,
         message: getRandomContent().slice(0, 100),
+
+        user_seen_arr: [],
+        user_receive_arr: [],
     };
 };
 
@@ -170,6 +176,28 @@ export const default_room_chat_obj = (room_chat) => {
         is_group ? 6 : 1
     );
 
+    const messages = default_message_arr(is_group, count_message);
+
+    const last_receive_mess_ix = messages.findIndex(
+        (item) => item.type == 'mess'
+    );
+    const last_seen_mess_ix =
+        messages
+            .slice(last_receive_mess_ix + 1)
+            .findIndex((item) => item.type == 'mess') +
+        last_receive_mess_ix +
+        1;
+
+    last_seen_mess_ix >= 0 &&
+        (messages[last_seen_mess_ix].user_seen_arr = room_users
+            .slice(1)
+            .map((item) => item.user));
+
+    last_receive_mess_ix >= 0 &&
+        (messages[last_receive_mess_ix].user_receive_arr = room_users
+            .slice(1)
+            .map((item) => item.user));
+
     //
     return {
         room_chat: room_chat,
@@ -183,14 +211,15 @@ export const default_room_chat_obj = (room_chat) => {
         colour_arr: getRandomFromArr(default_chat_list_colour_arr()).colour_arr,
         emoji: getRandomFromArr(default_chat_emoji_arr()),
 
-        messages: default_message_arr(is_group, count_message),
+        messages: messages,
         count_message: count_message,
+        user_begin_mess: 0,
 
         group_notices: default_group_notice_arr(),
         count_group_notice: 3,
-        count_new_mess: 0,
+
         is_active: false,
-        user_begin_mess: 0,
+        count_new_mess: 0,
         updated_time: '2021-03-28T10:11:52Z',
     };
 };

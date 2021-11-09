@@ -1,5 +1,4 @@
 .ChatBd_contain {
-    border-bottom: 1px solid var(--bg-blur);
     overflow-x: hidden;
     overflow-y: auto;
 
@@ -30,4 +29,8 @@
 .ChatBd_texting-hide {
     height: 0;
     transform: translateY(100px);
+}
+
+.ChatBd_contain_end{
+    margin-bottom: -1px;
 }

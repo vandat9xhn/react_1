@@ -19,7 +19,7 @@
     display: inline-flex;
 }
 
-.display-inherit{
+.display-inherit {
     display: inherit;
 }
 
@@ -55,6 +55,11 @@
     justify-content: flex-end;
 }
 
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+//
 .flex-grow-1 {
     flex-grow: 1;
 }
@@ -67,12 +72,12 @@
     flex-basis: 1rem;
 }
 
-.flex-1{
-    flex: 1;
+.flex-basis-0 {
+    flex-basis: 0;
 }
 
-.flex-wrap {
-    flex-wrap: wrap;
+.flex-1 {
+    flex: 1;
 }
 
 /* ------- Justify ----------- */

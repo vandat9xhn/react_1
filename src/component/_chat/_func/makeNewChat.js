@@ -15,7 +15,7 @@ export function makeNewChat(data) {
         group_name,
         colour_arr,
         emoji,
-        
+
         owner,
         creator,
         count_group_notice,
@@ -43,6 +43,10 @@ export function makeNewChat(data) {
             messages: messages,
             count_message: count_message,
             user_begin_mess: user_begin_mess,
+            last_seen_mess_arr: room_users.map((item) => item.last_seen_mess),
+            last_receive_mess_arr: room_users.map(
+                (item) => item.last_receive_mess
+            ),
         },
     };
 }

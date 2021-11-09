@@ -401,24 +401,29 @@ function ChatShow({
                         />
                     </div>
 
-                    <div
-                        className="ChatShow_body flex-grow-1 pos-rel overflow-hidden"
-                        style={{
-                            backgroundImage: room_obj.room_active
-                                ? `linear-gradient(to bottom, ${colour_arr.join(
-                                      ', '
-                                  )})`
-                                : 'none',
-                        }}
-                    >
-                        <ChatBd
-                            chat_ix={chat_ix}
-                            message_obj={message_obj}
-                            is_on_input={is_on_input}
-                            //
-                            room_users={room_users}
-                            room_creator={room_creator}
-                        />
+                    <div className="ChatShow_body flex-grow-1 overflow-hidden">
+                        <div
+                            className="pos-rel h-100per"
+                            style={{
+                                backgroundImage: room_obj.room_active
+                                    ? `linear-gradient(to bottom, ${colour_arr.join(
+                                          ', '
+                                      )})`
+                                    : 'none',
+                                backgroundColor: room_obj.room_active
+                                    ? undefined
+                                    : 'var(--md-bg-ccc)',
+                            }}
+                        >
+                            <ChatBd
+                                chat_ix={chat_ix}
+                                message_obj={message_obj}
+                                is_on_input={is_on_input}
+                                //
+                                room_users={room_users}
+                                room_creator={room_creator}
+                            />
+                        </div>
                     </div>
 
                     <div className="ChatShow_footer">
