@@ -17,7 +17,7 @@ function ChatHeadName({ is_group, title_action, handleAction }) {
                     { name: 'colour', title: 'Colour' },
                     { name: 'emoji', title: 'Emoji' },
                     { name: 'nicknames', title: 'Nicknames' },
-                    { name: '', title: 'Conversation name' },
+                    { name: 'group_name', title: 'Conversation name' },
                 ],
                 [
                     { name: 'member', title: 'Member' },

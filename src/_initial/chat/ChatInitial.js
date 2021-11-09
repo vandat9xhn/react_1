@@ -4,6 +4,7 @@ export const initial_chat_item = () => ({
     type: 'mess',
 
     is_group: false,
+    group_name: '',
     colour_arr: [''],
     emoji: { name: '' },
 

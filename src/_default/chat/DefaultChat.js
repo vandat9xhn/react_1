@@ -19,14 +19,16 @@ const default_room_user_obj = (is_owner = false) => ({
     ...(is_owner ? { user: default_define_user } : getRandomUser()),
     is_owner: is_owner,
     is_admin: (getRandomBool() && getRandomBool()) || is_owner,
-    //
+    nickname: '',
+
     is_notice: true,
     on_chat: false,
     on_input: false,
     begin_mess: 0,
-    joined_time: '2021-03-28T03:14:51.777085Z',
+
     room_model: '1-2',
     profile_model: 2,
+    joined_time: '2021-03-28T03:14:51.777085Z',
 });
 
 const default_room_user_arr = (min, max) => [
@@ -142,7 +144,7 @@ const default_message_obj = (is_group = false) => {
 export const default_message_arr = (is_group, count_message) =>
     getDefaultArr(
         () => default_message_obj(is_group),
-        1,
+        count_message <= 20 ? count_message : 20,
         count_message <= 20 ? count_message : 20
     );
 
@@ -163,16 +165,21 @@ export const default_group_notice_arr = () =>
 export const default_room_chat_obj = (room_chat) => {
     const is_group = getRandomBool();
     const count_message = getRandomNumber(1, 50);
+    const room_users = default_room_user_arr(
+        is_group ? 2 : 1,
+        is_group ? 6 : 1
+    );
 
     //
     return {
         room_chat: room_chat,
-        room_users: default_room_user_arr(2, is_group ? 6 : 2),
-        count_user: 2,
+        room_users: room_users,
+        count_user: room_users.length,
         owner: { ...default_define_user, is_online: true },
         creator: { ...default_define_user, is_online: true },
 
         is_group: is_group,
+        group_name: '',
         colour_arr: getRandomFromArr(default_chat_list_colour_arr()).colour_arr,
         emoji: getRandomFromArr(default_chat_emoji_arr()),
 

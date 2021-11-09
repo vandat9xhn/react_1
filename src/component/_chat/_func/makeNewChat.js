@@ -12,6 +12,7 @@ export function makeNewChat(data) {
         user_begin_mess,
 
         is_group,
+        group_name,
         colour_arr,
         emoji,
         
@@ -26,6 +27,7 @@ export function makeNewChat(data) {
         room_chat: room_chat,
 
         is_group: is_group,
+        group_name: group_name,
         colour_arr: colour_arr,
         emoji: emoji,
 

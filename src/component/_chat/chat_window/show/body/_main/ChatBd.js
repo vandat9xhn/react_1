@@ -65,23 +65,9 @@ function ChatBd({
             className="ChatBd_contain display-flex col-reverse scroll-thin h-100per"
             onScroll={handleScroll}
         >
-            {/* <div> */}
             <div className="ChatBd_mess bg-primary">
                 <ChatBdTexting is_on_input={is_on_input} />
             </div>
-
-            {IS_MOBILE ? (
-                <div className="bg-primary">
-                    <ScreenBlurShowMore
-                        title="See old messages"
-                        is_show_more={count_message > messages.length}
-                        is_fetching={is_fetching}
-                        //
-                        handleShowMore={handleShowMore}
-                        FetchingComponent={FetchingDiv}
-                    />
-                </div>
-            ) : null}
 
             <div className="display-flex col-reverse">
                 {messages.map((mess_item, mess_ix) => (
@@ -106,6 +92,27 @@ function ChatBd({
                 ))}
             </div>
 
+            <div className="padding-y-5px bg-primary">
+                {IS_MOBILE ? (
+                    <ScreenBlurShowMore
+                        title={
+                            <div className="text-secondary font-italic">
+                                See old messages
+                            </div>
+                        }
+                        is_show_more={count_message > messages.length}
+                        is_fetching={is_fetching}
+                        //
+                        handleShowMore={handleShowMore}
+                        FetchingComponent={FetchingDiv}
+                    />
+                ) : (
+                    <div className="display-flex-center">
+                        <FetchingDiv is_fetching={is_fetching} />
+                    </div>
+                )}
+            </div>
+
             {messages.length >= count_message ? (
                 <div className="flex-grow-1 flex-basic-1rem bg-primary padding-y-20px padding-x-10px">
                     {is_group ? (
@@ -121,7 +128,6 @@ function ChatBd({
                     )}
                 </div>
             ) : null}
-            {/* </div> */}
         </div>
     );
 }

@@ -33,14 +33,14 @@ function ScreenBlurFootYesNo({
         <div className="ScreenBlurFootYesNo padding-15px">
             <div className="flex-end">
                 <button
-                    className="ScreenBlurFootYesNo_btn margin-right-10px btn text-blue hv-bg-hv"
+                    className="ScreenBlurFootYesNo_btn ScreenBlurFootYesNo_btn-no margin-right-10px btn text-blue hv-bg-hv"
                     onClick={closeScreenBlur}
                 >
                     {title_no}
                 </button>
 
                 <button
-                    className={`ScreenBlurFootYesNo_btn btn ${
+                    className={`ScreenBlurFootYesNo_btn ScreenBlurFootYesNo_btn-yes btn ${
                         disabled
                             ? 'bg-ccc text-smoke pointer-events-none'
                             : 'btn-hv bg-blue text-white'

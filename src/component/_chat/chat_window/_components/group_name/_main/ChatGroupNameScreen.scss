@@ -1,0 +1,15 @@
+.ChatGroupNameScreen{
+    // 
+    .InputNotValid_input {
+        padding: 16px 12px;
+    }
+    .InputNotValid_placeholder {
+        background-color: var(--md-bg-primary);
+    }
+
+    // 
+    .ScreenBlurFootYesNo_btn-no{
+        color: var(--md-color-secondary);
+        background-color: var(--md-bg-ccc);
+    }
+}

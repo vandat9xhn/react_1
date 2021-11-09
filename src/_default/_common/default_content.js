@@ -1,4 +1,4 @@
-import { getRandomBool } from "./default_bool";
+import { getRandomBool } from './default_bool';
 
 //
 const content_1 =
@@ -62,7 +62,7 @@ export const default_content_more_arr = [
 
 //
 export const getRandomContent = () =>
-    '"CONTENT:" (' +
+    '(' +
     Math.round(Math.random() * 1000) +
     ') ' +
     default_content_arr[
@@ -71,7 +71,7 @@ export const getRandomContent = () =>
 
 //
 export const getRandomContentMore = () =>
-    '"CONTENT MORE:" (' +
+    '"MORE:" (' +
     Math.round(Math.random() * 1000) +
     ') ' +
     default_content_more_arr[

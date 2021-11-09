@@ -22,6 +22,8 @@ import ChatBd from '../body/_main/ChatBd';
 import ChatF from '../footer/_main/ChatFoot';
 //
 import './ChatShow.scss';
+import ChatGroupNameScreen from '../../_components/group_name/_main/ChatGroupNameScreen';
+import ChatNicknamesScreen from '../../_components/nicknames/_main/ChatNicknamesScreen';
 
 //
 ChatShow.propTypes = {};
@@ -47,6 +49,7 @@ function ChatShow({
         room_chat,
 
         is_group,
+        group_name,
         colour_arr,
         emoji,
 
@@ -213,6 +216,18 @@ function ChatShow({
         updateScreenAction();
     }
 
+    //
+    function changeGroupName(new_group_name = '') {
+        chat_item.group_name = new_group_name;
+        updateScreenAction();
+    }
+
+    //
+    function changeNickName({ nickname, user_ix }) {
+        room_users[user_ix].nickname = nickname;
+        forceUpdate();
+    }
+
     // ------ OPEN
 
     //
@@ -248,6 +263,32 @@ function ChatShow({
                     emoji={emoji}
                     removeEmoji={removeEmoji}
                     changeEmoji={changeEmoji}
+                    handleClose={closeScreenFloor}
+                />
+            ),
+        });
+    }
+
+    //
+    function openRoomGroupName() {
+        openRoomWithElm({
+            elm: (
+                <ChatGroupNameScreen
+                    group_name={group_name}
+                    changeGroupName={changeGroupName}
+                    handleClose={closeScreenFloor}
+                />
+            ),
+        });
+    }
+
+    //
+    function openRoomNicknames() {
+        openRoomWithElm({
+            elm: (
+                <ChatNicknamesScreen
+                    room_users={room_users}
+                    changeNickName={changeNickName}
                     handleClose={closeScreenFloor}
                 />
             ),
@@ -291,6 +332,18 @@ function ChatShow({
 
             return;
         }
+
+        if (action_name == 'group_name') {
+            openRoomGroupName();
+
+            return;
+        }
+
+        if (action_name == 'nicknames') {
+            openRoomNicknames();
+
+            return;
+        }
     }
 
     //
@@ -320,6 +373,7 @@ function ChatShow({
             ws={ws}
             //
             is_group={is_group}
+            group_name={group_name}
             colour_arr={colour_arr}
             emoji={emoji}
             //

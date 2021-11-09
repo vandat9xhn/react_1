@@ -30,15 +30,26 @@ function ChatHead({
     //
     const { hideRoomChat, closeRoomChat } = useContext(context_api);
 
-    const { openChatScreen, ws, chat_ix, is_group, room_obj, colour_arr } =
-        useContext(context_chat);
+    const {
+        ws,
+        chat_ix,
+
+        is_group,
+        group_name,
+        room_obj,
+        colour_arr,
+    } = useContext(context_chat);
 
     const head_name = is_group
-        ? `${room_users
-              .slice(0, count_user - 1)
-              .map((item) => item.user.last_name)
-              .join(', ')} and ${room_users.slice(-1)[0].user.last_name}`
-        : `${room_users[1].user.first_name} ${room_users[1].user.last_name}`;
+        ? group_name ||
+          `${room_users
+              .slice(1)
+              .map((item) => item.nickname || item.user.last_name)
+              .join(', ')} and ${
+              room_users[0].nickname || room_users[0].user.last_name
+          }`
+        : room_users[1].nickname ||
+          `${room_users[1].user.first_name} ${room_users[1].user.last_name}`;
 
     // ---------
 
@@ -51,16 +62,6 @@ function ChatHead({
     function handleCloseRoomChat() {
         closeRoomChat(true, chat_ix);
     }
-
-    // //
-    // function handleShowUser() {
-    //     openChatUser({
-    //         openChatScreen: openChatScreen,
-    //         ws: ws,
-    //         room_users: room_users,
-    //         owner_id: room_owner.id,
-    //     });
-    // }
 
     //
     return (

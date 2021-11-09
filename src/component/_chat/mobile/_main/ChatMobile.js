@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { GetIdSlug } from '../../../../_some_function/GetIdSlug';
@@ -11,6 +12,8 @@ import { handle_API_ChatZoom_R } from '../../../../_handle_api/chat/ChatHandleAP
 import { makeNewChat } from '../../_func/makeNewChat';
 //
 import ChatShow from '../../chat_window/show/_main/ChatShow';
+import { toggleAppHiddenTemp } from '../../../../_some_function/AppHiddenTemp';
+import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
 //
 // import './Chat.scss';
 
@@ -30,13 +33,30 @@ function ChatMobile(props) {
     const { room_chat, chat_item, ws, has_fetched } = chat_obj;
 
     //
+    const { id } = useParams();
+
+    //
+    const handleScreenFetching = useScreenFetching();
+
+    //
     useEffect(() => {
-        openRoomChat(room_chat);
+        toggleAppHiddenTemp({ is_hidden: true });
+
+        return () => {
+            toggleAppHiddenTemp({ is_hidden: false });
+        };
     }, []);
 
     //
+    useEffect(() => {
+        openRoomChat(room_chat);
+    }, [id]);
+
+    //
     const openRoomChat = async (new_room_chat) => {
-        const data = await handle_API_ChatZoom_R(new_room_chat);
+        const data = await handleScreenFetching(() =>
+            handle_API_ChatZoom_R(new_room_chat)
+        );
 
         setChatObj({
             ...chat_obj,
@@ -54,7 +74,7 @@ function ChatMobile(props) {
 
     //
     return (
-        <div className="ChatMobile">
+        <div key={id} className="ChatMobile">
             <ChatShow
                 chat_ix={0}
                 is_two_chat={false}

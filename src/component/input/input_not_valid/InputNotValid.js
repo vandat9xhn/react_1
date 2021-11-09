@@ -14,6 +14,7 @@ InputNotValid.propTypes = {
     //
     value: PropTypes.string,
     handleChange: PropTypes.func,
+    input_props: PropTypes.object,
 
     handle_focus: PropTypes.bool,
     focus_props: PropTypes.shape({
@@ -28,6 +29,8 @@ InputNotValid.defaultProps = {
     placeholder: 'Placeholder',
     max_length: 100,
     handle_focus: false,
+    
+    input_props: {},
 };
 
 //
@@ -37,10 +40,12 @@ function InputNotValid({
     type,
     placeholder,
     max_length,
+    
     handleChange,
-
     handle_focus,
-    focus_props
+    focus_props,
+
+    input_props,
 }) {
     //
     const { is_focus, handleFocus, handleBlur } = !handle_focus
@@ -57,14 +62,15 @@ function InputNotValid({
             <input
                 className="InputNotValid_input brs-5px"
                 name={name}
+                value={value}
                 type={type}
                 maxLength={max_length}
                 //
-                value={value}
                 onChange={handleChange}
-                //
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                // 
+                {...input_props}
             />
 
             <div
