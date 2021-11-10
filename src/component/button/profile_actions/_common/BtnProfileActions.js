@@ -6,16 +6,19 @@ import './BtnProfileActions.scss';
 //
 BtnProfileActions.propTypes = {
     className: PropTypes.string,
+    title: PropTypes.string,
+    use_title: PropTypes.bool,
     children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     handleClick: PropTypes.func,
 };
 
 BtnProfileActions.defaultProps = {
     className: '',
+    use_title: true,
 };
 
 //
-function BtnProfileActions({ className, Icon, title, handleClick }) {
+function BtnProfileActions({ className, Icon, use_title, title, handleClick }) {
     //
     return (
         <button
@@ -25,13 +28,15 @@ function BtnProfileActions({ className, Icon, title, handleClick }) {
         >
             {Icon}
 
-            <span
-                className={`text-nowrap ${
-                    title && Icon ? 'margin-left-5px' : ''
-                }`}
-            >
-                {title}
-            </span>
+            {use_title ? (
+                <span
+                    className={`text-nowrap ${
+                        title && Icon ? 'margin-left-5px' : ''
+                    }`}
+                >
+                    {title}
+                </span>
+            ) : null}
         </button>
     );
 }

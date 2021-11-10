@@ -11,7 +11,7 @@ import BtnProfileActions from '../_common/BtnProfileActions';
 BtnProfileChat.propTypes = {};
 
 //
-function BtnProfileChat({ user_id }) {
+function BtnProfileChat({ user_id, use_title }) {
     //
     const { openRoomChat } = useContext(context_api);
 
@@ -25,6 +25,7 @@ function BtnProfileChat({ user_id }) {
         <BtnProfileActions
             className={'BtnProfileChat bg-ccc'}
             Icon={<IconsMenu x={200} y={200} />}
+            use_title={use_title}
             title="Message"
             handleClick={onChat}
         />

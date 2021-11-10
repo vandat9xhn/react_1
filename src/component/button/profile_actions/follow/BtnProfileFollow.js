@@ -9,7 +9,7 @@ import BtnProfileActions from '../_common/BtnProfileActions';
 BtnProfileFollow.propTypes = {};
 
 //
-function BtnProfileFollow({ handleAction }) {
+function BtnProfileFollow({use_title, handleAction }) {
     //
     function onFollow() {
         handleAction('follow');
@@ -20,6 +20,7 @@ function BtnProfileFollow({ handleAction }) {
         <BtnProfileActions
             className={'BtnProfileFollow bg-blue text-white'}
             Icon={<IconPlusSubtract stroke="currentColor" />}
+            use_title={use_title}
             title={'Follow Friend'}
             handleClick={onFollow}
         />

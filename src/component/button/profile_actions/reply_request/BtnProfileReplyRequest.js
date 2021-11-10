@@ -12,7 +12,13 @@ import './BtnProfileReplyRequest.scss';
 BtnProfileReplyRequest.propTypes = {};
 
 //
-function BtnProfileReplyRequest({ is_at_body, handle_API_L, handleAction }) {
+function BtnProfileReplyRequest({
+    is_at_body,
+    use_title,
+    
+    handle_API_L,
+    handleAction,
+}) {
     //
     return (
         <div className="BtnProfileReplyRequest">
@@ -23,6 +29,7 @@ function BtnProfileReplyRequest({ is_at_body, handle_API_L, handleAction }) {
                             'BtnProfileReplyRequest_btn bg-blue text-white'
                         }
                         Icon={<IconsAction y={200} />}
+                        use_title={use_title}
                         title="Respond"
                     />
                 }

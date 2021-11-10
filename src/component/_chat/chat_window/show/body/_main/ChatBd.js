@@ -88,11 +88,11 @@ function ChatBd({
                                 mess_item={mess_item}
                                 //
                                 ist_last_sent={
-                                    mess_ix + 1 < messages.length &&
-                                    (mess_item.type !=
-                                        messages[mess_ix + 1].type ||
-                                        mess_item.user.id !=
-                                            messages[mess_ix + 1].user.id)
+                                    mess_ix == 0 ||
+                                    mess_item.type !=
+                                        messages[mess_ix - 1].type ||
+                                    mess_item.user.id !=
+                                        messages[mess_ix - 1].user.id
                                 }
                             />
                         ) : (

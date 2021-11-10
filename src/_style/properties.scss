@@ -113,34 +113,3 @@
 .visibility-visible {
     visibility: visible;
 }
-
-// ------- ICON
-
-.close-icon-small {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 1.5rem;
-    height: 1.5rem;
-    background-color: var(--danger);
-}
-
-.btn-icon-36px {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-}
-
-// ----
-
-.device-mobile {
-    .btn-icon-36px {
-        width: 30px;
-        height: 30px;
-    }
-}

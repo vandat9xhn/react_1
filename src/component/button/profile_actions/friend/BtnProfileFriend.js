@@ -5,14 +5,20 @@ import IconsAction from '../../../../_icons_svg/icons_action/IconsAction';
 //
 import BtnProfileActions from '../_common/BtnProfileActions';
 import ActionsMultiList from '../../../actions_multi_list/_main/ActionsMultiList';
-// 
+//
 import './BtnProfileFriend.scss';
 
 //
 BtnProfileFriend.propTypes = {};
 
 //
-function BtnProfileFriend({is_at_body, handle_API_L, handleAction }) {
+function BtnProfileFriend({
+    is_at_body,
+    use_title,
+    
+    handle_API_L,
+    handleAction,
+}) {
     //
     return (
         <div className="BtnProfileFriend">
@@ -21,6 +27,7 @@ function BtnProfileFriend({is_at_body, handle_API_L, handleAction }) {
                     <BtnProfileActions
                         className={'BtnProfileFriend_btn bg-ccc'}
                         Icon={<IconsAction y={200} />}
+                        use_title={use_title}
                         title="Friend"
                     />
                 }

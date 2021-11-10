@@ -1,0 +1,43 @@
+// ----
+
+%btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+}
+
+// ----
+.close-icon-small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--danger);
+}
+
+.btn-icon-36px {
+    @extend %btn-icon;
+
+    width: 36px;
+    height: 36px;
+}
+
+.btn-icon-24px {
+    @extend %btn-icon;
+
+    width: 24px;
+    height: 24px;
+}
+
+// ----
+
+.device-mobile {
+    .btn-icon-36px {
+        width: 30px;
+        height: 30px;
+    }
+}

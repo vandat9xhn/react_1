@@ -54,7 +54,7 @@ function IconsInput({ size_icon, x, y }) {
             </g>
 
             {/* key for searching x=0 y=200*/}
-            <g className="IconsInput_key">
+            <g className="IconsInput_key" stroke="currentColor">
                 <circle cx="80" cy="280" r="65" strokeWidth="10" />
                 <line strokeWidth="25" x1="130" y1="330" x2="200" y2="400" />
             </g>

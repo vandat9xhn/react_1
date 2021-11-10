@@ -19,11 +19,13 @@ import './_style/box_shadow.scss';
 import './_style/button.scss';
 import './_style/form.scss';
 import './_style/hover.scss';
+import './_style/icon.scss';
 import './_style/input.scss';
-import './_style/rect.scss';
+import './_style/margin_padding.scss';
 import './_style/screen.scss';
 import './_style/scroll.scss';
 import './_style/text.scss';
+import './_style/width_height.scss';
 
 import './_style/story.scss';
 import './_style/post.scss';

@@ -9,7 +9,7 @@ import BtnProfileActions from '../_common/BtnProfileActions';
 BtnProfileCancelRequest.propTypes = {};
 
 //
-function BtnProfileCancelRequest({ handleAction }) {
+function BtnProfileCancelRequest({ use_title, handleAction }) {
     //
     function onCancelRequest() {
         handleAction('cancel_request');
@@ -20,6 +20,7 @@ function BtnProfileCancelRequest({ handleAction }) {
         <BtnProfileActions
             className={'BtnProfileCancelRequest bg-ccc'}
             Icon={<IconsArrow y={400} />}
+            use_title={use_title}
             title={'Cancel Request'}
             handleClick={onCancelRequest}
         />

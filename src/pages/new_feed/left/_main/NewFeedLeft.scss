@@ -1,4 +1,4 @@
 .NewFeedLeft{
-    max-height: 100vh;
+    height: calc(100vh - var(--height-header));
     overflow: auto;
 }

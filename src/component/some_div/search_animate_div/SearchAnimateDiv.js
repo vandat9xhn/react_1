@@ -9,45 +9,53 @@ import './SearchAnimateDiv.scss';
 //
 SearchAnimateDiv.propTypes = {
     value: PropTypes.string,
+    placeholder: PropTypes.string,
+    input_props: PropTypes.object,
+
     handleChange: PropTypes.func,
     handleSearch: PropTypes.func,
-    placeholder: PropTypes.string,
 };
 SearchAnimateDiv.defaultProps = {
     value: '',
     placeholder: 'Search...',
-}
+    input_props: {},
+};
 
 //
-function SearchAnimateDiv(props) {
-    const { value, placeholder, handleChange, handleSearch } = props;
-    //
-    const [is_open, setIsOpen] = useState(false);
+function SearchAnimateDiv({
+    value,
+    placeholder,
+    input_props,
+    is_open,
+
+    handleOpen,
+    handleChange,
+    handleSearch,
+}) {
+    // -----------
 
     //
-    function onClick() {
-        if (is_open) {
-            handleSearch();
-        } else {
-            setIsOpen(true);
-        }
+    function openSearch() {
+        handleOpen(true);
     }
     //
     function handleClose() {
-        setIsOpen(false);
+        handleOpen(false);
     }
 
     //
     function onChange(e) {
         handleChange(e.target.value);
     }
+
     //
     function onKeyDown(e) {
         if (e.keyCode == 13) {
             e.preventDefault();
-            handleSearch();
+            handleSearch && handleSearch();
         }
     }
+
     //
     function handleClear() {
         handleChange('');
@@ -55,42 +63,54 @@ function SearchAnimateDiv(props) {
 
     //
     return (
-        <div className={`SearchAnimateDiv pos-rel ${is_open ? '' : 'SearchAnimateDiv_close'}`}>
-            <div className="SearchAnimateDiv_key">
+        <div
+            className={`SearchAnimateDiv pos-rel display-flex align-items-center w-100per padding-x-12px padding-y-8px bg-primary overflow-hidden ${
+                is_open ? '' : 'SearchAnimateDiv-close'
+            }`}
+        >
+            <div className="display-flex align-items-center w-100per">
                 <div
-                    className={`SearchAnimateDiv_key_contain display-flex justify-content-center align-items-center cursor-pointer ${
-                        is_open ? 'nav-active' : ''
+                    className={`${
+                        is_open
+                            ? 'SearchAnimateDiv_right btn-icon-36px cursor-pointer'
+                            : 'display-none'
                     }`}
-                    onClick={onClick}
+                    onClick={handleClose}
+                >
+                    <IconsArrow x={200} y={200} size_icon="1.5rem" />
+                </div>
+
+                <div
+                    className={`${
+                        is_open
+                            ? 'display-none'
+                            : 'SearchAnimateDiv_key display-flex-center cursor-pointer'
+                    }`}
+                    onClick={openSearch}
                 >
                     <IconsInput y={200} />
                 </div>
-            </div>
 
-            <div className="SearchAnimateDiv_input">
-                <input
-                    type="text"
-                    value={value}
-                    placeholder={placeholder}
-                    onChange={onChange}
-                    onKeyDown={onKeyDown}
-                />
+                <div className="SearchAnimateDiv_input flex-grow-1 flex-between-center margin-left-5px padding-x-10px padding-y-4px brs-15px bg-fb">
+                    <input
+                        className="flex-grow-1 bg-transparent border-none outline-none"
+                        type="text"
+                        value={value}
+                        placeholder={placeholder}
+                        onChange={onChange}
+                        onKeyDown={onKeyDown}
+                        {...input_props}
+                    />
 
-                <div
-                    className="SearchAnimateDiv_input-clear"
-                    onClick={handleClear}
-                >
-                    <IconsArrow y={400} size_icon="0.8rem" />
-                </div>
-            </div>
-
-            <div className="SearchAnimateDiv_right">
-                <div className="SearchAnimateDiv_icon-close display-flex justify-content-center align-items-center">
                     <div
-                        className="close-icon-small brs-50 cursor-pointer"
-                        onClick={handleClose}
+                        className={`${
+                            value
+                                ? 'SearchAnimateDiv_input-clear btn-icon-24px cursor-pointer'
+                                : 'display-none'
+                        }`}
+                        onClick={handleClear}
                     >
-                        <IconsArrow y={400} size_icon="1rem" />
+                        <IconsArrow y={400} size_icon="0.8rem" />
                     </div>
                 </div>
             </div>

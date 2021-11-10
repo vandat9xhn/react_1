@@ -18,13 +18,14 @@ ActionsProfileCase.propTypes = {};
 function ActionsProfileCase({
     action_case,
     user_id,
+    use_title,
     is_at_body = false,
 
     handleAction,
 }) {
     //
     if (action_case == 'chat') {
-        return <BtnProfileChat user_id={user_id} />;
+        return <BtnProfileChat user_id={user_id} use_title={use_title} />;
     }
 
     //
@@ -32,6 +33,7 @@ function ActionsProfileCase({
         return (
             <ActionsProfileFriend
                 user_id={user_id}
+                use_title={use_title}
                 is_at_body={is_at_body}
                 handleAction={handleAction}
             />
@@ -40,22 +42,32 @@ function ActionsProfileCase({
 
     //
     if (action_case == 'edit_profile') {
-        return <BtnProfileEdit user_id={user_id} />;
+        return <BtnProfileEdit user_id={user_id} use_title={use_title} />;
     }
 
     //
     if (action_case == 'add_friend') {
-        return <BtnProfileAddFriend handleAction={handleAction} />;
+        return (
+            <BtnProfileAddFriend
+                handleAction={handleAction}
+                use_title={use_title}
+            />
+        );
     }
 
     //
     if (action_case == 'add_story') {
-        return <BtnProfileAddStory />;
+        return <BtnProfileAddStory use_title={use_title} />;
     }
 
     //
     if (action_case == 'follow') {
-        return <BtnProfileFollow handleAction={handleAction} />;
+        return (
+            <BtnProfileFollow
+                use_title={use_title}
+                handleAction={handleAction}
+            />
+        );
     }
 
     //
@@ -63,6 +75,7 @@ function ActionsProfileCase({
         return (
             <ActionsProfileReplyRequest
                 user_id={user_id}
+                use_title={use_title}
                 is_at_body={is_at_body}
                 handleAction={handleAction}
             />
@@ -71,7 +84,12 @@ function ActionsProfileCase({
 
     //
     if (action_case == 'cancel_request') {
-        return <BtnProfileCancelRequest handleAction={handleAction} />;
+        return (
+            <BtnProfileCancelRequest
+                use_title={use_title}
+                handleAction={handleAction}
+            />
+        );
     }
 
     //

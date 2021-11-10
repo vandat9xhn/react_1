@@ -10,7 +10,7 @@ import BtnProfileActions from '../_common/BtnProfileActions';
 BtnProfileEdit.propTypes = {};
 
 //
-function BtnProfileEdit({ user_id }) {
+function BtnProfileEdit({ user_id, use_title }) {
     //
     return (
         <Link
@@ -20,6 +20,7 @@ function BtnProfileEdit({ user_id }) {
             <BtnProfileActions
                 className={'BtnProfileEdit bg-ccc'}
                 Icon={<IconsEdit color={'currentColor'} size_icon="16px" />}
+                use_title={use_title}
                 title={'Edit Profile'}
                 // handleClick={onEditProfile}
             />

@@ -15,13 +15,15 @@ import { handleCreateNewPost } from '../../../_default/post/PostHandleCreate';
 //
 import './NewFeedCommon.scss';
 //
-import NewFeedSearch from '../search/NewFeedSearch';
 import NewFeedLeft from '../left/_main/NewFeedLeft';
 import NewFeedCenter from '../center/_main/NewFeedCenter';
 import NewFeedRight from '../right/_main/NewFeedRight';
 //
 import './NewFeed.scss';
 import './NewFeedRes.scss';
+
+//
+NewFeed.propTypes = {};
 
 //
 function NewFeed() {
@@ -67,16 +69,6 @@ function NewFeed() {
         });
     }, []);
 
-    /* ----------- SEARCH ---------- */
-
-    const handleSearch = (search) => {
-        params_api.current = {
-            search: search,
-        };
-
-        refreshData_API();
-    };
-
     /* ----------- CREATE ----------- */
 
     async function handleCreatePost(data) {
@@ -102,45 +94,34 @@ function NewFeed() {
     // console.log(post_arr);
     //
     return (
-        <div className="NewFeed">
-            <div className="NewFeed_contain bg-fb">
-                <div className="NewFeed_search">
-                    <NewFeedSearch handleSearch={handleSearch} />
+        <div className="NewFeed padding-y-10px bg-fb">
+            <div className="NewFeed_row display-flex space-between">
+                <div className="NewFeed_col-left flex-shrink-0 w-360px margin-right-10px">
+                    <div className="pos-sticky-from-header">
+                        <NewFeedLeft />
+                    </div>
                 </div>
 
-                <div className="NewFeed_row display-flex space-between">
-                    <div className="NewFeed_col-left">
-                        <div className="pos-sticky-from-header">
-                            <NewFeedLeft />
-                        </div>
-                    </div>
+                <div className="NewFeed_col-center flex-grow-1 flex-basis-1rem">
+                    <NewFeedCenter
+                        // title_add_new={title_add_new}
+                        post_arr={data_arr}
+                        has_fetched={has_fetched}
+                        is_fetching={is_fetching}
+                        handleCreatePost={handleCreatePost}
+                    />
 
-                    <div className="NewFeed_col-center flex-grow-1">
-                        <NewFeedCenter
-                            // title_add_new={title_add_new}
-                            post_arr={data_arr}
-                            has_fetched={has_fetched}
-                            is_fetching={is_fetching}
-                            handleCreatePost={handleCreatePost}
-                        />
+                    <div ref={ref_fake_elm_end} className="padding-1px"></div>
+                </div>
 
-                        <div
-                            ref={ref_fake_elm_end}
-                            className="padding-1px"
-                        ></div>
-                    </div>
-
-                    <div className="NewFeed_col-right">
-                        <div className="pos-sticky-from-header">
-                            <NewFeedRight />
-                        </div>
+                <div className="NewFeed_col-right flex-shrink-0 w-300px margin-left-10px">
+                    <div className="pos-sticky-from-header">
+                        <NewFeedRight />
                     </div>
                 </div>
             </div>
         </div>
     );
 }
-
-NewFeed.propTypes = {};
 
 export default NewFeed;

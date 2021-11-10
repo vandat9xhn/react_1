@@ -12,7 +12,7 @@ import './BtnProfileAddStory.scss';
 BtnProfileAddStory.propTypes = {};
 
 //
-function BtnProfileAddStory({}) {
+function BtnProfileAddStory({ use_title }) {
     //
     return (
         <Link className="color-inherit" to={`/story/create`}>
@@ -23,6 +23,7 @@ function BtnProfileAddStory({}) {
                         <IconPlusSubtract stroke="var(--blue)" />
                     </div>
                 }
+                use_title={use_title}
                 title={'Add to Story'}
                 // handleClick={onAddStory}
             />
