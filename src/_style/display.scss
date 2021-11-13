@@ -134,7 +134,7 @@
     -webkit-box-orient: vertical;
 }
 
-@for $i from 1 through 4 {
+@for $i from 1 through 5 {
     .line-clamp-#{$i} {
         -webkit-line-clamp: #{$i};
     }

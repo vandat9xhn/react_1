@@ -22,7 +22,7 @@ IconFriend.defaultProps = {
     size_icon: '1rem',
 
     stroke: 'currentColor',
-    stroke_width: 5,
+    stroke_width: 10,
     fill: 'none',
 
     is_plus: false,
@@ -64,7 +64,7 @@ function IconFriend({
             {is_plus ? (
                 <g className="IconFriend_plus" stroke="currentColor">
                     <line x1="160" y1="20" x2="160" y2="80" />
-                    <line x1="120" y1="50" x2="180" y2="50" />
+                    <line x1="130" y1="50" x2="190" y2="50" />
                 </g>
             ) : is_request ? (
                 <g className="IconFriend_request" stroke="currentColor">
@@ -74,9 +74,9 @@ function IconFriend({
                 </g>
             ) : is_menu ? (
                 <g className="IconFriend_all" stroke="currentColor">
-                    <line x1="120" y1="20" x2="180" y2="20" />
-                    <line x1="120" y1="35" x2="180" y2="35" />
-                    <line x1="120" y1="50" x2="180" y2="50" />
+                    <line x1="130" y1="10" x2="190" y2="10" />
+                    <line x1="130" y1="35" x2="190" y2="35" />
+                    <line x1="130" y1="60" x2="190" y2="60" />
                 </g>
             ) : null}
         </svg>

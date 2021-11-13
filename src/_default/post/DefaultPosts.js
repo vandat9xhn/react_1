@@ -88,7 +88,7 @@ const post_vid_pic_obj = () => ({
 });
 
 const post_vid_pic_arr = () =>
-    getDefaultArr(post_vid_pic_obj, 0, getRandomBool() ? 6 : 0);
+    getDefaultArr(post_vid_pic_obj, 0, getRandomBool() ? 4 : 0);
 
 export const default_post_obj = () => {
     // --- TAG
@@ -100,8 +100,14 @@ export const default_post_obj = () => {
             : getRandomNumber(user_tag_arr.length, 12);
 
     const vid_pics = post_vid_pic_arr();
+    const vid_pic_count =
+        vid_pics.length == 0
+            ? 0
+            : vid_pics.length <= 4
+            ? vid_pics.length
+            : getRandomNumber(4, 10);
 
-    // 
+    //
     return {
         id: getRandomId(),
         ...getRandomUser(),
@@ -113,6 +119,8 @@ export const default_post_obj = () => {
         user_tag_count: user_tag_count,
         ...getRandomContentObj(),
         vid_pics: vid_pics,
+        vid_pic_count: vid_pic_count,
+
         bg_obj: vid_pics.length
             ? null
             : getRandomBool()
@@ -122,20 +130,19 @@ export const default_post_obj = () => {
                   color: 'white',
               }
             : null,
-        vid_pic_count: 1,
-        // 
+        //
         ...default_post_reacted_info_obj(),
-        // 
+        //
         share_arr: [],
         count_share: 3,
         count_unique_share: 3,
         count_user_shared: 2,
-        
+
         comments: [],
-        count_comment: 11,
+        count_comment: getRandomNumber(0, 20),
         histories: [],
         count_history: 10,
-        
+
         profile_model: 1,
         permission_post: 0,
         created_time: '2021-04-01T07:48:48.176630Z',

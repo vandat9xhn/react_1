@@ -6,6 +6,14 @@ import ToggleSwitch from '../switch/Switch';
 import './SwitchDiv.scss';
 
 //
+SwitchDiv.propTypes = {
+    children: PropTypes.any,
+    switch_on: PropTypes.bool,
+};
+
+SwitchDiv.defaultProps = {};
+
+//
 function SwitchDiv({ children, switch_on }) {
     //
     return (
@@ -20,12 +28,5 @@ function SwitchDiv({ children, switch_on }) {
         </div>
     );
 }
-
-SwitchDiv.propTypes = {
-    children: PropTypes.any,
-    switch_on: PropTypes.bool,
-};
-
-SwitchDiv.defaultProps = {};
 
 export default SwitchDiv;

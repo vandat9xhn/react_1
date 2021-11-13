@@ -3,9 +3,11 @@ import { IS_MOBILE } from '../_constant/Constant';
 
 //
 import { account_route_arr } from './_Account';
+
 import { profile_route_arr } from './_ProfilePost';
 import { friend_route_arr } from './_Friends';
 import { story_route_arr } from './_story';
+import { fb_search_route_arr } from './fb_search';
 
 import { fashion_route_arr } from './_Fashion';
 import { phone_route_arr } from './_Phone';
@@ -33,6 +35,7 @@ export const Routes = [
     ...profile_route_arr,
     ...friend_route_arr,
     ...story_route_arr,
+    ...fb_search_route_arr,
 
     ...phone_route_arr,
     ...city_route_arr,

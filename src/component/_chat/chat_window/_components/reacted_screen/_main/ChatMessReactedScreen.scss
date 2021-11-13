@@ -1,27 +1,9 @@
 .ChatMessReactedScreen {
-    margin: 0 auto;
-    width: 550px;
-    padding: 5rem 0;
-
     .ScreenLikeContain_head {
         border-bottom: none;
     }
     // .
     .ScreenLikeHead {
         padding: 0;
-    }
-}
-
-// ----
-
-.device-mobile {
-    .ChatMessReactedScreen {
-        width: 100%;
-        padding: 0;
-
-        .ChatMessReactedScreen_contain {
-            min-height: 100vh;
-            border-radius: 0;
-        }
     }
 }

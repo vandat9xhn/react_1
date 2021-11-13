@@ -12,7 +12,7 @@ function FbSearchInputKey({ LayoutComponent, search_key, Icon }) {
     return (
         <div className="FbSearchInputKey">
             <LayoutComponent
-                link_to={`/search/${search_key}`}
+                link_to={`/search?q=${search_key}`}
                 left_elm={<div className="btn-icon-36px bg-fb">{Icon}</div>}
                 center_elm={<div>{search_key}</div>}
             />

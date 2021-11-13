@@ -1,0 +1,6 @@
+.SelectOneSearchInput_input{
+    &::placeholder{
+        color: var(--md-color-third);
+        opacity: 0.5;
+    }
+}

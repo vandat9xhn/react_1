@@ -57,8 +57,6 @@ function NewFeed() {
 
     //
     useEffect(() => {
-        document.title = 'New Feed';
-
         refreshData_API();
 
         observerShowMore({

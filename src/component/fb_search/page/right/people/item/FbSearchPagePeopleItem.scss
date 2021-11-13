@@ -1,0 +1,19 @@
+.FbSearchPagePeopleItem {
+    .BtnProfileActions {
+        width: 36px;
+        padding: 0;
+        background-color: var(--md-bg-ccc);
+        border-radius: 50%;
+        
+        color: var(--color-333);
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .IconFriend{
+            fill: currentColor;
+        }
+    }
+}

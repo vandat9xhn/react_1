@@ -3,6 +3,7 @@ $shadows: 1, 2, 5, 6, 8, 9;
 // ------
 
 :root {
+    --color-05: #050505;
     --color-222: #222;
     --color-333: #333;
     --color-555: #555;
@@ -15,6 +16,7 @@ $shadows: 1, 2, 5, 6, 8, 9;
     --blue: #007bff;
     --blue-blur: #007bff80;
     --blue-tear: #00a3ff;
+    --bg-btn-2: #e4e6eb;
     --danger: #dc3545;
     --del: #929292;
     --del-05: rgba(146, 146, 146, 0.5);
@@ -111,6 +113,7 @@ $shadows: 1, 2, 5, 6, 8, 9;
         --md-black-brown: var(--md-color);
         --color-react: #216577;
         --color-django: #1b7e58;
+        --color-05: var(--color-light);
         --color-222: var(--color-light);
         --color-333: var(--color-light);
         --color-555: var(--color-light);

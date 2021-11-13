@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import ActionsProfileCase from '../../../../../../actions_profile/case/_main/ActionsProfileCase';
+import ActionsProfileCase from '../../../../../actions_profile/case/_main/ActionsProfileCase';
 //
-import FsSearchPageUserLayout from '../../../../_components/user_layout/FsSearchPageUserLayout';
+import FsSearchPageUserLayout from '../../../_components/user_layout/FsSearchPageUserLayout';
 //
-import './FbSearchPageItemUser.scss';
+import './FbSearchPagePeopleItem.scss';
 
 //
-FbSearchPageItemUser.propTypes = {};
+FbSearchPagePeopleItem.propTypes = {};
 
 //
-function FbSearchPageItemUser({ profile }) {
+function FbSearchPagePeopleItem({ profile }) {
     //
     const {
         id,
@@ -33,7 +33,7 @@ function FbSearchPageItemUser({ profile }) {
 
     //
     return (
-        <div className="FbSearchPageItemUser">
+        <div className="FbSearchPagePeopleItem">
             <FsSearchPageUserLayout
                 id={id}
                 picture={picture}
@@ -59,4 +59,4 @@ function FbSearchPageItemUser({ profile }) {
     );
 }
 
-export default FbSearchPageItemUser;
+export default FbSearchPagePeopleItem;

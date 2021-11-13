@@ -9,7 +9,7 @@ import BtnProfileReplyRequest from '../../../button/profile_actions/reply_reques
 ActionsProfileReplyRequest.propTypes = {};
 
 //
-function ActionsProfileReplyRequest({ user_id, is_at_body, handleAction }) {
+function ActionsProfileReplyRequest({ user_id, is_at_body, use_title, handleAction }) {
     //
     async function getData_ActionReplyRequest() {
         const data = await handle_API_ProfileActions_L({
@@ -23,6 +23,7 @@ function ActionsProfileReplyRequest({ user_id, is_at_body, handleAction }) {
     return (
         <BtnProfileReplyRequest
             is_at_body={is_at_body}
+            use_title={use_title}
             handle_API_L={getData_ActionReplyRequest}
             handleAction={handleAction}
         />

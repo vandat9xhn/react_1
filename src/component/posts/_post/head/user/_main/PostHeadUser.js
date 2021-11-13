@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 import UnitTime from '../../../../../../_some_function/UnitTime';
 //
 import { IconsPermission } from '../../../../../../_groups_icon/permission/GroupIconPermission';
+// 
+import ActionPreviewProfile from '../../../../../action_preview_profile/_main/ActionPreviewProfile';
 //
 import './PostHeadUser.scss';
-import ActionPreviewProfile from '../../../../../action_preview_profile/_main/ActionPreviewProfile';
 
 //
 PostHeadUser.propTypes = {};

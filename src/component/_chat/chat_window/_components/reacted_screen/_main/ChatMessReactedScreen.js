@@ -74,8 +74,8 @@ function ChatMessReactedScreen({
 
     //
     return (
-        <div className="ChatMessReactedScreen">
-            <div className="ChatMessReactedScreen_contain bg-primary brs-8px box-shadow-fb">
+        <div className="ChatMessReactedScreen screen">
+            <div className="ChatMessReactedScreen_contain screen-contain w-550px">
                 <div>
                     <ScreenBlurHead
                         title="Message reactions"

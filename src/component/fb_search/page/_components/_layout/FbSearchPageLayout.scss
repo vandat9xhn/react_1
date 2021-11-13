@@ -1,0 +1,9 @@
+.FbSearchPageLayout_left{
+    top: calc(var(--height-header));
+    height: calc(100vh - var(--height-header));
+    box-shadow: 1px 1px 4px var(--shadow-2);
+}
+
+.FbSearchPageLayout_no_results{
+    height: calc(100vh - var(--height-header));
+}

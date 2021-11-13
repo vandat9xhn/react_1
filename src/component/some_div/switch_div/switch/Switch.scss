@@ -1,35 +1,34 @@
 $width: 2.2rem;
 $height: 1rem;
 
-.Switch_btn{
+.Switch {
     position: relative;
 
     width: $width;
     height: $height;
     border-radius: 20px;
-    border: 1px solid var(--bg-blur);
-    cursor: pointer;
+    background-color: var(--md-bg-blur);
     
-}  
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.Switch-open {
+    background-color: var(--blue);
+    .Switch_ball {
+        left: $width - $height - 0.1rem;
+    }
+}
 
-.Switch_ball { 
+.Switch_ball {
     position: absolute;
     left: 0.1rem;
     top: 50%;
-    
+
     width: $height - 0.2rem;
     height: $height - 0.2rem;
     border-radius: 50%;
-    background-color: var(--bg-blur);
-    
+    background-color: var(--md-bg-primary);
+
     transform: translateY(-50%);
     transition: all 0.3s;
-}
-
-// open
-.Switch_open{
-    background-color: var(--blue);
-    .Switch_ball{
-        left: $width - $height - 0.1rem;
-    }
 }

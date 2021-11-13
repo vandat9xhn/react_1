@@ -1,0 +1,26 @@
+.FbSearchPagePhotoList_item {
+    width: 33.33%;
+    padding: 3px;
+
+    &:nth-child(1) {
+        .FbSearchPagePhotoItem {
+            border-top-left-radius: 8px;
+        }
+    }
+    &:nth-child(3) {
+        .FbSearchPagePhotoItem {
+            border-top-right-radius: 8px;
+        }
+    }
+
+    &:nth-last-child(1) {
+        .FbSearchPagePhotoItem {
+            border-bottom-right-radius: 8px;
+        }
+    }
+    &:nth-last-child(3) {
+        .FbSearchPagePhotoItem {
+            border-bottom-left-radius: 8px;
+        }
+    }
+}

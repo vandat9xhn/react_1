@@ -16,18 +16,18 @@ VidPicsPost.defaultProps = {
 };
 
 //
-function VidPicsPost({ post_ix, vid_pics }) {
+function VidPicsPost({ post_ix, vid_pics, vid_pic_count }) {
     //
     return (
         <div className="VidPicsPost">
-            {vid_pics ? (
-                <div className={vid_pics.length > 0 ? 'VidPics_grid' : ''}>
+            {vid_pic_count ? (
+                <div className={vid_pic_count > 0 ? 'VidPics_grid' : ''}>
                     {vid_pics.map((item, index) => (
                         <VidPicPostItem
                             key={index}
                             index={index}
                             post_ix={post_ix}
-                            vid_pic_count={vid_pics.length}
+                            vid_pic_count={vid_pic_count}
                             id={item.id}
                             vid_pic={item.vid_pic}
                         />

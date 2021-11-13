@@ -1,0 +1,18 @@
+.FbSearchPagePhotoItem {
+    &:hover {
+        .FbSearchPagePhotoItem_bg {
+            background-color: var(--shadow-1);
+        }
+    }
+}
+
+.FbSearchPagePhotoItem_bg {
+    background-image: linear-gradient(
+        to top,
+        var(--shadow-2),
+        transparent,
+        transparent,
+        transparent,
+        var(--shadow-1),
+    );
+}

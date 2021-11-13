@@ -70,13 +70,13 @@ function Post({
         id,
         user,
         vid_pics,
-        bg_obj,
+        vid_pic_count,
         content_obj,
-        permission_post,
+
+        bg_obj,
         emoji_obj,
         user_tag_arr,
         user_tag_count,
-        updated_time,
 
         reacted_ix_arr,
         reacted_count,
@@ -88,6 +88,9 @@ function Post({
 
         comments,
         count_comment,
+
+        permission_post,
+        updated_time,
     } = post;
 
     const is_poster = c_user.id == user.id;
@@ -232,6 +235,7 @@ function Post({
         content_obj.content_more = '';
         content_obj.has_more_content = false;
         post.vid_pics = c_vid_pics;
+        post.vid_pic_count = c_vid_pics.length;
         post.bg_obj = bg_ix >= 0 ? bg_arr[bg_ix] : null;
         post.permission_post = permission;
         post.user_tag_arr = user_tag_arr.slice(0, 2);
@@ -325,9 +329,13 @@ function Post({
                     </div>
                 ) : null}
 
-                {vid_pics.length ? (
+                {vid_pic_count ? (
                     <div className="Post_pic">
-                        <VidPicsPost post_ix={post_ix} vid_pics={vid_pics} />
+                        <VidPicsPost
+                            post_ix={post_ix}
+                            vid_pics={vid_pics}
+                            vid_pic_count={vid_pic_count}
+                        />
                     </div>
                 ) : null}
 

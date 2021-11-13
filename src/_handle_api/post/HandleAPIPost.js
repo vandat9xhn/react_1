@@ -73,14 +73,14 @@ export async function handle_API_Like_L(post_id = 0, c_count = 0, type_like) {
 
 //
 export async function handle_API_PostReactedInfo_L({
-    post_id = 0,
+    id = 0,
     is_vid_pic = false,
 }) {
     const res = await API_PostReactedInfo_L(
         {
             page: 1,
             size: 6,
-            post_model: post_id,
+            [is_vid_pic ? 'vid_pic_model' : 'post_model']: id,
         },
         is_vid_pic
     );

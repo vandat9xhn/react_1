@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsAction from '../../../../_icons_svg/icons_action/IconsAction';
+import IconFriend from '../../../../_icons_svg/icon_friend/IconFriend';
 //
 import BtnProfileActions from '../_common/BtnProfileActions';
 
@@ -19,7 +19,7 @@ function BtnProfileAddFriend({ use_title, handleAction }) {
     return (
         <BtnProfileActions
             className={'BtnProfileAddFriend bg-blue text-white'}
-            Icon={<IconsAction y={200} />}
+            Icon={<IconFriend is_plus={true} />}
             use_title={use_title}
             title={'Add Friend'}
             handleClick={onAddFriend}

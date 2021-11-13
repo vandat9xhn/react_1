@@ -8,7 +8,7 @@ import './Footer.scss';
 //
 function Footer() {
     //
-    if (/(^\/profile\/\d+$|\/friends)/.test(location.pathname)) {
+    if (!/(^\/login-form$|^\/registration-form$)/.test(location.pathname)) {
         return null;
     }
 

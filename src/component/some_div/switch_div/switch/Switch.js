@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import './Switch.scss';
 
-// 
+//
 Switch.propTypes = {
     switch_on: PropTypes.bool,
 };
@@ -13,18 +13,11 @@ Switch.defaultProps = {
 };
 
 //
-function Switch(props) {
-    const { switch_on } = props;
+function Switch({ switch_on }) {
     //
     return (
-        <div>
-            <div
-                className={`Switch_btn ${
-                    switch_on ? 'Switch_open' : ''
-                }`}
-            >
-                <div className="Switch_ball" />
-            </div>
+        <div className={`Switch ${switch_on ? 'Switch-open' : ''}`}>
+            <div className="Switch_ball" />
         </div>
     );
 }

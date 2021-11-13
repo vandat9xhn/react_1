@@ -18,41 +18,53 @@ function FsSearchPageUserLayout({
 }) {
     //
     return (
-        <div className="FsSearchPageUserLayout">
+        <div className="FsSearchPageUserLayout padding-16px bg-primary brs-8px box-shadow-1">
             <div className="display-flex">
-                <div>
+                <div className="margin-right-12px">
                     <ActionPreviewProfile
                         user_id={id}
                         title_action={
-                            <img src={picture} alt="" width="60" height="60" />
+                            <img
+                                className="brs-50 object-fit-cover"
+                                src={picture}
+                                alt=""
+                                width="60"
+                                height="60"
+                            />
                         }
                     />
                 </div>
 
                 <div className="flex-grow-1 flex-between-center">
                     <div>
-                        <ActionPreviewProfile
-                            user_id={id}
-                            title_action={<div>{name}</div>}
-                        />
+                        <div className="display-flex">
+                            <ActionPreviewProfile
+                                user_id={id}
+                                title_action={
+                                    <div className="font-600">{name}</div>
+                                }
+                            />
+                        </div>
+
+                        {info_1 ? (
+                            <div className="font-13px text-secondary">
+                                {info_1}
+                            </div>
+                        ) : null}
+
+                        {info_2 ? (
+                            <div className="margin-top-10px text-secondary">
+                                {info_2}
+                            </div>
+                        ) : null}
                     </div>
 
-                    {info_1 ? (
-                        <div className="font-13px text-secondary">{info_1}</div>
-                    ) : null}
-
-                    {info_2 ? (
-                        <div className="margin-top-10px text-secondary">
-                            {info_2}
+                    {Icon ? (
+                        <div className="btn-icon-36px bg-fb cursor-pointer hv-bg-hv">
+                            {Icon}
                         </div>
                     ) : null}
                 </div>
-
-                {Icon ? (
-                    <div className="btn-icon-36px bg-fb cursor-pointer hv-bg-hv">
-                        {Icon}
-                    </div>
-                ) : null}
             </div>
         </div>
     );

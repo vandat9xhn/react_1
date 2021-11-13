@@ -13,12 +13,13 @@ export async function handle_API_ProfileInfo_R({ user_id }) {
 }
 
 //
-export async function handle_API_ProfileInfo_L({ c_count = 0, type = '' }) {
+export async function handle_API_ProfileInfo_L({ c_count = 0, type = '', params = {} }) {
     const res = await API_ProfileInfo_L({
         c_count: c_count,
         type: type,
         size: 10,
         page: 1,
+        ...params,
     });
 
     return res.data;

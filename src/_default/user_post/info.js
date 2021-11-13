@@ -1,4 +1,5 @@
 import { default_define_user } from '../login/DefaultLogin';
+import { default_action_user_case_obj } from '../_common/action_user_case';
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
@@ -9,40 +10,27 @@ import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 
 //
-const default_action_case_obj = {
-    edit_profile: 'edit_profile',
-    add_story: 'add_story',
-
-    friend: 'friend',
-    chat: 'chat',
-
-    add_friend: 'add_friend',
-    reply_request: 'reply_request',
-    follow: 'follow',
-};
-
-//
 const default_action_case_arr = [
     [
-        { name: default_action_case_obj.add_story },
-        { name: default_action_case_obj.edit_profile },
+        { name: default_action_user_case_obj.add_story },
+        { name: default_action_user_case_obj.edit_profile },
     ],
 
     [
-        { name: default_action_case_obj.friend },
-        { name: default_action_case_obj.chat },
+        { name: default_action_user_case_obj.friend },
+        { name: default_action_user_case_obj.chat },
     ],
     [
-        { name: default_action_case_obj.add_friend },
-        { name: default_action_case_obj.chat },
+        { name: default_action_user_case_obj.add_friend },
+        { name: default_action_user_case_obj.chat },
     ],
 
     [
-        { name: default_action_case_obj.reply_request },
-        { name: default_action_case_obj.chat },
+        { name: default_action_user_case_obj.reply_request },
+        { name: default_action_user_case_obj.chat },
     ],
-    [{ name: default_action_case_obj.chat }],
-    [{ name: default_action_case_obj.follow }],
+    [{ name: default_action_user_case_obj.chat }],
+    [{ name: default_action_user_case_obj.follow }],
 ];
 
 //
@@ -79,7 +67,7 @@ export const default_fb_profile_info_r = (user_id, max_friend_arr = 8) => {
         : getRandomFromArr(default_action_case_arr.slice(1));
 
     const sent_request =
-        action_case_arr[0].name == default_action_case_obj.reply_request;
+        action_case_arr[0].name == default_action_user_case_obj.reply_request;
 
     return {
         id: user_id && user_id > 0 ? user_id : getRandomId(),
@@ -115,7 +103,7 @@ export const default_fb_profile_info_r = (user_id, max_friend_arr = 8) => {
 };
 
 export const default_fb_profile_info_arr = ({ type }) => {
-    const is_suggest = ['suggest', 'friend'].includes(type);
+    const is_suggest = !type || ['suggest', 'friend'].includes(type);
 
     return getRandomBool() && !is_suggest
         ? []

@@ -29,6 +29,7 @@ import './_style/width_height.scss';
 
 import './_style/story.scss';
 import './_style/post.scss';
+import './_style/vid_pic_max_3.scss';
 import './_style/vid_pics.scss';
 
 import './_style/fashion.scss';
