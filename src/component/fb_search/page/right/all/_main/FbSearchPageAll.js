@@ -16,12 +16,13 @@ function FbSearchPageAll(props) {
         <div className="FbSearchPageAll">
             <FbSearchPageLayout
                 right_elm={
-                    <div className="FbSearchPageAll_contain display-flex-center">
+                    <div className="fb-search-page-right-contain display-flex-center">
                         <div className="w-680px">
                             <FbSearchPageRelated />
                         </div>
                     </div>
                 }
+                title="All"
             />
         </div>
     );

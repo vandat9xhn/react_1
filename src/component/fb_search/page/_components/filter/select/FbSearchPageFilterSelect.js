@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-//
+// 
 import { useSelectOneSearch } from '../../../../../../_hooks/useSelectOneSearch';
 import { useSwitchLocationSearch } from '../../../../../../_hooks/useSwitchLocationSearch';
 //
@@ -41,11 +41,11 @@ function FbSearchPageFilterSelect({
     });
 
     //
-    const { changeLocationSearch } = useSwitchLocationSearch();
+    const { changeLocationSearch } = useSwitchLocationSearch({});
 
     //
     useEffect(() => {
-        if (!(params_key in ParseLocationSearch())) {
+        if (!(params_key in ParseLocationSearch()) && option_obj.id > 0) {
             clearChoice();
         }
     }, [location.search]);

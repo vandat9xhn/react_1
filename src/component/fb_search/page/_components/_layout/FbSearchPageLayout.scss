@@ -1,9 +1,41 @@
-.FbSearchPageLayout_left{
+.FbSearchPageLayout_left {
     top: calc(var(--height-header));
     height: calc(100vh - var(--height-header));
     box-shadow: 1px 1px 4px var(--shadow-2);
 }
 
-.FbSearchPageLayout_no_results{
+.FbSearchPageLayout_no_results {
     height: calc(100vh - var(--height-header));
+}
+
+// -------
+
+.device-mobile {
+    .FbSearchPageLayout_left {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: var(--z-index-lv2);
+
+        width: 100%;
+        height: 100%;
+        background: white;
+        
+        transform: translateX(100%);
+        transition: all 250ms ease-in;
+    }
+    .FbSearchPageLayout_left-open {
+        transform: translateX(0%);
+    }
+
+    .FbSearchPageLayout_right{
+        width: 100%;
+        padding-top: 48px;
+    }
+    // .
+    .FbSearchPageLayout_right_head{
+        .IconsArrow_back-prev{
+            stroke: currentColor;
+        }
+    }
 }

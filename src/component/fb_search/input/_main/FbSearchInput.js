@@ -5,29 +5,30 @@ import PropTypes from 'prop-types';
 import { useBool } from '../../../../_hooks/useBool';
 //
 import CloseDiv from '../../../some_div/close_div/CloseDiv';
+//
 import SearchAnimateDiv from '../../../some_div/search_animate_div/SearchAnimateDiv';
 import FbSearchHistory from '../history/_main/FbSearchHistory';
+import FbSearchInputList from '../list/_main/FbSearchInputList';
 //
 import './FbSearchInput.scss';
-import FbSearchInputList from '../list/_main/FbSearchInputList';
 
 //
 FbSearchInput.propTypes = {};
 
 //
-function FbSearchInput({}) {
+function FbSearchInput({ initial_value = '', initial_open = false }) {
     //
     const use_history = useHistory();
 
     //
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(initial_value);
 
     //
     const ref_main = useRef(null);
 
     //
     const { is_true, setIsTrue } = useBool();
-    const { is_true: is_open, setIsTrue: setIsOpen } = useBool(false);
+    const { is_true: is_open, setIsTrue: setIsOpen } = useBool(initial_open);
 
     // -----
 
@@ -60,7 +61,7 @@ function FbSearchInput({}) {
 
     //
     function onSearch() {
-        use_history.push(`/search/${value}`);
+        use_history.push(`/search?q=${value}`);
     }
 
     //

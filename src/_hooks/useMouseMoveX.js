@@ -76,6 +76,8 @@ export function useMouseMoveX({
     //
     return {
         is_run,
+        client_x,
+        client_y,
         first_orientation,
 
         handleStart,

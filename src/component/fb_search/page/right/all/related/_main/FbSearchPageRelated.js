@@ -38,7 +38,7 @@ function FbSearchPageRelated(props) {
     }
     //
     return (
-        <div className="FbSearchPageRelated padding-16px brs-8px bg-primary box-shadow-1">
+        <div className="FbSearchPageRelated fb-search-page-right-item-contain padding-16px brs-8px bg-primary box-shadow-1">
             <div>
                 {search_value_arr.map((item, ix) => (
                     <div key={ix}>

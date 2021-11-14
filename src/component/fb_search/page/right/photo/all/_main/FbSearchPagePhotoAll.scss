@@ -1,9 +1,16 @@
-.FbSearchPagePhotoAll_contain{
-    padding: 32px;
+// .
+.FbSearchPagePhotoAll_item {
+    margin: 3px;
+    width: 200px;
 }
 
-// .
-.FbSearchPagePhotoAll_item{
-    width: 200px;
-    margin: 3px;
+// -----
+
+.device-mobile{
+    .FbSearchPagePhotoAll_item {
+        margin: 0;
+        max-width: 33.33%;
+        padding: 3px;
+    }
+
 }

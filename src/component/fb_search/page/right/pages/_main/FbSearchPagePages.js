@@ -32,13 +32,13 @@ function FbSearchPagePages(props) {
         <div className="FbSearchPagePages">
             <FbSearchPageLayout
                 right_elm={
-                    <div className="FbSearchPagePages_contain display-flex-center">
+                    <div className="fb-search-page-right-contain display-flex-center">
                         <div className="w-680px">
                             <div>
                                 {data_arr.map((page_obj, ix) => (
                                     <div
                                         key={page_obj.id}
-                                        className="margin-bottom-20px"
+                                        className="fb-search-page-right-item"
                                     >
                                         <FbSearchPagePagesItem page_obj={page_obj} />
                                     </div>
@@ -53,6 +53,7 @@ function FbSearchPagePages(props) {
                     </div>
                 }
                 no_result={has_fetched && data_count.current == 0}
+                title="Pages"
             />
         </div>
     );

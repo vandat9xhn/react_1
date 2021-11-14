@@ -32,15 +32,17 @@ function FbSearchPageVideo(props) {
         <div className="FbSearchPageVideo">
             <FbSearchPageLayout
                 right_elm={
-                    <div className="FbSearchPageVideo_contain display-flex-center">
+                    <div className="fb-search-page-right-contain display-flex-center">
                         <div className="w-680px">
                             <div>
                                 {data_arr.map((video_obj, ix) => (
                                     <div
                                         key={video_obj.id}
-                                        className="margin-bottom-20px"
+                                        className="fb-search-page-right-item"
                                     >
-                                        <FbSearchPageVideoItem video_obj={video_obj} />
+                                        <FbSearchPageVideoItem
+                                            video_obj={video_obj}
+                                        />
                                     </div>
                                 ))}
                             </div>
@@ -53,6 +55,7 @@ function FbSearchPageVideo(props) {
                     </div>
                 }
                 no_result={has_fetched && data_count.current == 0}
+                title="Videos"
             />
         </div>
     );

@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import FbScPagePostItemHead from '../head/FbScPagePostItemHead';
 import FbScPagePostItemContent from '../content/FbScPagePostItemContent';
 import FbScPagePostItemInfo from '../info/_main/FbScPagePostItemInfo';
+// 
+import './FbScPagePostItem.scss';
 
 //
 FbScPagePostItem.propTypes = {};
@@ -45,8 +47,8 @@ function FbScPagePostItem({ post }) {
 
     //
     return (
-        <div className="FbScPagePostItem brs-8px bg-primary box-shadow-1">
-            <div className="padding-16px border-bottom-blur">
+        <div className="FbScPagePostItem fb-search-page-right-item-contain brs-8px bg-primary box-shadow-1">
+            <div className="FbScPagePostItem_head padding-16px border-bottom-blur">
                 <FbScPagePostItemHead
                     user={user}
                     post_id={id}
@@ -54,7 +56,7 @@ function FbScPagePostItem({ post }) {
                 />
             </div>
 
-            <div className="padding-x-16px padding-top-16px padding-bottom-10px">
+            <div className="FbScPagePostItem_content padding-x-16px padding-top-16px padding-bottom-10px">
                 <div className="margin-bottom-12px">
                     <Link
                         ref={ref_link_content}

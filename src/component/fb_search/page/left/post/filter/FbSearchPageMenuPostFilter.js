@@ -49,7 +49,7 @@ function FbSearchPageMenuPostFilter(props) {
     } = state_obj;
 
     //
-    const { switchLocationSearch } = useSwitchLocationSearch();
+    const { switchLocationSearch } = useSwitchLocationSearch({});
 
     //
     useEffect(() => {
@@ -110,7 +110,7 @@ function FbSearchPageMenuPostFilter(props) {
     //
     return (
         <div className="FbSearchPageMenuPostFilter">
-            <div className="FbSearchPageMenuPostFilter_part">
+            <div className="FbSearchPageMenuPostFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSwitch
                     title="Recently posts"
                     switch_on={!!search_obj['recently_posts']}
@@ -118,7 +118,7 @@ function FbSearchPageMenuPostFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPostFilter_part">
+            <div className="FbSearchPageMenuPostFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSwitch
                     title="Posts you've seen"
                     switch_on={!!search_obj['seen_posts']}
@@ -126,7 +126,7 @@ function FbSearchPageMenuPostFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPostFilter_part">
+            <div className="FbSearchPageMenuPostFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="date_posted"
                     title="Date posted"
@@ -138,7 +138,7 @@ function FbSearchPageMenuPostFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPostFilter_part">
+            <div className="FbSearchPageMenuPostFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="posts_from"
                     title="Posts from"
@@ -150,7 +150,7 @@ function FbSearchPageMenuPostFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPostFilter_part">
+            <div className="FbSearchPageMenuPostFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="location"
                     title="Tagged location"

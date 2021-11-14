@@ -35,12 +35,12 @@ function FbSearchPagePhotoList({ title, title_no_results, type, search_key }) {
     //
     return (
         <div
-            className={`FbSearchPagePhotoList padding-16px brs-8px bg-primary box-shadow-1 ${
+            className={`FbSearchPagePhotoList fb-search-page-right-item-contain padding-16px brs-8px bg-primary box-shadow-1 ${
                 has_fetched ? '' : 'display-none'
             }`}
         >
             <div className={`${data_count.current > 0 ? '' : 'display-none'}`}>
-                <h2 className="font-20px font-700">{title}</h2>
+                <h2 className="FbSearchPagePhotoList_title font-20px font-700">{title}</h2>
 
                 <div className="margin-y-10px">
                     <div className="display-flex flex-wrap">

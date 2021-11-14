@@ -43,7 +43,7 @@ function FbSearchPageMenuPagesFilter(props) {
     } = state_obj;
 
     //
-    const { switchLocationSearch } = useSwitchLocationSearch();
+    const { switchLocationSearch } = useSwitchLocationSearch({});
 
     //
     useEffect(() => {
@@ -101,14 +101,15 @@ function FbSearchPageMenuPagesFilter(props) {
     //
     return (
         <div className="FbSearchPageMenuPagesFilter">
-            <div className="FbSearchPageMenuPagesFilter_part">
-                <div className="FbSearchPageMenuPagesFilter_part">
-                    <FbSearchPageFilterSwitch
-                        title="Shops"
-                        switch_on={!!search_obj['shops']}
-                        toggleSwitch={switchShops}
-                    />
-                </div>
+            <div className="FbSearchPageMenuPagesFilter_part fb-search-page-left-filter-item">
+                <FbSearchPageFilterSwitch
+                    title="Shops"
+                    switch_on={!!search_obj['shops']}
+                    toggleSwitch={switchShops}
+                />
+            </div>
+
+            <div className="FbSearchPageMenuPagesFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="location"
                     title="Location"
@@ -120,7 +121,7 @@ function FbSearchPageMenuPagesFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPagesFilter_part">
+            <div className="FbSearchPageMenuPagesFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSwitch
                     title="Verified"
                     switch_on={!!search_obj['verified']}
@@ -128,7 +129,7 @@ function FbSearchPageMenuPagesFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPagesFilter_part">
+            <div className="FbSearchPageMenuPagesFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="category"
                     title="Category"

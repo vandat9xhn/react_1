@@ -24,11 +24,9 @@ function StoryCreateTextChoice({ title, openScreenStoryText }) {
             onClick={openScreenStoryText}
         >
             <StoryCreateChoice title={title}>
-                <div>
-                    <span className="StoryCreateTextChoice_title font-500 font-18px">
-                        Aa
-                    </span>
-                </div>
+                <span className="StoryCreateTextChoice_title font-500 font-18px">
+                    Aa
+                </span>
             </StoryCreateChoice>
         </div>
     );

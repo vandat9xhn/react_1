@@ -5,3 +5,17 @@
 .FbSearchPageMenuItem_filter{
     padding-left: 32px;
 }
+
+// ------
+
+.device-mobile{
+    .FbSearchPageMenuItem_link{
+        height: 48px;
+        border-radius: 0;
+    }
+
+    .FbSearchPageMenuItem_filter{
+        padding-left: 0px;
+        background-color: var(--md-bg-fb);
+    }
+}

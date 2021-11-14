@@ -33,7 +33,7 @@ function FbSearchPagePhotoAll({}) {
         <div className="FbSearchPagePhotoAll">
             <FbSearchPageLayout
                 right_elm={
-                    <div className="FbSearchPagePhotoAll_contain">
+                    <div className="fb-search-page-right-contain">
                         <div className="FbSearchPagePhotoAll_list display-flex flex-wrap">
                             {data_arr.map((item, ix) => (
                                 <div
@@ -49,6 +49,7 @@ function FbSearchPagePhotoAll({}) {
                     </div>
                 }
                 no_result={has_fetched && data_count.current == 0}
+                title="Photos"
             />
         </div>
     );

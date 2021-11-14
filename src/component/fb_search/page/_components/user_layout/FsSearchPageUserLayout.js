@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import ActionPreviewProfile from '../../../../action_preview_profile/_main/ActionPreviewProfile';
+//
+import './FsSearchPageUserLayout.scss';
 
 //
 FsSearchPageUserLayout.propTypes = {};
@@ -18,14 +20,14 @@ function FsSearchPageUserLayout({
 }) {
     //
     return (
-        <div className="FsSearchPageUserLayout padding-16px bg-primary brs-8px box-shadow-1">
+        <div className="FsSearchPageUserLayout fb-search-page-right-item-contain padding-16px bg-primary brs-8px box-shadow-1">
             <div className="display-flex">
                 <div className="margin-right-12px">
                     <ActionPreviewProfile
                         user_id={id}
                         title_action={
                             <img
-                                className="brs-50 object-fit-cover"
+                                className="FsSearchPageUserLayout_pic brs-50 object-fit-cover"
                                 src={picture}
                                 alt=""
                                 width="60"
@@ -59,11 +61,7 @@ function FsSearchPageUserLayout({
                         ) : null}
                     </div>
 
-                    {Icon ? (
-                        <div className="btn-icon-36px bg-fb cursor-pointer hv-bg-hv">
-                            {Icon}
-                        </div>
-                    ) : null}
+                    {Icon ? Icon : null}
                 </div>
             </div>
         </div>

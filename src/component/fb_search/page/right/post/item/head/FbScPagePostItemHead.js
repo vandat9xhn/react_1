@@ -6,6 +6,8 @@ import { handle_API_FbSearchPostAction_L } from '../../../../../../../_handle_ap
 //
 import ActionsMultiList from '../../../../../../actions_multi_list/_main/ActionsMultiList';
 import ActionPreviewProfile from '../../../../../../action_preview_profile/_main/ActionPreviewProfile';
+// 
+import './FbScPagePostItemHead.scss';
 
 //
 FbScPagePostItemHead.propTypes = {};
@@ -30,7 +32,7 @@ function FbScPagePostItemHead({ user, post_id, handleAction }) {
                         >
                             <div className="display-flex align-items-center">
                                 <img
-                                    className="brs-50 object-fit-cover"
+                                    className="FbScPagePostItemHead_pic brs-50 object-fit-cover"
                                     src={user.picture}
                                     alt=""
                                     width="60"

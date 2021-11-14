@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
 import { ParseLocationSearch } from '../../../../../_some_function/ParseLocationSearch';
 //
 import FbSearchPageMenuAll from '../all/FbSearchPageMenuAll';
@@ -11,6 +13,7 @@ import FbSearchPageMenuPhoto from '../photo/_main/FbSearchPageMenuPhoto';
 import FbSearchPageMenuVideo from '../video/_main/FbSearchPageMenuVideo';
 import FbSearchPageMenuPages from '../pages/_main/FbSearchPageMenuPages';
 import FbSearchPageMenuGroups from '../groups/_main/FbSearchPageMenuGroups';
+import FbSearchInput from '../../../input/_main/FbSearchInput';
 //
 import './FbSearchPageLeft.scss';
 
@@ -18,7 +21,7 @@ import './FbSearchPageLeft.scss';
 FbSearchPageLeft.propTypes = {};
 
 //
-function FbSearchPageLeft(props) {
+function FbSearchPageLeft({}) {
     //
     const search_obj = ParseLocationSearch();
 
@@ -27,11 +30,27 @@ function FbSearchPageLeft(props) {
     //
     return (
         <div className="FbSearchPageLeft h-100per display-flex flex-col">
-            <h1 className="padding-top-17px padding-bottom-20px margin-x-16px border-bottom-blur bg-primary line-20px font-24px font-700">
-                Search results
-            </h1>
+            <div className="FbSearchPageLeft_head pos-rel margin-x-16px border-bottom-blur">
+                <h1 className="FbSearchPageLeft_head_title padding-top-17px padding-bottom-20px bg-primary line-20px font-24px font-700">
+                    Search results
+                </h1>
 
-            <div className="flex-1 overflow-y-auto scroll-thin">
+                <div
+                    key={search_value}
+                    className="pos-abs left-0 y-center z-index-1 w-100per"
+                >
+                    <FbSearchInput
+                        initial_value={search_value}
+                        initial_open={IS_MOBILE}
+                    />
+                </div>
+            </div>
+
+            <div
+                className={`flex-1 overflow-y-auto scroll-thin ${
+                    search_value ? '' : 'display-none'
+                }`}
+            >
                 <div className="FbSearchPageLeft_filter_title flex-between-center padding-x-16px line-18px">
                     <h2 className="font-17px font-600">Filters</h2>
 
@@ -46,7 +65,7 @@ function FbSearchPageLeft(props) {
                     </div>
                 </div>
 
-                <div className="padding-x-8px padding-bottom-20px">
+                <div className="FbSearchPageLeft_contain padding-x-8px padding-bottom-20px">
                     <div>
                         <FbSearchPageMenuAll search_value={search_value} />
                     </div>

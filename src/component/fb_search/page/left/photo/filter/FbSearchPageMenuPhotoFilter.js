@@ -98,7 +98,7 @@ function FbSearchPageMenuPhotoFilter(props) {
     //
     return (
         <div className="FbSearchPageMenuPhotoFilter">
-            <div className="FbSearchPageMenuPhotoFilter_part">
+            <div className="FbSearchPageMenuPhotoFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="posted_by"
                     title="Posted by"
@@ -110,7 +110,7 @@ function FbSearchPageMenuPhotoFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPhotoFilter_part">
+            <div className="FbSearchPageMenuPhotoFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="type"
                     title="Photo type"
@@ -122,7 +122,7 @@ function FbSearchPageMenuPhotoFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPhotoFilter_part">
+            <div className="FbSearchPageMenuPhotoFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="location"
                     title="Tagged location"
@@ -134,7 +134,7 @@ function FbSearchPageMenuPhotoFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPhotoFilter_part">
+            <div className="FbSearchPageMenuPhotoFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="date"
                     title="Date posted"

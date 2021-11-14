@@ -1,0 +1,33 @@
+.fb-search-page-right-contain {
+    padding: 32px;
+}
+
+.fb-search-page-left-filter-item {
+    margin-top: 8px;
+}
+
+.fb-search-page-right-item{
+    margin-bottom: 20px;
+}
+
+// -----
+
+.device-mobile {
+    // ---
+    .fb-search-page-left-filter-item {
+        margin: 0;
+    }
+
+    // ---
+    .fb-search-page-right-contain {
+        padding: 0;
+    }
+
+    .fb-search-page-right-item-contain {
+        border-radius: 0;
+    }
+
+    .fb-search-page-right-item{
+        margin-bottom: 10px;
+    }
+}

@@ -2,20 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
+import { toggleAppHiddenTemp } from '../../../../_some_function/AppHiddenTemp';
 import { GetIdSlug } from '../../../../_some_function/GetIdSlug';
+
 import { getRoomChatWebsocket } from '../../_func/getRoomChatWs';
+import { makeNewChat } from '../../_func/makeNewChat';
 //
 import { initial_chat_item } from '../../../../_initial/chat/ChatInitial';
 //
 import { handle_API_ChatZoom_R } from '../../../../_handle_api/chat/ChatHandleAPI';
-//
-import { makeNewChat } from '../../_func/makeNewChat';
-//
-import ChatShow from '../../chat_window/show/_main/ChatShow';
-import { toggleAppHiddenTemp } from '../../../../_some_function/AppHiddenTemp';
+// 
 import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
 //
-// import './Chat.scss';
+import ChatShow from '../../chat_window/show/_main/ChatShow';
+//
+import './ChatMobile.scss';
 
 //
 ChatMobile.propTypes = {};

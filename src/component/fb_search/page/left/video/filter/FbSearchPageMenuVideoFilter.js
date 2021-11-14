@@ -43,7 +43,7 @@ function FbSearchPageMenuVideoFilter(props) {
     } = state_obj;
 
     //
-    const { switchLocationSearch } = useSwitchLocationSearch();
+    const { switchLocationSearch } = useSwitchLocationSearch({});
 
     //
     useEffect(() => {
@@ -93,7 +93,7 @@ function FbSearchPageMenuVideoFilter(props) {
     //
     return (
         <div className="FbSearchPageMenuVideoFilter">
-            <div className="FbSearchPageMenuVideoFilter_part">
+            <div className="FbSearchPageMenuVideoFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="sort"
                     title="Sort by"
@@ -105,7 +105,7 @@ function FbSearchPageMenuVideoFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuVideoFilter_part">
+            <div className="FbSearchPageMenuVideoFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="date_posted"
                     title="Date posted"
@@ -117,7 +117,7 @@ function FbSearchPageMenuVideoFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuVideoFilter_part">
+            <div className="FbSearchPageMenuVideoFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSwitch
                     title="Live"
                     switch_on={!!search_obj['live']}

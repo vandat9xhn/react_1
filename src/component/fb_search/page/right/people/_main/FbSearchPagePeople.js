@@ -33,12 +33,12 @@ function FbSearchPagePeople({}) {
         <div className="FbSearchPagePeople">
             <FbSearchPageLayout
                 right_elm={
-                    <div className="FbSearchPagePeople_contain display-flex-center">
+                    <div className="fb-search-page-right-contain display-flex-center">
                         <div className="FbSearchPagePeople_list w-680px">
                             {data_arr.map((item, ix) => (
                                 <div
                                     key={ix}
-                                    className="FbSearchPagePeople_item margin-bottom-15px"
+                                    className="fb-search-page-right-item"
                                 >
                                     <FbSearchPagePeopleItem profile={item} />
                                 </div>
@@ -49,6 +49,7 @@ function FbSearchPagePeople({}) {
                     </div>
                 }
                 no_result={has_fetched && data_count.current == 0}
+                title="People"
             />
         </div>
     );

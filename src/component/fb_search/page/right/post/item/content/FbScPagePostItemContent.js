@@ -23,18 +23,22 @@ function FbScPagePostItemContent({
     return (
         <div className="FbScPagePostItemContent text-05">
             <div className="display-flex">
-                <div className="flex-grow-1 wk-box-vertical line-clamp-4 padding-5px overflow-hidden">
-                    <span>{new Date(updated_time).toDateString()}</span>
+                <div className="flex-grow-1 padding-5px">
+                    <div className="wk-box-vertical line-clamp-4 overflow-hidden">
+                        <span>{new Date(updated_time).toDateString()}</span>
 
-                    <span> · </span>
+                        <span> · </span>
 
-                    <span className="inline-flex">
-                        {IconsPermission[permission].Icon}
-                    </span>
+                        <span className="inline-flex">
+                            {IconsPermission[permission].Icon}
+                        </span>
 
-                    <span> · </span>
+                        <span> · </span>
 
-                    <span>{content}</span>
+                        <span>{content}</span>
+                    </div>
+
+                    <div></div>
                 </div>
 
                 {vid_pic_count > 0 ? (

@@ -5,11 +5,11 @@ import { ParseLocationSearch } from '../../../../../../_some_function/ParseLocat
 //
 import { useSwitchLocationSearch } from '../../../../../../_hooks/useSwitchLocationSearch';
 //
+import CircleLoading from '../../../../../waiting/circle_loading/CircleLoading';
 import FbSearchPageFilterSwitch from '../../../_components/filter/switch/FbSearchPageFilterSwitch';
 import FbSearchPageFilterSelect from '../../../_components/filter/select/FbSearchPageFilterSelect';
 //
 import './FbSearchPageMenuPeopleFilter.scss';
-import CircleLoading from '../../../../../waiting/circle_loading/CircleLoading';
 
 //
 const FRIENDS_FRIENDS_SEARCH_KEY = 'friends_friends';
@@ -52,7 +52,7 @@ function FbSearchPageMenuPeopleFilter(props) {
     } = state_obj;
 
     //
-    const { switchLocationSearch } = useSwitchLocationSearch();
+    const { switchLocationSearch } = useSwitchLocationSearch({});
 
     //
     useEffect(() => {
@@ -107,7 +107,7 @@ function FbSearchPageMenuPeopleFilter(props) {
     //
     return (
         <div className="FbSearchPageMenuPeopleFilter">
-            <div className="FbSearchPageMenuPeopleFilter_part">
+            <div className="FbSearchPageMenuPeopleFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSwitch
                     title="Friends of friends"
                     switch_on={!!search_obj[FRIENDS_FRIENDS_SEARCH_KEY]}
@@ -115,7 +115,7 @@ function FbSearchPageMenuPeopleFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPeopleFilter_part">
+            <div className="FbSearchPageMenuPeopleFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="people_city"
                     title="City"
@@ -127,7 +127,7 @@ function FbSearchPageMenuPeopleFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPeopleFilter_part">
+            <div className="FbSearchPageMenuPeopleFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="people_edu"
                     title="Education"
@@ -139,7 +139,7 @@ function FbSearchPageMenuPeopleFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuPeopleFilter_part">
+            <div className="FbSearchPageMenuPeopleFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="people_work"
                     title="Work"

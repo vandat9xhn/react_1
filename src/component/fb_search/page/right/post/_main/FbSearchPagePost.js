@@ -9,7 +9,7 @@ import { useObserverMoreSearch } from '../../../../../../_hooks/search/useObserv
 //
 import FbScPagePostItem from '../item/_main/FbScPagePostItem';
 import FbSearchPageLayout from '../../../_components/_layout/FbSearchPageLayout';
-// 
+//
 import './FbSearchPagePost.scss';
 
 //
@@ -43,11 +43,14 @@ function FbSearchPagePost(props) {
         <div className="FbSearchPagePost">
             <FbSearchPageLayout
                 right_elm={
-                    <div className="FbSearchPagePost_contain display-flex-center">
+                    <div className="fb-search-page-right-contain display-flex-center">
                         <div className="w-680px">
                             <div>
                                 {data_arr.map((post, ix) => (
-                                    <div key={post.id} className="margin-bottom-20px">
+                                    <div
+                                        key={post.id}
+                                        className="fb-search-page-right-item"
+                                    >
                                         <FbScPagePostItem post={post} />
                                     </div>
                                 ))}
@@ -61,6 +64,7 @@ function FbSearchPagePost(props) {
                     </div>
                 }
                 no_result={has_fetched && data_count.current == 0}
+                title="Posts"
             />
         </div>
     );

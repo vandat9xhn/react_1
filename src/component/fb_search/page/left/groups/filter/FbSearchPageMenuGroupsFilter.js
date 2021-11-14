@@ -37,7 +37,7 @@ function FbSearchPageMenuGroupsFilter(props) {
     } = state_obj;
 
     //
-    const { switchLocationSearch } = useSwitchLocationSearch();
+    const { switchLocationSearch } = useSwitchLocationSearch({});
 
     //
     useEffect(() => {
@@ -88,7 +88,7 @@ function FbSearchPageMenuGroupsFilter(props) {
     //
     return (
         <div className="FbSearchPageMenuGroupsFilter">
-            <div className="FbSearchPageMenuGroupsFilter_part">
+            <div className="FbSearchPageMenuGroupsFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSelect
                     params_key="city"
                     title="Location"
@@ -100,7 +100,7 @@ function FbSearchPageMenuGroupsFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuGroupsFilter_part">
+            <div className="FbSearchPageMenuGroupsFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSwitch
                     title="Public groups"
                     switch_on={!!search_obj['public']}
@@ -108,7 +108,7 @@ function FbSearchPageMenuGroupsFilter(props) {
                 />
             </div>
 
-            <div className="FbSearchPageMenuGroupsFilter_part">
+            <div className="FbSearchPageMenuGroupsFilter_part fb-search-page-left-filter-item">
                 <FbSearchPageFilterSwitch
                     title="My groups"
                     switch_on={!!search_obj['joined']}

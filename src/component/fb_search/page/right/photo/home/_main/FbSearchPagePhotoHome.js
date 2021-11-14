@@ -21,7 +21,7 @@ function FbSearchPagePhotoHome(props) {
         <div className="FbSearchPagePhotoHome">
             <FbSearchPageLayout
                 right_elm={
-                    <div className="FbSearchPagePhotoHome_contain display-flex-center">
+                    <div className="fb-search-page-right-contain display-flex-center">
                         <div className="w-680px">
                             <div className="margin-bottom-20px">
                                 <FbSearchPagePhotoList
@@ -43,6 +43,7 @@ function FbSearchPagePhotoHome(props) {
                         </div>
                     </div>
                 }
+                title="Photos"
             />
         </div>
     );

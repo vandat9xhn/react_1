@@ -4,9 +4,20 @@ import { stringify } from 'query-string';
 import { ParseLocationSearch } from '../_some_function/ParseLocationSearch';
 
 //
-export function useSwitchLocationSearch() {
+export function useSwitchLocationSearch({ is_replace = false }) {
     //
     const use_history = useHistory();
+
+    // ------
+
+    //
+    function pushOrReplaceSearch({ search_obj }) {
+        if (is_replace) {
+            use_history.replace(`?${stringify(search_obj)}`);
+        } else {
+            use_history.push(`?${stringify(search_obj)}`);
+        }
+    }
 
     //
     function switchLocationSearch({ search_key = '' }) {
@@ -19,7 +30,7 @@ export function useSwitchLocationSearch() {
             search_obj[search_key] = undefined;
         }
 
-        use_history.push(`?${stringify(search_obj)}`);
+        pushOrReplaceSearch({ search_obj: search_obj });
     }
 
     //
@@ -32,7 +43,7 @@ export function useSwitchLocationSearch() {
             search_obj[search_key] = undefined;
         }
 
-        use_history.push(`?${stringify(search_obj)}`);
+        pushOrReplaceSearch({ search_obj: search_obj });
     }
 
     //

@@ -21,8 +21,8 @@ function FbSearchPageMenuItem({
     return (
         <div className="FbSearchPageMenuItem">
             <NavLink
-                className="FbSearchPageMenuItem_link display-flex align-items-center padding-8px brs-6px color-inherit font-500 hv-bg-fb"
-                activeClassName="FbSearchPageMenuItem_link-active bg-fb"
+                className="FbSearchPageMenuItem_link display-flex align-items-center padding-8px brs-6px color-inherit font-600 hv-bg-fb"
+                activeClassName="FbSearchPageMenuItem_link-active bg-fb pointer-events-none"
                 to={`${pathname}?q=${search_value}`}
                 exact
             >

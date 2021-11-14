@@ -16,11 +16,11 @@
     border: 1px solid transparent;
 }
 
-.border-danger{
+.border-danger {
     border: 1px solid var(--danger);
 }
 
-.border-current{
+.border-current {
     border: 1px solid currentColor;
 }
 
@@ -55,20 +55,22 @@
 
 // ------- SIDE
 
-.border-bottom-blur{
+.border-bottom-blur {
     border-bottom: 1px solid var(--md-bg-blur);
 }
 
-.border-top-blur{
+.border-top-blur {
     border-top: 1px solid var(--md-bg-blur);
 }
 
-
 // ------- BORDER RADIUS
-
 
 @for $i from 0 through 20 {
     .brs-#{$i}px {
+        border-radius: #{$i}px;
+    }
+
+    .brs-#{$i}px-pc {
         border-radius: #{$i}px;
     }
 }
@@ -87,19 +89,16 @@
 
 // --------- OUTLINE
 
-.outline-none{
+.outline-none {
     outline: none;
 }
 
-// ------ MEDIA QUERIES
+// -----
 
-// 
-@media (max-width: 400px) {
-    .brs-5px-md {
-        border-radius: 0;
-    }
-
-    .brs-8px-md {
-        border-radius: 0;
+.device-mobile {
+    @for $i from 0 through 20 {
+        .brs-#{$i}px-pc {
+            border-radius: 0;
+        }
     }
 }

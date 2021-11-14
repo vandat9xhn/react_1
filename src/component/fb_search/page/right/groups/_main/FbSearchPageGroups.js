@@ -32,13 +32,13 @@ function FbSearchPageGroups(props) {
         <div className="FbSearchPageGroups">
             <FbSearchPageLayout
                 right_elm={
-                    <div className="FbSearchPageGroups_contain display-flex-center">
+                    <div className="fb-search-page-right-contain display-flex-center">
                         <div className="w-680px">
                             <div>
                                 {data_arr.map((group_obj, ix) => (
                                     <div
                                         key={group_obj.id}
-                                        className="margin-bottom-20px"
+                                        className="fb-search-page-right-item"
                                     >
                                         <FbSearchPageGroupItem
                                             group_obj={group_obj}
@@ -55,6 +55,7 @@ function FbSearchPageGroups(props) {
                     </div>
                 }
                 no_result={has_fetched && data_count.current == 0}
+                title="Groups"
             />
         </div>
     );

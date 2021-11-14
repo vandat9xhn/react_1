@@ -29,14 +29,20 @@ function ActionsContainMb({
 
     //
     function onClose(e) {
-        e.stopPropagation();
+        stopPropagation(e);
         handleClose();
+    }
+
+    //
+    function stopPropagation(e) {
+        e.stopPropagation();
     }
 
     //
     return (
         <div
             className={`ActionsMb pos-fixed-100per z-index-lv5 user-select-none ${class_actions}`}
+            onTouchStart={stopPropagation}
         >
             <div className="pos-abs-100 bg-shadow-5" onClick={onClose}></div>
 

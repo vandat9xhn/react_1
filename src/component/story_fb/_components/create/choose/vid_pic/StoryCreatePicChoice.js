@@ -34,9 +34,7 @@ function StoryCreatePicChoice({ title, openScreenStoryPic }) {
                 handleChange={handleChange}
             >
                 <StoryCreateChoice title={title}>
-                    <div>
-                        <IconsInput />
-                    </div>
+                    <IconsInput />
                 </StoryCreateChoice>
             </InputFile>
         </div>

@@ -26,7 +26,7 @@ function FbSearchPagePhotoItem({ item }) {
             </Link>
 
             <div className="pos-abs bottom-0 left-0 z-index-1 w-100per pointer-events-none">
-                <div className="padding-y-5px text-align-center text-white font-500">
+                <div className="wk-box-vertical line-clamp-2 overflow-hidden padding-5px text-white font-500">
                     {item.title}
                 </div>
             </div>
