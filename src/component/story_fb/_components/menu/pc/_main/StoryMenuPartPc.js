@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import UnitTime from '../../../../../../_some_function/UnitTime';
+//
 import PicNameContent from '../../../../../picture_name/pic_name_content/PicNameContent';
 //
 import './StoryMenuPartPc.scss';
-import UnitTime from '../../../../../../_some_function/UnitTime';
 
 //
 StoryMenuPartPc.propTypes = {};
@@ -15,6 +16,7 @@ function StoryMenuPartPc({
     story_menu_obj,
     is_active_type,
     active_ix,
+    ref_fake_elm,
 
     handleChangeStory,
 }) {
@@ -24,7 +26,9 @@ function StoryMenuPartPc({
     //
     return (
         <div className="StoryMenuPartPc">
-            <h2 className="margin-0 font-20px padding-10px">{heading}</h2>
+            {story_arr.length ? (
+                <h2 className="margin-0 font-20px padding-10px">{heading}</h2>
+            ) : null}
 
             <div className={`${has_fetched ? '' : 'display-none'}`}>
                 {story_arr.map((item, ix) => (
@@ -54,6 +58,8 @@ function StoryMenuPartPc({
                         />
                     </div>
                 ))}
+
+                <div ref={ref_fake_elm} className="padding-1px"></div>
             </div>
 
             {!has_fetched ? (

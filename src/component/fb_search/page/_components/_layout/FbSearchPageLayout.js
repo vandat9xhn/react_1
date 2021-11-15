@@ -43,12 +43,20 @@ function FbSearchPageLayout({ right_elm, no_result, title }) {
 
     //
     useEffect(() => {
-        closeLeft();
+        if (ParseLocationSearch()['q']) {
+            closeLeft();
+        } else {
+            openLeft();
+        }
     }, [location.search]);
 
     //
     useEffect(() => {
         toggleAppHiddenTemp({ is_hidden: is_true });
+
+        return () => {
+            toggleAppHiddenTemp({ is_hidden: false });
+        };
     }, [is_true]);
 
     // ------
@@ -104,50 +112,52 @@ function FbSearchPageLayout({ right_elm, no_result, title }) {
                     <FbSearchPageLeft />
                 </div>
 
-                <div className="FbSearchPageLayout_right flex-grow-1 overflow-hidden">
-                    {IS_MOBILE ? (
-                        <div className="FbSearchPageLayout_right_head pos-fixed left-0 top-0 z-index-lv1 w-100per flex-between-center padding-8px bg-primary box-shadow-1">
-                            <div className="display-flex align-items-center">
-                                <div
-                                    className="display-flex-center"
-                                    onClick={handleBack}
-                                >
-                                    <IconsArrow x={200} y={200} />
+                {search_value ? (
+                    <div className="FbSearchPageLayout_right flex-grow-1 overflow-hidden">
+                        {IS_MOBILE ? (
+                            <div className="FbSearchPageLayout_right_head pos-fixed left-0 top-0 z-index-lv1 w-100per flex-between-center padding-8px bg-primary box-shadow-1">
+                                <div className="display-flex align-items-center">
+                                    <div
+                                        className="display-flex-center"
+                                        onClick={handleBack}
+                                    >
+                                        <IconsArrow x={200} y={200} />
+                                    </div>
+
+                                    <div className="margin-left-8px font-600 font-16px">
+                                        {title}
+                                    </div>
                                 </div>
 
-                                <div className="margin-left-8px font-600 font-16px">
-                                    {title}
+                                <div onClick={openLeft}>
+                                    <IconFilter
+                                        size_icon="20px"
+                                        stroke="var(--blue)"
+                                    />
                                 </div>
                             </div>
+                        ) : null}
 
-                            <div onClick={openLeft}>
-                                <IconFilter
-                                    size_icon="20px"
-                                    stroke="var(--blue)"
-                                />
-                            </div>
+                        <div className={`${no_result ? 'display-none' : ''}`}>
+                            {right_elm}
                         </div>
-                    ) : null}
 
-                    <div className={`${no_result ? 'display-none' : ''}`}>
-                        {search_value ? right_elm : null}
+                        {no_result ? (
+                            <div className="FbSearchPageLayout_no_results display-flex-center">
+                                <div className="w-500px text-align-center text-555">
+                                    <div className="font-20px font-700">
+                                        We didn't find any results
+                                    </div>
+
+                                    <div className="font-17px">
+                                        Make sure that everything is spelt
+                                        correctly or try different keywords.
+                                    </div>
+                                </div>
+                            </div>
+                        ) : null}
                     </div>
-
-                    {no_result && search_value ? (
-                        <div className="FbSearchPageLayout_no_results display-flex-center">
-                            <div className="w-500px text-align-center text-555">
-                                <div className="font-20px font-700">
-                                    We didn't find any results
-                                </div>
-
-                                <div className="font-17px">
-                                    Make sure that everything is spelt correctly
-                                    or try different keywords.
-                                </div>
-                            </div>
-                        </div>
-                    ) : null}
-                </div>
+                ) : null}
             </div>
         </div>
     );

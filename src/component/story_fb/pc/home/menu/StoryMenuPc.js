@@ -20,6 +20,9 @@ function StoryMenuPc({
     story_followed_obj,
     story_your_obj,
 
+    ref_menu,
+    ref_fake_elm_followed,
+
     handleChangeUserStory,
     handleChangeYourStory,
 
@@ -44,15 +47,12 @@ function StoryMenuPc({
             </div>
 
             <div
-                className={`StoryMenuPc h-100per padding-8px bg-primary ${
-                    is_show_menu
-                        ? 'StoryMenuPc_show'
-                        : 'StoryMenuPc_hide'
+                ref={ref_menu}
+                className={`StoryMenuPc h-100per overflow-y-auto padding-8px bg-primary ${
+                    is_show_menu ? 'StoryMenuPc_show' : 'StoryMenuPc_hide'
                 }`}
             >
-                <h1 className="StoryMenuPc_head font-22px font-500">
-                    Stories
-                </h1>
+                <h1 className="StoryMenuPc_head font-22px font-500">Stories</h1>
 
                 <div>
                     <StoryMenuPartPc
@@ -69,9 +69,10 @@ function StoryMenuPc({
                 <div>
                     <StoryMenuPartPc
                         heading="All stories"
+                        story_menu_obj={story_followed_obj}
                         is_active_type={story_type == 'followed'}
                         active_ix={active_ix}
-                        story_menu_obj={story_followed_obj}
+                        ref_fake_elm={ref_fake_elm_followed}
                         handleChangeStory={handleChangeUserStory}
                     />
                 </div>

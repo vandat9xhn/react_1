@@ -17,7 +17,7 @@ function FbSearchPageRelatedItem({ search_value }) {
         >
             <div className="display-flex align-items-center padding-8px brs-6px hv-bg-hv">
                 <div className="margin-right-12px">
-                    <IconsInput y={200} size_icon="20px" />
+                    <IconsInput y={200} size_icon="24px" />
                 </div>
 
                 <div>{search_value}</div>

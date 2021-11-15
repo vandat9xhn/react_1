@@ -5,13 +5,15 @@ import { initial_story_menu_obj } from '../../../../../_initial/story/InitialSto
 //
 import { handle_API_FeedStory_L } from '../../../../../_handle_api/feed/HandleAPIStory';
 //
+import { useObserverGetData } from '../../../../../_hooks/useObserverGetData';
+//
 import IconsArrow from '../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
+import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
 import StoryMenuPc from '../menu/StoryMenuPc';
 import StoryItemPc from '../item/StoryItemPc';
 //
 import './StoryHomePc.scss';
-import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
 
 //
 StoryHomePc.propTypes = {
@@ -80,16 +82,37 @@ function StoryHomePc({
     const { story_arr, count_story, has_fetched } = state_obj[story_type];
 
     //
-    const ref_is_fetching = useRef(false);
+    const ref_is_fetching = useRef({ followed: false, yours: false });
+    const ref_is_max = useRef({
+        followed: false,
+        yours: false,
+    });
+
+    const ref_menu = useRef(null);
+    const ref_fake_elm_followed = useRef(null);
+
+    //
+    const { observerShowMore } = useObserverGetData({
+        getData_API: () => getData_Story({}),
+        getIsMax: () => ref_is_max.current.followed,
+        getIsFetching: () => ref_is_fetching.current.followed,
+    });
 
     //
     useEffect(() => {
-        !has_fetched_followed && getData_Story({ new_story_type: 'followed' });
         !has_fetched_yours && getData_Story({ new_story_type: 'yours' });
-    }, []);
 
-    useEffect(() => {
-        document.title = 'Story';
+        if (!has_fetched_followed || count_story_followed >= 5) {
+            getData_Story({ new_story_type: 'followed' });
+
+            observerShowMore({
+                fake_elm_end: ref_fake_elm_followed.current,
+                root: ref_menu.current,
+                rootMargin: '0px',
+                way_scroll: 'to_bottom',
+                margin: 0,
+            });
+        }
     }, []);
 
     /* ----------- */
@@ -100,11 +123,11 @@ function StoryHomePc({
         c_count = 0,
         new_active_ix = active_ix,
     }) {
-        if (ref_is_fetching.current) {
+        if (ref_is_fetching.current[new_story_type]) {
             return;
         }
 
-        ref_is_fetching.current = true;
+        ref_is_fetching.current[new_story_type] = true;
 
         setStateObj((state_obj) => {
             return {
@@ -113,23 +136,31 @@ function StoryHomePc({
             };
         });
 
-        const { data, count: new_count } = await handle_API_FeedStory_L(
+        const { data, count } = await handle_API_FeedStory_L(
             c_count,
             new_story_type
         );
 
-        ref_is_fetching.current = false;
+        ref_is_fetching.current[new_story_type] = false;
 
         setStateObj((state_obj) => {
             const { story_arr, count_story, has_fetched } =
                 state_obj[new_story_type];
 
+            const new_count_story = has_fetched ? count_story : count;
+
+            ref_is_max.current[new_story_type] =
+                new_count_story <= story_arr.length;
+
             return {
                 ...state_obj,
 
                 [new_story_type]: {
-                    story_arr: [...story_arr, ...data],
-                    count_story: has_fetched ? count_story : new_count,
+                    story_arr: [...story_arr, ...data].slice(
+                        0,
+                        new_count_story
+                    ),
+                    count_story: new_count_story,
                     has_fetched: true,
                 },
             };
@@ -227,6 +258,9 @@ function StoryHomePc({
                         story_followed_obj={followed}
                         story_your_obj={yours}
                         //
+                        ref_menu={ref_menu}
+                        ref_fake_elm_followed={ref_fake_elm_followed}
+                        //
                         handleChangeUserStory={handleChangeUserStory}
                         handleChangeYourStory={handleChangeYourStory}
                         handleClose={handleClose}
@@ -235,9 +269,7 @@ function StoryHomePc({
                 </div>
 
                 <div className="flex-grow-1 pos-rel">
-                    {!ref_is_fetching.current &&
-                    has_fetched &&
-                    story_arr.length > 0 ? (
+                    {has_fetched && story_arr.length > 0 ? (
                         <StoryItemPc
                             count_story={count_story}
                             story_arr={story_arr}
@@ -246,13 +278,7 @@ function StoryHomePc({
                             handleNextStoryUser={handleNextStoryUser}
                             handlePrevStoryUser={handlePrevStoryUser}
                         />
-                    ) : (
-                        <div className="wh-100 display-flex-center bg-shadow-9">
-                            <CircleLoading
-                                is_fetching={ref_is_fetching.current}
-                            />
-                        </div>
-                    )}
+                    ) : null}
                 </div>
             </div>
 

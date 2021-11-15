@@ -14,7 +14,7 @@ FbSearchPagePhotoHome.propTypes = {};
 //
 function FbSearchPagePhotoHome(props) {
     //
-    const search_key = ParseLocationSearch()['q'];
+    const search_value = ParseLocationSearch()['q'];
 
     //
     return (
@@ -27,7 +27,7 @@ function FbSearchPagePhotoHome(props) {
                                 <FbSearchPagePhotoList
                                     title="Photos from friends and groups"
                                     title_no_results="No photos from friends and groups"
-                                    search_key={search_key}
+                                    search_value={search_value}
                                     type="friends_groups"
                                 />
                             </div>
@@ -36,7 +36,7 @@ function FbSearchPagePhotoHome(props) {
                                 <FbSearchPagePhotoList
                                     title="Public photos"
                                     title_no_results="No photos from public"
-                                    search_key={search_key}
+                                    search_value={search_value}
                                     type="public"
                                 />
                             </div>

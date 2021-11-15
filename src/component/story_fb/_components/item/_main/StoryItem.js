@@ -160,7 +160,7 @@ function StoryItem({
             return;
         }
 
-        if (active_step ) {
+        if (active_step == 0) {
             handlePrevStoryUser();
         } else {
             handlePrevStoryItem();

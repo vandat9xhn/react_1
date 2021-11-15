@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
@@ -10,6 +10,8 @@ import { openScreenStoryItemMobile } from '../../../../../_screen/type/story/mob
 import StoryFace from '../../../face/item/_main/StoryFace';
 //
 import './StoryMenuPartMobile.scss';
+import observeToDo from '../../../../../../_some_function/observerToDo';
+import { useObserverGetData } from '../../../../../../_hooks/useObserverGetData';
 
 //
 StoryMenuPartMobile.propTypes = {
@@ -44,8 +46,48 @@ function StoryMenuPartMobile({
     const { story_arr, has_fetched } = state_obj;
 
     //
+    const ref_main = useRef(null);
+    const ref_fake_elm = useRef(null);
+    const ref_is_fetching = useRef(false);
+    const ref_is_max = useRef(false);
+
+    //
+    const { observerShowMore } = useObserverGetData({
+        getData_API: getData_Story,
+        getIsFetching: () => ref_is_fetching.current,
+        getIsMax: () => ref_is_max.current,
+    });
+
+    //
+    useEffect(() => {
+        observeToDo({
+            elm: ref_main.current,
+            callback: () => {
+                !has_fetched && getData_Story(story_type);
+            },
+        });
+
+        if (!has_fetched || old_story_arr.length < old_count_story) {
+            observerShowMore({
+                fake_elm_end: ref_fake_elm.current,
+                rootMargin: '0px 0px 0px 0px',
+                way_scroll: 'to_bottom',
+                margin: 0,
+            });
+        }
+    }, []);
+
+    // -----
+
+    //
     async function getData_Story() {
-        const { data } = await handle_API_FeedStory_L(0, story_type);
+        if (ref_is_fetching.current) {
+            return;
+        }
+
+        ref_is_fetching.current = true;
+
+        const { data, count } = await handle_API_FeedStory_L(0, story_type);
 
         data.map((item) => {
             item.active_step =
@@ -56,17 +98,19 @@ function StoryMenuPartMobile({
             return item;
         });
 
-        setStateObj((state_obj) => ({
-            ...state_obj,
-            story_arr: [...state_obj.story_arr, ...data],
-            has_fetched: true,
-        }));
-    }
+        ref_is_fetching.current = false;
 
-    //
-    useEffect(() => {
-        !has_fetched && getData_Story(story_type);
-    }, []);
+        setStateObj((state_obj) => {
+            ref_is_max.current =
+            count <= state_obj.story_arr.length + data.length;
+
+            return {
+                ...state_obj,
+                story_arr: [...state_obj.story_arr, ...data],
+                has_fetched: true,
+            };
+        });
+    }
 
     //
     function handleChangeStory(ix) {
@@ -85,8 +129,10 @@ function StoryMenuPartMobile({
 
     //
     return (
-        <div className="screen-story-menu-mobile">
-            <h2 className="margin-0 font-20px padding-8px">{heading}</h2>
+        <div ref={ref_main} className="screen-story-menu-mobile">
+            {story_arr.length ? (
+                <h2 className="font-18px padding-8px">{heading}</h2>
+            ) : null}
 
             <div className={`${has_fetched ? '' : 'display-none'}`}>
                 <ul className="list-none display-flex flex-wrap">
@@ -108,11 +154,15 @@ function StoryMenuPartMobile({
                         </li>
                     ))}
                 </ul>
+
+                <div ref={ref_fake_elm} className="padding-1px"></div>
             </div>
 
             <div
                 className={`${
-                    has_fetched ? 'display-none' : 'StoryMenuPartMobile_skeleton'
+                    has_fetched
+                        ? 'display-none'
+                        : 'StoryMenuPartMobile_skeleton'
                 }`}
             ></div>
         </div>

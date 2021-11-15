@@ -14,14 +14,23 @@ import './FbSearchPagePhotoList.scss';
 FbSearchPagePhotoList.propTypes = {};
 
 //
-function FbSearchPagePhotoList({ title, title_no_results, type, search_key }) {
+function FbSearchPagePhotoList({
+    title,
+    type,
+    search_value,
+
+    use_see_all = true,
+    title_no_results,
+}) {
     //
     const { data_state, data_count, refreshData_API } = useDataShowMore({
         handle_API_L: (c_count) =>
             handle_API_FbSearchPhoto_L({
                 c_count: c_count,
-                search_key: search_key,
-                type: type,
+                search: search_value,
+                params: {
+                    type: type,
+                },
             }),
     });
 
@@ -40,7 +49,9 @@ function FbSearchPagePhotoList({ title, title_no_results, type, search_key }) {
             }`}
         >
             <div className={`${data_count.current > 0 ? '' : 'display-none'}`}>
-                <h2 className="FbSearchPagePhotoList_title font-20px font-700">{title}</h2>
+                <h2 className="FbSearchPagePhotoList_title font-20px font-700">
+                    {title}
+                </h2>
 
                 <div className="margin-y-10px">
                     <div className="display-flex flex-wrap">
@@ -55,19 +66,21 @@ function FbSearchPagePhotoList({ title, title_no_results, type, search_key }) {
                     </div>
                 </div>
 
-                <div>
-                    <Link
-                        className="color-inherit"
-                        to={`/search/photos/all${location.search}&type=${type}`}
-                    >
-                        <div className="padding-y-8px brs-6px bg-fb line-20px text-align-center font-500 hv-bg-s-through">
-                            See all
-                        </div>
-                    </Link>
-                </div>
+                {use_see_all ? (
+                    <div>
+                        <Link
+                            className="color-inherit"
+                            to={`/search/photos/all${location.search}&type=${type}`}
+                        >
+                            <div className="padding-y-8px brs-6px bg-fb line-20px text-align-center font-500 hv-bg-s-through">
+                                See all
+                            </div>
+                        </Link>
+                    </div>
+                ) : null}
             </div>
 
-            {data_count.current == 0 ? (
+            {data_count.current == 0 && title_no_results ? (
                 <div className="text-align-center">{title_no_results}</div>
             ) : null}
         </div>

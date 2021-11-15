@@ -97,6 +97,7 @@ const default_story_obj = (has_new = false) => {
 };
 
 export const default_story_arr = (story_type = '', c_count = 0) => {
+    console.log(story_type);
     const story_yours_arr = getRandomBool()
         ? [{ ...default_story_obj(getRandomBool()), user: default_define_user }]
         : [];
@@ -106,9 +107,20 @@ export const default_story_arr = (story_type = '', c_count = 0) => {
     }
 
     const story_followed_arr = [
-        ...getDefaultArr(() => default_story_obj(true), 0, 4),
-        ...getDefaultArr(() => default_story_obj(false), 0, 4),
-    ].slice(0, IS_MOBILE ? 6 : 4);
+        ...getDefaultArr(
+            () => default_story_obj(true),
+            story_type == 'suggested' ? 4 : 0,
+            story_type == 'suggested' ? 8 : 4
+        ),
+        ...getDefaultArr(
+            () => default_story_obj(false),
+            story_type == 'suggested' ? 4 : 0,
+            story_type == 'suggested' ? 8 : 4
+        ),
+    ].slice(
+        story_type == 'suggested' ? 6 : 0,
+        story_type == 'suggested' ? 12 : IS_MOBILE ? 6 : 4
+    );
 
     if (story_type == 'followed' || 'suggested' || 'friends') {
         return story_followed_arr;

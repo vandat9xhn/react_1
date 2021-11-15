@@ -16,7 +16,7 @@ export async function handle_API_FeedStory_L(
     const res = await API_FeedStory_L({
         c_count: c_count,
         page: 1,
-        size: IS_MOBILE ? 6 : 4,
+        size: story_type == 'suggested' ? 10 : IS_MOBILE ? 6 : 4,
         story_type: story_type,
     });
 

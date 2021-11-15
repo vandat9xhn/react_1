@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMakeBodyHidden } from '../../../../_hooks/useMakeBodyHidden';
-// 
+//
 import StoryMenuPartMobile from '../../_components/menu/mobile/_main/StoryMenuPartMobile';
 import StoryBtnCreateMb from '../../_components/menu/mobile/btn_create/StoryBtnCreateMb';
 //
@@ -25,17 +25,11 @@ function StoryMenuMobile({
 
     closeScreen,
 }) {
-    // 
-    useMakeBodyHidden({
-            // hidden_scroll: true,
-            hidden_app: true,
-            hidden_header: true,
-        });
-
     //
-    useEffect(() => {
-        document.title = 'Story Menu';
-    }, []);
+    useMakeBodyHidden({
+        hidden_app: true,
+        hidden_header: true,
+    });
 
     //
     return (
