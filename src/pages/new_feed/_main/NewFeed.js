@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../_context/ContextAPI';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+//
 import { useObserverShowMore } from '../../../_hooks/useObserverShowMore';
 import { useScreenFetching } from '../../../_hooks/UseScreenFetching';
 //
@@ -92,15 +94,17 @@ function NewFeed() {
     // console.log(post_arr);
     //
     return (
-        <div className="NewFeed padding-y-10px bg-fb">
+        <div className="NewFeed bg-fb">
             <div className="NewFeed_row display-flex space-between">
-                <div className="NewFeed_col-left flex-shrink-0 w-360px margin-right-10px">
-                    <div className="pos-sticky-from-header">
-                        <NewFeedLeft />
+                {IS_MOBILE ? null : (
+                    <div className="NewFeed_col-left flex-shrink-0 w-360px margin-right-10px">
+                        <div className="pos-sticky-from-header padding-y-20px">
+                            <NewFeedLeft />
+                        </div>
                     </div>
-                </div>
+                )}
 
-                <div className="NewFeed_col-center flex-grow-1 flex-basis-1rem">
+                <div className="NewFeed_col-center flex-grow-1 flex-basis-1rem padding-y-20px">
                     <NewFeedCenter
                         // title_add_new={title_add_new}
                         post_arr={data_arr}
@@ -112,11 +116,13 @@ function NewFeed() {
                     <div ref={ref_fake_elm_end} className="padding-1px"></div>
                 </div>
 
-                <div className="NewFeed_col-right flex-shrink-0 w-300px margin-left-10px">
-                    <div className="pos-sticky-from-header">
-                        <NewFeedRight />
+                {IS_MOBILE ? null : (
+                    <div className="NewFeed_col-right flex-shrink-0 w-300px margin-left-10px">
+                        <div className="pos-sticky-from-header padding-y-20px">
+                            <NewFeedRight />
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     );

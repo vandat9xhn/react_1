@@ -12,7 +12,7 @@ export const API_FbSearch_LC = ({ method, params = {}, data = {} }) =>
             : data,
         () =>
             axiosDjangoClient({
-                url: `api/facebook/search-recently-lc/`,
+                url: `api/facebook/fb-search-recently-lc/`,
                 method: method,
                 params: params,
                 data: data,
@@ -25,7 +25,7 @@ export const API_FbSearchRecently_D = ({ data }) =>
         {},
         () =>
             axiosDjangoClient({
-                url: `api/facebook/search-recently-d/`,
+                url: `api/facebook/fb-search-recently-d/`,
                 method: 'delete',
                 data: data,
             }),

@@ -1,0 +1,29 @@
+.HeaderCenterItem {
+    // max-width: 111.6px;
+}
+.HeaderCenterItem-active {
+    color: var(--blue);
+
+    .HeaderCenterItem_bottom {
+        display: block;
+    }
+
+    .IconFriends{
+        fill: currentColor;
+    }
+}
+
+.HeaderCenterItem_icon {
+    svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+// .
+.HeaderCenterItem_badge {
+    left: 80%;
+}
+
+.HeaderCenterItem_bottom {
+    height: 3px;
+}

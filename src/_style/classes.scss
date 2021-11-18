@@ -19,7 +19,17 @@
     padding: 0;
 }
 
-// -----
+.left-bar-sticky{
+    position: sticky;
+    top: calc(var(--height-header));
+
+    width: 360px;
+    height: calc(100vh - var(--height-header));
+    background-color: var(--md-bg-primary);
+    box-shadow: var(--box-shadow-left-bar);
+}
+
+// ----- S
 
 %stepper-line {
     position: absolute;

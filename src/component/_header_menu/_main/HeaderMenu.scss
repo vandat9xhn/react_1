@@ -1,0 +1,31 @@
+.HeaderMenu_icon {
+    .IconsMenu_menu {
+        stroke: currentColor;
+    }
+}
+.HeaderMenu_icon-active {
+    & + .HeaderMenu_border_bottom {
+        display: block;
+    }
+}
+
+.HeaderMenu_border_bottom {
+    height: 3px;
+}
+
+.HeaderMenu_hidden {
+    top: var(--height-header);
+    height: calc(100% - var(--height-header));
+}
+
+// .
+.HeaderMenu_item {
+    .HeaderHorizontalLink {
+        height: 48px;
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}

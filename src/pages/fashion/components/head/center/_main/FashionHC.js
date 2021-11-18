@@ -55,7 +55,7 @@ function FashionHC({
                     {search_arr.map((search, ix) => (
                         <li key={`${ix}`} className="padding-x-8px">
                             <CustomLink
-                                to={`/fashion/search?q=${search}`}
+                                to={`/fashion/fb-search?q=${search}`}
                                 className="text-white font-12px font-500"
                             >
                                 {search}

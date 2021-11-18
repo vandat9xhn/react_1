@@ -74,7 +74,7 @@ function FbSearchInputList({ value_search }) {
                     ))}
                 </div>
 
-                <Link to={`/search?q=${value_search}`}>
+                <Link to={`/fb-search?q=${value_search}`}>
                     <div className="display-flex align-items-center padding-8px">
                         <div className="flex-shrink-0 btn-icon-36px bg-blue text-white">
                             <IconsInput y={200} size_icon="18px" />

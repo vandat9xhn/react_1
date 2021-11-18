@@ -42,50 +42,50 @@ const FbSearchPageGroups = React.lazy(() =>
 //
 export const fb_search_route_arr = [
     {
-        path: '/search',
+        path: '/fb-search',
         component: FbSearchPageAll,
         exact: true,
         auth: true,
     },
     {
-        path: '/search/people',
+        path: '/fb-search/people',
         component: FbSearchPagePeople,
         exact: true,
         auth: true,
     },
     {
-        path: '/search/photos/all',
+        path: '/fb-search/photos/all',
         component: FbSearchPagePhotoAll,
         exact: true,
         auth: true,
     },
     {
-        path: '/search/photos',
+        path: '/fb-search/photos',
         component: FbSearchPagePhotoHome,
         exact: true,
         auth: true,
     },
     {
-        path: '/search/posts',
+        path: '/fb-search/posts',
         component: FbSearchPagePost,
         exact: true,
         auth: true,
     },
 
     {
-        path: '/search/videos',
+        path: '/fb-search/videos',
         component: FbSearchPageVideo,
         exact: true,
         auth: true,
     },
     {
-        path: '/search/pages',
+        path: '/fb-search/pages',
         component: FbSearchPagePages,
         exact: true,
         auth: true,
     },
     {
-        path: '/search/groups',
+        path: '/fb-search/groups',
         component: FbSearchPageGroups,
         exact: true,
         auth: true,

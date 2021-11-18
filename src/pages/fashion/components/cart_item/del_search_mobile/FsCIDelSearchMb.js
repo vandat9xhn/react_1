@@ -15,7 +15,7 @@ function FsCIDelSearchMb({ item_id, width, handleDelete }) {
     return (
         <div className="display-flex h-100per font-14px">
             <Link
-                to={`/fashion/search?product_same_id=${item_id}`}
+                to={`/fashion/fb-search?product_same_id=${item_id}`}
                 className="h-100per text-white"
             >
                 <div

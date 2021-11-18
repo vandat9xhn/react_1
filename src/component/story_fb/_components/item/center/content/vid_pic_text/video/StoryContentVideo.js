@@ -63,7 +63,7 @@ function StoryContentVideo({ vid_pic }) {
             />
 
             <div
-                className={`StoryContent_control pos-abs-center ${
+                className={`StoryContent_control pos-abs-center z-index-1 ${
                     show_control ? '' : 'display-none'
                 }`}
             >

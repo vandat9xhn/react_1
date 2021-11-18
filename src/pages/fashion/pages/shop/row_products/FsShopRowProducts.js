@@ -39,7 +39,7 @@ function FsShopRowProducts({ type_id, title, has_more, title_more }) {
                 limit_count={6}
                 use_more={false}
                 use_next_prev={false}
-                // link_to_more={`/fashion/search?`}
+                // link_to_more={`/fashion/fb-search?`}
                 // title_more="Xem thêm"
                 // class_color_more=""
                 title={
@@ -50,7 +50,7 @@ function FsShopRowProducts({ type_id, title, has_more, title_more }) {
 
                         {has_more ? (
                             <FashionSeeMoreOnTitle
-                                link_to={`/fashion/search?`}
+                                link_to={`/fashion/fb-search?`}
                                 title={title_more}
                             />
                         ) : null}

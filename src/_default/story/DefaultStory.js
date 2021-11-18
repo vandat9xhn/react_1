@@ -97,7 +97,6 @@ const default_story_obj = (has_new = false) => {
 };
 
 export const default_story_arr = (story_type = '', c_count = 0) => {
-    console.log(story_type);
     const story_yours_arr = getRandomBool()
         ? [{ ...default_story_obj(getRandomBool()), user: default_define_user }]
         : [];

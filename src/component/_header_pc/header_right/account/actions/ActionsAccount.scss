@@ -1,0 +1,32 @@
+//
+.ActionsAccount {
+    .IconsMenu_home {
+        fill: currentColor;
+    }
+
+    .ToggleSwitch_btn {
+        border: 1px solid var(--md-bg-ccc);
+    }
+
+    .IconsArrow_back-prev {
+        stroke: var(--md-color);
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.ActionsAccount_profile {
+    border-bottom: 2px solid var(--bg-blur);
+}
+
+// ------
+
+.device-mobile {
+    .ActionsAccount_profile_pic {
+        width: 40px;
+        height: 40px;
+    }
+}

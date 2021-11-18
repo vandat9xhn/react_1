@@ -17,7 +17,7 @@
 }
 
 //
-@media (max-width: 500px) {
+.device-mobile {
     .NewFeedStory {
         padding: 4px;
         border-radius: 0;
@@ -33,16 +33,18 @@
         }
     }
 
-    .NewFeedStory_item {
-        width: 85px;
-        height: 155px;
+    @media (max-width: 500px) {
+        .NewFeedStory_item {
+            width: 85px;
+            height: 155px;
+        }
     }
-}
 
-@media (max-width: 350px) {
-    .NewFeedStory_item {
-        width: 75px;
-        height: 135px;
-        font-size: 13px;
+    @media (max-width: 350px) {
+        .NewFeedStory_item {
+            width: 75px;
+            height: 135px;
+            font-size: 13px;
+        }
     }
 }

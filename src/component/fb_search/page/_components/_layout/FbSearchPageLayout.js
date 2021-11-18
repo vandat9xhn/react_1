@@ -43,20 +43,24 @@ function FbSearchPageLayout({ right_elm, no_result, title }) {
 
     //
     useEffect(() => {
-        if (ParseLocationSearch()['q']) {
-            closeLeft();
-        } else {
-            openLeft();
+        if (IS_MOBILE) {
+            if (ParseLocationSearch()['q']) {
+                closeLeft();
+            } else {
+                openLeft();
+            }
         }
     }, [location.search]);
 
     //
     useEffect(() => {
-        toggleAppHiddenTemp({ is_hidden: is_true });
+        if (IS_MOBILE) {
+            toggleAppHiddenTemp({ is_hidden: is_true });
 
-        return () => {
-            toggleAppHiddenTemp({ is_hidden: false });
-        };
+            return () => {
+                toggleAppHiddenTemp({ is_hidden: false });
+            };
+        }
     }, [is_true]);
 
     // ------
@@ -105,7 +109,7 @@ function FbSearchPageLayout({ right_elm, no_result, title }) {
         >
             <div className="FbSearchPageLayout_row display-flex">
                 <div
-                    className={`FbSearchPageLayout_left pos-sticky flex-shrink-0 w-360px bg-primary ${
+                    className={`FbSearchPageLayout_left flex-shrink-0 left-bar-sticky ${
                         is_true ? 'FbSearchPageLayout_left-open' : ''
                     }`}
                 >

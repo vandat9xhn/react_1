@@ -10,7 +10,7 @@ export const API_FbSearchPostAction_L = (params) =>
         default_fb_search_post_action_arr(),
         () =>
             axiosDjangoClient({
-                url: 'api/facebook/search-post-action-l/',
+                url: 'api/facebook/fb-search-post-action-l/',
                 method: 'GET',
                 params: params,
             }),

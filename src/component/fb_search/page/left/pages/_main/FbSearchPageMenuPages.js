@@ -14,7 +14,7 @@ function FbSearchPageMenuPages({ search_value }) {
         <div className="FbSearchPageMenuPages">
             <FbSearchPageMenuItem
                 title="Pages"
-                pathname="/search/pages"
+                pathname="/fb-search/pages"
                 search_value={search_value}
             >
                 <FbSearchPageMenuPagesFilter />

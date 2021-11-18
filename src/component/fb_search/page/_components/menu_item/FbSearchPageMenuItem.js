@@ -26,7 +26,9 @@ function FbSearchPageMenuItem({
                 to={`${pathname}?q=${search_value}`}
                 exact
             >
-                <div>{Icon}</div>
+                <div className="FbSearchPageMenuItem_icon btn-icon-36px bg-ccc">
+                    {Icon}
+                </div>
 
                 <div className="margin-left-12px">{title}</div>
             </NavLink>

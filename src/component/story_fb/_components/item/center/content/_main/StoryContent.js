@@ -30,7 +30,7 @@ function StoryContent({
     //
     return (
         <div
-            className={`StoryContent wh-100 ${IS_MOBILE ? 'pos-rel' : ''}`}
+            className={`StoryContent wh-100 brs-10px-mb overflow-hidden ${IS_MOBILE ? 'pos-rel' : ''}`}
         >
             <div className="story-bg"></div>
 
@@ -49,7 +49,7 @@ function StoryContent({
                     />
                 ) : null}
 
-                <div className="StoryContent_head">
+                <div className="StoryContent_head pos-abs-0 z-index-1 w-100per">
                     <StoryContentHead
                         count={count}
                         active_step={active_step}
@@ -59,12 +59,12 @@ function StoryContent({
                 </div>
 
                 <div
-                    className={`StoryContent_close ${
+                    className={`StoryContent_close pos-abs right-0 z-index-2 ${
                         IS_MOBILE ? '' : 'display-none'
                     }`}
                 >
                     <div
-                        className="StoryContent_close_contain display-flex-center bg-ccc brs-50"
+                        className="StoryContent_close_contain display-flex-center brs-50 bg-shadow-2"
                         onClick={handleCloseStoryItem}
                     >
                         <IconsArrow y={400} size_icon="1rem" />

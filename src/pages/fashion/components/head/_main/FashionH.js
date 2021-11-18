@@ -24,7 +24,7 @@ function FashionH({ placeholder, search_arr }) {
 
     //
     function handleSearch() {
-        use_history.push(`/fashion/search?q=${value}`);
+        use_history.push(`/fashion/fb-search?q=${value}`);
     }
 
     //

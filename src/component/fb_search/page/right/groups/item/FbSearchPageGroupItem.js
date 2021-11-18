@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { UnitNumber } from '../../../../../../_some_function/UnitNumber';
 //
+import IconGroup from '../../../../../../_icons_svg/icon_group/IconGroup';
+//
 import FsSearchPageUserLayout from '../../../_components/user_layout/FsSearchPageUserLayout';
 //
 import './FbSearchPageGroupItem.scss';
@@ -21,6 +23,7 @@ function FbSearchPageGroupItem({ group_obj }) {
         privacy,
         count_member,
         action_case,
+        action_case_obj,
 
         info_arr,
     } = group_obj;
@@ -28,8 +31,8 @@ function FbSearchPageGroupItem({ group_obj }) {
     // -----
 
     //
-    function handleAction(...params) {
-        console.log(params);
+    function handleActionGroup() {
+        console.log(action_case);
     }
 
     //
@@ -49,7 +52,23 @@ function FbSearchPageGroupItem({ group_obj }) {
                         ))}
                     </div>
                 }
-                Icon={null}
+                Icon={
+                    <div
+                        className={`FbSearchPageGroupItem_btn_icon pos-rel btn-icon-36px cursor-pointer hv-bg-hv ${
+                            action_case == 'not_joined'
+                                ? 'bg-fb'
+                                : 'bg-fb-active text-blue'
+                        }`}
+                        title={action_case_obj.title}
+                        onClick={handleActionGroup}
+                    >
+                        <IconGroup size_icon="24px" />
+
+                        <div className="pos-abs right-0 bottom-0 padding-right-2px padding-bottom-2px">
+                            {action_case_obj.Icon}
+                        </div>
+                    </div>
+                }
             />
         </div>
     );

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 //
 import { context_api } from '../../../_context/ContextAPI';
 // 
@@ -12,6 +12,7 @@ LinkToProfilePage.propTypes = {};
 //
 function LinkToProfilePage({
     className,
+    activeClassName,
     to,
     replace,
 
@@ -30,16 +31,18 @@ function LinkToProfilePage({
 
     //
     return (
-        <Link
+        <NavLink
             className={className}
+            activeClassName={activeClassName}
             to={to}
             replace={replace}
+            exact
             //
             title={title}
             onClick={gotoProfilePage}
         >
             {children}
-        </Link>
+        </NavLink>
     );
 }
 

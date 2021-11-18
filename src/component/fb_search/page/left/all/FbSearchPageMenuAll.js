@@ -13,7 +13,7 @@ function FbSearchPageMenuAll({ search_value }) {
         <div>
             <FbSearchPageMenuItem
                 title="All"
-                pathname="/search"
+                pathname="/fb-search"
                 search_value={search_value}
             />
         </div>

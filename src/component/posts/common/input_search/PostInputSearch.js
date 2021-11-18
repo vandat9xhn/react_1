@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import IconsInput from '../../../../_icons_svg/Icons_input/IconsInput';
@@ -9,22 +9,48 @@ import './PostInputSearch.scss';
 PostInputSearch.propTypes = {};
 
 //
-function PostInputSearch({ value, placeholder, changeSearch }) {
+function PostInputSearch({
+    value,
+    placeholder,
+    changeSearch,
+    input_props = {},
+
+    class_input = 'PostInputSearch_input-36px' || 'PostInputSearch_input-40px',
+    hide_key_when_focus = true,
+}) {
+    //
+    const ref_input = useRef(null);
+
+    // ------
+
+    //
+    function focusInput() {
+        ref_input.current.focus();
+    }
+
     //
     return (
-        <div className="PostInputSearch padding-y-6px padding-x-12px bg-fb">
-            <div className="display-flex align-items-center">
-                <IconsInput y={200} size_icon="16px" />
+        <label
+            className={`PostInputSearch pos-rel display-block ${
+                hide_key_when_focus ? 'PostInputSearch-hide_key' : ''
+            }`}
+            onClick={focusInput}
+        >
+            <input
+                ref={ref_input}
+                className={`PostInputSearch_input w-100per border-none brs-20px bg-fb outline-none ${class_input}`}
+                value={value}
+                type="search"
+                placeholder={placeholder}
+                spellCheck={false}
+                onChange={changeSearch}
+                {...input_props}
+            />
 
-                <input
-                    className="flex-grow-1 margin-left-8px border-none bg-transparent outline-none"
-                    type="text"
-                    value={value}
-                    placeholder={placeholder}
-                    onChange={changeSearch}
-                />
+            <div className="PostInputSearch_key pos-abs y-center display-flex-center">
+                <IconsInput y={200} size_icon="16px" />
             </div>
-        </div>
+        </label>
     );
 }
 

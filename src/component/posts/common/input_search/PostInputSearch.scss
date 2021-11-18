@@ -1,3 +1,53 @@
-.PostInputSearch{
-    border-radius: 20px;
+// -----
+
+%focus-transition {
+    transition: all 200ms ease-in;
+}
+
+// -----
+
+.PostInputSearch {
+    cursor: text;
+}
+.PostInputSearch-hide_key {
+    .PostInputSearch_input:focus + .PostInputSearch_key {
+        left: 0;
+        opacity: 0;
+    }
+
+    .PostInputSearch_input-40px {
+        &:focus {
+            padding-left: 16px;
+        }
+    }
+    .PostInputSearch_input-36px {
+        &:focus {
+            padding-left: 12px;
+        }
+    }
+}
+
+.PostInputSearch_key {
+    height: 16px;
+    @extend %focus-transition;
+}
+
+.PostInputSearch_input {
+    @extend %focus-transition;
+}
+.PostInputSearch_input-40px {
+    height: 40px;
+    padding: 8px 16px 8px 36px;
+
+    & + .PostInputSearch_key {
+        left: 12px;
+    }
+}
+.PostInputSearch_input-36px {
+    height: 36px;
+    padding: 8px 12px 8px 32px;
+
+    & + .PostInputSearch_key {
+        left: 8px;
+    }
 }

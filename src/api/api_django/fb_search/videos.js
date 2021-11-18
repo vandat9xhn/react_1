@@ -10,7 +10,7 @@ export const API_FbSearchVideo_L = (params) =>
         default_fb_search_video_arr(),
         () =>
             axiosDjangoClient({
-                url: 'api/facebook/search-video-l/',
+                url: 'api/facebook/fb-search-video-l/',
                 method: 'GET',
                 params: params,
             }),

@@ -10,7 +10,7 @@ export const API_FbSearchPage_L = (params) =>
         default_fb_search_page_arr(),
         () =>
             axiosDjangoClient({
-                url: 'api/facebook/search-page-l/',
+                url: 'api/facebook/fb-search-page-l/',
                 method: 'GET',
                 params: params,
             }),

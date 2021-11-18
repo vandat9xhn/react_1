@@ -14,9 +14,9 @@ function FbSearchPageMenuPhoto({ search_value }) {
         <div className="FbSearchPageMenuPhoto">
             <FbSearchPageMenuItem
                 title="Photos"
-                pathname="/search/photos"
+                pathname="/fb-search/photos"
                 search_value={search_value}
-                other_pathname_arr={['/search/photos/all']}
+                other_pathname_arr={['/fb-search/photos/all']}
             >
                 <FbSearchPageMenuPhotoFilter />
             </FbSearchPageMenuItem>

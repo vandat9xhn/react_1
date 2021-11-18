@@ -10,7 +10,7 @@ export const API_FbSearchPhoto_L = (params) =>
         default_fb_search_photo_arr(),
         () =>
             axiosDjangoClient({
-                url: 'api/facebook/search-photo-l/',
+                url: 'api/facebook/fb-search-photo-l/',
                 method: 'GET',
                 params: params,
             }),

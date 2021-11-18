@@ -61,7 +61,7 @@ function FsSearchPageUserLayout({
                         ) : null}
                     </div>
 
-                    {Icon ? Icon : null}
+                    {Icon ? <div className="flex-shrink-0">{Icon}</div> : null}
                 </div>
             </div>
         </div>

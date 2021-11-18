@@ -18,7 +18,7 @@ function FsShopCategoryMb({ shop_id, category_arr }) {
                 {category_arr.map((item, ix) => (
                     <Link
                         key={item.id}
-                        to={`/fashion/search?shop_id=${shop_id}`}
+                        to={`/fashion/fb-search?shop_id=${shop_id}`}
                         className="FsShopCategoryMb_item flex-between-center padding-10px"
                     >
                         <div className="display-flex align-items-center">

@@ -3,7 +3,7 @@ import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../_context/ContextAPI';
-// 
+//
 import { IS_MOBILE } from '../_constant/Constant';
 //
 import { Routes } from '../__routes/__main';
@@ -40,20 +40,18 @@ function CustomSwitch() {
             return root_floor_url_arr.current[0];
         }
 
-        // -----
+        // ----- PROFILE IN FRIENDS PAGES
 
         let new_pathname = use_location.pathname;
 
-        if (IS_MOBILE) {
+        //
+        if (!profile_friends_pathname.current || IS_MOBILE) {
+            profile_friends_pathname.current = '';
+
             return new_pathname;
         }
 
-        // ----- PROFILE IN FRIENDS PAGES
-
-        if (
-            profile_friends_pathname.current &&
-            /^\/profile\/\d+/.test(new_pathname)
-        ) {
+        if (/^\/profile\/\d+/.test(new_pathname)) {
             new_pathname = profile_friends_pathname.current;
         } else {
             profile_friends_pathname.current = '';

@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
+import observeToDo from '../../../../../../_some_function/observerToDo';
+import { openScreenStoryItemMobile } from '../../../../../_screen/type/story/mobile/item/ScreenStoryItemMobile';
+//
 import { handle_API_FeedStory_L } from '../../../../../../_handle_api/feed/HandleAPIStory';
 //
-import { openScreenStoryItemMobile } from '../../../../../_screen/type/story/mobile/item/ScreenStoryItemMobile';
+import { useObserverGetData } from '../../../../../../_hooks/useObserverGetData';
 //
 import StoryFace from '../../../face/item/_main/StoryFace';
 //
 import './StoryMenuPartMobile.scss';
-import observeToDo from '../../../../../../_some_function/observerToDo';
-import { useObserverGetData } from '../../../../../../_hooks/useObserverGetData';
 
 //
 StoryMenuPartMobile.propTypes = {
@@ -102,11 +103,11 @@ function StoryMenuPartMobile({
 
         setStateObj((state_obj) => {
             ref_is_max.current =
-            count <= state_obj.story_arr.length + data.length;
+                count <= state_obj.story_arr.length + data.length;
 
             return {
                 ...state_obj,
-                story_arr: [...state_obj.story_arr, ...data],
+                story_arr: [...state_obj.story_arr, ...data].slice(0, count),
                 has_fetched: true,
             };
         });

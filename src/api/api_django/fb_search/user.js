@@ -10,7 +10,7 @@ export const API_FbSearchUser_L = (params) =>
         default_fb_search_user_arr(),
         () =>
             axiosDjangoClient({
-                url: 'api/facebook/search-user-l/',
+                url: 'api/facebook/fb-search-user-l/',
                 method: 'GET',
                 params: params,
             }),

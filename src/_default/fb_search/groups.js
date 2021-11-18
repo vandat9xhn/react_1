@@ -7,7 +7,7 @@ import { getRandomFromArr } from '../_common/getRandomFromArr';
 
 //
 const default_fb_search_group_obj = () => {
-    const action_case = getRandomFromArr(['joined', 'requested']);
+    const action_case = getRandomFromArr(['joined', 'sent_request', 'not_joined']);
 
     return {
         id: getRandomId(),

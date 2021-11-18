@@ -23,8 +23,6 @@ export const useRouteLoaded = ({
         makeReset();
     }, deps);
 
-    /* ---------------------- */
-
     //
     useLayoutEffect(() => {
         if (!allow_routes_str.includes(location[part_location])) {
@@ -35,6 +33,8 @@ export const useRouteLoaded = ({
             handleAfterSetRouteLoaded();
         }
     }, [location[part_location], ...deps]);
+
+    // -------
 
     //
     function makeReset() {

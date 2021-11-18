@@ -16,13 +16,13 @@ import FbSearchHistoryKey from '../item/key/FbSearchHistoryKey';
 FbSearchHistory.propTypes = {};
 
 //
-function FbSearchHistory(props) {
+function FbSearchHistory({ params_api = {} }) {
     //
     const { data_state, getData_API } = useDataShowMore({
         handle_API_L: (c_count) =>
             handle_API_FbSearch_L({
                 c_count: c_count,
-                params: { filter: 'recently' },
+                params: { filter: 'recently', ...params_api },
             }),
     });
 
@@ -43,12 +43,12 @@ function FbSearchHistory(props) {
                 <div className="flex-between-center margin-8px line-20px">
                     <h2 className="font-17px font-600">Recently searches</h2>
 
-                    <Link to={`/search/edit`}>Edit</Link>
+                    <Link to={`/fb-search/edit`}>Edit</Link>
                 </div>
 
                 <div>
                     {data_arr.map((item, ix) => (
-                        <div key={ix}>
+                        <div key={item.id}>
                             {item.type == 'user' ? (
                                 <FbSearchHistoryUser user={item.user} />
                             ) : (

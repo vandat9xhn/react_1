@@ -14,7 +14,7 @@ function FbSearchPageMenuPost({ search_value }) {
         <div className="FbSearchPageMenuPost">
             <FbSearchPageMenuItem
                 title="Posts"
-                pathname="/search/posts"
+                pathname="/fb-search/posts"
                 search_value={search_value}
             >
                 <FbSearchPageMenuPostFilter />

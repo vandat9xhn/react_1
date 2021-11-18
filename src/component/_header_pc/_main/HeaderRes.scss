@@ -1,0 +1,23 @@
+@media (max-width: 1050px) {
+    .HeaderRight_user {
+        display: none;
+    }
+}
+
+//
+@media (max-width: 900px) {
+    .HeaderCenter_item {
+        max-width: 75px;
+    }
+}
+
+//
+@media (max-width: 750px) {
+    .Header_menu {
+        display: block;
+    }
+
+    .Header_center {
+        display: none;
+    }
+}

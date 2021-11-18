@@ -1,21 +1,26 @@
-.FbSearchPageLeft_head{
-    padding-left: 52px;
-}
-
-.FbSearchPageLeft_filter_title{
+.FbSearchPageLeft_filter_title {
     height: 48px;
 }
 
 // -------
 
-.device-mobile{
-    .FbSearchPageLeft_head{
-        margin: 0;
+.device-mobile {
+    .FbSearchPageLeft {
+        .FbSearchInputElm {
+            padding: 8px;
+            border-radius: 0;
+        }
+
+        .FbSearchInputElm_list {
+            height: calc(100vh - 52px);
+            max-height: unset;
+            border-radius: 0;
+            z-index: 1;
+        }
     }
 
-    .FbSearchPageLeft_head_title{
-        padding: 15px 0;
-        font-size: 18px;
+    .FbSearchPageLeft_head {
+        margin: 0;
     }
 
     .FbSearchPageLeft_filter_title {
@@ -23,7 +28,7 @@
         padding-right: 8px;
     }
 
-    .FbSearchPageLeft_contain{
+    .FbSearchPageLeft_contain {
         padding-left: 0;
         padding-right: 0;
     }

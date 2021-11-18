@@ -27,7 +27,7 @@ function NewFeedCenter({
         <div className="NewFeedCenter">
             {IS_MOBILE ? (
                 <div className="NewFeedCenter_search display-flex margin-bottom-10px margin-left-8px">
-                    <Link className="text-third" to={`/search`}>
+                    <Link className="text-third" to={`/fb-search`}>
                         <div className="btn-icon-36px bg-primary box-show-1">
                             <IconsInput y={200} size_icon="20px" />
                         </div>

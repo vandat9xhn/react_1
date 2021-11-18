@@ -1,0 +1,21 @@
+.HeaderItemMb {
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .IconsMenu_new-feed {
+        stroke: currentColor;
+    }
+}
+.HeaderItemMb-active {
+    color: var(--blue);
+
+    .HeaderItemMb_bottom {
+        display: block;
+    }
+}
+
+.HeaderItemMb_new {
+    transform: translate(0, -15px);
+}

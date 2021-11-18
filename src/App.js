@@ -49,7 +49,8 @@ import CustomSwitch from './__Switch/__switch';
 //
 import WaitingBall from './component/waiting/waiting_ball/WaitingBall';
 //
-import Header from './component/_header/_main/Header';
+import Header from './component/_header_pc/_main/Header';
+import HeaderMobile from './component/_header_mobile/_main/HeaderMobile';
 import Footer from './component/_footer/_main/Footer';
 //
 import AppScreen from './component/_screen/_main/AppScreen';
@@ -61,6 +62,8 @@ import Contact from './component/_contact/Contact';
 import BackTop from './component/_back_to_top/BackTop';
 import PLCompare from './component/pl_compare/_main/PLCompare';
 import SomeLinks from './component/some_links/SomeLinks';
+//
+import './component/_header_pc/_main/HeaderCommon.scss';
 
 // App
 class App extends Component {
@@ -157,7 +160,7 @@ class App extends Component {
                     >
                         <div className="App">
                             <header className="AppHeader">
-                                <Header />
+                                {IS_MOBILE ? <HeaderMobile /> : <Header />}
                             </header>
 
                             <div className="App_contain">

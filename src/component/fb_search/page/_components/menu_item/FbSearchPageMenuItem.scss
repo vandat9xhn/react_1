@@ -1,20 +1,32 @@
-.FbSearchPageMenuItem_link{
+.FbSearchPageMenuItem_link {
     height: 52px;
 }
+.FbSearchPageMenuItem_link-active {
+    .FbSearchPageMenuItem_icon {
+        background-color: var(--blue);
+    }
+}
 
-.FbSearchPageMenuItem_filter{
+.FbSearchPageMenuItem_icon {
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.FbSearchPageMenuItem_filter {
     padding-left: 32px;
 }
 
 // ------
 
-.device-mobile{
-    .FbSearchPageMenuItem_link{
+.device-mobile {
+    .FbSearchPageMenuItem_link {
         height: 48px;
         border-radius: 0;
     }
 
-    .FbSearchPageMenuItem_filter{
+    .FbSearchPageMenuItem_filter {
         padding-left: 0px;
         background-color: var(--md-bg-fb);
     }

@@ -70,7 +70,7 @@ function FbSearchPagePhotoList({
                     <div>
                         <Link
                             className="color-inherit"
-                            to={`/search/photos/all${location.search}&type=${type}`}
+                            to={`/fb-search/photos/all${location.search}&type=${type}`}
                         >
                             <div className="padding-y-8px brs-6px bg-fb line-20px text-align-center font-500 hv-bg-s-through">
                                 See all

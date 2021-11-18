@@ -1,0 +1,17 @@
+.nav-active {
+    .HeaderBtnIcon_contain {
+        background-color: var(--md-bg-fb-active);
+    }
+}
+
+.HeaderBtnIcon_contain {
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.HeaderBtnIcon_new {
+    top: -5px;
+    right: -5px;
+}

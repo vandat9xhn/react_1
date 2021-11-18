@@ -31,19 +31,18 @@ function FbSearchPageLeft({}) {
     return (
         <div className="FbSearchPageLeft h-100per display-flex flex-col">
             <div className="FbSearchPageLeft_head pos-rel margin-x-16px border-bottom-blur">
-                <h1 className="FbSearchPageLeft_head_title padding-top-17px padding-bottom-20px bg-primary line-20px font-24px font-700">
-                    Search results
-                </h1>
-
-                <div
-                    key={search_value}
-                    className="pos-abs left-0 y-center z-index-1 w-100per"
-                >
-                    <FbSearchInput
-                        initial_value={search_value}
-                        initial_open={IS_MOBILE}
-                    />
-                </div>
+                {IS_MOBILE ? (
+                    <div key={search_value} className="">
+                        <FbSearchInput
+                            initial_value={search_value}
+                            initial_open={IS_MOBILE}
+                        />
+                    </div>
+                ) : (
+                    <h1 className="FbSearchPageLeft_head_title padding-top-17px padding-bottom-20px bg-primary line-20px font-24px font-700">
+                        Search results
+                    </h1>
+                )}
             </div>
 
             <div

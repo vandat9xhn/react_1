@@ -96,7 +96,9 @@ function Profile(props) {
 
     //
     function handleNotFoundRoute() {
-        use_history.replace('/profile/' + id);
+        if (location.pathname.search('/profile') == 0) {
+            use_history.replace('/profile/' + id);
+        }
     }
 
     //

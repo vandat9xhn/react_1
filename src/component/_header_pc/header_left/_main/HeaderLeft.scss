@@ -1,0 +1,29 @@
+.HeaderLeft{
+    width: 320px;
+}
+
+.HeaderLeft_search {
+    transition: all 200ms ease-in;
+
+    .FbSearchInputElm {
+        padding-right: 16px;
+    }
+}
+
+// ----
+
+@media (max-width: 1200px) {
+    .HeaderLeft_search-hide_contain {
+        width: 40px;
+        flex-grow: 0;
+
+        .FbSearchInputElm {
+            padding-right: 0;
+        }
+
+        .SearchAnimateDiv {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+    }
+}

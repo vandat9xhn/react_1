@@ -14,7 +14,7 @@ function FbSearchPageMenuVideo({ search_value }) {
         <div className="FbSearchPageMenuVideo">
             <FbSearchPageMenuItem
                 title="Video"
-                pathname="/search/videos"
+                pathname="/fb-search/videos"
                 search_value={search_value}
             >
                 <FbSearchPageMenuVideoFilter />

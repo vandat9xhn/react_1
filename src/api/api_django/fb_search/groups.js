@@ -10,7 +10,7 @@ export const API_FbSearchGroup_L = (params) =>
         default_fb_search_group_arr(),
         () =>
             axiosDjangoClient({
-                url: 'api/facebook/search-group-l/',
+                url: 'api/facebook/fb-search-group-l/',
                 method: 'GET',
                 params: params,
             }),

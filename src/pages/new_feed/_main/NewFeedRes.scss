@@ -28,18 +28,11 @@
     }
 }
 
-@media (max-width: 500px) {
-    .NewFeed_col-center {
-        width: 96%;
-    }
-}
+// ------
 
-@media (max-width: 400px) {
-    .NewFeed_contain{
-        padding: 0;
-    }
-
-    .NewFeed_col-center {
+.device-mobile{
+    .NewFeed_col-center{
         width: 100%;
+        padding-top: 10px;
     }
 }

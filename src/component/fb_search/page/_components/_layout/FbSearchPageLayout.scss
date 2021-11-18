@@ -1,9 +1,3 @@
-.FbSearchPageLayout_left {
-    top: calc(var(--height-header));
-    height: calc(100vh - var(--height-header));
-    box-shadow: 1px 1px 4px var(--shadow-2);
-}
-
 .FbSearchPageLayout_no_results {
     height: calc(100vh - var(--height-header));
 }
@@ -20,7 +14,7 @@
         width: 100%;
         height: 100%;
         background: white;
-        
+
         transform: translateX(100%);
         transition: all 250ms ease-in;
     }
@@ -28,13 +22,13 @@
         transform: translateX(0%);
     }
 
-    .FbSearchPageLayout_right{
+    .FbSearchPageLayout_right {
         width: 100%;
         padding-top: 48px;
     }
     // .
-    .FbSearchPageLayout_right_head{
-        .IconsArrow_back-prev{
+    .FbSearchPageLayout_right_head {
+        .IconsArrow_back-prev {
             stroke: currentColor;
         }
     }

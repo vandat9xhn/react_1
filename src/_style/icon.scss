@@ -19,6 +19,13 @@
     background-color: var(--danger);
 }
 
+.btn-icon-40px {
+    @extend %btn-icon;
+
+    width: 40px;
+    height: 40px;
+}
+
 .btn-icon-36px {
     @extend %btn-icon;
 
