@@ -1,4 +1,5 @@
 import React from 'react';
+import IconGaming from '../../../_icons_svg/gaming/IconGaming';
 //
 import IconsMenu from '../../../_icons_svg/icons_menu/IconsMenu';
 import IconsProfile from '../../../_icons_svg/icons_profile/IconsProfile';
@@ -6,6 +7,7 @@ import IconCity from '../../../_icons_svg/icon_city/IconCity';
 import IconFriends from '../../../_icons_svg/icon_friends/IconFriends';
 import IconGroup from '../../../_icons_svg/icon_group/IconGroup';
 import IconLearn from '../../../_icons_svg/icon_learn/IconLearn';
+import IconWatch from '../../../_icons_svg/watch/IconWatch';
 
 //
 export const DATA_HEADER_MENU = [
@@ -24,6 +26,16 @@ export const DATA_HEADER_MENU = [
         link_to: '/group/feed',
         Icon: <IconGroup />,
     },
+    {
+        title: 'Watch',
+        link_to: '/watch',
+        Icon: <IconWatch />,
+    },
+    {
+        title: 'Gaming',
+        link_to: '/gaming',
+        Icon: <IconGaming />,
+    },
 
     {
         title: 'Home',
@@ -38,7 +50,7 @@ export const DATA_HEADER_MENU = [
     {
         title: 'Shopping',
         link_to: '/fashion',
-        Icon: <IconsMenu y={400} />,
+        Icon: <IconsMenu x={400} />,
     },
     {
         title: 'City',

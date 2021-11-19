@@ -57,7 +57,7 @@ function FbSearchInputElm({
 
             <CloseDiv refs_target={[ref_main]} makeDivHidden={handleClose}>
                 <div
-                    className={`FbSearchInputElm_list pos-abs top-100per left-0 w-100per bg-primary overflow-y-auto scroll-thin ${
+                    className={`FbSearchInputElm_list pos-abs top-100per left-0 z-index-lv1 w-100per bg-primary overflow-y-auto scroll-thin ${
                         show_contain ? '' : 'display-none'
                     }`}
                 >

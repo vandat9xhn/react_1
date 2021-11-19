@@ -15,7 +15,7 @@ function HeaderItemMb({ Icon, link_to, count_new }) {
     return (
         <NavLink
             className="HeaderItemMb pos-rel display-flex-center h-100per padding-bottom-2px color-inherit"
-            activeClassName="HeaderItemMb-active"
+            activeClassName="HeaderItemMb-active nav-active"
             to={link_to}
         >
             {Icon}

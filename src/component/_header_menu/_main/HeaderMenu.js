@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
+import { context_api } from '../../../_context/ContextAPI';
+//
 import { toggleAppHiddenTemp } from '../../../_some_function/AppHiddenTemp';
-// 
+//
 import { useBool } from '../../../_hooks/useBool';
 //
 import IconsMenu from '../../../_icons_svg/icons_menu/IconsMenu';
@@ -14,13 +16,35 @@ import HeaderHorizontalLink from '../../_header_pc/_components/link/HeaderHorizo
 //
 import './HeaderMenu.scss';
 
+const getMenuUser = ({ user }) =>
+    user.id <= 0
+        ? []
+        : [
+              {
+                  title: `${user.first_name} ${user.last_name}`,
+                  link_to: `/profile/${user.id}`,
+                  Icon: (
+                      <img
+                          className="brs-50 object-fit-cover"
+                          src={user.picture}
+                          alt=""
+                          width="24"
+                          height="24"
+                      />
+                  ),
+              },
+          ];
+
 //
 HeaderMenu.propTypes = {};
 
 //
 function HeaderMenu(props) {
-    // 
-    useParams()
+    //
+    useParams();
+
+    //
+    const { user } = useContext(context_api);
 
     //
     const { is_true, setIsTrue, toggleBool } = useBool();
@@ -66,15 +90,17 @@ function HeaderMenu(props) {
                 }`}
             >
                 <ul className="list-none">
-                    {DATA_HEADER_MENU.map((item, ix) => (
-                        <li key={ix} className="HeaderMenu_item">
-                            <HeaderHorizontalLink
-                                title={item.title}
-                                link_to={item.link_to}
-                                Icon={item.Icon}
-                            />
-                        </li>
-                    ))}
+                    {[...getMenuUser({ user: user }), ...DATA_HEADER_MENU].map(
+                        (item, ix) => (
+                            <li key={ix} className="HeaderMenu_item">
+                                <HeaderHorizontalLink
+                                    title={item.title}
+                                    link_to={item.link_to}
+                                    Icon={item.Icon}
+                                />
+                            </li>
+                        )
+                    )}
                 </ul>
             </div>
         </div>

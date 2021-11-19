@@ -7,7 +7,7 @@ import GroupLayoutLeft from '../left/_main/GroupLayoutLeft';
 GroupLayout.propTypes = {};
 
 //
-function GroupLayout({ right_elm }) {
+function GroupLayout({ children }) {
     //
     return (
         <div className="GroupLayout">
@@ -16,7 +16,7 @@ function GroupLayout({ right_elm }) {
                     <GroupLayoutLeft />
                 </div>
 
-                <div className="GroupLayout_right">{right_elm}</div>
+                <div className="GroupLayout_right flex-grow-1">{children}</div>
             </div>
         </div>
     );

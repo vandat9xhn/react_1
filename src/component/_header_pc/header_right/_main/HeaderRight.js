@@ -86,7 +86,7 @@ function HeaderRight() {
 
     //
     return (
-        <div className="HeaderRight h-100per padding-x-8px">
+        <div className="HeaderRight h-100per padding-x-16px">
             <ul className="HeaderRight_ul display-flex list-none h-100per">
                 {user.id > 0 ? (
                     <React.Fragment>

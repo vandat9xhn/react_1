@@ -137,3 +137,7 @@ $shadows: 1, 2, 5, 6, 8, 9;
         background-color: var(--shadow-#{$shadow});
     }
 }
+
+.bg-shadow-05 {
+    background-color: var(--shadow-05);
+}

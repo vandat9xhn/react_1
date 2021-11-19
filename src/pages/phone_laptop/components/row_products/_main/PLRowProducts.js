@@ -20,7 +20,13 @@ function PLRowProducts({ product_arr, use_compare, use_type }) {
 
     //
     const { is_has_next, is_has_prev, handleNext, handlePrev, hasNextPrev } =
-        useScrollToX(ref_scroll_elm);
+        useScrollToX({
+            ref_scroll_elm: ref_scroll_elm,
+            getItemElm: () =>
+                ref_scroll_elm.current.getElementsByClassName(
+                    'PLRowProducts_item'
+                )[0],
+        });
 
     //
     useEffect(() => {

@@ -44,7 +44,13 @@ function RowProductPc({
         handleNext,
         handlePrev,
         hasNextPrev,
-    } = useMouseDragScrollToX(ref_scroll_elm);
+    } = useMouseDragScrollToX({
+        ref_scroll_elm: ref_scroll_elm,
+        getItemElm: () =>
+            ref_scroll_elm.current.getElementsByClassName(
+                'RowProductPc_item'
+            )[0],
+    });
 
     //
     useEffect(() => {
@@ -69,7 +75,7 @@ function RowProductPc({
                     {products.map((item, ix) => (
                         <li
                             key={`${item.id || ix}`}
-                            className={`row-product-item ${
+                            className={`RowProductPc_item row-product-item ${
                                 is_mouse_down ? 'pointer-events-none' : ''
                             }`}
                         >

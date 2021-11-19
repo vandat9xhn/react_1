@@ -1,9 +1,15 @@
 import { useState } from 'react';
 //
+import { initial_div_elm } from '../_initial/htm_elm/html_elm';
+//
+import { getScrollToX } from '../_some_function/getScrollToX';
 import { handleScrollSmooth } from '../_some_function/handleScrollSmooth';
 
 //
-export function useScrollToX(ref_elm, scroll_percent = 1) {
+export function useScrollToX({
+    ref_scroll_elm = { current: initial_div_elm },
+    getItemElm = () => initial_div_elm,
+}) {
     //
     const [state_obj, setStateObj] = useState({
         is_has_next: false,
@@ -12,67 +18,79 @@ export function useScrollToX(ref_elm, scroll_percent = 1) {
 
     const { is_has_next, is_has_prev } = state_obj;
 
+    // ----------
+
     //
     function hasNextPrev(
-        new_scroll_left = ref_elm.current ? ref_elm.current.scrollLeft : 0
+        new_scroll_left = ref_scroll_elm.current
+            ? ref_scroll_elm.current.scrollLeft
+            : 0
     ) {
-        if (!ref_elm.current || ref_elm.current.scrollWidth == 0) {
+        if (
+            !ref_scroll_elm.current ||
+            ref_scroll_elm.current.scrollWidth == 0
+        ) {
             return;
         }
 
-        const client_width = ref_elm.current.clientWidth;
-        const scroll_width = ref_elm.current.scrollWidth;
+        const client_width = ref_scroll_elm.current.clientWidth;
+        const scroll_width = ref_scroll_elm.current.scrollWidth;
 
         if (scroll_width == client_width) {
             setStateObj({
                 is_has_next: false,
                 is_has_prev: false,
             });
+
+            return;
         }
-        //
-        else if (new_scroll_left >= scroll_width - client_width) {
+
+        if (new_scroll_left >= scroll_width - client_width) {
             setStateObj({
                 is_has_next: false,
                 is_has_prev: true,
             });
+
+            return;
         }
-        //
-        else if (new_scroll_left <= 0) {
+
+        if (new_scroll_left <= 0) {
             setStateObj({
                 is_has_next: true,
                 is_has_prev: false,
             });
+
+            return;
         }
-        //
-        else {
-            setStateObj({
-                is_has_next: true,
-                is_has_prev: true,
-            });
-        }
+
+        setStateObj({
+            is_has_next: true,
+            is_has_prev: true,
+        });
     }
 
     //
     function handleNextPrev(is_next) {
-        const client_width = ref_elm.current.clientWidth;
-        const scroll_left = ref_elm.current.scrollLeft;
-        const new_scroll_left =
-            scroll_left +
-            (is_next ? 1 : -1) *
-                (client_width -
-                    parseInt(getComputedStyle(ref_elm.current).padding)) *
-                scroll_percent;
+        const scroll_to_x = getScrollToX({
+            scroll_elm: ref_scroll_elm.current,
+            item_elm: getItemElm(),
+        });
+        const { scrollLeft } = ref_scroll_elm.current;
+        const new_scroll_left = scrollLeft + (is_next ? 1 : -1) * scroll_to_x;
 
         hasNextPrev(new_scroll_left);
-        ref_elm.current.scrollTo(new_scroll_left, 0);
+        ref_scroll_elm.current.scrollTo(new_scroll_left, 0);
     }
 
     //
     function handleScrollTo(is_next = true) {
-        handleScrollSmooth(() => handleNextPrev(is_next), ref_elm.current);
+        handleScrollSmooth(
+            () => handleNextPrev(is_next),
+            ref_scroll_elm.current
+        );
     }
 
-    /* ---------------------------------- */
+    // ----------
 
     //
     function handleNext() {
@@ -83,6 +101,8 @@ export function useScrollToX(ref_elm, scroll_percent = 1) {
     function handlePrev() {
         handleScrollTo(false);
     }
+
+    // ------
 
     return { is_has_next, is_has_prev, handleNext, handlePrev, hasNextPrev };
 }

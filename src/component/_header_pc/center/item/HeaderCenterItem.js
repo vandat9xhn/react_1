@@ -15,7 +15,7 @@ function HeaderCenterItem({ Icon, link_to, count_new, title }) {
     return (
         <NavLink
             className="HeaderCenterItem display-block pos-rel h-100per brs-6px text-secondary hv-bg-s-through"
-            activeClassName="HeaderCenterItem-active"
+            activeClassName="HeaderCenterItem-active nav-active"
             to={link_to}
             title={title}
         >

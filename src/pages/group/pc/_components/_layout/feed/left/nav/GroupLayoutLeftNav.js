@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
-// 
+//
 import IconPlusSubtract from '../../../../../../../../_icons_svg/_icon_plus_subtract/IconPlusSubtract';
 
 //
@@ -35,7 +35,9 @@ function GroupLayoutLeftNav(props) {
                         activeClassName="bg-fb"
                         to={item.link_to}
                     >
-                        <div className="margin-right-12px">{item.Icon}</div>
+                        <div className="btn-icon-36px margin-right-12px bg-ccc">
+                            {item.Icon}
+                        </div>
 
                         <div>{item.title}</div>
                     </NavLink>
@@ -44,7 +46,7 @@ function GroupLayoutLeftNav(props) {
 
             <div className="margin-top-10px margin-x-4px">
                 <Link
-                    className="display-flex-center padding-x-8px padding-y-8px brs-6px bg-fb-active line-20px font-500"
+                    className="display-flex-center padding-x-8px padding-y-8px brs-6px bg-fb-active line-20px font-500 hv-after-shadow-05"
                     to="/group/create"
                 >
                     <IconPlusSubtract size_icon="15px" stroke="currentColor" />

@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 //
 import IconsMenu from '../../../../_icons_svg/icons_menu/IconsMenu';
 import IconFriends from '../../../../_icons_svg/icon_friends/IconFriends';
-import IconCameraFilm from '../../../../_icons_svg/icon_camera_film/IconCameraFilm';
 import IconGroup from '../../../../_icons_svg/icon_group/IconGroup';
+import IconWatch from '../../../../_icons_svg/watch/IconWatch';
+import IconGaming from '../../../../_icons_svg/gaming/IconGaming';
 //
 import HeaderCenterItem from '../item/HeaderCenterItem';
 //
@@ -36,7 +37,7 @@ function HeaderCenter(props) {
             count_new: 0,
         },
         {
-            Icon: <IconCameraFilm />,
+            Icon: <IconWatch />,
             link_to: '/watch',
             title: 'Watch',
             count_new: 0,
@@ -48,7 +49,7 @@ function HeaderCenter(props) {
             count_new: 0,
         },
         {
-            Icon: <IconCameraFilm />,
+            Icon: <IconGaming />,
             link_to: '/gaming',
             title: 'Gaming',
             count_new: 0,

@@ -42,7 +42,7 @@ function GroupLeftJoined({ ref_scroll }) {
     //
     return (
         <div className="GroupLeftJoined margin-x-8px padding-y-12px border-top-blur">
-            <h2 className="margin-bottom-5px font-17px font-600">
+            <h2 className="margin-bottom-5px padding-x-8px font-17px font-600">
                 Group you've joined
             </h2>
 

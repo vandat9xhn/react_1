@@ -61,7 +61,7 @@ export const fashion_route_arr = [
         auth: true,
     },
     {
-        path: '/fashion/fb-search',
+        path: '/fashion/search',
         component: FashionSearch,
         exact: true,
         auth: false,

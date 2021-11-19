@@ -23,7 +23,13 @@ function FashionCtg(props) {
 
     //
     const { is_has_next, is_has_prev, handleNext, handlePrev, hasNextPrev } =
-        useScrollToX(ref_scroll_elm);
+        useScrollToX({
+            ref_scroll_elm: ref_scroll_elm,
+            getItemElm: () =>
+                ref_scroll_elm.current.getElementsByClassName(
+                    'FashionCtg_item'
+                )[0],
+        });
 
     //
     useEffect(() => {

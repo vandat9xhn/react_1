@@ -3,22 +3,23 @@ import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
+import observeToDo from '../../../../../_some_function/observerToDo';
+//
 import { handle_API_FsProduct_L } from '../../../../../_handle_api/fashion/FashionHandleAPI';
 //
 import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 import { useScrollToX } from '../../../../../_hooks/useScrollToX';
 //
+import NextPrevDiv from '../../../../../component/some_div/next_prev_div/NextPrevDiv';
+//
 import FashionSellingProduct from '../../../components/selling_product/_main/FashionSellingProduct';
+import FashionSeeMoreOnTitle from '../../../components/see_more/on_title/FashionSeeMoreOnTitle';
+import FashionSeeMoreLastRow from '../../../components/see_more/last_row/FashionSeeMoreLastRow';
 //
 import fashion_month_top from '../../../../../../image/fashion_month_top.jpg';
 import fashion_month_body from '../../../../../../image/fashion_month_body.jpg';
 import fashion_month_foot from '../../../../../../image/fashion_month_foot.jpg';
-import observeToDo from '../../../../../_some_function/observerToDo';
-import NextPrevDiv from '../../../../../component/some_div/next_prev_div/NextPrevDiv';
-//
 import './FashionHomeSelling.scss';
-import FashionSeeMoreOnTitle from '../../../components/see_more/on_title/FashionSeeMoreOnTitle';
-import FashionSeeMoreLastRow from '../../../components/see_more/last_row/FashionSeeMoreLastRow';
 
 //
 FashionHomeSelling.propTypes = {};
@@ -38,7 +39,13 @@ function FashionHomeSelling(props) {
 
     //
     const { is_has_next, is_has_prev, handleNext, handlePrev, hasNextPrev } =
-        useScrollToX(ref_scroll_elm);
+        useScrollToX({
+            ref_scroll_elm: ref_scroll_elm,
+            getItemElm: () =>
+                ref_scroll_elm.current.getElementsByClassName(
+                    'FashionHomeSelling_item'
+                )[0],
+        });
 
     //
     useEffect(() => {

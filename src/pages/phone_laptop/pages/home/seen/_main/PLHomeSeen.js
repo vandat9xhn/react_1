@@ -39,7 +39,13 @@ function PLHomeSeen(props) {
 
     //
     const { is_has_next, is_has_prev, handleNext, handlePrev, hasNextPrev } =
-        useScrollToX(ref_scroll_elm);
+        useScrollToX({
+            ref_scroll_elm: ref_scroll_elm,
+            getItemElm: () =>
+                ref_scroll_elm.current.getElementsByClassName(
+                    'PLHomeSeen_item'
+                )[0],
+        });
 
     //
     useEffect(() => {
@@ -135,7 +141,10 @@ function PLHomeSeen(props) {
             ) : null}
 
             <div className="PLHomeSeen_contain pos-rel">
-                <ul className="display-flex list-none overflow-x-auto scroll-height-0">
+                <ul
+                    ref={ref_scroll_elm}
+                    className="display-flex list-none overflow-x-auto scroll-height-0"
+                >
                     {seen_arr.map((item, ix) => (
                         <li key={item.id} className="PLHomeSeen_item">
                             <Link to={`/phone-laptop/${item.id}`}>

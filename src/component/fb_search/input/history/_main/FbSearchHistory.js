@@ -41,7 +41,7 @@ function FbSearchHistory({ params_api = {} }) {
         <div ref={ref_main} className="FbSearchHistory padding-8px text-333">
             <div className={`${has_fetched ? '' : 'display-none'}`}>
                 <div className="flex-between-center margin-8px line-20px">
-                    <h2 className="font-17px font-600">Recently searches</h2>
+                    <h2 className="font-17px font-600">Recent searches</h2>
 
                     <Link to={`/fb-search/edit`}>Edit</Link>
                 </div>

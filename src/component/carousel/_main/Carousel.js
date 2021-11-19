@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { IS_MOBILE } from '../../../_constant/Constant';
 //
 import { observerDisplay } from '../../../_some_function/observerDisplay';
+import { toggleAppTouchNone } from '../../../_some_function/AppTouchNoneTemp';
 //
 import { useInterval } from '../../../_hooks/UseInterval';
 import { useMouseMoveX } from '../../../_hooks/useMouseMoveX';
@@ -15,7 +16,6 @@ import CarouselItem from '../item/_main/CarouselItem';
 import CarouselPosition from '../position/_main/CarouselPosition';
 //
 import './Carousel.scss';
-import { toggleAppTouchNone } from '../../../_some_function/AppTouchNoneTemp';
 
 //
 Carousel.propTypes = {

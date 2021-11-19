@@ -33,7 +33,13 @@ function HeaderMessHeadPc({
         handleNext,
         handlePrev,
         hasNextPrev,
-    } = useMouseDragScrollToX(ref_head_elm);
+    } = useMouseDragScrollToX({
+        ref_scroll_elm: ref_head_elm,
+        getItemElm: () =>
+            ref_head_elm.current.getElementsByClassName(
+                'HeaderMessHeadPc_item'
+            )[0],
+    });
 
     //
     useEffect(() => {
@@ -44,12 +50,12 @@ function HeaderMessHeadPc({
     return (
         <div className="HeaderMessHeadPc pos-rel">
             <div
+                ref={ref_head_elm}
                 className={`${
                     has_fetched
                         ? 'HeaderMessHeadPc_contain max-w-100per overflow-x-auto scroll-height-0'
                         : 'display-none'
                 }`}
-                ref={ref_head_elm}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 //
@@ -59,7 +65,7 @@ function HeaderMessHeadPc({
             >
                 <div className="display-flex align-items-center">
                     {friend_arr.map((friend, ix) => (
-                        <div key={`ListMessages_friend_${ix}`}>
+                        <div className="HeaderMessHeadPc_item" key={ix}>
                             <MessageFriend
                                 is_mouse_down={is_mouse_down}
                                 friend_id={friend.id}

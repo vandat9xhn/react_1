@@ -44,7 +44,7 @@ function FashionShead({ shop_id, value_search, search_arr, placeholder }) {
     function handleSearch() {
         (value_search != value || (where_search_ix == 0 && shop_id > 0)) &&
             use_history.push(
-                `/fashion/fb-search?q=${value}${
+                `/fashion/search?q=${value}${
                     where_search_ix == 1 ? `&shop_id=${shop_id}` : ''
                 }`
             );

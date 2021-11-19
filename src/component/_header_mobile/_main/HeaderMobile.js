@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 //
 import IconsMenu from '../../../_icons_svg/icons_menu/IconsMenu';
 import IconFriends from '../../../_icons_svg/icon_friends/IconFriends';
+import IconWatch from '../../../_icons_svg/watch/IconWatch';
 //
 import HeaderMenu from '../../_header_menu/_main/HeaderMenu';
 import HeaderItemMb from '../item/HeaderItemMb';
-import IconCameraFilm from '../../../_icons_svg/icon_camera_film/IconCameraFilm';
 import HeaderNotice from '../../_header_pc/header_right/notice/_main/HeaderNotice';
 import HeaderMessage from '../../_header_pc/header_right/message/_main/HeaderMessage';
 // 
@@ -52,7 +52,7 @@ function HeaderMobile(props) {
 
                 <li className="HeaderMobile_item">
                     <HeaderItemMb
-                        Icon={<IconCameraFilm />}
+                        Icon={<IconWatch />}
                         link_to="/watch"
                         count_new={count_new_watch}
                     />

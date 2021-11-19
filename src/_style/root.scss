@@ -37,7 +37,7 @@ $shadows: 1, 2, 5, 6, 8, 9;
     --primary-08: rgba(0, 0, 0, 0.8);
     --snow-flake: #76dfff;
     --snow-flake-through: #76dfff80;
-    --star: #FE8C23;
+    --star: #fe8c23;
     --success: #28a745;
     --warning: #ffc107;
     --white: white;
@@ -98,7 +98,8 @@ $shadows: 1, 2, 5, 6, 8, 9;
     @each $shadow in $shadows {
         --shadow-#{$shadow}: rgba(0, 0, 0, #{$shadow / 10});
     }
-
+    --shadow-05: rgba(0, 0, 0, 0.05);
+    
     --shadow-inset: rgba(255, 255, 255, 0.5);
     --shadow-9-hover: #3a3434d9;
 

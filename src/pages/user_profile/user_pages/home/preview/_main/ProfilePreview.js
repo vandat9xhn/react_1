@@ -1,16 +1,17 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useStickyAuto } from '../../../../../../_hooks/useStickyAuto';
-//
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+// 
 import { GetIdSlug } from '../../../../../../_some_function/GetIdSlug';
+//
+import { useStickyAuto } from '../../../../../../_hooks/useStickyAuto';
 //
 import ProfilePrPic from '../pic/_main/ProfilePrPic';
 import ProfilePrFriend from '../friend/_main/ProfilePrFriend';
 import ProfilePrIntro from '../about/_main/ProfilePrAbout';
 //
 import './ProfilePreview.scss';
-import { IS_MOBILE } from '../../../../../../_constant/Constant';
 
 //
 ProfilePreview.propTypes = {};
@@ -37,11 +38,11 @@ function ProfilePreview(props) {
             return;
         }
 
-        count_ready.current += 1;
+        // count_ready.current += 1;
 
-        if (count_ready.current == 3) {
+        // if (count_ready.current == 3) {
             calculateAgain();
-        }
+        // }
     }
 
     //
