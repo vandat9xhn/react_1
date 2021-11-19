@@ -5,18 +5,18 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { LogoutRequest } from '../../../../../api/api_django_no_token/login_logout/LoginLogout';
-// 
+//
 import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
-// 
+//
 import IconsAccount from '../../../../../_icons_svg/icons_account/IconsAccount';
-// 
+//
 import IconDiv from '../../../../some_div/icon_div/IconDiv';
 
 //
 ActionsAccountLog.propTypes = {};
 
 //
-function ActionsAccountLog({closeAccount}) {
+function ActionsAccountLog({ closeAccount }) {
     //
     const use_history = useHistory();
 

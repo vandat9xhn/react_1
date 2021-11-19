@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import IconThreeDot from '../../../_icons_svg/icon_three_dot/IconThreeDot';
-// 
+//
 import OverlapPicsItem from '../item/OverlapPicsItem';
-// 
+//
 import './OverlapPics.scss';
 
 //
@@ -25,19 +25,19 @@ function OverlapPics({ pic_arr, has_more, ItemComponent, clickMore }) {
     return (
         <div className="flex-end row-reverse">
             {has_more && (
-                <div className="OverlapPics_item pos-rel">
-                    <div className="OverlapPics_item_img">
+                <div className="OverlapPics_item">
+                    <div className="OverlapPics_item_img pos-rel">
                         <ItemComponent picture={pic_arr[0].picture} />
-                    </div>
-
-                    <div
-                        className="pos-abs-0 display-flex-center wh-100 brs-50 bg-shadow-2"
-                        onClick={clickMore}
-                    >
-                        <IconThreeDot
-                            size_icon="15px"
-                            color="var(--md-bg-blur)"
-                        />
+                        
+                        <div
+                            className="pos-abs-0 display-flex-center wh-100 brs-50 bg-shadow-2"
+                            onClick={clickMore}
+                        >
+                            <IconThreeDot
+                                size_icon="15px"
+                                color="var(--md-bg-blur)"
+                            />
+                        </div>
                     </div>
                 </div>
             )}

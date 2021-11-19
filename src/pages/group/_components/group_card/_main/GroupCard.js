@@ -10,6 +10,13 @@ import GroupCardFriends from '../friends/GroupCardFriends';
 import './GroupCard.scss';
 
 //
+const initialBtnElm = (
+    <div className="display-flex-center wh-100 bg-blue text-white">
+        Join Group
+    </div>
+);
+
+//
 GroupCard.propTypes = {};
 
 //
@@ -26,7 +33,7 @@ function GroupCard({
     friend_count,
     has_more_friend,
 
-    BtnElm,
+    BtnElm = initialBtnElm,
     removeGroupCard,
 }) {
     //
@@ -55,7 +62,7 @@ function GroupCard({
                     />
                 </div>
 
-                <div>
+                <div className="border-top-blur">
                     <GroupCartInfo
                         name={name}
                         count_member={count_member}

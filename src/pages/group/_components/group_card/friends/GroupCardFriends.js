@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import IconFriends from '../../../../../_icons_svg/icon_friends/IconFriends';
-// 
+//
 import OverlapPics from '../../../../../component/overlap_pics/_main/OverlapPics';
+// 
+import './GroupCardFriends.scss';
 
 //
 GroupCardFriends.propTypes = {};
@@ -15,10 +17,12 @@ function GroupCardFriends({ friend_arr, friend_count, has_more_friend }) {
         <div className="GroupCardFriends text-secondary">
             <div className="display-flex align-items-center">
                 {friend_arr.length ? (
-                    <OverlapPics
-                        pic_arr={friend_arr}
-                        has_more={has_more_friend}
-                    />
+                    <div className="padding-right-5px">
+                        <OverlapPics
+                            pic_arr={friend_arr}
+                            has_more={has_more_friend}
+                        />
+                    </div>
                 ) : (
                     <IconFriends size_icon="24px" fill="currentColor" />
                 )}

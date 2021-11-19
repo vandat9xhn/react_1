@@ -18,6 +18,7 @@ import ActionsAccountNature from '../nature/ActionsAccountNature';
 import HeaderAccountProfile from '../profile/HeaderAccountProfile';
 //
 import './ActionsAccount.scss';
+import HeaderAccountMode from '../mode/HeaderAccountMode';
 
 //
 ActionsAccount.propTypes = {
@@ -87,17 +88,8 @@ function ActionsAccount({ closeAccount }) {
                         />
                     </div>
 
-                    <div onClick={onChangeMode} title="Change mode">
-                        <div className="header_item ActionsAccount_mode">
-                            <SwitchDiv switch_on={light_mode == 0}>
-                                <IconDiv
-                                    Icon={IconsMode}
-                                    icon_props={{ light_mode: !light_mode }}
-                                >
-                                    {light_mode ? 'Light Mode' : 'Dark Mode'}
-                                </IconDiv>
-                            </SwitchDiv>
-                        </div>
+                    <div>
+                        <HeaderAccountMode />
                     </div>
 
                     <ActionsAccountNature

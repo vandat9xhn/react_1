@@ -24,6 +24,20 @@
         height: 48px;
     }
 
+    .HeaderAccountMode {
+        height: 48px;
+        border-radius: 6px;
+
+        &:hover {
+            background-color: var(--md-bg-s-through);
+        }
+    }
+
+    .IconDiv_left {
+        width: 36px;
+        height: 36px;
+    }
+
     svg {
         width: 20px;
         height: 20px;

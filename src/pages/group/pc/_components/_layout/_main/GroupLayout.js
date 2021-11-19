@@ -16,7 +16,9 @@ function GroupLayout({ children }) {
                     <GroupLayoutLeft />
                 </div>
 
-                <div className="GroupLayout_right flex-grow-1">{children}</div>
+                <div className="GroupLayout_right flex-grow-1 overflow-hidden">
+                    {children}
+                </div>
             </div>
         </div>
     );

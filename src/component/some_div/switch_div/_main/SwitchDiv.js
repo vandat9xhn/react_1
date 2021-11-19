@@ -17,7 +17,7 @@ SwitchDiv.defaultProps = {};
 function SwitchDiv({ children, switch_on }) {
     //
     return (
-        <div className="SwitchDiv">
+        <div className="SwitchDiv w-100per">
             <div className="SwitchDiv_row flex-between-center">
                 <div className="SwitchDiv_children">{children}</div>
 

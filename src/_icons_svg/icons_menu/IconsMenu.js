@@ -40,10 +40,10 @@ function IconsMenu({ size_icon, x, y }) {
             {/* menu x=0, y=0 */}
             <path
                 className="IconsMenu_menu"
-                d="M20,20 180,20
-                M20,100 180,100
-                M20,180 180,180"
-                strokeWidth="25"
+                d="M40,40 160,40
+                M40,100 160,100
+                M40,160 160,160"
+                strokeWidth="15"
             />
 
             {/* home x=200, y=0*/}

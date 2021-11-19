@@ -13,6 +13,8 @@ import IconsMenu from '../../../_icons_svg/icons_menu/IconsMenu';
 import { DATA_HEADER_MENU } from '../_data/HeaderLeftData';
 //
 import HeaderHorizontalLink from '../../_header_pc/_components/link/HeaderHorizontalLink';
+import ActionsAccountLog from '../../_header_pc/header_right/account/log/ActionsAccountLog';
+import HeaderAccountMode from '../../_header_pc/header_right/account/mode/HeaderAccountMode';
 //
 import './HeaderMenu.scss';
 
@@ -101,6 +103,14 @@ function HeaderMenu(props) {
                             </li>
                         )
                     )}
+
+                    <li className="HeaderMenu_item">
+                        <HeaderAccountMode />
+                    </li>
+
+                    <li className="HeaderMenu_item">
+                        <ActionsAccountLog closeAccount={handleClose} />
+                    </li>
                 </ul>
             </div>
         </div>

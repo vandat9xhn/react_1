@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconSetting from '../../../../../../../../../_icons_svg/icon_setting/IconSetting';
+import IconSetting from '../../../../../../../../_icons_svg/icon_setting/IconSetting';
 //
-import FbSearchInput from '../../../../../../../../../component/fb_search/input/_main/FbSearchInput';
+import FbSearchInput from '../../../../../../../../component/fb_search/input/_main/FbSearchInput';
 // 
 import './GroupLayoutLeftHead.scss';
 

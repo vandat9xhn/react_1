@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 //
-import IconPlusSubtract from '../../../../../../../../_icons_svg/_icon_plus_subtract/IconPlusSubtract';
+import IconPlusSubtract from '../../../../../../../_icons_svg/_icon_plus_subtract/IconPlusSubtract';
 
 //
 GroupLayoutLeftNav.propTypes = {};

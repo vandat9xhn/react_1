@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
-import { handle_API_FbSearchGroup_L } from '../../../../../../../../../_handle_api/fb_search/groups';
+import { handle_API_FbSearchGroup_L } from '../../../../../../../../_handle_api/fb_search/groups';
 //
-import { useObserverShowMore } from '../../../../../../../../../_hooks/useObserverShowMore';
+import { useObserverShowMore } from '../../../../../../../../_hooks/useObserverShowMore';
 //
 import './GroupLeftJoined.scss';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import GroupLayout from '../../../_components/_layout/feed/_main/GroupLayout';
+import GroupLayout from '../../../_components/_layout/_main/GroupLayout';
 import GroupFeedRight from '../right/_main/GroupFeedRight';
 //
 import './GroupFeed.scss';

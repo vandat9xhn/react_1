@@ -9,7 +9,6 @@ export async function handle_API_FbGroupSuggested_L({
         c_count: c_count,
         size: 10,
         page: 1,
-        type: 'suggested',
         ...params,
     });
 
