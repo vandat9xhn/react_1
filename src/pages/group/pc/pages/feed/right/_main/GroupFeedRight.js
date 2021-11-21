@@ -24,11 +24,7 @@ function GroupFeedRight(props) {
             return;
         }
 
-        // count_ready.current += 1;
-
-        // if (count_ready.current == 1) {
         calculateAgain();
-        // }
     }
 
     //

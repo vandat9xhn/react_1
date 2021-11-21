@@ -19,7 +19,7 @@ IconBell.defaultProps = {
     stroke_width: '5',
 };
 
-function IconBell({ class_icon, size_icon, x, y, stroke, stroke_width }) {
+function IconBell({ class_icon, size_icon, x, y, stroke, stroke_width, fill }) {
     //
     return (
         <svg
@@ -28,7 +28,7 @@ function IconBell({ class_icon, size_icon, x, y, stroke, stroke_width }) {
             height={size_icon}
             viewBox={`${x} ${y} 200 200`}
             stroke={stroke}
-            fill="none"
+            fill={fill}
             strokeLinecap="round"
         >
             <path

@@ -29,15 +29,18 @@ import { useScreenFetching } from '../../../../_hooks/UseScreenFetching';
 //
 import VirtualScroll from '../../../virtual_scroll/VirtualScroll';
 //
-import CUPost from '../../common/create_update_post/_main/CUPost';
-import PostText from '../text/_main/PostText';
-import VidPicsPost from '../vid_pics/_main/VidPicsPost';
-import Info from '../../common/info/_main/InfoWs';
-import CommentsWs from '../../common/ws_comments/_main/CommentsWs';
-import LikeShareCmt from '../../common/like_share_cmt/_main/LikeShareCmtWs';
-import PostHistory from '../history/_main/PostHistory';
-import CUPostMb from '../../common/cu_post_mobile/_main/CUPostMb';
 import PostHead from '../head/_main/PostHead';
+import PostText from '../text/_main/PostText';
+import PostTagAndEmoji from '../tag_emoji/_main/PostTagAndEmoji';
+
+import Info from '../../common/info/_main/InfoWs';
+import LikeShareCmt from '../../common/like_share_cmt/_main/LikeShareCmtWs';
+import CommentsWs from '../../common/ws_comments/_main/CommentsWs';
+import VidPicsPost from '../vid_pics/_main/VidPicsPost';
+
+import CUPostMb from '../../common/cu_post_mobile/_main/CUPostMb';
+import CUPost from '../../common/create_update_post/_main/CUPost';
+import PostHistory from '../history/_main/PostHistory';
 //
 import './Post.scss';
 
@@ -66,9 +69,14 @@ function Post({
     //
     const {
         is_del,
+        is_head_to,
 
         id,
+        post_where,
         user,
+        to_user,
+        group_obj,
+
         vid_pics,
         vid_pic_count,
         content_obj,
@@ -105,15 +113,6 @@ function Post({
     // ------- HEAD
 
     //
-    function openPermissionPost() {
-        openScreenPermission({
-            openScreenFloor: openScreenFloor,
-            permission: permission_post,
-            handleChoosePermission: handleChoosePermission,
-        });
-    }
-
-    //
     function openTagUser() {
         openScreenUserAdd({
             openScreenFloor: openScreenFloor,
@@ -124,6 +123,39 @@ function Post({
     }
 
     // ----- ACTIONS
+
+    //
+    function handleAction(action_name = '') {
+        console.log(action_name);
+        if (action_name == 'edit_audience') {
+            openPermissionPost();
+        }
+
+        if (action_name == 'history') {
+            openHistoryPost();
+        }
+
+        if (action_name == 'edit') {
+            openUpdatePost();
+        }
+
+        if (action_name == 'remove') {
+            openDeletePost();
+        }
+
+        if (action_name == 'support_report') {
+            openReportPost();
+        }
+    }
+
+    //
+    function openPermissionPost() {
+        openScreenPermission({
+            openScreenFloor: openScreenFloor,
+            permission: permission_post,
+            handleChoosePermission: handleChoosePermission,
+        });
+    }
 
     //
     function openHistoryPost() {
@@ -190,8 +222,12 @@ function Post({
     function openDeletePost() {
         openScreenConfirm({
             openScreenFloor: openScreenFloor,
-            title: 'Delete',
-            notification: 'Do you really want to delete this post?',
+            title: 'Move to your recycle bin?',
+            notification:
+                'Items in your recycle bin will be automatically deleted after 30 days. You can delete them earlier from your recycle bin by going to "Activity log" in your settings.',
+
+            title_no: 'Cancel',
+            title_yes: 'Move',
             handleConfirm: handleDelete,
         });
     }
@@ -297,27 +333,39 @@ function Post({
                 <div className="Post_head padding-10px">
                     <PostHead
                         post_id={id}
-                        user={user}
+                        post_where={post_where}
                         permission={permission_post}
+                        updated_time={updated_time}
+                        //
+                        user={user}
+                        to_user={to_user}
+                        group_obj={group_obj}
+                        is_poster={is_poster}
+                        //
                         emoji_obj={emoji_obj}
                         user_tag_arr={user_tag_arr}
                         user_tag_rest_count={
                             user_tag_count - user_tag_arr.length
                         }
-                        updated_time={updated_time}
                         //
-                        is_poster={is_poster}
-                        //
+
                         openTagUser={openTagUser}
-                        openPermissionPost={openPermissionPost}
-                        //
-                        openHistoryPost={openHistoryPost}
-                        openUpdatePost={openUpdatePost}
-                        openDeletePost={openDeletePost}
-                        openReportPost={openReportPost}
-                        openPermissionPost={openPermissionPost}
+                        handleAction={handleAction}
                     />
                 </div>
+
+                {is_head_to ? (
+                    <div>
+                        <PostTagAndEmoji
+                            user_tag_arr={user_tag_arr}
+                            user_tag_rest_count={
+                                user_tag_count - user_tag_arr.length
+                            }
+                            emoji_obj={emoji_obj}
+                            openTagUser={openTagUser}
+                        />
+                    </div>
+                ) : null}
 
                 {content_obj.content ? (
                     <div>

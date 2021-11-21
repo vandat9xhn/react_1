@@ -90,10 +90,44 @@ const post_vid_pic_obj = () => ({
 const post_vid_pic_arr = () =>
     getDefaultArr(post_vid_pic_obj, 0, getRandomBool() ? 4 : 0);
 
-export const default_post_obj = () => {
+export const default_post_obj = (
+    params = {
+        post_where: getRandomFromArr(['user', 'group', 'page']),
+    }
+) => {
+    const { post_where } = params;
+
+    const data_user = { ...getRandomUser() };
+
+    if (post_where == 'page') {
+        data_user['user'].first_name = 'Page Name';
+        data_user['user'].last_name = '';
+    }
+
+    if (post_where == 'group') {
+        data_user['group_obj'] = {
+            id: getRandomId(),
+            name: 'Group Name',
+            picture: getRandomVidPic(),
+            privacy: getRandomFromArr(['Public', 'Private']),
+        };
+    }
+
+    if (post_where == 'user') {
+        if (getRandomBool() && getRandomBool() && getRandomBool()) {
+            data_user['to_user'] = getRandomUser().user;
+            data_user['is_head_to'] = true;
+        } else {
+            data_user['is_head_to'] = false;
+            data_user['to_user'] = null;
+        }
+    }
+
     // --- TAG
-    const max_user_tag = 2;
-    const user_tag_arr = default_post_user_tag_arr(max_user_tag);
+    const max_user_tag =
+        post_where == 'group' && !(getRandomBool() && getRandomBool()) ? 0 : 2;
+    const user_tag_arr =
+        post_where == 'page' ? [] : default_post_user_tag_arr(max_user_tag);
     const user_tag_count =
         max_user_tag > user_tag_arr
             ? user_tag_arr.length
@@ -110,16 +144,19 @@ export const default_post_obj = () => {
     //
     return {
         id: getRandomId(),
-        ...getRandomUser(),
+        ...data_user,
+        post_where: post_where,
+
+        ...getRandomContentObj(),
+        vid_pics: vid_pics,
+        vid_pic_count: vid_pic_count,
+
         emoji_obj:
-            getRandomBool() && getRandomBool()
+            post_where == 'user' && getRandomBool() && getRandomBool()
                 ? getRandomFromArr(default_post_emoji_arr())
                 : {},
         user_tag_arr: user_tag_arr,
         user_tag_count: user_tag_count,
-        ...getRandomContentObj(),
-        vid_pics: vid_pics,
-        vid_pic_count: vid_pic_count,
 
         bg_obj: vid_pics.length
             ? null
@@ -144,7 +181,7 @@ export const default_post_obj = () => {
         count_history: 10,
 
         profile_model: 1,
-        permission_post: 0,
+        permission_post: data_user['to_user'] ? 2 : 0,
         created_time: '2021-04-01T07:48:48.176630Z',
         updated_time: '2021-04-01T15:18:30.339347Z',
     };

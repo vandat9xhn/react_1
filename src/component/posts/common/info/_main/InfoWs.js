@@ -5,6 +5,7 @@ import { context_api } from '../../../../../_context/ContextAPI';
 import { context_post } from '../../../../../_context/post/ContextPost';
 //
 import { UnitNumber } from '../../../../../_some_function/UnitNumber';
+import { getPostTitleReacted } from '../../../../../_some_function/post/title_reacted';
 //
 import { openScreenLike } from '../../../../_screen/type/like/_main/ScreenLike';
 import { openScreenUserAdd } from '../../../../_screen/type/user_add/_main/ScreenUserAdd';
@@ -21,7 +22,6 @@ import InfoCmt from '../cmt/InfoCmt';
 import PeopleShare from '../share/PeopleShare';
 //
 import './Info.scss';
-import { getPostTitleReacted } from '../../../../../_some_function/post/title_reacted';
 
 //
 Info.propTypes = {
@@ -106,7 +106,7 @@ function Info({
 
     //
     return (
-        <div className="Info padding-y-5px text-secondary">
+        <div className="Info padding-5px text-secondary">
             <div className="Info_row flex-between-center">
                 <div className="Info_like pos-rel">
                     <ListUniqueLike

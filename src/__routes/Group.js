@@ -9,6 +9,10 @@ const GroupDiscover = React.lazy(() =>
     import('../pages/group/pc/pages/discover/_main/GroupDiscover')
 );
 
+const GroupNotice = React.lazy(() =>
+    import('../pages/group/pc/pages/notice/_main/GroupNotice')
+);
+
 //
 export const fb_group_route_arr = [
     {
@@ -20,6 +24,12 @@ export const fb_group_route_arr = [
     {
         path: '/group/discover',
         component: GroupDiscover,
+        exact: true,
+        auth: true,
+    },
+    {
+        path: '/group/notifications',
+        component: GroupNotice,
         exact: true,
         auth: true,
     },

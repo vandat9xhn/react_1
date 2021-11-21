@@ -1,0 +1,15 @@
+.PostTagAndEmoji_start{
+    width: 28px;
+
+    &::after{
+        content: '';
+
+        position: absolute;
+        left: 0;
+        top: -5px;
+
+        width: 25px;
+        height: 1px;
+        background-color: var(--md-bg-ccc);
+    }
+}

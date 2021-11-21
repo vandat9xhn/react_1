@@ -86,4 +86,10 @@
             display: block;
         }
     }
+
+    &:active {
+        &::after {
+            background-color: var(--shadow-1);
+        }
+    }
 }

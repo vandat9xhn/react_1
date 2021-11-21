@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 //
 import IconPlusSubtract from '../../../../../../../_icons_svg/_icon_plus_subtract/IconPlusSubtract';
+import IconBell from '../../../../../../../_icons_svg/icon_bell/IconBell';
+//
+import './GroupLayoutLeftNav.scss';
 
 //
 GroupLayoutLeftNav.propTypes = {};
@@ -25,17 +28,17 @@ function GroupLayoutLeftNav(props) {
                 },
                 {
                     title: 'Your notifications',
-                    Icon: null,
+                    Icon: <IconBell fill="currentColor" stroke="none" />,
                     link_to: '/group/notifications',
                 },
             ].map((item, ix) => (
                 <div key={ix}>
                     <NavLink
-                        className="display-flex align-items-center padding-x-8px padding-y-8px brs-6px line-20px text-333 font-500 hv-bg-fb"
-                        activeClassName="bg-fb"
+                        className="GroupLayoutLeftNav_item display-flex align-items-center padding-x-8px padding-y-8px brs-6px line-20px text-333 font-500 hv-bg-fb"
+                        activeClassName="GroupLayoutLeftNav_item-active bg-fb"
                         to={item.link_to}
                     >
-                        <div className="btn-icon-36px margin-right-12px bg-ccc">
+                        <div className="GroupLayoutLeftNav_icon btn-icon-36px margin-right-12px bg-ccc">
                             {item.Icon}
                         </div>
 

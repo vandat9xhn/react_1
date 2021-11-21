@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 //
+import { IS_MOBILE } from '../../../../_constant/Constant';
+// 
+import IconsInput from '../../../../_icons_svg/Icons_input/IconsInput';
+// 
 import NewFeedStory from '../story/_main/NewFeedStory';
 import NewFeedNewPost from '../new_post/NewFeedNewPost';
 import NewFeedPosts from '../posts/NewFeedPosts';
 //
 import './NewFeedCenter.scss';
-import { IS_MOBILE } from '../../../../_constant/Constant';
-import IconsInput from '../../../../_icons_svg/Icons_input/IconsInput';
-import { Link } from 'react-router-dom';
 
 //
 NewFeedCenter.propTypes = {};

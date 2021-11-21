@@ -12,7 +12,6 @@ import { initial_posts } from '../../../_initial/post/InitialPosts';
 //
 import { handle_API_NewFeedPost_L } from '../../../_handle_api/new_feed/NewFeedHandleAPI';
 import { handle_API_Post_C } from '../../../_handle_api/post/HandleAPIPost';
-//
 import { handleCreateNewPost } from '../../../_default/post/PostHandleCreate';
 //
 import './NewFeedCommon.scss';

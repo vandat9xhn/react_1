@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 //
 import { context_post } from '../../../../../_context/post/ContextPost';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
 import { getCmtTitleMore } from '../../../../../_some_function/post/cmt_title_more';
 //
 import IconCaret from '../../../../../_icons_svg/_icon_caret/IconCaret';
+import IconUpdate from '../../../../../_icons_svg/icon_update/IconUpdate';
 //
 import ScreenBlurShowMore from '../../../../_screen/components/part/foot/ScreenBlurShowMore';
 import CommentPost from '../../../../input_img_vid_preview/comment_post/CommentPost';
@@ -14,8 +17,6 @@ import FetchingDiv from '../../../../some_div/fetching/FetchingDiv';
 import CommentWs from '../ws_comment/_main/CommentWs';
 //
 import './CommentsWs.scss';
-import { IS_MOBILE } from '../../../../../_constant/Constant';
-import IconUpdate from '../../../../../_icons_svg/icon_update/IconUpdate';
 
 //
 CommentsWs.propTypes = {
@@ -54,7 +55,7 @@ function CommentsWs({
     useEffect(() => {
         initial_open_input &&
             comments.length == 0 &&
-            count_comment > 0 &&
+            // count_comment > 0 &&
             onGetCommentsWs();
     }, []);
 
@@ -62,8 +63,13 @@ function CommentsWs({
 
     //
     async function onGetCommentsWs() {
-        setFetchingCmt(true);
         !open_input && setOpenInput(true);
+
+        if (count_comment == 0) {
+            return;
+        }
+
+        setFetchingCmt(true);
 
         const { data: new_comments } = await handle_API_Cmt_L(
             parent_id,

@@ -1,0 +1,12 @@
+.GroupLayoutLeftNav_item {
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+.GroupLayoutLeftNav_item-active {
+    .GroupLayoutLeftNav_icon {
+        color: white;
+        background-color: var(--blue);
+    }
+}

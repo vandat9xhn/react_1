@@ -33,6 +33,7 @@ export function useStickyAuto({ sticky_location = /./ }) {
     const has_event_scroll = useRef(false);
 
     const ref_more_height = useRef(0);
+    const ref_has_more_height = useRef(false);
     const ref_scroll_y = useRef(0);
     const ref_is_last_scroll_down = useRef(true);
 
@@ -59,7 +60,9 @@ export function useStickyAuto({ sticky_location = /./ }) {
     function getNewMoreHeight() {
         const { height } = ref_preview_elm.current.getBoundingClientRect();
 
-        return height - innerHeight > 0 ? height - innerHeight : 0;
+        ref_has_more_height.current = height + header_head > innerHeight;
+
+        return height - innerHeight;
     }
 
     //
@@ -103,7 +106,7 @@ export function useStickyAuto({ sticky_location = /./ }) {
         ref_more_height.current = getNewMoreHeight();
         ref_is_innerWidth_ok.current = true;
 
-        if (ref_more_height.current > 0) {
+        if (ref_has_more_height.current) {
             ref_preview_elm.current.style.position = 'sticky';
             handleAddScroll();
         } else {
@@ -137,7 +140,7 @@ export function useStickyAuto({ sticky_location = /./ }) {
         ref_more_height.current = getNewMoreHeight();
 
         if (ref_is_innerWidth_ok.current) {
-            if (ref_more_height.current <= 0) {
+            if (!ref_has_more_height.current) {
                 handleRefWhenMoreHeightNotOk();
             }
         } else {
@@ -145,7 +148,7 @@ export function useStickyAuto({ sticky_location = /./ }) {
         }
 
         if (
-            ref_more_height.current > 0 &&
+            ref_has_more_height.current &&
             ref_is_href_ok.current &&
             ref_is_innerWidth_ok.current
         ) {
@@ -223,7 +226,7 @@ export function useStickyAuto({ sticky_location = /./ }) {
             } else {
                 ref_more_height.current = getNewMoreHeight();
 
-                if (ref_more_height.current <= 0) {
+                if (!ref_has_more_height.current) {
                     handleRefWhenMoreHeightNotOk();
                     handleRemoveScroll();
                 } else {
