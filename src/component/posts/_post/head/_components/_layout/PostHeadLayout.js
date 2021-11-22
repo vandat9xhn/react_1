@@ -15,7 +15,7 @@ function PostHeadLayout({
 }) {
     //
     return (
-        <div className="PostHeadLayout">
+        <div className="PostHeadLayout padding-10px">
             <div className="PostHeadLayout_row display-flex">
                 <div className="PostHeadLayout_left">{left_elm}</div>
 

@@ -78,11 +78,12 @@ $shadows: 1, 2, 5, 6, 8, 9;
     --md-bg-ccc: #e6e6e6;
     --md-bg-blur: #e4e6e9;
     --bg-app-form: #61ff8a;
-    --md-bg-through: var(--bg-through);
-    --md-bg-screen: #f4f4f4cc;
     --md-bg-fb: #f0f2f5;
     --md-bg-fb-active: var(--bg-fb-active);
     --md-bg-hover: #00000024;
+    --md-bg-screen: #f4f4f4cc;
+    --md-bg-through: var(--bg-through);
+    --md-bg-primary-5: rgba(255, 255, 255, 0.5);
     --bg-icon: #e1e2e285;
     //
     --md-box-shadow: #2c2b2b69;
@@ -99,7 +100,7 @@ $shadows: 1, 2, 5, 6, 8, 9;
         --shadow-#{$shadow}: rgba(0, 0, 0, #{$shadow / 10});
     }
     --shadow-05: rgba(0, 0, 0, 0.05);
-    
+
     --shadow-inset: rgba(255, 255, 255, 0.5);
     --shadow-9-hover: #3a3434d9;
 
@@ -125,11 +126,12 @@ $shadows: 1, 2, 5, 6, 8, 9;
         --md-bg-primary: #3f3f3f;
         --md-bg-ccc: #4e4f50;
         --md-bg-blur: #ffffff1a;
-        --md-bg-through: #545252d6;
-        --md-bg-screen: #0b0b0bcc;
         --bg-app-form: #61ff8a80;
         --md-bg-fb: #18191a;
         --md-bg-fb-active: #263951;
+        --md-bg-screen: #0b0b0bcc;
+        --md-bg-through: #545252d6;
+        --md-bg-primary-5: var(--shadow-5);
         --md-bg-hover: rgb(42, 42, 42);
         --md-box-shadow: #ffffff99;
         --md-border-blur: #77767641;

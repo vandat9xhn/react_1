@@ -28,13 +28,12 @@ PostSub2.propTypes = {};
 
 //
 function PostSub2({
-    is_poster,
     sub_2,
+    open_input_sub_2,
 
     has_straight_1,
     has_straight_2,
 
-    open_input_sub_2,
     focusInputSub2,
 }) {
     //
@@ -53,7 +52,7 @@ function PostSub2({
         handle_API_MoreContentHisSub_R,
     } = useContext(context_post);
 
-    const { user: c_user, openScreenFloor } = useContext(context_api);
+    const { openScreenFloor } = useContext(context_api);
 
     //
     const {
@@ -171,10 +170,9 @@ function PostSub2({
     //
     function handle_API_Action_L() {
         return handle_API_FbPostCmtAction_L({
-            is_commenter: user.id == c_user.id,
-            is_poster: is_poster,
             params: {
                 type: 'sub2',
+                id: id,
                 is_vid_pic: is_main_vid_pic,
             },
         });

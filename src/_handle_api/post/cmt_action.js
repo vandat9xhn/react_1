@@ -1,4 +1,4 @@
-import { getRandomBool } from '../../_default/_common/default_bool';
+import { getRandomFromArr } from '../../_default/_common/getRandomFromArr';
 
 //
 const cmt_action_obj = {
@@ -25,20 +25,16 @@ const cmt_action_obj = {
 };
 
 //
-export function handle_API_FbPostCmtAction_L({
-    is_commenter = false,
-    is_poster = false,
-    params = {},
-}) {
+export function handle_API_FbPostCmtAction_L({ params = {} }) {
     return new Promise((res) => {
         setTimeout(() => {
-            if (is_commenter || getRandomBool()) {
-                res([[cmt_action_obj.edit, cmt_action_obj.delete]]);
-            } else if (is_poster || getRandomBool()) {
-                res([[cmt_action_obj.delete, cmt_action_obj.hide]]);
-            } else {
-                res([[cmt_action_obj.hide, cmt_action_obj.report]]);
-            }
+            res(
+                getRandomFromArr([
+                    [[cmt_action_obj.edit, cmt_action_obj.delete]],
+                    [[cmt_action_obj.delete, cmt_action_obj.hide]],
+                    [[cmt_action_obj.hide, cmt_action_obj.report]],
+                ])
+            );
         }, 250);
     });
 }

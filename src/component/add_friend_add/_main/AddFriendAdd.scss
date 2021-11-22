@@ -1,8 +1,16 @@
-.AddFriendAdd_mutual{
-    height:28px;
+.AddFriendAdd_mutual {
+    height: 28px;
 }
 
 .AddFriendAdd_btn {
     margin: 6px 10px;
     height: 36px;
+}
+
+// -----
+
+.device-mobile {
+    .AddFriendAdd_mutual {
+        font-size: 13px;
+    }
 }

@@ -60,11 +60,7 @@ function Post({
     // enabled_cmt,
 }) {
     //
-    const {
-        user: c_user,
-        openScreenFloor,
-        closeScreenFloor,
-    } = useContext(context_api);
+    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
 
     //
     const {
@@ -76,6 +72,7 @@ function Post({
         user,
         to_user,
         group_obj,
+        page_obj,
 
         vid_pics,
         vid_pic_count,
@@ -100,8 +97,6 @@ function Post({
         permission_post,
         updated_time,
     } = post;
-
-    const is_poster = c_user.id == user.id;
 
     //
     const ref_comments = useRef(null);
@@ -330,7 +325,7 @@ function Post({
     return (
         <VirtualScroll rootMargin_y={1000}>
             <div className="Post bg-primary box-shadow-1 brs-8px">
-                <div className="Post_head padding-10px">
+                <div className="Post_head">
                     <PostHead
                         post_id={id}
                         post_where={post_where}
@@ -340,7 +335,7 @@ function Post({
                         user={user}
                         to_user={to_user}
                         group_obj={group_obj}
-                        is_poster={is_poster}
+                        page_obj={page_obj}
                         //
                         emoji_obj={emoji_obj}
                         user_tag_arr={user_tag_arr}
@@ -423,7 +418,6 @@ function Post({
 
                 <div ref={ref_comments} className="Post_comment">
                     <CommentsWs
-                        is_poster={is_poster}
                         parent_id={id}
                         comments={comments}
                         count_comment={count_comment}

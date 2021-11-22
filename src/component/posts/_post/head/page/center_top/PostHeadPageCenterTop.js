@@ -21,7 +21,7 @@ function PostHeadPageCenterTop({ page_obj, emoji_obj }) {
                             className="color-inherit hv-cl-blue"
                             to={`/page/${page_obj.id}`}
                         >
-                            {page_obj.first_name} {page_obj.last_name}
+                            {page_obj.name}
                         </Link>
                     }
                 />

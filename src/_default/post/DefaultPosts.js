@@ -95,13 +95,52 @@ export const default_post_obj = (
         post_where: getRandomFromArr(['user', 'group', 'page']),
     }
 ) => {
+    // --- WHERE
     const { post_where } = params;
 
-    const data_user = { ...getRandomUser() };
+    const data_user = {};
 
     if (post_where == 'page') {
-        data_user['user'].first_name = 'Page Name';
-        data_user['user'].last_name = '';
+        const page_type_arr = [
+            {
+                name: 'sponsored',
+                title_at_head: '',
+                title_at_time: 'Sponsored',
+                link_title_at_time: '/privacy/sponsored',
+            },
+            {
+                name: 'suggested',
+                title_at_head: 'Suggested for you',
+                title_at_time: '',
+                link_title_at_time: '',
+            },
+            {
+                name: 'like',
+                title_at_head: '',
+                title_at_time: '',
+                link_title_at_time: '',
+            },
+            {
+                name: 'followed',
+                title_at_head: '',
+                title_at_time: '',
+                link_title_at_time: '',
+            },
+        ];
+        const page_type_obj = getRandomFromArr(page_type_arr);
+
+        data_user['page_obj'] = {
+            id: getRandomId(),
+            name: 'Page Name',
+            picture: getRandomVidPic(),
+
+            type: page_type_obj.name,
+            title_at_head: page_type_obj.title_at_head,
+            title_at_time: page_type_obj.title_at_time,
+            link_title_at_time: page_type_obj.link_title_at_time,
+        };
+    } else {
+        data_user['user'] = getRandomUser().user;
     }
 
     if (post_where == 'group') {
@@ -181,7 +220,11 @@ export const default_post_obj = (
         count_history: 10,
 
         profile_model: 1,
-        permission_post: data_user['to_user'] ? 2 : 0,
+        permission_post: data_user['to_user']
+            ? 2
+            : post_where == 'user'
+            ? getRandomNumber(0, 4)
+            : 0,
         created_time: '2021-04-01T07:48:48.176630Z',
         updated_time: '2021-04-01T15:18:30.339347Z',
     };

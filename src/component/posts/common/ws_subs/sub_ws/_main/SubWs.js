@@ -7,7 +7,7 @@ import { context_post } from '../../../../../../_context/post/ContextPost';
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
 //
 import { getTypeVidOrPic } from '../../../../../../_some_function/VideoOrImage';
-// 
+//
 import { handleFbPostCmtAction } from '../../../../../../_some_function/post/handleFbPostCmtAction';
 //
 import { handle_API_FbPostCmtAction_L } from '../../../../../../_handle_api/post/cmt_action';
@@ -31,7 +31,7 @@ import './SubWs.scss';
 SubWs.propTypes = {};
 
 //
-function SubWs({ is_poster, sub, has_straight_1, focusInputSub }) {
+function SubWs({ sub, has_straight_1, focusInputSub }) {
     //
     const {
         ws_send,
@@ -193,10 +193,9 @@ function SubWs({ is_poster, sub, has_straight_1, focusInputSub }) {
     //
     function handle_API_Action_L() {
         return handle_API_FbPostCmtAction_L({
-            is_commenter: user.id == c_user.id,
-            is_poster: is_poster,
             params: {
                 type: 'sub',
+                id: id,
                 is_vid_pic: is_main_vid_pic,
             },
         });
@@ -315,7 +314,6 @@ function SubWs({ is_poster, sub, has_straight_1, focusInputSub }) {
             <div ref={ref_subs2_ws} className="Comment_subs2">
                 {!IS_MOBILE ? (
                     <PostSubs2
-                        is_poster={is_poster}
                         sub_id={id}
                         subs_2={subs_2}
                         count_sub_2={count_sub_2}

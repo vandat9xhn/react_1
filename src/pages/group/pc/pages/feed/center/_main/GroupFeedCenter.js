@@ -6,6 +6,7 @@ import { handle_API_PostGroup_L } from '../../../../../../../_handle_api/fb_grou
 import { useObserverShowMore } from '../../../../../../../_hooks/useObserverShowMore';
 //
 import Posts from '../../../../../../../component/posts/_posts/_main/Posts';
+import GroupFeedCenterSuggested from '../suggested/_main/GroupFeedCenterSuggested';
 
 //
 GroupFeedCenter.propTypes = {};
@@ -21,6 +22,7 @@ function GroupFeedCenter(props) {
         setDataState,
 
         is_max,
+        data_count,
 
         getData_API,
         observerShowMore,
@@ -60,6 +62,13 @@ function GroupFeedCenter(props) {
                     has_fetched={has_fetched}
                     is_fetching={is_fetching}
                     open_input_id_arr={[]}
+                    //
+                    interleaved_elm_arr={[
+                        {
+                            elm: <GroupFeedCenterSuggested />,
+                            interleaved_ix: 4,
+                        },
+                    ]}
                 />
             </div>
 

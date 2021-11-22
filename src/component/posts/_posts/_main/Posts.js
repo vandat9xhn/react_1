@@ -46,6 +46,20 @@ import Post from '../../_post/_main_post/Post';
 import PostSkeleton from '../../_post/skeleton/PostSkeleton';
 //
 import './Posts.scss';
+import ListInterLeavedElms from '../../../list_interleaved_elms/_main/ListInterLeavedElms';
+
+//
+function PostItem({ item, ix, open_input_id_arr }) {
+    return (
+        <div className="Posts_item">
+            <Post
+                post={item}
+                post_ix={ix}
+                is_open_input={open_input_id_arr.includes(item.id)}
+            />
+        </div>
+    );
+}
 
 //
 Posts.propTypes = {
@@ -53,6 +67,8 @@ Posts.propTypes = {
     has_fetched: PropTypes.bool,
     is_fetching: PropTypes.bool,
     open_input_id_arr: PropTypes.arrayOf(PropTypes.number),
+
+    interleaved_elm_arr: ListInterLeavedElms.propTypes.interleaved_elm_arr,
 };
 
 Posts.defaultProps = {
@@ -62,7 +78,14 @@ Posts.defaultProps = {
 };
 
 //
-function Posts({ posts, has_fetched, is_fetching, open_input_id_arr }) {
+function Posts({
+    posts,
+    has_fetched,
+    is_fetching,
+    open_input_id_arr,
+
+    interleaved_elm_arr,
+}) {
     //
     const { openScreenFloor, closeScreenFloor } = useContext(context_api);
 
@@ -151,8 +174,17 @@ function Posts({ posts, has_fetched, is_fetching, open_input_id_arr }) {
                     component={<PostSkeleton />}
                     num={1}
                 />
+                {has_fetched && (
+                    <ListInterLeavedElms
+                        data_arr={posts}
+                        ItemComponent={PostItem}
+                        item_props={{ open_input_id_arr: open_input_id_arr }}
+                        interleaved_elm_arr={interleaved_elm_arr}
+                        elm_class="Posts_item"
+                    />
+                )}
 
-                {has_fetched &&
+                {/* {has_fetched &&
                     posts.map((post, index) => (
                         <div key={post.id} className="Posts_item">
                             <Post
@@ -163,7 +195,7 @@ function Posts({ posts, has_fetched, is_fetching, open_input_id_arr }) {
                                 )}
                             />
                         </div>
-                    ))}
+                    ))} */}
 
                 <div className="width-fit-content margin-auto">
                     <FetchingDiv is_fetching={is_fetching && has_fetched} />

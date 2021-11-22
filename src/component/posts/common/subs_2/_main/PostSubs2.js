@@ -20,9 +20,9 @@ PostSubs2.propTypes = {};
 //
 function PostSubs2({
     sub_id,
-    is_poster,
     subs_2,
     count_sub_2,
+    
     has_straight_1,
 
     open_input_sub_2,
@@ -112,13 +112,12 @@ function PostSubs2({
                     <div className="PostSubs2_item" key={sub_2.id}>
                         <PostSub2
                             sub_2={sub_2}
-                            is_poster={is_poster}
+                            open_input_sub_2={open_input_sub_2}
                             //
                             has_straight_1={has_straight_1}
                             // Flex col-reverse => the first does not have straight-1
                             has_straight_2={sub_2_ix > 0 || open_input_sub_2}
                             //
-                            open_input_sub_2={open_input_sub_2}
                             focusInputSub2={focusInputSub2}
                         />
                     </div>

@@ -20,7 +20,6 @@ SubsWs.propTypes = {};
 //
 function SubsWs({
     cmt_id,
-    is_poster,
     subs,
     count_sub,
     //
@@ -104,11 +103,10 @@ function SubsWs({
                 {subs.map((sub, sub_ix) => (
                     <div className="SubsWs_item" key={sub.id}>
                         <SubWs
-                            is_poster={is_poster}
                             sub={sub}
                             // Flex col-reverse => the first does not have straight-1
                             has_straight_1={open_input_sub || sub_ix > 0}
-                            // 
+                            //
                             focusInputSub={focusInputSub}
                         />
                     </div>

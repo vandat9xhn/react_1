@@ -9,6 +9,9 @@ import { handleScrollSmooth } from '../_some_function/handleScrollSmooth';
 export function useScrollToX({
     ref_scroll_elm = { current: initial_div_elm },
     getItemElm = () => initial_div_elm,
+
+    custom_scroll_x = false,
+    getCustomScrollX = (is_next = true) => 0,
 }) {
     //
     const [state_obj, setStateObj] = useState({
@@ -71,10 +74,13 @@ export function useScrollToX({
 
     //
     function handleNextPrev(is_next) {
-        const scroll_to_x = getScrollToX({
-            scroll_elm: ref_scroll_elm.current,
-            item_elm: getItemElm(),
-        });
+        const scroll_to_x = custom_scroll_x
+            ? getCustomScrollX(is_next)
+            : getScrollToX({
+                  scroll_elm: ref_scroll_elm.current,
+                  item_elm: getItemElm(),
+              });
+
         const { scrollLeft } = ref_scroll_elm.current;
         const new_scroll_left = scrollLeft + (is_next ? 1 : -1) * scroll_to_x;
 

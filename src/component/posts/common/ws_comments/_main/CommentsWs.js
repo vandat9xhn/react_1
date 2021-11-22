@@ -29,7 +29,6 @@ CommentsWs.defaultProps = {
 
 //
 function CommentsWs({
-    is_poster,
     parent_id,
     comments,
     count_comment,
@@ -138,11 +137,7 @@ function CommentsWs({
 
             <div className="Comments_list display-flex col-reverse">
                 {comments.map((comment) => (
-                    <CommentWs
-                        key={comment.id}
-                        is_poster={is_poster}
-                        comment={comment}
-                    />
+                    <CommentWs key={comment.id} comment={comment} />
                 ))}
             </div>
 

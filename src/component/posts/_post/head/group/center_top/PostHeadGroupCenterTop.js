@@ -17,6 +17,7 @@ function PostHeadGroupCenterTop({
     user_tag_rest_count,
 
     openTagUser,
+    joinGroup,
 }) {
     //
     return (
@@ -46,6 +47,18 @@ function PostHeadGroupCenterTop({
                 user_tag_rest_count={user_tag_rest_count}
                 openTagUser={openTagUser}
             />
+
+            {group_obj.type == 'suggested_public' ? (
+                <React.Fragment>
+                    {' · '}
+                    <span
+                        className="font-500 text-blue cursor-pointer"
+                        onClick={joinGroup}
+                    >
+                        Join
+                    </span>
+                </React.Fragment>
+            ) : null}
         </React.Fragment>
     );
 }

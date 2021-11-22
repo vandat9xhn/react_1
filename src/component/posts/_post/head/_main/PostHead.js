@@ -19,6 +19,7 @@ function PostHead({
     user,
     to_user,
     group_obj,
+    page_obj,
 
     emoji_obj,
     user_tag_arr,
@@ -48,7 +49,7 @@ function PostHead({
             ) : post_where == 'page' ? (
                 <PostHeadPage
                     post_id={post_id}
-                    page_obj={user}
+                    page_obj={page_obj}
                     permission={permission}
                     emoji_obj={emoji_obj}
                     updated_time={updated_time}

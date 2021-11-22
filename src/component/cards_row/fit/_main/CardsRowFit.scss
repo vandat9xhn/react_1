@@ -1,0 +1,11 @@
+// ------
+
+.device-mobile {
+    .CardsRowFit_contain {
+        scroll-snap-type: x mandatory;
+    }
+
+    .CardsRowFit_item {
+        scroll-snap-align: start;
+    }
+}

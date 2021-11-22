@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import PostHeadLayout from '../../_components/_layout/PostHeadLayout';
 import PostHeadAction from '../../_components/action/_main/PostHeadAction';
-// 
+//
 import PostHeadPageLeft from '../left/PostHeadPageLeft';
 import PostHeadPageCenterTop from '../center_top/PostHeadPageCenterTop';
 import PostHeadPageCenterBottom from '../center_bottom/PostHeadPageCenterBottom';
@@ -26,6 +26,12 @@ function PostHeadPage({
     //
     return (
         <div className="PostHeadPage">
+            {page_obj.title_at_head ? (
+                <div className="margin-x-10px padding-y-10px border-bottom-blur text-secondary">
+                    {page_obj.title_at_head}
+                </div>
+            ) : null}
+
             <PostHeadLayout
                 left_elm={<PostHeadPageLeft page_obj={page_obj} />}
                 center_top_elm={
@@ -37,6 +43,7 @@ function PostHeadPage({
                 center_bottom_elm={
                     <PostHeadPageCenterBottom
                         post_id={post_id}
+                        page_obj={page_obj}
                         permission={permission}
                         updated_time={updated_time}
                     />

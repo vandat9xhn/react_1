@@ -31,6 +31,12 @@ function PostHeadGroup({
     //
     return (
         <div className="PostHeadGroup">
+            {group_obj.title_at_head ? (
+                <div className="margin-x-10px padding-y-10px border-bottom-blur text-secondary">
+                    {group_obj.title_at_head}
+                </div>
+            ) : null}
+
             <PostHeadLayout
                 left_elm={
                     <PostHeadGroupLeft group_obj={group_obj} user={user} />
