@@ -3,31 +3,7 @@
 }
 
 .HeaderMobile_item {
-    flex-grow: 1;
     position: relative;
+    flex-grow: 1;
     height: 100%;
-
-    .HeaderBtnIcon_contain {
-        width: 24px;
-        height: 24px;
-        background-color: transparent;
-    }
-
-    //
-
-    .HeaderMenu_icon {
-        padding: 0;
-
-        &:hover {
-            background-color: transparent;
-        }
-    }
-
-    .HeaderMenu_border_bottom {
-        height: 0;
-    }
-
-    .Header_notice {
-        height: calc(var(--height-header));
-    }
 }

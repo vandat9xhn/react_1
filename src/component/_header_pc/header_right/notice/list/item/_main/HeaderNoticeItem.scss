@@ -1,20 +1,20 @@
-.ItemNotice_action {
-    right: 16px;
+.HeaderNoticeItem_action {
+    right: 25px;
 }
 
 // ----
 
 .device-mobile {
-    .ItemNotice_contain {
+    .HeaderNoticeItem_contain {
         padding-right: 25px;
     }
 
-    .ItemNotice_pic{
+    .HeaderNoticeItem_pic{
         width: 40px;
         height: 40px;
     }
 
-    .ItemNotice_action {
+    .HeaderNoticeItem_action {
         transform: rotate(90deg);
         top: 0;
         right: 0;

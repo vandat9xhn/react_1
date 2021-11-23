@@ -41,12 +41,12 @@ import {
 //
 import ComponentSkeleton from '../../../skeleton/component_skeleton/ComponentSkeleton';
 import FetchingDiv from '../../../some_div/fetching/FetchingDiv';
+import ListInterLeavedElms from '../../../list_interleaved_elms/_main/ListInterLeavedElms';
 //
 import Post from '../../_post/_main_post/Post';
 import PostSkeleton from '../../_post/skeleton/PostSkeleton';
 //
 import './Posts.scss';
-import ListInterLeavedElms from '../../../list_interleaved_elms/_main/ListInterLeavedElms';
 
 //
 function PostItem({ item, ix, open_input_id_arr }) {

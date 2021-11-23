@@ -6,7 +6,8 @@ import { getRandomUser } from '../_common/default_user';
 import { getRandomBool } from '../_common/default_bool';
 import { default_define_user } from '../login/DefaultLogin';
 
-//
+//------
+
 const default_message_obj = () => ({
     id: getRandomId(),
     name: getRandomName() + ' ' + getRandomName(),
@@ -16,7 +17,8 @@ const default_message_obj = () => ({
 export const default_message_arr = () =>
     getDefaultArr(default_message_obj, 10, 10);
 
-//
+// -------
+
 const default_room_obj = () => {
     const is_user = getRandomBool();
 
@@ -39,16 +41,22 @@ const default_room_obj = () => {
     };
 };
 
-export const default_room_arr = () => getDefaultArr(default_room_obj, 5, 8);
+export const default_room_arr = () => getDefaultArr(default_room_obj, 12, 15);
 
-//
-const default_notice_obj = () => ({
+// -------
+
+const default_notice_obj = (type = '') => ({
     id: getRandomId(),
     link_id: getRandomId(),
     ...getRandomUser(),
     content: getRandomContent(),
-    status_seen: getRandomNumber(0, 2),
+    status_seen: type == 'new' ? 'received' : 'read',
     updated_time: new Date(),
 });
 
-export const default_notice_arr = () => getDefaultArr(default_notice_obj, 5, 8);
+export const default_notice_arr = (type = '') =>
+    getDefaultArr(
+        () => default_notice_obj(type),
+        type == 'new' ? 0 : 12,
+        type == 'new' ? 4 : 12
+    );

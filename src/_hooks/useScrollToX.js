@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 //
 import { initial_div_elm } from '../_initial/htm_elm/html_elm';
 //
@@ -20,6 +20,9 @@ export function useScrollToX({
     });
 
     const { is_has_next, is_has_prev } = state_obj;
+
+    //
+    const ref_item_elm = useRef(null);
 
     // ----------
 
@@ -74,11 +77,15 @@ export function useScrollToX({
 
     //
     function handleNextPrev(is_next) {
+        if (!ref_item_elm.current) {
+            ref_item_elm.current = getItemElm();
+        }
+
         const scroll_to_x = custom_scroll_x
             ? getCustomScrollX(is_next)
             : getScrollToX({
                   scroll_elm: ref_scroll_elm.current,
-                  item_elm: getItemElm(),
+                  item_elm: ref_item_elm.current,
               });
 
         const { scrollLeft } = ref_scroll_elm.current;

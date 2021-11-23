@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 //
 import { useMouseDragScrollToX } from '../../../../../_hooks/useMouseDragScrollToX';
 //
+import VirtualScroll from '../../../../../component/virtual_scroll/VirtualScroll';
 import NextPrevDiv from '../../../../../component/some_div/next_prev_div/NextPrevDiv';
+// 
 import FashionFaceItem from '../../face_item/_main/FashionFaceItem';
 import FashionSeeMoreLastRow from '../../see_more/last_row/FashionSeeMoreLastRow';
 //
@@ -79,30 +81,32 @@ function RowProductPc({
                                 is_mouse_down ? 'pointer-events-none' : ''
                             }`}
                         >
-                            <FashionFaceItem
-                                id={item.id}
-                                img={item.img}
-                                is_like={item.is_like}
-                                is_plus={item.is_plus}
-                                is_mall={item.is_mall}
-                                flash_img={item.flash_img}
-                                discount={item.discount}
-                                name={item.name}
-                                rate_avg={item.rate_avg}
-                                sold={item.sold}
-                                //
-                                shop_deals={item.shop_deals}
-                                shop_discount={item.shop_discount}
-                                address={item.address}
-                                //
-                                old_price={item.old_price}
-                                new_price={item.new_price}
-                                old_price_max={item.old_price_max}
-                                new_price_max={item.new_price_max}
-                                //
-                                use_same={false}
-                                {...item_props}
-                            />
+                            <VirtualScroll ref_root={ref_scroll_elm}>
+                                <FashionFaceItem
+                                    id={item.id}
+                                    img={item.img}
+                                    is_like={item.is_like}
+                                    is_plus={item.is_plus}
+                                    is_mall={item.is_mall}
+                                    flash_img={item.flash_img}
+                                    discount={item.discount}
+                                    name={item.name}
+                                    rate_avg={item.rate_avg}
+                                    sold={item.sold}
+                                    //
+                                    shop_deals={item.shop_deals}
+                                    shop_discount={item.shop_discount}
+                                    address={item.address}
+                                    //
+                                    old_price={item.old_price}
+                                    new_price={item.new_price}
+                                    old_price_max={item.old_price_max}
+                                    new_price_max={item.new_price_max}
+                                    //
+                                    use_same={false}
+                                    {...item_props}
+                                />
+                            </VirtualScroll>
                         </li>
                     ))}
 

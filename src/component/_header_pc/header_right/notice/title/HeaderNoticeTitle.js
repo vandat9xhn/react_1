@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useBool } from '../../../../../../_hooks/useBool';
+import { useBool } from '../../../../../_hooks/useBool';
 //
-import Actions from '../../../../../actions/_main/Actions';
+import Actions from '../../../../actions/_main/Actions';
 //
 import './HeaderNoticeTitle.scss';
 
@@ -11,7 +11,7 @@ import './HeaderNoticeTitle.scss';
 HeaderNoticeTitle.propTypes = {};
 
 //
-function HeaderNoticeTitle(props) {
+function HeaderNoticeTitle({ handleAction }) {
     //
     const { is_true, setIsTrue, toggleBool } = useBool();
 
@@ -39,21 +39,22 @@ function HeaderNoticeTitle(props) {
                     is_show={is_true}
                     x_always={'right'}
                     //
-                    handleClose={handleClose}
                     toggleShow={toggleBool}
+                    handleClose={handleClose}
                 >
                     <div
                         className="HeaderNoticeTitle_action_contain padding-y-8px text-333"
                         onClick={clickActionContain}
                     >
                         {[
-                            { title: 'Mark all as read' },
-                            { title: 'Notification settings' },
-                            { title: 'Open notification' },
+                            { name: 'read_all', title: 'Mark all as read' },
+                            { name: '', title: 'Notification settings' },
+                            { name: '', title: 'Open notification' },
                         ].map((item, ix) => (
                             <div
                                 key={ix}
                                 className="margin-x-8px padding-8px brs-5px line-20px font-500 cursor-pointer hv-bg-hv"
+                                onClick={() => handleAction(item.name)}
                             >
                                 {item.title}
                             </div>

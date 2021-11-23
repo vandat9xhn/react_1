@@ -372,7 +372,7 @@ function Post({
                     </div>
                 ) : null}
 
-                {vid_pic_count ? (
+                {vid_pic_count && vid_pics.length ? (
                     <div className="Post_pic">
                         <VidPicsPost
                             post_ix={post_ix}

@@ -21,6 +21,7 @@ ListInterLeavedElms.propTypes = {
 
 ListInterLeavedElms.defaultProps = {
     item_props: {},
+    interleaved_elm_arr: [],
     getItemKey: (item, ix) => item.id || ix,
 };
 

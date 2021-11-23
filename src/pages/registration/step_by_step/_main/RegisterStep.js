@@ -195,7 +195,7 @@ function RegisterStep() {
                     {(form_props) => (
                         <Form
                             autoComplete="off"
-                            className="RegistrationStep_form App_Form brs-5px-md padding-8px"
+                            className="RegistrationStep_form App_Form brs-8px-pc padding-8px"
                             onClick={closeMoreError}
                         >
                             <div>

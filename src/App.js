@@ -51,6 +51,7 @@ import WaitingBall from './component/waiting/waiting_ball/WaitingBall';
 //
 import Header from './component/_header_pc/_main/Header';
 import HeaderMobile from './component/_header_mobile/_main/HeaderMobile';
+import PLHead from './pages/phone_laptop/components/head/_main/PLHead';
 import Footer from './component/_footer/_main/Footer';
 //
 import AppScreen from './component/_screen/_main/AppScreen';
@@ -161,6 +162,8 @@ class App extends Component {
                         <div className="App">
                             <header className="AppHeader">
                                 {IS_MOBILE ? <HeaderMobile /> : <Header />}
+
+                                <PLHead />
                             </header>
 
                             <div className="App_contain">

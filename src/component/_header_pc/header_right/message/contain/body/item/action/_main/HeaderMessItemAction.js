@@ -13,16 +13,17 @@ import ActionsMultiListContain from '../../../../../../../../actions_multi_list/
 import './HeaderMessItemAction.scss';
 
 //
+const title_action = (
+    <div className="HeaderMessItemAction_btn display-flex-center brs-50 border-blur bg-primary cursor-pointer hv-bg-blur btn-active">
+        <IconThreeDot size_icon="18px" color="var(--md-color-third)" />
+    </div>
+);
+
+//
 HeaderMessItemAction.propTypes = {};
 
 //
-function HeaderMessItemAction({
-    room_id,
-    ref_scroll_elm,
-    ref_mess_item,
-
-    handleAction,
-}) {
+function HeaderMessItemAction({ room_id, ref_scroll_elm, handleAction }) {
     //
     const {
         list_action_arr,
@@ -38,15 +39,6 @@ function HeaderMessItemAction({
             handle_API_FbHeaderMessAction_L({ room_id: room_id }),
         handleAction: handleAction,
     });
-
-    // -------
-
-    //
-    const title_action = (
-        <div className="HeaderMessItemAction_btn display-flex-center brs-50 border-blur bg-primary cursor-pointer hv-bg-blur btn-active">
-            <IconThreeDot size_icon="18px" color="var(--md-color-third)" />
-        </div>
-    );
 
     //
     return (

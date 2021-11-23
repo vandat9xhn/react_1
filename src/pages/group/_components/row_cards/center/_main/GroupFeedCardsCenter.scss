@@ -69,3 +69,15 @@ $side-percent: 12.5%;
 .GroupFeedCardsCenter_side-right-none {
     width: 0;
 }
+
+// ------
+
+.device-mobile {
+    .GroupFeedCardsCenter_contain {
+        scroll-snap-type: x mandatory;
+    }
+
+    .GroupFeedCardsCenter_item {
+        scroll-snap-align: center;
+    }
+}

@@ -48,21 +48,20 @@ export const API_FbHeaderMessAction_L = (params = {}) =>
         })
     );
 
-
-
 // ---------- NOTICE
 
 //
 export const API_Notice_L = (params = {}) =>
     API_FakeReal(
-        default_notice_arr(),
+        default_notice_arr(params['type']),
         () =>
             axiosDjangoClient({
                 url: 'api/notice/notice-l',
                 method: 'GET',
                 params: params,
             }),
-        params
+        params,
+        params['type'] == 'new'
     );
 
 export const API_FbNoticeAction_L = (params = {}) =>

@@ -1,0 +1,12 @@
+.FbHeaderChatMb_contain {
+    min-height: calc(100vh - var(--height-header));
+
+    .HeaderMessContain_title {
+        position: sticky;
+        top: var(--height-header);
+        z-index: 1;
+
+        background: var(--md-bg-primary);
+        border-bottom: 1px solid var(--md-bg-blur);
+    }
+}

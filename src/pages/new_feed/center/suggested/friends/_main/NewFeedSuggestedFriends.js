@@ -7,6 +7,7 @@ import CardsRowFit from '../../../../../../component/cards_row/fit/_main/CardsRo
 import AddFriendSuggest from '../../../../../../component/add_friend_add/suggest/AddFriendSuggest';
 //
 import './NewFeedSuggestedFriends.scss';
+import { Link } from 'react-router-dom';
 
 //
 function FriendItem({ item, ix, addFriend, removeFriend }) {
@@ -53,7 +54,11 @@ function NewFeedSuggestedFriends({ params_api, handleFetched }) {
 
     //
     return (
-        <div className="NewFeedSuggestedFriends w-500px margin-auto">
+        <div className="NewFeedSuggestedFriends w-500px margin-auto padding-y-12px brs-8px-pc bg-primary box-shadow-1">
+            <h2 className="margin-bottom-12px padding-x-12px font-17px font-600">
+                Friends you may know
+            </h2>
+
             <CardsRowFit
                 ItemComponent={FriendItem}
                 item_props={{
@@ -64,6 +69,13 @@ function NewFeedSuggestedFriends({ params_api, handleFetched }) {
                 handle_API_L={handle_API_L}
                 handleFetched={handleFetched}
             />
+
+            <Link
+                className="display-block margin-top-12px text-align-center font-500 hv-underline"
+                to="/friends/suggestions"
+            >
+                See All
+            </Link>
         </div>
     );
 }

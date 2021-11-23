@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../../_context/ContextAPI';
@@ -18,6 +19,9 @@ PLHead.propTypes = {};
 //
 function PLHead(props) {
     //
+    useParams();
+
+    //
     const { openScreenFloor, closeScreenFloor } = useContext(context_api);
 
     //
@@ -29,6 +33,11 @@ function PLHead(props) {
             openScreenFloor: openScreenFloor,
             elm: <PLChooseAddressScreen closeScreen={closeScreenFloor} />,
         });
+    }
+
+    //
+    if (location.pathname.search('/phone') < 0) {
+        return null;
     }
 
     //

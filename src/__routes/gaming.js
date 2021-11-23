@@ -11,6 +11,6 @@ export const fb_gaming_route_arr = [
         path: '/gaming',
         component: Gaming,
         exact: true,
-        auth: true,
+        auth: false,
     },
 ];

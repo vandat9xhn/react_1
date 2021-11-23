@@ -13,16 +13,17 @@ import ActionsMultiListContain from '../../../../../../../actions_multi_list/con
 import './HeaderNoticeItemAction.scss';
 
 //
+const title_action = (
+    <div className="HeaderNoticeItemAction_btn display-flex-center brs-50 border-blur bg-primary cursor-pointer hv-bg-blur">
+        <IconThreeDot size_icon="18px" color="var(--md-color-third)" />
+    </div>
+);
+
+//
 HeaderNoticeItemAction.propTypes = {};
 
 //
-function HeaderNoticeItemAction({
-    notice_id,
-    ref_scroll_elm,
-    ref_notice_item,
-
-    handleAction,
-}) {
+function HeaderNoticeItemAction({ notice_id, ref_scroll_elm, handleAction }) {
     //
     const {
         list_action_arr,
@@ -40,13 +41,6 @@ function HeaderNoticeItemAction({
     });
 
     // --------
-
-    //
-    const title_action = (
-        <div className="HeaderNoticeItemAction_btn display-flex-center brs-50 border-blur bg-primary cursor-pointer hv-bg-blur">
-            <IconThreeDot size_icon="18px" color="var(--md-color-third)" />
-        </div>
-    );
 
     //
     return (

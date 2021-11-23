@@ -11,6 +11,6 @@ export const fb_watch_route_arr = [
         path: '/watch',
         component: Watch,
         exact: true,
-        auth: true,
+        auth: false,
     },
 ];

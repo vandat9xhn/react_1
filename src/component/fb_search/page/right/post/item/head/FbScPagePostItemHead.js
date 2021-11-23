@@ -6,8 +6,9 @@ import { handle_API_FbSearchPostAction_L } from '../../../../../../../_handle_ap
 //
 import ActionsMultiList from '../../../../../../actions_multi_list/_main/ActionsMultiList';
 import ActionPreviewProfile from '../../../../../../action_preview_profile/_main/ActionPreviewProfile';
-// 
+//
 import './FbScPagePostItemHead.scss';
+import PostHead from '../../../../../../posts/_post/head/_main/PostHead';
 
 //
 FbScPagePostItemHead.propTypes = {};
@@ -22,6 +23,26 @@ function FbScPagePostItemHead({ user, post_id, handleAction }) {
     //
     return (
         <div className="FbScPagePostItemHead">
+            <PostHead
+                post_id={id}
+                post_where={post_where}
+                permission={permission_post}
+                updated_time={updated_time}
+                //
+                user={user}
+                to_user={to_user}
+                group_obj={group_obj}
+                page_obj={page_obj}
+                //
+                emoji_obj={emoji_obj}
+                user_tag_arr={user_tag_arr}
+                user_tag_rest_count={user_tag_count - user_tag_arr.length}
+                //
+
+                openTagUser={openTagUser}
+                handleAction={handleAction}
+            />
+
             <div className="flex-between-center">
                 <ActionPreviewProfile
                     user_id={user.id}

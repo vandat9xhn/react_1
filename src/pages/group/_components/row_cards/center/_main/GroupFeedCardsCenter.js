@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+//
 import { handle_API_FbGroupSuggested_L } from '../../../../../../_handle_api/fb_group/suggested';
 //
 import { useDataShowMore } from '../../../../../../_hooks/useDataShowMore';
@@ -59,9 +61,11 @@ function GroupFeedCardsCenter({ params_api, BtnElm, handleFetched }) {
         handleFetched && handleFetched();
         hasNextPrev();
 
-        ref_first_item.current = ref_scroll_elm.current.getElementsByClassName(
-            'GroupFeedCardsCenter_item'
-        )[0];
+        ref_first_item.current = !ref_scroll_elm.current
+            ? null
+            : ref_scroll_elm.current.getElementsByClassName(
+                  'GroupFeedCardsCenter_item'
+              )[0];
         changeItemSideWidth();
     }
 
@@ -70,7 +74,7 @@ function GroupFeedCardsCenter({ params_api, BtnElm, handleFetched }) {
         <div className="GroupFeedCardsCenter pos-rel">
             <div
                 ref={ref_scroll_elm}
-                className="wh-100 overflow-x-auto scroll-height-0"
+                className="GroupFeedCardsCenter_contain wh-100 overflow-x-auto scroll-height-0"
             >
                 <ul className="display-flex list-none">
                     {data_arr.map((item, ix) => (
@@ -99,30 +103,46 @@ function GroupFeedCardsCenter({ params_api, BtnElm, handleFetched }) {
                 </ul>
             </div>
 
-            <div
-                className={`GroupFeedCardsCenter_side left-0 ${
-                    !is_has_next ? 'GroupFeedCardsCenter_side-left-only' : ''
-                } ${!is_has_prev ? 'GroupFeedCardsCenter_side-left-none' : ''}`}
-                onClick={handlePrev}
-            ></div>
+            {IS_MOBILE ? null : (
+                <React.Fragment>
+                    <div
+                        className={`GroupFeedCardsCenter_side left-0 ${
+                            !is_has_next
+                                ? 'GroupFeedCardsCenter_side-left-only'
+                                : ''
+                        } ${
+                            !is_has_prev
+                                ? 'GroupFeedCardsCenter_side-left-none'
+                                : ''
+                        }`}
+                        onClick={handlePrev}
+                    ></div>
 
-            <div
-                className={`GroupFeedCardsCenter_side right-0 ${
-                    !is_has_prev ? 'GroupFeedCardsCenter_side-right-only' : ''
-                } ${!is_has_next ? 'GroupFeedCardsCenter_side-right-none' : ''}`}
-                onClick={handleNext}
-            ></div>
+                    <div
+                        className={`GroupFeedCardsCenter_side right-0 ${
+                            !is_has_prev
+                                ? 'GroupFeedCardsCenter_side-right-only'
+                                : ''
+                        } ${
+                            !is_has_next
+                                ? 'GroupFeedCardsCenter_side-right-none'
+                                : ''
+                        }`}
+                        onClick={handleNext}
+                    ></div>
 
-            <div className="text-secondary">
-                <NextPrevDiv
-                    is_btn_circle={true}
-                    is_has_next={is_has_next}
-                    is_has_prev={is_has_prev}
-                    // size_icon
-                    handleNext={handleNext}
-                    handlePrev={handlePrev}
-                />
-            </div>
+                    <div className="text-secondary">
+                        <NextPrevDiv
+                            is_btn_circle={true}
+                            is_has_next={is_has_next}
+                            is_has_prev={is_has_prev}
+                            // size_icon
+                            handleNext={handleNext}
+                            handlePrev={handlePrev}
+                        />
+                    </div>
+                </React.Fragment>
+            )}
         </div>
     );
 }

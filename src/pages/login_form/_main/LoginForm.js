@@ -11,7 +11,7 @@ import makeFormData from '../../../_some_function/makeFormData';
 //
 import IconsAction from '../../../_icons_svg/icons_action/IconsAction';
 import IconFav from '../../../_icons_svg/_icon_fav/IconFav';
-// 
+//
 import IconDiv from '../../../component/some_div/icon_div/IconDiv';
 import ButtonRipple from '../../../component/button/button_ripple/ButtonRipple';
 import InputNotValid from '../../../component/input/input_not_valid/InputNotValid';
@@ -116,7 +116,7 @@ function LoginForm() {
 
                     <div className="LoginForm_col-right display-flex justify-content-center">
                         <form
-                            className="LoginForm_form App_Form padding-8px brs-5px-md bg-react"
+                            className="LoginForm_form App_Form padding-8px brs-8px-pc bg-react"
                             autoComplete="off"
                             onSubmit={handleLogin}
                         >

@@ -19,7 +19,7 @@ ComponentSkeleton.defaultProps = {
 //
 function ComponentSkeleton({ component, has_fetched, num, skeleton_class }) {
     //
-    return !has_fetched ? (
+    return has_fetched ? null : (
         <div
             className={`ComponentSkeleton pointer-events-none ${skeleton_class}`}
         >
@@ -34,7 +34,7 @@ function ComponentSkeleton({ component, has_fetched, num, skeleton_class }) {
                     </div>
                 ))}
         </div>
-    ) : null;
+    );
 }
 
 export default ComponentSkeleton;
