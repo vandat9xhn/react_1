@@ -50,7 +50,9 @@ export function useFbSearchInput({
     return {
         is_open,
         show_contain,
+        
         value,
+        setValue,
 
         handleFocus,
         handleChange,

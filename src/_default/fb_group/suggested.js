@@ -1,6 +1,6 @@
 import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
-import { getRandomUser } from '../_common/default_user';
+import { getRandomGroup, getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 
@@ -13,9 +13,7 @@ const default_fb_group_suggested_obj = () => {
     );
 
     return {
-        id: getRandomId(),
-        name: 'Group name',
-        picture: getRandomVidPic(),
+        ...getRandomGroup().group_obj,
 
         privacy: getRandomFromArr(['Public', 'Private']),
         count_member: getRandomNumber(1, 20) * 1000,

@@ -7,7 +7,11 @@ import {
 } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
-import { getRandomUser } from '../_common/default_user';
+import {
+    getRandomGroup,
+    getRandomPage,
+    getRandomUser,
+} from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 import { default_post_emoji_arr } from './cu_emoji';
@@ -130,9 +134,7 @@ export const default_post_obj = (
         const page_type_obj = getRandomFromArr(page_type_arr);
 
         data_user['page_obj'] = {
-            id: getRandomId(),
-            name: 'Page Name',
-            picture: getRandomVidPic(),
+            ...getRandomPage().page_obj,
 
             type: page_type_obj.name,
             title_at_head: page_type_obj.title_at_head,
@@ -145,9 +147,7 @@ export const default_post_obj = (
 
     if (post_where == 'group') {
         data_user['group_obj'] = {
-            id: getRandomId(),
-            name: 'Group Name',
-            picture: getRandomVidPic(),
+            ...getRandomGroup().group_obj,
             privacy: getRandomFromArr(['Public', 'Private']),
         };
     }

@@ -8,6 +8,7 @@ import FavWithLetter from '../../../fav_with_letter/FavWithLetter';
 import FbSearchInputElm from '../../../fb_search/input/elm/FbSearchInputElm';
 //
 import './HeaderLeft.scss';
+import { ParseLocationSearch } from '../../../../_some_function/ParseLocationSearch';
 
 //
 HeaderLeft.propTypes = {};
@@ -18,7 +19,9 @@ function HeaderLeft(props) {
     const {
         is_open,
         show_contain,
+
         value,
+        setValue,
 
         handleFocus,
         handleChange,
@@ -33,6 +36,13 @@ function HeaderLeft(props) {
     //
     useEffect(() => {
         handleClose();
+
+        if (location.pathname.startsWith('/fb-search')) {
+            const new_value = ParseLocationSearch()['q'];
+            setValue(new_value);
+        } else {
+            setValue('')
+        }
     }, [location.href]);
 
     //

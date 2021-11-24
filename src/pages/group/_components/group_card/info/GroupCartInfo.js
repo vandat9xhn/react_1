@@ -11,7 +11,9 @@ function GroupCartInfo({ name, count_member, post_count, post_unit }) {
     //
     return (
         <div className="GroupCartInfo padding-x-16px padding-top-16px">
-            <div className="font-600 font-17px">{name}</div>
+            <div className="text-nowrap font-600 font-17px">
+                {name}
+            </div>
 
             <div className="text-secondary">
                 {UnitNumber(count_member)} members · {UnitNumber(post_count)}{' '}

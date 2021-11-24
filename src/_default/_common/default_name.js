@@ -40,3 +40,40 @@ const default_nick_name_arr = [
 
 //
 export const getRandomNickName = () => getRandomFromArr(default_nick_name_arr);
+
+//
+const default_group_name_arr = [
+    'Hoc excel',
+    'Ae Lien minh huyen thoai HN',
+    'Cong dong ke toan',
+    'Group lap ra de tim game',
+    'Cong dong front-end',
+    'Python  Viet Nam',
+    'Cung ho tieng anh',
+    'Tieng nhat cho nguoi moi',
+    'Naruto Viet Nam',
+    'One punch man Viet Nam',
+];
+
+//
+export const getRandomGroupName = () =>
+    getRandomFromArr(default_group_name_arr);
+
+//
+const default_page_name_arr = [
+    'TopDev',
+    'VTV 24',
+    'The gioi di dong',
+    'Cuoc song quanh ta',
+    'Bao 24h',
+    'Viblo',
+    'The thao 247',
+    'Grab',
+    // '',
+    // '',
+    // '',
+];
+
+//
+export const getRandomPageName = () =>
+    getRandomFromArr(default_page_name_arr);

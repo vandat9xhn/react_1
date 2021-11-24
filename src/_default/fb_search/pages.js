@@ -1,7 +1,7 @@
 import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
-import { getRandomUser } from '../_common/default_user';
+import { getRandomPage, getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 
@@ -11,9 +11,7 @@ const default_fb_search_page_obj = () => {
     const friend_arr = getDefaultArr(() => getRandomUser().user, 0, 1);
 
     return {
-        id: getRandomId(),
-        name: 'Page name',
-        picture: getRandomVidPic(),
+        ...getRandomPage().page_obj,
 
         description: getRandomContent().slice(0, 100),
         count_like: getRandomNumber(1, 20) * 1000,
