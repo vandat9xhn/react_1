@@ -19,10 +19,6 @@ export function useScrollToXCenter({ count_item_center = 1 }) {
     const { is_has_next, is_has_prev, handleNext, handlePrev, hasNextPrev } =
         useScrollToX({
             ref_scroll_elm: ref_scroll_elm,
-            // getItemElm: () =>
-            //     ref_scroll_elm.current.getElementsByClassName(
-            //         'GroupFeedCardsCenter_item'
-            //     )[0],
             custom_scroll_x: true,
             getCustomScrollX: getCustomScrollX,
         });

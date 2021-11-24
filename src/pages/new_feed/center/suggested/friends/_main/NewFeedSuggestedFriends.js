@@ -54,7 +54,7 @@ function NewFeedSuggestedFriends({ params_api, handleFetched }) {
 
     //
     return (
-        <div className="NewFeedSuggestedFriends w-500px margin-auto padding-y-12px brs-8px-pc bg-primary box-shadow-1">
+        <div className="NewFeedSuggestedFriends w-500px margin-auto padding-y-12px brs-8px-pc bg-primary box-shadow-1 font-14px">
             <h2 className="margin-bottom-12px padding-x-12px font-17px font-600">
                 Friends you may know
             </h2>

@@ -19,7 +19,10 @@ function GroupFeedSuggested({ handleReady }) {
     //
     function handleFetched() {
         setHasFetched(true);
-        handleReady();
+        
+        setTimeout(() => {
+            handleReady();
+        }, 0);
     }
 
     //

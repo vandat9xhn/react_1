@@ -1,20 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { handle_API_FbGroupSuggested_L } from '../../../../../_handle_api/fb_group/suggested';
+import { handle_API_FbGroupSuggested_L } from '../../../../../../_handle_api/fb_group/suggested';
 //
-import CardsRowFit from '../../../../../component/cards_row/fit/_main/CardsRowFit';
-import GroupItemCards from '../_components/item/GroupItemCards';
+import CardsRowCenter from '../../../../../../component/cards_row/center/_main/CardsRowCenter';
+import GroupItemCards from '../../_components/item/GroupItemCards';
 //
-import './GroupRowCardsFit.scss';
+import './GroupRowCardsCenter.scss';
 
 //
-GroupRowCardsFit.propTypes = {};
+GroupRowCardsCenter.propTypes = {};
 
 //
-function GroupRowCardsFit({ params_api, BtnElm, handleFetched }) {
+function GroupRowCardsCenter({
+    params_api,
+    has_blur_side,
+    BtnElm,
+    
+    handleFetched,
+}) {
     //
-    function handle_API_L(c_count) {
+    function handle_API_L(c_count = 0) {
         return handle_API_FbGroupSuggested_L({
             c_count: c_count,
             params: {
@@ -24,8 +30,6 @@ function GroupRowCardsFit({ params_api, BtnElm, handleFetched }) {
         });
     }
 
-    // ------
-
     //
     function removeGroupCard(params) {
         console.log(params);
@@ -33,13 +37,14 @@ function GroupRowCardsFit({ params_api, BtnElm, handleFetched }) {
 
     //
     return (
-        <div className="GroupRowCardsFit">
-            <CardsRowFit
+        <div className="GroupRowCardsCenter pos-rel">
+            <CardsRowCenter
                 ItemComponent={GroupItemCards}
                 item_props={{
                     BtnElm: BtnElm,
                     removeGroupCard: removeGroupCard,
                 }}
+                has_blur_side={has_blur_side}
                 //
                 handle_API_L={handle_API_L}
                 handleFetched={handleFetched}
@@ -48,4 +53,4 @@ function GroupRowCardsFit({ params_api, BtnElm, handleFetched }) {
     );
 }
 
-export default GroupRowCardsFit;
+export default GroupRowCardsCenter;

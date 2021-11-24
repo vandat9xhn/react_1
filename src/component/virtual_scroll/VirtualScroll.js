@@ -19,7 +19,7 @@ function VirtualScroll({ children, ref_root, rootMargin_y, extra_height }) {
     //
     const [state_obj, setStateObj] = useState({
         display: 'block',
-        height: 'auto',
+        height: '',
     });
 
     const { display, height } = state_obj;
@@ -50,17 +50,19 @@ function VirtualScroll({ children, ref_root, rootMargin_y, extra_height }) {
     //
     return (
         <div
+            className="VirtualScroll"
             ref={ref_virtual_elm}
             style={{
-                height:
-                    height == 'auto'
-                        ? 'auto'
-                        : `calc(${height} + ${extra_height})`,
+                height: !height
+                    ? undefined
+                    : `calc(${height} + ${extra_height})`,
             }}
         >
             <div
+                className={`VirtualScroll_contain ${
+                    display == 'block' ? '' : 'display-none'
+                }`}
                 ref={ref_contain_elm}
-                className={`${display == 'block' ? '' : 'display-none'}`}
             >
                 {children}
             </div>

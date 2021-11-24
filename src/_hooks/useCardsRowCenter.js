@@ -1,26 +1,25 @@
-import { useEffect, useRef } from 'react';
-// 
+import { useEffect } from 'react';
+//
 import { initial_div_elm } from '../_initial/htm_elm/html_elm';
 //
 import { useDataShowMore } from './useDataShowMore';
-import { useScrollToX } from './useScrollToX';
+import { useScrollToXCenter } from './useScrollToXCenter';
 
 //
-export function useCardsRowFit({
+export function useCardsRowCenter({
+    count_item_center = 1,
+
     handle_API_L = () => new Promise(),
     getItemElm = () => initial_div_elm,
     handleFetched = () => {},
 }) {
     //
-    const ref_scroll_elm = useRef(null);
-
-    //
-    const data_scroll_x = useScrollToX({
-        ref_scroll_elm: ref_scroll_elm,
-        getItemElm: getItemElm,
+    const data_scroll_x = useScrollToXCenter({
+        count_item_center: count_item_center,
     });
 
-    const { hasNextPrev } = data_scroll_x;
+    const { ref_scroll_elm, ref_first_item, changeItemSideWidth, hasNextPrev } =
+        data_scroll_x;
 
     //
     const data_show_more = useDataShowMore({
@@ -39,14 +38,17 @@ export function useCardsRowFit({
     //
     async function getData_API_AtFirst() {
         await getData_API();
+
         handleFetched && handleFetched();
         hasNextPrev();
+
+        ref_first_item.current = !ref_scroll_elm.current ? null : getItemElm();
+        changeItemSideWidth();
     }
 
-    // ----
+    // ------
 
     return {
-        ref_scroll_elm,
         ...data_scroll_x,
         ...data_show_more,
     };

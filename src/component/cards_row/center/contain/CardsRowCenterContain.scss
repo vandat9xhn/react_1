@@ -3,9 +3,9 @@ $side-percent: 12.5%;
 
 // -----
 
-.GroupFeedCardsCenter {
+.CardsRowCenterContain {
     &:hover {
-        .GroupFeedCardsCenter_side {
+        .CardsRowCenterContain_side {
             opacity: 1;
         }
     }
@@ -38,13 +38,13 @@ $side-percent: 12.5%;
 }
 
 // ..
-.GroupFeedCardsCenter_item {
+.CardsRowCenterContain_item {
     width: #{100% - $side-percent * 2};
     padding: 0 5px;
 }
 
 // .
-.GroupFeedCardsCenter_side {
+.CardsRowCenterContain_side {
     position: absolute;
     top: 0;
     z-index: 2;
@@ -57,27 +57,27 @@ $side-percent: 12.5%;
     cursor: pointer;
     transition: opacity 150ms ease-in;
 }
-.GroupFeedCardsCenter_side-left-only {
+.CardsRowCenterContain_side-left-only {
     width: #{$side-percent * 2};
 }
-.GroupFeedCardsCenter_side-left-none {
+.CardsRowCenterContain_side-left-none {
     width: 0;
 }
-.GroupFeedCardsCenter_side-right-only {
+.CardsRowCenterContain_side-right-only {
     width: #{$side-percent * 2};
 }
-.GroupFeedCardsCenter_side-right-none {
+.CardsRowCenterContain_side-right-none {
     width: 0;
 }
 
 // ------
 
 .device-mobile {
-    .GroupFeedCardsCenter_contain {
+    .CardsRowCenterContain_contain {
         scroll-snap-type: x mandatory;
     }
 
-    .GroupFeedCardsCenter_item {
+    .CardsRowCenterContain_item {
         scroll-snap-align: center;
     }
 }

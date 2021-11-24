@@ -184,20 +184,7 @@ function Posts({
                     />
                 )}
 
-                {/* {has_fetched &&
-                    posts.map((post, index) => (
-                        <div key={post.id} className="Posts_item">
-                            <Post
-                                post={post}
-                                post_ix={index}
-                                is_open_input={open_input_id_arr.includes(
-                                    post.id
-                                )}
-                            />
-                        </div>
-                    ))} */}
-
-                <div className="width-fit-content margin-auto">
+                <div className="display-flex-center">
                     <FetchingDiv is_fetching={is_fetching && has_fetched} />
                 </div>
             </ContextPost>
