@@ -111,6 +111,10 @@
     top: 50%;
 }
 
+.top-header{
+    top: var(--height-header);
+}
+
 /* ------ CENTER ------- */
 
 .x-center {
@@ -198,6 +202,12 @@
 
 .rotate-180 {
     transform: rotate(180deg);
+}
+
+// 
+
+.rotate--45 {
+    transform: rotate(-45deg);
 }
 
 .rotate--90 {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
-import UnitTime from '../../../../../../../_some_function/UnitTime';
+import UnitTime from '../../../../../_some_function/UnitTime';
 
 //
 GroupNoticeItem.propTypes = {};
@@ -63,7 +63,7 @@ function GroupNoticeItem({ item }) {
                             <span className="margin-left-5px">
                                 {UnitTime(
                                     new Date() - new Date(created_time),
-                                    '1p'
+                                    '1min'
                                 )}{' '}
                                 ago
                             </span>

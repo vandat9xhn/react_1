@@ -5,7 +5,7 @@ import { handle_API_GroupNotice_L } from '../../../../../../../_handle_api/fb_gr
 //
 import { useObserverShowMore } from '../../../../../../../_hooks/useObserverShowMore';
 //
-import GroupNoticeList from '../../_components/list/GroupNoticeList';
+import GroupNoticeList from '../../../../_components/notice_list/GroupNoticeList';
 
 //
 GroupNoticeEarlier.propTypes = {};

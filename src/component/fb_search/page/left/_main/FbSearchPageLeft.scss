@@ -12,7 +12,7 @@
         }
 
         .FbSearchInputElm_list {
-            height: calc(100vh - 52px);
+            height: calc(100vh - 52px - var(--height-header));
             max-height: unset;
             border-radius: 0;
             z-index: 1;

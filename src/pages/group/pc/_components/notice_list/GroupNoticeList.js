@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import GroupNoticeItem from '../item/GroupNoticeItem';
+import GroupNoticeItem from '../notice_item/GroupNoticeItem';
 
 //
 GroupNoticeList.propTypes = {};

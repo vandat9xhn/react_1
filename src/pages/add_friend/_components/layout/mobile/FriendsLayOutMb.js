@@ -11,12 +11,12 @@ FriendsLayOutMb.propTypes = {};
 //
 function FriendsLayOutMb({ ComponentLeftHead, ComponentLeftContain }) {
     //
-    usePageNotHeader();
+    // usePageNotHeader();
 
     //
     return (
         <div className="FriendsLayOutMb bg-primary">
-            <div className="pos-sticky top-0 bg-primary z-index-1">
+            <div className="pos-sticky top-header bg-primary z-index-1">
                 {ComponentLeftHead}
             </div>
 

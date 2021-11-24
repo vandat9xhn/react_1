@@ -34,7 +34,7 @@ function FbSearchPageLayout({ right_elm, no_result, title }) {
     const ref_pos_start = useRef(0);
 
     //
-    IS_MOBILE && usePageNotHeader();
+    // IS_MOBILE && usePageNotHeader();
 
     const { client_x, handleStart, handleEnd } = useMouseMoveX({
         handleMouseDown: handleMouseDown,
@@ -119,7 +119,7 @@ function FbSearchPageLayout({ right_elm, no_result, title }) {
                 {search_value ? (
                     <div className="FbSearchPageLayout_right flex-grow-1 overflow-hidden">
                         {IS_MOBILE ? (
-                            <div className="FbSearchPageLayout_right_head pos-fixed left-0 top-0 z-index-lv1 w-100per flex-between-center padding-8px bg-primary box-shadow-1">
+                            <div className="FbSearchPageLayout_right_head pos-fixed left-0 top-header z-index-lv1 w-100per flex-between-center padding-8px bg-primary box-shadow-1">
                                 <div className="display-flex align-items-center">
                                     <div
                                         className="display-flex-center"

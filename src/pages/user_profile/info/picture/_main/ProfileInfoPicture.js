@@ -20,7 +20,7 @@ function ProfileInfoPicture({ picture, has_new_story, openPicture }) {
                     to="/posts/1"
                 >
                     <img
-                        className="ProfileInfoPicture_img w-100per brs-50 object-fit-cover"
+                        className="ProfileInfoPicture_img w-100per brs-50 bg-primary object-fit-cover"
                         src={picture}
                         // width="160"
                         height="160"

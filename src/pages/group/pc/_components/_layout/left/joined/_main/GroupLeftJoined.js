@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 //
-import { handle_API_FbSearchGroup_L } from '../../../../../../../../_handle_api/fb_search/groups';
+import { handle_API_GroupJoined_L } from '../../../../../../../../_handle_api/fb_group/joined';
 //
 import { useObserverShowMore } from '../../../../../../../../_hooks/useObserverShowMore';
+//
+import GroupLeftJoinedItem from '../item/GroupLeftJoinedItem';
 //
 import './GroupLeftJoined.scss';
 
@@ -20,9 +21,8 @@ function GroupLeftJoined({ ref_scroll }) {
     const { data_state, is_max, getData_API, observerShowMore } =
         useObserverShowMore({
             handle_API_L: (c_count) =>
-                handle_API_FbSearchGroup_L({
+                handle_API_GroupJoined_L({
                     c_count: c_count,
-                    params: { type: 'joined' },
                 }),
         });
 
@@ -48,35 +48,19 @@ function GroupLeftJoined({ ref_scroll }) {
 
             {data_state.data_arr.map((item, ix) => (
                 <div key={item.id}>
-                    <Link
-                        className="display-flex padding-8px brs-6px color-inherit hv-bg-fb"
-                        to={`/group/${item.id}`}
-                    >
-                        <img
-                            className="brs-8px border-blur object-fit-cover"
-                            src={item.picture}
-                            alt=""
-                            width="60"
-                            height="60"
-                        />
-
-                        <div className="margin-left-12px">
-                            <div className="wk-box-vertical line-clamp-2 overflow-hidden font-500">
-                                {item.name}
-                            </div>
-
-                            <div></div>
-                        </div>
-                    </Link>
+                    <GroupLeftJoinedItem item={item} />
                 </div>
             ))}
 
-            <div
-                ref={ref_fake_elm}
-                className={`GroupLeftJoined_fake ${
-                    is_max.current ? 'display-none' : ''
-                }`}
-            ></div>
+            {is_max.current ? null : (
+                <div className="GroupLeftJoined_fake"></div>
+            )}
+
+            <div ref={ref_fake_elm} className="padding-1px"></div>
+
+            {is_max.current ? null : (
+                <div className="GroupLeftJoined_fake"></div>
+            )}
         </div>
     );
 }

@@ -7,6 +7,7 @@ import { useObserverShowMore } from '../../../../../../../_hooks/useObserverShow
 //
 import Posts from '../../../../../../../component/posts/_posts/_main/Posts';
 import GroupFeedCenterSuggested from '../suggested/_main/GroupFeedCenterSuggested';
+import GroupFeedCenterNew from '../new/_main/GroupFeedCenterNew';
 
 //
 GroupFeedCenter.propTypes = {};
@@ -52,6 +53,10 @@ function GroupFeedCenter(props) {
     //
     return (
         <div className="GroupFeedCenter">
+            <div>
+                <GroupFeedCenterNew />
+            </div>
+
             <h2 className="padding-y-12px font-600 font-15px text-555">
                 More from groups
             </h2>
