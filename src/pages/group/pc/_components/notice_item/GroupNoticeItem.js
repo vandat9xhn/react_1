@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
 import UnitTime from '../../../../../_some_function/UnitTime';
+// 
+import './GroupNoticeItem.scss';
 
 //
 GroupNoticeItem.propTypes = {};

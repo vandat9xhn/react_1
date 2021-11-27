@@ -60,7 +60,7 @@ function GroupDiscoverMoreSuggestions({}) {
             ref={ref_main_elm}
             className="GroupDiscoverMoreSuggestions pos-rel"
         >
-            <h2 className="margin-bottom-16px padding-x-3px font-20px font-700">
+            <h2 className="GroupDiscoverMoreSuggestions_title margin-bottom-16px padding-x-3px font-20px font-700">
                 More suggestions
             </h2>
 

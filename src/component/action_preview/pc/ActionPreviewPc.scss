@@ -1,0 +1,23 @@
+.ActionPreviewPc_contain {
+    width: 400px;
+    padding: 16px;
+}
+
+.ActionPreviewPc_right {
+    svg {
+        flex-shrink: 0;
+
+        margin: 2px 10px 0 0;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.ActionPreviewPc_btn {
+    margin: 0 4px;
+}
+.ActionPreviewPc_btn_main {
+    button {
+        width: 100%;
+    }
+}

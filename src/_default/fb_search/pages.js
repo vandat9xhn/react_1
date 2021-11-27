@@ -1,3 +1,4 @@
+import { getRandomBool } from '../_common/default_bool';
 import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
@@ -16,6 +17,7 @@ const default_fb_search_page_obj = () => {
         description: getRandomContent().slice(0, 100),
         count_like: getRandomNumber(1, 20) * 1000,
         action_case: action_case,
+        has_tick: getRandomBool() * getRandomBool(),
 
         friend_arr: friend_arr,
         friend_count:

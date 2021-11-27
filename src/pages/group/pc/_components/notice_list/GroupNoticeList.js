@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import GroupNoticeItem from '../notice_item/GroupNoticeItem';
+// 
+import './GroupNoticeList.scss';
 
 //
 GroupNoticeList.propTypes = {};
@@ -15,12 +17,12 @@ function GroupNoticeList({ title, notice_arr }) {
 
     //
     return (
-        <div className="GroupNoticeList padding-y-20px brs-8px bg-primary box-shadow-1">
-            <h2 className="margin-bottom-5px padding-x-16px font-600 font-20px">
+        <div className="GroupNoticeList padding-y-20px brs-8px-pc bg-primary box-shadow-1">
+            <h2 className="GroupNoticeList_title margin-bottom-5px padding-x-16px font-600 font-20px">
                 {title}
             </h2>
 
-            <div className="padding-x-8px">
+            <div className="GroupNoticeList_contain padding-x-8px">
                 {notice_arr.map((item, ix) => (
                     <div key={item.id}>
                         <GroupNoticeItem item={item} />

@@ -1,0 +1,48 @@
+.GroupDiscoverMb {
+    // -----
+
+    .GroupDiscoverRow {
+        padding: 0;
+    }
+
+    .GroupDiscoverRow_head {
+        margin: 0;
+        padding: 8px;
+    }
+    // .
+    .GroupDiscoverRow_title {
+        font-size: 16px;
+    }
+    // .
+    .GroupDiscoverRow_info {
+        font-size: unset;
+    }
+
+    // ------
+
+    .GroupDiscoverRight_separate {
+        margin: 16px 8px;
+    }
+
+    // ------
+
+    .GroupDiscoverMoreSuggestions {
+        padding: 0;
+    }
+
+    .GroupDiscoverMoreSuggestions_title {
+        margin: 0;
+        padding: 8px;
+        font-size: 16px;
+    }
+}
+
+// -----
+
+@media (max-width: 480px) {
+    .GroupDiscoverMb {
+        .GroupDiscoverMoreSuggestions_item {
+            width: 100%;
+        }
+    }
+}

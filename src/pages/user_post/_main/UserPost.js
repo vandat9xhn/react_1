@@ -21,7 +21,7 @@ function UserPost(props) {
 
     //
     const [post_state, setPostState] = useState({
-        post_arr: initial_posts,
+        post_arr: initial_posts(),
         has_fetched: false,
         open_input_id_arr: [],
     });

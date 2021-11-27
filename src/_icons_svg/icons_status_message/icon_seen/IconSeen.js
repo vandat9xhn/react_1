@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// 
+//
 IconSeen.propTypes = {
+    class_icon: PropTypes.string,
     size_icon: PropTypes.string,
     stroke: PropTypes.string,
     x: PropTypes.number,
@@ -10,6 +11,7 @@ IconSeen.propTypes = {
 };
 
 IconSeen.defaultProps = {
+    class_icon: '',
     size_icon: '1rem',
     stroke: 'var(--white)',
     x: 0,
@@ -17,12 +19,11 @@ IconSeen.defaultProps = {
 };
 
 //
-function IconSeen(props) {
-    const { size_icon, x, y, stroke } = props;
-
+function IconSeen({ size_icon, x, y, stroke, class_icon }) {
+    //
     return (
         <svg
-            className="IconSeen"
+            className={`IconSeen ${class_icon}`}
             width={size_icon}
             height={size_icon}
             viewBox={`${x} ${y} 200 200`}
@@ -35,7 +36,6 @@ function IconSeen(props) {
                 strokeLinecap="round"
                 fill="none"
             />
-            
         </svg>
     );
 }

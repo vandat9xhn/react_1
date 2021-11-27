@@ -57,7 +57,7 @@ function GroupFeedCenter(props) {
                 <GroupFeedCenterNew />
             </div>
 
-            <h2 className="padding-y-12px font-600 font-15px text-555">
+            <h2 className="GroupFeedCenter_title padding-y-12px font-600 font-15px text-555">
                 More from groups
             </h2>
 

@@ -13,8 +13,8 @@ GroupFeedCenterSuggested.propTypes = {};
 function GroupFeedCenterSuggested(props) {
     //
     return (
-        <div className="GroupFeedCenterSuggested padding-y-16px brs-8px bg-primary box-shadow-1">
-            <h2 className="margin-bottom-10px padding-x-12px font-17px font-500 text-secondary">
+        <div className="GroupFeedCenterSuggested padding-y-16px brs-8px-pc bg-primary box-shadow-1">
+            <h2 className="margin-bottom-10px padding-x-12px font-17px font-600 text-secondary">
                 More group
             </h2>
 

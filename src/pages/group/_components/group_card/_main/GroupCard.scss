@@ -1,3 +1,23 @@
-.GroupCard_pic{
+.GroupCard_pic {
     padding-top: 55%;
+}
+
+// ----
+
+.device-mobile {
+    .GroupCard_bottom {
+        padding-top: 0;
+    }
+
+    .GroupCard_friends {
+        padding-left: 8px;
+        padding-right: 8px;
+
+        line-height: 16px;
+        font-size: 13px;
+    }
+
+    .GroupCard_join {
+        padding: 8px;
+    }
 }

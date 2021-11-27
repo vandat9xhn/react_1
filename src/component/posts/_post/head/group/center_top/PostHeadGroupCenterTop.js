@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
-import ActionPreviewProfile from '../../../../../action_preview_profile/_main/ActionPreviewProfile';
+import ActionPreviewGroup from '../../../../../action_preview_group/_main/ActionPreviewGroup';
 import PostHeadEmoji from '../../_components/emoji/PostHeadEmoji';
 import PostHeadTag from '../../_components/tag/PostHeadTag';
 
@@ -19,12 +19,13 @@ function PostHeadGroupCenterTop({
     openTagUser,
     joinGroup,
 }) {
+    
     //
     return (
         <React.Fragment>
             <span className="font-600">
-                <ActionPreviewProfile
-                    user_id={group_obj.id}
+                <ActionPreviewGroup
+                    group_id={group_obj.id}
                     title_action={
                         <Link
                             className="color-inherit hv-cl-blue"

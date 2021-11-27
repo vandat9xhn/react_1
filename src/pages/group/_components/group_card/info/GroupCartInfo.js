@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { UnitNumber } from '../../../../../_some_function/UnitNumber';
+// 
+import './GroupCartInfo.scss';
 
 //
 GroupCartInfo.propTypes = {};

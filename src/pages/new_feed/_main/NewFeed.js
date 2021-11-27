@@ -43,7 +43,7 @@ function NewFeed() {
         refreshData_API,
         observerShowMore,
     } = useObserverShowMore({
-        initial_data_arr: initial_posts,
+        initial_data_arr: initial_posts(),
         handle_API_L: (c_count) =>
             handle_API_NewFeedPost_L({
                 c_count: c_count,
@@ -71,7 +71,6 @@ function NewFeed() {
     /* ----------- CREATE ----------- */
 
     async function handleCreatePost(data) {
-        console.log(data);
         await handleScreenFetching(() => handle_API_Post_C(data));
 
         // const new_data = await handle_API_Post_C({
@@ -81,16 +80,20 @@ function NewFeed() {
         //     user: user.id,
         // });
 
-        const new_data = handleCreateNewPost({ data: data, user: user });
+        const new_post = handleCreateNewPost({ data: data, user: user });
 
-        setDataState((data_state) => ({
-            ...data_state,
-            data_arr: [new_data, , ...data_state.data_arr],
-        }));
+        setDataState((data_state) => {
+            const new_data_arr = [...data_state.data_arr];
+            new_data_arr.unshift(new_post);
+
+            return {
+                ...data_state,
+                data_arr: new_data_arr,
+            };
+        });
         closeScreenFloor();
     }
 
-    // console.log(post_arr);
     //
     return (
         <div className="NewFeed bg-fb">

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
 import ActionPreviewProfile from '../../../../../action_preview_profile/_main/ActionPreviewProfile';
+import ActionPreviewGroup from '../../../../../action_preview_group/_main/ActionPreviewGroup';
 
 //
 PostHeadGroupLeft.propTypes = {};
@@ -13,8 +14,8 @@ function PostHeadGroupLeft({ group_obj, user }) {
     return (
         <div className="PostHeadGroupLeft pos-rel wh-40px">
             <div className="pos-abs-0">
-                <ActionPreviewProfile
-                    user_id={group_obj.id}
+                <ActionPreviewGroup
+                    group_id={group_obj.id}
                     title_action={
                         <Link
                             className="flex-shrink-0"

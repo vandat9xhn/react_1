@@ -11,6 +11,13 @@ $side-percent: 12.5%;
     }
 
     // ----
+
+    .VirtualScroll,
+    .VirtualScroll_contain {
+        height: 100%;
+    }
+
+    // ----
     .NextPrevDiv_next {
         right: #{$side-percent / 2};
         transform: translate(50%, -50%);

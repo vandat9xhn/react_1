@@ -72,9 +72,9 @@ function GroupCard({
                 </div>
             </div>
 
-            <div className="padding-top-8px">
+            <div className="GroupCard_bottom padding-top-8px">
                 {friend_count ? (
-                    <div className="padding-x-16px">
+                    <div className="GroupCard_friends padding-x-16px">
                         <GroupCardFriends
                             friend_arr={friend_arr}
                             friend_count={friend_count}

@@ -73,7 +73,7 @@ function HeaderMobile(props) {
         },
         {
             Icon: <IconGroup />,
-            link_to: '/group/feed',
+            link_to: '/group',
             count_new: count_new_group,
         },
         {

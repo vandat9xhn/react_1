@@ -24,14 +24,14 @@ function GroupDiscoverRow({ title, info, link_all, params_api }) {
     //
     return (
         <div className="GroupDiscoverRow">
-            <div className="margin-bottom-16px">
+            <div className="GroupDiscoverRow_head margin-bottom-16px">
                 <div className="flex-between-center">
-                    <h2 className="font-20px font-700">{title}</h2>
+                    <h2 className="GroupDiscoverRow_title font-20px font-700">{title}</h2>
 
                     <Link to={link_all}>See all</Link>
                 </div>
 
-                <div className="text-secondary font-17px">{info}</div>
+                <div className="GroupDiscoverRow_info text-secondary font-17px">{info}</div>
             </div>
 
             <div className={`${has_fetched ? '' : 'display-none'}`}>

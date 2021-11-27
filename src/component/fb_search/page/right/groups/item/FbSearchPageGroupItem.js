@@ -5,7 +5,7 @@ import { UnitNumber } from '../../../../../../_some_function/UnitNumber';
 //
 import IconGroup from '../../../../../../_icons_svg/icon_group/IconGroup';
 //
-import FsSearchPageUserLayout from '../../../_components/user_layout/FsSearchPageUserLayout';
+import ActionPreviewGroup from '../../../../../action_preview_group/_main/ActionPreviewGroup';
 //
 import './FbSearchPageGroupItem.scss';
 
@@ -38,10 +38,17 @@ function FbSearchPageGroupItem({ group_obj }) {
     //
     return (
         <div className="FbSearchPageGroupItem">
-            <FsSearchPageUserLayout
+            <FsSearchPageUserPageGroup
                 id={id}
                 picture={picture}
                 name={name}
+                //
+                PicComponent={ActionPreviewGroup}
+                NameComponent={ActionPreviewGroup}
+                link_to={`/group/${id}`}
+                action_img_props={{ group_id: id }}
+                action_name_props={{ group_id: id }}
+                //
                 info_1={`${privacy} group · ${UnitNumber(count_member)} member${
                     count_member >= 2 ? 's' : ''
                 }`}

@@ -1,5 +1,5 @@
 import { API_Friend_LC } from '../../api/api_django/user/user_friend/UserFriend';
-import { API_Post_L } from '../../api/api_django/user/user_post/UserPost';
+import { API_ProfilePost_L } from '../../api/api_django/user/user_post/UserPost';
 
 import {
     API_UserAlbumVidPic_L,
@@ -21,12 +21,11 @@ import makeFormData from '../../_some_function/makeFormData';
 
 // posts
 export async function handle_API_ProfilePost_L(c_count = 0, user_id = -1) {
-    const res = await API_Post_L({
+    const res = await API_ProfilePost_L({
         ...params_profile_post_l,
         c_count: c_count,
         user_id: user_id,
     });
-    // console.log(c_count, user_id, res.data);
 
     return res.data;
 }
@@ -44,10 +43,10 @@ export async function handle_API_Friend_L({
         c_count: c_count,
         ...params,
     });
-    
+
     const { data, ...rest_data } = res.data;
     const new_data = data.map((item) => item.friend);
-    
+
     // console.log(params, 'c_count: ', c_count, 'user_id: ', user_id, res.data);
 
     return { ...rest_data, data: new_data };
@@ -153,7 +152,10 @@ export async function handle_API_UserPhone_U({
 }
 
 // address
-export async function handle_API_UserAddress_C({ address = '', permission = 0 }) {
+export async function handle_API_UserAddress_C({
+    address = '',
+    permission = 0,
+}) {
     const res = await API_UserAbout_C(
         'address',
         makeFormData({
@@ -165,7 +167,10 @@ export async function handle_API_UserAddress_C({ address = '', permission = 0 })
     return res.data;
 }
 
-export async function handle_API_UserAddress_U({ address = '', permission = 0 }) {
+export async function handle_API_UserAddress_U({
+    address = '',
+    permission = 0,
+}) {
     const res = await API_UserAbout_U(
         'address',
         makeFormData({
@@ -359,7 +364,11 @@ export async function handle_API_UserCity_C({ city = '', permission = 0 }) {
     return res.data;
 }
 
-export async function handle_API_UserCity_U({ id = 0, city = '', permission = 0 }) {
+export async function handle_API_UserCity_U({
+    id = 0,
+    city = '',
+    permission = 0,
+}) {
     const res = await API_UserAboutMulti_U(
         'city',
         id,

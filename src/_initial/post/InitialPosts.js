@@ -1,5 +1,5 @@
 //
-export const initial_posts = [
+export const initial_posts = () => [
     {
         id: 0,
         user: {

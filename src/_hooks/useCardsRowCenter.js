@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { IS_MOBILE } from '../_constant/Constant';
 //
 import { initial_div_elm } from '../_initial/htm_elm/html_elm';
 //
@@ -40,10 +41,14 @@ export function useCardsRowCenter({
         await getData_API();
 
         handleFetched && handleFetched();
-        hasNextPrev();
 
-        ref_first_item.current = !ref_scroll_elm.current ? null : getItemElm();
-        changeItemSideWidth();
+        if (!IS_MOBILE) {
+            hasNextPrev();
+            ref_first_item.current = !ref_scroll_elm.current
+                ? null
+                : getItemElm();
+            changeItemSideWidth();
+        }
     }
 
     // ------

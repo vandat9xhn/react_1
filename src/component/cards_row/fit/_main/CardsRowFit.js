@@ -37,7 +37,6 @@ function CardsRowFit({
 
     // -----
 
-    
     //
     function getItemElm() {
         return ref_scroll_elm.current.getElementsByTagName('li')[0];

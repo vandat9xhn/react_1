@@ -1,18 +1,16 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import GroupLayoutLeftHead from '../head/_main/GroupLayoutLeftHead';
 import GroupLayoutLeftNav from '../nav/GroupLayoutLeftNav';
 import GroupLeftJoined from '../joined/_main/GroupLeftJoined';
+import GroupLeftManage from '../manage/_main/GroupLeftManage';
 
 //
 GroupLayoutLeft.propTypes = {};
 
 //
-function GroupLayoutLeft(props) {
-    //
-    const ref_scroll = useRef(null);
-
+function GroupLayoutLeft({ ref_scroll }) {
     //
     return (
         <div className="GroupLayoutLeft display-flex flex-col h-100per">
@@ -26,6 +24,10 @@ function GroupLayoutLeft(props) {
             >
                 <div>
                     <GroupLayoutLeftNav />
+                </div>
+
+                <div>
+                    <GroupLeftManage ref_scroll={ref_scroll} />
                 </div>
 
                 <div>

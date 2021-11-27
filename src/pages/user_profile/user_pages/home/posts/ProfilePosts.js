@@ -47,7 +47,7 @@ function ProfilePosts({ name }) {
         refreshData_API,
         observerShowMore,
     } = useObserverShowMore({
-        initial_data_arr: initial_posts,
+        initial_data_arr: initial_posts(),
         handle_API_L: (c_count) => handle_API_ProfilePost_L(c_count, id),
     });
 

@@ -11,13 +11,13 @@ import BtnProfileActions from '../_common/BtnProfileActions';
 BtnProfileChat.propTypes = {};
 
 //
-function BtnProfileChat({ user_id, use_title }) {
+function BtnProfileChat({ page_id, use_title }) {
     //
     const { openRoomChat } = useContext(context_api);
 
     //
     function onChat() {
-        openRoomChat(user_id);
+        openRoomChat(page_id);
     }
 
     //

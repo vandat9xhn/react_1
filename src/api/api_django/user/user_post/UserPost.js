@@ -18,6 +18,7 @@ import {
     default_post_vid_pic_history_arr,
 } from '../../../../_default/post/DefaultVidPic';
 import { default_post_reacted_info_total_arr } from '../../../../_default/post/reacted';
+import { default_profile_post_arr } from '../../../../_default/user_post/posts';
 
 // ------
 
@@ -28,6 +29,18 @@ export const API_Post_L = (params) =>
         () =>
             axiosDjangoClient({
                 url: '/user/l-post/',
+                method: 'GET',
+                params: params,
+            }),
+        params
+    );
+
+export const API_ProfilePost_L = (params) =>
+    API_FakeReal(
+        default_profile_post_arr(),
+        () =>
+            axiosDjangoClient({
+                url: 'api/facebook/post-l/',
                 method: 'GET',
                 params: params,
             }),

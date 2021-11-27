@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
-// 
+import { IS_MOBILE } from '../_constant/Constant';
+//
 import { initial_div_elm } from '../_initial/htm_elm/html_elm';
 //
 import { useDataShowMore } from './useDataShowMore';
@@ -39,8 +40,12 @@ export function useCardsRowFit({
     //
     async function getData_API_AtFirst() {
         await getData_API();
+
         handleFetched && handleFetched();
-        hasNextPrev();
+        
+        if (!IS_MOBILE) {
+            hasNextPrev();
+        }
     }
 
     // ----

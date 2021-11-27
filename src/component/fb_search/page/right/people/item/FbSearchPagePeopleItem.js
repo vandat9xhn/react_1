@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 //
 import ActionsProfileCase from '../../../../../actions_profile/case/_main/ActionsProfileCase';
 //
-import FsSearchPageUserLayout from '../../../_components/user_layout/FsSearchPageUserLayout';
+import ActionPreviewProfile from '../../../../../action_preview_profile/_main/ActionPreviewProfile';
+import FsSearchPageUserPageGroup from '../../../_components/user_page_group/FsSearchPageUserPageGroup';
 //
 import './FbSearchPagePeopleItem.scss';
 
@@ -34,10 +35,17 @@ function FbSearchPagePeopleItem({ profile }) {
     //
     return (
         <div className="FbSearchPagePeopleItem">
-            <FsSearchPageUserLayout
+            <FsSearchPageUserPageGroup
                 id={id}
                 picture={picture}
                 name={`${first_name} ${last_name}`}
+                //
+                PicComponent={ActionPreviewProfile}
+                NameComponent={ActionPreviewProfile}
+                link_to={`/profile/${id}`}
+                action_img_props={{ user_id: id }}
+                action_name_props={{ user_id: id }}
+                //
                 info_1={info_1}
                 info_2={
                     <div>

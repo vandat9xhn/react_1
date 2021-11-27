@@ -1,6 +1,8 @@
 import React from 'react';
-import IconGaming from '../../../_icons_svg/gaming/IconGaming';
+// 
+import { IS_MOBILE } from '../../../_constant/Constant';
 //
+import IconGaming from '../../../_icons_svg/gaming/IconGaming';
 import IconsMenu from '../../../_icons_svg/icons_menu/IconsMenu';
 import IconsProfile from '../../../_icons_svg/icons_profile/IconsProfile';
 import IconCity from '../../../_icons_svg/icon_city/IconCity';
@@ -23,7 +25,7 @@ export const DATA_HEADER_MENU = [
     },
     {
         title: 'Group',
-        link_to: '/group/feed',
+        link_to: IS_MOBILE ? '/group' : '/group/feed',
         Icon: <IconGroup />,
     },
     {
