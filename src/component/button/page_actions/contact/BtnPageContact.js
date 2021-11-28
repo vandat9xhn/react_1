@@ -1,13 +1,29 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import BtnActions from '../../actions/BtnActions';
 
 //
-BtnPageContact.propTypes = {};
+BtnPageContact.propTypes = {
+    ...BtnActions.propTypes,
+};
+
+BtnPageContact.defaultProps = {
+    Icon: null,
+    title: 'Contact',
+    className: 'bg-ccc',
+};
 
 //
-function BtnPageContact({ use_title, handleAction }) {
+function BtnPageContact({
+    className,
+    Icon,
+    title,
+    use_title,
+    use_icon,
+
+    handleAction,
+}) {
     //
     function onContact() {
         handleAction('contact');
@@ -16,10 +32,11 @@ function BtnPageContact({ use_title, handleAction }) {
     //
     return (
         <BtnActions
-            className={'BtnPageContact bg-ccc'}
-            Icon={null}
+            className={`BtnPageContact ${className}`}
+            Icon={Icon}
+            title={title}
             use_title={use_title}
-            title="Contact"
+            use_icon={use_icon}
             handleClick={onContact}
         />
     );

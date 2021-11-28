@@ -1,13 +1,28 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import BtnActions from '../../actions/BtnActions';
 
-//
-BtnPageLearnMore.propTypes = {};
+BtnPageLearnMore.propTypes = {
+    ...BtnActions.propTypes,
+};
+
+BtnPageLearnMore.defaultProps = {
+    Icon: null,
+    title: 'Learn more',
+    className: 'bg-ccc',
+};
 
 //
-function BtnPageLearnMore({ use_title, handleAction }) {
+function BtnPageLearnMore({
+    className,
+    Icon,
+    title,
+    use_title,
+    use_icon,
+
+    handleAction,
+}) {
     //
     function onLearnMore() {
         handleAction('learn_more');
@@ -16,10 +31,11 @@ function BtnPageLearnMore({ use_title, handleAction }) {
     //
     return (
         <BtnActions
-            className={'BtnPageLearnMore bg-ccc'}
-            Icon={null}
+            className={`BtnPageLearnMore ${className}`}
+            Icon={Icon}
+            title={title}
             use_title={use_title}
-            title="Learn more"
+            use_icon={use_icon}
             handleClick={onLearnMore}
         />
     );

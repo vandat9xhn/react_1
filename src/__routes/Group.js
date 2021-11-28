@@ -1,4 +1,5 @@
 import React from 'react';
+//
 import { IS_MOBILE } from '../_constant/Constant';
 
 //
@@ -29,6 +30,10 @@ const GroupDiscover = React.lazy(() =>
 
 const GroupNotice = React.lazy(() =>
     import('../pages/group/pc/pages/notice/_main/GroupNotice')
+);
+
+const GroupPage = React.lazy(() =>
+    import('../pages/group_page/_main/GroupPage')
 );
 
 const WorkingOnIt = React.lazy(() =>
@@ -65,8 +70,8 @@ export const fb_group_route_arr = [
 
     {
         path: '/group/:id',
-        component: WorkingOnIt,
-        exact: true,
+        component: GroupPage,
+        exact: false,
         auth: true,
     },
     {

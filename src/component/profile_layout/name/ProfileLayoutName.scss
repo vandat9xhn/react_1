@@ -1,0 +1,22 @@
+.ProfileLayoutName_name {
+    line-height: 38px;
+    font-size: 32px;
+}
+
+.ProfileLayoutName_nick {
+    font-size: 28px;
+}
+
+// -------
+
+.device-mobile {
+    .ProfileLayoutName_name {
+        line-height: unset;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .ProfileLayoutName_nick {
+        font-size: inherit;
+    }
+}

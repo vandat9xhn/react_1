@@ -13,15 +13,15 @@ import IconPrivate from '../../../_icons_svg/icon_private/IconPrivate';
 //
 import ActionPreviewPc from '../../action_preview/pc/ActionPreviewPc';
 import ActionsPreviewInfo from '../../action_preview/info/ActionsPreviewInfo';
-import ActionsGroupCase from '../../actions_group/_case/ActionsGroupCase';
 import ActionsGroupOther from '../../actions_group/other/ActionsGroupOther';
+import BtnGroupCase from '../../button/group_actions/_case/BtnGroupCase';
 //
 import './ActionPreviewGroupPc.scss';
 
 //
 function ActionsCaseComponent({ item, group_id, handleAction }) {
     return (
-        <ActionsGroupCase
+        <BtnGroupCase
             action_name={item.action_name}
             group_id={group_id}
             handleAction={handleAction}

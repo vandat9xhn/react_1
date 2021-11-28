@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import BtnGroupJoin from '../../button/group_actions/join/BtnGroupJoin';
-import BtnGroupVisit from '../../button/group_actions/visit/BtnGroupVisit';
+import ActionsGroupJoined from '../joined/ActionsGroupJoined';
 
 //
 ActionsGroupCase.propTypes = {};
@@ -16,12 +16,24 @@ function ActionsGroupCase({
 }) {
     //
     if (action_name == 'join') {
-        return <BtnGroupJoin handleAction={handleAction} />;
+        return (
+            <BtnGroupJoin
+                // className={''}
+                // title={title}
+                // Icon={Icon}
+                handleAction={handleAction}
+            />
+        );
     }
 
     //
     if (action_name == 'joined') {
-        return <BtnGroupVisit group_id={group_id} />;
+        return (
+            <ActionsGroupJoined
+                group_id={group_id}
+                handleAction={handleAction}
+            />
+        );
     }
 
     //

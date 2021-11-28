@@ -6,10 +6,29 @@ import IconPlusSubtract from '../../../../_icons_svg/_icon_plus_subtract/IconPlu
 import BtnActions from '../../actions/BtnActions';
 
 //
-BtnPageFollow.propTypes = {};
+BtnPageFollow.propTypes = {
+    ...BtnActions.propTypes,
+};
+
+BtnPageFollow.defaultProps = {
+    Icon: <IconPlusSubtract stroke="currentColor" />,
+    title: 'Follow',
+    className: 'bg-ccc',
+    classNameActive: 'bg-fb-active text-blue',
+};
 
 //
-function BtnPageFollow({ use_title, has_followed, handleAction }) {
+function BtnPageFollow({
+    className,
+    classNameActive,
+    Icon,
+    title,
+
+    use_title,
+    use_icon,
+
+    has_followed,
+}) {
     //
     function onFollow() {
         handleAction('follow');
@@ -19,11 +38,12 @@ function BtnPageFollow({ use_title, has_followed, handleAction }) {
     return (
         <BtnActions
             className={`BtnPageFollow ${
-                has_followed ? 'bg-fb-active text-blue' : 'bg-ccc'
+                has_followed ? classNameActive : className
             }`}
-            Icon={<IconPlusSubtract stroke="currentColor" />}
+            Icon={Icon}
+            title={title}
             use_title={use_title}
-            title={'Follow'}
+            use_icon={use_icon}
             handleClick={onFollow}
         />
     );

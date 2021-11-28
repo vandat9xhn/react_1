@@ -5,11 +5,13 @@ import './IconsArrow.scss';
 
 //
 IconsArrow.propTypes = {
+    class_icon: PropTypes.string,
     x: PropTypes.number,
     y: PropTypes.number,
     size_icon: PropTypes.string,
 };
 IconsArrow.defaultProps = {
+    class_icon: '',
     x: 0,
     y: 0,
     size_icon: '1.5rem',
@@ -25,11 +27,11 @@ IconsArrow.defaultProps = {
  *   @6. close: (0, 400),
  *   @7. download (600, 0),
  */
-function IconsArrow({ size_icon, x, y }) {
+function IconsArrow({ class_icon, size_icon, x, y }) {
     //
     return (
         <svg
-            className="IconsArrow"
+            className={`IconsArrow ${class_icon}`}
             viewBox={`${x} ${y} 200 200`}
             width={size_icon}
             height={size_icon}

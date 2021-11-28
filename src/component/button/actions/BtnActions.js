@@ -7,7 +7,10 @@ import './BtnActions.scss';
 BtnActions.propTypes = {
     className: PropTypes.string,
     title: PropTypes.string,
+
     use_title: PropTypes.bool,
+    use_icon: PropTypes.bool,
+
     children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     handleClick: PropTypes.func,
 };
@@ -15,10 +18,20 @@ BtnActions.propTypes = {
 BtnActions.defaultProps = {
     className: '',
     use_title: true,
+    use_icon: true,
 };
 
 //
-function BtnActions({ className, Icon, use_title, title, handleClick }) {
+function BtnActions({
+    className,
+    Icon,
+    title,
+
+    use_title,
+    use_icon,
+
+    handleClick,
+}) {
     //
     return (
         <button
@@ -26,7 +39,7 @@ function BtnActions({ className, Icon, use_title, title, handleClick }) {
             type="button"
             onClick={handleClick}
         >
-            {Icon}
+            {use_icon ? Icon : null}
 
             {use_title ? (
                 <span

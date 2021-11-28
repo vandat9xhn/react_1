@@ -10,15 +10,15 @@ import IconTablePhone from '../../../_icons_svg/icon_table_phone/IconTablePhone'
 //
 import ActionPreviewPc from '../../action_preview/pc/ActionPreviewPc';
 import ActionsPreviewInfo from '../../action_preview/info/ActionsPreviewInfo';
-import ActionsPageCase from '../../actions_page/_case/ActionsPageCase';
 import ActionsPageOther from '../../actions_page/other/ActionsPageOther';
+import BtnPageCase from '../../button/page_actions/_case/BtnPageCase';
 //
 import './ActionPreviewPagePc.scss';
 
 //
 function ActionsCaseComponent({ item, page_id, handleAction }) {
     return (
-        <ActionsPageCase
+        <BtnPageCase
             action_name={item.action_name}
             page_id={page_id}
             has_liked={item.has_liked}
