@@ -16,7 +16,7 @@ GroupPageNavMore.propTypes = {};
 function GroupPageNavMore({ group_id, color, bg_btn, more_link_arr }) {
     //
     const is_active = more_link_arr.some(
-        (item) => item.link_to == location.pathname
+        (item) => item.link_to == location.pathname.split('/').slice(-1)[0]
     );
 
     //
@@ -37,20 +37,22 @@ function GroupPageNavMore({ group_id, color, bg_btn, more_link_arr }) {
         <div className="GroupPageNavMore pos-rel h-100per">
             <div
                 ref={ref_btn}
-                className="display-flex-center h-100per padding-x-12px brs-6px cursor-pointer hv-bg-fb"
+                className="display-flex-center pos-rel h-100per padding-x-12px padding-bottom-3px brs-6px cursor-pointer hv-bg-fb"
                 onClick={toggleBool}
+                style={{ color: is_active ? color : null }}
             >
-                <div
-                    className="margin-right-8px font-500"
-                    style={{ color: is_active ? color : null }}
-                >
-                    More
-                </div>
+                <div className="margin-right-8px font-500">More</div>
 
                 <IconCaret
                     size_icon="15px"
                     fill={is_active ? bg_btn : 'currentColor'}
                 />
+                
+                <div
+                    className={`pos-abs bottom-0 left-0 w-100per h-3px bg-current brs-20px ${
+                        is_active ? '' : 'display-none'
+                    }`}
+                ></div>
             </div>
 
             {is_true ? (

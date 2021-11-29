@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import GroupPageCover from '../cover/GroupPageCover';
+import GroupPageCover from '../cover/_main/GroupPageCover';
 import GroupPageName from '../name/GroupPageName';
 import GroupPageMembers from '../members/_main/GroupPageMembers';
 import GroupPageActions from '../actions/_main/GroupPageActions';
@@ -15,9 +15,11 @@ function GroupPageInfo({
     name,
     picture,
 
+    color_obj,
+    affiliation_obj,
+
     privacy,
     action_name,
-
     member_arr,
     count_member,
 
@@ -31,6 +33,8 @@ function GroupPageInfo({
             <div>
                 <GroupPageCover
                     picture={picture}
+                    affiliation_obj={affiliation_obj}
+                    bg_btn={color_obj.bg_btn}
                     openCoverPicture={openCoverPicture}
                 />
             </div>
@@ -55,6 +59,8 @@ function GroupPageInfo({
                         <GroupPageActions
                             action_name={action_name}
                             group_id={group_id}
+                            bg_btn={color_obj.bg_btn}
+                            //
                             handleAction={handleAction}
                             toggleRelatedGroup={toggleRelatedGroup}
                         />

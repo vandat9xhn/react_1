@@ -32,7 +32,9 @@ function GroupPage(props) {
         // id,
         name,
         picture,
+
         color_obj,
+        affiliation_obj,
 
         privacy,
         action_name,
@@ -79,6 +81,13 @@ function GroupPage(props) {
 
     // -----
 
+    const route_props =
+        location.pathname.search(/\/group\/\d+\/discuss/) == 0
+            ? { bg_btn: color_obj.bg_btn }
+            : {};
+
+    // -----
+
     if (!has_fetch) {
         return null;
     }
@@ -93,6 +102,9 @@ function GroupPage(props) {
                             group_id={id}
                             name={name}
                             picture={picture}
+                            //
+                            color_obj={color_obj}
+                            affiliation_obj={affiliation_obj}
                             //
                             privacy={privacy}
                             action_name={action_name}
@@ -114,17 +126,25 @@ function GroupPage(props) {
                     </div>
                 </div>
 
-                <div style={{ backgroundColor: color_obj.bg }}>
-                    <Switch>
-                        {GroupPageRoutes.map((item, ix) => (
-                            <Route
-                                key={ix}
-                                component={item.component}
-                                path={item.path}
-                            />
-                        ))}
-                    </Switch>
-                </div>
+                {id > 0 ? (
+                    <div style={{ backgroundColor: color_obj.bg }}>
+                        <Switch>
+                            {GroupPageRoutes.map((item, ix) => (
+                                <Route
+                                    key={ix}
+                                    // component={item.component}
+                                    path={item.path}
+                                    render={(props) => (
+                                        <item.component
+                                            {...props}
+                                            {...route_props}
+                                        />
+                                    )}
+                                />
+                            ))}
+                        </Switch>
+                    </div>
+                ) : null}
             </div>
         </Suspense>
     );

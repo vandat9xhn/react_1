@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
-// 
+//
 import { GetIdSlug } from '../../../../../../_some_function/GetIdSlug';
 //
 import { useStickyAuto } from '../../../../../../_hooks/useStickyAuto';
@@ -22,9 +22,6 @@ function ProfilePreview(props) {
     const id = GetIdSlug();
 
     //
-    const count_ready = useRef(0);
-
-    //
     const { calculateAgain, ref_main_elm, ref_preview_elm, ref_fake_elm } =
         !IS_MOBILE
             ? useStickyAuto({
@@ -38,11 +35,7 @@ function ProfilePreview(props) {
             return;
         }
 
-        // count_ready.current += 1;
-
-        // if (count_ready.current == 3) {
-            calculateAgain();
-        // }
+        calculateAgain();
     }
 
     //

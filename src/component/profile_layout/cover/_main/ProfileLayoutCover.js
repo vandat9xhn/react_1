@@ -9,7 +9,7 @@ import './ProfileLayoutCover.scss';
 ProfileLayoutCover.propTypes = {};
 
 //
-function ProfileLayoutCover({ cover, link_to, openCoverPicture }) {
+function ProfileLayoutCover({ cover, link_to, children, openCoverPicture }) {
     //
     return (
         <div className="ProfileLayoutCover pos-rel">
@@ -33,9 +33,9 @@ function ProfileLayoutCover({ cover, link_to, openCoverPicture }) {
                         onClick={openCoverPicture}
                     />
                 </HasLinkOrNot>
-            </div>
 
-            <div></div>
+                <div>{children}</div>
+            </div>
         </div>
     );
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import ActionsGroupCase from '../../../../../../component/actions_group/_case/ActionsGroupCase';
-import BtnGroupInvite from '../../../../../../component/button/group_actions/invite/BtnGroupInvite';
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
+// 
+import BtnGroupInvite from '../../../../../../component/button/group_actions/invite/BtnGroupInvite';
 import BtnActions from '../../../../../../component/button/actions/BtnActions';
+import ActionsGroupCase from '../../../../../../component/actions_group/_case/ActionsGroupCase';
 
 //
 GroupPageActions.propTypes = {};
@@ -13,6 +14,7 @@ GroupPageActions.propTypes = {};
 function GroupPageActions({
     action_name,
     group_id,
+    bg_btn,
 
     handleAction,
     toggleRelatedGroup,
@@ -30,7 +32,11 @@ function GroupPageActions({
                 </div>
 
                 <div className="margin-right-8px">
-                    <BtnGroupInvite handleAction={handleAction} />
+                    <BtnGroupInvite
+                        className="text-white"
+                        btn_props={{ style: { backgroundColor: bg_btn } }}
+                        handleAction={handleAction}
+                    />
                 </div>
 
                 <div>

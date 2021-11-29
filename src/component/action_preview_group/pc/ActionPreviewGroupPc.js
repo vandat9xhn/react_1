@@ -7,6 +7,8 @@ import { initial_group_preview } from '../../../_initial/group/preview';
 //
 import { handle_API_GroupPreview_R } from '../../../_handle_api/fb_group/preview';
 //
+import { useMounted } from '../../../_hooks/useMounted';
+// 
 import IconFriends from '../../../_icons_svg/icon_friends/IconFriends';
 import IconPublic from '../../../_icons_svg/icon_public/IconPublic';
 import IconPrivate from '../../../_icons_svg/icon_private/IconPrivate';
@@ -72,6 +74,9 @@ function ActionPreviewGroupPc({ group_id, title_action }) {
 
     const action_case_arr = [{ action_name: joined ? 'joined' : 'join' }];
 
+    //
+    const mounted = useMounted();
+
     // --------
 
     //
@@ -82,6 +87,10 @@ function ActionPreviewGroupPc({ group_id, title_action }) {
         });
 
         const data = await handle_API_GroupPreview_R({ group_id: group_id });
+
+        if (!mounted) {
+            return;
+        }
 
         setGroupState({
             ...group_state,

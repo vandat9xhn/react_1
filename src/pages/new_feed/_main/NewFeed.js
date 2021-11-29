@@ -32,7 +32,6 @@ function NewFeed() {
     const { user, closeScreenFloor } = useContext(context_api);
 
     //
-    const params_api = useRef({});
     const ref_fake_elm_end = useRef(null);
 
     //
@@ -47,7 +46,6 @@ function NewFeed() {
         handle_API_L: (c_count) =>
             handle_API_NewFeedPost_L({
                 c_count: c_count,
-                params: params_api.current,
             }),
     });
 
@@ -100,7 +98,7 @@ function NewFeed() {
             <div className="NewFeed_row display-flex space-between">
                 {IS_MOBILE ? null : (
                     <div className="NewFeed_col-left flex-shrink-0 w-360px margin-right-10px">
-                        <div className="pos-sticky-from-header padding-y-20px">
+                        <div className="pos-sticky-from-header">
                             <NewFeedLeft />
                         </div>
                     </div>

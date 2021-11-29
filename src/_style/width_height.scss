@@ -1,15 +1,14 @@
-
 // ---------- WIDTH
 
 .width-fit-content {
     width: fit-content;
 }
 
-.width-max-content{
+.width-max-content {
     width: max-content;
 }
 
-.width-auto{
+.width-auto {
     width: auto;
 }
 
@@ -33,32 +32,9 @@
     max-width: 100%;
 }
 
-// 
-
-.w-300px{
-    width: 300px;
-}
-
-.w-360px{
-    width: 360px;
-}
-
-.w-500px{
-    width: 500px;
-}
-
-.w-550px{
-    width: 550px;
-}
-
-.w-680px{
-    width: 680px;
-}
-
-
 // ---------- HEIGHT
 
-.height-auto{
+.height-auto {
     height: auto;
 }
 
@@ -82,20 +58,7 @@
     height: 100vh;
 }
 
-// 
-.h-36px{
-    height: 36px;
-}
-
-.h-48px{
-    height: 48px;
-}
-
-.h-250px{
-    height: 250px;
-}
-
-// 
+//
 
 .max-h-100per {
     max-height: 100%;
@@ -122,19 +85,21 @@
     height: 200vh;
 }
 
-// 
+// ----- PX
 
-.wh-16px{
-    width: 16px;
-    height: 16px;
-}
+//
+$wh-px-list: 2, 3, 4, 16, 36, 40, 48, 250, 300, 360, 500, 550, 680;
 
-.wh-36px{
-    width: 36px;
-    height: 36px;
-}
+@each $px in $wh-px-list {
+    .wh-#{$px}px {
+        width: #{$px}px;
+        height: #{$px}px;
+    }
 
-.wh-40px{
-    width: 40px;
-    height: 40px;
+    .w-#{$px}px {
+        width: #{$px}px;
+    }
+    .h-#{$px}px {
+        height: #{$px}px;
+    }
 }

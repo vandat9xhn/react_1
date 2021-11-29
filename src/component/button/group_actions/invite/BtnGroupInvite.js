@@ -17,7 +17,7 @@ BtnGroupInvite.defaultProps = {
 };
 
 //
-function BtnGroupInvite({ className, title, Icon, handleAction }) {
+function BtnGroupInvite({ className, title, Icon, btn_props, handleAction }) {
     //
     function inviteFriend() {
         handleAction('invite');
@@ -29,6 +29,7 @@ function BtnGroupInvite({ className, title, Icon, handleAction }) {
             className={`BtnGroupInvite ${className}`}
             title={title}
             Icon={Icon}
+            btn_props={btn_props}
             handleClick={inviteFriend}
         />
     );

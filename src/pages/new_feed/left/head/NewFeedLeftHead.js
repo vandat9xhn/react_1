@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../_context/ContextAPI';
 //
 import { data_left_head_link_arr } from '../../../../_data/feed/left_link';
-// 
+//
 import FlexDiv from '../../../../component/some_div/flex_div/FlexDiv';
 import PictureName from '../../../../component/picture_name/pic_name/PictureName';
 //
@@ -21,7 +21,7 @@ function NewFeedLeftHead(props) {
 
     //
     return (
-        <div className="NewFeedLeftHead scroll-thin">
+        <div className="NewFeedLeftHead padding-x-8px">
             <div>
                 <div>
                     <PictureName user={user} align_center={false} />
@@ -29,16 +29,16 @@ function NewFeedLeftHead(props) {
 
                 {data_left_head_link_arr.map((item, ix) => (
                     <Link
-                        to={item.link_to}
-                        key={`NewFeedLeftHead_item_${ix}`}
+                        key={ix}
                         className="normal-text hv-cl-blue w-100per"
+                        to={item.link_to}
                     >
                         <div className="NewFeed_side_item">
                             <FlexDiv
                                 ComponentLeft={item.Icon}
                                 ComponentRight={
                                     <div>
-                                        <div className="text-secondary font-500">
+                                        <div className="text-secondary font-600">
                                             {item.title}
                                         </div>
 
@@ -49,7 +49,7 @@ function NewFeedLeftHead(props) {
                                                     : 'display-none'
                                             }`}
                                         >
-                                            * {item.count_new} {item.title_new}
+                                            · {item.count_new} {item.title_new}
                                         </div>
                                     </div>
                                 }

@@ -10,5 +10,6 @@ export const GroupPageRoutes = [
     {
         component: GroupPageDiscuss,
         path: '/group/:id/discuss',
+        props: {},
     },
 ];

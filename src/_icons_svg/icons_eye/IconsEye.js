@@ -13,8 +13,8 @@ IconsEye.propTypes = {
 };
 
 IconsEye.defaultProps = {
-    x: 0,
-    y: 0,
+    x: 200,
+    y: 200,
     size_icon: '1.5rem',
     close_eye: true,
 };

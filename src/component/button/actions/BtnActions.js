@@ -7,6 +7,7 @@ import './BtnActions.scss';
 BtnActions.propTypes = {
     className: PropTypes.string,
     title: PropTypes.string,
+    btn_props: PropTypes.object,
 
     use_title: PropTypes.bool,
     use_icon: PropTypes.bool,
@@ -17,6 +18,8 @@ BtnActions.propTypes = {
 
 BtnActions.defaultProps = {
     className: '',
+    btn_props: {},
+
     use_title: true,
     use_icon: true,
 };
@@ -26,6 +29,7 @@ function BtnActions({
     className,
     Icon,
     title,
+    btn_props,
 
     use_title,
     use_icon,
@@ -38,6 +42,7 @@ function BtnActions({
             className={`BtnActions btn btn-active display-flex-center h-36px padding-x-12px brs-6px font-600 line-20px cursor-pointer ${className} hv-after-shadow-05`}
             type="button"
             onClick={handleClick}
+            {...btn_props}
         >
             {use_icon ? Icon : null}
 
