@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import IconPinned from '../../../../../../../../_icons_svg/pinned/IconPinned';
 //
 import GPDTopicAction from '../action/GPDTopicAction';
+import GroupPageTopicTitle from '../../../../../../_components/topic_title/GroupPageTopicTitle';
+import GroupPageTopicInfo from '../../../../../../_components/topic_info/GroupPageTopicInfo';
 
 //
 GPDAboutTopic.propTypes = {};
@@ -28,27 +30,21 @@ function GPDAboutTopic({
         <div className="GPDAboutTopic">
             <div className="flex-between-center">
                 <div>
-                    <Link
-                        className={`display-block color-inherit font-600 font-17px hv-underline ${
-                            is_hidden ? 'opacity-04' : ''
-                        }`}
-                        to={`/hashtag?q=${hash_tag}&group_id=${group_id}`}
-                    >
-                        <div className="inline-block margin-right-5px">
-                            #{hash_tag}
-                        </div>
-
-                        {pinned ? <IconPinned size_icon="14px" /> : null}
-                    </Link>
-
-                    <div>
-                        {is_hidden
-                            ? 'Hidden by admin · '
-                            : pinned
-                            ? 'Pinned by admin · '
-                            : ''}
-                        {post_count} post{post_count >= 2 ? 's' : ''}
+                    <div className="font-17px">
+                        <GroupPageTopicTitle
+                            group_id={group_id}
+                            hash_tag={hash_tag}
+                            is_hidden={is_hidden}
+                            pinned={pinned}
+                            size_icon={'14px'}
+                        />
                     </div>
+
+                    <GroupPageTopicInfo
+                        is_admin={is_admin}
+                        is_hidden={is_hidden}
+                        post_count={post_count}
+                    />
                 </div>
 
                 {is_admin ? (

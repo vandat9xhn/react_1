@@ -10,7 +10,7 @@ import { useObserverShowMore } from '../../../../../../_hooks/useObserverShowMor
 import GroupPageDiscussCreate from '../create/GroupPageDiscussCreate';
 import GroupPageDiscussPosts from '../posts/_main/GroupPageDiscussPosts';
 import GroupPageDiscussSort from '../sort/GroupPageDiscussSort';
-// 
+//
 import './GroupPageDiscussLeft.scss';
 
 //
@@ -20,7 +20,7 @@ const sort_obj = { title: 'New activity' };
 GroupPageDiscussLeft.propTypes = {};
 
 //
-function GroupPageDiscussLeft({ bg_btn }) {
+function GroupPageDiscussLeft({ group_id, bg_btn }) {
     //
     const ref_fake_elm_end = useRef(null);
 
@@ -38,6 +38,7 @@ function GroupPageDiscussLeft({ bg_btn }) {
         handle_API_L: (c_count) =>
             handle_API_ProfilePost_L({
                 c_count: c_count,
+                group_id: group_id,
             }),
     });
 

@@ -11,6 +11,7 @@ BtnActions.propTypes = {
 
     use_title: PropTypes.bool,
     use_icon: PropTypes.bool,
+    icon_on_left: PropTypes.bool,
 
     children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     handleClick: PropTypes.func,
@@ -22,6 +23,7 @@ BtnActions.defaultProps = {
 
     use_title: true,
     use_icon: true,
+    icon_on_left: true,
 };
 
 //
@@ -33,6 +35,7 @@ function BtnActions({
 
     use_title,
     use_icon,
+    icon_on_left,
 
     handleClick,
 }) {
@@ -44,17 +47,23 @@ function BtnActions({
             onClick={handleClick}
             {...btn_props}
         >
-            {use_icon ? Icon : null}
+            {use_icon && icon_on_left ? Icon : null}
 
             {use_title ? (
                 <span
                     className={`text-nowrap ${
-                        title && Icon ? 'margin-left-5px' : ''
+                        title && Icon
+                            ? icon_on_left
+                                ? 'margin-left-5px'
+                                : 'margin-right-5px'
+                            : ''
                     }`}
                 >
                     {title}
                 </span>
             ) : null}
+
+            {use_icon && !icon_on_left ? Icon : null}
         </button>
     );
 }

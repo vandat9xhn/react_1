@@ -76,7 +76,7 @@ function GroupPage(props) {
 
     // -----
 
-    const route_props = { is_admin: is_admin };
+    const route_props = { group_id: id, is_admin: is_admin };
 
     if (location.pathname.search(/\/group\/\d+\/discuss/) == 0) {
         route_props['bg_btn'] = color_obj.bg_btn;

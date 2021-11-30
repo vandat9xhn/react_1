@@ -15,10 +15,7 @@ import './GroupPageDiscussRightCommon.scss';
 GroupPageDiscussRight.propTypes = {};
 
 //
-function GroupPageDiscussRight({ is_admin }) {
-    //
-    const group_id = location.pathname.split('/').slice(-2)[0];
-
+function GroupPageDiscussRight({ group_id, is_admin }) {
     //
     const { calculateAgain, ref_main_elm, ref_preview_elm, ref_fake_elm } =
         !IS_MOBILE
