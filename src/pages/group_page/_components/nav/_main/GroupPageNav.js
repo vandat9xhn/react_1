@@ -34,6 +34,10 @@ const NAV_LINK_ARR = [
         title: 'Members',
         link_to: 'members',
     },
+    {
+        title: 'Topics',
+        link_to: 'topics',
+    },
 ];
 
 //

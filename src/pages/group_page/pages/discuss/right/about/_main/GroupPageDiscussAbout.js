@@ -14,7 +14,7 @@ import './GroupPageDiscussAbout.scss';
 GroupPageDiscussAbout.propTypes = {};
 
 //
-function GroupPageDiscussAbout({ handleReady }) {
+function GroupPageDiscussAbout({ group_id, handleReady }) {
     //
     const [state_obj, setStateObj] = useState({
         about_obj: {
@@ -40,7 +40,7 @@ function GroupPageDiscussAbout({ handleReady }) {
     //
     async function getData_API() {
         const data = await handle_API_GroupAboutPreview_R({
-            group_id: location.pathname.split('/').slice(-2)[0],
+            group_id: group_id,
         });
 
         setStateObj((state_obj) => {
@@ -51,15 +51,13 @@ function GroupPageDiscussAbout({ handleReady }) {
             };
         });
 
-        setTimeout(() => {
-            handleReady();
-        }, 0);
+        handleReady();
     }
 
     //
     return (
         <div className="GroupPageDiscussAbout GroupPageDiscussRight_part_contain">
-            <h2 className="font-17px font-600">About</h2>
+            <h2 className="GroupPageDiscussRight_part_title">About</h2>
 
             <div className={`${has_fetched ? '' : 'h-360px'}`}>
                 <div className="GroupPageDiscussAbout_part">

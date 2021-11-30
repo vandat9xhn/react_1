@@ -8,7 +8,7 @@ import GroupPageDiscussRight from '../right/_main/GroupPageDiscussRight';
 GroupPageDiscuss.propTypes = {};
 
 //
-function GroupPageDiscuss({ bg_btn }) {
+function GroupPageDiscuss({ is_admin, bg_btn }) {
     //
     return (
         <div className="GroupPageDiscuss padding-16px">
@@ -18,7 +18,7 @@ function GroupPageDiscuss({ bg_btn }) {
                 </div>
 
                 <div className="GroupPageDiscuss_right w-360px">
-                    <GroupPageDiscussRight />
+                    <GroupPageDiscussRight is_admin={is_admin} />
                 </div>
             </div>
         </div>

@@ -60,11 +60,16 @@ export function useActionsMultiList({
         handleClose();
     }
 
+    // ----
+
     //
     return {
         list_action_arr,
         is_fetching,
+        has_fetched,
         is_true,
+        
+        setStateObj,
 
         toggleBool,
         handleClose,

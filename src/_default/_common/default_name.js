@@ -1,6 +1,6 @@
 import { getRandomFromArr } from './getRandomFromArr';
 
-//
+// NAME
 const default_arr_name = [
     'Harry',
     'Potter',
@@ -19,10 +19,9 @@ const default_arr_name = [
     'Le Nguyen',
 ];
 
-//
 export const getRandomName = () => getRandomFromArr(default_arr_name);
 
-//
+// NICK NAME
 const default_nick_name_arr = [
     'Bo',
     'Bin',
@@ -41,7 +40,7 @@ const default_nick_name_arr = [
 //
 export const getRandomNickName = () => getRandomFromArr(default_nick_name_arr);
 
-//
+// GROUP NAME
 const default_group_name_arr = [
     'Hoc excel',
     'Ae Lien minh huyen thoai HN',
@@ -59,7 +58,7 @@ const default_group_name_arr = [
 export const getRandomGroupName = () =>
     getRandomFromArr(default_group_name_arr);
 
-//
+// PAGE NAME
 const default_page_name_arr = [
     'TopDev',
     'VTV 24',

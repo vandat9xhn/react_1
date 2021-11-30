@@ -15,7 +15,7 @@ function BtnActionsOther({
     class_btn,
 
     class_action_contain,
-    is_at_body = false,
+    is_at_body = true,
     
     handle_API_L,
     handleAction,

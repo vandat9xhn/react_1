@@ -90,10 +90,10 @@ export function useDataShowMore({
     }
 
     //
-    function refreshData_API(start_obj_state = {}) {
+    async function refreshData_API(start_obj_state = {}) {
         data_count.current = 0;
 
-        getData_API({
+        await getData_API({
             start_obj_state: {
                 data_arr: [],
                 count: 0,

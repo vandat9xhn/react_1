@@ -48,6 +48,7 @@ function GroupPageInfo({
 
                         <div className="font-17px">
                             <GroupPageMembers
+                            group_id={group_id}
                                 privacy={privacy}
                                 member_arr={member_arr}
                                 count_member={count_member}

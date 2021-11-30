@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useBool } from '../../../../../../_hooks/useBool';
@@ -25,6 +25,11 @@ function GroupPageNavMore({ group_id, color, bg_btn, more_link_arr }) {
     //
     const { is_true, setIsTrue, toggleBool } = useBool();
 
+    //
+    useEffect(() => {
+        makeDivHidden();
+    }, [location.href]);
+
     // -----
 
     //
@@ -47,7 +52,7 @@ function GroupPageNavMore({ group_id, color, bg_btn, more_link_arr }) {
                     size_icon="15px"
                     fill={is_active ? bg_btn : 'currentColor'}
                 />
-                
+
                 <div
                     className={`pos-abs bottom-0 left-0 w-100per h-3px bg-current brs-20px ${
                         is_active ? '' : 'display-none'
@@ -57,7 +62,7 @@ function GroupPageNavMore({ group_id, color, bg_btn, more_link_arr }) {
 
             {is_true ? (
                 <CloseDiv makeDivHidden={makeDivHidden} refs_target={[ref_btn]}>
-                    <div className="pos-abs top-100per left-0">
+                    <div className="pos-abs top-100per left-0 z-index-1">
                         <div className="padding-8px brs-8px bg-primary box-shadow-fb">
                             <ul className="list-none">
                                 {more_link_arr.map((item, ix) => (

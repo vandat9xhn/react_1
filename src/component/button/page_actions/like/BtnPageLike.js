@@ -12,7 +12,7 @@ BtnPageLike.propTypes = {
 
 BtnPageLike.defaultProps = {
     Icon: <IconLike fill="currentColor" />,
-    title: 'Follow',
+    title: 'Like',
     className: 'bg-ccc',
     classNameActive: 'bg-fb-active text-blue',
 };

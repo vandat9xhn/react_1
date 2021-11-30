@@ -51,6 +51,7 @@ export const default_fb_group_page_obj = () => {
                   }
                 : { to: '', id: 0, name: '' },
 
+        is_admin: getRandomBool(),
         joined: joined,
         privacy: getRandomFromArr(['Public', 'Private']),
 

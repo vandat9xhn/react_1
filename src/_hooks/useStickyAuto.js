@@ -208,7 +208,7 @@ export function useStickyAuto({ sticky_location = /./ }) {
             ref_is_last_scroll_down.current = false;
         }
 
-        ref_scroll_y.current = pageYOffset;
+        ref_scroll_y.current = scrollY;
     }
 
     //

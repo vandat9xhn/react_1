@@ -9,11 +9,11 @@ import OverlapPics from '../../../../../../component/overlap_pics/_main/OverlapP
 GroupPageMemberPics.propTypes = {};
 
 //
-function GroupPageMemberPics({ member_arr, count_member }) {
+function GroupPageMemberPics({ group_id, member_arr, count_member }) {
     //
     return (
         <div className="GroupPageMemberPics">
-            <Link to={`/group/member`}>
+            <Link to={`/group/${group_id}/members`}>
                 <OverlapPics
                     pic_arr={member_arr}
                     has_more={member_arr < count_member}

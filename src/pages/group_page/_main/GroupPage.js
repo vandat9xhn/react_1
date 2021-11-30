@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import { Route, Switch, useParams, useHistory } from 'react-router-dom';
+import { Redirect, Route, Switch, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { initial_group_page } from '../../../_initial/group/page';
@@ -18,7 +18,6 @@ GroupPage.propTypes = {};
 function GroupPage(props) {
     //
     const { id } = useParams();
-    const use_history = useHistory();
 
     //
     const [state_obj, setStateObj] = useState({
@@ -36,6 +35,7 @@ function GroupPage(props) {
         color_obj,
         affiliation_obj,
 
+        is_admin,
         privacy,
         action_name,
 
@@ -46,11 +46,6 @@ function GroupPage(props) {
     //
     useEffect(() => {
         getData_API();
-
-        const path = location.pathname;
-        if (path.search(/^\/group\/\d+$/) == 0) {
-            use_history.replace(`${path}/discuss`);
-        }
     }, []);
 
     // -------
@@ -81,10 +76,11 @@ function GroupPage(props) {
 
     // -----
 
-    const route_props =
-        location.pathname.search(/\/group\/\d+\/discuss/) == 0
-            ? { bg_btn: color_obj.bg_btn }
-            : {};
+    const route_props = { is_admin: is_admin };
+
+    if (location.pathname.search(/\/group\/\d+\/discuss/) == 0) {
+        route_props['bg_btn'] = color_obj.bg_btn;
+    }
 
     // -----
 
@@ -142,6 +138,8 @@ function GroupPage(props) {
                                     )}
                                 />
                             ))}
+
+                            <Redirect to={`/group/${id}/discuss`} />
                         </Switch>
                     </div>
                 ) : null}

@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
 //
 import { useStickyAuto } from '../../../../../../_hooks/useStickyAuto';
-import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 //
 import GroupPageDiscussAbout from '../about/_main/GroupPageDiscussAbout';
+import GPDAboutTopics from '../topics/_main/GPDTopics';
+import GPDMedia from '../media/_main/GPDMedia';
 //
 import './GroupPageDiscussRightCommon.scss';
 
@@ -14,7 +15,10 @@ import './GroupPageDiscussRightCommon.scss';
 GroupPageDiscussRight.propTypes = {};
 
 //
-function GroupPageDiscussRight(props) {
+function GroupPageDiscussRight({ is_admin }) {
+    //
+    const group_id = location.pathname.split('/').slice(-2)[0];
+
     //
     const { calculateAgain, ref_main_elm, ref_preview_elm, ref_fake_elm } =
         !IS_MOBILE
@@ -23,8 +27,6 @@ function GroupPageDiscussRight(props) {
               })
             : {};
 
-    const forceUpdate = useForceUpdate()
-
     // ------
 
     //
@@ -32,8 +34,6 @@ function GroupPageDiscussRight(props) {
         if (IS_MOBILE) {
             return;
         }
-
-        forceUpdate()
 
         setTimeout(() => {
             calculateAgain();
@@ -45,14 +45,28 @@ function GroupPageDiscussRight(props) {
         <div ref={ref_main_elm} className="GroupPageDiscussRight h-100per">
             <div ref={ref_fake_elm}></div>
 
-            <div ref={ref_preview_elm} className="pos-sticky padding-bottom-10px">
+            <div
+                ref={ref_preview_elm}
+                className="pos-sticky padding-bottom-10px"
+            >
                 <div className="margin-bottom-15px">
-                    <GroupPageDiscussAbout handleReady={handleReady} />
+                    <GroupPageDiscussAbout
+                        group_id={group_id}
+                        handleReady={handleReady}
+                    />
                 </div>
 
-                <div className="margin-bottom-15px h-250px bg-primary"></div>
+                <div className="margin-bottom-15px">
+                    <GPDAboutTopics
+                        group_id={group_id}
+                        is_admin={is_admin}
+                        handleReady={handleReady}
+                    />
+                </div>
 
-                <div className="h-250px bg-primary"></div>
+                <div>
+                    <GPDMedia group_id={group_id} handleReady={handleReady} />
+                </div>
             </div>
         </div>
     );
