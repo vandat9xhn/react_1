@@ -90,39 +90,39 @@ function GroupPage(props) {
 
     //
     return (
-        <Suspense fallback={null}>
-            <div className="GroupPage">
-                <div className="bg-primary box-shadow-1">
-                    <div>
-                        <GroupPageInfo
-                            group_id={id}
-                            name={name}
-                            picture={picture}
-                            //
-                            color_obj={color_obj}
-                            affiliation_obj={affiliation_obj}
-                            //
-                            privacy={privacy}
-                            action_name={action_name}
-                            member_arr={member_arr}
-                            count_member={count_member}
-                            //
-                            openCoverPicture={openCoverPicture}
-                            toggleRelatedGroup={toggleRelatedGroup}
-                            handleAction={handleAction}
-                        />
-                    </div>
-
-                    <div className="fb-profile-width-contain">
-                        <GroupPageNav
-                            group_id={id}
-                            color={color_obj.color}
-                            bg_btn={color_obj.bg_btn}
-                        />
-                    </div>
+        <div className="GroupPage">
+            <div className="bg-primary box-shadow-1">
+                <div>
+                    <GroupPageInfo
+                        group_id={id}
+                        name={name}
+                        picture={picture}
+                        //
+                        color_obj={color_obj}
+                        affiliation_obj={affiliation_obj}
+                        //
+                        privacy={privacy}
+                        action_name={action_name}
+                        member_arr={member_arr}
+                        count_member={count_member}
+                        //
+                        openCoverPicture={openCoverPicture}
+                        toggleRelatedGroup={toggleRelatedGroup}
+                        handleAction={handleAction}
+                    />
                 </div>
 
-                {id > 0 ? (
+                <div className="fb-profile-width-contain">
+                    <GroupPageNav
+                        group_id={id}
+                        color={color_obj.color}
+                        bg_btn={color_obj.bg_btn}
+                    />
+                </div>
+            </div>
+
+            {id > 0 ? (
+                <Suspense fallback={null}>
                     <div style={{ backgroundColor: color_obj.bg }}>
                         <Switch>
                             {GroupPageRoutes.map((item, ix) => (
@@ -142,9 +142,9 @@ function GroupPage(props) {
                             <Redirect to={`/group/${id}/discuss`} />
                         </Switch>
                     </div>
-                ) : null}
-            </div>
-        </Suspense>
+                </Suspense>
+            ) : null}
+        </div>
     );
 }
 

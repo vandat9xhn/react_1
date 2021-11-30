@@ -5,8 +5,11 @@ import { handle_API_FbGroupTopic_L } from '../../../../../_handle_api/fb_group/t
 //
 import { useObserverShowMore } from '../../../../../_hooks/useObserverShowMore';
 //
+import GPTopicsSettings from '../settings/_main/GPTopicsSettings';
 import GroupPageTopicsFilter from '../filter/_main/GroupPageTopicsFilter';
 import GroupPageTopic from '../item/GroupPageTopic';
+//
+import './GroupPageTopics.scss';
 
 //
 GroupPageTopics.propTypes = {};
@@ -74,9 +77,15 @@ function GroupPageTopics({ group_id, is_admin }) {
     //
     return (
         <div className="GroupPageTopics margin-auto padding-y-16px w-680px">
-            <div className="padding-16px brs-8px bg-primary box-shadow-1">
+            {is_admin ? (
+                <div className="GroupPageTopics_contain margin-bottom-16px">
+                    <GPTopicsSettings />
+                </div>
+            ) : null}
+
+            <div className="GroupPageTopics_contain">
                 <div className="flex-between-center">
-                    <h2 className="font-20px font-700">Group topics</h2>
+                    <h2 className="GroupPageTopics_title">Group topics</h2>
 
                     <div>
                         <GroupPageTopicsFilter />

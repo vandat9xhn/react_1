@@ -1,6 +1,10 @@
 import React from 'react';
 
 //
+const GroupPageAbout = React.lazy(() =>
+    import('../pages/about/_main/GroupPageAbout')
+);
+
 const GroupPageDiscuss = React.lazy(() =>
     import('../pages/discuss/_main/GroupPageDiscuss')
 );
@@ -16,7 +20,7 @@ const WorkingOnIt = React.lazy(() =>
 //
 export const GroupPageRoutes = [
     {
-        component: WorkingOnIt,
+        component: GroupPageAbout,
         path: '/group/:id/about',
     },
     {

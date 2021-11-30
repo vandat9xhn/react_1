@@ -19,21 +19,21 @@ function GroupPageTopicTitle({
 }) {
     //
     return (
-        <Link
-            className={`display-block color-inherit font-600 hv-underline ${
-                is_hidden ? 'opacity-04' : ''
-            }`}
-            to={`/hashtag?q=${hash_tag}&group_id=${group_id}`}
-        >
-            <div className="inline-block margin-right-5px">
+        <div className="GroupPageTopicTitle">
+            <Link
+                className={`inline-block margin-right-5px color-inherit font-600 hv-underline ${
+                    is_hidden ? 'opacity-04' : ''
+                }`}
+                to={`/hashtag?q=${hash_tag}&group_id=${group_id}`}
+            >
                 {use_hash_character ? '#' : ''}
                 {hash_tag}
-            </div>
+            </Link>
 
             {pinned ? (
                 <IconPinned class_icon="inline-block" size_icon={size_icon} />
             ) : null}
-        </Link>
+        </div>
     );
 }
 
