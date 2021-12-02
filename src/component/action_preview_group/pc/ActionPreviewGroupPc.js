@@ -67,7 +67,7 @@ function ActionPreviewGroupPc({ group_id, title_action }) {
         joined,
         privacy,
 
-        count_member,
+        member_count,
         friend_count,
         friend_arr,
     } = group;
@@ -134,8 +134,8 @@ function ActionPreviewGroupPc({ group_id, title_action }) {
                               friend_count >= 2 ? 's' : ''
                           } · `
                         : ''
-                }${UnitNumber(count_member)} member${
-                    count_member >= 2 ? 's' : ''
+                }${UnitNumber(member_count)} member${
+                    member_count >= 2 ? 's' : ''
                 }`,
             },
         },

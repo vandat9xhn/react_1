@@ -21,7 +21,7 @@ function GroupPageInfo({
     privacy,
     action_name,
     member_arr,
-    count_member,
+    member_count,
 
     openCoverPicture,
     toggleRelatedGroup,
@@ -51,7 +51,7 @@ function GroupPageInfo({
                             group_id={group_id}
                                 privacy={privacy}
                                 member_arr={member_arr}
-                                count_member={count_member}
+                                member_count={member_count}
                             />
                         </div>
                     </div>

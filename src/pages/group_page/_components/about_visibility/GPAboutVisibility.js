@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import GroupPageAboutPart from '../../../../../_components/about_part/GroupPageAboutPart';
-import IconsEye from '../../../../../../../_icons_svg/icons_eye/IconsEye';
+import IconsEye from '../../../../_icons_svg/icons_eye/IconsEye';
+// 
+import GroupPageAboutPart from '../about_part/GroupPageAboutPart';
 
 //
-GPDAboutVisibility.propTypes = {};
+GPAboutVisibility.propTypes = {};
 
 //
-function GPDAboutVisibility({ visibility }) {
+function GPAboutVisibility({ visibility }) {
     //
     const is_visible = visibility.toUpperCase() == 'VISIBLE';
 
     //
     return (
-        <div className="GPDAboutVisibility">
+        <div className="GPAboutVisibility">
             <GroupPageAboutPart
                 Icon={<IconsEye close_eye={!is_visible} />}
                 title={visibility}
@@ -28,4 +29,4 @@ function GPDAboutVisibility({ visibility }) {
     );
 }
 
-export default GPDAboutVisibility;
+export default GPAboutVisibility;

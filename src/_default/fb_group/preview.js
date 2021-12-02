@@ -20,7 +20,7 @@ export const default_fb_group_preview_obj = () => {
         joined: joined,
         privacy: getRandomFromArr(['Public', 'Private']),
 
-        count_member: getRandomNumber(1, 20) * 1000,
+        member_count: getRandomNumber(1, 20) * 1000,
         friend_arr: friend_arr,
         friend_count: friend_count,
     };

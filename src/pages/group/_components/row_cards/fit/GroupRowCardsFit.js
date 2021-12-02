@@ -12,9 +12,20 @@ import './GroupRowCardsFit.scss';
 GroupRowCardsFit.propTypes = {};
 
 //
-function GroupRowCardsFit({ params_api, BtnElm, handleFetched }) {
+function GroupRowCardsFit({
+    params_api,
+    has_handle_API_L = false,
+    BtnElm,
+
+    handle_API_GroupCards_L,
+    handleFetched,
+}) {
     //
     function handle_API_L(c_count) {
+        if (has_handle_API_L) {
+            return handle_API_GroupCards_L(c_count);
+        }
+
         return handle_API_FbGroupSuggested_L({
             c_count: c_count,
             params: {

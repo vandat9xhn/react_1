@@ -8,14 +8,14 @@ import GroupPageMemberPics from '../pics/GroupPageMemberPics';
 GroupPageMembers.propTypes = {};
 
 //
-function GroupPageMembers({ group_id, privacy, member_arr, count_member }) {
+function GroupPageMembers({ group_id, privacy, member_arr, member_count }) {
     //
     return (
         <div className="GroupPageMembers">
             <div className="margin-top-8px margin-bottom-12px">
                 <GroupPageMemberCount
                     privacy={privacy}
-                    count_member={count_member}
+                    member_count={member_count}
                 />
             </div>
 
@@ -23,7 +23,7 @@ function GroupPageMembers({ group_id, privacy, member_arr, count_member }) {
                 <GroupPageMemberPics
                     group_id={group_id}
                     member_arr={member_arr}
-                    count_member={count_member}
+                    member_count={member_count}
                 />
             </div>
         </div>

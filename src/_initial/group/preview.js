@@ -7,7 +7,7 @@ export const initial_group_preview = () => {
         joined: false,
         privacy: '',
 
-        count_member: 0,
+        member_count: 0,
         friend_arr: [],
         friend_count: 0,
     };

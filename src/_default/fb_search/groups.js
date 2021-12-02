@@ -17,7 +17,7 @@ const default_fb_search_group_obj = () => {
         ...getRandomGroup().group_obj,
 
         privacy: getRandomFromArr(['Public', 'Private']),
-        count_member: getRandomNumber(1, 20) * 1000,
+        member_count: getRandomNumber(1, 20) * 1000,
 
         info_arr: [
             getRandomFromArr([

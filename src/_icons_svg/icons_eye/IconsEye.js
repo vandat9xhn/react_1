@@ -31,8 +31,8 @@ function IconsEye({size_icon, x, y, close_eye}){
             height={size_icon}
             width={size_icon}
             viewBox={`${x} ${y} 200 200`}
-            stroke="var(--black-brown)"
-            fill="var(--black-brown)"
+            stroke="var(--md-color)"
+            fill="var(--md-color)"
             strokeLinecap="round"
         >
 

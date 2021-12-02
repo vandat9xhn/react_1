@@ -47,7 +47,7 @@ GroupPageNav.propTypes = {};
 function GroupPageNav({ group_id, color, bg_btn, handleAction }) {
     //
     return (
-        <div className="GroupPageNav font-600">
+        <div className="GroupPageNav font-600 text-secondary">
             <div className="GroupPageNav_row flex-between-center h-100per">
                 <ul className="display-flex list-none h-100per padding-top-3px">
                     {NAV_LINK_ARR.map((item, ix) => (

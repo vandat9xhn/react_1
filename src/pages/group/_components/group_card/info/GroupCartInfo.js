@@ -9,7 +9,7 @@ import './GroupCartInfo.scss';
 GroupCartInfo.propTypes = {};
 
 //
-function GroupCartInfo({ name, count_member, post_count, post_unit }) {
+function GroupCartInfo({ name, member_count, post_count, post_unit }) {
     //
     return (
         <div className="GroupCartInfo padding-x-16px padding-top-16px">
@@ -18,7 +18,7 @@ function GroupCartInfo({ name, count_member, post_count, post_unit }) {
             </div>
 
             <div className="text-secondary">
-                {UnitNumber(count_member)} members · {UnitNumber(post_count)}{' '}
+                {UnitNumber(member_count)} members · {UnitNumber(post_count)}{' '}
                 post
                 {post_count >= 2 ? 's' : ''} a {post_unit}
             </div>

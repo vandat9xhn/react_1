@@ -20,7 +20,7 @@ function GroupItemCards({ item, ix, BtnElm, removeGroupCard }) {
             name={item.name}
             picture={item.picture}
             //
-            count_member={item.count_member}
+            member_count={item.member_count}
             post_count={item.post_count}
             post_unit={item.post_unit}
             //

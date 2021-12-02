@@ -25,7 +25,7 @@ function GroupCard({
     name,
     picture,
 
-    count_member,
+    member_count,
     post_count,
     post_unit,
 
@@ -65,7 +65,7 @@ function GroupCard({
                 <div className="border-top-blur">
                     <GroupCartInfo
                         name={name}
-                        count_member={count_member}
+                        member_count={member_count}
                         post_count={post_count}
                         post_unit={post_unit}
                     />

@@ -66,7 +66,7 @@ function GPDTopics({ group_id, is_admin, handleReady }) {
     //
     return (
         <div className="GPDTopics GroupPageDiscussRight_part_contain">
-            <h2 className="GroupPageDiscussRight_part_title">
+            <h2 className="GroupPageDiscussRight_part_title margin-bottom-8px">
                 <div className="inline-block margin-right-5px">
                     Popular topics in this group
                 </div>

@@ -40,7 +40,7 @@ function GroupPage(props) {
         action_name,
 
         member_arr,
-        count_member,
+        member_count,
     } = group_obj;
 
     //
@@ -104,7 +104,7 @@ function GroupPage(props) {
                         privacy={privacy}
                         action_name={action_name}
                         member_arr={member_arr}
-                        count_member={count_member}
+                        member_count={member_count}
                         //
                         openCoverPicture={openCoverPicture}
                         toggleRelatedGroup={toggleRelatedGroup}

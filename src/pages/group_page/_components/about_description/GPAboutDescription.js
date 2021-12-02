@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useBool } from '../../../../../../../_hooks/useBool';
+import { useBool } from '../../../../_hooks/useBool';
 
 //
-GPDAboutDescription.propTypes = {};
+GPAboutDescription.propTypes = {};
 
 //
-function GPDAboutDescription({ description, handleReady }) {
+function GPAboutDescription({ description, handleReady }) {
     //
     const { is_true, toggleBool } = useBool();
 
@@ -15,13 +15,13 @@ function GPDAboutDescription({ description, handleReady }) {
 
     //
     function onToggleBool() {
-        handleReady();
+        handleReady && handleReady();
         toggleBool();
     }
 
     //
     return (
-        <div className="GPDAboutDescription">
+        <div className="GPAboutDescription">
             <span>{description.slice(0, is_true ? undefined : 100)}</span>{' '}
             {description.length <= 100 ? null : (
                 <span
@@ -35,4 +35,4 @@ function GPDAboutDescription({ description, handleReady }) {
     );
 }
 
-export default GPDAboutDescription;
+export default GPAboutDescription;

@@ -16,7 +16,7 @@ const default_fb_group_suggested_obj = () => {
         ...getRandomGroup().group_obj,
 
         privacy: getRandomFromArr(['Public', 'Private']),
-        count_member: getRandomNumber(1, 20) * 1000,
+        member_count: getRandomNumber(1, 20) * 1000,
 
         post_count: getRandomNumber(1, 50),
         post_unit: getRandomFromArr(['day', 'week']),

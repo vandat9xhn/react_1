@@ -21,7 +21,7 @@ function FbSearchPageGroupItem({ group_obj }) {
         picture,
 
         privacy,
-        count_member,
+        member_count,
         action_case,
         action_case_obj,
 
@@ -49,8 +49,8 @@ function FbSearchPageGroupItem({ group_obj }) {
                 action_img_props={{ group_id: id }}
                 action_name_props={{ group_id: id }}
                 //
-                info_1={`${privacy} group · ${UnitNumber(count_member)} member${
-                    count_member >= 2 ? 's' : ''
+                info_1={`${privacy} group · ${UnitNumber(member_count)} member${
+                    member_count >= 2 ? 's' : ''
                 }`}
                 info_2={
                     <div>

@@ -26,7 +26,7 @@ function GroupPageNavItem({
             <div>{title}</div>
 
             <div
-                className="GroupPageNavItem_bottom display-none pos-abs bottom-0 left-0 w-100per brs-20px"
+                className="GroupPageNavItem_bottom display-none pos-abs bottom-0 left-0 w-100per h-3px brs-20px"
                 style={{ backgroundColor: border_active }}
             ></div>
         </NavLink>

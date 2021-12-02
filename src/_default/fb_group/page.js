@@ -55,13 +55,13 @@ export const default_fb_group_page_obj = () => {
         joined: joined,
         privacy: getRandomFromArr(['Public', 'Private']),
 
-        count_member: getRandomNumber(1, 20) * 1000,
+        member_count: getRandomNumber(1, 20) * 1000,
         // friend_arr: friend_arr,
         // friend_count: friend_count,
 
         action_name: joined ? 'joined' : 'join',
 
         member_arr: member_arr,
-        count_member: getRandomNumber(1, 20) * 10000,
+        member_count: getRandomNumber(1, 20) * 10000,
     };
 };

@@ -9,7 +9,7 @@ import IconPrivate from '../../../../../../_icons_svg/icon_private/IconPrivate';
 GroupPageMemberCount.propTypes = {};
 
 //
-function GroupPageMemberCount({ privacy, count_member }) {
+function GroupPageMemberCount({ privacy, member_count }) {
     //
     return (
         <div className="GroupPageMemberCount text-secondary">
@@ -23,8 +23,8 @@ function GroupPageMemberCount({ privacy, count_member }) {
                 <div className="margin-x-5px">·</div>
 
                 <div>
-                    {UnitNumber(count_member)} member
-                    {count_member >= 2 ? 's' : ''}
+                    {UnitNumber(member_count)} member
+                    {member_count >= 2 ? 's' : ''}
                 </div>
             </div>
         </div>

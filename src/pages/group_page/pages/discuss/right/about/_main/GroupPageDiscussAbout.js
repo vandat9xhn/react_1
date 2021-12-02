@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { handle_API_GroupAboutPreview_R } from '../../../../../../../_handle_api/fb_group/about_preview';
 //
-import GroupPageAboutPart from '../../../../../_components/about_part/GroupPageAboutPart';
-import GPDAboutDescription from '../description/GPDAboutDescription';
-import GPDAboutPrivacy from '../privacy/GPDAboutPrivacy';
-import GPDAboutVisibility from '../visibility/GPDAboutVisibility';
-//
-import './GroupPageDiscussAbout.scss';
+import GPDAboutContain from '../contain/GPDAboutContain';
 
 //
 GroupPageDiscussAbout.propTypes = {};
@@ -57,31 +52,19 @@ function GroupPageDiscussAbout({ group_id, handleReady }) {
     //
     return (
         <div className="GroupPageDiscussAbout GroupPageDiscussRight_part_contain">
-            <h2 className="GroupPageDiscussRight_part_title">About</h2>
+            <h2 className="GroupPageDiscussRight_part_title margin-bottom-8px">
+                About
+            </h2>
 
-            <div className={`${has_fetched ? '' : 'h-360px'}`}>
-                <div className="GroupPageDiscussAbout_part">
-                    <GPDAboutDescription
-                        description={description}
-                        handleReady={handleReady}
-                    />
-                </div>
-
-                <div className="GroupPageDiscussAbout_part">
-                    <GPDAboutPrivacy privacy={privacy} />
-                </div>
-
-                <div className="GroupPageDiscussAbout_part">
-                    <GPDAboutVisibility visibility={visibility} />
-                </div>
-
-                <div className="GroupPageDiscussAbout_part">
-                    <GroupPageAboutPart
-                        Icon={type_obj.Icon}
-                        title={type_obj.title}
-                    />
-                </div>
-            </div>
+            <GPDAboutContain
+                description={description}
+                privacy={privacy}
+                visibility={visibility}
+                type_obj={type_obj}
+                has_fetched={has_fetched}
+                //
+                handleReady={handleReady}
+            />
         </div>
     );
 }
