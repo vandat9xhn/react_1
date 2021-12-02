@@ -35,6 +35,11 @@ export const default_fb_group_page_obj = () => {
     const member_arr = getDefaultArr(() => getRandomUser().user, 6, 8);
     const affiliation_to = getRandomFromArr(['user', 'page']);
 
+    const is_admin = !!(getRandomBool() * getRandomBool());
+    const is_moderate = is_admin
+        ? false
+        : !!(getRandomBool() * getRandomBool());
+
     return {
         ...getRandomGroup().group_obj,
 
@@ -51,9 +56,10 @@ export const default_fb_group_page_obj = () => {
                   }
                 : { to: '', id: 0, name: '' },
 
-        is_admin: getRandomBool(),
-        joined: joined,
+        is_admin: is_admin,
+        is_moderate: is_moderate,
         privacy: getRandomFromArr(['Public', 'Private']),
+        joined: joined,
 
         member_count: getRandomNumber(1, 20) * 1000,
         // friend_arr: friend_arr,

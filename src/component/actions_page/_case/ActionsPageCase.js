@@ -6,18 +6,22 @@ import BtnPageFollow from '../../button/page_actions/follow/BtnPageFollow';
 import BtnPageChat from '../../button/page_actions/chat/BtnPageChat';
 import BtnPageContact from '../../button/page_actions/contact/BtnPageContact';
 import BtnPageLearnMore from '../../button/page_actions/learn_more/BtnPageLearnMore';
+import ActionsPageOther from '../other/ActionsPageOther';
 
 //
-ActionsGroupCase.propTypes = {};
+ActionsPageCase.propTypes = {};
 
 //
-function ActionsGroupCase({
+function ActionsPageCase({
     action_name,
     use_title,
 
     page_id,
     has_liked,
     has_followed,
+
+    class_action_contain,
+    is_at_body,
 
     handleAction,
 }) {
@@ -66,7 +70,19 @@ function ActionsGroupCase({
     }
 
     //
+    if (action_name == 'other') {
+        return (
+            <ActionsPageOther
+                page_id={page_id}
+                class_action_contain={class_action_contain}
+                is_at_body={is_at_body}
+                handleAction={handleAction}
+            />
+        );
+    }
+
+    //
     return null;
 }
 
-export default ActionsGroupCase;
+export default ActionsPageCase;

@@ -10,6 +10,7 @@ import BtnProfileChat from '../../../button/profile_actions/message/BtnProfileCh
 //
 import ActionsProfileFriend from '../friend/ActionsProfileFriend';
 import ActionsProfileReplyRequest from '../reply_request/ActionsProfileReplyRequest';
+import ActionsProfileOther from '../../other/ActionsProfileOther';
 
 //
 ActionsProfileCase.propTypes = {};
@@ -19,7 +20,9 @@ function ActionsProfileCase({
     action_case,
     user_id,
     use_title,
-    is_at_body = false,
+
+    is_at_body,
+    class_action_contain,
 
     handleAction,
 }) {
@@ -87,6 +90,18 @@ function ActionsProfileCase({
         return (
             <BtnProfileCancelRequest
                 use_title={use_title}
+                handleAction={handleAction}
+            />
+        );
+    }
+
+    //
+    if (action_case == 'other') {
+        return (
+            <ActionsProfileOther
+                user_id={user_id}
+                class_action_contain={class_action_contain}
+                is_at_body={is_at_body}
                 handleAction={handleAction}
             />
         );

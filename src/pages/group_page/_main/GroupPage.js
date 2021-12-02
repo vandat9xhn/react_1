@@ -8,6 +8,8 @@ import { handle_API_GroupPage_R } from '../../../_handle_api/fb_group/page';
 //
 import { GroupPageRoutes } from '../_routes/_main';
 //
+import './GroupPageCommon.scss';
+//
 import GroupPageInfo from '../_components/info/_main/GroupPageInfo';
 import GroupPageNav from '../_components/nav/_main/GroupPageNav';
 
@@ -36,6 +38,7 @@ function GroupPage(props) {
         affiliation_obj,
 
         is_admin,
+        is_moderate,
         privacy,
         action_name,
 
@@ -76,7 +79,12 @@ function GroupPage(props) {
 
     // -----
 
-    const route_props = { group_id: id, is_admin: is_admin };
+    const route_props = {
+        group_id: id,
+        is_admin: is_admin,
+        is_moderate: is_moderate,
+        member_count: member_count,
+    };
 
     if (location.pathname.search(/\/group\/\d+\/discuss/) == 0) {
         route_props['bg_btn'] = color_obj.bg_btn;

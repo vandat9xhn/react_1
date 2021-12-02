@@ -27,7 +27,7 @@ function GPAbActivity({
         <div className="GPAbActivity gr-page-about-part">
             <h2 className="gr-page-about-title">Activity</h2>
 
-            <hr className="gr-page-about-hr" />
+            <hr className="gr-page-hr" />
 
             <div>
                 <GroupPageAboutPart

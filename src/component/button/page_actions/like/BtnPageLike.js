@@ -11,7 +11,7 @@ BtnPageLike.propTypes = {
 };
 
 BtnPageLike.defaultProps = {
-    Icon: <IconLike fill="currentColor" />,
+    Icon: <IconLike fill="currentColor" stroke="currentColor" />,
     title: 'Like',
     className: 'bg-ccc',
     classNameActive: 'bg-fb-active text-blue',

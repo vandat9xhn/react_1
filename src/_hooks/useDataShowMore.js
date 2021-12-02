@@ -11,7 +11,7 @@ export function useDataShowMore({
     //
     const [data_state, setDataState] = useState({
         data_arr: initial_arr,
-        count: initial_arr.length,
+        count: 0,
         has_fetched: initial_arr.length > 0,
         is_fetching: false,
         ...other_state,
@@ -20,7 +20,7 @@ export function useDataShowMore({
     //
     const is_max = useRef(false);
     const ref_fetching = useRef(false);
-    const data_count = useRef(0);
+    const data_count = useRef(initial_arr.length);
 
     //
     const mounted = useMounted();
@@ -63,7 +63,8 @@ export function useDataShowMore({
             mounted &&
                 setDataState((data_state) => {
                     const { has_fetched, data_arr, count } = data_state;
-                    const total_count = has_fetched ? count : new_count;
+                    const total_count =
+                        has_fetched && count ? count : new_count;
 
                     data_count.current += data.length;
                     is_max.current = data_count.current >= total_count;

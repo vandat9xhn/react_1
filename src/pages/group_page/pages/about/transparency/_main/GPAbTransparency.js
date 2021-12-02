@@ -13,7 +13,7 @@ function GPAbTransparency({ created_time, openGroupHistory }) {
         <div className="GPAboutGroup gr-page-about-part">
             <h2 className="gr-page-about-title">Transparency</h2>
 
-            <hr className="gr-page-about-hr" />
+            <hr className="gr-page-hr" />
 
             <div>
                 <GroupPageAboutPart

@@ -17,7 +17,7 @@ function GPAbRecommended({ recommended_count, openRecommendedGroups }) {
                 Recommended by the admins · {recommended_count}
             </h2>
 
-            <hr className="gr-page-about-hr" />
+            <hr className="gr-page-hr" />
 
             <div className="font-13px">
                 <GroupRowCardsFit

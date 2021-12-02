@@ -27,7 +27,7 @@ function GPAbMembers({
                 Members · {UnitNumber(member_count)}
             </h2>
 
-            <hr className="gr-page-about-hr" />
+            <hr className="gr-page-hr" />
 
             <div>
                 <GPAbMembersPics
