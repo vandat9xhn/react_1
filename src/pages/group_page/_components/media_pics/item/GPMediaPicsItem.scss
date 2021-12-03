@@ -1,0 +1,7 @@
+.GPMediaPicsItem{
+    &:hover{
+        .GPMediaPicsItem_title{
+            text-decoration: underline;
+        }
+    }
+}

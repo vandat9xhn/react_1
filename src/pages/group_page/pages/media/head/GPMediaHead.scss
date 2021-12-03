@@ -1,0 +1,16 @@
+.GPMediaHead_btn {
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 6px;
+
+    font-weight: 600;
+    color: var(--blue);
+
+    &:hover {
+        background-color: var(--bg-s-through);
+    }
+
+    &::after {
+        content: none;
+    }
+}

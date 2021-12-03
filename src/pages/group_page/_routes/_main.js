@@ -17,6 +17,10 @@ const GroupPageMembers = React.lazy(() =>
     import('../pages/members/_main/GroupPageMembers')
 );
 
+const GroupPageMedia = React.lazy(() =>
+    import('../pages/media/_main/GroupPageMedia')
+);
+
 const WorkingOnIt = React.lazy(() =>
     import('../../../component/working_on_it/WorkingOnIt')
 );
@@ -41,7 +45,7 @@ export const GroupPageRoutes = [
     },
 
     {
-        component: WorkingOnIt,
+        component: GroupPageMedia,
         path: '/group/:id/media',
     },
     {

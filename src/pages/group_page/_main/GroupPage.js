@@ -129,9 +129,9 @@ function GroupPage(props) {
                 </div>
             </div>
 
-            {id > 0 ? (
-                <Suspense fallback={null}>
-                    <div style={{ backgroundColor: color_obj.bg }}>
+            <div style={{ backgroundColor: color_obj.bg }}>
+                {id > 0 ? (
+                    <Suspense fallback={null}>
                         <Switch>
                             {GroupPageRoutes.map((item, ix) => (
                                 <Route
@@ -149,9 +149,9 @@ function GroupPage(props) {
 
                             <Redirect to={`/group/${id}/discuss`} />
                         </Switch>
-                    </div>
-                </Suspense>
-            ) : null}
+                    </Suspense>
+                ) : null}
+            </div>
         </div>
     );
 }

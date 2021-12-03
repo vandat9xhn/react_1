@@ -1,0 +1,6 @@
+.GPMediaNav_item-active {
+    color: var(--blue);
+    & + .GPMediaNav_item_bottom {
+        display: block;
+    }
+}

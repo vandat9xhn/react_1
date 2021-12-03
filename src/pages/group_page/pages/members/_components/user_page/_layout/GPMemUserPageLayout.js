@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// 
 import BtnActionsOther from '../../../../../../../component/button/actions_other/BtnActionsOther';
 
 //
