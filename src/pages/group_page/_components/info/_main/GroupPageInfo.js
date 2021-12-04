@@ -5,7 +5,7 @@ import GroupPageCover from '../cover/_main/GroupPageCover';
 import GroupPageName from '../name/GroupPageName';
 import GroupPageMembers from '../members/_main/GroupPageMembers';
 import GroupPageActions from '../actions/_main/GroupPageActions';
-// 
+//
 import './GroupPageInfo.scss';
 
 //
@@ -50,7 +50,7 @@ function GroupPageInfo({
 
                         <div className="GroupPageInfo_member font-17px">
                             <GroupPageMembers
-                            group_id={group_id}
+                                group_id={group_id}
                                 privacy={privacy}
                                 member_arr={member_arr}
                                 member_count={member_count}

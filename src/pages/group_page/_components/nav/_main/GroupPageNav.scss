@@ -1,18 +1,22 @@
-.GroupPageNav{
+.GroupPageNav {
     height: 60px;
 }
 
-.GroupPageNav_item{
+.GroupPageNav_fake_sticky {
+    bottom: calc(100% + var(--height-header) + 1px);
+}
+
+.GroupPageNav_item {
     height: 100%;
 }
 
 // ------
 
-.device-mobile{
-    .GroupPageNav{
+.device-mobile {
+    .GroupPageNav {
         overflow-x: auto;
 
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
             display: none;
         }
     }

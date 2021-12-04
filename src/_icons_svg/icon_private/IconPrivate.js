@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// 
+//
 IconPrivate.propTypes = {
     size_icon: PropTypes.string,
     stroke: PropTypes.string,
@@ -9,25 +9,23 @@ IconPrivate.propTypes = {
 
 IconPrivate.defaultProps = {
     size_icon: '1rem',
-    stroke: 'var(--md-color)'
-}
+    stroke: 'var(--md-color)',
+};
 
-// 
-function IconPrivate(props) {
-    const {size_icon, stroke} = props;
-    // 
+//
+function IconPrivate({ size_icon, stroke }) {
+    //
     return (
         <svg
             width={size_icon}
             height={size_icon}
             viewBox="0 0 200 200"
-            
             stroke={stroke}
             strokeLinejoin="round"
         >
             <path
                 d="M35 185V83.2216H165V185H35Z"
-                fill="black"
+                fill={stroke}
                 strokeWidth="15"
             />
 

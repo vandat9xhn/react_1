@@ -6,9 +6,6 @@ import { HEADER_HEAD } from '../_constant/Constant';
 //
 import { useMounted } from './useMounted';
 
-//
-const header_head = HEADER_HEAD + 10;
-
 const isInnerWidthOk = () => innerWidth > 900;
 const isHrefOk = (sticky_location) =>
     location.href.search(sticky_location) >= 0;
@@ -22,7 +19,10 @@ function handleScrollTo(new_pos = 0) {
 }
 
 //
-export function useStickyAuto({ sticky_location = /./ }) {
+export function useStickyAuto({
+    sticky_location = /./,
+    header_head = HEADER_HEAD + 10,
+}) {
     //
     const ref_main_elm = useRef(null);
     const ref_fake_elm = useRef(null);

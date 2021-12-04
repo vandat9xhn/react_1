@@ -12,7 +12,7 @@ import './GroupPageCommon.scss';
 //
 import GroupPageInfo from '../_components/info/_main/GroupPageInfo';
 import GroupPageNav from '../_components/nav/_main/GroupPageNav';
-// 
+//
 import './GroupPage.scss';
 
 //
@@ -48,10 +48,13 @@ function GroupPage(props) {
         member_count,
     } = group_obj;
 
+    const no_permission =
+        action_name == 'join' && privacy.toUpperCase() == 'PRIVATE';
+
     //
     useEffect(() => {
         getData_API();
-    }, []);
+    }, [id]);
 
     // -------
 
@@ -85,6 +88,7 @@ function GroupPage(props) {
         group_id: id,
         is_admin: is_admin,
         is_moderate: is_moderate,
+        no_permission: no_permission,
         member_count: member_count,
     };
 
@@ -100,33 +104,40 @@ function GroupPage(props) {
 
     //
     return (
-        <div className="GroupPage">
-            <div className="bg-primary box-shadow-1">
-                <div>
-                    <GroupPageInfo
-                        group_id={id}
-                        name={name}
-                        picture={picture}
-                        //
-                        color_obj={color_obj}
-                        affiliation_obj={affiliation_obj}
-                        //
-                        privacy={privacy}
-                        action_name={action_name}
-                        member_arr={member_arr}
-                        member_count={member_count}
-                        //
-                        openCoverPicture={openCoverPicture}
-                        toggleRelatedGroup={toggleRelatedGroup}
-                        handleAction={handleAction}
-                    />
-                </div>
+        <div key={id} className="GroupPage">
+            <div className="bg-primary">
+                <GroupPageInfo
+                    group_id={id}
+                    name={name}
+                    picture={picture}
+                    //
+                    color_obj={color_obj}
+                    affiliation_obj={affiliation_obj}
+                    //
+                    privacy={privacy}
+                    action_name={action_name}
+                    member_arr={member_arr}
+                    member_count={member_count}
+                    //
+                    openCoverPicture={openCoverPicture}
+                    toggleRelatedGroup={toggleRelatedGroup}
+                    handleAction={handleAction}
+                />
+            </div>
 
+            <div className="pos-sticky top-header z-index-lv1 bg-primary box-shadow-1">
                 <div className="GroupPage_nav fb-profile-width-contain">
                     <GroupPageNav
                         group_id={id}
                         color={color_obj.color}
                         bg_btn={color_obj.bg_btn}
+                        //
+                        no_permission={no_permission}
+                        action_name={action_name}
+                        //
+                        name={name}
+                        picture={picture}
+                        link_to={`/group/${id}/discuss`}
                     />
                 </div>
             </div>
@@ -135,7 +146,10 @@ function GroupPage(props) {
                 {id > 0 ? (
                     <Suspense fallback={null}>
                         <Switch>
-                            {GroupPageRoutes.map((item, ix) => (
+                            {GroupPageRoutes.slice(
+                                0,
+                                no_permission ? 2 : undefined
+                            ).map((item, ix) => (
                                 <Route
                                     key={ix}
                                     // component={item.component}

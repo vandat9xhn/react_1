@@ -7,6 +7,8 @@ import IconGroup from '../../../../../../_icons_svg/icon_group/IconGroup';
 //
 import ActionPreviewGroup from '../../../../../action_preview_group/_main/ActionPreviewGroup';
 //
+import FsSearchPageUserPageGroup from '../../../_components/user_page_group/FsSearchPageUserPageGroup';
+// 
 import './FbSearchPageGroupItem.scss';
 
 //

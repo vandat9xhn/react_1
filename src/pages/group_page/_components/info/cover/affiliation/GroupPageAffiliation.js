@@ -28,7 +28,7 @@ function GroupPageAffiliation({ bg_btn, affiliation_obj }) {
                 <div className="margin-right-8px">Group by</div>
 
                 <div>
-                    {to == 'user' ? (
+                    {to == 'person' ? (
                         <ActionPreviewProfile
                             user_id={id}
                             title_action={

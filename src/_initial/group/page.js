@@ -9,9 +9,10 @@ export const initial_group_page = () => {
 
         color_obj: { bg: '', bg_btn: '', color: '' },
         affiliation_obj: {
-            to: 'user' || 'page',
+            to: 'person' || 'page',
             id: 0,
             name: '',
+            picture: '',
         },
 
         joined: false,

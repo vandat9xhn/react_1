@@ -1,5 +1,6 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
+import { getRandomVidPic } from '../_common/default_image';
 import { getRandomName, getRandomPageName } from '../_common/default_name';
 import { getRandomGroup, getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
@@ -33,7 +34,7 @@ const GROUP_COLOR_ARR = [
 export const default_fb_group_page_obj = () => {
     const joined = getRandomBool();
     const member_arr = getDefaultArr(() => getRandomUser().user, 6, 8);
-    const affiliation_to = getRandomFromArr(['user', 'page']);
+    const affiliation_to = getRandomFromArr(['person', 'page']);
 
     const is_admin = !!(getRandomBool() * getRandomBool());
     const is_moderate = is_admin
@@ -44,21 +45,23 @@ export const default_fb_group_page_obj = () => {
         ...getRandomGroup().group_obj,
 
         color_obj: getRandomFromArr(GROUP_COLOR_ARR),
-        affiliation_obj:
-            getRandomBool() || true
-                ? {
-                      to: affiliation_to,
-                      id: getRandomId(),
-                      name:
-                          affiliation_to == 'user'
-                              ? getRandomName()
-                              : getRandomPageName(),
-                  }
-                : { to: '', id: 0, name: '' },
+        affiliation_obj: getRandomBool()
+            ? {
+                  to: affiliation_to,
+                  id: getRandomId(),
+                  name:
+                      affiliation_to == 'person'
+                          ? getRandomName()
+                          : getRandomPageName(),
+                  picture: getRandomVidPic(),
+              }
+            : { to: '', id: 0, name: '', picture: '' },
 
         is_admin: is_admin,
         is_moderate: is_moderate,
-        privacy: getRandomFromArr(['Public', 'Private']),
+        privacy: getRandomBool()
+            ? 'Public'
+            : getRandomFromArr(['Public', 'Private']),
         joined: joined,
 
         member_count: getRandomNumber(1, 20) * 1000,
