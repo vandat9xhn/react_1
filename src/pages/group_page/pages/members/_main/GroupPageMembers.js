@@ -82,7 +82,7 @@ function GroupPageMembers({ group_id, is_admin, is_moderate, member_count }) {
     return (
         <div className="GroupPageMembers display-flex justify-content-center padding-y-16px">
             <div
-                className={`padding-16px brs-8px bg-primary box-shadow-1 ${
+                className={`GroupPageMembers_contain max-w-100per padding-16px brs-8px-pc bg-primary box-shadow-1 ${
                     is_admin ? 'w-500px' : 'w-680px'
                 }`}
             >
@@ -90,13 +90,13 @@ function GroupPageMembers({ group_id, is_admin, is_moderate, member_count }) {
                     <GPMemHead member_count={member_count} />
                 </div>
 
-                <hr className="gr-page-hr" />
+                <hr className="GroupPageMembers_hr gr-page-hr" />
 
                 <div>
                     <GPMemYou you_obj={you_obj} />
                 </div>
 
-                <hr className="gr-page-hr" />
+                <hr className="GroupPageMembers_hr gr-page-hr" />
 
                 {admin_count ? (
                     <div>
@@ -106,7 +106,7 @@ function GroupPageMembers({ group_id, is_admin, is_moderate, member_count }) {
                             admin_count={admin_count}
                         />
 
-                        <hr className="gr-page-hr" />
+                        <hr className="GroupPageMembers_hr gr-page-hr" />
                     </div>
                 ) : null}
 
@@ -118,7 +118,7 @@ function GroupPageMembers({ group_id, is_admin, is_moderate, member_count }) {
                             expert_count={expert_count}
                         />
 
-                        <hr className="gr-page-hr" />
+                        <hr className="GroupPageMembers_hr gr-page-hr" />
                     </div>
                 )}
 
@@ -130,7 +130,7 @@ function GroupPageMembers({ group_id, is_admin, is_moderate, member_count }) {
                             friend_count={friend_count}
                         />
 
-                        <hr className="gr-page-hr" />
+                        <hr className="GroupPageMembers_hr gr-page-hr" />
                     </div>
                 )}
 
@@ -142,7 +142,7 @@ function GroupPageMembers({ group_id, is_admin, is_moderate, member_count }) {
                             same_count={same_count}
                         />
 
-                        <hr className="gr-page-hr" />
+                        <hr className="GroupPageMembers_hr gr-page-hr" />
                     </div>
                 )}
 
@@ -154,7 +154,7 @@ function GroupPageMembers({ group_id, is_admin, is_moderate, member_count }) {
                             near_count={near_count}
                         />
 
-                        <hr className="gr-page-hr" />
+                        <hr className="GroupPageMembers_hr gr-page-hr" />
                     </div>
                 )}
 

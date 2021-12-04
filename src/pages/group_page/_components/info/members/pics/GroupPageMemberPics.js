@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
 import OverlapPics from '../../../../../../component/overlap_pics/_main/OverlapPics';
+// 
+import './GroupPageMemberPics.scss';
 
 //
 GroupPageMemberPics.propTypes = {};

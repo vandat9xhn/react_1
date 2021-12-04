@@ -12,8 +12,8 @@ CloseDivPcMb.propTypes = {};
 
 //
 function CloseDivPcMb({
-    class_actions = 'action-contain-mb-bottom',
-    class_action_contain_mb,
+    class_actions,
+    class_action_contain_mb = 'action-contain-mb-bottom',
 
     refs_target,
     children,

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
 import GroupPageNavMore from '../more/_main/GroupPageNavMore';
 import GroupPageNavItem from '../item/GroupPageNavItem';
 import GroupPageBtnSearch from '../btn_search/GroupPageBtnSearch';
@@ -38,6 +40,8 @@ const NAV_LINK_ARR = [
         title: 'Topics',
         link_to: 'topics',
     },
+
+    ...(IS_MOBILE ? MORE_LINK_ARR : []),
 ];
 
 //
@@ -61,22 +65,24 @@ function GroupPageNav({ group_id, color, bg_btn, handleAction }) {
                         </li>
                     ))}
 
-                    <li className="GroupPageNav_item">
-                        <GroupPageNavMore
-                            group_id={group_id}
-                            color={color}
-                            bg_btn={bg_btn}
-                            more_link_arr={MORE_LINK_ARR}
-                        />
-                    </li>
+                    {IS_MOBILE ? null : (
+                        <li className="GroupPageNav_item">
+                            <GroupPageNavMore
+                                group_id={group_id}
+                                color={color}
+                                bg_btn={bg_btn}
+                                more_link_arr={MORE_LINK_ARR}
+                            />
+                        </li>
+                    )}
                 </ul>
 
                 <div className="display-flex">
-                    <div className="margin-right-8px">
+                    <div className="margin-left-8px">
                         <GroupPageBtnSearch />
                     </div>
 
-                    <div>
+                    <div className="margin-left-8px">
                         <GroupPageActionOther
                             group_id={group_id}
                             handleAction={handleAction}

@@ -12,6 +12,8 @@ import './GroupPageCommon.scss';
 //
 import GroupPageInfo from '../_components/info/_main/GroupPageInfo';
 import GroupPageNav from '../_components/nav/_main/GroupPageNav';
+// 
+import './GroupPage.scss';
 
 //
 GroupPage.propTypes = {};
@@ -120,7 +122,7 @@ function GroupPage(props) {
                     />
                 </div>
 
-                <div className="fb-profile-width-contain">
+                <div className="GroupPage_nav fb-profile-width-contain">
                     <GroupPageNav
                         group_id={id}
                         color={color_obj.color}

@@ -5,6 +5,8 @@ import GroupPageCover from '../cover/_main/GroupPageCover';
 import GroupPageName from '../name/GroupPageName';
 import GroupPageMembers from '../members/_main/GroupPageMembers';
 import GroupPageActions from '../actions/_main/GroupPageActions';
+// 
+import './GroupPageInfo.scss';
 
 //
 GroupPageInfo.propTypes = {};
@@ -39,14 +41,14 @@ function GroupPageInfo({
                 />
             </div>
 
-            <div className="fb-profile-width-contain padding-top-16px">
-                <div className="display-flex space-between">
+            <div className="GroupPageInfo_foot fb-profile-width-contain padding-top-16px">
+                <div className="GroupPageInfo_foot_row display-flex space-between">
                     <div className="padding-bottom-16px padding-top-6px padding-x-6px">
                         <div>
                             <GroupPageName name={name} />
                         </div>
 
-                        <div className="font-17px">
+                        <div className="GroupPageInfo_member font-17px">
                             <GroupPageMembers
                             group_id={group_id}
                                 privacy={privacy}

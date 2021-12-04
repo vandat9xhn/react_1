@@ -1,6 +1,12 @@
-.GroupPageMembers{
-    .gr-page-hr{
-        margin-top: 20px;
-        margin-bottom: 20px;
+.GroupPageMembers_hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+// ------
+
+.device-mobile{
+    .GroupPageMembers_contain{
+        padding: 8px;
     }
 }

@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import BtnActionsOther from '../../../../../../../component/button/actions_other/BtnActionsOther';
+//
+import './GPMemUserPageLayout.scss';
 
 //
 GPMemUserPageLayout.propTypes = {};
@@ -25,10 +27,12 @@ function GPMemUserPageLayout({
     //
     return (
         <div className="GPMemUserPageLayout padding-y-8px break-word">
-            <div className="display-flex align-items-center">
-                <div className="flex-shrink-0 margin-right-12px">{picture}</div>
+            <div className="GPMemUserPageLayout_row display-flex align-items-center">
+                <div className="GPMemUserPageLayout_left flex-shrink-0 margin-right-12px">
+                    {picture}
+                </div>
 
-                <div className="flex-grow-1 flex-between-center">
+                <div className="GPMemUserPageLayout_right flex-grow-1 flex-between-center">
                     <div className="display-flex flex-col space-between padding-right-8px">
                         <div>{name}</div>
 

@@ -5,11 +5,13 @@ import { IS_MOBILE } from '../../../../../../_constant/Constant';
 //
 import { useStickyAuto } from '../../../../../../_hooks/useStickyAuto';
 //
+import './GroupPageDiscussRightCommon.scss';
+// 
 import GroupPageDiscussAbout from '../about/_main/GroupPageDiscussAbout';
 import GPDAboutTopics from '../topics/_main/GPDTopics';
 import GPDMedia from '../media/_main/GPDMedia';
 //
-import './GroupPageDiscussRightCommon.scss';
+import './GroupPageDiscussRight.scss';
 
 //
 GroupPageDiscussRight.propTypes = {};
@@ -44,7 +46,7 @@ function GroupPageDiscussRight({ group_id, is_admin }) {
 
             <div
                 ref={ref_preview_elm}
-                className="pos-sticky padding-bottom-10px"
+                className="GroupPageDiscussRight_contain pos-sticky padding-bottom-10px"
             >
                 <div className="margin-bottom-15px">
                     <GroupPageDiscussAbout

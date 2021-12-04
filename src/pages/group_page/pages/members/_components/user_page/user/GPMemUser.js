@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+// 
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 //
 import ActionsProfileCase from '../../../../../../../component/actions_profile/case/_main/ActionsProfileCase';
 import ActionPreviewProfile from '../../../../../../../component/action_preview_profile/_main/ActionPreviewProfile';
@@ -89,7 +91,7 @@ function GPMemUser({
                     <ActionsProfileCase
                         action_case={action_case}
                         user_id={id}
-                        use_title={use_title}
+                        use_title={IS_MOBILE ? false : use_title}
                         handleAction={handleAction}
                     />
                 }

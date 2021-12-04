@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { UnitNumber } from '../../../../../../_some_function/UnitNumber';
 // 
 import IconPrivate from '../../../../../../_icons_svg/icon_private/IconPrivate';
+// 
+import './GroupPageMemberCount.scss';
 
 //
 GroupPageMemberCount.propTypes = {};
@@ -13,7 +15,7 @@ function GroupPageMemberCount({ privacy, member_count }) {
     //
     return (
         <div className="GroupPageMemberCount text-secondary">
-            <div className="display-flex align-items-center">
+            <div className="GroupPageMemberCount_row display-flex align-items-center">
                 <div className="display-flex align-items-center">
                     <IconPrivate />
 

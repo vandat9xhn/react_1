@@ -48,10 +48,15 @@ function GPMediaAlbums({ group_id }) {
         <div className="GPMediaAlbums">
             <ul className="display-flex flex-wrap list-none">
                 {data_arr.map((item, ix) => (
-                    <li key={item.id} className="GPMediaAlbums_item">
+                    <li
+                        key={item.id}
+                        className="GPMediaAlbums_item gr-page-media-item"
+                    >
                         <GPMediaPicsItem img={item.img} link_to={item.link_to}>
-                            <div className="GPMediaAlbums_item_title line-20px">
-                                <div className="font-600">{item.title}</div>
+                            <div className="GPMediaAlbums_item_title padding-5px">
+                                <div className="line-20px font-600">
+                                    {item.title}
+                                </div>
 
                                 <div className="font-13px line-16px text-secondary">
                                     {item.video_count

@@ -16,8 +16,8 @@ function GPMediaHead({ group_id, openAddMedia }) {
     //
     return (
         <div className="GPMediaHead">
-            <div className="flex-between-center">
-                <h2 className="font-20px font-700">Media</h2>
+            <div className="GPMediaHead_row flex-between-center">
+                <h2 className="GPMediaHead_title font-20px font-700">Media</h2>
 
                 <div className="display-flex align-items-center">
                     <Link

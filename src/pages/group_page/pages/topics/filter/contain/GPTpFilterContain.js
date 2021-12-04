@@ -9,7 +9,7 @@ GPTpFilterContain.propTypes = {};
 //
 function GPTpFilterContain({ filter_arr, filter_ix, chooseFilter }) {
     return (
-        <div className="GPTpFilterContain padding-8px brs-8px bg-primary box-shadow-fb">
+        <div className="GPTpFilterContain padding-8px brs-8px-pc bg-primary box-shadow-fb">
             {filter_arr.map((item, ix) => (
                 <div key={ix}>
                     <GPTpFilterItem

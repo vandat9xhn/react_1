@@ -40,7 +40,10 @@ function GPMediaPics({ handle_API_L }) {
         <div className="GPMediaPics">
             <ul className="display-flex flex-wrap list-none">
                 {data_arr.map((item, ix) => (
-                    <li key={item.id} className="GPMediaPics_item">
+                    <li
+                        key={item.id}
+                        className="GPMediaPics_item gr-page-media-item"
+                    >
                         <GPMediaPicsItem
                             img={item.img}
                             link_to={item.link_to}

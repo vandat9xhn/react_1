@@ -31,7 +31,7 @@ function GroupPageTopic({
                     #
                 </div>
 
-                <div className="flex-grow-1 padding-6px">
+                <div className="GroupPageTopic_right flex-grow-1 padding-6px">
                     <div className="flex-between-center">
                         <GroupPageTopicTitle
                             group_id={group_id}
@@ -52,7 +52,7 @@ function GroupPageTopic({
                         </div>
                     </div>
 
-                    <div className="margin-top-12px font-13px">
+                    <div className="GroupPageTopic_info margin-top-12px font-13px">
                         <GroupPageTopicInfo
                             is_admin={is_admin}
                             is_hidden={is_hidden}

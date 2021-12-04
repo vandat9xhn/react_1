@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+// 
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
 // 
 import BtnGroupInvite from '../../../../../../component/button/group_actions/invite/BtnGroupInvite';
 import BtnActions from '../../../../../../component/button/actions/BtnActions';
 import ActionsGroupCase from '../../../../../../component/actions_group/_case/ActionsGroupCase';
+// 
+import './GroupPageActions.scss';
 
 //
 GroupPageActions.propTypes = {};
@@ -22,8 +26,8 @@ function GroupPageActions({
     //
     return (
         <div className="GroupPageActions">
-            <div className="display-flex align-items-center">
-                <div className="margin-right-8px">
+            <div className="GroupPageActions_row display-flex align-items-center">
+                <div className="GroupPageActions_btn margin-right-8px">
                     <ActionsGroupCase
                         action_name={action_name}
                         group_id={group_id}
@@ -31,7 +35,7 @@ function GroupPageActions({
                     />
                 </div>
 
-                <div className="margin-right-8px">
+                <div className="GroupPageActions_btn margin-right-8px">
                     <BtnGroupInvite
                         className="text-white"
                         btn_props={{ style: { backgroundColor: bg_btn } }}
@@ -39,7 +43,7 @@ function GroupPageActions({
                     />
                 </div>
 
-                <div>
+                {IS_MOBILE ? null : <div>
                     <BtnActions
                         className="bg-ccc padding-x-16px"
                         Icon={
@@ -54,7 +58,7 @@ function GroupPageActions({
                         //  use_icon
                         handleClick={toggleRelatedGroup}
                     />
-                </div>
+                </div>}
             </div>
         </div>
     );

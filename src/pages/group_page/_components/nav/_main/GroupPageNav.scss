@@ -5,3 +5,15 @@
 .GroupPageNav_item{
     height: 100%;
 }
+
+// ------
+
+.device-mobile{
+    .GroupPageNav{
+        overflow-x: auto;
+
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+}

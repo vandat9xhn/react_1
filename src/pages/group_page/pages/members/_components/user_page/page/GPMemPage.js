@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+// 
 import ActionsPageCase from '../../../../../../../component/actions_page/_case/ActionsPageCase';
 import ActionPreviewPage from '../../../../../../../component/action_preview_page/_main/ActionPreviewPage';
 //
@@ -93,7 +95,7 @@ function GPMemPage({
                         has_liked={has_liked}
                         has_followed={has_followed}
                         //
-                        use_title={use_title}
+                        use_title={IS_MOBILE ? false : use_title}
                         handleAction={handleAction}
                     />
                 }

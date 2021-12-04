@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 //
 import { GroupPageMediaRoutes } from '../_route/_main';
 //
+import './GroupPageMediaCommon.scss';
+// 
 import GPMediaHead from '../head/GPMediaHead';
 import GPMediaNav from '../nav/GPMediaNav';
+// 
+import './GroupPageMedia.scss';
 
 //
 GroupPageMedia.propTypes = {};
@@ -15,7 +19,7 @@ function GroupPageMedia({ group_id }) {
     //
     return (
         <div className="GroupPageMedia padding-y-20px">
-            <div className="GroupPageMedia_contain fb-profile-width-contain padding-16px brs-8px bg-primary box-shadow-1">
+            <div className="GroupPageMedia_contain fb-profile-width-contain padding-16px brs-8px-pc bg-primary box-shadow-1">
                 <div className="margin-bottom-10px">
                     <GPMediaHead group_id={group_id} />
                 </div>

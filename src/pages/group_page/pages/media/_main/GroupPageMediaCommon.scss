@@ -1,0 +1,19 @@
+.gr-page-media-item {
+    width: 20%;
+}
+
+// -----
+
+.device-mobile {
+    @media (max-width: 1000px) {
+        .gr-page-media-item {
+            width: 33.33%;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .gr-page-media-item {
+            width: 50%;
+        }
+    }
+}
