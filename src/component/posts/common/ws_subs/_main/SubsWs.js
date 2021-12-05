@@ -23,6 +23,7 @@ function SubsWs({
     subs,
     count_sub,
     //
+    use_cmt_connect,
     open_input_sub,
     focusInputSub,
 }) {
@@ -77,11 +78,15 @@ function SubsWs({
         <div className="SubsWs">
             {count_sub_left >= 1 ? (
                 <div className="sub-contain text-secondary">
-                    {subs.length || open_input_sub ? (
-                        <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
-                    ) : null}
+                    {use_cmt_connect ? (
+                        <React.Fragment>
+                            {subs.length || open_input_sub ? (
+                                <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
+                            ) : null}
 
-                    <div className="cmt-connect-curved cmt-connect-curved-1"></div>
+                            <div className="cmt-connect-curved cmt-connect-curved-1"></div>
+                        </React.Fragment>
+                    ) : null}
 
                     <div className="display-flex align-items-center">
                         <IconReply class_icon="margin-x-5px" />
@@ -105,6 +110,7 @@ function SubsWs({
                         <SubWs
                             sub={sub}
                             // Flex col-reverse => the first does not have straight-1
+                            use_cmt_connect={use_cmt_connect}
                             has_straight_1={open_input_sub || sub_ix > 0}
                             //
                             focusInputSub={focusInputSub}
@@ -115,7 +121,9 @@ function SubsWs({
 
             {open_input_sub ? (
                 <div className="SubsWs_input sub-contain">
-                    <div className="cmt-connect-curved cmt-connect-curved-1"></div>
+                    {use_cmt_connect ? (
+                        <div className="cmt-connect-curved cmt-connect-curved-1"></div>
+                    ) : null}
 
                     <div className="sub-input">
                         <CommentPost

@@ -1,9 +1,5 @@
-.ProfileMoreItem-active{
-    .ProfileMoreItem_contain{
-        border-bottom: 3px solid currentColor;
+.ProfileMoreItem-active {
+    .ProfileMoreItem_bottom {
+        display: block;
     }
-}
-
-.ProfileMoreItem_contain{
-    height: 60px;
 }

@@ -1,11 +1,19 @@
-.Profile_head {
-    box-shadow: 0 1px 2px var(--shadow-1);
+.Profile_part {
+    padding-bottom: 20px;
 }
 
 // -----
 
 .device-mobile {
-    .Profile_sent_request {
-        padding-bottom: 10px;
+    .Profile_part {
+        padding-bottom: 16px;
+    }
+
+    .Profile_more {
+        position: static;
+    }
+
+    .Profile_main{
+        margin-top: 16px;
     }
 }

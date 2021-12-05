@@ -6,6 +6,7 @@ import GroupPageDiscussRight from '../right/_main/GroupPageDiscussRight';
 import GroupPageDiscussPrivate from '../private/GroupPageDiscussPrivate';
 //
 import './GroupPageDiscuss.scss';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 
 //
 GroupPageDiscuss.propTypes = {};
@@ -27,13 +28,15 @@ function GroupPageDiscuss({ group_id, is_admin, bg_btn, no_permission }) {
                     )}
                 </div>
 
-                <div className="GroupPageDiscuss_right w-360px">
-                    <GroupPageDiscussRight
-                        group_id={group_id}
-                        is_admin={is_admin}
-                        no_permission={no_permission}
-                    />
-                </div>
+                {IS_MOBILE ? null : (
+                    <div className="GroupPageDiscuss_right w-360px">
+                        <GroupPageDiscussRight
+                            group_id={group_id}
+                            is_admin={is_admin}
+                            no_permission={no_permission}
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );

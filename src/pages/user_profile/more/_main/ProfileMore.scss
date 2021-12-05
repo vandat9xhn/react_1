@@ -1,4 +1,12 @@
-.ProfileMore{
+.ProfileMore {
+    height: 60px;
+}
+
+.ProfileMore_contain {
     width: 900px;
     max-width: 100%;
+}
+
+.ProfileMore_fake_sticky {
+    bottom: calc(100% + var(--height-header) + 1px);
 }

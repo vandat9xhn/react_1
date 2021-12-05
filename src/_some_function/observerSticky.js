@@ -17,4 +17,6 @@ export function observerSticky({
     });
 
     observer.observe(fake_elm);
+
+    return observer;
 }

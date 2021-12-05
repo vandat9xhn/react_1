@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
-import { observerSticky } from '../../../../../_some_function/observerSticky';
+import { useStickyOver } from '../../../../../_hooks/useStickyOver';
 //
 import ActionsGroupCase from '../../../../../component/actions_group/_case/ActionsGroupCase';
 import BtnGroupInvite from '../../../../../component/button/group_actions/invite/BtnGroupInvite';
@@ -70,34 +70,17 @@ function GroupPageNav({
     handleAction,
 }) {
     //
-    const [scroll_over, setScrollOver] = useState(false);
-
-    //
-    const ref_fake_sticky = useRef(null);
-
-    //
-    useEffect(() => {
-        window.scrollTo(scrollX, scrollY + 1);
-
-        observerSticky({
-            fake_elm: ref_fake_sticky.current,
-            fake_bottom: -1,
-            callbackNotOver: () => {
-                setScrollOver(false);
-            },
-            callbackOver: () => {
-                setScrollOver(true);
-            },
-        });
-    }, []);
+    const { scroll_over, ref_fake_sticky } = useStickyOver({});
 
     //
     return (
         <div className="GroupPageNav font-600 text-secondary">
-            <div
-                ref={ref_fake_sticky}
-                className="GroupPageNav_fake_sticky pos-abs left-0 w-100per h-1px"
-            ></div>
+            {IS_MOBILE ? null : (
+                <div
+                    ref={ref_fake_sticky}
+                    className="GroupPageNav_fake_sticky pos-abs left-0 w-100per h-1px pointer-events-none"
+                ></div>
+            )}
 
             <div className="GroupPageNav_row flex-between-center h-100per">
                 <div className="flex-grow-1 h-100per">
@@ -134,46 +117,52 @@ function GroupPageNav({
                         </ul>
                     </div>
 
-                    <div
-                        className={`h-100per ${
-                            scroll_over ? 'flex-between-center' : 'display-none'
-                        }`}
-                    >
-                        <div className="flex-grow-1 h-100per padding-y-2px">
-                            <GPNavGroup
-                                name={name}
-                                picture={picture}
-                                link_to={link_to}
-                            />
-                        </div>
-
-                        <div className="display-flex">
-                            <div className="margin-left-8px">
-                                <ActionsGroupCase
-                                    action_name={action_name}
-                                    group_id={group_id}
-                                    handleAction={handleAction}
+                    {IS_MOBILE ? null : (
+                        <div
+                            className={`h-100per ${
+                                scroll_over
+                                    ? 'flex-between-center'
+                                    : 'display-none'
+                            }`}
+                        >
+                            <div className="flex-grow-1 h-100per padding-y-2px">
+                                <GPNavGroup
+                                    name={name}
+                                    picture={picture}
+                                    link_to={link_to}
                                 />
                             </div>
 
-                            {action_name == 'joined' ? (
+                            <div className="display-flex">
                                 <div className="margin-left-8px">
-                                    <BtnGroupInvite
-                                        className="text-white"
-                                        btn_props={{
-                                            style: { backgroundColor: bg_btn },
-                                        }}
+                                    <ActionsGroupCase
+                                        action_name={action_name}
+                                        group_id={group_id}
                                         handleAction={handleAction}
                                     />
                                 </div>
-                            ) : null}
+
+                                {action_name == 'joined' ? (
+                                    <div className="margin-left-8px">
+                                        <BtnGroupInvite
+                                            className="text-white"
+                                            btn_props={{
+                                                style: {
+                                                    backgroundColor: bg_btn,
+                                                },
+                                            }}
+                                            handleAction={handleAction}
+                                        />
+                                    </div>
+                                ) : null}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
 
-                <div className="display-flex">
+                <div className="display-flex padding-x-8px">
                     {no_permission ? null : (
-                        <div className="margin-left-8px">
+                        <div>
                             <GroupPageBtnSearch />
                         </div>
                     )}

@@ -31,6 +31,7 @@ function PostSub2({
     sub_2,
     open_input_sub_2,
 
+    use_cmt_connect,
     has_straight_1,
     has_straight_2,
 
@@ -244,13 +245,17 @@ function PostSub2({
     return (
         <div className="PostSub2">
             <div className="sub-2-contain">
-                {has_straight_1 ? (
-                    <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
-                ) : null}
-                <div className="cmt-connect-curved cmt-connect-curved-2"></div>
+                {use_cmt_connect ? (
+                    <React.Fragment>
+                        {has_straight_1 ? (
+                            <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
+                        ) : null}
+                        <div className="cmt-connect-curved cmt-connect-curved-2"></div>
 
-                {has_straight_2 ? (
-                    <div className="cmt-connect-straight cmt-connect-straight-2-child"></div>
+                        {has_straight_2 ? (
+                            <div className="cmt-connect-straight cmt-connect-straight-2-child"></div>
+                        ) : null}
+                    </React.Fragment>
                 ) : null}
 
                 <PostCmt

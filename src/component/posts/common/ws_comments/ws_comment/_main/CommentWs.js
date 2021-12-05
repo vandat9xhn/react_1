@@ -28,7 +28,7 @@ import './CommentWs.scss';
 CommentWs.propTypes = {};
 
 //
-function CommentWs({ comment }) {
+function CommentWs({ use_cmt_connect, comment }) {
     //
     const { user: c_user, openScreenFloor } = useContext(context_api);
 
@@ -266,7 +266,7 @@ function CommentWs({ comment }) {
     return (
         <div className="CommentWs">
             <div className="cmt-contain">
-                {count_sub || open_input_sub ? (
+                {use_cmt_connect && (count_sub || open_input_sub) ? (
                     <div className="cmt-connect-straight cmt-connect-straight-1"></div>
                 ) : null}
 
@@ -312,6 +312,7 @@ function CommentWs({ comment }) {
                         subs={subs}
                         count_sub={count_sub}
                         //
+                        use_cmt_connect={use_cmt_connect}
                         open_input_sub={open_input_sub}
                         focusInputSub={focusInputSub}
                     />

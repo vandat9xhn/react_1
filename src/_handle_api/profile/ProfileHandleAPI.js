@@ -20,11 +20,16 @@ import { params_profile_post_l } from '../../_params/profile/paramsProfileHome';
 import makeFormData from '../../_some_function/makeFormData';
 
 // posts
-export async function handle_API_ProfilePost_L(c_count = 0, user_id = -1) {
+export async function handle_API_ProfilePost_L({
+    c_count = 0,
+    user_id = -1,
+    params = {},
+}) {
     const res = await API_ProfilePost_L({
         ...params_profile_post_l,
         c_count: c_count,
         user_id: user_id,
+        ...params,
     });
 
     return res.data;

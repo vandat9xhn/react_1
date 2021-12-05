@@ -9,7 +9,7 @@ BtnProfileOther.propTypes = {};
 //
 function BtnProfileOther({
     class_action_contain,
-    is_at_body = false,
+    is_at_body,
 
     handle_API_L,
     handleAction,

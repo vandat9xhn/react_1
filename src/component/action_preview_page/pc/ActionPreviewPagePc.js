@@ -5,6 +5,8 @@ import { initial_page_preview } from '../../../_initial/page/preview';
 //
 import { handle_API_PagePreview_R } from '../../../_handle_api/fb_page/preview';
 //
+import { useMounted } from '../../../_hooks/useMounted';
+// 
 import IconPublic from '../../../_icons_svg/icon_public/IconPublic';
 import IconTablePhone from '../../../_icons_svg/icon_table_phone/IconTablePhone';
 //
@@ -75,6 +77,9 @@ function ActionPreviewPagePc({ page_id, title_action }) {
         action_case_arr,
     } = page;
 
+    // 
+    const mounted = useMounted()
+
     // --------
 
     //
@@ -85,6 +90,10 @@ function ActionPreviewPagePc({ page_id, title_action }) {
         });
 
         const data = await handle_API_PagePreview_R({ page_id: page_id });
+
+        if (!mounted) {
+            return;
+        }
 
         setPageState({
             ...page_state,

@@ -13,7 +13,7 @@ function PostHeadGroupLeft({ group_obj, user }) {
     //
     return (
         <div className="PostHeadGroupLeft pos-rel wh-40px">
-            <div className="pos-abs-0">
+            <div className="PostHeadGroupLeft_group pos-abs-0">
                 <ActionPreviewGroup
                     group_id={group_obj.id}
                     title_action={
@@ -21,9 +21,9 @@ function PostHeadGroupLeft({ group_obj, user }) {
                             className="flex-shrink-0"
                             to={`/group/${group_obj.id}`}
                         >
-                            <div className="hv-bg-shadow-05">
+                            <div className="hv-after-shadow-05">
                                 <img
-                                    className="brs-8px object-fit-cover"
+                                    className="PostHeadGroupLeft_group_picture brs-8px object-fit-cover"
                                     src={group_obj.picture}
                                     alt=""
                                     width="36"
@@ -35,7 +35,7 @@ function PostHeadGroupLeft({ group_obj, user }) {
                 />
             </div>
 
-            <div className="pos-abs right-0 bottom-0">
+            <div className="PostHeadGroupLeft_user pos-abs right-0 bottom-0">
                 <ActionPreviewProfile
                     user_id={user.id}
                     title_action={
@@ -43,9 +43,9 @@ function PostHeadGroupLeft({ group_obj, user }) {
                             className="flex-shrink-0"
                             to={`/profile/${user.id}`}
                         >
-                            <div className="hv-bg-shadow-05">
+                            <div className="hv-after-shadow-05">
                                 <img
-                                    className="brs-50 object-fit-cover"
+                                    className="PostHeadGroupLeft_user_picture brs-50 object-fit-cover"
                                     src={user.picture}
                                     alt=""
                                     width="24"

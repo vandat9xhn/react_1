@@ -1,4 +1,17 @@
+.ProfilePreview_pic {
+    margin: 16px 0;
+}
 
-.ProfilePreview_pic{
-    margin: 1rem 0;
+// ------
+
+.device-mobile {
+    .ProfilePreview_preview {
+        padding-bottom: 0;
+    }
+
+    .ProfilePreview_pic{
+        margin: 0;
+        border-top: 1px solid var(--md-bg-blur);
+        border-bottom: 1px solid var(--md-bg-blur);
+    }
 }

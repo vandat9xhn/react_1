@@ -6,3 +6,19 @@
 .PostHeadAction_list-mb {
     max-height: calc(100% - 60px);
 }
+
+// -----
+
+.device-mobile {
+    .PostHeadAction {
+        .ActionsBtnToggle_icon {
+            width: 27px;
+            height: 27px;
+        }
+
+        .IconThreeDot {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { IS_MOBILE } from '../../../../../../_constant/Constant';
+import { HEADER_HEAD, IS_MOBILE } from '../../../../../../_constant/Constant';
 //
 import { GetIdSlug } from '../../../../../../_some_function/GetIdSlug';
 //
@@ -26,6 +26,7 @@ function ProfilePreview(props) {
         !IS_MOBILE
             ? useStickyAuto({
                   sticky_location: /\/profile\/\d+$/,
+                  header_head: HEADER_HEAD + 70,
               })
             : {};
 
@@ -45,7 +46,7 @@ function ProfilePreview(props) {
 
             <div
                 ref={ref_preview_elm}
-                className="pos-sticky padding-bottom-10px"
+                className="ProfilePreview_preview pos-sticky padding-bottom-10px"
             >
                 <div className="ProfilePreview_item">
                     <ProfilePrIntro id={id} handleReady={handleReady} />

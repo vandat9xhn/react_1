@@ -125,8 +125,8 @@ function GroupPage(props) {
                 />
             </div>
 
-            <div className="pos-sticky top-header z-index-lv1 bg-primary box-shadow-1">
-                <div className="GroupPage_nav fb-profile-width-contain">
+            <div className="GroupPage_nav pos-sticky top-header z-index-lv1 bg-primary box-shadow-1">
+                <div className="GroupPage_nav_contain fb-profile-width-contain">
                     <GroupPageNav
                         group_id={id}
                         color={color_obj.color}

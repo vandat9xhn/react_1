@@ -48,7 +48,8 @@ function ProfilePosts({ name }) {
         observerShowMore,
     } = useObserverShowMore({
         initial_data_arr: initial_posts(),
-        handle_API_L: (c_count) => handle_API_ProfilePost_L(c_count, id),
+        handle_API_L: (c_count) =>
+            handle_API_ProfilePost_L({ c_count: c_count, user_id: id }),
     });
 
     const { data_arr: post_arr, is_fetching, has_fetched } = data_state;

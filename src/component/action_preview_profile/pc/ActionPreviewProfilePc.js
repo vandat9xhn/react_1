@@ -14,6 +14,7 @@ import ActionsPreviewPrFriend from '../../action_preview/profile_friend/ActionsP
 import ActionsPreviewInfo from '../../action_preview/info/ActionsPreviewInfo';
 //
 import './ActionPreviewProfilePc.scss';
+import { useMounted } from '../../../_hooks/useMounted';
 
 //
 const ActionsCaseComponent = ({ item, user_id }) => (
@@ -60,6 +61,11 @@ function ActionPreviewProfilePc({ user_id, title_action }) {
     } = profile;
 
     //
+    const mounted = useMounted();
+
+    // -----
+
+    //
     async function getProfileInfo() {
         setProfileState({
             ...profile_state,
@@ -67,6 +73,10 @@ function ActionPreviewProfilePc({ user_id, title_action }) {
         });
 
         const data = await handle_API_ProfileInfo_R({ user_id: user_id });
+
+        if (!mounted) {
+            return;
+        }
 
         setProfileState({
             ...profile_state,

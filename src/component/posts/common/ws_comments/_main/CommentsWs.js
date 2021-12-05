@@ -32,6 +32,8 @@ function CommentsWs({
     parent_id,
     comments,
     count_comment,
+
+    use_cmt_connect,
     initial_open_input = false,
 }) {
     //
@@ -137,7 +139,11 @@ function CommentsWs({
 
             <div className="Comments_list display-flex col-reverse">
                 {comments.map((comment) => (
-                    <CommentWs key={comment.id} comment={comment} />
+                    <CommentWs
+                        key={comment.id}
+                        comment={comment}
+                        use_cmt_connect={use_cmt_connect}
+                    />
                 ))}
             </div>
 

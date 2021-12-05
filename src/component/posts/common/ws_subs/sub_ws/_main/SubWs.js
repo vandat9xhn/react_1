@@ -31,7 +31,7 @@ import './SubWs.scss';
 SubWs.propTypes = {};
 
 //
-function SubWs({ sub, has_straight_1, focusInputSub }) {
+function SubWs({ sub, use_cmt_connect, has_straight_1, focusInputSub }) {
     //
     const {
         ws_send,
@@ -267,13 +267,17 @@ function SubWs({ sub, has_straight_1, focusInputSub }) {
     return (
         <div className="SubWs">
             <div className="sub-contain">
-                {has_straight_1 ? (
-                    <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
-                ) : null}
-                <div className="cmt-connect-curved cmt-connect-curved-1"></div>
+                {use_cmt_connect ? (
+                    <React.Fragment>
+                        {has_straight_1 ? (
+                            <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
+                        ) : null}
+                        <div className="cmt-connect-curved cmt-connect-curved-1"></div>
 
-                {open_input_sub_2 || count_sub_2 ? (
-                    <div className="cmt-connect-straight cmt-connect-straight-2"></div>
+                        {open_input_sub_2 || count_sub_2 ? (
+                            <div className="cmt-connect-straight cmt-connect-straight-2"></div>
+                        ) : null}
+                    </React.Fragment>
                 ) : null}
 
                 <PostCmt
@@ -317,6 +321,8 @@ function SubWs({ sub, has_straight_1, focusInputSub }) {
                         sub_id={id}
                         subs_2={subs_2}
                         count_sub_2={count_sub_2}
+                        // 
+                        use_cmt_connect={use_cmt_connect}
                         has_straight_1={has_straight_1}
                         //
                         open_input_sub_2={open_input_sub_2}

@@ -421,6 +421,8 @@ function Post({
                         parent_id={id}
                         comments={comments}
                         count_comment={count_comment}
+                        //
+                        use_cmt_connect={post_where == 'group'}
                         initial_open_input={is_open_input}
                     />
                 </div>

@@ -39,6 +39,8 @@ function Profile(props) {
 
     const { profile, is_fetching } = profile_state;
 
+    const { first_name, last_name, picture } = profile;
+
     //
     useEffect(() => {
         handleChangeId();
@@ -126,38 +128,43 @@ function Profile(props) {
     //
     return (
         <div key={id} className="Profile">
-            <div className="Profile_head margin-bottom-15px bg-primary">
-                <div className="Profile_info">
-                    <ProfileInfo
-                        profile={profile}
-                        //
-                        openCoverPicture={openCoverPicture}
-                        openPicture={openPicture}
+            <div className="Profile_info Profile_part bg-primary">
+                <ProfileInfo
+                    profile={profile}
+                    //
+                    openCoverPicture={openCoverPicture}
+                    openPicture={openPicture}
+                    handleAction={handleAction}
+                />
+            </div>
+
+            {profile.sent_request ? (
+                <div className="Profile_sent_request Profile_part bg-primary">
+                    <ProfileSentFriendRequest
+                        user_name={`${profile.first_name} ${profile.last_name}`}
                         handleAction={handleAction}
                     />
                 </div>
+            ) : null}
 
-                {profile.sent_request ? (
-                    <div className="Profile_sent_request margin-top-20px">
-                        <ProfileSentFriendRequest
-                            user_name={`${profile.first_name} ${profile.last_name}`}
-                            handleAction={handleAction}
-                        />
-                    </div>
-                ) : null}
+            {false ? null : (
+                <div className="Profile_more pos-sticky top-header z-index-lv1 bg-primary box-shadow-1">
+                    <ProfileMore
+                        user_id={id}
+                        user_name={`${first_name} ${last_name}`}
+                        user_pic={picture}
+                        handleAction={handleAction}
+                    />
+                </div>
+            )}
 
-                {IS_MOBILE ? null : (
-                    <div className="Profile_more margin-top-20px">
-                        <ProfileMore user_id={id} handleAction={handleAction} />
-                    </div>
-                )}
+            <div className="Profile_main margin-top-20px">
+                <RouteLoaded
+                    route_arr={route_arr}
+                    // use_loaded={false}
+                    fallback={<ProfileSkeleton />}
+                />
             </div>
-
-            <RouteLoaded
-                route_arr={route_arr}
-                // use_loaded={false}
-                fallback={<ProfileSkeleton />}
-            />
         </div>
     );
 }

@@ -22,7 +22,8 @@ function PostSubs2({
     sub_id,
     subs_2,
     count_sub_2,
-    
+
+    use_cmt_connect,
     has_straight_1,
 
     open_input_sub_2,
@@ -83,12 +84,17 @@ function PostSubs2({
         <div>
             {count_sub_2_left >= 1 ? (
                 <div className="sub-2-contain text-secondary">
-                    {has_straight_1 ? (
-                        <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
-                    ) : null}
-                    <div className="cmt-connect-curved cmt-connect-curved-2"></div>
-                    {subs_2.length || open_input_sub_2 ? (
-                        <div className="cmt-connect-straight cmt-connect-straight-2-child"></div>
+                    {use_cmt_connect ? (
+                        <React.Fragment>
+                            {has_straight_1 ? (
+                                <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
+                            ) : null}
+                            <div className="cmt-connect-curved cmt-connect-curved-2"></div>
+
+                            {subs_2.length || open_input_sub_2 ? (
+                                <div className="cmt-connect-straight cmt-connect-straight-2-child"></div>
+                            ) : null}
+                        </React.Fragment>
                     ) : null}
 
                     <div className="display-flex align-items-center">
@@ -114,6 +120,7 @@ function PostSubs2({
                             sub_2={sub_2}
                             open_input_sub_2={open_input_sub_2}
                             //
+                            use_cmt_connect={use_cmt_connect}
                             has_straight_1={has_straight_1}
                             // Flex col-reverse => the first does not have straight-1
                             has_straight_2={sub_2_ix > 0 || open_input_sub_2}
@@ -126,10 +133,14 @@ function PostSubs2({
 
             {open_input_sub_2 ? (
                 <div className="PostSubs2_input sub-2-contain">
-                    {has_straight_1 ? (
-                        <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
+                    {use_cmt_connect ? (
+                        <React.Fragment>
+                            {has_straight_1 ? (
+                                <div className="cmt-connect-straight cmt-connect-straight-1-child"></div>
+                            ) : null}
+                            <div className="cmt-connect-curved cmt-connect-curved-2"></div>
+                        </React.Fragment>
                     ) : null}
-                    <div className="cmt-connect-curved cmt-connect-curved-2"></div>
 
                     <div className="sub-input">
                         <CommentPost

@@ -14,18 +14,18 @@ function ProfileMoreItem({ sk, title }) {
     return (
         <NavLink
             to={location.pathname + `${sk ? '?sk=' : ''}${sk}`}
-            className={
+            className={`ProfileMoreItem display-flex-center pos-rel h-100per padding-x-15px brs-6px font-600 hv-bg-s-through ${
                 (location.search.startsWith(`?sk=${sk.split('_')[0]}`) &&
                     sk != '') ||
                 (location.search == '' && sk == '')
                     ? 'ProfileMoreItem-active nav-active'
                     : 'normal-text'
-            }
+            }`}
             replace
         >
-            <div className="ProfileMoreItem_contain display-flex-center padding-x-15px cursor-pointer font-600 text-secondary nav-text">
-                {title}
-            </div>
+            <div className="nav-text">{title}</div>
+
+            <div className="ProfileMoreItem_bottom pos-abs top-100per left-0 w-100per h-3px bg-blue display-none"></div>
         </NavLink>
     );
 }
