@@ -10,11 +10,11 @@
 // ------
 
 .device-mobile {
-    .CardsRowFitContain_contain {
-        scroll-snap-type: x mandatory;
-    }
+    // .CardsRowFitContain_contain {
+    //     scroll-snap-type: x mandatory;
+    // }
 
-    .CardsRowFitContain_item {
-        scroll-snap-align: start;
-    }
+    // .CardsRowFitContain_item {
+    //     scroll-snap-align: start;
+    // }
 }

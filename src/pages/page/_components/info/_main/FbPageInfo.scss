@@ -1,0 +1,28 @@
+.FbPageInfo_name_extra {
+    margin: 32px 0 16px 16px;
+}
+
+.FbPageInfo_actions {
+    margin: 32px 0 16px 32px;
+}
+
+// ----
+
+.device-mobile {
+    .FbPageInfo_user_action {
+        display: block;
+    }
+    // .
+    .FbPageInfo_user {
+        display: block;
+    }
+    // ..
+    .FbPageInfo_name_extra {
+        margin: 10px 0;
+    }
+    // .
+    .FbPageInfo_actions {
+        margin: 0;
+        padding: 10px 5px;
+    }
+}

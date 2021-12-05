@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
 import { IS_MOBILE } from '../../../../../../../_constant/Constant';
-// 
+//
 import ActionsPageCase from '../../../../../../../component/actions_page/_case/ActionsPageCase';
 import ActionPreviewPage from '../../../../../../../component/action_preview_page/_main/ActionPreviewPage';
 //
 import GPMemUserPageLayout from '../_layout/GPMemUserPageLayout';
 import GPMemUserPagePic from '../picture/GPMemUserPagePic';
+import { handle_API_PageActions_L } from '../../../../../../../_handle_api/fb_page/action';
 
 //
 GPMemPage.propTypes = {};
@@ -42,12 +43,11 @@ function GPMemPage({
 
     //
     function handle_API_ActionOther_L() {
-        return [[{ name: 'test', title: 'Test' }]];
-        // return handle_API_FbGroupMemberActionOther_L({
-        //     type_user: 'person',
-        //     id: id,
-        //     group_id: group_id,
-        // });
+        return handle_API_PageActions_L({
+            page_id: id,
+            type: 'other',
+            params: {},
+        });
     }
 
     //

@@ -26,8 +26,9 @@ function BtnPageLike({
 
     use_title,
     use_icon,
-
     has_liked,
+
+    handleAction,
 }) {
     //
     function handleLike() {

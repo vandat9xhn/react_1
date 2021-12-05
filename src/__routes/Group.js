@@ -36,10 +36,6 @@ const GroupPage = React.lazy(() =>
     import('../pages/group_page/_main/GroupPage')
 );
 
-const WorkingOnIt = React.lazy(() =>
-    import('../component/working_on_it/WorkingOnIt')
-);
-
 //
 export const fb_group_route_arr = [
     {
@@ -72,12 +68,6 @@ export const fb_group_route_arr = [
         path: '/group/:id',
         component: GroupPage,
         exact: false,
-        auth: true,
-    },
-    {
-        path: '/page/:id',
-        component: WorkingOnIt,
-        exact: true,
         auth: true,
     },
 ];

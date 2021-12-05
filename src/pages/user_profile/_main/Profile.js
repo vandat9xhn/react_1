@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import update from 'immutability-helper';
 import PropTypes from 'prop-types';
-//
-import { IS_MOBILE } from '../../../_constant/Constant';
+
 //
 import { handle_API_ProfileInfo_R } from '../../../_handle_api/profile/info';
 //
@@ -17,7 +16,7 @@ import { ProfileRoutes, profile_search_arr } from '../__common/routes/routes';
 //
 import ProfileSkeleton from '../__common/skeleton/ProfileSkeleton';
 import ProfileInfo from '../info/_main/ProfileInfo';
-import ProfileMore from '../more/_main/ProfileMore';
+import ProfileNav from '../nav/_main/ProfileNav';
 import ProfileSentFriendRequest from '../sent_friend_request/ProfileSentFriendRequest';
 //
 import './Profile.scss';
@@ -147,16 +146,16 @@ function Profile(props) {
                 </div>
             ) : null}
 
-            {false ? null : (
-                <div className="Profile_more pos-sticky top-header z-index-lv1 bg-primary box-shadow-1">
-                    <ProfileMore
+            <div className="fb-profile-nav">
+                <div className="fb-profile-width-contain">
+                    <ProfileNav
                         user_id={id}
                         user_name={`${first_name} ${last_name}`}
                         user_pic={picture}
                         handleAction={handleAction}
                     />
                 </div>
-            )}
+            </div>
 
             <div className="Profile_main margin-top-20px">
                 <RouteLoaded

@@ -1,0 +1,7 @@
+.ProfileLayoutNav {
+    height: 60px;
+}
+
+.ProfileLayoutNav_fake_sticky {
+    bottom: calc(100% + var(--height-header) + 1px);
+}

@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsInput from '../../../../../_icons_svg/Icons_input/IconsInput';
-// 
-import BtnActions from '../../../../../component/button/actions/BtnActions';
+import BtnKeySearch from '../../../../../component/button/key_search/BtnKeySearch';
 
 //
 GroupPageBtnSearch.propTypes = {};
@@ -11,16 +9,7 @@ GroupPageBtnSearch.propTypes = {};
 //
 function GroupPageBtnSearch({ openGroupSearch }) {
     //
-    return (
-        <BtnActions
-            className="bg-ccc"
-            Icon={<IconsInput y={200} />}
-            title=""
-            use_title={false}
-            //  use_icon
-            handleClick={openGroupSearch}
-        />
-    );
+    return <BtnKeySearch handleClick={openGroupSearch} />;
 }
 
 export default GroupPageBtnSearch;

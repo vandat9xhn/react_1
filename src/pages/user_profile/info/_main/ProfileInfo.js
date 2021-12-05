@@ -83,7 +83,7 @@ function ProfileInfo({
                             />
                         </div>
 
-                        <div className="ProfileInfo_name_friend margin-left-16px">
+                        <div className="ProfileInfo_name_friend ">
                             <div>
                                 <ProfileInfoName
                                     name={`${first_name} ${last_name}`}

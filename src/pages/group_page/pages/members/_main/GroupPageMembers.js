@@ -11,14 +11,21 @@ import GPMemSame from '../same/_main/GPMemSame';
 import GPMemNear from '../near/_main/GPMemNear';
 import GPMemNew from '../new/_main/GPMemNew';
 import GPMemFriends from '../friends/_main/GPMemFriends';
-// 
+//
 import './GroupPageMembers.scss';
 
 //
 GroupPageMembers.propTypes = {};
 
 //
-function GroupPageMembers({ group_id, is_admin, is_moderate, member_count }) {
+function GroupPageMembers({
+    group_id,
+    is_admin,
+    is_moderate,
+
+    member_count,
+    member_recent_count,
+}) {
     //
     const [state_obj, setStateObj] = useState({
         group_member_obj: {},
@@ -29,7 +36,7 @@ function GroupPageMembers({ group_id, is_admin, is_moderate, member_count }) {
 
     const {
         you_obj,
-        
+
         admin_arr,
         admin_count,
 
@@ -83,7 +90,7 @@ function GroupPageMembers({ group_id, is_admin, is_moderate, member_count }) {
         <div className="GroupPageMembers display-flex justify-content-center padding-y-16px">
             <div
                 className={`GroupPageMembers_contain max-w-100per padding-16px brs-8px-pc bg-primary box-shadow-1 ${
-                    is_admin ? 'w-500px' : 'w-680px'
+                    is_admin && member_recent_count ? 'w-500px' : 'w-680px'
                 }`}
             >
                 <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// 
+//
 import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 //
 import ActionsProfileCase from '../../../../../../../component/actions_profile/case/_main/ActionsProfileCase';
@@ -9,6 +9,7 @@ import ActionPreviewProfile from '../../../../../../../component/action_preview_
 //
 import GPMemUserPageLayout from '../_layout/GPMemUserPageLayout';
 import GPMemUserPagePic from '../picture/GPMemUserPagePic';
+import { handle_API_ProfileActions_L } from '../../../../../../../_handle_api/profile/action';
 
 //
 GPMemUser.propTypes = {};
@@ -41,12 +42,7 @@ function GPMemUser({
 
     //
     function handle_API_ActionOther_L() {
-        return [[{ name: 'test', title: 'Test' }]];
-        // return handle_API_FbGroupMemberActionOther_L({
-        //     type_user: 'person',
-        //     id: id,
-        //     group_id: group_id,
-        // });
+        return handle_API_ProfileActions_L({ user_id: id, type: 'other' });
     }
 
     //

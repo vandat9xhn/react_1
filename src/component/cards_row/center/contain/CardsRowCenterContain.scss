@@ -80,11 +80,11 @@ $side-percent: 12.5%;
 // ------
 
 .device-mobile {
-    .CardsRowCenterContain_contain {
-        scroll-snap-type: x mandatory;
-    }
+    // .CardsRowCenterContain_contain {
+    //     scroll-snap-type: x mandatory;
+    // }
 
-    .CardsRowCenterContain_item {
-        scroll-snap-align: center;
-    }
+    // .CardsRowCenterContain_item {
+    //     scroll-snap-align: center;
+    // }
 }

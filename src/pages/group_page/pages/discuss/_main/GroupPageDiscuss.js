@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+// 
 import GroupPageDiscussLeft from '../left/_main/GroupPageDiscussLeft';
 import GroupPageDiscussRight from '../right/_main/GroupPageDiscussRight';
 import GroupPageDiscussPrivate from '../private/GroupPageDiscussPrivate';
 //
 import './GroupPageDiscuss.scss';
-import { IS_MOBILE } from '../../../../../_constant/Constant';
 
 //
 GroupPageDiscuss.propTypes = {};

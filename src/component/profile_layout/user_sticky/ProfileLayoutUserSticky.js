@@ -22,7 +22,7 @@ function ProfileLayoutUserSticky({ link_to, picture, name }) {
                     height="40"
                 />
 
-                <div className="margin-left-12px font-600 font-17px">
+                <div className="margin-left-12px text-nowrap font-600 font-17px">
                     {name}
                 </div>
             </div>

@@ -86,23 +86,24 @@ $shadows: 1, 2, 5, 6, 8, 9;
     --md-bg-primary-5: rgba(255, 255, 255, 0.5);
     --bg-icon: #e1e2e285;
     //
+    // -------
+    @each $shadow in $shadows {
+        --shadow-#{$shadow}: rgba(0, 0, 0, #{$shadow / 10});
+    }
+
+    --shadow-05: rgba(0, 0, 0, 0.05);
+    --shadow-inset: rgba(255, 255, 255, 0.5);
+    --shadow-9-hover: #3a3434d9;
+
     --md-box-shadow: #2c2b2b69;
     --box-shadow-fb: 0 12px 28px 0 var(--shadow-2), 0 2px 4px 0 var(--shadow-1),
         inset 0 0 0 1px var(--shadow-inset);
+    --box-shadow-fb-nav: 0 1px 2px var(--shadow-1);
     --box-shadow-1: 0 1px 4px var(--shadow-1);
     --box-shadow-left-bar: 1px 1px 4px var(--shadow-2);
     --box-shadow-action: 0 0 2.5px 1px var(--md-box-shadow);
     // border
     --md-border-blur: #00000041;
-
-    // -------
-    @each $shadow in $shadows {
-        --shadow-#{$shadow}: rgba(0, 0, 0, #{$shadow / 10});
-    }
-    --shadow-05: rgba(0, 0, 0, 0.05);
-
-    --shadow-inset: rgba(255, 255, 255, 0.5);
-    --shadow-9-hover: #3a3434d9;
 
     /*     DARK     */
     &[data-theme='dark'] {

@@ -1,6 +1,22 @@
-.fb-profile-width-contain{
+.fb-profile-nav {
+    position: sticky;
+    top: calc(var(--height-header));
+    z-index: var(--z-index-lv1);
+
+    background-color: var(--md-bg-primary);
+    box-shadow: var(--box-shadow-fb-nav);
+}
+
+.fb-profile-width-contain {
     margin-left: auto;
     margin-right: auto;
     width: 900px;
     max-width: 100%;
+}
+
+.device-mobile{
+    .fb-profile-nav{
+        position: static;
+        border-top: 1px solid var(--md-bg-blur);
+    }
 }

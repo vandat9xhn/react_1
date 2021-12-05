@@ -26,8 +26,9 @@ function BtnPageFollow({
 
     use_title,
     use_icon,
-
     has_followed,
+
+    handleAction,
 }) {
     //
     function onFollow() {
