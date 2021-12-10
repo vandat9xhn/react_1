@@ -6,10 +6,10 @@ import observeToDo from '../../../../../../../_some_function/observerToDo';
 import { handle_API_Friend_L } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
 //
 import { useDataShowMore } from '../../../../../../../_hooks/useDataShowMore';
-
-import ProfilePrCommon from '../../_common/preview_common/ProfilePrCommon';
-
+//
 import ProfilePrFrSkeleton from '../skeleton/ProfilePrFrSkeleton';
+import ProfileLayoutHomePreview from '../../../../../../../component/profile_layout/home_preview/ProfileLayoutHomePreview';
+//
 import ProfilePrFrItem from '../item/ProfilePrFrItem';
 //
 import './ProfilePrFriend.scss';
@@ -59,9 +59,9 @@ function ProfilePrFriend({ id, handleReady }) {
     //
     return (
         <div ref={ref_component}>
-            <ProfilePrCommon
+            <ProfileLayoutHomePreview
                 title="Friends"
-                sk="friend"
+                link_to={location.pathname + '?sk=friend'}
                 is_fetching={is_fetching}
                 ProfilePrSkeleton={ProfilePrFrSkeleton}
             >
@@ -81,7 +81,7 @@ function ProfilePrFriend({ id, handleReady }) {
                         </div>
                     </div>
                 </div>
-            </ProfilePrCommon>
+            </ProfileLayoutHomePreview>
         </div>
     );
 }

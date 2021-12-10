@@ -142,7 +142,10 @@ function GroupPage(props) {
                 </div>
             </div>
 
-            <div style={{ backgroundColor: color_obj.bg }}>
+            <div
+                className="padding-y-16px"
+                style={{ backgroundColor: color_obj.bg }}
+            >
                 {id > 0 ? (
                     <Suspense fallback={null}>
                         <Switch>

@@ -95,7 +95,7 @@ function FbPageNav({
             left_sticky_elm={
                 <div className="display-flex h-100per padding-y-2px">
                     <ProfileLayoutUserSticky
-                        link_to={`/page/${page_id}`}
+                        link_to={`/page/${page_id}/home`}
                         picture={picture}
                         name={name}
                     />

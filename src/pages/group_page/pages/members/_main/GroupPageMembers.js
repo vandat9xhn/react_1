@@ -87,7 +87,7 @@ function GroupPageMembers({
 
     //
     return (
-        <div className="GroupPageMembers display-flex justify-content-center padding-y-16px">
+        <div className="GroupPageMembers display-flex justify-content-center">
             <div
                 className={`GroupPageMembers_contain max-w-100per padding-16px brs-8px-pc bg-primary box-shadow-1 ${
                     is_admin && member_recent_count ? 'w-500px' : 'w-680px'

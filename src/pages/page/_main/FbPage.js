@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { Suspense, useEffect, useState } from 'react';
+import { useParams, Switch, Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { initial_fb_page } from '../../../_initial/page/page';
-// 
+//
 import { handle_API_FbPage_R } from '../../../_handle_api/fb_page/page';
-// 
+//
 import FbPageInfo from '../_components/info/_main/FbPageInfo';
 import FbPageNav from '../_components/nav/_main/FbPageNav';
+import FbPageRoutes from '../_route/_main';
 
 //
 FbPage.propTypes = {};
@@ -16,8 +17,6 @@ FbPage.propTypes = {};
 function FbPage(props) {
     //
     const { id } = useParams();
-
-    console.log(id);
 
     //
     const [state_obj, setStateObj] = useState({
@@ -107,6 +106,27 @@ function FbPage(props) {
                         handleAction={handleAction}
                     />
                 </div>
+            </div>
+
+            <div className="padding-y-16px">
+                {id > 0 ? (
+                    <Suspense fallback={null}>
+                        <Switch>
+                            {FbPageRoutes.map((item, ix) => (
+                                <Route
+                                    key={ix}
+                                    // component={item.component}
+                                    path={item.path}
+                                    render={(props) => (
+                                        <item.component {...props} page_id={id} />
+                                    )}
+                                />
+                            ))}
+
+                            <Redirect to={`/page/${id}/home`} />
+                        </Switch>
+                    </Suspense>
+                ) : null}
             </div>
         </div>
     );

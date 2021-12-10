@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useMounted } from '../../../../../../../_hooks/useMounted';
-
 import observeToDo from '../../../../../../../_some_function/observerToDo';
 //
 import { handle_API_VidPic_L } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
-
-import ProfilePrCommon from '../../_common/preview_common/ProfilePrCommon';
+//
+import { useMounted } from '../../../../../../../_hooks/useMounted';
+//
 import ProfilePrPicSkeleton from '../skeleton/ProfilePrPicSkeleton';
+import ProfileLayoutHomePreview from '../../../../../../../component/profile_layout/home_preview/ProfileLayoutHomePreview';
 
 import ProfilePrPicItem from '../item/ProfilePrPicItem';
 //
@@ -66,19 +66,17 @@ function ProfilePrPic({ id, handleReady }) {
     //
     return (
         <div ref={ref_component}>
-            <ProfilePrCommon
+            <ProfileLayoutHomePreview
                 title="Photos"
-                sk="photos_all"
+                link_to={location.pathname + '?sk=photos_all'}
                 is_fetching={is_fetching}
+                //
                 ProfilePrSkeleton={ProfilePrPicSkeleton}
             >
                 <div className="ProfilePrPic">
                     <div className="ProfilePrPic_row display-flex flex-wrap space-between">
                         {vid_pics.map((item, ix) => (
-                            <div
-                                className="ProfilePrPic_item"
-                                key={`ProfilePrPic_${ix}`}
-                            >
+                            <div className="ProfilePrPic_item" key={ix}>
                                 <ProfilePrPicItem
                                     id={item.id}
                                     vid_pic={item.vid_pic}
@@ -89,7 +87,7 @@ function ProfilePrPic({ id, handleReady }) {
 
                     {vid_pics.length ? null : <div>No video, image</div>}
                 </div>
-            </ProfilePrCommon>
+            </ProfileLayoutHomePreview>
         </div>
     );
 }

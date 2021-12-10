@@ -8,7 +8,7 @@ export const fb_page_route_arr = [
     {
         path: '/page/:id',
         component: FbPage,
-        exact: true,
+        exact: false,
         auth: true,
     },
 ];

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconPlusSubtract from '../../../../_icons_svg/_icon_plus_subtract/IconPlusSubtract';
+import IconFollow from '../../../../_icons_svg/follow/IconFollow';
 //
 import BtnProfileActions from '../_common/BtnProfileActions';
 
@@ -9,7 +9,7 @@ import BtnProfileActions from '../_common/BtnProfileActions';
 BtnProfileFollow.propTypes = {};
 
 //
-function BtnProfileFollow({use_title, handleAction }) {
+function BtnProfileFollow({ use_title, handleAction }) {
     //
     function onFollow() {
         handleAction('follow');
@@ -19,7 +19,7 @@ function BtnProfileFollow({use_title, handleAction }) {
     return (
         <BtnProfileActions
             className={'BtnProfileFollow bg-blue text-white'}
-            Icon={<IconPlusSubtract stroke="currentColor" />}
+            Icon={<IconFollow stroke_plus="var(--blue)" />}
             use_title={use_title}
             title={'Follow Friend'}
             handleClick={onFollow}

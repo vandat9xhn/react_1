@@ -1,0 +1,17 @@
+.FPHomeLeft_pic {
+    margin: 16px 0;
+}
+
+// ------
+
+.device-mobile {
+    .FPHomeLeft_preview {
+        padding-bottom: 0;
+    }
+
+    .FPHomeLeft_pic{
+        margin: 0;
+        border-top: 1px solid var(--md-bg-blur);
+        border-bottom: 1px solid var(--md-bg-blur);
+    }
+}

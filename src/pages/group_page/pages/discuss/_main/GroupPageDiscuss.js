@@ -16,7 +16,7 @@ GroupPageDiscuss.propTypes = {};
 function GroupPageDiscuss({ group_id, is_admin, bg_btn, no_permission }) {
     //
     return (
-        <div className="GroupPageDiscuss padding-16px">
+        <div className="GroupPageDiscuss">
             <div className="GroupPageDiscuss_row display-flex justify-content-center">
                 <div className="GroupPageDiscuss_left w-500px margin-right-15px">
                     {no_permission ? (

@@ -6,10 +6,9 @@ import { useMounted } from '../../../../../../../_hooks/useMounted';
 import observeToDo from '../../../../../../../_some_function/observerToDo';
 //
 import { handle_API_ProfileUser_R } from '../../../../../../../_handle_api/profile/ProfileHandleAPI';
-
-import ProfilePrCommon from '../../_common/preview_common/ProfilePrCommon';
-
+//
 import ProfilePrAboutSkeleton from '../skeleton/ProfilePrAboutSkeleton';
+import ProfileLayoutHomePreview from '../../../../../../../component/profile_layout/home_preview/ProfileLayoutHomePreview';
 //
 import './ProfilePrAbout.scss';
 
@@ -88,27 +87,25 @@ function ProfilePrAbout({ id, handleReady }) {
     //
     return (
         <div ref={ref_component}>
-            <ProfilePrCommon
-                title="Intro"
-                sk="about_overview"
+            <ProfileLayoutHomePreview
+                title="About"
+                link_to={location.pathname + '?sk=about_overview'}
                 is_fetching={is_fetching}
                 ProfilePrSkeleton={ProfilePrAboutSkeleton}
             >
                 <div className="ProfilePrAbout">
-                    {about_arr.map((item, ix) => (
-                        <div
-                            key={`${ix}`}
-                            className={`${item.content ? '' : 'display-none'}`}
-                        >
-                            <span className="font-500 text-secondary">
-                                {item.title}:{' '}
-                            </span>
-
-                            <span className="font-500">{item.content}</span>
-                        </div>
-                    ))}
+                    {about_arr.map((item, ix) =>
+                        !item.content ? null : (
+                            <div key={ix} className="font-500">
+                                <span className="text-secondary">
+                                    {item.title}:
+                                </span>{' '}
+                                <span>{item.content}</span>
+                            </div>
+                        )
+                    )}
                 </div>
-            </ProfilePrCommon>
+            </ProfileLayoutHomePreview>
         </div>
     );
 }

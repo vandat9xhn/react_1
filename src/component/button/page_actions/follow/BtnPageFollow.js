@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconPlusSubtract from '../../../../_icons_svg/_icon_plus_subtract/IconPlusSubtract';
-//
+import IconFollow from '../../../../_icons_svg/follow/IconFollow';
+// 
 import BtnActions from '../../actions/BtnActions';
 
 //
@@ -11,10 +11,10 @@ BtnPageFollow.propTypes = {
 };
 
 BtnPageFollow.defaultProps = {
-    Icon: <IconPlusSubtract stroke="currentColor" />,
+    Icon: <IconFollow />,
     title: 'Follow',
     className: 'bg-ccc',
-    classNameActive: 'bg-fb-active text-blue',
+    classNameActive: 'BtnPageFollow-active bg-fb-active text-blue',
 };
 
 //

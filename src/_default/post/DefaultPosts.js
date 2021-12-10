@@ -230,4 +230,4 @@ export const default_post_obj = (
     };
 };
 
-export const default_post_arr = () => getDefaultArr(default_post_obj, 6, 10);
+export const default_post_arr = () => getDefaultArr(default_post_obj, 10, 10);

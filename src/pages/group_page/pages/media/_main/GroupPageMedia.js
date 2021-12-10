@@ -18,7 +18,7 @@ GroupPageMedia.propTypes = {};
 function GroupPageMedia({ group_id }) {
     //
     return (
-        <div className="GroupPageMedia padding-y-20px">
+        <div className="GroupPageMedia">
             <div className="GroupPageMedia_contain fb-profile-width-contain padding-16px brs-8px-pc bg-primary box-shadow-1">
                 <div className="margin-bottom-10px">
                     <GPMediaHead group_id={group_id} />

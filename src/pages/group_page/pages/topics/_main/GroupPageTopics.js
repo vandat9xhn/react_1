@@ -76,7 +76,7 @@ function GroupPageTopics({ group_id, is_admin }) {
 
     //
     return (
-        <div className="GroupPageTopics margin-auto padding-y-16px w-680px max-w-100per">
+        <div className="GroupPageTopics margin-auto w-680px max-w-100per">
             {is_admin ? (
                 <div className="GroupPageTopics_contain margin-bottom-16px">
                     <GPTopicsSettings />

@@ -24,10 +24,15 @@ function CustomSwitch() {
 
     // //
     useEffect(() => {
-        setDisplayLocation({
-            ...use_location,
-            pathname: getNewPathname(),
-        });
+        // if (
+        //     use_location.pathname + use_location.search !=
+        //     displayLocation.pathname + displayLocation.search
+        // ) {
+            setDisplayLocation({
+                ...use_location,
+                pathname: getNewPathname(),
+            });
+        // }
     }, [use_location]);
 
     // ----

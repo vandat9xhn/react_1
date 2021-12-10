@@ -76,7 +76,7 @@ function GroupPageAbout({ group_id }) {
 
     //
     return (
-        <div className="GroupPageAbout margin-auto w-680px padding-y-16px">
+        <div className="GroupPageAbout margin-auto w-680px">
             <div className="GroupPageAbout_part">
                 <GPAboutGroup
                     description={description}
