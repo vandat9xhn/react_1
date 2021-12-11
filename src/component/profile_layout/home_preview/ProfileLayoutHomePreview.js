@@ -17,7 +17,7 @@ ProfileLayoutHomePreview.propTypes = {
 };
 
 ProfileLayoutHomePreview.defaultProps = {
-    ProfilePrSkeleton: () => <div></div>,
+    ProfilePrSkeleton: () => <div className="h-250px"></div>,
 };
 
 //

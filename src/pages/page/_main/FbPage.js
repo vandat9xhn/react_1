@@ -31,10 +31,14 @@ function FbPage(props) {
         name,
         picture,
         cover,
-
         has_new_story,
 
+        info_extra_1,
+        info_extra_2,
+
+        action_main_arr,
         action_arr,
+
         has_liked,
         has_followed,
     } = page_obj;
@@ -81,14 +85,22 @@ function FbPage(props) {
         <div key={id} className="FbPage">
             <div>
                 <FbPageInfo
-                    id={id}
+                    page_id={id}
                     name={name}
                     picture={picture}
                     cover={cover}
                     has_new_story={has_new_story}
+                    // 
+                    info_extra_1={info_extra_1}
+                    info_extra_2={info_extra_2}
+                    //
+                    action_main_arr={action_main_arr}
+                    has_liked={has_liked}
+                    has_followed={has_followed}
                     //
                     openCoverPicture={openCoverPicture}
                     openPicture={openPicture}
+                    handleAction={handleAction}
                 />
             </div>
 
@@ -99,7 +111,9 @@ function FbPage(props) {
                         name={name}
                         picture={picture}
                         //
+                        action_main_arr={action_main_arr}
                         action_arr={action_arr}
+                        // 
                         has_liked={has_liked}
                         has_followed={has_followed}
                         //
@@ -118,7 +132,10 @@ function FbPage(props) {
                                     // component={item.component}
                                     path={item.path}
                                     render={(props) => (
-                                        <item.component {...props} page_id={id} />
+                                        <item.component
+                                            {...props}
+                                            page_id={id}
+                                        />
                                     )}
                                 />
                             ))}

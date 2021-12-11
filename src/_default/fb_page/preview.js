@@ -4,6 +4,7 @@ import { getRandomNumber } from '../_common/default_id';
 import { getRandomPage } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
+import { getRandomPageType } from '../_common/getRandomPageType';
 
 //
 export const default_fb_page_preview_obj = () => {
@@ -37,12 +38,7 @@ export const default_fb_page_preview_obj = () => {
         has_followed: has_followed,
         has_liked: has_liked,
 
-        type: getRandomFromArr([
-            'supermarket',
-            'Just for fun',
-            'Community',
-            'School/university',
-        ]),
+        type: getRandomPageType(),
         description: getRandomContent().slice(0, 50),
         web_link: 'https://fbshopeetgdd.web.app',
         phone: '0123456789',

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
+import { useStickyOver } from '../../../../../_hooks/useStickyOver';
+//
 import BtnPageCase from '../../../../../component/button/page_actions/_case/BtnPageCase';
 import ActionsPageOther from '../../../../../component/actions_page/other/ActionsPageOther';
 
@@ -57,7 +59,9 @@ function FbPageNav({
     name,
     picture,
 
+    action_main_arr,
     action_arr,
+
     has_liked,
     has_followed,
 
@@ -70,8 +74,14 @@ function FbPageNav({
     });
 
     //
+    const scroll_over_obj = useStickyOver({});
+
+    //
     return (
         <ProfileLayoutNav
+            has_scroll_over={true}
+            scroll_over_obj={scroll_over_obj}
+            //
             left_main_elm={
                 <ul className="FbPageNav_list flex-grow-1 display-flex list-none h-100per padding-top-3px">
                     {state_obj.nav_arr.map((item, ix) => (
@@ -103,7 +113,10 @@ function FbPageNav({
             }
             right_elm={
                 <div className="display-flex align-items-center h-100per">
-                    {action_arr.map((item, ix) => (
+                    {[
+                        ...(scroll_over_obj.scroll_over ? action_main_arr : []),
+                        ...action_arr,
+                    ].map((item, ix) => (
                         <div key={ix} className="margin-right-8px">
                             <BtnPageCase
                                 action_name={item}

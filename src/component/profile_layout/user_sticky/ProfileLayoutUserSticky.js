@@ -10,7 +10,7 @@ function ProfileLayoutUserSticky({ link_to, picture, name }) {
     //
     return (
         <Link
-            className="ProfileLayoutUserSticky display-block h-100per padding-x-8px brs-6px color-inherit hv-bg-blur"
+            className="ProfileLayoutUserSticky display-block wh-100 padding-x-8px brs-6px color-inherit hv-bg-blur"
             to={link_to}
         >
             <div className="display-flex align-items-center h-100per">

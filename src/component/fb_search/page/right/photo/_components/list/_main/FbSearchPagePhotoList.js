@@ -60,7 +60,9 @@ function FbSearchPagePhotoList({
                                 key={ix}
                                 className="FbSearchPagePhotoList_item"
                             >
-                                <FbSearchPagePhotoItem item={item} />
+                                <div className="padding-top-100per">
+                                    <FbSearchPagePhotoItem item={item} />
+                                </div>
                             </div>
                         ))}
                     </div>

@@ -8,9 +8,7 @@ import { handle_API_VidPic_L } from '../../../../../../../_handle_api/profile/Pr
 import { useMounted } from '../../../../../../../_hooks/useMounted';
 //
 import ProfilePrPicSkeleton from '../skeleton/ProfilePrPicSkeleton';
-import ProfileLayoutHomePreview from '../../../../../../../component/profile_layout/home_preview/ProfileLayoutHomePreview';
-
-import ProfilePrPicItem from '../item/ProfilePrPicItem';
+import PrLayoutHomePreviewPics from '../../../../../../../component/profile_layout/home_preview_pics/PrLayoutHomePreviewPics';
 //
 import './ProfilePrPic.scss';
 
@@ -44,6 +42,8 @@ function ProfilePrPic({ id, handleReady }) {
         });
     }, []);
 
+    // ------
+
     //
     async function getData_API_PicPreview() {
         setStateObj((state_obj) => ({
@@ -63,31 +63,25 @@ function ProfilePrPic({ id, handleReady }) {
         }
     }
 
+    // -------
+
+    //
+    function getLinkItem(item) {
+        return `/post/photos/${item.id}`;
+    }
+
     //
     return (
         <div ref={ref_component}>
-            <ProfileLayoutHomePreview
+            <PrLayoutHomePreviewPics
                 title="Photos"
                 link_to={location.pathname + '?sk=photos_all'}
                 is_fetching={is_fetching}
-                //
                 ProfilePrSkeleton={ProfilePrPicSkeleton}
-            >
-                <div className="ProfilePrPic">
-                    <div className="ProfilePrPic_row display-flex flex-wrap space-between">
-                        {vid_pics.map((item, ix) => (
-                            <div className="ProfilePrPic_item" key={ix}>
-                                <ProfilePrPicItem
-                                    id={item.id}
-                                    vid_pic={item.vid_pic}
-                                />
-                            </div>
-                        ))}
-                    </div>
 
-                    {vid_pics.length ? null : <div>No video, image</div>}
-                </div>
-            </ProfileLayoutHomePreview>
+                pic_arr={vid_pics}
+                getLinkItem={getLinkItem}
+            />
         </div>
     );
 }

@@ -92,16 +92,17 @@ export function usePosFollowBodyOrElm({
             return;
         }
 
-        // 
-        const { top, bottom } = ref_base_elm.current.getBoundingClientRect();
+        //
+        const { top, bottom, width } =
+            ref_base_elm.current.getBoundingClientRect();
 
-        if (top < 0 || bottom > innerHeight) {
+        if (top < 0 || bottom > innerHeight || width == 0) {
             handleClose({ callbackClose: callbackClose });
 
             return;
         }
 
-        // 
+        //
         const getPost = is_at_body ? getPosAtBody : getPosAtElm;
 
         ref_pos.current = getPost({

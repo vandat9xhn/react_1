@@ -12,6 +12,8 @@ import { useStickyAuto } from '../../../../../../_hooks/useStickyAuto';
 import FPHomeAbout from '../about/_main/FPHomeAbout';
 //
 import './FPHomeLeft.scss';
+import FPHomeVideos from '../videos/_main/FPHomeVideos';
+import FPHomePhotos from '../photos/_main/FPHomePhotos';
 
 //
 FPHomeLeft.propTypes = {};
@@ -22,13 +24,21 @@ function FPHomeLeft({ page_id }) {
     const [state_obj, setStateObj] = useState({
         page_preview_obj: initial_fb_page_home_preview(),
         has_fetched: false,
-        is_fetching: false,
+        is_fetching: true,
     });
 
     const { page_preview_obj, has_fetched, is_fetching } = state_obj;
 
-    const { info_obj, like_obj, follow_obj, site_obj, phone_obj } =
-        page_preview_obj;
+    const {
+        info_obj,
+        like_obj,
+        follow_obj,
+        site_obj,
+        phone_obj,
+
+        pic_arr,
+        video_obj,
+    } = page_preview_obj;
 
     //
     const { calculateAgain, ref_main_elm, ref_preview_elm, ref_fake_elm } =
@@ -46,13 +56,6 @@ function FPHomeLeft({ page_id }) {
 
     //
     async function getData_API() {
-        setStateObj((state_obj) => {
-            return {
-                ...state_obj,
-                is_fetching: true,
-            };
-        });
-
         const data = await handle_API_FbPageHomePreview_R({ page_id: page_id });
 
         setStateObj((state_obj) => {
@@ -93,9 +96,21 @@ function FPHomeLeft({ page_id }) {
                     />
                 </div>
 
-                <div className="FPHomeLeft_pic FPHomeLeft_item"></div>
+                <div className="FPHomeLeft_pic FPHomeLeft_item">
+                    <FPHomePhotos
+                        page_id={page_id}
+                        pic_arr={pic_arr}
+                        is_fetching={is_fetching}
+                    />
+                </div>
 
-                <div className="FPHomeLeft_item"></div>
+                <div className="FPHomeLeft_item">
+                    <FPHomeVideos
+                        page_id={page_id}
+                        is_fetching={is_fetching}
+                        video_obj={video_obj}
+                    />
+                </div>
             </div>
         </div>
     );

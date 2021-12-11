@@ -11,9 +11,18 @@ import './ProfileLayoutNav.scss';
 ProfileLayoutNav.propTypes = {};
 
 //
-function ProfileLayoutNav({ left_main_elm, left_sticky_elm, right_elm }) {
+function ProfileLayoutNav({
+    has_scroll_over = false,
+    scroll_over_obj,
+
+    left_main_elm,
+    left_sticky_elm,
+    right_elm,
+}) {
     //
-    const { scroll_over, ref_fake_sticky } = useStickyOver({});
+    const { scroll_over, ref_fake_sticky } = has_scroll_over
+        ? scroll_over_obj
+        : useStickyOver({});
 
     //
     return (

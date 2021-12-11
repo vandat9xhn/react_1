@@ -31,6 +31,7 @@ import './_style/story.scss';
 import './_style/post.scss';
 import './_style/vid_pic_max_3.scss';
 import './_style/vid_pics.scss';
+import './_style/list_pics_round.scss';
 
 import './_style/fashion.scss';
 import './_style/fb.scss';

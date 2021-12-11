@@ -11,7 +11,7 @@ FbSearchPagePhotoItem.propTypes = {};
 function FbSearchPagePhotoItem({ item }) {
     //
     return (
-        <div className="FbSearchPagePhotoItem pos-rel overflow-hidden">
+        <div className="FbSearchPagePhotoItem pos-rel wh-100">
             <div className="FbSearchPagePhotoItem_bg pos-abs-100 z-index-1 pointer-events-none"></div>
 
             <Link

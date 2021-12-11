@@ -21,8 +21,8 @@ export const default_album_vid_pic_arr = () =>
 //
 const default_profile_vid_pic_obj = () => ({
     id: getRandomId(),
-    vid_pic: getRandomVidPic(),
+    img: getRandomVidPic(),
 });
 
 export const default_profile_vid_pic_arr = () =>
-    getDefaultArr(default_profile_vid_pic_obj, 9, 9);
+    getDefaultArr(default_profile_vid_pic_obj, 2, 9);
