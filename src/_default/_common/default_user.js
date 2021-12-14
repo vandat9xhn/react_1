@@ -1,3 +1,4 @@
+import { getRandomBool } from './default_bool';
 import { getRandomId } from './default_id';
 import { getRandomVidPic } from './default_image';
 import { getRandomGroupName, getRandomName, getRandomPageName } from './default_name';
@@ -26,6 +27,6 @@ export const getRandomPage = () => ({
         id: getRandomId(),
         picture: getRandomVidPic(),
         name: getRandomPageName(),
-        is_online: false,
+        has_tick: getRandomBool(),
     },
 });

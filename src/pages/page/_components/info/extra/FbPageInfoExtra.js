@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //
 import HasLinkOrNot from '../../../../../component/link/has_link_or_not/HasLinkOrNot';
+// 
+import './FbPageInfoExtra.scss';
 
 //
 function FbPageInfoExtraItem({ title, has_link, link_to }) {

@@ -95,6 +95,7 @@ function FbPage(props) {
                     info_extra_2={info_extra_2}
                     //
                     action_main_arr={action_main_arr}
+                    action_arr={action_arr}
                     has_liked={has_liked}
                     has_followed={has_followed}
                     //

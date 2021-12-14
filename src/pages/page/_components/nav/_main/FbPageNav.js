@@ -112,31 +112,35 @@ function FbPageNav({
                 </div>
             }
             right_elm={
-                <div className="display-flex align-items-center h-100per">
-                    {[
-                        ...(scroll_over_obj.scroll_over ? action_main_arr : []),
-                        ...action_arr,
-                    ].map((item, ix) => (
-                        <div key={ix} className="margin-right-8px">
-                            <BtnPageCase
-                                action_name={item}
-                                // use_title={use_title}
-                                // use_icon={use_icon}
+                IS_MOBILE ? null : (
+                    <div className="display-flex align-items-center h-100per">
+                        {[
+                            ...(scroll_over_obj.scroll_over
+                                ? action_main_arr
+                                : []),
+                            ...action_arr,
+                        ].map((item, ix) => (
+                            <div key={ix} className="margin-right-8px">
+                                <BtnPageCase
+                                    action_name={item}
+                                    // use_title={use_title}
+                                    // use_icon={use_icon}
+                                    page_id={page_id}
+                                    has_liked={has_liked}
+                                    has_followed={has_followed}
+                                    handleAction={handleAction}
+                                />
+                            </div>
+                        ))}
+
+                        <div>
+                            <ActionsPageOther
                                 page_id={page_id}
-                                has_liked={has_liked}
-                                has_followed={has_followed}
                                 handleAction={handleAction}
                             />
                         </div>
-                    ))}
-
-                    <div>
-                        <ActionsPageOther
-                            page_id={page_id}
-                            handleAction={handleAction}
-                        />
                     </div>
-                </div>
+                )
             }
         />
     );

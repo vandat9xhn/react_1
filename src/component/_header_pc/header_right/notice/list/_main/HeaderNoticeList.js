@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import HeaderNoticeItem from '../item/_main/HeaderNoticeItem';
 //
 import './HeaderNoticeList.scss';
+import VirtualScroll from '../../../../../virtual_scroll/VirtualScroll';
 
 //
 HeaderNoticeList.propTypes = {};
@@ -31,21 +32,28 @@ function HeaderNoticeList({
             <div>
                 {notices.map((notice, ix) => (
                     <div key={ix}>
-                        <HeaderNoticeItem
-                            ref_scroll_elm={ref_scroll_elm}
-                            ix={ix}
-                            //
-                            id={notice.id}
-                            user={notice.user}
-                            content={notice.content}
-                            is_new={
-                                notice.status_seen == 'received' ? true : false
-                            }
-                            updated_time={notice.updated_time}
-                            //
-                            handleClickItem={handleClickItem}
-                            handleAction={handleAction}
-                        />
+                        <VirtualScroll
+                            ref_root={ref_scroll_elm}
+                            rootMargin_y={200}
+                        >
+                            <HeaderNoticeItem
+                                ref_scroll_elm={ref_scroll_elm}
+                                ix={ix}
+                                //
+                                id={notice.id}
+                                user={notice.user}
+                                content={notice.content}
+                                is_new={
+                                    notice.status_seen == 'received'
+                                        ? true
+                                        : false
+                                }
+                                updated_time={notice.updated_time}
+                                //
+                                handleClickItem={handleClickItem}
+                                handleAction={handleAction}
+                            />
+                        </VirtualScroll>
                     </div>
                 ))}
             </div>

@@ -1,7 +1,7 @@
 .fb-profile-nav {
     position: sticky;
     top: calc(var(--height-header));
-    z-index: var(--z-index-lv1);
+    z-index: var(--z-index-lv3);
 
     background-color: var(--md-bg-primary);
     box-shadow: var(--box-shadow-fb-nav);
@@ -14,8 +14,8 @@
     max-width: 100%;
 }
 
-.device-mobile{
-    .fb-profile-nav{
+.device-mobile {
+    .fb-profile-nav {
         position: static;
         border-top: 1px solid var(--md-bg-blur);
     }

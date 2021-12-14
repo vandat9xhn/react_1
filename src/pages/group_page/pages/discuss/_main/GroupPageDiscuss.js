@@ -8,6 +8,7 @@ import GroupPageDiscussRight from '../right/_main/GroupPageDiscussRight';
 import GroupPageDiscussPrivate from '../private/GroupPageDiscussPrivate';
 //
 import './GroupPageDiscuss.scss';
+import './GroupPageDiscussRes.scss';
 
 //
 GroupPageDiscuss.propTypes = {};

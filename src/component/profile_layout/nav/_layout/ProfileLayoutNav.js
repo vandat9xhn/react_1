@@ -35,7 +35,11 @@ function ProfileLayoutNav({
             )}
 
             <div className="ProfileLayoutNav_row flex-between-center h-100per">
-                <div className="flex-grow-1 h-100per overflow-hidden">
+                <div
+                    className={`flex-grow-1 h-100per ${
+                        IS_MOBILE ? '' : 'overflow-hidden'
+                    }`}
+                >
                     <div
                         className={`h-100per ${
                             scroll_over ? 'display-none' : ''
@@ -55,7 +59,9 @@ function ProfileLayoutNav({
                     )}
                 </div>
 
-                <div className="h-100per padding-x-8px">{right_elm}</div>
+                {right_elm ? (
+                    <div className="h-100per padding-x-8px">{right_elm}</div>
+                ) : null}
             </div>
         </div>
     );

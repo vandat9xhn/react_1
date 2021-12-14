@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
-// 
+//
 import observeToDo from '../../../../../../_some_function/observerToDo';
 //
 import { API_Zoom_U } from '../../../../../../api/api_django/chat/APIChat';
@@ -14,6 +14,7 @@ import { useObserverShowMore } from '../../../../../../_hooks/useObserverShowMor
 //
 import ComponentSkeleton from '../../../../../skeleton/component_skeleton/ComponentSkeleton';
 import SkeletonPicContent from '../../../../../skeleton/some_skeleton/pic_content/SkeletonPicContent';
+import VirtualScroll from '../../../../../virtual_scroll/VirtualScroll';
 //
 import MessageFriendHead from '../head/_main/HeaderMessHead';
 import HeaderMessItem from '../body/item/_main/HeaderMessItem';
@@ -106,20 +107,26 @@ function HeaderMessContain({ ref_scroll_elm, closeZoom }) {
 
             <div>
                 {data_arr.map((zoom_item, ix) => (
-                    <HeaderMessItem
-                        key={ix}
-                        ref_scroll_elm={ref_scroll_elm}
-                        ix={ix}
-                        //
-                        id={zoom_item.room_chat}
-                        user={zoom_item.messages[0].user}
-                        message={zoom_item.messages[0].message}
-                        count_new={zoom_item.count_new_mess}
-                        updated_time={zoom_item.updated_time}
-                        //
-                        handleClickItem={handleClickZoomItem}
-                        handleAction={handleAction}
-                    />
+                    <div key={ix}>
+                        <VirtualScroll
+                            ref_root={ref_scroll_elm}
+                            rootMargin_y={200}
+                        >
+                            <HeaderMessItem
+                                ref_scroll_elm={ref_scroll_elm}
+                                ix={ix}
+                                //
+                                id={zoom_item.room_chat}
+                                user={zoom_item.messages[0].user}
+                                message={zoom_item.messages[0].message}
+                                count_new={zoom_item.count_new_mess}
+                                updated_time={zoom_item.updated_time}
+                                //
+                                handleClickItem={handleClickZoomItem}
+                                handleAction={handleAction}
+                            />
+                        </VirtualScroll>
+                    </div>
                 ))}
             </div>
 
@@ -127,7 +134,9 @@ function HeaderMessContain({ ref_scroll_elm, closeZoom }) {
 
             <div className="padding-8px">
                 <ComponentSkeleton
-                    component={<SkeletonPicContent size_pic={IS_MOBILE ? 48 : 56} />}
+                    component={
+                        <SkeletonPicContent size_pic={IS_MOBILE ? 48 : 56} />
+                    }
                     has_fetched={is_max.current}
                     num={2}
                     skeleton_class=""
