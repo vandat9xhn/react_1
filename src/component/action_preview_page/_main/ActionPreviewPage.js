@@ -23,10 +23,8 @@ function ActionPreviewPage({ page_id, title_action, has_tick }) {
             )}
 
             {has_tick ? (
-                <span>
-                    <span className="inline-block vertical-align-middle margin-left-5px wh-16px">
-                        <PageTick />
-                    </span>
+                <span className="inline-flex align-items-center margin-left-5px">
+                    <PageTick />
                 </span>
             ) : null}
         </React.Fragment>

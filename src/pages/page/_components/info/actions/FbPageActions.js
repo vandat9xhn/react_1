@@ -25,25 +25,39 @@ function FbPageActions({
     //
     return IS_MOBILE ? (
         <div className="FbPageActionsMb display-flex flex-wrap">
-            {action_arr.map((item, ix) => (
-                <div key={ix} className="flex-grow-1 padding-4px">
-                    <BtnPageCase
-                        action_name={item}
-                        // use_title={use_title}
-                        // use_icon={use_icon}
+            <div className="flex-grow-1 padding-4px">
+                <BtnPageCase
+                    action_name={action_arr[0]}
+                    // use_title={use_title}
+                    // use_icon={use_icon}
+                    page_id={page_id}
+                    has_liked={has_liked}
+                    has_followed={has_followed}
+                    handleAction={handleAction}
+                />
+            </div>
+
+            <div className="flex-grow-1 display-flex flex-wrap">
+                {action_arr[1] ? (
+                    <div className="flex-grow-1 padding-4px">
+                        <BtnPageCase
+                            action_name={action_arr[1]}
+                            // use_title={use_title}
+                            // use_icon={use_icon}
+                            page_id={page_id}
+                            has_liked={has_liked}
+                            has_followed={has_followed}
+                            handleAction={handleAction}
+                        />
+                    </div>
+                ) : null}
+
+                <div className="padding-4px">
+                    <ActionsPageOther
                         page_id={page_id}
-                        has_liked={has_liked}
-                        has_followed={has_followed}
                         handleAction={handleAction}
                     />
                 </div>
-            ))}
-
-            <div className="padding-4px">
-                <ActionsPageOther
-                    page_id={page_id}
-                    handleAction={handleAction}
-                />
             </div>
         </div>
     ) : (

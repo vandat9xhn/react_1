@@ -6,9 +6,9 @@ import './IconsAction.scss';
  * icons: (x, y) start of view box
  *   @delete: (0, 0),
  *   @message origin: (200, 0),
- *   @add friend: (0, 200),
+ 
  *   @send message: (200, 200),
- *   @friends: (400, 0)
+ 
  *   @update: (0, 400)
  *   @warning: (400, 400)
  *   @info: (600, 0)
@@ -51,7 +51,7 @@ function IconsAction({ size_icon, x, y }) {
             </g>
 
             {/* add friend x=0 y=200*/}
-            <g className="IconsAction_add_friend">
+            {/* <g className="IconsAction_add_friend">
                 <g
                     className="IconsAction_add-friend_friend"
                     strokeWidth="5"
@@ -65,7 +65,7 @@ function IconsAction({ size_icon, x, y }) {
                     <line x1="160" y1="220" x2="160" y2="280" />
                     <line x1="120" y1="250" x2="180" y2="250" />
                 </g>
-            </g>
+            </g> */}
 
             {/* send message x=200 y=200*/}
             <path
@@ -78,13 +78,13 @@ function IconsAction({ size_icon, x, y }) {
             />
 
             {/* friends x=400 y=0 */}
-            <g fill="none" strokeWidth="5">
+            {/* <g fill="none" strokeWidth="5">
                 <circle cx="460" cy="60" r="35" />
                 <path d="M405,175 Q410,100 460,100 Q510,100 515,175 Z" />
 
                 <circle cx="550" cy="60" r="25" />
                 <path d="M500,145 Q505,90 550,90 Q590,90 595,145 Z" />
-            </g>
+            </g> */}
 
             {/* update x=0 y=400 */}
             <g fill="none" strokeWidth="15">

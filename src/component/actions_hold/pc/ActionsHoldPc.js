@@ -15,7 +15,6 @@ function ActionsHoldPc({
     children,
 
     scroll_elm,
-    changeStyleAction,
 
     x_always,
     transform_x_more,
@@ -89,12 +88,11 @@ function ActionsHoldPc({
                     {title_action}
                 </div>
             }
-            class_action_contain={`ActionsHoldPc ${class_action_contain}`}
+            class_action_contain={class_action_contain}
             use_own_title={true}
             is_show={show_count > 0}
             //
             scroll_elm={scroll_elm}
-            changeStyleAction={changeStyleAction}
             //
             x_always={x_always}
             transform_x_more={transform_x_more}

@@ -1,7 +1,10 @@
 import React from 'react';
 // 
-import IconsAction from '../../_icons_svg/icons_action/IconsAction';
+import IconGaming from '../../_icons_svg/gaming/IconGaming';
 import IconsProfile from '../../_icons_svg/icons_profile/IconsProfile';
+import IconFriends from '../../_icons_svg/icon_friends/IconFriends';
+import IconGroup from '../../_icons_svg/icon_group/IconGroup';
+import IconWatch from '../../_icons_svg/watch/IconWatch';
 
 // 
 export const data_left_head_link_arr = [
@@ -10,16 +13,16 @@ export const data_left_head_link_arr = [
         count_new: 0,
         title_new: '',
         title: 'Friends',
-        Icon: <IconsAction x={400} />,
-        link_to: '/add-friend-add',
+        Icon: <IconFriends />,
+        link_to: '/friends',
     },
     {
         name: 'groups',
         count_new: 0,
         title_new: '',
         title: 'Groups',
-        Icon: <IconsProfile />,
-        link_to: '#',
+        Icon: <IconGroup />,
+        link_to: '/group/feed',
     },
     {
         name: 'marketplace',
@@ -27,15 +30,23 @@ export const data_left_head_link_arr = [
         title_new: '',
         title: 'MarketPlace',
         Icon: <IconsProfile />,
-        link_to: '#',
+        link_to: '/working-on-it',
     },
     {
         name: 'watch',
         count_new: 0,
         title_new: '',
         title: 'Watch',
-        Icon: <IconsProfile />,
-        link_to: '#',
+        Icon: <IconWatch />,
+        link_to: '/watch',
+    },
+    {
+        name: 'gaming',
+        count_new: 0,
+        title_new: '',
+        title: 'Gaming',
+        Icon: <IconGaming />,
+        link_to: '/gaming',
     },
     {
         name: 'event',
@@ -43,7 +54,7 @@ export const data_left_head_link_arr = [
         title_new: '',
         title: 'Event',
         Icon: <IconsProfile />,
-        link_to: '#',
+        link_to: '/working-on-it',
     },
     {
         name: 'weather',
@@ -51,7 +62,7 @@ export const data_left_head_link_arr = [
         title_new: '',
         title: 'Weather',
         Icon: <IconsProfile />,
-        link_to: '#',
+        link_to: '/working-on-it',
     },
     
 ]

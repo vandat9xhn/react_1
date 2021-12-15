@@ -1,5 +1,7 @@
 import React from 'react';
 //
+import { IS_MOBILE } from '../../../../_constant/Constant';
+// 
 import { data_sk_link_arr } from '../../../../_data/profile/main_link';
 //
 import ActionsProfileOther from '../../../../component/actions_profile/other/ActionsProfileOther';
@@ -34,12 +36,14 @@ function ProfileNav({ user_id, user_name, user_pic, handleAction }) {
                 </div>
             }
             right_elm={
-                <div className="display-flex align-items-center h-100per">
-                    <ActionsProfileOther
-                        user_id={user_id}
-                        handleAction={handleAction}
-                    />
-                </div>
+                IS_MOBILE ? null : (
+                    <div className="display-flex align-items-center h-100per">
+                        <ActionsProfileOther
+                            user_id={user_id}
+                            handleAction={handleAction}
+                        />
+                    </div>
+                )
             }
         />
     );

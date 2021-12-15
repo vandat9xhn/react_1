@@ -25,6 +25,7 @@ function ActionsPc({
     is_show,
     class_action_contain,
     children,
+    use_caret,
 
     scroll_elm,
     pos_orientation,
@@ -32,7 +33,6 @@ function ActionsPc({
     header_head,
 
     getActionsScrollElms,
-    changeStyleAction,
 
     x_always,
     transform_x_more,
@@ -59,14 +59,14 @@ function ActionsPc({
             ref_btn_elm={ref_btn_elm}
             class_action_contain={class_action_contain}
             children={children}
+            use_caret={use_caret}
             //
             scroll_elm={scroll_elm}
             pos_orientation={pos_orientation}
             is_at_body={is_at_body}
             header_head={header_head}
-            // 
+            //
             getActionsScrollElms={getActionsScrollElms}
-            changeStyleAction={changeStyleAction}
             //
             x_always={x_always}
             transform_x_more={transform_x_more}

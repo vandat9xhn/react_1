@@ -31,7 +31,7 @@ function ProfileLayoutHomePreview({
 }) {
     //
     return (
-        <div className="ProfileLayoutHomePreview padding-16px bg-primary box-shadow-1 brs-5px">
+        <div className="ProfileLayoutHomePreview padding-16px bg-primary box-shadow-1 brs-8px-pc">
             <div className={is_fetching ? 'display-none' : ''}>
                 <div className="flex-between-center padding-bottom-16px">
                     <h2 className="ProfileLayoutHomePreview_title font-20px">

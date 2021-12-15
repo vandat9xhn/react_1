@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsAction from '../../../../_icons_svg/icons_action/IconsAction';
+import IconFriend from '../../../../_icons_svg/icon_friend/IconFriend';
 //
 import BtnProfileActions from '../_common/BtnProfileActions';
 import ActionsMultiList from '../../../actions_multi_list/_main/ActionsMultiList';
@@ -26,7 +26,7 @@ function BtnProfileFriend({
                 title_action={
                     <BtnProfileActions
                         className={'BtnProfileFriend_btn bg-ccc'}
-                        Icon={<IconsAction y={200} />}
+                        Icon={<IconFriend />}
                         use_title={use_title}
                         title="Friend"
                     />

@@ -12,29 +12,29 @@ import { Link } from 'react-router-dom';
 //
 // import './FbSearchPagePagesItem.scss';
 
-//
-function ActionPreviewPageNameTick({ page_id, name, link_to }) {
-    //
-    return (
-        <ActionPreviewPage
-            title_action={
-                <span className="display-inline">
-                    <Link
-                        className="break-word vertical-align-middle color-inherit font-600"
-                        to={link_to}
-                    >
-                        {name}
-                    </Link>
+// //
+// function ActionPreviewPageNameTick({ page_id, name, link_to }) {
+//     //
+//     return (
+//         <ActionPreviewPage
+//             title_action={
+//                 <span className="display-inline">
+//                     <Link
+//                         className="break-word vertical-align-middle color-inherit font-600"
+//                         to={link_to}
+//                     >
+//                         {name}
+//                     </Link>
 
-                    <span className="inline-block vertical-align-middle margin-left-5px wh-16px">
-                        <PageTick />
-                    </span>
-                </span>
-            }
-            page_id={page_id}
-        />
-    );
-}
+//                     <span className="inline-block vertical-align-middle margin-left-5px wh-16px">
+//                         <PageTick />
+//                     </span>
+//                 </span>
+//             }
+//             page_id={page_id}
+//         />
+//     );
+// }
 
 //
 FbSearchPagePagesItem.propTypes = {};
@@ -46,10 +46,10 @@ function FbSearchPagePagesItem({ page_obj }) {
         id,
         name,
         picture,
+        has_tick,
 
         description,
         count_like,
-        has_tick,
 
         friend_arr,
         friend_count,
@@ -82,16 +82,15 @@ function FbSearchPagePagesItem({ page_obj }) {
                 picture={picture}
                 name={name}
                 //
-                NameComponent={
-                    has_tick ? ActionPreviewPageNameTick : ActionPreviewPage
-                }
+                NameComponent={ActionPreviewPage}
                 PicComponent={ActionPreviewPage}
                 link_to={`/page/${id}`}
                 action_img_props={{ page_id: id }}
                 action_name_props={{
                     page_id: id,
-                    link_to: `/page/${id}`,
-                    name: name,
+                    // link_to: `/page/${id}`,
+                    // name: name,
+                    has_tick: has_tick,
                 }}
                 //
                 info_1={`${UnitNumber(count_like)} like this`}

@@ -48,13 +48,15 @@ function StoryMenuPc({
 
             <div
                 ref={ref_menu}
-                className={`StoryMenuPc h-100per overflow-y-auto padding-8px bg-primary ${
+                className={`StoryMenuPc h-100per overflow-y-auto bg-primary ${
                     is_show_menu ? 'StoryMenuPc_show' : 'StoryMenuPc_hide'
                 }`}
             >
-                <h1 className="StoryMenuPc_head font-22px font-500">Stories</h1>
+                <h1 className="StoryMenuPc_head pos-sticky top-0 z-index-lv1 padding-8px bg-primary font-22px font-600">
+                    Stories
+                </h1>
 
-                <div>
+                <div className="padding-8px">
                     <StoryMenuPartPc
                         heading="Your stories"
                         is_active_type={story_type == 'yours'}
@@ -66,7 +68,7 @@ function StoryMenuPc({
                     <StoryBtnCreatePc />
                 </div>
 
-                <div>
+                <div className="padding-8px">
                     <StoryMenuPartPc
                         heading="All stories"
                         story_menu_obj={story_followed_obj}

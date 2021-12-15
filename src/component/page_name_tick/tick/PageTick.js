@@ -1,35 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconSent from '../../../_icons_svg/icons_status_message/icon_sent/IconSent';
+import { IS_MOBILE } from '../../../_constant/Constant';
+//
+import ActionsHoldPc from '../../actions_hold/pc/ActionsHoldPc';
+//
+import PageTickBtn from './PageTickBtn';
+//
+import './PageTick.scss';
 
 //
 PageTick.propTypes = {
-    size_icon: IconSent.propTypes.size_icon,
-};
-
-PageTick.defaultProps = {
-    size_icon: '14px',
+    size_icon: PageTickBtn.propTypes.size_icon,
 };
 
 //
 function PageTick({ size_icon }) {
     //
-    function handleMouseEnter(e) {
-        e.stopPropagation();
-        e.preventDefault();
-    }
-
-    //
-    return (
-        <div className="PageTick pos-rel wh-100 brs-50 bg-blue">
-            <div
-                className="pos-abs-100 z-index-lv1 display-flex-center"
-                onMouseEnter={handleMouseEnter}
-                onMouseOver={handleMouseEnter}
+    return IS_MOBILE ? (
+        <PageTickBtn size_icon={size_icon} />
+    ) : (
+        <div className="PageTick">
+            <ActionsHoldPc
+                title_action={<PageTickBtn size_icon={size_icon} />}
+                class_action_contain="w-360px padding-16px"
+                x_always="left"
+                // 
+                time_leave={100}
             >
-                <IconSent size_icon={size_icon} stroke="var(--white)" />
-            </div>
+                <div>
+                    A verified badge confirms that this is an authentic Page for
+                    this public figure, media company or brand.
+                </div>
+            </ActionsHoldPc>
         </div>
     );
 }

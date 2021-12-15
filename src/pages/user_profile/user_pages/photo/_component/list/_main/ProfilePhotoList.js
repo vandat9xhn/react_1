@@ -32,7 +32,7 @@ function ProfilePhotoList({album_model, ProfilePhotoMainSkeleton}) {
                 initial_photo_state={[
                     {
                         id: 0,
-                        vid_pic: '',
+                        img: '',
                     },
                 ]}
                 handle_API_Photo_L={on_API_VidPic_L}

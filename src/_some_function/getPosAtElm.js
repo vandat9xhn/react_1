@@ -113,6 +113,8 @@ export function getPosYAtElm({
             position_y: `100%`,
             transform_y: `${transform_y_more}px`,
             max_height: h_top,
+
+            caret_pos: 'bottom',
         };
     }
 
@@ -121,6 +123,8 @@ export function getPosYAtElm({
         position_y: `100%`,
         transform_y: `${transform_y_more}px`,
         max_height: h_bottom,
+
+        caret_pos: 'top',
     };
 }
 
@@ -142,9 +146,11 @@ export function getPosXAtElmOrientationX({
     if ((w_left > w_right && x_always == '') || x_always == 'right') {
         return {
             left_or_right: 'left',
-            position_x: `0px`,
+            position_x: `${transform_x_more}px`,
             transform_x: `-100%`,
             max_width: w_left,
+
+            caret_pos: 'right',
         };
     }
 
@@ -153,6 +159,8 @@ export function getPosXAtElmOrientationX({
         position_x: `${transform_x_more}px`,
         transform_x: '100%',
         max_width: w_right,
+
+        caret_pos: 'left',
     };
 }
 

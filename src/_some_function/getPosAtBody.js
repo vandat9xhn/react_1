@@ -114,6 +114,8 @@ export function getPosYAtBody({
             position_y: `${new_top + 0}px`,
             transform_y: '-100%',
             max_height: h_top,
+
+            caret_pos: 'bottom',
         };
     }
 
@@ -122,6 +124,8 @@ export function getPosYAtBody({
         position_y: `${new_bottom + 0}px`,
         transform_y: '0%',
         max_height: h_bottom,
+
+        caret_pos: 'top',
     };
 }
 
@@ -146,6 +150,8 @@ export function getPosXAtBodyOrientationX({
             position_x: `${new_left + scrollX}px`,
             transform_x: `-100%`,
             max_width: w_left,
+
+            caret_pos: 'right',
         };
     }
 
@@ -154,6 +160,8 @@ export function getPosXAtBodyOrientationX({
         position_x: `${new_right + scrollX}px`,
         transform_x: '0px',
         max_width: w_right,
+
+        caret_pos: 'left',
     };
 }
 

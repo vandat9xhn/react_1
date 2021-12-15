@@ -24,6 +24,9 @@ import { city_route_arr } from './_City';
 const Home = React.lazy(() => import('../pages/home/_main/Home'));
 
 const LearnHTML = React.lazy(() => import('../pages/learn/_main/LearnHTML'));
+const WorkingOnIt = React.lazy(() =>
+    import('../component/working_on_it/WorkingOnIt')
+);
 
 const ChatMobile = React.lazy(() =>
     import('../component/_chat/mobile/_main/ChatMobile')
@@ -44,11 +47,11 @@ export const Routes = [
     ...profile_route_arr,
     ...friend_route_arr,
     ...story_route_arr,
-    
+
     ...fb_search_route_arr,
     ...fb_group_route_arr,
     ...fb_page_route_arr,
-    
+
     ...fb_watch_route_arr,
     ...fb_gaming_route_arr,
 
@@ -62,6 +65,13 @@ export const Routes = [
         exact: true,
         reset_position: true,
     },
+    {
+        path: '/working-on-it',
+        component: WorkingOnIt,
+        exact: false,
+        reset_position: false,
+    },
+
     ...(IS_MOBILE
         ? [
               {

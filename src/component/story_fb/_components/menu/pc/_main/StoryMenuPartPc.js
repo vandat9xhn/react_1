@@ -6,6 +6,8 @@ import UnitTime from '../../../../../../_some_function/UnitTime';
 import PicNameContent from '../../../../../picture_name/pic_name_content/PicNameContent';
 //
 import './StoryMenuPartPc.scss';
+import ComponentSkeleton from '../../../../../skeleton/component_skeleton/ComponentSkeleton';
+import SkeletonPicContent from '../../../../../skeleton/some_skeleton/pic_content/SkeletonPicContent';
 
 //
 StoryMenuPartPc.propTypes = {};
@@ -21,7 +23,7 @@ function StoryMenuPartPc({
     handleChangeStory,
 }) {
     //
-    const { has_fetched, story_arr } = story_menu_obj;
+    const { has_fetched, story_arr, count_story } = story_menu_obj;
 
     //
     return (
@@ -58,13 +60,15 @@ function StoryMenuPartPc({
                         />
                     </div>
                 ))}
-
-                <div ref={ref_fake_elm} className="padding-1px"></div>
             </div>
 
-            {!has_fetched ? (
-                <div className="StoryMenuPartPc_not_fetched"></div>
-            ) : null}
+            <div ref={ref_fake_elm} className="padding-1px"></div>
+
+            <ComponentSkeleton
+                has_fetched={has_fetched && count_story <= story_arr.length}
+                component={<SkeletonPicContent />}
+                num={1}
+            />
         </div>
     );
 }

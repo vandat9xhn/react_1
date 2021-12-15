@@ -1,0 +1,27 @@
+.ActionsContainPc_caret {
+    &::before {
+        content: '';
+
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        transform: translate(-50%, -1px);
+
+        border-width: 0px 8px 10px 8px;
+        border-style: solid;
+        border-color: transparent transparent var(--md-bg-ccc) transparent;
+    }
+
+    &::after {
+        content: '';
+
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        transform: translateX(-50%);
+
+        border-width: 0px 8px 10px 8px;
+        border-style: solid;
+        border-color: transparent transparent var(--md-bg-primary) transparent;
+    }
+}

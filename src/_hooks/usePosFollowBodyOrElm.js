@@ -47,6 +47,8 @@ export function usePosFollowBodyOrElm({
 
         max_height: 0,
         max_width: 0,
+
+        caret_pos: 'top',
     });
 
     const ref_has_add_scroll = useRef(false);
