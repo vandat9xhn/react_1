@@ -31,6 +31,7 @@ export function usePosFollowBodyOrElm({
     use_resize = true,
 
     callbackClose,
+    callbackChangePos,
 }) {
     //
     const ref_is_open = useRef(false);

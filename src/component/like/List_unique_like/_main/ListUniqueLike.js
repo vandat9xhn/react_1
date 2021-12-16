@@ -7,6 +7,7 @@ import MouseEnterLeaveInfo from '../../../posts/common/mouse_enter_leave_info/_m
 //
 import ItemUniqueLike from '../item/ItemUniqueLike';
 import PeopleUniqueLike from '../people/PeopleUniqueLike';
+import PeopleShare from '../../../posts/common/info/share/PeopleShare';
 //
 import './ListUniqueLike.scss';
 
@@ -59,7 +60,7 @@ function ListUniqueLike({
                             title_people={type_likes[ix].title}
                             //
                             div_fix_width={div_fix_width}
-                            PeopleComponent={PeopleUniqueLike}
+                            PeopleComponent={PeopleShare}
                             //
                             onOpenDetailLike={onOpenDetailLike}
                             handle_API_L={on_API_Like_L}

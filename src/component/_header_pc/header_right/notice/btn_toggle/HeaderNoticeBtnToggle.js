@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { API_NoticeCountNew_R } from '../../../../../api/api_django/header/APIHeaderToken';
 //
 import IconBell from '../../../../../_icons_svg/icon_bell/IconBell';
 //
+import Tooltip from '../../../../tooltip/_main/Tooltip';
 import HeaderBtnIcon from '../../../_components/btn_icon/HeaderBtnIcon';
 
 //
@@ -14,6 +15,8 @@ HeaderNoticeBtnToggle.propTypes = {};
 function HeaderNoticeBtnToggle({ toggleOpenNotice }) {
     //
     const [count_new, setCountNew] = useState(0);
+
+    const ref_elm = useRef(null)
 
     //
     useEffect(() => {
@@ -42,12 +45,18 @@ function HeaderNoticeBtnToggle({ toggleOpenNotice }) {
     return (
         <div>
             <HeaderBtnIcon
-                handleClick={onToggleOpenNotice}
                 count_new={count_new}
-                title="Notice"
+                // title="Notice"
+                ref_btn={ref_elm}
+                //
+                handleClick={onToggleOpenNotice}
             >
                 <IconBell />
             </HeaderBtnIcon>
+
+            <Tooltip ref_elm={ref_elm} pos="bottom">
+                Notices
+            </Tooltip>
         </div>
     );
 }

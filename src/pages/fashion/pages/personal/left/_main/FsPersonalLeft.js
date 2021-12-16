@@ -20,22 +20,20 @@ function FsPersonalLeft({ is_true, toggleBool }) {
     //
     return (
         <div className="FsPersonalLeft font-14px text-cap">
-            <div className="margin-bottom-20px">
-                <div className="flex-between-center border-bottom-blur">
-                    <Link
-                        className="text-primary-08"
-                        to={`/fashion/user/account/profile`}
-                    >
-                        <FsPLeftHead />
-                    </Link>
+            <div className="flex-between-center margin-bottom-20px border-bottom-blur">
+                <Link
+                    className="text-primary-08"
+                    to={`/fashion/user/account/profile`}
+                >
+                    <FsPLeftHead />
+                </Link>
 
-                    {IS_MOBILE ? (
-                        <FsPersonalIconClose
-                            is_true={is_true}
-                            toggleBool={toggleBool}
-                        />
-                    ) : null}
-                </div>
+                {IS_MOBILE ? (
+                    <FsPersonalIconClose
+                        is_true={is_true}
+                        toggleBool={toggleBool}
+                    />
+                ) : null}
             </div>
 
             <div>
@@ -43,19 +41,15 @@ function FsPersonalLeft({ is_true, toggleBool }) {
                     <div key={`${ix}`}>
                         <NavLink
                             key={ix}
-                            className="FsPersonalLeft_link text-primary-08"
+                            className="FsPersonalLeft_link display-flex align-items-center padding-8px text-primary-08"
                             activeClassName={`${
                                 item.has_sub ? '' : 'color-fashion'
                             }`}
                             to={`/fashion/user/${item.link}`}
                         >
-                            <div className="display-flex align-items-center padding-8px">
-                                <div>{item.Icon}</div>
+                            {item.Icon}
 
-                                <div className="margin-left-10px line-20px">
-                                    {item.title}
-                                </div>
-                            </div>
+                            <div className="margin-left-10px">{item.title}</div>
                         </NavLink>
 
                         {item.has_sub ? (

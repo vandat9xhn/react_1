@@ -11,11 +11,12 @@ HeaderBtnIcon.propTypes = {
 };
 
 //
-function HeaderBtnIcon({ count_new, title, children, handleClick }) {
+function HeaderBtnIcon({ ref_btn, count_new, title, children, handleClick }) {
     //
     return (
         <div className="HeaderBtnIcon display-flex-center h-100per">
             <div
+                ref={ref_btn}
                 className="HeaderBtnIcon_contain pos-rel btn-icon-40px cursor-pointer bg-ccc hv-bg-hv"
                 title={title}
                 onClick={handleClick}

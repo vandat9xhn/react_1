@@ -9,7 +9,6 @@ import HeaderMessContain from '../contain/_main/HeaderMessContain';
 import HeaderMessBtnToggle from '../btn_toggle/HeaderMessBtnToggle';
 //
 import './HeaderMessage.scss';
-//
 
 //
 HeaderMessage.propTypes = {};

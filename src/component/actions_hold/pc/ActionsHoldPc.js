@@ -25,6 +25,8 @@ function ActionsHoldPc({
     time_leave = 800,
     force_close,
 
+    use_caret,
+
     callbackOpen,
     callbackClose,
 }) {
@@ -98,6 +100,8 @@ function ActionsHoldPc({
             transform_x_more={transform_x_more}
             y_always={y_always}
             transform_y_more={transform_y_more}
+            // 
+            use_caret={use_caret}
             //
             // toggleShow={toggleShow}
             callbackOpen={callbackOpen}

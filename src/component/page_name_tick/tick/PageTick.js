@@ -24,9 +24,12 @@ function PageTick({ size_icon }) {
             <ActionsHoldPc
                 title_action={<PageTickBtn size_icon={size_icon} />}
                 class_action_contain="w-360px padding-16px"
+                //
                 x_always="left"
-                // 
+                transform_x_more={-12}
+                //
                 time_leave={100}
+                // use_caret={false}
             >
                 <div>
                     A verified badge confirms that this is an authentic Page for

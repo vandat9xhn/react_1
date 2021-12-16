@@ -1,15 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { IS_MOBILE } from '../../../../_constant/Constant';
-//
 import { usePosFollowBodyOrElm } from '../../../../_hooks/usePosFollowBodyOrElm';
-//
-import IconCaret from '../../../../_icons_svg/_icon_caret/IconCaret';
 //
 import CloseDiv from '../../../some_div/close_div/CloseDiv';
 //
 import './ActionsContainPc.scss';
+import { useForceUpdate } from '../../../../_hooks/UseForceUpdate';
 
 //
 const CARET_HEIGHT = 10;
@@ -41,6 +38,7 @@ function ActionsContainPc({
 }) {
     //
     const ref_child = useRef(null);
+    const ref_caret_pos = useRef({});
 
     //
     const {
@@ -83,9 +81,18 @@ function ActionsContainPc({
     } = ref_pos.current;
 
     //
+    const forceUpdate = useForceUpdate();
+
+    //
     useEffect(() => {
         handleOpen({ callbackOpen: callbackOpen });
     }, []);
+
+    //
+    useEffect(() => {
+        ref_caret_pos.current = getCaretPos();
+        forceUpdate();
+    }, [ref_pos.current]);
 
     // ------
 
@@ -116,26 +123,55 @@ function ActionsContainPc({
 
     //
     function getCaretPos() {
+        if (!ref_child.current) {
+            return {};
+        }
+
         const { top, bottom, left, right } =
             ref_btn_elm.current.getBoundingClientRect();
+        const {
+            top: top_child,
+            bottom: bottom_child,
+            left: left_child,
+            right: right_child,
+        } = ref_child.current.getBoundingClientRect();
+
         const x_center = (left + right) / 2;
         const y_center = (top + bottom) / 2;
 
         if (caret_pos == 'top') {
             return {
-                top: bottom + CARET_HEIGHT,
-                left: x_center,
+                bottom: '100%',
+                right: right_child - x_center,
             };
         }
 
         if (caret_pos == 'bottom') {
             return {
-                top: top - CARET_HEIGHT,
-                left: x_center,
+                top: `100%`,
+                right: right_child - x_center,
                 transform: `rotate(180deg)`,
             };
         }
+
+        if (caret_pos == 'left') {
+            return {
+                right: '100%',
+                top: y_center - top_child,
+                transform: `rotate(-90deg)`,
+            };
+        }
+
+        if (caret_pos == 'right') {
+            return {
+                left: '100%',
+                top: y_center - top_child,
+                transform: `rotate(90deg)`,
+            };
+        }
     }
+
+    // -----
 
     //
     function makeDivHidden() {
@@ -145,55 +181,54 @@ function ActionsContainPc({
     //
     return (
         ref_is_open.current && (
-            <React.Fragment>
-                <CloseDiv
-                    makeDivHidden={makeDivHidden}
-                    refs_target={[ref_btn_elm]}
+            <CloseDiv makeDivHidden={makeDivHidden} refs_target={[ref_btn_elm]}>
+                <div
+                    className={`${
+                        is_at_body ? 'pos-fixed' : 'pos-abs'
+                    } z-index-lv5 ${ref_starting.current ? 'opacity-0' : ''}`}
+                    style={{
+                        [left_or_right]: position_x,
+                        [top_or_bottom]: position_y,
+                        transform: `translate(${transform_x}, ${transform_y})`,
+                    }}
                 >
                     <div
-                        ref={ref_child}
-                        className={`${
-                            is_at_body ? 'pos-fixed' : 'pos-abs'
-                        } z-index-lv5`}
                         style={{
-                            [left_or_right]: position_x,
-                            [top_or_bottom]: position_y,
-                            transform: `translate(${transform_x}, ${transform_y})`,
+                            [`padding${caret_pos
+                                .slice(0, 1)
+                                .toUpperCase()}${caret_pos.slice(1)}`]:
+                                use_caret ? `${CARET_HEIGHT - 1}px` : undefined,
                         }}
                     >
-                        <div
-                            style={{
-                                [`padding${caret_pos
-                                    .slice(0, 1)
-                                    .toUpperCase()}${caret_pos.slice(1)}`]:
-                                    use_caret
-                                        ? `${CARET_HEIGHT - 1}px`
-                                        : undefined,
-                            }}
-                        >
+                        <div className="pos-rel">
                             <div
-                                className={`scroll-thin overflow-y-auto brs-8px bg-primary box-shadow-fb ${class_action_contain} ${
-                                    ref_starting.current ? 'opacity-0' : ''
-                                }`}
+                                ref={ref_child}
+                                className={`scroll-thin overflow-y-auto brs-8px bg-primary box-shadow-fb ${class_action_contain}`}
                                 style={{
-                                    maxHeight: `${max_height}px`,
+                                    maxHeight: `${
+                                        max_height -
+                                        (use_caret &&
+                                        ['top', 'bottom'].includes(caret_pos)
+                                            ? CARET_HEIGHT - 1
+                                            : 0)
+                                    }px`,
                                 }}
                             >
                                 {children}
                             </div>
+
+                            {use_caret ? (
+                                <div
+                                    className="ActionsContainPc_caret pos-abs z-index-1 pointer-events-none"
+                                    style={{
+                                        ...ref_caret_pos.current,
+                                    }}
+                                ></div>
+                            ) : null}
                         </div>
                     </div>
-                </CloseDiv>
-
-                {use_caret && !IS_MOBILE && ref_child.current ? (
-                    <div
-                        className="ActionsContainPc_caret pos-fixed z-index-lv5 pointer-events-none"
-                        style={{
-                            ...getCaretPos(),
-                        }}
-                    ></div>
-                ) : null}
-            </React.Fragment>
+                </div>
+            </CloseDiv>
         )
     );
 }

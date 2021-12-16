@@ -1,8 +1,8 @@
 import React from 'react';
 //
-import IconsAction from '../../../../../../_icons_svg/icons_action/IconsAction';
 import IconsProfile from '../../../../../../_icons_svg/icons_profile/IconsProfile';
 import IconBell from '../../../../../../_icons_svg/icon_bell/IconBell';
+import IconFriend from '../../../../../../_icons_svg/icon_friend/IconFriend';
 
 //
 export const link_fs_personal_arr = [
@@ -11,7 +11,7 @@ export const link_fs_personal_arr = [
         has_sub: true,
         base_link: 'account/',
         link: 'account/profile',
-        Icon: <IconsAction y={200} size_icon="20px" />,
+        Icon: <IconFriend fill='currentColor' />,
         sub_list: [
             {
                 title: 'Hồ sơ',
@@ -36,7 +36,7 @@ export const link_fs_personal_arr = [
         title: 'Đơn mua',
         has_sub: false,
         link: 'purchase',
-        Icon: <IconsProfile size_icon="20px" />,
+        Icon: <IconsProfile />,
     },
 
     {
@@ -44,7 +44,7 @@ export const link_fs_personal_arr = [
         has_sub: true,
         link: 'notifications/order',
         base_link: 'notifications/',
-        Icon: <IconBell size_icon="18px" stroke="var(--primary-08)" />,
+        Icon: <IconBell stroke="var(--primary-08)" />,
         sub_list: [
             {
                 title: 'Cập nhật đơn hàng',
@@ -77,13 +77,13 @@ export const link_fs_personal_arr = [
         title: 'Kho voucher',
         has_sub: false,
         link: 'voucher',
-        Icon: <IconsProfile size_icon="20px" />,
+        Icon: <IconsProfile />,
     },
 
     {
         title: 'Xu',
         has_sub: false,
         link: 'coin',
-        Icon: <IconsProfile size_icon="20px" />,
+        Icon: <IconsProfile />,
     },
 ];

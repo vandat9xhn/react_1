@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 //
 import { FsCountCartThunk } from '../../../../../redux/slice/FsCountCartSlice';
-// 
+//
 import IconsMenu from '../../../../../_icons_svg/icons_menu/IconsMenu';
-import IconsAction from '../../../../../_icons_svg/icons_action/IconsAction';
+import IconFriend from '../../../../../_icons_svg/icon_friend/IconFriend';
 //
 import BadgeDiv from '../../../../../component/some_div/badge_div/BadgeDiv';
 //
@@ -49,7 +49,11 @@ function FashionHR(props) {
                 <div className="FashionHR_personal">
                     <Link to="/fashion/user/account/profile">
                         <div className="FashionHR_personal-icon margin-left-8px margin-right-8px">
-                            <IconsAction y={200} size_icon="1.5rem" />
+                            <IconFriend
+                                size_icon="1.5rem"
+                                stroke="var(--white)"
+                                fill="var(--white)"
+                            />
                         </div>
                     </Link>
                 </div>

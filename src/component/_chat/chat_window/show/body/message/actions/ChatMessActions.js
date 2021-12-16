@@ -79,6 +79,8 @@ function ChatMessActions({ ref_bd_elm, chooseListTypeLike, handleAction }) {
                         class_action_contain_mb="ChatMessActions_reacted_contain_mb action-contain-mb-center"
                         is_show={is_true}
                         getActionsScrollElms={getActionsScrollElms}
+                        // 
+                        use_caret={false}
                         //
                         toggleShow={toggleBool}
                         handleClose={handleClose}

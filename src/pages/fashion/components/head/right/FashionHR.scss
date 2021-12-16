@@ -11,13 +11,13 @@
     right: 5px;
 }
 
-// ..
-.FashionHR_personal-icon {
-    .IconsAction_add-friend_friend {
-        stroke: white;
-        stroke-width: 15;
-    }
-    .IconsAction_add-friend_plus {
-        stroke: none;
+// -----
+
+.device-mobile{
+    .FashionHR{
+        svg{
+            width: 20px;
+            height: 20px;
+        }
     }
 }

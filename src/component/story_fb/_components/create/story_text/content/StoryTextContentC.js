@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { waitingToDoLast } from '../../../../../../_some_function/waitingToDoLast';
+// 
 import { useForceUpdate } from '../../../../../../_hooks/UseForceUpdate';
 //
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
@@ -23,19 +25,30 @@ function StoryTextContentC({ vid_pic, text, font_family, scale }) {
     const ref_text_elm = useRef(null);
     const has_more_text = useRef(false);
 
+    const ref_interval = useRef(false);
+
     //
     const forceUpdate = useForceUpdate();
 
     //
     useEffect(() => {
-        const new_has_more_text =
-            text.trim() && ref_text_elm.current.scrollHeight >= scale * 22 * 5;
+        // waitingToDoLast({
+        //     ref_interval: ref_interval,
+        //     time: 500,
+        //     callback: () => {
+                const new_has_more_text =
+                    text.trim() &&
+                    ref_text_elm.current.scrollHeight >= scale * 22 * 5;
 
-        if (has_more_text.current != new_has_more_text) {
-            has_more_text.current = new_has_more_text;
-            forceUpdate();
-        }
+                if (has_more_text.current != new_has_more_text) {
+                    has_more_text.current = new_has_more_text;
+                    forceUpdate();
+                }
+            // },
+        // });
     }, [text]);
+
+    // -----
 
     //
     function handleToggleText() {
@@ -50,7 +63,7 @@ function StoryTextContentC({ vid_pic, text, font_family, scale }) {
     //
     return (
         <div className="wh-100 pos-rel">
-            <img src={vid_pic} alt="" className="wh-100" />
+            <img className="wh-100" src={vid_pic} alt="" />
 
             <div
                 className="StoryTextContentC_text pos-abs-center display-flex flex-col justify-content-center w-100per text-white"
@@ -62,10 +75,10 @@ function StoryTextContentC({ vid_pic, text, font_family, scale }) {
             >
                 <div
                     ref={ref_text_elm}
-                    className={`StoryTextContentC_text_contain text-align-center ${
+                    className={`StoryTextContentC_text_contain padding-x-8px text-align-center ${
                         is_show_more
                             ? 'overflow-y-auto scroll-thin max-h-100per'
-                            : 'StoryTextContentC_text_contain-less overflow-hidden'
+                            : 'StoryTextContentC_text_contain-less wk-box-vertical line-clamp-4 overflow-hidden'
                     }`}
                 >
                     <span className="StoryTextContentC_text_contain_item font-700">
@@ -84,13 +97,11 @@ function StoryTextContentC({ vid_pic, text, font_family, scale }) {
                             </div>
 
                             <div
-                                className={`StoryTextContentC_icon_more display-flex-center brs-50 bg-primary ${
-                                    is_show_more
-                                        ? 'StoryTextContentC_icon_more-less'
-                                        : 'StoryTextContentC_icon_more-more'
+                                className={`StoryTextContentC_icon_more display-flex-center margin-left-5px wh-16px brs-50 bg-primary ${
+                                    is_show_more ? 'rotate--90' : 'rotate-90'
                                 }`}
                             >
-                                <IconsArrow x={200} size_icon="0.75rem" />
+                                <IconsArrow x={200} size_icon="12px" />
                             </div>
                         </div>
                     </div>

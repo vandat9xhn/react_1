@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { API_RoomCountNew_R } from '../../../../../api/api_django/header/APIHeaderToken';
 //
 import IconsMenu from '../../../../../_icons_svg/icons_menu/IconsMenu';
 //
+import Tooltip from '../../../../tooltip/_main/Tooltip';
 import HeaderBtnIcon from '../../../_components/btn_icon/HeaderBtnIcon';
 
 //
@@ -14,6 +15,9 @@ HeaderMessBtnToggle.propTypes = {};
 function HeaderMessBtnToggle({ toggleOpenZoom }) {
     //
     const [count_new, setCountNew] = useState(0);
+
+    //
+    const ref_elm = useRef(null);
 
     //
     useEffect(() => {
@@ -39,13 +43,21 @@ function HeaderMessBtnToggle({ toggleOpenZoom }) {
 
     //
     return (
-        <HeaderBtnIcon
-            handleClick={onToggleOpenZoom}
-            count_new={count_new}
-            title="message"
-        >
-            <IconsMenu x={200} y={200} />
-        </HeaderBtnIcon>
+        <React.Fragment>
+            <HeaderBtnIcon
+                ref_btn={ref_elm}
+                count_new={count_new}
+                // title="message"
+                // 
+                handleClick={onToggleOpenZoom}
+            >
+                <IconsMenu x={200} y={200} />
+            </HeaderBtnIcon>
+
+            <Tooltip ref_elm={ref_elm} pos="bottom">
+                Messages
+            </Tooltip>
+        </React.Fragment>
     );
 }
 

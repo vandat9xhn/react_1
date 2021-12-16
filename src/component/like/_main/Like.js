@@ -1,32 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../_constant/Constant';
+//
 import { useBool } from '../../../_hooks/useBool';
 //
 import { type_likes } from '../list_type_like/type_likes/TypeLikes';
 //
 import ActionsHoldPc from '../../actions_hold/pc/ActionsHoldPc';
+import ActionsHoldMb from '../../actions_hold/mobile/ActionsHoldMb';
 import ListTypeLike from '../list_type_like/_main/ListTypeLike';
 //
 import './Like.scss';
-import { IS_MOBILE } from '../../../_constant/Constant';
-import ActionsHoldMb from '../../actions_hold/mobile/ActionsHoldMb';
 
 //
 Like.propTypes = {
     type_like: PropTypes.number,
     changeTypeLike: PropTypes.func,
-    //
+
     icon_small: PropTypes.bool,
+
+    use_caret: PropTypes.bool,
 };
 
 Like.defaultProps = {
     type_like: -1,
     icon_small: false,
+
+    use_caret: false,
 };
 
 //
-function Like({ changeTypeLike, icon_small, type_like }) {
+function Like({ changeTypeLike, icon_small, type_like, use_caret }) {
     //
     const { is_true, toggleBool } = useBool();
 
@@ -89,6 +94,8 @@ function Like({ changeTypeLike, icon_small, type_like }) {
                 y_always={'bottom'}
                 //
                 force_close={is_true}
+                //
+                use_caret={use_caret}
             >
                 <ListTypeLike
                     open_type_like={true}
