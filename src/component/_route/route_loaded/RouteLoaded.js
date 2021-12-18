@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 
 //
@@ -10,7 +10,7 @@ RouteLoaded.propTypes = {
 
 RouteLoaded.defaultProps = {
     part_location: 'pathname',
-    fallback: <Fragment />,
+    fallback: null,
     use_loaded: true,
 };
 
@@ -22,7 +22,7 @@ function RouteLoaded({ route_arr, fallback, use_loaded }) {
             <Suspense fallback={fallback}>
                 {route_arr.map((route_obj, index) => (
                     <div
-                        key={`RouteLoaded_${index}`}
+                        key={index}
                         className={route_obj.is_active ? '' : 'display-none'}
                     >
                         {(use_loaded

@@ -49,12 +49,7 @@ export async function handle_API_Friend_L({
         ...params,
     });
 
-    const { data, ...rest_data } = res.data;
-    const new_data = data.map((item) => item.friend);
-
-    // console.log(params, 'c_count: ', c_count, 'user_id: ', user_id, res.data);
-
-    return { ...rest_data, data: new_data };
+    return res.data;
 }
 
 // vid_pic

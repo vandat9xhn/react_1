@@ -123,7 +123,7 @@
     font-size: inherit;
 }
 
-@for $i from 9 through 24 {
+@for $i from 8 through 24 {
     .font-#{$i}px {
         font-size: #{$i}px;
     }
@@ -157,7 +157,7 @@
 
 // -------- LINE
 
-@for $i from 10 through 24 {
+@for $i from 8 through 24 {
     .line-#{$i}px {
         line-height: #{$i}px;
     }

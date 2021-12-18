@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import { useRouteLoaded } from '../../../../../_hooks/useRouteLoaded';
+import { useRouteFollowSearch } from '../../../../../_hooks/useRouteFollowSearch';
 //
-import RouteLoaded from '../../../../../component/_route/route_loaded/RouteLoaded';
+import { PhotosRoutes } from '../__common/routes/routes';
+//
+import RouteFollowSearch from '../../../../../component/_route/follow_search/RouteFollowSearch';
 //
 import ProfileSkeleton from '../../../__common/skeleton/ProfileSkeleton';
-
-import { PhotosRoutes, photos_searches_str } from '../__common/routes/routes';
+import ProfileLayoutNavItem from '../../../../../component/profile_layout/nav/item/ProfileLayoutNavItem';
 //
 import './ProfilePhoto.scss';
 
@@ -30,48 +31,54 @@ ProfilePhoto.propTypes = {};
 //
 function ProfilePhoto({ user_id, name }) {
     //
-    const { route_arr } = useRouteLoaded({
-        initial_route_arr: PhotosRoutes,
-        part_location: 'search',
-        allow_routes_str: photos_searches_str,
-        deps: [user_id],
+    const use_history = useHistory();
+
+    //
+    const { route_ix, route_props } = useRouteFollowSearch({
+        base_path: /\/profile\/\d+\?sk=photo/,
+        route_arr: PhotosRoutes,
+        is_exact: false,
+
+        // getRouteProps: getRouteProps,
+        handleNotFound: handleNotFound,
     });
+
+    // -----
+
+    //
+    function handleNotFound() {
+        use_history.replace(`${location.pathname}${PhotosRoutes[0].search}`);
+    }
 
     //
     return (
-        <div className="ProfilePhoto padding-8px bg-primary brs-8px-md box-shadow-1">
-            <h2 className="ProfilePhoto_title">Photos</h2>
+        <div className="ProfilePhoto profile-route-contain padding-y-16px">
+            <h2 className="ProfilePhoto_title profile-route-title padding-x-8px">
+                Photos
+            </h2>
 
-            <div>
-                <div className="display-flex">
-                    {group_photo_arr.map((item, ix) => (
-                        <Link
-                            key={`${ix}`}
-                            to={`?sk=photos_${item.search}`}
-                            className="normal-text"
-                            replace
-                        >
-                            <div className="padding-8px">
-                                <span
-                                    className={`font-500 hv-cl-blue ${
-                                        `?sk=photos_${item.search}` ==
-                                        location.search
-                                            ? 'text-blue'
-                                            : ''
-                                    }`}
-                                >
-                                    {item.title}
-                                </span>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-
-                <RouteLoaded
-                    route_arr={route_arr}
-                    fallback={<ProfileSkeleton />}
-                />
+            <div className="display-flex margin-y-15px">
+                {group_photo_arr.map((item, ix) => (
+                    <div key={ix} className="h-52px font-600 text-secondary">
+                        <ProfileLayoutNavItem
+                            title={item.title}
+                            link_to={`?sk=photos_${item.search}`}
+                            IsActive={() => {
+                                return (
+                                    `?sk=photos_${item.search}` ==
+                                    location.search
+                                );
+                            }}
+                        />
+                    </div>
+                ))}
             </div>
+
+            <RouteFollowSearch
+                RouteComponent={PhotosRoutes[route_ix].component}
+                route_props={route_props}
+                fallback={<ProfileSkeleton />}
+            />
         </div>
     );
 }

@@ -30,14 +30,16 @@ function Tooltip({ ref_elm, children, pos, distance, class_contain }) {
             ref_elm.current.addEventListener('mouseleave', handleMouseLeave);
 
             return () => {
-                ref_elm.current.removeEventListener(
-                    'mouseenter',
-                    handleMouseEnter
-                );
-                ref_elm.current.removeEventListener(
-                    'mouseleave',
-                    handleMouseLeave
-                );
+                ref_elm.current &&
+                    ref_elm.current.removeEventListener(
+                        'mouseenter',
+                        handleMouseEnter
+                    );
+                ref_elm.current &&
+                    ref_elm.current.removeEventListener(
+                        'mouseleave',
+                        handleMouseLeave
+                    );
             };
         }
     }, [ref_elm.current]);

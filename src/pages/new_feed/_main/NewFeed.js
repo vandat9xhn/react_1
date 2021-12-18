@@ -97,14 +97,14 @@ function NewFeed() {
         <div className="NewFeed bg-fb">
             <div className="NewFeed_row display-flex space-between">
                 {IS_MOBILE ? null : (
-                    <div className="NewFeed_col-left flex-shrink-0 w-360px margin-right-10px">
+                    <div className="NewFeed_left flex-shrink-0 w-360px margin-right-10px">
                         <div className="pos-sticky-from-header">
                             <NewFeedLeft />
                         </div>
                     </div>
                 )}
 
-                <div className="NewFeed_col-center flex-grow-1 flex-basis-1rem padding-y-20px">
+                <div className="NewFeed_center flex-grow-1 flex-basis-1rem padding-y-20px">
                     <NewFeedCenter
                         // title_add_new={title_add_new}
                         post_arr={data_arr}
@@ -117,8 +117,8 @@ function NewFeed() {
                 </div>
 
                 {IS_MOBILE ? null : (
-                    <div className="NewFeed_col-right flex-shrink-0 w-300px margin-left-10px">
-                        <div className="pos-sticky-from-header padding-y-20px">
+                    <div className="NewFeed_right flex-shrink-0 w-300px margin-left-10px">
+                        <div className="NewFeed_right_contain pos-sticky-from-header scroll-thin overflow-y-auto padding-y-10px">
                             <NewFeedRight />
                         </div>
                     </div>

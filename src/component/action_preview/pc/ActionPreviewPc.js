@@ -18,6 +18,11 @@ ActionPreviewPc.propTypes = {};
 function ActionPreviewPc({
     title_action,
     class_action_contain,
+
+    pos_orientation,
+    x_always,
+    y_always,
+
     use_caret = false,
 
     id,
@@ -104,6 +109,10 @@ function ActionPreviewPc({
                 class_action_contain={`ActionPreviewPc ${class_action_contain}`}
                 use_own_title={true}
                 is_show={show_count > 0}
+                // 
+                pos_orientation={pos_orientation}
+                x_always={x_always}
+                y_always={y_always}
                 // scroll_elm={scroll_elm}
                 use_caret={use_caret}
                 //

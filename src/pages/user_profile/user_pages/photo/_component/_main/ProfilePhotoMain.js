@@ -1,7 +1,8 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { GetIdSlug } from '../../../../../../_some_function/GetIdSlug';
+import observeToDo from '../../../../../../_some_function/observerToDo';
 //
 import ComponentSkeleton from '../../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 import ScreenBlurShowMore from '../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
@@ -51,8 +52,16 @@ function ProfilePhotoMain(props) {
     const { photo_arr, photo_count, has_fetched, is_fetching } = photo_state;
 
     //
-    useLayoutEffect(() => {
-        getData_API_Photo();
+    const ref_main = useRef(null);
+
+    //
+    useEffect(() => {
+        observeToDo({
+            elm: ref_main.current,
+            callback: () => {
+                getData_API_Photo();
+            },
+        });
     }, []);
 
     //
@@ -86,7 +95,7 @@ function ProfilePhotoMain(props) {
 
     //
     return (
-        <div>
+        <div ref={ref_main} className="ProfilePhotoMain">
             <div>
                 <div className="display-flex flex-wrap">
                     {photo_arr.map((item) => (

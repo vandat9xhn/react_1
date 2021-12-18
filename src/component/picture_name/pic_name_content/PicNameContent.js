@@ -8,22 +8,27 @@ import PictureNameCommon from '../_main/PictureNameCommon';
 //
 PicNameContent.propTypes = {
     user: PropTypes.object,
-    handleClick: PropTypes.func,
     content: content_pic_name_props,
-
+    
+    use_time_online: PropTypes.bool,
     is_inline_block: PropTypes.bool,
     align_center: PropTypes.bool,
+    
+    handleClick: PropTypes.func,
 };
 
 //
 function PicNameContent({
     user,
     content,
+
+    use_time_online,
     is_inline_block,
     align_center,
+
     handleClick,
 }) {
-    const { id, picture, first_name, last_name } = user;
+    const { id, picture, first_name, last_name, time_online } = user;
 
     //
     return (
@@ -31,6 +36,9 @@ function PicNameContent({
             <PictureNameCommon
                 name={first_name ? first_name + ' ' + last_name : undefined}
                 picture={picture}
+                use_time_online={use_time_online}
+                time_online={time_online}
+                //
                 content={content}
                 is_inline_block={is_inline_block}
                 align_center={align_center}

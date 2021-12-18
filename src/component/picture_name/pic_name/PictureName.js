@@ -14,6 +14,8 @@ import PictureNameCommon from '../_main/PictureNameCommon';
 PictureName.propTypes = {
     ...user_propTypes,
     content: content_pic_name_props,
+
+    use_time_online: PropTypes.bool,
     is_inline_block: PropTypes.bool,
     align_center: PropTypes.bool,
 };
@@ -26,13 +28,16 @@ PictureName.defaultProps = {
 //
 function PictureName({
     link_class,
+
     user,
     content,
+
+    use_time_online,
     is_inline_block,
     align_center,
 }) {
     //
-    const { id, picture, first_name, last_name } = user;
+    const { id, picture, first_name, last_name, time_online } = user;
 
     //
     function handleClickLink(e) {
@@ -50,6 +55,8 @@ function PictureName({
                 <PictureNameCommon
                     picture={picture}
                     name={first_name + ' ' + last_name}
+                    use_time_online={use_time_online}
+                    time_online={time_online}
                     content={content}
                     //
                     is_inline_block={is_inline_block}

@@ -79,8 +79,9 @@ function ScreenUserAdd({
                     <div className="ScreenBlur_body_contain scroll-thin">
                         {data_arr.map((item, ix) => (
                             <UserAdd
-                                key={`ScreenLike_${ix}`}
+                                key={ix}
                                 user={item.user}
+                                action_name={item.action_name}
                                 handleSendAddFriend={handleSendAddFriend}
                             />
                         ))}

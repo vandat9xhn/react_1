@@ -6,7 +6,7 @@ import { initial_page_preview } from '../../../_initial/page/preview';
 import { handle_API_PagePreview_R } from '../../../_handle_api/fb_page/preview';
 //
 import { useMounted } from '../../../_hooks/useMounted';
-// 
+//
 import IconPublic from '../../../_icons_svg/icon_public/IconPublic';
 import IconTablePhone from '../../../_icons_svg/icon_table_phone/IconTablePhone';
 //
@@ -49,7 +49,14 @@ const ActionsOtherComponent = ({
 ActionPreviewPagePc.propTypes = {};
 
 //
-function ActionPreviewPagePc({ page_id, title_action }) {
+function ActionPreviewPagePc({
+    page_id,
+    title_action,
+
+    pos_orientation,
+    x_always,
+    y_always,
+}) {
     //
     const [page_state, setPageState] = useState({
         page: initial_page_preview(),
@@ -77,8 +84,8 @@ function ActionPreviewPagePc({ page_id, title_action }) {
         action_case_arr,
     } = page;
 
-    // 
-    const mounted = useMounted()
+    //
+    const mounted = useMounted();
 
     // --------
 
@@ -161,6 +168,10 @@ function ActionPreviewPagePc({ page_id, title_action }) {
         <ActionPreviewPc
             title_action={title_action}
             class_action_contain={'ActionPreviewPagePc'}
+            // 
+            pos_orientation={pos_orientation}
+            x_always={x_always}
+            y_always={y_always}
             //
             id={id}
             name={name}

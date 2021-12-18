@@ -13,7 +13,7 @@ function PostSkeleton(props) {
         <div className="Post bg-primary brs-5px-md box-shadow-1">
             <div className="padding-8px">
                 <div className="display-flex">
-                    <div className="PictureNameCommon__pic brs-50"></div>
+                    <div className="PicNameImg brs-50"></div>
 
                     <div className="PostSkeleton_name">
                         <SkeletonDiv />

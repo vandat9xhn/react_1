@@ -1,7 +1,15 @@
 import { getRandomBool } from './default_bool';
-import { getRandomId } from './default_id';
+import { getRandomId, getRandomNumber } from './default_id';
 import { getRandomVidPic } from './default_image';
-import { getRandomGroupName, getRandomName, getRandomPageName } from './default_name';
+import {
+    getRandomGroupName,
+    getRandomName,
+    getRandomPageName,
+} from './default_name';
+
+//
+export const getRandomTimeOnline = ({ max = 3000 }) =>
+    getRandomBool() ? 0 : getRandomNumber(0, max);
 
 //
 export const getRandomUser = () => ({
@@ -10,7 +18,8 @@ export const getRandomUser = () => ({
         picture: getRandomVidPic(),
         first_name: getRandomName(),
         last_name: getRandomName(),
-        is_online: false,
+        time_online: getRandomTimeOnline({}),
+        has_new_story: getRandomBool() * getRandomBool(),
     },
 });
 
@@ -27,6 +36,8 @@ export const getRandomPage = () => ({
         id: getRandomId(),
         picture: getRandomVidPic(),
         name: getRandomPageName(),
+        time_online: getRandomTimeOnline({}),
         has_tick: getRandomBool(),
+        has_new_story: getRandomBool() * getRandomBool(),
     },
 });

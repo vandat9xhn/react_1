@@ -34,7 +34,14 @@ const ActionsOtherComponent = ({ user_id }) => (
 ActionPreviewProfilePc.propTypes = {};
 
 //
-function ActionPreviewProfilePc({ user_id, title_action }) {
+function ActionPreviewProfilePc({
+    user_id,
+    title_action,
+
+    pos_orientation,
+    x_always,
+    y_always,
+}) {
     //
     const [profile_state, setProfileState] = useState({
         profile: initial_profile(),
@@ -143,6 +150,11 @@ function ActionPreviewProfilePc({ user_id, title_action }) {
     return (
         <ActionPreviewPc
             title_action={title_action}
+            // 
+            pos_orientation={pos_orientation}
+            x_always={x_always}
+            y_always={y_always}
+            //
             id={id}
             name={`${first_name} ${last_name}`}
             picture={picture}

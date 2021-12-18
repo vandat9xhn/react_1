@@ -1,16 +1,17 @@
-import naruto_x_hinata from '../../../image/naruto_x_hinata.jpg';
+import { getRandomVidPic } from '../_common/default_image';
+import { getRandomName } from '../_common/default_name';
 
-// 
+//
 export const default_define_user = {
     id: 1,
-    first_name: 'Ngoc',
-    last_name: 'My',
-    picture: naruto_x_hinata,
-}
+    first_name: getRandomName(),
+    last_name: getRandomName(),
+    picture: getRandomVidPic(),
+};
 
-// 
+//
 export const default_login = {
     ...default_define_user,
     access: '',
-    life_time: new Date().getTime()
-}
+    life_time: new Date().getTime(),
+};

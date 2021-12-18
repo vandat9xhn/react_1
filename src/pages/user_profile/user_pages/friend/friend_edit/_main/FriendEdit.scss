@@ -1,8 +1,15 @@
-.FriendEdit {
-    box-shadow: 0 1px 4px var(--shadow-2);
-}
+// ------
 
-.FriendEdit_right {
-    right: 5px;
-    top: 5px;
+.device-mobile{
+    .FriendEdit{
+        padding: 8px;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+    }
+    
+    .FriendEdit_img{
+        width: 40px;
+        height: 40px;
+    }
 }

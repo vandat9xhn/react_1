@@ -5,7 +5,8 @@ import { content_pic_name_props } from '../../../_prop-types/_CommonPropTypes';
 //
 import SkeletonDiv from '../../skeleton/skeleton_div/SkeletonDiv';
 //
-import white_person from '../../../../image/white_person.svg';
+import PicNameImg from '../_components/img/_main/PicNameImg';
+// 
 import './PictureNameCommon.scss';
 
 //
@@ -14,6 +15,9 @@ PictureNameCommon.propTypes = {
     picture: PropTypes.string,
     content: content_pic_name_props,
 
+    use_time_online: PropTypes.bool,
+    time_online: PropTypes.number,
+
     is_inline_block: PropTypes.bool,
     align_center: PropTypes.bool,
 };
@@ -21,6 +25,9 @@ PictureNameCommon.defaultProps = {
     name: '',
     picture: '',
     content: '',
+
+    use_time_online: false,
+    time_online: 0,
 
     is_inline_block: false,
     align_center: true,
@@ -31,25 +38,31 @@ function PictureNameCommon({
     name,
     picture,
     content,
+
+    use_time_online,
+    time_online,
+    use_new_story,
+    has_new_story,
+
     is_inline_block,
     align_center,
 }) {
     //
     return (
-        <div className="PictureNameCommon" title={name}>
+        <div className="PictureNameCommon">
             <div
                 className={`PictureNameCommon_row display-flex ${
                     align_center ? 'align-items-center' : ''
                 }`}
             >
                 <div className="PictureNameCommon_left">
-                    <div className="PictureNameCommon__pic brs-50">
-                        <img
-                            className="wh-100"
-                            src={picture || white_person}
-                            alt=""
-                        />
-                    </div>
+                    <PicNameImg
+                        picture={picture}
+                        use_time_online={use_time_online}
+                        time_online={time_online}
+                        use_new_story={use_new_story}
+                        has_new_story={has_new_story}
+                    />
                 </div>
 
                 <div className="PictureNameCommon_right flex-grow-1">

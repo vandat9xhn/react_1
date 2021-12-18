@@ -17,13 +17,9 @@ function AboutLeftItem({ item }) {
 
     //
     return (
-        <Link
-            to={search}
-            replace
-            className="normal-text w-100per"
-        >
+        <Link className="display-block color-inherit" to={search} replace>
             <div
-                className={`AboutLeftItem brs-8px padding-8px font-500 text-secondary ${
+                className={`AboutLeftItem brs-8px-pc padding-8px font-600 text-secondary ${
                     search == location.search
                         ? 'bg-fb-active text-blue'
                         : 'hv-bg-blur'

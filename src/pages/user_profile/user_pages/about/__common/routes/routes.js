@@ -30,68 +30,40 @@ const PfAboutLifeEvents = React.lazy(() =>
 );
 
 //
-export const AboutCommonRoutes = [
+export const AboutRoutes = [
     {
         component: PfAboutOverview,
         search: '?sk=about_overview',
-        props: {},
         title: 'Overview',
     },
     {
         component: PfAboutPlaces,
         search: '?sk=about_place_lived',
-        props: {},
         title: 'Place lived',
     },
     {
         component: PfAboutWorkEdu,
         search: '?sk=about_work_edu',
-        props: {},
         title: 'Work and education',
     },
     {
         component: PfAboutContactBasis,
         search: '?sk=about_contact',
-        props: {},
         title: 'Contact and basis info',
     },
     {
         component: PfAboutRelation,
         search: '?sk=about_family_relationships',
-        props: {},
         title: 'Family and relationships',
     },
     {
         component: PfAboutDetails,
         search: '?sk=about_details',
-        props: {},
         title: 'Details',
     },
     {
         component: PfAboutLifeEvents,
         search: '?sk=about_life_events',
-        props: {},
         title: 'Life events',
     },
 ];
-
-//
-export const AboutRoutes = AboutCommonRoutes.map((item) => ({
-    component: item.component,
-    search: item.search,
-    props: item.props,
-    is_active: false,
-    is_loaded: false,
-}));
-
-//
-export const about_searches_str = AboutCommonRoutes.reduce(
-    (a, b) => a + b.search,
-    ''
-);
-
-//
-export const common_about_title = AboutCommonRoutes.map((item) => ({
-    search: item.search,
-    title: item.title,
-}));

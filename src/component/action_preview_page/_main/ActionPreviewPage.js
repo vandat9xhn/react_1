@@ -10,7 +10,15 @@ import PageTick from '../../page_name_tick/tick/PageTick';
 ActionPreviewPage.propTypes = {};
 
 //
-function ActionPreviewPage({ page_id, title_action, has_tick }) {
+function ActionPreviewPage({
+    page_id,
+    has_tick,
+
+    title_action,
+    pos_orientation,
+    x_always,
+    y_always,
+}) {
     return (
         <React.Fragment>
             {IS_MOBILE ? (
@@ -19,6 +27,10 @@ function ActionPreviewPage({ page_id, title_action, has_tick }) {
                 <ActionPreviewPagePc
                     page_id={page_id}
                     title_action={title_action}
+                    //
+                    pos_orientation={pos_orientation}
+                    x_always={x_always}
+                    y_always={y_always}
                 />
             )}
 

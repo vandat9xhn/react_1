@@ -14,26 +14,22 @@ PfAboutOverviewItem.propTypes = {
 };
 
 //
-function PfAboutOverviewItem(props) {
-    const { link_to, Icon, title, permission } = props;
-
+function PfAboutOverviewItem({ link_to, Icon, title, permission }) {
     //
     return (
-        <div>
-            <Link
-                to={link_to}
-                replace
-                className="normal-text font-500 text-secondary"
-            >
-                <FlexDiv
-                    space_between={true}
-                    ComponentLeft={
-                        <FlexDiv ComponentLeft={Icon} ComponentRight={title} />
-                    }
-                    ComponentRight={<PermissionDiv permission={permission} />}
-                />
-            </Link>
-        </div>
+        <Link
+            className="display-block color-inherit font-500 text-secondary"
+            to={link_to}
+            replace
+        >
+            <FlexDiv
+                space_between={true}
+                ComponentLeft={
+                    <FlexDiv ComponentLeft={Icon} ComponentRight={title} />
+                }
+                ComponentRight={<PermissionDiv permission={permission} />}
+            />
+        </Link>
     );
 }
 

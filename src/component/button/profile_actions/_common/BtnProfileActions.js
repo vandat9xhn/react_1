@@ -11,12 +11,22 @@ BtnProfileActions.propTypes = {
 };
 
 //
-function BtnProfileActions({ className, Icon, use_title, title, handleClick }) {
+function BtnProfileActions({
+    className,
+
+    Icon,
+    use_icon,
+    use_title,
+    title,
+    
+    handleClick,
+}) {
     //
     return (
         <BtnActions
             className={`BtnProfileActions ${className}`}
             Icon={Icon}
+            use_icon={use_icon}
             use_title={use_title}
             title={title}
             handleClick={handleClick}

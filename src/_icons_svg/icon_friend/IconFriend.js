@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// 
+import './IconFriend.scss';
 
 //
 IconFriend.propTypes = {
@@ -12,6 +14,7 @@ IconFriend.propTypes = {
     fill: PropTypes.string,
 
     is_plus: PropTypes.bool,
+    is_subtract: PropTypes.bool,
     is_request: PropTypes.bool,
     is_menu: PropTypes.bool,
 };
@@ -26,6 +29,7 @@ IconFriend.defaultProps = {
     fill: 'none',
 
     is_plus: false,
+    is_subtract: false,
     is_request: false,
     is_menu: false,
 };
@@ -43,6 +47,7 @@ function IconFriend({
     fill,
 
     is_plus,
+    is_subtract,
     is_request,
     is_menu,
 }) {
@@ -61,8 +66,13 @@ function IconFriend({
             <circle cx="100" cy="50" r="35" />
             <path d="M15,185 Q15,100 100,100 Q185,100 185,185 Z" />
 
-            {is_plus ? (
-                <g className="IconFriend_plus" stroke="currentColor">
+            {is_plus || is_subtract ? (
+                <g
+                    className={`${
+                        is_subtract ? 'IconFriend_subtract' : 'IconFriend_plus'
+                    }`}
+                    stroke="currentColor"
+                >
                     <line x1="160" y1="20" x2="160" y2="80" />
                     <line x1="130" y1="50" x2="190" y2="50" />
                 </g>

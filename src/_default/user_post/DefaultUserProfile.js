@@ -4,17 +4,20 @@ import { getRandomFromArr } from '../_common/getRandomFromArr';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomName } from '../_common/default_name';
 import { getRandomVidPic } from '../_common/default_image';
+import { getRandomBool } from '../_common/default_bool';
 
 /* ----------------------------------------- */
 
 //
 const default_friend_obj = () => ({
-    friend: {
-        id: getRandomId(),
-        first_name: getRandomName(),
-        last_name: getRandomName(),
-        picture: getRandomVidPic(),
-    },
+    id: getRandomId(),
+    first_name: getRandomName(),
+    last_name: getRandomName(),
+    picture: getRandomVidPic(),
+
+    is_friend: getRandomBool(),
+    can_add_friend: getRandomBool(),
+    sent_request: getRandomBool(),
 });
 
 export const default_friend_arr = (min = 9, max = 9) =>

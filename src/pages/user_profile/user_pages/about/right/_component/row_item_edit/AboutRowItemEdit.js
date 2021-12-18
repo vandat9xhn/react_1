@@ -91,11 +91,7 @@ function AboutRowItemEdit({
     //
     return (
         <div className={`AboutRowItemEdit ${title ? '' : 'display-none'}`}>
-            {label && (
-                <div>
-                    <div className="font-500 text-secondary">{label}</div>
-                </div>
-            )}
+            {label && <div className="font-500 text-secondary">{label}</div>}
 
             <div>
                 <div className="AboutRowItemEdit_item">

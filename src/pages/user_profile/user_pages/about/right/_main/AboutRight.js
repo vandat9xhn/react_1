@@ -1,14 +1,16 @@
-import React, { useRef } from 'react';
-import update from 'immutability-helper';
+import React, { useEffect, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
-import { useRouteLoaded } from '../../../../../../_hooks/useRouteLoaded';
-
 import { handleScrollSmooth } from '../../../../../../_some_function/handleScrollSmooth';
 //
-import RouteLoaded from '../../../../../../component/_route/route_loaded/RouteLoaded';
+import { useRouteFollowSearch } from '../../../../../../_hooks/useRouteFollowSearch';
 //
-import { AboutRoutes, about_searches_str } from '../../__common/routes/routes';
+import RouteFollowSearch from '../../../../../../component/_route/follow_search/RouteFollowSearch';
+//
+import { AboutRoutes } from '../../__common/routes/routes';
+//
+import ProfileSkeleton from '../../../../__common/skeleton/ProfileSkeleton';
 //
 import './AboutRight.scss';
 
@@ -18,24 +20,47 @@ AboutRight.propTypes = {};
 //
 function AboutRight({ name, user_id }) {
     //
+    const use_history = useHistory();
+
+    //
     const ref_about_right = useRef(null);
 
     //
-    const { route_arr, makeReset } = useRouteLoaded({
-        initial_route_arr: update(AboutRoutes, {
-            0: { props: { $set: { name: name, user_id: user_id } } },
-        }),
-        part_location: 'search',
-        allow_routes_str: about_searches_str,
-        deps: [user_id],
-        handleAfterSetRouteLoaded: handleAfterSetRouteLoaded,
+    const { route_ix, route_props } = useRouteFollowSearch({
+        base_path: /\/profile\/\d+\?sk=about/,
+        route_arr: AboutRoutes,
+        is_exact: false,
+
+        getRouteProps: getRouteProps,
+        handleNotFound: handleNotFound,
     });
 
     //
-    function handleAfterSetRouteLoaded() {
+    useEffect(() => {
+        handleRouteChange();
+    }, [route_ix]);
+
+    // -----
+
+    //
+    function getRouteProps(new_route_ix = 0) {
+        return {
+            name: name,
+            user_id: user_id,
+        };
+    }
+
+    //
+    function handleNotFound() {
+        use_history.replace(`${location.pathname}${AboutRoutes[0].search}`);
+    }
+
+    //
+    function handleRouteChange() {
         if (window.innerWidth < 1000) {
             handleScrollSmooth(() => {
-                ref_about_right.current && ref_about_right.current.scrollIntoView(false);
+                ref_about_right.current &&
+                    ref_about_right.current.scrollIntoView(false);
             });
         }
     }
@@ -43,10 +68,10 @@ function AboutRight({ name, user_id }) {
     //
     return (
         <div ref={ref_about_right}>
-            <RouteLoaded
-                route_arr={route_arr}
-                fallback={<div className="AboutRight_fallback wh-100"></div>}
-                // use_loaded={false}
+            <RouteFollowSearch
+                RouteComponent={AboutRoutes[route_ix].component}
+                route_props={route_props}
+                fallback={<ProfileSkeleton />}
             />
         </div>
     );

@@ -42,6 +42,7 @@ export const default_post_like_arr = () =>
 const default_share_post_obj = () => ({
     id: getRandomId(),
     ...getRandomUser(),
+    action_name: getRandomFromArr(['add_friend', 'chat', 'cancel_request', '']),
     post_model: 11,
     profile_model: 1,
 });

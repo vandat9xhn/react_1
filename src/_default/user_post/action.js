@@ -2,7 +2,7 @@ import { default_define_user } from '../login/DefaultLogin';
 import { getRandomBool } from '../_common/default_bool';
 
 //
-const default_fb_other_action_arr = (user_id) => {
+export const default_fb_other_action_arr = (user_id) => {
     //
     if (user_id == default_define_user.id) {
         return [
@@ -83,7 +83,7 @@ const default_fb_other_action_arr = (user_id) => {
 };
 
 //
-const default_fb_friend_action_arr = () => {
+export const default_fb_friend_action_arr = () => {
     return [
         [
             {

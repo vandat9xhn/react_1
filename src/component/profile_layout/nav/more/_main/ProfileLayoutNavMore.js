@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useBool } from '../../../../../_hooks/useBool';
@@ -15,7 +15,15 @@ import './ProfileLayoutNavMore.scss';
 ProfileLayoutNavMore.propTypes = {};
 
 //
-function ProfileLayoutNavMore({ color, bg_btn, more_link_arr }) {
+function ProfileLayoutNavMore({
+    color,
+    bg_btn,
+    more_link_arr,
+
+    has_item_component = false,
+    ItemComponent = () => <div></div>,
+    item_props = {},
+}) {
     //
     const is_active = more_link_arr.some(
         (item) => item.link_to == location.pathname.split('/').slice(-1)[0]
@@ -63,6 +71,8 @@ function ProfileLayoutNavMore({ color, bg_btn, more_link_arr }) {
                 is_show={is_true}
                 x_always="left"
                 //
+                use_caret={false}
+                //
                 toggleShow={toggleBool}
                 handleClose={handleClose}
             >
@@ -70,10 +80,14 @@ function ProfileLayoutNavMore({ color, bg_btn, more_link_arr }) {
                     <ul className="list-none">
                         {more_link_arr.map((item, ix) => (
                             <li key={ix}>
-                                <ProfileLayoutNavMoreItem
-                                    title={item.title}
-                                    link_to={item.link_to}
-                                />
+                                {has_item_component ? (
+                                    <ItemComponent {...item} {...item_props} />
+                                ) : (
+                                    <ProfileLayoutNavMoreItem
+                                        title={item.title}
+                                        link_to={item.link_to}
+                                    />
+                                )}
                             </li>
                         ))}
                     </ul>

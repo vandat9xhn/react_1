@@ -30,6 +30,8 @@ function ProfilePhotoAlbum(props) {
     //
     const ref_photos_in_album = useRef(null);
 
+    // -------
+
     //
     function handleChooseAlbum(new_album_model, new_album_name) {
         setAlbumState({

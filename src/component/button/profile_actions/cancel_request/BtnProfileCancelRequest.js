@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsArrow from '../../../../_icons_svg/icons_arrow/IconsArrow';
+import IconFriend from '../../../../_icons_svg/icon_friend/IconFriend';
 //
 import BtnProfileActions from '../_common/BtnProfileActions';
 
@@ -19,7 +19,7 @@ function BtnProfileCancelRequest({ use_title, handleAction }) {
     return (
         <BtnProfileActions
             className={'BtnProfileCancelRequest bg-ccc'}
-            Icon={<IconsArrow y={400} />}
+            Icon={<IconFriend is_subtract={true} />}
             use_title={use_title}
             title={'Cancel Request'}
             handleClick={onCancelRequest}

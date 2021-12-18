@@ -10,12 +10,13 @@ import './ProfileLayoutNavMoreItem.scss';
 ProfileLayoutNavMoreItem.propTypes = {};
 
 //
-function ProfileLayoutNavMoreItem({ title, link_to }) {
+function ProfileLayoutNavMoreItem({ title, link_to, isActive }) {
     //
     return (
         <NavLink
             className="ProfileLayoutNavMoreItem flex-between-center padding-8px brs-6px color-inherit hv-bg-fb"
             activeClassName="ProfileLayoutNavMoreItem-active"
+            isActive={isActive}
             to={link_to}
         >
             <div>{title}</div>

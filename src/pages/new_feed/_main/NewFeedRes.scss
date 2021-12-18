@@ -1,19 +1,19 @@
 
 @media (max-width: 1300px) {
     // .
-    .NewFeed_col-left, .NewFeed_col-right {
+    .NewFeed_left, .NewFeed_right {
         width: 250px;
     }
 }
 
 @media (max-width: 1100px) {
     // .
-    .NewFeed_col-right{
+    .NewFeed_right{
         width: 280px;
     }
 
     // .
-    .NewFeed_col-left {
+    .NewFeed_left {
         display: none;
     }
 }
@@ -23,7 +23,7 @@
         justify-content: center;
     }
     // .
-    .NewFeed_col-right {
+    .NewFeed_right {
         display: none;
     }
 }
@@ -31,7 +31,7 @@
 // ------
 
 .device-mobile{
-    .NewFeed_col-center{
+    .NewFeed_center{
         width: 100%;
         padding-top: 10px;
     }

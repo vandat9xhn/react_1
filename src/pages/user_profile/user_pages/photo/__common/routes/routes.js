@@ -13,16 +13,9 @@ export const PhotosRoutes = [
     {
         component: ProfilePhotoAlbum,
         search: '?sk=photos_album',
-        props: {},
     },
     {
         component: ProfilePhotoAll,
         search: '?sk=photos_all',
-        props: {},
     },
 ];
-
-export const photos_searches_str = PhotosRoutes.reduce(
-    (a, b) => a + b.search,
-    ''
-);

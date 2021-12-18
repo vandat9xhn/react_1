@@ -1,4 +1,4 @@
-import { API_Friend_LC } from '../../api/api_django/user/user_friend/UserFriend';
+import { API_ChatFriend_L } from '../../api/api_django/chat/friends';
 import { API_Post_L } from '../../api/api_django/user/user_post/UserPost';
 //
 import {
@@ -19,15 +19,11 @@ export async function handle_API_NewFeedPost_L({ c_count = 0, params = {} }) {
 
 //
 export async function handle_API_NewFeedContact_L({ c_count = 0 }) {
-    const res = await API_Friend_LC('GET', {
+    const res = await API_ChatFriend_L({
         ...params_new_feed_contact_l,
         c_count: c_count,
+        type: 'recent',
     });
 
-    const { data, ...rest_data } = res.data;
-    const new_data = data.map((item) => item.friend);
-    
-    // console.log(params, 'c_count: ', c_count, 'user_id: ', user_id, res.data);
-
-    return { ...rest_data, data: new_data };
+    return res.data;
 }
