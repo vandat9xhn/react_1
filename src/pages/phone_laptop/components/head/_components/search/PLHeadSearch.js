@@ -17,13 +17,18 @@ function PLHeadSearch({ input_props }) {
     //
     const ref_input = useRef(null);
 
+    // -------
+
     // ----
 
     //
     function handleSearch(e) {
         e.preventDefault();
 
-        use_history.push(`/phone-laptop/fb-search?q=${ref_input.current.value}`);
+        ref_input.current.value &&
+            use_history.push(
+                `/phone-laptop/search?q=${ref_input.current.value}`
+            );
     }
 
     //

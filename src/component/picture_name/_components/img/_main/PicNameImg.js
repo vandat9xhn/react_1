@@ -17,15 +17,26 @@ function PicNameImg({
 
     use_new_story = false,
     has_new_story,
+    has_seen_story = false,
 }) {
     //
     return (
         <div
             className={`PicNameImg pos-rel brs-50 bg-primary ${
-                use_new_story && has_new_story ? 'PicNameImg-story_new' : ''
+                use_new_story && has_new_story
+                    ? `PicNameImg-story ${
+                          has_seen_story
+                              ? 'PicNameImg-story_seen'
+                              : 'PicNameImg-story_new'
+                      }`
+                    : ''
             }`}
         >
-            <img className="wh-100 brs-50" src={picture} alt="" />
+            <img
+                className="wh-100 brs-50 object-fit-cover"
+                src={picture}
+                alt=""
+            />
 
             {use_time_online ? (
                 <div className="PicNameImg_time pos-abs right-0 bottom-0">

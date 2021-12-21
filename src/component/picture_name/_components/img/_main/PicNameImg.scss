@@ -3,7 +3,13 @@
     width: 2.5rem;
     height: 2.5rem;
 }
-.PicNameImg-story_new{
-    padding: 1px;
-    border: 2px solid var(--blue);
+.PicNameImg-story {
+    padding: 2px;
+    border: 2px solid;
+}
+.PicNameImg-story_new {
+    border-color: var(--blue);
+}
+.PicNameImg-story_seen {
+    border-color: var(--md-bg-ccc);
 }

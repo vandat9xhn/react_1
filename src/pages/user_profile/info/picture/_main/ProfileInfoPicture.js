@@ -9,13 +9,20 @@ import './ProfileInfoPicture.scss';
 ProfileInfoPicture.propTypes = {};
 
 //
-function ProfileInfoPicture({ picture, has_new_story, openPicture }) {
+function ProfileInfoPicture({
+    picture,
+    has_new_story,
+    has_seen_story,
+
+    openPicture,
+}) {
     //
     return (
         <ProfileLayoutPicture
-            link_to={'/posts/1'}
+            link_to={has_new_story ? '' : '/posts/1'}
             picture={picture}
             has_new_story={has_new_story}
+            has_seen_story={has_seen_story}
             openPicture={openPicture}
         />
     );

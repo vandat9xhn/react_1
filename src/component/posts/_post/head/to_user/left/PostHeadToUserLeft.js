@@ -18,6 +18,8 @@ function PostHeadToUserLeft({ user }) {
                 <PostHeadLayoutPictureCircle
                     link_to={`/profile/${user.id}`}
                     picture={user.picture}
+                    has_new_story={user.has_new_story}
+                    has_seen_story={user.has_seen_story}
                 />
             }
         />

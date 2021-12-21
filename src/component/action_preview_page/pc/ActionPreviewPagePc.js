@@ -14,6 +14,7 @@ import ActionPreviewPc from '../../action_preview/pc/ActionPreviewPc';
 import ActionsPreviewInfo from '../../action_preview/info/ActionsPreviewInfo';
 import ActionsPageOther from '../../actions_page/other/ActionsPageOther';
 import BtnPageCase from '../../button/page_actions/_case/BtnPageCase';
+import PageTickBtn from '../../page_name_tick/tick/PageTickBtn';
 //
 import './ActionPreviewPagePc.scss';
 
@@ -70,6 +71,7 @@ function ActionPreviewPagePc({
         id,
         name,
         picture,
+        has_tick,
 
         // following_count,
         // like_count,
@@ -168,13 +170,22 @@ function ActionPreviewPagePc({
         <ActionPreviewPc
             title_action={title_action}
             class_action_contain={'ActionPreviewPagePc'}
-            // 
+            //
             pos_orientation={pos_orientation}
             x_always={x_always}
             y_always={y_always}
             //
             id={id}
-            name={name}
+            name={
+                <span>
+                    {name}{' '}
+                    {has_tick ? (
+                        <span className="ActionPreviewPagePc_tick inline-block">
+                            <PageTickBtn size_icon="16px" />
+                        </span>
+                    ) : null}
+                </span>
+            }
             picture={picture}
             link_to={`/page/${id}`}
             //

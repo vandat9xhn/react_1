@@ -22,6 +22,7 @@ function FbPageInfo({
     picture,
     cover,
     has_new_story,
+    has_seen_story,
 
     info_extra_1,
     info_extra_2,
@@ -53,6 +54,7 @@ function FbPageInfo({
                             <FbPagePicture
                                 picture={picture}
                                 has_new_story={has_new_story}
+                                has_seen_story={has_seen_story}
                                 openPicture={openPicture}
                             />
                         </div>

@@ -31,8 +31,10 @@ function NewFeedContactItem({ item }) {
                         picture={item.picture}
                         use_time_online={true}
                         time_online={item.time_online}
+                        // 
                         use_new_story={true}
                         has_new_story={item.has_new_story}
+                        has_seen_story={item.has_seen_story}
                     />
                 </div>
             }

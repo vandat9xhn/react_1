@@ -41,8 +41,10 @@ function PictureNameCommon({
 
     use_time_online,
     time_online,
+
     use_new_story,
     has_new_story,
+    has_seen_story,
 
     is_inline_block,
     align_center,
@@ -60,8 +62,10 @@ function PictureNameCommon({
                         picture={picture}
                         use_time_online={use_time_online}
                         time_online={time_online}
+                        // 
                         use_new_story={use_new_story}
                         has_new_story={has_new_story}
+                        has_seen_story={has_seen_story}
                     />
                 </div>
 

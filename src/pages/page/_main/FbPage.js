@@ -32,6 +32,7 @@ function FbPage(props) {
         picture,
         cover,
         has_new_story,
+        has_seen_story,
 
         info_extra_1,
         info_extra_2,
@@ -90,6 +91,7 @@ function FbPage(props) {
                     picture={picture}
                     cover={cover}
                     has_new_story={has_new_story}
+                    has_seen_story={has_seen_story}
                     // 
                     info_extra_1={info_extra_1}
                     info_extra_2={info_extra_2}

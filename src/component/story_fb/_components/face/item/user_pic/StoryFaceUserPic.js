@@ -10,20 +10,18 @@ StoryFaceUserPic.propTypes = {};
 function StoryFaceUserPic({ count_new, picture }) {
     //
     return (
-        <div className="StoryFaceUserPic_contain brs-50">
+        <div className="StoryFaceUserPic brs-50">
             <div
-                className={`brs-50 ${
+                className={`StoryFaceUserPic_contain brs-50 ${
                     count_new > 0
                         ? 'StoryFaceUserPic_border-new'
                         : 'StoryFaceUserPic_border-old'
                 }`}
             >
                 <img
+                    className="StoryFaceUserPic_item wh-100 brs-50 object-fit-cover"
                     src={picture}
                     alt=""
-                    className="StoryFaceUserPic_item brs-50"
-                    width="35"
-                    height="35"
                 />
             </div>
         </div>

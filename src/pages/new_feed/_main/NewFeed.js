@@ -89,6 +89,7 @@ function NewFeed() {
                 data_arr: new_data_arr,
             };
         });
+        
         closeScreenFloor();
     }
 
@@ -97,7 +98,7 @@ function NewFeed() {
         <div className="NewFeed bg-fb">
             <div className="NewFeed_row display-flex space-between">
                 {IS_MOBILE ? null : (
-                    <div className="NewFeed_left flex-shrink-0 w-360px margin-right-10px">
+                    <div className="NewFeed_left flex-shrink-0 w-300px margin-right-10px">
                         <div className="pos-sticky-from-header">
                             <NewFeedLeft />
                         </div>

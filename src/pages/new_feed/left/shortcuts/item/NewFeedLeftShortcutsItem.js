@@ -22,7 +22,7 @@ function NewFeedLeftShortcutsItem({ id, name, picture }) {
                     height="28"
                 />
 
-                <div className="margin-left-12px">{name}</div>
+                <div className="margin-left-12px text-nowrap">{name}</div>
             </div>
         </Link>
     );

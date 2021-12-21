@@ -30,6 +30,7 @@ function HeaderNotice({}) {
     //
     const {
         ref_is_open,
+        ref_starting,
         ref_pos,
 
         handleOpen,
@@ -111,7 +112,7 @@ function HeaderNotice({}) {
                     <div
                         className={`${
                             ref_is_open.current ? '' : 'display-none'
-                        }`}
+                        } ${ref_starting.current ? 'opacity-0' : ''}`}
                     >
                         <div
                             ref={ref_scroll_elm}

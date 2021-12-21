@@ -1,29 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// 
+//
 import './PostHeadLayoutPictureCircle.scss';
+import PicNameImg from '../../../../../picture_name/_components/img/_main/PicNameImg';
 
 //
 PostHeadLayoutPictureCircle.propTypes = {};
 
 //
-function PostHeadLayoutPictureCircle({ link_to, picture }) {
+function PostHeadLayoutPictureCircle({
+    link_to,
+    picture,
+    has_new_story,
+    has_seen_story,
+}) {
     //
     return (
         <Link
             className="PostHeadLayoutPictureCircle flex-shrink-0"
             to={link_to}
         >
-            <div className="brs-50 hv-after-shadow-05">
-                <img
-                    className="PostHeadLayoutPictureCircle_img brs-50 object-fit-cover"
-                    src={picture}
-                    alt=""
-                    width="40"
-                    height="40"
-                />
-            </div>
+            <PicNameImg
+                picture={picture}
+                use_time_online={false}
+                // time_online={time_online}
+                use_new_story={true}
+                has_new_story={has_new_story}
+                has_seen_story={has_seen_story}
+            />
         </Link>
     );
 }

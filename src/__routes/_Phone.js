@@ -16,6 +16,10 @@ const PLPhones = React.lazy(() =>
     import('../pages/phone_laptop/pages/phones/_main/PLPhones')
 );
 
+const WorkingOnIt = React.lazy(() =>
+    import('../component/working_on_it/WorkingOnIt')
+);
+
 //
 export const phone_route_arr = [
     {
@@ -24,6 +28,12 @@ export const phone_route_arr = [
         exact: true,
         auth: false,
         reset_position: true,
+    },
+    {
+        path: '/phone-laptop/search',
+        component: WorkingOnIt,
+        exact: true,
+        auth: false,
     },
     {
         path: '/phone-laptop/:id',

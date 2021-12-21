@@ -109,7 +109,7 @@ function ActionPreviewPc({
                 class_action_contain={`ActionPreviewPc ${class_action_contain}`}
                 use_own_title={true}
                 is_show={show_count > 0}
-                // 
+                //
                 pos_orientation={pos_orientation}
                 x_always={x_always}
                 y_always={y_always}
@@ -153,18 +153,20 @@ function ActionPreviewPc({
                                         </Link>
                                     </div>
 
-                                    {preview_arr.map((item, ix) =>
-                                        item.can_show ? (
-                                            <div
-                                                key={ix}
-                                                className="margin-y-8px"
-                                            >
-                                                <item.component
-                                                    {...item.props}
-                                                />
-                                            </div>
-                                        ) : null
-                                    )}
+                                    <div className="ActionPreviewPc_preview">
+                                        {preview_arr.map((item, ix) =>
+                                            item.can_show ? (
+                                                <div
+                                                    key={ix}
+                                                    className="margin-y-8px"
+                                                >
+                                                    <item.component
+                                                        {...item.props}
+                                                    />
+                                                </div>
+                                            ) : null
+                                        )}
+                                    </div>
                                 </div>
                             </div>
 

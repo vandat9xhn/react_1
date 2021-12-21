@@ -95,9 +95,12 @@ function AddNewPost({ title, handleCreatePost }) {
     return (
         <div className="AddNewPost padding-x-16px padding-y-12px bg-primary brs-8px">
             <div className="AddNewPost_head display-flex align-items-center padding-bottom-12px border-bottom-blur">
-                <Link to={`/profile/${user.id}`}>
+                <Link
+                    className="display-block brs-50 hv-after-shadow-05"
+                    to={`/profile/${user.id}`}
+                >
                     <img
-                        className="brs-50"
+                        className="border-blur brs-50 object-fit-cover"
                         src={user.picture}
                         alt=""
                         width="40"

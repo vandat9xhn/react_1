@@ -4,6 +4,7 @@ export const initial_fb_page = () => ({
     picture: '',
     cover: '',
     has_new_story: false,
+    has_seen_story: false,
 
     info_extra_1: { title: '', has_link: false, link_to: '' },
     info_extra_2: { title: '', has_link: false, link_to: '' },
