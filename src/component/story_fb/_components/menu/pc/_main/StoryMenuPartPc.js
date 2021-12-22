@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 //
 import UnitTime from '../../../../../../_some_function/UnitTime';
 //
+import ComponentSkeleton from '../../../../../skeleton/component_skeleton/ComponentSkeleton';
+import SkeletonPicContent from '../../../../../skeleton/some_skeleton/pic_content/SkeletonPicContent';
 import PicNameContent from '../../../../../picture_name/pic_name_content/PicNameContent';
 //
 import './StoryMenuPartPc.scss';
-import ComponentSkeleton from '../../../../../skeleton/component_skeleton/ComponentSkeleton';
-import SkeletonPicContent from '../../../../../skeleton/some_skeleton/pic_content/SkeletonPicContent';
 
 //
 StoryMenuPartPc.propTypes = {};
@@ -67,7 +67,7 @@ function StoryMenuPartPc({
             <ComponentSkeleton
                 has_fetched={has_fetched && count_story <= story_arr.length}
                 component={<SkeletonPicContent />}
-                num={1}
+                num={2}
             />
         </div>
     );

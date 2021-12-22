@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import { handle_API_FeedStory_L } from '../../../../_handle_api/feed/HandleAPIStory';
 //
 import StoryItem from '../../_components/item/_main/StoryItem';
@@ -16,6 +16,7 @@ function StoryItemMobile({
     count,
     old_active_ix,
     story_type,
+
     closeScreen,
 }) {
     //
@@ -41,6 +42,8 @@ function StoryItemMobile({
             story_type
         );
 
+        console.log(data);
+
         story_arr.push(...data);
 
         setStateObj((state_obj) => ({
@@ -54,7 +57,7 @@ function StoryItemMobile({
 
     //
     function handleNextStoryUser() {
-        if (active_ix < story_arr.length) {
+        if (active_ix < story_arr.length - 1) {
             setStateObj({
                 ...state_obj,
                 active_ix: active_ix + 1,

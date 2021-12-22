@@ -8,6 +8,8 @@ import { handle_API_FbSearch_L } from '../../../../../_handle_api/fb_search/rece
 //
 import { useDataShowMore } from '../../../../../_hooks/useDataShowMore';
 //
+import IconsInput from '../../../../../_icons_svg/Icons_input/IconsInput';
+// 
 import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
 import FbSearchHistoryUser from '../item/user/FbSearchHistoryUser';
 import FbSearchHistoryKey from '../item/key/FbSearchHistoryKey';
@@ -54,6 +56,7 @@ function FbSearchHistory({ params_api = {} }) {
                             ) : (
                                 <FbSearchHistoryKey
                                     search_key={item.search_key}
+                                    Icon={<IconsInput y={200} />}
                                 />
                             )}
                         </div>

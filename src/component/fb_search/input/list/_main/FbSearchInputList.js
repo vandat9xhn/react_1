@@ -12,7 +12,7 @@ import IconsInput from '../../../../../_icons_svg/Icons_input/IconsInput';
 //
 import CircleLoading from '../../../../waiting/circle_loading/CircleLoading';
 import FbSearchInputSearchUser from '../item/user/FbSearchInputSearchUser';
-import FbSearchInputSearchKey from '../item/key/FbSearchHistoryKey';
+import FbSearchInputSearchKey from '../item/key/FbSearchInputSearchKey';
 
 //
 FbSearchInputList.propTypes = {};

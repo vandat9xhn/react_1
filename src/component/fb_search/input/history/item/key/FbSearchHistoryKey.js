@@ -8,13 +8,13 @@ import FbSearchInputKey from '../../../_components/item/key/FbSearchInputKey';
 FbSearchHistoryKey.propTypes = {};
 
 //
-function FbSearchHistoryKey({ search_key }) {
+function FbSearchHistoryKey({ search_key, Icon }) {
     //
     return (
         <FbSearchInputKey
             LayoutComponent={FbSearchHistoryItemLayout}
             search_key={search_key}
-            Icon={null}
+            Icon={Icon}
         />
     );
 }

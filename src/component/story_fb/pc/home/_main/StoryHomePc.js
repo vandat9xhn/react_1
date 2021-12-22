@@ -83,6 +83,7 @@ function StoryHomePc({
 
     //
     const ref_is_fetching = useRef({ followed: false, yours: false });
+    const ref_c_count = useRef({ followed: 0, yours: 0 });
     const ref_is_max = useRef({
         followed: false,
         yours: false,
@@ -102,25 +103,27 @@ function StoryHomePc({
     useEffect(() => {
         !has_fetched_yours && getData_Story({ new_story_type: 'yours' });
 
-        if (!has_fetched_followed || count_story_followed >= 5) {
-            getData_Story({ new_story_type: 'followed' });
-
-            observerShowMore({
-                fake_elm_end: ref_fake_elm_followed.current,
-                root: ref_menu.current,
-                rootMargin: '0px',
-                way_scroll: 'to_bottom',
-                margin: 0,
-            });
-        }
+        observerShowMore({
+            fake_elm_end: ref_fake_elm_followed.current,
+            root: ref_menu.current,
+            rootMargin: '0px',
+            way_scroll: 'to_bottom',
+            margin: 0,
+        });
     }, []);
+
+    //
+    useEffect(() => {
+        if (ref_c_count.current['followed'] <= 10) {
+            getData_Story({ new_story_type: 'followed' });
+        }
+    }, [ref_c_count.current['followed']]);
 
     /* ----------- */
 
     //
     async function getData_Story({
         new_story_type = story_type,
-        c_count = 0,
         new_active_ix = active_ix,
     }) {
         if (ref_is_fetching.current[new_story_type]) {
@@ -129,15 +132,15 @@ function StoryHomePc({
 
         ref_is_fetching.current[new_story_type] = true;
 
-        setStateObj((state_obj) => {
-            return {
-                ...state_obj,
-                active_ix: new_active_ix,
-            };
-        });
+        // setStateObj((state_obj) => {
+        //     return {
+        //         ...state_obj,
+        //         active_ix: new_active_ix,
+        //     };
+        // });
 
         const { data, count } = await handle_API_FeedStory_L(
-            c_count,
+            ref_c_count.current[new_story_type],
             new_story_type
         );
 
@@ -148,18 +151,20 @@ function StoryHomePc({
                 state_obj[new_story_type];
 
             const new_count_story = has_fetched ? count_story : count;
+            const new_story_arr = [...story_arr, ...data].slice(
+                0,
+                new_count_story
+            );
 
+            ref_c_count.current[new_story_type] = new_story_arr.length;
             ref_is_max.current[new_story_type] =
                 new_count_story <= story_arr.length;
 
             return {
                 ...state_obj,
-
+                active_ix: new_active_ix,
                 [new_story_type]: {
-                    story_arr: [...story_arr, ...data].slice(
-                        0,
-                        new_count_story
-                    ),
+                    story_arr: new_story_arr,
                     count_story: new_count_story,
                     has_fetched: true,
                 },
@@ -176,12 +181,11 @@ function StoryHomePc({
         if (new_active_ix >= story_arr.length) {
             getData_Story({
                 new_active_ix: new_active_ix,
-                c_count: new_active_ix,
             });
         } else {
             setStateObj({
                 ...state_obj,
-                active_ix: active_ix + 1,
+                active_ix: new_active_ix,
             });
         }
     }

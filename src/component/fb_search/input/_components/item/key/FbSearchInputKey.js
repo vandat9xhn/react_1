@@ -1,10 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import IconsInput from '../../../../../../_icons_svg/Icons_input/IconsInput';
+
 import './FbSearchInputKey.scss';
 
 //
-FbSearchInputKey.propTypes = {};
+FbSearchInputKey.propTypes = {
+    LayoutComponent: PropTypes.func,
+    search_key: PropTypes.string,
+    Icon: PropTypes.element,
+};
+
+FbSearchInputKey.defaultProps = {};
 
 //
 function FbSearchInputKey({ LayoutComponent, search_key, Icon }) {
