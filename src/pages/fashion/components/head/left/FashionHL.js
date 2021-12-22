@@ -15,8 +15,18 @@ function FashionHL(props) {
     return (
         <div className="FashionHL">
             <div className="display-flex-center">
-                <Link to="/fashion">
-                    <FavWithLetter letter="S" class_letter="color-fashion" />
+                <Link
+                    className="text-white font-600 font-18px font-italic"
+                    to="/fashion"
+                >
+                    <div className="display-flex-center">
+                        <FavWithLetter
+                            letter="S"
+                            class_letter="color-fashion"
+                        />
+
+                        <div className="margin-left-8px">Fashion</div>
+                    </div>
                 </Link>
             </div>
         </div>

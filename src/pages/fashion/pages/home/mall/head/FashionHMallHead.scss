@@ -1,7 +1,3 @@
-.FashionHMallHead_contain {
-    border-bottom: 1px solid var(--md-bg-blur);
-}
-
 //
 @media (max-width: 800px) {
     .FashionHMallHead {
@@ -20,6 +16,7 @@
         transform: translateY(-50%);
 
         font-size: 11px;
+        color: var(--fashion-head);
     }
     // ..
     .FashionHMallHead_right_item {

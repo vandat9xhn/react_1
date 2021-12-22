@@ -11,11 +11,19 @@ FooterWhich.propTypes = {};
 //
 function FooterWhich(props) {
     if (location.pathname.indexOf('/fashion') == 0) {
-        return <FooterFashion />;
+        return (
+            <div className="margin-top-15px">
+                <FooterFashion />;
+            </div>
+        );
     }
 
     if (location.pathname.indexOf('/phone') == 0) {
-        return <FooterPhone />;
+        return (
+            <div className="margin-top-15px">
+                <FooterPhone />;
+            </div>
+        );
     }
 
     return null;

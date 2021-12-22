@@ -74,7 +74,7 @@ function InputNotValid({
             />
 
             <div
-                className={`InputNotValid_placeholder input-placeholder ${
+                className={`InputNotValid_placeholder input-placeholder text-nowrap ${
                     is_focus
                         ? 'InputNotValid_placeholder-focus input-placeholder-active'
                         : ''

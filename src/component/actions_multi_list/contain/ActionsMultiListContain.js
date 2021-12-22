@@ -6,10 +6,10 @@ import { IS_MOBILE } from '../../../_constant/Constant';
 import CircleLoading from '../../waiting/circle_loading/CircleLoading';
 import DivWidthLoading from '../../waiting/div_width_loading/DivWidthLoading';
 //
+import PortalAtBody from '../../portal/at_body/PortalAtBody';
 import ActionsMultiListItem from '../item/ActionsMultiListItem';
 //
 import './ActionsMultiListContain.scss';
-import PortalAtBody from '../../portal/at_body/PortalAtBody';
 
 //
 ActionsMultiListContain.propTypes = {
@@ -35,12 +35,11 @@ function ActionsMultiListContain({
     handleAction,
     handleClose,
 }) {
-    //
     return (
         <div class_separate="ActionsMultiListContain">
             {list_action_arr.map((action_arr, action_ix) => (
                 <div key={action_ix} className="ActionsMultiListContain_part">
-                    {action_ix == 0 ? null : (
+                    {action_ix == 0 || IS_MOBILE ? null : (
                         <div
                             className={`ActionsMultiListContain_separate margin-y-8px bg-blur ${class_separate}`}
                         ></div>

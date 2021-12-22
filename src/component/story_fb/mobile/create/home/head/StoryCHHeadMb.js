@@ -13,7 +13,7 @@ StoryCHHeadMb.propTypes = {};
 function StoryCHHeadMb({ openScreenStoryText, openScreenStoryPic }) {
     //
     return (
-        <div className="StoryCHHeadMb">
+        <div className="StoryCHHeadMb padding-x-8px padding-y-15px">
             <div className="display-flex">
                 <div className="StoryCHHeadMb_item pos-rel">
                     <div className="pos-abs-100 padding-4px ">

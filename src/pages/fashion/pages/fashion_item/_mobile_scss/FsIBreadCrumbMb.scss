@@ -11,6 +11,10 @@
         .FashionBreadCrumb {
             white-space: nowrap;
             overflow-x: auto;
+
+            &::-webkit-scrollbar{
+                display: none;
+            }
         }
         .FashionBreadCrumb_row {
             flex-wrap: nowrap;

@@ -25,7 +25,9 @@ import './Profile.scss';
 function Profile(props) {
     //
     const use_history = useHistory();
-    const { id } = useParams();
+    const use_params = useParams();
+
+    const id = use_params.id || location.pathname.split('/')[2];
 
     //
     const [profile_state, setProfileState] = useState({

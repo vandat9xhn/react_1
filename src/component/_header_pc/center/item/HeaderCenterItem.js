@@ -11,7 +11,7 @@ import './HeaderCenterItem.scss';
 HeaderCenterItem.propTypes = {};
 
 //
-function HeaderCenterItem({ Icon, link_to, count_new, title }) {
+function HeaderCenterItem({ Icon, link_to, count_new, title, isActive }) {
     //
     const ref_elm = useRef(null);
 
@@ -24,6 +24,7 @@ function HeaderCenterItem({ Icon, link_to, count_new, title }) {
                 activeClassName="HeaderCenterItem-active nav-active"
                 to={link_to}
                 // title={title}
+                isActive={isActive}
             >
                 <div className="HeaderCenterItem_icon pos-rel display-flex-center h-100per">
                     {Icon}
@@ -35,7 +36,7 @@ function HeaderCenterItem({ Icon, link_to, count_new, title }) {
 
                 <div className="HeaderCenterItem_bottom display-none pos-abs left-0 top-100per w-100per brs-10px bg-blue"></div>
             </NavLink>
-            
+
             <Tooltip ref_elm={ref_elm} pos="bottom">
                 {title}
             </Tooltip>

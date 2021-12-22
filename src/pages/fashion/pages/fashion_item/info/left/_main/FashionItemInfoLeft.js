@@ -83,12 +83,14 @@ function FashionItemInfoLeft({}) {
                 />
 
                 {IS_MOBILE ? null : (
-                    <NextPrevDiv
-                        is_has_next={is_has_next}
-                        is_has_prev={is_has_prev}
-                        handleNext={handleNext}
-                        handlePrev={handlePrev}
-                    />
+                    <div className="text-white">
+                        <NextPrevDiv
+                            is_has_next={is_has_next}
+                            is_has_prev={is_has_prev}
+                            handleNext={handleNext}
+                            handlePrev={handlePrev}
+                        />
+                    </div>
                 )}
             </div>
 

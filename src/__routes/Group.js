@@ -32,6 +32,10 @@ const GroupNotice = React.lazy(() =>
     import('../pages/group/pc/pages/notice/_main/GroupNotice')
 );
 
+const WorkingOnIt = React.lazy(() =>
+    import('../component/working_on_it/WorkingOnIt')
+);
+
 const GroupPage = React.lazy(() =>
     import('../pages/group_page/_main/GroupPage')
 );
@@ -60,6 +64,18 @@ export const fb_group_route_arr = [
     {
         path: '/group/notifications',
         component: IS_MOBILE ? GroupNoticeMb : GroupNotice,
+        exact: true,
+        auth: true,
+    },
+    {
+        path: '/group/categories',
+        component: WorkingOnIt,
+        exact: true,
+        auth: true,
+    },
+    {
+        path: '/group/create',
+        component: WorkingOnIt,
         exact: true,
         auth: true,
     },

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
-// 
+//
 import ScreenBlurHead from '../../../../../_screen/components/part/head/ScreenBlurHead';
 import ScreenBlurFootYesNo from '../../../../../_screen/components/part/foot_yes_no/ScreenBlurFootYesNo';
 import InputNotValid from '../../../../../input/input_not_valid/InputNotValid';
@@ -44,7 +44,7 @@ function ChatGroupNameScreen({ group_name, changeGroupName, handleClose }) {
                     />
                 </div>
 
-                <div className="padding-x-16px padding-top-16px">
+                <div className="ChatGroupNameScreen_main padding-x-16px padding-top-16px">
                     <div className="margin-top-4px font-13px text-secondary">
                         Changing the name of a group chat changes it for
                         everyone.
@@ -53,6 +53,8 @@ function ChatGroupNameScreen({ group_name, changeGroupName, handleClose }) {
                     <div className="margin-top-20px margin-bottom-6px">
                         <InputNotValid
                             value={value}
+                            placeholder={group_name || 'Group name'}
+                            max_length={50}
                             handleChange={handleChange}
                         />
                     </div>

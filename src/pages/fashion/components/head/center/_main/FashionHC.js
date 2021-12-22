@@ -15,6 +15,7 @@ FashionHC.propTypes = {
 
 FashionHC.defaultProps = {
     search_arr: ['Shoes', 'cloth', 'skirt', 'sandal'],
+    placeholder: 'Shopping now',
 };
 
 //

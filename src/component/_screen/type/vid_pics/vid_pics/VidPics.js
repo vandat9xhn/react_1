@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { VideoOrImage } from '../../../../../_some_function/VideoOrImage';
@@ -6,6 +6,7 @@ import { VideoOrImage } from '../../../../../_some_function/VideoOrImage';
 import './VidPics.scss';
 //
 import VidPicItem from '../vid_pic_item/VidPicItem';
+import { scrollItemToCenter } from '../../../../../_some_function/scrollItemToCenter';
 
 //
 VidPics.propTypes = {
@@ -20,6 +21,21 @@ VidPics.defaultProps = {
 
 //
 function VidPics({ urls, current, changeCurrent }) {
+    //
+    const ref_all = useRef(null);
+
+    //
+    useEffect(() => {
+        const c_vid_pic =
+            ref_all.current.getElementsByClassName('VidPicItem_item')[current];
+
+        scrollItemToCenter({
+            scroll_elm: ref_all.current,
+            item_elm: c_vid_pic,
+            scroll_smooth: false,
+        });
+    }, []);
+
     //
     return (
         <div className="VidPics pos-rel wh-100 z-index-lv5">
@@ -56,11 +72,11 @@ function VidPics({ urls, current, changeCurrent }) {
             </div>
 
             <div className={urls.length > 1 ? 'VidPics_all' : 'display-none'}>
-                <div className="VidPics_all_contain">
+                <div ref={ref_all} className="VidPics_all_contain">
                     <div className="VidPics_all-row display-flex">
                         {urls.map((item, index) => (
                             <VidPicItem
-                                key={`VidPics_${index}`}
+                                key={index}
                                 item_ix={index}
                                 is_active={current == index}
                                 changeCurrent={changeCurrent}

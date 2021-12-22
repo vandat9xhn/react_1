@@ -77,7 +77,7 @@ function FashionHomeSelling(props) {
             >
                 <div className="FashionHomeSelling_contain">
                     <div className="flex-between-center fashion-head-padding">
-                        <h2 className="FashionHomeSelling_title color-fashion font-500 font-16px">
+                        <h2 className="FashionHomeSelling_title color-fashion font-600 font-16px">
                             SẢN PHẨM BÁN CHẠY
                         </h2>
 

@@ -84,6 +84,7 @@ function ChatNicknamesScreenItem({ ix, user, nickname, changeNickName }) {
                             <div>
                                 <InputNotValid
                                     value={value}
+                                    placeholder={user_name}
                                     handleChange={handleChange}
                                     input_props={{ onKeyDown: handleKeyDown }}
                                 />

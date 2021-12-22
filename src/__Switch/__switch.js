@@ -16,7 +16,7 @@ CustomSwitch.propTypes = {};
 function CustomSwitch() {
     //
     const use_location = useLocation();
-    const { root_floor_url_arr, profile_friends_pathname } =
+    const { root_floor_url_arr, profile_friends_pathname, forceUpdateApp } =
         useContext(context_api);
 
     // //
@@ -28,10 +28,12 @@ function CustomSwitch() {
         //     use_location.pathname + use_location.search !=
         //     displayLocation.pathname + displayLocation.search
         // ) {
-            setDisplayLocation({
-                ...use_location,
-                pathname: getNewPathname(),
-            });
+        const new_pathname = getNewPathname();
+
+        setDisplayLocation({
+            ...use_location,
+            pathname: new_pathname,
+        });
         // }
     }, [use_location]);
 
@@ -60,6 +62,7 @@ function CustomSwitch() {
             new_pathname = profile_friends_pathname.current;
         } else {
             profile_friends_pathname.current = '';
+            forceUpdateApp();
         }
 
         return new_pathname;

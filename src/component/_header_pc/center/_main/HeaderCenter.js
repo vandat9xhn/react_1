@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { context_api } from '../../../../_context/ContextAPI';
+// 
 import IconsMenu from '../../../../_icons_svg/icons_menu/IconsMenu';
 import IconFriends from '../../../../_icons_svg/icon_friends/IconFriends';
 import IconGroup from '../../../../_icons_svg/icon_group/IconGroup';
@@ -16,6 +18,9 @@ HeaderCenter.propTypes = {};
 
 //
 function HeaderCenter(props) {
+    //
+    const { profile_friends_pathname } = useContext(context_api);
+
     //
     const [nav_arr, setNavArr] = useState([
         {
@@ -35,6 +40,12 @@ function HeaderCenter(props) {
             link_to: '/friends',
             title: 'Friends',
             count_new: 0,
+            isActive: (_, location) => {
+                return (
+                    location.pathname.startsWith('/friends') ||
+                    !!profile_friends_pathname.current
+                );
+            },
         },
         {
             Icon: <IconWatch />,
@@ -70,12 +81,11 @@ function HeaderCenter(props) {
                             link_to={item.link_to}
                             count_new={item.count_new}
                             title={item.title}
+                            isActive={item.isActive}
                         />
                     </li>
                 ))}
             </ul>
-
-            
         </div>
     );
 }

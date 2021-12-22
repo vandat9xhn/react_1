@@ -43,3 +43,13 @@
         max-width: 100vw;
     }
 }
+
+// ----
+
+.device-mobile {
+    .VidPics_all_contain {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
