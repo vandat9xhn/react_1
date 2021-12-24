@@ -1,3 +1,20 @@
-.ChatColorScreen_item{
+.ChatColorScreen_item {
     width: 25%;
+}
+
+// -----
+
+.device-mobile {
+    .ChatColorScreen {
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .ChatColorScreen_head {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+
+        background-color: var(--md-bg-primary);
+    }
 }

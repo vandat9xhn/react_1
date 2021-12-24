@@ -33,7 +33,7 @@ function ProfileInfoFriends({
             <div className="padding-top-8px">
                 <Link
                     to={`?sk=friend${
-                        mutual_friend_count ? '&type=mutual' : ''
+                        mutual_friend_count && !is_user ? '&type=mutual' : ''
                     }`}
                 >
                     <OverlapPics

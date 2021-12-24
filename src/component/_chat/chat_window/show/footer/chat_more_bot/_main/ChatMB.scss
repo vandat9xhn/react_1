@@ -21,8 +21,6 @@ $dur: 0.4s;
     transition: width $dur;
 }
 .ChatMB_actions-open {
-    width: 10rem;
-
     .ChatMB__item {
         transform: scale(1);
     }
@@ -36,8 +34,6 @@ $dur: 0.4s;
     }
 }
 .ChatMB_actions-close {
-    width: 0;
-
     .ChatMB__item {
         transform: scale(0);
     }

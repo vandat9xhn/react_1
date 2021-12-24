@@ -8,7 +8,7 @@
 }
 
 //
-.ListTypeLike_contain {
+.ListTypeLike_row {
     border-radius: 40px;
     box-shadow: 0 1px 3px var(--shadow-5);
 }
@@ -32,9 +32,10 @@
         flex-wrap: wrap;
         width: max-content;
         max-width: calc(100vw - 40px);
+        padding: 8px;
     }
 
     .ListTypeLike_item {
-        margin: 0 8px;
+        margin: 8px;
     }
 }

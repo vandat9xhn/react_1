@@ -16,7 +16,7 @@
     width: 8rem;
 }
 .ChatF_MB-close {
-    width: 2rem;
+    width: 1.5rem;
 }
 
 .ChatF_Ip {
@@ -25,4 +25,15 @@
 // .
 .ChatF_textarea {
     max-height: 6.5rem;
+}
+
+// -------
+
+.device-mobile {
+    .ChatF_MB-open {
+        width: 6rem;
+    }
+    .ChatF_MB-close {
+        width: 0rem;
+    }
 }

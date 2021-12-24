@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { handle_API_ChatColour_L } from '../../../../../../_handle_api/chat/colour';
 //
 import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
-// 
+//
 import ScreenBlurHead from '../../../../../_screen/components/part/head/ScreenBlurHead';
 //
 import ChatColorScreenItem from '../item/ChatColorScreenItem';
-// 
+//
 import './ChatColorScreen.scss';
 
 //
@@ -58,7 +58,7 @@ function ChatColorScreen({ handleClose, changeColor }) {
     return (
         <div className="ChatColorScreen screen">
             <div className="screen-contain w-360px">
-                <div>
+                <div className="ChatColorScreen_head">
                     <ScreenBlurHead
                         title="Colour"
                         is_center={true}

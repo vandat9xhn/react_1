@@ -59,7 +59,7 @@ function ChatMemberScreenItem({
     return (
         <div className="ChatMemberScreenItem padding-8px">
             <div className="display-flex align-items-center">
-                <Link className="" to={`/profile${id}`}>
+                <Link className="" to={`/profile/${id}`}>
                     <img
                         className="brs-50 object-fit-cover"
                         src={picture}

@@ -1,6 +1,8 @@
 import React, { useContext, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+// 
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_chat } from '../../../../../../_context/chat/ContextChat';
 //
@@ -190,7 +192,7 @@ function ChatF({ canvas_obj, input_obj }) {
     return (
         <div className="ChatF pos-rel bg-primary">
             <div className="ChatF_contain">
-                <div
+                {IS_MOBILE ? null : <div
                     className={`ChatF_MT ${
                         more_input ? 'ChatF_MT-open' : 'ChatF_MT-close'
                     }`}
@@ -199,7 +201,7 @@ function ChatF({ canvas_obj, input_obj }) {
                         letDrawCanvas={letDrawCanvas}
                         handleChooseFiles={handleChooseFiles}
                     />
-                </div>
+                </div>}
 
                 <div className="ChatF_row display-flex align-items-end padding-4px border-top-blur">
                     <div

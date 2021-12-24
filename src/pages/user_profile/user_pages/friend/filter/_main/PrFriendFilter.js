@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+//
+import { context_api } from '../../../../../../_context/ContextAPI';
 //
 import { ParseLocationSearch } from '../../../../../../_some_function/ParseLocationSearch';
 //
@@ -10,6 +12,9 @@ PrFriendFilter.propTypes = {};
 
 //
 function PrFriendFilter({ user_id }) {
+    //
+    const { user } = useContext(context_api);
+
     //
     const type = ParseLocationSearch()['type'] || '';
 
@@ -26,13 +31,21 @@ function PrFriendFilter({ user_id }) {
     // ----
 
     function getData_API() {
-        setFilterArr([
-            { title: 'All friends', type: '' },
-            { title: 'Recently added', type: 'recent' },
-            { title: 'Births Day', type: 'birth' },
-            { title: 'Current City', type: 'city' },
-            { title: 'Following', type: 'following' },
-        ]);
+        setFilterArr(
+            user.id == user_id
+                ? [
+                      { title: 'All friends', type: '' },
+                      { title: 'Recently added', type: 'recent' },
+                      { title: 'Births Day', type: 'birth' },
+                      { title: 'Current City', type: 'city' },
+                      { title: 'Following', type: 'following' },
+                  ]
+                : [
+                      { title: 'All friends', type: '' },
+                      { title: 'Mutual', type: 'mutual' },
+                      { title: 'Following', type: 'following' },
+                  ]
+        );
     }
 
     //

@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+// 
 import { context_chat } from '../../../../../../../_context/chat/ContextChat';
 //
 import IconPlusSubtract from '../../../../../../../_icons_svg/_icon_plus_subtract/IconPlusSubtract';
@@ -39,16 +41,18 @@ function ChatMB({
             }}
         >
             <div className="ChatMB_row display-flex align-items-center">
-                <div>
-                    <div
-                        className={`ChatMB_toggle display-flex-center brs-50 bg-current cursor-pointer ${
-                            more_input ? 'ChatMB_open' : 'ChatMB_close'
-                        }`}
-                        onClick={moreActionsIp}
-                    >
-                        <IconPlusSubtract size_icon="1rem" stroke="white" />
+                {IS_MOBILE ? null : (
+                    <div>
+                        <div
+                            className={`ChatMB_toggle display-flex-center brs-50 bg-current cursor-pointer ${
+                                more_input ? 'ChatMB_open' : 'ChatMB_close'
+                            }`}
+                            onClick={moreActionsIp}
+                        >
+                            <IconPlusSubtract size_icon="1rem" stroke="white" />
+                        </div>
                     </div>
-                </div>
+                )}
 
                 <div
                     className={`ChatMB_actions ${
