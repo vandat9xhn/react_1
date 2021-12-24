@@ -94,6 +94,7 @@ function Actions({
             use_caret={use_caret}
             //
             toggleShow={toggleShow}
+            handleClose={handleClose}
             callbackOpen={callbackOpen}
             callbackClose={callbackClose}
         />

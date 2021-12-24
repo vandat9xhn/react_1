@@ -47,6 +47,7 @@ function CmtActionPc({
                 is_show={is_true}
                 // scroll_elm={scroll_elm}
                 toggleShow={toggleBool}
+                handleClose={handleClose}
                 callbackOpen={callbackOpen}
             >
                 <div className="CmtActionPc_contain padding-10px font-500">

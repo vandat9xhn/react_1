@@ -39,7 +39,7 @@ function ProfileLayoutNavMore({
 
     //
     function handleClose() {
-        is_true && setIsTrue(false);
+        setIsTrue(false);
     }
 
     //

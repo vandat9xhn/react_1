@@ -91,7 +91,7 @@ function PostCmt({
                     />
                 </div>
 
-                {is_editing ? (
+                {!is_editing ? null : (
                     <div className="flex-grow-1">
                         <PostCmtEdit
                             text={`${content_obj.content} ${content_obj.content_more}`}
@@ -110,42 +110,42 @@ function PostCmt({
                             cancelEdit={cancelEdit}
                         />
                     </div>
-                ) : (
-                    <div>
-                        <CmtRight
-                            user_id={user_id}
-                            user_name={user_name}
-                            //
-                            content_obj={content_obj}
-                            vid_pic={vid_pic}
-                            updated_time={updated_time}
-                            class_scroll_elm={class_scroll_elm}
-                            //
-                            reacted_ix_arr={reacted_ix_arr}
-                            reacted_count={reacted_count}
-                            user_reacted_ix={user_reacted_ix}
-                            //
-                            seeMoreContent={seeMoreContent}
-                            handleClickVidPic={handleClickVidPic}
-                            startReply={startReply}
-                            sendAward={sendAward}
-                            openHistory={openHistory}
-                            //
-                            changeTypeLike={changeTypeLike}
-                            on_API_LikeAll_L={on_API_LikeAll_L}
-                            onOpenDetailLikeAll={onOpenDetailLikeAll}
-                            //
-                            handle_API_Action_L={handle_API_Action_L}
-                            handleAction={handleAction}
-                            closeActionMb={closeActionMb}
-                            //
-                            show_action_mb={show_action_mb}
-                            handleTouchStart={handleTouchStart}
-                            handleTouchMove={handleTouchMove}
-                            handleTouchEnd={handleTouchEnd}
-                        />
-                    </div>
                 )}
+
+                <div className={`${is_editing ? 'display-none' : ''}`}>
+                    <CmtRight
+                        user_id={user_id}
+                        user_name={user_name}
+                        //
+                        content_obj={content_obj}
+                        vid_pic={vid_pic}
+                        updated_time={updated_time}
+                        class_scroll_elm={class_scroll_elm}
+                        //
+                        reacted_ix_arr={reacted_ix_arr}
+                        reacted_count={reacted_count}
+                        user_reacted_ix={user_reacted_ix}
+                        //
+                        seeMoreContent={seeMoreContent}
+                        handleClickVidPic={handleClickVidPic}
+                        startReply={startReply}
+                        sendAward={sendAward}
+                        openHistory={openHistory}
+                        //
+                        changeTypeLike={changeTypeLike}
+                        on_API_LikeAll_L={on_API_LikeAll_L}
+                        onOpenDetailLikeAll={onOpenDetailLikeAll}
+                        //
+                        handle_API_Action_L={handle_API_Action_L}
+                        handleAction={handleAction}
+                        closeActionMb={closeActionMb}
+                        //
+                        show_action_mb={show_action_mb}
+                        handleTouchStart={handleTouchStart}
+                        handleTouchMove={handleTouchMove}
+                        handleTouchEnd={handleTouchEnd}
+                    />
+                </div>
             </div>
         </div>
     );

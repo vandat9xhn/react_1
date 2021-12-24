@@ -32,7 +32,7 @@ function GroupFeedCenterSuggested(props) {
             </div>
 
             <div className="display-flex-center">
-                <Link to={`/group/category?q=`}>See more group</Link>
+                <Link to={`/group/categories?q=suggestion`}>See more group</Link>
             </div>
         </div>
     );

@@ -25,7 +25,7 @@ function NewFeedSuggestedGroups(props) {
 
             <Link
                 className="display-block margin-top-12px text-align-center font-500 hv-underline"
-                to="/group/category?q="
+                to="/group/categories?q=suggestion"
             >
                 See All
             </Link>

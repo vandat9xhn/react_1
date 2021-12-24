@@ -40,6 +40,7 @@ function ActionsPc({
     transform_y_more,
 
     toggleShow,
+    handleClose,
     callbackOpen,
     callbackClose,
 }) {
@@ -48,7 +49,7 @@ function ActionsPc({
 
     //
     function onCallbackClose() {
-        is_show && toggleShow && toggleShow();
+        is_show && handleClose && handleClose();
         callbackClose && callbackClose();
     }
 
