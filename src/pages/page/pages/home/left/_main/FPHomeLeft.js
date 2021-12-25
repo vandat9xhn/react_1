@@ -10,10 +10,10 @@ import { handle_API_FbPageHomePreview_R } from '../../../../../../_handle_api/fb
 import { useStickyAuto } from '../../../../../../_hooks/useStickyAuto';
 //
 import FPHomeAbout from '../about/_main/FPHomeAbout';
-//
-import './FPHomeLeft.scss';
 import FPHomeVideos from '../videos/_main/FPHomeVideos';
 import FPHomePhotos from '../photos/_main/FPHomePhotos';
+//
+import './FPHomeLeft.scss';
 
 //
 FPHomeLeft.propTypes = {};

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 //
 import { FuncPagination } from '../func_page/FuncPagination';
@@ -30,10 +30,9 @@ function Pagination({
     handleChangePage,
 }) {
     //
-    const [arr_center, more_left, more_right] = FuncPagination(
-        count,
-        num_side_center,
-        current
+    const [arr_center, more_left, more_right] = useMemo(
+        () => FuncPagination(count, num_side_center, current),
+        [count, num_side_center, current]
     );
 
     //

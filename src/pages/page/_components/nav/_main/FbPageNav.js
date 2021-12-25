@@ -34,7 +34,7 @@ const MORE_LINK_ARR = ({ page_id = 0 }) => [
 //
 const NAV_LINK_ARR = ({ page_id = 0 }) => [
     {
-        link_to: `/page/${page_id}/`,
+        link_to: `/page/${page_id}/home`,
         title: 'Home',
     },
     {

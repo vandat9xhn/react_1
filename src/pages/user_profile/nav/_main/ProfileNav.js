@@ -2,6 +2,8 @@ import React from 'react';
 //
 import { IS_MOBILE } from '../../../../_constant/Constant';
 //
+import { ParseLocationSearch } from '../../../../_some_function/ParseLocationSearch';
+//
 import {
     data_sk_link_arr,
     more_link_arr,
@@ -20,6 +22,13 @@ import './ProfileNav.scss';
 //
 function ProfileNav({ user_id, user_name, user_pic, handleAction }) {
     //
+    const is_active = (function () {
+        const sk = ParseLocationSearch()['sk'];
+
+        return more_link_arr.some((item) => item.sk == sk);
+    })();
+
+    //
     return (
         <ProfileLayoutNav
             left_main_elm={
@@ -37,6 +46,7 @@ function ProfileNav({ user_id, user_name, user_pic, handleAction }) {
                         <li className="ProfileNav_item">
                             <ProfileLayoutNavMore
                                 more_link_arr={more_link_arr}
+                                is_active={is_active}
                                 //
                                 has_item_component={true}
                                 item_props={{ user_id: user_id }}

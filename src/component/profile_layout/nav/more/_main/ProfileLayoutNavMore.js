@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useBool } from '../../../../../_hooks/useBool';
@@ -16,24 +16,25 @@ ProfileLayoutNavMore.propTypes = {};
 
 //
 function ProfileLayoutNavMore({
-    color,
-    bg_btn,
+    color = 'var(--blue)',
+    bg_btn = 'var(--blue)',
     more_link_arr,
+    is_active = false,
 
     has_item_component = false,
     ItemComponent = () => <div></div>,
     item_props = {},
 }) {
     //
-    const is_active = more_link_arr.some(
-        (item) => item.link_to == location.pathname.split('/').slice(-1)[0]
-    );
-
-    //
     const ref_btn = useRef(null);
 
     //
     const { is_true, setIsTrue, toggleBool } = useBool();
+
+    //
+    useEffect(() => {
+        setIsTrue(false);
+    }, [location.href]);
 
     // -----
 

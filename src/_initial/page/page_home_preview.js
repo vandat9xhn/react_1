@@ -1,6 +1,6 @@
 //
-export const initial_fb_page_home_preview = () => {
-    // 
+export const initial_fb_page_hone_about = () => {
+    //
     return {
         info_obj: {
             content: '',
@@ -18,6 +18,16 @@ export const initial_fb_page_home_preview = () => {
             link_title: '',
         },
         phone_obj: { num_phone: '' },
+
+       
+    };
+};
+
+//
+export const initial_fb_page_home_preview = () => {
+    //
+    return {
+        ...initial_fb_page_hone_about(),
 
         pic_arr: [''],
         video_obj: {

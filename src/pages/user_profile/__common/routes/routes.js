@@ -14,25 +14,43 @@ const ProfilePhoto = React.lazy(() =>
     import('../../user_pages/photo/_main/ProfilePhoto')
 );
 
+const WorkingOnIt = React.lazy(() =>
+    import('../../../../component/working_on_it/WorkingOnIt')
+);
+
 //
 export const ProfileRoutes = [
     {
         component: ProfileHome,
-        search: ''
+        search: '',
     },
-
     {
         component: ProfileAbout,
-        search: '?sk=about'
+        search: '?sk=about',
     },
-
     {
         component: ProfilePhoto,
-        search: '?sk=photo'
+        search: '?sk=photo',
+    },
+    {
+        component: ProfileFriend,
+        search: '?sk=friend',
     },
 
     {
-        component: ProfileFriend,
-        search: '?sk=friend'
+        component: WorkingOnIt,
+        search: '?sk=like',
+    },
+    {
+        component: WorkingOnIt,
+        search: '?sk=group',
+    },
+    {
+        component: WorkingOnIt,
+        search: '?sk=film',
+    },
+    {
+        component: WorkingOnIt,
+        search: '?sk=music',
     },
 ];
