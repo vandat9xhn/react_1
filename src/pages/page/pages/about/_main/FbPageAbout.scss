@@ -1,3 +1,16 @@
 .FbPageAbout_part{
     margin-bottom: 30px
 }
+
+// ------
+
+.device-mobile{
+    .FbPageAbout{
+        width: 100%;
+        padding: 8px;
+    }
+
+    .FbPageAbout_part{
+        margin-bottom: 20px
+    }
+}
