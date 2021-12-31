@@ -1,0 +1,56 @@
+.LikeShareCmtElm {
+    .IconLike,
+    .IconsPost_cmt,
+    .IconsPost_share {
+        stroke: currentColor;
+    }
+}
+
+.LikeShareCmtElm_item {
+    flex-basis: 1rem;
+    flex-grow: 1;
+
+    height: 2.25rem;
+    border-radius: 5px;
+    &:hover {
+        background-color: var(--md-bg-fb);
+    }
+    .Like_type {
+        padding: 0.25rem;
+    }
+}
+
+//
+.BtnPostCmtShare_title {
+    display: block;
+}
+.BtnPostCmtShare_total {
+    display: none;
+}
+
+//
+@media (max-width: 500px) {
+    .LikeShareCmtElm_item {
+        height: auto;
+        font-size: 14px;
+
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+        .Like_list-type-touch {
+            svg {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+
+    //
+    .BtnPostCmtShare_title {
+        display: none;
+    }
+    .BtnPostCmtShare_total {
+        display: block;
+    }
+}

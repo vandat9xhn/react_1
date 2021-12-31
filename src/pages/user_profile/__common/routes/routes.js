@@ -13,6 +13,9 @@ const ProfileFriend = React.lazy(() =>
 const ProfilePhoto = React.lazy(() =>
     import('../../user_pages/photo/_main/ProfilePhoto')
 );
+const ProfilePhotoAnAlbum = React.lazy(() =>
+    import('../../user_pages/photo/an_album/_main/ProfilePhotoAnAlbum')
+);
 
 const WorkingOnIt = React.lazy(() =>
     import('../../../../component/working_on_it/WorkingOnIt')
@@ -29,12 +32,16 @@ export const ProfileRoutes = [
         search: '?sk=about',
     },
     {
+        component: ProfileFriend,
+        search: '?sk=friend',
+    },
+    {
         component: ProfilePhoto,
         search: '?sk=photo',
     },
     {
-        component: ProfileFriend,
-        search: '?sk=friend',
+        component: ProfilePhotoAnAlbum,
+        search: '?sk=album_photo',
     },
 
     {

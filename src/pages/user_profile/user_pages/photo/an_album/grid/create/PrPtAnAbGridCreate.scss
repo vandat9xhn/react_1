@@ -1,0 +1,7 @@
+.ProfilePhotoCreateBtnLink {
+    &:hover {
+        .PrPtAnAbGridCreate_title {
+            text-decoration: 2px underline var(--md-color);
+        }
+    }
+}

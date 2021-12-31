@@ -19,7 +19,9 @@ function ProfileNavItem({ sk, title }) {
                 return (
                     (location.search.startsWith(`?sk=${sk.split('_')[0]}`) &&
                         sk != '') ||
-                    (location.search == '' && sk == '')
+                    (location.search == '' && sk == '') ||
+                    (sk == 'photos_all' &&
+                        location.search.startsWith('?sk=album_photo'))
                 );
             }}
         />

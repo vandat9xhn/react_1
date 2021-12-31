@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+//
+import { context_api } from '../../../_context/ContextAPI';
 //
 import { initial_profile } from '../../../_initial/profile/InitialProfile';
 //
@@ -28,6 +30,12 @@ function Profile(props) {
     const use_params = useParams();
 
     const id = use_params.id || location.pathname.split('/')[2];
+
+    //
+    const { user } = useContext(context_api);
+
+    //
+    const is_your = id == user.id;
 
     //
     const [profile_state, setProfileState] = useState({
@@ -88,8 +96,9 @@ function Profile(props) {
     //
     function getRouteProps(new_route_ix = 0) {
         return {
-            name: `${profile.first_name} ${profile.last_name}`,
             user_id: id,
+            name: `${profile.first_name} ${profile.last_name}`,
+            is_your: is_your,
         };
     }
 

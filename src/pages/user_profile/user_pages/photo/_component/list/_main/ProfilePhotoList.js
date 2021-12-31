@@ -16,18 +16,18 @@ ProfilePhotoList.propTypes = {
 
 ProfilePhotoList.defaultProps = {
     album_model: 0,
-}
+};
 
 //
-function ProfilePhotoList({album_model, ProfilePhotoMainSkeleton}) {
-    // 
+function ProfilePhotoList({ album_model, ProfilePhotoMainSkeleton }) {
+    //
     function on_API_VidPic_L(user_id, c_count) {
-        return handle_API_VidPic_L(user_id, c_count, album_model)
+        return handle_API_VidPic_L(user_id, c_count, album_model);
     }
 
     //
     return (
-        <div>
+        <div className="ProfilePhotoList">
             <ProfilePhotoMain
                 initial_photo_state={[
                     {

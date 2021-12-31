@@ -76,3 +76,26 @@ const default_page_name_arr = [
 //
 export const getRandomPageName = () =>
     getRandomFromArr(default_page_name_arr);
+
+// ALBUM_NAME
+
+//
+ const default_album_name_arr = [
+    'Nature',
+    'Animal',
+    'Building',
+    'Company',
+    'Da Nang',
+    'Da Lat',
+    'Ca Mau',
+    'Que toi',
+    'New York',
+    'Upload',
+    'Timeline',
+    'Profile pictures',
+];
+
+//
+export const getRandomAlbumName = () =>
+    getRandomFromArr(default_album_name_arr);
+

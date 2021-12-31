@@ -11,11 +11,11 @@ const ProfilePhotoAlbum = React.lazy(() =>
 //
 export const PhotosRoutes = [
     {
-        component: ProfilePhotoAlbum,
-        search: '?sk=photos_album',
-    },
-    {
         component: ProfilePhotoAll,
         search: '?sk=photos_all',
+    },
+    {
+        component: ProfilePhotoAlbum,
+        search: '?sk=photos_albums',
     },
 ];

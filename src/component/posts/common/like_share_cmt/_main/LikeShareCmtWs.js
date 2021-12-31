@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 //
 import { context_post } from '../../../../../_context/post/ContextPost';
 //
-import Like from '../../../../like/_main/Like';
-//
-import BtnPostCmt from '../cmt/BtnPostCmt';
-import BtnPostShare from '../share/BtnPostShare';
-//
+import LikeShareCmtElm from '../elm/LikeShareCmtElm';
+// 
 import './LikeShareCmt.scss';
 
 //
@@ -67,35 +64,19 @@ function LikeShareCmt({
 
     //
     return (
-        <div className="LikeShareCmt padding-y-5px padding-x-10px border-top-blur border-bottom-blur text-secondary font-500 user-select-none">
-            <div className="LikeShareCmt_row display-flex-center">
-                {enabled_like && (
-                    <div className="LikeShareCmt_item">
-                        <Like
-                            type_like={user_reacted_ix}
-                            changeTypeLike={changeTypeLike}
-                        />
-                    </div>
-                )}
-
-                {enabled_cmt && (
-                    <div className="LikeShareCmt_item">
-                        <BtnPostCmt
-                            count_comment={count_comment}
-                            handleClickBtnCmt={handleClickBtnCmt}
-                        />
-                    </div>
-                )}
-
-                {enabled_share && (
-                    <div className="LikeShareCmt_item">
-                        <BtnPostShare
-                            count_share={count_share}
-                            sharePost={sharePost}
-                        />
-                    </div>
-                )}
-            </div>
+        <div className="LikeShareCmt">
+            <LikeShareCmtElm
+                user_reacted_ix={user_reacted_ix}
+                enabled_like={enabled_like}
+                enabled_cmt={enabled_cmt}
+                count_comment={count_comment}
+                enabled_share={enabled_share}
+                count_share={count_share}
+                // 
+                changeTypeLike={changeTypeLike}
+                handleClickBtnCmt={handleClickBtnCmt}
+                sharePost={sharePost}
+            />
         </div>
     );
 }

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 export function useRouteFollowSearch({
     base_path = /./,
     route_arr = [{ component: () => <div></div>, search: '' }],
-    has_func_detect_route = false,
+    HasFuncDetectRoute = () => false,
     is_exact = false,
 
     getRouteIx = () => 0,
@@ -30,7 +30,7 @@ export function useRouteFollowSearch({
     function detectRouteIx() {
         const search = location.search;
 
-        if (has_func_detect_route) {
+        if (HasFuncDetectRoute()) {
             return getRouteIx();
         }
 

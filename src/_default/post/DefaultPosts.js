@@ -86,7 +86,7 @@ export const default_post_history_arr = () =>
     getDefaultArr(default_post_history_obj, 1, 10);
 
 //
-const post_vid_pic_obj = () => ({
+export const post_vid_pic_obj = () => ({
     id: getRandomId(),
     vid_pic: getRandomVidPic(),
     content: getRandomContent(),
@@ -98,10 +98,14 @@ const post_vid_pic_arr = () =>
 export const default_post_obj = (
     params = {
         post_where: getRandomFromArr(['user', 'group', 'page']),
+        can_to_user: true,
     }
 ) => {
     // --- WHERE
-    const { post_where } = params;
+    const {
+        post_where = getRandomFromArr(['user', 'group', 'page']),
+        can_to_user = true,
+    } = params;
 
     const data_user = {};
 
@@ -154,7 +158,12 @@ export const default_post_obj = (
     }
 
     if (post_where == 'user') {
-        if (getRandomBool() && getRandomBool() && getRandomBool()) {
+        if (
+            can_to_user &&
+            getRandomBool() &&
+            getRandomBool() &&
+            getRandomBool()
+        ) {
             data_user['to_user'] = getRandomUser().user;
             data_user['is_head_to'] = true;
         } else {
@@ -220,7 +229,7 @@ export const default_post_obj = (
         histories: [],
         count_history: 10,
 
-        profile_model: 1,
+        profile_model: getRandomId(),
         permission_post: data_user['to_user']
             ? 2
             : post_where == 'user'

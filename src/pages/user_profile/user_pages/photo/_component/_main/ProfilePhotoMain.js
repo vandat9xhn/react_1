@@ -6,14 +6,20 @@ import observeToDo from '../../../../../../_some_function/observerToDo';
 //
 import ComponentSkeleton from '../../../../../../component/skeleton/component_skeleton/ComponentSkeleton';
 import ScreenBlurShowMore from '../../../../../../component/_screen/components/part/foot/ScreenBlurShowMore';
+import NoItem from '../../../../../../component/some_div/no_item/NoItem';
 //
 import './ProfilePhotoMain.scss';
 
 //
 ProfilePhotoMain.propTypes = {
-    initial_photo_state: PropTypes.array,
+    initial_photo_arr: PropTypes.array,
+    initial_photo_count: PropTypes.number,
     item_props: PropTypes.object,
+    has_create: PropTypes.bool,
+    CreateElm: PropTypes.element,
+
     title_show_more: PropTypes.string,
+    title_no_item: PropTypes.string,
 
     handle_API_Photo_L: PropTypes.func,
     ProfilePhotoItem: PropTypes.func,
@@ -21,31 +27,40 @@ ProfilePhotoMain.propTypes = {
 };
 
 ProfilePhotoMain.defaultProps = {
+    initial_photo_arr: [],
+    initial_photo_count: 0,
     item_props: {},
+    has_create: false,
+    CreateElm: <div></div>,
+
     title_show_more: 'See more photos',
+    title_no_item: 'No items to show',
 };
 
 //
-function ProfilePhotoMain(props) {
+function ProfilePhotoMain({
+    initial_photo_arr,
+    initial_photo_count,
+
+    item_props,
+    has_create,
+    CreateElm,
+
+    title_show_more,
+    title_no_item,
+
+    handle_API_Photo_L,
+    ProfilePhotoItem,
+    ProfilePhotoMainSkeleton,
+}) {
     //
     const id = GetIdSlug();
 
     //
-    const {
-        initial_photo_state,
-        item_props,
-        title_show_more,
-
-        handle_API_Photo_L,
-        ProfilePhotoItem,
-        ProfilePhotoMainSkeleton,
-    } = props;
-
-    //
     const [photo_state, setPhotoState] = useState({
-        photo_arr: initial_photo_state,
-        photo_count: 0,
-        has_fetched: false,
+        photo_arr: initial_photo_arr,
+        photo_count: initial_photo_count,
+        has_fetched: initial_photo_arr.length > 0,
         is_fetching: false,
     });
 
@@ -56,12 +71,13 @@ function ProfilePhotoMain(props) {
 
     //
     useEffect(() => {
-        observeToDo({
-            elm: ref_main.current,
-            callback: () => {
-                getData_API_Photo();
-            },
-        });
+        initial_photo_arr.length == 0 &&
+            observeToDo({
+                elm: ref_main.current,
+                callback: () => {
+                    getData_API_Photo();
+                },
+            });
     }, []);
 
     //
@@ -98,23 +114,31 @@ function ProfilePhotoMain(props) {
         <div ref={ref_main} className="ProfilePhotoMain">
             <div>
                 <div className="display-flex flex-wrap">
+                    {has_create ? (
+                        <div className="ProfilePhotoMain_item">{CreateElm}</div>
+                    ) : null}
+
                     {photo_arr.map((item) => (
-                        <div
-                            key={`ProfilePhotoMain_${item.id}`}
-                            className="ProfilePhotoMain_item"
-                        >
+                        <div key={item.id} className="ProfilePhotoMain_item">
                             <ProfilePhotoItem item={item} {...item_props} />
                         </div>
                     ))}
                 </div>
             </div>
 
-            <div>
+            <div className="padding-top-10px">
                 <ScreenBlurShowMore
                     title={title_show_more}
                     is_show_more={photo_count > photo_arr.length}
                     is_fetching={is_fetching && has_fetched}
                     handleShowMore={handleShowMorePhotos}
+                />
+            </div>
+
+            <div className="text-align-center font-700 font-18px text-third">
+                <NoItem
+                    no_item={has_fetched && photo_arr.length == 0}
+                    title={title_no_item}
                 />
             </div>
 

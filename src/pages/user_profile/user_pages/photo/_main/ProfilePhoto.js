@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
@@ -14,24 +14,24 @@ import ProfileLayoutNavItem from '../../../../../component/profile_layout/nav/it
 import './ProfilePhoto.scss';
 
 //
-const group_photo_arr = [
-    {
-        search: 'all',
-        title: 'Your Photos',
-    },
-    {
-        search: 'album',
-        title: 'Album',
-    },
-];
-
-//
 ProfilePhoto.propTypes = {};
 
 //
-function ProfilePhoto({ user_id, name }) {
+function ProfilePhoto({ user_id, name, is_your }) {
     //
     const use_history = useHistory();
+
+    //
+    const [photo_arr, setPhotoArr] = useState([
+        {
+            search: 'all',
+            title: is_your ? 'Your Photos' : `${name.split(' ')[0]}'s Photos`,
+        },
+        {
+            search: 'albums',
+            title: 'Albums',
+        },
+    ]);
 
     //
     const { route_ix, route_props } = useRouteFollowSearch({
@@ -39,11 +39,20 @@ function ProfilePhoto({ user_id, name }) {
         route_arr: PhotosRoutes,
         is_exact: false,
 
-        // getRouteProps: getRouteProps,
+        getRouteProps: getRouteProps,
         handleNotFound: handleNotFound,
     });
 
     // -----
+
+    //
+    function getRouteProps() {
+        return {
+            user_id: user_id,
+            name: name,
+            is_your: is_your,
+        };
+    }
 
     //
     function handleNotFound() {
@@ -58,7 +67,7 @@ function ProfilePhoto({ user_id, name }) {
             </h2>
 
             <div className="display-flex margin-y-15px">
-                {group_photo_arr.map((item, ix) => (
+                {photo_arr.map((item, ix) => (
                     <div key={ix} className="h-52px font-600 text-secondary">
                         <ProfileLayoutNavItem
                             title={item.title}
