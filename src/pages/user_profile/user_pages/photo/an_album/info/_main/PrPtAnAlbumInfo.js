@@ -8,6 +8,8 @@ import LikeShareCmtElm from '../../../../../../../component/posts/common/like_sh
 //
 import PrPtAnAbInfoHead from '../head/_main/PrPtAnAbInfoHead';
 import PrPtAnAbInfoContent from '../content/_main/PrPtAnAbInfoContent';
+// 
+import './PrPtAnAlbumInfo.scss';
 
 //
 PrPtAnAlbumInfo.propTypes = {};
@@ -18,12 +20,13 @@ function PrPtAnAlbumInfo({
     mode_view,
 
     changeModeView,
+    handleChoosePermission,
+    
     handle_API_Other_L,
     handleActionOther,
 
     on_API_Like_L,
     onOpenDetailLike,
-
     changeTypeLike,
     handleClickBtnCmt,
     shareAlbum,
@@ -74,6 +77,8 @@ function PrPtAnAlbumInfo({
                     post_count={post_count}
                     item_count={item_count}
                     permission={permission}
+                    // 
+                    handleChoosePermission={handleChoosePermission}
                 />
             </div>
 

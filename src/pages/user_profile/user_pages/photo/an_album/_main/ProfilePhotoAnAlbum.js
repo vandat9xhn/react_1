@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+// 
 import { ParseLocationSearch } from '../../../../../../_some_function/ParseLocationSearch';
 //
 import { handle_API_FbProfilePhotoAlbum_R } from '../../../../../../_handle_api/profile/photo_an_album';
@@ -65,6 +67,19 @@ function ProfilePhotoAnAlbum({ user_id, name, is_your }) {
     }
 
     //
+    function handleChoosePermission(new_permission = 0) {
+        setStateObj((state_obj) => {
+            const new_album_obj = { ...state_obj.album_obj };
+            new_album_obj.permission = new_permission;
+
+            return {
+                ...state_obj,
+                album_obj: new_album_obj,
+            };
+        });
+    }
+
+    //
     function handle_API_Other_L() {
         return [
             [
@@ -118,6 +133,7 @@ function ProfilePhotoAnAlbum({ user_id, name, is_your }) {
                     mode_view={mode_view}
                     //
                     changeModeView={changeModeView}
+                    handleChoosePermission={handleChoosePermission}
                     handle_API_Other_L={handle_API_Other_L}
                     handleActionOther={handleActionOther}
                     //
@@ -129,7 +145,7 @@ function ProfilePhotoAnAlbum({ user_id, name, is_your }) {
                 />
             </div>
 
-            {mode_view == 'feed' ? (
+            {mode_view == 'feed' && !IS_MOBILE ? (
                 <div className="ProfilePhotoAnAlbum_feed margin-auto">
                     <PrPtAnAlbumFeed
                         album_name={album_obj.album_name}
@@ -140,7 +156,7 @@ function ProfilePhotoAnAlbum({ user_id, name, is_your }) {
                     />
                 </div>
             ) : (
-                <div className="profile-route-contain">
+                <div className="ProfilePhotoAnAlbum_grid profile-route-contain">
                     <PrPtAnAlbumGrid
                         is_your={is_your}
                         pic_arr={album_obj.pic_arr}

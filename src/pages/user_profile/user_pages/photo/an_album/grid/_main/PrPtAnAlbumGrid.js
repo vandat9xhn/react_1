@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import ProfilePhotoMain from '../../../_component/_main/ProfilePhotoMain';
 import ProfilePhotoItem from '../../../_component/list/item/ProfilePhotoItem';
 import PrPtAnAbGridCreate from '../create/PrPtAnAbGridCreate';
+// 
+import './PrPtAnAlbumGrid.scss';
 
 //
 PrPtAnAlbumGrid.propTypes = {};
@@ -15,7 +17,7 @@ function PrPtAnAlbumGrid({ pic_arr, pic_count }) {
 
     //
     return (
-        <div className="padding-x-8px padding-y-12px">
+        <div className="PrPtAnAlbumGrid padding-x-8px padding-y-12px">
             <ProfilePhotoMain
                 initial_photo_arr={pic_arr}
                 initial_photo_count={pic_count}

@@ -1,7 +1,16 @@
-.ProfilePhotoAnAlbum_info{
+.ProfilePhotoAnAlbum_info {
     margin-bottom: 20px;
 }
 
 .ProfilePhotoAnAlbum_feed {
     width: 775px;
+}
+
+// ------
+
+.device-mobile {
+    .ProfilePhotoAnAlbum_info,
+    .ProfilePhotoAnAlbum_grid {
+        padding: 0;
+    }
 }
