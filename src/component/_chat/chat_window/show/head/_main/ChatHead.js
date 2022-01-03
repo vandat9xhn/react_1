@@ -21,6 +21,7 @@ ChatHead.defaultProps = {};
 //
 function ChatHead({
     room_users,
+    room_users_not_leave,
     room_owner,
     count_user,
 
@@ -41,13 +42,16 @@ function ChatHead({
     } = useContext(context_chat);
 
     const head_name = is_group
-        ? group_name ||
-          `${room_users
-              .slice(1)
-              .map((item) => item.nickname || item.user.last_name)
-              .join(', ')} and ${
-              room_users[0].nickname || room_users[0].user.last_name
-          }`
+        ? room_users_not_leave.length == 1
+            ? 'no participants'
+            : group_name ||
+              `${room_users_not_leave
+                  .slice(1)
+                  .map((item) => item.nickname || item.user.last_name)
+                  .join(', ')} and ${
+                  room_users_not_leave[0].nickname ||
+                  room_users_not_leave[0].user.last_name
+              }`
         : room_users[1].nickname ||
           `${room_users[1].user.first_name} ${room_users[1].user.last_name}`;
 
@@ -70,10 +74,12 @@ function ChatHead({
                 <div className="display-flex align-items-center pos-rel padding-4px">
                     <div className="pos-rel z-index-1 padding-right-8px">
                         {is_group ? (
-                            <ChatHeadGroupPic
-                                room_users={room_users}
-                                openRoomUsers={openRoomUsers}
-                            />
+                            room_users_not_leave.length == 1 ? null : (
+                                <ChatHeadGroupPic
+                                    room_users={room_users_not_leave}
+                                    openRoomUsers={openRoomUsers}
+                                />
+                            )
                         ) : (
                             <ChatHeadUserPic
                                 id={room_users[1].user.id}

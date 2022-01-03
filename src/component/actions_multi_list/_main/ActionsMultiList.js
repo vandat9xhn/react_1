@@ -38,7 +38,8 @@ function ActionsMultiList({
     transform_y_more,
 
     class_separate,
-
+    deps_reset_api,
+    
     ComponentItem,
     handle_API_L,
     handleAction,
@@ -57,6 +58,7 @@ function ActionsMultiList({
         callbackClose,
     } = useActionsMultiList({
         handle_API_L: handle_API_L,
+        deps_reset_api: deps_reset_api,
     });
 
     //

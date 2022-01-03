@@ -11,6 +11,7 @@ import ChatBdChangeMakeAdmin from '../make_admin/ChatBdChangeMakeAdmin';
 import ChatBdChangeNickname from '../nickname/ChatBdChangeNickname';
 import ChatBdChangeRemoveAdmin from '../remove_admin/ChatBdChangeRemoveAdmin';
 import ChatBdChangeRemoveFriend from '../remove_friend/ChatBdChangeRemoveFriend';
+import ChatBdChangeGroupName from '../group_name/ChatBdChangeGroupName';
 
 //
 const CHANGE_COMPONENT_OBJ = {
@@ -23,6 +24,8 @@ const CHANGE_COMPONENT_OBJ = {
     [CHAT_MESS_TYPE.COLOUR]: ChatBdChangeColour,
     [CHAT_MESS_TYPE.EMOJI]: ChatBdChangeEmoji,
     [CHAT_MESS_TYPE.NICKNAME]: ChatBdChangeNickname,
+
+    [CHAT_MESS_TYPE.GROUP_NAME]: ChatBdChangeGroupName,
 };
 
 //

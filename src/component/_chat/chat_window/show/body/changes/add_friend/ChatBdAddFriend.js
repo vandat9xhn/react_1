@@ -7,16 +7,16 @@ import { useYouOrName } from '../../../../../../../_hooks/useYouOrName';
 ChatBdAddFriend.propTypes = {};
 
 //
-function ChatBdAddFriend({ user, friend }) {
+function ChatBdAddFriend({ user, admin }) {
     //
     const { getYouOrName } = useYouOrName();
 
     //
     return (
         <div className="ChatBdAddFriend">
-            {getYouOrName({ user: user })}
+            {getYouOrName({ user: admin })}
             {' added '}
-            {getYouOrName({ user: friend })}
+            {getYouOrName({ user: user })}
             {' to this group.'}
         </div>
     );

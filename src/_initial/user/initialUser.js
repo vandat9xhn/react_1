@@ -4,6 +4,7 @@ export const initial_user = () => ({
     first_name: '',
     last_name: '',
     picture: '',
+    sex: 'male' || 'female' || 'other',
 
     time_online: 0,
     has_new_story: false,

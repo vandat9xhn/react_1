@@ -9,4 +9,6 @@ export const CHAT_MESS_TYPE = {
     COLOUR: 'colour',
     EMOJI: 'emoji',
     NICKNAME: 'nickname',
+
+    GROUP_NAME: 'group_name',
 };

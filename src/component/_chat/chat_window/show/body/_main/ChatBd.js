@@ -28,6 +28,7 @@ function ChatBd({
     is_on_input,
 
     room_users,
+    room_users_not_leave,
     room_creator,
 }) {
     //
@@ -131,7 +132,7 @@ function ChatBd({
                 <div className="bg-primary padding-y-20px padding-x-10px">
                     {is_group ? (
                         <ChatBdLastGroup
-                            room_users={room_users}
+                            room_users={room_users_not_leave}
                             room_creator={room_creator}
                         />
                     ) : (

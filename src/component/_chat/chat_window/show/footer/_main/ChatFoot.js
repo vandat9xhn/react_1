@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
-// 
+//
 import { context_api } from '../../../../../../_context/ContextAPI';
 import { context_chat } from '../../../../../../_context/chat/ContextChat';
 //
@@ -148,7 +148,7 @@ function ChatF({ canvas_obj, input_obj }) {
     //
     function deleteCanvasDraw() {
         resetCanvas();
-        forceUpdate()
+        forceUpdate();
     }
 
     /* ------------- */
@@ -158,8 +158,6 @@ function ChatF({ canvas_obj, input_obj }) {
         if (!text.trim() && !urls.length && !current_canvas) {
             return;
         }
-
-        const data_send = [text, current_canvas, JSON.stringify(files)];
 
         resetCanvas();
         resetInput();
@@ -172,19 +170,40 @@ function ChatF({ canvas_obj, input_obj }) {
             textarea.style.height = 'auto';
         }
 
-        const data = await handle_API_ChatMessage_C(room_chat, ...data_send);
-
-        console.log('data_send: ', data_send, ', data: ', data);
+        const data = await handle_API_ChatMessage_C({
+            room_chat: room_chat,
+            data: {
+                message: text.trim(),
+                current_canvas: current_canvas,
+                files: JSON.stringify(files),
+            },
+        });
 
         const { id, message, vid_pics } = data;
         // const new_vid_pics = vid_pics && vid_pics.map((item) => item.vid_pic);
 
         WsSend(ws, {
-            type: 'message',
+            type: 'mess',
             id: id,
-            vid_pics: vid_pics,
+            // vid_pics: vid_pics,
+            vid_pics: urls,
             message: message,
             current_canvas: current_canvas,
+        });
+    }
+
+    //
+    async function handleSendEmoji() {
+        const data = await handle_API_ChatMessage_C({
+            room_chat: room_chat,
+            data: {},
+        });
+
+        const { id } = data;
+
+        WsSend(ws, {
+            type: 'mess_emoji',
+            id: id,
         });
     }
 
@@ -192,16 +211,18 @@ function ChatF({ canvas_obj, input_obj }) {
     return (
         <div className="ChatF pos-rel bg-primary">
             <div className="ChatF_contain">
-                {IS_MOBILE ? null : <div
-                    className={`ChatF_MT ${
-                        more_input ? 'ChatF_MT-open' : 'ChatF_MT-close'
-                    }`}
-                >
-                    <ChatMT
-                        letDrawCanvas={letDrawCanvas}
-                        handleChooseFiles={handleChooseFiles}
-                    />
-                </div>}
+                {IS_MOBILE ? null : (
+                    <div
+                        className={`ChatF_MT ${
+                            more_input ? 'ChatF_MT-open' : 'ChatF_MT-close'
+                        }`}
+                    >
+                        <ChatMT
+                            letDrawCanvas={letDrawCanvas}
+                            handleChooseFiles={handleChooseFiles}
+                        />
+                    </div>
+                )}
 
                 <div className="ChatF_row display-flex align-items-end padding-4px border-top-blur">
                     <div
@@ -242,6 +263,7 @@ function ChatF({ canvas_obj, input_obj }) {
                                 !!text.trim()
                             }
                             handleSend={handleSend}
+                            handleSendEmoji={handleSendEmoji}
                         />
                     </div>
                 </div>

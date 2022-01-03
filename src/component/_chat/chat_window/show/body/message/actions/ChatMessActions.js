@@ -15,7 +15,12 @@ import './ChatMessActions.scss';
 ChatMessActions.propTypes = {};
 
 //
-function ChatMessActions({ ref_bd_elm, chooseListTypeLike, handleAction }) {
+function ChatMessActions({
+    ref_bd_elm,
+    unsent,
+    chooseListTypeLike,
+    handleAction,
+}) {
     //
     const [show_action, setShowAction] = useState(false);
 
@@ -26,12 +31,14 @@ function ChatMessActions({ ref_bd_elm, chooseListTypeLike, handleAction }) {
 
     //
     function handle_API_Action_L() {
-        return [
-            [
-                { name: 'remove', title: 'Remove' },
-                { name: 'forward', title: 'Forward' },
-            ],
-        ];
+        return unsent
+            ? [[{ name: 'remove', title: 'Remove' }]]
+            : [
+                  [
+                      { name: 'remove', title: 'Remove' },
+                      { name: 'forward', title: 'Forward' },
+                  ],
+              ];
     }
 
     //
@@ -65,6 +72,8 @@ function ChatMessActions({ ref_bd_elm, chooseListTypeLike, handleAction }) {
             <div className="ChatMessActions_row display-flex align-items-center row-reverse">
                 <div className="ChatMessActions_action hv-opacity cursor-pointer">
                     <ActionsMultiList
+                        deps_reset_api={[unsent]}
+                        //
                         getActionsScrollElms={getActionsScrollElms}
                         handle_API_L={handle_API_Action_L}
                         handleAction={handleAction}
@@ -72,27 +81,29 @@ function ChatMessActions({ ref_bd_elm, chooseListTypeLike, handleAction }) {
                     />
                 </div>
 
-                <div className="ChatMessActions_reacted">
-                    <Actions
-                        title_action={<IconFaceGray />}
-                        class_action_contain="ChatMessActions_reacted_contain"
-                        class_action_contain_mb="ChatMessActions_reacted_contain_mb action-contain-mb-center"
-                        is_show={is_true}
-                        getActionsScrollElms={getActionsScrollElms}
-                        // 
-                        use_caret={false}
-                        //
-                        toggleShow={toggleBool}
-                        handleClose={handleClose}
-                    >
-                        <div className="ChatMessActions_reacted_list">
-                            <ListTypeLike
-                                chooseListTypeLike={onChooseListTypeLike}
-                                open_type_like={true}
-                            />
-                        </div>
-                    </Actions>
-                </div>
+                {unsent ? null : (
+                    <div className="ChatMessActions_reacted">
+                        <Actions
+                            title_action={<IconFaceGray />}
+                            class_action_contain="ChatMessActions_reacted_contain"
+                            class_action_contain_mb="ChatMessActions_reacted_contain_mb action-contain-mb-center"
+                            is_show={is_true}
+                            getActionsScrollElms={getActionsScrollElms}
+                            //
+                            use_caret={false}
+                            //
+                            toggleShow={toggleBool}
+                            handleClose={handleClose}
+                        >
+                            <div className="ChatMessActions_reacted_list">
+                                <ListTypeLike
+                                    chooseListTypeLike={onChooseListTypeLike}
+                                    open_type_like={true}
+                                />
+                            </div>
+                        </Actions>
+                    </div>
+                )}
             </div>
         </div>
     );

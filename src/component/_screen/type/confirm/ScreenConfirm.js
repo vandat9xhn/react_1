@@ -12,22 +12,34 @@ import './ScreenConfirm.scss';
 export function openScreenConfirm({
     openScreenFloor,
 
+    class_main = '',
     title,
+    title_center,
     notification,
+
     title_yes,
     title_no,
     reversed_btn = false,
+
+    body_hidden_props = {},
+
     handleConfirm,
     ...other_props
 }) {
     openScreenFloor({
         FloorComponent: ScreenConfirm,
 
+        class_main: class_main,
         title: title,
+        title_center: title_center,
         notification: notification,
+
         title_yes: title_yes,
         title_no: title_no,
         reversed_btn: reversed_btn,
+
+        body_hidden_props: body_hidden_props,
+
         handleConfirm: handleConfirm,
         ...other_props,
     });
@@ -38,11 +50,17 @@ ScreenConfirm.propTypes = {};
 
 //
 function ScreenConfirm({
+    class_main = '',
+
     title,
+    title_center,
     notification,
+
     title_yes,
     title_no,
     reversed_btn,
+
+    body_hidden_props = {},
 
     handleConfirm,
     closeScreen,
@@ -50,6 +68,9 @@ function ScreenConfirm({
     //
     useMakeBodyHidden({
         hidden_app: false,
+        use_z_index: true,
+        screen_z_index: 99,
+        ...body_hidden_props,
     });
 
     // -----
@@ -72,11 +93,14 @@ function ScreenConfirm({
 
     //
     return (
-        <div className="ScreenConfirm w-100per h-100vh display-flex-center">
+        <div
+            className={`ScreenConfirm w-100per h-100vh display-flex-center ${class_main}`}
+        >
             <div className="ScreenConfirm_contain bg-primary brs-5px box-shadow-fb">
                 <div className="ScreenConfirm_head margin-bottom-10px">
                     <ScreenBlurHead
                         title={title}
+                        is_center={title_center}
                         closeScreenBlur={closeScreen}
                     />
                 </div>

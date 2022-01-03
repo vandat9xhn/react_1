@@ -7,17 +7,29 @@ import { useYouOrName } from '../../../../../../../_hooks/useYouOrName';
 ChatBdChangeNickname.propTypes = {};
 
 //
-function ChatBdChangeNickname({ user, friend, nickname }) {
+function ChatBdChangeNickname({ user_set, user, nickname }) {
     //
     const { getYouOrName } = useYouOrName();
+
+    //
+    const user_set_name = getYouOrName({ user: user_set });
+    const user_name = getYouOrName({ user: user });
 
     //
     return (
         <div className="ChatBdChangeNickname">
             <span>
-                {getYouOrName({ user: user })}
-                {' set the nickname for '}
-                {getYouOrName({ user: friend })}
+                {user_set_name}
+                {user_set.id != user.id
+                    ? `${' set the nickname for '}
+                ${user_name}`
+                    : ` set ${
+                          user_name.toLocaleLowerCase() == 'you'
+                              ? 'your'
+                              : user.sex == 'male'
+                              ? 'his'
+                              : 'her'
+                      } nickname`}
                 {' to '}
                 {nickname}.
             </span>

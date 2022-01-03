@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 //
 import { useBool } from './useBool';
 import { useForceUpdate } from './UseForceUpdate';
@@ -6,6 +6,7 @@ import { useForceUpdate } from './UseForceUpdate';
 //
 export function useActionsMultiList({
     handle_API_L = () => new Promise((res) => res()),
+    deps_reset_api = [],
 }) {
     //
     const [state_obj, setStateObj] = useState({
@@ -19,6 +20,19 @@ export function useActionsMultiList({
     //
     const { is_true, setIsTrue, toggleBool } = useBool();
     const forceUpdate = useForceUpdate();
+
+    //
+    useEffect(() => {
+        if (deps_reset_api.length) {
+            setStateObj((state_obj) => {
+                return {
+                    ...state_obj,
+                    list_action_arr: [[]],
+                    has_fetched: false,
+                };
+            });
+        }
+    }, deps_reset_api);
 
     // ------- API
 
@@ -68,7 +82,7 @@ export function useActionsMultiList({
         is_fetching,
         has_fetched,
         is_true,
-        
+
         setStateObj,
 
         toggleBool,

@@ -6,7 +6,7 @@ import { context_chat } from '../../../../../../_context/chat/ContextChat';
 import IconsAction from '../../../../../../_icons_svg/icons_action/IconsAction';
 import IconLike from '../../../../../../_icons_svg/icons_like/icon_like/IconLike';
 //
-import { Group_emoji_obj } from '../../../../../../_groups_icon/emoji/_main';
+import { GROUP_EMOJI_OBJ } from '../../../../../../_groups_icon/emoji/_main';
 //
 import './ChatSd.scss';
 
@@ -22,7 +22,7 @@ function ChatSd({ should_send, handleSend, handleSendEmoji }) {
     const { colour_arr, emoji, room_obj } = useContext(context_chat);
 
     //
-    const Emoji = Group_emoji_obj[emoji.name];
+    const Emoji = GROUP_EMOJI_OBJ[emoji.name];
 
     //
     return (

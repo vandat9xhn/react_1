@@ -5,25 +5,32 @@ import { useHistory } from 'react-router-dom';
 import { context_api } from '../../../../../_context/ContextAPI';
 import ContextChat from '../../../../../_context/chat/ContextChat';
 //
-import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
-//
 import { openChatAddFriend } from '../../__screen/type/add_friend/_main/ChatScreenAddFriend';
 import { openScreenWithElm } from '../../../../_screen/type/with_elm/ScreenWithElm';
 //
-import { CHAT_ACTION_MEMBER_OBJ_1 } from '../../../../../_some_function/chat/action_member';
+import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
+//
+import {
+    CHAT_ACTION_MEMBER_OBJ_1,
+    CHAT_ACTION_MEMBER_OBJ_2,
+} from '../../../../../_some_function/chat/action_member';
+import { handleWsChat } from '../../../_ws/_main';
 //
 import ChatScreen from '../../__screen/_main/ChatScreen';
 import ChatMemberScreen from '../../_components/member_screen/_main/ChatMemberScreen';
 import ChatColorScreen from '../../_components/color/_main/ChatColorScreen';
 import ChatEmojiScreen from '../../_components/emoji/_main/ChatEmojiScreen';
+import ChatGroupNameScreen from '../../_components/group_name/_main/ChatGroupNameScreen';
+import ChatNicknamesScreen from '../../_components/nicknames/_main/ChatNicknamesScreen';
 //
 import ChatHead from '../head/_main/ChatHead';
 import ChatBd from '../body/_main/ChatBd';
 import ChatF from '../footer/_main/ChatFoot';
 //
 import './ChatShow.scss';
-import ChatGroupNameScreen from '../../_components/group_name/_main/ChatGroupNameScreen';
-import ChatNicknamesScreen from '../../_components/nicknames/_main/ChatNicknamesScreen';
+import { WsSend } from '../../../../../_some_function/WsSend';
+import { WS_CHAT_TYPE_OBJ } from '../../../_ws/_type';
+import { openScreenConfirm } from '../../../../_screen/type/confirm/ScreenConfirm';
 
 //
 ChatShow.propTypes = {};
@@ -41,8 +48,14 @@ function ChatShow({
     const use_history = useHistory();
 
     //
-    const { openScreenFloor, closeScreenFloor, openRoomChat } =
-        useContext(context_api);
+    const {
+        user,
+
+        openScreenFloor,
+        closeScreenFloor,
+        openRoomChat,
+        closeRoomChat,
+    } = useContext(context_api);
 
     //
     const {
@@ -63,6 +76,7 @@ function ChatShow({
     const { user_input, num_input } = texting_obj;
 
     const { room_users, count_user, room_creator, room_owner } = room_obj;
+    const room_users_not_leave = room_users.filter((item) => !item.leave);
 
     const is_on_input = user_input ? num_input >= 2 : num_input >= 1;
 
@@ -72,86 +86,19 @@ function ChatShow({
     //
     const forceUpdate = useForceUpdate();
 
+    // --------
+
     //
-    // useEffect(() => {
-    //     shouldSendStatus();
-    // }, []);
+    const fake_ws = {
+        send: (ws_event) => {
+            handleWsChat({
+                ws_event: { data: ws_event },
+                chat_item: chat_item,
+            });
 
-    // //
-    // function handleWsMessage(e) {
-    //     const data = JSON.parse(e.data);
-    //     const { type } = data;
-
-    //     if (type == 'mess') {
-    //         const { new_mess_id } = data;
-    //         handleGetMessage({ ...data, chat_ix: chat_ix });
-
-    //         if (room_active) {
-    //             if (!is_hide) {
-    //                 sendStatusMessageWs(new_mess_id, 'seen');
-    //             } else {
-    //                 sendStatusMessageWs(new_mess_id, 'receive');
-    //             }
-    //         }
-    //     }
-    //     //
-    //     else if (type == 'on_input') {
-    //         handleOnInPut({ chat_ix: chat_ix, ...data });
-    //     }
-    //     //
-    //     else if (type == 'status_mess') {
-    //         const { mess_id } = data;
-    //         mess_id > user_begin_mess &&
-    //             handleStatusMessage({ ...data, chat_ix: chat_ix });
-    //     }
-    //     //
-    //     else if (type == 'like_message') {
-    //         const { mess_id } = data;
-    //         mess_id > user_begin_mess &&
-    //             handleLikeMessage({ ...data, chat_ix: chat_ix });
-    //     }
-    //     //
-    //     else if (type == 'delete_message') {
-    //         const { mess_id } = data;
-    //         mess_id > user_begin_mess &&
-    //             handleDeleteMessage({ ...data, chat_ix: chat_ix });
-    //     }
-    //     //
-    //     else if (type == 'add_friend') {
-    //         handleAddFriendToGroup({
-    //             ...data,
-    //             chat_ix: chat_ix,
-    //             begin_mess: messages[messages.length - 1].id,
-    //         });
-    //     }
-    //     //
-    //     else if (type == 'quit') {
-    //         handleQuitGroup({ chat_ix: chat_ix, ...data });
-    //     }
-    //     //
-    //     else if (type == 'force_quit') {
-    //         handleForceQuitGroup({ chat_ix: chat_ix, ...data });
-    //     }
-    // }
-
-    // //
-    // function shouldSendStatus() {
-    //     const last_message = messages[messages.length - 1];
-    //     if (last_message) {
-    //         const { id } = last_message;
-
-    //         if (room_users[room_users.length - 1].id_seen_mess < id) {
-    //             sendStatusMessageWs(id, 'seen');
-    //         }
-    //     }
-    // }
-
-    /* ---------- WS SEND ----------*/
-
-    // //
-    // function sendStatusMessageWs(new_mess_id, status_mess) {
-    //     handleSendStatusMessageWs(ws.current, new_mess_id, status_mess);
-    // }
+            forceUpdate();
+        },
+    };
 
     /* -------------- */
 
@@ -192,7 +139,7 @@ function ChatShow({
 
     //
     function updateScreenAction() {
-        forceUpdate();
+        // forceUpdate();
         closeScreenFloor();
     }
 
@@ -200,32 +147,46 @@ function ChatShow({
 
     //
     function changeColor(new_color_arr = []) {
-        chat_item.colour_arr = new_color_arr;
-        updateScreenAction();
-    }
+        WsSend(fake_ws, {
+            type: WS_CHAT_TYPE_OBJ.COLOUR,
+            colour_arr: new_color_arr,
+        });
 
-    //
-    function removeEmoji() {
-        chat_item.emoji.name = 'like';
         updateScreenAction();
     }
 
     //
     function changeEmoji(new_emoji = { name: '' }) {
-        chat_item.emoji = new_emoji;
+        WsSend(fake_ws, {
+            type: WS_CHAT_TYPE_OBJ.EMOJI,
+            emoji: new_emoji,
+        });
+
         updateScreenAction();
     }
 
     //
+    function removeEmoji() {
+        changeEmoji({ name: 'like' });
+    }
+
+    //
     function changeGroupName(new_group_name = '') {
-        chat_item.group_name = new_group_name;
+        WsSend(fake_ws, {
+            type: WS_CHAT_TYPE_OBJ.GROUP_NAME,
+            group_name: new_group_name,
+        });
+
         updateScreenAction();
     }
 
     //
     function changeNickName({ nickname, user_ix }) {
-        room_users[user_ix].nickname = nickname;
-        forceUpdate();
+        WsSend(fake_ws, {
+            type: WS_CHAT_TYPE_OBJ.NICKNAMES,
+            nickname: nickname,
+            user_id: room_users[user_ix].user.id,
+        });
     }
 
     // ------ OPEN
@@ -235,7 +196,8 @@ function ChatShow({
         openRoomWithElm({
             elm: (
                 <ChatMemberScreen
-                    room_users={room_users}
+                    room_users={room_users_not_leave}
+                    openRoomRemoveMember={openRoomRemoveMember}
                     handleAction={handleActionGroup}
                     handleClose={closeScreenFloor}
                 />
@@ -287,7 +249,7 @@ function ChatShow({
         openRoomWithElm({
             elm: (
                 <ChatNicknamesScreen
-                    room_users={room_users}
+                    room_users={room_users.filter((item) => !item.leave)}
                     changeNickName={changeNickName}
                     handleClose={closeScreenFloor}
                 />
@@ -295,10 +257,54 @@ function ChatShow({
         });
     }
 
+    //
+    function openRoomLeave() {
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Leave group chat?',
+            notification:
+                'You will stop receiving messages from this conversation and people will see that you left.',
+            title_yes: 'Leave group',
+            title_no: 'Cancel',
+
+            handleConfirm: () => {
+                WsSend(fake_ws, {
+                    type: WS_CHAT_TYPE_OBJ.QUIT,
+                });
+
+                closeRoomChat(true, chat_ix);
+                closeScreenFloor();
+            },
+        });
+    }
+
+    //
+    function openRoomRemoveMember({ user_id, callback = () => {} }) {
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Remove from chat?',
+            notification:
+                'Are you sure that you want to remove this person from the conversation? They will no longer be able to send or receive new messages.',
+            title_yes: 'Remove from chat',
+            title_no: 'Cancel',
+
+            handleConfirm: () => {
+                WsSend(fake_ws, {
+                    type: WS_CHAT_TYPE_OBJ.QUIT,
+                    admin_id: user.id,
+                    user_id: user_id,
+                });
+
+                callback();
+            },
+        });
+    }
+
     // ------ ACTIONS
 
     //
     function handleAction(action_name = '') {
+        console.log(action_name);
         if (action_name == 'view_profile') {
             use_history.push(`/profile/${room_users[1].user.id}`);
 
@@ -308,7 +314,7 @@ function ChatShow({
         if (action_name == 'add_member') {
             openChatAddFriend({
                 openChatScreen: openChatScreen,
-                ws: ws,
+                ws: fake_ws,
                 room_user_id_arr: room_users.map((item) => item.user.id),
             });
 
@@ -344,6 +350,12 @@ function ChatShow({
 
             return;
         }
+
+        if (action_name == 'leave') {
+            openRoomLeave();
+
+            return;
+        }
     }
 
     //
@@ -361,6 +373,18 @@ function ChatShow({
             return;
         }
 
+        // if (action_name == CHAT_ACTION_MEMBER_OBJ_2.remove_member.name) {
+        //     openRoomRemoveMember({ user_id: user_id });
+
+        //     return;
+        // }
+
+        if (action_name == CHAT_ACTION_MEMBER_OBJ_2.leave_group.name) {
+            openRoomLeave();
+
+            return;
+        }
+
         console.log(action_name, user_id);
     }
 
@@ -370,7 +394,7 @@ function ChatShow({
         <ContextChat
             chat_ix={chat_ix}
             scroll_y={scroll_y}
-            ws={ws}
+            ws={fake_ws}
             //
             is_group={is_group}
             group_name={group_name}
@@ -394,8 +418,10 @@ function ChatShow({
                     <div className="ChatShow_head">
                         <ChatHead
                             room_users={room_users}
+                            room_users_not_leave={room_users_not_leave}
                             count_user={count_user}
                             room_owner={room_owner}
+                            //
                             handleAction={handleAction}
                             openRoomUsers={openRoomUsers}
                         />
@@ -421,6 +447,7 @@ function ChatShow({
                                 is_on_input={is_on_input}
                                 //
                                 room_users={room_users}
+                                room_users_not_leave={room_users_not_leave}
                                 room_creator={room_creator}
                             />
                         </div>

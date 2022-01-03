@@ -35,10 +35,10 @@ function ChatMT({ letDrawCanvas, handleChooseFiles }) {
                 <div className="ChatMB_col">
                     <div className="ChatMT__files ChatMT__item">
                         <InputFile
-                            onChange={handleChooseFiles}
                             file_multiple={true}
                             accept="image/*,video/*"
                             title="Choose images/videos"
+                            handleChange={handleChooseFiles}
                         >
                             <IconsInput size_icon={size_icon} />
                         </InputFile>

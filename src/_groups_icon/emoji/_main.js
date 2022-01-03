@@ -5,7 +5,7 @@ import IconLike from '../../_icons_svg/icons_like/icon_like/IconLike';
 import IconSad from '../../_icons_svg/icons_like/icon_sad/IconSad';
 
 //
-export const Group_emoji_obj = {
+export const GROUP_EMOJI_OBJ = {
     like: IconLike,
     sad: IconSad,
     heart: IconHeart,

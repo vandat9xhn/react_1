@@ -6,6 +6,7 @@ import {
     getRandomName,
     getRandomPageName,
 } from './default_name';
+import { getRandomFromArr } from './getRandomFromArr';
 
 //
 export const getRandomTimeOnline = ({ max = 3000 }) =>
@@ -21,6 +22,8 @@ export const getRandomUser = () => {
             picture: getRandomVidPic(),
             first_name: getRandomName(),
             last_name: getRandomName(),
+            sex: getRandomFromArr(['male', 'female', 'other']),
+
             time_online: getRandomTimeOnline({}),
             has_new_story: has_new_story,
             has_seen_story: has_new_story && getRandomBool(),

@@ -1,5 +1,6 @@
 .ChatMess_friend {
-    .ChatMessContent_contain {
+    .ChatMessContent_row {
+        flex-direction: row-reverse;
         background-color: var(--md-bg-ccc);
     }
 }

@@ -5,6 +5,8 @@ import { WsSend } from '../../../../../../../_some_function/WsSend';
 //
 import PicNameContent from '../../../../../../picture_name/pic_name_content/PicNameContent';
 //
+import { WS_CHAT_TYPE_OBJ } from '../../../../../_ws/_type';
+// 
 import './ChatScreenAddFriendItem.scss';
 
 //
@@ -21,8 +23,8 @@ function ChatScreenAddFriendItem({ user, ws }) {
     function onAddFriendToGroupWs() {
         if (!was_added) {
             WsSend(ws, {
-                type: 'add_friend',
-                user_id: user.id,
+                type: WS_CHAT_TYPE_OBJ.ADD_TO_GROUP,
+                user: user,
             });
 
             setWasAdded(true);

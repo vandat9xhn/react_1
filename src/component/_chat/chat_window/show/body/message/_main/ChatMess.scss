@@ -1,8 +1,7 @@
 //
 .ChatMess_user {
     .ChatMess_felt {
-        right: auto;
-        left: 5px;
+        right: 2px;
     }
 }
 
@@ -42,7 +41,15 @@
     }
 }
 
-.ChatMess_sent{
+.ChatMess_sent {
     width: 16px;
     height: 16px;
+}
+
+// ----
+
+.ChatMess_remove_screen {
+    .ScreenConfirm_contain {
+        width: 700px;
+    }
 }

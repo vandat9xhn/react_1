@@ -17,10 +17,11 @@ import { default_chat_emoji_arr } from './emoji';
 const default_room_user_obj = (is_owner = false) => ({
     id: getRandomId(),
     ...(is_owner ? { user: default_define_user } : getRandomUser()),
+    nickname: '',
     is_owner: is_owner,
     is_admin: (getRandomBool() && getRandomBool()) || is_owner,
-    nickname: '',
 
+    leave: false,
     is_notice: true,
     on_chat: false,
     on_input: false,
@@ -64,9 +65,10 @@ export const default_message_user_like_arr = () =>
 //
 const default_message_obj = (is_group = false) => {
     const type =
-        getRandomBool() && getRandomBool()
-            ? getRandomFromArr(Object.values(CHAT_MESS_TYPE))
-            : 'mess';
+        // (getRandomBool() && getRandomBool()) || false
+        //     ? getRandomFromArr(Object.values(CHAT_MESS_TYPE))
+        //     :
+        'mess';
 
     const user_id = getRandomBool() ? 1 : getRandomId();
     const mess_common_obj = {
@@ -81,66 +83,108 @@ const default_message_obj = (is_group = false) => {
 
     // -------
 
-    if (type != 'mess') {
-        const change_obj = {};
+    // if (type != 'mess' || false) {
+    //     const change_obj = {};
 
-        if (
-            is_group &&
-            [
-                CHAT_MESS_TYPE.ADD_FRIEND,
-                CHAT_MESS_TYPE.REMOVE_FRIEND,
-                CHAT_MESS_TYPE.MAKE_ADMIN,
-                CHAT_MESS_TYPE.REMOVE_ADMIN,
-            ].includes(type)
-        ) {
-            change_obj['friend'] = {
-                ...getRandomUser().user,
-                id: user_id != 1 && getRandomBool() ? 1 : getRandomId(),
-            };
-        } else if (type == CHAT_MESS_TYPE.COLOUR) {
-            change_obj['colour_arr'] = getRandomFromArr(
-                default_chat_list_colour_arr()
-            ).colour_arr;
-        } else if (type == CHAT_MESS_TYPE.EMOJI) {
-            change_obj['emoji'] = getRandomFromArr(default_chat_emoji_arr());
-        }
+    // if (
+    //     is_group &&
+    //     [
+    //         CHAT_MESS_TYPE.ADD_FRIEND,
+    //         CHAT_MESS_TYPE.REMOVE_FRIEND,
+    //         CHAT_MESS_TYPE.MAKE_ADMIN,
+    //         CHAT_MESS_TYPE.REMOVE_ADMIN,
+    //     ].includes(type)
+    // ) {
+    //     change_obj['friend'] = {
+    //         ...getRandomUser().user,
+    //         id: user_id != 1 && getRandomBool() ? 1 : getRandomId(),
+    //     };
+    // } else
+    // if (type == CHAT_MESS_TYPE.COLOUR) {
+    //     change_obj['colour_arr'] = getRandomFromArr(
+    //         default_chat_list_colour_arr()
+    //     ).colour_arr;
+    // } else if (type == CHAT_MESS_TYPE.EMOJI) {
+    //     change_obj['emoji'] = getRandomFromArr(default_chat_emoji_arr());
+    // }
 
-        if (type == CHAT_MESS_TYPE.NICKNAME) {
-            change_obj['friend'] = {
-                ...getRandomUser().user,
-                id: user_id != 1 && getRandomBool() ? 1 : getRandomId(),
-            };
-            change_obj['nickname'] = getRandomNickName();
-        }
+    // if (type == CHAT_MESS_TYPE.NICKNAME) {
+    //     change_obj['user_set'] = {
+    //         ...getRandomUser().user,
+    //         id: getRandomId(),
+    //     };
+    //     change_obj['user'] = {
+    //         ...getRandomUser().user,
+    //         id: getRandomId(),
+    //     };
+    //     change_obj['nickname'] = getRandomNickName();
+    // }
 
-        if (Object.keys(change_obj).length > 0) {
-            return {
-                ...mess_common_obj,
-                ...change_obj,
-            };
-        }
+    // if (type == CHAT_MESS_TYPE.GROUP_NAME) {
+    //     change_obj['group_name'] = {
+    //         ...getRandomUser().user,
+    //         id: user_id != 1 && getRandomBool() ? 1 : getRandomId(),
+    //     };
+    //     change_obj['group_name'] = getRandomNickName();
+    // }
+
+    //     if (Object.keys(change_obj).length > 0) {
+    //         return {
+    //             ...mess_common_obj,
+    //             ...change_obj,
+    //         };
+    //     }
+    // } else {
+    const unsent = false;
+
+    if (unsent) {
+        return {
+            ...mess_common_obj,
+            unsent: true,
+        };
     }
+    // }
 
     // ------
 
-    const _vid_pic_arr = default_message_vid_pic_arr(
-        0,
-        getRandomBool() && getRandomBool() ? getRandomNumber(0, 4) : 0
-    );
+    const emoji =
+        getRandomBool() && getRandomBool() && getRandomBool()
+            ? getRandomFromArr(default_chat_emoji_arr())
+            : null;
 
-    const vid_pic_count = getRandomNumber(
-        _vid_pic_arr.length,
-        _vid_pic_arr.length <= 4 ? _vid_pic_arr.length : _vid_pic_arr.length + 4
-    );
+    const _vid_pic_arr = emoji
+        ? []
+        : default_message_vid_pic_arr(
+              0,
+              getRandomBool() && getRandomBool() ? getRandomNumber(0, 4) : 0
+          );
+
+    const vid_pic_count = emoji
+        ? 0
+        : getRandomNumber(
+              _vid_pic_arr.length,
+              _vid_pic_arr.length <= 4
+                  ? _vid_pic_arr.length
+                  : _vid_pic_arr.length + 4
+          );
 
     //
     return {
         ...mess_common_obj,
-        ...default_post_reacted_info_obj(),
+        unsent: false,
+        // ...default_post_reacted_info_obj(),
+
+        reacted_arr: [],
+        reacted_ix_arr: [],
+        reacted_count: 0,
+        user_reacted_ix: -1,
 
         vid_pics: _vid_pic_arr,
         vid_pic_count: vid_pic_count,
-        message: getRandomContent().slice(0, 100),
+        message: emoji
+            ? ''
+            : getRandomContent().slice(0, getRandomNumber(1, 200)),
+        emoji: emoji,
 
         user_seen_arr: [],
         user_receive_arr: [],

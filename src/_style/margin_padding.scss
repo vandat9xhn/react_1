@@ -16,7 +16,7 @@
     margin: 0;
 }
 
-@for $i from 1 through 20 {
+@for $i from 1 through 25 {
     .margin-#{$i}px {
         margin: #{$i}px;
     }
@@ -46,7 +46,7 @@
 
 // ---------- PADDING
 
-@for $i from 0 through 20 {
+@for $i from 0 through 25 {
     .padding-#{$i}px {
         padding: #{$i}px;
     }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
 //
-import { Group_emoji_obj } from '../../../../../../_groups_icon/emoji/_main';
+import { GROUP_EMOJI_OBJ } from '../../../../../../_groups_icon/emoji/_main';
 //
 import './ChatEmojiScreenCurrent.scss';
 
@@ -13,7 +13,7 @@ ChatEmojiScreenCurrent.propTypes = {};
 //
 function ChatEmojiScreenCurrent({ emoji, removeEmoji }) {
     //
-    const Emoji = Group_emoji_obj[emoji.name];
+    const Emoji = GROUP_EMOJI_OBJ[emoji.name];
 
     //
     return (

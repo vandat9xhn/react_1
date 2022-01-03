@@ -41,15 +41,19 @@ export async function handle_API_ChatMessage_L(room_chat, c_count = 0) {
 }
 
 //
-export async function handle_API_ChatMessage_C(
-    room_chat,
-    message,
-    current_canvas,
-    files
-) {
+export async function handle_API_ChatMessage_C({ room_chat, data = {} }) {
+    //
+    const {
+        message = '',
+        current_canvas = '',
+        files = [],
+        emoji = null,
+    } = data;
+
     const formData = makeFormData({
         zoom_model: room_chat,
         message: message,
+        emoji: emoji,
     });
 
     current_canvas && formData.append('canvas_draw', current_canvas);

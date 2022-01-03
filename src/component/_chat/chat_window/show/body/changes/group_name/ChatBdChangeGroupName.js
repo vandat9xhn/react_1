@@ -4,24 +4,23 @@ import PropTypes from 'prop-types';
 import { useYouOrName } from '../../../../../../../_hooks/useYouOrName';
 
 //
-ChatBdChangeRemoveFriend.propTypes = {};
+ChatBdChangeGroupName.propTypes = {};
 
 //
-function ChatBdChangeRemoveFriend({ admin, user }) {
+function ChatBdChangeGroupName({ user, group_name }) {
     //
     const { getYouOrName } = useYouOrName();
 
     //
     return (
-        <div className="ChatBdChangeRemoveFriend">
+        <div className="ChatBdChangeGroupName">
             <span>
-                {getYouOrName({ user: admin })}
-                {' removed '}
                 {getYouOrName({ user: user })}
-                {' from the group.'}
+                {' change the conversation name to '}
+                {group_name}
             </span>
         </div>
     );
 }
 
-export default ChatBdChangeRemoveFriend;
+export default ChatBdChangeGroupName;
