@@ -69,6 +69,17 @@ class AppScreen extends Component {
     };
 
     //
+    detectScreenHasChange = (has_change) => {
+        this.count_has_change += has_change ? 1 : -1;
+        this.has_change_obj.current = this.count_has_change > 0;
+    };
+
+    //
+    rerenderScreenFloor = () => {
+        this.setState({});
+    };
+
+    //
     closeScreenFloor = () => {
         const { floor_arr } = this.state;
 
@@ -80,12 +91,6 @@ class AppScreen extends Component {
             this.count_has_change = 0;
             this.has_change_obj = { current: false };
         }
-    };
-
-    //
-    detectScreenHasChange = (has_change) => {
-        this.count_has_change += has_change ? 1 : -1;
-        this.has_change_obj.current = this.count_has_change > 0;
     };
 
     //

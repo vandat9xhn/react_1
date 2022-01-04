@@ -13,6 +13,8 @@ export const WS_CHAT_TYPE_OBJ = {
     EMOJI: 'emoji',
 
     ADD_TO_GROUP: 'add_to_group',
+    MAKE_ADMIN: 'make_admin',
+    REMOVE_ADMIN: 'remove_admin',
     GROUP_NAME: 'group_name',
     QUIT: 'quit',
 };

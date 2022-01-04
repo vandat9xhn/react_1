@@ -22,6 +22,7 @@ import ChatMessRemove from '../remove/_main/ChatMessRemove';
 import { WS_CHAT_TYPE_OBJ } from '../../../../../_ws/_type';
 import ChatMessUnsent from '../unsent/_main/ChatMessUnsent';
 import ChatMessEmoji from '../emoji/ChatMessEmoji';
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 ChatMess.propTypes = {};
@@ -95,7 +96,7 @@ function ChatMess({ ref_bd_elm, mess_item, ist_last_sent }) {
 
             class_main: user_not_unsent ? 'ChatMess_remove_screen' : '',
             title: title,
-            title_center: true,
+            title_center: !IS_MOBILE,
             notification: notification,
 
             title_yes: 'Remove',

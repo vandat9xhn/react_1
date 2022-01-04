@@ -9,23 +9,18 @@ import ChatMemberScreenHead from '../head/_main/ChatMemberScreenHead';
 import ChatMemberScreenItem from '../item/_main/ChatMemberScreenItem';
 //
 import './ChatMemberScreen.scss';
-import { CHAT_ACTION_MEMBER_OBJ_2 } from '../../../../../../_some_function/chat/action_member';
 
 //
 ChatMemberScreen.propTypes = {};
 
 //
-function ChatMemberScreen({
-    room_users,
-    openRoomRemoveMember,
-    handleAction,
-    handleClose,
-}) {
+function ChatMemberScreen({ room_users, handleAction, handleClose }) {
     //
-    const { user, openScreenFloor } = useContext(context_api);
+    const { user } = useContext(context_api);
 
+    // console.log(room_users);
     //
-    const [user_arr, setUserArr] = useState(room_users);
+    const user_arr = room_users.filter((item) => !item.leave);
 
     //
     useMakeBodyHidden({ use_z_index: true, screen_z_index: 41 });
@@ -45,22 +40,6 @@ function ChatMemberScreen({
             : user_arr.filter((item) => item.is_admin);
 
     // -----
-
-    //
-    function onAction({ action_name = '', user_id = 0 }) {
-        if (action_name == CHAT_ACTION_MEMBER_OBJ_2.remove_member.name) {
-            openRoomRemoveMember({
-                user_id: user_id,
-                callback: () => {
-                    setUserArr((user_arr) =>
-                        user_arr.filter((item) => item.user.id != user_id)
-                    );
-                },
-            });
-        }
-
-        handleAction({ action_name: action_name, user_id: user_id });
-    }
 
     //
     function changeMemberType(new_member_type_ix = 0) {
@@ -87,7 +66,7 @@ function ChatMemberScreen({
                                 user_add={item.user_add}
                                 is_user_admin={is_user_admin}
                                 is_member_admin={item.is_admin}
-                                handleAction={onAction}
+                                handleAction={handleAction}
                             />
                         </div>
                     ))}

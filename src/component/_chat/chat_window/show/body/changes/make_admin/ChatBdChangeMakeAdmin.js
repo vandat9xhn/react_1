@@ -7,7 +7,7 @@ import { useYouOrName } from '../../../../../../../_hooks/useYouOrName';
 ChatBdChangeMakeAdmin.propTypes = {};
 
 //
-function ChatBdChangeMakeAdmin({ user, friend }) {
+function ChatBdChangeMakeAdmin({ user, admin }) {
     //
     const { getYouOrName } = useYouOrName();
 
@@ -15,9 +15,9 @@ function ChatBdChangeMakeAdmin({ user, friend }) {
     return (
         <div className="ChatBdChangeMakeAdmin">
             <span>
-                {getYouOrName({ user: user })}
+                {getYouOrName({ user: admin })}
                 {' added '}
-                {getYouOrName({ user: friend })}
+                {getYouOrName({ user: user })}
                 {' as a group admin.'}
             </span>
         </div>

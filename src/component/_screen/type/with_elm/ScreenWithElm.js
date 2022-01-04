@@ -19,6 +19,7 @@ ScreenWithElm.propTypes = {
 
 //
 function ScreenWithElm({ elm }) {
+    console.log(1);
     //
     return <React.Fragment>{elm}</React.Fragment>;
 }

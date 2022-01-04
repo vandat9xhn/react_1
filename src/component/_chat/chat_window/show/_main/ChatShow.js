@@ -53,6 +53,7 @@ function ChatShow({
 
         openScreenFloor,
         closeScreenFloor,
+
         openRoomChat,
         closeRoomChat,
     } = useContext(context_api);
@@ -100,6 +101,15 @@ function ChatShow({
         },
     };
 
+    // ----
+
+    //
+    function getRoomUserName({ user_id }) {
+        const { user } = room_users.find((item) => item.user.id == user_id);
+
+        return `${user.first_name} ${user.last_name}`;
+    }
+
     /* -------------- */
 
     //
@@ -143,7 +153,7 @@ function ChatShow({
         closeScreenFloor();
     }
 
-    // ------
+    // ------ WS SEND
 
     //
     function changeColor(new_color_arr = []) {
@@ -193,15 +203,12 @@ function ChatShow({
 
     //
     function openRoomUsers() {
-        openRoomWithElm({
-            elm: (
-                <ChatMemberScreen
-                    room_users={room_users_not_leave}
-                    openRoomRemoveMember={openRoomRemoveMember}
-                    handleAction={handleActionGroup}
-                    handleClose={closeScreenFloor}
-                />
-            ),
+        openScreenFloor({
+            FloorComponent: ChatMemberScreen,
+            room_users: room_users,
+
+            handleAction: handleActionGroup,
+            handleClose: closeScreenFloor,
         });
     }
 
@@ -279,7 +286,7 @@ function ChatShow({
     }
 
     //
-    function openRoomRemoveMember({ user_id, callback = () => {} }) {
+    function openRoomRemoveMember({ user_id }) {
         openScreenConfirm({
             openScreenFloor: openScreenFloor,
             title: 'Remove from chat?',
@@ -294,8 +301,46 @@ function ChatShow({
                     admin_id: user.id,
                     user_id: user_id,
                 });
+            },
+        });
+    }
 
-                callback();
+    //
+    function openRoomMakeAdmin({ user_id }) {
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Add group admin?',
+            notification: `As a group admin, "${getRoomUserName({
+                user_id: user_id,
+            })}" will be able to manage who can join and customise this conversation.`,
+            title_yes: 'Make Admin',
+            title_no: 'Cancel',
+
+            handleConfirm: () => {
+                WsSend(fake_ws, {
+                    type: WS_CHAT_TYPE_OBJ.MAKE_ADMIN,
+                    user_id: user_id,
+                });
+            },
+        });
+    }
+
+    //
+    function openRoomRemoveAdmin({ user_id }) {
+        openScreenConfirm({
+            openScreenFloor: openScreenFloor,
+            title: 'Remove as group admin?',
+            notification: `"${getRoomUserName({
+                user_id: user_id,
+            })}" will no longer be able to manage who can join and customise this conversation.`,
+            title_yes: 'Remove',
+            title_no: 'Cancel',
+
+            handleConfirm: () => {
+                WsSend(fake_ws, {
+                    type: WS_CHAT_TYPE_OBJ.REMOVE_ADMIN,
+                    user_id: user_id,
+                });
             },
         });
     }
@@ -373,14 +418,26 @@ function ChatShow({
             return;
         }
 
-        // if (action_name == CHAT_ACTION_MEMBER_OBJ_2.remove_member.name) {
-        //     openRoomRemoveMember({ user_id: user_id });
+        if (action_name == CHAT_ACTION_MEMBER_OBJ_2.remove_member.name) {
+            openRoomRemoveMember({ user_id: user_id });
 
-        //     return;
-        // }
+            return;
+        }
 
         if (action_name == CHAT_ACTION_MEMBER_OBJ_2.leave_group.name) {
             openRoomLeave();
+
+            return;
+        }
+
+        if (action_name == CHAT_ACTION_MEMBER_OBJ_2.make_admin.name) {
+            openRoomMakeAdmin({ user_id: user_id });
+
+            return;
+        }
+
+        if (action_name == CHAT_ACTION_MEMBER_OBJ_2.remove_admin.name) {
+            openRoomRemoveAdmin({ user_id: user_id });
 
             return;
         }

@@ -7,23 +7,23 @@ import { useYouOrName } from '../../../../../../../_hooks/useYouOrName';
 ChatBdChangeRemoveAdmin.propTypes = {};
 
 //
-function ChatBdChangeRemoveAdmin({ user, friend }) {
+function ChatBdChangeRemoveAdmin({ user, admin }) {
     //
     const { getYouOrName } = useYouOrName();
 
     //
     return (
         <div className="ChatBdChangeRemoveAdmin">
-            {user ? (
+            {admin ? (
                 <span>
-                    {getYouOrName({ user: user })}
+                    {getYouOrName({ user: admin })}
                     {' removed '}
-                    {getYouOrName({ user: friend })}
+                    {getYouOrName({ user: user })}
                     {' as a group admin.'}
                 </span>
             ) : (
                 <span>
-                    {getYouOrName({ user: friend })}
+                    {getYouOrName({ user: user })}
                     {' removed themselves as a group admin.'}
                 </span>
             )}

@@ -82,7 +82,7 @@ function AppScreenFloors({
             return (event.returnValue = 'Are you sure you want to exit?');
         }
     }
-
+    
     //
     return (
         <React.Fragment>

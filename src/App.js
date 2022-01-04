@@ -110,8 +110,9 @@ class App extends Component {
     refAppScreen = (elm) => {
         if (elm != null) {
             this.openScreenFloor = elm.openScreenFloor;
-            this.closeScreenFloor = elm.closeScreenFloor;
             this.detectScreenHasChange = elm.detectScreenHasChange;
+            this.rerenderScreenFloor = elm.rerenderScreenFloor;
+            this.closeScreenFloor = elm.closeScreenFloor;
         }
     };
 
@@ -157,8 +158,9 @@ class App extends Component {
                         closeScreenOnce={this.closeScreenOnce}
                         //
                         openScreenFloor={this.openScreenFloor}
-                        closeScreenFloor={this.closeScreenFloor}
                         detectScreenHasChange={this.detectScreenHasChange}
+                        rerenderScreenFloor={this.rerenderScreenFloor}
+                        closeScreenFloor={this.closeScreenFloor}
                     >
                         <div className="App">
                             <header className="AppHeader">

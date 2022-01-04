@@ -1,5 +1,15 @@
-.ChatMessRemoveItem{
-    .RadioCustom_active{
+.ChatMessRemoveItem {
+    .RadioCustom_active {
         background-color: var(--blue);
+    }
+}
+
+// -----
+
+.device-mobile {
+    .ChatMessRemoveItem_des {
+        margin-top: 2px;
+        font-size: 13px;
+        line-height: initial;
     }
 }

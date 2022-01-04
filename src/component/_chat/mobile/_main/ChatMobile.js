@@ -41,15 +41,6 @@ function ChatMobile(props) {
 
     //
     useEffect(() => {
-        toggleAppHiddenTemp({ is_hidden: true });
-
-        return () => {
-            toggleAppHiddenTemp({ is_hidden: false });
-        };
-    }, []);
-
-    //
-    useEffect(() => {
         openRoomChat(room_chat);
     }, [id]);
 

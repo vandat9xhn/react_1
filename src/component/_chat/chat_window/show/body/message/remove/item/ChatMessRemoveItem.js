@@ -37,7 +37,7 @@ function ChatMessRemoveItem({
                 </div>
             </div>
 
-            <div className="margin-top-10px padding-left-24px text-third">
+            <div className="ChatMessRemoveItem_des margin-top-10px padding-left-24px text-third">
                 {description}
             </div>
         </div>

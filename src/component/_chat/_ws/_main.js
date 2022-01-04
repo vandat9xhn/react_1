@@ -17,6 +17,8 @@ import { handleChangeGroupName } from './handleChangeGroupName';
 import { handleAddToGroup } from './handleAddToGroup';
 import { handleQuitGroup } from './handleQuitGroup';
 import { handleChangeNicknames } from './handleChangeNicknames';
+import { handleRemoveAdmin } from './handleRemoveAdmin';
+import { handleMakeAdmin } from './handleMakeAdmin';
 
 
 //
@@ -84,6 +86,16 @@ export function handleWsChat({ ws_event, chat_item }) {
             {
                 type: WS_CHAT_TYPE_OBJ.ADD_TO_GROUP,
                 handleType: handleAddToGroup,
+                data_type_obj: { chat_item: chat_item },
+            },
+            {
+                type: WS_CHAT_TYPE_OBJ.MAKE_ADMIN,
+                handleType: handleMakeAdmin,
+                data_type_obj: { chat_item: chat_item },
+            },
+            {
+                type: WS_CHAT_TYPE_OBJ.REMOVE_ADMIN,
+                handleType: handleRemoveAdmin,
                 data_type_obj: { chat_item: chat_item },
             },
             {

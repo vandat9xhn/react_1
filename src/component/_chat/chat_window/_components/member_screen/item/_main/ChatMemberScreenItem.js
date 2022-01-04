@@ -81,6 +81,8 @@ function ChatMemberScreenItem({
                     <div>
                         <ActionsMultiList
                             x_always="right"
+                            deps_reset_api={[is_member_admin]}
+                            //
                             handle_API_L={handle_API_L}
                             handleAction={onAction}
                         />

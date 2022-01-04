@@ -1,12 +1,9 @@
-import { CHAT_MESS_TYPE } from '../../_data/chat/mess_type';
 import { default_define_user } from '../login/DefaultLogin';
-import { default_post_reacted_info_obj } from '../post/reacted';
 //
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
-import { getRandomName, getRandomNickName } from '../_common/default_name';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
@@ -64,11 +61,7 @@ export const default_message_user_like_arr = () =>
 
 //
 const default_message_obj = (is_group = false) => {
-    const type =
-        // (getRandomBool() && getRandomBool()) || false
-        //     ? getRandomFromArr(Object.values(CHAT_MESS_TYPE))
-        //     :
-        'mess';
+    const type = 'mess';
 
     const user_id = getRandomBool() ? 1 : getRandomId();
     const mess_common_obj = {
@@ -83,58 +76,6 @@ const default_message_obj = (is_group = false) => {
 
     // -------
 
-    // if (type != 'mess' || false) {
-    //     const change_obj = {};
-
-    // if (
-    //     is_group &&
-    //     [
-    //         CHAT_MESS_TYPE.ADD_FRIEND,
-    //         CHAT_MESS_TYPE.REMOVE_FRIEND,
-    //         CHAT_MESS_TYPE.MAKE_ADMIN,
-    //         CHAT_MESS_TYPE.REMOVE_ADMIN,
-    //     ].includes(type)
-    // ) {
-    //     change_obj['friend'] = {
-    //         ...getRandomUser().user,
-    //         id: user_id != 1 && getRandomBool() ? 1 : getRandomId(),
-    //     };
-    // } else
-    // if (type == CHAT_MESS_TYPE.COLOUR) {
-    //     change_obj['colour_arr'] = getRandomFromArr(
-    //         default_chat_list_colour_arr()
-    //     ).colour_arr;
-    // } else if (type == CHAT_MESS_TYPE.EMOJI) {
-    //     change_obj['emoji'] = getRandomFromArr(default_chat_emoji_arr());
-    // }
-
-    // if (type == CHAT_MESS_TYPE.NICKNAME) {
-    //     change_obj['user_set'] = {
-    //         ...getRandomUser().user,
-    //         id: getRandomId(),
-    //     };
-    //     change_obj['user'] = {
-    //         ...getRandomUser().user,
-    //         id: getRandomId(),
-    //     };
-    //     change_obj['nickname'] = getRandomNickName();
-    // }
-
-    // if (type == CHAT_MESS_TYPE.GROUP_NAME) {
-    //     change_obj['group_name'] = {
-    //         ...getRandomUser().user,
-    //         id: user_id != 1 && getRandomBool() ? 1 : getRandomId(),
-    //     };
-    //     change_obj['group_name'] = getRandomNickName();
-    // }
-
-    //     if (Object.keys(change_obj).length > 0) {
-    //         return {
-    //             ...mess_common_obj,
-    //             ...change_obj,
-    //         };
-    //     }
-    // } else {
     const unsent = false;
 
     if (unsent) {
@@ -143,7 +84,6 @@ const default_message_obj = (is_group = false) => {
             unsent: true,
         };
     }
-    // }
 
     // ------
 
@@ -172,7 +112,6 @@ const default_message_obj = (is_group = false) => {
     return {
         ...mess_common_obj,
         unsent: false,
-        // ...default_post_reacted_info_obj(),
 
         reacted_arr: [],
         reacted_ix_arr: [],
