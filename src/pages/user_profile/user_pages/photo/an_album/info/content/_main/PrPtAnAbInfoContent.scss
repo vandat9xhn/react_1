@@ -1,20 +1,23 @@
 .PrPtAnAbInfoContent_permission {
-    &:hover{
-        svg{
-            border-radius: 50%;
-            background-color: var(--bg-s-through);
-            box-shadow: 0 0 0 4px var(--bg-s-through);
-        }
-    }
     svg {
         width: 13px;
         height: 13px;
     }
 }
 
+.PrPtAnAbInfoContent_permission-your {
+    &:hover {
+        svg {
+            border-radius: 50%;
+            background-color: var(--bg-s-through);
+            box-shadow: 0 0 0 4px var(--bg-s-through);
+        }
+    }
+}
+
 // -----
 
-.device-mobile{
+.device-mobile {
     .PrPtAnAbInfoContent {
         padding: 0;
     }

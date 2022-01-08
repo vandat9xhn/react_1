@@ -16,7 +16,9 @@ function PrPtAnAbInfoContent({
     description,
     post_count,
     item_count,
+
     permission,
+    is_your,
 
     handleChoosePermission,
 }) {
@@ -25,6 +27,10 @@ function PrPtAnAbInfoContent({
 
     //
     function onOpenPermission() {
+        if (!is_your) {
+            return;
+        }
+
         openScreenPermission({
             openScreenFloor: openScreenFloor,
             permission: permission,
@@ -51,7 +57,11 @@ function PrPtAnAbInfoContent({
                 </span>
                 {' · '}
                 <span
-                    className="PrPtAnAbInfoContent_permission cursor-pointer"
+                    className={`PrPtAnAbInfoContent_permission ${
+                        is_your
+                            ? 'PrPtAnAbInfoContent_permission-your cursor-pointer'
+                            : 'cursor-default'
+                    }`}
                     onClick={onOpenPermission}
                 >
                     {IconsPermission[permission].Icon}

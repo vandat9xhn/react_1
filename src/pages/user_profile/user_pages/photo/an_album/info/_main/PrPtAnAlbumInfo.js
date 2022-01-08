@@ -18,6 +18,7 @@ PrPtAnAlbumInfo.propTypes = {};
 function PrPtAnAlbumInfo({
     album_obj,
     mode_view,
+    is_your,
 
     changeModeView,
     handleChoosePermission,
@@ -77,6 +78,7 @@ function PrPtAnAlbumInfo({
                     post_count={post_count}
                     item_count={item_count}
                     permission={permission}
+                    is_your={is_your}
                     // 
                     handleChoosePermission={handleChoosePermission}
                 />

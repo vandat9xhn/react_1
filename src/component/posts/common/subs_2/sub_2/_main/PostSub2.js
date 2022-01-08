@@ -59,9 +59,11 @@ function PostSub2({
     const {
         id,
         user,
-        vid_pic,
-        updated_time,
+
         content_obj,
+        vid_pic,
+        is_edited,
+        updated_time,
 
         reacted_ix_arr,
         reacted_count,
@@ -266,6 +268,7 @@ function PostSub2({
                     //
                     content_obj={content_obj}
                     vid_pic={vid_pic}
+                    is_edited={is_edited}
                     updated_time={updated_time}
                     class_scroll_elm={''}
                     //

@@ -98,10 +98,10 @@ function Posts({
         ws.current =
             localStorage.is_login && !is_api_fake ? new WebSocket('') : null;
 
-        ws.current != null &&
-            (ws.current.onopen = () => {
-                console.log('open');
-            });
+        // ws.current != null &&
+        //     (ws.current.onopen = () => {
+        //         console.log('open');
+        //     });
     }, []);
 
     //

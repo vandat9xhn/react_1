@@ -110,7 +110,8 @@ export const API_PostCmtHistory_L = (params, is_vid_pic = false) =>
                 method: 'GET',
                 params: params,
             }),
-        params
+        params,
+        true
     );
 
 //

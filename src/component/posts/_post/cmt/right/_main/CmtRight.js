@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-//
-import { useHold } from '../../../../../../_hooks/useHold';
 //
 import CmtAction from '../action/_main/CmtAction';
 import CmtUser from '../user/CmtUser';
@@ -22,6 +20,7 @@ function CmtRight({
 
     content_obj,
     vid_pic,
+    is_edited,
     updated_time,
     class_scroll_elm,
 
@@ -62,12 +61,14 @@ function CmtRight({
                         <CmtUser user_name={user_name} user_id={user_id} />
                     </div>
 
-                    <div className="CmtRight_text">
-                        <CmtText
-                            content_obj={content_obj}
-                            seeMoreContent={seeMoreContent}
-                        />
-                    </div>
+                    {content_obj.content ? (
+                        <div className="CmtRight_text">
+                            <CmtText
+                                content_obj={content_obj}
+                                seeMoreContent={seeMoreContent}
+                            />
+                        </div>
+                    ) : null}
 
                     {vid_pic ? null : (
                         <div className="pos-abs right-0 top-100per trans-y--50per z-index-1 padding-right-2px">
@@ -108,6 +109,7 @@ function CmtRight({
 
             <div className="margin-top-5px">
                 <CmtInteract
+                    is_edited={is_edited}
                     user_reacted_ix={user_reacted_ix}
                     updated_time={updated_time}
                     class_scroll_elm={class_scroll_elm}

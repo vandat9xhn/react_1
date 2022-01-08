@@ -131,6 +131,7 @@ function ProfilePhotoAnAlbum({ user_id, name, is_your }) {
                 <PrPtAnAlbumInfo
                     album_obj={album_obj}
                     mode_view={mode_view}
+                    is_your={is_your}
                     //
                     changeModeView={changeModeView}
                     handleChoosePermission={handleChoosePermission}

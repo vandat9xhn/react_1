@@ -107,7 +107,8 @@ export const API_PostSubHistory_L = (params, is_vid_pic = false) =>
                 method: 'GET',
                 params: params,
             }),
-        params
+        params,
+        true
     );
 
 //

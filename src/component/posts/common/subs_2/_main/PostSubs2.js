@@ -5,6 +5,8 @@ import { context_post } from '../../../../../_context/post/ContextPost';
 //
 import { getReplyTitleAllOrMore } from '../../../../../_some_function/post/cmt_title_more';
 //
+// 
+import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 import IconReply from '../../../../../_icons_svg/icon_reply/IconReply';
 //
 import CommentPost from '../../../../input_img_vid_preview/comment_post/CommentPost';
@@ -19,7 +21,10 @@ PostSubs2.propTypes = {};
 
 //
 function PostSubs2({
+    parent_id,
+    cmt_id,
     sub_id,
+
     subs_2,
     count_sub_2,
 
@@ -29,9 +34,6 @@ function PostSubs2({
     open_input_sub_2,
     focusInputSub2,
 }) {
-    //
-    const count_sub_2_left = count_sub_2 - subs_2.length;
-
     //
     const {
         ws_send,
@@ -43,7 +45,13 @@ function PostSubs2({
     } = useContext(context_post);
 
     //
+    const count_sub_2_left = count_sub_2 - subs_2.length;
+
+    //
     const [fetching_sub, setFetchingSub] = useState(false);
+
+    //
+    const forceUpdate = useForceUpdate();
 
     //
     async function onGetPostSubs2() {
@@ -61,7 +69,7 @@ function PostSubs2({
 
     //
     async function onSendSub2(content, files) {
-        const { content: new_content, vid_pic } = await handle_API_Sub_C({
+        const data = await handle_API_Sub_C({
             is_sub_2: 1,
             sub_id: sub_id,
             data: {
@@ -72,10 +80,16 @@ function PostSubs2({
             is_vid_pic: is_main_vid_pic,
         });
 
+        subs_2.unshift(data)
+        forceUpdate()
+
         ws_send({
             type: ws_type_sub + '_input',
-            content: new_content,
-            file: vid_pic,
+            parent_id: parent_id,
+            cmt_id: cmt_id,
+            sub_id: sub_id,
+            content: data.content_obj.content,
+            vid_pic: data.vid_pic,
         });
     }
 

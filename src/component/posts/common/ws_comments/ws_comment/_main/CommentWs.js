@@ -28,7 +28,7 @@ import './CommentWs.scss';
 CommentWs.propTypes = {};
 
 //
-function CommentWs({ use_cmt_connect, comment }) {
+function CommentWs({ parent_id, use_cmt_connect, comment }) {
     //
     const { user: c_user, openScreenFloor } = useContext(context_api);
 
@@ -51,9 +51,11 @@ function CommentWs({ use_cmt_connect, comment }) {
     const {
         id,
         user,
-        vid_pic,
-        updated_time,
+
         content_obj,
+        vid_pic,
+        is_edited,
+        updated_time,
 
         reacted_ix_arr,
         reacted_count,
@@ -116,17 +118,14 @@ function CommentWs({ use_cmt_connect, comment }) {
     //
     function focusInputSub() {
         if (c_user.id) {
-            !open_input_sub &&
-                setStateObj((state_obj) => ({
-                    ...state_obj,
-                    open_input_sub: true,
-                }));
+            setStateObj((state_obj) => ({
+                ...state_obj,
+                open_input_sub: true,
+            }));
 
             setTimeout(() => {
                 ref_subs_ws.current
-                    .querySelector(
-                        '.SubsWs_input textarea.CommentInput_textarea'
-                    )
+                    .querySelector('.SubsWs_input textarea')
                     .focus();
             }, 1);
         }
@@ -278,6 +277,7 @@ function CommentWs({ use_cmt_connect, comment }) {
                     //
                     content_obj={content_obj}
                     vid_pic={vid_pic}
+                    is_edited={is_edited}
                     updated_time={updated_time}
                     class_scroll_elm={''}
                     //
@@ -306,8 +306,9 @@ function CommentWs({ use_cmt_connect, comment }) {
             </div>
 
             <div ref={ref_subs_ws} className="Comment_subs">
-                {count_sub ? (
+                {count_sub || open_input_sub ? (
                     <SubsWs
+                        parent_id={parent_id}
                         cmt_id={id}
                         subs={subs}
                         count_sub={count_sub}

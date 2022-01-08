@@ -1,3 +1,9 @@
+import { default_define_user } from '../../_default/login/DefaultLogin';
+import { getRandomId } from '../../_default/_common/default_id';
+// 
+import { loadFile } from '../../_some_function/loadFile';
+import makeFormData from '../../_some_function/makeFormData';
+// 
 import {
     API_PostSub_LC,
     API_PostSub_UD,
@@ -7,8 +13,6 @@ import {
     API_PostSubContentMore_R,
     API_SubReactedInfo_L,
 } from '../../api/api_django/user/user_post/sub';
-//
-import makeFormData from '../../_some_function/makeFormData';
 //
 import {
     params_sub_post_l,
@@ -58,8 +62,49 @@ export async function handle_API_Sub_C({
         }),
         is_vid_pic
     );
+
     // return res.data;
-    return data;
+
+    const { vid_pics } = data.vid_pic
+        ? await loadFile([data.vid_pic])
+        : { vid_pics: [{ vid_pic: '' }] };
+    const fake_data = {
+        id: getRandomId(),
+        user: {
+            ...default_define_user,
+            sex: 'male',
+            time_online: 0,
+            has_new_story: false,
+            has_seen_story: false,
+        },
+        content_obj: {
+            content_more: '',
+            has_more_content: false,
+            content: data.content,
+        },
+        vid_pic: vid_pics[0].vid_pic,
+        is_edited: false,
+
+        reacted_arr: [],
+        reacted_ix_arr: [],
+        reacted_count: 0,
+        user_reacted_ix: 0,
+
+        is_sub2: is_sub_2,
+        sub_id: sub_id,
+
+        subs_2: [],
+        count_sub_2: 0,
+        histories: [],
+        count_history: 0,
+
+        profile_model: default_define_user.id,
+        comment_model: cmt_id,
+        created_time: new Date().toString(),
+        updated_time: new Date().toString(),
+    };
+
+    return fake_data;
 }
 
 //

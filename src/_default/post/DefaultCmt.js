@@ -1,3 +1,4 @@
+import { getRandomBool } from '../_common/default_bool';
 import { getRandomContentObj } from '../_common/default_content';
 import { getRandomId } from '../_common/default_id';
 import { getRandomVidPicOrNull } from '../_common/default_image';
@@ -14,11 +15,13 @@ export const default_post_cmt_obj = () => ({
     ...getRandomContentObj(),
     ...default_post_reacted_info_obj(),
     
+    is_edited: getRandomBool() && getRandomBool(),
+    vid_pic: getRandomVidPicOrNull(),
+
     subs: default_post_sub_arr(0, 1),
     count_sub: 1,
     histories: [],
     count_history: 0,
-    vid_pic: getRandomVidPicOrNull(),
 
     profile_model: 2,
     post_model: 11,

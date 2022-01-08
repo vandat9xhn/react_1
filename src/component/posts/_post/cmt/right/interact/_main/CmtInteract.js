@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../../_constant/Constant';
+// 
 import UnitTime from '../../../../../../../_some_function/UnitTime';
 //
 import Like from '../../../../../../like/_main/Like';
@@ -11,15 +13,16 @@ import CmtShare from '../share/CmtShare';
 import CmtAward from '../award/CmtAward';
 //
 import './CmtInteract.scss';
-import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 
 //
 CmtInteract.propTypes = {};
 
 //
 function CmtInteract({
+    is_edited,
     user_reacted_ix,
     updated_time,
+
     class_scroll_elm,
 
     changeTypeLike,
@@ -76,12 +79,12 @@ function CmtInteract({
 
                 <div className="CmtInteract_separate">.</div>
 
-                <div
+                {is_edited ? <div
                     className="cursor-pointer hv-underline"
                     onClick={openHistory}
                 >
                     Edited
-                </div>
+                </div> : null}
             </div>
         </div>
     );

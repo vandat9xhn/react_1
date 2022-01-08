@@ -24,6 +24,7 @@ function PostCmt({
 
     content_obj,
     vid_pic,
+    is_edited,
     updated_time,
     class_scroll_elm,
 
@@ -119,6 +120,7 @@ function PostCmt({
                         //
                         content_obj={content_obj}
                         vid_pic={vid_pic}
+                        is_edited={is_edited}
                         updated_time={updated_time}
                         class_scroll_elm={class_scroll_elm}
                         //

@@ -5,6 +5,8 @@ import { context_post } from '../../../../../_context/post/ContextPost';
 //
 import { getReplyTitleAllOrMore } from '../../../../../_some_function/post/cmt_title_more';
 //
+import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
+// 
 import IconReply from '../../../../../_icons_svg/icon_reply/IconReply';
 //
 import CommentPost from '../../../../input_img_vid_preview/comment_post/CommentPost';
@@ -19,17 +21,16 @@ SubsWs.propTypes = {};
 
 //
 function SubsWs({
+    parent_id,
     cmt_id,
+
     subs,
     count_sub,
-    //
+
     use_cmt_connect,
     open_input_sub,
     focusInputSub,
 }) {
-    //
-    const count_sub_left = count_sub - subs.length;
-
     //
     const {
         ws_send,
@@ -41,7 +42,13 @@ function SubsWs({
     } = useContext(context_post);
 
     //
+    const count_sub_left = count_sub - subs.length;
+
+    //
     const [fetching_sub, setFetchingSub] = useState(false);
+
+    //
+    const forceUpdate = useForceUpdate();
 
     // ------
 
@@ -57,7 +64,7 @@ function SubsWs({
 
     //
     async function onSendSub(content, files) {
-        const { content: new_content, vid_pic } = await handle_API_Sub_C({
+        const data = await handle_API_Sub_C({
             cmt_id: cmt_id,
             data: {
                 content: content,
@@ -66,10 +73,15 @@ function SubsWs({
             is_vid_pic: is_main_vid_pic,
         });
 
+        subs.unshift(data)
+        forceUpdate()
+
         ws_send({
             type: ws_type_sub + '_input',
-            content: new_content,
-            file: vid_pic,
+            parent_id: parent_id,
+            cmt_id: cmt_id,
+            content: data.content_obj.content,
+            vid_pic: data.vid_pic,
         });
     }
 
@@ -108,6 +120,8 @@ function SubsWs({
                 {subs.map((sub, sub_ix) => (
                     <div className="SubsWs_item" key={sub.id}>
                         <SubWs
+                            parent_id={parent_id}
+                            cmt_id={cmt_id}
                             sub={sub}
                             // Flex col-reverse => the first does not have straight-1
                             use_cmt_connect={use_cmt_connect}

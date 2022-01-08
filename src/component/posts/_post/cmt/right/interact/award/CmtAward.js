@@ -40,6 +40,11 @@ function CmtAward({ sendAward }) {
     // ----
 
     //
+    function handleClose() {
+        setIsTrue(false);
+    }
+
+    //
     function onSendAward() {
         setIsTrue(false);
         sendAward(award_arr[award_ix]);
@@ -53,6 +58,7 @@ function CmtAward({ sendAward }) {
             }
             is_show={is_true}
             toggleShow={toggleBool}
+            handleClose={handleClose}
         >
             <div className="CmtAward cmt-interact-portal">
                 <div className="CmtAward_contain">

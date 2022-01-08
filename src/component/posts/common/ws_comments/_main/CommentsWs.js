@@ -7,6 +7,8 @@ import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
 import { getCmtTitleMore } from '../../../../../_some_function/post/cmt_title_more';
 //
+import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
+// 
 import IconCaret from '../../../../../_icons_svg/_icon_caret/IconCaret';
 import IconUpdate from '../../../../../_icons_svg/icon_update/IconUpdate';
 //
@@ -37,13 +39,6 @@ function CommentsWs({
     initial_open_input = false,
 }) {
     //
-    const count_comment_left = count_comment - comments.length;
-
-    //
-    const [fetching_cmt, setFetchingCmt] = useState(false);
-    const [open_input, setOpenInput] = useState(initial_open_input);
-
-    //
     const {
         ws_send,
         ws_type_cmt,
@@ -51,6 +46,16 @@ function CommentsWs({
         handle_API_Cmt_L,
         handle_API_Cmt_C,
     } = useContext(context_post);
+
+    //
+    const count_comment_left = count_comment - comments.length;
+
+    //
+    const [fetching_cmt, setFetchingCmt] = useState(false);
+    const [open_input, setOpenInput] = useState(initial_open_input);
+
+    // 
+    const forceUpdate = useForceUpdate()
 
     //
     useEffect(() => {
@@ -83,18 +88,19 @@ function CommentsWs({
 
     //
     async function onSendCmt(content, files) {
-        const { content: new_content, vid_pic } = await handle_API_Cmt_C(
-            parent_id,
-            {
-                content: content,
-                vid_pic: files[0],
-            }
-        );
+        const data = await handle_API_Cmt_C(parent_id, {
+            content: content,
+            vid_pic: files[0],
+        });
+
+        comments.unshift(data);
+        forceUpdate()
 
         ws_send({
             type: ws_type_cmt + '_input',
-            content: new_content,
-            file: vid_pic,
+            parent_id: parent_id,
+            content: data.content_obj.content,
+            vid_pic: data.vid_pic,
         });
     }
 
@@ -141,6 +147,7 @@ function CommentsWs({
                 {comments.map((comment) => (
                     <CommentWs
                         key={comment.id}
+                        parent_id={parent_id}
                         comment={comment}
                         use_cmt_connect={use_cmt_connect}
                     />

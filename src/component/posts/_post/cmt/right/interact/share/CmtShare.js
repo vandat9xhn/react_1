@@ -13,7 +13,14 @@ CmtShare.propTypes = {};
 //
 function CmtShare({}) {
     //
-    const { is_true, toggleBool } = useBool();
+    const { is_true, setIsTrue, toggleBool } = useBool();
+
+    // -----
+
+    //
+    function handleClose() {
+        setIsTrue(false);
+    }
 
     //
     return (
@@ -23,6 +30,7 @@ function CmtShare({}) {
             }
             is_show={is_true}
             toggleShow={toggleBool}
+            handleClose={handleClose}
         >
             <div className="CmtShare cmt-interact-portal">
                 <div className="CmtShare_contain">

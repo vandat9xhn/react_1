@@ -4,23 +4,23 @@
     height: 0.5rem;
     border-radius: 50%;
 
-    animation: fetching_div 1.5s infinite linear;
+    animation: fetching_div 0.75s infinite linear;
 }
 
 .FetchingDiv_item_2 {
-    animation-delay: 0.5s;
+    animation-delay: 0.25s;
 }
 .FetchingDiv_item_3 {
-    animation-delay: 1s;
+    animation-delay: 0.5s;
 }
 
 // 
 @keyframes fetching_div {
     0% {
-        background-color: var(--blue);
+        background-color: var(--md-bg-ccc);
     }
     50% {
-        background-color: var(--md-bg-ccc);
+        background-color: var(--blue);
     }
     100% {
         background-color: transparent;

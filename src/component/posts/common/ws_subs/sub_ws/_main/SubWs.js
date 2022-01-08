@@ -31,7 +31,15 @@ import './SubWs.scss';
 SubWs.propTypes = {};
 
 //
-function SubWs({ sub, use_cmt_connect, has_straight_1, focusInputSub }) {
+function SubWs({
+    parent_id,
+    cmt_id,
+    sub,
+
+    use_cmt_connect,
+    has_straight_1,
+    focusInputSub,
+}) {
     //
     const {
         ws_send,
@@ -54,9 +62,11 @@ function SubWs({ sub, use_cmt_connect, has_straight_1, focusInputSub }) {
     const {
         id,
         user,
+
         vid_pic,
-        updated_time,
         content_obj,
+        is_edited,
+        updated_time,
 
         reacted_ix_arr,
         reacted_count,
@@ -110,7 +120,7 @@ function SubWs({ sub, use_cmt_connect, has_straight_1, focusInputSub }) {
 
     //
     function startReply() {
-        IS_MOBILE ? focusInputSub() : focusInputSub2();
+        IS_MOBILE || !use_cmt_connect ? focusInputSub() : focusInputSub2();
     }
 
     //
@@ -122,11 +132,10 @@ function SubWs({ sub, use_cmt_connect, has_straight_1, focusInputSub }) {
             return;
         }
 
-        !open_input_sub_2 &&
-            setStateObj((state_obj) => ({
-                ...state_obj,
-                open_input_sub_2: true,
-            }));
+        setStateObj((state_obj) => ({
+            ...state_obj,
+            open_input_sub_2: true,
+        }));
 
         setTimeout(() => {
             ref_subs2_ws.current
@@ -288,6 +297,7 @@ function SubWs({ sub, use_cmt_connect, has_straight_1, focusInputSub }) {
                     //
                     content_obj={content_obj}
                     vid_pic={vid_pic}
+                    is_edited={is_edited}
                     updated_time={updated_time}
                     class_scroll_elm={''}
                     //
@@ -316,12 +326,16 @@ function SubWs({ sub, use_cmt_connect, has_straight_1, focusInputSub }) {
             </div>
 
             <div ref={ref_subs2_ws} className="Comment_subs2">
-                {!IS_MOBILE ? (
+                {!IS_MOBILE &&
+                use_cmt_connect &&
+                (count_sub_2 || open_input_sub_2) ? (
                     <PostSubs2
+                        parent_id={parent_id}
+                        cmt_id={cmt_id}
                         sub_id={id}
                         subs_2={subs_2}
                         count_sub_2={count_sub_2}
-                        // 
+                        //
                         use_cmt_connect={use_cmt_connect}
                         has_straight_1={has_straight_1}
                         //
