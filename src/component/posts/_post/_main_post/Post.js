@@ -43,6 +43,8 @@ import CUPost from '../../common/create_update_post/_main/CUPost';
 import PostHistory from '../history/_main/PostHistory';
 //
 import './Post.scss';
+import { context_post } from '../../../../_context/post/ContextPost';
+import { openScreenNotice } from '../../../_screen_once/notice/ScreenNotice';
 
 //
 Post.propTypes = {
@@ -60,7 +62,13 @@ function Post({
     // enabled_cmt,
 }) {
     //
-    const { openScreenFloor, closeScreenFloor } = useContext(context_api);
+    const {
+        openScreenFloor,
+        closeScreenFloor,
+        openScreenOnce,
+        closeScreenOnce,
+    } = useContext(context_api);
+    const { ws_send, ws_type_post } = useContext(context_post);
 
     //
     const {
@@ -298,7 +306,7 @@ function Post({
         forceUpdate();
     }
 
-    // -----
+    // ----- CONTENT LIKE SHARE CMT
 
     //
     function on_API_MoreContent_R() {
@@ -306,14 +314,88 @@ function Post({
     }
 
     //
+    function changeTypeLike(new_type_like) {
+        ws_send({
+            id: id,
+            type: ws_type_post + '_like',
+            type_like: new_type_like,
+        });
+
+        // ---- FAKE
+        if (new_type_like >= 0) {
+            if (post.user_reacted_ix < 0) {
+                post.reacted_count += 1;
+            }
+        } else {
+            if (post.user_reacted_ix >= 0) {
+                post.reacted_count -= 1;
+            }
+        }
+
+        post.reacted_ix_arr = [
+            ...post.reacted_ix_arr.filter(
+                (item) => item != post.user_reacted_ix && item != new_type_like
+            ),
+            ...(new_type_like >= 0 ? [new_type_like] : []),
+        ]
+
+            .sort()
+            .slice(0, 3);
+
+        if (post.reacted_count > 0 && post.reacted_ix_arr.length == 0) {
+            post.reacted_ix_arr = [post.user_reacted_ix];
+        }
+        post.user_reacted_ix = new_type_like;
+
+        forceUpdate();
+    }
+
+    //
+    function sharePost() {
+        if (count_user_shared < 10) {
+            ws_send({
+                id: id,
+                type: ws_type_post + '_share',
+            });
+        } else {
+            openScreenNotice({
+                openScreenOnce: openScreenOnce,
+                ComponentNotice: (
+                    <div className="display-flex-center w-250px padding-20px brs-10px bg-shadow-5">
+                        <div className="padding-y-20px text-align-center font-600 text-white font-17px">
+                            You can not share more than 10 times
+                        </div>
+                    </div>
+                ),
+            });
+
+            setTimeout(() => {
+                closeScreenOnce();
+            }, 1500);
+        }
+    }
+
+    //
     async function handleClickBtnCmt() {
-        if (comments.length == 0) {
-            const btn_more_cmt = ref_comments.current.querySelector(
-                '.Comments_more .ScreenBlurShowMore_title'
+        if (comments.length > 0) {
+            return;
+        }
+
+        if (count_comment == 0) {
+            const btn_open_cmt = ref_comments.current.querySelector(
+                '.CommentsWs_open_input'
             );
 
-            btn_more_cmt && btn_more_cmt.click();
+            btn_open_cmt.click();
+
+            return;
         }
+
+        const btn_more_cmt = ref_comments.current.querySelector(
+            '.Comments_more .ScreenBlurShowMore_title'
+        );
+
+        btn_more_cmt && btn_more_cmt.click();
     }
 
     //
@@ -412,6 +494,8 @@ function Post({
                         count_share={count_share}
                         count_user_shared={count_user_shared}
                         //
+                        changeTypeLike={changeTypeLike}
+                        sharePost={sharePost}
                         handleClickBtnCmt={handleClickBtnCmt}
                     />
                 </div>

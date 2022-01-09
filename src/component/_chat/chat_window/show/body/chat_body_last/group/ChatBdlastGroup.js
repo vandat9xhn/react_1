@@ -8,7 +8,7 @@ import './ChatBdLastGroup.scss';
 ChatBdLastGroup.propTypes = {};
 
 //
-function ChatBdLastGroup({ room_users, room_creator }) {
+function ChatBdLastGroup({ room_users, room_creator, room_users_not_leave }) {
     //
     const { user } = useContext(context_api);
 
@@ -28,7 +28,7 @@ function ChatBdLastGroup({ room_users, room_creator }) {
     return (
         <div className="ChatBdLastGroup">
             <div className="ChatBdLastGroup_row display-flex justify-content-center flex-wrap">
-                {room_users.map((room_user, user_ix) => (
+                {room_users_not_leave.map((room_user, user_ix) => (
                     <div
                         className="ChatBdLastGroup_pic"
                         key={`ChatBdLastGroup_user_${user_ix}`}

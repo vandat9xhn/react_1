@@ -101,6 +101,7 @@ class App extends Component {
                   this.hideRoomChat = () => {};
                   this.hideAllRoomChat = () => {};
                   this.closeRoomChat = () => {};
+                  this.closeRoomChat = elm.closeRoomChat;
                   this.closeAllRoomChat = () => {};
               }
           }

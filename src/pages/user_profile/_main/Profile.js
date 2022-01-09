@@ -40,10 +40,13 @@ function Profile(props) {
     //
     const [profile_state, setProfileState] = useState({
         profile: initial_profile(),
+        has_fetched: false,
         is_fetching: false,
+
+        route_props: {},
     });
 
-    const { profile, is_fetching } = profile_state;
+    const { profile, has_fetched } = profile_state;
 
     const { first_name, last_name, picture } = profile;
 
@@ -65,6 +68,7 @@ function Profile(props) {
         base_path: /\/profile\/\d+/,
         route_arr: ProfileRoutes,
         is_exact: false,
+        has_fetched: has_fetched,
 
         getRouteProps: getRouteProps,
         handleNotFound: handleNotFound,
@@ -87,6 +91,7 @@ function Profile(props) {
         setProfileState({
             ...profile_state,
             profile: data,
+            has_fetched: true,
             is_fetching: false,
         });
     }
@@ -125,7 +130,7 @@ function Profile(props) {
     // ----------
 
     //
-    if (is_fetching) {
+    if (!has_fetched) {
         return null;
     }
 

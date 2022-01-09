@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-// 
-import LinkOpenChat from './LinkOpenChat';
+import PropTypes from 'prop-types';
 
 //
 class SomeLinks extends Component {
@@ -12,8 +10,33 @@ class SomeLinks extends Component {
     };
 
     //
+    refChatRoom = (elm) => {
+        if (elm != null) {
+            this.ref_chat_room = elm;
+        }
+    };
+
+    //
+    refChatHome = (elm) => {
+        if (elm != null) {
+            this.ref_chat_home = elm;
+        }
+    };
+
+    //
     openRoomChat = (new_chat_room = '') => {
         this.setState({ chat_room: new_chat_room });
+        setTimeout(() => {
+            this.ref_chat_room.click();
+        }, 1);
+    };
+
+    //
+    closeRoomChat = () => {
+        this.setState({ chat_room: '' });
+        setTimeout(() => {
+            this.ref_chat_home.click();
+        }, 1);
     };
 
     //
@@ -23,7 +46,12 @@ class SomeLinks extends Component {
         //
         return (
             <div className="display-none">
-                <LinkOpenChat chat_room={chat_room} />
+                <Link
+                    ref={this.refChatRoom}
+                    to={`/chat/${chat_room}`}
+                    replace={location.pathname.startsWith('/chat/')}
+                />
+                <Link ref={this.refChatHome} to={`/fb-chat`} replace />
             </div>
         );
     }

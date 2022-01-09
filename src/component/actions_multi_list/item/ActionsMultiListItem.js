@@ -12,14 +12,14 @@ function ActionsMultiListItem({
     Icon,
     title,
     info,
-    
+
     handleAction,
     handleClose,
 }) {
     //
     function onClick(e) {
-        e.stopPropagation()
-        
+        e.stopPropagation();
+
         handleClose();
         handleAction(name);
     }
@@ -37,7 +37,7 @@ function ActionsMultiListItem({
                     <div className="font-500">{title}</div>
 
                     <div
-                        className={`text-third font-13px ${
+                        className={`text-third font-13px line-height-initial ${
                             info ? '' : 'display-none'
                         }`}
                     >

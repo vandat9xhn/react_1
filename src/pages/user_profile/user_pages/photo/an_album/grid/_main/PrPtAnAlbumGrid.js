@@ -11,7 +11,7 @@ import './PrPtAnAlbumGrid.scss';
 PrPtAnAlbumGrid.propTypes = {};
 
 //
-function PrPtAnAlbumGrid({ pic_arr, pic_count }) {
+function PrPtAnAlbumGrid({ pic_arr, pic_count, is_your }) {
     //
     function on_API_VidPic_L() {}
 
@@ -21,7 +21,7 @@ function PrPtAnAlbumGrid({ pic_arr, pic_count }) {
             <ProfilePhotoMain
                 initial_photo_arr={pic_arr}
                 initial_photo_count={pic_count}
-                has_create
+                has_create={is_your}
                 CreateElm={<PrPtAnAbGridCreate />}
                 //
                 handle_API_Photo_L={on_API_VidPic_L}

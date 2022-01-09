@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { context_post } from '../../../../../_context/post/ContextPost';
-//
 import LikeShareCmtElm from '../elm/LikeShareCmtElm';
-// 
+//
 import './LikeShareCmt.scss';
 
 //
@@ -39,29 +37,10 @@ function LikeShareCmt({
     count_share,
     count_user_shared,
     //
+    changeTypeLike,
+    sharePost,
     handleClickBtnCmt,
 }) {
-    //
-    const { ws_send, ws_type_post } = useContext(context_post);
-
-    //
-    function changeTypeLike(new_type_like) {
-        ws_send({
-            id: parent_id,
-            type: ws_type_post + '_like',
-            type_like: new_type_like,
-        });
-    }
-    //
-    function sharePost() {
-        if (count_user_shared < 5) {
-            ws_send({
-                id: parent_id,
-                type: ws_type_post + '_share',
-            });
-        }
-    }
-
     //
     return (
         <div className="LikeShareCmt">
@@ -72,7 +51,7 @@ function LikeShareCmt({
                 count_comment={count_comment}
                 enabled_share={enabled_share}
                 count_share={count_share}
-                // 
+                //
                 changeTypeLike={changeTypeLike}
                 handleClickBtnCmt={handleClickBtnCmt}
                 sharePost={sharePost}

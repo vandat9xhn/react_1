@@ -26,7 +26,7 @@ export const default_post_reacted_info_obj = () => {
         user_reacted_ix:
             reacted_ix_arr.length && getRandomBool()
                 ? getRandomNumber(0, 5)
-                : -2,
+                : -1,
     };
 };
 

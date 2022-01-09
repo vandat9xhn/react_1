@@ -8,14 +8,14 @@ import { IS_MOBILE } from '../../../../../_constant/Constant';
 import { getCmtTitleMore } from '../../../../../_some_function/post/cmt_title_more';
 //
 import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
-// 
-import IconCaret from '../../../../../_icons_svg/_icon_caret/IconCaret';
+//
 import IconUpdate from '../../../../../_icons_svg/icon_update/IconUpdate';
 //
 import ScreenBlurShowMore from '../../../../_screen/components/part/foot/ScreenBlurShowMore';
 import CommentPost from '../../../../input_img_vid_preview/comment_post/CommentPost';
 import FetchingDiv from '../../../../some_div/fetching/FetchingDiv';
 //
+import PostCommentsFilter from '../_components/filter/_main/PostCommentsFilter';
 import CommentWs from '../ws_comment/_main/CommentWs';
 //
 import './CommentsWs.scss';
@@ -54,8 +54,8 @@ function CommentsWs({
     const [fetching_cmt, setFetchingCmt] = useState(false);
     const [open_input, setOpenInput] = useState(initial_open_input);
 
-    // 
-    const forceUpdate = useForceUpdate()
+    //
+    const forceUpdate = useForceUpdate();
 
     //
     useEffect(() => {
@@ -66,6 +66,11 @@ function CommentsWs({
     }, []);
 
     // ------
+
+    //
+    function handleOpenInput() {
+        setOpenInput(true);
+    }
 
     //
     async function onGetCommentsWs() {
@@ -87,6 +92,23 @@ function CommentsWs({
     }
 
     //
+    async function handleChangeFilter() {
+        !open_input && setOpenInput(true);
+
+        if (count_comment == 0) {
+            return;
+        }
+
+        comments.splice(0, comments.length);
+        setFetchingCmt(true);
+
+        const { data: new_comments } = await handle_API_Cmt_L(parent_id, 0);
+        comments.push(...new_comments);
+
+        setFetchingCmt(false);
+    }
+
+    //
     async function onSendCmt(content, files) {
         const data = await handle_API_Cmt_C(parent_id, {
             content: content,
@@ -94,7 +116,7 @@ function CommentsWs({
         });
 
         comments.unshift(data);
-        forceUpdate()
+        forceUpdate();
 
         ws_send({
             type: ws_type_cmt + '_input',
@@ -136,11 +158,7 @@ function CommentsWs({
                     />
                 </div>
 
-                <div className="Comments_filter display-flex align-items-center cursor-pointer font-600 text-secondary">
-                    <span className="margin-right-5px">All comments</span>
-
-                    <IconCaret size_icon="15px" fill="currentColor" />
-                </div>
+                <PostCommentsFilter handleChangeFilter={handleChangeFilter} />
             </div>
 
             <div className="Comments_list display-flex col-reverse">
@@ -162,6 +180,11 @@ function CommentsWs({
                     />
                 </div>
             ) : null}
+
+            <div
+                className="CommentsWs_open_input display-none"
+                onClick={handleOpenInput}
+            ></div>
         </div>
     );
 }

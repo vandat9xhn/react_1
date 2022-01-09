@@ -29,15 +29,15 @@
         .ScreenBlurShowMore_title {
             color: inherit;
         }
+
+        .ScreenBlurShowMore{
+            padding: 0;
+        }
     }
 
     .Comments_title {
         align-items: flex-start;
         flex-direction: column-reverse;
-    }
-    // .
-    .Comments_filter {
-        font-weight: 400;
     }
 
     .Comments_input {

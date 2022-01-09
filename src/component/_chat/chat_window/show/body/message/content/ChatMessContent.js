@@ -15,7 +15,9 @@ function ChatMessContent({ message }) {
                 <div className="flex-grow-1 bg-primary"></div>
 
                 <div className="pos-rel">
-                    <div className="padding-12px">{message}</div>
+                    <div className="ChatMessContent_mess padding-12px">
+                        {message}
+                    </div>
 
                     <div className="ChatMessContent_bg pos-abs-center"></div>
                 </div>

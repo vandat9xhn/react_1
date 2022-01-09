@@ -6,6 +6,7 @@ export function useRouteFollowSearch({
     route_arr = [{ component: () => <div></div>, search: '' }],
     HasFuncDetectRoute = () => false,
     is_exact = false,
+    has_fetched = true,
 
     getRouteIx = () => 0,
     getRouteProps = () => {
@@ -21,8 +22,8 @@ export function useRouteFollowSearch({
 
     //
     useEffect(() => {
-        detectRoute();
-    }, [location.href]);
+        has_fetched && detectRoute();
+    }, [has_fetched, location.href]);
 
     // -----
 

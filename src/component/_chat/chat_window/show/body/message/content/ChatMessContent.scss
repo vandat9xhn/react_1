@@ -7,6 +7,10 @@
 
 // -----
 
+.ChatMessContent_mess{
+    white-space: pre-wrap;
+}
+
 .ChatMessContent_bg {
     width: calc(100% - 4px);
     height: calc(100% - 4px);
