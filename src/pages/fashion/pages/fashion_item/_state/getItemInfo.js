@@ -21,6 +21,8 @@ export async function getItemInfo({
     }
 
     setStateObj((state_obj) => {
+        document.title = data.name
+
         return {
             ...state_obj,
             item_info: data,

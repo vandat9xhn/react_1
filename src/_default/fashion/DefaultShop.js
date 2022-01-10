@@ -1,4 +1,5 @@
 import { getRandomBool } from '../_common/default_bool';
+import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomVidPic } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
@@ -139,8 +140,13 @@ export const default_shop_obj = () => ({
     banner: getRandomVidPic(),
     place: 'Quận Gò Vấp, TP. Hồ Chí Minh',
     location: 'TP. Hồ Chí Minh',
-    description:
-        '-Bác sĩ Thẩm Mỹ - Da liễu Dr Chiều\n- Tự hào với >20.000+ Khách hàng đã tin dùng.\n- Tất cả các Sp bên Shop của Bác sĩ đều là Dược Mỹ phẩm được các bác sĩ Da Liễu dùng, và tin dùng. Được bác sĩ chọn lọc ra sau nhiều năm điều trị, hỗ trợ, tư vấn cho bệnh nhân của minh.\n- Một số sản phẩm là thuốc điều trị ( treatment) nên cần được sự tư vấn của bác sĩ trước khi sử dụng các bạn nhé. hãy in cho shop để được tư vấn trước khi mua hàng ạ.\n- Sỉ add zalo:  0963749993',
+    description: `- ${getRandomContent().slice(
+        0,
+        100
+    )}\n- ${getRandomContent().slice(0, 100)}\n- ${getRandomContent().slice(
+        0,
+        200
+    )}\n- ${getRandomContent().slice(0, 200)}\n- Sỉ add zalo:  0123456789`,
     ...owner_info(),
     profile_model: 2,
 });

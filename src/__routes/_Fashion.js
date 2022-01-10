@@ -33,44 +33,56 @@ export const fashion_route_arr = [
         component: Fashion,
         exact: true,
         auth: false,
-        reset_position: true,
+        
+        title: 'Mua sắm'
     },
     {
         path: '/fashion/shop/:id',
         component: FashionShop,
         exact: true,
         auth: false,
+        
+        title: 'Shop'
     },
     {
         path: '/fashion::id',
         component: FashionItem,
         exact: true,
         auth: false,
+        
+        title: 'Sản phẩm'
     },
     {
         path: '/fashion/cart',
         component: FashionCart,
         exact: true,
         auth: true,
-        reset_position: true,
+        
+        title: 'Giỏ hàng'
     },
     {
         path: '/fashion/buy',
         component: FashionBuy,
         exact: true,
         auth: true,
+        
+        title: 'Mua hàng'
     },
     {
         path: '/fashion/search',
         component: FashionSearch,
         exact: true,
         auth: false,
+        
+        title: 'Tìm kiếm'
     },
     {
         path: '/fashion/user',
         component: FashionPersonal,
         exact: false,
         auth: true,
+        
+        title: 'Tài khoản'
     },
 
     // on work
@@ -79,35 +91,47 @@ export const fashion_route_arr = [
         component: FashionOnWork,
         exact: true,
         auth: false,
+        
+        title: 'Mall'
     },
     {
         path: '/fashion/extra-ship',
         component: FashionOnWork,
         exact: true,
         auth: false,
+        
+        title: ''
     },
     {
         path: '/fashion/premium',
         component: FashionOnWork,
         exact: true,
         auth: false,
+        
+        title: ''
     },
     {
         path: '/fashion/brand-discount',
         component: FashionOnWork,
         exact: true,
         auth: false,
+        
+        title: ''
     },
     {
         path: '/fashion/brand-1',
         component: FashionOnWork,
         exact: true,
         auth: false,
+        
+        title: ''
     },
     {
         path: '/fashion/condition',
         component: FashionOnWork,
         exact: true,
         auth: false,
+        
+        title: ''
     },
 ];

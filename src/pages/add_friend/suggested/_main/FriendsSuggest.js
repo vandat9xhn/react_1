@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import { useFriendsShowProfile } from '../../../../_hooks/friends/useFriendsShowProfile';
@@ -17,11 +17,6 @@ function FriendsSuggest(props) {
     const { showProfile } = useFriendsShowProfile({
         friends_pathname: '/friends/suggestions',
     });
-
-    //
-    useEffect(() => {
-        document.title = 'Suggestions';
-    }, []);
 
     //
     return (

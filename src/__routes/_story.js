@@ -27,11 +27,15 @@ export const story_route_arr = [
         component: IS_MOBILE ? ScreenStoryMenuMobile : StoryHomePc,
         exact: true,
         auth: true,
+
+        title: 'Stories'
     },
     {
         path: '/story/create',
         component: IS_MOBILE ? ScreenStoryCreateMb : StoryCreatePc,
         exact: true,
         auth: true,
+
+        title: 'Create story'
     },
 ];

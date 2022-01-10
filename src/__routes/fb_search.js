@@ -46,30 +46,40 @@ export const fb_search_route_arr = [
         component: FbSearchPageAll,
         exact: true,
         auth: true,
+
+        title: 'Search',
     },
     {
         path: '/fb-search/people',
         component: FbSearchPagePeople,
         exact: true,
         auth: true,
+
+        title: 'Search people',
     },
     {
         path: '/fb-search/photos/all',
         component: FbSearchPagePhotoAll,
         exact: true,
         auth: true,
+
+        title: 'Search All Photos',
     },
     {
         path: '/fb-search/photos',
         component: FbSearchPagePhotoHome,
         exact: true,
         auth: true,
+
+        title: 'Search photos',
     },
     {
         path: '/fb-search/posts',
         component: FbSearchPagePost,
         exact: true,
         auth: true,
+
+        title: 'Search posts',
     },
 
     {
@@ -77,17 +87,23 @@ export const fb_search_route_arr = [
         component: FbSearchPageVideo,
         exact: true,
         auth: true,
+
+        title: 'Search videos',
     },
     {
         path: '/fb-search/pages',
         component: FbSearchPagePages,
         exact: true,
         auth: true,
+
+        title: 'Search pages',
     },
     {
         path: '/fb-search/groups',
         component: FbSearchPageGroups,
         exact: true,
         auth: true,
+
+        title: 'Search groups',
     },
 ];

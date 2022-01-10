@@ -69,11 +69,18 @@ export const default_fb_profile_info_r = (user_id, max_friend_arr = 8) => {
     const sent_request =
         action_case_arr[0].name == default_action_user_case_obj.reply_request;
 
+    //
+    const user = is_user
+        ? default_define_user
+        : {
+              id: getRandomId(),
+              first_name: getRandomName(),
+              last_name: getRandomName(),
+              picture: getRandomVidPic(),
+          };
+
     return {
-        id: user_id && user_id > 0 ? user_id : getRandomId(),
-        first_name: getRandomName(),
-        last_name: getRandomName(),
-        picture: getRandomVidPic(),
+        ...user,
         cover: getRandomVidPic(),
 
         sent_request: sent_request,

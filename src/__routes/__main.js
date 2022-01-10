@@ -37,8 +37,10 @@ export const Routes = [
     {
         path: '/home',
         component: Home,
+        auth: false,
         exact: true,
-        reset_position: true,
+        
+        title: 'Home',
     },
 
     ...account_route_arr,
@@ -63,13 +65,17 @@ export const Routes = [
         path: '/learn-html',
         component: LearnHTML,
         exact: true,
-        reset_position: true,
+        auth: false,
+
+        title: 'Learn',
     },
     {
         path: '/working-on-it',
         component: WorkingOnIt,
         exact: false,
-        reset_position: false,
+        auth: false,
+
+        title: 'Working on it',
     },
 
     ...(IS_MOBILE
@@ -77,8 +83,10 @@ export const Routes = [
               {
                   path: '/chat/:id',
                   component: ChatMobile,
+                  auth: true,
                   exact: true,
-                  reset_position: true,
+
+                  title: 'Chat',
               },
           ]
         : []),

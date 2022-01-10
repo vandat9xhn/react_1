@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 //
 import { context_api } from '../../../../_context/ContextAPI';
@@ -25,11 +25,6 @@ function FriendsRequest(props) {
     const { showProfile } = useFriendsShowProfile({
         friends_pathname: '/friends/requests',
     });
-
-    //
-    useEffect(() => {
-        document.title = 'Requests';
-    }, []);
 
     // ------
 

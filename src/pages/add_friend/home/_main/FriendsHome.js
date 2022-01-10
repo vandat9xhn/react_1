@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 //
 import FriendsLayOut from '../../_components/layout/_main/FriendsLayOut';
@@ -13,11 +13,6 @@ FriendsHome.propTypes = {};
 
 //
 function FriendsHome(props) {
-    //
-    useEffect(() => {
-        document.title = 'Friends';
-    }, []);
-
     //
     return (
         <div className="FriendsHome">

@@ -37,8 +37,6 @@ function Fashion(props) {
 
     //
     useEffect(() => {
-        document.title = 'Fashion';
-
         getData_API_HotImage();
 
         return () => {

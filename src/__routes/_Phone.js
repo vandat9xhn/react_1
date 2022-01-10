@@ -27,32 +27,39 @@ export const phone_route_arr = [
         component: PLHome,
         exact: true,
         auth: false,
-        reset_position: true,
+        
+        title: 'Phone Laptop'
     },
     {
         path: '/phone-laptop/search',
         component: WorkingOnIt,
         exact: true,
         auth: false,
+        
+        title: 'Tìm kiếm'
     },
     {
         path: '/phone-laptop/:id',
         component: PhoneLaptopDetail,
         exact: true,
         auth: false,
+        
+        title: 'Sản phẩm'
     },
     {
         path: '/phone-laptop-phones',
         component: PLPhones,
         exact: true,
         auth: false,
-        reset_position: true,
+        
+        title: 'Phones'
     },
     {
         path: '/phone-laptop-laptops',
         component: Laptops,
         exact: true,
         auth: false,
-        reset_position: true,
+        
+        title: 'Laptops'
     },
 ];

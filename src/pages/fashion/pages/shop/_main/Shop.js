@@ -53,6 +53,8 @@ function Shop(props) {
     async function getData_API_shop_R() {
         const data = await handle_API_FashionShop_R(id);
 
+        document.title = data.name
+
         FsShop_handleDataState({
             data: data,
             setStateObj: setStateObj,

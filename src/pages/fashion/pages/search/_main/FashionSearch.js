@@ -285,14 +285,21 @@ function FashionSearch(props) {
                         }`}
                     >
                         {IS_MOBILE ? (
-                            <div className="FashionSearch_filter_icon_close">
+                            <React.Fragment>
                                 <div
-                                    className="close-icon-small brs-50 cursor-pointer"
+                                    className="pos-abs-100 bg-shadow-5"
                                     onClick={closeFilter}
-                                >
-                                    <IconsArrow y={400} size_icon="1rem" />
+                                ></div>
+
+                                <div className="FashionSearch_filter_icon_close">
+                                    <div
+                                        className="close-icon-small brs-50 cursor-pointer"
+                                        onClick={closeFilter}
+                                    >
+                                        <IconsArrow y={400} size_icon="1rem" />
+                                    </div>
                                 </div>
-                            </div>
+                            </React.Fragment>
                         ) : null}
 
                         <FsSearchFilter

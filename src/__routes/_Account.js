@@ -16,6 +16,8 @@ export const account_route_arr = [
         component: LoginForm,
         exact: true,
         auth: false,
+
+        title: 'Login',
     },
 
     {
@@ -23,5 +25,7 @@ export const account_route_arr = [
         component: Registration,
         exact: true,
         auth: false,
+
+        title: 'Register',
     },
 ];

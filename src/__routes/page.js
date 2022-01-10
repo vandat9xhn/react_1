@@ -10,5 +10,7 @@ export const fb_page_route_arr = [
         component: FbPage,
         exact: false,
         auth: true,
+
+        title: 'Page'
     },
 ];

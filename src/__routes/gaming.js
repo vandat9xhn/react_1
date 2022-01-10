@@ -12,5 +12,7 @@ export const fb_gaming_route_arr = [
         component: Gaming,
         exact: true,
         auth: false,
+
+        title: 'Gaming'
     },
 ];

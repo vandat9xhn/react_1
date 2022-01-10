@@ -28,34 +28,39 @@ export const friend_route_arr = [
         component: FriendsHome,
         exact: true,
         auth: true,
-        reset_position: true,
+        
+        title: 'Friends',
     },
     {
         path: '/friends/requests',
         component: FriendsRequest,
         exact: true,
         auth: true,
-        reset_position: true,
+        
+        title: 'Friend requests',
     },
     {
         path: '/friends/suggestions',
         component: FriendsSuggest,
         exact: true,
         auth: true,
-        reset_position: true,
+        
+        title: 'Friend suggestions',
     },
     {
         path: '/friends/all',
         component: FriendsAll,
         exact: true,
         auth: true,
-        reset_position: true,
+        
+        title: 'All Friends',
     },
     {
         path: '/friends/birthdays',
         component: FriendsBirth,
         exact: true,
         auth: true,
-        reset_position: true,
+        
+        title: 'Birthdays',
     },
 ];

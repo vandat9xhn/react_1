@@ -18,24 +18,31 @@ export const profile_route_arr = [
         component: Profile,
         exact: true,
         auth: true,
+
+        title: '',
     },
     {
         path: '/posts/:id',
         component: UserPost,
         exact: true,
         auth: true,
+
+        title: 'Post',
     },
     {
         path: '/new-feed',
         component: NewFeed,
         exact: true,
         auth: true,
-        reset_position: true,
+
+        title: 'New feed',
     },
     {
         path: '/post/photos/:id',
         component: ZoomVidPicItem,
         exact: true,
         auth: true,
+
+        title: 'Photo',
     },
 ];

@@ -12,5 +12,7 @@ export const fb_watch_route_arr = [
         component: Watch,
         exact: true,
         auth: false,
+        
+        title: 'Watch'
     },
 ];

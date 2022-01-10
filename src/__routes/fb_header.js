@@ -17,17 +17,23 @@ export const fb_header_route_arr = [
         component: FbNotice,
         exact: true,
         auth: true,
+        
+        title: 'Notice',
     },
     {
         path: '/fb-chat',
         component: FbHeaderChat,
         exact: true,
         auth: true,
+        
+        title: 'Chat',
     },
     {
         path: '/fb-menu',
         component: FbMenu,
         exact: true,
         auth: false,
+        
+        title: 'Menu',
     },
 ];

@@ -10,7 +10,7 @@ Auth.propTypes = {};
 //
 function Auth({ route, ...props }) {
     //
-    const { user, root_floor_url_arr } = useContext(context_api);
+    const { user } = useContext(context_api);
 
     //
     if (route.auth && !user.id) {
@@ -31,6 +31,8 @@ function Auth({ route, ...props }) {
     }
 
     // route.reset_position && window.scrollTo(0, 0);
+
+    route.title && (document.title = route.title);
 
     //
     return <route.component {...props} />;
