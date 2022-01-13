@@ -10,9 +10,12 @@
 }
 
 .ProfileLayoutCover_contain {
-    width: 950px;
+    width: 940px;
     max-width: 100%;
-    padding-top: 32%;
+}
+// .
+.ProfileLayoutCover_cover {
+    padding-top: 37%;
 
     background-image: linear-gradient(
         to top,
@@ -32,7 +35,7 @@
 // ------
 
 @media (max-width: 500px) {
-    .ProfileLayoutCover_contain {
+    .ProfileLayoutCover_cover {
         padding-top: 50%;
     }
 }

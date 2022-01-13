@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
-// 
+//
 import observeToDo from '../../../../../_some_function/observerToDo';
 import { waitingToDoLast } from '../../../../../_some_function/waitingToDoLast';
 //
@@ -25,7 +25,7 @@ import './ProfileFriend.scss';
 ProfileFriend.propTypes = {};
 
 //
-function ProfileFriend({ user_id }) {
+function ProfileFriend({ user_id, is_your }) {
     //
     const [value_search, setValueSearch] = useState('');
 
@@ -110,6 +110,7 @@ function ProfileFriend({ user_id }) {
         >
             <div className="margin-bottom-10px">
                 <ProfileFriendHead
+                    is_your={is_your}
                     value_search={value_search}
                     changeSearch={changeSearch}
                 />

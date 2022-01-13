@@ -21,20 +21,22 @@ function ProfileLayoutCover({ cover, link_to, children, openCoverPicture }) {
             </div>
 
             <div className="ProfileLayoutCover_contain margin-auto pos-rel">
-                <HasLinkOrNot
-                    class_link="pos-abs-0 wh-100"
-                    has_link={!!link_to}
-                    link_to={link_to}
-                >
-                    <img
-                        className="ProfileLayoutCover_img wh-100 object-fit-cover"
-                        src={cover}
-                        alt=""
-                        onClick={openCoverPicture}
-                    />
-                </HasLinkOrNot>
+                <div className='ProfileLayoutCover_cover'>
+                    <HasLinkOrNot
+                        class_link="pos-abs-0 wh-100"
+                        has_link={!!link_to}
+                        link_to={link_to}
+                    >
+                        <img
+                            className="ProfileLayoutCover_img wh-100 object-fit-cover"
+                            src={cover}
+                            alt=""
+                            onClick={openCoverPicture}
+                        />
+                    </HasLinkOrNot>
 
-                <div>{children}</div>
+                    <div>{children}</div>
+                </div>
             </div>
         </div>
     );

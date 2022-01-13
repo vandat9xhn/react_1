@@ -34,7 +34,7 @@ function FbPageInfo({
     has_followed,
 
     openCoverPicture,
-    openPicture,
+    handleActionPicture,
     handleAction,
 }) {
     //
@@ -55,7 +55,7 @@ function FbPageInfo({
                                 picture={picture}
                                 has_new_story={has_new_story}
                                 has_seen_story={has_seen_story}
-                                openPicture={openPicture}
+                                handleActionPicture={handleActionPicture}
                             />
                         </div>
 

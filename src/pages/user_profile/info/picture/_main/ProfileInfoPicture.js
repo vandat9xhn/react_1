@@ -14,7 +14,7 @@ function ProfileInfoPicture({
     has_new_story,
     has_seen_story,
 
-    openPicture,
+    handleActionPicture,
 }) {
     //
     return (
@@ -23,7 +23,7 @@ function ProfileInfoPicture({
             picture={picture}
             has_new_story={has_new_story}
             has_seen_story={has_seen_story}
-            openPicture={openPicture}
+            handleAction={handleActionPicture}
         />
     );
 }

@@ -55,6 +55,10 @@ export const default_fb_other_action_arr = (user_id) => {
                       title: 'Find support or report profile',
                   },
                   {
+                      name: 'copy_link',
+                      title: 'Copy link',
+                  },
+                  {
                       name: 'block',
                       title: 'Block',
                   },
@@ -74,6 +78,10 @@ export const default_fb_other_action_arr = (user_id) => {
                       name: 'support',
                       title: 'Find support or report profile',
                   },
+                  {
+                    name: 'copy_link',
+                    title: 'Copy link',
+                },
                   {
                       name: 'block',
                       title: 'Block',

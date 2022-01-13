@@ -1,5 +1,5 @@
 .ProfileLayoutPicture {
-    width: 160px;
+    width: 168px;
 }
 
 .ProfileLayoutPicture_contain {
@@ -7,17 +7,21 @@
 }
 
 .ProfileLayoutPicture_pic-story {
-    border: 3px solid;
+    border: 4px solid white;
 }
 .ProfileLayoutPicture_pic-story_new {
-    border-color: var(--blue);
+    .ProfileLayoutPicture_pic_contain {
+        border: 4px solid var(--blue);
+    }
 }
 .ProfileLayoutPicture_pic-story_seen {
-    border-color: var(--md-bg-ccc);
+    .ProfileLayoutPicture_pic_contain {
+        border: 4px solid var(--md-bg-ccc);
+    }
 }
 // .
 .ProfileLayoutPicture_img {
-    border: 3px solid var(--white);
+    border: 4px solid var(--white);
 }
 
 // --------

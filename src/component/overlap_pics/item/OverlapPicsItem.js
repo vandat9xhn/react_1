@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 OverlapPicsItem.propTypes = {};
 
 //
-function OverlapPicsItem({ picture }) {
+function OverlapPicsItem({ item }) {
     //
     return (
         <img
             className="OverlapPicsItem wh-100 brs-50 object-fit-cover"
-            src={picture}
+            src={item.picture}
             alt=""
         />
     );

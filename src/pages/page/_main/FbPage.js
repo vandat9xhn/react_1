@@ -70,7 +70,7 @@ function FbPage(props) {
     function openCoverPicture() {}
 
     //
-    function openPicture() {}
+    function handleActionPicture() {}
 
     //
     function handleAction() {}
@@ -102,7 +102,7 @@ function FbPage(props) {
                     has_followed={has_followed}
                     //
                     openCoverPicture={openCoverPicture}
-                    openPicture={openPicture}
+                    handleActionPicture={handleActionPicture}
                     handleAction={handleAction}
                 />
             </div>

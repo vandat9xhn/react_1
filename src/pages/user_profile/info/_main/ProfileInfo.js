@@ -20,7 +20,7 @@ import './ProfileInfo.scss';
 ProfileInfo.propTypes = {
     profile: PropTypes.object,
     openCoverPicture: PropTypes.func,
-    openPicture: PropTypes.func,
+    handleActionPicture: PropTypes.func,
 };
 
 //
@@ -28,7 +28,7 @@ function ProfileInfo({
     profile,
 
     openCoverPicture,
-    openPicture,
+    handleActionPicture,
     handleAction,
 }) {
     //
@@ -81,7 +81,7 @@ function ProfileInfo({
                                 picture={picture}
                                 has_new_story={has_new_story}
                                 has_seen_story={has_seen_story}
-                                openPicture={openPicture}
+                                handleActionPicture={handleActionPicture}
                             />
                         </div>
 

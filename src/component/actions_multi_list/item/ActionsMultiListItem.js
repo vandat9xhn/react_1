@@ -13,12 +13,14 @@ function ActionsMultiListItem({
     title,
     info,
 
+    stop_propagation = true,
+
     handleAction,
     handleClose,
 }) {
     //
     function onClick(e) {
-        e.stopPropagation();
+        stop_propagation && e.stopPropagation();
 
         handleClose();
         handleAction(name);

@@ -118,8 +118,8 @@ function Profile(props) {
     }
 
     //
-    function openPicture() {
-        console.log(id);
+    function handleActionPicture(action_name = '') {
+        console.log(action_name);
     }
 
     //
@@ -142,7 +142,7 @@ function Profile(props) {
                     profile={profile}
                     //
                     openCoverPicture={openCoverPicture}
-                    openPicture={openPicture}
+                    handleActionPicture={handleActionPicture}
                     handleAction={handleAction}
                 />
             </div>

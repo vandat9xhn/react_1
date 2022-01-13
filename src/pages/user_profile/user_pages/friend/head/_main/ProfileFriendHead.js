@@ -13,7 +13,7 @@ import './ProfileFriendHead.scss';
 ProfileFriendHead.propTypes = {};
 
 //
-function ProfileFriendHead({ value_search, changeSearch }) {
+function ProfileFriendHead({ is_your, value_search, changeSearch }) {
     //
     function handle_API_L() {
         return [[{ title: 'Edit privacy', name: 'edit_privacy' }]];
@@ -44,26 +44,30 @@ function ProfileFriendHead({ value_search, changeSearch }) {
                             />
                         </div>
 
-                        <Link
-                            className="ProfileFriendHead_right_item ProfileFriendHead_link"
-                            to="/friends"
-                        >
-                            Friend requests
-                        </Link>
+                        {!is_your ? null : (
+                            <React.Fragment>
+                                <Link
+                                    className="ProfileFriendHead_right_item ProfileFriendHead_link"
+                                    to="/friends"
+                                >
+                                    Friend requests
+                                </Link>
 
-                        <Link
-                            className="ProfileFriendHead_right_item ProfileFriendHead_link"
-                            to="/friends"
-                        >
-                            Find friends
-                        </Link>
+                                <Link
+                                    className="ProfileFriendHead_right_item ProfileFriendHead_link"
+                                    to="/friends"
+                                >
+                                    Find friends
+                                </Link>
 
-                        <div className="ProfileFriendHead_right_item">
-                            <ActionsMultiList
-                                handle_API_L={handle_API_L}
-                                handleAction={handleAction}
-                            />
-                        </div>
+                                <div className="ProfileFriendHead_right_item">
+                                    <ActionsMultiList
+                                        handle_API_L={handle_API_L}
+                                        handleAction={handleAction}
+                                    />
+                                </div>
+                            </React.Fragment>
+                        )}
                     </div>
                 )}
             </div>
