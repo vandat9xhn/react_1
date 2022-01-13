@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import HeaderNoticeItem from '../item/_main/HeaderNoticeItem';
 //
 import './HeaderNoticeList.scss';
-import VirtualScroll from '../../../../../virtual_scroll/VirtualScroll';
+// import VirtualScroll from '../../../../../virtual_scroll/VirtualScroll';
 
 //
 HeaderNoticeList.propTypes = {};
@@ -32,10 +32,10 @@ function HeaderNoticeList({
             <div>
                 {notices.map((notice, ix) => (
                     <div key={ix}>
-                        <VirtualScroll
+                        {/* <VirtualScroll
                             ref_root={ref_scroll_elm}
                             rootMargin_y={200}
-                        >
+                        > */}
                             <HeaderNoticeItem
                                 ref_scroll_elm={ref_scroll_elm}
                                 ix={ix}
@@ -53,7 +53,7 @@ function HeaderNoticeList({
                                 handleClickItem={handleClickItem}
                                 handleAction={handleAction}
                             />
-                        </VirtualScroll>
+                        {/* </VirtualScroll> */}
                     </div>
                 ))}
             </div>

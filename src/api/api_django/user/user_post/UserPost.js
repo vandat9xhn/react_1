@@ -245,7 +245,8 @@ export const API_PostHistory_L = (params) =>
                 method: 'GET',
                 params: params,
             }),
-        params
+        params,
+        true
     );
 
 // Get

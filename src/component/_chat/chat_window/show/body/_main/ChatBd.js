@@ -109,7 +109,7 @@ function ChatBd({
                 {IS_MOBILE ? (
                     <ScreenBlurShowMore
                         title={
-                            <div className="text-secondary font-italic">
+                            <div className="padding-top-25px text-secondary font-italic">
                                 See old messages
                             </div>
                         }

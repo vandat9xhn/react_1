@@ -55,7 +55,7 @@ function ActionsPc({
 
     // ------
 
-    const Contain = (
+    const Contain = !is_show ? null : (
         <ActionsContainPc
             ref_btn_elm={ref_btn_elm}
             class_action_contain={class_action_contain}

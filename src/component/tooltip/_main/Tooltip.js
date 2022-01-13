@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import { useBool } from '../../../_hooks/useBool';
+import { useForceUpdate } from '../../../_hooks/UseForceUpdate';
+import { useHold } from '../../../_hooks/useHold';
 //
 import PortalAtBody from '../../portal/at_body/PortalAtBody';
 
@@ -22,7 +24,26 @@ Tooltip.defaultProps = {
 };
 
 //
-function Tooltip({ ref_elm, children, pos, distance, class_contain }) {
+function Tooltip({
+    ref_elm,
+    ref_scroll_elm = { current: document.getElementsByTagName('html')[0] },
+    use_scroll = false,
+
+    children,
+    pos,
+    distance,
+    class_contain,
+
+    hold_time,
+}) {
+    //
+    const ref_func_scroll = useRef(null);
+
+    //
+    const { is_true, setIsTrue } = useBool();
+    const forceUpdate = useForceUpdate();
+    const { StartHold, StopHold } = useHold({ time: hold_time });
+
     //
     useEffect(() => {
         if (ref_elm.current) {
@@ -45,24 +66,81 @@ function Tooltip({ ref_elm, children, pos, distance, class_contain }) {
     }, [ref_elm.current]);
 
     //
-    const { is_true, setIsTrue } = useBool();
+    useEffect(() => {
+        if (use_scroll) {
+            if (!ref_func_scroll.current) {
+                ref_func_scroll.current = handleScroll;
+            }
+
+            if (is_true) {
+                ref_scroll_elm.current.addEventListener(
+                    'scroll',
+                    ref_func_scroll.current
+                );
+            } else {
+                ref_scroll_elm.current.removeEventListener(
+                    'scroll',
+                    ref_func_scroll.current
+                );
+            }
+        }
+    }, [is_true]);
 
     // -----
 
     //
     function handleMouseEnter() {
-        setIsTrue(true);
+        StartHold(() => {
+            setIsTrue(true);
+        });
     }
 
     //
     function handleMouseLeave() {
+        StopHold();
         setIsTrue(false);
     }
 
     //
     function getTooltipPos() {
-        const { top, left, bottom, right } =
+        if (!ref_elm.current) {
+            return {};
+        }
+
+        let { top, left, bottom, right } =
             ref_elm.current.getBoundingClientRect();
+
+        if (use_scroll) {
+            const {
+                top: scroll_top,
+                left: scroll_left,
+                bottom: scroll_bottom,
+                right: scroll_right,
+            } = ref_scroll_elm.current.getBoundingClientRect();
+
+            if (
+                top >= scroll_bottom ||
+                bottom <= scroll_top ||
+                left >= scroll_right ||
+                right <= scroll_left
+            ) {
+                setIsTrue(false);
+                return {};
+            }
+
+            if (top <= scroll_top) {
+                top = scroll_top;
+            } else if (bottom >= scroll_bottom) {
+                bottom = scroll_bottom;
+            }
+
+            if (left <= scroll_left) {
+                left = scroll_left;
+            } else if (right >= scroll_right) {
+                right = scroll_right;
+            }
+        }
+
         const x_center = (left + right) / 2;
         const y_center = (top + bottom) / 2;
 
@@ -86,7 +164,7 @@ function Tooltip({ ref_elm, children, pos, distance, class_contain }) {
             return {
                 left: left + distance,
                 top: y_center,
-                transform: `translateY(-50%)`,
+                transform: `translate(-100%, -50%)`,
             };
         }
 
@@ -97,6 +175,11 @@ function Tooltip({ ref_elm, children, pos, distance, class_contain }) {
                 transform: `translateY(-50%)`,
             };
         }
+    }
+
+    //
+    function handleScroll() {
+        forceUpdate();
     }
 
     //

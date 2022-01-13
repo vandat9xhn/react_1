@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// 
+//
 import { useDataShowMore } from '../../../../_hooks/useDataShowMore';
 //
 import ScreenBlur from '../../components/frame/blur/ScreenBlur';
@@ -64,7 +64,11 @@ function ScreenHistory({
             closeScreen={closeScreen}
             waiting={!has_fetched && is_fetching}
         >
-            <div className={`${has_fetched ? '' : 'display-none'}`}>
+            <div
+                className={`${
+                    has_fetched ? 'padding-bottom-10px' : 'display-none'
+                }`}
+            >
                 <ScreenBlurHead title={title} closeScreenBlur={closeScreen} />
 
                 <div className="ScreenBlur_body_contain scroll-thin">
