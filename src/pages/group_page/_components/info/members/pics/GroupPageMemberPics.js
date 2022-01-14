@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { Link } from 'react-router-dom';
+import ProfileLayoutOverlapFriends from '../../../../../../component/profile_layout/overlap_friends/_main/ProfileLayoutOverlapFriends';
 //
-import OverlapPics from '../../../../../../component/overlap_pics/_main/OverlapPics';
-// 
 import './GroupPageMemberPics.scss';
 
 //
@@ -15,14 +13,11 @@ function GroupPageMemberPics({ group_id, member_arr, member_count }) {
     //
     return (
         <div className="GroupPageMemberPics">
-            <Link to={`/group/${group_id}/members`}>
-                <OverlapPics
-                    pic_arr={member_arr}
-                    has_more={member_arr < member_count}
-                    // ItemComponent={ItemComponent}
-                    // clickMore={clickMore}
-                />
-            </Link>
+            <ProfileLayoutOverlapFriends
+                link_to={`/group/${group_id}/members`}
+                friend_arr={member_arr}
+                has_more_friend={member_arr < member_count}
+            />
         </div>
     );
 }

@@ -14,15 +14,16 @@ import GroupPageDiscussSort from '../sort/GroupPageDiscussSort';
 import './GroupPageDiscussLeft.scss';
 
 //
-const sort_obj = { title: 'New activity' };
-
-//
 GroupPageDiscussLeft.propTypes = {};
 
 //
 function GroupPageDiscussLeft({ group_id, bg_btn }) {
     //
     const ref_fake_elm_end = useRef(null);
+    const ref_sort_obj = useRef({
+        name: 'new',
+        title: 'New activity',
+    });
 
     //
     const {
@@ -59,8 +60,13 @@ function GroupPageDiscussLeft({ group_id, bg_btn }) {
     // -----
 
     //
-    function openDiscussSort() {
-        console.log('sort');
+    function handleChangeSort(new_sort_obj = ref_sort_obj.current) {
+        if (new_sort_obj.name == ref_sort_obj.current.name) {
+            return;
+        }
+
+        ref_sort_obj.current = new_sort_obj;
+        refreshData_API();
     }
 
     //
@@ -75,12 +81,16 @@ function GroupPageDiscussLeft({ group_id, bg_btn }) {
                 <GroupPageDiscussCreate handleCreatePost={handleCreatePost} />
             </div>
 
-            <div className="margin-top-15px">
+            <div
+                className={`margin-top-15px ${
+                    is_fetching || !has_fetched ? 'pointer-events-none' : ''
+                }`}
+            >
                 <div>
                     <GroupPageDiscussSort
-                        sort_obj={sort_obj}
+                        sort_obj={ref_sort_obj.current}
                         bg_btn={bg_btn}
-                        openDiscussSort={openDiscussSort}
+                        handleChangeSort={handleChangeSort}
                     />
                 </div>
 

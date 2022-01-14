@@ -26,7 +26,7 @@ function ProfileLayoutNav({
 
     //
     return (
-        <div className="ProfileLayoutNav border-top-blur font-600 text-secondary">
+        <div className="ProfileLayoutNav border-top-blur font-600 text-secondary user-select-none">
             {IS_MOBILE ? null : (
                 <div
                     ref={ref_fake_sticky}
