@@ -1,0 +1,12 @@
+.LeftBarNavItem {
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+.LeftBarNavItem-active {
+    .LeftBarNavItem_icon {
+        color: white;
+        background-color: var(--blue);
+    }
+}

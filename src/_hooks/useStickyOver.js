@@ -9,6 +9,7 @@ import { useMounted } from './useMounted';
 export function useStickyOver({
     fake_bottom,
     ref_initial_fake_sticky = { current: null },
+    use_for_mobile = false,
 }) {
     //
     const [scroll_over, setScrollOver] = useState(false);
@@ -23,7 +24,7 @@ export function useStickyOver({
 
     //
     useEffect(() => {
-        if (!IS_MOBILE) {
+        if (!IS_MOBILE || use_for_mobile) {
             setScrollOver(
                 ref_fake_sticky.current.getBoundingClientRect().bottom <=
                     fake_bottom

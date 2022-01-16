@@ -12,7 +12,7 @@ import { openScreenConfirm } from '../../../../../../_screen/type/confirm/Screen
 //
 import IconSent from '../../../../../../../_icons_svg/icons_status_message/icon_sent/IconSent';
 //
-// import VirtualScroll from '../../../../../../virtual_scroll/VirtualScroll';
+import VirtualScroll from '../../../../../../virtual_scroll/VirtualScroll';
 import { WS_CHAT_TYPE_OBJ } from '../../../../../_ws/_type';
 //
 import ChatMessReacted from '../reacted/ChatMessReacted';
@@ -137,7 +137,7 @@ function ChatMess({ ref_bd_elm, mess_item, ist_last_sent }) {
     //
     return (
         <div className={`${is_user ? '' : 'bg-primary'}`}>
-            {/* <VirtualScroll ref_root={ref_bd_elm} rootMargin_y={400}> */}
+            <VirtualScroll ref_root={ref_bd_elm} rootMargin_y={2000}>
             <div>
                 {is_group && !is_user ? (
                     <div className="bg-primary text-align-center line-16px font-12px text-secondary">
@@ -263,7 +263,7 @@ function ChatMess({ ref_bd_elm, mess_item, ist_last_sent }) {
                     </div>
                 </div>
             </div>
-            {/* </VirtualScroll> */}
+            </VirtualScroll>
         </div>
     );
 }

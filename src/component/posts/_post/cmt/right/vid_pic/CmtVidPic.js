@@ -23,7 +23,7 @@ function CmtVidPic({
     //
     return (
         <div className="CmtVidPic">
-            <div className="CmtVidPic_contain pos-rel bg-vid-pic">
+            <div className="CmtVidPic_contain pos-rel">
                 <div
                     className="CmtVidPic_pic width-fit-content margin-auto overflow-hidden cursor-pointer"
                     onClick={handleClick}

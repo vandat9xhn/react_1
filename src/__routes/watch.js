@@ -1,18 +1,16 @@
 import React from 'react';
 
 //
-const Watch = React.lazy(() =>
-    import('../component/working_on_it/WorkingOnIt')
-);
+const Watch = React.lazy(() => import('../pages/watch/_main/Watch'));
 
 //
 export const fb_watch_route_arr = [
     {
         path: '/watch',
         component: Watch,
-        exact: true,
+        exact: false,
         auth: false,
-        
-        title: 'Watch'
+
+        title: 'Watch',
     },
 ];

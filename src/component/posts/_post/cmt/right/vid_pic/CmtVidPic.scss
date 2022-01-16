@@ -9,11 +9,12 @@
 
 .CmtVidPic_contain {
     width: fit-content;
-    min-width: 150px;
+    // min-width: 150px;
     max-width: calc(100% - 30px);
-    border-radius: 18px;
+    // border-radius: 18px;
 }
 
 .CmtVidPic_pic {
-    border-radius: 18px;
+    border-radius: min(18px, 20%);
+    border: 1px solid var(--md-bg-blur);
 }
