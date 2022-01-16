@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import WatchLayoutHead from '../head/WatchLayoutHead';
 import WatchLayoutLeftNav from '../nav/WatchLayoutLeftNav';
 import SeparateLineScrollToggle from '../../../../../../component/separate_line_scroll_toggle/SeparateLineScrollToggle';
+import WatchLayoutLeftList from '../list/_main/WatchLayoutLeftList';
 
 //
 WatchLayoutLeft.propTypes = {};
@@ -29,6 +30,10 @@ function WatchLayoutLeft(props) {
                 className="flex-grow-1 flex-basis-1rem overflow-y-auto scroll-thin"
             >
                 <WatchLayoutLeftNav ref_scroll_elm={ref_scroll_elm} />
+
+                <div className="margin-top-12px padding-x-8px">
+                    <WatchLayoutLeftList ref_scroll_elm={ref_scroll_elm} />
+                </div>
             </div>
         </div>
     );

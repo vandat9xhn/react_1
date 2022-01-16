@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import UnitTime from '../../../../../../../../_some_function/UnitTime';
 //
 import IconPinned from '../../../../../../../../_icons_svg/pinned/IconPinned';
+// 
+import DotCountNew from '../../../../../../../../component/dot_count_new/DotCountNew';
 
 //
 GroupLeftGroupItem.propTypes = {};
@@ -37,14 +39,10 @@ function GroupLeftGroupItem({ item }) {
 
                     <div className="line-16px font-13px text-secondary">
                         {new_post_count > 0 ? (
-                            <span>
-                                <span className="inline-block padding-4px brs-50 bg-blue"></span>
-
-                                <span className="margin-left-5px">
-                                    {new_post_count} post
-                                    {new_post_count >= 2 ? 's' : ''} for you
-                                </span>
-                            </span>
+                            <DotCountNew
+                                title={`${new_post_count} post
+                                    ${new_post_count >= 2 ? 's' : ''} for you`}
+                            />
                         ) : (
                             <span>
                                 Last active{' '}

@@ -10,7 +10,7 @@ const watch_nav_arr = [
     {
         Icon: <IconWatch />,
         title: 'Home',
-        link_to: '/watch/home',
+        link_to: '/watch',
     },
     {
         Icon: null,

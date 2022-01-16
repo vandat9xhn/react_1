@@ -1,0 +1,38 @@
+.WatchLayoutLeftManageItem_right{
+    svg{
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.WatchLayoutLeftManageItem_icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+
+    cursor: pointer;
+    &:hover{
+        background-color: var(--md-bg-blur);
+    }
+}
+
+.WatchLayoutLeftManageItem_bell-inactive{
+    position: relative;
+
+    &::after{
+        content: '';
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        
+        width: 1px;
+        height: 75%;
+        background-color: var(--md-bg-blur);
+    }
+}

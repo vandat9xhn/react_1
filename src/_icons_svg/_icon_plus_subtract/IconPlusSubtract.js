@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 //
 IconPlusSubtract.propTypes = {
+    class_icon: PropTypes.string,
     size_icon: PropTypes.string,
     x: PropTypes.number,
     y: PropTypes.number,
@@ -11,6 +12,7 @@ IconPlusSubtract.propTypes = {
     is_plus: PropTypes.bool,
 };
 IconPlusSubtract.defaultProps = {
+    class_icon: '',
     size_icon: '0.5rem',
     x: 0,
     y: 0,
@@ -20,11 +22,19 @@ IconPlusSubtract.defaultProps = {
     is_plus: true,
 };
 
-function IconPlusSubtract({ size_icon, x, y, stroke, stroke_width, is_plus }) {
+function IconPlusSubtract({
+    class_icon,
+    size_icon,
+    x,
+    y,
+    stroke,
+    stroke_width,
+    is_plus,
+}) {
     //
     return (
         <svg
-            className="IconPlusSubtract"
+            className={`IconPlusSubtract ${class_icon}`}
             viewBox={`${x} ${y} 200 200`}
             width={size_icon}
             height={size_icon}
