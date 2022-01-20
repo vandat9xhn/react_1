@@ -8,5 +8,6 @@ export const watchRoutes = [
     {
         path: '/watch',
         component: WatchHome,
+        exact: true,
     },
 ];

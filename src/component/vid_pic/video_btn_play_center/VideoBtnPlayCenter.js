@@ -1,15 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-//
-import { useWaitingLastAction } from '../../../_hooks/useWaitingLastAction';
 //
 import IconsPlayPause from '../../../_icons_svg/icon_play_pause/IconsPlayPause';
 
 //
-VideoUtils.propTypes = {};
+VideoBtnPlayCenter.propTypes = {};
 
 //
-function VideoUtils({
+function VideoBtnPlayCenter({
     size_icon,
     color,
 
@@ -47,4 +45,4 @@ function VideoUtils({
     );
 }
 
-export default VideoUtils;
+export default VideoBtnPlayCenter;

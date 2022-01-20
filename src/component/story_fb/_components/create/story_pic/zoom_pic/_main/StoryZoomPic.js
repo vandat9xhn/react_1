@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import InputRangeOneSlider from '../../../../../../input/range/one_slider/InputRangeOneSlider';
+import InputRangeOneSlider from '../../../../../../input/range/one_slider/_main/InputRangeOneSlider';
 //
 import StoryZoomRange from '../range/StoryZoomRange';
 import StoryZoomActive from '../active_range/StoryZoomActive';
@@ -13,15 +13,15 @@ import './StoryZoomPic.scss';
 StoryZoomPic.propTypes = {};
 
 //
-function StoryZoomPic({ value, handleMouseMove, handleMouseEnd }) {
+function StoryZoomPic({ value, handleChange, afterMouseUp }) {
     //
     function handleZoomAdd() {
-        value < 100 && handleMouseMove(5);
+        handleChange(value + 5);
     }
 
     //
     function handleZoomSub() {
-        value > 0 && handleMouseMove(-5);
+        handleChange(value - 5);
     }
 
     //
@@ -46,8 +46,8 @@ function StoryZoomPic({ value, handleMouseMove, handleMouseEnd }) {
                         slider={<StoryZoomSlider />}
                         value={value}
                         //
-                        handleMouseMove={handleMouseMove}
-                        handleMouseEnd={handleMouseEnd}
+                        handleChange={handleChange}
+                        afterMouseUp={afterMouseUp}
                     />
                 </div>
 

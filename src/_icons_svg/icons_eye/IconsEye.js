@@ -23,8 +23,8 @@ IconsEye.defaultProps = {
     IconsEye: (x, y)
         1. Eye show password: (200, 200)
 */
-function IconsEye({size_icon, x, y, close_eye}){
-    // 
+function IconsEye({ size_icon, x, y, close_eye }) {
+    //
     return (
         <svg
             className="IconsEye"
@@ -35,7 +35,6 @@ function IconsEye({size_icon, x, y, close_eye}){
             fill="var(--md-color)"
             strokeLinecap="round"
         >
-
             {/* Eye for showing password x=200 y=200 Toggle:close_eye */}
             <path
                 d="M200,300 Q300,200 400,300 Q300,400 200,300"
@@ -43,19 +42,21 @@ function IconsEye({size_icon, x, y, close_eye}){
                 strokeWidth="10"
             />
             <circle
-                className={close_eye ? 'display-none' : ''}
+                className={`IconsEye_in ${close_eye ? 'display-none' : ''}`}
                 cx="300"
                 cy="300"
                 r="30"
             />
             <g className={close_eye ? '' : 'display-none'}>
-                <path d="M200,300 Q300,350 400,300" fill="none" strokeWidth="20"/>
-                <line x1="210" y1="210" x2="390" y2="390" strokeWidth="30"/>
+                <path
+                    d="M200,300 Q300,350 400,300"
+                    fill="none"
+                    strokeWidth="20"
+                />
+                <line x1="210" y1="210" x2="390" y2="390" strokeWidth="30" />
             </g>
-
         </svg>
     );
-};
-
+}
 
 export default IconsEye;

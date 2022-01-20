@@ -6,8 +6,9 @@ import PropTypes from 'prop-types';
 // import TestPagination from '../test_pagination/TestPagination';
 //
 import './LearnHTML.scss';
-import LearnPreviewProfile from '../preview_profile/LearnPreviewProfile';
-import LearnGroupCard from '../group_card/LearnGroupCard';
+import LearnVideo from '../video/LearnVideo';
+// import LearnPreviewProfile from '../preview_profile/LearnPreviewProfile';
+// import LearnGroupCard from '../group_card/LearnGroupCard';
 // import LearnCmt from '../cmt/LearnCmt';
 // import TestSearchAnimate from '../test_search_animate/TestSearchAnimate';
 // import FbLogin from '../fb/test_login/FbLogin';
@@ -108,7 +109,9 @@ function LearnHTML() {
 
             {/* <LearnPreviewProfile /> */}
 
-            <LearnGroupCard />
+            {/* <LearnGroupCard /> */}
+
+            <LearnVideo />
 
             <div className="h-100vh"></div>
         </div>

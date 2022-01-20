@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import { watchRoutes } from '../_routes/_main';
@@ -21,10 +21,9 @@ function Watch(props) {
                             key={ix}
                             path={item.path}
                             component={item.component}
+                            exact={item.exact}
                         />
                     ))}
-
-                    <Redirect to={'/watch/home'} />
                 </Switch>
             </WatchLayout>
         </div>

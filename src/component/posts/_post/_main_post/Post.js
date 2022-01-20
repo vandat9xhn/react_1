@@ -45,6 +45,7 @@ import PostHistory from '../history/_main/PostHistory';
 import './Post.scss';
 import { context_post } from '../../../../_context/post/ContextPost';
 import { openScreenNotice } from '../../../_screen_once/notice/ScreenNotice';
+import PostVideoLive from '../video_live/_main/PostVideoLive';
 
 //
 Post.propTypes = {
@@ -75,8 +76,10 @@ function Post({
         is_del,
         is_head_to,
 
-        id,
         post_where,
+        is_live,
+        
+        id,
         user,
         to_user,
         group_obj,
@@ -454,7 +457,9 @@ function Post({
                     </div>
                 ) : null}
 
-                {vid_pic_count && vid_pics.length ? (
+                {is_live ? (
+                    <PostVideoLive vid_pics={vid_pics} />
+                ) : vid_pic_count && vid_pics.length ? (
                     <div className="Post_pic">
                         <VidPicsPost
                             post_ix={post_ix}

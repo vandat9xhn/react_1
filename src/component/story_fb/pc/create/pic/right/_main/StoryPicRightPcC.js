@@ -28,8 +28,8 @@ function StoryPicRightPcC({
     handleRotateText,
     handleDeleteText,
 
-    handleMouseMoveZoom,
-    handleMouseEndZoom,
+    handleChangeZoom,
+    afterMouseUpZoom,
     handleRotatePic,
 }) {
     
@@ -74,8 +74,8 @@ function StoryPicRightPcC({
             <div>
                 <StoryPicFootPcC
                     value_zoom={value_zoom_pic}
-                    handleMouseMoveZoom={handleMouseMoveZoom}
-                    handleMouseEndZoom={handleMouseEndZoom}
+                    handleChangeZoom={handleChangeZoom}
+                    afterMouseUpZoom={afterMouseUpZoom}
                     handleRotatePic={handleRotatePic}
                 />
             </div>

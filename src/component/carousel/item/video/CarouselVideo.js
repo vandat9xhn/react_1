@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //
-import { useVideoUtils } from '../../../../_hooks/useVideoUtils';
+import { useVideoBtnPlayCenter } from '../../../../_hooks/useVideoBtnPlayCenter';
 //
-import VideoUtils from '../../../vid_pic/video_utils/VideoUtils';
+import VideoBtnPlayCenter from '../../../vid_pic/video_btn_play_center/VideoBtnPlayCenter';
 
 //
 CarouselVideo.propTypes = {};
@@ -22,7 +22,7 @@ function CarouselVideo({ vid_pic, vid_pic_ix, stopInterval }) {
         doPause,
         // hideBtnPlay,
         handleEnded,
-    } = useVideoUtils({
+    } = useVideoBtnPlayCenter({
         other_state: {},
     });
 
@@ -57,7 +57,7 @@ function CarouselVideo({ vid_pic, vid_pic_ix, stopInterval }) {
                 onEnded={handleEnded}
             />
 
-            <VideoUtils
+            <VideoBtnPlayCenter
                 size_icon="2.5rem"
                 // color={color}
                 is_play={is_play}

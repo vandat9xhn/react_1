@@ -92,6 +92,7 @@ function Posts({
     //
     const ws = useRef(null);
     const c_zoom_post = useRef(-1);
+    const ref_posts = useRef(null);
 
     //
     useEffect(() => {
@@ -141,12 +142,15 @@ function Posts({
 
     //
     return (
-        <div className="Posts">
+        <div ref={ref_posts} className="Posts">
             <ContextPost
                 ws_send={ws.current ? ws.current.send : handle_fake_ws_send}
                 ws_type_post="post"
                 ws_type_cmt="cmt"
                 ws_type_sub="sub"
+                //
+                ref_posts={ref_posts}
+                //
                 zoomVidPicPost={zoomVidPicPost}
                 handle_API_Like_L={handle_API_Like_L}
                 handle_API_Share_L={handle_API_Share_L}

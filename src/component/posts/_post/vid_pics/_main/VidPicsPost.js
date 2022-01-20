@@ -7,13 +7,9 @@ import VidPicPostItem from '../item/VidPicPostItem';
 //
 // import './VidPicsPost.scss';
 
-VidPicsPost.propTypes = {
-    vid_pics: PropTypes.array,
-};
+VidPicsPost.propTypes = {};
 
-VidPicsPost.defaultProps = {
-    // vid_pics: [1],
-};
+VidPicsPost.defaultProps = {};
 
 //
 function VidPicsPost({ post_ix, vid_pics, vid_pic_count }) {
@@ -25,10 +21,11 @@ function VidPicsPost({ post_ix, vid_pics, vid_pic_count }) {
                     {vid_pics.map((item, index) => (
                         <VidPicPostItem
                             key={index}
-                            index={index}
                             post_ix={post_ix}
-                            vid_pic_count={vid_pic_count}
+                            index={index}
                             id={item.id}
+                            // 
+                            vid_pic_count={vid_pic_count}
                             vid_pic={item.vid_pic}
                         />
                     ))}

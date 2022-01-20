@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 //
-import { IS_MOBILE } from '../_constant/Constant';
-//
 import { getClientXY } from '../_some_function/getClientXY';
+// 
+import { useMouseDownToWindowUp } from './useMouseDownToWindowUp';
 
 //
 export function useMouseMoveX({
@@ -18,6 +18,15 @@ export function useMouseMoveX({
     const client_y = useRef(0);
 
     //
+    const { onDown } = useMouseDownToWindowUp({
+        handleDown: handleMouseDown,
+        handleMove: handleMove,
+        handleEnd: handleEnd,
+    });
+
+    // -----
+
+    //
     function handleStart(e) {
         e.stopPropagation();
 
@@ -27,15 +36,7 @@ export function useMouseMoveX({
         client_x.current = new_client_x;
         client_y.current = new_client_y;
 
-        handleMouseDown();
-
-        if (IS_MOBILE) {
-            window.ontouchmove = handleMove;
-            window.ontouchend = handleEnd;
-        } else {
-            window.onmousemove = handleMove;
-            window.onmouseup = handleEnd;
-        }
+        onDown(e)
     }
 
     //
@@ -57,7 +58,7 @@ export function useMouseMoveX({
         }
 
         handleMouseMove(client_change_x);
-        
+
         client_x.current = new_client_x;
         client_y.current = new_client_y;
     }
@@ -65,10 +66,6 @@ export function useMouseMoveX({
     //
     function handleEnd() {
         is_run.current = false;
-
-        window.onmousemove = null;
-        window.onmouseup = null;
-
         handleMouseEnd();
         first_orientation.current = '';
     }

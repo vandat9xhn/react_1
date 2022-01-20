@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //
 import StoryZoomPic from '../../../../../_components/create/story_pic/zoom_pic/_main/StoryZoomPic';
 import StoryRotatePic from '../../../../../_components/create/story_pic/rotate/StoryRotatePic';
-// 
+//
 import './StoryPicFootPcC.scss';
 
 //
@@ -12,8 +12,8 @@ StoryPicFootPcC.propTypes = {};
 //
 function StoryPicFootPcC({
     value_zoom,
-    handleMouseMoveZoom,
-    handleMouseEndZoom,
+    handleChangeZoom,
+    afterMouseUpZoom,
     handleRotatePic,
 }) {
     //
@@ -23,8 +23,8 @@ function StoryPicFootPcC({
                 <div className="StoryPicFootPcC_left">
                     <StoryZoomPic
                         value={value_zoom}
-                        handleMouseMove={handleMouseMoveZoom}
-                        handleMouseEnd={handleMouseEndZoom}
+                        handleChange={handleChangeZoom}
+                        afterMouseUp={afterMouseUpZoom}
                     />
                 </div>
 

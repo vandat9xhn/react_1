@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import LeftBarTitleSettings from '../../../../../../component/side_bar/left/title_settings/LeftBarTitleSettings';
-import FbSearchInput from '../../../../../../component/fb_search/input/_main/FbSearchInput';
-// 
+import FbSearchInput from '../../../../../../../component/fb_search/input/_main/FbSearchInput';
+import LeftBarTitleSettings from '../../../../../../../component/side_bar/left/title_settings/LeftBarTitleSettings';
+//
+import WatchLayoutHeadSettings from '../settings/_main/WatchLayoutHeadSettings';
+//
 import './WatchLayoutHead.scss';
 
 //
@@ -17,7 +19,7 @@ function WatchLayoutHead(props) {
             <div className="WatchLayoutHead_settings">
                 <LeftBarTitleSettings
                     title={'Watch'}
-                    setting_elm={<div></div>}
+                    setting_elm={<WatchLayoutHeadSettings />}
                 />
             </div>
 

@@ -8,7 +8,7 @@ StoryZoomRange.propTypes = {};
 function StoryZoomRange(props) {
     //
     return (
-        <div className="StoryZoomRange padding-4px bg-always-white brs-5px"></div>
+        <div className="StoryZoomRange h-100per bg-always-white brs-5px"></div>
     );
 }
 

@@ -7,7 +7,7 @@ StoryZoomActive.propTypes = {};
 //
 function StoryZoomActive(props) {
     //
-    return <div className="StoryZoomActive padding-4px bg-blue brs-5px"></div>;
+    return <div className="StoryZoomActive h-100per bg-blue brs-5px"></div>;
 }
 
 export default StoryZoomActive;

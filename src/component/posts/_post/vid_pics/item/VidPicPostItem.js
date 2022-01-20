@@ -8,6 +8,8 @@ import { getTypeVidOrPic } from '../../../../../_some_function/VideoOrImage';
 //
 import IconsPlayPause from '../../../../../_icons_svg/icon_play_pause/IconsPlayPause';
 //
+import Video from '../../../../vid_pic/video/_main/Video';
+//
 import './VidPicPostItem.scss';
 
 //
@@ -16,7 +18,7 @@ VidPicPostItem.propTypes = {};
 //
 function VidPicPostItem({ vid_pic_count, index, post_ix, id, vid_pic }) {
     //
-    const { zoomVidPicPost } = useContext(context_post);
+    const { ref_posts, zoomVidPicPost } = useContext(context_post);
 
     //
     const vid_pic_type = getTypeVidOrPic(vid_pic);
@@ -30,6 +32,17 @@ function VidPicPostItem({ vid_pic_count, index, post_ix, id, vid_pic }) {
     }
 
     //
+    function beforeTogglePlay() {
+        const videos = ref_posts.current.getElementsByTagName('video');
+
+        for (const video of videos) {
+            if (video.played) {
+                video.pause();
+            }
+        }
+    }
+
+    //
     return (
         <div
             className={`VidPicPostItem VidPics_count_${
@@ -39,34 +52,50 @@ function VidPicPostItem({ vid_pic_count, index, post_ix, id, vid_pic }) {
                 index == 3 && vid_pic_count > 4 ? vid_pic_count - 4 : undefined
             }
         >
-            <Link
-                className="display-block wh-100"
-                to={`/post/photos/${id}`}
-                onClick={handleClick}
-            >
-                {vid_pic_type == 'img' ? (
-                    <img
-                        className="wh-100 object-fit-cover"
-                        src={vid_pic}
-                        alt=""
-                    />
-                ) : vid_pic_type == 'video' ? (
-                    <div className="wh-100 pos-rel">
-                        <video
+            {vid_pic_count == 1 && vid_pic_type == 'video' ? (
+                <Video
+                    video={vid_pic}
+                    initial_is_play={false}
+                    initial_is_mute={true}
+                    //
+                    face_video_elm={
+                        <Link
+                            className="display-block wh-100"
+                            to={`/post/photos/${id}`}
+                            onClick={handleClick}
+                        ></Link>
+                    }
+                    //
+                    beforeTogglePlay={beforeTogglePlay}
+                />
+            ) : (
+                <Link
+                    className="display-block wh-100"
+                    to={`/post/photos/${id}`}
+                    onClick={handleClick}
+                >
+                    {vid_pic_type == 'img' ? (
+                        <img
                             className="wh-100 object-fit-cover"
                             src={vid_pic}
-                            preload="metadata"
-                            controls={vid_pic_count == 1}
+                            alt=""
                         />
+                    ) : vid_pic_type == 'video' ? (
+                        <div className="wh-100 pos-rel">
+                            <video
+                                className="wh-100 object-fit-cover"
+                                src={vid_pic}
+                                preload="metadata"
+                                controls={false}
+                            />
 
-                        {vid_pic_count >= 2 ? (
                             <div className="pos-abs-100 display-flex-center bg-shadow-2">
                                 <IconsPlayPause size_icon="40px" />
                             </div>
-                        ) : null}
-                    </div>
-                ) : null}
-            </Link>
+                        </div>
+                    ) : null}
+                </Link>
+            )}
         </div>
     );
 }

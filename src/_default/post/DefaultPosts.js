@@ -190,11 +190,15 @@ export const default_post_obj = (
             ? vid_pics.length
             : getRandomNumber(4, 10);
 
+    const is_live = false;
+
     //
     return {
         id: getRandomId(),
         ...data_user,
+
         post_where: post_where,
+        is_live: is_live,
 
         ...getRandomContentObj(),
         vid_pics: vid_pics,

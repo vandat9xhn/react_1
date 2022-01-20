@@ -245,11 +245,9 @@ function StoryCreatePicPc({
     }
 
     //
-    function handleMouseMoveZoom(value_zoom_change) {
+    function handleChangeZoom(new_value_zoom = 0) {
         setStateObj((state_obj) => {
-            let new_scale =
-                state_obj.vid_pic_obj.scale +
-                value_zoom_change / SCALE_PIC_RATIO;
+            let new_scale = new_value_zoom / SCALE_PIC_RATIO;
 
             if (new_scale <= 0) {
                 new_scale = 0;
@@ -268,7 +266,7 @@ function StoryCreatePicPc({
     }
 
     //
-    function handleMouseEndZoom() {}
+    function afterMouseUpZoom() {}
 
     //
     function handleRotatePic() {
@@ -369,8 +367,8 @@ function StoryCreatePicPc({
                     handleRotateText={handleRotateText}
                     handleDeleteText={handleDeleteText}
                     //
-                    handleMouseMoveZoom={handleMouseMoveZoom}
-                    handleMouseEndZoom={handleMouseEndZoom}
+                    handleChangeZoom={handleChangeZoom}
+                    afterMouseUpZoom={afterMouseUpZoom}
                     handleRotatePic={handleRotatePic}
                 />
             }
