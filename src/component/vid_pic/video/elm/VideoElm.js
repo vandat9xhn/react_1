@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../_constant/Constant';
+//
 import VideoUtils from '../utils/VideoUtils';
 //
 // import './VideoElm.scss';
@@ -14,7 +16,7 @@ function VideoElm({
     face_video_elm,
 
     video,
-    size_icon_utils = '20px',
+    size_icon_utils = IS_MOBILE ? '16px' : '20px',
     total_view,
 
     is_play,

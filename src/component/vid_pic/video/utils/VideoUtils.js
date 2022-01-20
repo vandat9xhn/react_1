@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../_constant/Constant';
+// 
 import VideoPause from '../../video_components/pause/VideoPause';
 import VideoTimeTotalTime from '../../video_components/time_total_time/VideoTimeTotalTime';
+import VideoTimeLine from '../../video_components/time_line/_main/VideoTimeLine';
+import VideoSettings from '../../video_components/settings/_main/VideoSettings';
 import VideoZoom from '../../video_components/zoom/_main/VideoZoom';
 import VideoSound from '../../video_components/sound/_main/VideoSound';
-import VideoTimeLine from '../../video_components/time_line/_main/VideoTimeLine';
 //
 import './VideoUtils.scss';
 //
@@ -47,14 +50,14 @@ function VideoUtils({
                     />
                 </div>
 
-                <div className="VideoUtils_part">
-                    <div className="font-12px">
+                {IS_MOBILE ? null : (
+                    <div className="VideoUtils_part">
                         <VideoTimeTotalTime
                             c_time={c_time}
                             total_time={total_time}
                         />
                     </div>
-                </div>
+                )}
 
                 <div className="flex-grow-1">
                     <VideoTimeLine
@@ -68,6 +71,21 @@ function VideoUtils({
                         handleEndMoveTime={handleEndMoveTime}
                     />
                 </div>
+
+                {!IS_MOBILE ? null : (
+                    <div className="VideoUtils_part">
+                        <VideoTimeTotalTime
+                            c_time={c_time}
+                            total_time={total_time}
+                        />
+                    </div>
+                )}
+
+                {IS_MOBILE ? null : (
+                    <div className="VideoUtils_part">
+                        <VideoSettings size_icon={size_icon} />
+                    </div>
+                )}
 
                 <div className="VideoUtils_part">
                     <VideoZoom

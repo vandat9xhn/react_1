@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../../_constant/Constant';
+//
 import IconWatch from '../../../../../../_icons_svg/watch/IconWatch';
 //
 import LeftBarNav from '../../../../../../component/side_bar/left/nav/_main/LeftBarNav';
@@ -10,7 +12,7 @@ const watch_nav_arr = [
     {
         Icon: <IconWatch />,
         title: 'Home',
-        link_to: '/watch',
+        link_to: IS_MOBILE ? '/watch/home' : '/watch',
     },
     {
         Icon: null,

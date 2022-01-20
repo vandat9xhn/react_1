@@ -11,6 +11,8 @@ import { useObserverShowMore } from '../../../../../../_hooks/useObserverShowMor
 import NextPrevDiv from '../../../../../../component/some_div/next_prev_div/NextPrevDiv';
 //
 import WatchHomeNewItem from '../item/_main/WatchHomeNewItem';
+//
+import './WatchHomeNew.scss';
 
 //
 WatchHomeNew.propTypes = {};
@@ -78,17 +80,20 @@ function WatchHomeNew(props) {
     //
     return (
         <div className="WatchHomeNew watch-home-part padding-y-16px brs-8px-pc bg-primary box-shadow-1">
-            <div className="margin-bottom-8px padding-x-16px font-20px font-700">
+            <div className="WatchHomeNew_title margin-bottom-8px padding-x-16px font-20px font-700">
                 New for you · {count}
             </div>
 
-            <div className="pos-rel padding-x-16px">
+            <div className="WatchHomeNew_list pos-rel padding-x-16px">
                 <ul
                     ref={ref_scroll_elm}
                     className="display-flex list-none overflow-x-auto scroll-height-0"
                 >
                     {data_arr.map((item, ix) => (
-                        <li key={item.id} className="flex-shrink-0 w-50per">
+                        <li
+                            key={item.id}
+                            className="WatchHomeNew_item flex-shrink-0 w-50per"
+                        >
                             <WatchHomeNewItem item={item} />
                         </li>
                     ))}

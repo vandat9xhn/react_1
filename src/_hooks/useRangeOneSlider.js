@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { getClientXY } from '../_some_function/getClientXY';
 //
 import { getSliderPercent } from '../_some_function/getSliderValue';
 //
@@ -89,7 +90,8 @@ export function useRangeOneSlider({
             changeRangeObj();
         }
 
-        onChange({ clientX: e.clientX, clientY: e.clientY });
+        const { client_x, client_y } = getClientXY(e);
+        onChange({ clientX: client_x, clientY: client_y });
         ref_is_run.current = true;
         forceUpdate();
 
@@ -99,7 +101,8 @@ export function useRangeOneSlider({
     //
     function onMouseMove(e) {
         if (ref_is_run.current) {
-            onChange({ clientX: e.clientX, clientY: e.clientY });
+            const { client_x, client_y } = getClientXY(e);
+            onChange({ clientX: client_x, clientY: client_y });
 
             afterMousemove();
         }

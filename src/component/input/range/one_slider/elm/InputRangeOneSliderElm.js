@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+// 
 import './InputRangeOneSliderElm.scss';
 
 //
@@ -27,8 +29,12 @@ function InputRangeOneSliderElm({
             className={`InputRangeOneSliderElm pos-rel wh-100 ${
                 is_run ? 'input-range-running' : ''
             }`}
-            onMouseDown={!only_drag_slider ? handleStart : undefined}
-            onTouchStart={!only_drag_slider ? handleStart : undefined}
+            onMouseDown={
+                !only_drag_slider && !IS_MOBILE ? handleStart : undefined
+            }
+            onTouchStart={
+                !only_drag_slider && IS_MOBILE ? handleStart : undefined
+            }
         >
             <div
                 className="InputRangeOneSliderElm_range pos-abs left-0 y-center wh-100 cursor-pointer"
@@ -48,8 +54,12 @@ function InputRangeOneSliderElm({
                 className="InputRangeOneSliderElm_slider pos-abs top-50per"
                 style={{ left: `${value}%` }}
                 //
-                onMouseDown={only_drag_slider ? handleStart : undefined}
-                onTouchStart={only_drag_slider ? handleStart : undefined}
+                onMouseDown={
+                    only_drag_slider && !IS_MOBILE ? handleStart : undefined
+                }
+                onTouchStart={
+                    only_drag_slider && IS_MOBILE ? handleStart : undefined
+                }
             >
                 {slider}
             </div>

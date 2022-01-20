@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+// 
 import WatchLayoutLeft from '../left/_main/WatchLayoutLeft';
 
 //
@@ -8,6 +10,11 @@ WatchLayout.propTypes = {};
 
 //
 function WatchLayout({ children }) {
+    //
+    if (IS_MOBILE) {
+        return children;
+    }
+
     //
     return (
         <div className="WatchLayout">

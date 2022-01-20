@@ -5,6 +5,8 @@ import WatchLayoutHead from '../head/_main/WatchLayoutHead';
 import WatchLayoutLeftNav from '../nav/WatchLayoutLeftNav';
 import SeparateLineScrollToggle from '../../../../../../component/separate_line_scroll_toggle/SeparateLineScrollToggle';
 import WatchLayoutLeftList from '../list/_main/WatchLayoutLeftList';
+// 
+import './WatchLayoutLeft.scss';
 
 //
 WatchLayoutLeft.propTypes = {};

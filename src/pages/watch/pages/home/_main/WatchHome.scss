@@ -1,4 +1,12 @@
-.WatchHome{
+.WatchHome {
     margin: 4px auto;
     width: 740px;
+}
+
+// ----
+
+.device-mobile {
+    .WatchHome {
+        width: 100%;
+    }
 }

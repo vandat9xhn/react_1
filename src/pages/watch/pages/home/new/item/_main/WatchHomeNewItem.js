@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
 import DotCountNew from '../../../../../../../component/dot_count_new/DotCountNew';
+// 
+import './WatchHomeNewItem.scss';
 
 //
 WatchHomeNewItem.propTypes = {};
@@ -20,7 +22,7 @@ function WatchHomeNewItem({ item }) {
         >
             <div className="margin-right-12px">
                 <img
-                    className="brs-50 object-fit-cover"
+                    className="WatchHomeNewItem_img brs-50 object-fit-cover"
                     src={picture}
                     alt=""
                     width={60}
@@ -29,7 +31,7 @@ function WatchHomeNewItem({ item }) {
             </div>
 
             <div>
-                <div className="font-17px">{title}</div>
+                <div className="WatchHomeNewItem_title font-17px">{title}</div>
 
                 <div className="font-12px text-blue">
                     <DotCountNew title={time_str} />
