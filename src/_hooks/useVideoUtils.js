@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { observerDisplay } from '../_some_function/observerDisplay';
 //
 import { useForceUpdate } from './UseForceUpdate';
 
@@ -7,7 +8,9 @@ export function useVideoUtils({
     ref_video_elm = {
         current: document.getElementsByTagName('video')[0],
     },
+
     is_live,
+    stop_when_over = true,
 
     initial_is_play = false,
     initial_zoom_lv = 0,
@@ -32,6 +35,9 @@ export function useVideoUtils({
 
     beforeChangeTime = () => {},
     afterChangeTime = () => {},
+
+    beforeGotoLiveView = () => {},
+    afterGotoLiveView = () => {},
 }) {
     //
     const ref_is_play = useRef(initial_is_play);
@@ -45,6 +51,7 @@ export function useVideoUtils({
     const ref_buffer_time = useRef(0);
 
     const ref_holding_slider = useRef(false);
+    const ref_is_over = useRef(false);
 
     //
     const forceUpdate = useForceUpdate();
@@ -85,9 +92,29 @@ export function useVideoUtils({
                     'durationchange',
                     handleChangeDuration
                 );
-                ref_video_elm.current.removeEventListener('pause', handleWhenPause);
+                ref_video_elm.current.removeEventListener(
+                    'pause',
+                    handleWhenPause
+                );
             }
         };
+    }, []);
+
+    //
+    useEffect(() => {
+        stop_when_over &&
+            observerDisplay({
+                elm: ref_video_elm.current,
+                callbackDisplay: () => {
+                    ref_is_over.current = false;
+                },
+                callbackNoDisplay: () => {
+                    ref_is_over.current = true;
+                    if (ref_is_play.current) {
+                        togglePlay();
+                    }
+                },
+            });
     }, []);
 
     // ---- EVENTS
@@ -97,6 +124,11 @@ export function useVideoUtils({
         ref_total_time.current = ref_video_elm.current.duration;
         ref_is_play.current && ref_video_elm.current.play();
         ref_is_mute.current && (ref_video_elm.current.muted = true);
+
+        if (is_live) {
+            ref_c_time.current = ref_total_time.current;
+            ref_video_elm.current.currentTime = ref_total_time.current;
+        }
 
         forceUpdate();
     }
@@ -218,6 +250,22 @@ export function useVideoUtils({
         forceUpdate();
     }
 
+    //
+    function startMoveTime() {
+        ref_holding_slider.current = true;
+        if (ref_is_play.current) {
+            ref_video_elm.current.pause();
+        }
+    }
+
+    //
+    function endMoveTime() {
+        ref_holding_slider.current = false;
+        if (ref_is_play.current) {
+            ref_video_elm.current.play();
+        }
+    }
+
     // ---- NORMAL
 
     function getTotalTime() {
@@ -228,9 +276,15 @@ export function useVideoUtils({
 
     //
     function gotoLiveView() {
+        if (ref_c_time.current == ref_total_time.current) {
+            return;
+        }
+
         beforeGotoLiveView();
-        ref_is_play.current = true;
+        // ref_is_play.current = true;
+        // ref_video_elm.current.play();
         ref_c_time.current = ref_total_time.current;
+        ref_video_elm.current.currentTime = ref_total_time.current;
         forceUpdate();
         afterGotoLiveView();
     }
@@ -255,6 +309,8 @@ export function useVideoUtils({
         changeZoomLv,
 
         changeTime,
+        startMoveTime,
+        endMoveTime,
         getTotalTime,
         changeTotalTime,
 

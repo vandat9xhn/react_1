@@ -38,7 +38,6 @@ function Video({
 }) {
     //
     const ref_video_elm = useRef(null);
-    const ref_is_over = useRef(false);
 
     //
     const {
@@ -59,6 +58,8 @@ function Video({
         changeZoomLv,
 
         changeTime,
+        startMoveTime,
+        endMoveTime,
         getTotalTime,
         changeTotalTime,
 
@@ -67,6 +68,7 @@ function Video({
     } = useVideoUtils({
         ref_video_elm: ref_video_elm,
         is_live: false,
+        stop_when_over: stop_when_over,
 
         initial_is_play: initial_is_play,
         initial_zoom_lv: initial_zoom_lv,
@@ -87,54 +89,7 @@ function Video({
         afterChangeTime: afterChangeTime,
     });
 
-    //
-    useEffect(() => {
-        stop_when_over &&
-            observerDisplay({
-                elm: ref_video_elm.current,
-                callbackDisplay: () => {
-                    ref_is_over.current = false;
-                },
-                callbackNoDisplay: () => {
-                    ref_is_over.current = true;
-                    if (ref_is_play.current) {
-                        togglePlay();
-                    }
-                },
-            });
-    }, []);
-
     // ------
-
-    //
-    function handleVolumeValueChange(new_volume = 0) {
-        changeVolume({
-            new_volume: new_volume / 100,
-        });
-    }
-
-    //
-    function handleStartMoveTime() {
-        ref_holding_slider.current = true;
-        if (ref_is_play.current) {
-            ref_video_elm.current.pause()
-        }
-    }
-
-    //
-    function handleChangeTime(time_percent = 0) {
-        changeTime({
-            new_c_time: (ref_total_time.current * time_percent) / 100,
-        });
-    }
-
-    // 
-    function handleEndMoveTime() {
-        ref_holding_slider.current = false;
-        if (ref_is_play.current) {
-            ref_video_elm.current.play()
-        }
-    }
 
     //
     return (
@@ -151,17 +106,17 @@ function Video({
             c_time={ref_c_time.current}
             buffer_time={ref_buffer_time.current}
             total_time={ref_total_time.current}
-            // 
+            //
             face_video_elm={face_video_elm}
             //
             togglePlayPause={togglePlay}
             toggleZoom={changeZoomLv}
             toggleMute={toggleMute}
-            handleVolumeValueChange={handleVolumeValueChange}
+            handleChangeVolume={changeVolume}
             //
-            handleChangeTime={handleChangeTime}
-            handleStartMoveTime={handleStartMoveTime}
-            handleEndMoveTime={handleEndMoveTime}
+            handleChangeTime={changeTime}
+            handleStartMoveTime={startMoveTime}
+            handleEndMoveTime={endMoveTime}
         />
     );
 }

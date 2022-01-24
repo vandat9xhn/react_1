@@ -59,7 +59,7 @@
     color: var(--fashion-mall);
 }
 
-// 
+//
 .text-05 {
     color: var(--color-05);
 }
@@ -76,7 +76,7 @@
     color: var(--color-555);
 }
 
-// 
+//
 .text-star {
     color: var(--star);
 }
@@ -95,6 +95,10 @@
 
 .text-always-green {
     color: green;
+}
+
+.text-always-05 {
+    color: #050505;
 }
 
 // ------- OPACITY
@@ -163,20 +167,19 @@
     }
 }
 
-.line-height-initial{
+.line-height-initial {
     line-height: initial;
 }
 
 // -------- DECORATION
 
-.text-underline{
+.text-underline {
     text-decoration: underline;
 }
 
-
 // -------- WORD
 
-.break-word{
+.break-word {
     word-break: break-word;
 }
 

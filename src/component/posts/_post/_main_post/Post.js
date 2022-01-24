@@ -78,7 +78,7 @@ function Post({
 
         post_where,
         is_live,
-        
+
         id,
         user,
         to_user,
@@ -458,7 +458,7 @@ function Post({
                 ) : null}
 
                 {is_live ? (
-                    <PostVideoLive vid_pics={vid_pics} />
+                    <PostVideoLive post_ix={post_ix} vid_pics={vid_pics} />
                 ) : vid_pic_count && vid_pics.length ? (
                     <div className="Post_pic">
                         <VidPicsPost

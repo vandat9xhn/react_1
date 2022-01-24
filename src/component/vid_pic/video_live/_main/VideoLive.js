@@ -11,8 +11,10 @@ VideoLive.propTypes = {};
 //
 function VideoLive({
     video,
-    view_count,
-    is_live,
+    total_view,
+    face_video_elm,
+
+    stop_when_over,
 
     initial_is_play,
     initial_zoom_lv,
@@ -32,8 +34,8 @@ function VideoLive({
     beforeChangeTime,
     afterChangeTime,
 }) {
-    // 
-    const ref_video_elm= useRef(null)
+    //
+    const ref_video_elm = useRef(null);
 
     //
     const {
@@ -45,6 +47,7 @@ function VideoLive({
 
         ref_c_time,
         ref_total_time,
+        ref_buffer_time,
         ref_holding_slider,
 
         togglePlay,
@@ -53,13 +56,18 @@ function VideoLive({
         changeZoomLv,
 
         changeTime,
+        startMoveTime,
+        endMoveTime,
         getTotalTime,
         changeTotalTime,
 
         // live
         gotoLiveView,
     } = useVideoUtils({
-        is_live: is_live,
+        ref_video_elm: ref_video_elm,
+        is_live: true,
+        stop_when_over: stop_when_over,
+
         initial_is_play: initial_is_play,
         initial_zoom_lv: initial_zoom_lv,
         initial_volume: initial_volume,
@@ -79,19 +87,35 @@ function VideoLive({
         afterChangeTime: afterChangeTime,
     });
 
-    //
-    useEffect(() => {
-        changeTotalTime(getTotalTime(ref_video_elm.current));
-    }, []);
+    // ------
 
     //
     return (
         <VideoLiveElm
             ref_video_elm={ref_video_elm}
             video={video}
-            view_count={view_count}
+            total_view={total_view}
+            //
+            is_play={ref_is_play.current}
+            is_zoom_out={ref_zoom_lv.current > 0}
+            is_mute={ref_is_mute.current}
+            volume={ref_volume.current}
+            //
             c_time={ref_c_time.current}
+            buffer_time={ref_buffer_time.current}
             total_time={ref_total_time.current}
+            //
+            face_video_elm={face_video_elm}
+            //
+            togglePlayPause={togglePlay}
+            gotoLiveView={gotoLiveView}
+            toggleZoom={changeZoomLv}
+            toggleMute={toggleMute}
+            handleChangeVolume={changeVolume}
+            //
+            handleChangeTime={changeTime}
+            handleStartMoveTime={startMoveTime}
+            handleEndMoveTime={endMoveTime}
         />
     );
 }

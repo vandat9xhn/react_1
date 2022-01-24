@@ -31,7 +31,7 @@ function VideoElm({
     togglePlayPause,
     toggleZoom,
     toggleMute,
-    handleVolumeValueChange,
+    handleChangeVolume,
 
     handleChangeTime,
     handleStartMoveTime,
@@ -66,7 +66,7 @@ function VideoElm({
                     togglePlayPause={togglePlayPause}
                     toggleZoom={toggleZoom}
                     toggleMute={toggleMute}
-                    handleVolumeValueChange={handleVolumeValueChange}
+                    handleChangeVolume={handleChangeVolume}
                     //
                     handleChangeTime={handleChangeTime}
                     handleStartMoveTime={handleStartMoveTime}

@@ -38,7 +38,7 @@ function VideoSound({
     slider,
 
     toggleMute,
-    handleVolumeValueChange,
+    handleChangeVolume,
 }) {
     //
     const [is_mouse_down, setIsMouseDown] = useState(false);
@@ -61,6 +61,11 @@ function VideoSound({
     }
 
     //
+    function onVolumeValueChange(new_volume = 0) {
+        handleChangeVolume({ new_volume: new_volume / 100 });
+    }
+
+    //
     return (
         <div
             className={`VideoSound pos-rel padding-left-4px ${
@@ -75,7 +80,7 @@ function VideoSound({
                     is_mute={is_mute}
                     is_too_low={volume <= 0.1}
                     is_high={volume >= 0.6}
-                    // 
+                    //
                     color="var(--white)"
                     size_icon={size_icon}
                 />
@@ -92,7 +97,7 @@ function VideoSound({
                         only_drag_slider={false}
                         getRangeAngel={getRangeAngel}
                         //
-                        handleChange={handleVolumeValueChange}
+                        handleChange={onVolumeValueChange}
                         afterMouseDown={afterMouseDown}
                         afterMouseUp={afterMouseUp}
                     />

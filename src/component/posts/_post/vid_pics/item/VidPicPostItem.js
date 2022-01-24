@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
 import { context_post } from '../../../../../_context/post/ContextPost';
 //
 import { getTypeVidOrPic } from '../../../../../_some_function/VideoOrImage';
@@ -32,6 +34,11 @@ function VidPicPostItem({ vid_pic_count, index, post_ix, id, vid_pic }) {
     }
 
     //
+    function afterChangeZoomLv() {
+        zoomVidPicPost(0, post_ix);
+    }
+
+    //
     function beforeTogglePlay() {
         const videos = ref_posts.current.getElementsByTagName('video');
 
@@ -59,14 +66,17 @@ function VidPicPostItem({ vid_pic_count, index, post_ix, id, vid_pic }) {
                     initial_is_mute={true}
                     //
                     face_video_elm={
-                        <Link
-                            className="display-block wh-100"
-                            to={`/post/photos/${id}`}
-                            onClick={handleClick}
-                        ></Link>
+                        !IS_MOBILE ? null : (
+                            <Link
+                                className="display-block wh-100"
+                                to={`/post/photos/${id}`}
+                                onClick={handleClick}
+                            ></Link>
+                        )
                     }
                     //
                     beforeTogglePlay={beforeTogglePlay}
+                    afterChangeZoomLv={afterChangeZoomLv}
                 />
             ) : (
                 <Link

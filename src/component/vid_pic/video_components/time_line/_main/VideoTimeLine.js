@@ -33,6 +33,7 @@ VideoTimeLine.defaultProps = {
 //
 function VideoTimeLine({
     c_time,
+    total_time,
     buffer_time,
 
     range,
@@ -43,6 +44,13 @@ function VideoTimeLine({
     handleStartMoveTime,
     handleEndMoveTime,
 }) {
+    //
+    function onChangeTime(time_percent = 0) {
+        handleChangeTime({
+            new_c_time: (total_time * time_percent) / 100,
+        });
+    }
+
     //
     return (
         <div className="VideoTimeLine">
@@ -63,7 +71,7 @@ function VideoTimeLine({
                 value={c_time}
                 only_drag_slider={false}
                 //
-                handleChange={handleChangeTime}
+                handleChange={onChangeTime}
                 afterMouseDown={handleStartMoveTime}
                 afterMouseUp={handleEndMoveTime}
             />

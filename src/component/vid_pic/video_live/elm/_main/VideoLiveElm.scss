@@ -2,7 +2,32 @@
     .IconsEye {
         stroke: currentColor;
     }
-    .IconsEye_in{
+    .IconsEye_in {
         fill: currentColor;
+    }
+}
+
+// -----
+
+.device-mobile {
+    .VideoLiveElm-play {
+        .VideoLiveElm_view,
+        .VideoLiveElm_utils {
+            opacity: 0;
+            visibility: hidden;
+
+            transition: all 250ms ease-in-out;
+        }
+    }
+    .VideoLiveElm:hover {
+        .VideoLiveElm_view,
+        .VideoLiveElm_utils {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    .VideoLiveElm_view{
+        padding: 8px;
     }
 }

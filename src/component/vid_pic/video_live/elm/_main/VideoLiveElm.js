@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import IconsEye from '../../../../../_icons_svg/icons_eye/IconsEye';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
 import VideoLiveUtils from '../../utils/_main/VideoLiveUtils';
-// 
+import VideoLiveView from '../../view/VideoLiveView';
+//
 import './VideoLiveElm.scss';
 
 //
@@ -14,17 +15,37 @@ VideoLiveElm.propTypes = {};
 function VideoLiveElm({
     ref_video_elm,
     video,
+    total_view,
 
-    view_count,
+    is_play,
+    is_zoom_out,
+    is_mute,
+    volume,
+
     c_time,
+    buffer_time,
     total_time,
+
+    size_icon = IS_MOBILE ? '16px' : '20px',
+    face_video_elm,
+
+    togglePlayPause,
+    gotoLiveView,
+    toggleZoom,
+    toggleMute,
+    handleChangeVolume,
+
+    handleChangeTime,
+    handleStartMoveTime,
+    handleEndMoveTime,
 }) {
     //
-    const is_live_view = c_time == total_time;
-
-    //
     return (
-        <div className="VideoLiveElm pos-rel wh-100">
+        <div
+            className={`VideoLiveElm pos-rel wh-100 ${
+                is_play ? 'VideoLiveElm-play' : ''
+            }`}
+        >
             <video
                 ref={ref_video_elm}
                 className="wh-100"
@@ -32,28 +53,38 @@ function VideoLiveElm({
                 controls={false}
             />
 
-            <div className="pos-abs-100"></div>
+            <div className="pos-abs-100">{face_video_elm}</div>
 
-            <div className="pos-abs-0 padding-8px">
-                <div className="display-flex align-items-center line-12px font-13px text-white font-600">
-                    <div
-                        className={`padding-6px brs-5px ${
-                            is_live_view ? 'bg-danger' : 'bg-ccc'
-                        }`}
-                    >
-                        LIVE
-                    </div>
-
-                    <div className="display-flex-center margin-left-5px padding-6px brs-5px bg-shadow-5">
-                        <IconsEye size_icon="13px" close_eye={false} />
-
-                        <div className="margin-left-5px">{view_count}</div>
-                    </div>
-                </div>
+            <div className="VideoLiveElm_view pos-abs-0 padding-12px">
+                <VideoLiveView
+                    is_live_view={c_time == total_time}
+                    total_view={total_view}
+                />
             </div>
 
-            <div className="pos-abs left-0 bottom-0 w-100per">
-                <VideoLiveUtils />
+            <div className="VideoLiveElm_utils pos-abs left-0 bottom-0 w-100per">
+                <VideoLiveUtils
+                    is_play={is_play}
+                    is_zoom_out={is_zoom_out}
+                    is_mute={is_mute}
+                    volume={volume}
+                    //
+                    c_time={c_time}
+                    buffer_time={buffer_time}
+                    total_time={total_time}
+                    //
+                    size_icon={size_icon}
+                    //
+                    togglePlayPause={togglePlayPause}
+                    gotoLiveView={gotoLiveView}
+                    toggleZoom={toggleZoom}
+                    toggleMute={toggleMute}
+                    handleChangeVolume={handleChangeVolume}
+                    //
+                    handleChangeTime={handleChangeTime}
+                    handleStartMoveTime={handleStartMoveTime}
+                    handleEndMoveTime={handleEndMoveTime}
+                />
             </div>
         </div>
     );
