@@ -1,6 +1,6 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 
 //
@@ -15,7 +15,7 @@ export const default_fs_coin_history_obj = () => {
             : coin_change >= 0
             ? 'Đăng nhập mỗi ngày'
             : 'Hạn sử dụng của Xu',
-        img: is_used ? getRandomVidPic() : '',
+        img: is_used ? getRandomImg() : '',
         reason: is_used ? 'Đã dùng Xu để thanh toán' : '',
         coin_change: coin_change || 100,
         type: is_used || coin_change < 0 ? 'used' : 'received',

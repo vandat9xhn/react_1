@@ -1,136 +1,136 @@
-import { getRandomVidPic } from '../../_default/_common/default_image';
+import { getRandomImg } from '../../_default/_common/default_image';
 
 //
 export const data_fashion_category_item_arr = [
     {
         title: 'Thời Trang Nam',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Thời Trang Nữ',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Điện Thoại & Phụ Kiện',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/phone',
     },
     {
         title: 'Mẹ & Bé',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Thiết Bị Điện Tử',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Nhà Cửa & Đời Sống',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Máy Tính & Laptop',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Sắc Đẹp',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
 
     {
         title: 'Máy Ảnh & Máy Quay Phim',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Sức Khỏe',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Đồng Hồ',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Giày Dép Nữ',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Giày Dép Nam',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Túi Ví Nữ',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Thiết Bị Điện Gia Dụng',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Phụ Kiện & Trang Sức Nữ',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Thể Thao & Du Lịch',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Bách Hóa Online',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Ô Tô & Xe Máy & Xe Đạp',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Nhà Sách Online',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Balo & Túi Ví Nam',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Thời Trang Trẻ Em',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Đồ Chơi',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Giặt Giũ & Chăm Sóc Nhà Cửa',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Chăm Sóc Thú Cưng',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
     {
         title: 'Voucher & Dịch Vụ',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/fashion/working-on-it',
     },
 ];

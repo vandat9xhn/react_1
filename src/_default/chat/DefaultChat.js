@@ -3,7 +3,7 @@ import { default_define_user } from '../login/DefaultLogin';
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
@@ -40,7 +40,7 @@ const default_room_user_arr = (min, max) => [
 //
 const default_message_vid_pic_obj = () => ({
     id: getRandomId(),
-    vid_pic: getRandomVidPic(),
+    vid_pic: getRandomImg(),
     mess_model: 1,
 });
 

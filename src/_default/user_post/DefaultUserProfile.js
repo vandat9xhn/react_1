@@ -3,7 +3,7 @@ import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
 import { getRandomName } from '../_common/default_name';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomBool } from '../_common/default_bool';
 
 /* ----------------------------------------- */
@@ -13,7 +13,7 @@ const default_friend_obj = () => ({
     id: getRandomId(),
     first_name: getRandomName(),
     last_name: getRandomName(),
-    picture: getRandomVidPic(),
+    picture: getRandomImg(),
 
     is_friend: getRandomBool(),
     can_add_friend: getRandomBool(),
@@ -43,8 +43,8 @@ export const default_user_about_r = () => {
         id: getRandomId(),
         first_name: getRandomName(),
         last_name: getRandomName(),
-        picture: getRandomVidPic(),
-        cover: getRandomVidPic(),
+        picture: getRandomImg(),
+        cover: getRandomImg(),
 
         user_related: getRandomFromArr(user_related_arr),
         permission_add_friend: 0,

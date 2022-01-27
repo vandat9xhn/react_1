@@ -1,7 +1,7 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPicOrNull } from '../_common/default_image';
+import { getRandomImgOrNull } from '../_common/default_image';
 import { getRandomName } from '../_common/default_name';
 import { getDefaultArr } from '../_common/getDefaultArr';
 
@@ -23,7 +23,7 @@ const default_pl_detail_reply_obj = () => {
         user_name: user_name,
         is_admin: getRandomBool(),
         content: getRandomContent(),
-        img: getRandomVidPicOrNull(),
+        img: getRandomImgOrNull(),
         commented_time:
             getRandomNumber(1, 4) +
             (getRandomBool() ? ' tuần' : ' tháng') +

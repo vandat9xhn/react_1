@@ -1,7 +1,7 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomContentObj } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPicOrNull } from '../_common/default_image';
+import { getRandomImgOrNull } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { default_post_reacted_info_obj } from './reacted';
@@ -13,7 +13,7 @@ const default_post_sub_common_obj = ({ is_sub2 = false, sub_id = -1 }) => ({
     ...getRandomContentObj(),
     ...default_post_reacted_info_obj(),
 
-    vid_pic: getRandomVidPicOrNull(),
+    vid_pic: getRandomImgOrNull(),
     is_edited: getRandomBool() && getRandomBool(),
 
     is_sub2: is_sub2,
@@ -68,7 +68,7 @@ const default_post_sub_history_obj = () => ({
     id: getRandomId(),
     ...getRandomContentObj(),
     content: '',
-    vid_pic: getRandomVidPicOrNull(),
+    vid_pic: getRandomImgOrNull(),
 
     version: 1,
     sub_model: 1,

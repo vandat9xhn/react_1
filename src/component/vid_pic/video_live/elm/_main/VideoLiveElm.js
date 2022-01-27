@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
 //
+import VideoItem from '../../../video_components/video/VideoItem';
 import VideoLiveUtils from '../../utils/_main/VideoLiveUtils';
 import VideoLiveView from '../../view/VideoLiveView';
 //
@@ -46,12 +47,7 @@ function VideoLiveElm({
                 is_play ? 'VideoLiveElm-play' : ''
             }`}
         >
-            <video
-                ref={ref_video_elm}
-                className="wh-100"
-                src={video}
-                controls={false}
-            />
+            <VideoItem ref_video_elm={ref_video_elm} video={video} />
 
             <div className="pos-abs-100">{face_video_elm}</div>
 

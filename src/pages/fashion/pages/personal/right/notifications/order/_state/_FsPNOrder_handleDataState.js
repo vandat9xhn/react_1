@@ -1,6 +1,6 @@
 import { getRandomBool } from '../../../../../../../../_default/_common/default_bool';
 import { getRandomId } from '../../../../../../../../_default/_common/default_id';
-import { getRandomVidPic } from '../../../../../../../../_default/_common/default_image';
+import { getRandomImg } from '../../../../../../../../_default/_common/default_image';
 
 //
 export function FsPNOrder_handleDataState({ data }) {
@@ -11,7 +11,7 @@ export function FsPNOrder_handleDataState({ data }) {
             {
                 id: getRandomId(),
                 order_id: getRandomId(),
-                logo: getRandomVidPic(),
+                logo: getRandomImg(),
                 name: 'asdsd asd asd asd',
                 info: 'sda dad asd asd asd asd asd asd asd asd asd asda sd',
                 process_arr: [

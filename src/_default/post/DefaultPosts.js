@@ -6,7 +6,7 @@ import {
     getRandomContentObj,
 } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import {
     getRandomGroup,
     getRandomPage,
@@ -53,7 +53,7 @@ export const default_post_share_arr = () =>
 //
 const default_vid_pic_CD = () => ({
     id: getRandomId(),
-    vid_pic: getRandomVidPic(),
+    vid_pic: getRandomImg(),
     content: getRandomContent(),
     his_post: 1,
 });
@@ -88,7 +88,7 @@ export const default_post_history_arr = () =>
 //
 export const post_vid_pic_obj = () => ({
     id: getRandomId(),
-    vid_pic: getRandomVidPic(),
+    vid_pic: getRandomImg(),
     content: getRandomContent(),
 });
 

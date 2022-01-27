@@ -1,5 +1,5 @@
 import { getRandomBool } from '../../../../../../../_default/_common/default_bool';
-import { getRandomVidPic } from '../../../../../../../_default/_common/default_image';
+import { getRandomImg } from '../../../../../../../_default/_common/default_image';
 import {
     getRandomId,
     getRandomNumber,
@@ -21,7 +21,7 @@ export function FsPVc_handleDataState({ data, can_use = true }) {
                 id: getRandomId(),
                 type: 'shop',
                 shop_name: 'Shop name',
-                shop_picture: getRandomVidPic(),
+                shop_picture: getRandomImg(),
                 is_mall: getRandomBool(),
                 is_like: getRandomBool(),
 

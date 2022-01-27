@@ -1,7 +1,7 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 //
@@ -13,49 +13,49 @@ const shop_category_name_arr = [
         id: getRandomId(),
         name: 'new_recommended',
         title: 'New recommended',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         quantity: getRandomNumber(5, 50),
     },
     {
         id: getRandomId(),
         name: 'best_seller',
         title: 'Best seller',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         quantity: getRandomNumber(5, 50),
     },
     {
         id: getRandomId(),
         name: 'clothes_man',
         title: 'Quần áo nam',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         quantity: getRandomNumber(5, 50),
     },
     {
         id: getRandomId(),
         name: 'clothes_woman',
         title: 'Quần áo nữ',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         quantity: getRandomNumber(5, 50),
     },
     {
         id: getRandomId(),
         name: 'sneaker',
         title: 'Giày sneaker',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         quantity: getRandomNumber(5, 50),
     },
     {
         id: getRandomId(),
         name: 'sandal',
         title: 'Dép',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         quantity: getRandomNumber(5, 50),
     },
     {
         id: getRandomId(),
         name: 'shirt',
         title: 'Áo thun',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         quantity: getRandomNumber(5, 50),
     },
 ];
@@ -65,7 +65,7 @@ const shop_category_arr = () => shop_category_name_arr;
 //
 const shop_vid_pic_obj = () => ({
     id: getRandomId(),
-    vid_pic: getRandomVidPic(),
+    vid_pic: getRandomImg(),
     shop_model: 2,
 });
 
@@ -82,7 +82,7 @@ export const default_shop_obj = () => ({
     category_arr: shop_category_arr(),
     vid_pics: shop_vid_pic_arr(),
     name: 'Shop ' + getRandomId(),
-    picture: getRandomVidPic(),
+    picture: getRandomImg(),
 
     discount_arr: [
         {
@@ -137,7 +137,7 @@ export const default_shop_obj = () => ({
     ship_text:
         'Miễn Phí Vận Chuyển cho đơn hàng từ ₫50.000 (giảm tối đa ₫25.000); Miễn Phí Vận Chuyển cho đơn hàng từ ₫300.000 (giảm tối đa ₫70.000)',
 
-    banner: getRandomVidPic(),
+    banner: getRandomImg(),
     place: 'Quận Gò Vấp, TP. Hồ Chí Minh',
     location: 'TP. Hồ Chí Minh',
     description: `- ${getRandomContent().slice(

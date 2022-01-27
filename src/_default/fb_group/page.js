@@ -1,6 +1,6 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomName, getRandomPageName } from '../_common/default_name';
 import { getRandomGroup, getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
@@ -53,7 +53,7 @@ export const default_fb_group_page_obj = () => {
                       affiliation_to == 'person'
                           ? getRandomName()
                           : getRandomPageName(),
-                  picture: getRandomVidPic(),
+                  picture: getRandomImg(),
               }
             : { to: '', id: 0, name: '', picture: '' },
 

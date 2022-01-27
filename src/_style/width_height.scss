@@ -28,10 +28,6 @@
     width: 50%;
 }
 
-.max-w-100per {
-    max-width: 100%;
-}
-
 // ---------- HEIGHT
 
 .height-auto {
@@ -58,7 +54,15 @@
     height: 100vh;
 }
 
-//
+// ---------- MAX
+
+.max-w-100per {
+    max-width: 100%;
+}
+
+.max-w-50per {
+    max-width: 50%;
+}
 
 .max-h-100per {
     max-height: 100%;
@@ -66,6 +70,20 @@
 
 .max-h-100vh {
     max-height: 100vh;
+}
+
+.max-h-50per {
+    max-height: 50%;
+}
+
+// ---- MIN
+
+.min-w-50per {
+    min-width: 50%;
+}
+
+.min-h-50per {
+    min-height: 50%;
 }
 
 // ---------- WIDTH + HEIGHT
@@ -88,7 +106,8 @@
 // ----- PX
 
 //
-$wh-px-list: 1, 2, 3, 4, 16, 36, 40, 48, 52, 60, 250, 300, 360, 500, 550, 620, 680;
+$wh-px-list: 1, 2, 3, 4, 16, 36, 40, 48, 52, 60, 250, 300, 360, 500, 550, 620,
+    680;
 
 @each $px in $wh-px-list {
     .wh-#{$px}px {

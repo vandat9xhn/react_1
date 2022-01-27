@@ -1,5 +1,5 @@
 import { getDefaultArr } from '../_common/getDefaultArr';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomId } from '../_common/default_id';
 
 //
@@ -9,7 +9,7 @@ const default_fb_group_page_media_photo_obj = () => {
     return {
         id: id,
     //    title,
-       img: getRandomVidPic(),
+       img: getRandomImg(),
        link_to: `/post/photos/${id}` 
     };
 };

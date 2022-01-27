@@ -1,5 +1,5 @@
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 
@@ -45,7 +45,7 @@ export const default_payment_arr = () => [
 //
 const default_voucher_obj = () => ({
     id: getRandomId(),
-    img: getRandomVidPic(),
+    img: getRandomImg(),
     name: 'Free 10k',
     info: 'a b c dsa as a\nas da as asd asd saa sd',
     cost: getRandomNumber(10000, 50000),

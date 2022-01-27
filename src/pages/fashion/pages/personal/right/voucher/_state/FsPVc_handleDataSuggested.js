@@ -1,4 +1,4 @@
-import { getRandomVidPic } from '../../../../../../../_default/_common/default_image';
+import { getRandomImg } from '../../../../../../../_default/_common/default_image';
 
 //
 export function FsPVc_handleDataSuggested({
@@ -9,7 +9,7 @@ export function FsPVc_handleDataSuggested({
         suggested_arr: [
             {
                 id: 1,
-                img: getRandomVidPic(),
+                img: getRandomImg(),
                 name: 'adsada asd asdas',
                 new_price: 100000,
                 discount_str: '5k',
@@ -20,7 +20,7 @@ export function FsPVc_handleDataSuggested({
             },
             {
                 id: 2,
-                img: getRandomVidPic(),
+                img: getRandomImg(),
                 name: 'adsada asd h gh sd',
                 new_price: 100000,
                 discount_str: '20%',
@@ -31,7 +31,7 @@ export function FsPVc_handleDataSuggested({
             },
             {
                 id: 3,
-                img: getRandomVidPic(),
+                img: getRandomImg(),
                 name: 'lasdad sad asdoa sdka',
                 new_price: 100000,
                 discount_str: '10k',

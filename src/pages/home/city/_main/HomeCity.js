@@ -11,10 +11,10 @@ import './HomeCity.scss';
 
 //
 import { getDefaultArr } from '../../../../_default/_common/getDefaultArr';
-import { getRandomVidPic } from '../../../../_default/_common/default_image';
+import { getRandomImg } from '../../../../_default/_common/default_image';
 
 //
-const VID_PICS = getDefaultArr(getRandomVidPic, 3, 5);
+const VID_PICS = getDefaultArr(getRandomImg, 3, 5);
 
 //
 HomeCity.propTypes = {};

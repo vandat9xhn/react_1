@@ -9,7 +9,7 @@ import {
     getRandomNumber,
     getRandomNumberArr,
 } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
@@ -39,7 +39,7 @@ const default_story_viewer_first_obj = () => {
 
 //
 const default_vid_pic_obj = () => ({
-    vid_pic: getRandomVidPic(),
+    vid_pic: getRandomImg(),
     trans_x: getRandomNumber(-200, 200),
     trans_y: getRandomNumber(-200, 200),
     scale: Math.floor(Math.random() * 20 + 5) / 10,

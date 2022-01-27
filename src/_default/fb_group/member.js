@@ -1,7 +1,7 @@
 import { default_action_user_case_obj } from '../_common/action_user_case';
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomId } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomName, getRandomPageName } from '../_common/default_name';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
@@ -14,7 +14,7 @@ export const default_fb_group_member_obj = (params = { is_friend: false }) => {
 
     const common_obj = {
         id: getRandomId(),
-        picture: getRandomVidPic(),
+        picture: getRandomImg(),
         type_user: type_user,
 
         badge_arr: [],

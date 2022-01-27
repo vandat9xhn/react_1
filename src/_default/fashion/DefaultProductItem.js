@@ -1,7 +1,7 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomContentObj } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
@@ -9,7 +9,7 @@ import { getRandomFromArr } from '../_common/getRandomFromArr';
 import { product_name_arr } from './FashionDefault';
 
 //
-const product_vid_pic_obj = () => getRandomVidPic();
+const product_vid_pic_obj = () => getRandomImg();
 const product_vid_pic_arr = (min = 2, max = 10) =>
     getDefaultArr(product_vid_pic_obj, min, max);
 
@@ -223,19 +223,19 @@ export const default_fs_item_gift = () => {
         mains: [
             {
                 id: getRandomId(),
-                image: getRandomVidPic(),
+                image: getRandomImg(),
                 name: 'Quần bò baggy rách vuông',
             },
             {
                 id: getRandomId(),
-                image: getRandomVidPic(),
+                image: getRandomImg(),
                 name: '{ RẺ VÔ ĐỊCH } Áo thun Mỹ _ Loại 2 _ Mẫu ngẫu nhiên',
             },
         ],
         gifts: [
             {
                 id: getRandomId(),
-                image: getRandomVidPic(),
+                image: getRandomImg(),
                 name: '2 khẩu trang đúc su không chọn màu',
             },
         ],
@@ -259,7 +259,7 @@ export const default_fs_item_hot_deal_arr = () => {
 
 const product_rate_vid_pic_obj = () => ({
     id: getRandomId(),
-    vid_pic: getRandomVidPic(),
+    vid_pic: getRandomImg(),
     comment_model: 2,
 });
 

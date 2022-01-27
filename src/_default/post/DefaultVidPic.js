@@ -1,4 +1,4 @@
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomVideo, getRandomVidPic } from '../_common/default_image';
 import { getRandomContentObj } from '../_common/default_content';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
@@ -7,6 +7,7 @@ import { getRandomUser } from '../_common/default_user';
 import { default_post_vid_pic_cmt_arr } from './DefaultVidPicCmt';
 import { default_post_reacted_info_obj } from './reacted';
 import { getRandomBool } from '../_common/default_bool';
+import { getTypeVidOrPic } from '../../_some_function/VideoOrImage';
 
 //
 const default_post_vid_pic_id_obj = () => ({ id: getRandomId() });
@@ -42,6 +43,12 @@ export const default_post_vid_pic_history_arr = () =>
 //
 export const default_post_vid_pic = () => {
     const count_comment = getRandomBool() ? getRandomNumber(0, 8) : 0;
+    const vid_pic =
+        getRandomBool() && getRandomBool()
+            ? getRandomVideo()
+            : getRandomVidPic();
+    // const vid_pic = getRandomVideo();
+    const is_live = getTypeVidOrPic(vid_pic) == 'img' ? false : getRandomBool();
 
     //
     return {
@@ -50,7 +57,9 @@ export const default_post_vid_pic = () => {
         ...getRandomContentObj(),
         ...default_post_reacted_info_obj(),
 
-        vid_pic: getRandomVidPic(),
+        vid_pic: vid_pic,
+        is_live: is_live,
+
         folder_picture: 'my folder picture',
         content: '',
         user_tag: [],

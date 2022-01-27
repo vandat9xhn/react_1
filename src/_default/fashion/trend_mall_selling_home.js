@@ -1,5 +1,5 @@
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 
@@ -41,7 +41,7 @@ const default_home_fashion_trending_obj = () => {
     return {
         count: getRandomNumber(100, 300) * 1000,
         data_type: 'keyword',
-        image: getRandomVidPic(),
+        image: getRandomImg(),
         keyword: getRandomFromArr(default_keyword_arr),
     };
 };
@@ -52,7 +52,7 @@ export const default_home_fashion_trending_arr = () =>
 //
 const default_home_shop_mall_obj = () => {
     return {
-        image: getRandomVidPic(),
+        image: getRandomImg(),
         promo_text: 'Mua 1 tặng 1',
         shop_id: getRandomId(),
     };
@@ -65,7 +65,7 @@ export const default_home_shop_mall_arr = () =>
 const default_home_shop_mall_vid_pic_obj = () => {
     return {
         shop_id: getRandomId(),
-        vid_pic: getRandomVidPic()
+        vid_pic: getRandomImg()
     }
 }
 
@@ -75,7 +75,7 @@ export const default_home_shop_mall_vid_pic_arr = () =>
 //
 const default_home_top_search_obj = () => {
     return {
-        image: getRandomVidPic(),
+        image: getRandomImg(),
         sold_month: getRandomNumber(100, 300) * 100,
         type: 'Type of product',
     };

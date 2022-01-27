@@ -1,7 +1,7 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomContentObj } from '../_common/default_content';
 import { getRandomId } from '../_common/default_id';
-import { getRandomVidPicOrNull } from '../_common/default_image';
+import { getRandomImgOrNull } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 //
@@ -16,7 +16,7 @@ export const default_post_cmt_obj = () => ({
     ...default_post_reacted_info_obj(),
     
     is_edited: getRandomBool() && getRandomBool(),
-    vid_pic: getRandomVidPicOrNull(),
+    vid_pic: getRandomImgOrNull(),
 
     subs: default_post_sub_arr(0, 1),
     count_sub: 1,
@@ -50,7 +50,7 @@ const default_post_cmt_history_obj = () => ({
     ...getRandomContentObj(),
     content: '',
     created_time: '2021-05-08T02:57:45.006797Z',
-    vid_pic: getRandomVidPicOrNull(),
+    vid_pic: getRandomImgOrNull(),
     version: 1,
     comment_model: 1,
 });

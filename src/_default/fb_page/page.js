@@ -1,5 +1,5 @@
 import { getRandomBool } from '../_common/default_bool';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomPage } from '../_common/default_user';
 import { getRandomPageType } from '../_common/getRandomPageType';
 
@@ -10,7 +10,7 @@ export const default_fb_page_obj = () => {
     //
     return {
         ...page_obj,
-        cover: getRandomVidPic(),
+        cover: getRandomImg(),
         has_new_story: getRandomBool(),
 
         info_extra_1: {

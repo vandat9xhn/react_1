@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import NextPrevDiv from '../../../../some_div/next_prev_div/NextPrevDiv';
+import NextPrevDiv from '../../../../../some_div/next_prev_div/NextPrevDiv';
+//
+import ZoomPostCommonLeftImg from '../img/ZoomPostCommonLeftImg';
+import ZoomPostCommonLeftVideo from '../video/ZoomPostCommonLeftVideo';
 //
 import './ZoomPostCommonLeft.scss';
 
@@ -11,6 +14,10 @@ ZoomPostCommonLeft.propTypes = {};
 //
 function ZoomPostCommonLeft({
     vid_pic,
+    is_live,
+    video_or_img,
+    is_fetching,
+
     is_has_next,
     is_has_prev,
 
@@ -19,17 +26,20 @@ function ZoomPostCommonLeft({
 }) {
     //
     return (
-        <div className="ZoomPostCommonLeft wh-100 padding-x-10px">
+        <div className="ZoomPostCommonLeft wh-100">
             <div className="pos-rel display-flex-center wh-100">
-                <div className="ZoomPostCommonLeft_vid-pic display-flex-center">
-                    <img
-                        className="max-w-100per max-h-100per object-fit-cover"
-                        src={vid_pic}
-                        alt=""
-                    />
+                <div className="ZoomPostCommonLeft_item display-flex-center">
+                    {is_fetching ? null : video_or_img == 'img' ? (
+                        <ZoomPostCommonLeftImg img={vid_pic} />
+                    ) : (
+                        <ZoomPostCommonLeftVideo
+                            video={vid_pic}
+                            is_live={is_live}
+                        />
+                    )}
                 </div>
 
-                <div className="text-smoke">
+                <div className="text-555">
                     <NextPrevDiv
                         is_btn_circle={true}
                         is_has_next={is_has_next}

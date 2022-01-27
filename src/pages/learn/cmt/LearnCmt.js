@@ -8,8 +8,8 @@ import './LearnCmt.scss';
 
 //
 import {
-    getRandomVidPic,
-    getRandomVidPicOrNull,
+    getRandomImg,
+    getRandomImgOrNull,
 } from '../../../_default/_common/default_image';
 import { getRandomContentObj } from '../../../_default/_common/default_content';
 
@@ -65,11 +65,11 @@ function LearnCmt(props) {
                                 //
                                 user_id={1}
                                 user_name={'Ngoc My'}
-                                user_pic={getRandomVidPic()}
+                                user_pic={getRandomImg()}
                                 user_pic_size={32}
                                 //
                                 content_obj={getRandomContentObj().content_obj}
-                                vid_pic={getRandomVidPicOrNull()}
+                                vid_pic={getRandomImgOrNull()}
                                 updated_time={new Date().getTime()}
                                 class_scroll_elm={''}
                                 //
@@ -108,14 +108,14 @@ function LearnCmt(props) {
                                                 //
                                                 user_id={1}
                                                 user_name={'Nguyen Nguyen'}
-                                                user_pic={getRandomVidPic()}
+                                                user_pic={getRandomImg()}
                                                 user_pic_size={24}
                                                 //
                                                 content_obj={
                                                     getRandomContentObj()
                                                         .content_obj
                                                 }
-                                                vid_pic={getRandomVidPicOrNull()}
+                                                vid_pic={getRandomImgOrNull()}
                                                 updated_time={new Date().getTime()}
                                                 class_scroll_elm={''}
                                                 //
@@ -164,7 +164,7 @@ function LearnCmt(props) {
                                                                 user_name={
                                                                     'Nguyen Nguyen'
                                                                 }
-                                                                user_pic={getRandomVidPic()}
+                                                                user_pic={getRandomImg()}
                                                                 user_pic_size={
                                                                     24
                                                                 }
@@ -173,7 +173,7 @@ function LearnCmt(props) {
                                                                     getRandomContentObj()
                                                                         .content_obj
                                                                 }
-                                                                vid_pic={getRandomVidPicOrNull()}
+                                                                vid_pic={getRandomImgOrNull()}
                                                                 updated_time={new Date().getTime()}
                                                                 class_scroll_elm={
                                                                     ''

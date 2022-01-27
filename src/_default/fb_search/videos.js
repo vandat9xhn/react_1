@@ -1,6 +1,6 @@
 import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 
 //
@@ -8,7 +8,7 @@ const default_fb_search_video_obj = () => {
     return {
         id: getRandomId(),
         title: 'Video title',
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         description: getRandomContent().slice(0, 100),
 
         total_time_str: '5:11',

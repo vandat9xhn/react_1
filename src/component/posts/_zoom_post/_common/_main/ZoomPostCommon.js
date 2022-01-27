@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 //
 import { useMakeBodyHidden } from '../../../../../_hooks/useMakeBodyHidden';
 //
-import ScreenTitle from '../../../../_screen/components/frame/has_title/title/ScreenTitle';
-//
-import ZoomPostCommonLeft from '../common_left/ZoomPostCommonLeft';
+import ZoomPostCommonLeft from '../common_left/_main/ZoomPostCommonLeft';
 import ZoomPostCommonRight from '../right/_main/ZoomPostCommonRight';
+import ZoomPostCommonTitle from '../title/ZoomPostCommonTitle';
 //
 import './ZoomPostCommon.scss';
 
@@ -19,6 +18,10 @@ function ZoomPostCommon({
     closeScreenTitle,
 
     vid_pic,
+    is_live,
+    video_or_img,
+    is_fetching,
+
     is_has_next,
     is_has_prev,
     handleNextVidPic,
@@ -38,9 +41,9 @@ function ZoomPostCommon({
     handleEdit,
     cancelEdit,
 
-    action_component,
-    like_share_cmt_component,
-    comment_component,
+    ActionElm,
+    LikeShareCmtElm,
+    CommentElm,
 }) {
     //
     useMakeBodyHidden({
@@ -60,15 +63,19 @@ function ZoomPostCommon({
                 <div className="ZoomPostCommon_row display-flex h-100per">
                     <div className="ZoomPostCommon_left bg-shadow-9 pos-rel">
                         <div className="ZoomPostCommon_title pos-fixed top-0 left-0">
-                            <ScreenTitle
+                            <ZoomPostCommonTitle
+                                url={vid_pic}
                                 show_screen_title={show_screen_title}
                                 closeScreenTitle={closeScreenTitle}
-                                url={vid_pic}
                             />
                         </div>
 
                         <ZoomPostCommonLeft
                             vid_pic={vid_pic}
+                            is_live={is_live}
+                            video_or_img={video_or_img}
+                            is_fetching={is_fetching}
+                            //
                             is_has_next={is_has_next}
                             is_has_prev={is_has_prev}
                             handleNextVidPic={handleNextVidPic}
@@ -92,9 +99,9 @@ function ZoomPostCommon({
                             handleEdit={handleEdit}
                             cancelEdit={cancelEdit}
                             //
-                            action_component={action_component}
-                            like_share_cmt_component={like_share_cmt_component}
-                            comment_component={comment_component}
+                            ActionElm={ActionElm}
+                            LikeShareCmtElm={LikeShareCmtElm}
+                            CommentElm={CommentElm}
                         />
                     </div>
                 </div>

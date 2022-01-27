@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 //
 import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
 import IconFav from '../../../../../../_icons_svg/_icon_fav/IconFav';
+//
+import Tooltip from '../../../../../tooltip/_main/Tooltip';
 //
 import './ScreenTitle.scss';
 
@@ -11,6 +13,8 @@ import './ScreenTitle.scss';
 ScreenTitle.propTypes = {
     url: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     show_screen_title: PropTypes.bool,
+    tooltipCloseElm: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+
     handleDownload: PropTypes.func,
     closeScreenTitle: PropTypes.func,
 };
@@ -19,9 +23,14 @@ ScreenTitle.propTypes = {
 function ScreenTitle({
     url,
     show_screen_title,
+    tooltipCloseElm,
+
     handleDownload,
     closeScreenTitle,
 }) {
+    //
+    const ref_close_elm = useRef(null);
+
     //
     return (
         <div className="ScreenTitle">
@@ -33,14 +42,20 @@ function ScreenTitle({
                 </div>
 
                 {show_screen_title ? (
-                    <div className="ScreenTitle_close padding-4px">
+                    <div
+                        ref={ref_close_elm}
+                        className="ScreenTitle_close padding-4px"
+                    >
                         <div
                             className="ScreenTitle__icon-arrow display-flex-center brs-50 cursor-pointer hv-opacity"
                             onClick={closeScreenTitle}
-                            title="Close"
                         >
                             <IconsArrow size_icon="1.5rem" y={400} />
                         </div>
+
+                        <Tooltip ref_elm={ref_close_elm}>
+                            {tooltipCloseElm}
+                        </Tooltip>
                     </div>
                 ) : null}
 

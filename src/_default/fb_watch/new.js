@@ -1,6 +1,6 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomPageName } from '../_common/default_name';
 import { getDefaultArr } from '../_common/getDefaultArr';
 
@@ -11,7 +11,7 @@ const default_fb_watch_new_obj = () => {
     return {
         id: getRandomId(),
         name: name,
-        picture: getRandomVidPic(),
+        picture: getRandomImg(),
 
         title: `New video from ${name}`,
         link_to: `/watch/latest/${name.toLowerCase().replace(/ /g, '')}`,

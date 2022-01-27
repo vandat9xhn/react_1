@@ -8,7 +8,7 @@ import './PLHomeBrands.scss';
 
 //
 import { getDefaultArr } from '../../../../../../_default/_common/getDefaultArr';
-import { getRandomVidPic } from '../../../../../../_default/_common/default_image';
+import { getRandomImg } from '../../../../../../_default/_common/default_image';
 import { getRandomId } from '../../../../../../_default/_common/default_id';
 
 //
@@ -46,7 +46,7 @@ function PLHomeBrands(props) {
 
         setStateObj({
             ...state_obj,
-            new_arr: getDefaultArr(getRandomVidPic, 3, 3).map((item) => {
+            new_arr: getDefaultArr(getRandomImg, 3, 3).map((item) => {
                 return {
                     id: getRandomId(),
                     img: item,

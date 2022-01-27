@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import GroupCard from '../../group/_components/group_card/_main/GroupCard';
 
 //
-import { getRandomVidPic } from '../../../_default/_common/default_image';
+import { getRandomImg } from '../../../_default/_common/default_image';
 import { getRandomNumber } from '../../../_default/_common/default_id';
 
 //
@@ -19,7 +19,7 @@ function LearnGroupCard(props) {
                 <GroupCard
                     id={1}
                     name={'Group Name'}
-                    picture={getRandomVidPic()}
+                    picture={getRandomImg()}
                     //
                     member_count={50000}
                     post_count={50}

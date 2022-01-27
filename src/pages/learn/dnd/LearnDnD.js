@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 //
-import { default_vid_pic_arr } from '../../../_default/_common/default_image';
+import { default_img_arr } from '../../../_default/_common/default_image';
 //
 import './LearnDnD.scss';
 
@@ -12,7 +12,7 @@ LearnDnD.propTypes = {};
 function LearnDnD(props) {
     //
     const [image_arr, setImageArr] = useState(
-        default_vid_pic_arr.map((item, ix) => ({
+        default_img_arr.map((item, ix) => ({
             img: item,
             content: 'content' + ix,
         }))

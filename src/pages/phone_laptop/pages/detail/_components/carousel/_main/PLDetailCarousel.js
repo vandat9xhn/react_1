@@ -10,7 +10,7 @@ import PLDCarouselChoices from '../choices/_main/PLDCarouselChoices';
 
 //
 import { getDefaultArr } from '../../../../../../../_default/_common/getDefaultArr';
-import { getRandomVidPic } from '../../../../../../../_default/_common/default_image';
+import { getRandomImg } from '../../../../../../../_default/_common/default_image';
 
 //
 PLDetailCarousel.propTypes = {};
@@ -49,7 +49,7 @@ function PLDetailCarousel({
 
     //
     function handle_API_PLDetailVidPic_L() {
-        const data = getDefaultArr(getRandomVidPic, 3, 15);
+        const data = getDefaultArr(getRandomImg, 3, 15);
         return {
             data: data,
             count: data.length,

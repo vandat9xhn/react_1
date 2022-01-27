@@ -1,6 +1,6 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 //
@@ -24,7 +24,7 @@ const base_product_obj = () => {
     return {
         id: getRandomNumber(),
         name: getRandomFromArr(product_name_arr),
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         flash_img: getRandomBool() ? flash_img_large : null,
         total: total,
         sold: getRandomBool() ? getRandomNumber(0, total) : 0,

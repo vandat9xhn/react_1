@@ -2,7 +2,7 @@ import React from 'react';
 //
 import { default_shop_obj } from '../../../../../_default/fashion/DefaultShop';
 import { getRandomId } from '../../../../../_default/_common/default_id';
-import { getRandomVidPic } from '../../../../../_default/_common/default_image';
+import { getRandomImg } from '../../../../../_default/_common/default_image';
 import { getDefaultArr } from '../../../../../_default/_common/getDefaultArr';
 //
 import { initial_fashion_shop } from '../../../../../_initial/fashion/FashionInitial';
@@ -72,7 +72,7 @@ export function FsShop_handleDataState({ data = {}, setStateObj = () => {} }) {
             id: getRandomId(),
             type: 'special',
             data: {
-                vid_pic: getRandomVidPic(),
+                vid_pic: getRandomImg(),
             },
         },
         ...info_obj,
@@ -80,14 +80,14 @@ export function FsShop_handleDataState({ data = {}, setStateObj = () => {} }) {
             id: getRandomId(),
             type: 'vid_pic',
             data: {
-                vid_pic: getRandomVidPic(),
+                vid_pic: getRandomImg(),
             },
         },
         {
             id: getRandomId(),
             type: 'carousel',
             data: {
-                vid_pics: getDefaultArr(getRandomVidPic, 2, 4),
+                vid_pics: getDefaultArr(getRandomImg, 2, 4),
             },
         },
         {

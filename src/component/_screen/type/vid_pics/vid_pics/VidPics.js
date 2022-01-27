@@ -1,12 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 //
-import { VideoOrImage } from '../../../../../_some_function/VideoOrImage';
+import { IS_MOBILE } from '../../../../../_constant/Constant';
+//
+import { scrollItemToCenter } from '../../../../../_some_function/scrollItemToCenter';
+import { getTypeVidOrPic } from '../../../../../_some_function/VideoOrImage';
+//
+import Video from '../../../../vid_pic/video/_main/Video';
+import VidPicItem from '../vid_pic_item/VidPicItem';
 //
 import './VidPics.scss';
+
 //
-import VidPicItem from '../vid_pic_item/VidPicItem';
-import { scrollItemToCenter } from '../../../../../_some_function/scrollItemToCenter';
+function getVidPicItem(item) {
+    return item.url || item.vid_pic || item;
+}
 
 //
 VidPics.propTypes = {
@@ -22,31 +30,53 @@ VidPics.defaultProps = {
 //
 function VidPics({ urls, current, changeCurrent }) {
     //
+    const vid_pic = getVidPicItem(urls[current]);
+    const video_or_img = getTypeVidOrPic(vid_pic, urls[current].type);
+
+    //
     const ref_all = useRef(null);
 
     //
     useEffect(() => {
+        scrollAllToCenter({ scroll_smooth: false });
+    }, []);
+
+    //
+    useEffect(() => {
+        if (!IS_MOBILE) {
+            scrollAllToCenter({ scroll_smooth: true });
+        }
+    }, [current]);
+
+    // -----
+
+    //
+    function scrollAllToCenter({ scroll_smooth = false }) {
+        if (urls.length <= 1) {
+            return;
+        }
+
         const c_vid_pic =
             ref_all.current.getElementsByClassName('VidPicItem_item')[current];
 
         scrollItemToCenter({
             scroll_elm: ref_all.current,
             item_elm: c_vid_pic,
-            scroll_smooth: false,
+            scroll_smooth: scroll_smooth,
         });
-    }, []);
+    }
 
     //
     return (
         <div className="VidPics pos-rel wh-100 z-index-lv5">
             <div className="VidPics_blur wh-100 pos-abs">
                 <div
-                    className="VidPics_blur-img wh-100"
+                    className="VidPics_blur_img wh-100"
                     style={{
                         backgroundImage: `url(${
-                            urls[current].url ||
-                            urls[current].vid_pic ||
-                            urls[current]
+                            video_or_img == 'img'
+                                ? vid_pic
+                                : urls[current].thumbnail
                         })`,
                     }}
                 ></div>
@@ -56,32 +86,33 @@ function VidPics({ urls, current, changeCurrent }) {
 
             <div className="VidPics_current">
                 <div className="VidPics_current_contain display-flex-center wh-100">
-                    {VideoOrImage(
-                        urls[current].url ||
-                            urls[current].vid_pic ||
-                            urls[current],
-                        urls[current].type,
-                        <video
-                            src={urls[current].url}
+                    {video_or_img == 'img' ? (
+                        <img
+                            className="VidPics_current_img"
+                            src={vid_pic}
                             alt=""
-                            controls
-                            preload="metadata"
                         />
+                    ) : (
+                        <Video video={vid_pic} />
                     )}
                 </div>
             </div>
 
             <div className={urls.length > 1 ? 'VidPics_all' : 'display-none'}>
-                <div ref={ref_all} className="VidPics_all_contain">
-                    <div className="VidPics_all-row display-flex">
-                        {urls.map((item, index) => (
+                <div
+                    ref={ref_all}
+                    className="VidPics_all_contain scroll-height-0"
+                >
+                    <div className="VidPics_all_row display-flex">
+                        {urls.map((item, ix) => (
                             <VidPicItem
-                                key={index}
-                                item_ix={index}
-                                is_active={current == index}
+                                key={ix}
+                                item_ix={ix}
+                                is_active={current == ix}
+                                //
+                                url={getVidPicItem(item)}
+                                type={getTypeVidOrPic(item, item.type)}
                                 changeCurrent={changeCurrent}
-                                url={item.url || item.vid_pic || item}
-                                type={item.type}
                             />
                         ))}
                     </div>

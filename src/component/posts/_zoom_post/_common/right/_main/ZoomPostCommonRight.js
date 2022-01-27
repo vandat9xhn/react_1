@@ -33,9 +33,9 @@ function ZoomPostCommonRight({
     handleEdit,
     cancelEdit,
 
-    action_component,
-    like_share_cmt_component,
-    comment_component,
+    ActionElm,
+    LikeShareCmtElm,
+    CommentElm,
 }) {
     //
     const { openScreenFloor } = useContext(context_api);
@@ -54,17 +54,17 @@ function ZoomPostCommonRight({
         <div className="ZoomPostCommon_right_contain scroll-thin div_fix_scroll">
             <div>
                 <div className="ZoomPostCommon_right-head">
-                    <div>
+                    <div className="flex-between-center">
                         <PictureName
                             user={user}
                             content={UnitTime(
                                 new Date() - new Date(updated_time)
                             )}
                         />
-                    </div>
 
-                    <div className="ZoomPostCommon_actions">
-                        {action_component}
+                        <div className="ZoomPostCommon_actions">
+                            {ActionElm}
+                        </div>
                     </div>
 
                     <div>
@@ -93,12 +93,10 @@ function ZoomPostCommonRight({
                         />
                     </div>
 
-                    <div>{like_share_cmt_component}</div>
+                    <div>{LikeShareCmtElm}</div>
                 </div>
 
-                <div className="ZoomPostCommon_right-cmt">
-                    {comment_component}
-                </div>
+                <div className="ZoomPostCommon_right-cmt">{CommentElm}</div>
             </div>
         </div>
     );

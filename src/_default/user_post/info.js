@@ -3,7 +3,7 @@ import { default_action_user_case_obj } from '../_common/action_user_case';
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomName } from '../_common/default_name';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
@@ -76,12 +76,12 @@ export const default_fb_profile_info_r = (user_id, max_friend_arr = 8) => {
               id: getRandomId(),
               first_name: getRandomName(),
               last_name: getRandomName(),
-              picture: getRandomVidPic(),
+              picture: getRandomImg(),
           };
 
     return {
         ...user,
-        cover: getRandomVidPic(),
+        cover: getRandomImg(),
 
         sent_request: sent_request,
         has_new_story: getRandomBool(),

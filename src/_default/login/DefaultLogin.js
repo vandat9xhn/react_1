@@ -1,4 +1,4 @@
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomName } from '../_common/default_name';
 
 //
@@ -6,7 +6,7 @@ export const default_define_user = {
     id: 1,
     first_name: getRandomName(),
     last_name: getRandomName(),
-    picture: getRandomVidPic(),
+    picture: getRandomImg(),
 };
 
 //

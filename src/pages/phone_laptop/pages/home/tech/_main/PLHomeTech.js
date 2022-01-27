@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 //
 import { IS_MOBILE } from '../../../../../../_constant/Constant';
 //
-import { getRandomVidPic } from '../../../../../../_default/_common/default_image';
+import { getRandomImg } from '../../../../../../_default/_common/default_image';
 //
 import './PLHomeTech.scss';
 
@@ -19,42 +19,42 @@ function PLHomeTech(props) {
             id: 1,
             content:
                 'dasda dsad asdasd asd asdasda ads adas dasd asd asd asd asd asd asdasda sdas dasd asd asd asda sda dd  ada dad ada dasda das dasd asd as',
-            img: getRandomVidPic(),
+            img: getRandomImg(),
             link_to: '/phone-laptop',
             time_str: '6 giờ trước',
         },
         {
             id: 2,
             content: 'dasda dsad asdasd asd asdasda',
-            img: getRandomVidPic(),
+            img: getRandomImg(),
             link_to: '/phone-laptop',
             time_str: '6 giờ trước',
         },
         {
             id: 3,
             content: 'dasda dsad asdasd asd asdasda',
-            img: getRandomVidPic(),
+            img: getRandomImg(),
             link_to: '/phone-laptop',
             time_str: '6 giờ trước',
         },
         {
             id: 4,
             content: 'dasda dsad asdasd asd asdasda',
-            img: getRandomVidPic(),
+            img: getRandomImg(),
             link_to: '/phone-laptop',
             time_str: '6 giờ trước',
         },
         {
             id: 5,
             content: 'dasda dsad asdasd asd asdasda',
-            img: getRandomVidPic(),
+            img: getRandomImg(),
             link_to: '/phone-laptop',
             time_str: '6 giờ trước',
         },
         {
             id: 6,
             content: 'dasda dsad asdasd asd asdasda',
-            img: getRandomVidPic(),
+            img: getRandomImg(),
             link_to: '/phone-laptop',
             time_str: '6 giờ trước',
         },

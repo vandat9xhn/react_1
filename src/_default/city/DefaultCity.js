@@ -1,6 +1,6 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic, getRandomVidPicOrNull } from '../_common/default_image';
+import { getRandomImg, getRandomImgOrNull } from '../_common/default_image';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
@@ -58,7 +58,7 @@ export const default_city_obj = () => ({
     id: getRandomId(),
     ...getRandomUser(),
     ...getRandomCommonCityObj(),
-    image: getRandomVidPic(),
+    image: getRandomImg(),
     is_user: getRandomBool(),
     count_his: 2,
 });
@@ -69,7 +69,7 @@ export const default_city_arr = () => getDefaultArr(default_city_obj, 4, 4);
 export const default_city_history_obj = () => ({
     id: getRandomId(),
     ...getRandomCommonCityObj(),
-    image: getRandomVidPicOrNull(),
+    image: getRandomImgOrNull(),
     created_time: '2021-06-29T06:51:05.370Z',
 });
 

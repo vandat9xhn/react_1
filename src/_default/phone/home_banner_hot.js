@@ -1,5 +1,5 @@
 import { getRandomId } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 //
@@ -9,7 +9,7 @@ import img_event from '../../../image/preorder_iphone13.png';
 const default_pl_home_banner_obj = () => {
     return {
         id: getRandomId(),
-        vid_pic: getRandomVidPic(),
+        vid_pic: getRandomImg(),
         link_to: '/phone-laptop',
         title_1: getRandomFromArr([
             'Đặt Trước Vivo X70Pro',
@@ -32,7 +32,7 @@ export const default_pl_home_banner_arr = () =>
 const default_pl_home_hot_obj = () => {
     return {
         id: getRandomId(),
-        img: getRandomVidPic(),
+        img: getRandomImg(),
         link_to: '/phone-laptop',
     };
 };

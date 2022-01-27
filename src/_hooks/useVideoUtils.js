@@ -135,12 +135,20 @@ export function useVideoUtils({
 
     //
     function handleTimeUpDate() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         ref_c_time.current = ref_video_elm.current.currentTime;
         forceUpdate();
     }
 
     //
     function handleProgress() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         let range = 0;
         const bf = ref_video_elm.current.buffered;
         const c_time = ref_video_elm.current.currentTime;
@@ -164,12 +172,20 @@ export function useVideoUtils({
 
     //
     function handleChangeDuration() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+        
         ref_total_time.current = ref_video_elm.current.duration;
         forceUpdate();
     }
 
     //
     function handleWhenPause() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         if (!ref_holding_slider.current) {
             ref_is_play.current = false;
             forceUpdate();
@@ -180,6 +196,10 @@ export function useVideoUtils({
 
     //
     function togglePlay() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         beforeTogglePlay();
 
         const new_is_play = !ref_is_play.current;
@@ -196,6 +216,10 @@ export function useVideoUtils({
 
     //
     function changeZoomLv() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         let new_zoom_lv = ref_zoom_lv.current + 1;
         if (new_zoom_lv > max_zoom_lv) {
             new_zoom_lv = 0;
@@ -213,6 +237,10 @@ export function useVideoUtils({
 
     //
     function changeVolume({ new_volume = 0 }) {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         beforeChangeVolume();
         ref_volume.current = new_volume;
         ref_is_mute.current = false;
@@ -224,6 +252,10 @@ export function useVideoUtils({
 
     //
     function toggleMute() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         beforeToggleMute();
         const new_is_mute = !ref_is_mute.current;
         ref_is_mute.current = new_is_mute;
@@ -236,6 +268,10 @@ export function useVideoUtils({
 
     //
     function changeTime({ new_c_time }) {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         beforeChangeTime();
         ref_c_time.current = new_c_time;
         ref_video_elm.current.currentTime = new_c_time;
@@ -245,6 +281,10 @@ export function useVideoUtils({
 
     //
     function changeTotalTime(new_total_time) {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         ref_total_time.current = new_total_time;
         ref_video_elm.current.duration = new_total_time;
         forceUpdate();
@@ -252,6 +292,10 @@ export function useVideoUtils({
 
     //
     function startMoveTime() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         ref_holding_slider.current = true;
         if (ref_is_play.current) {
             ref_video_elm.current.pause();
@@ -260,6 +304,10 @@ export function useVideoUtils({
 
     //
     function endMoveTime() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         ref_holding_slider.current = false;
         if (ref_is_play.current) {
             ref_video_elm.current.play();
@@ -269,6 +317,10 @@ export function useVideoUtils({
     // ---- NORMAL
 
     function getTotalTime() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         return ref_video_elm.current.duration;
     }
 
@@ -276,6 +328,10 @@ export function useVideoUtils({
 
     //
     function gotoLiveView() {
+        if (!ref_video_elm.current) {
+            return;
+        }
+
         if (ref_c_time.current == ref_total_time.current) {
             return;
         }

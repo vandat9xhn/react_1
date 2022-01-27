@@ -1,6 +1,6 @@
 import { getRandomBool } from './default_bool';
 import { getRandomId, getRandomNumber } from './default_id';
-import { getRandomVidPic } from './default_image';
+import { getRandomImg } from './default_image';
 import {
     getRandomGroupName,
     getRandomName,
@@ -19,7 +19,7 @@ export const getRandomUser = () => {
     return {
         user: {
             id: getRandomId(),
-            picture: getRandomVidPic(),
+            picture: getRandomImg(),
             first_name: getRandomName(),
             last_name: getRandomName(),
             sex: getRandomFromArr(['male', 'female', 'other']),
@@ -34,7 +34,7 @@ export const getRandomUser = () => {
 export const getRandomGroup = () => ({
     group_obj: {
         id: getRandomId(),
-        picture: getRandomVidPic(),
+        picture: getRandomImg(),
         name: getRandomGroupName(),
     },
 });
@@ -46,7 +46,7 @@ export const getRandomPage = () => {
     return {
         page_obj: {
             id: getRandomId(),
-            picture: getRandomVidPic(),
+            picture: getRandomImg(),
             name: getRandomPageName(),
 
             time_online: getRandomTimeOnline({}),

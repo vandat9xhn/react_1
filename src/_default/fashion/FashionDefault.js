@@ -1,10 +1,10 @@
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 
 //
 const default_hot_image_obj = () => ({
-    vid_pic: getRandomVidPic(),
+    vid_pic: getRandomImg(),
 });
 
 export const default_hot_image_arr = () =>
@@ -13,7 +13,7 @@ export const default_hot_image_arr = () =>
 //
 const product_vid_pic_obj = () => ({
     id: getRandomId(),
-    vid_pic: getRandomVidPic(),
+    vid_pic: getRandomImg(),
     product_model: 5,
 });
 

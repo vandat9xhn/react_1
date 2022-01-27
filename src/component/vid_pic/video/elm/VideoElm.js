@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { IS_MOBILE } from '../../../../_constant/Constant';
 //
 import VideoUtils from '../utils/VideoUtils';
+import VideoItem from '../../video_components/video/VideoItem';
 //
 // import './VideoElm.scss';
 
@@ -40,13 +41,7 @@ function VideoElm({
     //
     return (
         <div className="VideoElm pos-rel wh-100 user-select-none">
-            <video
-                ref={ref_video_elm}
-                className="wh-100"
-                src={video}
-                controls={false}
-                preload="metadata"
-            />
+            <VideoItem ref_video_elm={ref_video_elm} video={video} />
 
             <div className="pos-abs-100">{face_video_elm}</div>
 

@@ -7,14 +7,13 @@ import ContextPost from '../../../../../_context/post/ContextPost';
 import { is_api_fake } from '../../../../../api/_ConstAPI';
 //
 import { GetIdSlug } from '../../../../../_some_function/GetIdSlug';
+import { getTypeVidOrPic } from '../../../../../_some_function/VideoOrImage';
 //
 import { useMounted } from '../../../../../_hooks/useMounted';
 import { useScreenFetching } from '../../../../../_hooks/UseScreenFetching';
-import { useForceUpdate } from '../../../../../_hooks/UseForceUpdate';
 //
 import { openScreenConfirm } from '../../../../_screen/type/confirm/ScreenConfirm';
 import { openScreenHistory } from '../../../../_screen/type/history/ScreenHistory';
-import { openScreenUpdate } from '../../../../_screen/type/update/_main/ScreenUpdate';
 //
 import {
     handle_API_PostVidPicContent_R,
@@ -58,9 +57,13 @@ import CommentsWs from '../../../common/ws_comments/_main/CommentsWs';
 
 import VidPicHistory from '../history/_main/VidPicHistory';
 import ZoomVidPicAction from '../action/_main/ZoomVidPicAction';
-import VidPicUpdate from '../update/VidPicUpdate';
 //
 import './ZoomVidPicItem.scss';
+import {
+    handleZoomVidPicActionObj,
+    openZoomVidPicActionObj,
+} from '../action/handle_actions/_main';
+import { ZOOM_VID_PIC_ACTION_NAME_OBJ } from '../../../../../_data/zoom_vid_pic/actions';
 
 //
 ZoomVidPicItem.propTypes = {
@@ -88,6 +91,7 @@ function ZoomVidPicItem({
         vid_pic_obj: {},
         vid_pic_id_arr: [],
         vid_pic_ix: -1,
+
         has_fetched: false,
         is_fetching: false,
 
@@ -106,6 +110,7 @@ function ZoomVidPicItem({
 
     const {
         is_del,
+        is_live,
 
         id,
         vid_pic,
@@ -183,23 +188,48 @@ function ZoomVidPicItem({
             handle_API_PostVidPic_R(vid_pic_id)
         );
 
-        mounted &&
-            setStateObj((state_obj) => {
-                return {
-                    ...state_obj,
-                    vid_pic_obj: data,
-                    is_fetching: false,
-                    vid_pic_ix: new_vid_pic_ix,
-                };
-            });
+        if (!mounted) {
+            return;
+        }
 
-        return data.post_model;
+        setStateObj((state_obj) => {
+            return {
+                ...state_obj,
+                vid_pic_obj: state_obj.has_fetched
+                    ? {
+                          ...data,
+                          user: state_obj.vid_pic_obj.user,
+                          is_live: false,
+                      }
+                    : data,
+                is_fetching: false,
+                vid_pic_ix: new_vid_pic_ix,
+            };
+        });
+
+        return data;
     }
 
     //
     async function getData_API_First() {
         const first_id = GetIdSlug();
-        const post_model = await getData_API_VidPic({ vid_pic_id: first_id });
+        const { post_model, id, is_live } = await getData_API_VidPic({
+            vid_pic_id: first_id,
+        });
+
+        if (is_live) {
+            setStateObj((state_obj) => ({
+                ...state_obj,
+                vid_pic_id_arr: [id],
+                has_fetched: true,
+                vid_pic_ix: 0,
+            }));
+
+            ref_has_fetched.current = true;
+
+            return;
+        }
+
         const data_id = await handle_API_PostVidPicID_L({
             post_model: post_model,
             vid_pic_id: first_id,
@@ -279,75 +309,61 @@ function ZoomVidPicItem({
     // ------ ACTIONS
 
     //
-    function openHistoryVidPic() {
-        openScreenHistory({
-            openScreenFloor: openScreenFloor,
-            title: 'History',
-            handle_API_History_L: handle_API_PostVidPicHistory_L,
-            HisComponent: VidPicHistory,
-        });
-    }
+    function handleAction(action_name = '') {
+        if (action_name == ZOOM_VID_PIC_ACTION_NAME_OBJ.HISTORY) {
+            openZoomVidPicActionObj.history({
+                openScreenFloor: openScreenFloor,
+            });
 
-    //
-    async function openUpdateVidPic() {
-        const content_more = content_obj.has_more_content
-            ? await handleScreenFetching(() =>
-                  handle_API_PostVidPicContent_R(id)
-              )
-            : '';
+            return;
+        }
 
-        content_obj.content_more = content_more;
+        if (action_name == ZOOM_VID_PIC_ACTION_NAME_OBJ.EDIT_ALT) {
+            openZoomVidPicActionObj.editAlt({
+                id: id,
+                content_obj: content_obj,
+                setStateObj: setStateObj,
+            });
+            return;
+        }
 
-        setStateObj({
-            ...state_obj,
-            is_editing: true,
-        });
-    }
+        if (action_name == ZOOM_VID_PIC_ACTION_NAME_OBJ.AUDIENCE) {
+            console.log('audience');
+            return;
+        }
 
-    //
-    function openDeleteVidPic() {
-        openScreenConfirm({
-            openScreenFloor: openScreenFloor,
-            title: 'Delete',
-            notification: 'Do you really want to delete this',
-            handleConfirm: handleDelete,
-        });
-    }
+        if (action_name == ZOOM_VID_PIC_ACTION_NAME_OBJ.DELETE) {
+            openZoomVidPicActionObj.delete({
+                openScreenFloor: openScreenFloor,
+                handleConfirm: handleDelete,
+            });
+            return;
+        }
 
-    //
-    function openReportVidPic() {
-        openScreenConfirm({
-            openScreenFloor: openScreenFloor,
-            title: 'Report',
-            notification: 'Do you report this',
-            handleConfirm: handleReport,
-        });
+        if (action_name == ZOOM_VID_PIC_ACTION_NAME_OBJ.REPORT) {
+            openZoomVidPicActionObj.report({
+                openScreenFloor: openScreenFloor,
+                handleConfirm: handleReport,
+            });
+            return;
+        }
     }
 
     // --------- HANDLE ACTIONS
 
     //
-    async function handleEdit(new_content) {
-        await handleScreenFetching(() =>
-            handle_API_PostVidPic_U(id, new_content)
-        );
-
-        content_obj.content = new_content;
-        content_obj.content_more = '';
-        content_obj.has_more_content = false;
-
-        setStateObj({
-            ...state_obj,
-            is_editing: false,
+    function handleEdit(new_content = '') {
+        handleZoomVidPicActionObj.editAlt({
+            id: id,
+            new_content: new_content,
+            setStateObj,
+            handleScreenFetching: handleScreenFetching,
         });
     }
 
     //
     function cancelEdit() {
-        setStateObj({
-            ...state_obj,
-            is_editing: false,
-        });
+        handleZoomVidPicActionObj.cancelEditAlt({ setStateObj: setStateObj });
     }
 
     //
@@ -357,27 +373,23 @@ function ZoomVidPicItem({
 
     //
     function handleDelete() {
-        const vid_pic_count = vid_pic_id_arr.length;
+        handleZoomVidPicActionObj.delete({
+            show_screen_title: show_screen_title,
+            closeScreenTitle: closeScreenTitle,
+            handleNextPrevVidPic: handleNextPrevVidPic,
+            handleDeleteVidPicPost: handleDeleteVidPicPost,
+        });
+    }
 
-        if (vid_pic_count == 1) {
-            if (show_screen_title) {
-                closeScreenTitle();
+    // -----
 
-                return;
-            }
-
-            history.back();
-
-            return;
-        }
-
-        handleNextPrevVidPic(vid_pic_ix <= vid_pic_count - 2);
-        vid_pic_id_arr.splice(vid_pic_ix, 1);
-        handleDeleteVidPicPost(vid_pic_ix);
+    //
+    if (!has_fetched) {
+        return <div className="wh-100v screen-blur"></div>;
     }
 
     //
-    if (!has_fetched || is_del) {
+    if (is_del) {
         return null;
     }
 
@@ -410,11 +422,15 @@ function ZoomVidPicItem({
                 handle_API_MoreContentHisSub_R={handle_API_MoreContentHisSub_R}
             >
                 <ZoomPostCommon
-                    // key={id}
+                    key={id}
                     show_screen_title={show_screen_title}
                     closeScreenTitle={closeScreenTitle}
                     //
                     vid_pic={vid_pic}
+                    is_live={is_live}
+                    video_or_img={getTypeVidOrPic(vid_pic)}
+                    is_fetching={is_fetching}
+                    //
                     is_has_next={is_has_next}
                     is_has_prev={is_has_prev}
                     handleNextVidPic={handleNextVidPic}
@@ -434,16 +450,13 @@ function ZoomVidPicItem({
                     handleEdit={handleEdit}
                     cancelEdit={cancelEdit}
                     //
-                    action_component={
+                    ActionElm={
                         <ZoomVidPicAction
-                            is_poster={user.id == c_user.id}
-                            openHistoryVidPic={openHistoryVidPic}
-                            openUpdateVidPic={openUpdateVidPic}
-                            openDeleteVidPic={openDeleteVidPic}
-                            openReportVidPic={openReportVidPic}
+                            video_or_img={getTypeVidOrPic(vid_pic)}
+                            handleAction={handleAction}
                         />
                     }
-                    like_share_cmt_component={
+                    LikeShareCmtElm={
                         <LikeShareCmt
                             parent_id={id}
                             user_reacted_ix={user_reacted_ix}
@@ -459,7 +472,7 @@ function ZoomVidPicItem({
                             handleClickBtnCmt={handleClickBtnCmt}
                         />
                     }
-                    comment_component={
+                    CommentElm={
                         <CommentsWs
                             is_poster={user.id == c_user.id}
                             parent_id={id}

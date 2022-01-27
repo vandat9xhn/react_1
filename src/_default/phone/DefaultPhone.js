@@ -1,6 +1,6 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomFromArr } from '../_common/getRandomFromArr';
 
@@ -32,9 +32,9 @@ export const default_phone_obj = (id = 0) => {
         in_stock: getRandomBool(),
 
         type_arr: [
-            { img: getRandomVidPic(), title: '4GB' },
-            { img: getRandomVidPic(), title: '8G' },
-            { img: getRandomVidPic(), title: '32G' },
+            { img: getRandomImg(), title: '4GB' },
+            { img: getRandomImg(), title: '8G' },
+            { img: getRandomImg(), title: '32G' },
         ].slice(0, getRandomNumber(1, 3)),
 
         rating_avg: rating_avg,

@@ -15,8 +15,8 @@ import {
     getRandomNumber,
 } from '../../../../../_default/_common/default_id';
 import {
-    getRandomVidPic,
-    getRandomVidPicOrNull,
+    getRandomImg,
+    getRandomImgOrNull,
 } from '../../../../../_default/_common/default_image';
 import { getDefaultArr } from '../../../../../_default/_common/getDefaultArr';
 import { getRandomBool } from '../../../../../_default/_common/default_bool';
@@ -44,7 +44,7 @@ const default_post = (
             macro.
         </p>
 
-        <img className="w-100per" src={getRandomVidPic()} alt="" />
+        <img className="w-100per" src={getRandomImg()} alt="" />
 
         <p>
             Cảm biến chính độ phân giải cao 50 MP tích hợp công nghệ AI thông
@@ -59,7 +59,7 @@ const default_post = (
             macro.
         </p>
 
-        <img className="w-100per" src={getRandomVidPic()} alt="" />
+        <img className="w-100per" src={getRandomImg()} alt="" />
 
         <p>
             Cảm biến chính độ phân giải cao 50 MP tích hợp công nghệ AI thông
@@ -91,21 +91,21 @@ const default_carousel_choice_arr = [
         title: 'Đen',
         title_see_all: 'Xem tất cả hình',
         only_screen: false,
-        img: getRandomVidPic(),
+        img: getRandomImg(),
     },
     {
         name: 'green',
         title: 'Xanh',
         title_see_all: 'Xem tất cả hình',
         only_screen: false,
-        img: getRandomVidPic(),
+        img: getRandomImg(),
     },
     {
         name: 'white',
         title: 'Trắng',
         title_see_all: 'Xem tất cả hình',
         only_screen: false,
-        img: getRandomVidPic(),
+        img: getRandomImg(),
     },
     {
         name: 'open',
@@ -304,7 +304,7 @@ export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
 
     const rate_img_count = getRandomNumber(0, 30);
     const rate_img_arr = getDefaultArr(
-        getRandomVidPic,
+        getRandomImg,
         rate_img_count > 10 ? 10 : rate_img_count,
         rate_img_count > 10 ? 10 : rate_img_count
     );
@@ -320,7 +320,7 @@ export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
             will_share: getRandomBool(),
 
             content: getRandomContent(),
-            img: getRandomVidPicOrNull(),
+            img: getRandomImgOrNull(),
             service_replied_time: new Date().getTime(),
 
             count_like: getRandomBool() ? getRandomNumber(0, 2) : 0,
@@ -380,7 +380,7 @@ export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
 
                 id: phone_id,
                 name: name,
-                img: getRandomVidPic(),
+                img: getRandomImg(),
                 product_type: getRandomFromArr(['phone', 'laptop']),
                 img_main: phone_img_main,
 
@@ -414,7 +414,7 @@ export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
                 },
 
                 carousel_choice_arr: default_carousel_choice_arr,
-                specific_vid_pics: getDefaultArr(getRandomVidPic, 3, 15),
+                specific_vid_pics: getDefaultArr(getRandomImg, 3, 15),
                 has_link_more: false,
                 link_more_name: '',
                 link_more_to: '',
@@ -545,7 +545,7 @@ export function PLDetail_handleState({ data = {}, setStateObj = () => {} }) {
                     gift_arr: [
                         {
                             id: getRandomId(),
-                            img: getRandomVidPic(),
+                            img: getRandomImg(),
                             name: 'Balo laptop HP',
                         },
                     ],

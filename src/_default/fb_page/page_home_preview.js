@@ -1,6 +1,6 @@
 import { getRandomContent } from '../_common/default_content';
 import { getRandomId, getRandomNumber } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { default_fb_page_about_obj } from './page_about';
 
@@ -14,7 +14,7 @@ export const default_fb_page_home_preview_obj = () => {
             () => {
                 return {
                     id: getRandomId(),
-                    img: getRandomVidPic(),
+                    img: getRandomImg(),
                 };
             },
             4,
@@ -23,7 +23,7 @@ export const default_fb_page_home_preview_obj = () => {
         video_obj: {
             id: getRandomNumber(),
             content: getRandomContent().slice(0, 100),
-            thumbnail: getRandomVidPic(),
+            thumbnail: getRandomImg(),
             video_time: '4:22',
 
             view_count: getRandomNumber(1, 20) * 10000,

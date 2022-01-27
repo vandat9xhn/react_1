@@ -1,6 +1,6 @@
 import { getRandomContentObj } from "../_common/default_content";
 import { getRandomId } from "../_common/default_id";
-import { getRandomVidPicOrNull } from "../_common/default_image";
+import { getRandomImgOrNull } from "../_common/default_image";
 import { getRandomUser } from "../_common/default_user";
 import { getDefaultArr } from "../_common/getDefaultArr";
 import { default_post_sub_arr } from "./DefaultSub";
@@ -19,7 +19,7 @@ const default_post_vid_pic_cmt_obj = () => ({
     
     histories: [],
     count_history: 0,
-    vid_pic: getRandomVidPicOrNull(),
+    vid_pic: getRandomImgOrNull(),
 
     vid_pic_model: 6,
     profile_model: 2,

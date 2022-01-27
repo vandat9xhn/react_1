@@ -63,6 +63,7 @@ function VideoUtils({
                     <VideoTimeLine
                         c_time={(c_time * 100) / total_time}
                         buffer_time={(buffer_time * 100) / total_time}
+                        total_time={total_time}
                         // range={range}
                         // active_range={active_range}
                         // slider={slider}

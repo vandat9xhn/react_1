@@ -1,6 +1,6 @@
 import { getRandomBool } from '../_common/default_bool';
 import { getRandomId } from '../_common/default_id';
-import { getRandomVidPic } from '../_common/default_image';
+import { getRandomImg } from '../_common/default_image';
 import { getRandomName } from '../_common/default_name';
 import { getRandomUser } from '../_common/default_user';
 import { getDefaultArr } from '../_common/getDefaultArr';
@@ -12,7 +12,7 @@ const default_post_user_tag_obj = () => {
         profile_model: getRandomId(),
         first_name: getRandomName(),
         last_name: getRandomName(),
-        picture: getRandomVidPic(),
+        picture: getRandomImg(),
     };
 };
 
