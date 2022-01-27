@@ -13,12 +13,16 @@ Tooltip.propTypes = {
     children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     pos: PropTypes.string,
     distance: PropTypes.number,
+
+    z_index: PropTypes.number,
     class_contain: PropTypes.string,
 };
 
 Tooltip.defaultProps = {
     pos: 'bottom',
     distance: 2,
+
+    z_index: 999,
     class_contain:
         'padding-x-10px padding-y-6px brs-8px bg-shadow-8 font-13px text-white pointer-events-none',
 };
@@ -32,6 +36,8 @@ function Tooltip({
     children,
     pos,
     distance,
+
+    z_index,
     class_contain,
 
     hold_time,
@@ -191,8 +197,8 @@ function Tooltip({
     return (
         <PortalAtBody>
             <div
-                className="Tooltip pos-fixed z-index-lv5"
-                style={{ ...getTooltipPos() }}
+                className="Tooltip pos-fixed"
+                style={{ ...getTooltipPos(), zIndex: z_index }}
             >
                 <div className={class_contain}>{children}</div>
             </div>

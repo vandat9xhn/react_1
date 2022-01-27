@@ -37,6 +37,8 @@ class CanvasDraw extends Component {
         this.startReadyCanvas();
     }
 
+    // ---------
+
     //
     startReadyCanvas = () => {
         const { list_canvas, c_step, bg, stroke_width, color } =
@@ -56,6 +58,11 @@ class CanvasDraw extends Component {
                 color: color,
             });
         }, 0);
+    };
+
+    //
+    handleHasChange = () => {
+        this.props.ref_has_change.current = true;
     };
 
     /* ------------------ COMMON ------------------- */
@@ -89,6 +96,7 @@ class CanvasDraw extends Component {
 
     //
     onMouseUpTouchEnd = () => {
+        this.handleHasChange();
         this.run = false;
 
         if (!this.just_move) {
@@ -180,8 +188,9 @@ class CanvasDraw extends Component {
 
         this.ctx.clearRect(0, 0, w_canvas, h_canvas);
         this.list_canvas.splice(this.c_step + 1, this.list_canvas.length, '');
-
         this.c_step += 1;
+
+        this.handleHasChange();
     };
 
     //
@@ -192,6 +201,8 @@ class CanvasDraw extends Component {
 
         this.c_step -= 1;
         this.drawImageToCanvas(this.c_step);
+
+        this.handleHasChange();
     };
 
     //
@@ -202,6 +213,8 @@ class CanvasDraw extends Component {
 
         this.c_step += 1;
         this.drawImageToCanvas(this.c_step);
+
+        this.handleHasChange();
     };
 
     //
@@ -216,6 +229,8 @@ class CanvasDraw extends Component {
         this.setState({
             bg: e.target.value,
         });
+
+        this.handleHasChange();
     };
 
     //

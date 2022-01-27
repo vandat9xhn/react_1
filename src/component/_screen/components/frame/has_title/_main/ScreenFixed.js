@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import { useFullScreen } from '../../../../../../_hooks/useFullScreen';
 import { useMakeBodyHidden } from '../../../../../../_hooks/useMakeBodyHidden';
 //
 import ScreenTitle from '../title/ScreenTitle';
@@ -33,6 +32,9 @@ ScreenFixed.defaultProps = {
 function ScreenFixed({
     url,
     show_screen_title,
+    tooltipCloseElm,
+    z_index_tooltip,
+
     children,
     body_hidden_params,
 
@@ -40,7 +42,6 @@ function ScreenFixed({
     closeScreenFixed,
 }) {
     //
-    useFullScreen();
     useMakeBodyHidden({
         hidden_scroll: true,
         hidden_app: true,
@@ -57,6 +58,9 @@ function ScreenFixed({
                     <ScreenTitle
                         show_screen_title={show_screen_title}
                         url={url}
+                        tooltipCloseElm={tooltipCloseElm}
+                        z_index_tooltip={z_index_tooltip}
+                        //
                         handleDownload={handleDownload}
                         closeScreenTitle={closeScreenFixed}
                     />

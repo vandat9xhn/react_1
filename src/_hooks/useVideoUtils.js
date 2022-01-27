@@ -1,20 +1,30 @@
 import { useEffect, useRef } from 'react';
+//
+import {
+    exitFullscreen,
+    requestFullscreen,
+} from '../_some_function/handelFullScreen';
 import { observerDisplay } from '../_some_function/observerDisplay';
 //
 import { useForceUpdate } from './UseForceUpdate';
+import { useHideCursorWhenFullscreen } from './useHideCursorWhenFullscreen';
 
 //
 export function useVideoUtils({
+    ref_main_video = {
+        current: document.getElementsByTagName('div')[0],
+    },
     ref_video_elm = {
         current: document.getElementsByTagName('video')[0],
     },
 
     is_live,
     stop_when_over = true,
+    use_fullscreen = false,
 
     initial_is_play = false,
     initial_zoom_lv = 0,
-    max_zoom_lv = 1,
+    max_zoom_lv = 0,
 
     initial_volume = 0.5,
     initial_is_mute = true,
@@ -54,7 +64,14 @@ export function useVideoUtils({
     const ref_is_over = useRef(false);
 
     //
+    const is_zoom_max = ref_zoom_lv.current == max_zoom_lv;
+
+    //
     const forceUpdate = useForceUpdate();
+
+    const { ref_is_hide_cursor } = useHideCursorWhenFullscreen({
+        fullscreen: is_zoom_max,
+    });
 
     //
     useEffect(() => {
@@ -117,18 +134,40 @@ export function useVideoUtils({
             });
     }, []);
 
+    //
+    useEffect(() => {
+        if (!use_fullscreen) {
+            return;
+        }
+
+        if (is_zoom_max) {
+            requestFullscreen({ elm: ref_main_video.current });
+        } else {
+            exitFullscreen({ elm: ref_main_video.current });
+        }
+
+        document.addEventListener('fullscreenchange', handleScreenChange);
+
+        return () => {
+            document.removeEventListener(
+                'fullscreenchange',
+                handleScreenChange
+            );
+        };
+    }, [is_zoom_max]);
+
     // ---- EVENTS
 
     //
     function handleLoadMetadata() {
-        ref_total_time.current = ref_video_elm.current.duration;
-        ref_is_play.current && ref_video_elm.current.play();
-        ref_is_mute.current && (ref_video_elm.current.muted = true);
-
         if (is_live) {
             ref_c_time.current = ref_total_time.current;
-            ref_video_elm.current.currentTime = ref_total_time.current;
         }
+        ref_video_elm.current.currentTime = ref_c_time.current;
+
+        ref_total_time.current = ref_video_elm.current.duration;
+        ref_is_mute.current && (ref_video_elm.current.muted = true);
+        ref_is_play.current && ref_video_elm.current.play();
 
         forceUpdate();
     }
@@ -175,7 +214,7 @@ export function useVideoUtils({
         if (!ref_video_elm.current) {
             return;
         }
-        
+
         ref_total_time.current = ref_video_elm.current.duration;
         forceUpdate();
     }
@@ -186,10 +225,24 @@ export function useVideoUtils({
             return;
         }
 
-        if (!ref_holding_slider.current) {
-            ref_is_play.current = false;
-            forceUpdate();
+        if (ref_holding_slider.current) {
+            return;
         }
+
+        ref_is_play.current = false;
+        forceUpdate();
+    }
+
+    // ----
+
+    //
+    function handleScreenChange() {
+        if (document.fullscreenElement || ref_zoom_lv.current == 0) {
+            return;
+        }
+
+        ref_zoom_lv.current = 0;
+        forceUpdate();
     }
 
     // ---- NORMAL
@@ -225,7 +278,7 @@ export function useVideoUtils({
             new_zoom_lv = 0;
         }
 
-        console.log(new_zoom_lv);
+        // console.log(new_zoom_lv);
 
         beforeChangeZoomLv();
         ref_zoom_lv.current = new_zoom_lv;
@@ -358,6 +411,8 @@ export function useVideoUtils({
         ref_total_time,
         ref_buffer_time,
         ref_holding_slider,
+
+        ref_is_hide_cursor,
 
         togglePlay,
         changeVolume,

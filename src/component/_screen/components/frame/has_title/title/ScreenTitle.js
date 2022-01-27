@@ -14,9 +14,14 @@ ScreenTitle.propTypes = {
     url: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     show_screen_title: PropTypes.bool,
     tooltipCloseElm: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    z_index_tooltip: PropTypes.number,
 
     handleDownload: PropTypes.func,
     closeScreenTitle: PropTypes.func,
+};
+
+ScreenTitle.defaultProps = {
+    tooltipCloseElm: 'Close',
 };
 
 //
@@ -24,6 +29,7 @@ function ScreenTitle({
     url,
     show_screen_title,
     tooltipCloseElm,
+    z_index_tooltip,
 
     handleDownload,
     closeScreenTitle,
@@ -53,7 +59,10 @@ function ScreenTitle({
                             <IconsArrow size_icon="1.5rem" y={400} />
                         </div>
 
-                        <Tooltip ref_elm={ref_close_elm}>
+                        <Tooltip
+                            ref_elm={ref_close_elm}
+                            z_index={z_index_tooltip}
+                        >
                             {tooltipCloseElm}
                         </Tooltip>
                     </div>

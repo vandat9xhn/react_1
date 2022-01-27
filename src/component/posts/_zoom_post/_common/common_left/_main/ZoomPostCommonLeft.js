@@ -39,7 +39,7 @@ function ZoomPostCommonLeft({
                     )}
                 </div>
 
-                <div className="text-555">
+                <div className="ZoomPostCommonLeft_next_prev text-555">
                     <NextPrevDiv
                         is_btn_circle={true}
                         is_has_next={is_has_next}

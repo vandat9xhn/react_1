@@ -15,7 +15,11 @@ function Video({
     total_view,
 
     initial_is_play,
+
     initial_zoom_lv,
+    max_zoom_lv = 0,
+    use_fullscreen = false,
+
     initial_volume,
     initial_is_mute,
     initial_c_time,
@@ -36,6 +40,7 @@ function Video({
     afterChangeTime,
 }) {
     //
+    const ref_main_video = useRef(null);
     const ref_video_elm = useRef(null);
 
     //
@@ -51,6 +56,8 @@ function Video({
         ref_buffer_time,
         ref_holding_slider,
 
+        ref_is_hide_cursor,
+
         togglePlay,
         changeVolume,
         toggleMute,
@@ -65,12 +72,16 @@ function Video({
         // live
         gotoLiveView,
     } = useVideoUtils({
+        ref_main_video: ref_main_video,
         ref_video_elm: ref_video_elm,
+
         is_live: false,
         stop_when_over: stop_when_over,
+        use_fullscreen: use_fullscreen,
 
         initial_is_play: initial_is_play,
         initial_zoom_lv: initial_zoom_lv,
+        max_zoom_lv: max_zoom_lv,
         initial_volume: initial_volume,
         initial_is_mute: initial_is_mute,
         initial_c_time: initial_c_time,
@@ -90,17 +101,22 @@ function Video({
 
     // ------
 
+    // console.log(ref_video_elm.current);
+
     //
     return (
         <VideoElm
+            ref_main_video={ref_main_video}
             ref_video_elm={ref_video_elm}
             video={video}
             total_view={total_view}
             //
             is_play={ref_is_play.current}
-            is_zoom_out={ref_zoom_lv.current > 0}
             is_mute={ref_is_mute.current}
             volume={ref_volume.current}
+            //
+            is_zoom_out={ref_zoom_lv.current == max_zoom_lv && max_zoom_lv > 0}
+            is_hide_cursor={ref_is_hide_cursor.current}
             //
             c_time={ref_c_time.current}
             buffer_time={ref_buffer_time.current}

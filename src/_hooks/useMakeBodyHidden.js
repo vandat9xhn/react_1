@@ -79,6 +79,7 @@ export const useMakeBodyHidden = (
         };
     }, []);
 
+    // ---- Z-INDEX
     useLayoutEffect(() => {
         const body = document.getElementsByTagName('body')[0];
         const screen_bg = document.getElementsByClassName(
@@ -86,11 +87,18 @@ export const useMakeBodyHidden = (
         )[0];
 
         if (use_z_index) {
+            const body_screen_z_index = body.dataset.screenZIndex;
+            const last_z_index = body_screen_z_index
+                ? parseInt(body_screen_z_index.split('_').slice(-1)[0])
+                : 0;
+            const new_screen_z_index =
+                last_z_index >= screen_z_index ? last_z_index : screen_z_index;
+
             body.dataset.screenZIndex =
                 (body.dataset.screenZIndex || '') +
                 '_' +
-                screen_z_index.toString();
-            screen_bg.style.zIndex = screen_z_index;
+                new_screen_z_index.toString();
+            screen_bg.style.zIndex = new_screen_z_index;
         } else if (body.dataset.screenZIndex) {
             screen_bg.style.zIndex = body.dataset.screenZIndex.slice(
                 body.dataset.screenZIndex.lastIndexOf('_') + 1

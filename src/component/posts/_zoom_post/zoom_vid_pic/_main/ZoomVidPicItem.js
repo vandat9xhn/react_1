@@ -109,23 +109,22 @@ function ZoomVidPicItem({
     } = state_obj;
 
     const {
-        is_del,
-        is_live,
-
         id,
         vid_pic,
+        is_live,
+        
         user,
-        updated_time,
         content_obj,
-
+        
         reacted_count,
         user_reacted_ix,
         reacted_ix_arr,
-
+        
         comments,
         count_comment,
         count_his,
-
+        
+        updated_time,
         post_model,
     } = vid_pic_obj;
 
@@ -389,11 +388,6 @@ function ZoomVidPicItem({
     }
 
     //
-    if (is_del) {
-        return null;
-    }
-
-    //
     return (
         <div className="ZoomVidPicItem">
             <ContextPost
@@ -452,6 +446,7 @@ function ZoomVidPicItem({
                     //
                     ActionElm={
                         <ZoomVidPicAction
+                            vid_pic_id={id}
                             video_or_img={getTypeVidOrPic(vid_pic)}
                             handleAction={handleAction}
                         />

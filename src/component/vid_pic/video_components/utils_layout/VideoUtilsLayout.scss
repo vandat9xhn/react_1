@@ -1,0 +1,10 @@
+.VideoUtilsLayout {
+    opacity: 1;
+    visibility: visible;
+    transition: all 200ms ease-in-out;
+}
+
+.VideoUtilsLayout-out {
+    opacity: 0;
+    visibility: hidden;
+}

@@ -6,13 +6,15 @@ import { IS_MOBILE } from '../../../../_constant/Constant';
 import VideoUtils from '../utils/VideoUtils';
 import VideoItem from '../../video_components/video/VideoItem';
 //
-// import './VideoElm.scss';
+import './VideoElm.scss';
+import VideoUtilsLayout from '../../video_components/utils_layout/VideoUtilsLayout';
 
 //
 VideoElm.propTypes = {};
 
 //
 function VideoElm({
+    ref_main_video,
     ref_video_elm,
     face_video_elm,
 
@@ -21,9 +23,10 @@ function VideoElm({
     total_view,
 
     is_play,
-    is_zoom_out,
     is_mute,
     volume,
+    is_zoom_out,
+    is_hide_cursor,
 
     c_time,
     buffer_time,
@@ -40,12 +43,18 @@ function VideoElm({
 }) {
     //
     return (
-        <div className="VideoElm pos-rel wh-100 user-select-none">
+        <div
+            ref={ref_main_video}
+            className="VideoElm pos-rel wh-100 user-select-none"
+        >
             <VideoItem ref_video_elm={ref_video_elm} video={video} />
 
             <div className="pos-abs-100">{face_video_elm}</div>
 
-            <div className="pos-abs left-0 bottom-0 w-100per">
+            <VideoUtilsLayout
+                ref_main_video={ref_main_video}
+                is_hide_cursor={is_hide_cursor}
+            >
                 <VideoUtils
                     is_play={is_play}
                     is_zoom_out={is_zoom_out}
@@ -67,7 +76,7 @@ function VideoElm({
                     handleStartMoveTime={handleStartMoveTime}
                     handleEndMoveTime={handleEndMoveTime}
                 />
-            </div>
+            </VideoUtilsLayout>
         </div>
     );
 }

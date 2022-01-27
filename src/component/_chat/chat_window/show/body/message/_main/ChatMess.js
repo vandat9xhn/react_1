@@ -7,12 +7,15 @@ import { context_chat } from '../../../../../../../_context/chat/ContextChat';
 import { IS_MOBILE } from '../../../../../../../_constant/Constant';
 //
 import { WsSend } from '../../../../../../../_some_function/WsSend';
+import { formatLocalDateTimeString } from '../../../../../../../_some_function/FormatDate';
 
 import { openScreenConfirm } from '../../../../../../_screen/type/confirm/ScreenConfirm';
 //
 import IconSent from '../../../../../../../_icons_svg/icons_status_message/icon_sent/IconSent';
 //
 import VirtualScroll from '../../../../../../virtual_scroll/VirtualScroll';
+import Tooltip from '../../../../../../tooltip/_main/Tooltip';
+// 
 import { WS_CHAT_TYPE_OBJ } from '../../../../../_ws/_type';
 //
 import ChatMessReacted from '../reacted/ChatMessReacted';
@@ -24,8 +27,6 @@ import ChatMessUnsent from '../unsent/_main/ChatMessUnsent';
 import ChatMessEmoji from '../emoji/ChatMessEmoji';
 //
 import './ChatMess.scss';
-import Tooltip from '../../../../../../tooltip/_main/Tooltip';
-import { formatLocalDateTimeString } from '../../../../../../../_some_function/FormatDate';
 
 //
 ChatMess.propTypes = {};
@@ -137,7 +138,7 @@ function ChatMess({ ref_bd_elm, mess_item, ist_last_sent }) {
     //
     return (
         <div className={`${is_user ? '' : 'bg-primary'}`}>
-            <VirtualScroll ref_root={ref_bd_elm} rootMargin_y={2000}>
+            <VirtualScroll ref_root={ref_bd_elm} rootMargin_y={1000}>
             <div>
                 {is_group && !is_user ? (
                     <div className="bg-primary text-align-center line-16px font-12px text-secondary">

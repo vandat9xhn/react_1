@@ -11,6 +11,11 @@ html {
         // touch-action: none;
         overflow-y: hidden;
     }
+
+    // .
+    &[data-fullscreen-hide-cursor] {
+        cursor: none;
+    }
 }
 
 *,

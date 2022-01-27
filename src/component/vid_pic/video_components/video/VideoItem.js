@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+//
+import {
+    exitFullscreen,
+    requestFullscreen,
+} from '../../../../_some_function/handelFullScreen';
 
 //
 VideoItem.propTypes = {};

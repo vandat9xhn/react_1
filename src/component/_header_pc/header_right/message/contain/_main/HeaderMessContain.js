@@ -14,10 +14,10 @@ import { useObserverShowMore } from '../../../../../../_hooks/useObserverShowMor
 //
 import ComponentSkeleton from '../../../../../skeleton/component_skeleton/ComponentSkeleton';
 import SkeletonPicContent from '../../../../../skeleton/some_skeleton/pic_content/SkeletonPicContent';
-// import VirtualScroll from '../../../../../virtual_scroll/VirtualScroll';
+import VirtualScroll from '../../../../../virtual_scroll/VirtualScroll';
 //
 import MessageFriendHead from '../head/_main/HeaderMessHead';
-import HeaderMessItem from '../body/item/_main/HeaderMessItem';
+import HeaderMessItem from '../item/_main/HeaderMessItem';
 import HeaderMessTitle from '../title/HeaderMessTitle';
 //
 import './HeaderMessContain.scss';
@@ -108,10 +108,10 @@ function HeaderMessContain({ ref_scroll_elm, closeZoom }) {
             <div>
                 {data_arr.map((zoom_item, ix) => (
                     <div key={ix}>
-                        {/* <VirtualScroll
+                        <VirtualScroll
                             ref_root={ref_scroll_elm}
-                            rootMargin_y={200}
-                        > */}
+                            rootMargin_y={1000}
+                        >
                             <HeaderMessItem
                                 ref_scroll_elm={ref_scroll_elm}
                                 ix={ix}
@@ -125,7 +125,7 @@ function HeaderMessContain({ ref_scroll_elm, closeZoom }) {
                                 handleClickItem={handleClickZoomItem}
                                 handleAction={handleAction}
                             />
-                        {/* </VirtualScroll> */}
+                        </VirtualScroll>
                     </div>
                 ))}
             </div>

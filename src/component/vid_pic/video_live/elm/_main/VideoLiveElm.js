@@ -8,24 +8,28 @@ import VideoLiveUtils from '../../utils/_main/VideoLiveUtils';
 import VideoLiveView from '../../view/VideoLiveView';
 //
 import './VideoLiveElm.scss';
+import VideoUtilsLayout from '../../../video_components/utils_layout/VideoUtilsLayout';
 
 //
 VideoLiveElm.propTypes = {};
 
 //
 function VideoLiveElm({
+    ref_main_video,
     ref_video_elm,
     video,
     total_view,
 
     is_play,
-    is_zoom_out,
     is_mute,
     volume,
+    is_zoom_out,
+    is_hide_cursor,
 
     c_time,
     buffer_time,
     total_time,
+
 
     size_icon = IS_MOBILE ? '16px' : '20px',
     face_video_elm,
@@ -43,6 +47,7 @@ function VideoLiveElm({
     //
     return (
         <div
+            ref={ref_main_video}
             className={`VideoLiveElm pos-rel wh-100 ${
                 is_play ? 'VideoLiveElm-play' : ''
             }`}
@@ -55,10 +60,13 @@ function VideoLiveElm({
                 <VideoLiveView
                     is_live_view={c_time == total_time}
                     total_view={total_view}
-                />
+                    />
             </div>
 
-            <div className="VideoLiveElm_utils pos-abs left-0 bottom-0 w-100per">
+            <VideoUtilsLayout
+                ref_main_video={ref_main_video}
+                is_hide_cursor={is_hide_cursor}
+            >
                 <VideoLiveUtils
                     is_play={is_play}
                     is_zoom_out={is_zoom_out}
@@ -81,7 +89,7 @@ function VideoLiveElm({
                     handleStartMoveTime={handleStartMoveTime}
                     handleEndMoveTime={handleEndMoveTime}
                 />
-            </div>
+            </VideoUtilsLayout>
         </div>
     );
 }
