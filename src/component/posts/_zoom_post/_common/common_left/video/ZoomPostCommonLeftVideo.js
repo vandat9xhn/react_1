@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import Video from '../../../../../vid_pic/video/_main/Video';
-import VideoLive from '../../../../../vid_pic/video_live/_main/VideoLive';
-//
+import MyVideoLive from '../../../../../vid_pic/video_live/_main/MyVideoLive';
+import MyVideo from '../../../../../vid_pic/video/_main/MyVideo';
+// 
 import './ZoomPostCommonLeftVideo.scss';
 
 //
@@ -18,7 +18,7 @@ function ZoomPostCommonLeftVideo({ video, is_live }) {
     return (
         <div className="ZoomPostCommonLeftVideo wh-100 padding-bottom-10px">
             {is_live ? (
-                <VideoLive
+                <MyVideoLive
                     video={video}
                     use_fullscreen={true}
                     max_zoom_lv={1}
@@ -26,7 +26,7 @@ function ZoomPostCommonLeftVideo({ video, is_live }) {
                     afterChangeZoomLv={afterChangeZoomLv}
                 />
             ) : (
-                <Video
+                <MyVideo
                     video={video}
                     use_fullscreen={true}
                     max_zoom_lv={1}

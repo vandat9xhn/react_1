@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { getClientXY } from '../_some_function/getClientXY';
 //
+import { getClientXY } from '../_some_function/getClientXY';
 import { getSliderPercent } from '../_some_function/getSliderValue';
 //
 import { useForceUpdate } from './UseForceUpdate';

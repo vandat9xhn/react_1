@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ScrollSticky, useScrollSticky } from 'react-scroll-sticky';
 //
 import { HEADER_HEAD, IS_MOBILE } from '../../../../../../_constant/Constant';
 //
 import { GetIdSlug } from '../../../../../../_some_function/GetIdSlug';
-//
-import { useStickyAuto } from '../../../../../../_hooks/useStickyAuto';
 //
 import ProfilePrPic from '../pic/_main/ProfilePrPic';
 import ProfilePrFriend from '../friend/_main/ProfilePrFriend';
@@ -22,13 +21,21 @@ function ProfilePreview(props) {
     const id = GetIdSlug();
 
     //
-    const { calculateAgain, ref_main_elm, ref_preview_elm, ref_fake_elm } =
+    const { calculateAgain, ref_main_elm, ref_sticky_elm, ref_fake_elm } =
         !IS_MOBILE
-            ? useStickyAuto({
+            ? useScrollSticky({
                   sticky_location: /\/profile\/\d+$/,
                   header_head: HEADER_HEAD + 70,
+                  detectInnerWidthIsOk: detectInnerWidthIsOk,
               })
             : {};
+
+    // -----
+
+    //
+    function detectInnerWidthIsOk() {
+        return innerWidth > 900;
+    }
 
     //
     function handleReady() {
@@ -41,25 +48,29 @@ function ProfilePreview(props) {
 
     //
     return (
-        <div ref={ref_main_elm} className="ProfilePreview h-100per">
-            <div ref={ref_fake_elm}></div>
-
-            <div
-                ref={ref_preview_elm}
-                className="ProfilePreview_preview pos-sticky padding-bottom-10px"
+        <div className="ProfilePreview h-100per">
+            <ScrollSticky
+                ref_main_elm={ref_main_elm}
+                ref_fake_elm={ref_fake_elm}
+                ref_sticky_elm={ref_sticky_elm}
+                //
+                class_main="h-100per"
+                class_sticky="pos-sticky"
             >
-                <div className="ProfilePreview_item">
-                    <ProfilePrIntro id={id} handleReady={handleReady} />
-                </div>
+                <div className="ProfilePreview_preview padding-bottom-10px">
+                    <div className="ProfilePreview_item">
+                        <ProfilePrIntro id={id} handleReady={handleReady} />
+                    </div>
 
-                <div className="ProfilePreview_pic ProfilePreview_item">
-                    <ProfilePrPic id={id} handleReady={handleReady} />
-                </div>
+                    <div className="ProfilePreview_pic ProfilePreview_item">
+                        <ProfilePrPic id={id} handleReady={handleReady} />
+                    </div>
 
-                <div className="ProfilePreview_item">
-                    <ProfilePrFriend id={id} handleReady={handleReady} />
+                    <div className="ProfilePreview_item">
+                        <ProfilePrFriend id={id} handleReady={handleReady} />
+                    </div>
                 </div>
-            </div>
+            </ScrollSticky>
         </div>
     );
 }

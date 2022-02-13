@@ -10,7 +10,7 @@ import { getTypeVidOrPic } from '../../../../../_some_function/VideoOrImage';
 //
 import IconsPlayPause from '../../../../../_icons_svg/icon_play_pause/IconsPlayPause';
 //
-import Video from '../../../../vid_pic/video/_main/Video';
+import MyVideo from '../../../../vid_pic/video/_main/MyVideo';
 //
 import './VidPicPostItem.scss';
 
@@ -60,7 +60,7 @@ function VidPicPostItem({ vid_pic_count, index, post_ix, id, vid_pic }) {
             }
         >
             {vid_pic_count == 1 && vid_pic_type == 'video' ? (
-                <Video
+                <MyVideo
                     video={vid_pic}
                     initial_is_play={false}
                     initial_is_mute={true}

@@ -6,7 +6,8 @@ import { IS_MOBILE } from '../../../../../_constant/Constant';
 import { scrollItemToCenter } from '../../../../../_some_function/scrollItemToCenter';
 import { getTypeVidOrPic } from '../../../../../_some_function/VideoOrImage';
 //
-import Video from '../../../../vid_pic/video/_main/Video';
+import MyVideo from '../../../../vid_pic/video/_main/MyVideo';
+// 
 import VidPicItem from '../vid_pic_item/VidPicItem';
 //
 import './VidPics.scss';
@@ -93,7 +94,7 @@ function VidPics({ urls, current, changeCurrent }) {
                             alt=""
                         />
                     ) : (
-                        <Video video={vid_pic} />
+                        <MyVideo video={vid_pic} />
                     )}
                 </div>
             </div>

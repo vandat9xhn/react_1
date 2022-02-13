@@ -10,6 +10,12 @@ export function useHideCursorWhenFullscreen({
     //
     const ref_interval = useRef(null);
     const ref_c_time = useRef(0);
+    const ref_mouse_down = useRef(false);
+
+    const ref_handle_down = useRef(null);
+    const ref_handle_move = useRef(null);
+    const ref_handle_up = useRef(null);
+
     const ref_is_hide_cursor = useRef(false);
 
     //
@@ -18,11 +24,26 @@ export function useHideCursorWhenFullscreen({
     //
     useEffect(() => {
         if (fullscreen) {
-            window.addEventListener('mousemove', handleMouseMove);
+            ref_handle_down.current = handleMouseDown;
+            ref_handle_move.current = handleMouseMove;
+            ref_handle_up.current = handleMouseUp;
+
+            window.addEventListener('mousedown', ref_handle_down.current);
+            window.addEventListener('mousemove', ref_handle_move.current);
+            window.addEventListener('mouseup', ref_handle_up.current);
+
             startCountUp();
-        } else {
-            window.removeEventListener('mousemove', handleMouseMove);
+        } else if (ref_interval.current) {
+            window.removeEventListener('mousedown', ref_handle_down.current);
+            window.removeEventListener('mousemove', ref_handle_move.current);
+            window.removeEventListener('mouseup', ref_handle_up.current);
+
+            ref_handle_down.current = null;
+            ref_handle_move.current = null;
+            ref_handle_up.current = null;
+
             clearInterval(ref_interval.current);
+            ref_interval.current = null;
         }
     }, [fullscreen]);
 
@@ -48,7 +69,10 @@ export function useHideCursorWhenFullscreen({
 
     //
     function startCountUp() {
-        console.log(1);
+        if (ref_interval.current) {
+            return;
+        }
+
         ref_interval.current = setInterval(() => {
             ref_c_time.current += 100;
 
@@ -66,14 +90,37 @@ export function useHideCursorWhenFullscreen({
 
     //
     function handleMouseMove() {
+        if (ref_mouse_down.current) {
+            return;
+        }
+
         ref_c_time.current = 0;
 
         if (ref_is_hide_cursor.current) {
             ref_is_hide_cursor.current = false;
             forceUpdate();
-        } else if (ref_interval.current == null) {
+        } else {
             startCountUp();
         }
+    }
+
+    //
+    function handleMouseDown() {
+        ref_mouse_down.current = true;
+        ref_c_time.current = 0;
+        clearInterval(ref_interval.current);
+        ref_interval.current = null;
+
+        if (ref_is_hide_cursor.current) {
+            ref_is_hide_cursor.current = false;
+            forceUpdate();
+        }
+    }
+
+    //
+    function handleMouseUp() {
+        ref_mouse_down.current = false;
+        startCountUp();
     }
 
     // ----

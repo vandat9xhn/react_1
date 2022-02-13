@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //
-import Video from '../../../component/vid_pic/video/_main/Video';
-import VideoLive from '../../../component/vid_pic/video_live/_main/VideoLive';
-//
+import MyVideoLive from '../../../component/vid_pic/video_live/_main/MyVideoLive';
+// 
 import './LearnVideo.scss';
 
 //
@@ -17,7 +16,7 @@ function LearnVideo(props) {
     //
     return (
         <div className="LearnVideo margin-auto border-blur bg-shadow-8">
-            <VideoLive
+            <MyVideoLive
                 video={video}
                 total_view={20}
                 //

@@ -339,7 +339,6 @@ export function useVideoUtils({
         }
 
         ref_total_time.current = new_total_time;
-        ref_video_elm.current.duration = new_total_time;
         forceUpdate();
     }
 
