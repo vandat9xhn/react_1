@@ -1,17 +1,3 @@
-//
-export function observerOverflow({
-    elm,
-    detectOverflow = ({ entry }) => {},
-    callbackOverflow = ({ entry }) => {},
-    options = {},
-}) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (detectOverflow({ entry: entry })) {
-                callbackOverflow({ entry: entry, observer: observer });
-            }
-        }, options);
-    });
+import { observerOverflow } from 'react-observer-ts';
 
-    observer.observe(elm);
-}
+export { observerOverflow };

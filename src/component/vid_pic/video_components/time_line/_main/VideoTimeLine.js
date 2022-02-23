@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 //
 import InputRangeOneSlider from '../../../../input/range/one_slider/_main/InputRangeOneSlider';
@@ -45,6 +45,10 @@ function VideoTimeLine({
     handleEndMoveTime,
 }) {
     //
+    const ref_is_run = useRef(false);
+
+    // ----
+    //
     function onChangeTime(time_percent = 0) {
         handleChangeTime({
             new_c_time: (total_time * time_percent) / 100,
@@ -53,7 +57,11 @@ function VideoTimeLine({
 
     //
     return (
-        <div className="VideoTimeLine">
+        <div
+            className={`VideoTimeLine ${
+                ref_is_run.current ? 'VideoTimeLine-run' : ''
+            }`}
+        >
             <InputRangeOneSlider
                 range={
                     <React.Fragment>
@@ -69,7 +77,9 @@ function VideoTimeLine({
                 active_range={active_range}
                 slider={slider}
                 value={c_time}
+                //
                 only_drag_slider={false}
+                ref_is_run={ref_is_run}
                 //
                 handleChange={onChangeTime}
                 afterMouseDown={handleStartMoveTime}

@@ -7,8 +7,6 @@ import contact_phone from '../../../image/contact phone.png';
 import giay_the_thao from '../../../image/giay_the_thao.jpg';
 import phone_jpg from '../../../image/phone_jpg.jpg';
 //
-import mov_video from '../../../_video/mov_bbb.mp4';
-//
 import { getRandomFromArr } from './getRandomFromArr';
 
 //
@@ -24,7 +22,12 @@ export const default_img_arr = [
 ];
 
 //
-export const default_video_arr = [mov_video];
+export const default_video_arr = [
+    'http://media.w3.org/2010/05/sintel/trailer.ogv',
+    'http://media.w3.org/2010/05/bunny/movie.ogv',
+    'http://media.w3.org/2010/05/sintel/trailer.mp4',
+    'http://media.w3.org/2010/05/bunny/movie.mp4',
+];
 
 //
 export const getRandomImg = () => getRandomFromArr(default_img_arr);

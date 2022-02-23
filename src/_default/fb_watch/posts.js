@@ -1,9 +1,11 @@
 import { default_post_obj } from '../post/DefaultPosts';
+import { default_video_arr } from '../_common/default_image';
+//
 import { getRandomId } from '../_common/default_id';
 import { getDefaultArr } from '../_common/getDefaultArr';
 import { getRandomBool } from '../_common/default_bool';
-// 
-import video from '../../../_video/mov_bbb.mp4';
+import { getRandomFromArr } from '../_common/getRandomFromArr';
+//
 
 //
 const default_fb_watch_post_obj = () => {
@@ -15,11 +17,11 @@ const default_fb_watch_post_obj = () => {
         vid_pics: [
             {
                 id: getRandomId(),
-                vid_pic: video,
+                vid_pic: getRandomFromArr(default_video_arr),
                 content: '',
             },
         ],
-        
+
         bg_obj: null,
     };
 };

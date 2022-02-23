@@ -1,13 +1,3 @@
-import { useState } from "react"
+import { useForceUpdate } from 'react-commons-ts';
 
-
-// 
-export const useForceUpdate = () => {
-    const [force_update, setForceUpdate] = useState(false)
-    // 
-    function forceUpdate(){
-        setForceUpdate(force_update => !force_update)
-    }
-
-    return forceUpdate
-}
+export { useForceUpdate };

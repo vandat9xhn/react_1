@@ -1,25 +1,7 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { OneSlider } from 'react-range-slider-ts';
+import 'react-range-slider-ts/dist/index.css';
 //
-import InputRangeOneSliderElm from '../elm/InputRangeOneSliderElm';
-//
-import { useRangeOneSlider } from '../../../../../_hooks/useRangeOneSlider';
-
-//
-InputRangeOneSlider.propTypes = {
-    range: PropTypes.element,
-    active_range: PropTypes.element,
-    slider: PropTypes.element,
-    value: PropTypes.number,
-
-    callbackStart: PropTypes.func,
-    handleMouseMove: PropTypes.func,
-    handleMouseEnd: PropTypes.func,
-};
-
-InputRangeOneSlider.defaultProps = {
-    callbackStart: () => {},
-};
 
 //
 function InputRangeOneSlider({
@@ -30,9 +12,9 @@ function InputRangeOneSlider({
 
     only_drag_slider,
     ref_has_change_range,
-    getRangeAngel,
+    ref_is_run,
 
-    callbackStart,
+    getRangeAngel,
     handleChange,
 
     afterMouseDown,
@@ -40,35 +22,22 @@ function InputRangeOneSlider({
     afterMouseUp,
 }) {
     //
-    const ref_range_elm = useRef(null);
-
-    //
-    const { ref_is_run, onDown, handleClick } = useRangeOneSlider({
-        ref_range_elm: ref_range_elm,
-        ref_has_change_range: ref_has_change_range,
-
-        getRangeAngel: getRangeAngel,
-        handleChange: handleChange,
-
-        afterMouseDown: afterMouseDown,
-        afterMousemove: afterMousemove,
-        afterMouseUp: afterMouseUp,
-    });
-
-    //
     return (
-        <InputRangeOneSliderElm
-            ref_range_elm={ref_range_elm}
-            is_run={ref_is_run.current}
-            only_drag_slider={only_drag_slider}
-            //
+        <OneSlider
             range={range}
             active_range={active_range}
             slider={slider}
             value={value}
             //
-            handleClick={handleClick}
-            handleStart={onDown}
+            only_drag_slider={only_drag_slider}
+            ref_has_change_range={ref_has_change_range}
+            ref_is_run={ref_is_run}
+            //
+            getRangeAngel={getRangeAngel}
+            handleChange={handleChange}
+            afterMouseDown={afterMouseDown}
+            afterMousemove={afterMousemove}
+            afterMouseUp={afterMouseUp}
         />
     );
 }

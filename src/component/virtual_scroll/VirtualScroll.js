@@ -5,6 +5,7 @@ import { useObserverVirtualScroll } from '../../_hooks/useObserverVirtualScroll'
 
 //
 VirtualScroll.propTypes = {
+    ref_root: PropTypes.object,
     children: PropTypes.element,
     rootMargin_y: PropTypes.number,
     extra_height: PropTypes.string,
@@ -12,6 +13,7 @@ VirtualScroll.propTypes = {
 
 VirtualScroll.defaultProps = {
     extra_height: '0px',
+    rootMargin_y: 500,
 };
 
 //

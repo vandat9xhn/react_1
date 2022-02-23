@@ -1,19 +1,3 @@
-//
-export function observerDisplay({
-    elm,
-    callbackDisplay = () => {},
-    callbackNoDisplay = () => {},
-    options = {},
-}) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                callbackDisplay();
-            } else {
-                callbackNoDisplay();
-            }
-        }, options);
-    });
+import { observerDisplay } from 'react-observer-ts';
 
-    observer.observe(elm);
-}
+export { observerDisplay };

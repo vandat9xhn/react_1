@@ -1,4 +1,7 @@
+import { observeToDo as _observeToDo } from 'react-observer-ts';
+
 //
+
 function observeToDo({
     elm,
     when_over = false,
@@ -8,26 +11,16 @@ function observeToDo({
     rootMargin = `500px`,
     threshold = 0,
 }) {
-    const observer = new IntersectionObserver(
-        (entries, observer) => {
-            entries.forEach((entry) => {
-                if (
-                    entry.isIntersecting ||
-                    (when_over && entry.boundingClientRect.bottom <= 0)
-                ) {
-                    callback();
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        {
+    _observeToDo({
+        elm: elm,
+        when_over: when_over,
+        callback: callback,
+        options: {
             root: root,
-            threshold: threshold,
             rootMargin: rootMargin,
-        }
-    );
-
-    observer.observe(elm);
+            threshold: threshold,
+        },
+    });
 }
 
 export default observeToDo;

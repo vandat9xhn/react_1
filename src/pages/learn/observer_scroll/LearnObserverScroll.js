@@ -23,7 +23,10 @@ function LearnObserverScroll(props) {
 
     //
     useEffect(() => {
-        observeVirtualScroll(ref_observer_elm.current, handleIntersecting);
+        observeVirtualScroll({
+            elm: ref_observer_elm.current,
+            handleIntersecting: handleIntersecting,
+        });
     }, []);
 
     //

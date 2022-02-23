@@ -40,6 +40,7 @@ export function useFriendsList({
             },
         ],
         handle_API_L: handle_API_L,
+        other_state: {}
     });
 
     //
