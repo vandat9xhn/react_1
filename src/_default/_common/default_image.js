@@ -23,10 +23,10 @@ export const default_img_arr = [
 
 //
 export const default_video_arr = [
-    'http://media.w3.org/2010/05/sintel/trailer.ogv',
-    'http://media.w3.org/2010/05/bunny/movie.ogv',
+    // 'http://media.w3.org/2010/05/sintel/trailer.ogv',
+    // 'http://media.w3.org/2010/05/bunny/movie.ogv',
     'http://media.w3.org/2010/05/sintel/trailer.mp4',
-    'http://media.w3.org/2010/05/bunny/movie.mp4',
+    // 'http://media.w3.org/2010/05/bunny/movie.mp4',
 ];
 
 //

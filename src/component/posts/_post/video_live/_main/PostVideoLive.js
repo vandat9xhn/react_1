@@ -7,6 +7,8 @@ import { IS_MOBILE } from '../../../../../_constant/Constant';
 import { context_post } from '../../../../../_context/post/ContextPost';
 //
 import VideoLive from '../../../../vid_pic/video_live/_main/MyVideoLive';
+// 
+import './PostVideoLive.scss';
 
 //
 PostVideoLive.propTypes = {};

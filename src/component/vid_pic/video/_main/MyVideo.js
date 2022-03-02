@@ -24,6 +24,9 @@ function MyVideo({
     initial_c_time,
     initial_total_time,
 
+    max_speed,
+    initial_speed_arr,
+
     beforeTogglePlay,
     afterTogglePlay,
     beforeChangeVolume,
@@ -52,6 +55,9 @@ function MyVideo({
             initial_is_mute={initial_is_mute}
             initial_c_time={initial_c_time}
             initial_total_time={initial_total_time}
+            // 
+            max_speed={max_speed}
+            initial_speed_arr={initial_speed_arr}
             //
             beforeTogglePlay={beforeTogglePlay}
             afterTogglePlay={afterTogglePlay}
