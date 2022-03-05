@@ -38,7 +38,11 @@ function PostCommentsFilter({ handleChangeFilter }) {
 
     //
     function handle_API_L() {
-        return [FILTER_ARR];
+        return new Promise((res) => {
+            setTimeout(() => {
+                res([FILTER_ARR]);
+            }, 1);
+        });
     }
 
     //

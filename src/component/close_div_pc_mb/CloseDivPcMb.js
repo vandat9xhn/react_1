@@ -12,7 +12,7 @@ CloseDivPcMb.propTypes = {};
 
 //
 function CloseDivPcMb({
-    class_actions,
+    class_actions_mb,
     class_action_contain_mb = 'action-contain-mb-bottom',
 
     refs_target,
@@ -26,7 +26,7 @@ function CloseDivPcMb({
     return IS_MOBILE ? (
         <PortalAtBody>
             <ActionsContainMb
-                class_actions={class_actions}
+                class_actions_mb={class_actions_mb}
                 class_action_contain_mb={class_action_contain_mb}
                 handleClose={handleClose}
                 callbackOpen={callbackOpen}

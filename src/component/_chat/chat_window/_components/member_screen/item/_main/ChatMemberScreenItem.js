@@ -35,10 +35,16 @@ function ChatMemberScreenItem({
 
     //
     function handle_API_L() {
-        return getChatActionMemberArr({
-            is_user: detectIsUser({ user_id: id }),
-            is_user_admin: is_user_admin,
-            is_member_admin: is_member_admin,
+        return new Promise((res) => {
+            setTimeout(() => {
+                res(
+                    getChatActionMemberArr({
+                        is_user: detectIsUser({ user_id: id }),
+                        is_user_admin: is_user_admin,
+                        is_member_admin: is_member_admin,
+                    })
+                );
+            }, 0);
         });
     }
 

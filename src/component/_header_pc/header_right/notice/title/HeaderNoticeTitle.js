@@ -24,7 +24,7 @@ function HeaderNoticeTitle({ handleAction }) {
 
     //
     function clickActionContain(e) {
-        e.stopPropagation();
+        // e.stopPropagation();
     }
 
     //

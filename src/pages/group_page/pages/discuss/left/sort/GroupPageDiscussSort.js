@@ -52,9 +52,21 @@ function GroupPageDiscussSort({ sort_obj, bg_btn, handleChangeSort }) {
             ],
         ];
 
+        if (ref_list.current[0].length) {
+            return new Promise((res) => {
+                setTimeout(() => {
+                    res(action_arr);
+                }, 0);
+            });
+        }
+
         ref_list.current = action_arr;
 
-        return action_arr;
+        return new Promise((res) => {
+            setTimeout(() => {
+                res(action_arr);
+            }, 100);
+        });
     }
 
     //

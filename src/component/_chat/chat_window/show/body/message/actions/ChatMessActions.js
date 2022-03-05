@@ -31,14 +31,20 @@ function ChatMessActions({
 
     //
     function handle_API_Action_L() {
-        return unsent
-            ? [[{ name: 'remove', title: 'Remove' }]]
-            : [
-                  [
-                      { name: 'remove', title: 'Remove' },
-                      { name: 'forward', title: 'Forward' },
-                  ],
-              ];
+        return new Promise((res) => {
+            setTimeout(() => {
+                res(
+                    unsent
+                        ? [[{ name: 'remove', title: 'Remove' }]]
+                        : [
+                              [
+                                  { name: 'remove', title: 'Remove' },
+                                  { name: 'forward', title: 'Forward' },
+                              ],
+                          ]
+                );
+            }, 1);
+        });
     }
 
     //
