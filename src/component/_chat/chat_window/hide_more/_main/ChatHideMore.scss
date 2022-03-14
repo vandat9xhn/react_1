@@ -1,5 +1,5 @@
-// 
-.ChatHideMore_hv {
+//
+.ChatHideMore_contain {
     &:hover {
         .ChatHideMore_room {
             display: block;
@@ -33,6 +33,7 @@
     position: absolute;
     right: 100%;
     bottom: 0;
+    display: none;
 }
 // ...
 .ChatHideMore_room_contain {

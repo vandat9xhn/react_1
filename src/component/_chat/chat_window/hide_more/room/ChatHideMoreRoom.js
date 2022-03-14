@@ -15,7 +15,7 @@ ChatHideMoreRoom.propTypes = {};
 //
 function ChatHideMoreRoom({
     chat_ix,
-    
+
     room_chat,
     scroll_y,
     index,
@@ -34,7 +34,7 @@ function ChatHideMoreRoom({
 
     //
     function onCloseZoomChat(e) {
-        e.stopPropagation()
+        e.stopPropagation();
         closeRoomChat(false, chat_ix);
     }
 
@@ -46,7 +46,7 @@ function ChatHideMoreRoom({
     return (
         <div className="ChatHideMoreRoom padding-8px text-nowrap">
             <div className="flex-between-center">
-                <div className="ChatHideMoreRoom_left chat-hide-contain cursor-pointer hv-bg-blur">
+                <div className="ChatHideMoreRoom_left flex-grow-1 chat-hide-contain padding-x-6px brs-6px cursor-pointer hv-bg-blur">
                     <PicNameContent
                         user={f_user}
                         content={

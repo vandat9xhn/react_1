@@ -1,5 +1,14 @@
-.ChatHideMoreRoom_left{
+.ChatHideMoreRoom_left {
     max-width: 240px;
+
+    .PictureNameCommon_right {
+        overflow: hidden;
+    }
+    .ChatHideMoreRoom_message {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 .ChatHideMoreRoom_close {

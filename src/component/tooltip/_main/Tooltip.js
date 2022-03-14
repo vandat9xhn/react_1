@@ -1,11 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { Tooltip as _Tooltip } from 'react-tooltip-ts';
 import PropTypes from 'prop-types';
-//
-import { useBool } from '../../../_hooks/useBool';
-import { useForceUpdate } from '../../../_hooks/UseForceUpdate';
-import { useHold } from '../../../_hooks/useHold';
-//
-import PortalAtBody from '../../portal/at_body/PortalAtBody';
 
 //
 Tooltip.propTypes = {
@@ -19,10 +14,6 @@ Tooltip.propTypes = {
 };
 
 Tooltip.defaultProps = {
-    pos: 'bottom',
-    distance: 2,
-
-    z_index: 999,
     class_contain:
         'padding-x-10px padding-y-6px brs-8px bg-shadow-8 font-13px text-white pointer-events-none',
 };
@@ -30,179 +21,30 @@ Tooltip.defaultProps = {
 //
 function Tooltip({
     ref_elm,
-    ref_scroll_elm = { current: document.getElementsByTagName('html')[0] },
-    use_scroll = false,
+    ref_scroll_elm,
+    use_scroll,
 
     children,
     pos,
     distance,
-
     z_index,
     class_contain,
-
     hold_time,
 }) {
     //
-    const ref_func_scroll = useRef(null);
-
-    //
-    const { is_true, setIsTrue } = useBool();
-    const forceUpdate = useForceUpdate();
-    const { StartHold, StopHold } = useHold({ time: hold_time });
-
-    //
-    useEffect(() => {
-        if (ref_elm.current) {
-            ref_elm.current.addEventListener('mouseenter', handleMouseEnter);
-            ref_elm.current.addEventListener('mouseleave', handleMouseLeave);
-
-            return () => {
-                ref_elm.current &&
-                    ref_elm.current.removeEventListener(
-                        'mouseenter',
-                        handleMouseEnter
-                    );
-                ref_elm.current &&
-                    ref_elm.current.removeEventListener(
-                        'mouseleave',
-                        handleMouseLeave
-                    );
-            };
-        }
-    }, [ref_elm.current]);
-
-    //
-    useEffect(() => {
-        if (use_scroll) {
-            if (!ref_func_scroll.current) {
-                ref_func_scroll.current = handleScroll;
-            }
-
-            if (is_true) {
-                ref_scroll_elm.current.addEventListener(
-                    'scroll',
-                    ref_func_scroll.current
-                );
-            } else {
-                ref_scroll_elm.current.removeEventListener(
-                    'scroll',
-                    ref_func_scroll.current
-                );
-            }
-        }
-    }, [is_true]);
-
-    // -----
-
-    //
-    function handleMouseEnter() {
-        StartHold(() => {
-            setIsTrue(true);
-        });
-    }
-
-    //
-    function handleMouseLeave() {
-        StopHold();
-        setIsTrue(false);
-    }
-
-    //
-    function getTooltipPos() {
-        if (!ref_elm.current) {
-            return {};
-        }
-
-        let { top, left, bottom, right } =
-            ref_elm.current.getBoundingClientRect();
-
-        if (use_scroll) {
-            const {
-                top: scroll_top,
-                left: scroll_left,
-                bottom: scroll_bottom,
-                right: scroll_right,
-            } = ref_scroll_elm.current.getBoundingClientRect();
-
-            if (
-                top >= scroll_bottom ||
-                bottom <= scroll_top ||
-                left >= scroll_right ||
-                right <= scroll_left
-            ) {
-                setIsTrue(false);
-                return {};
-            }
-
-            if (top <= scroll_top) {
-                top = scroll_top;
-            } else if (bottom >= scroll_bottom) {
-                bottom = scroll_bottom;
-            }
-
-            if (left <= scroll_left) {
-                left = scroll_left;
-            } else if (right >= scroll_right) {
-                right = scroll_right;
-            }
-        }
-
-        const x_center = (left + right) / 2;
-        const y_center = (top + bottom) / 2;
-
-        if (pos == 'bottom') {
-            return {
-                top: bottom + distance,
-                left: x_center,
-                transform: `translateX(-50%)`,
-            };
-        }
-
-        if (pos == 'top') {
-            return {
-                bottom: bottom + distance,
-                left: x_center,
-                transform: `translateX(-50%)`,
-            };
-        }
-
-        if (pos == 'left') {
-            return {
-                left: left + distance,
-                top: y_center,
-                transform: `translate(-100%, -50%)`,
-            };
-        }
-
-        if (pos == 'right') {
-            return {
-                left: right + distance,
-                top: y_center,
-                transform: `translateY(-50%)`,
-            };
-        }
-    }
-
-    //
-    function handleScroll() {
-        forceUpdate();
-    }
-
-    //
-    if (!is_true) {
-        return null;
-    }
-
-    //
     return (
-        <PortalAtBody>
-            <div
-                className="Tooltip pos-fixed"
-                style={{ ...getTooltipPos(), zIndex: z_index }}
-            >
-                <div className={class_contain}>{children}</div>
-            </div>
-        </PortalAtBody>
+        <_Tooltip
+            ref_elm={ref_elm}
+            ref_scroll_elm={ref_scroll_elm}
+            use_scroll={use_scroll}
+            //
+            pos={pos}
+            distance={distance}
+            z_index={z_index}
+            hold_time={hold_time}
+        >
+            <div className={class_contain}>{children}</div>
+        </_Tooltip>
     );
 }
 

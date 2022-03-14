@@ -1,70 +1,4 @@
 //
-export const promises = {
-    init: () => {
-        return new Promise((resolve, reject) => {
-            if (typeof FB !== 'undefined') {
-                resolve();
-            } else {
-                window.fbAsyncInit = () => {
-                    FB.init({
-                        appId: '234967228001181',
-                        cookie: true,
-                        xfbml: true,
-                        version: 'v2.5',
-                    });
-                    resolve();
-                };
-                // make <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js"></script>
-                (function (d, s, id) {
-                    var js,
-                        fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = '//connect.facebook.net/en_US/sdk.js';
-                    fjs.parentNode.insertBefore(js, fjs);
-                })(document, 'script', 'facebook-jssdk');
-            }
-        });
-    },
-    checkLoginState: () => {
-        return new Promise((resolve, reject) => {
-            FB.getLoginStatus((response) => {
-                response.status === 'connected'
-                    ? resolve(response)
-                    : reject(response);
-            });
-        });
-    },
-    login: () => {
-        return new Promise((resolve, reject) => {
-            FB.login((response) => {
-                response.status === 'connected'
-                    ? resolve(response)
-                    : reject(response);
-            });
-        });
-    },
-    logout: () => {
-        return new Promise((resolve, reject) => {
-            FB.logout((response) => {
-                response.authResponse ? resolve(response) : reject(response);
-            });
-        });
-    },
-    fetch: () => {
-        return new Promise((resolve, reject) => {
-            FB.api(
-                '/me',
-                { fields: 'first_name, last_name, gender, picture' },
-                (response) =>
-                    response.error ? reject(response) : resolve(response)
-            );
-        });
-    },
-};
-
-//
 export const promisesFB = {
     init: () => {
         return new Promise((resolve, reject) => {
@@ -158,8 +92,8 @@ export async function doLoginFb() {
         await promisesFB.init();
         const res_login = await promisesFB.login();
         console.log(res_login);
-        
-        const res = await promisesFB.fetch()
+
+        const res = await promisesFB.fetch();
 
         return res;
     } catch (err) {

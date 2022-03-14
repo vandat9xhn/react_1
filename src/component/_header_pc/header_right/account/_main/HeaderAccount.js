@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { ClickingOutSideFull } from 'react-click-outside-ts';
 import PropTypes from 'prop-types';
 //
 import { IS_MOBILE } from '../../../../../_constant/Constant';
@@ -7,7 +8,6 @@ import { toggleAppHiddenTemp } from '../../../../../_some_function/AppHiddenTemp
 //
 import IconCaret from '../../../../../_icons_svg/_icon_caret/IconCaret';
 //
-import CloseDiv from '../../../../some_div/close_div/CloseDiv';
 import Tooltip from '../../../../tooltip/_main/Tooltip';
 //
 import HeaderBtnIcon from '../../../_components/btn_icon/HeaderBtnIcon';
@@ -24,7 +24,8 @@ function HeaderAccount(props) {
     const [open_account, setOpenAccount] = useState(false);
 
     //
-    const ref_elm = useRef(null);
+    const ref_child = useRef(null);
+    const ref_btn = useRef(null);
 
     //
     useEffect(() => {
@@ -44,23 +45,34 @@ function HeaderAccount(props) {
     }
 
     //
+    function handleClickOutSide() {
+        setOpenAccount(false);
+    }
+
+    //
     return (
-        <CloseDiv makeDivHidden={closeAccount}>
-            <div className={`${open_account ? 'text-blue nav-active' : ''}`}>
-                <HeaderBtnIcon
-                    ref_btn={ref_elm}
-                    // title="Account"
-                    handleClick={toggleOpenAccount}
-                    // count_new={0}
-                >
-                    <IconCaret fill="currentColor" />
-                </HeaderBtnIcon>
+        <div className={`${open_account ? 'text-blue nav-active' : ''}`}>
+            <HeaderBtnIcon
+                ref_btn={ref_btn}
+                // title="Account"
+                handleClick={toggleOpenAccount}
+                // count_new={0}
+            >
+                <IconCaret fill="currentColor" />
+            </HeaderBtnIcon>
 
-                <Tooltip ref_elm={ref_elm} pos="bottom">
-                    Account
-                </Tooltip>
+            <Tooltip ref_elm={ref_btn} pos="bottom">
+                Account
+            </Tooltip>
 
+            <ClickingOutSideFull
+                ref_child={ref_child}
+                refs_target={[ref_btn]}
+                is_show={open_account}
+                handleClickOutSide={handleClickOutSide}
+            >
                 <div
+                    ref={ref_child}
                     className={`header_hidden right-0 ${
                         open_account ? 'border-top-blur' : 'display-none'
                     }`}
@@ -69,8 +81,8 @@ function HeaderAccount(props) {
                         <ActionsAccount closeAccount={closeAccount} />
                     </div>
                 </div>
-            </div>
-        </CloseDiv>
+            </ClickingOutSideFull>
+        </div>
     );
 }
 
