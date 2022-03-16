@@ -52,7 +52,9 @@ function VirtualScroll({ children, ref_root, rootMargin_y, extra_height }) {
     //
     return (
         <div
-            className="VirtualScroll"
+            className={`VirtualScroll ${
+                display == 'block' ? '' : 'VirtualScroll-none'
+            }`}
             ref={ref_virtual_elm}
             style={{
                 height:

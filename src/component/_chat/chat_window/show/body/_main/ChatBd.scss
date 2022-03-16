@@ -1,6 +1,7 @@
 .ChatBd_contain {
     overflow-x: hidden;
     overflow-y: auto;
+    will-change: scroll-position;
 
     &::-webkit-scrollbar-track{
         border-radius: 0;

@@ -29,6 +29,7 @@
     max-height: calc(100vh - 5rem);
     overflow-x: hidden;
     overflow-y: auto;
+    will-change: scroll-position;
 
     border-radius: 5px;
     background-color: var(--md-bg-primary);
