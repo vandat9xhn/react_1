@@ -7,7 +7,7 @@ import { scrollItemToCenter } from '../../../../../_some_function/scrollItemToCe
 import { getTypeVidOrPic } from '../../../../../_some_function/VideoOrImage';
 //
 import MyVideo from '../../../../vid_pic/video/_main/MyVideo';
-// 
+//
 import VidPicItem from '../vid_pic_item/VidPicItem';
 //
 import './VidPics.scss';
@@ -39,7 +39,9 @@ function VidPics({ urls, current, changeCurrent }) {
 
     //
     useEffect(() => {
-        scrollAllToCenter({ scroll_smooth: false });
+        if (IS_MOBILE) {
+            scrollAllToCenter({ scroll_smooth: false });
+        }
     }, []);
 
     //

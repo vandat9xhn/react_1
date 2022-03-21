@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { ClickingOutSideFull } from 'react-click-outside-ts';
 import PropTypes from 'prop-types';
 //
@@ -26,6 +26,9 @@ function ChatOptions({
 }) {
     //
     const { closeAllRoomChat } = useContext(context_api);
+
+    //
+    const ref_child = useRef(null);
 
     //
     const option_arr = [
@@ -60,20 +63,18 @@ function ChatOptions({
             is_show={open_options}
             handleClickOutSide={closeOptions}
         >
-            <div className="padding-4px pos-rel">
-                <div>
-                    <div>
-                        <div className="ChatOptions_menu display-flex-center">
-                            <div
-                                className="ChatOptions_menu_contain bg-primary display-flex-center hv-bg-blur box-shadow-fb brs-50 cursor-pointer"
-                                onClick={toggleOptions}
-                                title="Options"
-                            >
-                                <IconThreeDot />
-                            </div>
-                        </div>
+            <div ref={ref_child} className="padding-4px pos-rel">
+                <div className="ChatOptions_menu display-flex-center">
+                    <div
+                        className="ChatOptions_menu_contain bg-primary display-flex-center hv-bg-blur box-shadow-fb brs-50 cursor-pointer"
+                        onClick={toggleOptions}
+                        title="Options"
+                    >
+                        <IconThreeDot />
                     </div>
+                </div>
 
+                {open_options && (
                     <div className="ChatOptions_list">
                         <div className="ChatOptions_list_contain padding-8px bg-primary brs-8px box-shadow-fb">
                             <div className="chat-hide-contain">
@@ -97,7 +98,7 @@ function ChatOptions({
                             </div>
                         </div>
                     </div>
-                </div>
+                )}
             </div>
         </ClickingOutSideFull>
     );

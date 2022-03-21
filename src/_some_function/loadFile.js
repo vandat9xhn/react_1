@@ -4,10 +4,12 @@ export function loadFile(files, vid_pic_key = 'vid_pic') {
         const vid_pics = [];
         const new_files = [];
         let i = 1;
+        const file_count = files.length;
 
         for (const file of files) {
             const reader = new FileReader();
 
+            // event load
             reader.onload = () => {
                 vid_pics.push({
                     [vid_pic_key]: reader.result,
@@ -16,15 +18,18 @@ export function loadFile(files, vid_pic_key = 'vid_pic') {
 
                 new_files.push(file);
             };
-            reader.readAsDataURL(file);
 
-            reader.onloadend = () => {
-                if (i == files.length) {
+            // event loadend
+            if (i == file_count) {
+                reader.onloadend = () => {
                     res({ files: new_files, vid_pics: vid_pics });
-                } else {
-                    i += 1;
-                }
-            };
+                };
+            } else {
+                i += 1;
+            }
+
+            // read file
+            reader.readAsDataURL(file);
         }
     });
 }

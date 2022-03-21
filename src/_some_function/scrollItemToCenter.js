@@ -9,7 +9,10 @@ export function scrollItemToCenter({
     const { left, right } = scroll_elm.getBoundingClientRect();
     const { left: left_item, right: right_item } =
         item_elm.getBoundingClientRect();
-    const scroll_x = (left_item + right_item) / 2 - (right + left) / 2;
+    const scroll_x =
+        scroll_elm.scrollLeft +
+        (left_item + right_item) / 2 -
+        (right + left) / 2;
 
     scroll_smooth
         ? handleScrollSmooth(() => {

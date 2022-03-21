@@ -36,40 +36,36 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
 
     //
     function toggleChatInactive() {
-        setStateObj({
-            is_show_chat_hide: !is_show_chat_hide,
+        setStateObj((state_obj) => {
+            return {
+                ...state_obj,
+                open_options: false,
+                is_show_chat_hide: !state_obj.is_show_chat_hide,
+            };
         });
     }
 
     //
     function toggleOptions() {
-        setStateObj({
-            ...state_obj,
-            open_options: !open_options,
+        setStateObj((state_obj) => {
+            return { ...state_obj, open_options: !state_obj.open_options };
         });
     }
 
     //
     function closeOptions() {
-        open_options &&
-            setStateObj({
+        setStateObj((state_obj) => {
+            return {
                 ...state_obj,
                 open_options: false,
-            });
+            };
+        });
     }
 
     //
     function handleHideAllZoomChat() {
         hideAllRoomChat();
         closeOptions();
-    }
-
-    //
-    function toggleChatInactive() {
-        setStateObj({
-            open_options: false,
-            is_show_chat_hide: !is_show_chat_hide,
-        });
     }
 
     //
