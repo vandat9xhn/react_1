@@ -6,6 +6,10 @@ export function loadFile(files, vid_pic_key = 'vid_pic') {
         let i = 1;
         const file_count = files.length;
 
+        if (!file_count) {
+            res({ files: new_files, vid_pics: vid_pics });
+        }
+
         for (const file of files) {
             const reader = new FileReader();
 
