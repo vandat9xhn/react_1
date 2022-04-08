@@ -1,39 +1,14 @@
+import { loadFiles } from 'react-commons-ts';
+
 //
-export function loadFile(files, vid_pic_key = 'vid_pic') {
-    return new Promise((res) => {
-        const vid_pics = [];
-        const new_files = [];
-        let i = 1;
-        const file_count = files.length;
+export async function loadFile(files, vid_pic_key = 'vid_pic') {
+    const data = await loadFiles({ files: files });
 
-        if (!file_count) {
-            res({ files: new_files, vid_pics: vid_pics });
-        }
-
-        for (const file of files) {
-            const reader = new FileReader();
-
-            // event load
-            reader.onload = () => {
-                vid_pics.push({
-                    [vid_pic_key]: reader.result,
-                    type: file.type,
-                });
-
-                new_files.push(file);
-            };
-
-            // event loadend
-            if (i == file_count) {
-                reader.onloadend = () => {
-                    res({ files: new_files, vid_pics: vid_pics });
-                };
-            } else {
-                i += 1;
-            }
-
-            // read file
-            reader.readAsDataURL(file);
-        }
-    });
+    return {
+        files: data.map((item) => item.file),
+        vid_pics: data.map((item) => ({
+            [vid_pic_key]: item.url,
+            type: item.file.type,
+        })),
+    };
 }

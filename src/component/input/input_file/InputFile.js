@@ -67,6 +67,8 @@ function InputFile({
 
             const data_files = await loadFile(new_files, vid_pic_key);
 
+            console.log(data_files);
+
             handleChange(data_files);
             should_reset && (event.target.value = '');
         } else {
