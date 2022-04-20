@@ -19,7 +19,6 @@ import FashionHomeMall from '../mall/_main/FashionHomeMall';
 //
 import fashion_home_new from '../../../../../../image/fashion_home_new.jpg';
 import image_loading from '../../../../../../image/image_loading.svg';
-import mov_bbb from '../../../../../../_video/mov_bbb.mp4';
 import './Fashion.scss';
 
 //
@@ -57,7 +56,7 @@ function Fashion(props) {
                 hot_images: [
                     hot_images[hot_images.length - 1],
                     ...hot_images.slice(0, hot_images.length - 2),
-                    mov_bbb,
+                    'http://media.w3.org/2010/05/sintel/trailer.mp4',
                     hot_images[hot_images.length - 1],
                     hot_images[0],
                 ],

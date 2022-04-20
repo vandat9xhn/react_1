@@ -16,7 +16,7 @@ import './Like.scss';
 //
 const TitleAction = ({ icon_small, type_like, handleLike }) => (
     <div
-        className={`Like_current_like display-flex-center h-100per ${
+        className={`Like_current_like display-flex-center h-100per cursor-pointer ${
             icon_small ? 'Like_current_like-small' : ''
         } ${type_like == 0 ? 'nav-active' : ''}`}
         onClick={handleLike}
