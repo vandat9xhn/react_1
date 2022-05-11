@@ -48,7 +48,9 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
     //
     function toggleOptions() {
         setStateObj((state_obj) => {
-            return { ...state_obj, open_options: !state_obj.open_options };
+            // console.log(!state_obj.open_options);
+            const _open_options = !state_obj.open_options;
+            return { ...state_obj, open_options: _open_options };
         });
     }
 
@@ -70,7 +72,7 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
 
     //
     return (
-        <div className="ChatWdHidden pos-rel">
+        <div className="ChatWdHidden pos-rel user-select-none">
             <div
                 className={`ChatWdHidden_options ${
                     !is_show_chat_hide || open_options ? '' : 'display-none'

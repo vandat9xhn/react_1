@@ -113,7 +113,7 @@ function PostCmt({
                     </div>
                 )}
 
-                <div className={`${is_editing ? 'display-none' : ''}`}>
+                <div className={`flex-grow-1 ${is_editing ? 'display-none' : ''}`}>
                     <CmtRight
                         user_id={user_id}
                         user_name={user_name}

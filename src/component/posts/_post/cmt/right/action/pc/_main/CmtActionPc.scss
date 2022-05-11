@@ -1,14 +1,14 @@
 .PostCmt {
     .CmtActionPc {
         .ActionsPc-hidden {
-            display: none;
+            opacity: 0;
         }
     }
 
     &:hover {
         .CmtActionPc {
             .ActionsPc-hidden {
-                display: block;
+                opacity: 1;
             }
         }
     }
