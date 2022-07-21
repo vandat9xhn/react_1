@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import BtnNexPrev from '../../button/next_prev/BtnNexPrev';
 //
 import './NextPrevDiv.scss';
+import './NextPrevDivScreen.scss';
 
 //
 NextPrevDiv.propTypes = {

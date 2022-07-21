@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { useRef } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 //
-import IconsArrow from '../../../../../../_icons_svg/icons_arrow/IconsArrow';
-import IconFav from '../../../../../../_icons_svg/_icon_fav/IconFav';
+import IconsArrow from "../../../../../../_icons_svg/icons_arrow/IconsArrow";
+import IconFav from "../../../../../../_icons_svg/_icon_fav/IconFav";
 //
-import Tooltip from '../../../../../tooltip/_main/Tooltip';
+import Tooltip from "../../../../../tooltip/_main/Tooltip";
 //
-import './ScreenTitle.scss';
+import "./ScreenTitle.scss";
 
 //
 ScreenTitle.propTypes = {
@@ -21,13 +21,14 @@ ScreenTitle.propTypes = {
 };
 
 ScreenTitle.defaultProps = {
-    tooltipCloseElm: 'Close',
+    tooltipCloseElm: "Close",
 };
 
 //
 function ScreenTitle({
     url,
     show_screen_title,
+    has_download = true,
     tooltipCloseElm,
     z_index_tooltip,
 
@@ -68,21 +69,23 @@ function ScreenTitle({
                     </div>
                 ) : null}
 
-                <div className="ScreenTitle_download padding-4px">
-                    <a
-                        className="normal-text"
-                        href={url}
-                        download
-                        onClick={handleDownload}
-                    >
-                        <div
-                            className="ScreenTitle__icon-arrow display-flex-center brs-50 hv-opacity"
-                            title="Download"
+                {has_download && (
+                    <div className="ScreenTitle_download padding-4px">
+                        <a
+                            className="normal-text"
+                            href={url}
+                            download
+                            onClick={handleDownload}
                         >
-                            <IconsArrow x={600} size_icon="1.5rem" />
-                        </div>
-                    </a>
-                </div>
+                            <div
+                                className="ScreenTitle__icon-arrow display-flex-center brs-50 hv-opacity"
+                                title="Download"
+                            >
+                                <IconsArrow x={600} size_icon="1.5rem" />
+                            </div>
+                        </a>
+                    </div>
+                )}
             </div>
         </div>
     );

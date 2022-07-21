@@ -1,17 +1,5 @@
-//
-
-$pd: 5px;
-$left-right: 20px;
-
-//
-
 %btn-transition {
     transition: all 150ms ease-in;
-}
-
-%next-prev-pd {
-    padding-left: $pd;
-    padding-right: $pd;
 }
 
 // -----
@@ -22,38 +10,6 @@ $left-right: 20px;
             opacity: 1;
             visibility: visible;
         }
-    }
-
-    .NextPrevDiv_next {
-        @extend %next-prev-pd;
-        right: #{$left-right - $pd};
-
-        &:hover {
-            .NextPrevDiv_icon-circle {
-                transform: scale(1) translateX(#{$pd});
-                opacity: 1;
-            }
-        }
-    }
-    .NextPrevDiv_prev {
-        @extend %next-prev-pd;
-        left: #{$left-right - $pd};
-
-        &:hover {
-            .NextPrevDiv_icon-circle {
-                transform: scale(1) translateX(-#{$pd});
-                opacity: 1;
-            }
-        }
-    }
-
-    .BtnNexPrev {
-        @extend %btn-transition;
-    }
-    .NextPrevDiv_icon-circle {
-        width: 48px;
-        height: 48px;
-        opacity: 0.6;
     }
 }
 
@@ -68,16 +24,4 @@ $left-right: 20px;
     opacity: 0;
     visibility: hidden;
     @extend %btn-transition;
-}
-
-// -----
-
-.device-mobile {
-    $pd: 0px;
-    $left-right: 10px;
-
-    .NextPrevDiv_icon-circle {
-        width: 30px;
-        height: 30px;
-    }
 }

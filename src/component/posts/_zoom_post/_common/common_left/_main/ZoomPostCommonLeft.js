@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 //
-import NextPrevDiv from '../../../../../some_div/next_prev_div/NextPrevDiv';
+import NextPrevDiv from "../../../../../some_div/next_prev_div/NextPrevDiv";
 //
-import ZoomPostCommonLeftImg from '../img/ZoomPostCommonLeftImg';
-import ZoomPostCommonLeftVideo from '../video/ZoomPostCommonLeftVideo';
+import ZoomPostCommonLeftImg from "../img/ZoomPostCommonLeftImg";
+import ZoomPostCommonLeftVideo from "../video/ZoomPostCommonLeftVideo";
 //
-import './ZoomPostCommonLeft.scss';
+import "./ZoomPostCommonLeft.scss";
 
 //
 ZoomPostCommonLeft.propTypes = {};
@@ -29,7 +29,7 @@ function ZoomPostCommonLeft({
         <div className="ZoomPostCommonLeft wh-100">
             <div className="pos-rel display-flex-center wh-100">
                 <div className="ZoomPostCommonLeft_item display-flex-center">
-                    {is_fetching ? null : video_or_img == 'img' ? (
+                    {is_fetching ? null : video_or_img == "img" ? (
                         <ZoomPostCommonLeftImg img={vid_pic} />
                     ) : (
                         <ZoomPostCommonLeftVideo
@@ -39,7 +39,7 @@ function ZoomPostCommonLeft({
                     )}
                 </div>
 
-                <div className="ZoomPostCommonLeft_next_prev text-555">
+                <div className="ZoomPostCommonLeft_next_prev NextPrevDivScreen text-555">
                     <NextPrevDiv
                         is_btn_circle={true}
                         is_has_next={is_has_next}

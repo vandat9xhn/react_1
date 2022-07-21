@@ -8,11 +8,19 @@
     filter: blur(100px);
 }
 
-.ShortVideoFullPc_contain {
-    background-color: var(--shadow-8);
-}
-
 .ShortVideoFullPc_video {
     width: calc((100vh - 20px) * 9 / 15);
     height: 100%;
+}
+
+// ----
+
+.device-mobile {
+    .ShortVideoFullPc_contain {
+        padding: 0;
+    }
+
+    .ShortVideoFullPc_video {
+        width: 100%;
+    }
 }

@@ -19,15 +19,32 @@ const IconObj = {
 ShortVideoInteract.propTypes = {};
 
 //
-function ShortVideoInteract({ interacts }) {
+const ShortVideoInteractBtn = ({ icon_name, handleAction }) => {
+    //
+    const handleClick = () => {
+        handleAction(icon_name);
+    };
+
+    //
+    return (
+        <BtnActions
+            className="ShortVideoInteract_item_btn"
+            Icon={IconObj[icon_name]}
+            handleClick={handleClick}
+        />
+    );
+};
+
+//
+function ShortVideoInteract({ interacts, handleAction }) {
     return (
         <div className="ShortVideoInteract display-flex flex-end flex-col padding-10px h-100per font-14px font-500">
             {interacts.map((item, ix) => (
                 <div key={item.icon_name} className="padding-y-5px">
                     <div>
-                        <BtnActions
-                            className="ShortVideoInteract_item_btn"
-                            Icon={IconObj[item.icon_name]}
+                        <ShortVideoInteractBtn
+                            icon_name={item.icon_name}
+                            handleAction={handleAction}
                         />
                     </div>
 

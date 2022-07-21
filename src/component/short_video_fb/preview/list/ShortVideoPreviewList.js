@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+import { IS_MOBILE } from "../../../../_constant/Constant";
+
 import { useScrollToX } from "../../../../_hooks/useScrollToX";
 
 import ShortVideoPreview from "../_main/ShortVideoPreview";
@@ -37,13 +39,14 @@ function ShortVideoPreviewList({ list }) {
     });
 
     //
-    useEffect(() => {
-        hasNextPrev();
-    }, [list]);
+    !IS_MOBILE &&
+        useEffect(() => {
+            hasNextPrev();
+        }, [list]);
 
     //
     useEffect(() => {
-        changeItemElm();
+        IS_MOBILE && changeItemElm();
     }, []);
 
     // -----
@@ -66,7 +69,7 @@ function ShortVideoPreviewList({ list }) {
                     >
                         <Link
                             className="ShortVideoPreviewList_item_link display-block wh-100"
-                            to={"/short-video/1"}
+                            to={`/short-video/${item.id}`}
                         >
                             <ShortVideoPreview
                                 thumb={item.thumb}
@@ -78,13 +81,15 @@ function ShortVideoPreviewList({ list }) {
                 ))}
             </ul>
 
-            <NextPrevDiv
-                is_btn_circle={true}
-                is_has_next={is_has_next}
-                is_has_prev={is_has_prev}
-                handleNext={handleNext}
-                handlePrev={handlePrev}
-            />
+            {!IS_MOBILE ? (
+                <NextPrevDiv
+                    is_btn_circle={true}
+                    is_has_next={is_has_next}
+                    is_has_prev={is_has_prev}
+                    handleNext={handleNext}
+                    handlePrev={handlePrev}
+                />
+            ) : null}
         </div>
     );
 }

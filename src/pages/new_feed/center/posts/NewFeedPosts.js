@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Posts from '../../../../component/posts/_posts/_main/Posts';
 import NewFeedSuggestedFriends from '../suggested/friends/_main/NewFeedSuggestedFriends';
 import NewFeedSuggestedGroups from '../suggested/groups/_main/NewFeedSuggestedGroups';
+import NewFeedShortVideo from '../suggested/short_video/NewFeedShortVideo';
 
 //
 NewFeedPosts.propTypes = {};
@@ -21,6 +22,10 @@ function NewFeedPosts({ post_arr, has_fetched, is_fetching }) {
                     {
                         elm: <NewFeedSuggestedFriends />,
                         interleaved_ix: 3,
+                    },
+                    {
+                        elm: <NewFeedShortVideo />,
+                        interleaved_ix: 10,
                     },
                     {
                         elm: <NewFeedSuggestedGroups />,

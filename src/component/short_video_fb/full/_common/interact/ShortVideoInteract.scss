@@ -9,3 +9,22 @@
         height: 20px;
     }
 }
+
+// ------
+
+.device-mobile {
+    .ShortVideoInteract {
+        padding-bottom: 60px;
+        opacity: 0.75;
+    }
+
+    .ShortVideoInteract_item_btn {
+        width: 36px;
+        height: 36px;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

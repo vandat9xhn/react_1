@@ -14,6 +14,27 @@ ShortVideoFullPg.propTypes = {};
 
 //
 function ShortVideoFullPg(props) {
+    //
+    const handleAction = (icon_name = "") => {
+        console.log(icon_name);
+    };
+
+    //
+    const closeScreenTitle = () => {
+        console.log("Close");
+    };
+
+    //
+    const handleNext = () => {
+        console.log("Next");
+    };
+
+    //
+    const handlePrev = () => {
+        console.log("prev");
+    };
+
+    //
     return (
         <div>
             <ShortVideoFullPc
@@ -37,6 +58,15 @@ function ShortVideoFullPg(props) {
                 picture={picture}
                 content={default_content_arr[0]}
                 link_to={`/profile/1`}
+                //
+                show_screen_title={true}
+                is_has_next={true}
+                is_has_prev={true}
+                //
+                handleAction={handleAction}
+                closeScreenTitle={closeScreenTitle}
+                handleNext={handleNext}
+                handlePrev={handlePrev}
             />
         </div>
     );
