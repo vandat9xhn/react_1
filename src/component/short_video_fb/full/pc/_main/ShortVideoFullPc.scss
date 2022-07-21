@@ -1,0 +1,18 @@
+.ShortVideoFullPc {
+    height: 100vh;
+}
+
+.ShortVideoFullPc_bg {
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(100px);
+}
+
+.ShortVideoFullPc_contain {
+    background-color: var(--shadow-8);
+}
+
+.ShortVideoFullPc_video {
+    width: calc((100vh - 20px) * 9 / 15);
+    height: 100%;
+}

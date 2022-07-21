@@ -1,0 +1,9 @@
+.ShortVideoPreview {
+    border-radius: 20px;
+}
+
+.ShortVideoPreview_bg {
+    &:hover {
+        background-color: var(--shadow-2);
+    }
+}

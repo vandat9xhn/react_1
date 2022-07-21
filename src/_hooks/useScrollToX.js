@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef, useState } from "react";
 //
-import { initial_div_elm } from '../_initial/htm_elm/html_elm';
+import { initial_div_elm } from "../_initial/htm_elm/html_elm";
 //
-import { getScrollToX } from '../_some_function/getScrollToX';
-import { handleScrollSmooth } from '../_some_function/handleScrollSmooth';
+import { getScrollToX } from "../_some_function/getScrollToX";
+import { handleScrollSmooth } from "../_some_function/handleScrollSmooth";
 
 //
 export function useScrollToX({
@@ -25,6 +25,11 @@ export function useScrollToX({
     const ref_item_elm = useRef(null);
 
     // ----------
+
+    //
+    function changeItemElm() {
+        ref_item_elm.current = getItemElm();
+    }
 
     //
     function hasNextPrev(
@@ -117,5 +122,14 @@ export function useScrollToX({
 
     // ------
 
-    return { is_has_next, is_has_prev, handleNext, handlePrev, hasNextPrev };
+    return {
+        is_has_next,
+        is_has_prev,
+
+        changeItemElm,
+        hasNextPrev,
+
+        handleNext,
+        handlePrev,
+    };
 }

@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react';
-import { IS_MOBILE } from '../_constant/Constant';
+import { useEffect, useRef } from "react";
+import { IS_MOBILE } from "../_constant/Constant";
 //
-import { initial_div_elm } from '../_initial/htm_elm/html_elm';
+import { initial_div_elm } from "../_initial/htm_elm/html_elm";
 //
-import { useDataShowMore } from './useDataShowMore';
-import { useScrollToX } from './useScrollToX';
+import { useDataShowMore } from "./useDataShowMore";
+import { useScrollToX } from "./useScrollToX";
 
 //
 export function useCardsRowFit({
@@ -42,7 +42,8 @@ export function useCardsRowFit({
         await getData_API();
 
         handleFetched && handleFetched();
-        
+        data_scroll_x.changeItemElm();
+
         if (!IS_MOBILE) {
             hasNextPrev();
         }

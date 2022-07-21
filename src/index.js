@@ -7,10 +7,10 @@ import App from './App';
 import store from './redux/reducer';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root'),
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
 );
 
-serviceWorker.unregister()
+serviceWorker.unregister();

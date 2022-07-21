@@ -1,14 +1,14 @@
 /* ------- FAKE API -------- */
 export const is_api_fake = true;
 export const baseURL = is_api_fake
-    ? 'http://localhost:8000/'
-    : 'https://react-django-heroku.herokuapp.com/';
+    ? "http://localhost:8000/"
+    : "https://react-django-heroku.herokuapp.com/";
 
 //
 const API_Fake = ({ data, followed_size, params = {} }) =>
     new Promise((res) => {
-        const is_pagination = 'page' in params;
-        const size = params['size'] || 10;
+        const is_pagination = "page" in params;
+        const size = params["size"] || 10;
 
         setTimeout(() => {
             res(
@@ -42,9 +42,18 @@ export const API_FakeReal = (
 
 /* --------- CSRF TOKEN --------- */
 
-export const csrftoken = () =>
-    document.cookie &&
-    document.cookie
-        .split(';')
-        .filter((str) => str.startsWith('csrftoken='))[0]
-        .slice(10);
+export const csrftoken = () => {
+    if (!document.cookie) {
+        return "";
+    }
+
+    const str = document.cookie
+        .split(";")
+        .filter((str) => str.startsWith("csrftoken="))[0];
+
+    if (!str) {
+        return "";
+    }
+
+    return str.slice(10);
+};
