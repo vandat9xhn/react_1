@@ -9,9 +9,16 @@ import IconsPlayPause from "../../../../../_icons_svg/icon_play_pause/IconsPlayP
 ShortVideoFullMainPc.propTypes = {};
 
 //
-function ShortVideoFullMainPc({ video, name, picture, link_to, content }) {
+function ShortVideoFullMainPc({
+    video,
+    initial_is_play = true,
+    name,
+    picture,
+    link_to,
+    content,
+}) {
     //
-    const [is_play, setIsPlay] = useState(true);
+    const [is_play, setIsPlay] = useState(initial_is_play);
 
     //
     const ref_video = useRef(null);

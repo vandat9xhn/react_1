@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 import { IS_MOBILE } from "../../../../../_constant/Constant";
 
-import { useMakeBodyHidden } from "../../../../../_hooks/useMakeBodyHidden";
-
 import ScreenTitle from "../../../../../component/_screen/components/frame/has_title/title/ScreenTitle";
 import NextPrevDiv from "../../../../../component/some_div/next_prev_div/NextPrevDiv";
+import CircleLoading from "../../../../../component/waiting/circle_loading/CircleLoading";
 
 import ShortVideoInteract from "../../_common/interact/ShortVideoInteract";
 import ShortVideoFullMainPc from "../video/ShortVideoFullMainPc";
@@ -19,6 +18,8 @@ ShortVideoFullPc.propTypes = {};
 //
 function ShortVideoFullPc({
     video,
+    currentTime,
+    paused,
     thumb,
     interacts,
 
@@ -27,6 +28,7 @@ function ShortVideoFullPc({
     content,
     link_to,
 
+    is_fetching,
     show_screen_title,
     is_has_next,
     is_has_prev,
@@ -38,9 +40,26 @@ function ShortVideoFullPc({
     handlePrev,
 }) {
     //
-    useMakeBodyHidden({
-        hidden_header: true,
-    });
+    const ref_video = useRef(null);
+
+    //
+    useEffect(() => {
+        const video_elm = ref_video.current.getElementsByTagName("video")[0];
+        video_elm.currentTime = currentTime;
+        paused && video_elm.pause();
+    }, []);
+
+    // -----
+
+    {
+        is_fetching ? (
+            <div className="pos-abs-100 bg-black">
+                <div className="pos-abs-center">
+                    <CircleLoading is_fetching={true} />
+                </div>
+            </div>
+        ) : null;
+    }
 
     //
     return (
@@ -59,9 +78,13 @@ function ShortVideoFullPc({
                     </div>
                 )}
 
-                <div className="ShortVideoFullPc_video brs-10px-pc overflow-hidden">
+                <div
+                    ref={ref_video}
+                    className="ShortVideoFullPc_video brs-10px-pc overflow-hidden"
+                >
                     <ShortVideoFullMainPc
                         video={video}
+                        initial_is_play={!paused}
                         name={name}
                         picture={picture}
                         link_to={link_to}
