@@ -1,4 +1,4 @@
-import { IS_MOBILE } from '../_constant/Constant';
+import { IS_MOBILE } from "../_constant/Constant";
 
 //
 export function getClientX(e) {
@@ -13,7 +13,9 @@ export function getClientY(e) {
 //
 export function getClientXY(e) {
     return IS_MOBILE
-        ? { client_x: e.touches[0].clientX, client_y: e.touches[0].clientY }
+        ? e.touches
+            ? { client_x: e.touches[0].clientX, client_y: e.touches[0].clientY }
+            : { client_x: 0, client_y: 0 }
         : { client_x: e.clientX, client_y: e.clientY };
 }
 

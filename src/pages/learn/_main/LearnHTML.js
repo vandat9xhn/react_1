@@ -1,12 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 //
 // import TestHook from '../test_hook/TestHook';
 // import TestWs from '../test_ws/TestWs';
 // import TestPagination from '../test_pagination/TestPagination';
 //
-import './LearnHTML.scss';
-import LearnShortVideoPreview from '../short_video_preview/LearnShortVideoPreview';
+import "./LearnHTML.scss";
+import LearnSwipeYFull from "../swipe_y_full/LearnSwipeYFull";
+// import LearnShortVideoPreview from '../short_video_preview/LearnShortVideoPreview';
 // import LearnVideo from '../video/LearnVideo';
 // import LearnPreviewProfile from '../preview_profile/LearnPreviewProfile';
 // import LearnGroupCard from '../group_card/LearnGroupCard';
@@ -114,7 +115,9 @@ function LearnHTML() {
 
             {/* <LearnVideo /> */}
 
-            <LearnShortVideoPreview />
+            {/* <LearnShortVideoPreview /> */}
+
+            <LearnSwipeYFull />
 
             <div className="h-100vh"></div>
         </div>
