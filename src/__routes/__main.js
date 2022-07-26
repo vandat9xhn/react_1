@@ -1,5 +1,6 @@
 import React from "react";
-// import { IS_MOBILE } from "../_constant/Constant";
+
+import { IS_MOBILE } from "../_constant/Constant";
 
 // //
 // import { account_route_arr } from "./_Account";
@@ -32,8 +33,11 @@ const LearnHTML = React.lazy(() => import("../pages/learn/_main/LearnHTML"));
 //     import("../component/_chat/mobile/_main/ChatMobile")
 // );
 
-const ShortVideoFullPg = React.lazy(() =>
-    import("../pages/short_video_full/_main/ShortVideoFullPg")
+const ShortVideoFullPgPc = React.lazy(() =>
+    import("../pages/short_video_full/pc/ShortVideoFullPgPc")
+);
+const ShortVideoFullPgMb = React.lazy(() =>
+    import("../pages/short_video_full/mobile/ShortVideoFullPgMb")
 );
 
 //
@@ -83,7 +87,7 @@ export const Routes = [
     // },
     {
         path: "/short-video/:id",
-        component: ShortVideoFullPg,
+        component: IS_MOBILE ? ShortVideoFullPgMb : ShortVideoFullPgPc,
         exact: false,
         auth: false,
 

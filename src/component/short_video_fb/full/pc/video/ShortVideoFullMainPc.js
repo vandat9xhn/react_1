@@ -1,9 +1,12 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import "./ShortVideoFullMainPc.scss";
+import { useShortVideoMain } from "../../../../../component/short_video_fb/_hooks/useShortVideoMain";
+
 import IconsPlayPause from "../../../../../_icons_svg/icon_play_pause/IconsPlayPause";
+
+import "./ShortVideoFullMainPc.scss";
 
 //
 ShortVideoFullMainPc.propTypes = {};
@@ -12,31 +15,18 @@ ShortVideoFullMainPc.propTypes = {};
 function ShortVideoFullMainPc({
     video,
     initial_is_play = true,
+    currentTime,
+
     name,
     picture,
     link_to,
     content,
 }) {
     //
-    const [is_play, setIsPlay] = useState(initial_is_play);
-
-    //
-    const ref_video = useRef(null);
-
-    // ----
-    const togglePlay = () => {
-        setIsPlay((is_play) => {
-            const new_is_play = !is_play;
-
-            if (new_is_play) {
-                ref_video.current.play();
-            } else {
-                ref_video.current.pause();
-            }
-
-            return new_is_play;
-        });
-    };
+    const { ref_video, is_play, togglePlay } = useShortVideoMain({
+        initial_is_play: initial_is_play,
+        currentTime: currentTime,
+    });
 
     //
     return (
@@ -46,7 +36,7 @@ function ShortVideoFullMainPc({
                     ref={ref_video}
                     className="w-100per max-h-100per object-fit-cover"
                     src={video}
-                    autoPlay
+                    autoPlay={initial_is_play}
                     loop
                 />
             </div>

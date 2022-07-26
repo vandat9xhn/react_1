@@ -2,64 +2,19 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { useMakeBodyHidden } from "../../../_hooks/useMakeBodyHidden";
+import { handle_API_ShortVideo_R } from "../../../_handle_api/short_video/retrieve";
 
-import {
-    getRandomImg,
-    getRandomVideo,
-} from "../../../_default/_common/default_image";
-import {
-    default_content_arr,
-    getRandomContent,
-} from "../../../_default/_common/default_content";
-import { getRandomName } from "../../../_default/_common/default_name";
-import {
-    getRandomId,
-    getRandomNumber,
-} from "../../../_default/_common/default_id";
+import { useMakeBodyHidden } from "../../../_hooks/useMakeBodyHidden";
 
 import ShortVideoFullPc from "../../../component/short_video_fb/full/pc/_main/ShortVideoFullPc";
 
 //
-const handle_API_ShortVideo_R = (id = 0) =>
-    new Promise((res) => {
-        setTimeout(() => {
-            res({
-                short_video_obj: {
-                    id: id,
-                    video: getRandomVideo(),
-                    thumb: getRandomImg(),
-                    content: getRandomContent(),
-
-                    name: getRandomName(),
-                    picture: getRandomImg(),
-                    link_to: `/profile/${getRandomNumber()}`,
-
-                    interacts: [
-                        {
-                            icon_name: "like",
-                            count_str: "20K",
-                        },
-                        {
-                            icon_name: "comment",
-                            count_str: "500",
-                        },
-                        {
-                            icon_name: "share",
-                            count_str: "1K",
-                        },
-                    ],
-                },
-                next_id: getRandomId(),
-            });
-        }, 250);
-    });
 
 //
-ShortVideoFullPg.propTypes = {};
+ShortVideoFullPgPc.propTypes = {};
 
 //
-function ShortVideoFullPg(props) {
+function ShortVideoFullPgPc(props) {
     //
     const { id } = useParams();
 
@@ -74,7 +29,6 @@ function ShortVideoFullPg(props) {
 
     //
     const ref_video_pg = useRef(null);
-    const ref_time_arr = useRef([]);
     const ref_video_state_arr = useRef([]);
 
     //
@@ -134,16 +88,16 @@ function ShortVideoFullPg(props) {
 
     //
     const handleNext = () => {
-        history.replaceState("", "", `/short-video/${next_id}`);
-
         handleChangeTime(ix);
 
         if (list.length - 1 > ix) {
+            history.replaceState("", "", `/short-video/${list[ix + 1].id}`);
             setStateObj((state_obj) => ({
                 ...state_obj,
                 ix: state_obj.ix + 1,
             }));
         } else {
+            history.replaceState("", "", `/short-video/${next_id}`);
             getData(next_id);
         }
     };
@@ -168,8 +122,6 @@ function ShortVideoFullPg(props) {
         return null;
     }
 
-    console.log(ref_video_state_arr.current);
-
     //
     return (
         <div ref={ref_video_pg}>
@@ -183,7 +135,7 @@ function ShortVideoFullPg(props) {
                 //
                 name={list[ix].name}
                 picture={list[ix].picture}
-                content={default_content_arr[0]}
+                content={list[ix].content}
                 link_to={list[ix].link_to}
                 //
                 is_fetching={is_fetching}
@@ -200,4 +152,4 @@ function ShortVideoFullPg(props) {
     );
 }
 
-export default ShortVideoFullPg;
+export default ShortVideoFullPgPc;

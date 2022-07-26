@@ -4,7 +4,14 @@ import { useMouseMoveY } from "../../../_hooks/useMouseMoveY";
 import { handleScrollSmooth } from "../../../_some_function/handleScrollSmooth";
 
 //
-export function useSwipeYFull({ initial_ref_main, needed_change_y = 20 }) {
+export function useSwipeYFull({
+    initial_ref_main,
+    needed_change_y = 20,
+    swipe_up = true,
+
+    handleDownOrUp = (is_next = true) => {},
+    callbackTouchMove = (per_y_change = 0) => {},
+}) {
     //
     const _ref_main = useRef(null);
     const ref_main = initial_ref_main || _ref_main;
@@ -21,6 +28,11 @@ export function useSwipeYFull({ initial_ref_main, needed_change_y = 20 }) {
     //
     useEffect(() => {
         detectItemHeight();
+        window.addEventListener("resize", detectItemHeight);
+
+        return () => {
+            window.removeEventListener("resize", detectItemHeight);
+        };
     }, []);
 
     // ----
@@ -46,8 +58,10 @@ export function useSwipeYFull({ initial_ref_main, needed_change_y = 20 }) {
 
     // move
     function handleTouchMove(client_change_y = 0) {
-        ref_y_change.current += client_change_y;
-        handleScrollY(client_change_y);
+        const _client_change_y = swipe_up ? -client_change_y : client_change_y;
+        ref_y_change.current += _client_change_y;
+        handleScrollY(_client_change_y);
+        callbackTouchMove(ref_y_change.current / ref_item_height.current);
     }
 
     //
@@ -66,11 +80,13 @@ export function useSwipeYFull({ initial_ref_main, needed_change_y = 20 }) {
     // when up
     const handleWhenUp = () => {
         handleScrollYSmooth(ref_item_height.current - ref_y_change.current);
+        handleDownOrUp(false);
     };
 
     // when down
     const handleWhenDown = () => {
         handleScrollYSmooth(-ref_item_height.current - ref_y_change.current);
+        handleDownOrUp(true);
     };
 
     // when not change

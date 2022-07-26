@@ -14,14 +14,22 @@ SwipeYFull.propTypes = {};
 function SwipeYFull({
     initial_ref_main,
     needed_change_y,
+    swipe_up,
 
     className,
     children,
+
+    handleDownOrUp,
+    callbackTouchMove,
 }) {
     //
     const { ref_main, handleStart } = useSwipeYFull({
         initial_ref_main: initial_ref_main,
         needed_change_y: needed_change_y,
+        swipe_up: swipe_up,
+
+        handleDownOrUp: handleDownOrUp,
+        callbackTouchMove: callbackTouchMove,
     });
 
     //
