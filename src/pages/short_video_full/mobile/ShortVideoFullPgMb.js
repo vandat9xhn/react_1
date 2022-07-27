@@ -63,11 +63,19 @@ function ShortVideoFullPgMb(props) {
 
     // -----
 
-    const handleDownOrUp = (is_up) => {
-        if (is_up) {
-            handlePrev();
-        } else {
-            handleNext();
+    const handleChangeIx = (new_ix = 0) => {
+        setStateObj((state_obj) => {
+            history.replaceState("", "", `/short-video/${list[new_ix].id}`);
+
+            return {
+                ...state_obj,
+                ix: new_ix,
+                temp_ix: new_ix,
+            };
+        });
+
+        if (list.length - 2 === new_ix) {
+            getData(next_id);
         }
     };
 
@@ -85,30 +93,6 @@ function ShortVideoFullPgMb(props) {
         console.log(icon_name);
     };
 
-    //
-    const handleNext = () => {
-        history.replaceState("", "", `/short-video/${list[ix + 1].id}`);
-
-        setStateObj((state_obj) => ({
-            ...state_obj,
-            ix: state_obj.ix + 1,
-        }));
-
-        if (list.length - 2 === ix + 1) {
-            getData(next_id);
-        }
-    };
-
-    //
-    const handlePrev = () => {
-        history.replaceState("", "", `/short-video/${list[ix - 1].id}`);
-
-        setStateObj((state_obj) => ({
-            ...state_obj,
-            ix: state_obj.ix - 1,
-        }));
-    };
-
     // ---
 
     if (!has_fetched) {
@@ -119,7 +103,7 @@ function ShortVideoFullPgMb(props) {
     return (
         <div className="ShortVideoFullPgMb">
             <SwipeYFull
-                handleDownOrUp={handleDownOrUp}
+                handleChangeIx={handleChangeIx}
                 callbackTouchMove={callbackTouchMove}
             >
                 <React.Fragment>
@@ -141,8 +125,6 @@ function ShortVideoFullPgMb(props) {
                                     is_has_prev={ix > 0}
                                     //
                                     handleAction={handleAction}
-                                    handleNext={handleNext}
-                                    handlePrev={handlePrev}
                                 />
                             </VirtualScroll>
                         </div>

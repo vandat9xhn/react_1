@@ -19,7 +19,7 @@ function SwipeYFull({
     className,
     children,
 
-    handleDownOrUp,
+    handleChangeIx,
     callbackTouchMove,
 }) {
     //
@@ -28,7 +28,7 @@ function SwipeYFull({
         needed_change_y: needed_change_y,
         swipe_up: swipe_up,
 
-        handleDownOrUp: handleDownOrUp,
+        handleChangeIx: handleChangeIx,
         callbackTouchMove: callbackTouchMove,
     });
 

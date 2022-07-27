@@ -14,7 +14,7 @@ ShortVideoFullMainPc.propTypes = {};
 //
 function ShortVideoFullMainPc({
     video,
-    initial_is_play = true,
+    initial_is_play,
     currentTime,
 
     name,

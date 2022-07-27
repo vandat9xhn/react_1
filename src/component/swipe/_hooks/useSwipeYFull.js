@@ -9,7 +9,7 @@ export function useSwipeYFull({
     needed_change_y = 20,
     swipe_up = true,
 
-    handleDownOrUp = (is_next = true) => {},
+    handleChangeIx = (new_ix = 0) => {},
     callbackTouchMove = (per_y_change = 0) => {},
 }) {
     //
@@ -41,17 +41,26 @@ export function useSwipeYFull({
         ref_item_height.current = ref_main.current.clientHeight;
     };
 
-    //
     const handleScrollY = (scroll_y) => {
-        const scrollTop = ref_main.current.scrollTop;
-        ref_main.current.scrollTop = scrollTop + scroll_y;
+        ref_main.current.scrollTop = scroll_y;
     };
 
-    //
     const handleScrollYSmooth = (scroll_y) => {
         handleScrollSmooth(() => {
             handleScrollY(scroll_y);
         }, ref_main.current);
+    };
+
+    const getNewIx = () => {
+        const m = ref_main.current.scrollTop % ref_item_height.current;
+        const i = (ref_main.current.scrollTop - m) / ref_item_height.current;
+        const is_up = ref_y_change.current * (swipe_up ? -1 : 1) > 0;
+
+        if (is_up) {
+            return i + (m < ref_item_height.current - needed_change_y ? 0 : 1);
+        }
+
+        return i + (m < needed_change_y ? 0 : 1);
     };
 
     // -----
@@ -60,39 +69,21 @@ export function useSwipeYFull({
     function handleTouchMove(client_change_y = 0) {
         const _client_change_y = swipe_up ? -client_change_y : client_change_y;
         ref_y_change.current += _client_change_y;
-        handleScrollY(_client_change_y);
+        handleScrollY(ref_main.current.scrollTop + _client_change_y);
         callbackTouchMove(ref_y_change.current / ref_item_height.current);
     }
 
     //
     function handleTouchEnd() {
-        if (ref_y_change.current >= needed_change_y) {
-            handleWhenUp();
-        } else if (ref_y_change.current <= -needed_change_y) {
-            handleWhenDown();
-        } else {
-            handleNotChange();
+        if (ref_y_change.current === 0) {
+            return;
         }
 
+        const new_ix = getNewIx();
+        handleChangeIx(new_ix);
+        handleScrollYSmooth(ref_item_height.current * new_ix);
         ref_y_change.current = 0;
     }
-
-    // when up
-    const handleWhenUp = () => {
-        handleScrollYSmooth(ref_item_height.current - ref_y_change.current);
-        handleDownOrUp(false);
-    };
-
-    // when down
-    const handleWhenDown = () => {
-        handleScrollYSmooth(-ref_item_height.current - ref_y_change.current);
-        handleDownOrUp(true);
-    };
-
-    // when not change
-    const handleNotChange = () => {
-        handleScrollYSmooth(-ref_y_change.current);
-    };
 
     // ----
 
