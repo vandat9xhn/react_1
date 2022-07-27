@@ -1,11 +1,18 @@
-// 
+//
 .Posts_item {
     margin-bottom: 1rem;
 }
 
-//
-@media (max-width: 330px) {
+// ----
+
+.device-mobile {
+    //
     .Posts_new {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.5px;
+    }
+
+    //
+    .Posts_item {
+        margin-bottom: 5px;
     }
 }

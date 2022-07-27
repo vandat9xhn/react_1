@@ -1,3 +1,11 @@
-.ProfilePosts_new{
+.ProfilePosts_new {
     margin-bottom: 1rem;
+}
+
+// ------
+
+.device-mobile {
+    .ProfilePosts_new {
+        margin-bottom: 5px;
+    }
 }

@@ -25,7 +25,7 @@ function NewFeedPosts({ post_arr, has_fetched, is_fetching }) {
                     },
                     {
                         elm: <NewFeedShortVideo />,
-                        interleaved_ix: 10,
+                        interleaved_ix: 0,
                     },
                     {
                         elm: <NewFeedSuggestedGroups />,
