@@ -14,7 +14,7 @@ import ShortVideoFullPc from "../../../component/short_video_fb/full/pc/_main/Sh
 ShortVideoFullPgPc.propTypes = {};
 
 //
-function ShortVideoFullPgPc(props) {
+function ShortVideoFullPgPc({ show_screen_title = false, closeScreenTitle }) {
     //
     const { id } = useParams();
 
@@ -32,9 +32,11 @@ function ShortVideoFullPgPc(props) {
     const ref_video_state_arr = useRef([]);
 
     //
-    useMakeBodyHidden({
-        hidden_header: true,
-    });
+    !show_screen_title &&
+        useMakeBodyHidden({
+            hidden_header: true,
+            hidden_scroll: true,
+        });
 
     //
     useEffect(() => {
@@ -82,8 +84,8 @@ function ShortVideoFullPgPc(props) {
     };
 
     //
-    const closeScreenTitle = () => {
-        console.log("Close");
+    const onCloseScreenTitle = () => {
+        closeScreenTitle && closeScreenTitle();
     };
 
     //
@@ -139,12 +141,12 @@ function ShortVideoFullPgPc(props) {
                 link_to={list[ix].link_to}
                 //
                 is_fetching={is_fetching}
-                show_screen_title={true}
+                show_screen_title={show_screen_title}
                 is_has_next={true}
                 is_has_prev={ix > 0}
                 //
                 handleAction={handleAction}
-                closeScreenTitle={closeScreenTitle}
+                closeScreenTitle={onCloseScreenTitle}
                 handleNext={handleNext}
                 handlePrev={handlePrev}
             />

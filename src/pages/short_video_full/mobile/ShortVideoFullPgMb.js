@@ -16,7 +16,7 @@ import "./ShortVideoFullPgMb.scss";
 ShortVideoFullPgMb.propTypes = {};
 
 //
-function ShortVideoFullPgMb(props) {
+function ShortVideoFullPgMb({ show_screen_title = false }) {
     //
     const { id } = useParams();
 
@@ -32,9 +32,10 @@ function ShortVideoFullPgMb(props) {
     const { list, ix, temp_ix, next_id, is_fetching, has_fetched } = state_obj;
 
     //
-    useMakeBodyHidden({
-        hidden_header: true,
-    });
+    !show_screen_title &&
+        useMakeBodyHidden({
+            hidden_header: true,
+        });
 
     //
     useEffect(() => {

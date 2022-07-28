@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import ShortVideoFullMainMb from "../video/ShortVideoFullMainMb";
 import ShortVideoInteract from "../../_common/interact/ShortVideoInteract";
 
+import './ShortVideoFullMb.scss';
+
 //
 ShortVideoFullMb.propTypes = {};
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { IS_MOBILE } from "../../../../../_constant/Constant";
@@ -69,13 +70,7 @@ function NewFeedShortVideo(props) {
 
             <div>
                 {IS_MOBILE ? (
-                    list.length && (
-                        <ShortVideoPreview
-                            thumb={list[0].thumb}
-                            name={list[0].name}
-                            likes={list[0].likes}
-                        />
-                    )
+                    list.length && <ShortVideoPreview {...list[0]} />
                 ) : (
                     <ShortVideoPreviewList list={list} />
                 )}

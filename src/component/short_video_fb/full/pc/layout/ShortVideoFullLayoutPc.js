@@ -24,7 +24,7 @@ function ShortVideoFullLayoutPc({
     return (
         <React.Fragment>
             {is_fetching ? (
-                <div className="pos-abs-100 bg-black">
+                <div className="pos-fixed-100per bg-black">
                     <div className="pos-abs-center">
                         <CircleLoading is_fetching={true} />
                     </div>

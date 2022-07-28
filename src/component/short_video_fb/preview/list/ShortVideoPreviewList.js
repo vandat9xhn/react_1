@@ -67,16 +67,7 @@ function ShortVideoPreviewList({ list }) {
                         key={item.id}
                         className="ShortVideoPreviewList_item flex-shrink-0"
                     >
-                        <Link
-                            className="ShortVideoPreviewList_item_link display-block wh-100"
-                            to={`/short-video/${item.id}`}
-                        >
-                            <ShortVideoPreview
-                                thumb={item.thumb}
-                                name={item.name}
-                                likes={item.likes}
-                            />
-                        </Link>
+                        <ShortVideoPreview {...item} />
                     </li>
                 ))}
             </ul>
