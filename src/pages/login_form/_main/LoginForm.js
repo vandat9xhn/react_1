@@ -1,25 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 //
-import { context_api } from '../../../_context/ContextAPI';
+import { context_api } from "../../../_context/ContextAPI";
 //
-import { LoginRequest } from '../../../api/api_django_no_token/login_logout/LoginLogout';
+import { LoginRequest } from "../../../api/api_django_no_token/login_logout/LoginLogout";
 //
-import { useScreenFetching } from '../../../_hooks/UseScreenFetching';
+import { useScreenFetching } from "../../../_hooks/UseScreenFetching";
 //
-import makeFormData from '../../../_some_function/makeFormData';
+import makeFormData from "../../../_some_function/makeFormData";
 //
-import IconsAction from '../../../_icons_svg/icons_action/IconsAction';
-import IconFav from '../../../_icons_svg/_icon_fav/IconFav';
+import IconsAction from "../../../_icons_svg/icons_action/IconsAction";
+import IconFav from "../../../_icons_svg/_icon_fav/IconFav";
 //
-import IconDiv from '../../../component/some_div/icon_div/IconDiv';
-import ButtonRipple from '../../../component/button/button_ripple/ButtonRipple';
-import InputNotValid from '../../../component/input/input_not_valid/InputNotValid';
-import InputNotValidPass from '../../../component/input/input_not_valid_pass/InputNotValidPass';
+import IconDiv from "../../../component/some_div/icon_div/IconDiv";
+import ButtonRipple from "../../../component/button/button_ripple/ButtonRipple";
+import InputNotValid from "../../../component/input/input_not_valid/InputNotValid";
+import InputNotValidPass from "../../../component/input/input_not_valid_pass/InputNotValidPass";
 //
-import LoginFetching from '../logging/LoginFetching';
+import LoginFetching from "../logging/LoginFetching";
 //
-import './LoginForm.scss';
+import "./LoginForm.scss";
 
 //
 function LoginForm() {
@@ -28,20 +28,23 @@ function LoginForm() {
 
     //
     const [login_state, setLoginState] = useState({
-        username: '',
-        password: '',
-        type_pass: 'password',
+        username: "",
+        password: "",
+        type_pass: "password",
         account_wrong: false,
     });
 
     const { username, password, type_pass, account_wrong } = login_state;
 
     //
+    const ref_checked = useRef(null);
+
+    //
     const handleScreenFetching = useScreenFetching();
 
     //
     useEffect(() => {
-        document.title = 'Login';
+        document.title = "Login";
     }, []);
 
     /* ----------------------- FORM --------------------------- */
@@ -58,8 +61,13 @@ function LoginForm() {
     function toggleType() {
         setLoginState({
             ...login_state,
-            type_pass: type_pass == 'password' ? 'text' : 'password',
+            type_pass: type_pass == "password" ? "text" : "password",
         });
+    }
+
+    //
+    function toggleSaved() {
+        ref_checked.current.checked = !ref_checked.current.checked;
     }
 
     //
@@ -74,6 +82,7 @@ function LoginForm() {
         const formData = makeFormData({
             username: username,
             password: password,
+            saved: ref_checked.current.checked,
         });
 
         const res = await handleScreenFetching(
@@ -81,7 +90,7 @@ function LoginForm() {
             <LoginFetching is_fetching={true} />
         );
 
-        if (res.data == 'Wrong') {
+        if (res.data == "Wrong") {
             setLoginState((login_state) => ({
                 ...login_state,
                 account_wrong: true,
@@ -125,7 +134,7 @@ function LoginForm() {
 
                             <div
                                 className={`LoginForm_error ${
-                                    account_wrong ? '' : 'display-none'
+                                    account_wrong ? "" : "display-none"
                                 }`}
                             >
                                 <IconDiv Icon={IconsAction} x={400} y={400}>
@@ -156,6 +165,19 @@ function LoginForm() {
                                     handleChange={handleChange}
                                     toggleType={toggleType}
                                 />
+                            </div>
+
+                            <div
+                                className="display-flex align-items-center cursor-pointer margin-bottom-5px"
+                                onClick={toggleSaved}
+                            >
+                                <input
+                                    ref={ref_checked}
+                                    className="margin-right-5px pointer-events-none"
+                                    type="checkbox"
+                                />
+
+                                <div className="text-555 font-14px">Save account</div>
                             </div>
 
                             <div className="LoginForm_login App_submit display-flex-center">

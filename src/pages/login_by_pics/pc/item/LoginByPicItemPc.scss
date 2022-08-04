@@ -1,0 +1,13 @@
+$brs: 8px;
+
+//
+
+.LoginByPicItemPc {
+    width: 160px;
+    border-radius: $brs;
+    
+    cursor: pointer;
+    &:hover {
+        box-shadow: var(--box-shadow-action);
+    }
+}

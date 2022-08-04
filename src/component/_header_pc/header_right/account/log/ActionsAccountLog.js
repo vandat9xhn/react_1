@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 //
+import { REG_ACCOUNT } from '../../../../../_constant/Constant';
 import { context_api } from '../../../../../_context/ContextAPI';
 //
 import { LogoutRequest } from '../../../../../api/api_django_no_token/login_logout/LoginLogout';
@@ -32,7 +33,7 @@ function ActionsAccountLog({ closeAccount }) {
     function handleBeForeLog() {
         let url_before_login = location.pathname + location.search;
 
-        if (url_before_login.search(/(login-form|registration-form)/) == -1) {
+        if (url_before_login.search(REG_ACCOUNT) == -1) {
             sessionStorage.url_before_login = url_before_login;
         }
     }
@@ -59,7 +60,7 @@ function ActionsAccountLog({ closeAccount }) {
                 picture: '',
             });
 
-            use_history.push('/login-form');
+            use_history.push('/login-pic');
         } catch (e) {
             console.log(e);
         }
@@ -77,7 +78,7 @@ function ActionsAccountLog({ closeAccount }) {
                     <IconDiv Icon={IconsAccount}>Logout</IconDiv>
                 </div>
             ) : (
-                <Link to="/login-form" onClick={handleLogin}>
+                <Link to="/login-pic" onClick={handleLogin}>
                     <div className="header_item" title="Login">
                         <IconDiv Icon={IconsAccount} x={200}>
                             Login
