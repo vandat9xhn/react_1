@@ -6,8 +6,11 @@ const LoginForm = React.lazy(() =>
     import("../pages/login_form/_main/LoginForm")
 );
 
-const LoginByPics = React.lazy(() => 
+const LoginByPicsPc = React.lazy(() =>
     import("../pages/login_by_pics/pc/_main/LoginByPicsPc")
+);
+const LoginByPicsMb = React.lazy(() =>
+    import("../pages/login_by_pics/mb/_main/LoginByPicsMb")
 );
 
 const Registration = React.lazy(() =>
@@ -26,7 +29,7 @@ export const account_route_arr = [
     },
     {
         path: "/login-pic",
-        component: LoginByPics,
+        component: IS_MOBILE ? LoginByPicsMb : LoginByPicsPc,
         exact: true,
         auth: false,
 

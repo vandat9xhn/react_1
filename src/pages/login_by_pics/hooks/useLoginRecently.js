@@ -66,10 +66,23 @@ export function useLoginRecently() {
         setDataUser(user_data);
     }
 
+    function handleDel(ix = 0) {
+        setStateObj((state_obj) => {
+            const new_user_arr = [...state_obj.user_arr];
+            new_user_arr.splice(ix, 1);
+
+            return {
+                ...state_obj,
+                user_arr: new_user_arr,
+            };
+        });
+    }
+
     // ---
 
     return {
         ...state_obj,
         handleLogin,
+        handleDel,
     };
 }

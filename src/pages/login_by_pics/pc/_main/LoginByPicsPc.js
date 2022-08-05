@@ -1,10 +1,12 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { useLoginRecently } from "../../hooks/useLoginRecently";
 
+import { LOG_ANOTHER } from "../../constant";
 import LoginByPicItemPc from "../../pc/item/LoginByPicItemPc";
+import LoginByPicItemPlPc from "../item/LoginByPicItemPlPc";
 
 import "./LoginByPicsPc.scss";
 
@@ -14,17 +16,8 @@ LoginByPicsPc.propTypes = {};
 //
 function LoginByPicsPc(props) {
     //
-    const { user_arr, has_fetched, handleLogin } = useLoginRecently();
-
-    // ----
-
-    if (!has_fetched) {
-        return null;
-    }
-
-    if (has_fetched && user_arr.length === 0) {
-        return <Redirect to={"/login-form"} />;
-    }
+    const { user_arr, has_fetched, handleLogin, handleDel } =
+        useLoginRecently();
 
     //
     return (
@@ -45,14 +38,25 @@ function LoginByPicsPc(props) {
                                     last_name={item.last_name}
                                     picture={item.picture}
                                     handleLogin={handleLogin}
+                                    handleDel={handleDel}
                                 />
                             </div>
                         ))}
                     </div>
+
+                    {has_fetched ? (
+                        user_arr.length === 0 ? (
+                            <div className="font-17px font-500 text-555">
+                                No recently logins
+                            </div>
+                        ) : null
+                    ) : (
+                        <LoginByPicItemPlPc />
+                    )}
                 </div>
 
                 <div className="margin-top-20px">
-                    <Link to={"/login-form"}>Login another account</Link>
+                    <Link to={"/login-form"}>{LOG_ANOTHER}</Link>
                 </div>
             </div>
         </div>

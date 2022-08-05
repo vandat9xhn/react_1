@@ -1,13 +1,36 @@
 $brs: 8px;
 
 //
-
 .LoginByPicItemPc {
     width: 160px;
     border-radius: $brs;
-    
+
     cursor: pointer;
     &:hover {
         box-shadow: var(--box-shadow-action);
+        .LoginByPicItemPc_del {
+            transform: translate(-5px, -5px) scale(2);
+            background-color: #fff;
+            .IconsArrow_close {
+                stroke: var(--color-555);
+            }
+        }
+    }
+}
+
+//
+.LoginByPicItemPc_del {
+    left: 5px;
+    top: 5px;
+
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--shadow-6);
+
+    transition: transform 200ms ease-in-out;
+
+    .IconsArrow_close {
+        stroke-width: 25;
     }
 }
