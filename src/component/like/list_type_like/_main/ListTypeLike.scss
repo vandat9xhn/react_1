@@ -28,10 +28,13 @@
 // -----
 
 .device-mobile {
+    .ListTypeLike_contain {
+        max-width: calc(100vw - 40px);
+    }
     .ListTypeLike_row {
         flex-wrap: wrap;
         width: max-content;
-        max-width: calc(100vw - 40px);
+        max-width: 100%;
         padding: 8px;
     }
 

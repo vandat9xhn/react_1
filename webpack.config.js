@@ -39,11 +39,11 @@ const is_prod = process.env.ENVIRONMENT === 'production';
 
 // 
 const config = {
-    resolve: {
-        alias: {
-            '': path.resolve(__dirname, './src'),
-        },
-    },
+    // resolve: {
+    //     alias: {
+    //         '': path.resolve(__dirname, './src'),
+    //     },
+    // },
     // 
     entry: {
         app: './src/index.js',

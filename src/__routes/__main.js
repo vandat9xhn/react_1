@@ -42,14 +42,14 @@ const ShortVideoFullPgMb = React.lazy(() =>
 
 //
 export const Routes = [
-    // {
-    //     path: '/home',
-    //     component: Home,
-    //     auth: false,
-    //     exact: true,
+    {
+        path: '/home',
+        component: Home,
+        auth: false,
+        exact: true,
 
-    //     title: 'Home',
-    // },
+        title: 'Home',
+    },
 
     ...account_route_arr,
 
