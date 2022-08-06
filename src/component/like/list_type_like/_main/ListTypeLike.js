@@ -50,7 +50,7 @@ function ListTypeLike({ chooseListTypeLike, open_type_like }) {
                     {IS_MOBILE ? (
                         <FlexCenterWrap
                             ref_parent={ref_parent}
-                            more_item_width={16}
+                            // more_item_width={16}
                             more_parent_width={-16}
                         >
                             <ListTypeLikeRow

@@ -1,10 +1,11 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from "react";
 //
-import { context_api } from './ContextAPI';
+import { context_api } from "./ContextAPI";
 //
-import { initial_user } from '../_initial/user/initialUser';
+import { initial_user } from "../_initial/user/initialUser";
 //
-import { DefineUser } from '../api/api_django_no_token/define_user/DefineUser';
+import { DefineUser } from "../api/api_django_no_token/define_user/DefineUser";
+import { changeDefaultDefineUser } from "../_default/login/DefaultLogin";
 
 //
 const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
@@ -20,7 +21,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
 
     //
     const root_floor_url_arr = useRef([]);
-    const profile_friends_pathname = useRef('');
+    const profile_friends_pathname = useRef("");
 
     // ----------
 
@@ -35,7 +36,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
             const res = await DefineUser();
             // console.log(res);
 
-            if (typeof res.data == 'object') {
+            if (typeof res.data == "object") {
                 setContextState({
                     user: res.data,
                     has_fetched: true,
@@ -64,10 +65,12 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
         // log in or reload + has logged in
         if (new_user.id) {
             localStorage.is_login = 1;
+            // fake
+            changeDefaultDefineUser(new_user);
             // log out
         } else {
             localStorage.is_login = 0;
-            localStorage.access_token = '';
+            localStorage.access_token = "";
         }
 
         setContextState({
@@ -86,7 +89,7 @@ const ContextAPI = ({ children, handleRefresh, ...rest_props }) => {
         <context_api.Provider
             value={{
                 ...rest_props,
-                auth_class: user.id ? '' : 'display-none',
+                auth_class: user.id ? "" : "display-none",
                 user: user,
 
                 root_floor_url_arr: root_floor_url_arr,

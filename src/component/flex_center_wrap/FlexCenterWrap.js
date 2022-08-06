@@ -7,8 +7,8 @@ import { useCenterWrap } from "../../_hooks/useCenterWrap";
 function FlexCenterWrap({
     ref_parent,
     children,
-    more_item_width,
-    more_parent_width,
+    more_item_width = 0,
+    more_parent_width = 0,
 }) {
     //
     const { padding_x } = useCenterWrap({
@@ -19,10 +19,16 @@ function FlexCenterWrap({
     // ---
 
     function getItemWidth() {
+        const item_elm = ref_parent.current.getElementsByClassName(
+            "FlexCenterWrap_item"
+        )[0];
+        const { width, marginLeft, marginRight } = getComputedStyle(item_elm);
+
         return (
-            ref_parent.current
-                .getElementsByClassName("FlexCenterWrap_item")[0]
-                .getBoundingClientRect().width + more_item_width
+            parseFloat(width) +
+            parseFloat(marginLeft) +
+            parseFloat(marginRight) +
+            more_item_width
         );
     }
 

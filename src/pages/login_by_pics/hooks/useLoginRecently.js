@@ -63,7 +63,9 @@ export function useLoginRecently() {
         // localStorage.access_token = access;
         // localStorage.life_time = life_time;
         localStorage.time_set = new Date().getTime();
-        setDataUser(user_data);
+        setDataUser({
+            ...user_data,
+        });
     }
 
     function handleDel(ix = 0) {
