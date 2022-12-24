@@ -1,15 +1,15 @@
-import React, { useContext, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 //
-import { CHAT_INACTIVE_NUM } from '../../../../_constant/Constant';
+import { CHAT_INACTIVE_NUM } from "../../../../_constant/Constant";
 //
-import { context_api } from '../../../../_context/ContextAPI';
+import { context_api } from "../../../../_context/ContextAPI";
 //
-import ChatOptions from '../options/ChatOptions';
-import ChatHide from '../hide/_main/ChatHide';
-import ChatHideMore from '../hide_more/_main/ChatHideMore';
+import ChatOptions from "../options/ChatOptions";
+import ChatHide from "../hide/_main/ChatHide";
+import ChatHideMore from "../hide_more/_main/ChatHideMore";
 //
-import './ChatWdHide.scss';
+import "./ChatWdHide.scss";
 
 //
 ChatWdHide.propTypes = {};
@@ -48,9 +48,8 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
     //
     function toggleOptions() {
         setStateObj((state_obj) => {
-            // console.log(!state_obj.open_options);
-            const _open_options = !state_obj.open_options;
-            return { ...state_obj, open_options: _open_options };
+            const new_open_options = !state_obj.open_options;
+            return { ...state_obj, open_options: new_open_options };
         });
     }
 
@@ -75,7 +74,7 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
         <div className="ChatWdHidden pos-rel user-select-none">
             <div
                 className={`ChatWdHidden_options ${
-                    !is_show_chat_hide || open_options ? '' : 'display-none'
+                    !is_show_chat_hide || open_options ? "" : "display-none"
                 } 
                
                 `}
@@ -99,8 +98,8 @@ function ChatWdHide({ chat_inactive_arr, is_two_long_chat_inactive }) {
             <div
                 className={`ChatWdHidden_room pos-rel ${
                     is_show_chat_hide
-                        ? 'ChatWdHidden_room-show'
-                        : 'ChatWdHidden_room-hide'
+                        ? "ChatWdHidden_room-show"
+                        : "ChatWdHidden_room-hide"
                 }`}
             >
                 <div
