@@ -39,6 +39,8 @@ function ChatPv({
         setShowPreview(!show_preview);
     }
 
+    // console.log(current_canvas);
+
     //
     return (
         <div className="ChatPv pos-rel">

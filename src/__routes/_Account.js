@@ -1,4 +1,5 @@
 import React from "react";
+
 import { IS_MOBILE } from "../_constant/Constant";
 
 //
@@ -15,6 +16,10 @@ const LoginByPicsMb = React.lazy(() =>
 
 const Registration = React.lazy(() =>
     import("../pages/registration/_main/RegisterCommon")
+);
+
+const WorkingOnIt = React.lazy(() =>
+    import("../component/working_on_it/WorkingOnIt")
 );
 
 //
@@ -42,5 +47,13 @@ export const account_route_arr = [
         auth: false,
 
         title: "Register",
+    },
+    {
+        path: "/find-account",
+        component: WorkingOnIt,
+        exact: true,
+        auth: false,
+
+        title: "Find account",
     },
 ];

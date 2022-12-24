@@ -129,6 +129,7 @@ function ChatF({ canvas_obj, input_obj }) {
 
     //
     function completeCanvas(canvas_data) {
+        // console.log(canvas_data);
         for (const key in canvas_data) {
             canvas_obj[key] = canvas_data[key];
         }

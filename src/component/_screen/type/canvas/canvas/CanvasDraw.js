@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-//
-import IconReUndo from '../../../../../_icons_svg/icon_re_undo/IconReUndo';
-//
-import Select from '../../../../input/select/Select';
-//
-import './CanvasDraw.scss';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+
+import IconReUndo from "../../../../../_icons_svg/icon_re_undo/IconReUndo";
+import Select from "../../../../input/select/Select";
+
+import "./CanvasDraw.scss";
 
 //
 const w_canvas = 250;
@@ -15,8 +14,8 @@ const h_canvas = 250;
 class CanvasDraw extends Component {
     state = {
         stroke_width: 1,
-        color: '#000000',
-        bg: '#ffffff',
+        color: "#000000",
+        bg: "#ffffff",
     };
 
     //
@@ -44,7 +43,7 @@ class CanvasDraw extends Component {
         const { list_canvas, c_step, bg, stroke_width, color } =
             this.props.canvas_draws;
 
-        this.ctx = this.ref_canvas.getContext('2d');
+        this.ctx = this.ref_canvas.getContext("2d");
         this.run = false;
         this.list_canvas = [...list_canvas];
         this.c_step = c_step;
@@ -122,7 +121,7 @@ class CanvasDraw extends Component {
     };
 
     //
-    fillBgCanvas = () => {
+    fillBgCanvas = (callback) => {
         const img_src = this.ref_canvas.toDataURL();
         this.ctx.clearRect(0, 0, w_canvas, h_canvas);
         this.ctx.fillStyle = this.state.bg;
@@ -132,6 +131,7 @@ class CanvasDraw extends Component {
         img_canvas.src = img_src;
         img_canvas.onload = () => {
             this.ctx.drawImage(img_canvas, 0, 0);
+            callback();
         };
     };
 
@@ -187,7 +187,7 @@ class CanvasDraw extends Component {
         }
 
         this.ctx.clearRect(0, 0, w_canvas, h_canvas);
-        this.list_canvas.splice(this.c_step + 1, this.list_canvas.length, '');
+        this.list_canvas.splice(this.c_step + 1, this.list_canvas.length, "");
         this.c_step += 1;
 
         this.handleHasChange();
@@ -242,33 +242,32 @@ class CanvasDraw extends Component {
 
     //
     completeCanvas = () => {
-        this.fillBgCanvas();
+        this.fillBgCanvas(() => {
+            const current_canvas = this.ref_canvas.toDataURL();
+            // console.log(current_canvas);
 
-        setTimeout(() => {
             this.props.completeCanvas({
-                current_canvas: this.ref_canvas.toDataURL(),
+                current_canvas: current_canvas,
                 list_canvas: this.list_canvas,
                 c_step: this.c_step,
                 bg: this.state.bg,
                 color: this.state.color,
                 stroke_width: this.state.stroke_width,
             });
-        }, 0);
+        });
     };
 
     //
     handleDownload = (e) => {
         e.preventDefault();
-        this.fillBgCanvas();
-
-        setTimeout(() => {
+        this.fillBgCanvas(() => {
             this.ref_link_download.href = this.ref_canvas.toDataURL();
             this.ref_link_download.click();
 
             setTimeout(() => {
                 this.drawImageToCanvas(this.c_step);
             }, 0);
-        }, 0);
+        });
     };
 
     //
@@ -282,8 +281,8 @@ class CanvasDraw extends Component {
                     <canvas
                         ref={this.refCanvas}
                         className="CanvasDraw_canvas"
-                        width={w_canvas + 'px'}
-                        height={h_canvas + 'px'}
+                        width={w_canvas + "px"}
+                        height={h_canvas + "px"}
                         style={{ backgroundColor: bg }}
                         onMouseLeave={this.onMouseLeave}
                         //
